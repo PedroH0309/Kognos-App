@@ -788,3 +788,64 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
 @media(max-width:760px) {.app-layout .practice-filter-grid {grid-template-columns:minmax(0,1fr) minmax(0,1fr);}.app-layout .learning-overview {flex-direction:column;align-items:stretch;padding:18px;}.app-layout .learning-overview-meter {max-width:none;min-width:0;width:100%;text-align:left;}.app-layout .learning-subjects {grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:520px) {.app-layout .learning-subjects,.app-layout .practice-filter-grid {grid-template-columns:minmax(0,1fr);}.app-layout .learning-lesson-detail,.app-layout .learning-index {padding:18px;}.app-layout .practice-question-row {align-items:stretch;flex-direction:column;}.app-layout .practice-question-row .btn {align-self:flex-start;}.app-layout .learning-lesson-actions .btn {width:100%;}}
 @media(prefers-reduced-motion:reduce){.app-layout .learning-progress-track>span {transition:none;}}
+
+/* v0.9 — Exploratory diagnostic and conservative adaptive review */
+.app-layout .diag-intro,.app-layout .diag-exam,.app-layout .diag-report{max-width:1000px;padding:clamp(22px,3vw,38px);margin-bottom:24px}
+.app-layout .diag-intro{display:grid;justify-items:start;gap:15px}
+.app-layout .diag-symbol{display:grid;place-items:center;width:56px;height:56px;border-radius:16px;background:#5B4DE31C;border:1px solid #5B4DE344;color:var(--violet)}
+.app-layout .diag-intro h2,.app-layout .diag-report h2{font-size:clamp(22px,2.5vw,30px);line-height:1.22;margin:0}
+.app-layout .diag-intro p,.app-layout .diag-report>p{line-height:1.7;color:var(--sub);max-width:760px;margin:0}
+.app-layout .diag-intro p strong,.app-layout .diag-report p strong{color:var(--txt)}
+.app-layout .diag-info-grid{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0}
+.app-layout .diag-info-grid>span{display:flex;align-items:center;gap:8px;font-size:12px;border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:9px 12px;color:var(--txt)}
+.app-layout .diag-info-grid svg{color:var(--violet)}
+.app-layout .diag-progress-title{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.055em;font-weight:730;color:var(--sub);margin-bottom:10px}
+.app-layout .diag-progress-title strong{color:var(--violet);letter-spacing:0}
+.app-layout .diag-exam .question-progress{margin:0 0 28px}
+.app-layout .diag-exam h2{font-size:clamp(20px,2.7vw,28px);line-height:1.35;margin:10px 0 24px}
+.app-layout .diag-exam .answer-options{display:grid;gap:10px}
+.app-layout .diag-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:25px 0 5px}
+.app-layout .diag-report{display:grid;gap:14px}
+.app-layout .diag-result-list{display:grid;gap:12px;margin:14px 0}
+.app-layout .diag-result-item{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);background:var(--panel-2);border-radius:14px;padding:16px}
+.app-layout .diag-result-item>div{display:flex;gap:12px;align-items:start;min-width:0}
+.app-layout .diag-result-marker{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.app-layout .diag-result-marker.is-correct{color:var(--success);background:#18B78A22}
+.app-layout .diag-result-marker.needs-review{color:var(--warning);background:#F0AD4E20}
+.app-layout .diag-result-item strong{display:block;font-size:13px;color:var(--txt)}
+.app-layout .diag-result-item small{display:block;margin:4px 0 8px;font-size:11px;color:var(--sub)}
+.app-layout .diag-result-item p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.app-layout .diag-result-item .btn{white-space:nowrap;flex:none}
+.app-layout .review-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+.app-layout .review-summary-grid article{display:flex;flex-direction:column;align-items:flex-start;gap:9px;background:var(--box-bg);border:1px solid var(--line);border-radius:14px;padding:20px;color:var(--sub)}
+.app-layout .review-summary-grid svg{color:var(--violet)}
+.app-layout .review-summary-grid strong{font-size:clamp(25px,3vw,36px);font-variant-numeric:tabular-nums;color:var(--txt);line-height:1}
+.app-layout .review-summary-grid span{font-size:12px}
+.app-layout .review-list-panel{padding:clamp(16px,2.8vw,28px)}
+.app-layout .review-panel-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.app-layout .review-panel-header h2{font-size:20px;margin:4px 0 0}
+.app-layout .review-tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);padding:15px 0}
+.app-layout .review-tabs button{border:1px solid transparent;border-radius:10px;padding:9px 12px;background:transparent;color:var(--sub);font-size:12px;font-weight:700}
+.app-layout .review-tabs button:hover{background:var(--panel-2)}
+.app-layout .review-tabs button.is-active{border-color:#5B4DE348;background:#5B4DE320;color:var(--txt)}
+.app-layout .review-item-list{display:grid;gap:10px;padding-top:16px}
+.app-layout .review-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px;border-radius:13px;border:1px solid var(--line);background:var(--panel-2)}
+.app-layout .review-item-body{min-width:0;flex:1}
+.app-layout .review-item-title{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:9px}
+.app-layout .review-pill{font-size:10px;padding:4px 8px;border-radius:8px;font-weight:730;border:1px solid var(--line);color:var(--sub)}
+.app-layout .review-pill.due{background:#F0AD4E19;color:var(--warning);border-color:#F0AD4E66}
+.app-layout .review-pill.scheduled{background:#38CDE514;color:var(--accent-400);border-color:#38CDE548}
+.app-layout .review-discipline{font-size:11px;color:var(--sub)}
+.app-layout .review-item h3{font-size:16px;margin:0 0 5px;color:var(--txt)}
+.app-layout .review-item p{font-size:12px;line-height:1.55;color:var(--sub);margin:0 0 10px;max-width:700px}
+.app-layout .review-meta{display:flex;flex-wrap:wrap;gap:12px;color:var(--sub);font-size:11px}
+.app-layout .review-meta>span{display:flex;gap:5px;align-items:center}
+.app-layout .review-item-actions{display:flex;flex-shrink:0;gap:9px;align-items:center}
+.app-layout .review-empty{display:grid;justify-items:center;text-align:center;padding:42px 12px;gap:7px;color:var(--sub)}
+.app-layout .review-empty svg{color:var(--success)}
+.app-layout .review-empty h3{color:var(--txt);font-size:17px;margin:4px 0}
+.app-layout .review-empty p{font-size:12px;margin:0}
+.app-layout .adaptive-reviews-page>.privacy-note{margin-top:18px;max-width:900px}
+@media(max-width:900px){.app-layout .diag-result-item,.app-layout .review-item{align-items:stretch;flex-direction:column}.app-layout .review-item-actions{flex-wrap:wrap}.app-layout .diag-result-item .btn{align-self:flex-start}}
+@media(max-width:650px){.app-layout .review-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.app-layout .review-summary-grid article{padding:12px;min-height:112px}.app-layout .review-summary-grid span{font-size:10px}.app-layout .review-summary-grid strong{font-size:27px}.app-layout .review-panel-header .btn{width:100%;justify-content:center}.app-layout .diag-intro,.app-layout .diag-exam,.app-layout .diag-report{padding:20px 15px}.app-layout .diag-actions .btn{flex:1;justify-content:center}.app-layout .review-item-actions .btn{flex:1;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.app-layout .diag-exam *, .app-layout .review-item *{transition:none!important;animation:none!important}}

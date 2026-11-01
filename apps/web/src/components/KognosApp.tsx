@@ -9,6 +9,9 @@ import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
 import AccountSettings, {ProfileAvatar} from './AccountSettings';
 import PracticeSpace from './PracticeSpace';
+import DiagnosticSpace from './DiagnosticSpace';
+import ReviewSpace from './ReviewSpace';
+import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
 import LearningTrails from './LearningTrails';
 import StudyPlanner from './StudyPlanner';
 import {statsFromAttempts,type QuestionAttempt} from '@/lib/demo-questions';
@@ -19,7 +22,7 @@ import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
 
 const STORAGE_KEY='kognos_guest_profile_v1';
-type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'plans'|'reviews'|'performance';
+type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'diagnostic'|'plans'|'reviews'|'performance';
 const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'dashboard',icon:'◫',label:'Visão geral'},
   {key:'learn',icon:'▤',label:'Aprender'},
@@ -27,8 +30,9 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'subjects',icon:'▧',label:'Minhas disciplinas'},
   {key:'questions',icon:'▦',label:'Banco de questões'},
   {key:'simulados',icon:'◉',label:'Simulados'},
+  {key:'diagnostic',icon:'◈',label:'Diagnóstico inicial'},
   {key:'plans',icon:'◷',label:'Meu planejamento'},
-  {key:'reviews',icon:'↻',label:'Revisões',status:'Em construção'},
+  {key:'reviews',icon:'↻',label:'Revisões inteligentes'},
   {key:'calendar',icon:'▣',label:'Calendário',status:'Em construção'},
   {key:'tutor',icon:'✧',label:'Kog · Tutor IA'},
   {key:'performance',icon:'▥',label:'Desempenho'},
@@ -39,7 +43,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
 
 const NAV_ICONS:Record<View,LucideIcon>={
  dashboard:LayoutDashboard,learn:BookOpen,trails:GraduationCap,subjects:LibraryBig,
- questions:ListChecks,simulados:ClipboardList,plans:CalendarDays,reviews:RotateCcw,
+ questions:ListChecks,simulados:ClipboardList,diagnostic:Target,plans:CalendarDays,reviews:RotateCcw,
  calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
  profile:UserRound,settings:Settings,
 };
@@ -189,7 +193,7 @@ function Onboarding({start,onFinish,onLogin,cloud}:{start:StudentProfile;onFinis
 }
 function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;onEdit:()=>void;user:User|null}){
   const first=p.nickname.split(' ')[0]||'estudante';
-  const [activity,setActivity]=useState<{answered:number;accuracy:number|null;completed:number;activeDays:number}>({answered:0,accuracy:null,completed:0,activeDays:0});
+  const [activity,setActivity]=useState<{answered:number;accuracy:number|null;completed:number;activeDays:number;dueReviews:number}>({answered:0,accuracy:null,completed:0,activeDays:0,dueReviews:0});
   const [activityError,setActivityError]=useState('');
   useEffect(()=>{
     let active=true;setActivityError('');
@@ -204,8 +208,8 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
         if(!active)return;
         const safeAttempts=Array.isArray(attempts)?attempts:[];
         const stats=statsFromAttempts(safeAttempts);
-        setActivity({answered:stats.answered,accuracy:stats.accuracy,completed:Array.isArray(tasks)?tasks.filter(t=>t.done).length:0,activeDays:new Set(safeAttempts.map(a=>a.createdAt.slice(0,10))).size});
-      } catch(e){if(active){setActivity({answered:0,accuracy:null,completed:0,activeDays:0});setActivityError(e instanceof Error?e.message:'Não foi possível carregar seu desempenho.');}}
+        setActivity({answered:stats.answered,accuracy:stats.accuracy,completed:Array.isArray(tasks)?tasks.filter(t=>t.done).length:0,activeDays:new Set(safeAttempts.map(a=>a.createdAt.slice(0,10))).size,dueReviews:reviewCounts(reviewItems(safeAttempts)).due});
+      } catch(e){if(active){setActivity({answered:0,accuracy:null,completed:0,activeDays:0,dueReviews:0});setActivityError(e instanceof Error?e.message:'Não foi possível carregar seu desempenho.');}}
     })();
     return()=>{active=false;};
   },[user]);
@@ -214,7 +218,7 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
   <div className="stat-grid"><StatCard icon={BookOpenCheck} label="QUESTÕES RESOLVIDAS" value={activity.answered} note={user?'Sincronizadas na sua conta':'Neste navegador'}/><StatCard icon={Target} label="TAXA DE ACERTOS" value={activity.accuracy===null?'—':`${activity.accuracy}%`} note={activity.answered?'Com base nas suas respostas':'Comece um treino'}/><StatCard icon={CheckCircle2} label="TAREFAS CONCLUÍDAS" value={activity.completed} note="Do seu planejamento"/><StatCard icon={CalendarCheck2} label="DIAS COM PRÁTICA" value={activity.activeDays} note={user?'Histórico da conta':'Histórico local'}/></div>
   {activityError&&<div className="message warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}
   <div className="home-two-cols"><section className="dark-panel"><div className="panel-title"><div><span className="overline">COMECE POR AQUI</span><h3>Sua próxima conquista</h3></div><span>✦</span></div><p className="panel-desc">O tutor Kognos pode explicar assuntos, criar exemplos e ajudar a destravar questões. O banco demonstrativo e o planejamento já permitem registrar atividades; a versão pública com provas oficiais e sincronização ainda está em desenvolvimento.</p><button className="btn primary" onClick={()=>onGo('tutor')}>Abrir tutor IA →</button><div className="panel-foot">{user?'O uso da IA exige configuração da chave no servidor.':'Conecte sua conta para habilitar a IA.'}</div></section><section className="dark-panel feature-panel"><div className="panel-title"><div><span className="overline">SEU PERFIL DE ESTUDO</span><h3>Como você aprende</h3></div></div><div className="profile-tags">{p.styles.map(x=><span className="profile-tag" key={x}>✧ {styleLabels[x]}</span>)}{p.adaptations.map(x=><span className="profile-tag special" key={x}>◈ {adaptationLabels[x]}</span>)}</div><button className="link-btn" onClick={onEdit}>Personalizar preferências →</button></section></div>
-  <div className="dashboard-quick-actions"><button className="btn outline" onClick={()=>onGo('questions')}><ListChecks size={18}/> Resolver questões</button><button className="btn outline" onClick={()=>onGo('simulados')}><ClipboardList size={18}/> Fazer simulado</button><button className="btn outline" onClick={()=>onGo('plans')}><CalendarDays size={18}/> Meu plano</button><button className="btn outline" onClick={()=>onGo('performance')}><BarChart3 size={18}/> Meu desempenho</button></div><div className="development-note"><span>✧</span><p><strong>Progresso sem dados inventados.</strong> Os números acima vêm das atividades demonstrativas registradas. Contas conectadas usam a nuvem; ciclos adaptativos completos e avaliações oficiais ainda estão em construção.</p></div>
+  <div className="dashboard-quick-actions"><button className="btn outline" onClick={()=>onGo('questions')}><ListChecks size={18}/> Resolver questões</button><button className="btn outline" onClick={()=>onGo('simulados')}><ClipboardList size={18}/> Fazer simulado</button><button className="btn outline" onClick={()=>onGo('diagnostic')}><Target size={18}/> Diagnóstico</button><button className="btn outline" onClick={()=>onGo('reviews')}><RotateCcw size={18}/> Revisões {activity.dueReviews>0?`(${activity.dueReviews})`:''}</button><button className="btn outline" onClick={()=>onGo('plans')}><CalendarDays size={18}/> Meu plano</button><button className="btn outline" onClick={()=>onGo('performance')}><BarChart3 size={18}/> Meu desempenho</button></div><div className="development-note"><span>✧</span><p><strong>Progresso sem dados inventados.</strong> Os números acima vêm das atividades demonstrativas registradas. Contas conectadas usam a nuvem; ciclos adaptativos completos e avaliações oficiais ainda estão em construção.</p></div>
   </div>;
 }
 
@@ -233,6 +237,7 @@ export default function KognosApp(){
  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);
  const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
  const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
+ const [learningFocus,setLearningFocus]=useState<{subject:string;lessonId:string}|null>(null);
  const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('dark');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
  const cloud=useMemo(()=>isCloudConfigured(),[]);
  useEffect(()=>{
@@ -249,8 +254,9 @@ export default function KognosApp(){
  },[]);
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(`Não foi possível salvar seu perfil: ${error.message}`);}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
  async function signout(){await getSupabase()?.auth.signOut();setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);}
- function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions')setPracticeFocus(null);setView(v);}setMobileMenu(false); }
- function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);} 
+ function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions')setPracticeFocus(null);if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);setView(v);}setMobileMenu(false); }
+ function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
+ function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
  function changeTheme(v:'dark'|'light'){setTheme(v);window.localStorage.setItem('kognos_theme_v1',v);}
  function toggleSidebar(){setSidebarCollapsed(old=>{localStorage.setItem('kognos_sidebar_collapsed_v1',String(!old));return !old;});}
  async function saveAccountChanges(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase indisponível.');const {error}=await sb.from('profiles').update({display_name:normalized.nickname,username:normalized.username||null,biography:normalized.biography,preferences:normalized}).eq('id',user.id);if(error){if(error.code==='23505')throw new Error('Este nome de usuário já está em uso. Escolha outro.');throw error;}}else window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));setProfile(normalized);}
@@ -264,11 +270,13 @@ export default function KognosApp(){
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>setAssistantOpen(true)} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
  view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>setAssistantOpen(true)}/>:
- view==='learn'||view==='trails'||view==='subjects'?<LearningTrails key={`${user?.id||'guest'}-${view}`} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext} onPractice={practiceFromLesson}/>: 
+ view==='learn'||view==='trails'||view==='subjects'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext} onPractice={practiceFromLesson}/>: 
  view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext}/>: 
+ view==='diagnostic'?<DiagnosticSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)}/>: 
+ view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 0.8 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 0.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>setView('dashboard')}/>}</div>;
 }

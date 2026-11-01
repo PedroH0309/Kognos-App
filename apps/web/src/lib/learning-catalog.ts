@@ -42,3 +42,8 @@ export const learningSubjects = [...new Set(learningLessons.map(lesson=>lesson.s
 export function findLearningLesson(id:string):LearningLesson|null {return learningLessons.find(lesson=>lesson.id===id)??null;}
 export function lessonsForSubject(subject:string):LearningLesson[] {return learningLessons.filter(lesson=>lesson.subject===subject);}
 export function questionForLesson(lesson:LearningLesson){return demoQuestions.find(q=>q.id===lesson.questionId)??null;}
+
+/** Maps an original demonstration question to its authored mini-lesson. */
+export function findLessonByQuestionId(id:string):LearningLesson|undefined {
+ return learningLessons.find(lesson=>lesson.questionId===id);
+}

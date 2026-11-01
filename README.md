@@ -4,6 +4,15 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v0.9 — exploratory diagnostic and adaptive review
+
+- **Exploratory diagnostic:** seven original questions across seven subjects, scored only after completion, with references to follow-up lessons. This is a learning starting point, **not** a calibrated assessment or official exam score.
+- **Adaptive review (beta):** schedules revisits of demonstration topics after incorrect responses or at 1/3/7/14-day intervals following consecutive correct attempts on different days. Repeated attempts on the same item do not establish mastery.
+- **Dashboard integration:** launch the diagnostic or review queue from the homepage and sidebar, and view pending review counts from recorded attempts.
+- **Existing storage:** reuses browser-local practice records or the RLS-protected Supabase demonstration attempt table. No migration or new permissions are needed for this release.
+
+See [Sprint 0.9 notes](docs/KOGNOS_SPRINT_09_DIAGNOSTICS_REVIEWS.md) for methodology and limitations.
+
 ## What's new in v0.8 — introductory lessons and question-bank discovery
 
 - **Learn / Learning Paths / My Subjects** are usable, with 20 original introductory mini-lessons grouped into seven subject tracks. Each lesson has a goal, explanation, worked example, frequent misconception, comprehension check, and a linked demonstration exercise.
