@@ -4,6 +4,16 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v0.8 — introductory lessons and question-bank discovery
+
+- **Learn / Learning Paths / My Subjects** are usable, with 20 original introductory mini-lessons grouped into seven subject tracks. Each lesson has a goal, explanation, worked example, frequent misconception, comprehension check, and a linked demonstration exercise.
+- Practice coverage is based on actual recorded demonstration attempts; it never claims mastery from a single correct answer.
+- **Question Bank** now supports filters by subject, topic and difficulty, text search, individual-question sessions, and filtered batches.
+- **Kog** recognizes the selected lesson using a validated, server-resolved lesson identifier. No answers or API credentials are taken from user-controlled context strings.
+- This small demonstration catalog is **not** a complete course, official exam archive, or verified measure of ENEM proficiency.
+
+See [Sprint 0.8 notes](docs/KOGNOS_SPRINT_08_LEARNING_PATHS.md).
+
 ## What's new in v0.7 — truly contextual Kog
 
 - Kog uses the **actual current demo question**, not merely the page name. In-progress prompts contain the question and visible alternatives but **not** the answer key.

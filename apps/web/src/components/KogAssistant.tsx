@@ -6,6 +6,7 @@ import { ArrowUp, BookOpenText, Check, ChevronDown, Maximize2, Minimize2, Messag
 import type { User } from '@supabase/supabase-js';
 import { getSupabase } from '@/lib/supabase';
 import { goalLabels, type StudentProfile } from '@/lib/profile';
+import {findLearningLesson} from '@/lib/learning-catalog';
 import KogMascot3D from './KogMascot3D';
 import { KognosSelect, type KognosOption } from './KognosFields';
 import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-context';
@@ -37,7 +38,8 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   useEffect(() => {if(open) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[open]);
   useEffect(() => {scrollRef.current?.scrollTo({top:scrollRef.current.scrollHeight,behavior:'smooth'});},[messages,pending,open]);
   useEffect(() => {
-    if(studyContext?.kind==='question')setSubject(findDemoQuestion(studyContext.questionId)?.subject||'Geral');
+    if(studyContext?.kind==='lesson')setSubject(findLearningLesson(studyContext.lessonId)?.subject||'Geral');
+    else if(studyContext?.kind==='question')setSubject(findDemoQuestion(studyContext.questionId)?.subject||'Geral');
     else if(context==='questions'||context==='simulados')setSubject(activeSubject);
   },[context,activeSubject,studyContext]);
   useEffect(() => {

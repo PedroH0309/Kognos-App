@@ -1,8 +1,10 @@
 import { demoQuestions } from './demo-questions.ts';
+import {findLearningLesson,type LearningLesson} from './learning-catalog.ts';
 
 /** Only compact, allowlisted identifiers are transmitted from the UI. */
 export type KogStudyContext =
   | {kind:'question'; questionId:string; phase:'solving'|'review'}
+  | {kind:'lesson'; lessonId:string}
   | {kind:'planner'; taskId?:string}
   | {kind:'performance'};
 
@@ -17,6 +19,7 @@ export function parseKogStudyContext(value:unknown):KogStudyContext|null {
   if(v.kind==='question' && typeof v.questionId==='string' && /^q\d{2,4}$/.test(v.questionId) && (v.phase==='solving'||v.phase==='review')) {
     return {kind:'question',questionId:v.questionId,phase:v.phase};
   }
+  if(v.kind==='lesson' && typeof v.lessonId==='string' && /^[a-z][a-z0-9-]{2,48}$/.test(v.lessonId))return {kind:'lesson',lessonId:v.lessonId};
   if(v.kind==='planner'){
     if(v.taskId===undefined || v.taskId===null)return {kind:'planner'};
     if(typeof v.taskId==='string' && /^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(v.taskId) && v.taskId.length<=40)return {kind:'planner',taskId:v.taskId};
@@ -47,6 +50,19 @@ export function buildVerifiedQuestionContext(context:Extract<KogStudyContext,{ki
     lines.push('Não há gabarito neste contexto. Ajude com pistas graduais, conceitos e primeiro passo, sem apontar a alternativa correta ou fornecer a resposta final. Peça que o estudante tente antes de conferir.');
   }
   return lines.join('\n');
+}
+
+export function buildVerifiedLessonContext(lesson:LearningLesson):string {
+  return [
+    'CONTEXTO VERIFICADO: miniaula introdutória AUTORAL do Kognos, não material oficial.',
+    `Disciplina: ${lesson.subject}. Assunto: ${lesson.topic}.`,
+    `Objetivo: ${lesson.objective}`,
+    `Explicação de referência: ${lesson.explanation}`,
+    `Exemplo resolvido: ${lesson.workedExample}`,
+    `Erro comum: ${lesson.commonMistake}`,
+    `Checagem de compreensão: ${lesson.check}`,
+    'Ajude a aprofundar ou esclarecer essa miniaula. Faça uma checagem de compreensão e ofereça um passo por vez. Não diga que o estudante dominou o conteúdo; não revele o gabarito da questão vinculada sem correção verificada.'
+  ].join('\n');
 }
 
 function safeField(value:unknown,limit:number):string{
@@ -80,6 +96,7 @@ export function buildVerifiedPerformanceContext(data:VerifiedPerformance):string
 
 export function previewKogStudyContext(context:KogStudyContext|null):string|null{
   if(!context)return null;
+  if(context.kind==='lesson'){const lesson=findLearningLesson(context.lessonId);return lesson?`Miniaula · ${lesson.subject} · ${lesson.topic}`:null;}
   if(context.kind==='question'){
     const q=findDemoQuestion(context.questionId);
     return q?`${context.phase==='review'?'Correção':'Questão em andamento'} · ${q.subject} · ${q.topic}`:null;
@@ -89,6 +106,7 @@ export function previewKogStudyContext(context:KogStudyContext|null):string|null
 
 export function contextualKogPrompts(context:KogStudyContext|null):string[]|null{
   if(!context)return null;
+  if(context.kind==='lesson')return ['Explique este assunto usando outro exemplo.','Me ajude a entender o principal erro comum.','Faça uma pergunta curta para conferir se aprendi.'];
   if(context.kind==='question')return context.phase==='review'
     ? ['Explique por que minha resposta estava errada ou certa.','Resolva o raciocínio passo a passo.','Me passe outra questão parecida para praticar.']
     : ['Me dê uma dica sem revelar a resposta.','Qual é o primeiro passo para resolver?','Explique o conceito que preciso usar aqui.'];
