@@ -698,3 +698,21 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
   .app-layout .kg-select-options,.app-content .kg-select-options,.app-layout .kg-calendar,.app-content .kg-calendar{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin-top:6px;}
   .app-layout .kog-input-head .kog-subject-select,.app-content .kog-input-head .kog-subject-select{max-width:none;}
 }
+
+
+/* Kog v0.7 — context from the currently open study activity */
+.app-layout .kog-active-context {
+ display:flex;align-items:center;gap:7px;min-width:0;flex-wrap:wrap;
+ background:var(--panel-2);border:1px solid var(--line);border-radius:10px;
+ color:var(--txt);padding:8px 10px;margin-bottom:9px;font-size:11px;line-height:1.4;
+}
+.app-layout .kog-active-context>svg {color:var(--accent-400);flex:none;}
+.app-layout .kog-active-context>span {font-weight:680;min-width:0;overflow-wrap:anywhere;flex:1;}
+.app-layout .kog-active-context>small {color:var(--sub);font-size:10px;}
+.app-content .practice-actions {display:flex;align-items:center;flex-wrap:wrap;gap:9px;}
+.app-content .practice-actions .btn {min-height:43px;}
+.app-content .task-row-actions {display:flex;align-items:center;gap:6px;flex:none;}
+.app-content .task-row-actions .task-kog-help {color:var(--accent-400);background:var(--panel-2);border:1px solid var(--line);border-radius:9px;min-height:33px;padding:5px 10px;font-size:11px;font-weight:730;}
+.app-content .task-row-actions .task-kog-help:hover,.app-content .task-row-actions .task-kog-help:focus-visible {border-color:var(--accent-600);outline:2px solid transparent;box-shadow:0 0 0 3px #5B4DE326;}
+.app-content .study-planner .btn.full + .btn.full {margin-top:9px;}
+@media(max-width:700px){.app-layout .kog-active-context>small{width:100%;margin-left:20px;}}

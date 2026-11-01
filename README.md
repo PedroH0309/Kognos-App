@@ -4,15 +4,26 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v0.7 — truly contextual Kog
+
+- Kog uses the **actual current demo question**, not merely the page name. In-progress prompts contain the question and visible alternatives but **not** the answer key.
+- After a submitted attempt is recorded in the student's Supabase account, Kog can provide corrective feedback with the canonical answer and an explanation.
+- In Study Planner, Kog can analyze pending tasks or focus on a selected activity. In Performance, it reads the student's real demo attempts and offers targeted practice suggestions.
+- The official tutor persona has been expanded with progressive instruction, prerequisite checks, concrete analogies, error analysis, frustration-sensitive language, and the student's selected accessibility preferences.
+- Context is derived and verified server-side from allowlisted identifiers and RLS-scoped account data. No private API keys are sent to the browser.
+- Demo practice remains demo practice: this is **not** official ENEM grading or a production-ready exam system.
+
+See [Sprint 0.7 notes](docs/KOGNOS_SPRINT_07_CONTEXTUAL_TUTOR.md).
+
 ## What's new in v0.6.1 — polished onboarding
 
-- Replaced native selects in onboarding with branded keyboard-accessible single-choice dropdowns.
-- Added a Brazilian date picker with manual date entry, validation, and a calendar popover.
-- Rebuilt study-time controls with a custom filled slider, step buttons, and weekly-hour guidance.
-- Refined spacing, progress indicators, choice cards, focus states, and mobile layouts across all five steps.
-- Preserved existing Supabase/guest persistence, user settings, and privacy semantics.
+- Refined all five onboarding steps using the official restrained Kognos design system.
+- Replaced native dropdowns in onboarding with accessible keyboard-operable custom selects.
+- Added a localized calendar, date input validation, and a custom branded study-time slider.
+- Updated responsive layouts, selected states, spacing, and contrast for desktop and mobile.
+- Retained all existing student profile fields, privacy defaults, and account persistence.
 
-See [Sprint 0.6.1 notes](docs/KOGNOS_SPRINT_061_ONBOARDING.md).
+See [Sprint 0.6.1 onboarding notes](docs/KOGNOS_SPRINT_061_ONBOARDING.md).
 
 ## What's new in v0.6
 

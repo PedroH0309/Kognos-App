@@ -9,12 +9,13 @@ import { goalLabels, type StudentProfile } from '@/lib/profile';
 import KogMascot3D from './KogMascot3D';
 import { KognosSelect, type KognosOption } from './KognosFields';
 import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-context';
+import {contextualKogPrompts,previewKogStudyContext,findDemoQuestion,type KogStudyContext} from '@/lib/kog-study-context';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
 const SUBJECTS = ['Matemática','Física','Química','Biologia','História','Geografia','Português','Literatura','Inglês','Redação','Filosofia','Sociologia','Raciocínio lógico','Geral'];
 
-export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,context}:{
-  open:boolean;onOpen:()=>void;onClose:()=>void;profile:StudentProfile;user:User|null;onLogin:()=>void;context:KogContext;
+export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,context,studyContext}:{
+  open:boolean;onOpen:()=>void;onClose:()=>void;profile:StudentProfile;user:User|null;onLogin:()=>void;context:KogContext;studyContext:KogStudyContext|null;
 }) {
   const [messages,setMessages] = useState<ChatMessage[]>([]);
   const [draft,setDraft] = useState('');
@@ -29,13 +30,16 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   const inFlightRef=useRef(false);
   const currentUserRef=useRef(user?.id||'guest');
   const activeSubject=subjectForView(context);
+  const contextLabel=previewKogStudyContext(studyContext);
+  const suggested=contextualKogPrompts(studyContext)??quickPromptForView(context,profile.goal);
   const subjectOptions = SUBJECTS.map(s=>({value:s,label:s})) as KognosOption<string>[];
 
   useEffect(() => {if(open) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[open]);
   useEffect(() => {scrollRef.current?.scrollTo({top:scrollRef.current.scrollHeight,behavior:'smooth'});},[messages,pending,open]);
   useEffect(() => {
-    if (context==='questions'||context==='simulados') setSubject(activeSubject);
-  },[context,activeSubject]);
+    if(studyContext?.kind==='question')setSubject(findDemoQuestion(studyContext.questionId)?.subject||'Geral');
+    else if(context==='questions'||context==='simulados')setSubject(activeSubject);
+  },[context,activeSubject,studyContext]);
   useEffect(() => {
     // Prevent accidentally showing one student's chat to a different signed-in user.
     const next=user?.id||'guest';
@@ -69,7 +73,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     try{
       const response=await fetch('/api/tutor',{
         method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},
-        body:JSON.stringify({message:prompt,subject,history}),
+        body:JSON.stringify({message:prompt,subject,history,studyContext}),
       });
       const data=await response.json();
       if(!response.ok)throw new Error(typeof data.error==='string'?data.error:'Não foi possível receber a resposta.');
@@ -79,7 +83,6 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     finally{inFlightRef.current=false;setPending(false);}
   }
   function fillPrompt(value:string){setDraft(value.slice(0,3000));textRef.current?.focus();}
-  const suggested=quickPromptForView(context,profile.goal);
   return <>
     <button ref={launcherRef} type="button" className={`kog-launcher ${open?'kog-launcher-hidden':''}`} onClick={onOpen}
       aria-label="Abrir Kog, o tutor de inteligência artificial" title="Pergunte ao Kog">
@@ -103,7 +106,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
               <KogMascot3D/>
               <div className="kog-greeting-copy"><span><Sparkles size={15}/> SEU PROFESSOR PARTICULAR</span><h2>Olá, {profile.nickname.split(' ')[0]||'estudante'}!</h2><p>Sou o Kog. Estou aqui para explicar, praticar e revisar com você, sem sair desta página.</p></div>
             </div>
-            <div className="kog-context-card"><BookOpenText size={16}/><span>Seu foco: <strong>{goalLabels[profile.goal]}</strong> · Ajuda contextual na área <strong>{context==='dashboard'?'Visão geral':context}</strong></span></div>
+            <div className="kog-context-card"><BookOpenText size={16}/><span>{contextLabel?<><strong>{contextLabel}</strong> · O Kog vai considerar essa atividade ao responder.</>:<>Seu foco: <strong>{goalLabels[profile.goal]}</strong> · Ajuda contextual na área <strong>{context==='dashboard'?'Visão geral':context}</strong></>}</span></div>
             <p className="kog-suggestions-title">Por onde começamos?</p>
             <div className="kog-suggestions">{suggested.map(item=><button type="button" key={item} onClick={()=>fillPrompt(item)}><Sparkles size={14} aria-hidden="true"/>{item}<ArrowUp size={13} aria-hidden="true"/></button>)}</div>
           </>:messages.map((message,index)=><div key={`${index}-${message.role}`} className={`kog-message-row ${message.role}`}>
@@ -114,7 +117,8 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
           {error&&<div className="kog-chat-error" role="alert">{error}<button type="button" onClick={()=>setError('')} aria-label="Dispensar erro"><X size={14}/></button></div>}
         </div>
         <div className="kog-drawer-bottom">
-          {messages.length>0&&<div className="kog-quick-row">{['Explique de outra forma','Dê um exemplo','Me teste','Resuma'].map(s=><button type="button" key={s} disabled={pending} onClick={()=>fillPrompt(`${s} o último conteúdo que discutimos.`)}>{s}</button>)}<button type="button" title="Nova conversa" aria-label="Iniciar nova conversa" onClick={()=>{setMessages([]);setDraft('');setError('');}}><RotateCcw size={15}/></button></div>}
+          {contextLabel&&<div className="kog-active-context" role="status"><BookOpenText size={14} aria-hidden="true"/><span>{contextLabel}</span><small>{studyContext?.kind==='question'&&studyContext.phase==='solving'?'Dicas sem gabarito':'Contexto da atividade'}</small></div>}
+          {messages.length>0&&<div className="kog-quick-row">{(studyContext?suggested:['Explique de outra forma','Dê um exemplo','Me teste','Resuma']).map(s=><button type="button" key={s} disabled={pending} onClick={()=>fillPrompt(studyContext?s:`${s} o último conteúdo que discutimos.`)}>{s}</button>)}<button type="button" title="Nova conversa" aria-label="Iniciar nova conversa" onClick={()=>{setMessages([]);setDraft('');setError('');}}><RotateCcw size={15}/></button></div>}
           <form onSubmit={send} className="kog-input-area"><div className="kog-input-head"><KognosSelect compact label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} className="kog-subject-select" /><small>{draft.length}/3000</small></div>
             <div className="kog-input-wrap"><textarea ref={textRef} value={draft} onChange={e=>setDraft(e.target.value)} maxLength={3000} rows={2} placeholder="Pergunte sobre sua dúvida…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form?.requestSubmit();}}}/><button type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled={!draft.trim()||pending} className="kog-send-btn"><Send size={18}/></button></div>
           </form>

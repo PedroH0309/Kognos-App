@@ -22,3 +22,13 @@ test('histórico de IA não permite papéis system e limita conteúdo',()=>{
  const history=sanitizeHistory([{role:'system',content:'hack'},{role:'user',content:'como calcular?'},{role:'assistant',content:'olá'}]);
  assert.equal(history.length,2);assert.equal(history[0].role,'user');
 });
+
+test('Kog follows teaching guidelines and does not repeat prior consent requirement',()=>{
+ const prompt=buildTutorSystemPrompt(initialProfile,'Química','CONTEXTO VERIFICADO: questão EM ANDAMENTO');
+ assert.match(prompt,/explique do simples/i);
+ assert.match(prompt,/mini exercício/i);
+ assert.match(prompt,/não revele a alternativa correta/i);
+ assert.match(prompt,/NVIDIA/);
+ assert.doesNotMatch(prompt,/somente com autorização explícita/);
+ assert.match(prompt,/CONTEXTO VERIFICADO/);
+});

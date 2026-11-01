@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
+import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
 export const runtime = 'nodejs';
 
@@ -11,7 +12,7 @@ function jsonError(message: string, status: number) {
 
 /** A protected Bearer-token API route. The browser never receives secret/admin/NVIDIA credentials. */
 const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated', issuer: 'https://ktjdlvojnunjntwyodot.supabase.co/auth/v1' }, async (request, ctx) => {
-  let body: { message?: unknown; history?: unknown; subject?: unknown };
+  let body: { message?: unknown; history?: unknown; subject?: unknown; studyContext?: unknown };
   try {
     // Limit actual bytes too; Content-Length is optional and cannot be trusted alone.
     const raw = await request.text();
@@ -40,8 +41,53 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     if (profileError || !profileRow) return jsonError('Conclua o cadastro antes de utilizar o tutor.', 409);
 
     const profile = normalizeProfile(profileRow.preferences);
+    const studyContext = parseKogStudyContext(body.studyContext);
+    let contextText = '';
+    let effectiveSubject = subject;
+    if (studyContext?.kind === 'question') {
+      const question = findDemoQuestion(studyContext.questionId);
+      if(question) {
+        effectiveSubject = question.subject;
+        let attempt: VerifiedDemoAttempt|null = null;
+        if(studyContext.phase === 'review') {
+          // Only a recorded attempt owned by the authenticated student unlocks correction.
+          const {data: recorded, error: attemptError} = await ctx.supabase.from('kognos_demo_attempts')
+            .select('answer_index').eq('user_id',userId).eq('question_id',question.id)
+            .order('created_at',{ascending:false}).limit(1).maybeSingle();
+          if(attemptError) return jsonError('Não foi possível verificar sua tentativa.',503);
+          if(recorded) attempt={answerIndex:recorded.answer_index,correct:recorded.answer_index===question.correct};
+        }
+        contextText=buildVerifiedQuestionContext(studyContext,attempt)||'';
+      }
+    } else if (studyContext?.kind === 'planner') {
+      let query = ctx.supabase.from('kognos_demo_tasks')
+        .select('title,subject,task_date,duration_minutes,done').eq('user_id',userId);
+      if(studyContext.taskId)query=query.eq('id',studyContext.taskId);
+      const {data: tasks,error: tasksError} = await query.order('task_date',{ascending:true}).limit(30);
+      if(tasksError)return jsonError('Não foi possível consultar seu planejamento.',503);
+      const safeTasks:VerifiedStudyTask[]=(tasks||[]).map(item=>({
+        title:item.title,subject:item.subject,date:item.task_date,minutes:item.duration_minutes,done:item.done
+      }));
+      contextText=buildVerifiedPlanContext(safeTasks);
+    } else if (studyContext?.kind === 'performance') {
+      const {data: rows,error: resultError} = await ctx.supabase.from('kognos_demo_attempts')
+        .select('question_id,answer_index').eq('user_id',userId)
+        .order('created_at',{ascending:false}).limit(100);
+      if(resultError)return jsonError('Não foi possível consultar seu desempenho.',503);
+      const totals=new Map<string,{subject:string;answered:number;correct:number}>();
+      let counted=0,correct=0;
+      for(const row of rows||[]){
+        const q=findDemoQuestion(row.question_id);
+        if(!q)continue; // Only verified original demo questions are included.
+        counted++;const correctAnswer=row.answer_index===q.correct;if(correctAnswer)correct++;
+        const prev=totals.get(q.subject)||{subject:q.subject,answered:0,correct:0};
+        prev.answered++;if(correctAnswer)prev.correct++;
+        totals.set(q.subject,prev);
+      }
+      contextText=buildVerifiedPerformanceContext({answered:counted,correct,bySubject:[...totals.values()]});
+    }
     const messages = [
-      { role: 'system', content: buildTutorSystemPrompt(profile, subject) },
+      { role: 'system', content: buildTutorSystemPrompt(profile, effectiveSubject, contextText) },
       ...sanitizeHistory(body.history),
       { role: 'user', content: (body.message as string).trim() },
     ];
