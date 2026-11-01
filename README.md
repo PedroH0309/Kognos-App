@@ -4,6 +4,16 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v0.6.1 — polished onboarding
+
+- Replaced native selects in onboarding with branded keyboard-accessible single-choice dropdowns.
+- Added a Brazilian date picker with manual date entry, validation, and a calendar popover.
+- Rebuilt study-time controls with a custom filled slider, step buttons, and weekly-hour guidance.
+- Refined spacing, progress indicators, choice cards, focus states, and mobile layouts across all five steps.
+- Preserved existing Supabase/guest persistence, user settings, and privacy semantics.
+
+See [Sprint 0.6.1 notes](docs/KOGNOS_SPRINT_061_ONBOARDING.md).
+
 ## What's new in v0.6
 
 - A persistent floating **Kog assistant** is available on any page.

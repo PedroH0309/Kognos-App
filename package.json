@@ -1,6 +1,6 @@
 {
   "name": "kognos-platform",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "workspaces": [
     "apps/web",
@@ -13,6 +13,6 @@
     "lint": "npm --workspace @kognos/web run lint",
     "test": "node --test packages/education-engine/test/*.test.mjs && node --experimental-strip-types --test apps/web/src/lib/*.test.ts",
     "typecheck": "npm --workspace @kognos/web exec tsc --noEmit",
-    "test:design": "node --test tests/design.test.mjs"
+    "test:design": "node --test tests/*.test.mjs"
   }
 }
