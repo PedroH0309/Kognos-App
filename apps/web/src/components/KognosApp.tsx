@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import KogAssistant from './KogAssistant';
+import ExamSources from './ExamSources';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import KogMascot3D from './KogMascot3D';
 import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls';
@@ -22,7 +23,7 @@ import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
 
 const STORAGE_KEY='kognos_guest_profile_v1';
-type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'diagnostic'|'plans'|'reviews'|'performance';
+type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'plans'|'reviews'|'performance';
 const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'dashboard',icon:'◫',label:'Visão geral'},
   {key:'learn',icon:'▤',label:'Aprender'},
@@ -30,6 +31,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'subjects',icon:'▧',label:'Minhas disciplinas'},
   {key:'questions',icon:'▦',label:'Banco de questões'},
   {key:'simulados',icon:'◉',label:'Simulados'},
+  {key:'sources',icon:'▤',label:'Matrizes e editais'},
   {key:'diagnostic',icon:'◈',label:'Diagnóstico inicial'},
   {key:'plans',icon:'◷',label:'Meu planejamento'},
   {key:'reviews',icon:'↻',label:'Revisões inteligentes'},
@@ -43,7 +45,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
 
 const NAV_ICONS:Record<View,LucideIcon>={
  dashboard:LayoutDashboard,learn:BookOpen,trails:GraduationCap,subjects:LibraryBig,
- questions:ListChecks,simulados:ClipboardList,diagnostic:Target,plans:CalendarDays,reviews:RotateCcw,
+ questions:ListChecks,simulados:ClipboardList,sources:BookOpenText,diagnostic:Target,plans:CalendarDays,reviews:RotateCcw,
  calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
  profile:UserRound,settings:Settings,
 };
@@ -272,11 +274,12 @@ export default function KognosApp(){
  view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>setAssistantOpen(true)}/>:
  view==='learn'||view==='trails'||view==='subjects'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext} onPractice={practiceFromLesson}/>: 
  view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext}/>: 
+ view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onQuestionBank={()=>navigate('questions')}/>: 
  view==='diagnostic'?<DiagnosticSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.0 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.1 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>setView('dashboard')}/>}</div>;
 }

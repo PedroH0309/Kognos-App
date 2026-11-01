@@ -50,5 +50,5 @@ export function filterByIndependentReview(raw:string,items:ValidatedQuestion[]):
  return items.filter((q,i)=>byIndex.get(i)?.approved===true&&byIndex.get(i)?.correct_index===q.correct_index);
 }
 export function publicGeneratedQuestion(row:Record<string,unknown>){
- return {id:row.id,institution:row.institution,source_title:row.source_title,source_url:row.source_url,edition:row.edition,subject:row.subject,topic:row.topic,difficulty:row.difficulty,prompt:row.prompt,options:row.options,created_at:row.created_at,review_status:'auto_reviewed' as const};
+ return {id:row.id,institution:row.institution,source_title:row.source_title,source_url:row.source_url,source_kind:row.source_topic_id?'editor_approved_source':'editorial',edition:row.edition,subject:row.subject,topic:row.topic,difficulty:row.difficulty,prompt:row.prompt,options:row.options,created_at:row.created_at,review_status:'auto_reviewed' as const};
 }

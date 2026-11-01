@@ -3,6 +3,8 @@ import {withSupabase} from '@supabase/server';
 import {createAndReviewQuestions} from '@/lib/nvidia-question-engine';
 import {examBlueprints,validateGenerationRequest} from '@/lib/exam-blueprints';
 import {publicGeneratedQuestion} from '@/lib/ai-question-validation';
+import {safeOfficialUrl} from '@/lib/syllabus-sources';
+import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 
 export const runtime='nodejs';
 export const maxDuration=180;
@@ -15,21 +17,36 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  const generation=validateGenerationRequest(body);
  if(!generation)return error('Escolha uma instituição, disciplina, assunto e dificuldade válidos (até cinco questões).',400);
  try{
-  // Shared daily AI quota with the tutor. Reserve before incurring provider costs.
+  // Never accept unverified source metadata from the browser. Match an approved topic + source in private tables.
+  let verified:VerifiedSyllabusReference|null=null;
+  let sourceTopicId:string|null=null;
+  if(generation.sourceTopicId){
+   const {data:topic,error:topicError}=await ctx.supabaseAdmin.from('kognos_exam_topics')
+     .select('id,source_id,subject,topic,evidence_excerpt,review_status').eq('id',generation.sourceTopicId).maybeSingle();
+   if(topicError)return error('Catálogo de fontes indisponível. Execute a migração 0006.',503);
+   if(!topic||topic.review_status!=='approved'||topic.subject!==generation.subject||topic.topic!==generation.topic)return error('O tema informado não está aprovado nessa matriz.',400);
+   const {data:source,error:sourceError}=await ctx.supabaseAdmin.from('kognos_exam_sources')
+     .select('institution,edition,source_title,source_url,review_status').eq('id',topic.source_id).maybeSingle();
+   if(sourceError)return error('Catálogo de fontes indisponível.',503);
+   if(!source||source.review_status!=='approved'||source.institution!==generation.institution||!safeOfficialUrl(source.source_url))return error('A referência oficial não está disponível ou foi retirada.',400);
+   verified={edition:source.edition,sourceTitle:source.source_title,sourceUrl:source.source_url,evidence:topic.evidence_excerpt};
+   sourceTopicId=topic.id;
+  }
+  // Validate approved source provenance BEFORE consuming the student's daily AI quota.
   const limit=Math.max(1,Math.min(100,Number(process.env.AI_DAILY_REQUEST_LIMIT||'20')||20));
   const {data:reserved,error:quotaError}=await ctx.supabaseAdmin.rpc('reserve_ai_quota',{p_user_id:userId,p_daily_limit:limit});
   if(quotaError)return error('Configure as migrações do Supabase, incluindo 0002 e 0005.',503);
   if(reserved!==true)return error(`Você atingiu o limite compartilhado de ${limit} solicitações à IA hoje.`,429);
-  const approved=await createAndReviewQuestions(generation);
+  const approved=await createAndReviewQuestions(generation,verified||undefined);
   if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
   const blueprint=examBlueprints[generation.institution];
   const rows=approved.map(q=>({
-   user_id:userId,institution:generation.institution,edition:blueprint.edition,source_title:blueprint.sourceTitle,
-   source_url:blueprint.sourceUrl,subject:generation.subject,topic:generation.topic,difficulty:generation.difficulty,
+   user_id:userId,institution:generation.institution,edition:verified?.edition||blueprint.edition,source_title:verified?.sourceTitle||blueprint.sourceTitle,
+   source_url:verified?.sourceUrl||blueprint.sourceUrl,source_topic_id:sourceTopicId,subject:generation.subject,topic:generation.topic,difficulty:generation.difficulty,
    prompt:q.prompt,options:q.options,correct_index:q.correct_index,explanation:q.explanation,review_status:'auto_reviewed'
   }));
   const {data, error:insertError}=await ctx.supabaseAdmin.from('kognos_ai_questions').insert(rows)
-    .select('id,institution,edition,source_title,source_url,subject,topic,difficulty,prompt,options,created_at,review_status');
+    .select('id,institution,edition,source_title,source_url,source_topic_id,subject,topic,difficulty,prompt,options,created_at,review_status');
   if(insertError||!data)return error('Falha ao salvar questões. Confira a migração 0005 e tente novamente.',503);
   return NextResponse.json({questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),approved:data.length,rejected:generation.count-data.length},{headers:{'Cache-Control':'no-store'}});
  }catch(e){

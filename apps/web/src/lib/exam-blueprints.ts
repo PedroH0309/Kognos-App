@@ -50,15 +50,17 @@ export const examBlueprints: Record<ExamId,{
     notice:'Temas editoriais exemplificativos. Consulte a íntegra do Programa FUVEST 2027, incluindo leituras obrigatórias e regras da fase escolhida.'
   }
 };
-export type GenerationRequest={institution:ExamId;subject:string;topic:string;difficulty:Difficulty;count:number};
+export type GenerationRequest={institution:ExamId;subject:string;topic:string;difficulty:Difficulty;count:number;sourceTopicId?:string};
 export function validateGenerationRequest(value:unknown):GenerationRequest|null {
  if(!value||typeof value!=='object'||Array.isArray(value))return null;
  const v=value as Record<string,unknown>;
  if(typeof v.institution!=='string'||!Object.hasOwn(examBlueprints,v.institution))return null;
  const institution=v.institution as ExamId;const b=examBlueprints[institution];
  if(typeof v.subject!=='string'||!Object.hasOwn(b.subjects,v.subject))return null;
- if(typeof v.topic!=='string'||!b.subjects[v.subject].includes(v.topic))return null;
+ const sourceTopicId=typeof v.sourceTopicId==='string'&&/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(v.sourceTopicId)&&v.sourceTopicId.length===36?v.sourceTopicId:undefined;
+ if(v.sourceTopicId!==undefined&&!sourceTopicId)return null;
+ if(typeof v.topic!=='string'||v.topic.length>110||v.topic.trim().length<4||(!b.subjects[v.subject].includes(v.topic)&&!sourceTopicId))return null;
  if(v.difficulty!=='basic'&&v.difficulty!=='intermediate'&&v.difficulty!=='advanced')return null;
  if(!Number.isInteger(v.count)||Number(v.count)<1||Number(v.count)>5)return null;
- return {institution,subject:v.subject,topic:v.topic,difficulty:v.difficulty,count:v.count as number};
+ return {institution,subject:v.subject,topic:v.topic,difficulty:v.difficulty,count:v.count as number,...(sourceTopicId?{sourceTopicId}:{})};
 }

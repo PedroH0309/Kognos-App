@@ -6,8 +6,9 @@ import {KognosSelect} from './KognosFields';
 import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exam-blueprints';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
+import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
 
-export type UserAIQuestion={id:string;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;review_status:'auto_reviewed'};
+export type UserAIQuestion={id:string;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string};
 type Mode='questions'|'simulados';
 const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
@@ -21,6 +22,8 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
  const [difficulty,setDifficulty]=useState<Difficulty>('intermediate');
  const [count,setCount]=useState('3');
  const [questions,setQuestions]=useState<UserAIQuestion[]>([]);
+ const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
+ const [sourceNotice,setSourceNotice]=useState('');
  const [loading,setLoading]=useState(false),[generating,setGenerating]=useState(false),[submitting,setSubmitting]=useState(false);
  const [error,setError]=useState(''),[notice,setNotice]=useState('');
  const [session,setSession]=useState<UserAIQuestion[]>([]),[cursor,setCursor]=useState(0),[choice,setChoice]=useState<number|null>(null);
@@ -28,11 +31,13 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
  const [elapsed,setElapsed]=useState(0);
  const blueprint=examBlueprints[institution];
  const subjectOptions=Object.keys(blueprint.subjects).map(value=>({value,label:value}));
- const topicOptions=(blueprint.subjects[subject]||[]).map(value=>({value,label:value}));
-
- const current=session[cursor];
+ const matched=approvedTopics.filter(t=>t.institution===institution&&t.subject===subject);
+ const verifiedTopic=matched.find(t=>t.topic===topic);
+ const allTopics=[...new Set([...(blueprint.subjects[subject]||[]),...matched.map(x=>x.topic)])];
+ const topicOptions=allTopics.map(value=>({value,label:matched.some(x=>x.topic===value)?`${value} · fonte revisada`:value}));
  const inMock=mode==='simulados';
  const bank=useMemo(()=>questions.filter(q=>q.institution===institution&&(!inMock||q.difficulty===difficulty)),[questions,institution,inMock,difficulty]);
+ const current=session[cursor];
  const activeSession=session.length>0&&!finished;
 
  const authenticatedFetch=useCallback(async(url:string,init?:RequestInit)=>{
@@ -54,6 +59,13 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
   finally{setLoading(false);}
  },[authenticatedFetch,userId]);
  useEffect(()=>{void refresh();},[refresh]);
+ useEffect(()=>{
+  if(!userId){setApprovedTopics([]);return;}
+  let active=true;
+  authenticatedFetch('/api/exam-sources').then(data=>{if(active){setApprovedTopics(Array.isArray(data.topics)?data.topics:[]);setSourceNotice('');}})
+   .catch(()=>{if(active){setApprovedTopics([]);setSourceNotice('Catálogo de fontes revisadas indisponível. O gerador ainda pode usar os recortes editoriais após aplicar a migração 0006.');}});
+  return()=>{active=false;};
+ },[authenticatedFetch,userId]);
  useEffect(()=>{if(!activeSession||!inMock)return;const started=Date.now()-elapsed*1000;const handle=window.setInterval(()=>setElapsed(Math.floor((Date.now()-started)/1000)),1000);return()=>window.clearInterval(handle);},[activeSession,inMock]);
  useEffect(()=>{
   if(!current||finished){onContextChange(null);return;}
@@ -65,7 +77,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
   if(!userId)return;
   setGenerating(true);setError('');setNotice('');
   try{
-   const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:Number(count)})});
+   const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:Number(count),sourceTopicId:verifiedTopic?.id})});
    setQuestions(old=>[...(result.questions||[]),...old].slice(0,100));
    setNotice(`${result.approved} questão(ões) aprovada(s) automaticamente e adicionada(s) ao seu banco e aos simulados. ${result.rejected?`${result.rejected} rejeitada(s) na revisão.`:''}`);
   }catch(e){setError(e instanceof Error?e.message:'Falha ao gerar questões.');}
@@ -101,7 +113,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
        <KognosSelect label="Nível" value={difficulty} options={difficultyOptions} onChange={setDifficulty}/>
        <KognosSelect label="Quantidade" value={count} options={amountOptions} onChange={setCount}/>
       </div>
-      <div className="ai-source-note"><BookOpenText size={16} aria-hidden="true"/><div><strong>Referência de preparação: {blueprint.edition}</strong><p>{blueprint.notice} <a href={blueprint.sourceUrl} target="_blank" rel="noopener noreferrer">Consultar fonte institucional</a></p></div></div>
+      <div className="ai-source-note"><BookOpenText size={16} aria-hidden="true"/><div><strong>{verifiedTopic?`Assunto vinculado a fonte revisada: ${verifiedTopic.edition}`:`Referência editorial: ${blueprint.edition}`}</strong><p>{verifiedTopic?`Trecho do documento: “${verifiedTopic.evidence}”. A revisão editorial não é homologação da instituição.`:blueprint.notice} <a href={verifiedTopic?.sourceUrl||blueprint.sourceUrl} target="_blank" rel="noopener noreferrer">Consultar fonte institucional</a></p>{sourceNotice&&<small>{sourceNotice}</small>}</div></div>
       <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading} onClick={()=>void generate()}><Sparkles size={16}/>{generating?'Gerando e revisando…':`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>Máximo de 5 por solicitação · usa sua cota diária de IA</small></div>
     </section>
     <section className="dark-panel ai-bank">
@@ -111,7 +123,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
       {!loading&&!bank.length&&<p className="ai-empty">Ainda não existem questões de IA para esta instituição. Gere um conjunto para começar; ele aparecerá automaticamente nos seus simulados.</p>}
       {!!bank.length&&<>
        <button type="button" className="btn primary" onClick={()=>start(bank.slice(0,Math.min(20,bank.length)))}>{inMock?'Iniciar simulado de IA':'Praticar questões do banco'} ({Math.min(20,bank.length)})</button>
-       <div className="ai-question-list">{bank.slice(0,20).map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>Gerada por IA · revisão automática, sem homologação editorial</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
+       <div className="ai-question-list">{bank.slice(0,20).map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>{q.source_kind==='editor_approved_source'?'IA · assunto vinculado a matriz revisada':'IA · assunto editorial'} · resposta verificada automaticamente, sem homologação do item</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
       </>}
       <p className="privacy-note">A revisão automática não garante ausência de erros. Questões geradas não são oficiais e não entram no banco de outros alunos sem revisão humana.</p>
     </section>
