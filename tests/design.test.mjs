@@ -5,6 +5,8 @@ const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
 const design=read('../apps/web/src/app/design-system.css');
 const app=read('../apps/web/src/components/KognosApp.tsx');
 const tutor=read('../apps/web/src/app/api/tutor/route.ts');
+const assistant=read('../apps/web/src/components/KogAssistant.tsx');
+const model=read('../apps/web/src/components/KogMascot3D.tsx');
 
 test('paleta oficial presente e utilizada pelos temas claro/escuro',()=>{
   for(const hex of ['#101B33','#273A61','#5B4DE3','#38CDE5','#F7F9FC','#EDF1F7','#202633','#111722','#18B78A','#F0AD4E','#E46D75','#1D2638','#778398','#E0E6EF']){
@@ -32,8 +34,30 @@ test('NVIDIA configurável somente no servidor, sem segredo publicado no bundle'
 });
 
 test('chat informa processamento externo sem interromper a cada mensagem',()=>{
-  assert.match(app,/provider-notice/);
-  assert.match(app,/NVIDIA/);
+  assert.match(assistant,/kog-ai-notice/);
+  assert.match(assistant,/NVIDIA/);
   assert.doesNotMatch(app,/Marque a autorização antes de enviar/);
   assert.doesNotMatch(tutor,/body\.consent/);
+});
+
+
+test('Kog floats globally, keeps chat state mounted, and opens from navigation',()=>{
+  assert.match(app,/<KogAssistant open=\{assistantOpen\}/);
+  assert.match(app,/function navigate\(v:View\)/);
+  assert.match(app,/if\(v==='tutor'\)\{setAssistantOpen\(true\)/);
+  assert.match(assistant,/kog-launcher/);
+  assert.match(assistant,/kog-drawer/);
+  assert.match(assistant,/Escape/);
+  assert.match(assistant,/quickPromptForView/);
+  assert.match(assistant,/currentUserRef/);
+  assert.match(design,/@media\(max-width:700px\)/);
+});
+
+test('mascot uses genuine Three.js 3D meshes and respects reduced motion',()=>{
+  assert.match(model,/import\('three'\)/);
+  assert.match(model,/THREE.WebGLRenderer/);
+  assert.match(model,/SphereGeometry/);
+  assert.match(model,/TubeGeometry/);
+  assert.match(model,/prefers-reduced-motion/);
+  assert.match(model,/setFallback\(true\)/);
 });
