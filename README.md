@@ -1,185 +1,194 @@
-# KOGNOS — Aprendizagem inteligente
+# Kognos — Intelligent Learning Platform
 
-> **KOGNOS É PROPRIETÁRIO — TODOS OS DIREITOS RESERVADOS.** Este projeto **não é open source**. A reutilização ou comercialização do código sem autorização não é permitida, observados os termos do GitHub e as exceções legais. Veja [LICENSE](LICENSE).
-> **Quer ajudar?** Abra uma Issue ou envie um Pull Request conforme [CONTRIBUTING.md](CONTRIBUTING.md). No repositório privado, peça ao mantenedor acesso como colaborador.
+> **PROPRIETARY SOFTWARE — ALL RIGHTS RESERVED.** Kognos is **not open source**. Unauthorized reuse or commercialization of its source code is prohibited, subject to GitHub's terms and applicable legal exceptions. See [LICENSE](LICENSE).
+>
+> **Want to contribute?** Open an issue or submit a pull request following [CONTRIBUTING.md](CONTRIBUTING.md). Because this repository is private, ask the maintainer for collaborator access first.
 
-**Versão 0.5.0 — Redesign visual completo das telas existentes, paleta oficial unificada, scrollbars próprias, navegação lateral recolhível e configuração local protegida da API NVIDIA.**
+**Version 0.5.0** — A visual redesign of the existing screens, unified official color palette, custom scrollbars, collapsible sidebar, and secure local NVIDIA API configuration.
 
-Kognos é a evolução do protótipo FOCO. Os protótipos antigos foram preservados na distribuição v0.5 original; os ZIPs legados foram excluídos deste pacote de GitHub para evitar redistribuição desnecessária. O projeto principal agora é uma aplicação Next.js 16 com App Router, React 19, TypeScript, Supabase e um gateway seguro de IA NVIDIA NIM.
+Kognos evolved from the FOCO prototype. The earlier prototypes were retained in the original v0.5 distribution; legacy ZIP archives were omitted from this GitHub package to avoid unnecessary redistribution. The main application uses **Next.js 16 (App Router), React 19, TypeScript, Supabase, and a secure NVIDIA NIM AI gateway**.
 
-## O que funciona nesta versão
+## Features available in this version
 
-- **Identidade Kognos original**: logomarca K e ilustração próprias em `apps/web/public/brand/`.
-- **Onboarding em cinco etapas**: apelido, modalidade de prova, nível, rotina, métodos de estudo, acessibilidade e revisão.
-- **Adaptações**: a pergunta sobre TDAH/dislexia é opcional; permite sugerir recursos de foco/leitura, mas a condição em si NÃO é salva e NÃO é enviada à IA.
-- **Modo local demonstrativo**: onboarding e preferências persistidos apenas no navegador (`localStorage`), sem necessidade de credenciais para testar a interface.
-- **Modo multiusuário com Supabase**: cadastro/login por e-mail e senha, confirmação de e-mail conforme configuração do projeto e perfis independentes no PostgreSQL com RLS.
-- **Tutor com API NVIDIA**: rota `/api/tutor` com autenticação validada pelo Supabase, quota diária atômica por usuário, aviso transparente sobre processamento externo e prompt didático personalizado.
-- **Perfil e conta**: foto (visitante local ou bucket privado Supabase), nome público, @usuário único, biografia, alteração de e-mail/senha, recuperação e opção de mostrar apenas senhas digitadas.
-- **Aparência**: modo claro/escuro, paleta de 13 tokens, componentes com estilos próprios, rolagem customizada, sidebar recolhível, busca de módulos e barra inferior no mobile.
-- **Kog**, mascote vetorial original do tutor, com persona professoral e equilibrada.
-- **Prática demonstrativa funcional**: 20 questões autorais, simulados por matéria, correção comentada, registro de resultados e visualização de desempenho.
-- **Plano semanal local ou sincronizado**: tarefas manuais, sugestão inicial de agenda, conclusão e exclusão.
-- **Objetivos múltiplos** no onboarding, inclusive aprendizado pessoal.
-- **Motor educacional anterior preservado** em `packages/education-engine`.
-- **Testes automatizados** para motor educacional e regras do tutor.
+- **Original branding:** Kognos K logo and illustrations in `apps/web/public/brand/`.
+- **Five-step onboarding:** preferred name, exam or learning goal, proficiency level, study schedule, learning methods, accessibility options, and review.
+- **Accessibility preferences:** ADHD/dyslexia-related adaptations are optional. The selected focus and reading accommodations can be applied without storing or sending a diagnosis to the AI.
+- **Local demo mode:** onboarding and preferences persist in the browser's `localStorage`. No credentials are needed to explore the interface.
+- **Supabase multiuser mode:** email/password registration and login, email verification according to project settings, and independent PostgreSQL profiles protected by row-level security (RLS).
+- **NVIDIA-powered tutor:** authenticated `/api/tutor` endpoint, atomic per-user daily request limits, transparent notice of third-party processing, and a personalized teaching prompt.
+- **Profile and account management:** profile photo (local visitor image or private Supabase storage), display name, unique username, bio, email/password changes, password recovery, and password visibility for newly typed values only.
+- **Appearance:** light and dark themes, official design tokens, custom-styled controls, scrollbars, collapsible sidebar, module search, and mobile bottom navigation.
+- **Kog:** an original vector tutor mascot with a balanced, teacher-like personality.
+- **Working demo exercises:** 20 original questions, subject-specific quizzes, explained answers, recorded attempts, and performance summaries.
+- **Weekly planning:** local or cloud-synced tasks, an initial study-plan suggestion, completion, and deletion.
+- **Multiple learning goals:** including school exams, university entrance exams, competitions, and self-directed learning.
+- **Reusable learning engine:** preserved in `packages/education-engine`.
+- **Automated tests:** for learning logic, tutor rules, and interface configuration.
 
-**Ainda não implementados**: simulados oficiais completos, CRUD online de questões, redação, integração do domínio por habilidade com exercícios sincronizados, sincronização completa de avaliações oficiais (somente as tarefas e tentativas demonstrativas são sincronizadas na v0.4). O dashboard mostra apenas dados reais locais existentes — não estimativas inventadas. No menu esses módulos são apresentados como futuros, sem números inventados.
+**Not yet implemented:** full official past-paper simulations, online question-bank CRUD, essay grading, skill-mastery integration with synced exercises, and fully server-graded official assessments. In v0.4, only tasks and demo attempts were synchronized. The dashboard displays available user data rather than fabricated statistics. Unfinished features are presented as upcoming.
 
-## Rodar no Windows — modo de demonstração
+## Getting started on Windows — demo mode
 
-1. Instale Node.js 22 LTS ou outra versão compatível com Next.js 16 (mínimo 20.9).
-2. Extraia o ZIP numa pasta que não seja `node_modules`.
-3. No terminal do VS Code, na pasta raiz `Kognos`:
+1. Install Node.js 22 LTS or another release compatible with Next.js 16 (minimum Node.js 20.9).
+2. Clone this repository, or download and extract its source files to a folder.
+3. Open the project root in VS Code and run:
 
 ```powershell
 npm install
 npm run dev
 ```
 
-4. Abra **http://localhost:3000**. Você pode concluir onboarding e experimentar a interface sem configurar o banco. O tutor remoto exige conta e configurações abaixo.
-5. Rode `npm test` para verificar as regras locais.
+4. Open **http://localhost:3000**. You can complete onboarding and explore the demo without configuring Supabase. The remote AI tutor requires an authenticated account and the setup described below.
+5. Run `npm test` for the local logic checks and `npm run test:design` for design/configuration checks.
 
-> Neste ambiente de criação, `npm install` não pôde ser concluído porque `registry.npmjs.org` retornou `EAI_AGAIN`. Testes Node.js que não dependem de instalação funcionaram. O build completo ainda requer execução no seu computador.
+**Validation note:** In the original build environment, dependency installation failed because `registry.npmjs.org` returned `EAI_AGAIN`. Dependency-free Node.js tests completed, but a full Next.js production build was not verified there.
 
-## Configurar login, persistência e tutor NVIDIA
+## Configure Supabase authentication and NVIDIA AI
 
-### 1. Prepare o Supabase
+### 1. Prepare Supabase
 
-1. Crie um projeto em https://supabase.com/dashboard.
-2. No SQL Editor, execute **nesta ordem**:
+1. Open [Supabase Dashboard](https://supabase.com/dashboard) and select your project.
+2. Run these SQL files in the **SQL Editor**, in the following order:
    - `supabase/migrations/0001_core_schema.sql`
    - `supabase/migrations/0002_kognos_onboarding_ai.sql`
-   - `supabase/migrations/0003_account_and_avatars.sql` **(necessária para nome de usuário, biografia e fotos)**
-   - `supabase/migrations/0004_demo_cloud_sync.sql` **(sincronização das atividades demonstrativas)**
-   - `supabase/seed/seed.sql` (opcional, catálogo inicial demonstrativo)
-3. Configure **Authentication → URL Configuration → Site URL** como `http://localhost:3000` para testes, e ajuste a URL de redirecionamento permitida.
-4. Configure **Authentication → Providers → Email** e as opções de confirmação desejadas. Para o lançamento público, valide o fluxo de confirmação de e-mail e as políticas de privacidade.
+   - `supabase/migrations/0003_account_and_avatars.sql` (required for usernames, bios, and profile photos)
+   - `supabase/migrations/0004_demo_cloud_sync.sql` (demo activity synchronization)
+   - `supabase/seed/seed.sql` (optional initial demonstration catalog)
+3. In **Authentication → URL Configuration**, set the development Site URL to `http://localhost:3000` and configure the permitted redirect URLs.
+4. Configure **Authentication → Providers → Email**, including your email confirmation rules. Validate email verification and privacy flows before a public release.
 
-### 2. Crie `apps/web/.env.local`
+### 2. Create `apps/web/.env.local`
 
-No Windows, execute **`CONFIGURAR_KOGNOS.bat`** para criar e abrir o arquivo privado; ou copie manualmente `apps/web/.env.example` para `apps/web/.env.local` e preencha:
+On Windows, run **`CONFIGURAR_KOGNOS.bat`** to create and open the private environment file. Alternatively, copy `apps/web/.env.example` to `apps/web/.env.local` and fill in the values:
 
-```bash
-NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=SUA_CHAVE_PUBLICAVEL
-SUPABASE_URL=https://ktjdlvojnunjntwyodot.supabase.co
-SUPABASE_PUBLISHABLE_KEY=SUA_CHAVE_PUBLICAVEL
-SUPABASE_SECRET_KEY=SUA_CHAVE_PRIVADA_COMPLETA
-SUPABASE_JWKS_URL=https://ktjdlvojnunjntwyodot.supabase.co/auth/v1/.well-known/jwks.json
-NVIDIA_API_KEY=SUA_NOVA_CHAVE_NVIDIA
+```dotenv
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
+SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
+SUPABASE_SECRET_KEY=YOUR_SERVER_SECRET_KEY
+SUPABASE_JWKS_URL=https://YOUR-PROJECT.supabase.co/auth/v1/.well-known/jwks.json
+NVIDIA_API_KEY=YOUR_NEW_NVIDIA_KEY
 NVIDIA_MODEL=meta/llama-3.3-70b-instruct
 NVIDIA_API_BASE_URL=https://integrate.api.nvidia.com/v1
 AI_DAILY_REQUEST_LIMIT=20
 ```
 
-**IMPORTANTE:** revogue a chave NVIDIA que foi exposta em uma conversa e use outra recém-gerada. Não envie, publique ou commite seu `apps/web/.env.local`. Também nunca exponha `SUPABASE_SECRET_KEY` no frontend. A chave publicável e a URL são as únicas variáveis com prefixo `NEXT_PUBLIC_`.
+The project's Supabase URL and publishable key are already included in `apps/web/.env.example`. The complete secret key is **not** included.
 
-A URL e chave publicável do seu projeto estão predefinidas em `apps/web/.env.example`. A chave de servidor foi fornecida mascarada e portanto NÃO foi preenchida. Copie a chave completa diretamente do painel Supabase para `.env.local` no seu próprio computador.
+**Security:** Rotate any NVIDIA API keys previously exposed in a chat or elsewhere. Never publish or commit `apps/web/.env.local`. Never use `NEXT_PUBLIC_` for `SUPABASE_SECRET_KEY` or `NVIDIA_API_KEY`; only non-secret browser configuration should have that prefix.
 
-O `NVIDIA_MODEL` é configurável. Se não estiver liberado no seu catálogo, escolha um modelo habilitado da lista https://build.nvidia.com/.
+The NVIDIA model is configurable. If the default model is not available to your account, select an authorized model at [NVIDIA Build](https://build.nvidia.com/).
 
-### 3. Reinicie o servidor
+### 3. Start the application
 
 ```powershell
 npm run dev
 ```
 
-Crie uma conta na interface (e confirme seu e-mail, caso esteja ativado), complete o onboarding e abra **Kog · Tutor IA**. O aviso de privacidade fica visível no formulário: as mensagens e o contexto pedagógico necessário são processados pela NVIDIA, sem pedir autorização a cada envio. O backend valida a sessão, aplica a quota e encaminha o pedido ao endpoint oficial.
+Sign up, verify your email if required, complete onboarding, and open **Kog · AI Tutor**. The interface displays a privacy notice: relevant messages and educational context are processed by NVIDIA, without a repeated checkbox on every message. The backend verifies the session, enforces usage limits, and forwards the request to the configured provider.
 
-## Segurança, custos e restrições
+## Security, privacy, and operating limits
 
-- O servidor nunca responde com a chave. As credenciais não aparecem no bundle do navegador.
-- Nenhuma conversa é persistida no banco nesta versão; a conversa fica no estado temporário da aba. **Conteúdo enviado ao tutor passa por infraestrutura de IA da NVIDIA**.
-- O provedor e modelo podem ter limites e custos; monitore a conta do provedor antes de abrir o serviço ao público.
-- Quota **por usuário autenticado**, não por IP, para impedir uso irrestrito da chave. Ainda serão necessários proteção contra abuso de cadastro, monitoramento, moderação e revisão de segurança antes do lançamento público.
-- O cadastro de menores requer revisão jurídica, política de privacidade e medidas adequadas de proteção. A versão atual é **beta de desenvolvimento**, não um serviço público pronto.
-- O uso de TDAH/dislexia no onboarding não é diagnóstico, teste clínico ou substituto de acompanhamento profissional.
-- O professor virtual é uma persona original; inspira-se em boas práticas didáticas e não imita a identidade de um professor real.
+- Server-side API keys must never be returned to the browser or embedded in client bundles.
+- AI conversations are not persisted in the database in this version. Chat history exists temporarily in the current browser tab. **Messages sent to the tutor are processed by NVIDIA's AI infrastructure.**
+- Providers and models may impose limits and usage charges. Monitor provider billing before allowing public access.
+- Usage quotas apply **per authenticated user**, not per IP address. Additional signup-abuse protections, monitoring, moderation, and security reviews are required before launch.
+- Services intended for minors require appropriate privacy policies, safeguards, and legal review.
+- ADHD/dyslexia accommodations are optional interface preferences, not medical diagnosis or clinical assessment.
+- Kog is an original teaching persona informed by sound educational practices, not an imitation of a real instructor.
+- This repository is **a development beta, not a production-certified public service**.
 
-## Estrutura
+## Project structure
 
 ```text
 apps/web/
-  public/brand/        Marca, ícone e hero originais
-  src/app/             Página inicial, layout, estilos e API protegida
-  src/components/      Aplicação, cadastro, onboarding, dashboard e tutor
-  src/lib/             Perfil, Supabase e prompt de IA
-packages/education-engine/  Motor anterior preservado
-supabase/migrations/        Esquema original + quota diária do Kognos
-docs/                      Especificação e decisões
-legacy/                    Protótipos FOCO originais intactos
+  public/brand/           Original logo, icons, and illustration
+  src/app/                Application routes, layouts, styles, and protected AI API
+  src/components/         App UI, authentication, onboarding, dashboard, and tutor
+  src/lib/                Student profiles, Supabase, and AI prompt
+packages/education-engine/  Reusable learning engine
+supabase/migrations/        Database schema, access policies, and AI quota
+docs/                      Specifications and architectural decisions
+legacy/                    Preserved FOCO prototypes (where included)
 ```
 
-## Próxima evolução
+## Visual design and accessibility
 
-- Perfil de acesso para menores e consentimento adequado para produção.
-- Plano adaptativo com persistência real (reaproveitar `education-engine`).
-- Banco de questões com revisão de origem/licença.
-- Simulados com correção protegida no servidor.
-- Testes de integração e RLS com usuários distintos.
+Kognos uses a restrained premium educational style rather than excessive neon or glass effects.
 
-Ver `docs/KOGNOS_SPRINT_02.md` e `docs/KOGNOS_AI_EDUCATION.md`.
+| Design token | Hex | Usage |
+| --- | --- | --- |
+| Deep Navy | `#101B33` | Sidebar and brand surfaces |
+| Slate Navy | `#273A61` | Secondary elements |
+| Intelligence Violet | `#5B4DE3` | Primary actions and AI features |
+| Progress Cyan | `#38CDE5` | Progress indicators and highlights |
+| Soft White | `#F7F9FC` | Light background |
+| Cloud Gray | `#EDF1F7` | Secondary light surfaces |
+| Graphite | `#202633` | Dark-mode cards |
+| Midnight | `#111722` | Dark background |
+| Emerald | `#18B78A` | Success |
+| Amber | `#F0AD4E` | Warnings |
+| Coral | `#E46D75` | Errors |
+| Ink | `#1D2638` | Primary light-theme text |
+| Slate | `#778398` | Muted text |
+| Mist | `#E0E6EF` | Borders |
 
-## Atualização v0.3 — Perfil e redesign
+`apps/web/src/app/design-system.css` defines tokens and light/dark variants for cards, inputs, buttons, forms, profile pages, exercises, and tutor screens. It is imported after older styles to reduce regressions; the legacy CSS can be consolidated as the remaining modules mature.
 
-O visual segue a paleta Deep Navy (#101B33), Intelligence Violet (#5B4DE3), Progress Cyan (#38CDE5), superfícies claras Soft White (#F7F9FC), e oferece tema claro/escuro, barra inferior móvel e mascote Kog. Consulte `docs/KOGNOS_VISUAL_SPEC_USER.md` para o briefing integral e `docs/KOGNOS_SPRINT_03.md` para o estado de cada recurso.
+The application includes customized Firefox and WebKit scrollbars, keyboard navigation, mobile navigation, and a collapsible desktop sidebar. The collapsed state is saved locally in the browser. Accessibility preferences can be changed later.
 
-### Conta e foto
+See `docs/KOGNOS_DESIGN_SYSTEM_V05.md` and `docs/KOGNOS_VISUAL_SPEC_USER.md`.
 
-Acesse **Meu perfil** na sidebar ou no avatar do cabeçalho. Escolha foto, nome público, @usuário e descrição. Em **Configurações → Conta e segurança**, altere e-mail e senha ou solicite recuperação. O texto da senha antiga **não pode ser exibido** porque o sistema só armazena credenciais de forma não recuperável.
+## Profile, account, and security settings
 
-Fotos de contas conectadas exigem a migration `0003` aplicada. Fotos de visitante e resultados de treino são **dados locais deste navegador**, não são sincronizados com a nuvem. Para detalhes, consulte `docs/ACCOUNT_SECURITY.md`.
+Open **My Profile** from the sidebar or header avatar to edit the profile picture, display name, username, and bio. Under **Settings → Account & Security**, change your email or password, or request password recovery.
 
-### Tutor NVIDIA
+Existing passwords **cannot be displayed** because the authentication system does not store them in a recoverable form. Visibility controls only reveal a password currently being typed.
 
-O Kog usa o gateway já implementado em `apps/web/src/app/api/tutor/route.ts`; somente o servidor lê `process.env.NVIDIA_API_KEY`. O endpoint oficial é `https://integrate.api.nvidia.com/v1/chat/completions`, mas modelos/limites dependem de permissão da sua conta. Não coloque chaves em arquivos rastreados pelo Git ou neste ZIP.
+Cloud profile photos require migration `0003`. Visitor photos and some demo exercise results are browser-local and do not synchronize across devices. See `docs/ACCOUNT_SECURITY.md`.
 
-### Testes
+## NVIDIA tutor configuration
 
-`npm test` executa **18 testes de lógica**, além dos novos testes de interface e configuração na versão 0.5. Sem acesso ao registro do npm, o build e as integrações com Supabase/NVIDIA permanecem **não validados**.
+Kog uses the protected route `apps/web/src/app/api/tutor/route.ts`; only the server reads `process.env.NVIDIA_API_KEY`. The default endpoint is:
 
+```text
+https://integrate.api.nvidia.com/v1/chat/completions
+```
 
-## Atualização v0.4 — projeto Supabase fornecido
+Model availability depends on your NVIDIA account.
 
-- Identificador do projeto: `ktjdlvojnunjntwyodot`; URL e chave **publicável** já estão no `.env.example` (não são segredos).
-- Tutor protegido usando o SDK oficial `@supabase/server`, projetado para rotas que recebem `Authorization: Bearer ...`. Instale com `npm install` na raiz; a dependência consta em `apps/web/package.json`.
-- As variáveis secretas **não** estão incluídas no projeto; digite os valores completos no arquivo ignorado `apps/web/.env.local`.
-- Planejamento e histórico demonstrativos de contas autenticadas agora são carregados/salvos no banco, com RLS por usuário. Visitantes continuam locais.
-- Rode SQL migration `0004_demo_cloud_sync.sql` depois das três anteriores.
-- Não há migração automática dos dados antigos salvos em dispositivos.
-- Leia `docs/KOGNOS_SPRINT_04_SUPABASE.md` antes de publicar.
+**Windows:** run `CONFIGURAR_API_NVIDIA.bat` from the project root. Enter a **new** `nvapi-...` key in the concealed PowerShell prompt and optionally set the model. It writes to the Git-ignored `apps/web/.env.local`. Restart `npm run dev` after changes.
 
+**Linux/macOS:** copy `apps/web/.env.example` to `apps/web/.env.local` and add `NVIDIA_API_KEY=...` directly to that private file.
 
-## Atualização v0.5 — redesign e configuração NVIDIA
+The tutor requires a valid Supabase session, a configured database with the necessary migrations, and an authorized NVIDIA API key. The tutor presents a notice about external processing without requiring a consent checkbox for each message. This does **not** remove the need for appropriate privacy disclosures or safeguards, especially for minors.
 
-### Nova identidade visual
+## Testing
 
-- Paleta oficial: `#101B33`, `#273A61`, `#5B4DE3`, `#38CDE5`, `#F7F9FC`, `#EDF1F7`, `#202633`, `#111722`, `#18B78A`, `#F0AD4E`, `#E46D75`, `#1D2638`, `#778398` e `#E0E6EF`.
-- `apps/web/src/app/design-system.css` centraliza os tokens, variantes claro/escuro, inputs, botões, painéis, cards, opções de prova, telas de perfil e tutor. É importado DEPOIS do CSS anterior para reduzir regressões; a migração total do CSS antigo pode ocorrer quando os módulos forem concluídos.
-- Scrollbars estilizadas com Firefox `scrollbar-color` e WebKit `::-webkit-scrollbar`, rolagem lateral para configurações pequenas e navegação por teclado.
-- Menu lateral recolhível no desktop, controle de aparência e expansão do menu no mobile. O estado de recolhimento fica salvo apenas no navegador.
-- Estados de componente e contraste revistos para tema claro e escuro. As páginas ainda em construção exibem estados vazios honestos, não dados fabricados.
+Run:
 
-Consulte `docs/KOGNOS_DESIGN_SYSTEM_V05.md` para tokens, regras e cobertura.
+```powershell
+npm test
+npm run test:design
+```
 
-### Configure a chave NVIDIA como administrador
+The local tests cover educational logic, profiles, storage behavior, design tokens, scrollbars, secret handling, and removal of the repeated consent checkbox. A complete production build and live Supabase/NVIDIA integration require separately configured services.
 
-**Windows:** execute `CONFIGURAR_API_NVIDIA.bat` na pasta principal do projeto, informe uma **nova** chave `nvapi-...` na entrada oculta do PowerShell e pressione Enter. O script grava a chave em `apps/web/.env.local` (ignorado pelo Git) e oferece entrada opcional para o modelo. Reinicie `npm run dev` depois de configurar.
+## Roadmap
 
-**Linux/macOS:** copie `apps/web/.env.example` para `apps/web/.env.local`, se não existir, e edite somente o arquivo privado para adicionar `NVIDIA_API_KEY=...`. Nunca use `NEXT_PUBLIC_NVIDIA_API_KEY`.
+- Safeguards and appropriately designed account flows for minors.
+- Full adaptive scheduling with persistent progress using `education-engine`.
+- A question bank with verified sources and permitted content licenses.
+- Server-graded mock examinations and securely recorded results.
+- Skill mastery based on actual exercise and review performance.
+- Integration tests for authentication and RLS between separate accounts.
+- Additional accessibility, security, and deployment validation.
 
-**Importante:** a chave não é inserida na interface dos estudantes, nem empacotada no ZIP. O servidor exige uma sessão Supabase, um projeto Supabase funcional com migrações aplicadas e uma chave autorizada pela NVIDIA.
+See `docs/KOGNOS_SPRINT_02.md`, `docs/KOGNOS_AI_EDUCATION.md`, and `docs/KOGNOS_SPRINT_04_SUPABASE.md`.
 
-### Envio ao tutor e privacidade
+## Copyright and contributions
 
-O formulário do Kog apresenta um **aviso informativo** sobre o provedor e quais informações são enviadas; não há checkbox obrigatório por mensagem. No backend, o parâmetro `consent` foi removido. O tutor continua usando a conta autenticada e um limite de requisições. Este comportamento não elimina a necessidade de política de privacidade, transparência e verificações de requisitos legais antes do lançamento público, especialmente para menores de idade.
+**© 2026 PedroH0309. All rights reserved.**
 
-### Verificação
-
-Execute `npm test` e `npm run test:design`. Os testes existentes cobrem lógica educacional, perfis e armazenamento. Os novos testes conferem tokens, scrollbars, configuração sem segredos e ausência da antiga exigência de checkbox. O build de Next.js ainda depende da instalação de dependências; não foi declarado testado neste ambiente.
-
-
-## Direitos autorais e participação
-
-**© 2026 PedroH0309 — All Rights Reserved.** O repositório é proprietário; a colaboração acontece por Issues e Pull Requests, mediante regras de contribuição. Veja `LICENSE`, `CONTRIBUTING.md`, `SECURITY.md` e `docs/PROTECAO_E_COLABORACAO_GITHUB.md`.
+Kognos is proprietary software. Collaboration is welcome through issues and pull requests under the project contribution rules. These permissions do not make the code open source. See [LICENSE](LICENSE), [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and `docs/PROTECAO_E_COLABORACAO_GITHUB.md`.
