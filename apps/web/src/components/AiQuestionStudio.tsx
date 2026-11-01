@@ -29,9 +29,10 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
  const blueprint=examBlueprints[institution];
  const subjectOptions=Object.keys(blueprint.subjects).map(value=>({value,label:value}));
  const topicOptions=(blueprint.subjects[subject]||[]).map(value=>({value,label:value}));
- const bank=useMemo(()=>questions.filter(q=>q.institution===institution&&(!inMock||q.difficulty===difficulty)),[questions,institution,inMock,difficulty]);
+
  const current=session[cursor];
  const inMock=mode==='simulados';
+ const bank=useMemo(()=>questions.filter(q=>q.institution===institution&&(!inMock||q.difficulty===difficulty)),[questions,institution,inMock,difficulty]);
  const activeSession=session.length>0&&!finished;
 
  const authenticatedFetch=useCallback(async(url:string,init?:RequestInit)=>{
