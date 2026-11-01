@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
-import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
+import {findLearningLesson} from '@/lib/learning-catalog';
+import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
 export const runtime = 'nodejs';
 
@@ -44,7 +45,10 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     const studyContext = parseKogStudyContext(body.studyContext);
     let contextText = '';
     let effectiveSubject = subject;
-    if (studyContext?.kind === 'question') {
+    if(studyContext?.kind === 'lesson') {
+      const lesson=findLearningLesson(studyContext.lessonId);
+      if(lesson){effectiveSubject=lesson.subject;contextText=buildVerifiedLessonContext(lesson);}
+    } else if (studyContext?.kind === 'question') {
       const question = findDemoQuestion(studyContext.questionId);
       if(question) {
         effectiveSubject = question.subject;
