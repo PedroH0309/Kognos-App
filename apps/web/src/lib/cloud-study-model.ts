@@ -11,12 +11,12 @@ export type StudyTask = {
   subject: string;
 };
 
-type TaskRow = {
+export type TaskRow = {
   id: string; user_id: string; task_date: string; title: string;
   duration_minutes: number; done: boolean; kind: 'manual' | 'suggested'; subject: string;
 };
 
-type AttemptRow = {
+export type AttemptRow = {
   id: string; user_id: string; question_id: string; subject: string;
   answer_index: number; correct: boolean; mode: 'practice' | 'mock'; created_at: string;
 };

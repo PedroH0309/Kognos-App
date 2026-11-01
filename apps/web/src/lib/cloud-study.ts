@@ -1,5 +1,5 @@
 import { getSupabase } from './supabase';
-import {attemptFromRow,attemptToRow,taskFromRow,taskToRow, type StudyTask} from './cloud-study-model';
+import {attemptFromRow,attemptToRow,taskFromRow,taskToRow, type StudyTask, type TaskRow, type AttemptRow} from './cloud-study-model';
 import type { QuestionAttempt } from './demo-questions';
 export type {StudyTask} from './cloud-study-model';
 

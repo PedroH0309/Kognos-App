@@ -181,7 +181,7 @@ export default function KognosApp(){
   const preferred=window.localStorage.getItem('kognos_theme_v1');if(preferred==='light'||preferred==='dark')setTheme(preferred);setSidebarCollapsed(window.localStorage.getItem('kognos_sidebar_collapsed_v1')==='true');
   const loadGuest=()=>{try{const saved=window.localStorage.getItem(STORAGE_KEY);if(mounted){setProfile(saved?normalizeProfile(JSON.parse(saved)):null);setAvatarUrl(window.localStorage.getItem('kognos_guest_avatar_v1'));}}catch{if(mounted)setProfile(null);}};
   const loadProfile=async(id:string)=>{if(!sb)return;const {data,error}=await sb.from('profiles').select('display_name,username,biography,avatar_path,preferences').eq('id',id).maybeSingle();if(!mounted)return;if(error){setProfile(null);setAvatarUrl(null);return;}
-     const prefs=data?.preferences||null;setProfile(prefs&&prefs.completedAt?normalizeProfile({...prefs,nickname:data.display_name||prefs.nickname,username:data.username||'',biography:data.biography||''}):null);
+     const prefs=data?.preferences||null;setProfile(prefs&&prefs.completedAt?normalizeProfile({...prefs,nickname:data?.display_name||prefs.nickname,username:data?.username||'',biography:data?.biography||''}):null);
      setAvatarUrl(null);if(data?.avatar_path){const {data:signed}=await sb.storage.from('kognos-avatars').createSignedUrl(data.avatar_path,3600);if(mounted)setAvatarUrl(signed?.signedUrl||null);}
   };
   (async()=>{if(sb){const {data}=await sb.auth.getSession();if(!mounted)return;if(data.session?.user){setUser(data.session.user);await loadProfile(data.session.user.id);}else loadGuest();}else loadGuest();if(mounted)setLoading(false);})();
