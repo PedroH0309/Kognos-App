@@ -7,6 +7,7 @@ import type { User } from '@supabase/supabase-js';
 import { getSupabase } from '@/lib/supabase';
 import { goalLabels, type StudentProfile } from '@/lib/profile';
 import KogMascot3D from './KogMascot3D';
+import { KognosSelect, type KognosOption } from './KognosFields';
 import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-context';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
@@ -28,6 +29,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   const inFlightRef=useRef(false);
   const currentUserRef=useRef(user?.id||'guest');
   const activeSubject=subjectForView(context);
+  const subjectOptions = SUBJECTS.map(s=>({value:s,label:s})) as KognosOption<string>[];
 
   useEffect(() => {if(open) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[open]);
   useEffect(() => {scrollRef.current?.scrollTo({top:scrollRef.current.scrollHeight,behavior:'smooth'});},[messages,pending,open]);
@@ -113,7 +115,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
         </div>
         <div className="kog-drawer-bottom">
           {messages.length>0&&<div className="kog-quick-row">{['Explique de outra forma','Dê um exemplo','Me teste','Resuma'].map(s=><button type="button" key={s} disabled={pending} onClick={()=>fillPrompt(`${s} o último conteúdo que discutimos.`)}>{s}</button>)}<button type="button" title="Nova conversa" aria-label="Iniciar nova conversa" onClick={()=>{setMessages([]);setDraft('');setError('');}}><RotateCcw size={15}/></button></div>}
-          <form onSubmit={send} className="kog-input-area"><div className="kog-input-head"><label htmlFor="kog-subject">Disciplina</label><select id="kog-subject" value={subject} onChange={e=>setSubject(e.target.value)}>{SUBJECTS.map(s=><option key={s}>{s}</option>)}</select><small>{draft.length}/3000</small></div>
+          <form onSubmit={send} className="kog-input-area"><div className="kog-input-head"><KognosSelect compact label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} className="kog-subject-select" /><small>{draft.length}/3000</small></div>
             <div className="kog-input-wrap"><textarea ref={textRef} value={draft} onChange={e=>setDraft(e.target.value)} maxLength={3000} rows={2} placeholder="Pergunte sobre sua dúvida…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form?.requestSubmit();}}}/><button type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled={!draft.trim()||pending} className="kog-send-btn"><Send size={18}/></button></div>
           </form>
           {!user&&<p className="kog-login-tip"><MessageCircle size={14}/> Entre na sua conta para conversar com o Kog. <button onClick={onLogin} type="button">Entrar</button></p>}

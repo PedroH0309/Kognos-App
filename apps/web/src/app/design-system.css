@@ -641,3 +641,60 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
  .app-layout .kog-drawer,.app-layout .kog-launcher {animation:none;transition:none;}
  .app-layout .kog-thinking span{animation:none;}
 }
+
+
+/* Generic Kognos fields outside onboarding */
+.app-layout .kg-form-field,.app-content .kg-form-field{display:flex;flex-direction:column;position:relative;min-width:0;}
+.app-layout .kg-field-title,.app-content .kg-field-title{display:block;font-size:13px;font-weight:720;line-height:1.4;color:var(--txt);margin:0 0 9px;}
+.app-layout .kg-field-hint,.app-content .kg-field-hint,.app-layout .kg-field-error,.app-content .kg-field-error{font-size:11px;line-height:1.45;margin-top:7px;}
+.app-layout .kg-field-hint,.app-content .kg-field-hint{color:var(--sub);}
+.app-layout .kg-field-error,.app-content .kg-field-error{color:var(--error);}
+.app-layout .kg-select-trigger,.app-content .kg-select-trigger,.app-layout .kg-date-box,.app-content .kg-date-box{
+  width:100%;min-height:48px;height:48px;background:var(--field-bg);border:1px solid var(--line);color:var(--txt);border-radius:12px;box-shadow:none;transition:background .18s,border-color .18s,box-shadow .18s;
+}
+.app-layout .kg-select-trigger:hover,.app-content .kg-select-trigger:hover,.app-layout .kg-date-box:hover,.app-content .kg-date-box:hover{border-color:#7785A0;}
+.app-layout .kg-select-trigger:focus-visible,.app-content .kg-select-trigger:focus-visible,.app-layout .kg-select-trigger.is-open,.app-content .kg-select-trigger.is-open,.app-layout .kg-date-box:focus-within,.app-content .kg-date-box:focus-within{outline:none;border-color:#8E81FF;box-shadow:0 0 0 3px #5B4DE326;}
+.app-layout .kg-select-trigger,.app-content .kg-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;text-align:left;overflow:hidden;}
+.app-layout .kg-select-trigger.compact,.app-content .kg-select-trigger.compact{min-height:42px;height:42px;}
+.app-layout .kg-select.compact .kg-field-title,.app-content .kg-select.compact .kg-field-title{font-size:11px;margin-bottom:6px;}
+.app-layout .kg-select-value,.app-content .kg-select-value{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:560;}
+.app-layout .kg-chevron,.app-content .kg-chevron{color:var(--sub);flex:none;transition:transform .18s,color .18s;}
+.app-layout .kg-select-trigger.is-open .kg-chevron,.app-content .kg-select-trigger.is-open .kg-chevron{transform:rotate(180deg);color:var(--accent-400);}
+.app-layout .kg-select-options,.app-content .kg-select-options{position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:120;max-height:280px;overflow:auto;background:var(--box-bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px #0811214D;padding:6px;}
+.app-layout .kg-select-options.is-above,.app-content .kg-select-options.is-above{top:auto;bottom:calc(100% + 7px);}
+.app-layout .kg-select-option,.app-content .kg-select-option{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:42px;border:0;background:transparent;color:var(--txt);text-align:left;border-radius:10px;padding:9px 10px;}
+.app-layout .kg-select-option span,.app-content .kg-select-option span{display:grid;gap:2px;min-width:0;}
+.app-layout .kg-select-option strong,.app-content .kg-select-option strong{font-size:13px;font-weight:650;line-height:1.35;}
+.app-layout .kg-select-option small,.app-content .kg-select-option small{font-size:11px;color:var(--sub);line-height:1.4;}
+.app-layout .kg-select-option:hover,.app-content .kg-select-option:hover,.app-layout .kg-select-option.is-active,.app-content .kg-select-option.is-active{background:var(--panel-2);}
+.app-layout .kg-select-option[aria-selected='true'],.app-content .kg-select-option[aria-selected='true']{background:#5B4DE314;color:var(--txt);}
+.app-layout .kg-select-option svg,.app-content .kg-select-option svg{color:var(--accent-400);flex:none;}
+.app-layout .kg-date-box,.app-content .kg-date-box{display:flex;align-items:center;padding:0 5px 0 2px;}
+.app-layout .kg-date-box input,.app-content .kg-date-box input{flex:1;min-width:0;height:100%;background:transparent;border:0!important;outline:0;padding:0 12px;color:var(--txt);font-size:13px;font-weight:560;}
+.app-layout .kg-date-box input::placeholder,.app-content .kg-date-box input::placeholder{color:var(--dim);opacity:1;}
+.app-layout .kg-date-box.has-error,.app-content .kg-date-box.has-error{border-color:var(--error);}
+.app-layout .kg-date-icon-button,.app-content .kg-date-icon-button{height:34px;width:34px;display:grid;place-items:center;border:0;background:transparent;border-radius:9px;color:var(--sub);}
+.app-layout .kg-date-icon-button:hover,.app-content .kg-date-icon-button:hover{background:var(--panel-2);color:var(--txt);}
+.app-layout .kg-calendar,.app-content .kg-calendar{position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:120;background:var(--box-bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px #0811214D;padding:12px;}
+.app-layout .kg-calendar.is-above,.app-content .kg-calendar.is-above{top:auto;bottom:calc(100% + 7px);}
+.app-layout .kg-calendar-head,.app-content .kg-calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;}
+.app-layout .kg-calendar-head button,.app-content .kg-calendar-head button{height:34px;width:34px;display:grid;place-items:center;border:1px solid var(--line);background:var(--panel-2);color:var(--txt);border-radius:10px;}
+.app-layout .kg-calendar-head strong,.app-content .kg-calendar-head strong{text-transform:capitalize;font-size:13px;font-weight:730;}
+.app-layout .kg-calendar-grid,.app-content .kg-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;}
+.app-layout .kg-calendar-weekday,.app-content .kg-calendar-weekday{font-size:10px;font-weight:700;text-align:center;color:var(--sub);padding-bottom:2px;}
+.app-layout .kg-calendar-grid button,.app-content .kg-calendar-grid button{height:34px;border:1px solid transparent;background:transparent;color:var(--txt);border-radius:10px;font-size:12px;font-weight:600;}
+.app-layout .kg-calendar-grid button:hover,.app-content .kg-calendar-grid button:hover{background:var(--panel-2);}
+.app-layout .kg-calendar-grid button.is-today,.app-content .kg-calendar-grid button.is-today{border-color:var(--line);}
+.app-layout .kg-calendar-grid button.is-selected,.app-content .kg-calendar-grid button.is-selected{background:var(--accent-600);border-color:var(--accent-600);color:white;}
+.app-layout .kg-calendar-footer,.app-content .kg-calendar-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:11px;color:var(--sub);}
+.app-layout .kg-calendar-footer button,.app-content .kg-calendar-footer button{border:0;background:transparent;color:var(--accent-400);font-weight:700;padding:0;}
+.app-content .practice-filter-row{align-items:end;}
+.app-content .practice-subject-select{max-width:none;}
+.app-layout .kog-input-head .kog-subject-select,.app-content .kog-input-head .kog-subject-select{flex:1;min-width:0;max-width:220px;}
+.app-layout .kog-input-head .kog-subject-select .kg-select-options,.app-content .kog-input-head .kog-subject-select .kg-select-options{max-height:250px;}
+.app-layout .kog-input-head .kog-subject-select .kg-field-title,.app-content .kog-input-head .kog-subject-select .kg-field-title{margin-bottom:5px;}
+.app-content .planner-form-grid{align-items:end;}
+@media(max-width:700px){
+  .app-layout .kg-select-options,.app-content .kg-select-options,.app-layout .kg-calendar,.app-content .kg-calendar{position:relative;top:auto;bottom:auto;left:auto;right:auto;margin-top:6px;}
+  .app-layout .kog-input-head .kog-subject-select,.app-content .kog-input-head .kog-subject-select{max-width:none;}
+}
