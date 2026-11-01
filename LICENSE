@@ -1,21 +1,29 @@
-MIT License
+KOGNOS — PROPRIETARY SOURCE CODE NOTICE
+Copyright (c) 2026 PedroH0309. All rights reserved.
 
-Copyright (c) 2026 Pedro Henrique
+Kognos is proprietary software. This repository is NOT licensed as open source.
+Unless an exception below applies or separate written authorization has been
+granted by the rights holder, no permission is granted to reproduce, publish,
+redistribute, sublicense, sell, monetize, host as a competing service,
+or incorporate Kognos source code, branding, or original assets into other
+projects. Applicable statutory exceptions and the GitHub Terms of Service
+remain unaffected.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+LIMITED CONTRIBUTOR PERMISSION
+An individual expressly authorized to collaborate on this project may make
+necessary working copies and modifications solely for proposing contributions
+to the official Kognos repository, including development, code review, and
+submitting a pull request. This permission does not authorize unrelated use,
+public redistribution, or commercial deployment. Contributions are subject
+to the CONTRIBUTING.md contribution terms and project owner approval.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+A public GitHub repository, if enabled in the future, may be viewed or forked
+under GitHub's Terms of Service; this notice does not override those terms.
+The permission to view or fork is not a general license to reuse or resell.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+THIRD-PARTY MATERIAL
+Dependencies, libraries, fonts, tools, and any separately licensed third-party
+content remain subject to their own applicable licenses and ownership. This
+notice makes no claim over such third-party materials.
+
+For additional permissions, contact the repository owner through GitHub.
