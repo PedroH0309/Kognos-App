@@ -21,13 +21,13 @@ const subjectDescriptions:Record<string,string>={
 };
 const evidenceLabels={'not-started':'Ainda não praticado',review:'Revisar resultado','correct-sample':'Acerto registrado'} as const;
 
-export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice}:{
+export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,focus}:{
  mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onTutor:()=>void;onPractice:(focus:Focus)=>void;
+ onTutor:()=>void;onPractice:(focus:Focus)=>void;focus?:{subject:string;lessonId:string}|null;
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
- const [subject,setSubject]=useState('Matemática');
- const [selectedId,setSelectedId]=useState<string>('math-percentages');
+ const [subject,setSubject]=useState(focus?.subject??'Matemática');
+ const [selectedId,setSelectedId]=useState<string>(focus?.lessonId??'math-percentages');
  const [query,setQuery]=useState('');
  const [loaded,setLoaded]=useState(false);
  const [error,setError]=useState('');

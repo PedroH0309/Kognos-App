@@ -37,4 +37,3 @@ export function attemptToRow(attempt: QuestionAttempt, userId: string, id: strin
   return {id,user_id:userId,question_id:attempt.questionId,subject:attempt.subject,
     answer_index:attempt.answerIndex,correct:attempt.correct,mode:attempt.mode,created_at:attempt.createdAt};
 }
-

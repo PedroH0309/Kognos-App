@@ -1,5 +1,5 @@
 import { getSupabase } from './supabase';
-import {attemptFromRow,attemptToRow,taskFromRow,taskToRow, type StudyTask, type TaskRow, type AttemptRow} from './cloud-study-model';
+import {attemptFromRow,attemptToRow,taskFromRow,taskToRow, type StudyTask,type TaskRow,type AttemptRow} from './cloud-study-model';
 import type { QuestionAttempt } from './demo-questions';
 export type {StudyTask} from './cloud-study-model';
 
@@ -32,5 +32,13 @@ export async function getCloudAttempts(userId:string):Promise<QuestionAttempt[]>
 }
 export async function createCloudAttempt(userId:string,attempt:QuestionAttempt){
   const {error}=await db().from('kognos_demo_attempts').insert(attemptToRow(attempt,userId,crypto.randomUUID()));
+  friendly(error);
+}
+
+/** Batch original demo attempts for the exploratory diagnostic; this is client-graded sample practice. */
+export async function createCloudAttempts(userId:string,attempts:QuestionAttempt[]){
+  if(!attempts.length)return;
+  const rows=attempts.map(attempt=>attemptToRow(attempt,userId,crypto.randomUUID()));
+  const {error}=await db().from('kognos_demo_attempts').insert(rows);
   friendly(error);
 }
