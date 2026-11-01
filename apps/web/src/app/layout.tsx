@@ -1,0 +1,13 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import "./design-system.css";
+
+export const metadata: Metadata = {
+  title: "Kognos | Estude além dos limites",
+  description: "Aprendizagem inteligente, trilhas personalizadas e um tutor que se adapta ao seu ritmo.",
+  icons: { icon: "/brand/kognos-icon.png" },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="pt-BR"><body>{children}</body></html>;
+}

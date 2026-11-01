@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 430" role="img" aria-labelledby="title desc">
+<title id="title">Kog, mascote do Kognos</title><desc id="desc">Assistente robótico arredondado com visor sorridente e detalhes violeta e ciano</desc>
+<defs>
+ <linearGradient id="body" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F7F8FF"/><stop offset=".5" stop-color="#C5D1F9"/><stop offset="1" stop-color="#7068B9"/></linearGradient>
+ <linearGradient id="hood" x1="0" x2="1"><stop stop-color="#A887FF"/><stop offset="1" stop-color="#46DEF1"/></linearGradient>
+ <radialGradient id="shell"><stop stop-color="#30396B"/><stop offset="1" stop-color="#0D142D"/></radialGradient>
+ <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+<ellipse cx="200" cy="396" rx="130" ry="17" fill="#7656EB" opacity=".28" filter="url(#glow)"/>
+<path d="M152 300Q104 308 103 343L91 365Q90 382 106 386L152 384Z" fill="url(#body)" stroke="#8D77DC" stroke-width="5"/>
+<path d="M249 300Q301 304 308 343L319 362Q324 377 306 387L254 384Z" fill="url(#body)" stroke="#8D77DC" stroke-width="5"/>
+<rect x="120" y="250" width="160" height="145" rx="56" fill="url(#body)" stroke="#8066D5" stroke-width="5"/>
+<path d="M164 317l29 0 23-28-14 42 35 31-51-17-24 16Z" fill="#4E48DC"/>
+<path d="M185 328l28-27" stroke="#40D2EA" stroke-width="10" stroke-linecap="round"/>
+<path d="M173 40q12-26 32-27q-11 23 2 38" stroke="#8A78E7" stroke-width="12" fill="none" stroke-linecap="round"/>
+<circle cx="206" cy="18" r="11" fill="#3CDBEB"/>
+<rect x="49" y="57" width="303" height="245" rx="103" fill="url(#body)" stroke="#9F89ED" stroke-width="7"/>
+<rect x="74" y="81" width="252" height="188" rx="78" fill="url(#shell)" stroke="#40528C" stroke-width="4"/>
+<rect x="38" y="146" width="31" height="77" rx="15" fill="url(#hood)"/>
+<rect x="331" y="146" width="31" height="77" rx="15" fill="url(#hood)"/>
+<g stroke="#53E7F3" stroke-width="12" stroke-linecap="round" fill="none">
+ <path d="M116 174q17-24 39 0"/><path d="M244 174q17-24 39 0"/>
+</g>
+<path d="M177 213q23 23 46 0" fill="none" stroke="#A786FF" stroke-width="8" stroke-linecap="round"/>
+<circle cx="107" cy="217" r="9" fill="#A786FF" opacity=".4"/><circle cx="294" cy="217" r="9" fill="#A786FF" opacity=".4"/>
+<path d="M152 280q50 16 95 0" fill="none" stroke="#BDB1F8" stroke-width="4" opacity=".7"/>
+<path d="M303 63l5-14 5 14 14 5-14 5-5 14-5-14-14-5Z" fill="#42D8EA"/>
+</svg>
