@@ -4,6 +4,17 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.1 — source-backed exam preparation with editorial review
+
+- **Matrices & Notices page:** view human-approved, versioned topic references and the relevant institution's official source URL, edition, and short supporting excerpt.
+- **Restricted source ingestion:** Kognos editors can fetch HTML from a narrowly allowlisted official HTTPS domain or paste extracted PDF text. Raw PDF downloading/parsing is **not** implemented yet. Redirects, arbitrary network hosts, oversized pages, and unsupported MIME types are blocked.
+- **AI-assisted extraction, not automatic publication:** the NVIDIA model proposes up to 20 curriculum topics with verbatim supporting excerpts. The server rejects any proposed quote that does not appear in the submitted text. Editors must approve each topic before it becomes available in the verified source catalog. Pasted transcripts still require checking against the linked original document.
+- **Versioned provenance:** stores institution, edition, source link, SHA-256 of consulted text, editorial status, reviewer and review date. Document text is not stored in the database; only short evidence snippets are retained.
+- **Question generation integration:** students can choose a human-approved topic in the existing AI generator. The server verifies topic/source approval again before building the prompt, and links resulting private questions to the approved topic. If no topic is approved, the existing **editorial** suggestions are still available and are labeled accordingly.
+- **New migration:** apply `supabase/migrations/0006_exam_source_catalog.sql` after 0005. A server-side `KOGNOS_EDITOR_USER_IDS` allowlist is required to import or moderate sources. Never set this list via a browser-exposed environment variable.
+
+See [Sprint 1.1 notes](docs/KOGNOS_SPRINT_11_SOURCE_MATRICES.md). **No automatic polling of institutional websites, PDF parser, official exam-frequency prediction, or official publisher endorsement is claimed.**
+
 ## What's new in v1.0 — AI question generation and institution-aware personal mocks
 
 - **NVIDIA-backed question generator:** authenticated learners select ENEM, ETEC or FUVEST, a subject, a topic, a difficulty, and up to five questions per request.

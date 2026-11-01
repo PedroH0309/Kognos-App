@@ -911,3 +911,43 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
  .app-layout .ai-session .practice-actions .btn{min-height:44px;}
 }
 @media(prefers-reduced-motion:reduce){.app-layout .ai-studio *{scroll-behavior:auto;}}
+
+/* v1.1 | Versioned institution matrices and editorial approvals */
+.app-layout .k-syllabus-page{max-width:1400px;margin:0 auto;}
+.app-layout .k-syllabus-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(255px,.7fr);gap:20px;align-items:start;margin-bottom:20px;}
+.app-layout .k-syllabus-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px;flex-wrap:wrap;}
+.app-layout .k-syllabus-heading h2,.app-layout .k-syllabus-sidebar h2,.app-layout .k-syllabus-editor h2{display:flex;align-items:center;gap:10px;margin:0;}
+.app-layout .k-syllabus-caption{color:var(--sub);font-size:12px;line-height:1.65;margin:17px 0;}
+.app-layout .k-syllabus-topic{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:10px;}
+.app-layout .k-syllabus-topic-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.app-layout .k-syllabus-topic-head strong{font-size:13px;line-height:1.5;}
+.app-layout .k-syllabus-topic-head span{font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--success);background:#18b78a19;border:1px solid #18b78a45;border-radius:30px;padding:5px 7px;}
+.app-layout .k-syllabus-topic p{font-size:12px;line-height:1.65;color:var(--txt);margin:11px 0 6px;}
+.app-layout .k-syllabus-topic small{display:block;color:var(--sub);font-size:11px;margin-bottom:8px;}
+.app-layout .k-syllabus-topic a,.app-layout .k-syllabus-review-list a{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--accent-400);text-decoration:none;}
+.app-layout .k-syllabus-topic a:hover,.app-layout .k-syllabus-review-list a:hover{text-decoration:underline;}
+.app-layout .k-syllabus-empty{display:grid;justify-items:start;gap:8px;padding:22px;border:1px dashed var(--line);border-radius:12px;color:var(--sub);margin:13px 0 20px;}
+.app-layout .k-syllabus-empty strong{color:var(--txt);font-size:13px;}
+.app-layout .k-syllabus-empty p{font-size:12px;line-height:1.65;margin:0;}
+.app-layout .k-syllabus-source-link{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--txt);}
+.app-layout .k-syllabus-source-link span{display:grid;gap:4px;min-width:0;}
+.app-layout .k-syllabus-source-link strong{font-size:13px;}
+.app-layout .k-syllabus-source-link small{font-size:11px;color:var(--sub);line-height:1.5;}
+.app-layout .k-syllabus-source-link svg{flex:none;color:var(--accent-400);}
+.app-layout .k-syllabus-sidebar>.message{margin-top:20px;line-height:1.6;font-size:11px;}
+.app-layout .k-syllabus-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:18px 0 20px;}
+.app-layout .k-syllabus-fields>label{min-width:0;display:grid;gap:7px;font-size:12px;font-weight:700;color:var(--txt);}
+.app-layout .k-syllabus-fields input,.app-layout .k-syllabus-fields textarea{width:100%;min-width:0;color:var(--txt);background:var(--field-bg);border:1px solid var(--line);border-radius:11px;padding:12px 13px;font-size:13px;font-weight:500;line-height:1.5;resize:vertical;}
+.app-layout .k-syllabus-fields input:focus,.app-layout .k-syllabus-fields textarea:focus{outline:2px solid var(--accent-600);outline-offset:2px;}
+.app-layout .k-syllabus-fields small{font-size:11px;color:var(--sub);font-weight:400;}
+.app-layout .k-syllabus-wide{grid-column:1/-1;}
+.app-layout .k-syllabus-editor>h3{margin:24px 0 10px;}
+.app-layout .k-syllabus-review-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.app-layout .k-syllabus-review-list article{padding:15px;border:1px solid var(--line);background:var(--panel-2);border-radius:13px;min-width:0;}
+.app-layout .k-syllabus-review-list article>strong{display:block;font-size:13px;}
+.app-layout .k-syllabus-review-list article>small{font-size:11px;color:var(--sub);display:block;margin:6px 0;}
+.app-layout .k-syllabus-review-list article>p{color:var(--txt);font-size:12px;line-height:1.6;}
+.app-layout .k-syllabus-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.app-layout .k-syllabus-actions button{min-height:35px;display:inline-flex;gap:5px;align-items:center;}
+@media(max-width:920px){.app-layout .k-syllabus-grid{grid-template-columns:minmax(0,1fr);}.app-layout .k-syllabus-review-list{grid-template-columns:1fr;}}
+@media(max-width:560px){.app-layout .k-syllabus-fields{grid-template-columns:minmax(0,1fr);}.app-layout .k-syllabus-wide{grid-column:auto;}.app-layout .k-syllabus-grid{gap:12px;}}
