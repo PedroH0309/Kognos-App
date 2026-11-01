@@ -4,6 +4,17 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.0 — AI question generation and institution-aware personal mocks
+
+- **NVIDIA-backed question generator:** authenticated learners select ENEM, ETEC or FUVEST, a subject, a topic, a difficulty, and up to five questions per request.
+- **Two-pass automated screening:** deterministic structural validation plus independent AI review of key consistency. Accepted questions are added automatically to the student's private question bank and mock simulator; they are **AI-generated, not official questions or human-approved materials**.
+- **Secure answers:** prompts/options appear in the browser, but the reference answer and explanation remain in a service-role-only Supabase table until server-graded submission. The mock interface releases feedback at the end.
+- **Kog integration:** the contextual tutor receives a verified private question ID, with no answer key during the solving phase.
+- **Versioned official source entry points:** the INEP 2026 reference matrix, official ETEC FAQ, and FUVEST 2027 programme are linked for verification. Current topic menus are an **illustrative editorial mapping**, not automated extraction from official exam documents.
+- **Required migration:** apply `supabase/migrations/0005_ai_question_bank.sql` after the existing migrations. The NVIDIA API key remains server-only. Generation shares the existing daily AI quota and makes two provider requests per generation.
+
+See [Sprint 1.0 notes](docs/KOGNOS_SPRINT_10_AI_GENERATED_EXAMS.md) for architecture, source limitations, safety, and deployment.
+
 ## What's new in v0.9 — exploratory diagnostic and adaptive review
 
 - **Exploratory diagnostic:** seven original questions across seven subjects, scored only after completion, with references to follow-up lessons. This is a learning starting point, **not** a calibrated assessment or official exam score.
