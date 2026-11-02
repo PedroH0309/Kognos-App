@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
-import {DEFAULT_NVIDIA_MODEL,nvidiaInferenceOptions} from '@/lib/nvidia-request-config';
+import {requestAI,isAIJobConfigured} from '@/lib/ai-provider';
 import {refundAIQuota} from '@/lib/ai-quota';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
@@ -113,51 +113,21 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       ...sanitizeHistory(body.history),
       { role: 'user', content: (body.message as string).trim() },
     ];
-    const baseUrl = (process.env.NVIDIA_API_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, '');
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 45000);
-    let response: Response;
-    try {
-      response = await fetch(`${baseUrl}/chat/completions`, {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${process.env.NVIDIA_API_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: process.env.NVIDIA_MODEL || DEFAULT_NVIDIA_MODEL, messages,
-          max_tokens: 1250, temperature: 0.55, stream: false,
-          ...nvidiaInferenceOptions(process.env.NVIDIA_MODEL || DEFAULT_NVIDIA_MODEL),
-        }),
-        cache: 'no-store', signal: controller.signal,
-      });
-    } catch (e) {
-      if (!(e instanceof Error && (e.name==='AbortError'||e.name==='TimeoutError'))) {
-        // The request never yielded a provider response. Refund the reserved use.
-        await refundAIQuota(ctx.supabaseAdmin,userId,quotaDay);
-      }
-      throw e;
-    } finally { clearTimeout(timeout); }
-    if (!response.ok) {
-      // The provider explicitly rejected the call before returning usable output.
-      // Preserve timeouts as charged: the provider might still have processed them.
-      if(response.status!==408 && response.status!==504)await refundAIQuota(ctx.supabaseAdmin,userId,quotaDay);
-      if (response.status === 401 || response.status === 403) return jsonError('Chave NVIDIA inválida ou modelo não autorizado.', 502);
-      if (response.status === 429) return jsonError('O provedor limitou temporariamente as respostas.', 429);
-      return jsonError('O tutor está temporariamente indisponível.', 502);
-    }
-    const result = await response.json();
-    const answer = result?.choices?.[0]?.message?.content;
-    if (typeof answer !== 'string' || !answer.trim()) return jsonError('O modelo não retornou uma resposta válida.', 502);
+    const answer = await requestAI('tutor',messages,1250,0.55);
     return NextResponse.json(
-      { answer: answer.slice(0, 12000), model: result.model || process.env.NVIDIA_MODEL },
+      { answer: answer.slice(0, 12000) },
       { headers: { 'Cache-Control': 'no-store' } }
     );
   } catch (e) {
-    if (e instanceof Error && e.name === 'AbortError') return jsonError('O tutor excedeu o tempo de resposta.', 504);
+    if (e instanceof Error && e.message === 'NVIDIA_TIMEOUT') return jsonError('O tutor excedeu o tempo de resposta.',504);
+    if (e instanceof Error && e.message === 'NVIDIA_RATE_LIMIT') return jsonError('O provedor de IA atingiu o limite de requisições.',429);
+    if (e instanceof Error && e.message === 'NVIDIA_AUTH') return jsonError('Chave do provedor de IA inválida ou não autorizada.',502);
     return jsonError('Não foi possível conectar ao tutor. Tente novamente.', 503);
   }
 });
 
 export async function POST(request: Request) {
-  if (!process.env.NVIDIA_API_KEY?.trim()) return NextResponse.json({error:'O tutor IA precisa de configuração no servidor. O guia local pode ser usado enquanto isso.',code:'AI_NOT_CONFIGURED'},{status:503,headers:{'Cache-Control':'no-store'}});
+  if (!isAIJobConfigured('tutor')) return NextResponse.json({error:'O tutor IA precisa de configuração no servidor. O guia local pode ser usado enquanto isso.',code:'AI_NOT_CONFIGURED'},{status:503,headers:{'Cache-Control':'no-store'}});
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_PUBLISHABLE_KEY ||
       !process.env.SUPABASE_SECRET_KEY || !process.env.SUPABASE_JWKS_URL) {
     return jsonError('A proteção da API precisa das variáveis do Supabase configuradas no servidor.', 503);
