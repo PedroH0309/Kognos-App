@@ -93,3 +93,10 @@
 @media(prefers-reduced-motion:reduce){
  .app-layout .k-syllabus-progress-track>span{transition:none}
 }
+
+/* Source-backed topics are clearly distinguished from editorial suggestions. */
+.app-layout .k-syllabus-verified{grid-column:1/-1;display:grid;gap:5px;padding:9px 11px;margin-top:2px;border-left:3px solid #38CDE5;background:var(--panel-2);border-radius:0 8px 8px 0}
+.app-layout .k-syllabus-verified>span{font-size:10px;font-weight:750;color:var(--txt)}
+.app-layout .k-syllabus-verified>a{font-size:11px;color:#38AFC5;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.app-layout .k-syllabus-verified>small{font-size:11px;line-height:1.6;color:var(--sub);max-width:none;text-align:left}
+@media(max-width:530px){.app-layout .k-syllabus-verified{padding:10px}}
