@@ -170,7 +170,7 @@ export function examForStudent(profile:Pick<StudentProfile,'goal'|'targetName'|'
  const target=profile.targetName.toLowerCase();
  if(/fuvest|usp/.test(target))return 'fuvest';
  if(/unesp|vunesp/.test(target))return 'vunesp';
- if(/saresp|prov[aã]o paulista/.test(target))return 'saresp';
+ if(/saresp/.test(target))return 'saresp';
  return null;
 }
 export function activeSyllabi(profile:Pick<StudentProfile,'goal'|'targetName'|'examFocus'|'syllabusExams'>):ExamId[]{
