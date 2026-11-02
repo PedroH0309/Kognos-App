@@ -43,7 +43,9 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
   const {data:prior,error:priorError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
     .select('prompt').eq('user_id',userId).eq('institution',generation.institution)
-    .eq('subject',generation.subject).eq('topic',generation.topic).order('created_at',{ascending:false}).limit(500);
+    // Check across disciplines and topics to catch repeated wording that was
+    // saved under a different topic. Bounded to the latest 1,000 records.
+    .order('created_at',{ascending:false}).limit(1000);
   if(priorError)return error('Não foi possível conferir duplicidades no banco pessoal.',503);
   const unique=excludePreviouslyGenerated(approved,(prior||[]).map(row=>row.prompt));
   if(!unique.length)return error('As questões propostas já existem no seu banco. Tente outro nível ou conteúdo.',409);
