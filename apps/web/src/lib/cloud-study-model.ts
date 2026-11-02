@@ -27,7 +27,7 @@ export type AttemptRow = {
 export function taskFromRow(row: TaskRow): StudyTask {
   return {id:row.id, date:row.task_date, title:row.title, minutes:row.duration_minutes,
     done:row.done, kind:row.kind, subject:row.subject,
-    ...(typeof row.start_time==='string'&&/^\\d{2}:\\d{2}/.test(row.start_time)?{startTime:row.start_time.slice(0,5)}:{})};
+    ...(typeof row.start_time==='string'&&/^\d{2}:\d{2}/.test(row.start_time)?{startTime:row.start_time.slice(0,5)}:{})};
 }
 export function taskToRow(task: StudyTask, userId: string): TaskRow {
   return {id:task.id, user_id:userId, task_date:task.date, title:task.title,
