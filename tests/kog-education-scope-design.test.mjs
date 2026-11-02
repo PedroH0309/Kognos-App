@@ -32,6 +32,6 @@ test('authenticated generation does not apply a Kognos daily quota',()=>{
  assert.match(route,/withSupabase/);
  assert.match(route,/auth:'user'/);
  assert.match(route,/validateGenerationRequest/);
- assert.match(route,/createAndReviewQuestions/);
+ assert.match(route,/createAndReviewQuestionBatch/);
  assert.doesNotMatch(route,/reserve_ai_quota|Cota diária esgotada/);
 });
