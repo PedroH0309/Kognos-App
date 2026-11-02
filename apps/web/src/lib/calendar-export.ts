@@ -1,5 +1,5 @@
 import type {StudyTask} from './cloud-study-model.ts';
-import {dateAtNoon,normalTime,shiftCivilDate,validCivilDate} from './calendar-model.ts';
+import {normalTime,shiftCivilDate,validCivilDate} from './calendar-model.ts';
 
 /** RFC 5545 importable snapshot. No account access, OAuth or background sync.
  * Timed events use floating local wall-clock time so iOS/Android interpret
@@ -25,7 +25,7 @@ export function createStudyCalendarICS(tasks:readonly StudyTask[],now=new Date()
    'DTSTAMP:'+stamp(now),
    'SUMMARY:'+escapeText(item.subject+': '+item.title),
    'DESCRIPTION:'+escapeText('Kognos · '+item.minutes+' minutos planejados. '+(item.done?'Concluída.':'Pendente.')),
-   'STATUS:'+ (item.done?'COMPLETED':'CONFIRMED')
+   'STATUS:CONFIRMED'
   ];
   const time=normalTime(item.startTime);
   if(time){
@@ -41,10 +41,19 @@ export function createStudyCalendarICS(tasks:readonly StudyTask[],now=new Date()
   lines.push(...event);
  }
  lines.push('END:VCALENDAR');
- // Fold long iCalendar lines at 73 ASCII chars or less. UTF8-safe folding
- // for production calendars is not guaranteed for unusual Unicode text,
- // so keep individual fields short and preserve event boundaries.
- return lines.join('\r\n')+'\r\n';
+ // RFC 5545: fold at 75 UTF-8 octets, counting the continuation space.
+ const encoder=new TextEncoder();
+ const folded:string[]=[];
+ for(const raw of lines){
+  let line='',size=0;
+  for(const ch of raw){
+   const bytes=encoder.encode(ch).length;
+   if(size+bytes>75){folded.push(line);line=' '+ch;size=1+bytes;}
+   else{line+=ch;size+=bytes;}
+  }
+  folded.push(line);
+ }
+ return folded.join('\r\n')+'\r\n';
 }
 export function downloadStudyCalendar(tasks:readonly StudyTask[]){
  if(!tasks.length)throw new Error('Adicione pelo menos uma atividade antes de exportar.');
