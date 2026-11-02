@@ -9,11 +9,14 @@ export type StudyTask = {
   done: boolean;
   kind: 'manual' | 'suggested';
   subject: string;
+  /** Optional local HH:mm. Legacy and AI-suggested tasks remain unscheduled. */
+  startTime?: string;
 };
 
 export type TaskRow = {
   id: string; user_id: string; task_date: string; title: string;
   duration_minutes: number; done: boolean; kind: 'manual' | 'suggested'; subject: string;
+  start_time?: string | null;
 };
 
 export type AttemptRow = {
@@ -23,11 +26,13 @@ export type AttemptRow = {
 
 export function taskFromRow(row: TaskRow): StudyTask {
   return {id:row.id, date:row.task_date, title:row.title, minutes:row.duration_minutes,
-    done:row.done, kind:row.kind, subject:row.subject};
+    done:row.done, kind:row.kind, subject:row.subject,
+    ...(typeof row.start_time==='string'&&/^\\d{2}:\\d{2}/.test(row.start_time)?{startTime:row.start_time.slice(0,5)}:{})};
 }
 export function taskToRow(task: StudyTask, userId: string): TaskRow {
   return {id:task.id, user_id:userId, task_date:task.date, title:task.title,
-    duration_minutes:task.minutes, done:task.done, kind:task.kind, subject:task.subject};
+    duration_minutes:task.minutes, done:task.done, kind:task.kind, subject:task.subject,
+    ...(task.startTime?{start_time:task.startTime}:{} )};
 }
 export function attemptFromRow(row: AttemptRow): QuestionAttempt {
   return {questionId:row.question_id,subject:row.subject,correct:row.correct,
