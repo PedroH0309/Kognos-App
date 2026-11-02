@@ -5,7 +5,7 @@ import {UserRound, ShieldCheck, BookOpenCheck, SunMoon, type LucideIcon} from 'l
 import type { User } from '@supabase/supabase-js';
 import { getSupabase } from '@/lib/supabase';
 import { type StudentProfile, adaptationLabels, goalLabels, styleLabels } from '@/lib/profile';
-import { normalizeUsername, validateDisplayName, validateUsername, validateAvatar, validateNewPassword } from '@/lib/account';
+import { normalizeUsername, validateDisplayName, validateUsername, validateAvatar, validateNewPassword, avatarStorageErrorMessage } from '@/lib/account';
 
 type SettingsTab = 'profile'|'security'|'learning'|'appearance';
 const TABS: {id:SettingsTab;icon:LucideIcon;label:string}[]=[
@@ -68,17 +68,34 @@ export default function AccountSettings({user,profile,avatarUrl,onSave,onAvatarC
         return;
       }
       const sb=getSupabase();if(!sb)throw new Error('A nuvem não está configurada.');
+      // Upload into a private folder belonging to this authenticated user only.
       const extension=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';
       const path=`${user.id}/${crypto.randomUUID()}.${extension}`;
-      const {error:uploadError}=await sb.storage.from('kognos-avatars').upload(path,file,{upsert:false,contentType:file.type,cacheControl:'3600'});
+      const bucket=sb.storage.from('kognos-avatars');
+      const {data:previous}=await sb.from('profiles').select('avatar_path').eq('id',user.id).maybeSingle();
+      const {error:uploadError}=await bucket.upload(path,file,{upsert:false,contentType:file.type,cacheControl:'3600'});
       if(uploadError)throw uploadError;
-      const {error:dbError}=await sb.from('profiles').update({avatar_path:path}).eq('id',user.id);
-      if(dbError){await sb.storage.from('kognos-avatars').remove([path]);throw dbError;}
-      const {data:sign,error:signError}=await sb.storage.from('kognos-avatars').createSignedUrl(path,3600);
-      if(signError)throw signError;
-      onAvatarChanged(sign.signedUrl,path);
-      info('Foto atualizada e guardada na sua conta.');
-    }catch(e){fail(e);}finally{setBusy(false);}
+      try {
+        // Check signed-access before replacing the saved pointer. A failed sign
+        // must not leave the profile pointing to an inaccessible image.
+        const {data:signed,error:signError}=await bucket.createSignedUrl(path,3600);
+        if(signError||!signed?.signedUrl)throw signError||new Error('Não foi possível disponibilizar a foto privada.');
+        const {error:dbError}=await sb.from('profiles').update({avatar_path:path}).eq('id',user.id);
+        if(dbError)throw dbError;
+        onAvatarChanged(signed.signedUrl,path);
+        info('Foto atualizada e guardada na sua conta.');
+        // Remove the previous owner-owned object to avoid unused storage.
+        if(previous?.avatar_path&&previous.avatar_path!==path&&
+           previous.avatar_path.startsWith(`${user.id}/`)){
+          const {error:oldError}=await bucket.remove([previous.avatar_path]);
+          if(oldError)console.warn('[KOGNOS][PROFILE] Previous avatar cleanup failed.');
+        }
+      }catch(innerError){
+        // Best effort cleanup of the new orphan when signing/DB update fails.
+        await bucket.remove([path]).catch(()=>{});
+        throw innerError;
+      }
+    }catch(e){fail(new Error(avatarStorageErrorMessage(e)));}finally{setBusy(false);}
   }
 
   async function removeAvatar(){setBusy(true);setError('');setNotice('');try{
