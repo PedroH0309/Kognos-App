@@ -6,6 +6,7 @@ import {examBlueprints,completeExamTopicCatalog} from '@/lib/exam-blueprints';
 import type {StudentProfile} from '@/lib/profile';
 import type {StudyTask} from '@/lib/cloud-study-model';
 import {syllabusProgress,type SyllabusTopicState,type TopicWeakEvidence} from '@/lib/syllabus-progress';
+import {syllabusWithVerifiedTopics,confirmedTopic,type VerifiedStudyTopic} from '@/lib/verified-study-catalog';
 
 const labels:Record<SyllabusTopicState,string>={
  not_started:'Ainda não iniciado',planned:'Planejado',studied:'Estudado',review:'Precisa de revisão'
@@ -15,13 +16,14 @@ const filters:{id:SyllabusFilter;label:string}[]=[
  {id:'all',label:'Todos'},{id:'not_started',label:'Não iniciados'},
  {id:'planned',label:'Planejados'},{id:'studied',label:'Estudados'},{id:'review',label:'Revisar'}
 ];
-export default function StudySyllabus({profile,tasks=[],weakTopics=[]}:{
- profile:StudentProfile;tasks?:readonly StudyTask[];weakTopics?:readonly TopicWeakEvidence[]
+export default function StudySyllabus({profile,tasks=[],weakTopics=[],officialTopics=[],officialError=''}:{
+ profile:StudentProfile;tasks?:readonly StudyTask[];weakTopics?:readonly TopicWeakEvidence[];
+ officialTopics?:readonly VerifiedStudyTopic[];officialError?:string
 }){
  const [search,setSearch]=useState('');
  const [statusFilter,setStatusFilter]=useState<SyllabusFilter>('all');
  const exams=activeSyllabi(profile);
- const catalog=completeExamTopicCatalog(exams);
+ const catalog=syllabusWithVerifiedTopics(completeExamTopicCatalog(exams),exams,officialTopics);
  const progress=syllabusProgress(catalog,tasks,weakTopics);
  const needle=search.trim().toLocaleLowerCase('pt-BR');
  const subjects=progress.subjects.map(item=>({
@@ -48,6 +50,8 @@ export default function StudySyllabus({profile,tasks=[],weakTopics=[]}:{
     <span style={{width:completedPercentage+'%'}}/>
    </div>
    <p className="privacy-note">Este progresso registra tarefas concluídas. Não representa nota, proficiência ou domínio do conteúdo.</p>
+   {officialError?<p role="status" className="privacy-note">Fontes editoriais não verificadas nesta consulta: {officialError}. A lista preparatória continua acessível, mas nenhum tópico deve ser apresentado como oficialmente aprovado sem a conexão.</p>:
+    <p className="privacy-note">{officialTopics.filter(item=>exams.includes(item.institution)).length} tópico(s) com evidência revisada pela equipe editorial e vinculada a documento institucional no catálogo carregado. Os demais itens são orientações preparatórias.</p>}
    <label className="k-syllabus-search">Buscar disciplina ou conteúdo<input type="search" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Ex.: eletromagnetismo, genética, redação"/></label>
    <div className="k-syllabus-filters" aria-label="Filtrar tópicos por situação">
     {filters.map(filter=><button key={filter.id} type="button" aria-pressed={statusFilter===filter.id}
@@ -55,10 +59,17 @@ export default function StudySyllabus({profile,tasks=[],weakTopics=[]}:{
    </div>
    <div className="k-syllabus-subjects">{subjects.map(({subject,topics})=><details key={subject}>
     <summary><strong>{subject}</strong><span>{topics.length} tópicos exibidos</span></summary>
-    <ul className="k-syllabus-topic-list">{topics.map(topic=><li key={topic.topic} className={'k-syllabus-topic '+topic.state}>
+    <ul className="k-syllabus-topic-list">{topics.map(topic=>{
+     const verified=confirmedTopic(officialTopics,exams,subject,topic.topic);
+     return <li key={topic.topic} className={'k-syllabus-topic '+topic.state}>
       <span>{topic.topic}</span>
       <small>{labels[topic.state]}{topic.state==='review'&&topic.recordedErrors>0?' · '+topic.recordedErrors+' erro(s) registrados':''}</small>
-    </li>)}</ul>
+      {verified&&<div className="k-syllabus-verified"><span>Fonte aprovada pela equipe</span>
+       <a href={verified.sourceUrl} target="_blank" rel="noopener noreferrer">{verified.sourceTitle} · {verified.edition}</a>
+       <small>Trecho de referência: {verified.evidence}</small>
+      </div>}
+     </li>;
+    })}</ul>
    </details>)}</div>
    {subjects.length===0&&<p role="status">Nenhum assunto corresponde a essa busca.</p>}
    <div className="k-syllabus-sources"><strong>Documentos institucionais de referência</strong>
