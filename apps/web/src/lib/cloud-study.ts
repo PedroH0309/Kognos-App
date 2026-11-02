@@ -10,15 +10,15 @@ function friendly(error: {message:string} | null){if(error)throw new Error(`Erro
 function calendarSchemaMissing(message:string):boolean{
  return /start_time/i.test(message)&&/column|schema|does not exist|could not find/i.test(message);
 }
-const LEGACY_TASK_COLUMNS='id,user_id,task_date,title,duration_minutes,done,kind,subject';
 export async function getCloudTasks(userId: string): Promise<StudyTask[]> {
-  const query=(columns:string)=>db().from('kognos_demo_tasks').select(columns)
+  const first=await db().from('kognos_demo_tasks')
+    .select('id,user_id,task_date,title,duration_minutes,done,kind,subject,start_time')
     .eq('user_id',userId).order('task_date',{ascending:true}).limit(500);
-  const first=await query(LEGACY_TASK_COLUMNS+',start_time');
   if(first.error&&calendarSchemaMissing(first.error.message)){
-    // Backwards compatibility: the old planner remains accessible before SQL
-    // migration, but new time assignments require 0011 to avoid data loss.
-    const legacy=await query(LEGACY_TASK_COLUMNS);
+    // Backwards compatibility: 0004-only installs can still view tasks.
+    const legacy=await db().from('kognos_demo_tasks')
+      .select('id,user_id,task_date,title,duration_minutes,done,kind,subject')
+      .eq('user_id',userId).order('task_date',{ascending:true}).limit(500);
     friendly(legacy.error);
     return (legacy.data||[]).map(row=>taskFromRow(row as TaskRow));
   }
