@@ -11,8 +11,8 @@ const endpoints={
 
 const preferences:Record<AIJob,{provider:AIProvider;model:string}>={
  generate:{provider:'groq',model:'openai/gpt-oss-120b'},
- review:{provider:'gemini',model:'gemini-2.5-flash-lite'},
- tutor:{provider:'gemini',model:'gemini-2.5-flash'},
+ review:{provider:'gemini',model:'gemini-3.1-flash-lite'},
+ tutor:{provider:'gemini',model:'gemini-3.1-flash-lite'},
 };
 
 export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null {
@@ -25,7 +25,7 @@ export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=
  const effective:AIProvider=selected?provider:preferred?provider:'nvidia';
  const key=secrets[effective]?.trim();
  if(!key)return null;
- const defaultModel=effective==='nvidia'?(env.NVIDIA_MODEL||DEFAULT_NVIDIA_MODEL):effective===preferences[job].provider?preferences[job].model:effective==='groq'?'openai/gpt-oss-120b':'gemini-2.5-flash';
+ const defaultModel=effective==='nvidia'?(env.NVIDIA_MODEL||DEFAULT_NVIDIA_MODEL):effective===preferences[job].provider?preferences[job].model:effective==='groq'?'openai/gpt-oss-120b':'gemini-3.1-flash-lite';
  // A model override belongs to the selected provider, never to the NVIDIA fallback.
  // E.g. AI_GENERATE_MODEL=openai/gpt-oss-120b is invalid at NVIDIA's endpoint.
  const fallingBack=effective!==provider;
