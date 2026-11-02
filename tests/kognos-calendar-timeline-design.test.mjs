@@ -47,7 +47,7 @@ test('calendar time column migration is nullable, idempotent and does not weaken
  assert.ok(!migration.includes('create policy'));
  assert.match(cloud,/setCloudTaskTime/);
  assert.match(cloud,/calendarSchemaMissing/);
- assert.match(cloud,/LEGACY_TASK_COLUMNS/);
+ assert.match(cloud,/select\('id,user_id,task_date,title,duration_minutes,done,kind,subject'\)/);
  assert.match(cloud,/0011_calendar_task_times\.sql/);
 });
 
