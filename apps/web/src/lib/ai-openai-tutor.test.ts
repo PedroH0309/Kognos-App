@@ -55,7 +55,7 @@ test('OpenAI errors remain server-side and never echo API key',async()=>{
 
 test('readiness can identify OpenAI without returning the API key',()=>{
  const ready=publicAIReadiness({
-  AI_TUTOR_PROVIDER:'openai',OPENAI_API_KEY:'sk-private-test',
+  AI_FREE_ONLY:'false',AI_TUTOR_PROVIDER:'openai',OPENAI_API_KEY:'sk-private-test',
   SUPABASE_URL:'ok',SUPABASE_PUBLISHABLE_KEY:'ok',
   SUPABASE_SECRET_KEY:'ok',SUPABASE_JWKS_URL:'ok',
  });
