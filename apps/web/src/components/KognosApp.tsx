@@ -522,7 +522,7 @@ export default function KognosApp(){
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
  view==='diagnostic'?<DiagnosticSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlanner={()=>navigate('plans')}/>: 
  view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
- view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)}/>: 
+ view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)} onDiagnostic={()=>navigate('diagnostic')}/>: 
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onDiagnostic={()=>navigate('diagnostic')} onCalendar={()=>navigate('calendar')} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
