@@ -1,10 +1,10 @@
 import type { Goal } from './profile.ts';
 
-export type KogContext = 'dashboard'|'learn'|'trails'|'subjects'|'questions'|'simulados'|'sources'|'diagnostic'|'plans'|'reviews'|'calendar'|'performance'|'achievements'|'profile'|'settings'|'tutor';
+export type KogContext = 'dashboard'|'learn'|'trails'|'subjects'|'questions'|'simulados'|'sources'|'diagnostic'|'weekly'|'plans'|'reviews'|'calendar'|'performance'|'achievements'|'profile'|'settings'|'tutor';
 
 /** Non-sensitive page context only: no personal data, answers, or account credentials. */
 export function subjectForView(view:KogContext):string {
-  return view==='questions'||view==='simulados'?'Geral':view==='performance'?'Geral':'Matemática';
+  return view==='questions'||view==='simulados'||view==='weekly'?'Geral':view==='performance'?'Geral':'Matemática';
 }
 
 export function quickPromptForView(view:KogContext,goal:Goal):string[] {
