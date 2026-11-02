@@ -37,3 +37,27 @@ test('student plan is grounded in the selected exam and no longer exports ICS',(
  assert.match(planner,/rebuildSuggestions/);
  assert.doesNotMatch(calendar,/downloadStudyCalendar|Exportar agenda|\.ics/);
 });
+
+test('versioned upgrade balances subjects and exposes private inventory, history, and weak topics',()=>{
+ const sql=read('supabase/migrations/0013_weekly_exam_balanced_inventory.sql');
+ const api=read('apps/web/src/app/api/weekly-exam/route.ts');
+ const ui=read('apps/web/src/components/WeeklyExamSpace.tsx');
+ assert.match(sql,/partition by q.subject/);
+ assert.match(sql,/kognos_weekly_exam_inventory/);
+ assert.match(sql,/kognos_weekly_exam_history/);
+ assert.match(sql,/kognos_weekly_exam_weak_topics/);
+ assert.match(sql,/to service_role/);
+ assert.match(api,/subjectScores/);
+ assert.match(api,/weakTopics/);
+ assert.match(ui,/questões inéditas disponíveis/);
+ assert.match(ui,/Seu histórico semanal/);
+ assert.match(ui,/Seu resultado por disciplina/);
+});
+test('planner includes evidence from verified weekly question attempts',()=>{
+ const planner=read('apps/web/src/components/StudyPlanner.tsx');
+ const adapt=read('apps/web/src/lib/personalized-study-cycle.ts');
+ assert.match(planner,/setWeeklyTopics/);
+ assert.match(planner,/weeklyTopics\)/);
+ assert.match(adapt,/weeklyWrong/);
+ assert.match(adapt,/weeklyBoost/);
+});
