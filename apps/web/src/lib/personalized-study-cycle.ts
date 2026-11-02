@@ -7,6 +7,8 @@ import {learningLessons} from './learning-catalog.ts';
 import {demoQuestions} from './demo-questions.ts';
 import {civilToday,shiftCivilDate} from './calendar-model.ts';
 import {activeSyllabi,mergedSyllabus} from './exam-syllabus.ts';
+/** Topic evidence is computed from reserved, server-graded weekly attempts. */
+export type WeeklyExamWeakTopic={subject:string;topic:string;attempts:number;incorrect:number;lastWrong:boolean};
 
 /** Evidence is linked to an ORIGINAL answer key, never a caller-supplied
  * "correct" flag. One answer is a study suggestion, not a diagnosis. */
@@ -58,13 +60,16 @@ function durationPlan(profile:StudentProfile,remaining:number):number{
 export function createPersonalizedStudyWeek(
  profile:StudentProfile,existing:readonly StudyTask[],
  demo:readonly QuestionAttempt[],ai:AIStudyProgress|null,
- base=new Date(),makeId=()=>crypto.randomUUID()
+ base=new Date(),makeId=()=>crypto.randomUUID(),
+ weeklyTopics:readonly WeeklyExamWeakTopic[]=[]
 ):StudyTask[]{
  const tasks=[...existing];
  const syllabus=mergedSyllabus(activeSyllabi(profile));
- const original=studyPriorities(demo,ai);
+ const weeklyBoost=(subject:string)=>Math.min(500,weeklyTopics.filter(t=>t.subject===subject&&t.lastWrong)
+  .reduce((total,t)=>total+Math.max(0,t.incorrect)*90,0));
+ const original=studyPriorities(demo,ai).map(p=>({...p,priority:p.priority+weeklyBoost(p.subject)}));
  const priorities=[...original.filter(p=>!Object.keys(syllabus).length||Boolean(syllabus[p.subject])),
-  ...Object.entries(syllabus).filter(([subject])=>!original.some(p=>p.subject===subject)).map(([subject,topics])=>({subject,topic:topics[0]||'Introdução',needsReview:false,reviewItems:0,practiced:0,total:topics.length,aiAttempts:0,priority:102}))];
+  ...Object.entries(syllabus).filter(([subject])=>!original.some(p=>p.subject===subject)).map(([subject,topics])=>({subject,topic:topics[0]||'Introdução',needsReview:false,reviewItems:0,practiced:0,total:topics.length,aiAttempts:0,priority:102+weeklyBoost(subject)}))];
  const mistakes=missedTopics(demo);
  const useCount=new Map<string,number>();
  for(const task of existing)useCount.set(task.subject,(useCount.get(task.subject)||0)+1);
@@ -93,8 +98,9 @@ export function createPersonalizedStudyWeek(
    // Work through the whole exam checklist before rotating any non-priority
    // topic; completed historical tasks remain evidence of prior coverage.
    const unplanned=availableTopics.find(item=>!tasks.some(task=>task.subject===chosen.subject&&task.title.toLocaleLowerCase('pt-BR').includes(item.toLocaleLowerCase('pt-BR'))));
-   const topic=weak?.topic||(chosen.needsReview?chosen.topic:null)||unplanned||availableTopics[0]||chosen.topic;
-   const goal=chosen.needsReview||Boolean(weak)?'Revisar':'Estudar';
+   const weeklyWrong=weeklyTopics.find(item=>item.subject===chosen.subject&&item.lastWrong&&availableTopics.includes(item.topic));
+   const topic=weeklyWrong?.topic||weak?.topic||(chosen.needsReview?chosen.topic:null)||unplanned||availableTopics[0]||chosen.topic;
+   const goal=chosen.needsReview||Boolean(weak)||Boolean(weeklyWrong)?'Revisar':'Estudar';
    const style=slot===slots-1?'questões e checagem':'conceito e exemplo';
    tasks.push({
     id:makeId(),date,minutes,kind:'suggested',done:false,
