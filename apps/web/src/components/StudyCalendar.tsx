@@ -4,7 +4,7 @@ import {useEffect,useMemo,useState,type CSSProperties} from 'react';
 import {
  ArrowRight,BookOpen,CalendarDays,Check,CheckCircle2,ChevronDown,
  ChevronLeft,ChevronRight,Clock3,FlaskConical,GraduationCap,
- Leaf,Plus,Sparkles,Target,Timer
+ Leaf,Plus,Sparkles,Target,Timer,Trash2
 } from 'lucide-react';
 import type {StudyTask} from '@/lib/cloud-study-model';
 import {getCloudTasks,setCloudTaskDone,setCloudTaskTime,deleteCloudTask} from '@/lib/cloud-study';
@@ -144,6 +144,9 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     <button type="button" className="k-cal-save-time" onClick={()=>void mutate(task,'time',times[task.id]??task.startTime??'')}
      disabled={busyId!==null||!(times[task.id]??task.startTime)}><Check size={16}/> Salvar</button>
     {task.startTime&&<button type="button" className="k-cal-clear-time" onClick={()=>void mutate(task,'time',null)} disabled={busyId!==null}>Sem horário</button>}
+    <button type="button" className="k-cal-delete-time" disabled={busyId!==null}
+     onClick={()=>{if(window.confirm(`Excluir a atividade "${task.title}"?`))void mutate(task,'delete');}}
+     aria-label={`Excluir atividade ${task.title}`}><Trash2 size={15}/> Excluir</button>
    </div>
   </div>;
  }
