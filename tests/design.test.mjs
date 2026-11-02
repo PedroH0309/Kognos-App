@@ -21,7 +21,9 @@ test('scrollbar customizada e acessível e navegação móvel',()=>{
   assert.match(design,/scrollbar-color:/);
   assert.match(design,/::-webkit-scrollbar-thumb/);
   assert.match(design,/prefers-reduced-motion/);
-  assert.match(app,/mobile-sidebar-scrim/);
+  const motion=read('../apps/web/src/components/KognosMotion.tsx');
+  assert.match(motion,/mobile-sidebar-scrim/);
+  assert.match(app,/AnimatedSidebarScrim/);
   assert.match(app,/sidebarCollapsed/);
 });
 
