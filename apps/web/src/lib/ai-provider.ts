@@ -78,10 +78,19 @@ export function safeAIRequestErrorKind(body:unknown):'structured_json'|'invalid_
  * prompts, model output or upstream raw error strings are retained.
  */
 export class AIProviderRequestError extends Error{
+ readonly provider:AIProvider;
+ readonly phase:AIJob;
+ readonly category:'structured_json'|'invalid_parameter'|'token_budget'|'bad_request';
  constructor(
-  code:string,public readonly provider:AIProvider,public readonly phase:AIJob,
-  public readonly category:'structured_json'|'invalid_parameter'|'token_budget'|'bad_request'
- ){super(code);this.name='AIProviderRequestError';}
+  code:string,provider:AIProvider,phase:AIJob,
+  category:'structured_json'|'invalid_parameter'|'token_budget'|'bad_request'
+ ){
+  super(code);
+  this.name='AIProviderRequestError';
+  this.provider=provider;
+  this.phase=phase;
+  this.category=category;
+ }
 }
 
 /** Groq GPT-OSS consumes reasoning tokens from the completion budget.
