@@ -20,7 +20,8 @@ test('planner combines demo and AI evidence and respects student scheduling',()=
  const engine=read('apps/web/src/lib/adaptive-week-plan.ts');
  assert.match(planner,/getCloudAttempts/);
  assert.match(planner,/useAIStudyProgress/);
- assert.match(planner,/createAdaptiveWeekPlan\(profile,tasks,history,aiEvidence\)/);
+ assert.match(planner,/createPersonalizedStudyWeek\(profile,tasks,history,aiEvidence\)/);
+ assert.match(read('apps/web/src/lib/personalized-study-cycle.ts'),/profile\.weeklyDays/);
  assert.match(planner,/Analisando histórico/);
  assert.match(engine,/connectedSubjectProgress/);
  assert.match(engine,/profile\.weeklyDays/);

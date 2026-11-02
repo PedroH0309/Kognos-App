@@ -1,5 +1,5 @@
 /** Versioned *orientation* maps, not machine-ingested official syllabi. */
-export type ExamId = 'enem'|'etec'|'fuvest';
+export type ExamId = 'enem'|'etec'|'fuvest'|'saresp'|'vunesp';
 export type Difficulty = 'basic'|'intermediate'|'advanced';
 export const difficulties: Record<Difficulty,string> = {basic:'Básica',intermediate:'Intermediária',advanced:'Avançada'};
 export const examBlueprints: Record<ExamId,{
@@ -34,6 +34,30 @@ export const examBlueprints: Record<ExamId,{
       Geografia:['Mapas e escalas','Meio ambiente e clima']
     },
     notice:'Roteiro editorial preliminar, não uma matriz oficial de conteúdos. Verifique modalidade, edital e prova anterior. O formato e o número de questões dependem da seleção.'
+  },
+  saresp:{
+    label:'SARESP — São Paulo',edition:'Orientação de estudos — conferir série e edição',
+    sourceTitle:'Secretaria de Educação SP — SARESP',sourceUrl:'https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-01822/pt-br',sourceCheckedOn:'2026-11-02',
+    subjects:{
+      Matemática:['Porcentagem e proporção','Equações e problemas','Leitura de gráficos','Geometria'],
+      Português:['Interpretação de textos','Gêneros textuais','Argumentação e linguagem'],
+      Ciências:['Fenômenos naturais','Ecologia e ambiente','Matéria e energia']
+    },
+    notice:'SARESP é avaliação de rendimento escolar, não vestibular. Este é um roteiro orientativo autoral: conteúdo e disciplinas variam com o ano/série e a edição; confira o material oficial da Secretaria.'
+  },
+  vunesp:{
+    label:'VUNESP — estilo de banca',edition:'Roteiro preparatório por edital',
+    sourceTitle:'Fundação VUNESP — Concursos, Vestibulares e Avaliações',sourceUrl:'https://www.vunesp.com.br/',sourceCheckedOn:'2026-11-02',
+    subjects:{
+      Matemática:['Equações e problemas','Porcentagem e proporções','Funções e gráficos','Probabilidade'],
+      Português:['Interpretação de textos','Sintaxe e concordância','Análise de argumentos'],
+      Física:['Mecânica','Eletricidade','Energia'],
+      Química:['Estrutura atômica','Reações químicas','Soluções'],
+      Biologia:['Citologia','Ecologia','Genética'],
+      História:['História do Brasil','Transformações econômicas','Cidadania'],
+      Geografia:['Cartografia','Questões ambientais','Dinâmicas territoriais']
+    },
+    notice:'VUNESP organiza diferentes provas, não possui matriz única. Escolha o concurso ou vestibular e consulte seu edital. As questões geradas pela IA são autorais, apenas orientadas pelo estilo, e NÃO são cadernos oficiais da VUNESP.'
   },
   fuvest:{
     label:'FUVEST / USP',edition:'Programa do Vestibular 2027',sourceTitle:'FUVEST — Programa do Vestibular 2027',

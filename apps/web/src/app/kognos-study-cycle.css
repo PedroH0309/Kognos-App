@@ -1,0 +1,49 @@
+/* KOGNOS study cycle: visual continuity with clean dashboard, dark mode,
+ * responsive activities and accessible learning prompts. */
+.app-layout .study-planner .k-cycle-panel{padding:clamp(18px,2vw,26px);margin-top:18px;margin-bottom:20px;border:1px solid var(--line);background:var(--box-bg);border-radius:19px;box-shadow:var(--k-shadow);min-width:0}
+.app-layout .study-planner .k-cycle-header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.app-layout .study-planner .k-cycle-header h2{font-size:21px;letter-spacing:-.03em;color:var(--txt);margin:7px 0}
+.app-layout .study-planner .k-cycle-header p{font-size:12px;line-height:1.65;max-width:640px;margin:0 0 14px}
+.app-layout .study-planner .k-cycle-week{padding:8px 10px;border-radius:9px;background:var(--panel-2);border:1px solid var(--line);color:var(--sub);font-size:10px;font-weight:710;white-space:nowrap}
+.app-layout .study-planner .k-cycle-progress{height:9px;background:var(--panel-2);border:1px solid var(--line);border-radius:20px;overflow:hidden;width:100%;margin:9px 0}
+.app-layout .study-planner .k-cycle-progress>span{display:block;height:100%;background:linear-gradient(90deg,#38CDE5,#18B78A);border-radius:20px;transition:width .45s ease}
+.app-layout .study-planner .k-cycle-summary{font-size:11px;color:var(--sub);line-height:1.6;margin:8px 0 17px}
+.app-layout .study-planner .k-cycle-methods{padding:15px 17px;border-radius:14px;background:var(--panel-2);margin-bottom:12px}
+.app-layout .study-planner .k-cycle-methods h3,.app-layout .study-planner .k-cycle-errors h3{font-size:13px;margin:0 0 10px;color:var(--txt);font-weight:760}
+.app-layout .study-planner .k-cycle-methods ol{margin:0;padding-left:22px;color:var(--txt);display:grid;gap:7px}
+.app-layout .study-planner .k-cycle-methods li{font-size:12px;line-height:1.55;padding-left:4px}
+.app-layout .study-planner .k-cycle-errors{border-radius:13px;border:1px solid var(--line);padding:14px;margin-bottom:12px}
+.app-layout .study-planner .k-cycle-errors>div{display:flex;gap:7px;flex-wrap:wrap}
+.app-layout .study-planner .k-cycle-errors span{display:inline-flex;border:1px solid var(--line);background:var(--panel-2);padding:7px 10px;border-radius:11px;font-size:10px;color:var(--txt)}
+.app-layout .study-planner .k-cycle-review{border-radius:14px;border:1px solid #38CDE54A;background:var(--panel-2);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 16px}
+.app-layout .study-planner .k-cycle-review strong{font-size:13px;color:var(--txt)}
+.app-layout .study-planner .k-cycle-review p{margin:5px 0 0;color:var(--sub);font-size:11px;line-height:1.5;max-width:540px}
+.app-layout .study-planner .k-cycle-review button{flex:none;font-size:12px}
+.app-layout .study-planner .task-row>label{min-width:0}
+.app-layout .study-planner .task-row-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.app-layout .study-planner .k-task-links{display:flex;flex-wrap:wrap;align-items:center;gap:7px;min-width:0}
+.app-layout .study-planner .k-task-links a,.app-layout .study-planner .k-task-links button{margin:0;white-space:normal;text-align:left}
+.app-layout .study-planner .task-row label>span{min-width:0;overflow-wrap:anywhere}
+.app-layout .study-planner .k-task-lesson,.app-layout .study-planner .k-task-video{font-size:10px;font-weight:750;display:inline-block;margin:7px 9px 0 0;padding:6px 0;border:0;background:transparent;color:#38AFC5;cursor:pointer;text-decoration:none;min-height:26px}
+.app-layout .study-planner .k-task-lesson:hover,.app-layout .study-planner .k-task-video:hover{text-decoration:underline;color:var(--txt)}
+.app-layout.theme-dark .study-planner .k-cycle-panel{box-shadow:none}
+.app-layout.theme-dark .study-planner .k-task-lesson,.app-layout.theme-dark .study-planner .k-task-video{color:#86E4F3}
+.app-layout .k-cal-export-button{border:1px solid var(--kc-border);background:var(--kc-bg);color:var(--kc-text);border-radius:12px}
+.app-layout .k-cal-export-button:hover:not(:disabled){background:var(--panel-2);color:var(--kc-text)}
+@media(max-width:920px){
+ .app-layout .study-planner .k-cycle-header{flex-direction:column;gap:6px}
+ .app-layout .study-planner .k-cycle-review{flex-direction:column;align-items:stretch}
+ .app-layout .study-planner .k-cycle-review button{width:100%}
+}
+@media(max-width:530px){
+ .app-layout .study-planner .task-row{flex-direction:column;align-items:stretch}
+ .app-layout .study-planner .task-row-actions{justify-content:flex-start}
+ .app-layout .study-planner .k-task-links{flex:1 1 100%}
+
+ .app-layout .study-planner .k-cycle-panel{margin-top:14px;padding:16px 14px}
+ .app-layout .study-planner .k-cycle-methods{padding:12px}
+ .app-layout .study-planner .k-cycle-header h2{font-size:18px}
+ .app-layout .k-cal-top-actions .k-cal-export-button{order:4;flex:1;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.app-layout .study-planner .k-cycle-progress>span{transition:none}}
+.app-layout.less-motion .study-planner .k-cycle-progress>span{transition:none}
