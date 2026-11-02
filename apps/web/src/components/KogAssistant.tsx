@@ -13,6 +13,7 @@ import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-c
 import {contextualKogPrompts,previewKogStudyContext,findDemoQuestion,type KogStudyContext} from '@/lib/kog-study-context';
 import {localStudyGuide} from '@/lib/offline-study-guide';
 import {normalizeTutorAnswer} from '@/lib/tutor';
+import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
 import type {AIReadiness} from '@/lib/ai-readiness';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
@@ -88,6 +89,13 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     event.preventDefault();
     if(inFlightRef.current || pending || !draft.trim())return;
     if(!user){onLogin();return;}
+    // Respond immediately to clear requests outside the tutor's educational scope.
+    // The API repeats this check so direct requests cannot bypass it.
+    const scopeReply=tutorScopeReply(draft.trim());
+    if(scopeReply){
+      setMessages(prev=>[...prev,{role:'user',content:draft.trim()},{role:'assistant',content:scopeReply}]);
+      setDraft('');setError('');return;
+    }
     if(readiness&&!readiness.tutorConfigured){
       const prompt=draft.trim();
       const guide=localStudyGuide(prompt,studyContext);
@@ -148,14 +156,14 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
           {messages.length===0?<>
             <div className="kog-greeting">
               <KogMascot3D/>
-              <div className="kog-greeting-copy"><span><Sparkles size={15}/> SEU PROFESSOR PARTICULAR</span><h2>Olá, {profile.nickname.split(' ')[0]||'estudante'}!</h2><p>Sou o Kog. Estou aqui para explicar, praticar e revisar com você, sem sair desta página.</p></div>
+              <div className="kog-greeting-copy"><span><Sparkles size={15}/> SEU PROFESSOR PARTICULAR</span><h2>Olá, {profile.nickname.split(' ')[0]||'estudante'}!</h2><p>Sou o Kog, seu tutor de estudos. Explico matérias, ajudo a interpretar exercícios e reviso conceitos com você. Não gero código nem trabalhos prontos.</p></div>
             </div>
             <div className="kog-context-card"><BookOpenText size={16}/><span>{contextLabel?<><strong>{contextLabel}</strong> · O Kog vai considerar essa atividade ao responder.</>:<>Seu foco: <strong>{goalLabels[profile.goal]}</strong> · Ajuda contextual na área <strong>{context==='dashboard'?'Visão geral':context}</strong></>}</span></div>
             <p className="kog-suggestions-title">Por onde começamos?</p>
             <div className="kog-suggestions">{readiness&&!readiness.tutorConfigured&&<button type="button" onClick={()=>fillPrompt("Me explique teorema de Pitágoras")}><BookOpenText size={14}/> Teorema de Pitágoras <ArrowUp size={13}/></button>}{suggested.map(item=><button type="button" key={item} onClick={()=>fillPrompt(item)}><Sparkles size={14} aria-hidden="true"/>{item}<ArrowUp size={13} aria-hidden="true"/></button>)}</div>
           </>:messages.map((message,index)=><div key={`${index}-${message.role}`} className={`kog-message-row ${message.role}`}>
             {message.role==='assistant'&&<span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span>}
-            <div className="kog-message-text">{message.role==='assistant'?normalizeTutorAnswer(message.content):message.content}</div>
+            <div className="kog-message-text">{message.role==='assistant'?normalizeTutorAnswer(enforcePedagogicalTutorAnswer(message.content)):message.content}</div>
           </div>)}
           {pending&&<div className="kog-message-row assistant"><span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span><div className="kog-message-text kog-thinking"><span/><span/><span/><small>Preparando uma explicação…</small></div></div>}
           {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.tutorProvider?'A chave de API do tutor não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia de Pitágoras</button></div></div>}
@@ -166,7 +174,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
           {contextLabel&&<div className="kog-active-context" role="status"><BookOpenText size={14} aria-hidden="true"/><span>{contextLabel}</span><small>{(studyContext?.kind==='question'||studyContext?.kind==='generated_question')&&studyContext.phase==='solving'?'Dicas sem gabarito':'Contexto da atividade'}</small></div>}
           {messages.length>0&&<div className="kog-quick-row">{(studyContext?suggested:['Explique de outra forma','Dê um exemplo','Me teste','Resuma']).map(s=><button type="button" key={s} disabled={pending} onClick={()=>fillPrompt(studyContext?s:`${s} o último conteúdo que discutimos.`)}>{s}</button>)}<button type="button" title="Nova conversa" aria-label="Iniciar nova conversa" onClick={()=>{setMessages([]);setDraft('');setError('');}}><RotateCcw size={15}/></button></div>}
           <form onSubmit={send} className="kog-input-area"><div className="kog-input-head"><KognosSelect compact label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} className="kog-subject-select" /><small>{draft.length}/3000</small></div>
-            <div className="kog-input-wrap"><textarea ref={textRef} value={draft} onChange={e=>setDraft(e.target.value)} maxLength={3000} rows={2} placeholder="Pergunte sobre sua dúvida…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form?.requestSubmit();}}}/><button type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled={!draft.trim()||pending} className="kog-send-btn"><Send size={18}/></button></div>
+            <div className="kog-input-wrap"><textarea ref={textRef} value={draft} onChange={e=>setDraft(e.target.value)} maxLength={3000} rows={2} placeholder="Pergunte sobre uma matéria ou exercício…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form?.requestSubmit();}}}/><button type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled={!draft.trim()||pending} className="kog-send-btn"><Send size={18}/></button></div>
           </form>
           {!user&&<p className="kog-login-tip"><MessageCircle size={14}/> Entre na sua conta para conversar com o Kog. <button onClick={onLogin} type="button">Entrar</button></p>}
           {notice?<p className="kog-ai-notice">As mensagens e o contexto de estudo são processados por {providerName} para gerar respostas. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>} <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
