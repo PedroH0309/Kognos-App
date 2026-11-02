@@ -3,24 +3,27 @@ import type {StudentProfile} from './profile.ts';
 import type {StudyTask} from './cloud-study-model.ts';
 import type {QuestionAttempt} from './demo-questions.ts';
 import type {AIStudyProgress} from './ai-study-progress.ts';
-import {learningLessons,findLessonByQuestionId} from './learning-catalog.ts';
+import {learningLessons} from './learning-catalog.ts';
 import {demoQuestions} from './demo-questions.ts';
 import {civilToday,shiftCivilDate} from './calendar-model.ts';
 
 /** Evidence is linked to an ORIGINAL answer key, never a caller-supplied
  * "correct" flag. One answer is a study suggestion, not a diagnosis. */
 export function missedTopics(attempts:readonly QuestionAttempt[]){
- const byTopic=new Map<string,{subject:string;topic:string;errors:number;answered:number}>();
- for(const a of attempts){
+ const byTopic=new Map<string,{subject:string;topic:string;errors:number;answered:number;lastWrong:boolean}>();
+ // Use the latest verified answer for the decision to revisit a topic.
+ for(const a of [...attempts].sort((x,y)=>x.createdAt.localeCompare(y.createdAt))){
   const q=demoQuestions.find(item=>item.id===a.questionId);
   if(!q||!Number.isInteger(a.answerIndex)||a.answerIndex<0||a.answerIndex>=q.options.length)continue;
   const key=q.subject+'|'+q.topic;
-  const previous=byTopic.get(key)||{subject:q.subject,topic:q.topic,errors:0,answered:0};
+  const previous=byTopic.get(key)||{subject:q.subject,topic:q.topic,errors:0,answered:0,lastWrong:false};
   previous.answered++;
   if(a.answerIndex!==q.correct)previous.errors++;
+  previous.lastWrong=a.answerIndex!==q.correct;
   byTopic.set(key,previous);
  }
- return [...byTopic.values()].filter(x=>x.errors).sort((a,b)=>b.errors-a.errors||a.subject.localeCompare(b.subject,'pt-BR'));
+ return [...byTopic.values()].filter(x=>x.lastWrong)
+  .sort((a,b)=>b.errors-a.errors||a.subject.localeCompare(b.subject,'pt-BR'));
 }
 export function studyMethod(profile:StudentProfile):string[]{
  const focused=profile.adaptations.includes('short_blocks')||profile.adaptations.includes('reduced_distractions');
