@@ -8,7 +8,7 @@ import {getCloudAttempts} from '@/lib/cloud-study';
 import {learningLessons,learningSubjects,lessonsForSubject,findLearningLesson,type LearningLesson} from '@/lib/learning-catalog';
 import {evidenceForLesson,recommendedNextLesson,subjectProgress} from '@/lib/learning-progress';
 
-type Mode='learn'|'trails'|'subjects';
+type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
 const subjectDescriptions:Record<string,string>={
  'Matemática':'Operações, funções e raciocínio quantitativo',
@@ -21,9 +21,9 @@ const subjectDescriptions:Record<string,string>={
 };
 const evidenceLabels={'not-started':'Ainda não praticado',review:'Revisar resultado','correct-sample':'Acerto registrado'} as const;
 
-export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,focus}:{
+export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onSeeTrails,focus}:{
  mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onTutor:()=>void;onPractice:(focus:Focus)=>void;focus?:{subject:string;lessonId:string}|null;
+ onTutor:()=>void;onPractice:(focus:Focus)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
@@ -53,31 +53,32 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  function selectSubject(value:string){setSubject(value);setSelectedId(lessonsForSubject(value)[0]?.id||'');setQuery('');}
  function chooseLesson(item:LearningLesson){setSelectedId(item.id);onContextChange({kind:'lesson',lessonId:item.id});}
  const overallPracticed=learningLessons.filter(l=>evidenceForLesson(l,attempts)!=='not-started').length;
- return <div className="app-content learning-paths-page">
-   <div className="page-intro"><span className="overline">TRILHAS DE APRENDIZAGEM</span>
-     <h1>{mode==='subjects'?'Suas ':mode==='learn'?'Aprender ': 'Explore suas '}<em>{mode==='subjects'?'disciplinas.':mode==='learn'?'de verdade.':'trilhas.'}</em></h1>
-     <p>Estude um conceito, veja um exemplo, responda a uma pergunta e pratique. Conteúdo original introdutório — não é um curso completo nem material oficial de vestibular.</p>
+ return <div className={`app-content learning-paths-page ${mode==='learn'?'learning-focus-page':'learning-trails-page'}`}>
+   <div className="page-intro"><span className="overline">{mode==='learn'?'SALA DE ESTUDO · AULAS AUTORAIS':'ROTEIROS DE APRENDIZAGEM'}</span>
+     <h1>{mode==='learn'?'Aprenda com ': 'Siga uma '}<em>{mode==='learn'?'foco.':'trilha.'}</em></h1>
+     <p>{mode==='learn'?'Escolha uma matéria, estude a explicação do tópico e pratique ao final. A aula é o centro desta página.':'Explore os conteúdos em ordem, veja os pré-requisitos de cada etapa e avance por uma sequência de miniaulas.'} São materiais autorais introdutórios, não cursos completos nem provas oficiais.</p>
    </div>
    <div className="message neutral" role="note">{userId?'As tentativas demonstrativas são consultadas na sua conta Supabase.':'Modo visitante: o progresso dos exercícios fica neste navegador.'} São {learningLessons.length} tópicos introdutórios e uma questão autoral por tópico. Um acerto isolado não comprova domínio permanente.</div>
    {error&&<div className="message warning" role="alert">{error}</div>}
-   <section className="learning-overview" aria-label="Progresso do catálogo introdutório">
+   {mode==='trails'&&<section className="learning-overview" aria-label="Progresso do catálogo introdutório">
      <div className="learning-overview-copy"><span className="overline">MAPA DE CONTEÚDOS</span><h2>{overallPracticed} de {learningLessons.length} tópicos praticados</h2><p>Acompanhe evidências de prática, sem notas ou classificações inventadas.</p></div>
      <div className="learning-overview-meter"><strong>{Math.round(100*overallPracticed/learningLessons.length)}%</strong><div className="learning-progress-track"><span style={{width:`${100*overallPracticed/learningLessons.length}%`}}/></div><small>Cobertura de exercícios autorais</small></div>
-   </section>
-   <section className="learning-subjects" aria-label="Selecione uma disciplina">
+   </section>}
+   {mode==='learn'&&<div className="learning-focus-header"><div><span className="overline">ESCOLHA A MATÉRIA</span><h2>Qual assunto vamos estudar?</h2></div><button type="button" className="btn outline small" onClick={()=>lesson&&onSeeTrails({subject:lesson.subject,lessonId:lesson.id})} disabled={!lesson}>Ver sequência completa <ArrowRight size={15}/></button></div>}
+   {mode==='learn'?<div className="learning-quick-subjects" role="group" aria-label="Matérias para estudo">{learningSubjects.map(item=><button type="button" key={item} className={item===subject?'is-active':''} aria-pressed={item===subject} onClick={()=>selectSubject(item)}>{item}</button>)}</div>:<section className="learning-subjects" aria-label="Selecione uma disciplina">
      {learningSubjects.map(item=>{const stats=subjectProgress(item,attempts);return <button type="button" className={`learning-subject-card ${item===subject?'is-current':''}`} key={item} aria-pressed={item===subject} onClick={()=>selectSubject(item)}>
        <span className="learning-subject-top"><BookOpenText size={19}/><small>{stats.total} tópicos</small></span>
        <strong>{item}</strong><span className="learning-subject-description">{subjectDescriptions[item]}</span>
        <span className="learning-progress-track"><span style={{width:`${stats.coverage}%`}}/></span><small>{stats.practiced}/{stats.total} praticados · {stats.correct} com acerto registrado</small>
      </button>;})}
-   </section>
-   <div className="learning-body-grid">
+   </section>}
+   <div className={`learning-body-grid ${mode==='learn'?'is-learning-first':''}`}>
      <section className="learning-index dark-panel" aria-label={`Tópicos de ${subject}`}>
-       <div className="learning-index-header"><div><span className="overline">{subject.toUpperCase()}</span><h2>Seu roteiro</h2><p>{statistics.practiced} atividades tentadas · {statistics.review} para revisar</p></div></div>
+       <div className="learning-index-header"><div><span className="overline">{subject.toUpperCase()}</span><h2>{mode==='learn'?'Outras aulas':'Etapas da trilha'}</h2><p>{mode==='learn'?'Mude de tópico sem sair do estudo.':`${statistics.practiced} assuntos praticados · ${statistics.review} para revisar`}</p></div></div>
        <label className="learning-search"><Search size={16} aria-hidden="true"/><span className="sr-only">Buscar tópico</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar assunto…"/></label>
        {!loaded&&<p className="muted" role="status">Carregando progresso…</p>}
        {next&&<button type="button" className="learning-next" onClick={()=>chooseLesson(next)}><Target size={16}/> Sugestão: {next.topic} <ArrowRight size={15}/></button>}
-       <div className="learning-lesson-list">{visibleLessons.length?visibleLessons.map((item,index)=>{
+       <div className="learning-lesson-list">{visibleLessons.length?visibleLessons.map(item=>{
          const evidence=evidenceForLesson(item,attempts);return <button type="button" key={item.id} className={`learning-lesson-item ${item.id===selectedId?'selected':''}`} aria-current={item.id===selectedId?'step':undefined} onClick={()=>chooseLesson(item)}>
            <span className="learning-lesson-number">{String(lessonsForSubject(subject).indexOf(item)+1).padStart(2,'0')}</span>
            <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{evidenceLabels[evidence]} · {item.minutes} min de leitura estimada</small></span>

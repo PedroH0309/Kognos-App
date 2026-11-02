@@ -4,6 +4,16 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.3 — distinct Subjects, Trails and Learn experiences
+
+- **My Subjects is now a dedicated dashboard**, not a second rendering of the trail/lesson screen. Students see seven subject cards, per-subject evidence-based practice coverage, pending review items, dates of recorded practice, a recommended next topic, and topic-level status. Every card links to its real lessons, practice sessions or contextual Kog help.
+- **Learning Paths is a sequenced curriculum navigator**, showing the catalog's stages, prerequisite hints, an introductory 20-topic practice-coverage map, and a lesson detail panel.
+- **Learn is lesson-first**, displaying the current mini-lesson prominently with compact subject switching, quick access to other lessons, and a link to the corresponding learning path.
+- All three areas reuse the **same verified demonstration attempts** in browser-local guest mode or the existing Supabase demo table when signed in; no new score, fabricated proficiency estimate, or account permission is introduced.
+- No new database migration or new environment variable is needed. This still covers only **20 introductory authorial lessons** and should not be confused with a complete school curriculum.
+
+See [Sprint 1.3 notes](docs/KOGNOS_SPRINT_13_SUBJECTS_TRAILS.md) for screen responsibilities, implementation details and limitations.
+
 ## What's new in v1.2 — source workspace UI and reliable access states
 
 - **Guest-friendly source page:** replaces the large passive sign-in banner with a compact account status card and working **Sign in to my account** button using the existing Kognos authentication modal. Successful sign-in from this page keeps the user on **Matrices & Notices**, rather than unexpectedly redirecting to the dashboard.
