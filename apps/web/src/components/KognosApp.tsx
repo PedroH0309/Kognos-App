@@ -11,6 +11,7 @@ import { weeklyStudyHours } from '@/lib/onboarding-helpers';
 import AccountSettings, {ProfileAvatar} from './AccountSettings';
 import PracticeSpace from './PracticeSpace';
 import AchievementSpace from './AchievementSpace';
+import type {AchievementSummary} from '@/lib/ai-achievements';
 import DiagnosticSpace from './DiagnosticSpace';
 import ReviewSpace from './ReviewSpace';
 import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
@@ -205,6 +206,8 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
   const first=p.nickname.split(' ')[0]||'estudante';
   const [activity,setActivity]=useState<{answered:number;accuracy:number|null;completed:number;activeDays:number;dueReviews:number}>({answered:0,accuracy:null,completed:0,activeDays:0,dueReviews:0});
   const [activityError,setActivityError]=useState('');
+  const [earned,setEarned]=useState<AchievementSummary|null>(null);
+  const [earnedError,setEarnedError]=useState('');
   useEffect(()=>{
     let active=true;setActivityError('');
     (async()=>{
@@ -223,12 +226,32 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
     })();
     return()=>{active=false;};
   },[user]);
+  useEffect(()=>{
+    if(!user){setEarned(null);setEarnedError('');return;}
+    let active=true;
+    async function reload(){
+      try{
+        const client=getSupabase();
+        const {data}=await client!.auth.getSession();
+        if(!data.session||data.session.user.id!==user?.id)return;
+        const response=await fetch('/api/ai-achievements',{
+          headers:{Authorization:`Bearer ${data.session.access_token}`},cache:'no-store'
+        });
+        const result=await response.json();
+        if(!response.ok)throw new Error(result.error||'Pontuação indisponível.');
+        if(active){setEarned(result as AchievementSummary);setEarnedError('');}
+      }catch(e){if(active){setEarned(null);setEarnedError(e instanceof Error?e.message:'Não foi possível carregar sua pontuação.');}}
+    }
+    void reload();
+    window.addEventListener('kognos:ai-answer-recorded',reload);
+    return()=>{active=false;window.removeEventListener('kognos:ai-answer-recorded',reload);};
+  },[user?.id]);
   return <div className="app-content"><div className="welcome-top"><div><span className="overline">SUA JORNADA DE APRENDIZAGEM</span><h1>Que bom ter você aqui, <em>{first}.</em></h1><p>Um passo de cada vez, muito conhecimento pela frente.</p></div><span className="mode-badge">{user?<Cloud size={14} aria-hidden="true"/>:<CircleHelp size={14} aria-hidden="true"/>}{user?'Perfil sincronizado':'Modo demonstração'}</span></div>
   <section className="welcome-hero"><div className="welcome-hero-copy"><span className="overline cyan">BEM-VINDO AO KOGNOS</span><h2>Não é sobre estudar mais. <em>É sobre aprender melhor.</em></h2><p>O Kognos adapta as explicações ao seu objetivo e às suas preferências. Comece perguntando algo ao seu tutor.</p><div className="hero-actions"><button className="btn primary" onClick={()=>onGo('tutor')}><Sparkles size={16} aria-hidden="true"/> Conversar com Kog</button><button className="btn outline" onClick={onEdit}>Ajustar perfil</button></div></div><Image className="dashboard-hero-img" src="/brand/kognos-hero.webp" alt="Arte de inteligência e aprendizagem" fill sizes="(max-width: 900px) 100vw, 50vw"/></section>
-  <div className="stat-grid"><StatCard icon={BookOpenCheck} label="QUESTÕES RESOLVIDAS" value={activity.answered} note={user?'Sincronizadas na sua conta':'Neste navegador'}/><StatCard icon={Target} label="TAXA DE ACERTOS" value={activity.accuracy===null?'—':`${activity.accuracy}%`} note={activity.answered?'Com base nas suas respostas':'Comece um treino'}/><StatCard icon={CheckCircle2} label="TAREFAS CONCLUÍDAS" value={activity.completed} note="Do seu planejamento"/><StatCard icon={CalendarCheck2} label="DIAS COM PRÁTICA" value={activity.activeDays} note={user?'Histórico da conta':'Histórico local'}/></div>
-  {activityError&&<div className="message warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}
+  <div className="stat-grid"><StatCard icon={BookOpenCheck} label="QUESTÕES CONCLUÍDAS" value={earned?.answered??activity.answered} note={earned?'IA e acervo demonstrativo':'Atividades demonstrativas'}/><StatCard icon={Target} label="TAXA DE ACERTOS" value={(earned?.accuracy??activity.accuracy)===null?'—':`${earned?.accuracy??activity.accuracy}%`} note="Primeira resposta por questão"/><StatCard icon={Zap} label="PONTUAÇÃO XP" value={earned?.xp??'—'} note={earned?`Nível ${earned.level} · ${earned.unlocked} conquistas`:'Consulte Conquistas'}/><StatCard icon={CheckCircle2} label="TAREFAS CONCLUÍDAS" value={activity.completed} note="Do seu planejamento"/></div>
+  {activityError&&<div className="message warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}{earnedError&&<div className="message warning" role="alert">Conquistas indisponíveis: {earnedError}</div>}
   <div className="home-two-cols"><section className="dark-panel"><div className="panel-title"><div><span className="overline">COMECE POR AQUI</span><h3>Sua próxima conquista</h3></div><span>✦</span></div><p className="panel-desc">O tutor Kognos pode explicar assuntos, criar exemplos e ajudar a destravar questões. O banco demonstrativo e o planejamento já permitem registrar atividades; a versão pública com provas oficiais e sincronização ainda está em desenvolvimento.</p><button className="btn primary" onClick={()=>onGo('tutor')}>Abrir tutor IA →</button><div className="panel-foot">{user?'O uso da IA exige configuração da chave no servidor.':'Conecte sua conta para habilitar a IA.'}</div></section><section className="dark-panel feature-panel"><div className="panel-title"><div><span className="overline">SEU PERFIL DE ESTUDO</span><h3>Como você aprende</h3></div></div><div className="profile-tags">{p.styles.map(x=><span className="profile-tag" key={x}>✧ {styleLabels[x]}</span>)}{p.adaptations.map(x=><span className="profile-tag special" key={x}>◈ {adaptationLabels[x]}</span>)}</div><button className="link-btn" onClick={onEdit}>Personalizar preferências →</button></section></div>
-  <div className="dashboard-quick-actions"><button className="btn outline" onClick={()=>onGo('questions')}><ListChecks size={18}/> Resolver questões</button><button className="btn outline" onClick={()=>onGo('simulados')}><ClipboardList size={18}/> Fazer simulado</button><button className="btn outline" onClick={()=>onGo('diagnostic')}><Target size={18}/> Diagnóstico</button><button className="btn outline" onClick={()=>onGo('reviews')}><RotateCcw size={18}/> Revisões {activity.dueReviews>0?`(${activity.dueReviews})`:''}</button><button className="btn outline" onClick={()=>onGo('plans')}><CalendarDays size={18}/> Meu plano</button><button className="btn outline" onClick={()=>onGo('performance')}><BarChart3 size={18}/> Meu desempenho</button></div><div className="development-note"><span>✧</span><p><strong>Progresso sem dados inventados.</strong> Os números acima vêm das atividades demonstrativas registradas. Contas conectadas usam a nuvem; ciclos adaptativos completos e avaliações oficiais ainda estão em construção.</p></div>
+  <div className="dashboard-quick-actions"><button className="btn outline" onClick={()=>onGo('questions')}><ListChecks size={18}/> Resolver questões</button><button className="btn outline" onClick={()=>onGo('simulados')}><ClipboardList size={18}/> Fazer simulado</button><button className="btn outline" onClick={()=>onGo('diagnostic')}><Target size={18}/> Diagnóstico</button><button className="btn outline" onClick={()=>onGo('reviews')}><RotateCcw size={18}/> Revisões {activity.dueReviews>0?`(${activity.dueReviews})`:''}</button><button className="btn outline" onClick={()=>onGo('plans')}><CalendarDays size={18}/> Meu plano</button><button className="btn outline" onClick={()=>onGo('performance')}><BarChart3 size={18}/> Meu desempenho</button><button className="btn outline" onClick={()=>onGo('achievements')}><Trophy size={18}/> Conquistas e XP</button></div><div className="development-note"><span>✧</span><p><strong>Progresso sem dados inventados.</strong> Os números exibidos vêm de respostas e tarefas registradas. Conquistas e XP contam apenas a primeira resposta por questão; não representam nota oficial.</p></div>
   </div>;
 }
 
