@@ -7,7 +7,7 @@ import {safeOfficialUrl} from '@/lib/syllabus-sources';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 import {describeGenerationError} from '@/lib/ai-generation-errors';
-import {isAIJobConfigured} from '@/lib/ai-provider';
+import {isAIJobConfigured,AIProviderRequestError} from '@/lib/ai-provider';
 
 export const runtime='nodejs';
 export const maxDuration=180;
@@ -58,11 +58,19 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   return NextResponse.json({questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),approved:data.length,rejected:generation.count-data.length},{headers:{'Cache-Control':'no-store'}});
  }catch(e){
   const failure=describeGenerationError(e);
-  // Never log raw exceptions: providers may include request content in error payloads.
-  console.error('[KOGNOS][AI_GENERATION]',failure.code);
-  return NextResponse.json({error:failure.message,code:failure.code},{
-   status:failure.status,headers:{'Cache-Control':'no-store'}
-  });
+  // Report only controlled diagnostic metadata, never upstream response text.
+  const rejected=e instanceof AIProviderRequestError?e:null;
+  const stage=rejected?.phase==='generate'?'geração':rejected?.phase==='review'?'revisão':null;
+  const categoryLabel=rejected?.category==='structured_json'?'formatação JSON':
+   rejected?.category==='invalid_parameter'?'parâmetro incompatível':
+   rejected?.category==='token_budget'?'orçamento de tokens':'solicitação recusada';
+  console.error('[KOGNOS][AI_GENERATION]',failure.code,
+   ...(rejected?[rejected.phase,rejected.provider,rejected.category]:[]));
+  const detail=rejected&&stage?` Etapa: ${stage} (${rejected.provider}); diagnóstico: ${categoryLabel}.`:'';
+  return NextResponse.json({
+   error:failure.message+detail,code:failure.code,
+   ...(rejected?{provider:rejected.provider,phase:rejected.phase,category:rejected.category}:{})
+  },{status:failure.status,headers:{'Cache-Control':'no-store'}});
  }
 });
 export async function POST(request:Request){

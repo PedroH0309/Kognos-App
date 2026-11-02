@@ -39,18 +39,75 @@ export function isAIJobConfigured(job:AIJob,env:Record<string,string|undefined>=
  return resolveAIProvider(job,env)!==null;
 }
 
+export const QUESTION_JSON_SCHEMA={
+ type:'object',properties:{
+  questions:{type:'array',items:{type:'object',properties:{
+   prompt:{type:'string'},options:{type:'array',items:{type:'string'}},
+   correct_index:{type:'integer'},explanation:{type:'string'}
+  },required:['prompt','options','correct_index','explanation'],additionalProperties:false}}
+ },required:['questions'],additionalProperties:false
+} as const;
+
+export const REVIEW_JSON_SCHEMA={
+ type:'object',properties:{
+  reviews:{type:'array',items:{type:'object',properties:{
+   index:{type:'integer'},approved:{type:'boolean'},
+   correct_index:{type:'integer'},reason:{type:'string'}
+  },required:['index','approved','correct_index','reason'],additionalProperties:false}}
+ },required:['reviews'],additionalProperties:false
+} as const;
+
+/** Categorize a provider error without copying its raw message (which may
+ * include student input, provider diagnostics or fragments of generated text).
+ * Only the named categories below are ever written to application logs.
+ */
+export function safeAIRequestErrorKind(body:unknown):'structured_json'|'invalid_parameter'|'token_budget'|'bad_request'{
+ if(!body||typeof body!=='object')return 'bad_request';
+ const error=(body as {error?:unknown}).error;
+ if(!error||typeof error!=='object')return 'bad_request';
+ const record=error as Record<string,unknown>;
+ const raw=[record.code,record.type,record.message].filter(x=>typeof x==='string')
+  .join(' ').toLowerCase().slice(0,2500);
+ if(/json|schema|response.format|structured.output|constrained.decod|validation.fail/.test(raw))return 'structured_json';
+ if(/max.completion.tokens|token.budget|too.many.tokens|token.limit/.test(raw))return 'token_budget';
+ if(/invalid.parameter|unsupported.parameter|not.supported|unknown.parameter|unexpected.field/.test(raw))return 'invalid_parameter';
+ return 'bad_request';
+}
+
+/** Safe provider/phase metadata for a rejected request. No tokens,
+ * prompts, model output or upstream raw error strings are retained.
+ */
+export class AIProviderRequestError extends Error{
+ readonly provider:AIProvider;
+ readonly phase:AIJob;
+ readonly category:'structured_json'|'invalid_parameter'|'token_budget'|'bad_request';
+ constructor(
+  code:string,provider:AIProvider,phase:AIJob,
+  category:'structured_json'|'invalid_parameter'|'token_budget'|'bad_request'
+ ){
+  super(code);
+  this.name='AIProviderRequestError';
+  this.provider=provider;
+  this.phase=phase;
+  this.category=category;
+ }
+}
+
 /** Groq GPT-OSS consumes reasoning tokens from the completion budget.
- * Use low effort and JSON mode only for question creation/review.
+ * Use low effort and strict JSON Schema for generation/review.
  * Provider- and model-specific settings must never leak to Gemini or NVIDIA.
  */
 export function educationalCompletionPayload(
  provider:AIProvider, model:string, job:AIJob,
  messages:{role:'system'|'user'|'assistant';content:string}[],
- maxTokens:number,temperature:number
+ maxTokens:number,temperature:number,strictOutput=true
 ):Record<string,unknown>{
  if(provider==='groq'&&job!=='tutor'&&/^openai\/gpt-oss-(?:20b|120b)$/.test(model)){
   return {model,messages,max_completion_tokens:maxTokens,temperature,stream:false,
-   reasoning_effort:'low',include_reasoning:false,response_format:{type:'json_object'}};
+   reasoning_effort:'low',include_reasoning:false,
+   ...(strictOutput?{response_format:{type:'json_schema',
+     json_schema:{name:job==='generate'?'kognos_question_batch':'kognos_question_review',
+      strict:true,schema:job==='generate'?QUESTION_JSON_SCHEMA:REVIEW_JSON_SCHEMA}}}:{})};
  }
  if(provider==='openai'){
   return {model,messages,max_completion_tokens:maxTokens,reasoning_effort:'none',stream:false};
@@ -60,14 +117,14 @@ export function educationalCompletionPayload(
 }
 
 /** Never expose raw upstream responses or keys. Shared OpenAI-compatible REST protocol. */
-async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number):Promise<string>{
+async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number,strictOutput=true):Promise<string>{
  const t=Date.now();
  let response:Response;
  try{
   response=await fetch(c.base+'/chat/completions',{
    method:'POST',
    headers:{Authorization:'Bearer '+c.key,'Content-Type':'application/json'},
-   body:JSON.stringify(educationalCompletionPayload(c.provider,c.model,job,messages,maxTokens,temperature)),
+   body:JSON.stringify(educationalCompletionPayload(c.provider,c.model,job,messages,maxTokens,temperature,strictOutput)),
    cache:'no-store',signal:AbortSignal.timeout(job==='tutor'?35000:30000),
   });
  }catch(cause){
@@ -80,7 +137,19 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
   if(response.status===401||response.status===403)throw new Error('NVIDIA_AUTH');
   if(response.status===429)throw new Error('NVIDIA_RATE_LIMIT');
   if(response.status===404)throw new Error('NVIDIA_MODEL_UNAVAILABLE');
-  if(response.status===400||response.status===422)throw new Error('NVIDIA_BAD_REQUEST');
+  if(response.status===400||response.status===422){
+   // An HTTP 400 alone does not identify the cause. Do not log raw provider
+   // responses because they may contain prompts, answers or sensitive details.
+   let responseBody:unknown=null;
+   try{responseBody=await response.json();}catch{/* Non-JSON provider error */}
+   const kind=safeAIRequestErrorKind(responseBody);
+   console.warn('[KOGNOS][AI]',job,c.provider,'model',c.model,
+    'rejectionCategory',kind,'strictJSON',strictOutput);
+   if(c.provider==='groq'&&strictOutput&&kind==='structured_json'
+     &&job!=='tutor'&&/^openai\/gpt-oss-(?:20b|120b)$/.test(c.model))
+    throw new AIProviderRequestError('AI_STRUCTURED_OUTPUT_REJECTED',c.provider,job,kind);
+   throw new AIProviderRequestError('NVIDIA_BAD_REQUEST',c.provider,job,kind);
+  }
   if(response.status===408||response.status===504)throw new Error('NVIDIA_TIMEOUT');
   throw new Error('NVIDIA_UNAVAILABLE');
  }
@@ -105,11 +174,28 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
  * The generator already sends study context to Groq. No new third-party
  * provider receives the content during fallback.
  */
+/** Retry only when the provider explicitly rejected the structured-output
+ * configuration. The second request still requires JSON in the prompt and
+ * must pass local structural validation AND independent pedagogical review.
+ * An arbitrary HTTP 400 never triggers an extra API call.
+ */
+async function requestWithStructuredRecovery(
+ c:ProviderConfig,job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],
+ maxTokens:number,temperature:number
+):Promise<string>{
+ try{return await requestSingleProvider(c,job,messages,maxTokens,temperature);}
+ catch(error){
+  if(!(error instanceof Error)||error.message!=='AI_STRUCTURED_OUTPUT_REJECTED')throw error;
+  console.warn('[KOGNOS][AI]',job,c.provider,'strict structured JSON rejected; retrying once without response_format');
+  return requestSingleProvider(c,job,messages,maxTokens,temperature,false);
+ }
+}
+
 export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number):Promise<string>{
  const primary=resolveAIProvider(job);
  if(!primary)throw new Error('AI_PROVIDER_NOT_CONFIGURED');
  try{
-  return await requestSingleProvider(primary,job,messages,maxTokens,temperature);
+  return await requestWithStructuredRecovery(primary,job,messages,maxTokens,temperature);
  }catch(cause){
   // A truncated GPT-OSS output is incomplete JSON. Retry the same generation
   // at most once with more completion budget; never parse/publish partial items.
@@ -119,7 +205,7 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
     const higherBudget=Math.min(14000,Math.ceil(maxTokens*1.4));
     if(higherBudget>maxTokens){
      console.warn('[KOGNOS][AI]',job,primary.provider,'retrying truncated output once with larger budget');
-     return requestSingleProvider(primary,job,messages,higherBudget,temperature);
+     return requestWithStructuredRecovery(primary,job,messages,higherBudget,temperature);
     }
   }
   const fallbackDisabled=process.env.AI_REVIEW_FALLBACK_PROVIDER?.trim().toLowerCase()==='none';
@@ -132,6 +218,6 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
   // Keep the fallback model independent from the 120B generation model.
   const fallback:ProviderConfig={provider:'groq',key,model,base:endpoints.groq};
   console.info('[KOGNOS][AI]',job,'Gemini unavailable; trying Groq fallback');
-  return requestSingleProvider(fallback,job,messages,maxTokens,temperature);
+  return requestWithStructuredRecovery(fallback,job,messages,maxTokens,temperature);
  }
 }

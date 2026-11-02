@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {educationalCompletionPayload,requestAI} from './ai-provider.ts';
+import {educationalCompletionPayload,requestAI,safeAIRequestErrorKind} from './ai-provider.ts';
 
 const messages=[{role:'system' as const,content:'Responda somente JSON.'},{role:'user' as const,content:'Gere uma questão de Matemática em JSON.'}];
 const keys=[
@@ -29,15 +29,29 @@ const length=()=>new Response(JSON.stringify({
  usage:{completion_tokens:2100}
 }),{status:200,headers:{'Content-Type':'application/json'}});
 
-test('Groq GPT-OSS educational jobs use lower reasoning effort, JSON mode and completion token budgets',()=>{
+test('Groq GPT-OSS educational jobs use strict JSON Schema, low reasoning effort and completion budget',()=>{
  for(const model of ['openai/gpt-oss-20b','openai/gpt-oss-120b']){
-  const payload=educationalCompletionPayload('groq',model,'generate',messages,8500,0.55);
-  assert.equal(payload.model,model);
-  assert.equal(payload.max_completion_tokens,8500);
-  assert.equal(payload.reasoning_effort,'low');
-  assert.equal(payload.include_reasoning,false);
-  assert.deepEqual(payload.response_format,{type:'json_object'});
-  assert.equal(payload.max_tokens,undefined);
+  for(const job of ['generate','review'] as const){
+   const payload=educationalCompletionPayload('groq',model,job,messages,8500,0.55);
+   assert.equal(payload.model,model);
+   assert.equal(payload.max_completion_tokens,8500);
+   assert.equal(payload.reasoning_effort,'low');
+   assert.equal(payload.include_reasoning,false);
+   assert.equal(payload.max_tokens,undefined);
+   const responseFormat=payload.response_format as any;
+   assert.equal(responseFormat.type,'json_schema');
+   assert.equal(responseFormat.json_schema.strict,true);
+   assert.deepEqual(responseFormat.json_schema.schema.required,job==='generate'?['questions']:['reviews']);
+   const arraySchema=responseFormat.json_schema.schema.properties[job==='generate'?'questions':'reviews'];
+   assert.equal(arraySchema.type,'array');
+   assert.equal(arraySchema.items.additionalProperties,false);
+   const required=job==='generate'?['prompt','options','correct_index','explanation']:['index','approved','correct_index','reason'];
+   assert.deepEqual(arraySchema.items.required,required);
+   assert.equal(responseFormat.json_schema.schema.additionalProperties,false);
+   // The bounded fallback still requests JSON via the prompt and is validated locally.
+   const plain=educationalCompletionPayload('groq',model,job,messages,8500,0.55,false);
+   assert.equal(plain.response_format,undefined);
+  }
  }
 });
 test('Gemini and NVIDIA requests do not receive Groq-specific reasoning or JSON parameters',()=>{
@@ -95,4 +109,55 @@ test('a truncated Gemini review receives a single independent Groq 20B fallback'
   assert.equal(payloads[1].model,'openai/gpt-oss-20b');
   assert.equal(payloads[1].reasoning_effort,'low');
  }finally{globalThis.fetch=oldFetch;restore();}
+});
+
+test('Groq JSON validation HTTP 400 gets a single conservative fallback without response_format',async()=>{
+ const restore=setup(),oldFetch=globalThis.fetch;const payloads:any[]=[];
+ globalThis.fetch=async(_input,init)=>{
+  payloads.push(JSON.parse(String(init?.body)));
+  return payloads.length===1
+   ? new Response(JSON.stringify({error:{type:'invalid_request_error',
+      message:'Generated JSON does not match the expected schema. Please adjust your prompt.'}}),{status:400})
+   :ok('{"questions":[]}');
+ };
+ try{
+  const result=await requestAI('generate',messages,4100,0.5);
+  assert.equal(result,'{"questions":[]}');
+  assert.equal(payloads.length,2);
+  assert.equal(payloads[0].response_format.type,'json_schema');
+  assert.equal(payloads[1].response_format,undefined);
+  assert.equal(payloads[1].reasoning_effort,'low');
+ }finally{globalThis.fetch=oldFetch;restore();}
+});
+
+test('invalid request unrelated to JSON never invokes paid recovery',async()=>{
+ const restore=setup(),oldFetch=globalThis.fetch;let calls=0;
+ globalThis.fetch=async()=>{calls++;return new Response(JSON.stringify({
+  error:{type:'invalid_request_error',message:'Invalid model parameter or maximum token budget'}
+ }),{status:400});};
+ try{
+  await assert.rejects(requestAI('generate',messages,4100,0.5),/NVIDIA_BAD_REQUEST/);
+  assert.equal(calls,1);
+ }finally{globalThis.fetch=oldFetch;restore();}
+});
+
+test('repeated JSON mode rejection stops after one fallback request',async()=>{
+ const restore=setup(),oldFetch=globalThis.fetch;let calls=0;
+ globalThis.fetch=async()=>{calls++;return new Response(JSON.stringify({
+  error:{type:'invalid_request_error',message:'JSON output failed validation'}
+ }),{status:400});};
+ try{
+  await assert.rejects(requestAI('generate',messages,4100,0.5),/NVIDIA_BAD_REQUEST/);
+  assert.equal(calls,2);
+ }finally{globalThis.fetch=oldFetch;restore();}
+});
+
+test('error category sanitizes upstream provider payload without logging sensitive text',()=>{
+ assert.equal(safeAIRequestErrorKind({
+  error:{message:'Could not generate valid JSON with data secret student name'}
+ }),'structured_json');
+ assert.equal(safeAIRequestErrorKind({error:{message:'Unsupported parameter xyz'}}),'invalid_parameter');
+ assert.equal(safeAIRequestErrorKind({error:{message:'max_completion_tokens above the allowed limit'}}),'token_budget');
+ assert.equal(safeAIRequestErrorKind({error:{message:'secret-key-12345'}}),'bad_request');
+ assert.equal(safeAIRequestErrorKind(null),'bad_request');
 });
