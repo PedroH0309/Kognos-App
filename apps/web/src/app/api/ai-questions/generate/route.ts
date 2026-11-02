@@ -1,6 +1,6 @@
 import {NextResponse} from 'next/server';
 import {withSupabase} from '@supabase/server';
-import {createAndReviewQuestions} from '@/lib/nvidia-question-engine';
+import {createAndReviewQuestionBatch} from '@/lib/nvidia-question-engine';
 import {examBlueprints,validateGenerationRequest} from '@/lib/exam-blueprints';
 import {publicGeneratedQuestion,excludePreviouslyGenerated} from '@/lib/ai-question-validation';
 import {safeOfficialUrl} from '@/lib/syllabus-sources';
@@ -38,7 +38,8 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   }
   // Validate approved source provenance before invoking a paid provider.
   // No application-level daily cap. Provider-side rate and billing limits still apply.
-  const approved=await createAndReviewQuestions(generation,verified||undefined);
+  const batch=await createAndReviewQuestionBatch(generation,verified||undefined);
+  const approved=batch.approved;
   if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
   const {data:prior,error:priorError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
     .select('prompt').eq('user_id',userId).eq('institution',generation.institution)
@@ -55,7 +56,11 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   const {data, error:insertError}=await ctx.supabaseAdmin.from('kognos_ai_questions').insert(rows)
     .select('id,institution,edition,source_title,source_url,source_topic_id,lesson_id,subject,topic,difficulty,prompt,options,created_at,review_status');
   if(insertError||!data)return error('Falha ao salvar questões. Confira as migrações 0005 e 0007 e tente novamente.',503);
-  return NextResponse.json({questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),approved:data.length,rejected:generation.count-data.length},{headers:{'Cache-Control':'no-store'}});
+  return NextResponse.json({
+   questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),
+   approved:data.length,rejected:generation.count-data.length,
+   diagnostics:{...batch.diagnostics,duplicates:approved.length-unique.length}
+  },{headers:{'Cache-Control':'no-store'}});
  }catch(e){
   const failure=describeGenerationError(e);
   // Report only controlled diagnostic metadata, never upstream response text.
