@@ -7,7 +7,6 @@ import {
  Leaf,Plus,Sparkles,Target,Timer,Trash2,Download
 } from 'lucide-react';
 import type {StudyTask} from '@/lib/cloud-study-model';
-import {downloadStudyCalendar} from '@/lib/calendar-export';
 import {getCloudTasks,setCloudTaskDone,setCloudTaskTime,deleteCloudTask} from '@/lib/cloud-study';
 import {
  civilToday,dateAtNoon,dayTasks,formatDay,formatMonth,formatWeekday,
@@ -185,7 +184,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     <label className="k-cal-date-jump"><CalendarDays size={18}/><span>{formatMonth(selected)}</span>
      <input type="date" aria-label="Escolher outra data" value={selected}
       onChange={e=>openDay(e.target.value)}/></label>
-    <button type="button" className="k-cal-export-button" disabled={loading||!tasks.length} onClick={()=>{try{downloadStudyCalendar(tasks);setNotice('Agenda exportada como arquivo .ics. Importe no Calendário do iPhone ou no seu calendário Android; alterações futuras exigem nova exportação.');setError('');}catch(e){setError(e instanceof Error?e.message:'Não foi possível exportar a agenda.');}}}><Download size={17}/> <span>Exportar agenda</span></button><button type="button" className="k-cal-add-button" onClick={()=>onPlanner(selected)}><Plus size={18}/> <span>Nova atividade</span></button>
+    <button type="button" className="k-cal-add-button" onClick={()=>onPlanner(selected)}><Plus size={18}/> <span>Nova atividade</span></button>
    </div>
   </header>
 
@@ -276,6 +275,6 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     </section>
    </aside>
   </div>
-  <p className="k-cal-source-note">Exportação .ics compatível com importação em calendários do iPhone e Android. É uma cópia, não uma sincronização automática bidirecional. A agenda mostra somente atividades reais do seu planejamento. Horários não definidos permanecem separados; os tempos são estimativas de estudo, não registros de tempo efetivo.</p>
+  <p className="k-cal-source-note">A agenda mostra somente atividades reais do seu planejamento. Horários não definidos permanecem separados; os tempos são estimativas de estudo, não registros de tempo efetivo.</p>
  </main>;
 }
