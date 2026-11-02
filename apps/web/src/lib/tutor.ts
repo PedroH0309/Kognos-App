@@ -22,14 +22,14 @@ export function sanitizeHistory(raw: unknown): TutorHistory {
  * Remove prose emphasis markers without deleting literal programming operators
  * inside backticks. Keep line breaks and the instructional content intact. */
 export function normalizeTutorAnswer(raw:string):string {
- return raw.split(/(```[\\s\\S]*?```|`[^`\\n]*`)/g).map((part,index)=>{
+ return raw.split(/(```[\s\S]*?```|`[^`\n]*`)/g).map((part,index)=>{
   if(index%2===1)return part;
   return part
-   .replace(/(^|\\s)#{1,6}\\s+/gm,'$1')
-   .replace(/\\*\\*([^*\\n]+?)\\*\\*/g,'$1')
-   .replace(/__([^_\\n]+?)__/g,'$1')
-   .replace(/^\\s*[-*]\\s+/gm,'• ')
-   .replace(/\\*\\*/g,'');
+   .replace(/(^|\s)#{1,6}\s+/gm,'$1')
+   .replace(/\*\*([^*\n]+?)\*\*/g,'$1')
+   .replace(/__([^_\n]+?)__/g,'$1')
+   .replace(/^\s*[-*]\s+/gm,'• ')
+   .replace(/\*\*/g,'');
  }).join('').trim();
 }
 
