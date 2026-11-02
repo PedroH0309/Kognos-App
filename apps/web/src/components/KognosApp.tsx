@@ -18,6 +18,7 @@ import PracticeSpace from './PracticeSpace';
 import AchievementSpace from './AchievementSpace';
 import type {AchievementSummary} from '@/lib/ai-achievements';
 import DiagnosticSpace from './DiagnosticSpace';
+import WeeklyExamSpace from './WeeklyExamSpace';
 import ReviewSpace from './ReviewSpace';
 import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
 import LearningTrails from './LearningTrails';
@@ -35,7 +36,7 @@ import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
 
 const STORAGE_KEY='kognos_guest_profile_v1';
-type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'plans'|'reviews'|'performance';
+type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'weekly'|'plans'|'reviews'|'performance';
 const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'dashboard',icon:'◫',label:'Visão geral'},
   {key:'learn',icon:'▤',label:'Aprender'},
@@ -45,6 +46,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'simulados',icon:'◉',label:'Simulados'},
   {key:'sources',icon:'▤',label:'Matrizes e editais'},
   {key:'diagnostic',icon:'◈',label:'Diagnóstico inicial'},
+  {key:'weekly',icon:'◈',label:'Simulado semanal (20–90)'},
   {key:'plans',icon:'◷',label:'Meu planejamento'},
   {key:'reviews',icon:'↻',label:'Revisões inteligentes'},
   {key:'calendar',icon:'▣',label:'Calendário'},
@@ -57,7 +59,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
 
 const NAV_ICONS:Record<View,LucideIcon>={
  dashboard:LayoutDashboard,learn:BookOpen,trails:GraduationCap,subjects:LibraryBig,
- questions:ListChecks,simulados:ClipboardList,sources:BookOpenText,diagnostic:Target,plans:CalendarDays,reviews:RotateCcw,
+ questions:ListChecks,simulados:ClipboardList,sources:BookOpenText,diagnostic:Target,weekly:ClipboardList,plans:CalendarDays,reviews:RotateCcw,
  calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
  profile:UserRound,settings:Settings,
 };
@@ -66,12 +68,12 @@ const NAV_ICONS:Record<View,LucideIcon>={
  */
 const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects','questions','simulados'];
 const NAV_SECONDARY:View[]=['calendar','plans','reviews','achievements','settings'];
-const NAV_MORE:View[]=['trails','diagnostic','sources','performance','profile'];
+const NAV_MORE:View[]=['trails','diagnostic','weekly','sources','performance','profile'];
 const SHORT_NAV_LABELS:Partial<Record<View,string>>={
  dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
  questions:'Questões',simulados:'Simulados',plans:'Meu plano',
  reviews:'Revisões',achievements:'Conquistas',settings:'Configurações',
- trails:'Trilhas',diagnostic:'Diagnóstico',sources:'Matrizes e editais',
+ trails:'Trilhas',diagnostic:'Diagnóstico',weekly:'Simulado semanal',sources:'Matrizes e editais',
  calendar:'Calendário',performance:'Desempenho',profile:'Meu perfil'
 };
 function SideNavigationItem({view,active,onSelect}:{view:View;active:boolean;onSelect:(view:View)=>void}){
@@ -498,7 +500,7 @@ export default function KognosApp(){
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
- function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('diagnostic');setMobileMenu(false);}
+ function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function generateForLesson(lessonId:string){setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
@@ -539,7 +541,8 @@ export default function KognosApp(){
  view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>setAssistantOpen(true)} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
- view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlan={()=>navigate('plans')}/>:  
+ view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:
+  view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlan={()=>navigate('plans')}/>:  
  view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
  view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onDiagnostic={()=>navigate('diagnostic')} onWeeklyReview={openWeeklyReview} onLearn={openFocusedLesson} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:  
