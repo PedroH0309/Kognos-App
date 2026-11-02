@@ -50,7 +50,7 @@ begin
  select count(*) into v_count from (
   select q.id from public.kognos_ai_questions q
   where q.user_id=p_user_id and q.institution=p_institution
-   and q.review_status='auto_reviewed' and q.completed_at is null
+   and q.review_status in ('auto_reviewed','editor_approved') and q.completed_at is null
    and not exists(select 1 from public.kognos_weekly_exam_items i where i.user_id=p_user_id and i.question_id=q.id)
   limit p_count
  ) available;
@@ -64,7 +64,7 @@ begin
   select q.id
   from public.kognos_ai_questions q
   where q.user_id=p_user_id and q.institution=p_institution
-   and q.review_status='auto_reviewed' and q.completed_at is null
+   and q.review_status in ('auto_reviewed','editor_approved') and q.completed_at is null
    and not exists(select 1 from public.kognos_weekly_exam_items i where i.user_id=p_user_id and i.question_id=q.id)
   order by pg_catalog.random()
   limit p_count
