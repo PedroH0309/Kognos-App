@@ -36,7 +36,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
    verified={edition:source.edition,sourceTitle:source.source_title,sourceUrl:source.source_url,evidence:topic.evidence_excerpt};
    sourceTopicId=topic.id;
   }
-  // Validate approved source provenance BEFORE consuming the student's daily AI quota.
+  // Validate approved source provenance before invoking a paid provider.
   // No application-level daily cap. Provider-side rate and billing limits still apply.
   const approved=await createAndReviewQuestions(generation,verified||undefined);
   if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
