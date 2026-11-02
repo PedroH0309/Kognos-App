@@ -26,7 +26,10 @@ export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=
  const key=secrets[effective]?.trim();
  if(!key)return null;
  const defaultModel=effective==='nvidia'?(env.NVIDIA_MODEL||DEFAULT_NVIDIA_MODEL):effective===preferences[job].provider?preferences[job].model:effective==='groq'?'llama-3.3-70b-versatile':'gemini-2.5-flash';
- const model=env[prefix+'_MODEL']?.trim()||defaultModel;
+ // A model override belongs to the selected provider, never to the NVIDIA fallback.
+ // E.g. AI_GENERATE_MODEL=llama-3.3-70b-versatile is invalid at NVIDIA's endpoint.
+ const fallingBack=effective!==provider;
+ const model=(!fallingBack?env[prefix+'_MODEL']?.trim():undefined)||defaultModel;
  const base=effective==='nvidia'?(env.NVIDIA_API_BASE_URL||endpoints.nvidia):endpoints[effective];
  return {provider:effective,model,key,base:base.replace(/\/$/,'')};
 }

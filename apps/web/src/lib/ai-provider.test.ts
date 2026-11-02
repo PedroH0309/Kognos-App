@@ -23,3 +23,18 @@ test('independent model overrides are applied and keys are not public',()=>{
  assert.equal(v?.model,'gemini-2.5-flash-lite');
  assert.equal(v?.provider,'gemini');
 });
+
+test('NVIDIA fallback never receives Groq or Gemini model overrides',()=>{
+ const env={
+  NVIDIA_API_KEY:'nvidia-private-test',
+  AI_GENERATE_MODEL:'llama-3.3-70b-versatile',
+  AI_REVIEW_MODEL:'gemini-2.5-flash-lite',
+  AI_TUTOR_MODEL:'gemini-2.5-flash',
+  NVIDIA_MODEL:'z-ai/glm-5.3-flash',
+ } as any;
+ for(const job of ['generate','review','tutor'] as const){
+  const selected=resolveAIProvider(job,env);
+  assert.equal(selected?.provider,'nvidia');
+  assert.equal(selected?.model,'z-ai/glm-5.3-flash');
+ }
+});
