@@ -12,7 +12,7 @@ const layout=read('apps/web/src/app/layout.tsx');
 const styles=read('apps/web/src/app/kognos-study-cycle.css');
 
 test('planner uses personalized, error-aware multi-subject routine, not static schedule',()=>{
- assert.match(planner,/createPersonalizedStudyWeek\(profile,tasks,history,aiEvidence\)/);
+ assert.match(planner,/createPersonalizedStudyWeek\(profile,tasks,history,aiEvidence,new Date\(\),\(\)=>crypto.randomUUID\(\),weeklyTopics\)/);
  assert.match(planner,/weekLearningSummary\(tasks\)/);
  assert.match(planner,/missedTopics\(history\)/);
  assert.match(planner,/studyMethod\(profile\)/);
