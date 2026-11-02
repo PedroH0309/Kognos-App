@@ -106,7 +106,7 @@ create or replace function public.kognos_weekly_exam_history(
  p_user_id uuid,p_institution text
 ) returns jsonb
 language sql stable security definer set search_path=''
-as $
+as $sql$
  with recent as (
   select e.id,e.week_start,e.question_count
   from public.kognos_weekly_exams e
@@ -129,7 +129,7 @@ as $
  select coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
   'weekStart',week_start,'total',question_count,'answered',answered,'correct',correct
  ) order by week_start desc),'[]'::jsonb) from scored;
-$;
+$sql$;
 revoke all on function public.kognos_weekly_exam_history(uuid,text) from public,anon,authenticated;
 grant execute on function public.kognos_weekly_exam_history(uuid,text) to service_role;
 
@@ -139,7 +139,7 @@ create or replace function public.kognos_weekly_exam_weak_topics(
  p_user_id uuid,p_institution text
 ) returns jsonb
 language sql stable security definer set search_path=''
-as $
+as $sql$
  with attempts as (
   select q.subject,q.topic,a.correct,a.created_at,
    pg_catalog.row_number() over (
@@ -166,7 +166,7 @@ as $
   'incorrect',incorrect,'lastWrong',last_wrong
  ) order by last_wrong desc,incorrect desc,subject,topic),'[]'::jsonb)
  from selected;
-$;
+$sql$;
 revoke all on function public.kognos_weekly_exam_weak_topics(uuid,text) from public,anon,authenticated;
 grant execute on function public.kognos_weekly_exam_weak_topics(uuid,text) to service_role;
 
