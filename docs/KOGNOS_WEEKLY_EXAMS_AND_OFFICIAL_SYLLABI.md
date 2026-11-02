@@ -9,7 +9,7 @@
 - The .ics export option and its unused utility are removed. The Kognos calendar remains internal.
 
 ## Deployment
-Apply supabase/migrations/0012_weekly_unique_exams.sql after migrations 0001–0011 in the Supabase SQL Editor. Ensure migrations 0005/0009 and protected server credentials are configured. AI generation still requires a working provider for generation and independent review.
+Apply supabase/migrations/0012_weekly_unique_exams.sql after migrations 0001–0011 in the Supabase SQL Editor. Then apply supabase/migrations/0013_weekly_exam_balanced_inventory.sql as a **separate** operation; never rerun or replace migration 0012 to obtain new features. Ensure migrations 0005/0009 and protected server credentials are configured. AI generation still requires a working provider for generation and independent review.
 
 ## Official source portals
 - ENEM: https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem
@@ -23,3 +23,7 @@ The catalog is a broad editorial study outline, not a fully transcribed, indepen
 
 ## Verification
 Run npm test, npm run test:design, npm run typecheck and npm run build; then manually validate mobile, RLS, 20-question and 90-question cases across consecutive weeks.
+
+## Follow-up after activating the initial simulator
+Migration 0013 preserves all already reserved questions. It spreads newly reserved questions across available subjects, provides the exact unused approved inventory by subject, shows a bounded 12-week progress summary, and derives topic-level missed-answer evidence for the next personalized study plan. If 0013 is missing, the earlier 0012 simulator remains usable but the new inventory and history indicators are unavailable. The UI must say so.
+The FUVEST 2027 catalog now includes the nine compulsory books taken from the official vestibular page, separately from the general, editorial list. Other edition-specific syllabi remain pending source-by-source review.
