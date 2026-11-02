@@ -162,7 +162,7 @@ const fundamental:Record<string,readonly string[]>={
 
 export const officialSyllabusSources:Record<ExamId,{title:string;url:string;edition:string;note:string}>={
  enem:{title:'Inep — Matrizes de Referência ENEM',url:'https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem',edition:'2026',note:'Confira competências, habilidades, objetos de conhecimento e cartilha de redação.'},
- fuvest:{title:'FUVEST — Programa do Vestibular da USP',url:fuvest2027ReadingSource,edition:'2027',note:'Consulte o programa PDF e a lista atual de obras obrigatórias; ambas podem variar por edição.'},
+ fuvest:{title:'FUVEST — Programa do Vestibular da USP',url:'https://www.fuvest.br/wp-content/uploads/fuvest2027-programa-vestibular.pdf',edition:'2027',note:'Consulte o programa PDF e a lista atual de obras obrigatórias; ambas podem variar por edição.'},
  vunesp:{title:'VUNESP — Vestibular UNESP 2027',url:'https://www.vunesp.com.br/VNSP2514',edition:'UNESP 2027 (referência)',note:'VUNESP organiza vários exames. Confirme qual vestibular e edital se aplicam; este roteiro é do ensino médio.'},
  etec:{title:'Vestibulinho ETEC — Manual e documentação',url:'https://vestibulinho.etec.sp.gov.br/documentos/',edition:'Verificar semestre e modalidade',note:'A base é dos anos finais do ensino fundamental; modalidades técnicas podem cobrar outros conteúdos.'},
  saresp:{title:'Secretaria de Educação SP — Matrizes e Currículo Paulista',url:'https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-08378/pt-br',edition:'Verificar série e ano',note:'SARESP não é vestibular. Matérias e habilidades dependem da série e do ano de aplicação.'}
