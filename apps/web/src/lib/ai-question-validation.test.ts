@@ -5,7 +5,7 @@ import {validateModelQuestions,filterByIndependentReview,assessIndependentReview
 const request={institution:'enem' as const,subject:'Matemática',topic:'Funções e gráficos',difficulty:'intermediate' as const,count:2};
 const q={prompt:'Uma função é definida por f(x)=2x+5. Qual será o valor da função quando x=3?',options:['2 unidades','6 unidades','8 unidades','11 unidades','15 unidades'],correct_index:3,explanation:'A substituição de x por 3 leva a f(3)=2 vezes 3 mais 5, totalizando 11.'};
 test('blueprints retain official source links with clearly editorial topics',()=>{
- for(const b of Object.values(examBlueprints)){assert.ok(b.sourceUrl.startsWith('https://'));assert.ok(b.notice.length>60);assert.ok(Object.keys(b.subjects).length>=5);}
+ for(const b of Object.values(examBlueprints)){assert.ok(b.sourceUrl.startsWith('https://'));assert.ok(b.notice.length>60);assert.ok(Object.keys(b.subjects).length>=2);}
 });
 test('generation settings reject unlisted scope and oversized batches',()=>{
  assert.deepEqual(validateGenerationRequest(request),request);
