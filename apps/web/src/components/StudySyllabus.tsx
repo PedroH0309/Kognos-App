@@ -1,6 +1,6 @@
 'use client';
 
-import {useMemo,useState} from 'react';
+import {useState} from 'react';
 import {activeSyllabi,mergedSyllabus,officialSyllabusSources} from '@/lib/exam-syllabus';
 import {examBlueprints} from '@/lib/exam-blueprints';
 import type {StudentProfile} from '@/lib/profile';
@@ -8,7 +8,7 @@ import type {StudentProfile} from '@/lib/profile';
 export default function StudySyllabus({profile}:{profile:StudentProfile}){
  const [search,setSearch]=useState('');
  const exams=activeSyllabi(profile);
- const catalog=useMemo(()=>mergedSyllabus(exams),[exams.join('|')]);
+ const catalog=mergedSyllabus(exams);
  const needle=search.trim().toLocaleLowerCase('pt-BR');
  const subjects=Object.entries(catalog).map(([subject,topics])=>({
   subject,topics:topics.filter(topic=>!needle||subject.toLocaleLowerCase('pt-BR').includes(needle)||topic.toLocaleLowerCase('pt-BR').includes(needle))
