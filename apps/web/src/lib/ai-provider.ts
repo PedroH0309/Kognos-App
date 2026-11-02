@@ -48,7 +48,7 @@ export function educationalCompletionPayload(
  messages:{role:'system'|'user'|'assistant';content:string}[],
  maxTokens:number,temperature:number
 ):Record<string,unknown>{
- if(provider==='groq'&&job!=='tutor'&&/^openai\\/gpt-oss-(?:20b|120b)$/.test(model)){
+ if(provider==='groq'&&job!=='tutor'&&/^openai\/gpt-oss-(?:20b|120b)$/.test(model)){
   return {model,messages,max_completion_tokens:maxTokens,temperature,stream:false,
    reasoning_effort:'low',include_reasoning:false,response_format:{type:'json_object'}};
  }
@@ -114,7 +114,7 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
   // A truncated GPT-OSS output is incomplete JSON. Retry the same generation
   // at most once with more completion budget; never parse/publish partial items.
   if(job==='generate'&&primary.provider==='groq'
-   &&/^openai\\/gpt-oss-(?:20b|120b)$/.test(primary.model)
+   &&/^openai\/gpt-oss-(?:20b|120b)$/.test(primary.model)
    &&cause instanceof Error&&cause.message==='NVIDIA_TRUNCATED'){
     const higherBudget=Math.min(14000,Math.ceil(maxTokens*1.4));
     if(higherBudget>maxTokens){
