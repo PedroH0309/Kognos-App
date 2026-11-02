@@ -124,7 +124,7 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
   }
   const fallbackDisabled=process.env.AI_REVIEW_FALLBACK_PROVIDER?.trim().toLowerCase()==='none';
   const eligible=job==='review'&&primary.provider==='gemini'&&!fallbackDisabled
-   &&cause instanceof Error&&cause.message==='NVIDIA_UNAVAILABLE';
+   &&cause instanceof Error&&(cause.message==='NVIDIA_UNAVAILABLE'||cause.message==='NVIDIA_TRUNCATED');
   if(!eligible)throw cause;
   const key=process.env.GROQ_API_KEY?.trim();
   if(!key)throw cause;
