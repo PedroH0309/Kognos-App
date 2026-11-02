@@ -101,4 +101,31 @@ revoke all on function public.reserve_kognos_weekly_exam(uuid,text,date,integer)
  from public,anon,authenticated;
 grant execute on function public.reserve_kognos_weekly_exam(uuid,text,date,integer)
  to service_role;
+-- A bounded longitudinal summary, derived from server-graded attempts only.
+create or replace function public.kognos_weekly_exam_history(
+ p_user_id uuid,p_institution text
+) returns jsonb
+language sql stable security definer set search_path=''
+as $
+ with recent as (
+  select e.id,e.week_start,e.question_count
+  from public.kognos_weekly_exams e
+  where e.user_id=p_user_id and e.institution=p_institution
+  order by e.week_start desc limit 12
+ ), scored as (
+  select e.week_start,e.question_count,
+   count(a.question_id)::integer as answered,
+   count(a.question_id) filter (where a.correct)::integer as correct
+  from recent e
+  left join public.kognos_weekly_exam_items i on i.exam_id=e.id and i.user_id=p_user_id
+  left join public.kognos_ai_attempts a on a.question_id=i.question_id and a.user_id=p_user_id
+  group by e.id,e.week_start,e.question_count
+ )
+ select coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
+  'weekStart',week_start,'total',question_count,'answered',answered,'correct',correct
+ ) order by week_start desc),'[]'::jsonb) from scored;
+$;
+revoke all on function public.kognos_weekly_exam_history(uuid,text) from public,anon,authenticated;
+grant execute on function public.kognos_weekly_exam_history(uuid,text) to service_role;
+
 notify pgrst, 'reload schema';
