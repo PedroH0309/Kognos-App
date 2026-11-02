@@ -21,6 +21,7 @@ import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, Cal
 import type { User } from '@supabase/supabase-js';
 import {explainProfileDatabaseError, profileSetupIssue} from '@/lib/profile-setup';
 import {readStoredStudentProfile} from '@/lib/auth-profile-routing';
+import {isSameAuthenticatedAccount,readWorkspaceView,saveWorkspaceView} from '@/lib/workspace-session';
 import { getSupabase, isCloudConfigured } from '@/lib/supabase';
 import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
@@ -252,6 +253,7 @@ export default function KognosApp(){
   const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('dark');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
   const cloud=useMemo(()=>isCloudConfigured(),[]);
   const authRequestId=useRef(0);
+  const authenticatedUserRef=useRef<string|null>(null);
   useEffect(()=>{
    let mounted=true;let sessionEventSeen=false;
    const sb=getSupabase();
@@ -264,6 +266,10 @@ export default function KognosApp(){
    async function resolveAccount(account:User|null){
      const requestId=++authRequestId.current;
      if(!mounted)return;
+     const sameAccount=isSameAuthenticatedAccount(authenticatedUserRef.current,account?.id??null);
+     authenticatedUserRef.current=account?.id??null;
+     // Restore the last page only when the account actually changes or after a reload.
+     if(account&&!sameAccount)setView(readWorkspaceView(window.sessionStorage,account.id));
      setLoading(true);setProfileError('');setUser(account);setProfile(null);setAvatarUrl(null);
      if(!account){setEditing(false);setView('dashboard');setLoading(false);return;}
      // An existing Auth account and a completed learning profile are different states.
@@ -295,12 +301,16 @@ export default function KognosApp(){
        void resolveAccount(null);
      }else if(event==='SIGNED_IN' && session?.user){
        sessionEventSeen=true;
+       // Supabase can emit SIGNED_IN again when a tab regains focus.
+       // Never tear down the current lesson or generation for the same user.
+       if(isSameAuthenticatedAccount(authenticatedUserRef.current,session.user.id))return;
        setAuthOpen(false);setEditing(false);
        void resolveAccount(session.user);
      }else if(event==='PASSWORD_RECOVERY'&&session?.user){
        sessionEventSeen=true;
-       setRecoveryMode(true);setView('settings');
-       void resolveAccount(session.user);
+       setRecoveryMode(true);
+       if(!isSameAuthenticatedAccount(authenticatedUserRef.current,session.user.id))void resolveAccount(session.user);
+       setView('settings');
      }
    });
    void sb.auth.getSession().then(({data,error})=>{
@@ -310,6 +320,10 @@ export default function KognosApp(){
    }).catch(()=>{if(mounted&&!sessionEventSeen){setProfileError('Não foi possível verificar a sessão. Confira sua conexão e tente novamente.');setLoading(false);}});
    return()=>{mounted=false;authRequestId.current++;listener.subscription.unsubscribe();};
   },[reloadRequest]);
+  useEffect(()=>{
+    // Do not overwrite the stored page while the profile is still being resolved.
+    if(user?.id&&profile&&!loading&&!editing)saveWorkspaceView(window.sessionStorage,user.id,view);
+  },[user?.id,profile,loading,editing,view]);
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
  async function signout(){
    const sb=getSupabase();if(sb)await sb.auth.signOut();
@@ -329,7 +343,7 @@ export default function KognosApp(){
  if(loading)return <div className="loading-page"><Logo/><p>Preparando seu espaço de aprendizagem…</p></div>;
  if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
- if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>{setAuthOpen(false);setReloadRequest(x=>x+1);}}/></div>;
+ if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
  if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
  return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><div className="side-heading">SEU ESPAÇO</div><nav className="side-nav" aria-label="Navegação principal">{NAV.map(item=><button key={item.key} onClick={()=>navigate(item.key)} className={`side-nav-item ${view===item.key?'active':''}`} title={item.label} aria-label={item.label} aria-current={view===item.key?'page':undefined}><span><NavIcon view={item.key}/></span>{item.label}{item.status&&<small>◌</small>}</button>)}</nav><div className="sidebar-bottom"><div className="side-promo"><span>✧ KOGNOS IA</span><h3>Seu conhecimento, amplificado.</h3><p>Tire dúvidas com o tutor que se adapta a você.</p><button onClick={()=>setAssistantOpen(true)}>Explorar tutor →</button></div><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside>{mobileMenu&&<button className="mobile-sidebar-scrim" aria-label="Fechar menu lateral" onClick={()=>setMobileMenu(false)}/>}
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
