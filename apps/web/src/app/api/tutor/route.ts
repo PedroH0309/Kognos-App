@@ -30,7 +30,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
   const userId = ctx.userClaims?.id;
   if (!userId) return jsonError('Sua sessão não foi reconhecida. Entre novamente.', 401);
   // The tutoring boundary must also exist on the server, not only in the UI.
-  // Explicit non-educational requests do not consume the student's AI quota.
+  // Explicit non-educational requests are answered without invoking a paid provider.
   const scopeResponse=tutorScopeReply(body.message as string);
   if(scopeResponse)return NextResponse.json({answer:scopeResponse,scope:'pedagogical_only'},{headers:{'Cache-Control':'no-store'}});
   try {
@@ -104,7 +104,6 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       }
       contextText=buildVerifiedPerformanceContext({answered:counted,correct,bySubject:[...totals.values()]});
     }
-    // Only consume quota after all profile/context checks have succeeded.
     // No application-level daily cap. Provider-side rate and billing limits still apply.
     const messages = [
       { role: 'system', content: buildTutorSystemPrompt(profile, effectiveSubject, contextText) },
