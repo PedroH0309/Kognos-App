@@ -33,7 +33,7 @@ test('weekly API never sends the private correct index before the student submit
 test('student plan is grounded in the selected exam and no longer exports ICS',()=>{
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
  const calendar=read('apps/web/src/components/StudyCalendar.tsx');
- assert.match(planner,/StudySyllabus profile=\{profile\}/);
+ assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\}/);
  assert.match(planner,/rebuildSuggestions/);
  assert.doesNotMatch(calendar,/downloadStudyCalendar|Exportar agenda|\.ics/);
 });
@@ -60,4 +60,13 @@ test('planner includes evidence from verified weekly question attempts',()=>{
  assert.match(planner,/weeklyTopics\)/);
  assert.match(adapt,/weeklyWrong/);
  assert.match(adapt,/weeklyBoost/);
+});
+
+test('curriculum checklist shows task-backed evidence without a mastery claim',()=>{
+ const ui=read('apps/web/src/components/StudySyllabus.tsx');
+ const lib=read('apps/web/src/lib/syllabus-progress.ts');
+ assert.match(ui,/syllabusProgress\(catalog,tasks,weakTopics\)/);
+ assert.match(ui,/Não representa nota, proficiência ou domínio do conteúdo/);
+ assert.match(ui,/statusFilter/);
+ assert.match(lib,/lastWrong/);
 });
