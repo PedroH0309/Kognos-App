@@ -7,18 +7,22 @@ import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exa
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
+import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from '@/lib/lesson-ai-links';
+import {findLearningLesson} from '@/lib/learning-catalog';
 
-export type UserAIQuestion={id:string;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
+export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string};
 type Mode='questions'|'simulados';
 const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
 const amountOptions=[1,2,3,4,5].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
-export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{mode:Mode;userId:string|null;onTutor:()=>void;onContextChange:(context:KogStudyContext|null)=>void}) {
- const [institution,setInstitution]=useState<ExamId>('enem');
- const [subject,setSubject]=useState('Matemática');
- const [topic,setTopic]=useState('Porcentagem e razão');
+export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,focusLessonId}:{mode:Mode;userId:string|null;onTutor:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null}) {
+ const preset=focusLessonId?lessonGenerationPreset(focusLessonId):null;
+ const [linkedLessonId,setLinkedLessonId]=useState<string|null>(preset?.lessonId??null);
+ const [institution,setInstitution]=useState<ExamId>(preset?.institution??'enem');
+ const [subject,setSubject]=useState(preset?.subject??'Matemática');
+ const [topic,setTopic]=useState(preset?.topic??'Porcentagem e razão');
  const [difficulty,setDifficulty]=useState<Difficulty>('intermediate');
  const [count,setCount]=useState('3');
  const [questions,setQuestions]=useState<UserAIQuestion[]>([]);
@@ -36,7 +40,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
  const allTopics=[...new Set([...(blueprint.subjects[subject]||[]),...matched.map(x=>x.topic)])];
  const topicOptions=allTopics.map(value=>({value,label:matched.some(x=>x.topic===value)?`${value} · fonte revisada`:value}));
  const inMock=mode==='simulados';
- const bank=useMemo(()=>questions.filter(q=>q.institution===institution&&(!inMock||q.difficulty===difficulty)),[questions,institution,inMock,difficulty]);
+ const linkedLesson=linkedLessonId?findLearningLesson(linkedLessonId):null;
+ const activeLessonLink=linkedLessonId&&validLessonAIReference(linkedLessonId,institution,subject,topic)?linkedLessonId:null;
+ const bank=useMemo(()=>questions.filter(q=>q.institution===institution&&(!inMock||q.difficulty===difficulty)&&(!linkedLessonId||q.lesson_id===linkedLessonId||(!q.lesson_id&&inferLegacyLessonId(q.institution,q.subject,q.topic)===linkedLessonId))),[questions,institution,inMock,difficulty,linkedLessonId]);
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
 
@@ -71,13 +77,19 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
   if(!current||finished){onContextChange(null);return;}
   onContextChange({kind:'generated_question',questionId:current.id,phase:answers[cursor]&&!inMock?'review':'solving'});
  },[current?.id,cursor,answers,finished,inMock,onContextChange]);
- function changeInstitution(value:ExamId){setInstitution(value);const first=Object.keys(examBlueprints[value].subjects)[0];setSubject(first);setTopic(examBlueprints[value].subjects[first][0]);}
- function changeSubject(value:string){setSubject(value);setTopic(blueprint.subjects[value][0]);}
+ function changeInstitution(value:ExamId){
+  setInstitution(value);const preferred=linkedLessonId?lessonGenerationPreset(linkedLessonId,value):null;
+  const exact=preferred?.institution===value?preferred:null;
+  const first=Object.keys(examBlueprints[value].subjects)[0];setSubject(exact?.subject??first);setTopic(exact?.topic??examBlueprints[value].subjects[first][0]);
+  if(!exact)setLinkedLessonId(null);
+ }
+ function changeSubject(value:string){setSubject(value);setTopic(blueprint.subjects[value][0]);setLinkedLessonId(null);}
+ function changeTopic(value:string){setTopic(value);if(linkedLessonId&&!validLessonAIReference(linkedLessonId,institution,subject,value))setLinkedLessonId(null);}
  async function generate(){
   if(!userId)return;
   setGenerating(true);setError('');setNotice('');
   try{
-   const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:Number(count),sourceTopicId:verifiedTopic?.id})});
+   const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:Number(count),sourceTopicId:verifiedTopic?.id,...(activeLessonLink?{lessonId:activeLessonLink}:{})})});
    setQuestions(old=>[...(result.questions||[]),...old].slice(0,100));
    setNotice(`${result.approved} questão(ões) aprovada(s) automaticamente e adicionada(s) ao seu banco e aos simulados. ${result.rejected?`${result.rejected} rejeitada(s) na revisão.`:''}`);
   }catch(e){setError(e instanceof Error?e.message:'Falha ao gerar questões.');}
@@ -104,12 +116,13 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange}:{
    {notice&&<div role="status" className="message success">{notice}</div>}
    {!userId&&<div className="dark-panel ai-signin"><ShieldCheck size={23}/><h2>Questões geradas por IA para sua conta</h2><p>Para criar e guardar questões personalizadas, entre com uma conta Kognos. O acervo demonstrativo continua disponível no outro separador.</p></div>}
    {userId&&!session.length&&<>
+    {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>setLinkedLessonId(null)}>Ver banco completo</button></div>}
     <section className="dark-panel ai-studio-generator">
       <div className="ai-generator-heading"><div><span className="overline">BANCO INTELIGENTE</span><h2><BrainCircuit size={22} aria-hidden="true"/> Gerador de questões com IA</h2><p>Escolha a instituição e o nível. O Kognos gera itens originais e realiza uma revisão automática antes de salvá-los.</p></div><span className="ai-tag"><Sparkles size={14}/> IA · NVIDIA</span></div>
       <div className="ai-generator-grid">
        <KognosSelect label="Instituição" value={institution} options={examOptions} onChange={changeInstitution}/>
        <KognosSelect label="Disciplina" value={subject} options={subjectOptions} onChange={changeSubject}/>
-       <KognosSelect label="Assunto" value={topic} options={topicOptions} onChange={setTopic}/>
+       <KognosSelect label="Assunto" value={topic} options={topicOptions} onChange={changeTopic}/>
        <KognosSelect label="Nível" value={difficulty} options={difficultyOptions} onChange={setDifficulty}/>
        <KognosSelect label="Quantidade" value={count} options={amountOptions} onChange={setCount}/>
       </div>

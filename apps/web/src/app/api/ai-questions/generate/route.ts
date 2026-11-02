@@ -4,6 +4,7 @@ import {createAndReviewQuestions} from '@/lib/nvidia-question-engine';
 import {examBlueprints,validateGenerationRequest} from '@/lib/exam-blueprints';
 import {publicGeneratedQuestion} from '@/lib/ai-question-validation';
 import {safeOfficialUrl} from '@/lib/syllabus-sources';
+import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 
 export const runtime='nodejs';
@@ -16,6 +17,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  try{const raw=await request.text();if(raw.length>2500)return error('Configuração muito grande.',413);body=JSON.parse(raw);}catch{return error('Dados de geração inválidos.',400);}
  const generation=validateGenerationRequest(body);
  if(!generation)return error('Escolha uma instituição, disciplina, assunto e dificuldade válidos (até cinco questões).',400);
+ if(generation.lessonId&&!validLessonAIReference(generation.lessonId,generation.institution,generation.subject,generation.topic))return error('A aula não corresponde ao assunto selecionado. Escolha um tema válido para esta trilha.',400);
  try{
   // Never accept unverified source metadata from the browser. Match an approved topic + source in private tables.
   let verified:VerifiedSyllabusReference|null=null;
@@ -42,12 +44,12 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   const blueprint=examBlueprints[generation.institution];
   const rows=approved.map(q=>({
    user_id:userId,institution:generation.institution,edition:verified?.edition||blueprint.edition,source_title:verified?.sourceTitle||blueprint.sourceTitle,
-   source_url:verified?.sourceUrl||blueprint.sourceUrl,source_topic_id:sourceTopicId,subject:generation.subject,topic:generation.topic,difficulty:generation.difficulty,
+   source_url:verified?.sourceUrl||blueprint.sourceUrl,source_topic_id:sourceTopicId,lesson_id:generation.lessonId||null,subject:generation.subject,topic:generation.topic,difficulty:generation.difficulty,
    prompt:q.prompt,options:q.options,correct_index:q.correct_index,explanation:q.explanation,review_status:'auto_reviewed'
   }));
   const {data, error:insertError}=await ctx.supabaseAdmin.from('kognos_ai_questions').insert(rows)
-    .select('id,institution,edition,source_title,source_url,source_topic_id,subject,topic,difficulty,prompt,options,created_at,review_status');
-  if(insertError||!data)return error('Falha ao salvar questões. Confira a migração 0005 e tente novamente.',503);
+    .select('id,institution,edition,source_title,source_url,source_topic_id,lesson_id,subject,topic,difficulty,prompt,options,created_at,review_status');
+  if(insertError||!data)return error('Falha ao salvar questões. Confira as migrações 0005 e 0007 e tente novamente.',503);
   return NextResponse.json({questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),approved:data.length,rejected:generation.count-data.length},{headers:{'Cache-Control':'no-store'}});
  }catch(e){
   if(e instanceof Error){if(e.message==='NVIDIA_AUTH')return error('Chave NVIDIA inválida ou modelo não autorizado.',502);if(e.message==='NVIDIA_RATE_LIMIT')return error('Limite temporário da NVIDIA atingido.',429);if(e.message==='NVIDIA_NOT_CONFIGURED')return error('Configure NVIDIA_API_KEY no servidor.',503);if(e.message.includes('JSON')||e.message.includes('validação'))return error('A IA retornou um formato inválido. Nenhuma questão foi publicada.',422);}
