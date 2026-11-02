@@ -14,7 +14,7 @@ const verified:VerifiedStudyTopic={
  evidence:'Analisar modelos matemáticos e suas aplicações na interpretação de fenômenos.'
 };
 
-test('approved topics expand only the student's selected exams',()=>{
+test("approved topics expand only the student\u0027s selected exams",()=>{
  const initial=completeExamTopicCatalog(['fuvest']);
  const merged=syllabusWithVerifiedTopics(initial,['fuvest'],[verified]);
  assert.ok(merged.Matemática.includes(verified.topic));
