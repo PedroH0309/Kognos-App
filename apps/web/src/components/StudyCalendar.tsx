@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import type {StudyTask} from '@/lib/cloud-study-model';
 import {getCloudTasks,setCloudTaskDone,setCloudTaskTime,deleteCloudTask} from '@/lib/cloud-study';
+import {exportStudyCalendar} from '@/lib/calendar-export';
 import {
  civilToday,dateAtNoon,dayTasks,formatDay,formatMonth,formatWeekday,
  normalTime,shiftCivilDate,shiftCivilMonth,subjectTone,surroundingWeek,timeRange,upcomingTasks,validCivilDate
@@ -89,6 +90,16 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
   });
  },[monthStart]);
 
+ function downloadCalendar(){
+  if(!tasks.length)return;
+  const file=exportStudyCalendar(tasks);
+  const url=URL.createObjectURL(new Blob([file],{type:'text/calendar;charset=utf-8'}));
+  const anchor=document.createElement('a');
+  anchor.href=url;anchor.download='kognos-estudos.ics';
+  document.body.appendChild(anchor);anchor.click();anchor.remove();
+  window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+  setNotice('Arquivo .ics exportado. Importe no calendário do dispositivo; alterações futuras exigem nova exportação.');
+ }
  function openDay(date:string){
   if(!validCivilDate(date))return;
   setSelected(date);setNotice('');setEditing(null);
@@ -184,7 +195,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     <label className="k-cal-date-jump"><CalendarDays size={18}/><span>{formatMonth(selected)}</span>
      <input type="date" aria-label="Escolher outra data" value={selected}
       onChange={e=>openDay(e.target.value)}/></label>
-    <button type="button" className="k-cal-add-button" onClick={()=>onPlanner(selected)}><Plus size={18}/> <span>Nova atividade</span></button>
+    <button type="button" className="k-cal-add-button" onClick={()=>onPlanner(selected)}><Plus size={18}/> <span>Nova atividade</span></button><button type="button" className="k-cal-export-button" onClick={downloadCalendar} disabled={loading||!tasks.length} title="Exportar para calendário iPhone ou Android">Exportar calendário .ics</button>
    </div>
   </header>
 
@@ -275,6 +286,6 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     </section>
    </aside>
   </div>
-  <p className="k-cal-source-note">A agenda mostra somente atividades reais do seu planejamento. Horários não definidos permanecem separados; os tempos são estimativas de estudo, não registros de tempo efetivo.</p>
+  <p className="k-cal-source-note">A agenda mostra atividades reais do planejamento. Na exportação, tarefas sem horário tornam-se eventos de dia inteiro. O arquivo .ics pode ser importado em calendários compatíveis, mas não oferece sincronização automática.</p>
  </main>;
 }
