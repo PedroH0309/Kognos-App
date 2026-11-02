@@ -1,8 +1,9 @@
 /** Public configuration readiness, never an active credential or provider health check. */
-import {isAIJobConfigured} from './ai-provider.ts';
+import {isAIJobConfigured,resolveAIProvider,type AIProvider} from './ai-provider.ts';
 
 export type AIReadiness = {
   tutorConfigured: boolean;
+  tutorProvider: AIProvider|null;
   nvidiaKeyConfigured: boolean;
   questionGenerationConfigured: boolean;
   supabaseServerConfigured: boolean;
@@ -17,6 +18,7 @@ export function publicAIReadiness(config: Record<string,string|undefined>): AIRe
   const generatorReady=isAIJobConfigured('generate',config)&&isAIJobConfigured('review',config);
   return {
     tutorConfigured:tutorReady && supabaseServerConfigured,
+    tutorProvider:tutorReady?resolveAIProvider('tutor',config)?.provider??null:null,
     nvidiaKeyConfigured:nvidiaConfigured,
     questionGenerationConfigured:generatorReady && supabaseServerConfigured,
     supabaseServerConfigured,
