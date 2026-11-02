@@ -16,12 +16,12 @@ test('My Subjects is an independent panel, not a copy of Learning Trails',()=>{
  assert.match(dashboard,/subjectSnapshots\(attempts\)/);
  assert.doesNotMatch(dashboard,/Entenda o conceito/);
 });
-test('Learn is lesson-first while Trails presents sequenced steps',()=>{
+test('Learn is lesson-first, Trails emphasizes compact sequential steps',()=>{
  assert.match(learn,/mode==='learn'\?'is-learning-first'/);
- assert.match(learn,/mode==='trails'&&<section className="learning-overview"/);
+ assert.match(learn,/isTrail&&<section className="learning-journey-summary"/);
  assert.match(learn,/Ver sequência completa/);
- assert.match(learn,/Etapas da trilha/);
- assert.match(learn,/learning-quick-subjects/);
+ assert.match(learn,/learning-journey-steps/);
+ assert.match(learn,/learning-journey-subject-pills/);
 });
 test('Subjects actions reach the existing learning flow, tutor and practice',()=>{
  assert.match(dashboard,/onOpenTrail\(\{subject:lesson.subject,lessonId:lesson.id\}\)/);

@@ -4,6 +4,16 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.4 — compact guided Learning Paths
+
+- **Visual redesign:** replaces the oversized visitor banner, large global percentage card and repeated tall subject cards with a compact progress strip, responsive subject chips, a focused subject overview and a clear ordered journey. The first lesson becomes visible sooner.
+- **Real guided navigation:** stages have numbered markers, prerequisite links, practice evidence states, a recommended next lesson and previous/next controls. On narrow screens selecting a step scrolls to its lesson, instead of silently updating content out of view.
+- **Resume last opened lesson:** optional user-scoped browser storage remembers the most recently opened original lesson. Explicit navigation from diagnostic results, reviews or Subjects takes precedence over the stored preference; this is not cloud progress synchronization.
+- **Honest progress states:** only saved demonstration attempts count toward practice coverage. Guest, loading, and failed-history states are clearly distinct; reading alone is not treated as an answered question or demonstrated mastery.
+- **Preserved integrations:** Subjects, Learn, Kog's lesson context, demo question practice, keyboard focus, dark/light mode and reduced-motion preferences still work. No migration, new API permission or environment variable is required.
+
+See [Sprint 1.4 notes](docs/KOGNOS_SPRINT_14_GUIDED_JOURNEYS.md). The current catalog remains **20 introductory authorial lessons**, not a complete school curriculum or an official exam archive.
+
 ## What's new in v1.3 — distinct Subjects, Trails and Learn experiences
 
 - **My Subjects is now a dedicated dashboard**, not a second rendering of the trail/lesson screen. Students see seven subject cards, per-subject evidence-based practice coverage, pending review items, dates of recorded practice, a recommended next topic, and topic-level status. Every card links to its real lessons, practice sessions or contextual Kog help.
