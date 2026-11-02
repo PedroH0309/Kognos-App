@@ -33,7 +33,7 @@ test('weekly API never sends the private correct index before the student submit
 test('student plan is grounded in the selected exam and no longer exports ICS',()=>{
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
  const calendar=read('apps/web/src/components/StudyCalendar.tsx');
- assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\}/);
+ assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\} officialTopics=\{officialTopics\}/);
  assert.match(planner,/rebuildSuggestions/);
  assert.doesNotMatch(calendar,/downloadStudyCalendar|Exportar agenda|\.ics/);
 });
@@ -75,7 +75,7 @@ test('manual task subjects include the complete selected exam rather than fixed 
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
  assert.match(planner,/Object\.keys\(syllabusWithVerifiedTopics\(completeExamTopicCatalog\(examScope\),examScope,officialTopics\)\)/);
  assert.match(planner,/permittedSubjects=examSubjects\.length\?examSubjects:subjects/);
- assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\}/);
+ assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\} officialTopics=\{officialTopics\}/);
 });
 
 test('database schema upgrades old institution checks without dropping user questions',()=>{
