@@ -6,8 +6,14 @@ import {examBlueprints} from '@/lib/exam-blueprints';
 import type {StudentProfile} from '@/lib/profile';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 type Question={id:string;subject:string;topic:string;prompt:string;options:string[]};
-type Session={id:string;count:number;answeredIds:string[];correct:number;questions:Question[]};
-type Result={session:Session|null;institution:string;weekStart:string};
+type TopicScore={topic:string;total:number;answered:number;correct:number};
+type SubjectScore={subject:string;total:number;answered:number;correct:number;topics:TopicScore[]};
+type Session={id:string;count:number;answeredIds:string[];correct:number;questions:Question[];subjectScores:SubjectScore[]|null};
+type Inventory={available:number;subjects:{subject:string;available:number}[]};
+type WeekHistory={weekStart:string;total:number;answered:number;correct:number};
+type Result={session:Session|null;institution:string;weekStart:string;
+ inventory?:Inventory|null;history?:WeekHistory[];enhanced?:boolean};
+function requiredNoGeneration(available:number|null,requested:number){return available!==null&&available>=requested;}
 
 export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onContextChange,onTutor}:{
  userId:string|null;profile:StudentProfile;onBank:()=>void;onPlanner:()=>void;
@@ -46,6 +52,8 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
  useEffect(()=>{void refresh();},[refresh]);
  const session=data?.session,current=session?.questions[position];
  const completed=Boolean(session&&session.answeredIds.length>=session.count);
+ const available=typeof data?.inventory?.available==='number'?data.inventory.available:null;
+ const shortage=available===null?null:Math.max(0,count-available);
  const answered=Boolean(session&&current&&session.answeredIds.includes(current.id));
  useEffect(()=>{
   onContextChange(current&&!answered&&!completed?{kind:'generated_question',questionId:current.id,phase:'solving'}:null);
@@ -62,18 +70,21 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
   setGenerating(true);setError('');setNotice('');setGenerated(0);
   const subjects=Object.entries(examBlueprints[exam].subjects);
   let approved=0;
+  const required=Math.max(0,count-(available??0));
+  if(required===0){setGenerating(false);setNotice('O banco já possui questões inéditas suficientes para esta semana.');return;}
   try{
-   for(let batch=0;batch<Math.ceil(count/5);batch++){
+   for(let batch=0;batch<Math.ceil(required/5);batch++){
     const subjectEntry=subjects[batch%subjects.length];
     const subject=subjectEntry[0],topics=subjectEntry[1];
     const topic=topics[Math.floor(batch/subjects.length)%topics.length];
-    const requested=Math.min(5,count-approved);
+    const requested=Math.min(5,required-approved);
     if(!requested)break;
     const response=await api('/api/ai-questions/generate',{method:'POST',
      body:JSON.stringify({institution:exam,subject,topic,difficulty:['basic','intermediate','advanced'][batch%3],count:requested,variation:batch%32})});
     approved+=Number(response.approved)||0;setGenerated(approved);
    }
-   setNotice(String(approved)+' novas questões foram aprovadas e salvas. Agora tente iniciar o simulado. Outras questões podem ser necessárias se já houver reservas anteriores.');
+   await refresh();
+   setNotice(String(approved)+' novas questões foram aprovadas e salvas. Confira o estoque atualizado antes de iniciar. Os itens não aprovados não são incluídos.');
   }catch(cause){
    setError((cause instanceof Error?cause.message:'Limite do provedor ou falha na geração.')+' '+approved+' questões foram aprovadas até o momento. Nenhum item artificial foi acrescentado.');
   }finally{setGenerating(false);}
@@ -88,6 +99,7 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
    setData(old=>old?.session?{...old,session:{...old.session,
     answeredIds:[...old.session.answeredIds,current.id],correct:old.session.correct+Number(Boolean(grade.correct))}}:old);
    window.dispatchEvent(new Event('kognos:ai-answer-recorded'));
+   if(session&&session.answeredIds.length+1===session.count)await refresh();
   }catch(cause){setError(cause instanceof Error?cause.message:'Falha ao registrar a resposta.');}
   finally{setBusy(false);}
  }
@@ -113,9 +125,15 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
      <input type="number" min={20} max={90} step={1} value={count} onChange={e=>setCount(Math.min(90,Math.max(20,Number(e.target.value)||20)))}/>
     </label>
     <p>Ao começar, o Kognos reserva perguntas não usadas. Uma avaliação já iniciada permanece igual até a próxima semana.</p>
+    {available!==null?<div className="k-weekly-inventory" aria-live="polite">
+      <strong>{available} questões inéditas disponíveis</strong>
+      {shortage!==null&&shortage>0?<p>Faltam {shortage} questões novas e aprovadas para montar um simulado de {count} itens.</p>:<p>Há questões suficientes para o tamanho escolhido, sujeitas à verificação final do servidor.</p>}
+      <div className="k-weekly-subjects">{data?.inventory?.subjects.map(item=>
+       <span key={item.subject}>{item.subject}: <strong>{item.available}</strong></span>)}</div>
+     </div>:<p className="privacy-note">Para visualizar o estoque e distribuir as questões entre disciplinas, aplique a migração 0013 no Supabase. A reserva original de 0012 permanece disponível.</p>}
     <div className="k-weekly-actions">
-     <button type="button" className="btn primary" disabled={busy||generating} onClick={()=>void create()}>{busy?'Reservando…':'Iniciar '+count+' questões inéditas'}</button>
-     <button type="button" className="btn outline" disabled={busy||generating} onClick={()=>void prepare()}>{generating?'Gerando e revisando… '+generated+' aprovadas':'Gerar até '+count+' novas questões com IA'}</button>
+     <button type="button" className="btn primary" disabled={busy||generating||(shortage!==null&&shortage>0)} onClick={()=>void create()}>{busy?'Reservando…':'Iniciar '+count+' questões inéditas'}</button>
+     <button type="button" className="btn outline" disabled={busy||generating||requiredNoGeneration(available,count)} onClick={()=>void prepare()}>{generating?'Gerando e revisando… '+generated+' aprovadas':'Gerar '+(shortage===null?count:shortage)+' novas questões com IA'}</button>
      <button type="button" className="btn outline" onClick={onBank}>Banco de questões</button>
     </div>
     <p className="privacy-note">A geração pode ser parcial, depende de cotas e de revisão independente. O Kognos não preenche o simulado com perguntas repetidas quando faltam questões novas.</p>
@@ -124,6 +142,18 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
    completed?<section className="dark-panel k-weekly-done">
     <span className="overline">SIMULADO CONCLUÍDO</span><h2>{session.correct} de {session.count} acertos</h2>
     <p>Suas respostas estão registradas. A próxima semana terá outra seleção de itens inéditos, se o banco tiver quantidade suficiente.</p>
+    {session.subjectScores&&<div className="k-weekly-report" aria-label="Desempenho por disciplina">
+      <h3>Seu resultado por disciplina</h3>
+      <p>Prioridades de estudo com base somente nas questões respondidas neste simulado.</p>
+      {session.subjectScores.map(item=><article key={item.subject}>
+       <div className="k-weekly-score-heading"><strong>{item.subject}</strong><span>{item.correct}/{item.total} acertos</span></div>
+       <div className="k-weekly-score-bar" role="progressbar" aria-label={'Acertos em '+item.subject}
+        aria-valuemin={0} aria-valuemax={item.total} aria-valuenow={item.correct}>
+        <span style={{width:Math.round(100*item.correct/item.total)+'%'}}/></div>
+       {item.topics.filter(topic=>topic.correct<topic.total).length>0&&
+        <small>Revisar: {item.topics.filter(topic=>topic.correct<topic.total).map(topic=>topic.topic).join(' · ')}</small>}
+      </article>)}
+     </div>}
     <div className="k-weekly-actions"><button className="btn primary" onClick={onPlanner}>Reorganizar estudos</button><button className="btn outline" onClick={onTutor}>Conversar com Kog</button></div>
    </section>:
    current?<section className="dark-panel k-weekly-question">
@@ -140,5 +170,14 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
       <button className="btn primary" onClick={next}>Próxima questão</button>}</div>
     <p className="privacy-note">As respostas são avaliadas no servidor. O gabarito não é enviado antes da tentativa.</p>
    </section>:<section className="dark-panel"><p>Não foi possível recuperar a próxima questão.</p><button className="btn outline" onClick={()=>void refresh()}>Recarregar</button></section>}
+   {(!session||completed)&&Array.isArray(data?.history)&&data.history.length>0&&
+    <section className="dark-panel k-weekly-history" aria-label="Histórico de simulados">
+      <h2>Seu histórico semanal</h2><p>Resultados de até 12 semanas, sem comparação de nota oficial ou previsão de aprovação.</p>
+      <div>{data.history.map(week=><div key={week.weekStart} className="k-weekly-history-item">
+       <strong>{new Date(week.weekStart+'T12:00:00').toLocaleDateString('pt-BR')}</strong>
+       <span>{week.answered} de {week.total} respondidas</span>
+       <span>{week.correct} acertos{week.answered===week.total?' · '+Math.round(100*week.correct/week.total)+'%':''}</span>
+      </div>)}</div>
+    </section>}
  </main>;
 }
