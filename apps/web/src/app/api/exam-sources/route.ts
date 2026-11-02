@@ -2,6 +2,7 @@ import {NextResponse} from 'next/server';
 import {withSupabase} from '@supabase/server';
 import {editorAuthorized,isUuid,parseImportSubmission,retrieveSourceText,sourceFingerprint} from '@/lib/syllabus-sources';
 import {suggestSourceTopics} from '@/lib/syllabus-extractor';
+import {isAIJobConfigured} from '@/lib/ai-provider';
 import {visibleCatalog,type DbSyllabusSource,type DbSyllabusTopic} from '@/lib/syllabus-catalog';
 
 export const runtime='nodejs';
@@ -31,7 +32,7 @@ const list=withSupabase({auth:'user',audience:'authenticated',issuer:'https://kt
 const ingest=withSupabase({auth:'user',audience:'authenticated',issuer:'https://ktjdlvojnunjntwyodot.supabase.co/auth/v1'},async(request,ctx)=>{
  const userId=ctx.userClaims?.id;
  if(!editor(userId))return error('A importação de matrizes exige permissão editorial.',403);
- if(!process.env.NVIDIA_API_KEY)return error('Configure a API NVIDIA no servidor.',503);
+ if(!isAIJobConfigured('generate'))return error('Configure um provedor de IA para extrair tópicos de documentos oficiais (Groq, Gemini ou NVIDIA).',503);
  let raw:unknown;
  try{const body=await request.text();if(body.length>30000)return error('Documento excede o limite de texto.',413);raw=JSON.parse(body);}catch{return error('Dados inválidos.',400);}
  const submission=parseImportSubmission(raw);
@@ -61,7 +62,8 @@ const ingest=withSupabase({auth:'user',audience:'authenticated',issuer:'https://
   institution:submission.institution,edition:submission.edition,source_title:submission.sourceTitle,source_url:submission.sourceUrl,
   source_method:submission.method,content_sha256:hash,imported_by:userId,review_status:'pending'
  }).select('id').single();
- if(insertError||!created)return error('Não foi possível registrar a fonte. Confira migração 0006 e duplicidades.',503);
+ if(insertError?.code==='23514')return error('Instituição ainda não habilitada no catálogo. Execute a migração 0014 antes de importar este edital.',503);
+ if(insertError||!created)return error('Não foi possível registrar a fonte. Confira as migrações 0006 e 0014 e possíveis duplicidades.',503);
  const {error:topicInsertError}=await ctx.supabaseAdmin.from('kognos_exam_topics').insert(extracted.map(item=>({
   source_id:created.id,subject:item.subject,topic:item.topic,evidence_excerpt:item.evidence,review_status:'pending'
  })));
