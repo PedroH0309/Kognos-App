@@ -1,0 +1,122 @@
+/* Kognos form repair — mobile planner date input.
+ * Scoped to the task form so account/auth input spacing remains unchanged.
+ * Base .field-stack input adds margin-top:7px to every descendant, which
+ * also affected the nested date input and pushed its text below the frame.
+ */
+.app-layout .study-planner .planner-form-grid {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:14px;
+ align-items:start;
+ min-width:0;
+ width:100%;
+}
+.app-layout .study-planner .planner-form-grid > * {
+ min-width:0;
+ width:100%;
+ align-self:start;
+}
+.app-layout .study-planner .planner-form-grid .kg-date-field {
+ display:flex;
+ min-width:0;
+ flex-direction:column;
+}
+.app-layout .study-planner .planner-form-grid .kg-field-title {
+ margin:0 0 9px;
+ line-height:1.4;
+ min-height:17px;
+ color:var(--txt);
+}
+.app-layout .study-planner .planner-form-grid .kg-date-box {
+ display:flex;
+ align-items:center;
+ gap:0;
+ flex:0 0 auto;
+ min-width:0;
+ width:100%;
+ height:48px;
+ min-height:48px;
+ box-sizing:border-box;
+ padding:0 6px 0 2px;
+ overflow:visible;
+ background:var(--field-bg);
+ border:1px solid var(--line);
+ border-radius:12px;
+}
+.app-layout .study-planner .planner-form-grid .kg-date-box > input {
+ display:block;
+ box-sizing:border-box;
+ flex:1 1 auto;
+ min-width:0;
+ width:0;
+ height:100%;
+ max-height:46px;
+ min-height:0;
+ padding:0 11px;
+ margin:0;
+ border:0!important;
+ outline:0;
+ background:transparent;
+ color:var(--txt);
+ font-size:13px;
+ line-height:normal;
+ text-align:left;
+ appearance:none;
+}
+.app-layout .study-planner .planner-form-grid .kg-date-box > input:focus {
+ box-shadow:none;
+}
+.app-layout .study-planner .planner-form-grid .kg-date-icon-button {
+ flex:0 0 34px;
+ height:34px;
+ width:34px;
+ margin:0;
+ padding:0;
+ display:grid;
+ align-items:center;
+ justify-items:center;
+ border:0;
+ border-radius:9px;
+ background:transparent;
+ color:var(--sub);
+}
+.app-layout .study-planner .planner-form-grid .kg-date-icon-button.calendar {
+ border-left:1px solid var(--line);
+ border-radius:0 8px 8px 0;
+}
+.app-layout .study-planner .planner-form-grid .kg-date-box:focus-within {
+ border-color:#38CDE5;
+ box-shadow:0 0 0 3px #38CDE524;
+}
+.app-layout .study-planner .planner-form-grid .kg-date-icon-button:hover {
+ color:var(--txt);
+ background:var(--panel-2);
+}
+.app-layout .study-planner .planner-form-grid > label > input {
+ box-sizing:border-box;
+ width:100%;
+ min-width:0;
+ min-height:48px;
+ margin-top:9px;
+}
+.app-layout .study-planner .planner-form-grid .kg-calendar {
+ box-sizing:border-box;
+ min-width:0;
+ max-width:100%;
+ z-index:125;
+}
+@media(max-width:700px) {
+ .app-layout .study-planner .planner-form-grid {
+  grid-template-columns:minmax(0,1fr);
+  gap:15px;
+  align-items:start;
+ }
+ .app-layout .study-planner .planner-form-grid .kg-calendar {
+  position:relative;
+  top:auto;
+  bottom:auto;
+  left:auto;
+  right:auto;
+  margin-top:8px;
+ }
+}
