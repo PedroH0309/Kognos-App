@@ -19,6 +19,7 @@ type Props={
  userId:string|null;
  onPlanner:(date:string)=>void;
  onTutor:()=>void;
+ onDiagnostic:()=>void;
  onContextChange:(context:KogStudyContext|null)=>void;
 };
 const demoStorageKey='kognos_tasks_v1_guest';
@@ -34,7 +35,7 @@ function TaskSubjectIcon({subject}:{subject:string}){
  return <span className={`k-cal-subject-icon k-tone-${tone}`}><Icon size={21} strokeWidth={1.8} aria-hidden="true"/></span>;
 }
 
-export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}:Props){
+export default function StudyCalendar({userId,onPlanner,onTutor,onDiagnostic,onContextChange}:Props){
  const [selected,setSelected]=useState(()=>civilToday());
  const [tasks,setTasks]=useState<StudyTask[]>([]);
  const [loading,setLoading]=useState(true);
@@ -170,6 +171,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     <small>{item.subject} · {timeRange(item.startTime,item.minutes)||`${item.minutes} min · sem horário`}</small>
    </div>
    <div className="k-cal-task-actions">
+    {item.subject==='Reavaliação'&&<button type="button" className="k-cal-review-launch" onClick={onDiagnostic} title="Iniciar a reavaliação semanal">Iniciar</button>}
     <button type="button" className="k-cal-check-task" aria-label={item.done?`Marcar ${item.title} como pendente`:`Concluir ${item.title}`}
      title={item.done?'Marcar pendente':'Concluir atividade'} aria-pressed={item.done}
      disabled={busyId!==null} onClick={()=>void mutate(item,'done')}>
@@ -286,6 +288,6 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     </section>
    </aside>
   </div>
-  <p className="k-cal-source-note">A agenda mostra atividades reais do planejamento. Na exportação, tarefas sem horário tornam-se eventos de dia inteiro. O arquivo .ics pode ser importado em calendários compatíveis, mas não oferece sincronização automática.</p>
+  <p className="k-cal-source-note">A agenda mostra somente atividades reais do seu planejamento. Na exportação, tarefas sem horário tornam-se eventos de dia inteiro. O arquivo .ics pode ser importado em calendários compatíveis, mas não oferece sincronização automática.</p>
  </main>;
 }
