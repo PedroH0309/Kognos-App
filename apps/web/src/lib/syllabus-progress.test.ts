@@ -36,3 +36,22 @@ test('zero completed tasks is not mistaken for academic mastery',()=>{
  assert.deepEqual([result.total,result.studied,result.planned,result.review],[1,0,0,0]);
  assert.equal(result.subjects[0].topics[0].state,'not_started');
 });
+
+test('different FUVEST compulsory books must not share a studied state',()=>{
+ const first='Leitura obrigatória FUVEST 2027: Opúsculo Humanitário — Nísia Floresta';
+ const second='Leitura obrigatória FUVEST 2027: Nebulosas — Narcisa Amália';
+ const task=make('fuvest1','Literatura','Estudar Literatura: '+first+' · conceito e exemplo',true);
+ assert.equal(taskCoversSyllabusTopic(task,'Literatura',first),true);
+ assert.equal(taskCoversSyllabusTopic(task,'Literatura',second),false);
+ const progress=syllabusProgress({Literatura:[first,second]},[task],[]);
+ assert.deepEqual(progress.subjects[0].topics.map(item=>item.state),['studied','not_started']);
+});
+test('only a substantial prefix of truly truncated topic titles counts',()=>{
+ const topic='Uma explicação extensa de métodos de contagem, arranjos, combinações e análise probabilística aplicada a situações de tomada de decisão';
+ const title=('Estudar Matemática: '+topic+' · conceito e exemplo').slice(0,120);
+ const task=make('long','Matemática',title,true);
+ assert.equal(title.length,120);
+ assert.equal(taskCoversSyllabusTopic(task,'Matemática',topic),true);
+ assert.equal(taskCoversSyllabusTopic(task,'Matemática',topic.replace('arranjos','integrais')),false);
+ assert.equal(taskCoversSyllabusTopic(make('manual','Matemática',topic,true),'Matemática',topic),true);
+});
