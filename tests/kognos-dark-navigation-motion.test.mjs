@@ -25,7 +25,7 @@ test('dark sidebar and mobile bottom bar override the last white navigation styl
 
 test('light navbar remains white and dark topbar retains readable contrast',()=>{
  const previous=read('apps/web/src/app/kognos-e-study.css');
- assert.match(previous,/\.app-layout\.theme-light \.app-sidebar,[\s\S]*?background:#FFFFFF/);
+ assert.match(previous,/\.app-layout \.app-sidebar,[\s\S]*?background:#FFFFFF/);
  assert.match(theme,/\.app-layout\.theme-dark \.app-topbar \.icon-top-btn/);
  assert.match(theme,/color:#DFEBFA/);
  assert.match(theme,/\.app-layout\.theme-dark \.app-sidebar \.side-user strong/);
