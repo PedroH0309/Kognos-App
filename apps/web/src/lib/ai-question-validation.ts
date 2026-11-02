@@ -34,20 +34,47 @@ export function validateModelQuestions(raw:string,request:GenerationRequest):Val
  if(!out.length)throw new Error('Nenhuma questão passou pela validação estrutural.');
  return out;
 }
-export function filterByIndependentReview(raw:string,items:ValidatedQuestion[]):ValidatedQuestion[]{
+export type ReviewAssessment={
+ approved:ValidatedQuestion[];
+ missingIndexes:number[];
+ rejectedIndexes:number[];
+ disputedIndexes:number[];
+};
+/** A missing/invalid review is NOT a rejection of the underlying question:
+ * try reviewing those candidates again before paying to generate replacements.
+ * Neither missing reviews nor answer disagreements are ever approved.
+ */
+export function assessIndependentReview(raw:string,items:ValidatedQuestion[]):ReviewAssessment{
  if(raw.length>16000)throw new Error('Revisão acima do limite.');
  const parsed=cleanJson(raw);
- const entries=(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))?(parsed as Record<string,unknown>).reviews:parsed;
+ const entries=(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))
+   ?(parsed as Record<string,unknown>).reviews:parsed;
  if(!Array.isArray(entries))throw new Error('A revisão automática não retornou o formato esperado.');
  const byIndex=new Map<number,ModelReview>();
  for(const v of entries){
   if(!v||typeof v!=='object'||Array.isArray(v))continue;
   const r=v as Record<string,unknown>;
-  if(!Number.isInteger(r.index)||Number(r.index)<0||Number(r.index)>=items.length||typeof r.approved!=='boolean'||!Number.isInteger(r.correct_index)||Number(r.correct_index)<0||Number(r.correct_index)>4)continue;
+  if(!Number.isInteger(r.index)||Number(r.index)<0||Number(r.index)>=items.length||
+     typeof r.approved!=='boolean'||!Number.isInteger(r.correct_index)||
+     Number(r.correct_index)<0||Number(r.correct_index)>4)continue;
   if(byIndex.has(Number(r.index)))continue;
-  byIndex.set(Number(r.index),{index:Number(r.index),approved:r.approved,correct_index:Number(r.correct_index),reason:typeof r.reason==='string'?r.reason.slice(0,500):''});
+  byIndex.set(Number(r.index),{
+   index:Number(r.index),approved:r.approved,correct_index:Number(r.correct_index),
+   reason:typeof r.reason==='string'?r.reason.slice(0,500):''
+  });
  }
- return items.filter((q,i)=>byIndex.get(i)?.approved===true&&byIndex.get(i)?.correct_index===q.correct_index);
+ const approved:ValidatedQuestion[]=[],missingIndexes:number[]=[],rejectedIndexes:number[]=[],disputedIndexes:number[]=[];
+ for(let i=0;i<items.length;i++){
+  const response=byIndex.get(i);
+  if(!response){missingIndexes.push(i);continue;}
+  if(!response.approved){rejectedIndexes.push(i);continue;}
+  if(response.correct_index!==items[i].correct_index){disputedIndexes.push(i);continue;}
+  approved.push(items[i]);
+ }
+ return {approved,missingIndexes,rejectedIndexes,disputedIndexes};
+}
+export function filterByIndependentReview(raw:string,items:ValidatedQuestion[]):ValidatedQuestion[]{
+ return assessIndependentReview(raw,items).approved;
 }
 /** Exact normalized de-duplication against the student's existing bank. */
 export function excludePreviouslyGenerated(items:readonly ValidatedQuestion[],existingPrompts:readonly string[]):ValidatedQuestion[]{
