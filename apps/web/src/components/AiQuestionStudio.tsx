@@ -224,7 +224,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
     <IntegrationSetupNotice readiness={readiness}/>
     {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>{setLinkedLessonId(null);setBankScope('all');}}>Ver banco completo</button></div>}
     <section className="dark-panel ai-studio-generator">
-      <div className="ai-generator-heading"><div><span className="overline">BANCO INTELIGENTE</span><h2><BrainCircuit size={22} aria-hidden="true"/> Gerador de questões com IA</h2><p>Escolha a instituição e o nível. O Kognos gera itens originais e realiza uma revisão automática antes de salvá-los.</p></div><span className="ai-tag"><Sparkles size={14}/> IA · revisão automática</span></div>
+      <div className="ai-generator-heading"><div><span className="overline">BANCO INTELIGENTE</span><h2><BrainCircuit size={22} aria-hidden="true"/> Gerador de questões com IA</h2><p>Escolha a instituição e o nível. O Kognos gera itens originais e realiza uma revisão automática antes de salvá-los.</p></div><span className="ai-tag"><Sparkles size={14}/> {readiness.status?.freeOnlyMode?'IA · modo gratuito':'IA · revisão automática'}</span></div>
       <div className="ai-generator-grid">
        <KognosSelect label="Instituição" value={institution} options={examOptions} onChange={changeInstitution}/>
        <KognosSelect label="Disciplina" value={subject} options={subjectOptions} onChange={changeSubject}/>
