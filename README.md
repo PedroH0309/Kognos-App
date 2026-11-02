@@ -207,3 +207,17 @@ The automated Node tests and syntax checks run locally. The production Next.js b
 Issues and pull requests are welcome from authorized contributors. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Contributions do not automatically make the proprietary source code open source.
 
 **© 2026 PedroH0309. All rights reserved.**
+
+
+## What's new in v1.6 — Onboarding recovery and a scalable AI bank
+
+- Correctly centered iconography in onboarding preference and accessibility chips (keyboard and screen-reader labels retained).
+- Actionable feedback for the Supabase `public.profiles` schema-cache error. **This is a database migration issue**: install `0001` before `0003`, and run all other numbered migrations in order. See [`docs/KOGNOS_SUPABASE_PROFILE_SETUP.md`](docs/KOGNOS_SUPABASE_PROFILE_SETUP.md) and the read-only `supabase/diagnostics/check_core_setup.sql`.
+- The original **20-item demonstration bank** is now explicitly labeled. The small single-item practice result is compact, shows **current-session** accuracy, and allows returning, retrying or switching to AI.
+- Anonymous visitors can open the existing sign-in dialog directly from AI or demonstration practice; signing in preserves the Question Bank or Mock Exams route.
+- The **private AI question bank** now uses authenticated owner-scoped server filtering and **40-question paginated results**, with an explicit total and a **Load more** action. This replaces the former 100-row API cap and 20-row visual preview.
+- Generation allows requesting **up to 10 original questions** via two sequential, quota-controlled, five-question NVIDIA calls. Each batch is server-reviewed, saved privately, and available in the mock pool. Duplicate prompts within the same student's topic are not added twice.
+
+### Scope and setup
+
+The app does **not** silently generate an unlimited public question catalog: the student must sign in, initiate generation, have valid Supabase and NVIDIA server configuration, and have remaining AI quota. Generated items are personal, original and automatically reviewed, **not certified official questions**. Server-side pagination does not alter answer-key access controls. Existing Supabase migrations through `0007` remain required; v1.6 introduces **no new database migration**.

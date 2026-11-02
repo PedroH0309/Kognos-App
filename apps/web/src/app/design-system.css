@@ -1215,3 +1215,38 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
 .app-layout .ai-lesson-focus strong{font-size:12px;color:var(--txt);}
 .app-layout .ai-lesson-focus small{font-size:11px;line-height:1.5;color:var(--sub);}
 @media(max-width:680px){.app-layout .ai-lesson-focus{align-items:flex-start;flex-wrap:wrap}.app-layout .ai-lesson-focus>span{flex-basis:calc(100% - 42px)}.app-layout .ai-lesson-focus button{margin-left:28px;}}
+
+/* v1.6 — accessible demonstration labels and compact single-question results. */
+.app-layout .practice-demo-note {display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 16px;margin:10px 0 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);}
+.app-layout .practice-demo-note span {display:flex;flex-direction:column;gap:4px;min-width:0;}
+.app-layout .practice-demo-note strong {font-size:12px;line-height:1.35;color:var(--txt);}
+.app-layout .practice-demo-note small {font-size:11px;line-height:1.5;color:var(--sub);}
+.app-layout .practice-demo-note .btn {white-space:normal;}
+.app-layout .compact-practice-result {max-width:1000px;padding:clamp(18px,3vw,29px);}
+.app-layout .practice-finish-head {display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.app-layout .practice-finish-head h2 {font-size:clamp(21px,2.1vw,26px);margin:8px 0;}
+.app-layout .practice-finish-head p {font-size:12px;line-height:1.65;color:var(--sub);margin:0;max-width:650px;}
+.app-layout .practice-result-emblem {width:48px;height:48px;border-radius:15px;display:grid;place-items:center;flex:none;color:var(--accent-400);border:1px solid var(--line);background:var(--panel-2);font-size:25px;}
+.app-layout .practice-finish-metrics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0;}
+.app-layout .practice-finish-metrics>div {display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;padding:14px 16px;border:1px solid var(--line);background:var(--panel-2);border-radius:12px;min-width:0;}
+.app-layout .practice-finish-metrics strong {font-size:clamp(20px,2.3vw,27px);font-weight:760;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--txt);}
+.app-layout .practice-finish-metrics small {font-size:10px;line-height:1.5;color:var(--sub);}
+.app-layout .practice-finish-actions {display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.app-layout .compact-practice-result .privacy-note {font-size:11px;color:var(--sub);margin:15px 0 0;}
+@media(max-width:640px){.app-layout .practice-finish-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}.app-layout .practice-finish-metrics>div:last-child{grid-column:span 2;}.app-layout .practice-finish-actions .btn{flex:1 1 140px;white-space:normal;}}
+
+/* v1.6 — personal AI bank can grow beyond the initial preview. */
+.app-layout .ai-signin-action {display:flex;align-items:flex-start;gap:17px;max-width:800px;}
+.app-layout .ai-signin-action>svg {flex:none;margin-top:4px;}
+.app-layout .ai-signin-action h2 {font-size:clamp(18px,2vw,22px);margin:0 0 8px;}
+.app-layout .ai-signin-action p {font-size:12px;line-height:1.7;color:var(--sub);max-width:550px;margin:0 0 15px;}
+.app-layout .ai-bank-scope {display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;margin:0 0 14px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:4px;}
+.app-layout .ai-bank-scope button {background:transparent;color:var(--sub);border:1px solid transparent;border-radius:8px;font-size:11px;font-weight:700;min-height:36px;padding:7px 12px;}
+.app-layout .ai-bank-scope button.selected {background:var(--accent-600);color:#fff;}
+.app-layout .ai-bank-scope button:focus-visible {outline:2px solid var(--accent-400);outline-offset:2px;}
+.app-layout .ai-bank-counter {max-width:100%;}
+.app-layout .ai-bank-counter span {display:flex;flex-direction:column;gap:4px;min-width:0;line-height:1.5;}
+.app-layout .ai-bank-counter small {font-size:10px;color:var(--dim);}
+.app-layout .ai-load-more {margin-top:15px;width:100%;white-space:normal;}
+.app-layout .ai-end-of-results {font-size:11px;color:var(--sub);text-align:center;margin:16px 0 0;}
+@media(max-width:600px){.app-layout .ai-signin-action{padding:18px;gap:12px;}.app-layout .ai-bank-scope{display:flex;width:100%;}.app-layout .ai-bank-scope button{flex:1;}.app-layout .ai-bank-counter{width:100%;}}
