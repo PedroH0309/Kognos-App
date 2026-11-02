@@ -113,7 +113,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       ...sanitizeHistory(body.history),
       { role: 'user', content: (body.message as string).trim() },
     ];
-    const answer = await requestAI('tutor',messages,1250,0.55);
+    const answer = await requestAI('tutor',messages as {role:'system'|'user'|'assistant';content:string}[],1250,0.55);
     return NextResponse.json(
       { answer: answer.slice(0, 12000) },
       { headers: { 'Cache-Control': 'no-store' } }
