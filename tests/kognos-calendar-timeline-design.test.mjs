@@ -31,7 +31,7 @@ test('calendar selects dates and uses real persisted tasks without sample sessio
  }
  assert.match(calendar,/selectedData\.unscheduled/);
  assert.match(calendar,/aria-label="Selecionar dia"/);
- assert.match(calendar,/aria-label="Abrir calendário mensal"/);
+ assert.match(calendar,/monthExpanded\?\x27Fechar calendário mensal\x27:\x27Abrir calendário mensal\x27/);
  assert.match(calendar,/type="time"/);
  assert.match(calendar,/type="date"/);
  assert.match(calendar,/Concluir atividade/);
