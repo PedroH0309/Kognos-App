@@ -57,7 +57,7 @@ test('planner includes evidence from verified weekly question attempts',()=>{
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
  const adapt=read('apps/web/src/lib/personalized-study-cycle.ts');
  assert.match(planner,/setWeeklyTopics/);
- assert.match(planner,/weeklyTopics\)/);
+ assert.match(planner,/weeklyTopics,officialTopics\)/);
  assert.match(adapt,/weeklyWrong/);
  assert.match(adapt,/weeklyBoost/);
 });
