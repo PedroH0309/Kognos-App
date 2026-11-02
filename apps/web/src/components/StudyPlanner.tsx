@@ -2,7 +2,8 @@
 import {useState,useEffect} from 'react';
 import {CalendarDays} from 'lucide-react';
 import StudySyllabus from './StudySyllabus';
-import {activeSyllabi,mergedSyllabus} from '@/lib/exam-syllabus';
+import {activeSyllabi} from '@/lib/exam-syllabus';
+import {completeExamTopicCatalog} from '@/lib/exam-blueprints';
 import {validCivilDate} from '@/lib/calendar-model';
 import { KognosDateField, KognosSelect, type KognosOption } from './KognosFields';
 import type {StudentProfile} from '@/lib/profile';
@@ -45,7 +46,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const [weeklyLoading,setWeeklyLoading]=useState(false),[weeklyError,setWeeklyError]=useState('');
   const {data:aiEvidence,loading:aiEvidenceLoading,error:aiEvidenceError}=useAIStudyProgress(userId);
   const priority=studyPriorities(history,aiEvidence);
-  const examSubjects=Object.keys(mergedSyllabus(activeSyllabi(profile)));
+  const examSubjects=Object.keys(completeExamTopicCatalog(activeSyllabi(profile)));
   const permittedSubjects=examSubjects.length?examSubjects:subjects;
   const subjectOptions=[...new Set([...permittedSubjects,...tasks.map(t=>t.subject)])]
    .map(s=>({value:s,label:s})) as KognosOption<string>[];
