@@ -90,8 +90,10 @@ export function createPersonalizedStudyWeek(
    if(minutes<15)break;
    const weak=mistakes.find(x=>x.subject===chosen.subject);
    const availableTopics=syllabus[chosen.subject]||[];
-   const topicIndex=((Math.floor(new Date(date+'T12:00:00').getTime()/86400000/7)+(useCount.get(chosen.subject)||0))%Math.max(1,availableTopics.length));
-   const topic=weak?.topic||(chosen.needsReview?chosen.topic:null)||availableTopics[topicIndex]||chosen.topic;
+   // Work through the whole exam checklist before rotating any non-priority
+   // topic; completed historical tasks remain evidence of prior coverage.
+   const unplanned=availableTopics.find(item=>!tasks.some(task=>task.subject===chosen.subject&&task.title.toLocaleLowerCase('pt-BR').includes(item.toLocaleLowerCase('pt-BR'))));
+   const topic=weak?.topic||(chosen.needsReview?chosen.topic:null)||unplanned||availableTopics[0]||chosen.topic;
    const goal=chosen.needsReview||Boolean(weak)?'Revisar':'Estudar';
    const style=slot===slots-1?'questões e checagem':'conceito e exemplo';
    tasks.push({
