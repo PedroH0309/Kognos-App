@@ -120,3 +120,47 @@
   margin-top:8px;
  }
 }
+
+
+/* Planner card: consistent spacing between actions, form and date input. */
+.app-layout .study-planner .planner-grid > aside.dark-panel {
+ min-width:0;
+ padding:clamp(18px,2.1vw,26px);
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > h2 {
+ margin:0 0 12px;
+ line-height:1.3;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > p.muted {
+ margin:0 0 18px;
+ line-height:1.65;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > .btn.full {
+ width:100%;
+ min-height:46px;
+ margin:0;
+ padding:12px 14px;
+ line-height:1.35;
+ white-space:normal;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > .btn.full + .btn.full {
+ margin-top:12px;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > .section-divider {
+ height:1px;
+ margin:24px 0;
+}
+.app-layout .study-planner .planner-grid .field-stack {
+ min-width:0;
+ display:flex;
+ flex-direction:column;
+ gap:15px;
+}
+.app-layout .study-planner .planner-grid .field-stack h3 {
+ margin:0 0 2px;
+ line-height:1.35;
+}
+@media(max-width:530px) {
+ .app-layout .study-planner .planner-grid > aside.dark-panel {padding:18px 16px;}
+ .app-layout .study-planner .planner-grid > aside.dark-panel > .btn.full + .btn.full {margin-top:11px;}
+}
