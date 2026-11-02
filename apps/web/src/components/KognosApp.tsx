@@ -275,7 +275,7 @@ export default function KognosApp(){
      if(error && /avatar_path/i.test(error.message) && /column|schema cache|does not exist/i.test(error.message)){
        const older=await sb!.from('profiles')
          .select('display_name,username,biography,preferences').eq('id',account.id).maybeSingle();
-       data=older.data;error=older.error;
+       data=older.data?{...older.data,avatar_path:null}:null;error=older.error;
      }
      if(!mounted||authRequestId.current!==requestId)return;
      if(error){setProfileError(explainProfileDatabaseError(error));setLoading(false);return;}
