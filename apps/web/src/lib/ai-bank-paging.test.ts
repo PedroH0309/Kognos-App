@@ -9,9 +9,10 @@ test('question listing has validated filters and bounded aligned pages',()=>{
  assert.equal(parseAIQuestionListQuery('https://kognos.test/api/ai-questions?institution=other'),null);
  assert.equal(parseAIQuestionListQuery('https://kognos.test/api/ai-questions?topic=abc'),null);
 });
-test('10 requested questions use two existing five-item server operations',()=>{
- assert.deepEqual(splitGenerationBatches(10),[5,5]);
- assert.deepEqual(splitGenerationBatches(6),[5,1]);
+test('5 and 10 requested questions use smaller parallel-ready validated operations',()=>{
+ assert.deepEqual(splitGenerationBatches(10),[3,2,3,2]);
+ assert.deepEqual(splitGenerationBatches(6),[3,2,1]);
+ assert.deepEqual(splitGenerationBatches(5),[3,2]);
  assert.deepEqual(splitGenerationBatches(3),[3]);
  assert.throws(()=>splitGenerationBatches(11));
 });
