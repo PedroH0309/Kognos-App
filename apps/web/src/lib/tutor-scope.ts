@@ -31,6 +31,8 @@ const explanationOnly=/\b(?:explicacao|explique|explicar|entender|compreender|o 
 export function tutorScopeReply(message:string):string|null {
  const text=normalize(message);
  if(!text)return null;
+ // Genetics is a Biology topic, not a request to produce source code.
+ if(/\bcodigo genetico\b/.test(text)&&!/\b(?:java|python|javascript|typescript|html|css|script|programa|hello world)\b/.test(text))return null;
  const wantsArtifact=productionVerb.test(text);
  const codeMention=codeArtifact.test(text)||(language.test(text)&&practicalCode.test(text));
  const educationalIntent=explanationOnly.test(text)||/\b(?:exercicio|questao|pergunta|atividade|aula|revisao|codigo genetico|material de estudo)\b/.test(text);
