@@ -19,8 +19,8 @@ if (-not $key -or $key -notmatch '^nvapi-[A-Za-z0-9_-]{24,}$') {
   $key = $null
   throw 'Chave nao parece ser uma credencial NVIDIA valida (nvapi-...). Nada foi alterado.'
 }
-$model = Read-Host 'Modelo (Enter para meta/llama-3.3-70b-instruct)'
-if ([string]::IsNullOrWhiteSpace($model)) { $model = 'meta/llama-3.3-70b-instruct' }
+$model = Read-Host 'Modelo (Enter para z-ai/glm-5.3-flash)'
+if ([string]::IsNullOrWhiteSpace($model)) { $model = 'z-ai/glm-5.3-flash' }
 if ($model -notmatch '^[A-Za-z0-9._/-]{3,120}$') { $key = $null; throw 'Nome de modelo invalido.' }
 $content = [System.IO.File]::ReadAllText($envFile)
 function Set-EnvValue ([string]$body,[string]$name,[string]$value) {
