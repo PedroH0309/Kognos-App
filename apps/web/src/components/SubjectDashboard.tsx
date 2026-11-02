@@ -7,7 +7,7 @@ import type {QuestionAttempt} from '@/lib/demo-questions';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {learningSubjects,lessonsForSubject,type LearningLesson} from '@/lib/learning-catalog';
 import {evidenceForLesson} from '@/lib/learning-progress';
-import {subjectDashboardTotals,subjectSnapshots} from '@/lib/subject-dashboard';
+import {subjectDashboardTotals,subjectSnapshots,type SubjectSnapshot} from '@/lib/subject-dashboard';
 import {connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 
@@ -63,7 +63,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
   const aiDates=merged.steps.map(step=>step.generated?.lastAttemptAt).filter((date):date is string=>Boolean(date));
   const lastAI=aiDates.sort((a,b)=>Date.parse(b)-Date.parse(a))[0]??null;
   const last=current.lastAttemptAt&&lastAI?(Date.parse(current.lastAttemptAt)>Date.parse(lastAI)?current.lastAttemptAt:lastAI):current.lastAttemptAt||lastAI;
-  const status=merged.practiced===0?'not-started':merged.review>0?'needs-review':merged.practiced===merged.total?'sample-covered':'in-progress';
+  const status:SubjectSnapshot['status']=merged.practiced===0?'not-started':merged.review>0?'needs-review':merged.practiced===merged.total?'sample-covered':'in-progress';
   return {...current,practiced:merged.practiced,coverage:merged.total?Math.round(100*merged.practiced/merged.total):0,
    needsReview:merged.review,notPracticed:merged.total-merged.practiced,recommended:merged.next,
    lastAttemptAt:last,attempts:current.attempts+merged.aiAttempts,status,
