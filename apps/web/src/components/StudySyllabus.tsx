@@ -7,6 +7,7 @@ import type {StudentProfile} from '@/lib/profile';
 import type {StudyTask} from '@/lib/cloud-study-model';
 import {syllabusProgress,type SyllabusTopicState,type TopicWeakEvidence} from '@/lib/syllabus-progress';
 import {syllabusWithVerifiedTopics,confirmedTopic,type VerifiedStudyTopic} from '@/lib/verified-study-catalog';
+import {pendingTopicTask} from '@/lib/syllabus-quick-schedule';
 
 const labels:Record<SyllabusTopicState,string>={
  not_started:'Ainda não iniciado',planned:'Planejado',studied:'Estudado',review:'Precisa de revisão'
@@ -16,9 +17,10 @@ const filters:{id:SyllabusFilter;label:string}[]=[
  {id:'all',label:'Todos'},{id:'not_started',label:'Não iniciados'},
  {id:'planned',label:'Planejados'},{id:'studied',label:'Estudados'},{id:'review',label:'Revisar'}
 ];
-export default function StudySyllabus({profile,tasks=[],weakTopics=[],officialTopics=[],officialError=''}:{
+export default function StudySyllabus({profile,tasks=[],weakTopics=[],officialTopics=[],officialError='',onPlanTopic,topicScheduling=false}:{
  profile:StudentProfile;tasks?:readonly StudyTask[];weakTopics?:readonly TopicWeakEvidence[];
- officialTopics?:readonly VerifiedStudyTopic[];officialError?:string
+ officialTopics?:readonly VerifiedStudyTopic[];officialError?:string;
+ onPlanTopic?:(subject:string,topic:string,review:boolean)=>void;topicScheduling?:boolean
 }){
  const [search,setSearch]=useState('');
  const [statusFilter,setStatusFilter]=useState<SyllabusFilter>('all');
@@ -61,6 +63,7 @@ export default function StudySyllabus({profile,tasks=[],weakTopics=[],officialTo
     <summary><strong>{subject}</strong><span>{topics.length} tópicos exibidos</span></summary>
     <ul className="k-syllabus-topic-list">{topics.map(topic=>{
      const verified=confirmedTopic(officialTopics,exams,subject,topic.topic);
+     const alreadyPlanned=pendingTopicTask(tasks,subject,topic.topic);
      return <li key={topic.topic} className={'k-syllabus-topic '+topic.state}>
       <span>{topic.topic}</span>
       <small>{labels[topic.state]}{topic.state==='review'&&topic.recordedErrors>0?' · '+topic.recordedErrors+' erro(s) registrados':''}</small>
@@ -68,6 +71,11 @@ export default function StudySyllabus({profile,tasks=[],weakTopics=[],officialTo
        <a href={verified.sourceUrl} target="_blank" rel="noopener noreferrer">{verified.sourceTitle} · {verified.edition}</a>
        <small>Trecho de referência: {verified.evidence}</small>
       </div>}
+      {onPlanTopic&&<button type="button" className="k-syllabus-schedule"
+       disabled={topicScheduling||Boolean(alreadyPlanned)} aria-label={(alreadyPlanned?'Já programado: ':'Programar estudo de ')+subject+' — '+topic.topic}
+       onClick={()=>onPlanTopic(subject,topic.topic,topic.state==='review')}>
+       {alreadyPlanned?'Já no calendário':topicScheduling?'Salvando…':topic.state==='review'?'Programar revisão':'Adicionar ao calendário'}
+      </button>}
      </li>;
     })}</ul>
    </details>)}</div>
