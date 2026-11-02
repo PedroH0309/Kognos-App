@@ -81,3 +81,15 @@ test('bounded generation variations are validated and cannot smuggle instruction
  assert.equal(validateGenerationRequest({...request,variation:32}),null);
  assert.equal(validateGenerationRequest({...request,variation:'override system'}),null);
 });
+
+test('conservative similarity catches light rewrites but preserves unrelated exam topics',async()=>{
+ const {stronglySimilarQuestion,excludePreviouslyGenerated}=await import('./ai-question-validation.ts');
+ const first='Uma turma de estudantes organizou uma pesquisa científica sobre a poluição de um rio durante o verão. Qual medida representa melhor a média dos resultados observados ao longo de uma semana?';
+ const paraphrase='Uma turma de estudantes organizou uma pesquisa científica sobre a poluição de um rio durante o verão; qual medida representa melhor a média dos resultados observados ao longo de uma semana?';
+ const other='Durante a análise de uma reação química, a pesquisadora observa um aumento de temperatura. Qual alternativa expressa corretamente o princípio de conservação de energia nesse experimento?';
+ assert.equal(stronglySimilarQuestion(first,paraphrase),true);
+ assert.equal(stronglySimilarQuestion(first,other),false);
+ const example={prompt:paraphrase,options:['a','b','c','d','e'],correct_index:0,explanation:'Exemplo de item da lista de comparação.'};
+ assert.equal(excludePreviouslyGenerated([example as any],[first]).length,0);
+ assert.equal(excludePreviouslyGenerated([{...example,prompt:other} as any],[first]).length,1);
+});

@@ -4,7 +4,9 @@ import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 /** Server-side, allowlisted provenance. These hosts are not a substitute for editorial source review. */
 export const officialHosts=new Set([
  'www.gov.br','download.inep.gov.br','www.inep.gov.br',
- 'www.fuvest.br','fuvest.br','vestibulinho.etec.sp.gov.br','www.cps.sp.gov.br','cps.sp.gov.br'
+ 'www.fuvest.br','fuvest.br','vestibulinho.etec.sp.gov.br','www.cps.sp.gov.br','cps.sp.gov.br',
+ 'www.vunesp.com.br','vunesp.com.br',
+ 'atendimento.educacao.sp.gov.br','www.educacao.sp.gov.br','educacao.sp.gov.br'
 ]);
 export type ImportMethod='official_html'|'manual_transcript';
 export type ImportSubmission={institution:ExamId;edition:string;sourceTitle:string;sourceUrl:string;method:ImportMethod;transcript?:string};

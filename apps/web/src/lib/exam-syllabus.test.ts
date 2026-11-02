@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {expandExamSubjects,examForStudent,activeSyllabi,mergedSyllabus,officialSyllabusSources,fuvest2027RequiredReading} from './exam-syllabus.ts';
 import {initialProfile} from './profile.ts';
+import {completeExamTopicCatalog} from './exam-blueprints.ts';
 
 test('broad curated tracks cover central and additional high-school subjects',()=>{
  const exam=expandExamSubjects('enem',{Matemática:['Porcentagem e razão']});
@@ -42,4 +43,13 @@ test('FUVEST 2027 syllabus includes nine edition-specific official required read
  const syllabus=expandExamSubjects('fuvest',{});
  for(const title of titles)assert.ok(syllabus.Literatura.some(item=>item.includes(title)),title);
  assert.equal(officialSyllabusSources.fuvest.url,'https://www.fuvest.br/wp-content/uploads/fuvest2027-programa-vestibular.pdf');
+});
+
+test('integrated catalog preserves legacy generated question scopes for weekly reviews',()=>{
+ const catalog=completeExamTopicCatalog(['enem','fuvest','vunesp']);
+ assert.ok(catalog.Matemática.includes('Funções e gráficos'));
+ assert.ok(catalog.Matemática.includes('Funções e modelagem'));
+ assert.ok(catalog.Matemática.includes('Equações e problemas'));
+ assert.ok(catalog.Literatura.some(topic=>topic.includes('Opúsculo Humanitário')));
+ assert.equal(new Set(catalog.Matemática).size,catalog.Matemática.length);
 });

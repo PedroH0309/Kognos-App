@@ -59,3 +59,12 @@ test('generation does not permit arbitrary topics without a matching source ID',
  assert.equal(validateGenerationRequest({...base,sourceTopicId:id})?.sourceTopicId,id);
  assert.equal(validateGenerationRequest({...base,sourceTopicId:'not-a-uuid'}),null);
 });
+test('official VUNESP and state education sources are accepted without opening arbitrary hosts',()=>{
+ assert.ok(safeOfficialUrl('https://www.vunesp.com.br/VNSP2514'));
+ assert.ok(safeOfficialUrl('https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-08378/pt-br'));
+ assert.equal(safeOfficialUrl('https://vunesp.com.br.evil.test/matriz'),null);
+ const source={institution:'vunesp',edition:'UNESP 2027',sourceTitle:'Vestibular UNESP 2027',sourceUrl:'https://www.vunesp.com.br/VNSP2514',
+  method:'manual_transcript',transcript:'Matriz de referência por competências. '.repeat(15)};
+ assert.equal(parseImportSubmission(source)?.institution,'vunesp');
+ assert.equal(parseImportSubmission({...source,institution:'saresp',sourceUrl:'https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-08378/pt-br'})?.institution,'saresp');
+});
