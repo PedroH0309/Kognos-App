@@ -18,3 +18,25 @@ export function validateAvatar(file: {type:string;size:number}): string | null {
   if (file.size <= 0) return 'O arquivo está vazio.';
   return null;
 }
+
+/** Actionable avatar errors. Never expose raw provider internals as diagnosis. */
+export function avatarStorageErrorMessage(error:unknown):string{
+ const failure=error as {message?:unknown;statusCode?:unknown;code?:unknown}|null;
+ const message=typeof failure?.message==='string'?failure.message:'';
+ const code=typeof failure?.code==='string'?failure.code:'';
+ if(/bucket.{0,25}(not found|does not exist|missing)|no such bucket/i.test(message)
+   || /BucketNotFound|NoSuchBucket/i.test(code)){
+  return 'O armazenamento privado de fotos não foi criado neste projeto Supabase. Execute a migração supabase/migrations/0010_restore_private_avatars.sql no SQL Editor e tente novamente.';
+ }
+ if(/avatar_path/i.test(message)&&/column|schema cache|does not exist/i.test(message)){
+  return 'A coluna de foto está ausente no banco de dados. Execute a migração supabase/migrations/0010_restore_private_avatars.sql no Supabase.';
+ }
+ if(/row.level.security|permission denied|unauthori[sz]ed|new row violates/i.test(message)
+   || /403|401/.test(String(failure?.statusCode??''))){
+  return 'O Supabase recusou a permissão de armazenamento. Confira as políticas privadas do bucket kognos-avatars na migração 0010 e faça login novamente.';
+ }
+ if(/file.?size|payload too large|entity too large/i.test(message)){
+  return 'Esta foto ultrapassa o limite permitido. Escolha uma imagem de até 3 MB.';
+ }
+ return message||'Não foi possível guardar a foto. Confira a configuração do Supabase e tente novamente.';
+}
