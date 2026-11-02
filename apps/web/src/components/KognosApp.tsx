@@ -5,6 +5,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import KogAssistant from './KogAssistant';
 import {AnimatedPage,AnimatedSidebarScrim,MobileTabIndicator} from './KognosMotion';
 import ExamSources from './ExamSources';
+import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
+import {examForStudent} from '@/lib/exam-syllabus';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import KogMascot3D from './KogMascot3D';
 import WeeklyProgressChart from './WeeklyProgressChart';
@@ -16,6 +18,7 @@ import PracticeSpace from './PracticeSpace';
 import AchievementSpace from './AchievementSpace';
 import type {AchievementSummary} from '@/lib/ai-achievements';
 import DiagnosticSpace from './DiagnosticSpace';
+import WeeklyExamSpace from './WeeklyExamSpace';
 import ReviewSpace from './ReviewSpace';
 import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
 import LearningTrails from './LearningTrails';
@@ -33,7 +36,7 @@ import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
 
 const STORAGE_KEY='kognos_guest_profile_v1';
-type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'plans'|'reviews'|'performance';
+type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'weekly'|'plans'|'reviews'|'performance';
 const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'dashboard',icon:'◫',label:'Visão geral'},
   {key:'learn',icon:'▤',label:'Aprender'},
@@ -43,6 +46,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'simulados',icon:'◉',label:'Simulados'},
   {key:'sources',icon:'▤',label:'Matrizes e editais'},
   {key:'diagnostic',icon:'◈',label:'Diagnóstico inicial'},
+  {key:'weekly',icon:'◈',label:'Simulado semanal (20–90)'},
   {key:'plans',icon:'◷',label:'Meu planejamento'},
   {key:'reviews',icon:'↻',label:'Revisões inteligentes'},
   {key:'calendar',icon:'▣',label:'Calendário'},
@@ -55,7 +59,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
 
 const NAV_ICONS:Record<View,LucideIcon>={
  dashboard:LayoutDashboard,learn:BookOpen,trails:GraduationCap,subjects:LibraryBig,
- questions:ListChecks,simulados:ClipboardList,sources:BookOpenText,diagnostic:Target,plans:CalendarDays,reviews:RotateCcw,
+ questions:ListChecks,simulados:ClipboardList,sources:BookOpenText,diagnostic:Target,weekly:ClipboardList,plans:CalendarDays,reviews:RotateCcw,
  calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
  profile:UserRound,settings:Settings,
 };
@@ -64,12 +68,12 @@ const NAV_ICONS:Record<View,LucideIcon>={
  */
 const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects','questions','simulados'];
 const NAV_SECONDARY:View[]=['calendar','plans','reviews','achievements','settings'];
-const NAV_MORE:View[]=['trails','diagnostic','sources','performance','profile'];
+const NAV_MORE:View[]=['trails','diagnostic','weekly','sources','performance','profile'];
 const SHORT_NAV_LABELS:Partial<Record<View,string>>={
  dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
  questions:'Questões',simulados:'Simulados',plans:'Meu plano',
  reviews:'Revisões',achievements:'Conquistas',settings:'Configurações',
- trails:'Trilhas',diagnostic:'Diagnóstico',sources:'Matrizes e editais',
+ trails:'Trilhas',diagnostic:'Diagnóstico',weekly:'Simulado semanal',sources:'Matrizes e editais',
  calendar:'Calendário',performance:'Desempenho',profile:'Meu perfil'
 };
 function SideNavigationItem({view,active,onSelect}:{view:View;active:boolean;onSelect:(view:View)=>void}){
@@ -162,9 +166,21 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
   const [saving,setSaving]=useState(false);
   const [error,setError]=useState('');
   const [dateError,setDateError]=useState(false);
+  const [proposedExam,setProposedExam]=useState<ExamId|null>(null);
   const update=(v:Partial<StudentProfile>)=>{setP(old=>({...old,...v}));setError('');};
   const toggleStyle=(s:TeachingStyle)=>update({styles:p.styles.includes(s)?p.styles.filter(v=>v!==s):[...p.styles,s]});
   const toggleAdaptation=(s:Adaptation)=>update({adaptations:p.adaptations.includes(s)?p.adaptations.filter(v=>v!==s):[...p.adaptations,s]});
+  function chooseExam(exam:ExamId){
+    const previous=examForStudent(p);
+    if(previous&&previous!==exam&&Boolean(start.completedAt)){setProposedExam(exam);return;}
+    setProposedExam(null);update({examFocus:exam,syllabusExams:[exam]});
+  }
+  function confirmExam(keepPrior:boolean){
+    if(!proposedExam)return;
+    const old=examForStudent(p);
+    update({examFocus:proposedExam,syllabusExams:keepPrior?[...new Set([...(p.syllabusExams||[]),...(old?[old]:[]),proposedExam])]:[proposedExam]});
+    setProposedExam(null);
+  }
   const toggleGoal=(goal:Goal)=>{const selected=p.goals.includes(goal)?p.goals.filter(g=>g!==goal):[...p.goals,goal];if(selected.length)update({goal:selected[0],goals:selected});};
   function declaration(v:typeof declared){
     setDeclared(v);
@@ -178,6 +194,7 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
   function validate(){
     if(step===0&&!p.nickname.trim())return 'Preencha o apelido para continuar.';
     if(step===0&&!p.goals.length)return 'Selecione ao menos um objetivo.';
+    if(step===0&&proposedExam)return 'Escolha como deseja atualizar seus temas antes de continuar.';
     if(step===0&&dateError)return 'Corrija a data da prova ou deixe o campo vazio.';
     if(step===1&&p.weeklyDays.length===0)return 'Selecione pelo menos um dia disponível.';
     if(step===2&&p.styles.length===0)return 'Selecione pelo menos uma forma de aprender.';
@@ -219,6 +236,9 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
           <div className="k-onboard-section">
             <label className="k-form-field"><span className="k-field-title">Como prefere ser chamado? <span className="k-required">*</span></span><input className="k-text-input" value={p.nickname} maxLength={60} onChange={e=>update({nickname:e.target.value})} placeholder="Seu nome ou apelido" autoComplete="nickname" autoFocus/><small className="k-field-hint">Este nome será usado no seu painel e pelo Kog.</small></label>
             <div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Para que você quer estudar?</span><span className="k-group-hint">Selecione uma ou mais opções</span></div><div className="goal-grid">{(Object.entries(goalLabels) as [Goal,string][]).map(([key,label])=><button key={key} type="button" aria-pressed={p.goals.includes(key)} className={`goal-card ${p.goals.includes(key)?'selected':''}`} onClick={()=>toggleGoal(key)}><span className="goal-icon"><GoalIcon goal={key}/></span><strong>{label}</strong><span aria-hidden="true" className="select-ring">{p.goals.includes(key)?<Check size={12} strokeWidth={3}/>:null}</span></button>)}</div></div>
+            <div className="k-field-group"><KognosSelect label="Prova principal (matriz de conteúdos)" value={p.examFocus||examForStudent(p)||'enem'} options={(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}))} onChange={chooseExam}/><small className="k-field-hint">As matérias são vinculadas à instituição selecionada. Editais, séries e modalidades específicas devem ser conferidos nas fontes oficiais.</small>
+              {proposedExam&&<div className="k-exam-change-choice" role="group" aria-label="Como atualizar os conteúdos de estudo"><p>Você está mudando sua prova. Deseja substituir os temas antigos ou manter os antigos e acrescentar os da nova prova?</p><button type="button" className="btn primary small" onClick={()=>confirmExam(false)}>Usar somente a nova prova</button><button type="button" className="btn outline small" onClick={()=>confirmExam(true)}>Manter e acrescentar temas</button><button type="button" className="text-button" onClick={()=>setProposedExam(null)}>Cancelar</button></div>}
+            </div>
             <div className="two-cols k-onboard-row"><KognosSelect label="Etapa escolar" value={p.stage} onChange={value=>update({stage:value})} options={stageOptions}/><KognosSelect label="Nível atual" value={p.level} onChange={value=>update({level:value})} options={levelOptions}/></div>
             <div className="two-cols k-onboard-row"><label className="k-form-field"><span className="k-field-title">Meta específica <span className="k-optional">opcional</span></span><input className="k-text-input" value={p.targetName} maxLength={120} onChange={e=>update({targetName:e.target.value})} placeholder="Ex.: UNESP 2027"/><small className="k-field-hint">Qual prova ou instituição?</small></label><KognosDateField label="Data da prova (opcional)" value={p.targetDate} onChange={value=>update({targetDate:value})} onInvalidChange={setDateError} hint="Você pode definir isso depois."/></div>
           </div>
@@ -241,7 +261,7 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
         </>}
         {step===4&&<>
           <p className="overline">05 / SUA JORNADA ESTÁ PRONTA</p><h1 id="onboard-heading">Tudo pronto para <em>evoluir.</em></h1><p className="intro-copy">Este é seu ponto de partida. Você pode editar suas escolhas a qualquer momento no seu perfil.</p>
-          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil ficará vinculado à sua conta. Da próxima vez, você poderá continuar diretamente pelo painel.</span></div>
+          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>MATRIZ DE ESTUDOS</small><strong>{(p.syllabusExams.length?p.syllabusExams:[examForStudent(p)].filter(Boolean) as ExamId[]).map(e=>examBlueprints[e].label).join(' · ')||'A definir'}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil ficará vinculado à sua conta. Da próxima vez, você poderá continuar diretamente pelo painel.</span></div>
         </>}
         {error&&<div className="message warning" role="alert">{error}</div>}
         {profileSetupIssue(error)&&<section className="onboard-db-help" aria-label="Configuração do Supabase necessária"><strong>Como liberar o cadastro</strong><p>No Supabase, abra <b>SQL Editor</b> e verifique se a migração <code>0001_core_schema.sql</code> criou <code>public.profiles</code>. Execute também <code>0003_account_and_avatars.sql</code> para os campos adicionais, respeitando a ordem das migrações. Confira se o projeto do seu <code>.env.local</code> é o mesmo do SQL Editor.</p><small>Depois recarregue a página e tente salvar. Suas escolhas continuam aqui até você sair.</small></section>}
@@ -480,7 +500,7 @@ export default function KognosApp(){
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
- function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('diagnostic');setMobileMenu(false);}
+ function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function generateForLesson(lessonId:string){setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
@@ -521,7 +541,8 @@ export default function KognosApp(){
  view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>setAssistantOpen(true)} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
- view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlan={()=>navigate('plans')}/>:  
+ view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:
+  view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlan={()=>navigate('plans')}/>:  
  view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
  view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onDiagnostic={()=>navigate('diagnostic')} onWeeklyReview={openWeeklyReview} onLearn={openFocusedLesson} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:  

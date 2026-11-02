@@ -1,3 +1,4 @@
+import type {ExamId} from './exam-blueprints.ts';
 export type Goal = 'enem' | 'vestibular' | 'etec' | 'school' | 'contest' | 'olympiad' | 'personal';
 export type Stage = 'fundamental_2' | 'medio' | 'tecnico' | 'superior' | 'adulto' | 'other';
 export type TeachingStyle = 'examples' | 'step_by_step' | 'brief' | 'detailed' | 'practice_first' | 'flashcards' | 'visual';
@@ -12,6 +13,8 @@ export interface StudentProfile {
   stage: Stage;
   goal: Goal;
   goals: Goal[];
+  examFocus: ExamId | null;
+  syllabusExams: ExamId[];
   targetName: string;
   targetDate: string;
   level: 'beginner' | 'intermediate' | 'advanced';
@@ -25,7 +28,7 @@ export interface StudentProfile {
 }
 
 export const initialProfile: StudentProfile = {
-  version: 1, nickname: '', username: '', biography: '', stage: 'medio', goal: 'enem', goals:['enem'], targetName: '', targetDate: '',
+  version: 1, nickname: '', username: '', biography: '', stage: 'medio', goal: 'enem', goals:['enem'], examFocus:null, syllabusExams:[], targetName: '', targetDate: '',
   level: 'beginner', weeklyDays: [1,2,3,4,5], dailyMinutes: 60, sessionMinutes: 25,
   styles: ['examples', 'step_by_step'], adaptations: [], tone: 'balanced', completedAt: '',
 };
@@ -50,6 +53,9 @@ export function normalizeProfile(value: unknown): StudentProfile {
   if (!value || typeof value !== 'object') return {...initialProfile};
   const v=value as Partial<StudentProfile>;
   const knownGoals=Object.keys(goalLabels) as Goal[];
+  const supportedExams:ExamId[]=['enem','etec','fuvest','saresp','vunesp'];
+  const examFocus=supportedExams.includes(v.examFocus as ExamId)?v.examFocus as ExamId:null;
+  const syllabusExams=Array.isArray(v.syllabusExams)?[...new Set(v.syllabusExams.filter(x=>supportedExams.includes(x)))]:[];
   const stages: Stage[]=['fundamental_2','medio','tecnico','superior','adulto','other'];
   const levels: StudentProfile['level'][]=['beginner','intermediate','advanced'];
   const styles=Object.keys(styleLabels) as TeachingStyle[];
@@ -63,6 +69,7 @@ export function normalizeProfile(value: unknown): StudentProfile {
     stage:stages.includes(v.stage as Stage)?v.stage as Stage:'medio',
     goal:knownGoals.includes(v.goal as Goal)?v.goal as Goal:'enem',
     goals:Array.isArray(v.goals) && v.goals.some(g=>knownGoals.includes(g))?Array.from(new Set(v.goals.filter(g=>knownGoals.includes(g)))):[knownGoals.includes(v.goal as Goal)?v.goal as Goal:'enem'],
+    examFocus,syllabusExams,
     targetName:typeof v.targetName==='string'?v.targetName.trim().slice(0,120):'',
     targetDate:validDate?v.targetDate!:'',
     level:levels.includes(v.level as StudentProfile['level'])?v.level as StudentProfile['level']:'beginner',

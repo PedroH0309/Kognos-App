@@ -28,8 +28,6 @@
 .app-layout .study-planner .k-task-lesson:hover,.app-layout .study-planner .k-task-video:hover{text-decoration:underline;color:var(--txt)}
 .app-layout.theme-dark .study-planner .k-cycle-panel{box-shadow:none}
 .app-layout.theme-dark .study-planner .k-task-lesson,.app-layout.theme-dark .study-planner .k-task-video{color:#86E4F3}
-.app-layout .k-cal-export-button{border:1px solid var(--kc-border);background:var(--kc-bg);color:var(--kc-text);border-radius:12px}
-.app-layout .k-cal-export-button:hover:not(:disabled){background:var(--panel-2);color:var(--kc-text)}
 @media(max-width:920px){
  .app-layout .study-planner .k-cycle-header{flex-direction:column;gap:6px}
  .app-layout .study-planner .k-cycle-review{flex-direction:column;align-items:stretch}
@@ -43,7 +41,6 @@
  .app-layout .study-planner .k-cycle-panel{margin-top:14px;padding:16px 14px}
  .app-layout .study-planner .k-cycle-methods{padding:12px}
  .app-layout .study-planner .k-cycle-header h2{font-size:18px}
- .app-layout .k-cal-top-actions .k-cal-export-button{order:4;flex:1;font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.app-layout .study-planner .k-cycle-progress>span{transition:none}}
 .app-layout.less-motion .study-planner .k-cycle-progress>span{transition:none}
