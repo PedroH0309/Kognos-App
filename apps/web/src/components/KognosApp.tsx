@@ -6,6 +6,8 @@ import KogAssistant from './KogAssistant';
 import ExamSources from './ExamSources';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import KogMascot3D from './KogMascot3D';
+import WeeklyProgressChart from './WeeklyProgressChart';
+import {weeklyStudyActivity,type WeeklyStudyPoint} from '@/lib/dashboard-weekly-activity';
 import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls';
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
 import AccountSettings, {ProfileAvatar} from './AccountSettings';
@@ -55,6 +57,13 @@ const NAV_ICONS:Record<View,LucideIcon>={
  calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
  profile:UserRound,settings:Settings,
 };
+/** Same destinations, visually grouped for a calmer desktop navigation. */
+const NAV_GROUPS:{label:string;keys:View[]}[]=[
+ {label:'PRINCIPAL',keys:['dashboard','learn','trails','subjects']},
+ {label:'PRATICAR',keys:['questions','simulados','diagnostic','reviews']},
+ {label:'ORGANIZAÇÃO',keys:['plans','calendar','sources','performance','achievements']},
+ {label:'MINHA CONTA',keys:['tutor','profile','settings']}
+];
 function NavIcon({view}:{view:View}){const Icon=NAV_ICONS[view];return <Icon size={19} strokeWidth={1.8} aria-hidden="true"/>;}
 const GOAL_ICONS: Record<Goal, LucideIcon> = { enem:Target, vestibular:GraduationCap, etec:BookOpenCheck, school:PencilLine, contest:Landmark, olympiad:Medal, personal:Compass };
 function GoalIcon({goal}:{goal:Goal}){const Icon=GOAL_ICONS[goal];return <Icon size={23} strokeWidth={1.7} aria-hidden="true"/>;}
@@ -206,6 +215,7 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
   const first=p.nickname.split(' ')[0]||'estudante';
   const [activity,setActivity]=useState<{answered:number;accuracy:number|null;completed:number;activeDays:number;dueReviews:number}>({answered:0,accuracy:null,completed:0,activeDays:0,dueReviews:0});
   const [activityError,setActivityError]=useState('');
+  const [weekly,setWeekly]=useState<WeeklyStudyPoint[]>([]);
   const [earned,setEarned]=useState<AchievementSummary|null>(null);
   const [earnedError,setEarnedError]=useState('');
   useEffect(()=>{
@@ -221,8 +231,9 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
         if(!active)return;
         const safeAttempts=Array.isArray(attempts)?attempts:[];
         const stats=statsFromAttempts(safeAttempts);
+        setWeekly(weeklyStudyActivity(safeAttempts));
         setActivity({answered:stats.answered,accuracy:stats.accuracy,completed:Array.isArray(tasks)?tasks.filter(t=>t.done).length:0,activeDays:new Set(safeAttempts.map(a=>a.createdAt.slice(0,10))).size,dueReviews:reviewCounts(reviewItems(safeAttempts)).due});
-      } catch(e){if(active){setActivity({answered:0,accuracy:null,completed:0,activeDays:0,dueReviews:0});setActivityError(e instanceof Error?e.message:'Não foi possível carregar seu desempenho.');}}
+      } catch(e){if(active){setActivity({answered:0,accuracy:null,completed:0,activeDays:0,dueReviews:0});setWeekly([]);setActivityError(e instanceof Error?e.message:'Não foi possível carregar seu desempenho.');}}
     })();
     return()=>{active=false;};
   },[user]);
@@ -246,13 +257,85 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
     window.addEventListener('kognos:ai-answer-recorded',reload);
     return()=>{active=false;window.removeEventListener('kognos:ai-answer-recorded',reload);};
   },[user?.id]);
-  return <div className="app-content"><div className="welcome-top"><div><span className="overline">SUA JORNADA DE APRENDIZAGEM</span><h1>Que bom ter você aqui, <em>{first}.</em></h1><p>Um passo de cada vez, muito conhecimento pela frente.</p></div><span className="mode-badge">{user?<Cloud size={14} aria-hidden="true"/>:<CircleHelp size={14} aria-hidden="true"/>}{user?'Perfil sincronizado':'Modo demonstração'}</span></div>
-  <section className="welcome-hero"><div className="welcome-hero-copy"><span className="overline cyan">BEM-VINDO AO KOGNOS</span><h2>Não é sobre estudar mais. <em>É sobre aprender melhor.</em></h2><p>O Kognos adapta as explicações ao seu objetivo e às suas preferências. Comece perguntando algo ao seu tutor.</p><div className="hero-actions"><button className="btn primary" onClick={()=>onGo('tutor')}><Sparkles size={16} aria-hidden="true"/> Conversar com Kog</button><button className="btn outline" onClick={onEdit}>Ajustar perfil</button></div></div><Image className="dashboard-hero-img" src="/brand/kognos-hero.webp" alt="Arte de inteligência e aprendizagem" fill sizes="(max-width: 900px) 100vw, 50vw"/></section>
-  <div className="stat-grid"><StatCard icon={BookOpenCheck} label="QUESTÕES CONCLUÍDAS" value={earned?.answered??activity.answered} note={earned?'IA e acervo demonstrativo':'Atividades demonstrativas'}/><StatCard icon={Target} label="TAXA DE ACERTOS" value={(earned?.accuracy??activity.accuracy)===null?'—':`${earned?.accuracy??activity.accuracy}%`} note="Primeira resposta por questão"/><StatCard icon={Zap} label="PONTUAÇÃO XP" value={earned?.xp??'—'} note={earned?`Nível ${earned.level} · ${earned.unlocked} conquistas`:'Consulte Conquistas'}/><StatCard icon={CheckCircle2} label="TAREFAS CONCLUÍDAS" value={activity.completed} note="Do seu planejamento"/></div>
-  {activityError&&<div className="message warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}{earnedError&&<div className="message warning" role="alert">Conquistas indisponíveis: {earnedError}</div>}
-  <div className="home-two-cols"><section className="dark-panel"><div className="panel-title"><div><span className="overline">COMECE POR AQUI</span><h3>Sua próxima conquista</h3></div><span>✦</span></div><p className="panel-desc">O tutor Kognos pode explicar assuntos, criar exemplos e ajudar a destravar questões. O banco demonstrativo e o planejamento já permitem registrar atividades; a versão pública com provas oficiais e sincronização ainda está em desenvolvimento.</p><button className="btn primary" onClick={()=>onGo('tutor')}>Abrir tutor IA →</button><div className="panel-foot">{user?'O uso da IA exige configuração da chave no servidor.':'Conecte sua conta para habilitar a IA.'}</div></section><section className="dark-panel feature-panel"><div className="panel-title"><div><span className="overline">SEU PERFIL DE ESTUDO</span><h3>Como você aprende</h3></div></div><div className="profile-tags">{p.styles.map(x=><span className="profile-tag" key={x}>✧ {styleLabels[x]}</span>)}{p.adaptations.map(x=><span className="profile-tag special" key={x}>◈ {adaptationLabels[x]}</span>)}</div><button className="link-btn" onClick={onEdit}>Personalizar preferências →</button></section></div>
-  <div className="dashboard-quick-actions"><button className="btn outline" onClick={()=>onGo('questions')}><ListChecks size={18}/> Resolver questões</button><button className="btn outline" onClick={()=>onGo('simulados')}><ClipboardList size={18}/> Fazer simulado</button><button className="btn outline" onClick={()=>onGo('diagnostic')}><Target size={18}/> Diagnóstico</button><button className="btn outline" onClick={()=>onGo('reviews')}><RotateCcw size={18}/> Revisões {activity.dueReviews>0?`(${activity.dueReviews})`:''}</button><button className="btn outline" onClick={()=>onGo('plans')}><CalendarDays size={18}/> Meu plano</button><button className="btn outline" onClick={()=>onGo('performance')}><BarChart3 size={18}/> Meu desempenho</button><button className="btn outline" onClick={()=>onGo('achievements')}><Trophy size={18}/> Conquistas e XP</button></div><div className="development-note"><span>✧</span><p><strong>Progresso sem dados inventados.</strong> Os números exibidos vêm de respostas e tarefas registradas. Conquistas e XP contam apenas a primeira resposta por questão; não representam nota oficial.</p></div>
-  </div>;
+  return <main className="app-content k-dashboard">
+    <header className="k-dashboard-heading">
+      <div className="k-dashboard-intro">
+        <span className="overline">VISÃO GERAL · SEU ESPAÇO DE ESTUDO</span>
+        <h1>Seu espaço de <em>evolução.</em></h1>
+        <p>Olá, {first}. Sua jornada continua por aqui, no seu ritmo.</p>
+      </div>
+      <div className="k-dashboard-heading-actions">
+        <span className="mode-badge">{user?<Cloud size={15} aria-hidden="true"/>:<CircleHelp size={15} aria-hidden="true"/>}{user?'Conta sincronizada':'Modo demonstração'}</span>
+        <button type="button" className="k-dashboard-icon-button" onClick={()=>onGo('tutor')} title="Perguntar ao Kog" aria-label="Abrir tutor Kog"><Sparkles size={19}/></button>
+      </div>
+    </header>
+
+    <section className="k-continue-card" aria-labelledby="k-continue-title">
+      <div className="k-continue-copy">
+        <span className="k-hero-eyebrow"><span className="k-pulse-dot"/> CONTINUAR APRENDENDO</span>
+        <h2 id="k-continue-title">Pronto para seu <span>próximo avanço?</span></h2>
+        <p>Estude no seu ritmo, retome uma trilha e transforme cada conceito em uma conquista.</p>
+        <div className="k-hero-chips">
+          <span><Target size={14}/> Foco: {goalLabels[p.goal]}</span>
+          <span><Clock3 size={14}/> Plano: {p.dailyMinutes} min/dia</span>
+        </div>
+        <button type="button" className="btn primary k-hero-button" onClick={()=>onGo('learn')}>Continuar estudando <ArrowRight size={17}/></button>
+      </div>
+      <div className="k-continue-art" aria-hidden="true">
+        <span className="k-art-ring k-art-ring-one"/><span className="k-art-ring k-art-ring-two"/>
+        <div className="k-art-center"><BrainCircuit size={44} strokeWidth={1.45}/></div>
+        <div className="k-art-note"><span><BookOpenText size={17}/></span><div><strong>Aprenda</strong><small>no seu ritmo</small></div></div>
+        <div className="k-art-badge"><CheckCircle2 size={16}/><span>Seu progresso importa</span></div>
+        <span className="k-art-dot k-art-dot-one"/><span className="k-art-dot k-art-dot-two"/><span className="k-art-dot k-art-dot-three"/>
+      </div>
+    </section>
+
+    <section className="k-stat-section" aria-label="Seu desempenho registrado">
+      <div className="stat-grid">
+        <StatCard icon={BookOpenCheck} label="QUESTÕES CONCLUÍDAS" value={earned?.answered??activity.answered} note={earned?'Histórico da sua conta':'Atividades demonstrativas'}/>
+        <StatCard icon={Target} label="TAXA DE ACERTOS" value={(earned?.accuracy??activity.accuracy)===null?'—':`${earned?.accuracy??activity.accuracy}%`} note="Respostas registradas"/>
+        <StatCard icon={Zap} label="PONTUAÇÃO XP" value={earned?.xp??'—'} note={earned?`Nível ${earned.level} · ${earned.unlocked} conquistas`:'Consulte Conquistas'}/>
+        <StatCard icon={CheckCircle2} label="TAREFAS CONCLUÍDAS" value={activity.completed} note="Do seu planejamento"/>
+      </div>
+    </section>
+    {activityError&&<div className="message warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}
+    {earnedError&&<div className="message warning" role="alert">Conquistas indisponíveis: {earnedError}</div>}
+
+    <div className="k-dashboard-detail-grid">
+      <section className="k-surface-panel k-weekly-panel" aria-labelledby="k-weekly-heading">
+        <div className="k-dashboard-section-heading">
+          <div><span className="overline">ACOMPANHE SEU RITMO</span><h2 id="k-weekly-heading">Evolução semanal</h2></div>
+          <button type="button" className="k-section-text-action" onClick={()=>onGo('performance')}>Ver desempenho <ArrowRight size={16}/></button>
+        </div>
+        <WeeklyProgressChart points={weekly}/>
+      </section>
+      <section className="k-surface-panel k-next-panel" aria-labelledby="k-next-heading">
+        <div className="k-dashboard-section-heading">
+          <div><span className="overline">O QUE FAZER AGORA</span><h2 id="k-next-heading">Sua próxima etapa</h2></div>
+        </div>
+        <div className="k-next-list">
+          <button type="button" onClick={()=>onGo('plans')} className="k-next-item"><span className="k-next-icon"><CalendarDays size={20}/></span><span><strong>Meu planejamento</strong><small>{p.dailyMinutes} min por dia no seu plano</small></span><ArrowRight size={16}/></button>
+          <button type="button" onClick={()=>onGo('reviews')} className="k-next-item"><span className="k-next-icon k-next-icon-cyan"><RotateCcw size={20}/></span><span><strong>Revisões inteligentes</strong><small>{activity.dueReviews>0?`${activity.dueReviews} revisões programadas`:'Confira o que revisar'}</small></span><ArrowRight size={16}/></button>
+          <button type="button" onClick={()=>onGo('achievements')} className="k-next-item"><span className="k-next-icon k-next-icon-green"><Trophy size={20}/></span><span><strong>Minhas conquistas</strong><small>{earned?`${earned.unlocked} selos desbloqueados`:'Acompanhe seu progresso'}</small></span><ArrowRight size={16}/></button>
+        </div>
+        <button type="button" className="btn primary k-next-cta" onClick={()=>onGo('plans')}>Abrir meu plano <ArrowRight size={17}/></button>
+      </section>
+    </div>
+
+    <section className="k-learning-shortcuts" aria-label="Acessos rápidos">
+      <div className="k-dashboard-section-heading">
+        <div><span className="overline">EXPLORE A PLATAFORMA</span><h2>Aprenda do seu jeito</h2></div>
+        <button type="button" className="k-section-text-action" onClick={onEdit}><Settings size={15}/> Ajustar preferências</button>
+      </div>
+      <div className="k-shortcut-grid">
+        <button type="button" className="k-shortcut-card" onClick={()=>onGo('trails')}><span className="k-shortcut-icon k-shortcut-violet"><GraduationCap size={25}/></span><strong>Trilhas</strong><small>Aprenda passo a passo</small><ArrowRight size={17}/></button>
+        <button type="button" className="k-shortcut-card" onClick={()=>onGo('questions')}><span className="k-shortcut-icon k-shortcut-cyan"><ListChecks size={25}/></span><strong>Questões</strong><small>Pratique seus conhecimentos</small><ArrowRight size={17}/></button>
+        <button type="button" className="k-shortcut-card" onClick={()=>onGo('simulados')}><span className="k-shortcut-icon k-shortcut-blue"><ClipboardList size={25}/></span><strong>Simulados</strong><small>Teste seu aprendizado</small><ArrowRight size={17}/></button>
+        <button type="button" className="k-shortcut-card" onClick={()=>onGo('tutor')}><span className="k-shortcut-icon k-shortcut-green"><Bot size={25}/></span><strong>Tutor Kog</strong><small>Tire dúvidas e revise</small><ArrowRight size={17}/></button>
+      </div>
+    </section>
+    <div className="development-note k-dashboard-data-note"><ShieldCheck size={18}/><p><strong>Seu progresso, sem números inventados.</strong> As estatísticas vêm das respostas e tarefas registradas. O gráfico semanal mostra somente as respostas do acervo demonstrativo, não mede horas de estudo.</p></div>
+  </main>;
 }
 
 function TutorLanding({profile,onOpen}:{profile:StudentProfile;onOpen:()=>void}) {
@@ -274,7 +357,7 @@ export default function KognosApp(){
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
   const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
   const [learningFocus,setLearningFocus]=useState<{subject:string;lessonId:string}|null>(null);
-  const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('dark');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
+  const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('light');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
   const cloud=useMemo(()=>isCloudConfigured(),[]);
   const authRequestId=useRef(0);
   const authenticatedUserRef=useRef<string|null>(null);
@@ -369,7 +452,7 @@ export default function KognosApp(){
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
  if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
  if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
- return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><div className="side-heading">SEU ESPAÇO</div><nav className="side-nav" aria-label="Navegação principal">{NAV.map(item=><button key={item.key} onClick={()=>navigate(item.key)} className={`side-nav-item ${view===item.key?'active':''}`} title={item.label} aria-label={item.label} aria-current={view===item.key?'page':undefined}><span><NavIcon view={item.key}/></span>{item.label}{item.status&&<small>◌</small>}</button>)}</nav><div className="sidebar-bottom"><div className="side-promo"><span>✧ KOGNOS IA</span><h3>Seu conhecimento, amplificado.</h3><p>Tire dúvidas com o tutor que se adapta a você.</p><button onClick={()=>setAssistantOpen(true)}>Explorar tutor →</button></div><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside>{mobileMenu&&<button className="mobile-sidebar-scrim" aria-label="Fechar menu lateral" onClick={()=>setMobileMenu(false)}/>}
+ return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">{NAV_GROUPS.map(group=><div className="k-nav-group" key={group.label}><span className="k-nav-group-label">{group.label}</span>{group.keys.map(key=>{const item=NAV.find(entry=>entry.key===key)!;return <button key={item.key} onClick={()=>navigate(item.key)} className={`side-nav-item ${view===item.key?'active':''}`} title={item.label} aria-label={item.label} aria-current={view===item.key?'page':undefined}><span><NavIcon view={item.key}/></span>{item.label}{item.status&&<small>◌</small>}</button>;})}</div>)}</nav><div className="sidebar-bottom"><div className="side-promo"><span>✧ KOGNOS IA</span><h3>Seu conhecimento, amplificado.</h3><p>Tire dúvidas com o tutor que se adapta a você.</p><button onClick={()=>setAssistantOpen(true)}>Explorar tutor →</button></div><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside>{mobileMenu&&<button className="mobile-sidebar-scrim" aria-label="Fechar menu lateral" onClick={()=>setMobileMenu(false)}/>}
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>setAssistantOpen(true)} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
@@ -384,6 +467,6 @@ export default function KognosApp(){
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','plans','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='plans'?'Plano':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
