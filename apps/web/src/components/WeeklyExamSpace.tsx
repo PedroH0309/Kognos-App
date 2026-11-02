@@ -8,7 +8,6 @@ import type {KogStudyContext} from '@/lib/kog-study-context';
 type Question={id:string;subject:string;topic:string;prompt:string;options:string[]};
 type Session={id:string;count:number;answeredIds:string[];correct:number;questions:Question[]};
 type Result={session:Session|null;institution:string;weekStart:string};
-const counts=[20,30,40,50,60,70,80,90];
 
 export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onContextChange,onTutor}:{
  userId:string|null;profile:StudentProfile;onBank:()=>void;onPlanner:()=>void;
@@ -111,9 +110,7 @@ export default function WeeklyExamSpace({userId,profile,onBank,onPlanner,onConte
    !session?<section className="dark-panel k-weekly-setup">
     <h2>Prova de {examBlueprints[exam].label}</h2>
     <label>Quantidade de questões
-     <select value={count} onChange={e=>setCount(Number(e.target.value))}>
-      {counts.map(amount=><option key={amount} value={amount}>{amount} questões</option>)}
-     </select>
+     <input type="number" min={20} max={90} step={1} value={count} onChange={e=>setCount(Math.min(90,Math.max(20,Number(e.target.value)||20)))}/>
     </label>
     <p>Ao começar, o Kognos reserva perguntas não usadas. Uma avaliação já iniciada permanece igual até a próxima semana.</p>
     <div className="k-weekly-actions">
