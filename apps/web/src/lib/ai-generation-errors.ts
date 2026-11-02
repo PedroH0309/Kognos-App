@@ -5,14 +5,14 @@ const known:Record<string,GenerationFailure>={
   NVIDIA_NOT_CONFIGURED:{code:'NVIDIA_NOT_CONFIGURED',message:'Configure NVIDIA_API_KEY no servidor.',status:503},
   NVIDIA_AUTH:{code:'NVIDIA_AUTH',message:'Chave de IA inválida ou modelo não autorizado. Confira a credencial do provedor selecionado.',status:502},
   NVIDIA_RATE_LIMIT:{code:'NVIDIA_RATE_LIMIT',message:'O provedor de IA atingiu o limite de requisições. Aguarde antes de tentar novamente.',status:429},
-  NVIDIA_TIMEOUT:{code:'NVIDIA_TIMEOUT',message:'A NVIDIA demorou demais para gerar ou revisar as questões. Tente gerar 1 ou 2 por vez.',status:504},
-  NVIDIA_NETWORK:{code:'NVIDIA_NETWORK',message:'O servidor não conseguiu se conectar à NVIDIA. Verifique a conexão e a URL da API.',status:502},
+  NVIDIA_TIMEOUT:{code:'NVIDIA_TIMEOUT',message:'O provedor de IA excedeu o tempo limite ao gerar ou revisar questões. Tente novamente.',status:504},
+  NVIDIA_NETWORK:{code:'NVIDIA_NETWORK',message:'O servidor não conseguiu se conectar ao provedor de IA. Confira sua conexão e a configuração da API.',status:502},
   NVIDIA_UNAVAILABLE:{code:'NVIDIA_UNAVAILABLE',message:'O provedor de IA está temporariamente indisponível. Confira o provedor ativo e tente novamente.',status:502},
-  NVIDIA_BAD_REQUEST:{code:'NVIDIA_BAD_REQUEST',message:'A NVIDIA rejeitou a solicitação. Confira NVIDIA_MODEL e os limites do modelo configurado.',status:502},
+  NVIDIA_BAD_REQUEST:{code:'NVIDIA_BAD_REQUEST',message:'O provedor de IA rejeitou a solicitação. Confira o modelo e os parâmetros de geração ou revisão.',status:502},
   NVIDIA_MODEL_UNAVAILABLE:{code:'NVIDIA_MODEL_UNAVAILABLE',message:'O modelo configurado não foi encontrado no provedor selecionado. Confira AI_GENERATE_MODEL, AI_REVIEW_MODEL e o provedor ativo.',status:502},
-  NVIDIA_BAD_RESPONSE:{code:'NVIDIA_BAD_RESPONSE',message:'A NVIDIA retornou dados em formato inesperado. Nenhuma questão foi salva.',status:502},
-  NVIDIA_EMPTY:{code:'NVIDIA_EMPTY',message:'A NVIDIA não retornou texto para geração ou revisão. Tente novamente.',status:502},
-  NVIDIA_TRUNCATED:{code:'NVIDIA_TRUNCATED',message:'A NVIDIA interrompeu a resposta por limite de tokens. Tente gerar menos questões de uma vez.',status:422},
+  NVIDIA_BAD_RESPONSE:{code:'NVIDIA_BAD_RESPONSE',message:'O provedor de IA retornou dados inesperados. Nenhuma questão foi salva.',status:502},
+  NVIDIA_EMPTY:{code:'NVIDIA_EMPTY',message:'O provedor de IA não retornou texto para geração ou revisão. Tente novamente.',status:502},
+  NVIDIA_TRUNCATED:{code:'NVIDIA_TRUNCATED',message:'A IA atingiu o limite de saída durante a geração ou revisão. Tente 1 ou 2 questões por vez se continuar acontecendo.',status:422},
 };
 export function describeGenerationError(cause:unknown):GenerationFailure {
   const message=cause instanceof Error?cause.message:'';

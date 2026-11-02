@@ -39,6 +39,26 @@ export function isAIJobConfigured(job:AIJob,env:Record<string,string|undefined>=
  return resolveAIProvider(job,env)!==null;
 }
 
+/** Groq GPT-OSS consumes reasoning tokens from the completion budget.
+ * Use low effort and JSON mode only for question creation/review.
+ * Provider- and model-specific settings must never leak to Gemini or NVIDIA.
+ */
+export function educationalCompletionPayload(
+ provider:AIProvider, model:string, job:AIJob,
+ messages:{role:'system'|'user'|'assistant';content:string}[],
+ maxTokens:number,temperature:number
+):Record<string,unknown>{
+ if(provider==='groq'&&job!=='tutor'&&/^openai\/gpt-oss-(?:20b|120b)$/.test(model)){
+  return {model,messages,max_completion_tokens:maxTokens,temperature,stream:false,
+   reasoning_effort:'low',include_reasoning:false,response_format:{type:'json_object'}};
+ }
+ if(provider==='openai'){
+  return {model,messages,max_completion_tokens:maxTokens,reasoning_effort:'none',stream:false};
+ }
+ return {model,messages,max_tokens:maxTokens,temperature,stream:false,
+   ...(provider==='nvidia'?nvidiaInferenceOptions(model):{})};
+}
+
 /** Never expose raw upstream responses or keys. Shared OpenAI-compatible REST protocol. */
 async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number):Promise<string>{
  const t=Date.now();
@@ -47,11 +67,7 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
   response=await fetch(c.base+'/chat/completions',{
    method:'POST',
    headers:{Authorization:'Bearer '+c.key,'Content-Type':'application/json'},
-   // The GPT-6 Luna reasoning API uses max_completion_tokens and can omit reasoning.
-   // Never forward temperature or max_tokens to this OpenAI reasoning model.
-   body:JSON.stringify(c.provider==='openai'
-    ? {model:c.model,messages,max_completion_tokens:maxTokens,reasoning_effort:'none',stream:false}
-    : {model:c.model,messages,max_tokens:maxTokens,temperature,stream:false,...(c.provider==='nvidia'?nvidiaInferenceOptions(c.model):{})}),
+   body:JSON.stringify(educationalCompletionPayload(c.provider,c.model,job,messages,maxTokens,temperature)),
    cache:'no-store',signal:AbortSignal.timeout(job==='tutor'?35000:30000),
   });
  }catch(cause){
@@ -71,7 +87,12 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
  let body:any;
  try{body=await response.json();}catch{throw new Error('NVIDIA_BAD_RESPONSE');}
  const choice=body?.choices?.[0];
- if(choice?.finish_reason==='length')throw new Error('NVIDIA_TRUNCATED');
+ if(choice?.finish_reason==='length'){
+  // Record only diagnostic counts, never prompt, answer or API credentials.
+  const completionTokens=typeof body?.usage?.completion_tokens==='number'?body.usage.completion_tokens:'unknown';
+  console.warn('[KOGNOS][AI]',job,c.provider,'TRUNCATED','budget',maxTokens,'completionTokens',completionTokens);
+  throw new Error('NVIDIA_TRUNCATED');
+ }
  const answer=choice?.message?.content;
  if(typeof answer!=='string'||!answer.trim())throw new Error('NVIDIA_EMPTY');
  return answer;
@@ -90,9 +111,20 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
  try{
   return await requestSingleProvider(primary,job,messages,maxTokens,temperature);
  }catch(cause){
+  // A truncated GPT-OSS output is incomplete JSON. Retry the same generation
+  // at most once with more completion budget; never parse/publish partial items.
+  if(job==='generate'&&primary.provider==='groq'
+   &&/^openai\/gpt-oss-(?:20b|120b)$/.test(primary.model)
+   &&cause instanceof Error&&cause.message==='NVIDIA_TRUNCATED'){
+    const higherBudget=Math.min(14000,Math.ceil(maxTokens*1.4));
+    if(higherBudget>maxTokens){
+     console.warn('[KOGNOS][AI]',job,primary.provider,'retrying truncated output once with larger budget');
+     return requestSingleProvider(primary,job,messages,higherBudget,temperature);
+    }
+  }
   const fallbackDisabled=process.env.AI_REVIEW_FALLBACK_PROVIDER?.trim().toLowerCase()==='none';
   const eligible=job==='review'&&primary.provider==='gemini'&&!fallbackDisabled
-   &&cause instanceof Error&&cause.message==='NVIDIA_UNAVAILABLE';
+   &&cause instanceof Error&&(cause.message==='NVIDIA_UNAVAILABLE'||cause.message==='NVIDIA_TRUNCATED');
   if(!eligible)throw cause;
   const key=process.env.GROQ_API_KEY?.trim();
   if(!key)throw cause;
