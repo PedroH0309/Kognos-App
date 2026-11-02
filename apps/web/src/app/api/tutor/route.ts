@@ -3,6 +3,7 @@ import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
 import {DEFAULT_NVIDIA_MODEL,nvidiaInferenceOptions} from '@/lib/nvidia-request-config';
+import {refundAIQuota} from '@/lib/ai-quota';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
@@ -29,14 +30,6 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
   const userId = ctx.userClaims?.id;
   if (!userId) return jsonError('Sua sessão não foi reconhecida. Entre novamente.', 401);
   try {
-    const maxRequests = Math.max(1, Math.min(100, Number(process.env.AI_DAILY_REQUEST_LIMIT || '20') || 20));
-    // Only the server can invoke the security-definer RPC; the user cannot choose the owner ID.
-    const { data: reserved, error: quotaError } = await ctx.supabaseAdmin.rpc(
-      'reserve_ai_quota', { p_user_id: userId, p_daily_limit: maxRequests }
-    );
-    if (quotaError) return jsonError('O controle de cotas precisa da migração 0002 no Supabase.', 503);
-    if (reserved !== true) return jsonError(`Limite de ${maxRequests} perguntas por dia atingido.`, 429);
-
     // Caller-scoped read. Row Level Security enforces isolation of preferences.
     const { data: profileRow, error: profileError } = await ctx.supabase
       .from('profiles').select('preferences').eq('id', userId).single();
@@ -107,6 +100,14 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       }
       contextText=buildVerifiedPerformanceContext({answered:counted,correct,bySubject:[...totals.values()]});
     }
+    // Only consume quota after all profile/context checks have succeeded.
+    const maxRequests = Math.max(1, Math.min(100, Number(process.env.AI_DAILY_REQUEST_LIMIT || '20') || 20));
+    const quotaDay = new Date().toISOString().slice(0,10);
+    const { data: reserved, error: quotaError } = await ctx.supabaseAdmin.rpc(
+      'reserve_ai_quota', { p_user_id: userId, p_daily_limit: maxRequests }
+    );
+    if (quotaError) return jsonError('O controle de cotas precisa da migração 0002 no Supabase.', 503);
+    if (reserved !== true) return jsonError(`Cota diária esgotada: até ${maxRequests} usos e ${maxRequests*2} tentativas de IA, compartilhadas com o gerador. Reinicia às 00:00 UTC.`, 429);
     const messages = [
       { role: 'system', content: buildTutorSystemPrompt(profile, effectiveSubject, contextText) },
       ...sanitizeHistory(body.history),
@@ -127,8 +128,17 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
         }),
         cache: 'no-store', signal: controller.signal,
       });
+    } catch (e) {
+      if (!(e instanceof Error && (e.name==='AbortError'||e.name==='TimeoutError'))) {
+        // The request never yielded a provider response. Refund the reserved use.
+        await refundAIQuota(ctx.supabaseAdmin,userId,quotaDay);
+      }
+      throw e;
     } finally { clearTimeout(timeout); }
     if (!response.ok) {
+      // The provider explicitly rejected the call before returning usable output.
+      // Preserve timeouts as charged: the provider might still have processed them.
+      if(response.status!==408 && response.status!==504)await refundAIQuota(ctx.supabaseAdmin,userId,quotaDay);
       if (response.status === 401 || response.status === 403) return jsonError('Chave NVIDIA inválida ou modelo não autorizado.', 502);
       if (response.status === 429) return jsonError('O provedor limitou temporariamente as respostas.', 429);
       return jsonError('O tutor está temporariamente indisponível.', 502);
