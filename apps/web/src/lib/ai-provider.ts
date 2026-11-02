@@ -15,7 +15,7 @@ const preferences:Record<AIJob,{provider:AIProvider;model:string}>={
  tutor:{provider:'gemini',model:'gemini-2.5-flash'},
 };
 
-export function resolveAIProvider(job:AIJob,env:NodeJS.ProcessEnv=process.env):ProviderConfig|null {
+export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null {
  const prefix='AI_'+job.toUpperCase();
  const preferred=env[prefix+'_PROVIDER']?.trim().toLowerCase();
  const provider:AIProvider=preferred==='groq'||preferred==='gemini'||preferred==='nvidia'?preferred:preferences[job].provider;
@@ -31,7 +31,7 @@ export function resolveAIProvider(job:AIJob,env:NodeJS.ProcessEnv=process.env):P
  return {provider:effective,model,key,base:base.replace(/\/$/,'')};
 }
 
-export function isAIJobConfigured(job:AIJob,env:NodeJS.ProcessEnv=process.env):boolean{
+export function isAIJobConfigured(job:AIJob,env:Record<string,string|undefined>=process.env):boolean{
  return resolveAIProvider(job,env)!==null;
 }
 
