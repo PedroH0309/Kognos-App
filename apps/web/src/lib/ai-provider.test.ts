@@ -38,3 +38,9 @@ test('NVIDIA fallback never receives Groq or Gemini model overrides',()=>{
   assert.equal(selected?.model,'z-ai/glm-5.3-flash');
  }
 });
+
+test('new Groq generation default avoids the retired Llama 3.3 model',()=>{
+ const config=resolveAIProvider('generate',{GROQ_API_KEY:'test-groq'} as any);
+ assert.equal(config?.provider,'groq');
+ assert.equal(config?.model,'openai/gpt-oss-120b');
+});
