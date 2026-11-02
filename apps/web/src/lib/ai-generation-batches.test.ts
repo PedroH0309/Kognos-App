@@ -65,7 +65,7 @@ test('a fatal provider error stops queuing free-tier requests',async()=>{
  let started=0;
  const result=await generateApprovedBatches(10,async count=>{
   started++;
-  if(count===2)throw new Error('API rate limit');
+  if(started===1)throw new Error('API rate limit');
   await new Promise(resolve=>setTimeout(resolve,3));
   return {approved:count};
  });
