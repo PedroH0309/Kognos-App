@@ -4,6 +4,15 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.8 — Kog readiness and evidence-based study planner
+
+- Added a no-store `GET /api/ai-status` endpoint which exposes **only configuration presence**, never provider secrets or a claim that an upstream request succeeded.
+- Kog now detects missing NVIDIA server configuration before sending a prompt. Its clearly labeled **Local Library — No AI** mode provides an original Pythagoras explanation and guides from the 20 authored lessons. Unsupported questions are acknowledged without fake generated answers.
+- The planner combines the student's real demo attempt history and authenticated, server-graded AI practice **summary** to prioritize review topics. It respects scheduled weekdays, daily minutes and existing tasks, without inferring mastery or predicted exam results.
+- No new Supabase migration or third-party dependency is needed. Full conversational AI still requires a private `NVIDIA_API_KEY` in the server's `apps/web/.env.local` or the hosting platform's secret settings.
+
+See [Sprint 18 and NVIDIA setup](docs/KOGNOS_SPRINT_18_KOG_PLANNER.md). A presence-only readiness flag does not confirm that the provider or model is reachable.
+
 ## What's new in v1.5 — AI practice linked to learning paths
 
 - Connected NVIDIA-generated questions to the **20 authored starter lessons**, with explicit, server-validated lesson-to-exam-topic mappings; generation from a lesson now opens the personal AI bank with the correct institution, subject and topic preselected.
