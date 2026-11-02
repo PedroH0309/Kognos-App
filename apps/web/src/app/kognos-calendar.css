@@ -229,3 +229,24 @@
 .app-layout.less-motion .k-calendar-page *,
 .app-layout.less-motion .k-calendar-page *::before,
 .app-layout.less-motion .k-calendar-page *::after {animation:none!important;transition:none!important;}
+
+
+/* Calendar rhythm and minimum touch targets on responsive layouts. */
+.k-calendar-page .k-cal-page-header {margin-bottom:24px;}
+.k-calendar-page .k-cal-top-actions {row-gap:10px;column-gap:10px;}
+.k-calendar-page .k-cal-date-strip {margin-bottom:28px;}
+.k-calendar-page .k-cal-week-strip {gap:clamp(7px,1.1vw,14px);padding:3px 2px 11px;}
+.k-calendar-page .k-cal-date-pill {min-width:0;}
+.k-calendar-page .k-cal-month-grid {gap:7px 6px;}
+.k-calendar-page .k-cal-month-grid button {min-height:44px;}
+.k-calendar-page .k-cal-main-grid {gap:24px;}
+.k-calendar-page .k-cal-time-row {padding-bottom:19px;}
+.k-calendar-page .k-cal-export-button {border-color:var(--kc-border);white-space:nowrap;}
+@media(max-width:530px) {
+ .k-calendar-page .k-cal-date-strip {padding:14px 10px 8px;}
+ .k-calendar-page .k-cal-week-strip {grid-template-columns:repeat(7,minmax(39px,1fr));gap:6px;}
+ .k-calendar-page .k-cal-top-actions .k-cal-export-button {order:4;flex:1 0 100%;}
+ .k-calendar-page .k-cal-summary-body {flex-wrap:wrap;}
+ .k-calendar-page .k-cal-ring {margin:auto;}
+ .k-calendar-page .k-cal-metrics {flex:1 1 150px;}
+}
