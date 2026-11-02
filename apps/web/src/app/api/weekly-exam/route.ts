@@ -45,15 +45,17 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  if(examError)return fail('O simulado semanal exige a migração 0012 no Supabase.',503);
  // Inventory and longitudinal summaries are service-role scoped. On databases
  // that have only migration 0012, existing exams remain usable.
- const [inventoryRead,historyRead]=await Promise.all([
+ const [inventoryRead,historyRead,weakRead]=await Promise.all([
   ctx.supabaseAdmin.rpc('kognos_weekly_exam_inventory',{p_user_id:userId,p_institution:exam}),
-  ctx.supabaseAdmin.rpc('kognos_weekly_exam_history',{p_user_id:userId,p_institution:exam})
+  ctx.supabaseAdmin.rpc('kognos_weekly_exam_history',{p_user_id:userId,p_institution:exam}),
+  ctx.supabaseAdmin.rpc('kognos_weekly_exam_weak_topics',{p_user_id:userId,p_institution:exam})
  ]);
  const inventory=inventoryRead.error?null:inventoryRead.data;
  const history=historyRead.error?[]:historyRead.data;
- const enhanced=inventoryRead.error===null&&historyRead.error===null;
+ const weakTopics=weakRead.error?[]:weakRead.data;
+ const enhanced=inventoryRead.error===null&&historyRead.error===null&&weakRead.error===null;
  if(!examRow)return NextResponse.json({institution:exam,weekStart:monday,session:null,
-  inventory,history,enhanced},{headers:noCache});
+  inventory,history,weakTopics,enhanced},{headers:noCache});
  const {data:assignments,error:itemsError}=await ctx.supabaseAdmin.from('kognos_weekly_exam_items')
   .select('question_id,position').eq('exam_id',examRow.id).eq('user_id',userId).order('position');
  if(itemsError||!assignments||assignments.length!==examRow.question_count)
@@ -93,7 +95,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   topics:[...group.topics.values()].sort((a,b)=>a.topic.localeCompare(b.topic,'pt-BR'))
  })).sort((a,b)=>a.correct/a.total-b.correct/b.total||a.subject.localeCompare(b.subject,'pt-BR')):null;
  return NextResponse.json({institution:exam,weekStart:monday,
-  inventory,history,enhanced,session:{
+  inventory,history,weakTopics,enhanced,session:{
    id:examRow.id,count:examRow.question_count,answeredIds,correct,questions,subjectScores
   }},{headers:noCache});
 });
