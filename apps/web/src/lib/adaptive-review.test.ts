@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {addCalendarDays,localDateKey,reviewCounts,reviewItems,selectExploratoryDiagnostic,evaluateExploratoryDiagnostic} from './adaptive-review.ts';
+import {addCalendarDays,localDateKey,reviewCounts,reviewItems,selectExploratoryDiagnostic,selectAdaptiveDiagnosticSession,evaluateExploratoryDiagnostic} from './adaptive-review.ts';
 import {demoQuestions,type QuestionAttempt} from './demo-questions.ts';
 const at=(questionId:string,answerIndex:number,date:string):QuestionAttempt=>({questionId,answerIndex,subject:'ignored client hint',correct:!Boolean(answerIndex),createdAt:`${date}T12:00:00`,mode:'practice'});
 const today=new Date(2026,10,1,15);
@@ -44,4 +44,17 @@ test('diagnostic evaluates using canonical answer index, not browser correct fie
  const report=evaluateExploratoryDiagnostic([q],[{questionId:'q01',answerIndex:2}]);
  assert.equal(report.correct,1);assert.equal(report.answered,1);
  assert.equal(evaluateExploratoryDiagnostic([q],[{questionId:'q01',answerIndex:99}]).answered,0);
+});
+test('new diagnostic covers 20 original questions and all 7 subjects',()=>{
+ const questions=selectAdaptiveDiagnosticSession([]);
+ assert.equal(questions.length,20);
+ assert.equal(new Set(questions.map(q=>q.id)).size,20);
+ assert.equal(new Set(questions.map(q=>q.subject)).size,7);
+ assert.deepEqual(selectAdaptiveDiagnosticSession([],5).length,5);
+});
+test('reassessment ranks a previously wrong answer before other items within a subject',()=>{
+ const prior=at('q01',0,'2026-11-01');
+ const next=selectAdaptiveDiagnosticSession([prior]);
+ const math=next.filter(q=>q.subject==='Matemática');
+ assert.equal(math[0].id,'q01');
 });
