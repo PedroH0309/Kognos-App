@@ -6,6 +6,7 @@ import {publicGeneratedQuestion,excludePreviouslyGenerated} from '@/lib/ai-quest
 import {safeOfficialUrl} from '@/lib/syllabus-sources';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
+import {describeGenerationError} from '@/lib/ai-generation-errors';
 
 export const runtime='nodejs';
 export const maxDuration=180;
@@ -58,8 +59,12 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   if(insertError||!data)return error('Falha ao salvar questões. Confira as migrações 0005 e 0007 e tente novamente.',503);
   return NextResponse.json({questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),approved:data.length,rejected:generation.count-data.length},{headers:{'Cache-Control':'no-store'}});
  }catch(e){
-  if(e instanceof Error){if(e.message==='NVIDIA_AUTH')return error('Chave NVIDIA inválida ou modelo não autorizado.',502);if(e.message==='NVIDIA_RATE_LIMIT')return error('Limite temporário da NVIDIA atingido.',429);if(e.message==='NVIDIA_NOT_CONFIGURED')return error('Configure NVIDIA_API_KEY no servidor.',503);if(e.message.includes('JSON')||e.message.includes('validação'))return error('A IA retornou um formato inválido. Nenhuma questão foi publicada.',422);}
-  return error('Não foi possível gerar e revisar as questões agora.',503);
+  const failure=describeGenerationError(e);
+  // Never log raw exceptions: providers may include request content in error payloads.
+  console.error('[KOGNOS][AI_GENERATION]',failure.code);
+  return NextResponse.json({error:failure.message,code:failure.code},{
+   status:failure.status,headers:{'Cache-Control':'no-store'}
+  });
  }
 });
 export async function POST(request:Request){
