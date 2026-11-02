@@ -69,3 +69,15 @@ test('YouTube link is a query, not a fabricated instructor video',()=>{
  assert.equal(url.pathname,'/results');
  assert.ok(url.searchParams.get('search_query')?.includes('Citologia'));
 });
+
+test('verified weekly errors prioritize the same exam topic in the next plan',()=>{
+ const profile={...initialProfile,examFocus:'fuvest' as const,syllabusExams:['fuvest' as const],
+  weeklyDays:[1],dailyMinutes:60,sessionMinutes:25};
+ const weekly=[{subject:'Literatura',topic:'Leitura obrigatória FUVEST 2027: Opúsculo Humanitário — Nísia Floresta',
+  attempts:6,incorrect:5,lastWrong:true}];
+ const rows=createPersonalizedStudyWeek(profile,[],[],null,new Date(2026,10,2,12),
+  (()=>{let i=0;return()=>String(++i)})(),weekly);
+ assert.ok(rows.some(row=>row.subject==='Literatura'&&row.title.includes('Opúsculo Humanitário')));
+ assert.ok(rows.some(row=>row.title.startsWith('Revisar Literatura:')));
+ assert.ok(rows.reduce((sum,row)=>sum+row.minutes,0)<=60);
+});
