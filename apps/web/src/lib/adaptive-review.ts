@@ -84,3 +84,38 @@ export function evaluateExploratoryDiagnostic(questions:readonly DemoQuestion[],
  return {answered:results.filter(r=>r.answered).length,correct:results.filter(r=>r.answered&&r.correct).length,total:results.length,results,
   subjects:results.map(r=>({subject:r.subject,correct:r.correct,topic:r.topic,questionId:r.questionId}))};
 }
+/** Mixed author-created 20-item starting checkpoint: all curated introductory
+ * topics, no claim of authentic ENEM/FUVEST/VUNESP/SARESP questions. */
+export function selectBaselineQuestions():DemoQuestion[]{
+ return [...demoQuestions];
+}
+/** Weekly checkpoint mixes missed topics with previously-unseen topics, while
+ * rotating questions based on recorded history. Never trusts user-supplied
+ * 'correct', and avoids calling a single answer a durable learning deficit.
+ */
+export function selectWeeklyCheckpoint(attempts:readonly QuestionAttempt[],limit=10):DemoQuestion[]{
+ const history=new Map<string,{count:number;lastWrong:boolean}>();
+ for(const attempt of [...attempts].sort((a,b)=>a.createdAt.localeCompare(b.createdAt))){
+  const q=demoQuestions.find(v=>v.id===attempt.questionId);
+  if(!q||!Number.isInteger(attempt.answerIndex)||attempt.answerIndex<0||attempt.answerIndex>=q.options.length)continue;
+  const prev=history.get(q.id)||{count:0,lastWrong:false};
+  history.set(q.id,{count:prev.count+1,lastWrong:attempt.answerIndex!==q.correct});
+ }
+ const wrong=demoQuestions.filter(q=>history.get(q.id)?.lastWrong)
+   .sort((a,b)=>(history.get(a.id)?.count||0)-(history.get(b.id)?.count||0)||a.id.localeCompare(b.id));
+ const newQuestions=demoQuestions.filter(q=>!history.has(q.id)).sort((a,b)=>a.id.localeCompare(b.id));
+ const rest=demoQuestions.filter(q=>history.has(q.id)&&!history.get(q.id)?.lastWrong)
+   .sort((a,b)=>(history.get(a.id)?.count||0)-(history.get(b.id)?.count||0)||a.id.localeCompare(b.id));
+ const output:DemoQuestion[]=[];
+ const target=Math.max(1,Math.min(20,Math.floor(limit)));
+ // Balanced sampling: the checkpoint must include familiar weak and different
+ // material when such material actually exists.
+ const weakCap=Math.ceil(target*0.6);
+ output.push(...wrong.slice(0,weakCap));
+ output.push(...newQuestions.slice(0,Math.max(0,target-output.length)));
+ for(const q of [...wrong.slice(weakCap),...rest,...newQuestions]){
+  if(output.length>=target)break;
+  if(!output.some(x=>x.id===q.id))output.push(q);
+ }
+ return output.slice(0,target);
+}
