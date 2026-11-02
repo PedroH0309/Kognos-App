@@ -12,14 +12,14 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  if(!filters)return error('Filtros de questões inválidos.',400);
  let query=ctx.supabaseAdmin.from('kognos_ai_questions')
    .select('id,institution,source_title,source_url,source_topic_id,lesson_id,edition,subject,topic,difficulty,prompt,options,created_at,review_status',{count:'exact'})
-   .eq('user_id',userId).neq('review_status','withdrawn');
+   .eq('user_id',userId).neq('review_status','withdrawn').is('completed_at',null);
  if(filters.institution)query=query.eq('institution',filters.institution);
  if(filters.subject)query=query.eq('subject',filters.subject);
  if(filters.topic)query=query.eq('topic',filters.topic);
  if(filters.difficulty)query=query.eq('difficulty',filters.difficulty);
  const {data,count,error:queryError}=await query.order('created_at',{ascending:false})
    .range(filters.offset,filters.offset+filters.limit-1);
- if(queryError)return error('Não foi possível carregar o banco gerado por IA. Execute as migrações 0005 e 0007.',503);
+ if(queryError)return error('Não foi possível carregar o banco gerado por IA. Execute a migração 0009 (após 0005 e 0007).',503);
  return NextResponse.json({questions:(data||[]).map(row=>publicGeneratedQuestion(row as Record<string,unknown>)),
    total:count??0,offset:filters.offset,limit:filters.limit,hasMore:filters.offset+(data?.length??0)<(count??0)},
    {headers:{'Cache-Control':'no-store'}});

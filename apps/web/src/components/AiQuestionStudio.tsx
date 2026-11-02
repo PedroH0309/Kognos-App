@@ -13,9 +13,10 @@ import {AI_BANK_PAGE_SIZE,splitGenerationBatches} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
+import {generateApprovedBatches,MAX_ATTEMPTS_PER_BATCH} from '@/lib/ai-generation-batches';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
-type Grading={correct:boolean;correctIndex:number;explanation:string};
+type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
 type Mode='questions'|'simulados';
 const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
@@ -38,6 +39,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [hasMore,setHasMore]=useState(false);
  const [loadingMore,setLoadingMore]=useState(false);
  const [batchNumber,setBatchNumber]=useState(0);
+ const [batchAttempt,setBatchAttempt]=useState(1);
  const [draftReadyFor,setDraftReadyFor]=useState<string|null>(null);
  const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
  const [generationSeconds,setGenerationSeconds]=useState(0);
@@ -150,50 +152,72 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  function changeSubject(value:string){setSubject(value);setTopic(blueprint.subjects[value][0]);setLinkedLessonId(null);}
  function changeTopic(value:string){setTopic(value);if(linkedLessonId&&!validLessonAIReference(linkedLessonId,institution,subject,value))setLinkedLessonId(null);}
  async function generate(){
-  if(!userId||!canGenerate)return;
+  if(!userId||!canGenerate||generating)return;
+  const requested=Number(count);
   setGenerating(true);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
-  const parts=splitGenerationBatches(Number(count));
-  let saved=0,rejected=0,failure='';
   try{
-   for(let index=0;index<parts.length;index++){
-    setBatchNumber(index+1);
-    try{
-     const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:parts[index],sourceTopicId:verifiedTopic?.id,...(activeLessonLink?{lessonId:activeLessonLink}:{})})});
-     saved+=Number(result.approved)||0;rejected+=Number(result.rejected)||0;
-    }catch(e){failure=e instanceof Error?e.message:'A geração de questões não foi concluída.';break;}
-   }
-   if(saved){
-    setNotice(`${saved} questão(ões) gerada(s) e salva(s) no banco pessoal. ${rejected?`${rejected} não passou/passaram na revisão. `:''}Essas questões também ficam disponíveis para simulados.`);
+   const result=await generateApprovedBatches(requested,
+    async remaining=>await authenticatedFetch('/api/ai-questions/generate',{
+     method:'POST',body:JSON.stringify({
+      institution,subject,topic,difficulty,count:remaining,
+      ...(verifiedTopic?{sourceTopicId:verifiedTopic.id}:{}),
+      ...(activeLessonLink?{lessonId:activeLessonLink}:{})
+     })
+    }),
+    (batch,attempt)=>{setBatchNumber(batch);setBatchAttempt(attempt);}
+   );
+   if(result.saved){
+    setNotice(`${result.saved} de ${result.requested} questões foram aprovadas e salvas. ${result.missing?`${result.missing} não passaram pela revisão ou não foram concluídas após ${MAX_ATTEMPTS_PER_BATCH} tentativas por lote. `:''}As questões ficam disponíveis para prática e simulados.`);
     await refresh();
    }
-   if(failure)setError(`${failure}${saved?` As ${saved} questão(ões) anteriores foram mantidas no banco.`:''}`);
-  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);}
+   if(result.error)setError(`${result.error}${result.saved?` As ${result.saved} aprovadas continuam salvas.`:''}`);
+   else if(result.missing&&!result.saved)setError('Nenhuma questão passou pela revisão. Tente outro tema ou dificuldade; nenhuma questão incorreta foi salva.');
+  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);setBatchAttempt(1);}
  }
+
  function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
  async function submitAnswer(){
   if(!current||choice===null||submitting||answers[cursor])return;
   setSubmitting(true);setError('');
   try{
-   const grade=await authenticatedFetch('/api/ai-questions/submit',{method:'POST',body:JSON.stringify({questionId:current.id,answerIndex:choice,mode:inMock?'mock':'practice'})});
-   setAnswers(old=>[...old,grade as Grading]);
-  }catch(e){setError(e instanceof Error?e.message:'Falha ao corrigir a resposta.');}
-  finally{setSubmitting(false);}
+   const grade=await authenticatedFetch('/api/ai-questions/submit',{
+    method:'POST',body:JSON.stringify({questionId:current.id,answerIndex:choice,mode:inMock?'mock':'practice'})
+   });
+   const xpEarned=Number(grade.xpEarned)||0;
+   setAnswers(old=>[...old,{correct:Boolean(grade.correct),correctIndex:grade.correctIndex,explanation:grade.explanation,xpEarned}]);
+   // Keep the completed question visible only in THIS session for feedback;
+   // it is no longer available for a new attempt or a new bank session.
+   setQuestions(old=>old.filter(q=>q.id!==current.id));
+   setTotalQuestions(old=>Math.max(0,old-1));
+   setNotice(`Resposta registrada · +${xpEarned} XP. Esta questão saiu da sua lista de pendentes.`);
+   window.dispatchEvent(new Event('kognos:ai-answer-recorded'));
+  }catch(e){
+   const message=e instanceof Error?e.message:'Falha ao corrigir a resposta.';
+   setError(message);
+   if(/já concluída/i.test(message)){
+    setQuestions(old=>old.filter(q=>q.id!==current.id));
+    setSession([]);setFinished(false);
+    void refresh();
+   }
+  }finally{setSubmitting(false);}
  }
+
  function next(){
   if(cursor>=session.length-1){setFinished(true);setChoice(null);return;}
   setCursor(v=>v+1);setChoice(null);
  }
  const points=answers.filter(a=>a.correct).length;
+ const sessionXP=answers.reduce((sum,a)=>sum+a.xpEarned,0);
  const duration=`${String(Math.floor(elapsed/60)).padStart(2,'0')}:${String(elapsed%60).padStart(2,'0')}`;
  return <div className="ai-studio">
    {error&&<div role="alert" className="message warning">{error}</div>}
    {notice&&<div role="status" className="message success">{notice}</div>}
-   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo demonstrativo tem 20 questões fixas. Com a sua conta você gera novos itens com NVIDIA, salva no Supabase e monta simulados com eles.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
+   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo demonstrativo tem 20 questões fixas. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
    {userId&&!session.length&&<>
     <IntegrationSetupNotice readiness={readiness}/>
     {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>{setLinkedLessonId(null);setBankScope('all');}}>Ver banco completo</button></div>}
     <section className="dark-panel ai-studio-generator">
-      <div className="ai-generator-heading"><div><span className="overline">BANCO INTELIGENTE</span><h2><BrainCircuit size={22} aria-hidden="true"/> Gerador de questões com IA</h2><p>Escolha a instituição e o nível. O Kognos gera itens originais e realiza uma revisão automática antes de salvá-los.</p></div><span className="ai-tag"><Sparkles size={14}/> IA · NVIDIA</span></div>
+      <div className="ai-generator-heading"><div><span className="overline">BANCO INTELIGENTE</span><h2><BrainCircuit size={22} aria-hidden="true"/> Gerador de questões com IA</h2><p>Escolha a instituição e o nível. O Kognos gera itens originais e realiza uma revisão automática antes de salvá-los.</p></div><span className="ai-tag"><Sparkles size={14}/> IA · revisão automática</span></div>
       <div className="ai-generator-grid">
        <KognosSelect label="Instituição" value={institution} options={examOptions} onChange={changeInstitution}/>
        <KognosSelect label="Disciplina" value={subject} options={subjectOptions} onChange={changeSubject}/>
@@ -202,38 +226,38 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
        <KognosSelect label="Quantidade" value={count} options={amountOptions} onChange={setCount}/>
       </div>
       <details className="ai-source-note ai-source-reference"><summary><BookOpenText size={15} aria-hidden="true"/><strong>{verifiedTopic?`Conteúdo vinculado a fonte revisada · ${verifiedTopic.edition}`:`Referência editorial · ${blueprint.edition}`}</strong><span>Consultar detalhes</span></summary><div><p>{verifiedTopic?`Evidência: “${verifiedTopic.evidence}”. Revisão editorial não equivale à homologação da instituição.`:blueprint.notice} <a href={verifiedTopic?.sourceUrl||blueprint.sourceUrl} target="_blank" rel="noopener noreferrer">Consultar fonte institucional</a></p>{sourceNotice&&<small>{sourceNotice}</small>}</div></details>
-      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading||!canGenerate} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Gerando e revisando · lote ${batchNumber}/${splitGenerationBatches(Number(count)).length}`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>{generating?`Processando há ${generationSeconds}s. Você pode mudar de guia e voltar; a geração continua enquanto a página permanecer aberta.`:'Dica: gere 1 questão para uma resposta mais rápida. A geração e a revisão independente usam duas chamadas à NVIDIA.'}</small></div>
+      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading||!canGenerate} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Gerando lote ${batchNumber}/${splitGenerationBatches(Number(count)).length} · tentativa ${batchAttempt}/${MAX_ATTEMPTS_PER_BATCH}`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>{generating?`Processando há ${generationSeconds}s. Você pode mudar de guia e voltar; a geração continua enquanto a página permanecer aberta.`:'A geração é feita em lotes de até 5. O Kognos tenta completar a quantidade escolhida, mas salva somente questões aprovadas pela revisão.'}</small></div>
     </section>
     <section className="dark-panel ai-bank">
-      <div className="ai-bank-header"><div><h2>{inMock?'Simulados personalizados':'Meu banco de questões IA'}</h2><p>Questões privadas salvas automaticamente, disponíveis para estudo e simulado.</p></div><button type="button" className="btn outline small" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={15}/> Atualizar</button></div>
+      <div className="ai-bank-header"><div><h2>{inMock?'Simulados personalizados':'Meu banco de questões IA'}</h2><p>Somente questões pendentes aparecem aqui. Ao responder, elas saem desta fila e rendem XP em Conquistas.</p></div><button type="button" className="btn outline small" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={15}/> Atualizar</button></div>
       <div className="ai-bank-scope" role="group" aria-label="Filtrar banco pessoal"><button type="button" className={bankScope==='all'?'selected':''} aria-pressed={bankScope==='all'} onClick={()=>{setBankScope('all');setLinkedLessonId(null);}}>Toda a instituição</button><button type="button" className={bankScope==='topic'?'selected':''} aria-pressed={bankScope==='topic'} onClick={()=>setBankScope('topic')}>Assunto selecionado</button></div>
-      <div className="ai-bank-counter"><strong>{hasServerBank?(loading?'…':totalQuestions):'—'}</strong><span>{hasServerBank?`${totalQuestions===1?'questão salva':'questões salvas'} neste filtro · ${scopeDescription}${inMock?` · ${difficulties[difficulty]}`:''}`:'Banco aguardando conexão com o servidor'}<small>{hasServerBank?(loading?'Consultando banco…':`${questions.length} carregadas nesta página`):'Os registros existentes continuam protegidos no Supabase'}</small></span></div>
+      <div className="ai-bank-counter"><strong>{hasServerBank?(loading?'…':totalQuestions):'—'}</strong><span>{hasServerBank?`${totalQuestions===1?'questão pendente':'questões pendentes'} neste filtro · ${scopeDescription}${inMock?` · ${difficulties[difficulty]}`:''}`:'Banco aguardando conexão com o servidor'}<small>{hasServerBank?(loading?'Consultando banco…':`${questions.length} carregadas nesta página`):'Os registros existentes continuam protegidos no Supabase'}</small></span></div>
       {!hasServerBank&&<div className="k-bank-connection" role="status">O Kognos ainda não conseguiu consultar seu banco de IA. Configure as variáveis do servidor e use <strong>Verificar novamente</strong> no painel acima.</div>}
       {hasServerBank&&loading&&<p role="status" className="muted">Carregando questões...</p>}
-      {hasServerBank&&!loading&&!bank.length&&<p className="ai-empty">Nenhuma questão salva para este filtro. Se você já gerou questões, tente “Toda a instituição”, escolha outra dificuldade ou gere um novo conjunto acima. As questões aprovadas serão incluídas também nos simulados.</p>}
+      {hasServerBank&&!loading&&!bank.length&&<p className="ai-empty">Nenhuma questão pendente neste filtro. Questões concluídas não podem ser respondidas novamente para ganhar XP; escolha outro assunto ou gere novas questões.</p>}
       {hasServerBank&&!!bank.length&&<>
        <button type="button" className="btn primary" onClick={()=>start(bank.slice(0,Math.min(20,bank.length)))}>{inMock?'Iniciar simulado de IA':'Praticar questões do banco'} ({Math.min(20,bank.length)})</button>
        <div className="ai-question-list">{bank.map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>{q.source_kind==='editor_approved_source'?'IA · assunto vinculado a matriz revisada':'IA · assunto editorial'} · resposta verificada automaticamente, sem homologação do item</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
       </>}
       {hasServerBank&&hasMore&&<button type="button" className="btn outline ai-load-more" disabled={loadingMore||loading} onClick={()=>void loadMore()}>{loadingMore?'Carregando…':`Carregar mais questões (${questions.length} de ${totalQuestions})`}</button>}
-      {hasServerBank&&!hasMore&&totalQuestions>0&&<p className="ai-end-of-results">Todas as {totalQuestions} questões deste filtro foram carregadas.</p>}
+      {hasServerBank&&!hasMore&&totalQuestions>0&&<p className="ai-end-of-results">Todas as {totalQuestions} questões pendentes deste filtro foram carregadas.</p>}
       <p className="privacy-note">A revisão automática não garante ausência de erros. Questões geradas não são oficiais e não entram no banco de outros alunos sem revisão humana.</p>
     </section>
    </>}
    {userId&&session.length>0&&<section className="dark-panel ai-session">
     {finished?<>
-      <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Resultado do seu conjunto de questões geradas por IA. Não é nota oficial, TRI ou estimativa psicométrica.</p>
+      <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Você conquistou {sessionXP} XP nesta sessão. As questões concluídas saíram do banco de pendentes e já contam para suas Conquistas. Esta pontuação não é nota oficial nem estimativa TRI.</p>
       <div className="ai-review-results">{session.map((q,i)=><article key={q.id}><strong>{i+1}. {q.subject} — {answers[i]?.correct?'Acerto':'Revisar'}</strong><p>{q.prompt}</p><p>Gabarito: {String.fromCharCode(65+(answers[i]?.correctIndex??0))}. {answers[i]?.explanation||'Sem correção disponível.'}</p></article>)}</div>
-      <button type="button" className="btn primary" onClick={()=>{setSession([]);setFinished(false);}}>Voltar ao banco</button>
+      <button type="button" className="btn primary" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Voltar às questões pendentes</button>
     </>:<>
       <div className="question-topline"><span>{inMock?'SIMULADO IA':'PRÁTICA IA'} · QUESTÃO {cursor+1} DE {session.length}</span><span>{current.subject} · {difficulties[current.difficulty]}</span></div>
       <div className="question-progress"><span style={{width:`${(cursor+1)/session.length*100}%`}}/></div>
       <div className="ai-session-meta"><span>{current.institution.toUpperCase()} · {current.topic}</span>{inMock&&<span><Clock3 size={15}/> {duration} decorrido</span>}</div>
       <h2>{current.prompt}</h2>
       <div className="answer-options">{current.options.map((text,i)=><button type="button" key={i} disabled={Boolean(answers[cursor])||submitting} className={`answer-choice ${choice===i?'chosen':''} ${!inMock&&answers[cursor]&&i===answers[cursor].correctIndex?'is-correct':''}`} onClick={()=>setChoice(i)}><span>{String.fromCharCode(65+i)}</span>{text}</button>)}</div>
-      {answers[cursor]&&!inMock&&<div className={`explanation-box ${answers[cursor].correct?'correct':'incorrect'}`} role="status"><strong>{answers[cursor].correct?'Correto!':'Vamos revisar'}</strong><p>Gabarito: {String.fromCharCode(65+answers[cursor].correctIndex)}. {answers[cursor].explanation}</p></div>}
-      {answers[cursor]&&inMock&&<p className="message neutral" role="status">Resposta registrada. A correção ficará disponível somente no final deste simulado.</p>}
-      <div className="practice-actions"><button type="button" className="btn outline" onClick={()=>{setSession([]);setFinished(false);}}>Encerrar</button><button type="button" className="btn outline" onClick={onTutor}>{answers[cursor]&&!inMock?'Entender com Kog':'Pedir dica ao Kog'}</button>{!answers[cursor]?<button type="button" className="btn primary" disabled={choice===null||submitting} onClick={()=>void submitAnswer()}>{submitting?'Conferindo…':'Registrar resposta'}</button>:<button type="button" className="btn primary" onClick={next}>{cursor===session.length-1?'Ver resultado':'Próxima questão →'}</button>}</div>
+      {answers[cursor]&&!inMock&&<div className={`explanation-box ${answers[cursor].correct?'correct':'incorrect'}`} role="status"><strong>{answers[cursor].correct?'Correto!':'Vamos revisar'} · +{answers[cursor].xpEarned} XP</strong><p>Gabarito: {String.fromCharCode(65+answers[cursor].correctIndex)}. {answers[cursor].explanation}</p></div>}
+      {answers[cursor]&&inMock&&<p className="message neutral" role="status">Resposta registrada · +{answers[cursor].xpEarned} XP. A correção ficará disponível somente no final deste simulado.</p>}
+      <div className="practice-actions"><button type="button" className="btn outline" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Encerrar</button><button type="button" className="btn outline" onClick={onTutor}>{answers[cursor]&&!inMock?'Entender com Kog':'Pedir dica ao Kog'}</button>{!answers[cursor]?<button type="button" className="btn primary" disabled={choice===null||submitting} onClick={()=>void submitAnswer()}>{submitting?'Conferindo…':'Registrar resposta'}</button>:<button type="button" className="btn primary" onClick={next}>{cursor===session.length-1?'Ver resultado':'Próxima questão →'}</button>}</div>
     </>}
    </section>}
  </div>;

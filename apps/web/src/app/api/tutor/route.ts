@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { withSupabase } from '@supabase/server';
-import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from '@/lib/tutor';
+import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normalizeTutorAnswer } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
 import {requestAI,isAIJobConfigured} from '@/lib/ai-provider';
 import {refundAIQuota} from '@/lib/ai-quota';
@@ -115,7 +115,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     ];
     const answer = await requestAI('tutor',messages as {role:'system'|'user'|'assistant';content:string}[],1250,0.55);
     return NextResponse.json(
-      { answer: answer.slice(0, 12000) },
+      { answer: normalizeTutorAnswer(answer).slice(0, 12000) },
       { headers: { 'Cache-Control': 'no-store' } }
     );
   } catch (e) {

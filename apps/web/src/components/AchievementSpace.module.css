@@ -1,0 +1,37 @@
+.heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin:0 0 24px}
+.heading>div{min-width:0}
+.heading p,.badgeHeading p{color:var(--txt-muted, var(--muted));max-width:700px;line-height:1.6;margin:7px 0 0}
+.headingTitle{display:flex;align-items:center;gap:12px;font-size:clamp(25px,3vw,34px);letter-spacing:-.03em;margin:9px 0}
+.headingTitle svg{color:var(--accent-400,#38cde5)}
+.hero{padding:26px;background:linear-gradient(117deg,rgba(91,77,227,.20),rgba(56,205,229,.06));border:1px solid var(--line);border-radius:19px;display:flex;align-items:center;gap:21px;margin-bottom:18px}
+.levelIcon{width:70px;height:70px;flex:0 0 70px;display:flex;align-items:center;justify-content:center;border-radius:19px;color:#ddd7ff;background:rgba(91,77,227,.36)}
+.levelCopy{flex:1;min-width:0}
+.levelCopy>span{color:var(--accent-400,#38cde5);font-size:11px;font-weight:750;letter-spacing:.12em}
+.levelCopy h2{font-size:26px;margin:6px 0}
+.levelCopy p{font-size:13px;color:var(--txt-muted,var(--muted));margin:4px 0 12px}
+.progressBar,.badgeProgress{height:8px;border-radius:999px;background:rgba(120,131,152,.24);overflow:hidden}
+.progressBar>span,.badgeProgress>span{display:block;height:100%;background:linear-gradient(90deg,#5b4de3,#38cde5);border-radius:inherit;transition:width .25s ease}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 27px}
+.stats>div{display:flex;flex-direction:column;gap:8px;padding:17px;border:1px solid var(--line);border-radius:14px;background:var(--panel-2,var(--panel));}
+.stats svg{color:var(--accent-400,#38cde5)}
+.stats strong{font-size:26px;font-variant-numeric:tabular-nums}
+.stats span{font-size:12px;color:var(--txt-muted,var(--muted))}
+.badgeSection{margin-bottom:22px}
+.badgeHeading{margin-bottom:15px}
+.badgeHeading h2{margin:6px 0 0;font-size:22px}
+.badgeGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.badgeCard{border:1px solid var(--line);border-radius:15px;background:var(--panel-2,var(--panel));padding:18px;display:flex;gap:15px;opacity:.72}
+.badgeCard.unlocked{opacity:1;border-color:rgba(56,205,229,.35)}
+.badgeIcon{width:48px;height:48px;flex:0 0 48px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:rgba(119,131,152,.15);color:var(--txt-muted,var(--muted))}
+.unlocked .badgeIcon{background:rgba(91,77,227,.25);color:#a89eff}
+.badgeText{flex:1;min-width:0}
+.badgeStatus{font-size:10px;font-weight:750;letter-spacing:.07em;color:var(--txt-muted,var(--muted));display:flex;align-items:center;gap:5px}
+.unlocked .badgeStatus{color:var(--accent-400,#38cde5)}
+.badgeText h3{font-size:16px;margin:7px 0 4px}
+.badgeText p{font-size:12px;line-height:1.5;color:var(--txt-muted,var(--muted));margin:0 0 12px}
+.badgeProgress{height:6px}
+.badgeText small{display:block;font-size:11px;text-align:right;margin-top:5px;color:var(--txt-muted,var(--muted))}
+.status{margin:22px 0;color:var(--txt-muted,var(--muted));padding:18px;border-radius:13px;border:1px solid var(--line)}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.heading{flex-direction:column}.hero{padding:18px;gap:14px}.levelIcon{width:50px;height:50px;flex-basis:50px}.levelCopy h2{font-size:20px}.badgeGrid{grid-template-columns:1fr}.stats>div{padding:13px}.stats strong{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.progressBar>span,.badgeProgress>span{transition:none}}

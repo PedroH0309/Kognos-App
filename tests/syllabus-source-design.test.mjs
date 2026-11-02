@@ -28,7 +28,7 @@ test('source evidence remains only an extraction proposal until reviewed',()=>{
 });
 test('students and editors receive separate interfaces and sources are English-documented',()=>{
  assert.match(read('apps/web/src/components/KognosApp.tsx'),/view==='sources'\?<ExamSources/);
- assert.match(read('apps/web/src/components/AiQuestionStudio.tsx'),/sourceTopicId:verifiedTopic\?\.id/);
+ assert.match(read('apps/web/src/components/AiQuestionStudio.tsx'),/sourceTopicId:verifiedTopic\.id/);
  assert.match(read('README.md'),/What's new in v1\.1/);
  assert.match(read('docs/KOGNOS_SPRINT_11_SOURCE_MATRICES.md'),/editorial review/i);
 });

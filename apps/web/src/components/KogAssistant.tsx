@@ -12,6 +12,7 @@ import { KognosSelect, type KognosOption } from './KognosFields';
 import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-context';
 import {contextualKogPrompts,previewKogStudyContext,findDemoQuestion,type KogStudyContext} from '@/lib/kog-study-context';
 import {localStudyGuide} from '@/lib/offline-study-guide';
+import {normalizeTutorAnswer} from '@/lib/tutor';
 import type {AIReadiness} from '@/lib/ai-readiness';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
@@ -154,7 +155,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
             <div className="kog-suggestions">{readiness&&!readiness.tutorConfigured&&<button type="button" onClick={()=>fillPrompt("Me explique teorema de Pitágoras")}><BookOpenText size={14}/> Teorema de Pitágoras <ArrowUp size={13}/></button>}{suggested.map(item=><button type="button" key={item} onClick={()=>fillPrompt(item)}><Sparkles size={14} aria-hidden="true"/>{item}<ArrowUp size={13} aria-hidden="true"/></button>)}</div>
           </>:messages.map((message,index)=><div key={`${index}-${message.role}`} className={`kog-message-row ${message.role}`}>
             {message.role==='assistant'&&<span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span>}
-            <div className="kog-message-text">{message.content}</div>
+            <div className="kog-message-text">{message.role==='assistant'?normalizeTutorAnswer(message.content):message.content}</div>
           </div>)}
           {pending&&<div className="kog-message-row assistant"><span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span><div className="kog-message-text kog-thinking"><span/><span/><span/><small>Preparando uma explicação…</small></div></div>}
           {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.tutorProvider?'A chave de API do tutor não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia de Pitágoras</button></div></div>}
