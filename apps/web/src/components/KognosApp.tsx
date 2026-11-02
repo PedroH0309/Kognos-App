@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import KogAssistant from './KogAssistant';
 import ExamSources from './ExamSources';
 import type {KogStudyContext} from '@/lib/kog-study-context';
@@ -17,9 +17,10 @@ import LearningTrails from './LearningTrails';
 import SubjectDashboard from './SubjectDashboard';
 import StudyPlanner from './StudyPlanner';
 import {statsFromAttempts,type QuestionAttempt} from '@/lib/demo-questions';
-import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, Cloud, CircleHelp, CalendarCheck2, type LucideIcon} from 'lucide-react';
+import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, type LucideIcon} from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 import {explainProfileDatabaseError, profileSetupIssue} from '@/lib/profile-setup';
+import {readStoredStudentProfile} from '@/lib/auth-profile-routing';
 import { getSupabase, isCloudConfigured } from '@/lib/supabase';
 import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
@@ -63,7 +64,7 @@ function Logo({small=false}:{small?:boolean}) {
   return <div className="logo-cluster"><div className="logo-mark"><Image src="/brand/kognos-mark.webp" width={small?42:56} height={small?42:56} alt="Símbolo Kognos" priority /></div><div className="logo-word"><strong>Kognos<span>.</span></strong>{!small&&<small>APRENDIZAGEM INTELIGENTE</small>}</div></div>;
 }
 
-function AuthModal({onClose,onAuthenticated}:{onClose:()=>void;onAuthenticated:()=>void}){
+function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;onAuthenticated:()=>void;standalone?:boolean}){
   const [mode,setMode]=useState<'signin'|'signup'|'reset'>('signin');
   const [email,setEmail]=useState('');const [password,setPassword]=useState('');const [showPassword,setShowPassword]=useState(false);
   const [pending,setPending]=useState(false);const [notice,setNotice]=useState('');
@@ -85,8 +86,8 @@ function AuthModal({onClose,onAuthenticated}:{onClose:()=>void;onAuthenticated:(
     }catch(e){setNotice(e instanceof Error?e.message:'Não foi possível concluir a autenticação.');}
     finally{setPending(false);}
   }
-  return <div className="modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}><section className="auth-card" role="dialog" aria-modal="true" aria-label="Entrar no Kognos">
-    <div className="modal-head"><Logo small/><button className="text-button" aria-label="Fechar" onClick={onClose}>✕</button></div>
+  const card=<section className="auth-card" role={standalone?undefined:"dialog"} aria-modal={standalone?undefined:true} aria-label="Entrar no Kognos">
+    <div className="modal-head"><Logo small/>{!standalone&&<button className="text-button" aria-label="Fechar" onClick={onClose}>✕</button>}</div>
     <h2>{mode==='signin'?'Bem-vindo de volta':mode==='signup'?'Crie sua conta':'Recuperar acesso'}</h2><p className="muted">{mode==='reset'?'Enviaremos um link para redefinir sua senha.':'Sua conta sincroniza seus estudos e libera o tutor com IA.'}</p>
     {!enabled?<div className="message warning">A nuvem ainda não está configurada. Configure o Supabase pelo README para ativar contas e recuperação.</div>:<form onSubmit={submit} className="field-stack">
       <label>E-mail<input autoComplete="email" type="email" required placeholder="voce@exemplo.com" value={email} onChange={e=>setEmail(e.target.value)}/></label>
@@ -96,10 +97,12 @@ function AuthModal({onClose,onAuthenticated}:{onClose:()=>void;onAuthenticated:(
     {notice&&<div className="message" role="status">{notice}</div>}
     {enabled&&<div className="auth-switches"><button className="text-button switch-mode" onClick={()=>{setMode(mode==='signup'?'signin':'signup');setNotice('');}}>{mode==='signup'?'Já possui conta? Entrar':'Criar conta'}</button><button className="text-button switch-mode" onClick={()=>{setMode(mode==='reset'?'signin':'reset');setNotice('');}}>{mode==='reset'?'Voltar ao login':'Esqueci minha senha'}</button></div>}
     <p className="fine-print">Proteja seu acesso: nunca compartilhe senha ou códigos de verificação.</p>
-  </section></div>;
+  </section>;
+  if(standalone)return <main className="k-auth-gateway"><div className="k-auth-shell"><aside className="k-auth-story" aria-label="Conheça a plataforma"><span className="overline">KOGNOS · APRENDIZAGEM INTELIGENTE</span><div className="k-auth-story-main"><span className="k-auth-glow">✧</span><h1>Seu próximo avanço começa <em>aqui.</em></h1><p>Uma plataforma para aprender, praticar, revisar e acompanhar sua evolução com apoio do Kog.</p><div className="k-auth-highlights"><span><BookOpenCheck size={16}/> Trilhas personalizadas</span><span><BrainCircuit size={16}/> Questões com IA</span><span><ShieldCheck size={16}/> Seu histórico protegido</span></div></div><small>Estude no seu ritmo, continue de onde parou.</small></aside>{card}</div></main>;
+  return <div className="modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}>{card}</div>;
 }
 
-function Onboarding({start,onFinish,onLogin,cloud}:{start:StudentProfile;onFinish:(p:StudentProfile)=>Promise<void>;onLogin:()=>void;cloud:boolean}){
+function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFinish:(p:StudentProfile)=>Promise<void>;onSignout:()=>void;email:string}){
   const [step,setStep]=useState(0);
   const [p,setP]=useState<StudentProfile>({...start});
   const [declared,setDeclared]=useState<'none'|'tdah'|'dislexia'|'both'|'skip'>('skip');
@@ -150,7 +153,7 @@ function Onboarding({start,onFinish,onLogin,cloud}:{start:StudentProfile;onFinis
     {value:'advanced',label:'Avançado',description:'Quero aprofundar e praticar'}
   ] as const;
   return <main className="onboard-layout onboard-v061">
-    <header className="onboard-header"><div className="onboard-header-inner"><Logo/><div className="onboard-utilities"><span className="subtle-tag">UMA JORNADA FEITA PARA VOCÊ</span><button type="button" onClick={onLogin} className="btn outline small">{cloud?'Entrar / Criar conta':'Configurar conta'}</button></div></div></header>
+    <header className="onboard-header"><div className="onboard-header-inner"><Logo/><div className="onboard-utilities"><span className="subtle-tag">UMA JORNADA FEITA PARA VOCÊ</span><span className="onboard-account-email" title={email}>{email}</span><button type="button" onClick={onSignout} className="btn outline small">Sair</button></div></div></header>
     <div className="onboard-columns">
       <section className="onboard-content" aria-labelledby="onboard-heading">
         <div className="wizard-head"><div><span className="wizard-eyebrow">PERSONALIZAÇÃO DE ESTUDO</span><p>Etapa <strong>{String(step+1).padStart(2,'0')}</strong> de 05 · {stepNames[step]}</p></div><span className="wizard-fraction">{Math.round((step+1)*20)}%</span></div>
@@ -185,14 +188,14 @@ function Onboarding({start,onFinish,onLogin,cloud}:{start:StudentProfile;onFinis
         </>}
         {step===4&&<>
           <p className="overline">05 / SUA JORNADA ESTÁ PRONTA</p><h1 id="onboard-heading">Tudo pronto para <em>evoluir.</em></h1><p className="intro-copy">Este é seu ponto de partida. Você pode editar suas escolhas a qualquer momento no seu perfil.</p>
-          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil está pronto. Sem login, os dados ficam apenas neste navegador; para sincronizar e usar o Kog, conecte sua conta.</span></div>
+          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil ficará vinculado à sua conta. Da próxima vez, você poderá continuar diretamente pelo painel.</span></div>
         </>}
         {error&&<div className="message warning" role="alert">{error}</div>}
         {profileSetupIssue(error)&&<section className="onboard-db-help" aria-label="Configuração do Supabase necessária"><strong>Como liberar o cadastro</strong><p>No Supabase, abra <b>SQL Editor</b> e verifique se a migração <code>0001_core_schema.sql</code> criou <code>public.profiles</code>. Execute também <code>0003_account_and_avatars.sql</code> para os campos adicionais, respeitando a ordem das migrações. Confira se o projeto do seu <code>.env.local</code> é o mesmo do SQL Editor.</p><small>Depois recarregue a página e tente salvar. Suas escolhas continuam aqui até você sair.</small></section>}
         <div className="wizard-actions"><div>{step>0&&<button type="button" className="btn outline" onClick={()=>{setStep(step-1);setError('');window.scrollTo({top:0,behavior:'smooth'});}}><ArrowLeft size={17}/> Voltar</button>}</div><button type="button" className="btn primary" disabled={saving} onClick={proceed}>{saving?'Salvando…':step===4?'Começar a aprender':'Continuar'}{!saving&&<ArrowRight size={18}/>}</button></div>
         <p className="k-wizard-footnote">Seu ritmo, seus objetivos. <span>Você tem controle sobre suas preferências.</span></p>
       </section>
-      <aside className="onboard-visual" aria-hidden="true"><div className="k-visual-top"><span className="k-visual-brand"><Sparkles size={16}/> APRENDIZAGEM INTELIGENTE</span><span>01 / KOGNOS</span></div><div className="hero-image"><Image src="/brand/kognos-hero.webp" alt="" fill sizes="(max-width: 920px) 100vw, 38vw" priority/></div><div className="visual-message"><span className="k-visual-rule"/><strong>Conhecimento que evolui com você.</strong><p>Um espaço de estudo no seu ritmo, com inteligência e clareza em cada passo.</p></div><div className="visual-footer"><span>KOGNOS / APRENDIZAGEM INTELIGENTE</span><span>v0.6.1</span></div></aside>
+      <aside className="onboard-visual" aria-hidden="true"><div className="k-visual-top"><span className="k-visual-brand"><Sparkles size={16}/> APRENDIZAGEM INTELIGENTE</span><span>01 / KOGNOS</span></div><div className="hero-image"><Image src="/brand/kognos-hero.webp" alt="" fill sizes="(max-width: 920px) 100vw, 38vw" priority/></div><div className="visual-message"><span className="k-visual-rule"/><strong>Conhecimento que evolui com você.</strong><p>Um espaço de estudo no seu ritmo, com inteligência e clareza em cada passo.</p></div><div className="visual-footer"><span>KOGNOS / APRENDIZAGEM INTELIGENTE</span><span>v1.7</span></div></aside>
     </div>
   </main>;
 }
@@ -237,29 +240,82 @@ function ComingSoon({view,onGo}:{view:View;onGo:(v:View)=>void}){
 }
 
 export default function KognosApp(){
- const [loading,setLoading]=useState(true);const [user,setUser]=useState<User|null>(null);const [profile,setProfile]=useState<StudentProfile|null>(null);
- const [assistantOpen,setAssistantOpen]=useState(false);
- const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);
- const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
- const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
- const [learningFocus,setLearningFocus]=useState<{subject:string;lessonId:string}|null>(null);
- const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
- const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('dark');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
- const cloud=useMemo(()=>isCloudConfigured(),[]);
- useEffect(()=>{
-  let mounted=true;const sb=getSupabase();
-  const preferred=window.localStorage.getItem('kognos_theme_v1');if(preferred==='light'||preferred==='dark')setTheme(preferred);setSidebarCollapsed(window.localStorage.getItem('kognos_sidebar_collapsed_v1')==='true');
-  const loadGuest=()=>{try{const saved=window.localStorage.getItem(STORAGE_KEY);if(mounted){setProfile(saved?normalizeProfile(JSON.parse(saved)):null);setAvatarUrl(window.localStorage.getItem('kognos_guest_avatar_v1'));}}catch{if(mounted)setProfile(null);}};
-  const loadProfile=async(id:string)=>{if(!sb)return;const {data,error}=await sb.from('profiles').select('display_name,username,biography,avatar_path,preferences').eq('id',id).maybeSingle();if(!mounted)return;if(error){setProfile(null);setAvatarUrl(null);return;}
-     const prefs=data?.preferences||null;setProfile(prefs&&prefs.completedAt?normalizeProfile({...prefs,nickname:data?.display_name||prefs.nickname,username:data?.username||'',biography:data?.biography||''}):null);
-     setAvatarUrl(null);if(data?.avatar_path){const {data:signed}=await sb.storage.from('kognos-avatars').createSignedUrl(data.avatar_path,3600);if(mounted)setAvatarUrl(signed?.signedUrl||null);}
-  };
-  (async()=>{if(sb){const {data}=await sb.auth.getSession();if(!mounted)return;if(data.session?.user){setUser(data.session.user);await loadProfile(data.session.user.id);}else loadGuest();}else loadGuest();if(mounted)setLoading(false);})();
-  const {data:listener}=sb?.auth.onAuthStateChange((event,session)=>{if(!mounted)return;setUser(session?.user||null);if(event==='SIGNED_OUT'){loadGuest();setView('dashboard');}if(event==='SIGNED_IN'&&session?.user){loadProfile(session.user.id);}if(event==='PASSWORD_RECOVERY'){setRecoveryMode(true);setView('settings');}})||{data:{subscription:{unsubscribe:()=>{}}}};
-  return()=>{mounted=false;listener.subscription.unsubscribe();};
- },[]);
+  const [loading,setLoading]=useState(true);const [user,setUser]=useState<User|null>(null);const [profile,setProfile]=useState<StudentProfile|null>(null);
+  const [profileError,setProfileError]=useState('');
+  const [reloadRequest,setReloadRequest]=useState(0);
+  const [assistantOpen,setAssistantOpen]=useState(false);
+  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);
+  const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
+  const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
+  const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
+  const [learningFocus,setLearningFocus]=useState<{subject:string;lessonId:string}|null>(null);
+  const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('dark');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
+  const cloud=useMemo(()=>isCloudConfigured(),[]);
+  const authRequestId=useRef(0);
+  useEffect(()=>{
+   let mounted=true;let sessionEventSeen=false;
+   const sb=getSupabase();
+   try{
+     const preferred=window.localStorage.getItem('kognos_theme_v1');
+     if(preferred==='light'||preferred==='dark')setTheme(preferred);
+     setSidebarCollapsed(window.localStorage.getItem('kognos_sidebar_collapsed_v1')==='true');
+   }catch { /* Storage restrictions must not interfere with authentication. */ }
+   if(!sb){setLoading(false);return()=>{mounted=false;};}
+   async function resolveAccount(account:User|null){
+     const requestId=++authRequestId.current;
+     if(!mounted)return;
+     setLoading(true);setProfileError('');setUser(account);setProfile(null);setAvatarUrl(null);
+     if(!account){setEditing(false);setView('dashboard');setLoading(false);return;}
+     // An existing Auth account and a completed learning profile are different states.
+     // A fetch error must never be treated as proof of a new account.
+     let {data,error}=await sb!.from('profiles')
+       .select('display_name,username,biography,avatar_path,preferences').eq('id',account.id).maybeSingle();
+     // Some older deployments lack the optional avatar_path column. They should
+     // still be able to open an already completed profile without re-onboarding.
+     if(error && /avatar_path/i.test(error.message) && /column|schema cache|does not exist/i.test(error.message)){
+       const older=await sb!.from('profiles')
+         .select('display_name,username,biography,preferences').eq('id',account.id).maybeSingle();
+       data=older.data?{...older.data,avatar_path:null}:null;error=older.error;
+     }
+     if(!mounted||authRequestId.current!==requestId)return;
+     if(error){setProfileError(explainProfileDatabaseError(error));setLoading(false);return;}
+     setProfile(readStoredStudentProfile(data));
+     setLoading(false);
+     if(data?.avatar_path){
+       const {data:signed}=await sb!.storage.from('kognos-avatars').createSignedUrl(data.avatar_path,3600);
+       if(mounted&&authRequestId.current===requestId)setAvatarUrl(signed?.signedUrl||null);
+     }
+   }
+   const {data:listener}=sb.auth.onAuthStateChange((event,session)=>{
+     if(!mounted)return;
+     if(event==='INITIAL_SESSION')return; // getSession initializes exactly once below.
+     if(event==='SIGNED_OUT'){
+       sessionEventSeen=true;
+       setAuthOpen(false);setAssistantOpen(false);setStudyContext(null);
+       void resolveAccount(null);
+     }else if(event==='SIGNED_IN' && session?.user){
+       sessionEventSeen=true;
+       setAuthOpen(false);setEditing(false);
+       void resolveAccount(session.user);
+     }else if(event==='PASSWORD_RECOVERY'&&session?.user){
+       sessionEventSeen=true;
+       setRecoveryMode(true);setView('settings');
+       void resolveAccount(session.user);
+     }
+   });
+   void sb.auth.getSession().then(({data,error})=>{
+     if(!mounted||sessionEventSeen)return;
+     if(error){setProfileError('Não foi possível verificar sua sessão. Tente entrar novamente.');setLoading(false);return;}
+     void resolveAccount(data.session?.user||null);
+   }).catch(()=>{if(mounted&&!sessionEventSeen){setProfileError('Não foi possível verificar a sessão. Confira sua conexão e tente novamente.');setLoading(false);}});
+   return()=>{mounted=false;authRequestId.current++;listener.subscription.unsubscribe();};
+  },[reloadRequest]);
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
- async function signout(){await getSupabase()?.auth.signOut();setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);}
+ async function signout(){
+   const sb=getSupabase();if(sb)await sb.auth.signOut();
+   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);
+ }
+ function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);setView(v);}setMobileMenu(false); }
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function generateForLesson(lessonId:string){setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
@@ -271,7 +327,10 @@ export default function KognosApp(){
  const actualProfile=profile??initialProfile;
  const accessibility=[actualProfile.adaptations.includes('larger_text')?'larger-text':'',actualProfile.adaptations.includes('high_contrast')?'strong-contrast':'',actualProfile.adaptations.includes('reduced_distractions')?'less-motion':''].join(' ');
  if(loading)return <div className="loading-page"><Logo/><p>Preparando seu espaço de aprendizagem…</p></div>;
- if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={editing?'edit':'first'} start={actualProfile} onFinish={saveProfile} onLogin={()=>setAuthOpen(true)} cloud={cloud}/>{authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{setEditing(false);}}/>}</div>;
+ if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
+ if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
+ if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>{setAuthOpen(false);setReloadRequest(x=>x+1);}}/></div>;
+ if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
  return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><div className="side-heading">SEU ESPAÇO</div><nav className="side-nav" aria-label="Navegação principal">{NAV.map(item=><button key={item.key} onClick={()=>navigate(item.key)} className={`side-nav-item ${view===item.key?'active':''}`} title={item.label} aria-label={item.label} aria-current={view===item.key?'page':undefined}><span><NavIcon view={item.key}/></span>{item.label}{item.status&&<small>◌</small>}</button>)}</nav><div className="sidebar-bottom"><div className="side-promo"><span>✧ KOGNOS IA</span><h3>Seu conhecimento, amplificado.</h3><p>Tire dúvidas com o tutor que se adapta a você.</p><button onClick={()=>setAssistantOpen(true)}>Explorar tutor →</button></div><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside>{mobileMenu&&<button className="mobile-sidebar-scrim" aria-label="Fechar menu lateral" onClick={()=>setMobileMenu(false)}/>}
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>setAssistantOpen(true)} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
@@ -286,6 +345,6 @@ export default function KognosApp(){
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.6 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.7 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
