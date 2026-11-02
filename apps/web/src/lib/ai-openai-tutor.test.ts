@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import {requestAI} from './ai-provider.ts';
 import {publicAIReadiness} from './ai-readiness.ts';
 
-const keys=['AI_TUTOR_PROVIDER','AI_TUTOR_MODEL','OPENAI_API_KEY'];
+const keys=['AI_TUTOR_PROVIDER','AI_TUTOR_MODEL','OPENAI_API_KEY','AI_FREE_ONLY'];
 function setup(){
  const previous=Object.fromEntries(keys.map(k=>[k,process.env[k]]));
+ process.env.AI_FREE_ONLY='false';
  process.env.AI_TUTOR_PROVIDER='openai';
  process.env.AI_TUTOR_MODEL='gpt-6-luna';
  process.env.OPENAI_API_KEY='sk-local-test-only';
