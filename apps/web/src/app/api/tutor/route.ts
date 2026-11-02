@@ -145,7 +145,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
 });
 
 export async function POST(request: Request) {
-  if (!process.env.NVIDIA_API_KEY) return jsonError('A IA NVIDIA ainda não foi configurada no servidor.', 503);
+  if (!process.env.NVIDIA_API_KEY?.trim()) return NextResponse.json({error:'O tutor IA precisa de configuração no servidor. O guia local pode ser usado enquanto isso.',code:'AI_NOT_CONFIGURED'},{status:503,headers:{'Cache-Control':'no-store'}});
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_PUBLISHABLE_KEY ||
       !process.env.SUPABASE_SECRET_KEY || !process.env.SUPABASE_JWKS_URL) {
     return jsonError('A proteção da API precisa das variáveis do Supabase configuradas no servidor.', 503);

@@ -11,6 +11,8 @@ import KogMascot3D from './KogMascot3D';
 import { KognosSelect, type KognosOption } from './KognosFields';
 import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-context';
 import {contextualKogPrompts,previewKogStudyContext,findDemoQuestion,type KogStudyContext} from '@/lib/kog-study-context';
+import {localStudyGuide} from '@/lib/offline-study-guide';
+import type {AIReadiness} from '@/lib/ai-readiness';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
 const SUBJECTS = ['Matemática','Física','Química','Biologia','História','Geografia','Português','Literatura','Inglês','Redação','Filosofia','Sociologia','Raciocínio lógico','Geral'];
@@ -23,6 +25,8 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   const [subject,setSubject] = useState('Matemática');
   const [pending,setPending] = useState(false);
   const [error,setError] = useState('');
+  const [readiness,setReadiness] = useState<AIReadiness|null>(null);
+  const [checkingReadiness,setCheckingReadiness] = useState(false);
   const [expanded,setExpanded] = useState(false);
   const [notice,setNotice] = useState(true);
   const scrollRef=useRef<HTMLDivElement>(null);
@@ -36,6 +40,18 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   const subjectOptions = SUBJECTS.map(s=>({value:s,label:s})) as KognosOption<string>[];
 
   useEffect(() => {if(open) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[open]);
+  useEffect(()=>{
+    if(!open)return;
+    const controller=new AbortController();
+    setCheckingReadiness(true);
+    fetch('/api/ai-status',{cache:'no-store',signal:controller.signal}).then(async res=>{
+      if(!res.ok)throw new Error('Indisponível');
+      const data=await res.json();
+      if(typeof data.tutorConfigured!=='boolean')throw new Error('Resposta inválida');
+      if(!controller.signal.aborted)setReadiness(data as AIReadiness);
+    }).catch(()=>{if(!controller.signal.aborted)setReadiness(null);}).finally(()=>{if(!controller.signal.aborted)setCheckingReadiness(false);});
+    return()=>controller.abort();
+  },[open]);
   useEffect(() => {scrollRef.current?.scrollTo({top:scrollRef.current.scrollHeight,behavior:'smooth'});},[messages,pending,open]);
   useEffect(() => {
     if(studyContext?.kind==='lesson')setSubject(findLearningLesson(studyContext.lessonId)?.subject||'Geral');
@@ -65,6 +81,17 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     event.preventDefault();
     if(inFlightRef.current || pending || !draft.trim())return;
     if(!user){onLogin();return;}
+    if(readiness&&!readiness.tutorConfigured){
+      const prompt=draft.trim();
+      const guide=localStudyGuide(prompt,studyContext);
+      if(guide){
+        setMessages(prev=>[...prev,{role:'user',content:prompt},{role:'assistant',content:guide.content}]);
+        setDraft('');setError('');
+      }else{
+        setError('Este assunto ainda não está na biblioteca local. Para conversar livremente com o Kog, configure a NVIDIA_API_KEY no servidor. Suas palavras não foram enviadas ao provedor.');
+      }
+      return;
+    }
     const api=getSupabase();
     const session=await api?.auth.getSession();
     const token=session?.data.session?.access_token;
@@ -79,7 +106,14 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
         body:JSON.stringify({message:prompt,subject,history,studyContext}),
       });
       const data=await response.json();
-      if(!response.ok)throw new Error(typeof data.error==='string'?data.error:'Não foi possível receber a resposta.');
+      if(!response.ok){
+        if(data.code==='AI_NOT_CONFIGURED'){
+          setReadiness(current=>({...current,tutorConfigured:false,nvidiaKeyConfigured:false,questionGenerationConfigured:false,supabaseServerConfigured:true,offlineGuidesAvailable:true}));
+          const guide=localStudyGuide(prompt,studyContext);
+          if(guide){if(currentUserRef.current===user.id)setMessages(prev=>[...prev,{role:'assistant',content:guide.content}]);return;}
+        }
+        throw new Error(typeof data.error==='string'?data.error:'Não foi possível receber a resposta.');
+      }
       if(typeof data.answer!=='string')throw new Error('O tutor retornou uma resposta inválida.');
       if(currentUserRef.current===user.id)setMessages(prev=>[...prev,{role:'assistant',content:data.answer}]);
     }catch(err){if(currentUserRef.current===user.id)setError(err instanceof Error?err.message:'Falha ao conectar com o tutor.');}
@@ -111,12 +145,14 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
             </div>
             <div className="kog-context-card"><BookOpenText size={16}/><span>{contextLabel?<><strong>{contextLabel}</strong> · O Kog vai considerar essa atividade ao responder.</>:<>Seu foco: <strong>{goalLabels[profile.goal]}</strong> · Ajuda contextual na área <strong>{context==='dashboard'?'Visão geral':context}</strong></>}</span></div>
             <p className="kog-suggestions-title">Por onde começamos?</p>
-            <div className="kog-suggestions">{suggested.map(item=><button type="button" key={item} onClick={()=>fillPrompt(item)}><Sparkles size={14} aria-hidden="true"/>{item}<ArrowUp size={13} aria-hidden="true"/></button>)}</div>
+            <div className="kog-suggestions">{readiness&&!readiness.tutorConfigured&&<button type="button" onClick={()=>fillPrompt("Me explique teorema de Pitágoras")}><BookOpenText size={14}/> Teorema de Pitágoras <ArrowUp size={13}/></button>}{suggested.map(item=><button type="button" key={item} onClick={()=>fillPrompt(item)}><Sparkles size={14} aria-hidden="true"/>{item}<ArrowUp size={13} aria-hidden="true"/></button>)}</div>
           </>:messages.map((message,index)=><div key={`${index}-${message.role}`} className={`kog-message-row ${message.role}`}>
             {message.role==='assistant'&&<span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span>}
             <div className="kog-message-text">{message.content}</div>
           </div>)}
           {pending&&<div className="kog-message-row assistant"><span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span><div className="kog-message-text kog-thinking"><span/><span/><span/><small>Preparando uma explicação…</small></div></div>}
+          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.nvidiaKeyConfigured?'A chave da NVIDIA não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia de Pitágoras</button></div></div>}
+          {checkingReadiness&&<p className="kog-readiness-check" role="status">Verificando configuração do tutor…</p>}
           {error&&<div className="kog-chat-error" role="alert">{error}<button type="button" onClick={()=>setError('')} aria-label="Dispensar erro"><X size={14}/></button></div>}
         </div>
         <div className="kog-drawer-bottom">
