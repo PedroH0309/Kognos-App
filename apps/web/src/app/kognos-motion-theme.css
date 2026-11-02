@@ -301,7 +301,6 @@
   animation:none!important;
   transition:none!important;
   scroll-behavior:auto!important;
-  transform:none!important;
  }
 }
 .app-layout.less-motion,
