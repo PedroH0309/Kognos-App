@@ -38,7 +38,8 @@ export function tutorScopeReply(message:string):string|null {
  // Programming may be a school subject; conceptual questions about code are in scope.
  // Creating a school question about Hello World is different from producing a runnable program.
  const asksEducationalExercise=/\b(?:crie|gere|elabore|monte|faca)\b.{0,35}\b(?:questao|exercicio|pergunta|atividade)\b/.test(text)&&!codeArtifact.test(text.replace(/hello world/g,''));
- if(!asksEducationalExercise && ((wantsArtifact&&codeMention&&(!educationalIntent||explicitOutput))
+ const studySchedule=/\b(?:programa|plano|roteiro|cronograma)\s+de\s+estud/.test(text)&&!language.test(text)&&!/\b(?:codigo|script|app|site|aplicativo|hello world)\b/.test(text);
+ if(!asksEducationalExercise&&!studySchedule && ((wantsArtifact&&codeMention&&(!educationalIntent||explicitOutput))
    ||(explicitOutput&&!educationalIntent&&/\b(?:quero|preciso|pode|por favor|me|um|uma)\b/.test(text))
    ||/\b(?:rode|execute|compile|instale|publique)\b.{0,90}\b(?:codigo|script|programa|java|python|app|site)\b/.test(text))){
   return PEDAGOGICAL_CODE_REPLY;
