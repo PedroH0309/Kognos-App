@@ -23,6 +23,14 @@ export function shiftCivilDate(iso:string,offset:number):string{
  d.setDate(d.getDate()+offset);
  return civilToday(d);
 }
+/** Keeps a valid day when changing months, including Dec/Jan and Feb/Mar. */
+export function shiftCivilMonth(iso:string,offset:number):string{
+ const d=dateAtNoon(iso);
+ const target=new Date(d.getFullYear(),d.getMonth()+offset,1,12);
+ const max=new Date(target.getFullYear(),target.getMonth()+1,0).getDate();
+ target.setDate(Math.min(d.getDate(),max));
+ return civilToday(target);
+}
 export function surroundingWeek(iso:string):string[]{
  return Array.from({length:7},(_,index)=>shiftCivilDate(iso,index-3));
 }
