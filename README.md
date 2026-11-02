@@ -4,6 +4,18 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.2 — source workspace UI and reliable access states
+
+- **Guest-friendly source page:** replaces the large passive sign-in banner with a compact account status card and working **Sign in to my account** button using the existing Kognos authentication modal. Successful sign-in from this page keeps the user on **Matrices & Notices**, rather than unexpectedly redirecting to the dashboard.
+- **Accurate data states:** a guest, loading session, failed Supabase read, authenticated reader, and server-authorized editor are distinct. Guests and failures **never claim that zero topics were approved**; totals appear only after a successful authenticated catalog load.
+- **Editorial workspace:** adds compact catalog metrics, a clearer official-sources panel, and **Import document** / **Review candidates** tabs, including an institution filter and local search for pending proposals.
+- **Responsive layout:** improves narrow desktop and mobile stacking, keyboard focus, loading indicators, and reduced-motion behavior while preserving the Kognos color system.
+- **Same server-side permissions:** `KOGNOS_EDITOR_USER_IDS` is only read by the protected API; it is not a sign-in method or browser permission toggle. The application must recognize a valid Supabase account before checking editor eligibility. There are no schema migrations for v1.2.
+
+**Local editor setup:** Create `apps/web/.env.local` if missing (copy `apps/web/.env.example`), preserve your existing Supabase/NVIDIA settings and add `KOGNOS_EDITOR_USER_IDS=<UUID from Supabase Authentication > Users>`. Keep `.env.local` out of source control. Apply migration `0006` if not already applied, restart the Next.js server, then **sign in to the Kognos app with that exact Supabase user**. Navigate to **Matrices & Notices**. A server-confirmed editor will see the restricted editorial workspace. If the page says *guest*, use its sign-in button; if it says *read only*, compare the authenticated account's User UID with the server's allowlist.
+
+See [Sprint 1.2 notes](docs/KOGNOS_SPRINT_12_SOURCE_WORKSPACE.md). Authentication and editorial permissions have not been bypassed or relaxed.
+
 ## What's new in v1.1 — source-backed exam preparation with editorial review
 
 - **Matrices & Notices page:** view human-approved, versioned topic references and the relevant institution's official source URL, edition, and short supporting excerpt.
