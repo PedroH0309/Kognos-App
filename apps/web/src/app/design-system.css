@@ -1091,3 +1091,110 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
 @media(max-width:760px){.app-layout .subject-kpi-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.app-layout .subject-next-action {flex-direction:column;}.app-layout .subject-next-buttons {flex-direction:row;flex-wrap:wrap;justify-content:start;}.app-layout .subject-next-buttons .btn {flex:1 1 140px;}.app-layout .subject-detail-head {flex-wrap:wrap;}.app-layout .subject-detail-metrics {gap:7px;}.app-layout .learning-focus-header {flex-wrap:wrap;}}
 @media(max-width:520px){.app-layout .subject-card-list {grid-template-columns:minmax(0,1fr);}.app-layout .subject-kpi-grid article {min-height:136px;padding:14px;}.app-layout .subject-detail-panel {padding:17px;}.app-layout .subject-detail-metrics {grid-template-columns:repeat(3,minmax(0,1fr));}.app-layout .subject-detail-metrics>div {padding:10px;}.app-layout .subject-detail-metrics strong {font-size:18px;}.app-layout .subject-next-action {padding:16px;}.app-layout .subject-select-card {min-height:80px;}.app-layout .learning-quick-subjects {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}.app-layout .learning-quick-subjects button {padding:10px 8px;}}
 @media(prefers-reduced-motion:reduce){.app-layout .subject-mini-progress>span {transition:none;}}
+
+/* Kognos v1.4 — compact, guided learning journeys (replaces the oversized hero/progress/cards). */
+.app-layout .learning-journey-v14 {padding-bottom:36px;}
+.app-layout .learning-journey-intro {display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:16px;}
+.app-layout .learning-journey-intro h1 {margin:7px 0 6px;font-size:clamp(27px,2.75vw,36px);line-height:1.15;letter-spacing:-.045em;}
+.app-layout .learning-journey-intro p {font-size:12px;line-height:1.55;max-width:680px;margin:0;}
+.app-layout .learning-journey-edition {display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:8px 11px;color:var(--sub);background:var(--box-bg);border:1px solid var(--line);border-radius:99px;font-size:10px;}
+.app-layout .learning-journey-summary {display:flex;align-items:center;justify-content:space-between;gap:28px;padding:16px 19px;background:var(--box-bg);border:1px solid var(--line);border-radius:15px;margin-bottom:17px;}
+.app-layout .learning-journey-summary-main {display:flex;align-items:center;gap:12px;min-width:0;}
+.app-layout .learning-journey-mark {display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:12px;color:var(--violet);background:color-mix(in srgb,var(--accent-600) 14%,transparent);}
+.app-layout .learning-journey-summary-copy {display:grid;gap:3px;min-width:0;}
+.app-layout .learning-journey-summary-copy strong {color:var(--txt);font-size:15px;font-weight:760;letter-spacing:-.02em;}
+.app-layout .learning-journey-summary-copy small {font-size:11px;color:var(--sub);}
+.app-layout .learning-journey-summary-progress {width:min(260px,35%);display:grid;gap:7px;flex:none;}
+.app-layout .learning-journey-progress-label {display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px;color:var(--sub);}
+.app-layout .learning-journey-progress-label strong {color:var(--txt);font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;}
+.app-layout .learning-journey-summary-progress>small {font-size:10px;color:var(--sub);line-height:1.4;}
+.app-layout .learning-journey-browser {margin-bottom:17px;}
+.app-layout .learning-journey-browser-head {display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:11px;}
+.app-layout .learning-journey-browser-head h2 {font-size:17px;margin:4px 0 0;letter-spacing:-.025em;}
+.app-layout .learning-journey-browser-head>span {font-size:10px;color:var(--sub);}
+.app-layout .learning-journey-subject-pills {display:flex;flex-wrap:wrap;gap:8px;}
+.app-layout .learning-journey-subject-pill {min-width:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;color:var(--txt);background:var(--box-bg);border:1px solid var(--line);border-radius:10px;font-size:12px;font-weight:700;transition:background .15s,border-color .15s;}
+.app-layout .learning-journey-subject-pill small {color:var(--sub);font-size:10px;font-weight:500;white-space:nowrap;}
+.app-layout .learning-journey-subject-pill.is-active {background:color-mix(in srgb,var(--accent-600) 12%,var(--box-bg));border-color:var(--accent-600);}
+.app-layout .learning-journey-subject-pill.is-active small {color:var(--violet);}
+.app-layout .learning-journey-subject-pill:hover {border-color:var(--accent-600);}
+.app-layout .learning-journey-subject-pill:focus-visible,.app-layout .learning-journey-continue:focus-visible,.app-layout .learning-journey-lesson-nav button:focus-visible,.app-layout .learning-prereqs button:focus-visible {outline:2px solid var(--accent-400);outline-offset:3px;}
+.app-layout .learning-journey-subject-overview {display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,190px) minmax(190px,250px);gap:18px;align-items:center;padding:16px 19px;margin-bottom:16px;background:var(--box-bg);border:1px solid var(--line);border-radius:14px;}
+.app-layout .learning-journey-subject-copy h2 {margin:4px 0;font-size:20px;letter-spacing:-.025em;}
+.app-layout .learning-journey-subject-copy h2 span {color:var(--sub);font-size:12px;font-weight:500;letter-spacing:0;}
+.app-layout .learning-journey-subject-copy p {font-size:11px;line-height:1.5;color:var(--sub);margin:0;}
+.app-layout .learning-journey-subject-status {display:grid;gap:8px;}
+.app-layout .learning-journey-subject-status>div:first-child {display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.app-layout .learning-journey-subject-status strong {font-size:18px;color:var(--txt);font-variant-numeric:tabular-nums;}
+.app-layout .learning-journey-subject-status span {font-size:10px;color:var(--sub);}
+.app-layout .learning-journey-continue {display:flex;align-items:center;gap:10px;text-align:left;color:var(--txt);background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:10px 12px;min-width:0;}
+.app-layout .learning-journey-continue:hover {border-color:var(--accent-600);}
+.app-layout .learning-journey-continue>svg:first-child {flex:none;color:var(--violet);}
+.app-layout .learning-journey-continue>svg:last-child {margin-left:auto;flex:none;color:var(--violet);}
+.app-layout .learning-journey-continue>span {min-width:0;display:grid;gap:3px;}
+.app-layout .learning-journey-continue small {font-size:10px;color:var(--sub);}
+.app-layout .learning-journey-continue strong {font-size:12px;line-height:1.3;overflow-wrap:anywhere;}
+.app-layout .learning-journey-workspace {grid-template-columns:minmax(275px,.76fr) minmax(0,1.34fr);gap:14px;}
+.app-layout .learning-journey-workspace .learning-index,.app-layout .learning-journey-workspace .learning-lesson-detail {padding:21px;}
+.app-layout .learning-journey-workspace .learning-index-header h2 {font-size:19px;margin:5px 0 4px;}
+.app-layout .learning-journey-workspace .learning-index-header p {margin-bottom:14px;font-size:11px;line-height:1.5;}
+.app-layout .learning-journey-workspace .learning-lesson-list {max-height:470px;gap:0;overflow-y:auto;padding-left:5px;}
+.app-layout .learning-journey-workspace .learning-journey-step {position:relative;border-radius:0;border:0;border-left:2px solid var(--line);background:transparent;padding:11px 8px 11px 12px;min-height:60px;}
+.app-layout .learning-journey-workspace .learning-journey-step:last-child {border-left-color:transparent;}
+.app-layout .learning-journey-workspace .learning-journey-step.selected {background:color-mix(in srgb,var(--accent-600) 12%,transparent);border-left-color:var(--accent-600);border-radius:0 10px 10px 0;}
+.app-layout .learning-journey-workspace .learning-journey-step:hover {background:var(--panel-2);}
+.app-layout .learning-journey-workspace .learning-journey-step .learning-lesson-number {width:31px;height:31px;border-radius:50%;font-size:10px;}
+.app-layout .learning-journey-workspace .learning-journey-step.has-sample .learning-lesson-number {border-color:color-mix(in srgb,#1BAE8C 55%,var(--line));color:#1BAE8C;}
+.app-layout .learning-journey-workspace .learning-journey-step.needs-review .learning-lesson-number {border-color:var(--warning);color:var(--warning);}
+.app-layout .learning-journey-prereq {opacity:.85;}
+.app-layout .learning-journey-key {display:flex;flex-wrap:wrap;gap:13px;border-top:1px solid var(--line);margin-top:12px;padding-top:12px;}
+.app-layout .learning-journey-key>span {display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--sub);}
+.app-layout .learning-journey-key .dot {height:7px;width:7px;border-radius:50%;background:var(--dim);}
+.app-layout .learning-journey-key .dot.review {background:var(--warning);}
+.app-layout .learning-journey-key .dot.sampled {background:#1BAE8C;}
+.app-layout .learning-journey-workspace .learning-lesson-head h2 {margin:8px 0 10px;}
+.app-layout .learning-journey-workspace .learning-lesson-tags {margin-bottom:16px;}
+.app-layout .learning-journey-workspace .learning-lesson-block {margin:17px 0;}
+.app-layout .learning-journey-workspace .learning-pedagogy {margin:4px 0 15px;}
+.app-layout .learning-journey-workspace .learning-prereqs {display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-bottom:16px;}
+.app-layout .learning-journey-workspace .learning-prereqs button {display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;color:var(--violet);font-size:12px;padding:2px;}
+.app-layout .learning-journey-workspace .learning-prereqs button:hover {text-decoration:underline;}
+.app-layout .learning-journey-lesson-nav {display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);margin-top:20px;padding-top:14px;}
+.app-layout .learning-journey-lesson-nav button {display:inline-flex;align-items:center;gap:6px;padding:7px 9px;background:transparent;border:1px solid var(--line);color:var(--txt);border-radius:9px;font-size:11px;}
+.app-layout .learning-journey-lesson-nav button:hover:not(:disabled) {border-color:var(--accent-600);}
+.app-layout .learning-journey-lesson-nav button:disabled {opacity:.35;cursor:not-allowed;}
+.app-layout .learning-journey-lesson-nav>span {color:var(--sub);font-size:11px;font-variant-numeric:tabular-nums;}
+.app-layout .learning-journey-footnote {display:flex;gap:8px;align-items:flex-start;margin:15px 0 0;font-size:10px;line-height:1.65;color:var(--sub);}
+.app-layout .learning-journey-footnote svg {flex:none;margin-top:1px;}
+.app-layout .learning-journey-workspace.is-learning-first {grid-template-columns:minmax(0,1.35fr) minmax(275px,.75fr);}
+.app-layout .learning-journey-workspace.is-learning-first .learning-lesson-detail {order:-1;}
+.app-layout .learning-journey-workspace.is-learning-first .learning-index {order:1;}
+@media(max-width:1150px){
+ .app-layout .learning-journey-subject-overview {grid-template-columns:minmax(0,1fr) minmax(145px,.45fr);}
+ .app-layout .learning-journey-continue {grid-column:1/-1;}
+ .app-layout .learning-journey-workspace,.app-layout .learning-journey-workspace.is-learning-first {grid-template-columns:minmax(0,1fr);}
+ .app-layout .learning-journey-workspace.is-learning-first .learning-index {order:0;}
+ .app-layout .learning-journey-workspace.is-learning-first .learning-lesson-detail {order:1;}
+}
+@media(max-width:720px){
+ .app-layout .learning-journey-intro {flex-direction:column;align-items:flex-start;}
+ .app-layout .learning-journey-summary {align-items:stretch;gap:15px;flex-direction:column;}
+ .app-layout .learning-journey-summary-progress {width:100%;}
+ .app-layout .learning-journey-subject-overview {grid-template-columns:minmax(0,1fr);gap:12px;}
+ .app-layout .learning-journey-continue {grid-column:auto;}
+ .app-layout .learning-journey-subject-pills {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+ .app-layout .learning-journey-browser-head>span {display:none;}
+}
+@media(max-width:460px){
+ .app-layout .learning-journey-intro h1 {font-size:29px;}
+ .app-layout .learning-journey-summary,.app-layout .learning-journey-subject-overview {padding:14px;}
+ .app-layout .learning-journey-subject-pill {padding:9px;gap:4px;flex-wrap:wrap;}
+ .app-layout .learning-journey-workspace .learning-index,.app-layout .learning-journey-workspace .learning-lesson-detail {padding:16px;}
+ .app-layout .learning-journey-lesson-nav button {padding:6px 7px;font-size:10px;}
+}
+@media(prefers-reduced-motion:reduce){.app-layout .learning-journey-v14 * {scroll-behavior:auto;transition:none!important;}}
+.app-layout .learning-journey-open-trails {display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:var(--violet);font-size:11px;font-weight:700;padding:4px 0;margin-top:4px;}
+.app-layout .learning-journey-open-trails:hover {text-decoration:underline;}
+.app-layout .learning-journey-open-trails:focus-visible {outline:2px solid var(--accent-400);outline-offset:3px;}
+.app-layout .learning-journey-lesson-detail {scroll-margin-top:16px;}
+.app-layout .learning-journey-workspace .learning-lesson-detail {scroll-margin-top:18px;}
