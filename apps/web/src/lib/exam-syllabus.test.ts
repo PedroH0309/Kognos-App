@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {expandExamSubjects,examForStudent,activeSyllabi,mergedSyllabus,officialSyllabusSources} from './exam-syllabus.ts';
+import {expandExamSubjects,examForStudent,activeSyllabi,mergedSyllabus,officialSyllabusSources,fuvest2027RequiredReading} from './exam-syllabus.ts';
 import {initialProfile} from './profile.ts';
 
 test('broad curated tracks cover central and additional high-school subjects',()=>{
@@ -33,4 +33,13 @@ test('each integrated edition points to an institutional website',()=>{
   assert.equal(uri.protocol,'https:');
   assert.ok(['www.gov.br','www.fuvest.br','www.vunesp.com.br','vestibulinho.etec.sp.gov.br','atendimento.educacao.sp.gov.br'].includes(uri.host));
  }
+});
+
+test('FUVEST 2027 syllabus includes nine edition-specific official required readings',()=>{
+ const titles=fuvest2027RequiredReading.map(item=>item.title);
+ assert.equal(titles.length,9);
+ assert.equal(new Set(titles).size,9);
+ const syllabus=expandExamSubjects('fuvest',{});
+ for(const title of titles)assert.ok(syllabus.Literatura.some(item=>item.includes(title)),title);
+ assert.equal(officialSyllabusSources.fuvest.url,'https://www.fuvest.br/vestibular-da-usp');
 });
