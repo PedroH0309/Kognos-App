@@ -8,6 +8,7 @@ import {demoQuestions} from './demo-questions.ts';
 import {civilToday,shiftCivilDate} from './calendar-model.ts';
 import {activeSyllabi} from './exam-syllabus.ts';
 import {completeExamTopicCatalog} from './exam-blueprints.ts';
+import {syllabusWithVerifiedTopics,type VerifiedStudyTopic} from './verified-study-catalog.ts';
 /** Topic evidence is computed from reserved, server-graded weekly attempts. */
 export type WeeklyExamWeakTopic={subject:string;topic:string;attempts:number;incorrect:number;lastWrong:boolean};
 
@@ -62,10 +63,12 @@ export function createPersonalizedStudyWeek(
  profile:StudentProfile,existing:readonly StudyTask[],
  demo:readonly QuestionAttempt[],ai:AIStudyProgress|null,
  base=new Date(),makeId=()=>crypto.randomUUID(),
- weeklyTopics:readonly WeeklyExamWeakTopic[]=[]
+ weeklyTopics:readonly WeeklyExamWeakTopic[]=[],
+ approvedTopics:readonly VerifiedStudyTopic[]=[]
 ):StudyTask[]{
  const tasks=[...existing];
- const syllabus=completeExamTopicCatalog(activeSyllabi(profile));
+ const exams=activeSyllabi(profile);
+ const syllabus=syllabusWithVerifiedTopics(completeExamTopicCatalog(exams),exams,approvedTopics);
  const weeklyBoost=(subject:string)=>Math.min(500,weeklyTopics.filter(t=>t.subject===subject&&t.lastWrong)
   .reduce((total,t)=>total+Math.max(0,t.incorrect)*90,0));
  const original=studyPriorities(demo,ai).map(p=>({...p,priority:p.priority+weeklyBoost(p.subject)}));
@@ -100,7 +103,9 @@ export function createPersonalizedStudyWeek(
    // topic; completed historical tasks remain evidence of prior coverage.
    const unplanned=availableTopics.find(item=>!tasks.some(task=>task.subject===chosen.subject&&task.title.toLocaleLowerCase('pt-BR').includes(item.toLocaleLowerCase('pt-BR'))));
    const weeklyWrong=weeklyTopics.find(item=>item.subject===chosen.subject&&item.lastWrong&&availableTopics.includes(item.topic));
-   const topic=weeklyWrong?.topic||weak?.topic||(chosen.needsReview?chosen.topic:null)||unplanned||availableTopics[0]||chosen.topic;
+   const officialUnplanned=approvedTopics.find(item=>exams.includes(item.institution)&&item.subject===chosen.subject
+    &&availableTopics.includes(item.topic)&&!tasks.some(task=>task.subject===chosen.subject&&task.title.toLocaleLowerCase('pt-BR').includes(item.topic.toLocaleLowerCase('pt-BR'))));
+   const topic=weeklyWrong?.topic||weak?.topic||(chosen.needsReview?chosen.topic:null)||officialUnplanned?.topic||unplanned||availableTopics[0]||chosen.topic;
    const goal=chosen.needsReview||Boolean(weak)||Boolean(weeklyWrong)?'Revisar':'Estudar';
    const style=slot===slots-1?'questões e checagem':'conceito e exemplo';
    tasks.push({
