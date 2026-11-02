@@ -137,7 +137,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     if(existing){setNotice('Este assunto já está programado para '+existing.date+'.');return;}
     const proposal=suggestSyllabusTopicSchedule(profile,tasks,subject,topic,new Date(),review);
     if(!proposal){
-     setError('Não há um bloco livre nos próximos 14 dias. Ajuste seus dias de estudo, a duração diária ou conclua seu planejamento atual.');
+     setError('Não há um bloco livre nos próximos 14 dias antes da data da prova. Confira seus dias de estudo, a data do exame ou a duração diária nas preferências.');
      return;
     }
     const item:StudyTask={id:crypto.randomUUID(),date:proposal.date,minutes:proposal.minutes,
