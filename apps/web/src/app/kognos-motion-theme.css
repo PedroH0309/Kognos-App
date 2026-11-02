@@ -1,0 +1,314 @@
+/* KOGNOS / DARK NAVIGATION + MOTION SYSTEM
+ * Overrides kognos-e-study.css (white nav) only under .theme-dark.
+ * Keep the original light sidebar and mobile bar unchanged.
+ * Animation timing: small, intentional, GPU-friendly transforms/opacity.
+ */
+
+.app-layout.theme-dark {
+ color-scheme:dark;
+ --k-nav-bg:#202633;
+ --k-nav-hover:#2A364B;
+ --k-nav-selected:#273A61;
+ --k-nav-ink:#F7F9FC;
+ --k-nav-muted:#B8C7DB;
+ --k-nav-rule:#39455A;
+}
+
+/* Sidebar (desktop AND slide-out mobile): use graphite/navy instead of fixed white. */
+.app-layout.theme-dark .app-sidebar,
+.app-layout.theme-dark.sidebar-collapsed .app-sidebar {
+ background:#202633;
+ color:#F7F9FC;
+ border-right:1px solid #39455A;
+ box-shadow:0 8px 25px #101B3318;
+}
+.app-layout.theme-dark .app-sidebar .side-logo .logo-word strong {
+ color:#F7F9FC;
+}
+.app-layout.theme-dark .app-sidebar .side-logo .logo-word strong span {
+ color:#38CDE5;
+}
+.app-layout.theme-dark .app-sidebar .sidebar-collapse-btn {
+ background:#2A364B;
+ border-color:#394B65;
+ color:#DFE9F9;
+}
+.app-layout.theme-dark .app-sidebar .sidebar-collapse-btn:hover {
+ background:#35455F;
+ color:#FFFFFF;
+ border-color:#506B8B;
+}
+.app-layout.theme-dark .app-sidebar .side-nav {
+ scrollbar-color:#51627D transparent;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item {
+ color:#D6E1F0;
+ border-color:transparent;
+ background:transparent;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item .k-side-icon {
+ color:#B1C4DC;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item small {
+ color:#9EB4CE;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item:hover {
+ background:#2A364B;
+ color:#FFFFFF;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item:hover .k-side-icon {
+ color:#E4F1FF;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item.active {
+ background:#273A61;
+ color:#F7F9FC;
+ border:1px solid #48618A;
+ box-shadow:none;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item.active .k-side-icon {
+ color:#6CE1F3;
+}
+.app-layout.theme-dark .app-sidebar .side-nav-item.active::before {
+ background:#38CDE5;
+}
+.app-layout.theme-dark .app-sidebar .k-nav-separator,
+.app-layout.theme-dark .app-sidebar .sidebar-bottom {
+ border-color:#39455A;
+}
+.app-layout.theme-dark .app-sidebar .k-nav-separator {
+ background:#39455A;
+}
+.app-layout.theme-dark .app-sidebar .k-nav-more-toggle {
+ background:transparent;
+ color:#BDD0E7;
+}
+.app-layout.theme-dark .app-sidebar .k-nav-more-toggle:hover,
+.app-layout.theme-dark .app-sidebar .k-nav-more-toggle.selected {
+ color:#F7F9FC;
+ background:#2A364B;
+}
+.app-layout.theme-dark .app-sidebar .k-nav-expanded {
+ border-left-color:#43536B;
+}
+.app-layout.theme-dark .app-sidebar .side-user {
+ background:#29354A;
+ border:1px solid #43516A;
+ color:#F7F9FC;
+}
+.app-layout.theme-dark .app-sidebar .side-user:hover {
+ background:#324157;
+ border-color:#5E7391;
+}
+.app-layout.theme-dark .app-sidebar .side-user strong {
+ color:#F7F9FC;
+}
+.app-layout.theme-dark .app-sidebar .side-user small {
+ color:#B8C7DB;
+}
+.app-layout.theme-dark .app-sidebar .side-user>b {
+ color:#9EAFCA;
+}
+.app-layout.theme-dark .app-sidebar .side-user .profile-avatar {
+ border-color:#38CDE5;
+}
+
+/* Bottom navigation: same dark palette and contrast as the desktop sidebar. */
+.app-layout.theme-dark .mobile-bottom-nav {
+ background:#202633;
+ color:#E5EDF9;
+ border-top:1px solid #39455A;
+ box-shadow:0 -8px 26px #101B3340;
+}
+.app-layout.theme-dark .mobile-bottom-nav button {
+ background:transparent;
+ color:#B8C7DB;
+}
+.app-layout.theme-dark .mobile-bottom-nav button svg {
+ stroke:currentColor;
+}
+.app-layout.theme-dark .mobile-bottom-nav button:hover {
+ background:#2A364B;
+ color:#F7F9FC;
+}
+.app-layout.theme-dark .mobile-bottom-nav button.active,
+.app-layout.theme-dark .mobile-bottom-nav button[aria-current="page"] {
+ background:#273A61;
+ color:#F7F9FC;
+}
+.app-layout.theme-dark .mobile-bottom-nav button.active svg {
+ stroke:#6CE1F3;
+}
+.app-layout.theme-dark .mobile-bottom-nav button:focus-visible,
+.app-layout.theme-dark .app-sidebar button:focus-visible {
+ outline:2px solid #38CDE5;
+ outline-offset:-2px;
+}
+.app-layout.theme-dark .mobile-bottom-nav button.active .k-tab-active-line {
+ background:#38CDE5;
+}
+
+/* Consistent dark topbar buttons and breadcrumb (previous overrides used dark text). */
+.app-layout.theme-dark .app-topbar .crumbs {
+ color:#D0DEF0;
+}
+.app-layout.theme-dark .app-topbar .crumbs span {
+ color:#74CFE1;
+}
+.app-layout.theme-dark .app-topbar .mobile-menu-btn,
+.app-layout.theme-dark .app-topbar .icon-top-btn,
+.app-layout.theme-dark .app-topbar .search-trigger {
+ color:#DFEBFA;
+ background:#273246;
+ border-color:#3A4960;
+}
+.app-layout.theme-dark .app-topbar .mobile-menu-btn:hover,
+.app-layout.theme-dark .app-topbar .icon-top-btn:hover,
+.app-layout.theme-dark .app-topbar .search-trigger:hover {
+ color:#FFFFFF;
+ background:#35445C;
+ border-color:#617891;
+}
+.app-layout.theme-dark .app-topbar .profile-avatar {
+ border-color:#38CDE5;
+}
+
+/* Theme changes should read as a gentle surface transition, not a flash. */
+.app-layout,
+.app-layout .app-sidebar,
+.app-layout .app-topbar,
+.app-layout .mobile-bottom-nav,
+.app-layout .side-user,
+.app-layout .side-nav-item {
+ transition:
+   background-color .23s ease,
+   border-color .23s ease,
+   color .18s ease;
+}
+
+/* Motion for React page wrapper preserves the existing full-width flex layout. */
+.app-layout .k-motion-page {
+ display:flex;
+ flex:1 0 auto;
+ min-width:0;
+ width:100%;
+ flex-direction:column;
+ align-items:stretch;
+}
+.app-layout .k-motion-page>.app-content {
+ flex:1;
+}
+/* Mobile tab selection travels to the newly selected page using Motion layoutId. */
+.app-layout .mobile-bottom-nav button {
+ position:relative;
+ overflow:hidden;
+ isolation:isolate;
+ transition:background-color .22s ease,color .22s ease;
+}
+.app-layout .mobile-bottom-nav button.active {
+ font-weight:780;
+}
+.app-layout .mobile-bottom-nav .k-tab-active-line {
+ position:absolute;
+ left:30%;
+ right:30%;
+ top:0;
+ height:3px;
+ border-radius:0 0 8px 8px;
+ background:#38CDE5;
+ pointer-events:none;
+}
+/* Gentle, purposeful microinteractions for cards and buttons. */
+@keyframes kognos-card-arrive {
+ from {opacity:0;transform:translate3d(0,9px,0);}
+ to {opacity:1;transform:translate3d(0,0,0);}
+}
+@keyframes kognos-hero-float {
+ 0%,100% {transform:translate(-50%,-50%) rotate(-5deg);}
+ 50% {transform:translate(-50%,-53%) rotate(-3deg);}
+}
+.app-layout .k-dashboard .stat-grid>.stat-card {
+ animation:kognos-card-arrive .42s both cubic-bezier(.2,.8,.2,1);
+}
+.app-layout .k-dashboard .stat-grid>.stat-card:nth-child(2){animation-delay:55ms;}
+.app-layout .k-dashboard .stat-grid>.stat-card:nth-child(3){animation-delay:110ms;}
+.app-layout .k-dashboard .stat-grid>.stat-card:nth-child(4){animation-delay:165ms;}
+.app-layout .k-art-center {
+ animation:kognos-hero-float 8s ease-in-out infinite;
+}
+.app-layout .k-shortcut-card,
+.app-layout .k-next-item,
+.app-layout .k-hero-button,
+.app-layout .k-next-cta,
+.app-layout .side-nav-item,
+.app-layout .k-nav-more-toggle,
+.app-layout .icon-top-btn {
+ transition:
+   transform .2s cubic-bezier(.2,.8,.2,1),
+   box-shadow .2s ease,
+   background-color .2s ease,
+   border-color .2s ease,
+   color .18s ease;
+}
+.app-layout .question-progress span,
+.app-layout .learning-progress-track>span {
+ transition:width .5s cubic-bezier(.22,1,.36,1);
+}
+@media(hover:hover) and (pointer:fine){
+ .app-layout .k-next-item:hover {transform:translateX(3px);}
+ .app-layout .side-nav-item:hover {transform:translateX(2px);}
+ .app-layout .k-shortcut-card:hover {transform:translateY(-3px);}
+ .app-layout .k-hero-button:hover:not(:disabled),
+ .app-layout .k-next-cta:hover:not(:disabled){transform:translateY(-2px);}
+ .app-layout .icon-top-btn:hover {transform:translateY(-1px);}
+}
+.app-layout .k-hero-button:active,
+.app-layout .k-next-cta:active,
+.app-layout .k-shortcut-card:active {
+ transform:scale(.985);
+}
+
+/* The new theme is consistent across viewport breakpoints (including iPhones
+ * with home-indicator safe areas). Desktop navbar remains sticky as before.
+ */
+@media(max-width:920px) {
+ .app-layout.theme-dark .app-sidebar,
+ .app-layout.theme-dark.sidebar-collapsed .app-sidebar {
+  background:#202633;
+  color:#F7F9FC;
+  border-right:1px solid #39455A;
+ }
+ .app-layout.theme-dark .mobile-bottom-nav {
+  background:#202633;
+  border-color:#39455A;
+  padding-bottom:env(safe-area-inset-bottom);
+ }
+ .app-layout .mobile-bottom-nav button {min-height:59px;}
+}
+@media(hover:none){
+ .app-layout .side-nav-item:hover,
+ .app-layout .k-shortcut-card:hover,
+ .app-layout .k-next-item:hover {transform:none;}
+}
+
+/* Respect OS and product accessibility controls, not merely the animations
+ * from this file. Users should never have to tolerate forced motion.
+ */
+@media(prefers-reduced-motion:reduce){
+ .app-layout,
+ .app-layout *,
+ .app-layout *::before,
+ .app-layout *::after {
+  animation:none!important;
+  transition:none!important;
+  scroll-behavior:auto!important;
+  transform:none!important;
+ }
+}
+.app-layout.less-motion,
+.app-layout.less-motion *,
+.app-layout.less-motion *::before,
+.app-layout.less-motion *::after {
+ animation:none!important;
+ transition:none!important;
+ scroll-behavior:auto!important;
+}
