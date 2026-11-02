@@ -81,10 +81,44 @@ export function assessIndependentReview(raw:string,items:ValidatedQuestion[]):Re
 export function filterByIndependentReview(raw:string,items:ValidatedQuestion[]):ValidatedQuestion[]{
  return assessIndependentReview(raw,items).approved;
 }
-/** Exact normalized de-duplication against the student's existing bank. */
+/** Conservative text-similarity check: catches trivial rewordings, not general
+ * semantic equivalents. Never claim all model-generated questions are conceptually
+ * unique, and never use this in place of the per-user SQL reservation constraint.
+ */
+export function stronglySimilarQuestion(a:string,b:string):boolean{
+ const left=normalize(a),right=normalize(b);
+ if(left===right)return true;
+ if(Math.min(left.length,right.length)<55||Math.min(left.length,right.length)/Math.max(left.length,right.length)<0.82)return false;
+ // Preserve digits and maths operators: changing "2+5" to "2-5" is material.
+ const words=(text:string)=>text.match(/[\p{L}\p{N}]+|[+*/=<>&-]/gu)||[];
+ const A=words(left),B=words(right);
+ if(A.length<10||B.length<10)return false;
+ const common=new Set(A),uniqueB=new Set(B);
+ const intersection=[...common].filter(x=>uniqueB.has(x)).length;
+ const jaccard=intersection/(new Set([...common,...uniqueB]).size||1);
+ if(jaccard<0.86)return false;
+ const shingles=(text:string)=>{
+  const values=new Set<string>();
+  for(let i=0;i+2<text.length;i++)values.add(text.slice(i,i+3));
+  return values;
+ };
+ const x=shingles(left),y=shingles(right);
+ const shared=[...x].filter(v=>y.has(v)).length;
+ const dice=(2*shared)/(x.size+y.size||1);
+ return dice>=0.90;
+}
+
+/** Removes exact and highly similar wording from new approved questions.
+ * Read windows are bounded to avoid expensive full-account history scans.
+ */
 export function excludePreviouslyGenerated(items:readonly ValidatedQuestion[],existingPrompts:readonly string[]):ValidatedQuestion[]{
  const seen=new Set(existingPrompts.map(normalize));
- return items.filter(q=>{const key=normalize(q.prompt);if(seen.has(key))return false;seen.add(key);return true;});
+ const accepted:string[]=[...existingPrompts];
+ return items.filter(q=>{
+  const key=normalize(q.prompt);
+  if(seen.has(key)||accepted.some(previous=>stronglySimilarQuestion(previous,q.prompt)))return false;
+  seen.add(key);accepted.push(q.prompt);return true;
+ });
 }
 export function publicGeneratedQuestion(row:Record<string,unknown>){
  return {id:row.id,lesson_id:row.lesson_id??null,institution:row.institution,source_title:row.source_title,source_url:row.source_url,source_kind:row.source_topic_id?'editor_approved_source':'editorial',edition:row.edition,subject:row.subject,topic:row.topic,difficulty:row.difficulty,prompt:row.prompt,options:row.options,created_at:row.created_at,review_status:'auto_reviewed' as const};
