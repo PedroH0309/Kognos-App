@@ -41,5 +41,5 @@ test('FUVEST 2027 syllabus includes nine edition-specific official required read
  assert.equal(new Set(titles).size,9);
  const syllabus=expandExamSubjects('fuvest',{});
  for(const title of titles)assert.ok(syllabus.Literatura.some(item=>item.includes(title)),title);
- assert.equal(officialSyllabusSources.fuvest.url,'https://www.fuvest.br/vestibular-da-usp');
+ assert.equal(officialSyllabusSources.fuvest.url,'https://www.fuvest.br/wp-content/uploads/fuvest2027-programa-vestibular.pdf');
 });
