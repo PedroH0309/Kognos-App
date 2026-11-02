@@ -9,7 +9,7 @@ import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
 import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from '@/lib/lesson-ai-links';
 import {findLearningLesson} from '@/lib/learning-catalog';
-import {AI_BANK_PAGE_SIZE,splitGenerationBatches} from '@/lib/ai-bank-paging';
+import {AI_BANK_PAGE_SIZE} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
@@ -38,8 +38,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [totalQuestions,setTotalQuestions]=useState(0);
  const [hasMore,setHasMore]=useState(false);
  const [loadingMore,setLoadingMore]=useState(false);
- const [batchNumber,setBatchNumber]=useState(0);
- const [batchAttempt,setBatchAttempt]=useState(1);
+ const [approvedSoFar,setApprovedSoFar]=useState(0);
  const [draftReadyFor,setDraftReadyFor]=useState<string|null>(null);
  const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
  const [generationSeconds,setGenerationSeconds]=useState(0);
@@ -154,25 +153,33 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  async function generate(){
   if(!userId||!canGenerate||generating)return;
   const requested=Number(count);
-  setGenerating(true);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
+  setGenerating(true);setApprovedSoFar(0);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
   try{
    const result=await generateApprovedBatches(requested,
-    async remaining=>await authenticatedFetch('/api/ai-questions/generate',{
+    async (remaining,batch,attempt)=>await authenticatedFetch('/api/ai-questions/generate',{
      method:'POST',body:JSON.stringify({
-      institution,subject,topic,difficulty,count:remaining,
+      institution,subject,topic,difficulty,count:remaining,variation:(batch-1)*3+attempt-1,
       ...(verifiedTopic?{sourceTopicId:verifiedTopic.id}:{}),
       ...(activeLessonLink?{lessonId:activeLessonLink}:{})
      })
     }),
-    (batch,attempt)=>{setBatchNumber(batch);setBatchAttempt(attempt);}
+    undefined,
+    approved=>setApprovedSoFar(approved)
    );
    if(result.saved){
-    setNotice(`${result.saved} de ${result.requested} questões foram aprovadas e salvas. ${result.missing?`${result.missing} não passaram pela revisão ou não foram concluídas após ${MAX_ATTEMPTS_PER_BATCH} tentativas por lote. `:''}As questões ficam disponíveis para prática e simulados.`);
+    const reasons=result.missing?[
+     result.diagnostics.structurallyMissing?`formato incompleto (${result.diagnostics.structurallyMissing})`:null,
+     result.diagnostics.missingReview?`revisão incompleta (${result.diagnostics.missingReview})`:null,
+     result.diagnostics.pedagogicallyRejected?`reprovações pedagógicas (${result.diagnostics.pedagogicallyRejected})`:null,
+     result.diagnostics.answerDisagreements?`gabaritos divergentes (${result.diagnostics.answerDisagreements})`:null,
+     result.diagnostics.duplicates?`questões repetidas (${result.diagnostics.duplicates})`:null
+    ].filter(Boolean).join('; '):'';
+    setNotice(`${result.saved} de ${result.requested} questões aprovadas e salvas. ${result.missing?`${result.missing} ficaram pendentes após até ${MAX_ATTEMPTS_PER_BATCH} tentativas por lote. ${reasons?`Diagnóstico das tentativas: ${reasons}. `:''}`:''}As aprovadas já estão no banco para prática e simulados.`);
     await refresh();
    }
    if(result.error)setError(`${result.error}${result.saved?` As ${result.saved} aprovadas continuam salvas.`:''}`);
    else if(result.missing&&!result.saved)setError('Nenhuma questão passou pela revisão. Tente outro tema ou dificuldade; nenhuma questão incorreta foi salva.');
-  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);setBatchAttempt(1);}
+  }finally{setGenerating(false);setGenerationStartedAt(null);}
  }
 
  function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
@@ -226,7 +233,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
        <KognosSelect label="Quantidade" value={count} options={amountOptions} onChange={setCount}/>
       </div>
       <details className="ai-source-note ai-source-reference"><summary><BookOpenText size={15} aria-hidden="true"/><strong>{verifiedTopic?`Conteúdo vinculado a fonte revisada · ${verifiedTopic.edition}`:`Referência editorial · ${blueprint.edition}`}</strong><span>Consultar detalhes</span></summary><div><p>{verifiedTopic?`Evidência: “${verifiedTopic.evidence}”. Revisão editorial não equivale à homologação da instituição.`:blueprint.notice} <a href={verifiedTopic?.sourceUrl||blueprint.sourceUrl} target="_blank" rel="noopener noreferrer">Consultar fonte institucional</a></p>{sourceNotice&&<small>{sourceNotice}</small>}</div></details>
-      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading||!canGenerate} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Gerando lote ${batchNumber}/${splitGenerationBatches(Number(count)).length} · tentativa ${batchAttempt}/${MAX_ATTEMPTS_PER_BATCH}`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>{generating?`Processando há ${generationSeconds}s. Você pode mudar de guia e voltar; a geração continua enquanto a página permanecer aberta.`:'A geração é feita em lotes de até 5. O Kognos tenta completar a quantidade escolhida, mas salva somente questões aprovadas pela revisão.'}</small></div>
+      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading||!canGenerate} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Preparando ${count} questões · ${approvedSoFar} aprovadas`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>{generating?`Processando há ${generationSeconds}s. Você pode mudar de guia e voltar; a geração continua enquanto a página permanecer aberta.`:'O Kognos processa até 2 lotes menores em paralelo e revisa cada item antes de salvar. O tempo depende das APIs.'}</small></div>
     </section>
     <section className="dark-panel ai-bank">
       <div className="ai-bank-header"><div><h2>{inMock?'Simulados personalizados':'Meu banco de questões IA'}</h2><p>Somente questões pendentes aparecem aqui. Ao responder, elas saem desta fila e rendem XP em Conquistas.</p></div><button type="button" className="btn outline small" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={15}/> Atualizar</button></div>
