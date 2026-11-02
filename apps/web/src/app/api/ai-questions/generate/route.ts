@@ -2,7 +2,7 @@ import {NextResponse} from 'next/server';
 import {withSupabase} from '@supabase/server';
 import {createAndReviewQuestions} from '@/lib/nvidia-question-engine';
 import {examBlueprints,validateGenerationRequest} from '@/lib/exam-blueprints';
-import {publicGeneratedQuestion} from '@/lib/ai-question-validation';
+import {publicGeneratedQuestion,excludePreviouslyGenerated} from '@/lib/ai-question-validation';
 import {safeOfficialUrl} from '@/lib/syllabus-sources';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
@@ -41,8 +41,14 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   if(reserved!==true)return error(`Você atingiu o limite compartilhado de ${limit} solicitações à IA hoje.`,429);
   const approved=await createAndReviewQuestions(generation,verified||undefined);
   if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
+  const {data:prior,error:priorError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
+    .select('prompt').eq('user_id',userId).eq('institution',generation.institution)
+    .eq('subject',generation.subject).eq('topic',generation.topic).order('created_at',{ascending:false}).limit(500);
+  if(priorError)return error('Não foi possível conferir duplicidades no banco pessoal.',503);
+  const unique=excludePreviouslyGenerated(approved,(prior||[]).map(row=>row.prompt));
+  if(!unique.length)return error('As questões propostas já existem no seu banco. Tente outro nível ou conteúdo.',409);
   const blueprint=examBlueprints[generation.institution];
-  const rows=approved.map(q=>({
+  const rows=unique.map(q=>({
    user_id:userId,institution:generation.institution,edition:verified?.edition||blueprint.edition,source_title:verified?.sourceTitle||blueprint.sourceTitle,
    source_url:verified?.sourceUrl||blueprint.sourceUrl,source_topic_id:sourceTopicId,lesson_id:generation.lessonId||null,subject:generation.subject,topic:generation.topic,difficulty:generation.difficulty,
    prompt:q.prompt,options:q.options,correct_index:q.correct_index,explanation:q.explanation,review_status:'auto_reviewed'

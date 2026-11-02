@@ -236,3 +236,17 @@
 @media(prefers-reduced-motion:reduce){
   .onboard-v061 *, .onboard-v061 *::before,.onboard-v061 *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important;}
 }
+
+/* v1.6 — perfectly centered, equal-size selection icons at all font scales. */
+.onboard-v061 .choice-pill {display:inline-flex;align-items:center;gap:10px;line-height:1.45;}
+.onboard-v061 .choice-check {
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+  width:21px;height:21px;min-width:21px;min-height:21px;
+  padding:0;margin:0;flex:0 0 21px;line-height:1;vertical-align:middle;
+}
+.onboard-v061 .choice-check svg {display:block;width:14px;height:14px;flex:0 0 14px;stroke-width:2.25;}
+.onboard-v061 .onboard-db-help {padding:15px 17px;border:1px solid var(--onboard-accent-text);border-radius:13px;background:var(--panel-2);color:var(--txt);font-size:12px;line-height:1.65;}
+.onboard-v061 .onboard-db-help strong {display:block;margin:0 0 6px;font-size:13px;}
+.onboard-v061 .onboard-db-help p {margin:0 0 7px;}
+.onboard-v061 .onboard-db-help small {color:var(--sub);font-size:11px;}
+.onboard-v061 .onboard-db-help code {background:var(--field-bg);padding:1px 4px;border-radius:4px;overflow-wrap:anywhere;}

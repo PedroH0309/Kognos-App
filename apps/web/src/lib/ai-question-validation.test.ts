@@ -41,3 +41,11 @@ test('generated question ID context strips supplied answers and corrects only re
  const verified=buildVerifiedGeneratedQuestionContext(example,'review',{answerIndex:0,correct:false});
  assert.match(verified,/Gabarito da questão/);assert.match(verified,/Resposta escolhida: A/);
 });
+
+
+test('repeated AI-generated prompts are excluded across separate generation batches',async()=>{
+ const {excludePreviouslyGenerated}=await import('./ai-question-validation.ts');
+ const q={prompt:'Por que a água evapora a 100 °C em pressão padrão?',options:['A','B','C','D','E'],correct_index:1,explanation:'A mudança de fase ocorre conforme a pressão e o aquecimento.'} as const;
+ const unique=excludePreviouslyGenerated([q as any],['Por que a água evapora a 100 °C em pressão padrão?']);
+ assert.equal(unique.length,0);
+});

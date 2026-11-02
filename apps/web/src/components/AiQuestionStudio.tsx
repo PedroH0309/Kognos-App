@@ -1,6 +1,6 @@
 'use client';
 
-import {useCallback,useEffect,useMemo,useState} from 'react';
+import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {BrainCircuit,BookOpenText,ShieldCheck,RefreshCw,Clock3,CheckCircle2,AlertTriangle,Sparkles} from 'lucide-react';
 import {KognosSelect} from './KognosFields';
 import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exam-blueprints';
@@ -9,23 +9,30 @@ import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
 import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from '@/lib/lesson-ai-links';
 import {findLearningLesson} from '@/lib/learning-catalog';
+import {AI_BANK_PAGE_SIZE,splitGenerationBatches} from '@/lib/ai-bank-paging';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string};
 type Mode='questions'|'simulados';
 const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
-const amountOptions=[1,2,3,4,5].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
+const amountOptions=[1,3,5,10].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
-export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,focusLessonId}:{mode:Mode;userId:string|null;onTutor:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null}) {
+export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextChange,focusLessonId}:{mode:Mode;userId:string|null;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null}) {
  const preset=focusLessonId?lessonGenerationPreset(focusLessonId):null;
  const [linkedLessonId,setLinkedLessonId]=useState<string|null>(preset?.lessonId??null);
  const [institution,setInstitution]=useState<ExamId>(preset?.institution??'enem');
  const [subject,setSubject]=useState(preset?.subject??'Matemática');
  const [topic,setTopic]=useState(preset?.topic??'Porcentagem e razão');
  const [difficulty,setDifficulty]=useState<Difficulty>('intermediate');
- const [count,setCount]=useState('3');
+ const [count,setCount]=useState('5');
+ const [bankScope,setBankScope]=useState<'all'|'topic'>(focusLessonId?'topic':'all');
  const [questions,setQuestions]=useState<UserAIQuestion[]>([]);
+ const [totalQuestions,setTotalQuestions]=useState(0);
+ const [hasMore,setHasMore]=useState(false);
+ const [loadingMore,setLoadingMore]=useState(false);
+ const [batchNumber,setBatchNumber]=useState(0);
+ const requestSerial=useRef(0);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
  const [sourceNotice,setSourceNotice]=useState('');
  const [loading,setLoading]=useState(false),[generating,setGenerating]=useState(false),[submitting,setSubmitting]=useState(false);
@@ -43,6 +50,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,fo
  const linkedLesson=linkedLessonId?findLearningLesson(linkedLessonId):null;
  const activeLessonLink=linkedLessonId&&validLessonAIReference(linkedLessonId,institution,subject,topic)?linkedLessonId:null;
  const bank=useMemo(()=>questions.filter(q=>q.institution===institution&&(!inMock||q.difficulty===difficulty)&&(!linkedLessonId||q.lesson_id===linkedLessonId||(!q.lesson_id&&inferLegacyLessonId(q.institution,q.subject,q.topic)===linkedLessonId))),[questions,institution,inMock,difficulty,linkedLessonId]);
+ const scopeDescription=bankScope==='topic'?`${subject} · ${topic}`:`todas as matérias · ${blueprint.label}`;
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
 
@@ -57,14 +65,39 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,fo
   return result;
  },[userId]);
 
+ const listUrl=useCallback((offset:number)=>{
+  const params=new URLSearchParams({institution,offset:String(offset)});
+  if(inMock)params.set('difficulty',difficulty);
+  if(bankScope==='topic'){params.set('subject',subject);params.set('topic',topic);}
+  return `/api/ai-questions?${params.toString()}`;
+ },[institution,inMock,difficulty,bankScope,subject,topic]);
  const refresh=useCallback(async()=>{
-  if(!userId){setQuestions([]);return;}
+  const requestId=++requestSerial.current;
+  if(!userId){setQuestions([]);setTotalQuestions(0);setHasMore(false);return;}
   setLoading(true);setError('');
-  try{const data=await authenticatedFetch('/api/ai-questions');setQuestions(Array.isArray(data.questions)?data.questions:[]);}
-  catch(e){setError(e instanceof Error?e.message:'Falha ao carregar as questões.');}
-  finally{setLoading(false);}
- },[authenticatedFetch,userId]);
- useEffect(()=>{void refresh();},[refresh]);
+  try{
+   const data=await authenticatedFetch(listUrl(0));
+   if(requestId!==requestSerial.current)return;
+   setQuestions(Array.isArray(data.questions)?data.questions:[]);
+   setTotalQuestions(Number(data.total)||0);
+   setHasMore(data.hasMore===true);
+  }catch(e){if(requestId===requestSerial.current){setQuestions([]);setTotalQuestions(0);setHasMore(false);setError(e instanceof Error?e.message:'Falha ao carregar as questões.');}}
+  finally{if(requestId===requestSerial.current)setLoading(false);}
+ },[authenticatedFetch,listUrl,userId]);
+ useEffect(()=>{void refresh();return()=>{requestSerial.current+=1;};},[refresh]);
+ async function loadMore(){
+  if(!userId||loading||loadingMore||!hasMore)return;
+  const activeId=requestSerial.current,offset=questions.length;
+  if(offset%AI_BANK_PAGE_SIZE!==0)return;
+  setLoadingMore(true);setError('');
+  try{
+   const data=await authenticatedFetch(listUrl(offset));
+   if(activeId!==requestSerial.current)return;
+   setQuestions(old=>[...old,...(Array.isArray(data.questions)?data.questions:[])]);
+   setTotalQuestions(Number(data.total)||0);setHasMore(data.hasMore===true);
+  }catch(e){if(activeId===requestSerial.current)setError(e instanceof Error?e.message:'Não foi possível carregar mais questões.');}
+  finally{if(activeId===requestSerial.current)setLoadingMore(false);}
+ }
  useEffect(()=>{
   if(!userId){setApprovedTopics([]);return;}
   let active=true;
@@ -88,12 +121,22 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,fo
  async function generate(){
   if(!userId)return;
   setGenerating(true);setError('');setNotice('');
+  const parts=splitGenerationBatches(Number(count));
+  let saved=0,rejected=0,failure='';
   try{
-   const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:Number(count),sourceTopicId:verifiedTopic?.id,...(activeLessonLink?{lessonId:activeLessonLink}:{})})});
-   setQuestions(old=>[...(result.questions||[]),...old].slice(0,100));
-   setNotice(`${result.approved} questão(ões) aprovada(s) automaticamente e adicionada(s) ao seu banco e aos simulados. ${result.rejected?`${result.rejected} rejeitada(s) na revisão.`:''}`);
-  }catch(e){setError(e instanceof Error?e.message:'Falha ao gerar questões.');}
-  finally{setGenerating(false);}
+   for(let index=0;index<parts.length;index++){
+    setBatchNumber(index+1);
+    try{
+     const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:parts[index],sourceTopicId:verifiedTopic?.id,...(activeLessonLink?{lessonId:activeLessonLink}:{})})});
+     saved+=Number(result.approved)||0;rejected+=Number(result.rejected)||0;
+    }catch(e){failure=e instanceof Error?e.message:'A geração de questões não foi concluída.';break;}
+   }
+   if(saved){
+    setNotice(`${saved} questão(ões) gerada(s) e salva(s) no banco pessoal. ${rejected?`${rejected} não passou/passaram na revisão. `:''}Essas questões também ficam disponíveis para simulados.`);
+    await refresh();
+   }
+   if(failure)setError(`${failure}${saved?` As ${saved} questão(ões) anteriores foram mantidas no banco.`:''}`);
+  }finally{setGenerating(false);setBatchNumber(0);}
  }
  function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
  async function submitAnswer(){
@@ -114,9 +157,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,fo
  return <div className="ai-studio">
    {error&&<div role="alert" className="message warning">{error}</div>}
    {notice&&<div role="status" className="message success">{notice}</div>}
-   {!userId&&<div className="dark-panel ai-signin"><ShieldCheck size={23}/><h2>Questões geradas por IA para sua conta</h2><p>Para criar e guardar questões personalizadas, entre com uma conta Kognos. O acervo demonstrativo continua disponível no outro separador.</p></div>}
+   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo demonstrativo tem 20 questões fixas. Com a sua conta você gera novos itens com NVIDIA, salva no Supabase e monta simulados com eles.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
    {userId&&!session.length&&<>
-    {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>setLinkedLessonId(null)}>Ver banco completo</button></div>}
+    {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>{setLinkedLessonId(null);setBankScope('all');}}>Ver banco completo</button></div>}
     <section className="dark-panel ai-studio-generator">
       <div className="ai-generator-heading"><div><span className="overline">BANCO INTELIGENTE</span><h2><BrainCircuit size={22} aria-hidden="true"/> Gerador de questões com IA</h2><p>Escolha a instituição e o nível. O Kognos gera itens originais e realiza uma revisão automática antes de salvá-los.</p></div><span className="ai-tag"><Sparkles size={14}/> IA · NVIDIA</span></div>
       <div className="ai-generator-grid">
@@ -127,17 +170,20 @@ export default function AiQuestionStudio({mode,userId,onTutor,onContextChange,fo
        <KognosSelect label="Quantidade" value={count} options={amountOptions} onChange={setCount}/>
       </div>
       <div className="ai-source-note"><BookOpenText size={16} aria-hidden="true"/><div><strong>{verifiedTopic?`Assunto vinculado a fonte revisada: ${verifiedTopic.edition}`:`Referência editorial: ${blueprint.edition}`}</strong><p>{verifiedTopic?`Trecho do documento: “${verifiedTopic.evidence}”. A revisão editorial não é homologação da instituição.`:blueprint.notice} <a href={verifiedTopic?.sourceUrl||blueprint.sourceUrl} target="_blank" rel="noopener noreferrer">Consultar fonte institucional</a></p>{sourceNotice&&<small>{sourceNotice}</small>}</div></div>
-      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading} onClick={()=>void generate()}><Sparkles size={16}/>{generating?'Gerando e revisando…':`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>Máximo de 5 por solicitação · usa sua cota diária de IA</small></div>
+      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Gerando lote ${batchNumber} de ${splitGenerationBatches(Number(count)).length}…`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>Até 10 por ação (lotes de 5) · cada lote utiliza sua cota diária de IA. A geração depende da NVIDIA e do Supabase.</small></div>
     </section>
     <section className="dark-panel ai-bank">
       <div className="ai-bank-header"><div><h2>{inMock?'Simulados personalizados':'Meu banco de questões IA'}</h2><p>Questões privadas salvas automaticamente, disponíveis para estudo e simulado.</p></div><button type="button" className="btn outline small" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={15}/> Atualizar</button></div>
-      <div className="ai-bank-counter"><strong>{bank.length}</strong><span>{bank.length===1?'questão disponível':'questões disponíveis'} para {blueprint.label}{inMock?` · ${difficulties[difficulty]}`:''}</span></div>
+      <div className="ai-bank-scope" role="group" aria-label="Filtrar banco pessoal"><button type="button" className={bankScope==='all'?'selected':''} aria-pressed={bankScope==='all'} onClick={()=>{setBankScope('all');setLinkedLessonId(null);}}>Toda a instituição</button><button type="button" className={bankScope==='topic'?'selected':''} aria-pressed={bankScope==='topic'} onClick={()=>setBankScope('topic')}>Assunto selecionado</button></div>
+      <div className="ai-bank-counter"><strong>{loading?'…':totalQuestions}</strong><span>{totalQuestions===1?'questão salva':'questões salvas'} neste filtro · {scopeDescription}{inMock?` · ${difficulties[difficulty]}`:''}<small> {loading?'Consultando banco…':`${questions.length} carregadas nesta página`}</small></span></div>
       {loading&&<p role="status" className="muted">Carregando questões...</p>}
-      {!loading&&!bank.length&&<p className="ai-empty">Ainda não existem questões de IA para esta instituição. Gere um conjunto para começar; ele aparecerá automaticamente nos seus simulados.</p>}
+      {!loading&&!bank.length&&<p className="ai-empty">Nenhuma questão salva para este filtro. Se você já gerou questões, tente “Toda a instituição”, escolha outra dificuldade ou gere um novo conjunto acima. As questões aprovadas serão incluídas também nos simulados.</p>}
       {!!bank.length&&<>
        <button type="button" className="btn primary" onClick={()=>start(bank.slice(0,Math.min(20,bank.length)))}>{inMock?'Iniciar simulado de IA':'Praticar questões do banco'} ({Math.min(20,bank.length)})</button>
-       <div className="ai-question-list">{bank.slice(0,20).map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>{q.source_kind==='editor_approved_source'?'IA · assunto vinculado a matriz revisada':'IA · assunto editorial'} · resposta verificada automaticamente, sem homologação do item</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
+       <div className="ai-question-list">{bank.map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>{q.source_kind==='editor_approved_source'?'IA · assunto vinculado a matriz revisada':'IA · assunto editorial'} · resposta verificada automaticamente, sem homologação do item</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
       </>}
+      {hasMore&&<button type="button" className="btn outline ai-load-more" disabled={loadingMore||loading} onClick={()=>void loadMore()}>{loadingMore?'Carregando…':`Carregar mais questões (${questions.length} de ${totalQuestions})`}</button>}
+      {!hasMore&&totalQuestions>0&&<p className="ai-end-of-results">Todas as {totalQuestions} questões deste filtro foram carregadas.</p>}
       <p className="privacy-note">A revisão automática não garante ausência de erros. Questões geradas não são oficiais e não entram no banco de outros alunos sem revisão humana.</p>
     </section>
    </>}

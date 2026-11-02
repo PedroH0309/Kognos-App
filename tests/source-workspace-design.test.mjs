@@ -8,7 +8,7 @@ test('guest receives a functional sign-in button opening the shared auth dialog'
  assert.match(page,/onLogin:\(\)=>void/);
  assert.match(page,/onClick=\{onLogin\}/);
  assert.match(shell,/view==='sources'\?<ExamSources[^\n]*onLogin=\{\(\)=>setAuthOpen\(true\)\}/);
- assert.match(shell,/if\(view!=='sources'\)setView\('dashboard'\)/);
+ assert.match(shell,/if\(!\['sources','questions','simulados'\]\.includes\(view\)\)setView\('dashboard'\)/);
 });
 test('guest and server failures do not falsely display zero approved topics',()=>{
  const page=read('apps/web/src/components/ExamSources.tsx');

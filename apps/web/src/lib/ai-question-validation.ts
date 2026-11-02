@@ -49,6 +49,11 @@ export function filterByIndependentReview(raw:string,items:ValidatedQuestion[]):
  }
  return items.filter((q,i)=>byIndex.get(i)?.approved===true&&byIndex.get(i)?.correct_index===q.correct_index);
 }
+/** Exact normalized de-duplication against the student's existing bank. */
+export function excludePreviouslyGenerated(items:readonly ValidatedQuestion[],existingPrompts:readonly string[]):ValidatedQuestion[]{
+ const seen=new Set(existingPrompts.map(normalize));
+ return items.filter(q=>{const key=normalize(q.prompt);if(seen.has(key))return false;seen.add(key);return true;});
+}
 export function publicGeneratedQuestion(row:Record<string,unknown>){
  return {id:row.id,lesson_id:row.lesson_id??null,institution:row.institution,source_title:row.source_title,source_url:row.source_url,source_kind:row.source_topic_id?'editor_approved_source':'editorial',edition:row.edition,subject:row.subject,topic:row.topic,difficulty:row.difficulty,prompt:row.prompt,options:row.options,created_at:row.created_at,review_status:'auto_reviewed' as const};
 }
