@@ -74,6 +74,16 @@ export function safeAIRequestErrorKind(body:unknown):'structured_json'|'invalid_
  return 'bad_request';
 }
 
+/** Safe provider/phase metadata for a rejected request. No tokens,
+ * prompts, model output or upstream raw error strings are retained.
+ */
+export class AIProviderRequestError extends Error{
+ constructor(
+  code:string,public readonly provider:AIProvider,public readonly phase:AIJob,
+  public readonly category:'structured_json'|'invalid_parameter'|'token_budget'|'bad_request'
+ ){super(code);this.name='AIProviderRequestError';}
+}
+
 /** Groq GPT-OSS consumes reasoning tokens from the completion budget.
  * Use low effort and strict JSON Schema for generation/review.
  * Provider- and model-specific settings must never leak to Gemini or NVIDIA.
@@ -128,8 +138,8 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
     'rejectionCategory',kind,'strictJSON',strictOutput);
    if(c.provider==='groq'&&strictOutput&&kind==='structured_json'
      &&job!=='tutor'&&/^openai\/gpt-oss-(?:20b|120b)$/.test(c.model))
-    throw new Error('AI_STRUCTURED_OUTPUT_REJECTED');
-   throw new Error('NVIDIA_BAD_REQUEST');
+    throw new AIProviderRequestError('AI_STRUCTURED_OUTPUT_REJECTED',c.provider,job,kind);
+   throw new AIProviderRequestError('NVIDIA_BAD_REQUEST',c.provider,job,kind);
   }
   if(response.status===408||response.status===504)throw new Error('NVIDIA_TIMEOUT');
   throw new Error('NVIDIA_UNAVAILABLE');
