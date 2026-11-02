@@ -18,7 +18,7 @@ test('sidebar no longer uses AI-violet or a purple promotional card',()=>{
  assert.ok(!layer.match(/\.app-layout \.app-sidebar \.side-nav-item\.active[^}]*#5B4DE3/i));
 });
 
-test('all sixteen Kognos destinations remain reachable in compact navigation',()=>{
+test('all seventeen Kognos destinations remain reachable in compact navigation',()=>{
  const slices=['NAV_PRIMARY:View[]','NAV_SECONDARY:View[]','NAV_MORE:View[]'];
  const groups=slices.map(label=>{
   const begin=app.indexOf('const '+label);
@@ -29,7 +29,7 @@ test('all sixteen Kognos destinations remain reachable in compact navigation',()
  const items=groups.flatMap(v=>[...v.matchAll(/'([a-z]+)'/g)].map(m=>m[1]));
  const expected=['dashboard','tutor','learn','subjects','questions','simulados',
   'plans','reviews','achievements','settings','trails','diagnostic',
-  'sources','calendar','performance','profile'];
+  'sources','calendar','performance','profile','weekly'];
  assert.deepEqual(items.sort(),expected.sort());
  assert.equal(new Set(items).size,expected.length);
  assert.match(app,/SideNavigationItem key=\{key\}/);
