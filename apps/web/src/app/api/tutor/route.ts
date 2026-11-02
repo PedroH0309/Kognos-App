@@ -120,7 +120,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     ];
     const answer = await requestAI('tutor',messages as {role:'system'|'user'|'assistant';content:string}[],1250,0.55);
     return NextResponse.json(
-      { answer: normalizeTutorAnswer(enforcePedagogicalTutorAnswer(answer)).slice(0, 12000) }
+      { answer: normalizeTutorAnswer(enforcePedagogicalTutorAnswer(answer)).slice(0, 12000) },
       { headers: { 'Cache-Control': 'no-store' } }
     );
   } catch (e) {
