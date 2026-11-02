@@ -33,7 +33,7 @@ test('weekly API never sends the private correct index before the student submit
 test('student plan is grounded in the selected exam and no longer exports ICS',()=>{
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
  const calendar=read('apps/web/src/components/StudyCalendar.tsx');
- assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\} officialTopics=\{officialTopics\}/);
+ assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\} officialTopics=\{officialTopics\} officialError=\{officialError\} onPlanTopic=\{scheduleTopic\} topicScheduling=\{busy\}/);
  assert.match(planner,/rebuildSuggestions/);
  assert.doesNotMatch(calendar,/downloadStudyCalendar|Exportar agenda|\.ics/);
 });
@@ -75,7 +75,7 @@ test('manual task subjects include the complete selected exam rather than fixed 
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
  assert.match(planner,/Object\.keys\(syllabusWithVerifiedTopics\(completeExamTopicCatalog\(examScope\),examScope,officialTopics\)\)/);
  assert.match(planner,/permittedSubjects=examSubjects\.length\?examSubjects:subjects/);
- assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\} officialTopics=\{officialTopics\}/);
+ assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\} officialTopics=\{officialTopics\} officialError=\{officialError\} onPlanTopic=\{scheduleTopic\} topicScheduling=\{busy\}/);
 });
 
 test('database schema upgrades old institution checks without dropping user questions',()=>{
@@ -92,4 +92,17 @@ test('weekly planner respects legacy question topics already used by the AI bank
  const planner=read('apps/web/src/lib/personalized-study-cycle.ts');
  assert.match(planner,/completeExamTopicCatalog\(exams\)/);
  assert.match(planner,/weeklyWrong/);
+});
+
+test('syllabus entries can be scheduled to the internal calendar without exports',()=>{
+ const planner=read('apps/web/src/components/StudyPlanner.tsx');
+ const list=read('apps/web/src/components/StudySyllabus.tsx');
+ const scheduler=read('apps/web/src/lib/syllabus-quick-schedule.ts');
+ assert.match(list,/onPlanTopic\(subject,topic\.topic,topic\.state==='review'\)/);
+ assert.match(list,/pendingTopicTask\(tasks,subject,topic\.topic\)/);
+ assert.match(planner,/createCloudTasks\(userId,\[item\]\)/);
+ assert.match(planner,/commitLocal\(next\)/);
+ assert.match(planner,/suggestSyllabusTopicSchedule\(profile,tasks,subject,topic,new Date\(\),review\)/);
+ assert.match(scheduler,/validCivilDate\(profile\.targetDate\)/);
+ assert.doesNotMatch(list,/\.ics/);
 });
