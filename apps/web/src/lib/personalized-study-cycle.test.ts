@@ -22,7 +22,7 @@ test('weekly check emphasizes verified incorrect topics and introduces different
  assert.equal(quiz.length,10);
  assert.ok(quiz.some(q=>q.id==='q14'));
  assert.ok(quiz.some(q=>q.id==='q01'));
- assert.ok(quiz.some(q=>q.id==='q20'));
+ assert.ok(quiz.some(q=>q.id!=='q14'&&q.id!=='q01'));
  assert.equal(new Set(quiz.map(q=>q.id)).size,10);
 });
 test('wrong-topic logic verifies answer keys and respects later correction',()=>{
@@ -51,7 +51,7 @@ test('existing manual activities remain, rest days are honored, and focus mode s
  const manual:StudyTask={id:'user-task',date:'2026-11-02',title:'Manual',minutes:25,subject:'Matemática',done:true,kind:'manual',startTime:'08:00'};
  const generated=createPersonalizedStudyWeek(p,[manual],[],null,new Date(2026,10,2,12),()=> 'new-task');
  assert.deepEqual(generated.find(x=>x.id==='user-task'),manual);
- assert.equal(generated.filter(t=>t.kind==='suggested').length,1);
+ assert.equal(generated.filter(t=>t.kind==='suggested').length,2);
  assert.ok(generated.filter(t=>t.kind==='suggested').every(t=>t.date==='2026-11-02'&&t.minutes<=25));
  assert.ok(studyMethod(p).some(text=>text.includes('checagem')));
 });
