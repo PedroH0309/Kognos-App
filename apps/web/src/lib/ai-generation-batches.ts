@@ -2,7 +2,7 @@ import {splitGenerationBatches} from './ai-bank-paging.ts';
 
 export const MAX_ATTEMPTS_PER_BATCH=3;
 /** Provider APIs have shared rate limits. Never fan out all ten calls at once. */
-export const MAX_CONCURRENT_GENERATION_BATCHES=2;
+export const MAX_CONCURRENT_GENERATION_BATCHES=1;
 
 export type BatchDiagnostics={
  generated?:number;
@@ -37,8 +37,8 @@ function recoverableGenerationError(message:string){
 }
 
 /** Each request gets its own server-side review and saves ONLY approved items.
- * Two microbatches run concurrently to reduce latency. Partial approvals are
- * replenished up to three attempts per microbatch; errors never fabricate
+ * A single request at a time avoids free-tier request/token bursts. Partial
+ * approvals are replenished only when required; errors never fabricate
  * questions or bypass independent checking. No arbitrary retries on API 429.
  */
 export async function generateApprovedBatches(
