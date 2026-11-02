@@ -34,10 +34,13 @@ export function tutorScopeReply(message:string):string|null {
  const wantsArtifact=productionVerb.test(text);
  const codeMention=codeArtifact.test(text)||(language.test(text)&&practicalCode.test(text));
  const educationalIntent=explanationOnly.test(text)||/\b(?:exercicio|questao|pergunta|atividade|aula|revisao|codigo genetico|material de estudo)\b/.test(text);
- const explicitOutput=/\b(?:codigo pronto|programa pronto|script pronto|hello world|linha de codigo|trecho de codigo|codigo executavel)\b/.test(text);
- if((wantsArtifact&&codeMention&&(!educationalIntent||explicitOutput))
-   ||(explicitOutput&&/\b(?:me|de|faca|crie|gere|mostre|escreva|rodando|executando|executavel)\b/.test(text))
-   ||/\b(?:rode|execute|compile|instale|publique)\b.{0,90}\b(?:codigo|script|programa|java|python|app|site)\b/.test(text)){
+ const explicitOutput=/\b(?:codigo pronto|programa pronto|script pronto|hello world|linha de codigo|trecho de codigo|exemplo de codigo|codigo executavel)\b/.test(text);
+ // Programming may be a school subject; conceptual questions about code are in scope.
+ // Creating a school question about Hello World is different from producing a runnable program.
+ const asksEducationalExercise=/\b(?:crie|gere|elabore|monte|faca)\b.{0,35}\b(?:questao|exercicio|pergunta|atividade)\b/.test(text)&&!codeArtifact.test(text.replace(/hello world/g,''));
+ if(!asksEducationalExercise && ((wantsArtifact&&codeMention&&(!educationalIntent||explicitOutput))
+   ||(explicitOutput&&!educationalIntent&&/\b(?:quero|preciso|pode|por favor|me|um|uma)\b/.test(text))
+   ||/\b(?:rode|execute|compile|instale|publique)\b.{0,90}\b(?:codigo|script|programa|java|python|app|site)\b/.test(text))){
   return PEDAGOGICAL_CODE_REPLY;
  }
  // The Kog explains how to write an essay, but does not do a complete student
@@ -57,6 +60,6 @@ export function tutorScopeReply(message:string):string|null {
  * The student's input and any subsequent history are still normal plain text.
  */
 export function enforcePedagogicalTutorAnswer(answer:string):string {
- const executable = /\x60\x60\x60|\b(?:public\s+static\s+void\s+main|System\.out\.print(?:ln)?\s*\(|console\.log\s*\(|import\s+java\.|class\s+\w+\s*\{|function\s+\w+\s*\(|def\s+\w+\s*\(|#include\s*<|<html\b|<script\b)/i;
+ const executable = /\x60\x60\x60|\b(?:public\s+static\s+void\s+main|System\.out\.print(?:ln)?\s*\(|console\.log\s*\(|import\s+java\.|class\s+\w+\s*\{|function\s+\w+\s*\(|def\s+\w+\s*\(|(?:int|double|float|boolean|String|char|const|let|var)\s+[A-Za-z_$]\w*\s*=)|#include\s*<|<html\b|<script\b/i;
  return executable.test(answer)?PEDAGOGICAL_OUTPUT_REPLY:answer;
 }
