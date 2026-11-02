@@ -172,7 +172,7 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
   const toggleAdaptation=(s:Adaptation)=>update({adaptations:p.adaptations.includes(s)?p.adaptations.filter(v=>v!==s):[...p.adaptations,s]});
   function chooseExam(exam:ExamId){
     const previous=examForStudent(p);
-    if(previous&&previous!==exam){setProposedExam(exam);return;}
+    if(previous&&previous!==exam&&Boolean(start.completedAt)){setProposedExam(exam);return;}
     setProposedExam(null);update({examFocus:exam,syllabusExams:[exam]});
   }
   function confirmExam(keepPrior:boolean){
