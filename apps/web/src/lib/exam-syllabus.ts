@@ -5,6 +5,23 @@
 import type {ExamId} from './exam-blueprints.ts';
 import type {StudentProfile} from './profile.ts';
 
+/** Officially published compulsory literature for the 2027 USP entrance exam.
+ * Only this edition-specific list, not the whole editorial syllabus, is
+ * asserted to be transcribed from an official institutional page.
+ */
+export const fuvest2027RequiredReading=[
+ {title:'Opúsculo Humanitário',author:'Nísia Floresta',year:1853},
+ {title:'Nebulosas',author:'Narcisa Amália',year:1872},
+ {title:'Memórias de Martha',author:'Julia Lopes de Almeida',year:1899},
+ {title:'Caminho de pedras',author:'Rachel de Queiroz',year:1937},
+ {title:'A paixão segundo G. H.',author:'Clarice Lispector',year:1964},
+ {title:'Geografia',author:'Sophia de Mello Breyner Andresen',year:1967},
+ {title:'Balada de amor ao vento',author:'Paulina Chiziane',year:1990},
+ {title:'Canção para ninar menino grande',author:'Conceição Evaristo',year:2018},
+ {title:'A visão das plantas',author:'Djaimilia Pereira de Almeida',year:2019}
+] as const;
+export const fuvest2027ReadingSource='https://www.fuvest.br/vestibular-da-usp';
+
 const highSchool:Record<string,readonly string[]>={
  'Matemática':[
  'Operações, divisibilidade e conjuntos numéricos','Razões, escalas e proporcionalidade','Porcentagem e juros',
@@ -145,7 +162,7 @@ const fundamental:Record<string,readonly string[]>={
 
 export const officialSyllabusSources:Record<ExamId,{title:string;url:string;edition:string;note:string}>={
  enem:{title:'Inep — Matrizes de Referência ENEM',url:'https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem',edition:'2026',note:'Confira competências, habilidades, objetos de conhecimento e cartilha de redação.'},
- fuvest:{title:'FUVEST — Programa do Vestibular da USP',url:'https://www.fuvest.br/',edition:'2027',note:'Consulte o programa PDF e a lista atual de obras obrigatórias; ambas podem variar por edição.'},
+ fuvest:{title:'FUVEST — Programa do Vestibular da USP',url:fuvest2027ReadingSource,edition:'2027',note:'Consulte o programa PDF e a lista atual de obras obrigatórias; ambas podem variar por edição.'},
  vunesp:{title:'VUNESP — Vestibular UNESP 2027',url:'https://www.vunesp.com.br/VNSP2514',edition:'UNESP 2027 (referência)',note:'VUNESP organiza vários exames. Confirme qual vestibular e edital se aplicam; este roteiro é do ensino médio.'},
  etec:{title:'Vestibulinho ETEC — Manual e documentação',url:'https://vestibulinho.etec.sp.gov.br/documentos/',edition:'Verificar semestre e modalidade',note:'A base é dos anos finais do ensino fundamental; modalidades técnicas podem cobrar outros conteúdos.'},
  saresp:{title:'Secretaria de Educação SP — Matrizes e Currículo Paulista',url:'https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-08378/pt-br',edition:'Verificar série e ano',note:'SARESP não é vestibular. Matérias e habilidades dependem da série e do ano de aplicação.'}
@@ -161,6 +178,10 @@ export function expandExamSubjects(exam:ExamId,original:Record<string,readonly s
  }
  for(const [subject,topics] of Object.entries(original))if(!result[subject])
   result[subject]=[...new Set(topics)];
+ if(exam==='fuvest'){
+  result.Literatura=[...new Set([...(result.Literatura||[]),
+   ...fuvest2027RequiredReading.map(book=>'Leitura obrigatória FUVEST 2027: '+book.title+' — '+book.author)])];
+ }
  return result;
 }
 export function examForStudent(profile:Pick<StudentProfile,'goal'|'targetName'|'examFocus'>):ExamId|null{
