@@ -1,16 +1,16 @@
 'use client';
 
-import {useEffect,useMemo,useState} from 'react';
+import {useEffect,useMemo,useState,type CSSProperties} from 'react';
 import {
  ArrowRight,BookOpen,CalendarDays,Check,CheckCircle2,ChevronDown,
  ChevronLeft,ChevronRight,Clock3,FlaskConical,GraduationCap,
- Leaf,Plus,RotateCcw,Sparkles,Target,Timer,Trash2, X
+ Leaf,Plus,Sparkles,Target,Timer
 } from 'lucide-react';
 import type {StudyTask} from '@/lib/cloud-study-model';
 import {getCloudTasks,setCloudTaskDone,setCloudTaskTime,deleteCloudTask} from '@/lib/cloud-study';
 import {
  civilToday,dateAtNoon,dayTasks,formatDay,formatMonth,formatWeekday,
- normalTime,shiftCivilDate,subjectTone,surroundingWeek,timeRange,upcomingTasks,validCivilDate
+ normalTime,shiftCivilDate,shiftCivilMonth,subjectTone,surroundingWeek,timeRange,upcomingTasks,validCivilDate
 } from '@/lib/calendar-model';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 
@@ -134,7 +134,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
   setEditing(v=>v===task.id?null:task.id);
   setTimes(old=>({...old,[task.id]:task.startTime||''}));
  }
- function TimeEditor({task}:{task:StudyTask}){
+ function renderTimeEditor(task:StudyTask){
   return <div className="k-cal-time-editor">
    <label htmlFor={`k-cal-time-${task.id}`}>Horário de início</label>
    <div className="k-cal-time-editor-actions">
@@ -147,7 +147,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
    </div>
   </div>;
  }
- function TaskCard({item}:{item:StudyTask}){
+ function renderTaskCard(item:StudyTask){
   const tone=subjectTone(item.subject);
   return <article className={`k-cal-task-card k-tone-${tone} ${item.done?'is-done':''}`}>
    <TaskSubjectIcon subject={item.subject}/>
@@ -164,7 +164,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
      aria-expanded={editing===item.id} disabled={busyId!==null} onClick={()=>editTask(item)}>
      <Clock3 size={17}/></button>
    </div>
-   {editing===item.id&&<TimeEditor task={item}/>}
+   {editing===item.id&&renderTimeEditor(item)}
   </article>;
  }
 
@@ -199,9 +199,9 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     <ChevronDown size={20}/></button>
    {monthExpanded&&<div className="k-cal-month-expanded">
     <div className="k-cal-month-heading">
-     <button type="button" aria-label="Mês anterior" onClick={()=>openDay(shiftCivilDate(`${selected.slice(0,7)}-15`,-32))}><ChevronLeft size={18}/></button>
+     <button type="button" aria-label="Mês anterior" onClick={()=>openDay(shiftCivilMonth(selected,-1))}><ChevronLeft size={18}/></button>
      <strong>{formatMonth(selected)}</strong>
-     <button type="button" aria-label="Mês seguinte" onClick={()=>{const d=dateAtNoon(selected);openDay(`${d.getFullYear()}-${String(d.getMonth()+2>12?1:d.getMonth()+2).padStart(2,'0')}-15`.replace(/^\d{4}-01-15$/,d.getMonth()===11?`${d.getFullYear()+1}-01-15`:'invalid'));}}><ChevronRight size={18}/></button>
+     <button type="button" aria-label="Mês seguinte" onClick={()=>openDay(shiftCivilMonth(selected,1))}><ChevronRight size={18}/></button>
     </div>
     <div className="k-cal-month-grid">{weekdayNames.map(d=><span key={d}>{d}</span>)}
      {grid.map((date,index)=>date?<button key={date} type="button" className={date===selected?'selected':''}
@@ -229,14 +229,14 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
       <div className="k-cal-timeline">
        {selectedData.timed.map(item=><div className="k-cal-time-row" key={item.id}>
         <span className="k-cal-time-marker">{normalTime(item.startTime)}</span>
-        <TaskCard item={item}/>
+        {renderTaskCard(item)}
        </div>)}
       </div>
       {selectedData.unscheduled.length>0&&<section className="k-cal-unscheduled" aria-label="Atividades sem horário">
        <div className="k-cal-subheading"><Clock3 size={17}/><h3>Sem horário definido</h3><span>{selectedData.unscheduled.length}</span></div>
        {selectedData.unscheduled.map(item=><div key={item.id} className="k-cal-time-row k-cal-unscheduled-row">
         <span className="k-cal-time-marker">—</span>
-        <TaskCard item={item}/>
+        {renderTaskCard(item)}
        </div>)}
       </section>}
      </>}
@@ -246,7 +246,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
     <section className="k-cal-widget" aria-labelledby="k-cal-summary-title">
      <div className="k-cal-widget-head"><span className="k-cal-widget-icon"><Target size={20}/></span><h2 id="k-cal-summary-title">Resumo do dia</h2></div>
      <div className="k-cal-summary-body">
-      <div className="k-cal-ring" style={{'--k-cal-progress':`${rate}%`} as React.CSSProperties}>
+      <div className="k-cal-ring" style={{'--k-cal-progress':`${rate}%`} as CSSProperties}>
        <div><strong>{selectedData.completed}/{selectedData.all.length}</strong><small>concluídas</small></div>
       </div>
       <div className="k-cal-metrics">
