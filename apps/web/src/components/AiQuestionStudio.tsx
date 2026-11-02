@@ -156,9 +156,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   setGenerating(true);setApprovedSoFar(0);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
   try{
    const result=await generateApprovedBatches(requested,
-    async remaining=>await authenticatedFetch('/api/ai-questions/generate',{
+    async (remaining,batch,attempt)=>await authenticatedFetch('/api/ai-questions/generate',{
      method:'POST',body:JSON.stringify({
-      institution,subject,topic,difficulty,count:remaining,
+      institution,subject,topic,difficulty,count:remaining,variation:(batch-1)*3+attempt-1,
       ...(verifiedTopic?{sourceTopicId:verifiedTopic.id}:{}),
       ...(activeLessonLink?{lessonId:activeLessonLink}:{})
      })
