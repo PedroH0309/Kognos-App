@@ -66,3 +66,30 @@
  .app-layout .k-weekly-history-item strong{grid-column:1/-1}
  .app-layout .k-weekly-inventory{padding:14px 12px}
 }
+
+/* Syllabus progress is based on confirmed tasks, never inferred mastery. */
+.app-layout .k-syllabus-progress-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:17px 0 12px}
+.app-layout .k-syllabus-progress-summary>div{min-width:0;padding:12px 10px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);display:grid;gap:5px}
+.app-layout .k-syllabus-progress-summary strong{font-size:19px;font-variant-numeric:tabular-nums;color:var(--txt)}
+.app-layout .k-syllabus-progress-summary span{font-size:11px;color:var(--sub)}
+.app-layout .k-syllabus-progress-track{height:9px;border-radius:9px;background:var(--line);overflow:hidden}
+.app-layout .k-syllabus-progress-track>span{height:100%;background:linear-gradient(90deg,#5B4DE3,#38CDE5);display:block;border-radius:9px;transition:width .2s ease}
+.app-layout .k-syllabus-filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.app-layout .k-syllabus-filters button{min-height:40px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);color:var(--txt);font-size:11px;font-weight:700;cursor:pointer}
+.app-layout .k-syllabus-filters button.selected{background:#273A61;color:#fff;border-color:#273A61}
+.app-layout .k-syllabus-topic-list{list-style:none;margin:4px 0 13px;padding:0;display:grid;gap:7px}
+.app-layout .k-syllabus-topic{display:grid;align-items:start;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 7px;border-bottom:1px solid var(--line)}
+.app-layout .k-syllabus-topic:last-child{border-bottom:none}
+.app-layout .k-syllabus-topic>span{color:var(--txt);font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+.app-layout .k-syllabus-topic>small{font-size:10px;color:var(--sub);text-align:right;line-height:1.4;max-width:115px}
+.app-layout .k-syllabus-topic.studied>small{color:#188C81}
+.app-layout .k-syllabus-topic.review>small{color:#D4753B}
+.app-layout .k-syllabus-topic.planned>small{color:#5B4DE3}
+@media(max-width:530px){
+ .app-layout .k-syllabus-progress-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .app-layout .k-syllabus-topic{grid-template-columns:1fr}
+ .app-layout .k-syllabus-topic>small{text-align:left;max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .app-layout .k-syllabus-progress-track>span{transition:none}
+}
