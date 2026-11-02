@@ -2,6 +2,7 @@
 import {useState,useEffect} from 'react';
 import {CalendarDays} from 'lucide-react';
 import StudySyllabus from './StudySyllabus';
+import {activeSyllabi,mergedSyllabus} from '@/lib/exam-syllabus';
 import {validCivilDate} from '@/lib/calendar-model';
 import { KognosDateField, KognosSelect, type KognosOption } from './KognosFields';
 import type {StudentProfile} from '@/lib/profile';
@@ -15,7 +16,7 @@ import type {KogStudyContext} from '@/lib/kog-study-context';
 import {createCloudTasks,deleteCloudTask,getCloudTasks,setCloudTaskDone,type StudyTask} from '@/lib/cloud-study';
 
 const subjects=['Matemática','Português','Biologia','Química','Física','História','Geografia'];
-const subjectOptions = subjects.map(s=>({value:s,label:s})) as KognosOption<string>[];
+
 export function taskStorageKey(id:string|null){return 'kognos_tasks_v1_'+(id||'guest');}
 function localDate(date:Date){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
 export function createWeekPlan(p:StudentProfile,existing:StudyTask[],base=new Date()):StudyTask[]{
@@ -44,6 +45,11 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const [weeklyLoading,setWeeklyLoading]=useState(false),[weeklyError,setWeeklyError]=useState('');
   const {data:aiEvidence,loading:aiEvidenceLoading,error:aiEvidenceError}=useAIStudyProgress(userId);
   const priority=studyPriorities(history,aiEvidence);
+  const examSubjects=Object.keys(mergedSyllabus(activeSyllabi(profile)));
+  const permittedSubjects=examSubjects.length?examSubjects:subjects;
+  const subjectOptions=[...new Set([...permittedSubjects,...tasks.map(t=>t.subject)])]
+   .map(s=>({value:s,label:s})) as KognosOption<string>[];
+
   useEffect(()=>{
     let active=true;setLoaded(false);setError('');setNotice('');setTasks([]);setDate(initialDate&&validCivilDate(initialDate)?initialDate:localDate(new Date()));
     if(!userId){
