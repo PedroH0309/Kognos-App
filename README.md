@@ -209,6 +209,16 @@ Issues and pull requests are welcome from authorized contributors. See [CONTRIBU
 **© 2026 PedroH0309. All rights reserved.**
 
 
+## What's new in v1.7 — Login-first experience and reliable profile restoration
+
+- A standalone, responsive **sign-in/create-account screen is the entry point** when Supabase is configured. No anonymous onboarding before authentication.
+- Returning users with a saved onboarding profile are sent straight to their personal dashboard after Supabase restores the persisted session. New authenticated users without saved study preferences see the five-step personalization flow once.
+- Previously saved legacy profiles missing the newer `completedAt` marker are recognized when substantive preferences already exist; a missing profile or an empty record still requires onboarding.
+- Failed Supabase profile queries now show an **explicit retry/configuration error**, never a misleading fresh onboarding flow.
+- The session is persisted by Supabase Auth and sign-out returns to the login page. Onboarding settings remain editable from inside the app without creating a second account.
+- When cloud configuration is absent, the app displays setup guidance rather than creating a misleading local account.
+- No SQL migrations or additional secrets are required for v1.7; the existing `public.profiles` schema must be functional. See `docs/KOGNOS_SPRINT_17_AUTH_ROUTING.md`.
+
 ## What's new in v1.6 — Onboarding recovery and a scalable AI bank
 
 - Correctly centered iconography in onboarding preference and accessibility chips (keyboard and screen-reader labels retained).
