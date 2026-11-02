@@ -13,7 +13,7 @@ function jsonError(message: string, status: number) {
   return NextResponse.json({ error: message }, { status, headers: { 'Cache-Control': 'no-store' } });
 }
 
-/** A protected Bearer-token API route. The browser never receives secret/admin/NVIDIA credentials. */
+/** A protected Bearer-token API route. The browser never receives secret/admin/provider credentials. */
 const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated', issuer: 'https://ktjdlvojnunjntwyodot.supabase.co/auth/v1' }, async (request, ctx) => {
   let body: { message?: unknown; history?: unknown; subject?: unknown; studyContext?: unknown };
   try {
@@ -121,7 +121,11 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
   } catch (e) {
     if (e instanceof Error && e.message === 'NVIDIA_TIMEOUT') return jsonError('O tutor excedeu o tempo de resposta.',504);
     if (e instanceof Error && e.message === 'NVIDIA_RATE_LIMIT') return jsonError('O provedor de IA atingiu o limite de requisições.',429);
-    if (e instanceof Error && e.message === 'NVIDIA_AUTH') return jsonError('Chave do provedor de IA inválida ou não autorizada.',502);
+    if (e instanceof Error && e.message === 'NVIDIA_AUTH') return jsonError('Chave de API do tutor inválida ou sem autorização.',502);
+    if (e instanceof Error && e.message === 'NVIDIA_MODEL_UNAVAILABLE') return jsonError('O modelo de IA do tutor não foi encontrado. Confira AI_TUTOR_MODEL.',502);
+    if (e instanceof Error && e.message === 'NVIDIA_BAD_REQUEST') return jsonError('O provedor rejeitou a requisição do tutor. Confira o modelo e seus parâmetros.',502);
+    if (e instanceof Error && e.message === 'NVIDIA_UNAVAILABLE') return jsonError('O serviço de IA do tutor está temporariamente indisponível.',502);
+    if (e instanceof Error && e.message === 'AI_PROVIDER_NOT_CONFIGURED') return jsonError('Configure OPENAI_API_KEY para o tutor OpenAI.',503);
     return jsonError('Não foi possível conectar ao tutor. Tente novamente.', 503);
   }
 });

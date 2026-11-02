@@ -50,3 +50,26 @@ test('review and tutor use accessible Gemini 3.1 Flash-Lite defaults',()=>{
  assert.equal(resolveAIProvider('review',env)?.model,'gemini-3.1-flash-lite');
  assert.equal(resolveAIProvider('tutor',env)?.model,'gemini-3.1-flash-lite');
 });
+
+test('OpenAI tutor uses independent credentials and current fast model',()=>{
+ const env={
+  AI_TUTOR_PROVIDER:'openai',
+  AI_TUTOR_MODEL:'gpt-6-luna',
+  OPENAI_API_KEY:'test-openai-only',
+  GROQ_API_KEY:'test-groq-only',
+  GEMINI_API_KEY:'test-gemini-only',
+ } as any;
+ const tutor=resolveAIProvider('tutor',env);
+ assert.equal(tutor?.provider,'openai');
+ assert.equal(tutor?.model,'gpt-6-luna');
+ assert.equal(tutor?.base,'https://api.openai.com/v1');
+ assert.equal(tutor?.key,'test-openai-only');
+ assert.equal(resolveAIProvider('generate',env)?.provider,'groq');
+ assert.equal(resolveAIProvider('review',env)?.provider,'gemini');
+});
+
+test('explicit OpenAI tutor does not reroute to another provider when key is missing',()=>{
+ const env={AI_TUTOR_PROVIDER:'openai',GEMINI_API_KEY:'test-gemini-only',NVIDIA_API_KEY:'test-nvidia-only'} as any;
+ assert.equal(resolveAIProvider('tutor',env),null);
+ assert.equal(isAIJobConfigured('tutor',env),false);
+});

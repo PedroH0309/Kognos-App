@@ -37,7 +37,8 @@ test('NVIDIA configurável somente no servidor, sem segredo publicado no bundle'
 
 test('chat informa processamento externo sem interromper a cada mensagem',()=>{
   assert.match(assistant,/kog-ai-notice/);
-  assert.match(assistant,/NVIDIA/);
+  assert.match(assistant,/providerName/);
+  assert.match(assistant,/openai.com\/policies\/privacy-policy/);
   assert.doesNotMatch(app,/Marque a autorização antes de enviar/);
   assert.doesNotMatch(tutor,/body\.consent/);
 });

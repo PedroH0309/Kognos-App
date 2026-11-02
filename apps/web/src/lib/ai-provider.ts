@@ -1,12 +1,13 @@
 import {DEFAULT_NVIDIA_MODEL,nvidiaInferenceOptions} from './nvidia-request-config.ts';
 
 export type AIJob='generate'|'review'|'tutor';
-export type AIProvider='groq'|'gemini'|'nvidia';
+export type AIProvider='groq'|'gemini'|'nvidia'|'openai';
 type ProviderConfig={provider:AIProvider;model:string;key:string;base:string};
 const endpoints={
  groq:'https://api.groq.com/openai/v1',
  gemini:'https://generativelanguage.googleapis.com/v1beta/openai',
  nvidia:'https://integrate.api.nvidia.com/v1',
+ openai:'https://api.openai.com/v1',
 } as const;
 
 const preferences:Record<AIJob,{provider:AIProvider;model:string}>={
@@ -18,14 +19,14 @@ const preferences:Record<AIJob,{provider:AIProvider;model:string}>={
 export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null {
  const prefix='AI_'+job.toUpperCase();
  const preferred=env[prefix+'_PROVIDER']?.trim().toLowerCase();
- const provider:AIProvider=preferred==='groq'||preferred==='gemini'||preferred==='nvidia'?preferred:preferences[job].provider;
- const secrets={groq:env.GROQ_API_KEY,gemini:env.GEMINI_API_KEY,nvidia:env.NVIDIA_API_KEY};
+ const provider:AIProvider=preferred==='groq'||preferred==='gemini'||preferred==='nvidia'||preferred==='openai'?preferred:preferences[job].provider;
+ const secrets={groq:env.GROQ_API_KEY,gemini:env.GEMINI_API_KEY,nvidia:env.NVIDIA_API_KEY,openai:env.OPENAI_API_KEY};
  const selected=secrets[provider]?.trim();
  // Backward-compatible fallback is allowed only when a new provider was not explicitly configured.
  const effective:AIProvider=selected?provider:preferred?provider:'nvidia';
  const key=secrets[effective]?.trim();
  if(!key)return null;
- const defaultModel=effective==='nvidia'?(env.NVIDIA_MODEL||DEFAULT_NVIDIA_MODEL):effective===preferences[job].provider?preferences[job].model:effective==='groq'?'openai/gpt-oss-120b':'gemini-3.1-flash-lite';
+ const defaultModel=effective==='nvidia'?(env.NVIDIA_MODEL||DEFAULT_NVIDIA_MODEL):effective==='openai'?'gpt-6-luna':effective===preferences[job].provider?preferences[job].model:effective==='groq'?'openai/gpt-oss-120b':'gemini-3.1-flash-lite';
  // A model override belongs to the selected provider, never to the NVIDIA fallback.
  // E.g. AI_GENERATE_MODEL=openai/gpt-oss-120b is invalid at NVIDIA's endpoint.
  const fallingBack=effective!==provider;
@@ -46,7 +47,11 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
   response=await fetch(c.base+'/chat/completions',{
    method:'POST',
    headers:{Authorization:'Bearer '+c.key,'Content-Type':'application/json'},
-   body:JSON.stringify({model:c.model,messages,max_tokens:maxTokens,temperature,stream:false,...(c.provider==='nvidia'?nvidiaInferenceOptions(c.model):{})}),
+   // The GPT-6 Luna reasoning API uses max_completion_tokens and can omit reasoning.
+   // Never forward temperature or max_tokens to this OpenAI reasoning model.
+   body:JSON.stringify(c.provider==='openai'
+    ? {model:c.model,messages,max_completion_tokens:maxTokens,reasoning_effort:'none',stream:false}
+    : {model:c.model,messages,max_tokens:maxTokens,temperature,stream:false,...(c.provider==='nvidia'?nvidiaInferenceOptions(c.model):{})}),
    cache:'no-store',signal:AbortSignal.timeout(job==='tutor'?35000:30000),
   });
  }catch(cause){

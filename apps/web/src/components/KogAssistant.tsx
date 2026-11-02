@@ -38,6 +38,12 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   const contextLabel=previewKogStudyContext(studyContext);
   const suggested=contextualKogPrompts(studyContext)??quickPromptForView(context,profile.goal);
   const subjectOptions = SUBJECTS.map(s=>({value:s,label:s})) as KognosOption<string>[];
+  const activeProvider=readiness?.tutorProvider??null;
+  const providerName=activeProvider==='openai'?'OpenAI':activeProvider==='gemini'?'Google Gemini':activeProvider==='groq'?'Groq':activeProvider==='nvidia'?'NVIDIA':'um provedor de IA externo';
+  const privacyUrl=activeProvider==='openai'?'https://openai.com/policies/privacy-policy/':
+    activeProvider==='gemini'?'https://policies.google.com/privacy':
+    activeProvider==='groq'?'https://groq.com/privacy-policy/':
+    activeProvider==='nvidia'?'https://www.nvidia.com/en-us/about-nvidia/privacy-policy/':null;
 
   useEffect(() => {if(open) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[open]);
   useEffect(()=>{
@@ -88,7 +94,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
         setMessages(prev=>[...prev,{role:'user',content:prompt},{role:'assistant',content:guide.content}]);
         setDraft('');setError('');
       }else{
-        setError('Este assunto ainda não está na biblioteca local. Para conversar livremente com o Kog, configure a NVIDIA_API_KEY no servidor. Suas palavras não foram enviadas ao provedor.');
+        setError('Este assunto ainda não está na biblioteca local. Para conversar livremente com o Kog, configure a chave de API do provedor do tutor no servidor. Suas palavras não foram enviadas ao provedor.');
       }
       return;
     }
@@ -108,7 +114,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
       const data=await response.json();
       if(!response.ok){
         if(data.code==='AI_NOT_CONFIGURED'){
-          setReadiness(current=>({...current,tutorConfigured:false,nvidiaKeyConfigured:false,questionGenerationConfigured:false,supabaseServerConfigured:true,offlineGuidesAvailable:true}));
+          setReadiness(current=>({tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:current?.nvidiaKeyConfigured??false,questionGenerationConfigured:current?.questionGenerationConfigured??false,supabaseServerConfigured:current?.supabaseServerConfigured??true,offlineGuidesAvailable:true}));
           const guide=localStudyGuide(prompt,studyContext);
           if(guide){if(currentUserRef.current===user.id)setMessages(prev=>[...prev,{role:'assistant',content:guide.content}]);return;}
         }
@@ -151,7 +157,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
             <div className="kog-message-text">{message.content}</div>
           </div>)}
           {pending&&<div className="kog-message-row assistant"><span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span><div className="kog-message-text kog-thinking"><span/><span/><span/><small>Preparando uma explicação…</small></div></div>}
-          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.nvidiaKeyConfigured?'A chave da NVIDIA não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia de Pitágoras</button></div></div>}
+          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.tutorProvider?'A chave de API do tutor não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia de Pitágoras</button></div></div>}
           {checkingReadiness&&<p className="kog-readiness-check" role="status">Verificando configuração do tutor…</p>}
           {error&&<div className="kog-chat-error" role="alert">{error}<button type="button" onClick={()=>setError('')} aria-label="Dispensar erro"><X size={14}/></button></div>}
         </div>
@@ -162,7 +168,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
             <div className="kog-input-wrap"><textarea ref={textRef} value={draft} onChange={e=>setDraft(e.target.value)} maxLength={3000} rows={2} placeholder="Pergunte sobre sua dúvida…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form?.requestSubmit();}}}/><button type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled={!draft.trim()||pending} className="kog-send-btn"><Send size={18}/></button></div>
           </form>
           {!user&&<p className="kog-login-tip"><MessageCircle size={14}/> Entre na sua conta para conversar com o Kog. <button onClick={onLogin} type="button">Entrar</button></p>}
-          {notice?<p className="kog-ai-notice">As mensagens e o contexto de estudo são processados pela NVIDIA para gerar respostas. Não compartilhe dados sensíveis. <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacidade</a> <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
+          {notice?<p className="kog-ai-notice">As mensagens e o contexto de estudo são processados por {providerName} para gerar respostas. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>} <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
         </div>
       </section>
     </>}
