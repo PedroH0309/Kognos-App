@@ -1272,3 +1272,82 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
 .app-layout .planner-intelligence-list strong{display:block;font-size:12px}
 .app-layout .planner-intelligence-list small{font-size:11px;color:var(--sub);display:block;margin-top:3px;overflow-wrap:anywhere}
 @media(max-width:700px){.app-layout .planner-intelligence{padding:16px;gap:14px}.app-layout .planner-intelligence h2{font-size:18px}}
+
+/* Kognos v1.9 — provider setup should not overwhelm the study workspace. */
+.app-layout .k-integration-check{display:inline-flex;align-items:center;gap:8px;color:var(--sub);font-size:12px;margin:0;padding:7px 2px;}
+.app-layout .k-integration-notice{display:grid;gap:0;padding:0;border:1px solid var(--line);background:var(--box-bg);border-radius:12px;overflow:hidden;min-width:0;}
+.app-layout .k-integration-summary{display:flex;align-items:center;gap:12px;padding:12px 15px;min-width:0;}
+.app-layout .k-integration-icon{display:grid;place-items:center;border-radius:9px;width:33px;height:33px;flex:none;background:var(--panel-2);color:var(--accent-400);}
+.app-layout .k-integration-copy{min-width:0;flex:1;}
+.app-layout .k-integration-copy strong{display:block;font-size:12px;line-height:1.45;color:var(--txt);}
+.app-layout .k-integration-copy p{font-size:11px;line-height:1.55;color:var(--sub);margin:2px 0 0;}
+.app-layout .k-integration-retry{display:inline-flex;justify-content:center;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel-2);color:var(--txt);border-radius:9px;padding:8px 10px;font-size:11px;cursor:pointer;white-space:nowrap;}
+.app-layout .k-integration-retry:disabled{opacity:.55;cursor:wait;}
+.app-layout .k-integration-details{border-top:1px solid var(--line);padding:0 15px;min-width:0;}
+.app-layout .k-integration-details summary{display:inline-flex;gap:7px;align-items:center;cursor:pointer;color:var(--sub);font-size:11px;font-weight:650;padding:9px 1px;list-style:none;}
+.app-layout .k-integration-details summary::-webkit-details-marker{display:none;}
+.app-layout .k-integration-details[open] summary{color:var(--txt);}
+.app-layout .k-integration-details>div{padding:0 0 13px;color:var(--sub);font-size:11px;line-height:1.65;}
+.app-layout .k-integration-details p{margin:4px 0 9px;}
+.app-layout .k-integration-variable-list{display:grid;gap:6px;padding:9px 11px;background:var(--panel-2);border-radius:9px;}
+.app-layout .k-integration-variable-list span{overflow-wrap:anywhere;}
+.app-layout .k-integration-variable-list strong{color:var(--txt);}
+.app-layout .k-integration-details code{font-size:10px;color:var(--txt);overflow-wrap:anywhere;}
+.app-layout .k-integration-details a{color:var(--accent-400);display:inline-flex;align-items:center;gap:6px;font-weight:650;margin-top:3px;}
+.app-layout .k-integration-retry:focus-visible,.app-layout .k-integration-details summary:focus-visible{outline:2px solid var(--accent-400);outline-offset:3px;}
+.app-layout .k-bank-connection{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;font-size:12px;color:var(--sub);line-height:1.55;padding:14px 16px;margin:0 0 14px;}
+.app-layout .k-bank-connection strong{color:var(--txt);}
+.app-layout .k-study-sync-notice{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:10px 12px;margin:7px 0 15px;color:var(--sub);font-size:11px;line-height:1.5;}
+.app-layout .k-study-sync-notice>svg{flex:none;color:var(--accent-400);}
+.app-layout .k-study-sync-notice>span{flex:1 1 340px;min-width:0;}
+.app-layout .k-study-sync-notice button{border:1px solid var(--line);background:var(--box-bg);color:var(--txt);display:inline-flex;gap:6px;align-items:center;justify-content:center;min-height:32px;padding:6px 10px;border-radius:8px;font-size:11px;cursor:pointer;}
+.app-layout .k-study-sync-notice button:focus-visible{outline:2px solid var(--accent-400);outline-offset:2px;}
+
+/* Five filters fill both rows, instead of leaving an unused third column. */
+.app-layout .ai-generator-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px 15px;margin-bottom:15px;}
+.app-layout .ai-generator-grid>.kg-form-field:nth-child(-n+3){grid-column:span 2;}
+.app-layout .ai-generator-grid>.kg-form-field:nth-child(n+4){grid-column:span 3;}
+.app-layout .ai-source-note.ai-source-reference{display:block;padding:0;margin:0 0 15px;background:var(--panel-2);border-radius:10px;}
+.app-layout .ai-source-reference summary{display:flex;align-items:center;gap:9px;cursor:pointer;list-style:none;padding:10px 12px;min-width:0;}
+.app-layout .ai-source-reference summary::-webkit-details-marker{display:none;}
+.app-layout .ai-source-reference summary>svg{flex:none;color:var(--accent-400);}
+.app-layout .ai-source-reference summary>strong{flex:1;min-width:0;font-size:11px;font-weight:650;line-height:1.5;}
+.app-layout .ai-source-reference summary>span{color:var(--sub);font-size:10px;white-space:nowrap;}
+.app-layout .ai-source-reference summary:focus-visible{outline:2px solid var(--accent-400);outline-offset:2px;}
+.app-layout .ai-source-reference>div{border-top:1px solid var(--line);padding:3px 12px 12px;}
+.app-layout .ai-source-reference>div p{margin:7px 0 2px;}
+.app-layout .ai-source-reference>div small{display:block;margin-top:7px;color:var(--sub);font-size:10px;}
+.app-layout .ai-generator-heading{margin-bottom:19px;}
+.app-layout .ai-generator-actions{justify-content:flex-start;gap:12px;}
+.app-layout .ai-generator-actions small{max-width:450px;line-height:1.5;}
+.app-layout .ai-generator-actions .btn:disabled{cursor:not-allowed;opacity:.65;}
+
+/* Clear progression and a proportional Next step in the selected trail. */
+.app-layout .learning-journey-subject-overview{grid-template-columns:minmax(0,1.35fr) minmax(180px,.55fr) minmax(210px,.7fr);gap:16px;padding:15px 18px;}
+.app-layout .learning-journey-subject-status{gap:7px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;}
+.app-layout .learning-journey-subject-status>div:first-child{align-items:center;}
+.app-layout .learning-journey-subject-status>div:first-child span{font-weight:580;}
+.app-layout .learning-journey-continue{min-height:64px;}
+@media(max-width:1060px){
+ .app-layout .learning-journey-subject-overview{grid-template-columns:minmax(0,1fr) minmax(190px,.55fr);}
+ .app-layout .learning-journey-continue{grid-column:1/-1;min-height:46px;}
+}
+@media(max-width:900px){
+ .app-layout .ai-generator-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+ .app-layout .ai-generator-grid>.kg-form-field:nth-child(n){grid-column:span 1;}
+ .app-layout .ai-generator-grid>.kg-form-field:last-child{grid-column:span 2;}
+}
+@media(max-width:680px){
+ .app-layout .k-integration-summary{align-items:flex-start;flex-wrap:wrap;}
+ .app-layout .k-integration-copy{flex-basis:calc(100% - 48px);}
+ .app-layout .k-integration-retry{margin-left:45px;}
+ .app-layout .k-study-sync-notice{align-items:flex-start;}
+ .app-layout .k-study-sync-notice button{width:100%;}
+ .app-layout .learning-journey-subject-overview{grid-template-columns:minmax(0,1fr);}
+ .app-layout .learning-journey-continue{grid-column:auto;}
+}
+@media(max-width:560px){
+ .app-layout .ai-generator-grid{grid-template-columns:minmax(0,1fr);}
+ .app-layout .ai-generator-grid>.kg-form-field:nth-child(n){grid-column:span 1;}
+ .app-layout .ai-source-reference summary>span{display:none;}
+}

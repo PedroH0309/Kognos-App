@@ -10,6 +10,7 @@ import {evidenceForLesson} from '@/lib/learning-progress';
 import {adjacentLesson,trailSnapshot} from '@/lib/learning-roadmap';
 import {connectedCatalogProgress,connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
+import StudySyncNotice from './StudySyncNotice';
 
 type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
@@ -92,7 +93,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   </div>
 
   {error&&<div className="message warning" role="alert">{error}</div>}
-  {aiError&&userId&&<div className="message warning" role="alert">As questões de IA não puderam ser consultadas: {aiError} O progresso abaixo mostra somente os exercícios demonstrativos. <button type="button" className="btn outline small" onClick={()=>void refreshAI()}>Tentar novamente</button></div>}
+  {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
   {isTrail&&<section className="learning-journey-summary" aria-label="Seu progresso nos roteiros">
    <div className="learning-journey-summary-main">
     <span className="learning-journey-mark"><Compass size={21}/></span>
@@ -128,7 +129,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <p>{isTrail?'Aulas organizadas do fundamento à aplicação. Você pode revisitar qualquer etapa.':'Escolha o assunto e acompanhe a explicação no painel abaixo.'}</p>
     {!isTrail&&lesson&&<button type="button" className="learning-journey-open-trails" onClick={()=>onSeeTrails({subject:lesson.subject,lessonId:lesson.id})}>Ver sequência completa <ArrowRight size={13}/></button>}
    </div>
-   <div className="learning-journey-subject-status"><div><strong>{historyReady?`${connectedTrail.practiced}/${roadmap.total}`:'—'}</strong><span>tópicos praticados</span></div>
+   <div className="learning-journey-subject-status"><div><span>Prática registrada</span><strong>{historyReady?`${connectedTrail.practiced}/${roadmap.total}`:'—'}</strong></div>
     <div className="learning-progress-track" role="progressbar" aria-label={`Tópicos praticados de ${subject}`} aria-valuemin={0} aria-valuemax={roadmap.total} aria-valuenow={historyReady?connectedTrail.practiced:0}><span style={{width:`${historyReady?currentProgress:0}%`}}/></div>
    </div>
    {highlight&&<button type="button" className="learning-journey-continue" onClick={()=>chooseLesson(highlight)}>

@@ -10,6 +10,7 @@ import {evidenceForLesson} from '@/lib/learning-progress';
 import {subjectDashboardTotals,subjectSnapshots,type SubjectSnapshot} from '@/lib/subject-dashboard';
 import {connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
+import StudySyncNotice from './StudySyncNotice';
 
 const descriptions:Record<string,string>={
  'Matemática':'Números, funções, probabilidade e resolução de problemas.',
@@ -80,7 +81,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
   <div className="page-intro"><span className="overline">PAINEL DE MATÉRIAS</span><h1>Minhas <em>disciplinas.</em></h1><p>Veja o que já praticou em cada matéria, identifique pontos de revisão e escolha sua próxima atividade. Para seguir a sequência das aulas, abra as Trilhas de aprendizagem.</p></div>
   <div className="message neutral" role="note">Cobertura de {totals.total} miniaulas introdutórias, considerando tentativas demonstrativas e questões de IA vinculadas (quando disponíveis). Não é nota nem prova de domínio. {userId?'Histórico sincronizado com sua conta.':'No modo visitante, o histórico fica neste navegador.'}</div>
   {error&&<div className="message warning" role="alert"><span>{error} Verifique o acesso ao seu histórico.</span> <button type="button" className="btn outline small" onClick={()=>void load()}>Tentar novamente</button></div>}
-  {aiError&&userId&&<div className="message warning" role="alert">Não foi possível consultar questões IA: {aiError} Os números abaixo consideram apenas a demonstração. <button type="button" className="btn outline small" onClick={()=>void refreshAI()}>Tentar novamente</button></div>}
+  {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
   <section className="subject-kpi-grid" aria-label="Visão geral das disciplinas">
    <article><LibraryBig size={20}/><span>Matérias disponíveis</span><strong>{totals.subjects}</strong><small>Catálogo introdutório</small></article>
    <article><BookOpenText size={20}/><span>Matérias praticadas</span><strong>{ready?totals.active:'—'}</strong><small>Com pelo menos uma tentativa</small></article>

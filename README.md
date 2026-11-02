@@ -240,3 +240,12 @@ Issues and pull requests are welcome from authorized contributors. See [CONTRIBU
 ### Scope and setup
 
 The app does **not** silently generate an unlimited public question catalog: the student must sign in, initiate generation, have valid Supabase and NVIDIA server configuration, and have remaining AI quota. Generated items are personal, original and automatically reviewed, **not certified official questions**. Server-side pagination does not alter answer-key access controls. Existing Supabase migrations through `0007` remain required; v1.6 introduces **no new database migration**.
+
+## What's new in v1.9 — clearer provider setup and compact AI study screens
+
+- Added a read-only, client-facing provider readiness check for the AI question generator. Missing server-side Supabase/NVIDIA configuration is displayed once in a compact, accessible panel with a setup guide and a retry action; no environment variable values are returned to the browser.
+- Generation is disabled when the server reports that required credentials are not present, but existing question-bank browsing remains available when only NVIDIA is missing.
+- The private AI question bank no longer displays a misleading count of zero when the server cannot access Supabase. It shows an unavailable state without suggesting that saved records were deleted.
+- Replaced lengthy infrastructure error banners in Learning Paths and My Subjects with small non-destructive sync notices, preserving demonstration progress.
+- Rebalanced the generator filters and made editorial source details collapsible; refined the selected trail's progress and next-lesson layout for desktop, tablet and mobile.
+- No database migration, new third-party dependency or changes to the private keys are required. Set credentials in `apps/web/.env.local` locally or in the hosting provider's server-side environment, and restart/redeploy. See `apps/web/.env.example`.
