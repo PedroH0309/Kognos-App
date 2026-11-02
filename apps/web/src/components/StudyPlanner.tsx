@@ -4,6 +4,7 @@ import {CalendarDays} from 'lucide-react';
 import StudySyllabus from './StudySyllabus';
 import {activeSyllabi} from '@/lib/exam-syllabus';
 import {completeExamTopicCatalog} from '@/lib/exam-blueprints';
+import {syllabusWithVerifiedTopics,type VerifiedStudyTopic} from '@/lib/verified-study-catalog';
 import {validCivilDate} from '@/lib/calendar-model';
 import { KognosDateField, KognosSelect, type KognosOption } from './KognosFields';
 import type {StudentProfile} from '@/lib/profile';
@@ -44,9 +45,13 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const [historyLoading,setHistoryLoading]=useState(true),[historyError,setHistoryError]=useState('');
   const [weeklyTopics,setWeeklyTopics]=useState<WeeklyExamWeakTopic[]>([]);
   const [weeklyLoading,setWeeklyLoading]=useState(false),[weeklyError,setWeeklyError]=useState('');
+  const [officialTopics,setOfficialTopics]=useState<VerifiedStudyTopic[]>([]);
+  const [officialLoading,setOfficialLoading]=useState(false),[officialError,setOfficialError]=useState('');
   const {data:aiEvidence,loading:aiEvidenceLoading,error:aiEvidenceError}=useAIStudyProgress(userId);
   const priority=studyPriorities(history,aiEvidence);
-  const examSubjects=Object.keys(completeExamTopicCatalog(activeSyllabi(profile)));
+  const examScope=activeSyllabi(profile);
+  const examScopeKey=examScope.join('|');
+  const examSubjects=Object.keys(syllabusWithVerifiedTopics(completeExamTopicCatalog(examScope),examScope,officialTopics));
   const permittedSubjects=examSubjects.length?examSubjects:subjects;
   const subjectOptions=[...new Set([...permittedSubjects,...tasks.map(t=>t.subject)])]
    .map(s=>({value:s,label:s})) as KognosOption<string>[];
@@ -98,6 +103,31 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     void load();
     return()=>{active=false;};
   },[userId,profile.examFocus]);
+  useEffect(()=>{
+    let active=true;setOfficialTopics([]);setOfficialError('');
+    if(!userId)return()=>{active=false;};
+    setOfficialLoading(true);
+    const load=async()=>{
+      try{
+       const sb=getSupabase();if(!sb)throw new Error('Nuvem não configurada.');
+       const {data}=await sb.auth.getSession();
+       if(!data.session||data.session.user.id!==userId)throw new Error('Sessão expirada.');
+       const response=await fetch('/api/exam-sources',{cache:'no-store',
+        headers:{Authorization:'Bearer '+data.session.access_token}});
+       if(!response.ok)throw new Error('Fontes aprovadas não puderam ser consultadas.');
+       const payload=await response.json();
+       const approved:VerifiedStudyTopic[]=Array.isArray(payload.topics)?payload.topics.filter((x:VerifiedStudyTopic)=>
+        x&&typeof x.id==='string'&&typeof x.institution==='string'&&typeof x.subject==='string'
+        &&typeof x.topic==='string'&&typeof x.sourceUrl==='string'
+        &&typeof x.sourceTitle==='string'&&typeof x.evidence==='string'
+        &&typeof x.edition==='string'&&examScopeKey.split('|').includes(x.institution)):[];
+       if(active)setOfficialTopics(approved);
+      }catch(e){if(active)setOfficialError(e instanceof Error?e.message:'Fontes oficiais indisponíveis.');}
+      finally{if(active)setOfficialLoading(false);}
+    };
+    void load();
+    return()=>{active=false;};
+  },[userId,examScopeKey]);
   function commitLocal(next:StudyTask[]){setTasks(next);try{localStorage.setItem(taskStorageKey(null),JSON.stringify(next));}catch{setError('O navegador não permitiu salvar suas tarefas.');}}
   async function run(action:()=>Promise<void>){if(busy||!loaded)return;setBusy(true);setError('');try{await action();}catch(e){setError(e instanceof Error?e.message:'Erro ao salvar tarefa.');}finally{setBusy(false);}}
   function add(e:React.FormEvent){e.preventDefault();if(!title.trim()||!date)return;
@@ -119,7 +149,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     setNotice('Tarefa removida.');
   });}
   function generate(){void run(async()=>{
-    const next=createPersonalizedStudyWeek(profile,tasks,history,aiEvidence,new Date(),()=>crypto.randomUUID(),weeklyTopics);const oldIds=new Set(tasks.map(t=>t.id));const created=next.filter(t=>!oldIds.has(t.id));
+    const next=createPersonalizedStudyWeek(profile,tasks,history,aiEvidence,new Date(),()=>crypto.randomUUID(),weeklyTopics,officialTopics);const oldIds=new Set(tasks.map(t=>t.id));const created=next.filter(t=>!oldIds.has(t.id));
     if(userId)await createCloudTasks(userId,created);
     if(userId)setTasks(next);else commitLocal(next);
     setNotice(created.length?`Adicionadas ${created.length} sessões com prioridades baseadas nos registros disponíveis. Ajuste o plano conforme sua rotina.`:'Não há novos dias ou minutos disponíveis nesta semana.');
@@ -131,7 +161,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
       const outdated=tasks.filter(t=>t.kind==='suggested'&&!t.done&&t.date>=today);
       if(userId)for(const item of outdated)await deleteCloudTask(userId,item.id);
       const retained=tasks.filter(t=>!outdated.includes(t));
-      const next=createPersonalizedStudyWeek(profile,retained,history,aiEvidence,new Date(),()=>crypto.randomUUID(),weeklyTopics);
+      const next=createPersonalizedStudyWeek(profile,retained,history,aiEvidence,new Date(),()=>crypto.randomUUID(),weeklyTopics,officialTopics);
       const created=next.filter(t=>!retained.includes(t));
       if(userId){if(created.length)await createCloudTasks(userId,created);setTasks(next);}
       else commitLocal(next);
@@ -143,8 +173,8 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const week=weekLearningSummary(tasks);
   const errorsByTopic=missedTopics(history);
   const methods=studyMethod(profile);
-  const evidenceLoading=historyLoading||aiEvidenceLoading||weeklyLoading;
-  const evidenceUnavailable=Boolean(historyError||aiEvidenceError||weeklyError);
+  const evidenceLoading=historyLoading||aiEvidenceLoading||weeklyLoading||officialLoading;
+  const evidenceUnavailable=Boolean(historyError||aiEvidenceError||weeklyError||officialError);
   const unresolvedWeekly=weeklyTopics.filter(item=>item.lastWrong);
   function askKog(taskId?:string){onContextChange(taskId?{kind:'planner',taskId}:{kind:'planner'});onTutor();}
   return <div className="app-content study-planner"><div className="page-intro"><span className="overline">ORGANIZAÇÃO INTELIGENTE</span><h1>Seu plano de <em>estudos.</em></h1><p>Uma agenda realista, flexível e respeitosa com seu tempo.</p>{onCalendar&&<button type="button" className="btn outline k-planner-calendar-link" onClick={onCalendar}><CalendarDays size={17}/> Ver calendário</button>}</div>
@@ -172,8 +202,8 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     </section>
     <div className="planner-grid"><section className="dark-panel"><h2>Minha agenda</h2><p className="muted">Marque atividades, exclua-as ou crie seu próprio plano.</p>{!tasks.length?<p className="empty-tasks">Ainda não há tarefas. Gere sugestões ou adicione sua primeira atividade.</p>:<div className="task-list">{tasks.map(t=><div key={t.id} className={`task-row ${t.done?'completed':''}`}><label><input disabled={busy||!loaded} type="checkbox" checked={t.done} onChange={e=>toggle(t,e.target.checked)}/><span><strong>{t.title}</strong><small>{new Date(t.date+'T12:00:00').toLocaleDateString('pt-BR')} · {t.subject} · {t.startTime?`${t.startTime} · `:''}{t.minutes} min · {t.kind==='manual'?'Criada por você':'Sugestão'}</small></span></label><div className="task-row-actions"><div className="k-task-links">{onLearn&&lessonForStudyTask(t)&&<button type="button" className="k-task-lesson" onClick={()=>{const lesson=lessonForStudyTask(t);if(lesson)onLearn({subject:lesson.subject,lessonId:lesson.id});}}>Ver aula e prática</button>}<a className="k-task-video" href={youtubeStudySearch(t.subject,lessonForStudyTask(t)?.topic||t.title.replace(/^.*?: /,''))} target="_blank" rel="noopener noreferrer">Buscar aula no YouTube</a></div><button type="button" className="task-kog-help" onClick={()=>askKog(t.id)} aria-label={`Pedir ajuda ao Kog para ${t.title}`}>Kog</button><button className="delete-task" disabled={busy||!loaded} aria-label={`Excluir ${t.title}`} onClick={()=>remove(t)}>✕</button></div></div>)}</div>}</section>
     <aside className="dark-panel"><h2>Planeje a semana</h2><p className="muted">Gere atividades com base no seu tempo disponível e nos assuntos que merecem atenção.</p><button type="button" className="btn outline full" disabled={!loaded||busy||evidenceLoading} onClick={rebuildSuggestions}>Atualizar sugestões após mudar a prova</button><button className="btn primary full" disabled={!loaded||busy||evidenceLoading} onClick={generate}>{busy?'Salvando…':evidenceLoading?'Analisando histórico…':'Gerar plano por prioridades'}</button><button type="button" className="btn outline full" onClick={()=>askKog()}>Organizar minha semana com Kog</button>{onDiagnostic&&<button type="button" className="btn outline full" onClick={onDiagnostic}>Fazer diagnóstico inicial (20 questões)</button>}<div className="section-divider"/><form className="field-stack" onSubmit={add}><h3>Adicionar atividade</h3><label>Atividade<input value={title} maxLength={120} required placeholder="Ex.: Revisar citologia" onChange={e=>setTitle(e.target.value)}/></label><KognosSelect label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} /><div className="two-cols planner-form-grid"><KognosDateField label="Data" value={date} onChange={setDate} /><label>Duração (min)<input type="number" min={5} max={240} value={minutes} onChange={e=>setMinutes(Math.max(5,Math.min(240,Number(e.target.value)||5)))}/></label></div><label className="k-planner-start-time">Horário (opcional)<input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} step="60"/><small className="muted">Sem horário, a atividade aparece na lista de pendentes de agendamento.</small></label><button className="btn outline" disabled={!loaded||busy}>{busy?'Salvando…':'Adicionar tarefa'}</button></form></aside></div>
-    {evidenceUnavailable&&<p role="status" className="privacy-note">Histórico parcial: {historyError||aiEvidenceError}. As atividades manuais continuam disponíveis.</p>}
-    <StudySyllabus profile={profile} tasks={tasks} weakTopics={weeklyTopics}/>
+    {evidenceUnavailable&&<p role="status" className="privacy-note">Algumas evidências estão indisponíveis: {historyError||aiEvidenceError||weeklyError||officialError}. As atividades manuais continuam disponíveis.</p>}
+    <StudySyllabus profile={profile} tasks={tasks} weakTopics={weeklyTopics} officialTopics={officialTopics} officialError={officialError}/>
     {notice&&<div className="message success" role="status">{notice}</div>}
   </div>;
 }
