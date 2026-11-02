@@ -1,44 +1,10 @@
 import {examBlueprints,difficulties,type GenerationRequest} from './exam-blueprints.ts';
 import {filterByIndependentReview,validateModelQuestions,type ValidatedQuestion} from './ai-question-validation.ts';
-import {DEFAULT_NVIDIA_MODEL,nvidiaInferenceOptions} from './nvidia-request-config.ts';
+import {requestAI} from './ai-provider.ts';
 
-/** The two calls are independent generations. They are NOT a guarantee of accuracy. */
+/** Backwards-compatible entry point; independently routed by generation phase. */
 export async function requestNvidia(messages:{role:'system'|'user';content:string}[],maxTokens:number,temperature:number,phase:'generate'|'review'='generate'):Promise<string>{
- const key=process.env.NVIDIA_API_KEY;
- if(!key?.trim())throw new Error('NVIDIA_NOT_CONFIGURED');
- const base=(process.env.NVIDIA_API_BASE_URL||'https://integrate.api.nvidia.com/v1').replace(/\/$/,'');
- const model=process.env.NVIDIA_MODEL||DEFAULT_NVIDIA_MODEL;
- const startedAt=Date.now();
- let response:Response;
- try{
-  response=await fetch(base+'/chat/completions',{
-   method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
-   body:JSON.stringify({model,messages,max_tokens:maxTokens,temperature,stream:false,...nvidiaInferenceOptions(model)}),
-   cache:'no-store',signal:AbortSignal.timeout(65000)
-  });
- }catch(cause){
-  console.warn('[KOGNOS][NVIDIA]',phase,'network-or-timeout',Date.now()-startedAt,'ms');
-  if(cause instanceof Error&&(cause.name==='TimeoutError'||cause.name==='AbortError'))throw new Error('NVIDIA_TIMEOUT');
-  throw new Error('NVIDIA_NETWORK');
- }
- // Timing and status only: never log prompts, questions, responses or API keys.
- console.info('[KOGNOS][NVIDIA]',phase,'HTTP',response.status,Date.now()-startedAt,'ms');
- if(!response.ok){
-  if(response.status===401||response.status===403)throw new Error('NVIDIA_AUTH');
-  if(response.status===429)throw new Error('NVIDIA_RATE_LIMIT');
-  if(response.status===408||response.status===504)throw new Error('NVIDIA_TIMEOUT');
-  if(response.status===400)throw new Error('NVIDIA_BAD_REQUEST');
-  if(response.status===404)throw new Error('NVIDIA_MODEL_UNAVAILABLE');
-  throw new Error('NVIDIA_UNAVAILABLE');
- }
- let body:unknown;
- try{body=await response.json();}catch{throw new Error('NVIDIA_BAD_RESPONSE');}
- const result=body&&typeof body==='object'?body as {choices?:Array<{message?:{content?:unknown};finish_reason?:unknown}>}:null;
- const choice=result?.choices?.[0];
- if(choice?.finish_reason==='length')throw new Error('NVIDIA_TRUNCATED');
- const text=choice?.message?.content;
- if(typeof text!=='string'||!text.trim())throw new Error('NVIDIA_EMPTY');
- return text;
+ return requestAI(phase,messages,maxTokens,temperature);
 }
 
 export type VerifiedSyllabusReference={edition:string;sourceTitle:string;sourceUrl:string;evidence:string};
