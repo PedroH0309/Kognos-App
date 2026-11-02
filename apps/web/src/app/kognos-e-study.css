@@ -5,6 +5,7 @@
    This CSS deliberately loads AFTER kognos-clean-ui.css. */
 :root{
  --k-nav-ink:#101B33;
+ --k-dark-surface:#202633;
  --k-nav-hover:#EDF1F7;
  --k-nav-selected:#E7EEF9;
  --k-nav-muted:#617086;
