@@ -1,8 +1,8 @@
 'use client';
 
 import {useState} from 'react';
-import {activeSyllabi,mergedSyllabus,officialSyllabusSources} from '@/lib/exam-syllabus';
-import {examBlueprints} from '@/lib/exam-blueprints';
+import {activeSyllabi,officialSyllabusSources} from '@/lib/exam-syllabus';
+import {examBlueprints,completeExamTopicCatalog} from '@/lib/exam-blueprints';
 import type {StudentProfile} from '@/lib/profile';
 import type {StudyTask} from '@/lib/cloud-study-model';
 import {syllabusProgress,type SyllabusTopicState,type TopicWeakEvidence} from '@/lib/syllabus-progress';
@@ -21,7 +21,7 @@ export default function StudySyllabus({profile,tasks=[],weakTopics=[]}:{
  const [search,setSearch]=useState('');
  const [statusFilter,setStatusFilter]=useState<SyllabusFilter>('all');
  const exams=activeSyllabi(profile);
- const catalog=mergedSyllabus(exams);
+ const catalog=completeExamTopicCatalog(exams);
  const progress=syllabusProgress(catalog,tasks,weakTopics);
  const needle=search.trim().toLocaleLowerCase('pt-BR');
  const subjects=progress.subjects.map(item=>({
