@@ -57,13 +57,28 @@ const NAV_ICONS:Record<View,LucideIcon>={
  calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
  profile:UserRound,settings:Settings,
 };
-/** Same destinations, visually grouped for a calmer desktop navigation. */
-const NAV_GROUPS:{label:string;keys:View[]}[]=[
- {label:'PRINCIPAL',keys:['dashboard','learn','trails','subjects']},
- {label:'PRATICAR',keys:['questions','simulados','diagnostic','reviews']},
- {label:'ORGANIZAÇÃO',keys:['plans','calendar','sources','performance','achievements']},
- {label:'MINHA CONTA',keys:['tutor','profile','settings']}
-];
+/** All existing routes remain reachable, but the sidebar uses the compact
+ * hierarchy of the requested E-Study reference instead of long AI-colored groups.
+ */
+const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects','questions','simulados'];
+const NAV_SECONDARY:View[]=['plans','reviews','achievements','settings'];
+const NAV_MORE:View[]=['trails','diagnostic','sources','calendar','performance','profile'];
+const SHORT_NAV_LABELS:Partial<Record<View,string>>={
+ dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
+ questions:'Questões',simulados:'Simulados',plans:'Meu plano',
+ reviews:'Revisões',achievements:'Conquistas',settings:'Configurações',
+ trails:'Trilhas',diagnostic:'Diagnóstico',sources:'Matrizes e editais',
+ calendar:'Calendário',performance:'Desempenho',profile:'Meu perfil'
+};
+function SideNavigationItem({view,active,onSelect}:{view:View;active:boolean;onSelect:(view:View)=>void}){
+ const item=NAV.find(entry=>entry.key===view)!;
+ return <button type="button" onClick={()=>onSelect(view)} className={`side-nav-item ${active?'active':''}`}
+   title={item.label} aria-label={item.label} aria-current={active?'page':undefined}>
+   <span className="k-side-icon"><NavIcon view={view}/></span>
+   <span className="k-side-label">{SHORT_NAV_LABELS[view]||item.label}</span>
+   {item.status&&<small title={item.status}>◌</small>}
+ </button>;
+}
 function NavIcon({view}:{view:View}){const Icon=NAV_ICONS[view];return <Icon size={19} strokeWidth={1.8} aria-hidden="true"/>;}
 const GOAL_ICONS: Record<Goal, LucideIcon> = { enem:Target, vestibular:GraduationCap, etec:BookOpenCheck, school:PencilLine, contest:Landmark, olympiad:Medal, personal:Compass };
 function GoalIcon({goal}:{goal:Goal}){const Icon=GOAL_ICONS[goal];return <Icon size={23} strokeWidth={1.7} aria-hidden="true"/>;}
@@ -98,8 +113,12 @@ function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;
     }catch(e){setNotice(e instanceof Error?e.message:'Não foi possível concluir a autenticação.');}
     finally{setPending(false);}
   }
-  const card=<section className="auth-card" role={standalone?undefined:"dialog"} aria-modal={standalone?undefined:true} aria-label="Entrar no Kognos">
-    <div className="modal-head"><Logo small/>{!standalone&&<button className="text-button" aria-label="Fechar" onClick={onClose}>✕</button>}</div>
+  const card=<section className={`auth-card ${standalone?'k-auth-card-embedded':''}`} role={standalone?undefined:"dialog"} aria-modal={standalone?undefined:true} aria-label="Entrar no Kognos">
+    <div className="modal-head">{!standalone&&<Logo small/>}{!standalone&&<button className="text-button" aria-label="Fechar" onClick={onClose}>✕</button>}</div>
+    {standalone&&mode!=='reset'&&<div className="k-auth-mode-tabs" role="group" aria-label="Opção de acesso">
+      <button type="button" aria-pressed={mode==='signin'} className={mode==='signin'?'selected':''} onClick={()=>{setMode('signin');setNotice('');}}>Entrar</button>
+      <button type="button" aria-pressed={mode==='signup'} className={mode==='signup'?'selected':''} onClick={()=>{setMode('signup');setNotice('');}}>Criar conta</button>
+    </div>}
     <h2>{mode==='signin'?'Bem-vindo de volta':mode==='signup'?'Crie sua conta':'Recuperar acesso'}</h2><p className="muted">{mode==='reset'?'Enviaremos um link para redefinir sua senha.':'Sua conta sincroniza seus estudos e libera o tutor com IA.'}</p>
     {!enabled?<div className="message warning">A nuvem ainda não está configurada. Configure o Supabase pelo README para ativar contas e recuperação.</div>:<form onSubmit={submit} className="field-stack">
       <label>E-mail<input autoComplete="email" type="email" required placeholder="voce@exemplo.com" value={email} onChange={e=>setEmail(e.target.value)}/></label>
@@ -107,10 +126,30 @@ function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;
       <button className="btn primary full" disabled={pending}>{pending?'Aguarde…':mode==='signin'?'Entrar':mode==='signup'?'Criar conta':'Enviar link de recuperação'}</button>
     </form>}
     {notice&&<div className="message" role="status">{notice}</div>}
-    {enabled&&<div className="auth-switches"><button className="text-button switch-mode" onClick={()=>{setMode(mode==='signup'?'signin':'signup');setNotice('');}}>{mode==='signup'?'Já possui conta? Entrar':'Criar conta'}</button><button className="text-button switch-mode" onClick={()=>{setMode(mode==='reset'?'signin':'reset');setNotice('');}}>{mode==='reset'?'Voltar ao login':'Esqueci minha senha'}</button></div>}
+    {enabled&&<div className="auth-switches">{!standalone&&<button className="text-button switch-mode" onClick={()=>{setMode(mode==='signup'?'signin':'signup');setNotice('');}}>{mode==='signup'?'Já possui conta? Entrar':'Criar conta'}</button>}<button className="text-button switch-mode" onClick={()=>{setMode(mode==='reset'?'signin':'reset');setNotice('');}}>{mode==='reset'?'Voltar ao login':'Esqueci minha senha'}</button></div>}
     <p className="fine-print">Proteja seu acesso: nunca compartilhe senha ou códigos de verificação.</p>
   </section>;
-  if(standalone)return <main className="k-auth-gateway"><div className="k-auth-shell"><aside className="k-auth-story" aria-label="Conheça a plataforma"><span className="overline">KOGNOS · APRENDIZAGEM INTELIGENTE</span><div className="k-auth-story-main"><span className="k-auth-glow">✧</span><h1>Seu próximo avanço começa <em>aqui.</em></h1><p>Uma plataforma para aprender, praticar, revisar e acompanhar sua evolução com apoio do Kog.</p><div className="k-auth-highlights"><span><BookOpenCheck size={16}/> Trilhas personalizadas</span><span><BrainCircuit size={16}/> Questões com IA</span><span><ShieldCheck size={16}/> Seu histórico protegido</span></div></div><small>Estude no seu ritmo, continue de onde parou.</small></aside>{card}</div></main>;
+  if(standalone)return <main className="k-auth-gateway k-auth-v2">
+    <div className="k-auth-shell k-auth-stack">
+      <aside className="k-auth-story" aria-label="Conheça o Kognos">
+        <div className="k-auth-stage-brand"><Logo small/><span>APRENDIZAGEM INTELIGENTE</span></div>
+        <div className="k-auth-story-main">
+          <div className="k-auth-portrait-scene">
+            <Image src="/brand/kognos-login-friends.svg" width={640} height={378}
+              alt="" priority sizes="(max-width: 640px) 340px, 480px"/>
+          </div>
+          <h1>Seu espaço para <em>evoluir.</em></h1>
+          <p>Estude do seu jeito. Conhecimento, clareza e progresso em um só lugar.</p>
+        </div>
+        <div className="k-auth-story-bubble k-auth-bubble-one" aria-hidden="true"/>
+        <div className="k-auth-story-bubble k-auth-bubble-two" aria-hidden="true"/>
+        <div className="k-auth-story-bubble k-auth-bubble-three" aria-hidden="true"/>
+        <div className="k-auth-story-bubble k-auth-bubble-four" aria-hidden="true"/>
+      </aside>
+      <div className="k-auth-form-shell">{card}</div>
+    </div>
+    <p className="k-auth-footer">Kognos · Conhecimento que evolui com você</p>
+  </main>;
   return <div className="modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}>{card}</div>;
 }
 
@@ -352,7 +391,7 @@ export default function KognosApp(){
   const [profileError,setProfileError]=useState('');
   const [reloadRequest,setReloadRequest]=useState(0);
   const [assistantOpen,setAssistantOpen]=useState(false);
-  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);
+  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
   const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
@@ -452,7 +491,21 @@ export default function KognosApp(){
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
  if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
  if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
- return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">{NAV_GROUPS.map(group=><div className="k-nav-group" key={group.label}><span className="k-nav-group-label">{group.label}</span>{group.keys.map(key=>{const item=NAV.find(entry=>entry.key===key)!;return <button key={item.key} onClick={()=>navigate(item.key)} className={`side-nav-item ${view===item.key?'active':''}`} title={item.label} aria-label={item.label} aria-current={view===item.key?'page':undefined}><span><NavIcon view={item.key}/></span>{item.label}{item.status&&<small>◌</small>}</button>;})}</div>)}</nav><div className="sidebar-bottom"><div className="side-promo"><span>✧ KOGNOS IA</span><h3>Seu conhecimento, amplificado.</h3><p>Tire dúvidas com o tutor que se adapta a você.</p><button onClick={()=>setAssistantOpen(true)}>Explorar tutor →</button></div><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside>{mobileMenu&&<button className="mobile-sidebar-scrim" aria-label="Fechar menu lateral" onClick={()=>setMobileMenu(false)}/>}
+ return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">
+    <div className="k-nav-set k-nav-main">{NAV_PRIMARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
+    <div className="k-nav-separator" aria-hidden="true"/>
+    <div className="k-nav-set k-nav-secondary">{NAV_SECONDARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
+    <button type="button" className={`k-nav-more-toggle ${NAV_MORE.includes(view)?'selected':''}`}
+      onClick={()=>setMoreMenuOpen(open=>!open)} aria-expanded={moreMenuOpen||NAV_MORE.includes(view)}
+      aria-controls="kognos-more-navigation">
+      <span className="k-side-icon"><Menu size={18} strokeWidth={1.8}/></span>
+      <span className="k-side-label">Mais recursos</span>
+      <span className="k-side-chevron"><ArrowRight size={15}/></span>
+    </button>
+    {(moreMenuOpen||NAV_MORE.includes(view))&&<div id="kognos-more-navigation" className="k-nav-set k-nav-expanded">
+      {NAV_MORE.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}
+    </div>}
+  </nav><div className="sidebar-bottom"><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside>{mobileMenu&&<button className="mobile-sidebar-scrim" aria-label="Fechar menu lateral" onClick={()=>setMobileMenu(false)}/>}
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>setAssistantOpen(true)} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:

@@ -12,7 +12,7 @@ test('signed-out cloud user is served the standalone auth page before onboarding
  assert.ok(app.indexOf('if(!user)return <div')<app.indexOf('if(!profile||editing)return'));
  assert.ok(app.includes('!cloud)return <main'));
  assert.ok(app.includes('role={standalone?undefined:"dialog"}'));
- assert.ok(app.includes('if(standalone)return <main className="k-auth-gateway"'));
+ assert.ok(app.includes('if(standalone)return <main className="k-auth-gateway k-auth-v2"'));
 });
 test('new user gets onboarding, existing student gets their saved profile and dashboard',()=>{
  for(const phrase of ['readStoredStudentProfile(data)','/avatar_path/i.test(error.message)','setProfileError(explainProfileDatabaseError(error))','setProfile(readStoredStudentProfile(data))','onFinish={saveProfile}','setProfile(normalized);setEditing(false);setView(\'dashboard\')'])assert.ok(app.includes(phrase),phrase);

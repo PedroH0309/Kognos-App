@@ -50,7 +50,14 @@ test('login and navigation have independent responsive styling',()=>{
  assert.match(css,/\.k-auth-gateway/);
  assert.match(css,/\.app-layout \.k-nav-group/);
  assert.match(css,/\.app-layout \.mobile-bottom-nav/);
- assert.match(app,/NAV_GROUPS\.map/);
+ assert.match(app,/NAV_PRIMARY\.map/);
+ assert.match(app,/NAV_SECONDARY\.map/);
+ assert.match(app,/NAV_MORE\.map/);
+ const finalStyle=read('apps/web/src/app/kognos-e-study.css');
+ const layout=read('apps/web/src/app/layout.tsx');
+ assert.match(layout,/import "\.\/kognos-e-study\.css";/);
+ assert.match(finalStyle,/\.app-layout \.app-sidebar/);
+ assert.match(finalStyle,/\.k-auth-v2\.k-auth-gateway/);
  assert.match(app,/AuthModal standalone/);
  assert.match(app,/onClick=\{\(\)=>navigate\(v\)\}/);
 });
