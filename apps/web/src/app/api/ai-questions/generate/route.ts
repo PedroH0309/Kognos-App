@@ -57,7 +57,8 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   }));
   const {data, error:insertError}=await ctx.supabaseAdmin.from('kognos_ai_questions').insert(rows)
     .select('id,institution,edition,source_title,source_url,source_topic_id,lesson_id,subject,topic,difficulty,prompt,options,created_at,review_status');
-  if(insertError||!data)return error('Falha ao salvar questões. Confira as migrações 0005 e 0007 e tente novamente.',503);
+  if(insertError?.code==='23514')return error('Este vestibular ainda não foi liberado no banco de questões. Execute a migração 0014 e tente novamente.',503);
+  if(insertError||!data)return error('Falha ao salvar questões. Confira as migrações 0005, 0007 e 0014 e tente novamente.',503);
   return NextResponse.json({
    questions:data.map(r=>publicGeneratedQuestion(r as Record<string,unknown>)),
    approved:data.length,rejected:generation.count-data.length,
