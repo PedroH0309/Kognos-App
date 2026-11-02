@@ -12,7 +12,7 @@ test('My Subjects is an independent panel, not a copy of Learning Trails',()=>{
  assert.match(app,/view==='subjects'\?<SubjectDashboard/);
  assert.match(app,/onOpenTrail=\{openFocusedLesson\}/);
  assert.match(dashboard,/PAINEL DE MATÉRIAS/);
- assert.match(dashboard,/Cobertura da amostra/);
+ assert.match(dashboard,/Cobertura de prática/);
  assert.match(dashboard,/subjectSnapshots\(attempts\)/);
  assert.doesNotMatch(dashboard,/Entenda o conceito/);
 });

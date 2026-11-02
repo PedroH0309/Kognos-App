@@ -8,9 +8,9 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  const userId=ctx.userClaims?.id;
  if(!userId)return error('Entre na sua conta para acessar o banco da IA.',401);
  const {data, error:queryError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
-   .select('id,institution,source_title,source_url,source_topic_id,edition,subject,topic,difficulty,prompt,options,created_at,review_status')
+   .select('id,institution,source_title,source_url,source_topic_id,lesson_id,edition,subject,topic,difficulty,prompt,options,created_at,review_status')
    .eq('user_id',userId).neq('review_status','withdrawn').order('created_at',{ascending:false}).limit(100);
- if(queryError)return error('Não foi possível carregar o banco gerado por IA. Execute a migração 0005.',503);
+ if(queryError)return error('Não foi possível carregar o banco gerado por IA. Execute as migrações 0005 e 0007.',503);
  return NextResponse.json({questions:(data||[]).map(row=>publicGeneratedQuestion(row as Record<string,unknown>))},{headers:{'Cache-Control':'no-store'}});
 });
 export async function GET(request:Request){

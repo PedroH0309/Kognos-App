@@ -7,16 +7,18 @@ import type {QuestionAttempt} from '@/lib/demo-questions';
 import {getCloudAttempts} from '@/lib/cloud-study';
 import {learningSubjects,lessonsForSubject,findLearningLesson,type LearningLesson} from '@/lib/learning-catalog';
 import {evidenceForLesson} from '@/lib/learning-progress';
-import {adjacentLesson,catalogRoadmap,trailSnapshot} from '@/lib/learning-roadmap';
+import {adjacentLesson,trailSnapshot} from '@/lib/learning-roadmap';
+import {connectedCatalogProgress,connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
+import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 
 type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
 const evidenceLabels={'not-started':'Não praticada',review:'Revisar questão','correct-sample':'Acerto registrado'} as const;
 const guestKey='kognos_demo_attempts_v1_guest';
 
-export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onSeeTrails,focus}:{
+export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus}:{
  mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onTutor:()=>void;onPractice:(focus:Focus)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;
+ onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
@@ -25,6 +27,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [loaded,setLoaded]=useState(false);
  const [error,setError]=useState('');
  const [restored,setRestored]=useState(false);
+ const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  const detailRef=useRef<HTMLElement|null>(null);
  useEffect(()=>{
   let mounted=true;setLoaded(false);setError('');setAttempts([]);
@@ -53,14 +56,16 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  },[restored,selectedId,subject,userId]);
 
  const roadmap=useMemo(()=>trailSnapshot(subject,attempts),[subject,attempts]);
- const overall=useMemo(()=>catalogRoadmap(attempts),[attempts]);
+ const connected=useMemo(()=>connectedCatalogProgress(attempts,aiProgress),[attempts,aiProgress]);
+ const connectedTrail=useMemo(()=>connectedSubjectProgress(subject,attempts,aiProgress),[subject,attempts,aiProgress]);
+ const historyReady=loaded&&(!userId||!aiLoading);
  const visibleLessons=useMemo(()=>roadmap.steps.filter(step=>`${step.lesson.topic} ${step.lesson.objective}`.toLocaleLowerCase('pt-BR').includes(query.trim().toLocaleLowerCase('pt-BR'))),[roadmap.steps,query]);
  const lesson=findLearningLesson(selectedId);
  const position=lesson?.subject===subject?roadmap.steps.findIndex(step=>step.lesson.id===lesson.id):-1;
  const previous=lesson?adjacentLesson(subject,lesson.id,-1):null;
  const following=lesson?adjacentLesson(subject,lesson.id,1):null;
- const progress=overall.total?Math.round(100*overall.practiced/overall.total):0;
- const currentProgress=roadmap.total?Math.round(100*roadmap.practiced/roadmap.total):0;
+ const progress=connected.total?Math.round(100*connected.practiced/connected.total):0;
+ const currentProgress=roadmap.total?Math.round(100*connectedTrail.practiced/roadmap.total):0;
 
  useEffect(()=>{
   onContextChange(lesson&&lesson.subject===subject?{kind:'lesson',lessonId:lesson.id}:null);
@@ -73,8 +78,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   setSubject(item.subject);setSelectedId(item.id);onContextChange({kind:'lesson',lessonId:item.id});
   if(window.matchMedia('(max-width: 1150px)').matches)detailRef.current?.scrollIntoView({behavior:'smooth',block:'start'});
  }
- const highlight=roadmap.next??roadmap.steps[0]?.lesson??null;
- const hasHistory=loaded&&overall.practiced>0;
+ const highlight=connectedTrail.next??roadmap.steps[0]?.lesson??null;
+ const hasHistory=historyReady&&connected.practiced>0;
  const isTrail=mode==='trails';
 
  return <main className={`app-content learning-paths-page ${mode==='learn'?'learning-focus-page':'learning-trails-page'} learning-journey-v14`}>
@@ -87,18 +92,19 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   </div>
 
   {error&&<div className="message warning" role="alert">{error}</div>}
+  {aiError&&userId&&<div className="message warning" role="alert">As questões de IA não puderam ser consultadas: {aiError} O progresso abaixo mostra somente os exercícios demonstrativos. <button type="button" className="btn outline small" onClick={()=>void refreshAI()}>Tentar novamente</button></div>}
   {isTrail&&<section className="learning-journey-summary" aria-label="Seu progresso nos roteiros">
    <div className="learning-journey-summary-main">
     <span className="learning-journey-mark"><Compass size={21}/></span>
     <div className="learning-journey-summary-copy"><span className="overline">SUA JORNADA</span>
-     <strong>{!loaded?'Carregando seu histórico…':hasHistory?'Continue de onde parou':'Comece sua primeira trilha'}</strong>
-     <small>{loaded?`${overall.practiced} de ${overall.total} tópicos com questões respondidas`:'Consultando suas tentativas registradas'}</small>
+     <strong>{!historyReady?'Carregando seu histórico…':hasHistory?'Continue de onde parou':'Comece sua primeira trilha'}</strong>
+     <small>{historyReady?`${connected.practiced} de ${connected.total} tópicos com prática (demo + IA)`:'Consultando suas tentativas registradas'}</small>
     </div>
    </div>
    <div className="learning-journey-summary-progress">
-    <div className="learning-journey-progress-label"><span>Prática registrada</span><strong>{loaded?`${progress}%`:'—'}</strong></div>
-    <div className="learning-progress-track" role="progressbar" aria-label="Tópicos com questões respondidas" aria-valuemin={0} aria-valuemax={overall.total} aria-valuenow={loaded?overall.practiced:0}><span style={{width:`${loaded?progress:0}%`}}/></div>
-    <small>{loaded&&overall.needsReview>0?`${overall.needsReview} tópico(s) com última resposta incorreta`: 'Evolução por tentativas, não por domínio comprovado'}</small>
+    <div className="learning-journey-progress-label"><span>Prática registrada</span><strong>{historyReady?`${progress}%`:'—'}</strong></div>
+    <div className="learning-progress-track" role="progressbar" aria-label="Tópicos com questões respondidas" aria-valuemin={0} aria-valuemax={connected.total} aria-valuenow={historyReady?connected.practiced:0}><span style={{width:`${historyReady?progress:0}%`}}/></div>
+    <small>{historyReady&&connected.review>0?`${connected.review} tópico(s) indicados para revisão`: 'Evolução por tentativas, não por domínio comprovado'}</small>
    </div>
   </section>}
 
@@ -109,8 +115,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    </div>
    <div className="learning-journey-subject-pills" role="group" aria-label="Disciplina selecionada">
     {learningSubjects.map(item=>{
-     const count=trailSnapshot(item,attempts);return <button type="button" key={item} className={`learning-journey-subject-pill ${item===subject?'is-active':''}`} aria-pressed={item===subject} onClick={()=>selectSubject(item)}>
-       <span>{item}</span><small>{loaded?`${count.practiced}/${count.total}`:`${count.total} aulas`}</small>
+     const count=connectedSubjectProgress(item,attempts,aiProgress);return <button type="button" key={item} className={`learning-journey-subject-pill ${item===subject?'is-active':''}`} aria-pressed={item===subject} onClick={()=>selectSubject(item)}>
+       <span>{item}</span><small>{historyReady?`${count.practiced}/${count.total}`:`${count.total} aulas`}</small>
       </button>;
     })}
    </div>
@@ -122,8 +128,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <p>{isTrail?'Aulas organizadas do fundamento à aplicação. Você pode revisitar qualquer etapa.':'Escolha o assunto e acompanhe a explicação no painel abaixo.'}</p>
     {!isTrail&&lesson&&<button type="button" className="learning-journey-open-trails" onClick={()=>onSeeTrails({subject:lesson.subject,lessonId:lesson.id})}>Ver sequência completa <ArrowRight size={13}/></button>}
    </div>
-   <div className="learning-journey-subject-status"><div><strong>{loaded?`${roadmap.practiced}/${roadmap.total}`:'—'}</strong><span>tópicos praticados</span></div>
-    <div className="learning-progress-track" role="progressbar" aria-label={`Tópicos praticados de ${subject}`} aria-valuemin={0} aria-valuemax={roadmap.total} aria-valuenow={loaded?roadmap.practiced:0}><span style={{width:`${loaded?currentProgress:0}%`}}/></div>
+   <div className="learning-journey-subject-status"><div><strong>{historyReady?`${connectedTrail.practiced}/${roadmap.total}`:'—'}</strong><span>tópicos praticados</span></div>
+    <div className="learning-progress-track" role="progressbar" aria-label={`Tópicos praticados de ${subject}`} aria-valuemin={0} aria-valuemax={roadmap.total} aria-valuenow={historyReady?connectedTrail.practiced:0}><span style={{width:`${historyReady?currentProgress:0}%`}}/></div>
    </div>
    {highlight&&<button type="button" className="learning-journey-continue" onClick={()=>chooseLesson(highlight)}>
       <Target size={17}/><span><small>Próximo passo recomendado</small><strong>{highlight.topic}</strong></span><ArrowRight size={16}/>
@@ -137,12 +143,12 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     {!loaded&&<p className="muted" role="status">Carregando evidências de prática…</p>}
     <div className="learning-lesson-list learning-journey-steps">
      {visibleLessons.length?visibleLessons.map(step=>{
-      const item=step.lesson;const active=item.id===selectedId;
-      return <button type="button" key={item.id} className={`learning-lesson-item learning-journey-step ${active?'selected':''} ${step.evidence==='correct-sample'?'has-sample':''} ${step.evidence==='review'?'needs-review':''}`}
+      const item=step.lesson;const active=item.id===selectedId;const connectedEvidence=connectedLessonEvidence(item,attempts,aiProgress);const ai=connectedEvidence.generated;
+      return <button type="button" key={item.id} className={`learning-lesson-item learning-journey-step ${active?'selected':''} ${step.evidence==='correct-sample'?'has-sample':''} ${connectedEvidence.review?'needs-review':''} ${connectedEvidence.hasAI?'has-ai':''}`}
        aria-current={active?'step':undefined} onClick={()=>chooseLesson(item)}>
        <span className="learning-lesson-number">{step.evidence==='correct-sample'?<CheckCircle2 size={17}/>:String(step.number).padStart(2,'0')}</span>
-       <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{evidenceLabels[step.evidence]} · {item.minutes} min</small>{step.prerequisites.length>0&&<small className="learning-journey-prereq">Base: {step.prerequisites.map(req=>req.topic).join(', ')}</small>}</span>
-       {step.evidence==='review'?<RotateCcw size={16}/>:<ChevronRight size={17}/>}
+       <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{connectedEvidence.hasAI&&step.evidence==='not-started'?'Prática IA registrada':evidenceLabels[step.evidence]} · {item.minutes} min</small>{ai&&<small className="learning-ai-step-stat">IA: {ai.attempts} resposta(s) em {ai.distinctQuestions} questão(ões){ai.lastCorrect===false?' · revisar':''}</small>}{step.prerequisites.length>0&&<small className="learning-journey-prereq">Base: {step.prerequisites.map(req=>req.topic).join(', ')}</small>}</span>
+       {connectedEvidence.review?<RotateCcw size={16}/>:<ChevronRight size={17}/>}
       </button>;
      }):<p className="muted">Nenhum assunto encontrado. Tente outra palavra.</p>}
     </div>
@@ -161,7 +167,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-lesson-block"><h3>Exemplo resolvido</h3><p>{lesson.workedExample}</p></div>
      <div className="learning-lesson-block mistake"><h3>Erro comum</h3><p>{lesson.commonMistake}</p></div>
      <div className="learning-lesson-block check"><h3>Confira se entendeu</h3><p>{lesson.check}</p><small>Responda com suas palavras ou peça uma explicação ao Kog.</small></div>
-     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>Praticar este tópico <ArrowRight size={16}/></button>
+     <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
+     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>Praticar demonstração <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
       <button type="button" className="btn outline" onClick={()=>{onContextChange({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
        <span>{position+1} / {roadmap.total}</span>
@@ -169,6 +176,6 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     </>:<p className="muted">Escolha uma aula para começar.</p>}
    </section>
   </div>
-  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'Suas tentativas demonstrativas são consultadas na conta Supabase.':'Modo visitante: as tentativas demonstrativas ficam neste navegador.'} Os materiais ainda são introdutórios, e um acerto isolado não comprova domínio da matéria.</p>
+  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'Prática demonstrativa e tentativas IA vinculadas aparecem em indicadores separados.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Os materiais ainda são introdutórios; uma resposta isolada não demonstra domínio.</p>
  </main>;
 }

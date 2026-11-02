@@ -4,6 +4,15 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.5 — AI practice linked to learning paths
+
+- Connected NVIDIA-generated questions to the **20 authored starter lessons**, with explicit, server-validated lesson-to-exam-topic mappings; generation from a lesson now opens the personal AI bank with the correct institution, subject and topic preselected.
+- Added a private authenticated `GET /api/ai-study-progress` endpoint. The server recomputes correctness using protected answer keys and only sends per-lesson counts, distinct question coverage and most recent outcome to the client — **never the key or chosen answer**.
+- **Learning Paths**, **Learn**, and **My Subjects** now display demonstration practice and linked AI practice separately. Recommendations prioritize lessons with a recent incorrect AI answer, without claiming exam readiness or long-term mastery.
+- Existing AI questions without explicit lesson metadata are mapped only when the old topic name **exactly** and uniquely matches a curated lesson. Broad/multidisciplinary institution labels are deliberately not assigned to narrow lessons.
+- Added migration [`0007_ai_lesson_links.sql`](supabase/migrations/0007_ai_lesson_links.sql), which stores a nullable validated `lesson_id` for new questions while retaining old bank records. **Apply it after 0005/0006 before using the v1.5 AI flow**. No new environment variables are required.
+- The public repository and English developer documentation are preserved. Full details: [`docs/KOGNOS_SPRINT_15_CONNECTED_AI_STUDY.md`](docs/KOGNOS_SPRINT_15_CONNECTED_AI_STUDY.md).
+
 ## What's new in v1.4 — compact guided Learning Paths
 
 - **Visual redesign:** replaces the oversized visitor banner, large global percentage card and repeated tall subject cards with a compact progress strip, responsive subject chips, a focused subject overview and a clear ordered journey. The first lesson becomes visible sooner.

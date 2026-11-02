@@ -1,0 +1,56 @@
+import {examBlueprints,type ExamId} from './exam-blueprints.ts';
+import {findLearningLesson,learningLessons} from './learning-catalog.ts';
+
+/** Explicit editorial bridges. These are NOT a claim that the institution endorses the lesson. */
+export const lessonExamTopics: Readonly<Record<string,Partial<Record<ExamId,string>>>> = {
+ 'math-percentages':{enem:'Porcentagem e razão',etec:'Porcentagem e proporções'},
+ 'math-equations':{etec:'Equações e problemas'},
+ 'math-functions':{enem:'Funções e gráficos',fuvest:'Funções e modelagem'},
+ 'math-probability':{enem:'Probabilidade e estatística',fuvest:'Probabilidade e combinatória'},
+ 'pt-grammar':{etec:'Classes gramaticais'},
+ 'pt-reading':{enem:'Interpretação de textos',etec:'Interpretação de textos'},
+ 'pt-agreement':{etec:'Concordância'},
+ 'physics-motion':{etec:'Movimento e unidades'},
+ 'physics-forces':{enem:'Movimento e forças',etec:'Força e energia'},
+ 'physics-energy':{enem:'Trabalho e energia',fuvest:'Energia e termodinâmica'},
+ 'chem-atoms':{enem:'Estrutura atômica',etec:'Estrutura da matéria'},
+ 'chem-bonds':{enem:'Ligações químicas',fuvest:'Ligações e reações'},
+ 'chem-solutions':{enem:'Soluções e concentração'},
+ 'bio-cells':{enem:'Citologia',etec:'Célula e saúde'},
+ 'bio-genetics':{enem:'Genética e hereditariedade',fuvest:'Genética'},
+ 'bio-ecology':{enem:'Ecologia e impactos ambientais',etec:'Ecologia',fuvest:'Ecologia'},
+ 'hist-colony':{enem:'Brasil colonial'},
+ 'hist-industry':{enem:'Industrialização e trabalho',etec:'Industrialização'},
+ 'geo-maps':{enem:'Cartografia',etec:'Mapas e escalas'},
+ 'geo-climate':{enem:'Clima e ambiente',fuvest:'Climatologia'},
+};
+
+export function linkedExamTopic(lessonId:string,institution:ExamId):string|null {
+ const lesson=findLearningLesson(lessonId);
+ const topic=lessonExamTopics[lessonId]?.[institution];
+ return lesson&&topic&&examBlueprints[institution]?.subjects[lesson.subject]?.includes(topic)?topic:null;
+}
+
+/** The server must verify this before associating a generated question with a lesson. */
+export function validLessonAIReference(lessonId:string,institution:ExamId,subject:string,topic:string):boolean{
+ const lesson=findLearningLesson(lessonId);
+ return Boolean(lesson&&lesson.subject===subject&&linkedExamTopic(lessonId,institution)===topic);
+}
+
+/** Legacy bank rows without lesson_id: conservative matches only. A broad exam topic is NOT proof that
+ *  an old generated question belongs to a narrower lesson (e.g. Movimento e forças != Cinemática). */
+export function inferLegacyLessonId(institution:ExamId,subject:string,topic:string):string|null {
+ const normalize=(v:string)=>v.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('pt-BR').trim();
+ const matching=learningLessons.filter(lesson=>lesson.subject===subject&&
+  normalize(lesson.topic)===normalize(topic)&&linkedExamTopic(lesson.id,institution)===topic);
+ return matching.length===1?matching[0].id:null;
+}
+
+/** Returns a verified generation preset; prefer ENEM when a lesson has a documented editorial bridge. */
+export function lessonGenerationPreset(lessonId:string,preferred?:ExamId){
+ const lesson=findLearningLesson(lessonId);
+ if(!lesson)return null;
+ const institutions:ExamId[]=preferred?[preferred,'enem','etec','fuvest']:['enem','etec','fuvest'];
+ for(const institution of institutions){const topic=linkedExamTopic(lessonId,institution);if(topic)return {lessonId:lesson.id,institution,subject:lesson.subject,topic};}
+ return null;
+}
