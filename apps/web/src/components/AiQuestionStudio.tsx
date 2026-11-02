@@ -9,7 +9,7 @@ import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
 import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from '@/lib/lesson-ai-links';
 import {findLearningLesson} from '@/lib/learning-catalog';
-import {AI_BANK_PAGE_SIZE,splitGenerationBatches} from '@/lib/ai-bank-paging';
+import {AI_BANK_PAGE_SIZE} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
@@ -38,8 +38,6 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [totalQuestions,setTotalQuestions]=useState(0);
  const [hasMore,setHasMore]=useState(false);
  const [loadingMore,setLoadingMore]=useState(false);
- const [batchNumber,setBatchNumber]=useState(0);
- const [batchAttempt,setBatchAttempt]=useState(1);
  const [approvedSoFar,setApprovedSoFar]=useState(0);
  const [draftReadyFor,setDraftReadyFor]=useState<string|null>(null);
  const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
@@ -165,7 +163,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
       ...(activeLessonLink?{lessonId:activeLessonLink}:{})
      })
     }),
-    (batch,attempt)=>{setBatchNumber(batch);setBatchAttempt(attempt);},
+    undefined,
     approved=>setApprovedSoFar(approved)
    );
    if(result.saved){
@@ -181,7 +179,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    }
    if(result.error)setError(`${result.error}${result.saved?` As ${result.saved} aprovadas continuam salvas.`:''}`);
    else if(result.missing&&!result.saved)setError('Nenhuma questão passou pela revisão. Tente outro tema ou dificuldade; nenhuma questão incorreta foi salva.');
-  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);setBatchAttempt(1);}
+  }finally{setGenerating(false);setGenerationStartedAt(null);}
  }
 
  function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
