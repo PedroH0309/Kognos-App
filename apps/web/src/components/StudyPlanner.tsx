@@ -9,7 +9,8 @@ import type {QuestionAttempt} from '@/lib/demo-questions';
 import {getCloudAttempts} from '@/lib/cloud-study';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 import {studyPriorities} from '@/lib/adaptive-week-plan';
-import {createPersonalizedStudyWeek,studyMethod,youtubeStudySearch,lessonForStudyTask,weekLearningSummary,missedTopics} from '@/lib/personalized-study-cycle';
+import {createPersonalizedStudyWeek,studyMethod,youtubeStudySearch,lessonForStudyTask,weekLearningSummary,missedTopics,type WeeklyExamWeakTopic} from '@/lib/personalized-study-cycle';
+import {getSupabase} from '@/lib/supabase';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {createCloudTasks,deleteCloudTask,getCloudTasks,setCloudTaskDone,type StudyTask} from '@/lib/cloud-study';
 
@@ -39,6 +40,8 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const [loaded,setLoaded]=useState(false);const [busy,setBusy]=useState(false);
   const [history,setHistory]=useState<QuestionAttempt[]>([]);
   const [historyLoading,setHistoryLoading]=useState(true),[historyError,setHistoryError]=useState('');
+  const [weeklyTopics,setWeeklyTopics]=useState<WeeklyExamWeakTopic[]>([]);
+  const [weeklyLoading,setWeeklyLoading]=useState(false),[weeklyError,setWeeklyError]=useState('');
   const {data:aiEvidence,loading:aiEvidenceLoading,error:aiEvidenceError}=useAIStudyProgress(userId);
   const priority=studyPriorities(history,aiEvidence);
   useEffect(()=>{
@@ -65,6 +68,29 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     void load();
     return()=>{active=false;};
   },[userId]);
+  useEffect(()=>{
+    let active=true;setWeeklyTopics([]);setWeeklyError('');
+    if(!userId)return()=>{active=false;};
+    setWeeklyLoading(true);
+    const load=async()=>{
+      try{
+       const sb=getSupabase();
+       if(!sb)throw Error('Nuvem não configurada.');
+       const {data}=await sb.auth.getSession();
+       if(!data.session||data.session.user.id!==userId)throw Error('Sessão expirada.');
+       const response=await fetch('/api/weekly-exam',{cache:'no-store',
+        headers:{Authorization:'Bearer '+data.session.access_token}});
+       if(!response.ok)throw Error('Não foi possível carregar os assuntos da reavaliação.');
+       const payload=await response.json();
+       if(active)setWeeklyTopics(Array.isArray(payload.weakTopics)?payload.weakTopics.filter((item:WeeklyExamWeakTopic)=>
+        item&&typeof item.subject==='string'&&typeof item.topic==='string'&&typeof item.incorrect==='number'
+        &&item.incorrect>=0&&typeof item.lastWrong==='boolean'):[]);
+      }catch(e){if(active)setWeeklyError(e instanceof Error?e.message:'Sem dados semanais.');}
+      finally{if(active)setWeeklyLoading(false);}
+    };
+    void load();
+    return()=>{active=false;};
+  },[userId,profile.examFocus]);
   function commitLocal(next:StudyTask[]){setTasks(next);try{localStorage.setItem(taskStorageKey(null),JSON.stringify(next));}catch{setError('O navegador não permitiu salvar suas tarefas.');}}
   async function run(action:()=>Promise<void>){if(busy||!loaded)return;setBusy(true);setError('');try{await action();}catch(e){setError(e instanceof Error?e.message:'Erro ao salvar tarefa.');}finally{setBusy(false);}}
   function add(e:React.FormEvent){e.preventDefault();if(!title.trim()||!date)return;
@@ -86,7 +112,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     setNotice('Tarefa removida.');
   });}
   function generate(){void run(async()=>{
-    const next=createPersonalizedStudyWeek(profile,tasks,history,aiEvidence);const oldIds=new Set(tasks.map(t=>t.id));const created=next.filter(t=>!oldIds.has(t.id));
+    const next=createPersonalizedStudyWeek(profile,tasks,history,aiEvidence,new Date(),()=>crypto.randomUUID(),weeklyTopics);const oldIds=new Set(tasks.map(t=>t.id));const created=next.filter(t=>!oldIds.has(t.id));
     if(userId)await createCloudTasks(userId,created);
     if(userId)setTasks(next);else commitLocal(next);
     setNotice(created.length?`Adicionadas ${created.length} sessões com prioridades baseadas nos registros disponíveis. Ajuste o plano conforme sua rotina.`:'Não há novos dias ou minutos disponíveis nesta semana.');
@@ -98,7 +124,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
       const outdated=tasks.filter(t=>t.kind==='suggested'&&!t.done&&t.date>=today);
       if(userId)for(const item of outdated)await deleteCloudTask(userId,item.id);
       const retained=tasks.filter(t=>!outdated.includes(t));
-      const next=createPersonalizedStudyWeek(profile,retained,history,aiEvidence);
+      const next=createPersonalizedStudyWeek(profile,retained,history,aiEvidence,new Date(),()=>crypto.randomUUID(),weeklyTopics);
       const created=next.filter(t=>!retained.includes(t));
       if(userId){if(created.length)await createCloudTasks(userId,created);setTasks(next);}
       else commitLocal(next);
@@ -110,8 +136,9 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const week=weekLearningSummary(tasks);
   const errorsByTopic=missedTopics(history);
   const methods=studyMethod(profile);
-  const evidenceLoading=historyLoading||aiEvidenceLoading;
-  const evidenceUnavailable=Boolean(historyError||aiEvidenceError);
+  const evidenceLoading=historyLoading||aiEvidenceLoading||weeklyLoading;
+  const evidenceUnavailable=Boolean(historyError||aiEvidenceError||weeklyError);
+  const unresolvedWeekly=weeklyTopics.filter(item=>item.lastWrong);
   function askKog(taskId?:string){onContextChange(taskId?{kind:'planner',taskId}:{kind:'planner'});onTutor();}
   return <div className="app-content study-planner"><div className="page-intro"><span className="overline">ORGANIZAÇÃO INTELIGENTE</span><h1>Seu plano de <em>estudos.</em></h1><p>Uma agenda realista, flexível e respeitosa com seu tempo.</p>{onCalendar&&<button type="button" className="btn outline k-planner-calendar-link" onClick={onCalendar}><CalendarDays size={17}/> Ver calendário</button>}</div>
     <div className="message neutral">{userId?'As atividades são sincronizadas na sua conta. As sugestões consideram sua disponibilidade, erros recentes e assuntos ainda não praticados nas amostras disponíveis.':'As atividades ficam neste navegador; sugestões utilizam somente o histórico demonstrativo local.'} Isso não é uma avaliação de domínio nem uma previsão de prova.</div>
@@ -127,6 +154,12 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
       <div className="k-cycle-progress" role="progressbar" aria-label="Atividades concluídas nesta semana" aria-valuenow={week.completed} aria-valuemin={0} aria-valuemax={Math.max(1,week.total)}><span style={{width:`${week.total?Math.round(100*week.completed/week.total):0}%`}}/></div>
       <p className="k-cycle-summary">{week.completed} de {week.total} sessões concluídas · {week.plannedMinutes} minutos planejados · {week.subjects.length} disciplinas</p>
       <div className="k-cycle-methods"><h3>Como estudar em cada sessão</h3><ol>{methods.map(step=><li key={step}>{step}</li>)}</ol></div>
+      {unresolvedWeekly.length>0&&<div className="k-cycle-errors" aria-label="Assuntos com erros nas avaliações semanais">
+        <h3>Revisões prioritárias dos simulados semanais</h3>
+        <div>{unresolvedWeekly.slice(0,6).map(item=><span key={item.subject+'|'+item.topic}>
+         {item.subject}: {item.topic} · {item.incorrect} {item.incorrect===1?'erro registrado':'erros registrados'}
+        </span>)}</div>
+       </div>}
       {errorsByTopic.length>0&&<div className="k-cycle-errors"><h3>Assuntos para revisar a partir de respostas registradas</h3><div>{errorsByTopic.slice(0,5).map(item=><span key={item.subject+'-'+item.topic}>{item.subject}: {item.topic} ({item.errors} {item.errors===1?'erro':'erros'} na amostra)</span>)}</div></div>}
       {onWeeklyReview&&<div className="k-cycle-review"><div><strong>Simulado de acompanhamento semanal</strong><p>Escolha entre 20 e 90 questões inéditas, geradas a partir dos conteúdos da prova selecionada e registradas para não serem reutilizadas. A quantidade depende do banco aprovado.</p></div><button type="button" className="btn primary" onClick={onWeeklyReview}>Iniciar revisão semanal</button></div>}
     </section>
