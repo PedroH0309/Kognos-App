@@ -10,6 +10,7 @@ import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
 import AccountSettings, {ProfileAvatar} from './AccountSettings';
 import PracticeSpace from './PracticeSpace';
+import AchievementSpace from './AchievementSpace';
 import DiagnosticSpace from './DiagnosticSpace';
 import ReviewSpace from './ReviewSpace';
 import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
@@ -42,7 +43,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'calendar',icon:'▣',label:'Calendário',status:'Em construção'},
   {key:'tutor',icon:'✧',label:'Kog · Tutor IA'},
   {key:'performance',icon:'▥',label:'Desempenho'},
-  {key:'achievements',icon:'★',label:'Conquistas',status:'Em construção'},
+  {key:'achievements',icon:'★',label:'Conquistas'},
   {key:'profile',icon:'◎',label:'Meu perfil'},
   {key:'settings',icon:'⚙',label:'Configurações'},
 ];
@@ -354,6 +355,7 @@ export default function KognosApp(){
  view==='learn'||view==='trails'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext} onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>: 
  view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>setAssistantOpen(true)} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
+ view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
  view==='diagnostic'?<DiagnosticSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
