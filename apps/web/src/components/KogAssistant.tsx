@@ -123,7 +123,7 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
       const data=await response.json();
       if(!response.ok){
         if(data.code==='AI_NOT_CONFIGURED'){
-          setReadiness(current=>({tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:current?.nvidiaKeyConfigured??false,questionGenerationConfigured:current?.questionGenerationConfigured??false,supabaseServerConfigured:current?.supabaseServerConfigured??true,offlineGuidesAvailable:true}));
+          setReadiness(current=>({freeOnlyMode:current?.freeOnlyMode??true,generatorProvider:current?.generatorProvider??null,reviewerProvider:current?.reviewerProvider??null,tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:current?.nvidiaKeyConfigured??false,questionGenerationConfigured:current?.questionGenerationConfigured??false,supabaseServerConfigured:current?.supabaseServerConfigured??true,offlineGuidesAvailable:true}));
           const guide=localStudyGuide(prompt,studyContext);
           if(guide){if(currentUserRef.current===user.id)setMessages(prev=>[...prev,{role:'assistant',content:guide.content}]);return;}
         }

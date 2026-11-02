@@ -7,7 +7,7 @@ import {safeOfficialUrl} from '@/lib/syllabus-sources';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 import {describeGenerationError} from '@/lib/ai-generation-errors';
-import {isAIJobConfigured,AIProviderRequestError} from '@/lib/ai-provider';
+import {isAIJobConfigured,AIProviderRequestError,AIProviderRateLimitError} from '@/lib/ai-provider';
 
 export const runtime='nodejs';
 export const maxDuration=180;
@@ -65,21 +65,25 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   const failure=describeGenerationError(e);
   // Report only controlled diagnostic metadata, never upstream response text.
   const rejected=e instanceof AIProviderRequestError?e:null;
+  const limited=e instanceof AIProviderRateLimitError?e:null;
   const stage=rejected?.phase==='generate'?'geração':rejected?.phase==='review'?'revisão':null;
   const categoryLabel=rejected?.category==='structured_json'?'formatação JSON':
    rejected?.category==='invalid_parameter'?'parâmetro incompatível':
    rejected?.category==='token_budget'?'orçamento de tokens':'solicitação recusada';
   console.error('[KOGNOS][AI_GENERATION]',failure.code,
    ...(rejected?[rejected.phase,rejected.provider,rejected.category]:[]));
-  const detail=rejected&&stage?` Etapa: ${stage} (${rejected.provider}); diagnóstico: ${categoryLabel}.`:'';
+  const detail=rejected&&stage?` Etapa: ${stage} (${rejected.provider}); diagnóstico: ${categoryLabel}.`:
+   limited?` A cota gratuita do provedor ${limited.provider} está temporariamente esgotada.${limited.retryAfterSeconds?` Tente novamente após aproximadamente ${limited.retryAfterSeconds} segundos.`:' Aguarde a renovação dos limites da conta.'}`:'';
+  const headers:Record<string,string>={'Cache-Control':'no-store'};
+  if(limited?.retryAfterSeconds)headers['Retry-After']=String(limited.retryAfterSeconds);
   return NextResponse.json({
    error:failure.message+detail,code:failure.code,
    ...(rejected?{provider:rejected.provider,phase:rejected.phase,category:rejected.category}:{})
-  },{status:failure.status,headers:{'Cache-Control':'no-store'}});
+  },{status:failure.status,headers});
  }
 });
 export async function POST(request:Request){
- if(!isAIJobConfigured('generate')||!isAIJobConfigured('review'))return error('Configure as chaves de IA para geração e revisão no servidor (GROQ_API_KEY e GEMINI_API_KEY ou NVIDIA_API_KEY).',503);
+ if(!isAIJobConfigured('generate')||!isAIJobConfigured('review'))return error('Configure GROQ_API_KEY e/ou GEMINI_API_KEY no servidor para ativar a geração gratuita.',503);
  if(!process.env.SUPABASE_URL||!process.env.SUPABASE_PUBLISHABLE_KEY||!process.env.SUPABASE_SECRET_KEY||!process.env.SUPABASE_JWKS_URL)return error('Supabase não configurado no servidor.',503);
  return handler(request);
 }

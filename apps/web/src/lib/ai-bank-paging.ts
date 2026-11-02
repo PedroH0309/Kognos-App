@@ -18,19 +18,10 @@ export function parseAIQuestionListQuery(url:string):AIQuestionListFilter|null {
  if(topic!==null&&(!topic.trim()||topic.length>120||subject===null))return null;
  return {institution:inst as ExamId|null,difficulty:difficulty as Difficulty|null,subject,topic,offset,limit:AI_BANK_PAGE_SIZE};
 }
-/**
- * Smaller batches reduce incomplete AI review arrays. Two independent
- * batches can run concurrently, keeping perceived latency near one request
- * while still using the same server-validated 1..5 request contract.
- */
+/** Use full batches to reduce calls on free-tier providers. */
 export function splitGenerationBatches(quantity:number):number[]{
  if(!Number.isInteger(quantity)||quantity<1||quantity>10)throw new Error('Escolha entre 1 e 10 questões.');
  const batches:number[]=[];
- for(let rest=quantity;rest>0;){
-  const chunk=Math.min(5,rest);
-  if(chunk>3)batches.push(3,chunk-3);
-  else batches.push(chunk);
-  rest-=chunk;
- }
+ for(let rest=quantity;rest>0;rest-=5)batches.push(Math.min(5,rest));
  return batches;
 }

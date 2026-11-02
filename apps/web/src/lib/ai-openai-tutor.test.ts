@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import {requestAI} from './ai-provider.ts';
 import {publicAIReadiness} from './ai-readiness.ts';
 
-const keys=['AI_TUTOR_PROVIDER','AI_TUTOR_MODEL','OPENAI_API_KEY'];
+const keys=['AI_TUTOR_PROVIDER','AI_TUTOR_MODEL','OPENAI_API_KEY','AI_FREE_ONLY'];
 function setup(){
  const previous=Object.fromEntries(keys.map(k=>[k,process.env[k]]));
+ process.env.AI_FREE_ONLY='false';
  process.env.AI_TUTOR_PROVIDER='openai';
  process.env.AI_TUTOR_MODEL='gpt-6-luna';
  process.env.OPENAI_API_KEY='sk-local-test-only';
@@ -54,7 +55,7 @@ test('OpenAI errors remain server-side and never echo API key',async()=>{
 
 test('readiness can identify OpenAI without returning the API key',()=>{
  const ready=publicAIReadiness({
-  AI_TUTOR_PROVIDER:'openai',OPENAI_API_KEY:'sk-private-test',
+  AI_FREE_ONLY:'false',AI_TUTOR_PROVIDER:'openai',OPENAI_API_KEY:'sk-private-test',
   SUPABASE_URL:'ok',SUPABASE_PUBLISHABLE_KEY:'ok',
   SUPABASE_SECRET_KEY:'ok',SUPABASE_JWKS_URL:'ok',
  });

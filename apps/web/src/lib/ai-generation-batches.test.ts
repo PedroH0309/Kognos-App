@@ -4,14 +4,14 @@ import {
  generateApprovedBatches,MAX_ATTEMPTS_PER_BATCH,MAX_CONCURRENT_GENERATION_BATCHES
 } from './ai-generation-batches.ts';
 
-test('ten approved questions use four small batches, without inventing extra results',async()=>{
+test('ten approved questions use two five-item batches, without inventing extra results',async()=>{
  const requested:number[]=[];
  const progress:number[]=[];
  const result=await generateApprovedBatches(10,async count=>{
   requested.push(count);
   return {approved:count,rejected:0};
  },undefined,approved=>progress.push(approved));
- assert.deepEqual(requested,[3,2,3,2]);
+ assert.deepEqual(requested,[5,5]);
  assert.equal(result.requested,10);
  assert.equal(result.saved,10);
  assert.equal(result.missing,0);
@@ -19,29 +19,29 @@ test('ten approved questions use four small batches, without inventing extra res
  assert.equal(progress.at(-1),10);
 });
 
-test('a 5-question request starts 3+2 concurrently instead of waiting for each AI review',async()=>{
+test('free-tier batches never start simultaneous API calls',async()=>{
  let active=0,maxActive=0;
- const result=await generateApprovedBatches(5,async count=>{
+ const result=await generateApprovedBatches(10,async count=>{
   active++;maxActive=Math.max(maxActive,active);
   await new Promise(resolve=>setTimeout(resolve,12));
   active--;
   return {approved:count};
  });
- assert.equal(result.saved,5);
+ assert.equal(result.saved,10);
  assert.equal(maxActive,MAX_CONCURRENT_GENERATION_BATCHES);
- assert.equal(maxActive,2);
+ assert.equal(maxActive,1);
 });
 
-test('partial approved microbatches replenish only their unapproved slots',async()=>{
+test('partial batch replenishes only missing approved questions',async()=>{
  const counts:number[]=[];
  const result=await generateApprovedBatches(5,async count=>{
   counts.push(count);
-  return {approved:count===3?1:count,rejected:count===3?2:0};
+  return {approved:count===5?1:count,rejected:count===5?4:0};
  });
- assert.deepEqual(counts,[3,2,2]);
- assert.equal(result.saved,5);assert.equal(result.missing,0);
+ assert.deepEqual(counts,[5,4]);
+ assert.equal(result.saved,5);
+ assert.equal(result.missing,0);
 });
-
 test('limited retries never approve content that the independent review rejected',async()=>{
  let calls=0;
  const result=await generateApprovedBatches(3,async()=>{
@@ -61,16 +61,16 @@ test('a recoverable no-approval error retries only within the fixed budget',asyn
  assert.equal(calls,2);assert.equal(result.saved,3);assert.equal(result.error,'');
 });
 
-test('a fatal provider error stops queuing extra work without discarding other in-flight approvals',async()=>{
+test('a fatal provider error stops queuing free-tier requests',async()=>{
  let started=0;
  const result=await generateApprovedBatches(10,async count=>{
   started++;
-  if(count===2)throw new Error('API rate limit');
+  if(started===1)throw new Error('API rate limit');
   await new Promise(resolve=>setTimeout(resolve,3));
   return {approved:count};
  });
  assert.equal(result.error,'API rate limit');
- assert.ok(started<=3,'no unbounded retries after a fatal error');
+ assert.equal(started,1,'no subsequent batch calls after a fatal error');
  assert.ok(result.saved>=0&&result.saved<=10);
  assert.equal(result.missing,10-result.saved);
 });

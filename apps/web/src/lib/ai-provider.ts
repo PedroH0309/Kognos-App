@@ -15,8 +15,53 @@ const preferences:Record<AIJob,{provider:AIProvider;model:string}>={
  review:{provider:'gemini',model:'gemini-3.1-flash-lite'},
  tutor:{provider:'gemini',model:'gemini-3.1-flash-lite'},
 };
+/** Development defaults to free-tier eligible providers only.
+ * OpenAI/NVIDIA remain available exclusively after explicit paid/SaaS opt-in.
+ * Actual zero-cost usage ALSO requires a provider account on its free tier.
+ */
+export function isFreeOnlyAI(env:Record<string,string|undefined>=process.env):boolean{
+ return env.AI_FREE_ONLY?.trim().toLowerCase()!=='false';
+}
+const freeOptions:Record<AIJob,readonly {provider:'groq'|'gemini';model:string}[]>={
+ generate:[
+  {provider:'groq',model:'openai/gpt-oss-120b'},
+  {provider:'gemini',model:'gemini-2.5-flash'}
+ ],
+ review:[
+  {provider:'gemini',model:'gemini-3.1-flash-lite'},
+  {provider:'groq',model:'openai/gpt-oss-20b'}
+ ],
+ tutor:[
+  {provider:'gemini',model:'gemini-3.1-flash-lite'},
+  {provider:'groq',model:'llama-3.1-8b-instant'}
+ ]
+};
+
+export function freeAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null{
+ const prefix='AI_'+job.toUpperCase();
+ const preferred=env[prefix+'_PROVIDER']?.trim().toLowerCase();
+ const options=freeOptions[job];
+ // Prefer valid, key-backed free models only. Existing OpenAI settings are
+ // deliberately ignored when the developer enables free-only mode.
+ const ordered=preferred==='groq'||preferred==='gemini'
+  ? [...options].sort((a,b)=>Number(b.provider===preferred)-Number(a.provider===preferred))
+  : options;
+ for(const option of ordered){
+  const key=(option.provider==='groq'?env.GROQ_API_KEY:env.GEMINI_API_KEY)?.trim();
+  if(!key)continue;
+  const configured=env[prefix+'_MODEL']?.trim();
+  const allowList=option.provider==='groq'
+   ?(job==='tutor'?['llama-3.1-8b-instant','openai/gpt-oss-20b']:job==='generate'?['openai/gpt-oss-120b','openai/gpt-oss-20b']:['openai/gpt-oss-20b'])
+   :(job==='generate'?['gemini-2.5-flash','gemini-2.5-flash-lite','gemini-3.1-flash-lite']:['gemini-3.1-flash-lite','gemini-2.5-flash-lite']);
+  const model=preferred===option.provider&&configured&&allowList.includes(configured)?configured:option.model;
+  return {provider:option.provider,model,key,base:endpoints[option.provider]};
+ }
+ return null;
+}
+
 
 export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null {
+ if(isFreeOnlyAI(env))return freeAIProvider(job,env);
  const prefix='AI_'+job.toUpperCase();
  const preferred=env[prefix+'_PROVIDER']?.trim().toLowerCase();
  const provider:AIProvider=preferred==='groq'||preferred==='gemini'||preferred==='nvidia'||preferred==='openai'?preferred:preferences[job].provider;
@@ -93,6 +138,26 @@ export class AIProviderRequestError extends Error{
  }
 }
 
+/** Minimal rate-limit metadata; no raw provider response is exposed. */
+export class AIProviderRateLimitError extends Error{
+ readonly provider:AIProvider;
+ readonly phase:AIJob;
+ readonly retryAfterSeconds:number|null;
+ constructor(provider:AIProvider,phase:AIJob,retryAfterSeconds:number|null){
+  super('NVIDIA_RATE_LIMIT');
+  this.name='AIProviderRateLimitError';
+  this.provider=provider;
+  this.phase=phase;
+  this.retryAfterSeconds=retryAfterSeconds;
+ }
+}
+function safeRetryAfter(header:string|null):number|null{
+ if(!header)return null;
+ const seconds=/^\d+(?:\.\d+)?$/.test(header.trim())
+  ?Number(header):Math.ceil((Date.parse(header)-Date.now())/1000);
+ return Number.isFinite(seconds)&&seconds>0?Math.min(86400,Math.ceil(seconds)):null;
+}
+
 /** Groq GPT-OSS consumes reasoning tokens from the completion budget.
  * Use low effort and strict JSON Schema for generation/review.
  * Provider- and model-specific settings must never leak to Gemini or NVIDIA.
@@ -135,7 +200,12 @@ async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'
  console.info('[KOGNOS][AI]',job,c.provider,'HTTP',response.status,Date.now()-t,'ms');
  if(!response.ok){
   if(response.status===401||response.status===403)throw new Error('NVIDIA_AUTH');
-  if(response.status===429)throw new Error('NVIDIA_RATE_LIMIT');
+  if(response.status===429){
+   const retryAfterSeconds=safeRetryAfter(response.headers.get('retry-after'));
+   console.warn('[KOGNOS][AI]',job,c.provider,'provider rate limited',
+    retryAfterSeconds===null?'unknown wait':`retry after ${retryAfterSeconds}s`);
+   throw new AIProviderRateLimitError(c.provider,job,retryAfterSeconds);
+  }
   if(response.status===404)throw new Error('NVIDIA_MODEL_UNAVAILABLE');
   if(response.status===400||response.status===422){
    // An HTTP 400 alone does not identify the cause. Do not log raw provider
@@ -202,19 +272,42 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
   if(job==='generate'&&primary.provider==='groq'
    &&/^openai\/gpt-oss-(?:20b|120b)$/.test(primary.model)
    &&cause instanceof Error&&cause.message==='NVIDIA_TRUNCATED'){
-    const higherBudget=Math.min(14000,Math.ceil(maxTokens*1.4));
+    const higherBudget=Math.min(isFreeOnlyAI()?6000:14000,Math.ceil(maxTokens*1.4));
     if(higherBudget>maxTokens){
      console.warn('[KOGNOS][AI]',job,primary.provider,'retrying truncated output once with larger budget');
      return requestWithStructuredRecovery(primary,job,messages,higherBudget,temperature);
     }
   }
-  const fallbackDisabled=process.env.AI_REVIEW_FALLBACK_PROVIDER?.trim().toLowerCase()==='none';
-  const eligible=job==='review'&&primary.provider==='gemini'&&!fallbackDisabled
+  const blockedReviewFallback=process.env.AI_REVIEW_FALLBACK_PROVIDER?.trim().toLowerCase()==='none';
+  const isRateLimit=cause instanceof Error&&cause.message==='NVIDIA_RATE_LIMIT';
+
+  // Development-only fallback is a different free-tier-eligible provider/model,
+  // once, never a loop. No OpenAI or NVIDIA request can be made in free-only mode.
+  if(isFreeOnlyAI()&&isRateLimit){
+   const next=job==='generate'&&primary.provider==='groq'
+    ?{provider:'gemini' as const,model:'gemini-2.5-flash',key:process.env.GEMINI_API_KEY?.trim()}
+    :job==='review'&&primary.provider==='gemini'&&!blockedReviewFallback
+    ?{provider:'groq' as const,model:'openai/gpt-oss-20b',key:process.env.GROQ_API_KEY?.trim()}
+    :job==='tutor'&&primary.provider==='gemini'
+    ?{provider:'groq' as const,model:'llama-3.1-8b-instant',key:process.env.GROQ_API_KEY?.trim()}
+    :job==='tutor'&&primary.provider==='groq'
+    ?{provider:'gemini' as const,model:'gemini-3.1-flash-lite',key:process.env.GEMINI_API_KEY?.trim()}
+    :null;
+   if(next?.key){
+    console.info('[KOGNOS][AI]',job,primary.provider,'free-tier rate limit; trying alternate',next.provider);
+    return requestWithStructuredRecovery({
+     provider:next.provider,model:next.model,key:next.key,base:endpoints[next.provider]
+    },job,messages,maxTokens,temperature);
+   }
+  }
+
+  const eligible=job==='review'&&primary.provider==='gemini'&&!blockedReviewFallback
    &&cause instanceof Error&&(cause.message==='NVIDIA_UNAVAILABLE'||cause.message==='NVIDIA_TRUNCATED');
   if(!eligible)throw cause;
   const key=process.env.GROQ_API_KEY?.trim();
   if(!key)throw cause;
-  const model=process.env.AI_REVIEW_FALLBACK_MODEL?.trim()||'openai/gpt-oss-20b';
+  const model=isFreeOnlyAI()?'openai/gpt-oss-20b':
+   process.env.AI_REVIEW_FALLBACK_MODEL?.trim()||'openai/gpt-oss-20b';
   // Keep the fallback model independent from the 120B generation model.
   const fallback:ProviderConfig={provider:'groq',key,model,base:endpoints.groq};
   console.info('[KOGNOS][AI]',job,'Gemini unavailable; trying Groq fallback');

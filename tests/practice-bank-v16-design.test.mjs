@@ -27,5 +27,5 @@ test('server paginates authenticated AI questions without shipping the answer ke
  assert.match(studio,/generateApprovedBatches/);
  const batch=read('apps/web/src/lib/ai-generation-batches.ts');
  assert.match(batch,/splitGenerationBatches/);
- assert.match(batch,/MAX_CONCURRENT_GENERATION_BATCHES=2/);
+ assert.match(batch,/MAX_CONCURRENT_GENERATION_BATCHES=1/);
 });

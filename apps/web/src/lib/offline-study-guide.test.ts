@@ -4,12 +4,14 @@ import {localStudyGuide} from './offline-study-guide.ts';
 import {publicAIReadiness} from './ai-readiness.ts';
 
 test('AI readiness exposes safe booleans and provider label without claiming connectivity',()=>{
- const env={SUPABASE_URL:'u',SUPABASE_PUBLISHABLE_KEY:'p',SUPABASE_SECRET_KEY:'secret123',SUPABASE_JWKS_URL:'j',NVIDIA_API_KEY:'nvapi-SUPERSECRET'};
+ const env={SUPABASE_URL:'u',SUPABASE_PUBLISHABLE_KEY:'p',SUPABASE_SECRET_KEY:'secret123',SUPABASE_JWKS_URL:'j',NVIDIA_API_KEY:'nvapi-SUPERSECRET',GEMINI_API_KEY:'gemini-test'};
  const result=publicAIReadiness(env);
  assert.equal(result.tutorConfigured,true);
  assert.equal(JSON.stringify(result).includes('SUPERSECRET'),false);
- assert.deepEqual(publicAIReadiness({}),{tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:false,questionGenerationConfigured:false,supabaseServerConfigured:false,offlineGuidesAvailable:true});
- assert.equal(publicAIReadiness({...env,NVIDIA_API_KEY:'  '}).tutorConfigured,false);
+ assert.deepEqual(publicAIReadiness({}),{freeOnlyMode:true,generatorProvider:null,reviewerProvider:null,tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:false,questionGenerationConfigured:false,supabaseServerConfigured:false,offlineGuidesAvailable:true});
+ assert.equal(publicAIReadiness({...env,GEMINI_API_KEY:'  '}).tutorConfigured,false);
+ assert.equal(result.freeOnlyMode,true);
+ assert.equal(result.tutorProvider,'gemini');
 });
 test('Pythagoras has a correct original non-AI worked example and a mini exercise',()=>{
  const text=localStudyGuide('me explique teorema de pitágoras');
