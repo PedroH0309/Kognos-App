@@ -21,6 +21,7 @@ import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
 import LearningTrails from './LearningTrails';
 import SubjectDashboard from './SubjectDashboard';
 import StudyPlanner from './StudyPlanner';
+import StudyCalendar from './StudyCalendar';
 import {statsFromAttempts,type QuestionAttempt} from '@/lib/demo-questions';
 import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, Zap, type LucideIcon} from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
@@ -44,7 +45,7 @@ const NAV: {key:View; icon:string;label:string;status?:string}[] = [
   {key:'diagnostic',icon:'◈',label:'Diagnóstico inicial'},
   {key:'plans',icon:'◷',label:'Meu planejamento'},
   {key:'reviews',icon:'↻',label:'Revisões inteligentes'},
-  {key:'calendar',icon:'▣',label:'Calendário',status:'Em construção'},
+  {key:'calendar',icon:'▣',label:'Calendário'},
   {key:'tutor',icon:'✧',label:'Kog · Tutor IA'},
   {key:'performance',icon:'▥',label:'Desempenho'},
   {key:'achievements',icon:'★',label:'Conquistas'},
@@ -62,8 +63,8 @@ const NAV_ICONS:Record<View,LucideIcon>={
  * hierarchy of the requested E-Study reference instead of long AI-colored groups.
  */
 const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects','questions','simulados'];
-const NAV_SECONDARY:View[]=['plans','reviews','achievements','settings'];
-const NAV_MORE:View[]=['trails','diagnostic','sources','calendar','performance','profile'];
+const NAV_SECONDARY:View[]=['calendar','plans','reviews','achievements','settings'];
+const NAV_MORE:View[]=['trails','diagnostic','sources','performance','profile'];
 const SHORT_NAV_LABELS:Partial<Record<View,string>>={
  dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
  questions:'Questões',simulados:'Simulados',plans:'Meu plano',
@@ -392,7 +393,7 @@ export default function KognosApp(){
   const [profileError,setProfileError]=useState('');
   const [reloadRequest,setReloadRequest]=useState(0);
   const [assistantOpen,setAssistantOpen]=useState(false);
-  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
+  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
   const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
@@ -477,7 +478,8 @@ export default function KognosApp(){
    setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
- function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);setView(v);}setMobileMenu(false); }
+ function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');setView(v);}setMobileMenu(false); }
+ function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function generateForLesson(lessonId:string){setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
@@ -520,10 +522,11 @@ export default function KognosApp(){
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
  view==='diagnostic'?<DiagnosticSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
- view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
+ view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)}/>: 
+ view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
  </AnimatedPage>
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','plans','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='plans'?'Plano':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Plano':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
