@@ -73,7 +73,23 @@ test('curriculum checklist shows task-backed evidence without a mastery claim',(
 
 test('manual task subjects include the complete selected exam rather than fixed seven',()=>{
  const planner=read('apps/web/src/components/StudyPlanner.tsx');
- assert.match(planner,/Object\.keys\(mergedSyllabus\(activeSyllabi\(profile\)\)\)/);
+ assert.match(planner,/Object\.keys\(completeExamTopicCatalog\(activeSyllabi\(profile\)\)\)/);
  assert.match(planner,/permittedSubjects=examSubjects\.length\?examSubjects:subjects/);
  assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\}/);
+});
+
+test('database schema upgrades old institution checks without dropping user questions',()=>{
+ const migration=read('supabase/migrations/0014_expand_supported_exam_institutions.sql');
+ assert.match(migration,/alter table public\.kognos_ai_questions/);
+ assert.match(migration,/alter table public\.kognos_exam_sources/);
+ assert.match(migration,/institution in \('enem','etec','fuvest','saresp','vunesp'\)/);
+ assert.doesNotMatch(migration,/drop table|truncate|delete from/i);
+ const importSources=read('apps/web/src/lib/syllabus-sources.ts');
+ assert.match(importSources,/www\.vunesp\.com\.br/);
+ assert.match(importSources,/atendimento\.educacao\.sp\.gov\.br/);
+});
+test('weekly planner respects legacy question topics already used by the AI bank',()=>{
+ const planner=read('apps/web/src/lib/personalized-study-cycle.ts');
+ assert.match(planner,/completeExamTopicCatalog\(activeSyllabi\(profile\)\)/);
+ assert.match(planner,/weeklyWrong/);
 });
