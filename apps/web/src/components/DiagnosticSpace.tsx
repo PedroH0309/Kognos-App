@@ -4,15 +4,15 @@ import {useEffect,useMemo,useState} from 'react';
 import {ArrowLeft,ArrowRight,CheckCircle2,ClipboardCheck,Info,RotateCcw,Sparkles,Target} from 'lucide-react';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {type QuestionAttempt,type DemoQuestion} from '@/lib/demo-questions';
-import {selectExploratoryDiagnostic,evaluateExploratoryDiagnostic,type DiagnosticAnswer} from '@/lib/adaptive-review';
+import {selectBaselineQuestions,selectWeeklyCheckpoint,evaluateExploratoryDiagnostic,type DiagnosticAnswer} from '@/lib/adaptive-review';
 import {findLessonByQuestionId} from '@/lib/learning-catalog';
 import {createCloudAttempts,getCloudAttempts} from '@/lib/cloud-study';
 
 type LearningFocus={subject:string;lessonId:string};
 const guestKey='kognos_demo_attempts_v1_guest';
-export default function DiagnosticSpace({userId,onContextChange,onLearn,onTutor}:{
+export default function DiagnosticSpace({userId,onContextChange,onLearn,onTutor,onPlan,cycle='baseline'}:{
  userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onLearn:(focus:LearningFocus)=>void;onTutor:()=>void;
+ onLearn:(focus:LearningFocus)=>void;onTutor:()=>void;onPlan?:()=>void;cycle?:'baseline'|'weekly';
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [sessionQuestions,setSessionQuestions]=useState<DemoQuestion[]>([]);
@@ -32,7 +32,7 @@ export default function DiagnosticSpace({userId,onContextChange,onLearn,onTutor}
   }
   void load();return()=>{active=false;};
  },[userId,onContextChange]);
- const suggestedQuestions=useMemo(()=>selectExploratoryDiagnostic(attempts),[attempts]);
+ const suggestedQuestions=useMemo(()=>cycle==='weekly'?selectWeeklyCheckpoint(attempts,10):selectBaselineQuestions(),[attempts,cycle]);
  const questions=sessionQuestions.length?sessionQuestions:suggestedQuestions;
  const current=questions[position];
  const currentAnswer=current?answers[current.id]:undefined;
@@ -42,7 +42,7 @@ export default function DiagnosticSpace({userId,onContextChange,onLearn,onTutor}
   setSaving(true);setError('');
   const stamp=Date.now();
   const records:QuestionAttempt[]=questions.map((q,i)=>({questionId:q.id,subject:q.subject,
-   answerIndex:answers[q.id],correct:answers[q.id]===q.correct,createdAt:new Date(stamp+i).toISOString(),mode:'practice'}));
+   answerIndex:answers[q.id],correct:answers[q.id]===q.correct,createdAt:new Date(stamp+i).toISOString(),mode:cycle==='weekly'?'mock':'practice'}));
   try{
    if(userId)await createCloudAttempts(userId,records);
    else {
@@ -57,14 +57,14 @@ export default function DiagnosticSpace({userId,onContextChange,onLearn,onTutor}
  }
  function reset(){setScreen('intro');setSessionQuestions([]);setPosition(0);setAnswers({});setError('');onContextChange(null);}
  return <main className="app-content diagnostic-page">
-  <div className="page-intro"><span className="overline">PONTO DE PARTIDA</span><h1>Descubra por onde <em>começar.</em></h1><p>Uma sondagem curta para escolher a próxima área de estudo. Não é uma prova oficial nem um diagnóstico completo das suas habilidades.</p></div>
+  <div className="page-intro"><span className="overline">{cycle==='weekly'?'REVISÃO DA SEMANA':'PONTO DE PARTIDA'}</span><h1>{cycle==='weekly'?'Confira o que ': 'Descubra por onde '}<em>{cycle==='weekly'?'aprendeu.':'começar.'}</em></h1><p>{cycle==='weekly'?'Revisite conceitos com questões de temas antes praticados e outros ainda pouco explorados.':'Uma sondagem inicial de 20 questões autorais para orientar o seu plano de estudos.'} Não é uma prova oficial nem um diagnóstico completo das suas habilidades.</p></div>
   {error&&<div className="message warning" role="alert">{error}</div>}
   {screen==='intro'&&<section className="dark-panel diag-intro">
    <div className="diag-symbol"><ClipboardCheck size={28}/></div>
-   <h2>Diagnóstico exploratório</h2>
-   <p>Você responderá <strong>{questions.length} questões autorais</strong>, uma por disciplina. A seleção prioriza assuntos que você ainda praticou pouco.</p>
-   <div className="diag-info-grid"><span><Target size={17}/> {questions.length} áreas avaliadas</span><span><Info size={17}/> Resultado indicativo</span><span><CheckCircle2 size={17}/> Feedback ao final</span></div>
-   <p className="privacy-note">As respostas são registradas como <strong>prática demonstrativa</strong> no seu histórico atual. Como há apenas um item por disciplina, um acerto ou erro não determina seu nível real. Não usamos nota TRI.</p>
+   <h2>{cycle==='weekly'?'Revisão semanal de aprendizagem':'Diagnóstico exploratório inicial'}</h2>
+   <p>Você responderá <strong>{questions.length} questões autorais</strong>, distribuídas entre disciplinas. {cycle==='weekly'?'O conjunto combina temas com erros registrados e assuntos diferentes para ampliar a amostra.':'A primeira sessão apresenta conteúdos introdutórios e identifica prioridades iniciais para o plano.'}</p>
+   <div className="diag-info-grid"><span><Target size={17}/> {new Set(questions.map(q=>q.subject)).size} disciplinas</span><span><Info size={17}/> Resultado indicativo</span><span><CheckCircle2 size={17}/> Feedback ao final</span></div>
+   <p className="privacy-note">As respostas são registradas como <strong>prática demonstrativa</strong> no seu histórico atual. Uma amostra de 20 itens, ou um simulado semanal curto, não determina seu nível de domínio. Não usamos nota TRI.</p>
    <button type="button" className="btn primary" disabled={!loaded} onClick={()=>{setSessionQuestions(suggestedQuestions);setPosition(0);setAnswers({});setScreen('questions');onContextChange(null);}}>{loaded?'Começar diagnóstico':'Carregando histórico…'} <ArrowRight size={17}/></button>
   </section>}
   {screen==='questions'&&current&&<section className="dark-panel diag-exam">
@@ -82,7 +82,7 @@ export default function DiagnosticSpace({userId,onContextChange,onLearn,onTutor}
    <p>Você acertou <strong>{report.correct} de {report.total} questões</strong>. Esse resultado descreve somente esta amostra; não equivale ao seu nível de domínio ou nota em exame.</p>
    <div className="diag-result-list">{report.results.map(result=>{const lesson=findLessonByQuestionId(result.questionId);const q=questions.find(x=>x.id===result.questionId)!;
     return <article key={result.questionId} className="diag-result-item"><div><span className={`diag-result-marker ${result.correct?'is-correct':'needs-review'}`}>{result.correct?<CheckCircle2 size={17}/>:<RotateCcw size={17}/>}</span><div><strong>{result.subject} · {result.topic}</strong><small>{result.correct?'Acerto nesta amostra':'Assunto indicado para revisão'}</small><p>{q.explanation}</p></div></div>{lesson&&<button type="button" className="btn outline small" onClick={()=>onLearn({subject:lesson.subject,lessonId:lesson.id})}>Estudar assunto <ArrowRight size={14}/></button>}</article>})}</div>
-   <div className="diag-actions"><button type="button" className="btn outline" onClick={reset}><RotateCcw size={16}/> Refazer sondagem</button><button type="button" className="btn primary" onClick={onTutor}><Sparkles size={16}/> Analisar com Kog</button></div>
+   <div className="diag-actions"><button type="button" className="btn outline" onClick={reset}><RotateCcw size={16}/> Refazer sondagem</button><button type="button" className="btn primary" onClick={onTutor}><Sparkles size={16}/> Analisar com Kog</button>{onPlan&&<button type="button" className="btn outline" onClick={onPlan}>Criar meu plano a partir dos resultados <ArrowRight size={16}/></button>}</div>
    <p className="privacy-note">O Kog poderá analisar suas tentativas registradas se você estiver conectado. Para aprofundar, resolva outras questões em dias diferentes.</p>
   </section>}
  </main>;
