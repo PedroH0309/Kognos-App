@@ -20,6 +20,9 @@
 .app-layout .study-planner .k-cycle-review p{margin:5px 0 0;color:var(--sub);font-size:11px;line-height:1.5;max-width:540px}
 .app-layout .study-planner .k-cycle-review button{flex:none;font-size:12px}
 .app-layout .study-planner .task-row>label{min-width:0}
+.app-layout .study-planner .task-row-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.app-layout .study-planner .k-task-links{display:flex;flex-wrap:wrap;align-items:center;gap:7px;min-width:0}
+.app-layout .study-planner .k-task-links a,.app-layout .study-planner .k-task-links button{margin:0;white-space:normal;text-align:left}
 .app-layout .study-planner .task-row label>span{min-width:0;overflow-wrap:anywhere}
 .app-layout .study-planner .k-task-lesson,.app-layout .study-planner .k-task-video{font-size:10px;font-weight:750;display:inline-block;margin:7px 9px 0 0;padding:6px 0;border:0;background:transparent;color:#38AFC5;cursor:pointer;text-decoration:none;min-height:26px}
 .app-layout .study-planner .k-task-lesson:hover,.app-layout .study-planner .k-task-video:hover{text-decoration:underline;color:var(--txt)}
@@ -33,6 +36,10 @@
  .app-layout .study-planner .k-cycle-review button{width:100%}
 }
 @media(max-width:530px){
+ .app-layout .study-planner .task-row{flex-direction:column;align-items:stretch}
+ .app-layout .study-planner .task-row-actions{justify-content:flex-start}
+ .app-layout .study-planner .k-task-links{flex:1 1 100%}
+
  .app-layout .study-planner .k-cycle-panel{margin-top:14px;padding:16px 14px}
  .app-layout .study-planner .k-cycle-methods{padding:12px}
  .app-layout .study-planner .k-cycle-header h2{font-size:18px}
