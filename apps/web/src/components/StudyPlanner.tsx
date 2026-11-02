@@ -7,7 +7,8 @@ import type {StudentProfile} from '@/lib/profile';
 import type {QuestionAttempt} from '@/lib/demo-questions';
 import {getCloudAttempts} from '@/lib/cloud-study';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
-import {createAdaptiveWeekPlan,studyPriorities} from '@/lib/adaptive-week-plan';
+import {studyPriorities} from '@/lib/adaptive-week-plan';
+import {createStructuredWeekPlan} from '@/lib/structured-week-plan';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {createCloudTasks,deleteCloudTask,getCloudTasks,setCloudTaskDone,type StudyTask} from '@/lib/cloud-study';
 
@@ -29,7 +30,7 @@ export function createWeekPlan(p:StudentProfile,existing:StudyTask[],base=new Da
   return [...existing,...generated].sort((a,b)=>a.date.localeCompare(b.date));
 }
 
-export default function StudyPlanner({profile,userId,onContextChange,onTutor,initialDate,onCalendar}:{profile:StudentProfile;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;onTutor:()=>void;initialDate?:string;onCalendar?:()=>void}){
+export default function StudyPlanner({profile,userId,onContextChange,onTutor,initialDate,onCalendar,onDiagnostic}:{profile:StudentProfile;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;onTutor:()=>void;initialDate?:string;onCalendar?:()=>void;onDiagnostic?:()=>void}){
   const [tasks,setTasks]=useState<StudyTask[]>([]);
   const [title,setTitle]=useState('');const [subject,setSubject]=useState('Matemática');
   const [minutes,setMinutes]=useState(25);const [date,setDate]=useState('');const [startTime,setStartTime]=useState('');
@@ -84,17 +85,17 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     setNotice('Tarefa removida.');
   });}
   function generate(){void run(async()=>{
-    const next=createAdaptiveWeekPlan(profile,tasks,history,aiEvidence);const oldIds=new Set(tasks.map(t=>t.id));const created=next.filter(t=>!oldIds.has(t.id));
+    const next=createStructuredWeekPlan(profile,tasks,history,aiEvidence);const oldIds=new Set(tasks.map(t=>t.id));const created=next.filter(t=>!oldIds.has(t.id));
     if(userId)await createCloudTasks(userId,created);
     if(userId)setTasks(next);else commitLocal(next);
-    setNotice(created.length?`Adicionadas ${created.length} sessões com prioridades baseadas nos registros disponíveis. Ajuste o plano conforme sua rotina.`:'Não há novos dias ou minutos disponíveis nesta semana.');
+    setNotice(created.length?`Adicionadas ${created.length} atividades de estudo e, quando aplicável, uma reavaliação semanal. Ajuste conforme sua rotina.`:'Não há novos dias ou minutos disponíveis nesta semana.');
   });}
   useEffect(()=>{onContextChange({kind:'planner'});},[onContextChange]);
   const pending=tasks.filter(t=>!t.done),done=tasks.filter(t=>t.done);
   const evidenceLoading=historyLoading||aiEvidenceLoading;
   const evidenceUnavailable=Boolean(historyError||aiEvidenceError);
   function askKog(taskId?:string){onContextChange(taskId?{kind:'planner',taskId}:{kind:'planner'});onTutor();}
-  return <div className="app-content study-planner"><div className="page-intro"><span className="overline">ORGANIZAÇÃO INTELIGENTE</span><h1>Seu plano de <em>estudos.</em></h1><p>Uma agenda realista, flexível e respeitosa com seu tempo.</p>{onCalendar&&<button type="button" className="btn outline k-planner-calendar-link" onClick={onCalendar}><CalendarDays size={17}/> Ver calendário</button>}</div>
+  return <div className="app-content study-planner"><div className="page-intro"><span className="overline">ORGANIZAÇÃO INTELIGENTE</span><h1>Seu plano de <em>estudos.</em></h1><p>Sessões distribuídas por matérias, erros observados e tempo disponível, com reavaliação semanal.</p>{onCalendar&&<button type="button" className="btn outline k-planner-calendar-link" onClick={onCalendar}><CalendarDays size={17}/> Ver calendário</button>}</div>
     <div className="message neutral">{userId?'As atividades são sincronizadas na sua conta. As sugestões consideram sua disponibilidade, erros recentes e assuntos ainda não praticados nas amostras disponíveis.':'As atividades ficam neste navegador; sugestões utilizam somente o histórico demonstrativo local.'} Isso não é uma avaliação de domínio nem uma previsão de prova.</div>
     {error&&<div className="message warning" role="alert">{error} {userId&&!loaded?'Verifique se aplicou a migração 0004 no Supabase.':''}</div>}
     {!loaded&&!error&&<p className="muted" role="status">Carregando sua agenda…</p>}
@@ -104,7 +105,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
       <div className="planner-intelligence-list">{priority.slice(0,3).map((item,index)=><div key={item.subject}><span className="planner-priority-number">{index+1}</span><div><strong>{item.subject}</strong><small>{item.topic} · {item.needsReview?'revisão indicada':'próxima prática sugerida'}</small></div></div>)}</div>
     </section>
     <div className="planner-grid"><section className="dark-panel"><h2>Minha agenda</h2><p className="muted">Marque atividades, exclua-as ou crie seu próprio plano.</p>{!tasks.length?<p className="empty-tasks">Ainda não há tarefas. Gere sugestões ou adicione sua primeira atividade.</p>:<div className="task-list">{tasks.map(t=><div key={t.id} className={`task-row ${t.done?'completed':''}`}><label><input disabled={busy||!loaded} type="checkbox" checked={t.done} onChange={e=>toggle(t,e.target.checked)}/><span><strong>{t.title}</strong><small>{new Date(t.date+'T12:00:00').toLocaleDateString('pt-BR')} · {t.subject} · {t.startTime?`${t.startTime} · `:''}{t.minutes} min · {t.kind==='manual'?'Criada por você':'Sugestão'}</small></span></label><div className="task-row-actions"><button type="button" className="task-kog-help" onClick={()=>askKog(t.id)} aria-label={`Pedir ajuda ao Kog para ${t.title}`}>Kog</button><button className="delete-task" disabled={busy||!loaded} aria-label={`Excluir ${t.title}`} onClick={()=>remove(t)}>✕</button></div></div>)}</div>}</section>
-    <aside className="dark-panel"><h2>Planeje a semana</h2><p className="muted">Gere atividades com base no seu tempo disponível e nos assuntos que merecem atenção.</p><button className="btn primary full" disabled={!loaded||busy||evidenceLoading} onClick={generate}>{busy?'Salvando…':evidenceLoading?'Analisando histórico…':'Gerar plano por prioridades'}</button><button type="button" className="btn outline full" onClick={()=>askKog()}>Organizar minha semana com Kog</button><div className="section-divider"/><form className="field-stack" onSubmit={add}><h3>Adicionar atividade</h3><label>Atividade<input value={title} maxLength={120} required placeholder="Ex.: Revisar citologia" onChange={e=>setTitle(e.target.value)}/></label><KognosSelect label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} /><div className="two-cols planner-form-grid"><KognosDateField label="Data" value={date} onChange={setDate} /><label>Duração (min)<input type="number" min={5} max={240} value={minutes} onChange={e=>setMinutes(Math.max(5,Math.min(240,Number(e.target.value)||5)))}/></label></div><label className="k-planner-start-time">Horário (opcional)<input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} step="60"/><small className="muted">Sem horário, a atividade aparece na lista de pendentes de agendamento.</small></label><button className="btn outline" disabled={!loaded||busy}>{busy?'Salvando…':'Adicionar tarefa'}</button></form></aside></div>
+    <aside className="dark-panel"><h2>Planeje a semana</h2><p className="muted">Organize várias disciplinas por dia, respeitando seus horários e reservando um momento de revisão.</p><button className="btn primary full" disabled={!loaded||busy||evidenceLoading} onClick={generate}>{busy?'Salvando…':evidenceLoading?'Analisando histórico…':'Gerar plano por prioridades'}</button><button type="button" className="btn outline full" onClick={()=>askKog()}>Organizar minha semana com Kog</button>{onDiagnostic&&<button type="button" className="btn outline full k-planner-checkpoint" onClick={onDiagnostic}>Diagnóstico e reavaliação semanal</button>}<div className="section-divider"/><form className="field-stack" onSubmit={add}><h3>Adicionar atividade</h3><label>Atividade<input value={title} maxLength={120} required placeholder="Ex.: Revisar citologia" onChange={e=>setTitle(e.target.value)}/></label><KognosSelect label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} /><div className="two-cols planner-form-grid"><KognosDateField label="Data" value={date} onChange={setDate} /><label>Duração (min)<input type="number" min={5} max={240} value={minutes} onChange={e=>setMinutes(Math.max(5,Math.min(240,Number(e.target.value)||5)))}/></label></div><label className="k-planner-start-time">Horário (opcional)<input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} step="60"/><small className="muted">Sem horário, a atividade aparece na lista de pendentes de agendamento.</small></label><button className="btn outline" disabled={!loaded||busy}>{busy?'Salvando…':'Adicionar tarefa'}</button></form></aside></div>
     {evidenceUnavailable&&<p role="status" className="privacy-note">Histórico parcial: {historyError||aiEvidenceError}. As atividades manuais continuam disponíveis.</p>}
     {notice&&<div className="message success" role="status">{notice}</div>}
   </div>;
