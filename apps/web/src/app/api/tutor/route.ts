@@ -4,7 +4,6 @@ import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normaliz
 import { normalizeProfile } from '@/lib/profile';
 import {requestAI,isAIJobConfigured} from '@/lib/ai-provider';
 import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
-import {refundAIQuota} from '@/lib/ai-quota';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
@@ -106,13 +105,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       contextText=buildVerifiedPerformanceContext({answered:counted,correct,bySubject:[...totals.values()]});
     }
     // Only consume quota after all profile/context checks have succeeded.
-    const maxRequests = Math.max(1, Math.min(100, Number(process.env.AI_DAILY_REQUEST_LIMIT || '20') || 20));
-    const quotaDay = new Date().toISOString().slice(0,10);
-    const { data: reserved, error: quotaError } = await ctx.supabaseAdmin.rpc(
-      'reserve_ai_quota', { p_user_id: userId, p_daily_limit: maxRequests }
-    );
-    if (quotaError) return jsonError('O controle de cotas precisa da migração 0002 no Supabase.', 503);
-    if (reserved !== true) return jsonError(`Cota diária esgotada: até ${maxRequests} usos e ${maxRequests*2} tentativas de IA, compartilhadas com o gerador. Reinicia às 00:00 UTC.`, 429);
+    // No application-level daily cap. Provider-side rate and billing limits still apply.
     const messages = [
       { role: 'system', content: buildTutorSystemPrompt(profile, effectiveSubject, contextText) },
       ...sanitizeHistory(body.history),
