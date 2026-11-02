@@ -7,6 +7,7 @@ import {safeOfficialUrl} from '@/lib/syllabus-sources';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 import {describeGenerationError} from '@/lib/ai-generation-errors';
+import {shouldRefundAIQuota,refundAIQuota} from '@/lib/ai-quota';
 
 export const runtime='nodejs';
 export const maxDuration=180;
@@ -19,6 +20,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  const generation=validateGenerationRequest(body);
  if(!generation)return error('Escolha uma instituição, disciplina, assunto e dificuldade válidos (até cinco questões).',400);
  if(generation.lessonId&&!validLessonAIReference(generation.lessonId,generation.institution,generation.subject,generation.topic))return error('A aula não corresponde ao assunto selecionado. Escolha um tema válido para esta trilha.',400);
+ let quotaDay:string|null=null;
  try{
   // Never accept unverified source metadata from the browser. Match an approved topic + source in private tables.
   let verified:VerifiedSyllabusReference|null=null;
@@ -37,9 +39,10 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   }
   // Validate approved source provenance BEFORE consuming the student's daily AI quota.
   const limit=Math.max(1,Math.min(100,Number(process.env.AI_DAILY_REQUEST_LIMIT||'20')||20));
+  quotaDay=new Date().toISOString().slice(0,10);
   const {data:reserved,error:quotaError}=await ctx.supabaseAdmin.rpc('reserve_ai_quota',{p_user_id:userId,p_daily_limit:limit});
   if(quotaError)return error('Configure as migrações do Supabase, incluindo 0002 e 0005.',503);
-  if(reserved!==true)return error(`Você atingiu o limite compartilhado de ${limit} solicitações à IA hoje.`,429);
+  if(reserved!==true)return error(`Cota diária esgotada: até ${limit} usos e ${limit*2} tentativas de IA, compartilhadas com o tutor. Reinicia às 00:00 UTC.`,429);
   const approved=await createAndReviewQuestions(generation,verified||undefined);
   if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
   const {data:prior,error:priorError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
@@ -62,6 +65,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   const failure=describeGenerationError(e);
   // Never log raw exceptions: providers may include request content in error payloads.
   console.error('[KOGNOS][AI_GENERATION]',failure.code);
+  if(quotaDay&&shouldRefundAIQuota(failure.code))await refundAIQuota(ctx.supabaseAdmin,userId,quotaDay);
   return NextResponse.json({error:failure.message,code:failure.code},{
    status:failure.status,headers:{'Cache-Control':'no-store'}
   });
