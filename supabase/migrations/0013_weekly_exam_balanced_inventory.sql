@@ -118,7 +118,12 @@ as $
    count(a.question_id) filter (where a.correct)::integer as correct
   from recent e
   left join public.kognos_weekly_exam_items i on i.exam_id=e.id and i.user_id=p_user_id
-  left join public.kognos_ai_attempts a on a.question_id=i.question_id and a.user_id=p_user_id
+  left join lateral (
+   select attempt.question_id,attempt.correct
+   from public.kognos_ai_attempts attempt
+   where attempt.question_id=i.question_id and attempt.user_id=p_user_id
+   order by attempt.created_at desc limit 1
+  ) a on true
   group by e.id,e.week_start,e.question_count
  )
  select coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
@@ -127,5 +132,42 @@ as $
 $;
 revoke all on function public.kognos_weekly_exam_history(uuid,text) from public,anon,authenticated;
 grant execute on function public.kognos_weekly_exam_history(uuid,text) to service_role;
+
+-- Verified topic-level performance from actual reserved exam questions only.
+-- No question content, answer index, user ID, or raw attempt leaves this function.
+create or replace function public.kognos_weekly_exam_weak_topics(
+ p_user_id uuid,p_institution text
+) returns jsonb
+language sql stable security definer set search_path=''
+as $
+ with attempts as (
+  select q.subject,q.topic,a.correct,a.created_at,
+   pg_catalog.row_number() over (
+    partition by q.subject,q.topic order by a.created_at desc
+   ) as recency
+  from public.kognos_weekly_exam_items item
+  join public.kognos_ai_questions q on q.id=item.question_id
+   and q.user_id=p_user_id and q.institution=p_institution
+  join public.kognos_ai_attempts a on a.question_id=item.question_id
+   and a.user_id=p_user_id
+  where item.user_id=p_user_id
+ ), grouped as (
+  select subject,topic,
+   count(*)::integer as attempts,
+   count(*) filter (where not correct)::integer as incorrect,
+   pg_catalog.bool_or(recency=1 and not correct) as last_wrong
+  from attempts group by subject,topic
+ ), selected as (
+  select * from grouped where incorrect>0
+  order by last_wrong desc, incorrect desc, subject,topic limit 60
+ )
+ select coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
+  'subject',subject,'topic',topic,'attempts',attempts,
+  'incorrect',incorrect,'lastWrong',last_wrong
+ ) order by last_wrong desc,incorrect desc,subject,topic),'[]'::jsonb)
+ from selected;
+$;
+revoke all on function public.kognos_weekly_exam_weak_topics(uuid,text) from public,anon,authenticated;
+grant execute on function public.kognos_weekly_exam_weak_topics(uuid,text) to service_role;
 
 notify pgrst, 'reload schema';
