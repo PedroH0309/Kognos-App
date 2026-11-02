@@ -3,6 +3,7 @@ import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normalizeTutorAnswer } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
 import {requestAI,isAIJobConfigured} from '@/lib/ai-provider';
+import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
 import {refundAIQuota} from '@/lib/ai-quota';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
@@ -29,6 +30,10 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     ? body.subject.replace(/[\r\n<>]/g, ' ').slice(0, 70) : 'Conteúdo geral';
   const userId = ctx.userClaims?.id;
   if (!userId) return jsonError('Sua sessão não foi reconhecida. Entre novamente.', 401);
+  // The tutoring boundary must also exist on the server, not only in the UI.
+  // Explicit non-educational requests do not consume the student's AI quota.
+  const scopeResponse=tutorScopeReply(body.message as string);
+  if(scopeResponse)return NextResponse.json({answer:scopeResponse,scope:'pedagogical_only'},{headers:{'Cache-Control':'no-store'}});
   try {
     // Caller-scoped read. Row Level Security enforces isolation of preferences.
     const { data: profileRow, error: profileError } = await ctx.supabase
@@ -115,7 +120,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     ];
     const answer = await requestAI('tutor',messages as {role:'system'|'user'|'assistant';content:string}[],1250,0.55);
     return NextResponse.json(
-      { answer: normalizeTutorAnswer(answer).slice(0, 12000) },
+      { answer: normalizeTutorAnswer(enforcePedagogicalTutorAnswer(answer)).slice(0, 12000) }
       { headers: { 'Cache-Control': 'no-store' } }
     );
   } catch (e) {
