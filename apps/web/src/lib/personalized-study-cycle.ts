@@ -6,7 +6,8 @@ import type {AIStudyProgress} from './ai-study-progress.ts';
 import {learningLessons} from './learning-catalog.ts';
 import {demoQuestions} from './demo-questions.ts';
 import {civilToday,shiftCivilDate} from './calendar-model.ts';
-import {activeSyllabi,mergedSyllabus} from './exam-syllabus.ts';
+import {activeSyllabi} from './exam-syllabus.ts';
+import {completeExamTopicCatalog} from './exam-blueprints.ts';
 /** Topic evidence is computed from reserved, server-graded weekly attempts. */
 export type WeeklyExamWeakTopic={subject:string;topic:string;attempts:number;incorrect:number;lastWrong:boolean};
 
@@ -64,7 +65,7 @@ export function createPersonalizedStudyWeek(
  weeklyTopics:readonly WeeklyExamWeakTopic[]=[]
 ):StudyTask[]{
  const tasks=[...existing];
- const syllabus=mergedSyllabus(activeSyllabi(profile));
+ const syllabus=completeExamTopicCatalog(activeSyllabi(profile));
  const weeklyBoost=(subject:string)=>Math.min(500,weeklyTopics.filter(t=>t.subject===subject&&t.lastWrong)
   .reduce((total,t)=>total+Math.max(0,t.incorrect)*90,0));
  const original=studyPriorities(demo,ai).map(p=>({...p,priority:p.priority+weeklyBoost(p.subject)}));
