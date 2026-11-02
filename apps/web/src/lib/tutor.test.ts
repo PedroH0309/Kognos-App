@@ -28,7 +28,7 @@ test('Kog follows teaching guidelines and does not repeat prior consent requirem
  assert.match(prompt,/explique do simples/i);
  assert.match(prompt,/mini exercício/i);
  assert.match(prompt,/não revele a alternativa correta/i);
- assert.match(prompt,/NVIDIA/);
+ assert.match(prompt,/provedor de IA escolhido no servidor/);
  assert.doesNotMatch(prompt,/somente com autorização explícita/);
  assert.match(prompt,/CONTEXTO VERIFICADO/);
 });
