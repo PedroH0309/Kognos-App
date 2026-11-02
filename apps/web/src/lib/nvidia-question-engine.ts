@@ -4,15 +4,33 @@ import {filterByIndependentReview,validateModelQuestions,type ValidatedQuestion}
 /** The two calls are independent generations. They are NOT a guarantee of accuracy. */
 export async function requestNvidia(messages:{role:'system'|'user';content:string}[],maxTokens:number,temperature:number):Promise<string>{
  const key=process.env.NVIDIA_API_KEY;
- if(!key)throw new Error('NVIDIA_NOT_CONFIGURED');
+ if(!key?.trim())throw new Error('NVIDIA_NOT_CONFIGURED');
  const base=(process.env.NVIDIA_API_BASE_URL||'https://integrate.api.nvidia.com/v1').replace(/\/$/,'');
- const response=await fetch(`${base}/chat/completions`,{
-  method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json'},
-  body:JSON.stringify({model:process.env.NVIDIA_MODEL||'meta/llama-3.3-70b-instruct',messages,max_tokens:maxTokens,temperature,stream:false}),
-  cache:'no-store',signal:AbortSignal.timeout(65000)
- });
- if(!response.ok){if([401,403].includes(response.status))throw new Error('NVIDIA_AUTH');if(response.status===429)throw new Error('NVIDIA_RATE_LIMIT');throw new Error('NVIDIA_UNAVAILABLE');}
- const body=await response.json();const text=body?.choices?.[0]?.message?.content;
+ let response:Response;
+ try{
+  response=await fetch(base+'/chat/completions',{
+   method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
+   body:JSON.stringify({model:process.env.NVIDIA_MODEL||'meta/llama-3.3-70b-instruct',messages,max_tokens:maxTokens,temperature,stream:false}),
+   cache:'no-store',signal:AbortSignal.timeout(65000)
+  });
+ }catch(cause){
+  if(cause instanceof Error&&(cause.name==='TimeoutError'||cause.name==='AbortError'))throw new Error('NVIDIA_TIMEOUT');
+  throw new Error('NVIDIA_NETWORK');
+ }
+ if(!response.ok){
+  if(response.status===401||response.status===403)throw new Error('NVIDIA_AUTH');
+  if(response.status===429)throw new Error('NVIDIA_RATE_LIMIT');
+  if(response.status===408||response.status===504)throw new Error('NVIDIA_TIMEOUT');
+  if(response.status===400)throw new Error('NVIDIA_BAD_REQUEST');
+  if(response.status===404)throw new Error('NVIDIA_MODEL_UNAVAILABLE');
+  throw new Error('NVIDIA_UNAVAILABLE');
+ }
+ let body:unknown;
+ try{body=await response.json();}catch{throw new Error('NVIDIA_BAD_RESPONSE');}
+ const result=body&&typeof body==='object'?body as {choices?:Array<{message?:{content?:unknown};finish_reason?:unknown}>}:null;
+ const choice=result?.choices?.[0];
+ if(choice?.finish_reason==='length')throw new Error('NVIDIA_TRUNCATED');
+ const text=choice?.message?.content;
  if(typeof text!=='string'||!text.trim())throw new Error('NVIDIA_EMPTY');
  return text;
 }
