@@ -15,7 +15,7 @@ function goodText(s:unknown,min:number,max:number){
  // Comparisons like x < 3, 5 > 2 are legitimate in Maths/Physics.
  // React escapes displayed text; still reject HTML-like tags in generated items.
  return typeof s==='string'&&s.trim().length>=min&&s.trim().length<=max
-   &&!/<\\/?[a-z][^>]{0,200}>/i.test(s);
+   &&!/<\/?[a-z][^>]{0,200}>/i.test(s);
 }
 function normalize(s:string){return s.normalize('NFKD').toLowerCase().replace(/\p{M}/gu,'').replace(/\s+/g,' ').trim();}
 
