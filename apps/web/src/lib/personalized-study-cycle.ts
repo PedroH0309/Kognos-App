@@ -6,6 +6,7 @@ import type {AIStudyProgress} from './ai-study-progress.ts';
 import {learningLessons} from './learning-catalog.ts';
 import {demoQuestions} from './demo-questions.ts';
 import {civilToday,shiftCivilDate} from './calendar-model.ts';
+import {activeSyllabi,mergedSyllabus} from './exam-syllabus.ts';
 
 /** Evidence is linked to an ORIGINAL answer key, never a caller-supplied
  * "correct" flag. One answer is a study suggestion, not a diagnosis. */
@@ -60,7 +61,10 @@ export function createPersonalizedStudyWeek(
  base=new Date(),makeId=()=>crypto.randomUUID()
 ):StudyTask[]{
  const tasks=[...existing];
- const priorities=studyPriorities(demo,ai);
+ const syllabus=mergedSyllabus(activeSyllabi(profile));
+ const original=studyPriorities(demo,ai);
+ const priorities=[...original.filter(p=>!Object.keys(syllabus).length||Boolean(syllabus[p.subject])),
+  ...Object.entries(syllabus).filter(([subject])=>!original.some(p=>p.subject===subject)).map(([subject,topics])=>({subject,topic:topics[0]||'Introdução',needsReview:false,reviewItems:0,practiced:0,total:topics.length,aiAttempts:0,priority:102}))];
  const mistakes=missedTopics(demo);
  const useCount=new Map<string,number>();
  for(const task of existing)useCount.set(task.subject,(useCount.get(task.subject)||0)+1);
@@ -85,7 +89,9 @@ export function createPersonalizedStudyWeek(
    const minutes=Math.min(durationPlan(profile,remaining),remaining-minAfter);
    if(minutes<15)break;
    const weak=mistakes.find(x=>x.subject===chosen.subject);
-   const topic=weak?.topic||chosen.topic;
+   const availableTopics=syllabus[chosen.subject]||[];
+   const topicIndex=((Math.floor(new Date(date+'T12:00:00').getTime()/86400000/7)+(useCount.get(chosen.subject)||0))%Math.max(1,availableTopics.length));
+   const topic=weak?.topic||(chosen.needsReview?chosen.topic:null)||availableTopics[topicIndex]||chosen.topic;
    const goal=chosen.needsReview||Boolean(weak)?'Revisar':'Estudar';
    const style=slot===slots-1?'questões e checagem':'conceito e exemplo';
    tasks.push({
