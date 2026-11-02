@@ -33,7 +33,7 @@ export async function createCloudTasks(userId:string,tasks:StudyTask[]) {
 }
 export async function setCloudTaskTime(userId:string,id:string,startTime:string|null){
   // The field is optional: use null to return a task to "Sem horário".
-  if(startTime!==null&&!/^([01]\\d|2[0-3]):[0-5]\\d$/.test(startTime))
+  if(startTime!==null&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(startTime))
     throw new Error('Horário inválido. Use HH:mm.');
   const {data,error}=await db().from('kognos_demo_tasks')
     .update({start_time:startTime}).eq('user_id',userId).eq('id',id)
