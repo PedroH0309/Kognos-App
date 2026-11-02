@@ -4,6 +4,7 @@ import "./design-system.css";
 import "./onboarding-polish.css";
 import "./auth-entry.css";
 import "./kognos-clean-ui.css";
+import "./kognos-e-study.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",
