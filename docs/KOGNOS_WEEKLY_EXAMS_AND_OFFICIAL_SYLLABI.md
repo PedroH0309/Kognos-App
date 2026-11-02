@@ -27,3 +27,14 @@ Run npm test, npm run test:design, npm run typecheck and npm run build; then man
 ## Follow-up after activating the initial simulator
 Migration 0013 preserves all already reserved questions. It spreads newly reserved questions across available subjects, provides the exact unused approved inventory by subject, shows a bounded 12-week progress summary, and derives topic-level missed-answer evidence for the next personalized study plan. If 0013 is missing, the earlier 0012 simulator remains usable but the new inventory and history indicators are unavailable. The UI must say so.
 The FUVEST 2027 catalog now includes the nine compulsory books taken from the official vestibular page, separately from the general, editorial list. Other edition-specific syllabi remain pending source-by-source review.
+
+## Next increment: task-backed coverage tracking
+
+The personal study planner now renders a searchable, filterable syllabus checklist across every subject in the selected examination. Its counters distinguish **not started**, **scheduled**, **studied** (a recorded study task was checked off), and **requires review** (wrong answers recorded in the weekly exam). This is a study-activity dashboard, *not* a claim of proficiency or mastery. Weak-topic indicators take priority over a completed task, since an earlier study session does not erase a subsequent incorrect answer.
+
+The new `syllabus-progress.ts` module derives each status only from saved cloud/local planner activities and the server-graded weak-topic summary. It neither invents progress from opening a lesson nor assumes that adding a task means studying it. The manual task form also offers all subjects in the student's selected examination, instead of a fixed initial list.
+
+The FUVEST syllabus reference points directly to the university's official 2027 program PDF:
+https://www.fuvest.br/wp-content/uploads/fuvest2027-programa-vestibular.pdf
+
+**Operations:** No migration beyond already-applied 0013 is required for syllabus progress. Student-facing code changes become available only after PR #45 is merged into the default branch and the application is redeployed. Existing tasks and exam attempts remain in place. 
