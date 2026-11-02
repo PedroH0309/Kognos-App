@@ -5,7 +5,7 @@ test('routes three jobs to independent providers when keys exist',()=>{
  const env={GROQ_API_KEY:'groq-test',GEMINI_API_KEY:'gemini-test',NVIDIA_API_KEY:'nvidia-test'} as any;
  assert.equal(resolveAIProvider('generate',env)?.provider,'groq');
  assert.equal(resolveAIProvider('review',env)?.provider,'gemini');
- assert.equal(resolveAIProvider('tutor',env)?.model,'gemini-2.5-flash');
+ assert.equal(resolveAIProvider('tutor',env)?.model,'gemini-3.1-flash-lite');
  assert.equal(resolveAIProvider('generate',env)?.base,'https://api.groq.com/openai/v1');
 });
 test('NVIDIA backwards compatibility when new providers are not configured',()=>{
@@ -18,9 +18,9 @@ test('explicit provider never silently reroutes to another provider',()=>{
  assert.equal(isAIJobConfigured('generate',env),false);
 });
 test('independent model overrides are applied and keys are not public',()=>{
- const env={AI_REVIEW_PROVIDER:'gemini',AI_REVIEW_MODEL:'gemini-2.5-flash-lite',GEMINI_API_KEY:'private-test'} as any;
+ const env={AI_REVIEW_PROVIDER:'gemini',AI_REVIEW_MODEL:'gemini-3.1-flash-lite',GEMINI_API_KEY:'private-test'} as any;
  const v=resolveAIProvider('review',env);
- assert.equal(v?.model,'gemini-2.5-flash-lite');
+ assert.equal(v?.model,'gemini-3.1-flash-lite');
  assert.equal(v?.provider,'gemini');
 });
 
@@ -28,8 +28,8 @@ test('NVIDIA fallback never receives Groq or Gemini model overrides',()=>{
  const env={
   NVIDIA_API_KEY:'nvidia-private-test',
   AI_GENERATE_MODEL:'llama-3.3-70b-versatile',
-  AI_REVIEW_MODEL:'gemini-2.5-flash-lite',
-  AI_TUTOR_MODEL:'gemini-2.5-flash',
+  AI_REVIEW_MODEL:'gemini-3.1-flash-lite',
+  AI_TUTOR_MODEL:'gemini-3.1-flash-lite',
   NVIDIA_MODEL:'z-ai/glm-5.3-flash',
  } as any;
  for(const job of ['generate','review','tutor'] as const){
@@ -43,4 +43,10 @@ test('new Groq generation default avoids the retired Llama 3.3 model',()=>{
  const config=resolveAIProvider('generate',{GROQ_API_KEY:'test-groq'} as any);
  assert.equal(config?.provider,'groq');
  assert.equal(config?.model,'openai/gpt-oss-120b');
+});
+
+test('review and tutor use accessible Gemini 3.1 Flash-Lite defaults',()=>{
+ const env={GEMINI_API_KEY:'test-gemini'} as any;
+ assert.equal(resolveAIProvider('review',env)?.model,'gemini-3.1-flash-lite');
+ assert.equal(resolveAIProvider('tutor',env)?.model,'gemini-3.1-flash-lite');
 });
