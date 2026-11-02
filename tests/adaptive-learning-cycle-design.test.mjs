@@ -31,11 +31,8 @@ test('initial and weekly tests are connected with correct routing and honesty',(
  assert.match(app,/onWeeklyReview=\{openWeeklyReview\}/);
  assert.match(app,/onPlan=\{\(\)=>navigate\('plans'\)\}/);
 });
-test('calendar exports real task snapshot, not claimed live Apple/Google sync',()=>{
- assert.match(calendar,/downloadStudyCalendar\(tasks\)/);
- assert.match(calendar,/\.ics/);
- assert.match(calendar,/não uma sincronização automática bidirecional/);
- assert.ok(!calendar.includes('CALENDAR_PRIVATE_KEY'));
+test('calendar focuses on an internal study agenda without iCalendar export',()=>{
+ assert.doesNotMatch(calendar,/downloadStudyCalendar|\\.ics|Exportar agenda/);
 });
 test('teaching remains education-only and adaptive, not diagnostic or medical',()=>{
  assert.match(tutor,/ROTINA ADAPTATIVA/);
