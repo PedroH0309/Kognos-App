@@ -18,10 +18,19 @@ export function parseAIQuestionListQuery(url:string):AIQuestionListFilter|null {
  if(topic!==null&&(!topic.trim()||topic.length>120||subject===null))return null;
  return {institution:inst as ExamId|null,difficulty:difficulty as Difficulty|null,subject,topic,offset,limit:AI_BANK_PAGE_SIZE};
 }
-/** A 10-question UI action is implemented as two server-validated 5-item requests. */
+/**
+ * Smaller batches reduce incomplete AI review arrays. Two independent
+ * batches can run concurrently, keeping perceived latency near one request
+ * while still using the same server-validated 1..5 request contract.
+ */
 export function splitGenerationBatches(quantity:number):number[]{
  if(!Number.isInteger(quantity)||quantity<1||quantity>10)throw new Error('Escolha entre 1 e 10 questões.');
  const batches:number[]=[];
- for(let rest=quantity;rest>0;rest-=5)batches.push(Math.min(5,rest));
+ for(let rest=quantity;rest>0;){
+  const chunk=Math.min(5,rest);
+  if(chunk>3)batches.push(3,chunk-3);
+  else batches.push(chunk);
+  rest-=chunk;
+ }
  return batches;
 }
