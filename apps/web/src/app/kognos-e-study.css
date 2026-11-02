@@ -1,0 +1,383 @@
+/* KOGNOS / E-STUDY NAV + ILLUSTRATED LOGIN
+   Requested references: uncluttered white editorial sidebar and a stacked
+   nearly-black illustration / white sign-in sheet. Reuses existing product
+   routes and Supabase logic; no new JS libraries or remote assets.
+   This CSS deliberately loads AFTER kognos-clean-ui.css. */
+:root{
+ --k-nav-ink:#101B33;
+ --k-nav-hover:#EDF1F7;
+ --k-nav-selected:#E7EEF9;
+ --k-nav-muted:#617086;
+ --k-nav-rule:#E6EBF2;
+ --k-nav-active:#273A61;
+ --k-login-dark:#0D121C;
+ --k-login-surface:#FFFFFF;
+}
+
+/* White, minimal sidebar. No violet navigation accents. */
+.app-layout {grid-template-columns:222px minmax(0,1fr);}
+.app-layout .app-sidebar,
+.app-layout.theme-dark .app-sidebar,
+.app-layout.theme-light .app-sidebar {
+ background:#FFFFFF;color:#101B33;border-right:1px solid #E0E6EF;
+ padding:21px 10px 14px;box-shadow:none;
+}
+.app-layout .app-sidebar .side-logo {
+ padding:0 9px 26px;display:flex;gap:7px;align-items:center;justify-content:space-between;
+}
+.app-layout .app-sidebar .logo-cluster {min-width:0;}
+.app-layout .app-sidebar .logo-mark {width:38px;height:38px;}
+.app-layout .app-sidebar .logo-mark img {object-fit:contain;}
+.app-layout .app-sidebar .logo-word strong {
+ color:#101B33;font-size:23px;font-weight:850;letter-spacing:-.06em;
+}
+.app-layout .app-sidebar .logo-word strong span {color:#38CDE5;}
+.app-layout .app-sidebar .logo-word small {display:none;}
+.app-layout .app-sidebar .sidebar-collapse-btn {
+ width:30px;min-width:30px;height:30px;min-height:30px;
+ background:#F7F9FC;border:1px solid #E4E9F2;border-radius:9px;
+ color:#273A61;flex:none;
+}
+.app-layout .app-sidebar .sidebar-collapse-btn:hover {
+ background:#EDF1F7;border-color:#CAD7E9;color:#101B33;
+}
+.app-layout .app-sidebar .side-nav {
+ display:flex;flex-direction:column;gap:3px;
+ padding:0 5px 10px;scrollbar-color:#D3DCE8 transparent;overflow-y:auto;flex:1;
+}
+.app-layout .app-sidebar .k-nav-set {display:grid;gap:3px;}
+.app-layout .app-sidebar .k-nav-separator {
+ width:calc(100% - 6px);height:1px;background:#E5E9F0;flex:0 0 auto;margin:14px 3px;
+}
+.app-layout .app-sidebar .side-nav-item {
+ display:flex;align-items:center;gap:12px;width:100%;min-height:43px;
+ padding:9px 11px;border:1px solid transparent;border-radius:10px;
+ background:transparent;color:#252E3B;text-align:left;
+ font-size:12px;font-weight:620;letter-spacing:-.006em;
+ box-shadow:none;white-space:normal;
+}
+.app-layout .app-sidebar .side-nav-item .k-side-icon {
+ display:grid;place-items:center;width:19px;min-width:19px;height:21px;
+ color:#172434;flex:none;
+}
+.app-layout .app-sidebar .side-nav-item .k-side-icon svg {
+ width:18px;height:18px;stroke-width:1.8;
+}
+.app-layout .app-sidebar .side-nav-item .k-side-label {
+ display:block;min-width:0;flex:1;line-height:1.3;
+}
+.app-layout .app-sidebar .side-nav-item small {
+ color:#5D6D83;font-size:11px;flex:none;
+}
+.app-layout .app-sidebar .side-nav-item:hover {
+ background:#EDF1F7;border-color:transparent;color:#101B33;
+}
+.app-layout .app-sidebar .side-nav-item:hover .k-side-icon {color:#101B33;}
+.app-layout .app-sidebar .side-nav-item.active {
+ background:#E7EEF9;border-color:transparent;color:#183D72;
+ font-weight:760;box-shadow:none;
+}
+.app-layout .app-sidebar .side-nav-item.active .k-side-icon {color:#183D72;}
+.app-layout .app-sidebar .side-nav-item.active::before {
+ content:"";width:3px;height:20px;border-radius:4px;background:#38CDE5;
+ position:absolute;left:0;top:50%;transform:translateY(-50%);
+}
+.app-layout .app-sidebar .side-nav-item {position:relative;}
+.app-layout .app-sidebar .k-nav-more-toggle {
+ display:flex;align-items:center;gap:12px;width:100%;padding:9px 11px;
+ border:1px solid transparent;border-radius:10px;min-height:43px;
+ text-align:left;background:transparent;color:#526176;font-size:12px;font-weight:650;
+}
+.app-layout .app-sidebar .k-nav-more-toggle .k-side-icon {width:19px;min-width:19px;display:grid;place-items:center;}
+.app-layout .app-sidebar .k-nav-more-toggle .k-side-label {flex:1;}
+.app-layout .app-sidebar .k-nav-more-toggle .k-side-chevron {display:grid;place-items:center;transition:transform .15s ease;}
+.app-layout .app-sidebar .k-nav-more-toggle[aria-expanded="true"] .k-side-chevron {transform:rotate(90deg);}
+.app-layout .app-sidebar .k-nav-more-toggle:hover,
+.app-layout .app-sidebar .k-nav-more-toggle.selected {
+ background:#EDF1F7;color:#273A61;
+}
+.app-layout .app-sidebar .k-nav-expanded {
+ margin:0 0 3px 16px;padding-left:8px;border-left:1px solid #DCE4EF;
+}
+.app-layout .app-sidebar .k-nav-expanded .side-nav-item {min-height:39px;font-size:11px;}
+.app-layout .app-sidebar .sidebar-bottom {
+ flex:none;margin-top:9px;padding:13px 5px 0;border-top:1px solid #E5E9F0;
+}
+.app-layout .app-sidebar .side-promo {display:none!important;}
+.app-layout .app-sidebar .side-user {
+ background:#F7F9FC;color:#101B33;border:1px solid #E7EBF1;
+ border-radius:12px;padding:8px 9px;box-shadow:none;
+}
+.app-layout .app-sidebar .side-user:hover {background:#EDF1F7;border-color:#CAD8EB;}
+.app-layout .app-sidebar .side-user strong {color:#101B33;font-size:11px;font-weight:760;}
+.app-layout .app-sidebar .side-user small {color:#6D7B8E;font-size:10px;}
+.app-layout .app-sidebar .side-user>b {color:#607086;}
+.app-layout .app-sidebar .side-user .profile-avatar {width:32px;height:32px;flex:none;}
+.app-layout .app-topbar .icon-top-btn,
+.app-layout .app-topbar .search-trigger {color:#273A61;}
+.app-layout .app-topbar .icon-top-btn:hover,
+.app-layout .app-topbar .search-trigger:hover {
+ border-color:#9AB6D2;color:#101B33;background:#EDF1F7;
+}
+.app-layout .app-topbar .crumbs span {color:#38A7BF;}
+.app-layout .k-dashboard-heading h1 em {color:#273A61;}
+.app-layout.theme-dark .k-dashboard-heading h1 em {color:#95CDE4;}
+.app-layout .k-dashboard .overline {color:#273A61;}
+.app-layout.theme-dark .k-dashboard .overline {color:#93CCDC;}
+.app-layout .k-section-text-action {color:#273A61;}
+.app-layout.theme-dark .k-section-text-action {color:#8CC8E0;}
+.app-layout .k-section-text-action:hover {color:#0B6B83;}
+.app-layout .k-dashboard-icon-button,
+.app-layout .k-dashboard .kognos-stat .stat-icon {
+ background:#E7EEF9;color:#273A61;border-color:transparent;
+}
+.app-layout .k-dashboard .kognos-stat:nth-child(3) .stat-icon {background:#EDF1F7;color:#273A61;}
+.app-layout .k-hero-button,
+.app-layout .k-next-cta {background:#273A61!important;border-color:#273A61!important;color:#fff!important;}
+.app-layout .k-hero-button:hover:not(:disabled),
+.app-layout .k-next-cta:hover:not(:disabled) {background:#1B2C4B!important;border-color:#1B2C4B!important;}
+.app-layout .mobile-bottom-nav,
+.app-layout.theme-light .mobile-bottom-nav,
+.app-layout.theme-dark .mobile-bottom-nav {
+ background:#FFFFFF;border-top:1px solid #E2E8F1;box-shadow:0 -8px 22px #101B330C;
+}
+.app-layout .mobile-bottom-nav button {color:#596B80;background:transparent;}
+.app-layout .mobile-bottom-nav button.active,
+.app-layout.theme-dark .mobile-bottom-nav button.active {
+ color:#173D6B;background:#E7EEF9;
+}
+.app-layout .mobile-bottom-nav button.active svg {stroke:#173D6B;}
+
+/* Narrow desktop keeps label text readable; collapsed sidebar keeps icons. */
+@media(min-width:921px) {
+ .app-layout.sidebar-collapsed {grid-template-columns:73px minmax(0,1fr);}
+ .app-layout.sidebar-collapsed .app-sidebar {padding-inline:8px;}
+ .app-layout.sidebar-collapsed .side-logo {padding:0 0 15px;display:grid;justify-items:center;gap:6px;}
+ .app-layout.sidebar-collapsed .side-logo .logo-word {display:none;}
+ .app-layout.sidebar-collapsed .side-logo .logo-mark {width:42px;height:42px;}
+ .app-layout.sidebar-collapsed .side-nav {padding-inline:1px;gap:4px;}
+ .app-layout.sidebar-collapsed .side-nav-item,
+ .app-layout.sidebar-collapsed .k-nav-more-toggle {
+  font-size:0;padding:8px 0;justify-content:center;gap:0;min-height:43px;
+ }
+ .app-layout.sidebar-collapsed .side-nav-item .k-side-label,
+ .app-layout.sidebar-collapsed .k-nav-more-toggle .k-side-label,
+ .app-layout.sidebar-collapsed .k-side-chevron {display:none;}
+ .app-layout.sidebar-collapsed .side-nav-item .k-side-icon,
+ .app-layout.sidebar-collapsed .k-nav-more-toggle .k-side-icon {display:grid;width:21px;min-width:21px;}
+ .app-layout.sidebar-collapsed .k-nav-expanded {margin:0;padding-left:0;border-left:0;}
+ .app-layout.sidebar-collapsed .k-nav-separator {margin:10px 4px;width:calc(100% - 8px);}
+ .app-layout.sidebar-collapsed .side-user {justify-content:center;padding:7px 0;}
+ .app-layout.sidebar-collapsed .side-user>span:not(.profile-avatar),
+ .app-layout.sidebar-collapsed .side-user>b {display:none;}
+}
+@media(min-width:921px) and (max-width:1080px){
+ .app-layout:not(.sidebar-collapsed) {grid-template-columns:210px minmax(0,1fr);}
+}
+
+/* LOGIN V3: one coherent black-to-white stage, on desktop AND mobile. */
+.theme-light .k-auth-v2.k-auth-gateway,
+.theme-dark .k-auth-v2.k-auth-gateway {
+ min-height:100dvh;display:flex;flex-direction:column;
+ justify-content:center;align-items:center;gap:16px;
+ padding:clamp(18px,4vh,36px) 18px;
+ background:#F7F9FC;color:#101B33;
+ overflow-x:hidden;overflow-y:auto;
+}
+.theme-light .k-auth-v2.k-auth-gateway::before,
+.theme-dark .k-auth-v2.k-auth-gateway::before {
+ inset:0;position:fixed;z-index:-1;
+ background:radial-gradient(circle at 11% 24%,#38CDE518 0,transparent 24%),
+ radial-gradient(circle at 88% 78%,#18B78A12 0,transparent 28%),#F7F9FC;
+}
+.k-auth-v2.k-auth-gateway .k-auth-shell.k-auth-stack {
+ display:flex;flex-direction:column;align-items:stretch;
+ width:min(610px,100%);max-width:610px;gap:0;
+ background:#FFFFFF;border:1px solid #E6ECF4;
+ border-radius:35px;overflow:hidden;
+ box-shadow:0 30px 85px #101B3320;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story {
+ position:relative;isolation:isolate;overflow:hidden;
+ display:flex;flex-direction:column;justify-content:flex-start;align-items:center;
+ width:100%;height:auto;min-height:334px;max-height:none;
+ padding:21px 32px 27px;margin:0;
+ background:radial-gradient(ellipse at 50% 14%,#303439 0%,#141719 46%,#090B0D 94%);
+ color:#fff;text-align:center;gap:0;
+}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand {
+ display:flex;align-items:center;justify-content:space-between;gap:18px;
+ width:100%;position:relative;z-index:2;
+}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand .logo-cluster {min-width:0;gap:6px;}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand .logo-mark {width:31px;height:31px;}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand .logo-word strong {
+ color:#fff;font-size:18px;letter-spacing:-.06em;
+}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand .logo-word strong span {color:#38CDE5;}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand>span {
+ font-size:9px;font-weight:750;letter-spacing:.10em;color:#D5DFE4;white-space:nowrap;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story-main {
+ position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0;
+ margin:0;width:100%;max-width:100%;
+}
+.k-auth-v2.k-auth-gateway .k-auth-portrait-scene {
+ width:min(100%,385px);height:213px;display:grid;place-items:center;
+ margin:-6px auto -14px;position:relative;flex:none;
+}
+.k-auth-v2.k-auth-gateway .k-auth-portrait-scene img {
+ width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 10px #0000002A);
+}
+.k-auth-v2.k-auth-gateway .k-auth-story h1 {
+ font-size:clamp(28px,3.4vw,38px);font-weight:850;
+ max-width:520px;letter-spacing:-.060em;line-height:1.08;color:#fff;
+ margin:5px 0 9px;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story h1 em {color:#FFFFFF;font-style:normal;}
+.k-auth-v2.k-auth-gateway .k-auth-story-main>p {
+ max-width:440px;font-size:12px;font-weight:480;line-height:1.65;color:#E0E8ED;margin:0;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story-bubble {
+ position:absolute;z-index:1;border-radius:50%;pointer-events:none;
+}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-one {width:31px;height:31px;background:#C9FAD1;top:53px;right:20px;}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-two {width:24px;height:24px;background:#EACBFB;top:99px;left:-10px;}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-three {width:11px;height:11px;background:#BDF3F9;top:163px;right:47px;}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-four {width:9px;height:9px;background:#FFF1B6;bottom:72px;left:44px;}
+.k-auth-v2.k-auth-gateway .k-auth-form-shell {
+ position:relative;z-index:3;background:#FFFFFF;color:#101B33;
+ border-radius:37px 37px 0 0;margin-top:-7px;width:100%;
+ padding:0;
+}
+.k-auth-v2.k-auth-gateway .k-auth-form-shell .auth-card,
+.theme-light .k-auth-v2.k-auth-gateway .auth-card,
+.theme-dark .k-auth-v2.k-auth-gateway .auth-card {
+ display:block;min-width:0;max-width:none;width:100%;margin:0;
+ padding:25px clamp(25px,8vw,71px) 26px;
+ background:transparent;box-shadow:none;border:0;
+ border-radius:0;color:#101B33;
+}
+.k-auth-v2.k-auth-gateway .auth-card .modal-head {display:none;}
+.k-auth-v2.k-auth-gateway .auth-card .k-auth-mode-tabs {
+ display:grid;grid-template-columns:1fr 1fr;gap:4px;width:min(330px,100%);
+ border:1px solid #E6EAF0;background:#EDF1F7;border-radius:12px;
+ padding:4px;margin:0 auto 18px;
+}
+.k-auth-v2.k-auth-gateway .k-auth-mode-tabs button {
+ border:0;border-radius:9px;min-height:39px;padding:8px 12px;
+ font-size:12px;font-weight:750;color:#66758C;background:transparent;
+}
+.k-auth-v2.k-auth-gateway .k-auth-mode-tabs button.selected {
+ color:#101B33;background:#fff;box-shadow:0 2px 10px #101B3313;
+}
+.k-auth-v2.k-auth-gateway .auth-card h2 {
+ text-align:center;font-size:clamp(20px,2.7vw,25px);
+ color:#101B33;font-weight:820;letter-spacing:-.04em;margin:4px 0 6px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .muted {
+ color:#718096;text-align:center;margin:0 auto;font-size:12px;line-height:1.6;max-width:380px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .field-stack {display:grid;gap:13px;margin-top:23px;}
+.k-auth-v2.k-auth-gateway .auth-card .field-stack label {
+ color:#273A61;font-weight:750;font-size:12px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .field-stack input {
+ width:100%;min-height:49px;margin-top:7px;border-radius:12px;
+ border:1px solid #E1E8F1;background:#F7F9FC;color:#101B33;
+ padding:12px 15px;font-size:13px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .field-stack input::placeholder {color:#8996A5;}
+.k-auth-v2.k-auth-gateway .auth-card .field-stack input:focus-visible {
+ outline:2px solid #38CDE5;outline-offset:2px;border-color:#273A61;
+}
+.k-auth-v2.k-auth-gateway .auth-card .password-eye {
+ color:#273A61;border:1px solid #E1E8F1;background:#EDF1F7;
+ border-radius:10px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .btn.primary {
+ color:#fff;background:#101B33;border:1px solid #101B33;border-radius:13px;
+ min-height:50px;font-size:13px;margin-top:4px;box-shadow:none;
+}
+.k-auth-v2.k-auth-gateway .auth-card .btn.primary:hover:not(:disabled) {
+ background:#273A61;border-color:#273A61;
+}
+.k-auth-v2.k-auth-gateway .auth-card .auth-switches {
+ display:flex;justify-content:center;gap:16px;margin-top:12px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .auth-switches button {
+ color:#273A61;font-size:11px;font-weight:730;margin:0;padding:5px 8px;
+}
+.k-auth-v2.k-auth-gateway .auth-card .auth-switches button:hover {color:#148EAD;}
+.k-auth-v2.k-auth-gateway .auth-card .fine-print {
+ text-align:center;color:#8996A5;font-size:10px;margin:14px auto 0;line-height:1.5;
+}
+.k-auth-v2.k-auth-gateway .auth-card .message {max-width:100%;font-size:12px;overflow-wrap:anywhere;}
+.k-auth-v2.k-auth-gateway .k-auth-footer {
+ margin:0;color:#687A8A;font-size:11px;text-align:center;
+}
+
+/* A seamless mobile counterpart, with large touch targets and no clipping. */
+@media(max-width:920px) {
+ .app-layout .app-sidebar,
+ .app-layout.sidebar-collapsed .app-sidebar {
+  background:#FFFFFF;border-color:#E0E6EF;color:#101B33;
+  z-index:33;padding:20px 11px 13px;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .side-logo {
+  display:flex;justify-content:space-between;padding:0 9px 23px;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .side-logo .logo-word {display:block;}
+ .app-layout.sidebar-collapsed .app-sidebar .side-nav-item {
+  justify-content:flex-start;gap:12px;padding:9px 11px;min-height:43px;font-size:12px;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .side-nav-item .k-side-label {display:block;}
+ .app-layout.sidebar-collapsed .app-sidebar .side-user {justify-content:flex-start;padding:8px 9px;}
+ .app-layout.sidebar-collapsed .app-sidebar .side-user>span:not(.profile-avatar),
+ .app-layout.sidebar-collapsed .app-sidebar .side-user>b {display:block;}
+ .app-layout .mobile-bottom-nav button {color:#596B80;}
+ .app-layout .app-topbar .icon-top-btn {background:var(--box-bg);}
+ .app-layout .app-sidebar .sidebar-collapse-btn {display:none;}
+ .k-auth-v2.k-auth-gateway .k-auth-shell.k-auth-stack {width:min(510px,100%);}
+}
+@media(max-width:600px) {
+ .theme-light .k-auth-v2.k-auth-gateway,
+ .theme-dark .k-auth-v2.k-auth-gateway {
+  padding:0;justify-content:flex-start;gap:0;min-height:100dvh;
+  background:#FFFFFF;
+ }
+ .k-auth-v2.k-auth-gateway .k-auth-shell.k-auth-stack {
+  max-width:none;width:100%;border:0;border-radius:0;box-shadow:none;
+ }
+ .k-auth-v2.k-auth-gateway .k-auth-story {
+  min-height:375px;padding:22px 20px 29px;border-radius:0;
+ }
+ .k-auth-v2.k-auth-gateway .k-auth-stage-brand>span {font-size:8px;}
+ .k-auth-v2.k-auth-gateway .k-auth-stage-brand .logo-word strong {font-size:18px;}
+ .k-auth-v2.k-auth-gateway .k-auth-portrait-scene {
+  width:min(100%,375px);height:218px;margin:-8px auto -13px;
+ }
+ .k-auth-v2.k-auth-gateway .k-auth-story h1 {font-size:clamp(28px,8vw,36px);max-width:390px;}
+ .k-auth-v2.k-auth-gateway .k-auth-story-main>p {font-size:12px;max-width:310px;}
+ .k-auth-v2.k-auth-gateway .k-auth-form-shell {margin-top:-22px;border-radius:39px 39px 0 0;}
+ .k-auth-v2.k-auth-gateway .k-auth-form-shell .auth-card,
+ .theme-light .k-auth-v2.k-auth-gateway .auth-card,
+ .theme-dark .k-auth-v2.k-auth-gateway .auth-card {
+  padding:31px clamp(22px,7vw,42px) 25px;
+ }
+ .k-auth-v2.k-auth-gateway .k-auth-footer {
+  padding:6px 20px 18px;background:#FFFFFF;width:100%;
+ }
+}
+@media(max-width:360px){
+ .k-auth-v2.k-auth-gateway .k-auth-stage-brand>span {display:none;}
+ .k-auth-v2.k-auth-gateway .k-auth-story {min-height:345px;}
+ .k-auth-v2.k-auth-gateway .k-auth-portrait-scene {height:180px;}
+ .k-auth-v2.k-auth-gateway .auth-card .field-stack {gap:10px;}
+}
+@media(max-height:670px) and (min-width:601px){
+ .theme-light .k-auth-v2.k-auth-gateway,.theme-dark .k-auth-v2.k-auth-gateway {justify-content:flex-start;}
+}
+@media(prefers-reduced-motion:reduce){
+ .app-layout .k-nav-more-toggle .k-side-chevron{transition:none!important;}
+}
