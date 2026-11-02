@@ -90,6 +90,6 @@ test('database schema upgrades old institution checks without dropping user ques
 });
 test('weekly planner respects legacy question topics already used by the AI bank',()=>{
  const planner=read('apps/web/src/lib/personalized-study-cycle.ts');
- assert.match(planner,/completeExamTopicCatalog\(activeSyllabi\(profile\)\)/);
+ assert.match(planner,/completeExamTopicCatalog\(exams\)/);
  assert.match(planner,/weeklyWrong/);
 });
