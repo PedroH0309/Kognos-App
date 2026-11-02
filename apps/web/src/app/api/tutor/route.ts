@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
+import {DEFAULT_NVIDIA_MODEL,nvidiaInferenceOptions} from '@/lib/nvidia-request-config';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
@@ -120,8 +121,9 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
         method: 'POST',
         headers: { Authorization: `Bearer ${process.env.NVIDIA_API_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: process.env.NVIDIA_MODEL || 'meta/llama-3.3-70b-instruct', messages,
+          model: process.env.NVIDIA_MODEL || DEFAULT_NVIDIA_MODEL, messages,
           max_tokens: 1250, temperature: 0.55, stream: false,
+          ...nvidiaInferenceOptions(process.env.NVIDIA_MODEL || DEFAULT_NVIDIA_MODEL),
         }),
         cache: 'no-store', signal: controller.signal,
       });
