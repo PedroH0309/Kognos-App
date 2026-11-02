@@ -7,6 +7,7 @@ import {safeOfficialUrl} from '@/lib/syllabus-sources';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 import {describeGenerationError} from '@/lib/ai-generation-errors';
+import {isAIJobConfigured} from '@/lib/ai-provider';
 import {shouldRefundAIQuota,refundAIQuota} from '@/lib/ai-quota';
 
 export const runtime='nodejs';
@@ -72,7 +73,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  }
 });
 export async function POST(request:Request){
- if(!process.env.NVIDIA_API_KEY)return error('Configure NVIDIA_API_KEY no servidor.',503);
+ if(!isAIJobConfigured('generate')||!isAIJobConfigured('review'))return error('Configure as chaves de IA para geração e revisão no servidor (GROQ_API_KEY e GEMINI_API_KEY ou NVIDIA_API_KEY).',503);
  if(!process.env.SUPABASE_URL||!process.env.SUPABASE_PUBLISHABLE_KEY||!process.env.SUPABASE_SECRET_KEY||!process.env.SUPABASE_JWKS_URL)return error('Supabase não configurado no servidor.',503);
  return handler(request);
 }
