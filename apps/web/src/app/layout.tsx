@@ -7,6 +7,7 @@ import "./kognos-clean-ui.css";
 import "./kognos-e-study.css";
 import "./kognos-motion-theme.css";
 import "./kognos-profile-planner-fixes.css";
+import "./kognos-calendar.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",
