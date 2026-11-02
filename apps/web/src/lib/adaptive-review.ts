@@ -84,3 +84,30 @@ export function evaluateExploratoryDiagnostic(questions:readonly DemoQuestion[],
  return {answered:results.filter(r=>r.answered).length,correct:results.filter(r=>r.answered&&r.correct).length,total:results.length,results,
   subjects:results.map(r=>({subject:r.subject,correct:r.correct,topic:r.topic,questionId:r.questionId}))};
 }
+/** Balanced diagnostic drawn from the existing 20 authored questions.
+ * Wrong answers are displayed early, then unseen topics; all subjects appear.
+ * The limited bank may repeat questions, so it cannot establish lasting mastery.
+ */
+export function selectAdaptiveDiagnosticSession(attempts:readonly QuestionAttempt[],limit=20):DemoQuestion[]{
+ const last=new Map<string,QuestionAttempt>();
+ const counts=new Map<string,number>();
+ for(const attempt of [...attempts].sort((a,b)=>Date.parse(b.createdAt)-Date.parse(a.createdAt))){
+  if(!demoQuestions.some(q=>q.id===attempt.questionId))continue;
+  if(!last.has(attempt.questionId))last.set(attempt.questionId,attempt);
+  counts.set(attempt.questionId,(counts.get(attempt.questionId)||0)+1);
+ }
+ const groups=new Map<string,DemoQuestion[]>();
+ for(const question of demoQuestions)groups.set(question.subject,[...(groups.get(question.subject)||[]),question]);
+ const weight=(question:DemoQuestion)=>{
+  const attempt=last.get(question.id);
+  return attempt&&attempt.answerIndex!==question.correct?0:!attempt?1:2;
+ };
+ const buckets=[...groups].sort(([a],[b])=>a.localeCompare(b,'pt-BR'))
+  .map(([,items])=>items.sort((a,b)=>weight(a)-weight(b)||
+   (counts.get(a.id)||0)-(counts.get(b.id)||0)||a.id.localeCompare(b.id)));
+ const output:DemoQuestion[]=[];
+ while(output.length<Math.min(limit,demoQuestions.length)&&buckets.some(bucket=>bucket.length)){
+  for(const bucket of buckets)if(bucket.length&&output.length<limit)output.push(bucket.shift()!);
+ }
+ return output;
+}
