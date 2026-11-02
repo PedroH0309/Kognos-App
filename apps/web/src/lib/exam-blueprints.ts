@@ -93,3 +93,19 @@ export function validateGenerationRequest(value:unknown):GenerationRequest|null 
  if(!Number.isInteger(v.count)||Number(v.count)<1||Number(v.count)>5)return null;
  return {institution,subject:v.subject,topic:v.topic,difficulty:v.difficulty,count:v.count as number,...(sourceTopicId?{sourceTopicId}:{}),...(lessonId?{lessonId}:{}),...(variation!==undefined?{variation}:{})};
 }
+
+/** Unified coverage of broad editorial content and original question-bank
+ * topics. Keeping both prevents an assessed legacy topic from disappearing
+ * from the study checklist, so weekly mistakes can be scheduled for review.
+ */
+export function completeExamTopicCatalog(exams:readonly ExamId[]):Record<string,readonly string[]>{
+ const output:Record<string,string[]>={};
+ for(const exam of exams){
+  const blueprint=examBlueprints[exam];
+  if(!blueprint)continue;
+  for(const [subject,topics] of Object.entries(blueprint.subjects)){
+   output[subject]=[...new Set([...(output[subject]||[]),...topics])];
+  }
+ }
+ return output;
+}
