@@ -39,9 +39,7 @@ export function isAIJobConfigured(job:AIJob,env:Record<string,string|undefined>=
 }
 
 /** Never expose raw upstream responses or keys. Shared OpenAI-compatible REST protocol. */
-export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number):Promise<string>{
- const c=resolveAIProvider(job);
- if(!c)throw new Error('AI_PROVIDER_NOT_CONFIGURED');
+async function requestSingleProvider(c:ProviderConfig,job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number):Promise<string>{
  const t=Date.now();
  let response:Response;
  try{
@@ -72,4 +70,31 @@ export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assist
  const answer=choice?.message?.content;
  if(typeof answer!=='string'||!answer.trim())throw new Error('NVIDIA_EMPTY');
  return answer;
+}
+
+/**
+ * Reuse already-generated questions if Gemini review is unavailable.
+ * A single Groq fallback performs a fresh independent pedagogical review;
+ * do not silently approve any question or retry unboundedly.
+ * The generator already sends study context to Groq. No new third-party
+ * provider receives the content during fallback.
+ */
+export async function requestAI(job:AIJob,messages:{role:'system'|'user'|'assistant';content:string}[],maxTokens:number,temperature:number):Promise<string>{
+ const primary=resolveAIProvider(job);
+ if(!primary)throw new Error('AI_PROVIDER_NOT_CONFIGURED');
+ try{
+  return await requestSingleProvider(primary,job,messages,maxTokens,temperature);
+ }catch(cause){
+  const fallbackDisabled=process.env.AI_REVIEW_FALLBACK_PROVIDER?.trim().toLowerCase()==='none';
+  const eligible=job==='review'&&primary.provider==='gemini'&&!fallbackDisabled
+   &&cause instanceof Error&&cause.message==='NVIDIA_UNAVAILABLE';
+  if(!eligible)throw cause;
+  const key=process.env.GROQ_API_KEY?.trim();
+  if(!key)throw cause;
+  const model=process.env.AI_REVIEW_FALLBACK_MODEL?.trim()||'openai/gpt-oss-20b';
+  // Keep the fallback model independent from the 120B generation model.
+  const fallback:ProviderConfig={provider:'groq',key,model,base:endpoints.groq};
+  console.info('[KOGNOS][AI]',job,'Gemini unavailable; trying Groq fallback');
+  return requestSingleProvider(fallback,job,messages,maxTokens,temperature);
+ }
 }
