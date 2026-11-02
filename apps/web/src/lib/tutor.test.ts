@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from './tutor.ts';
+import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normalizeTutorAnswer } from './tutor.ts';
 import { defaultForDyslexia, defaultForTDAH, initialProfile, normalizeProfile } from './profile.ts';
 
 test('perfil impede atributos desconhecidos e remove valores indevidos',()=>{
@@ -31,4 +31,18 @@ test('Kog follows teaching guidelines and does not repeat prior consent requirem
  assert.match(prompt,/NVIDIA/);
  assert.doesNotMatch(prompt,/somente com autorização explícita/);
  assert.match(prompt,/CONTEXTO VERIFICADO/);
+});
+test('Kog removes visible Markdown emphasis without corrupting fenced and inline code',()=>{
+ const input='Para resolver, veja **o contexto**, **o pedido** e **as pistas**.\n\n## Exemplo\n- Primeiro passo\n- Segundo passo\nCódigo: `a**b`.';
+ const formatted=normalizeTutorAnswer(input);
+ assert.match(formatted,/o contexto, o pedido e as pistas/);
+ assert.doesNotMatch(formatted,/\\*\\*o contexto/);
+ assert.match(formatted,/Exemplo/);
+ assert.match(formatted,/• Primeiro passo/);
+ assert.match(formatted,/`a\\*\\*b`/);
+});
+test('Kog prompt requests plain-language text without Markdown',()=>{
+ const prompt=buildTutorSystemPrompt(initialProfile,'Matemática');
+ assert.match(prompt,/sem Markdown/);
+ assert.match(prompt,/Nunca use asteriscos duplos/);
 });
