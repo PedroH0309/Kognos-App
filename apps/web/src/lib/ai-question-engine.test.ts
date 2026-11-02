@@ -52,7 +52,7 @@ test('one generation plus a targeted incomplete review recovers five verified qu
   assert.match(calls[1].host,/generativelanguage.googleapis.com/);
   assert.match(calls[2].host,/generativelanguage.googleapis.com/);
   assert.match(calls[0].body.messages[1].content,/Abordagem sugerida/);
-  const followup=JSON.parse(calls[2].body.messages[1].content.split('independentemente:\\n')[1]);
+  const followup=JSON.parse(calls[2].body.messages[1].content.split('independentemente:\n')[1]);
   assert.equal(followup.length,4);
   assert.deepEqual(followup.map((item:any)=>item.index),[0,1,2,3]);
   // No reference answers are sent to the independent review model.
