@@ -55,8 +55,8 @@ test('fallback can be explicitly disabled even when Gemini is overloaded',async(
 });
 test('generation does not reroute to another API on provider failure',async()=>{
  const restore=envForReview(),oldFetch=globalThis.fetch;let calls=0;
- process.env.AI_GENERATE_PROVIDER='groq';
  const oldGen=process.env.AI_GENERATE_PROVIDER;
+ process.env.AI_GENERATE_PROVIDER='groq';
  globalThis.fetch=async()=>{calls++;return new Response('{}',{status:503});};
  try{
   await assert.rejects(requestAI('generate',messages,300,0.1),/NVIDIA_UNAVAILABLE/);
