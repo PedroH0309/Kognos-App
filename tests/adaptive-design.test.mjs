@@ -15,7 +15,7 @@ test('diagnostic freezes canonical question selection and saves only at completi
  assert.match(diagnostic,/setSessionQuestions\(suggestedQuestions\)/);
  assert.match(diagnostic,/const questions=sessionQuestions.length\?sessionQuestions:suggestedQuestions/);
  assert.match(diagnostic,/createCloudAttempts\(userId,records\)/);
- assert.match(diagnostic,/mode:'practice'/);
+ assert.match(diagnostic,/mode:cycle==='weekly'\?'mock':'practice'/);
  assert.match(diagnostic,/screen==='report'/);
 });
 test('review actions navigate to actual lessons and exercises',()=>{
