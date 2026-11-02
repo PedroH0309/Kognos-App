@@ -70,3 +70,10 @@ test('curriculum checklist shows task-backed evidence without a mastery claim',(
  assert.match(ui,/statusFilter/);
  assert.match(lib,/lastWrong/);
 });
+
+test('manual task subjects include the complete selected exam rather than fixed seven',()=>{
+ const planner=read('apps/web/src/components/StudyPlanner.tsx');
+ assert.match(planner,/Object\.keys\(mergedSyllabus\(activeSyllabi\(profile\)\)\)/);
+ assert.match(planner,/permittedSubjects=examSubjects\.length\?examSubjects:subjects/);
+ assert.match(planner,/StudySyllabus profile=\{profile\} tasks=\{tasks\} weakTopics=\{weeklyTopics\}/);
+});
