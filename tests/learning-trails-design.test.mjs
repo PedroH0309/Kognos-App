@@ -7,8 +7,9 @@ const trails=readFileSync('apps/web/src/components/LearningTrails.tsx','utf8');
 const server=readFileSync('apps/web/src/app/api/tutor/route.ts','utf8');
 const css=readFileSync('apps/web/src/app/design-system.css','utf8');
 
-test('all learning sections route to real lessons and focused practice',()=>{
- assert.match(app,/view==='learn'\|\|view==='trails'\|\|view==='subjects'/);
+test('learn, trails and subjects route to distinct learning experiences',()=>{
+ assert.match(app,/view==='learn'\|\|view==='trails'/);
+ assert.match(app,/view==='subjects'\?<SubjectDashboard/);
  assert.match(app,/onPractice=\{practiceFromLesson\}/);
  assert.match(trails,/Praticar este tópico/);
  assert.match(trails,/evidenceForLesson/);
