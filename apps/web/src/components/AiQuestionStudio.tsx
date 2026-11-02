@@ -13,9 +13,10 @@ import {AI_BANK_PAGE_SIZE,splitGenerationBatches} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
+import {generateApprovedBatches,MAX_ATTEMPTS_PER_BATCH} from '@/lib/ai-generation-batches';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
-type Grading={correct:boolean;correctIndex:number;explanation:string};
+type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
 type Mode='questions'|'simulados';
 const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
@@ -38,6 +39,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [hasMore,setHasMore]=useState(false);
  const [loadingMore,setLoadingMore]=useState(false);
  const [batchNumber,setBatchNumber]=useState(0);
+ const [batchAttempt,setBatchAttempt]=useState(1);
  const [draftReadyFor,setDraftReadyFor]=useState<string|null>(null);
  const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
  const [generationSeconds,setGenerationSeconds]=useState(0);
@@ -150,40 +152,62 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  function changeSubject(value:string){setSubject(value);setTopic(blueprint.subjects[value][0]);setLinkedLessonId(null);}
  function changeTopic(value:string){setTopic(value);if(linkedLessonId&&!validLessonAIReference(linkedLessonId,institution,subject,value))setLinkedLessonId(null);}
  async function generate(){
-  if(!userId||!canGenerate)return;
+  if(!userId||!canGenerate||generating)return;
+  const requested=Number(count);
   setGenerating(true);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
-  const parts=splitGenerationBatches(Number(count));
-  let saved=0,rejected=0,failure='';
   try{
-   for(let index=0;index<parts.length;index++){
-    setBatchNumber(index+1);
-    try{
-     const result=await authenticatedFetch('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution,subject,topic,difficulty,count:parts[index],sourceTopicId:verifiedTopic?.id,...(activeLessonLink?{lessonId:activeLessonLink}:{})})});
-     saved+=Number(result.approved)||0;rejected+=Number(result.rejected)||0;
-    }catch(e){failure=e instanceof Error?e.message:'A geração de questões não foi concluída.';break;}
-   }
-   if(saved){
-    setNotice(`${saved} questão(ões) gerada(s) e salva(s) no banco pessoal. ${rejected?`${rejected} não passou/passaram na revisão. `:''}Essas questões também ficam disponíveis para simulados.`);
+   const result=await generateApprovedBatches(requested,
+    async remaining=>await authenticatedFetch('/api/ai-questions/generate',{
+     method:'POST',body:JSON.stringify({
+      institution,subject,topic,difficulty,count:remaining,
+      ...(verifiedTopic?{sourceTopicId:verifiedTopic.id}:{}),
+      ...(activeLessonLink?{lessonId:activeLessonLink}:{})
+     })
+    }),
+    (batch,attempt)=>{setBatchNumber(batch);setBatchAttempt(attempt);}
+   );
+   if(result.saved){
+    setNotice(`${result.saved} de ${result.requested} questões foram aprovadas e salvas. ${result.missing?`${result.missing} não passaram pela revisão ou não foram concluídas após ${MAX_ATTEMPTS_PER_BATCH} tentativas por lote. `:''}As questões ficam disponíveis para prática e simulados.`);
     await refresh();
    }
-   if(failure)setError(`${failure}${saved?` As ${saved} questão(ões) anteriores foram mantidas no banco.`:''}`);
-  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);}
+   if(result.error)setError(`${result.error}${result.saved?` As ${result.saved} aprovadas continuam salvas.`:''}`);
+   else if(result.missing&&!result.saved)setError('Nenhuma questão passou pela revisão. Tente outro tema ou dificuldade; nenhuma questão incorreta foi salva.');
+  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);setBatchAttempt(1);}
  }
+
  function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
  async function submitAnswer(){
   if(!current||choice===null||submitting||answers[cursor])return;
   setSubmitting(true);setError('');
   try{
-   const grade=await authenticatedFetch('/api/ai-questions/submit',{method:'POST',body:JSON.stringify({questionId:current.id,answerIndex:choice,mode:inMock?'mock':'practice'})});
-   setAnswers(old=>[...old,grade as Grading]);
-  }catch(e){setError(e instanceof Error?e.message:'Falha ao corrigir a resposta.');}
-  finally{setSubmitting(false);}
+   const grade=await authenticatedFetch('/api/ai-questions/submit',{
+    method:'POST',body:JSON.stringify({questionId:current.id,answerIndex:choice,mode:inMock?'mock':'practice'})
+   });
+   const xpEarned=Number(grade.xpEarned)||0;
+   setAnswers(old=>[...old,{correct:Boolean(grade.correct),correctIndex:grade.correctIndex,explanation:grade.explanation,xpEarned}]);
+   // Keep the completed question visible only in THIS session for feedback;
+   // it is no longer available for a new attempt or a new bank session.
+   setQuestions(old=>old.filter(q=>q.id!==current.id));
+   setTotalQuestions(old=>Math.max(0,old-1));
+   setNotice(`Resposta registrada · +${xpEarned} XP. Esta questão saiu da sua lista de pendentes.`);
+   window.dispatchEvent(new Event('kognos:ai-answer-recorded'));
+  }catch(e){
+   const message=e instanceof Error?e.message:'Falha ao corrigir a resposta.';
+   setError(message);
+   if(/já concluída/i.test(message)){
+    setQuestions(old=>old.filter(q=>q.id!==current.id));
+    setSession([]);setFinished(false);
+    void refresh();
+   }
+  }finally{setSubmitting(false);}
  }
+
  function next(){
   if(cursor>=session.length-1){setFinished(true);setChoice(null);return;}
   setCursor(v=>v+1);setChoice(null);
  }
  const points=answers.filter(a=>a.correct).length;
+ const sessionXP=answers.reduce((sum,a)=>sum+a.xpEarned,0);
  const duration=`${String(Math.floor(elapsed/60)).padStart(2,'0')}:${String(elapsed%60).padStart(2,'0')}`;
  return <div className="ai-studio">
    {error&&<div role="alert" className="message warning">{error}</div>}
