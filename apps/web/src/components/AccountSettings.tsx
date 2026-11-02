@@ -75,25 +75,34 @@ export default function AccountSettings({user,profile,avatarUrl,onSave,onAvatarC
       const {data:previous}=await sb.from('profiles').select('avatar_path').eq('id',user.id).maybeSingle();
       const {error:uploadError}=await bucket.upload(path,file,{upsert:false,contentType:file.type,cacheControl:'3600'});
       if(uploadError)throw uploadError;
+      let saved=false;
+      let signedUrl='';
       try {
-        // Check signed-access before replacing the saved pointer. A failed sign
-        // must not leave the profile pointing to an inaccessible image.
+        // Sign first. Do not update the DB if private image access fails.
         const {data:signed,error:signError}=await bucket.createSignedUrl(path,3600);
         if(signError||!signed?.signedUrl)throw signError||new Error('Não foi possível disponibilizar a foto privada.');
+        signedUrl=signed.signedUrl;
         const {error:dbError}=await sb.from('profiles').update({avatar_path:path}).eq('id',user.id);
         if(dbError)throw dbError;
-        onAvatarChanged(signed.signedUrl,path);
-        info('Foto atualizada e guardada na sua conta.');
-        // Remove the previous owner-owned object to avoid unused storage.
-        if(previous?.avatar_path&&previous.avatar_path!==path&&
-           previous.avatar_path.startsWith(`${user.id}/`)){
+        saved=true;
+      }catch(innerError){
+        if(!saved){
+          // Remove only our newly uploaded orphan; preserve the existing avatar.
+          try{await bucket.remove([path]);}catch{/* Best effort cleanup. */}
+        }
+        throw innerError;
+      }
+      onAvatarChanged(signedUrl,path);
+      info('Foto atualizada e guardada na sua conta.');
+      // Cleanup after the commit must never remove the new saved photo.
+      if(previous?.avatar_path&&previous.avatar_path!==path&&
+         previous.avatar_path.startsWith(`${user.id}/`)){
+        try {
           const {error:oldError}=await bucket.remove([previous.avatar_path]);
           if(oldError)console.warn('[KOGNOS][PROFILE] Previous avatar cleanup failed.');
+        }catch{
+          console.warn('[KOGNOS][PROFILE] Previous avatar cleanup unavailable.');
         }
-      }catch(innerError){
-        // Best effort cleanup of the new orphan when signing/DB update fails.
-        await bucket.remove([path]).catch(()=>{});
-        throw innerError;
       }
     }catch(e){fail(new Error(avatarStorageErrorMessage(e)));}finally{setBusy(false);}
   }
