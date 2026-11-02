@@ -15,8 +15,53 @@ const preferences:Record<AIJob,{provider:AIProvider;model:string}>={
  review:{provider:'gemini',model:'gemini-3.1-flash-lite'},
  tutor:{provider:'gemini',model:'gemini-3.1-flash-lite'},
 };
+/** Development defaults to free-tier eligible providers only.
+ * OpenAI/NVIDIA remain available exclusively after explicit paid/SaaS opt-in.
+ * Actual zero-cost usage ALSO requires a provider account on its free tier.
+ */
+export function isFreeOnlyAI(env:Record<string,string|undefined>=process.env):boolean{
+ return env.AI_FREE_ONLY?.trim().toLowerCase()!=='false';
+}
+const freeOptions:Record<AIJob,readonly {provider:'groq'|'gemini';model:string}[]>={
+ generate:[
+  {provider:'groq',model:'openai/gpt-oss-120b'},
+  {provider:'gemini',model:'gemini-2.5-flash'}
+ ],
+ review:[
+  {provider:'gemini',model:'gemini-3.1-flash-lite'},
+  {provider:'groq',model:'openai/gpt-oss-20b'}
+ ],
+ tutor:[
+  {provider:'gemini',model:'gemini-3.1-flash-lite'},
+  {provider:'groq',model:'llama-3.1-8b-instant'}
+ ]
+};
+
+export function freeAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null{
+ const prefix='AI_'+job.toUpperCase();
+ const preferred=env[prefix+'_PROVIDER']?.trim().toLowerCase();
+ const options=freeOptions[job];
+ // Prefer valid, key-backed free models only. Existing OpenAI settings are
+ // deliberately ignored when the developer enables free-only mode.
+ const ordered=preferred==='groq'||preferred==='gemini'
+  ? [...options].sort((a,b)=>Number(b.provider===preferred)-Number(a.provider===preferred))
+  : options;
+ for(const option of ordered){
+  const key=(option.provider==='groq'?env.GROQ_API_KEY:env.GEMINI_API_KEY)?.trim();
+  if(!key)continue;
+  const configured=env[prefix+'_MODEL']?.trim();
+  const allowList=option.provider==='groq'
+   ?(job==='tutor'?['llama-3.1-8b-instant','openai/gpt-oss-20b']:job==='generate'?['openai/gpt-oss-120b','openai/gpt-oss-20b']:['openai/gpt-oss-20b'])
+   :(job==='generate'?['gemini-2.5-flash','gemini-2.5-flash-lite','gemini-3.1-flash-lite']:['gemini-3.1-flash-lite','gemini-2.5-flash-lite']);
+  const model=preferred===option.provider&&configured&&allowList.includes(configured)?configured:option.model;
+  return {provider:option.provider,model,key,base:endpoints[option.provider]};
+ }
+ return null;
+}
+
 
 export function resolveAIProvider(job:AIJob,env:Record<string,string|undefined>=process.env):ProviderConfig|null {
+ if(isFreeOnlyAI(env))return freeAIProvider(job,env);
  const prefix='AI_'+job.toUpperCase();
  const preferred=env[prefix+'_PROVIDER']?.trim().toLowerCase();
  const provider:AIProvider=preferred==='groq'||preferred==='gemini'||preferred==='nvidia'||preferred==='openai'?preferred:preferences[job].provider;
