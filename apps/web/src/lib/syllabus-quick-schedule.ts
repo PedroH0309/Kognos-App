@@ -1,4 +1,4 @@
-import {civilToday,dateAtNoon,shiftCivilDate} from './calendar-model.ts';
+import {civilToday,dateAtNoon,shiftCivilDate,validCivilDate} from './calendar-model.ts';
 import {taskCoversSyllabusTopic} from './syllabus-progress.ts';
 import type {StudyTask} from './cloud-study-model.ts';
 import type {StudentProfile} from './profile.ts';
@@ -19,7 +19,7 @@ export function pendingTopicTask(
  * Respect enabled study days, daily budget and short-block accessibility.
  */
 export function nextSyllabusTopicSlot(
- profile:Pick<StudentProfile,'weeklyDays'|'dailyMinutes'|'sessionMinutes'|'adaptations'>,
+ profile:Pick<StudentProfile,'weeklyDays'|'dailyMinutes'|'sessionMinutes'|'adaptations'|'targetDate'>,
  tasks:readonly StudyTask[],base=new Date(),horizon=14
 ):{date:string;minutes:number}|null{
  const start=civilToday(base);
@@ -29,6 +29,8 @@ export function nextSyllabusTopicSlot(
   ?Math.min(25,profile.sessionMinutes):profile.sessionMinutes;
  for(let i=0;i<Math.min(28,Math.max(0,horizon));i++){
   const date=shiftCivilDate(start,i);
+  // Avoid scheduling new study sessions after a valid scheduled exam date.
+  if(validCivilDate(profile.targetDate)&&date>profile.targetDate)break;
   if(!weekdays.has(dateAtNoon(date).getDay()))continue;
   const used=tasks.filter(task=>task.date===date)
    .reduce((sum,task)=>sum+Math.max(0,task.minutes),0);
@@ -40,7 +42,7 @@ export function nextSyllabusTopicSlot(
 }
 
 export function suggestSyllabusTopicSchedule(
- profile:Pick<StudentProfile,'weeklyDays'|'dailyMinutes'|'sessionMinutes'|'adaptations'>,
+ profile:Pick<StudentProfile,'weeklyDays'|'dailyMinutes'|'sessionMinutes'|'adaptations'|'targetDate'>,
  tasks:readonly StudyTask[],subject:string,topic:string,
  base=new Date(),review=false
 ):TopicSchedule|null{
