@@ -27,6 +27,10 @@ test('does not block genuine conceptual or school questions, including programmi
   'O que é porcentagem e como resolver uma questão?',
   'Pode me explicar o que significa uma variável em Java?',
   'Qual é a diferença entre Python e Java?',
+  'Me explique o significado de Hello World em Java',
+  'Crie uma questão de lógica sobre Hello World',
+  'Me dê um programa de estudos de matemática',
+  'Me dê um exemplo de código genético na biologia',
   'Me dê uma explicação sobre o código genético',
   'Crie cinco questões de equação do segundo grau para eu praticar',
   'Explique o conceito de loops sem usar código',
@@ -55,6 +59,9 @@ test('does not show executable snippets or Markdown code fences even if model ig
   'console.log("Hello world");',
   'def hello():\n    print("hello")',
   '<html><body>Oi</body></html>',
+  'int numero = 5;',
+  'const total = 5;',
+  '#include <stdio.h>',
  ];
  for(const content of snippets)assert.equal(enforcePedagogicalTutorAnswer(content),PEDAGOGICAL_OUTPUT_REPLY);
  assert.equal(enforcePedagogicalTutorAnswer('Uma variável armazena um valor; pense nela como uma caixa com nome.'),'Uma variável armazena um valor; pense nela como uma caixa com nome.');
