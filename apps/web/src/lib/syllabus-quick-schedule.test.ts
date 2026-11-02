@@ -44,3 +44,10 @@ test('does not schedule beyond a two-week window and never displaces user tasks'
  assert.equal(suggestSyllabusTopicSchedule(p,filled,'Física','Óptica geométrica',monday),null);
  assert.equal(filled.length,2);
 });
+
+test('does not schedule after the official target date configured by the student',()=>{
+ const p={...initialProfile,weeklyDays:[2],dailyMinutes:45,sessionMinutes:25,targetDate:'2026-11-02'};
+ assert.equal(nextSyllabusTopicSlot(p,[],monday),null);
+ assert.equal(suggestSyllabusTopicSchedule(p,[],'Matemática','Funções exponenciais',monday),null);
+ assert.deepEqual(nextSyllabusTopicSlot({...p,targetDate:'2026-11-03'},[],monday),{date:'2026-11-03',minutes:25});
+});
