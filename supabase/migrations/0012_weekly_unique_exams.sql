@@ -59,8 +59,9 @@ begin
  insert into public.kognos_weekly_exams(user_id,institution,week_start,question_count)
  values(p_user_id,p_institution,p_week_start,p_count) returning id into v_exam;
  insert into public.kognos_weekly_exam_items(exam_id,user_id,question_id,position)
- select v_exam,p_user_id,selected.id,selected.pos from (
-  select q.id, row_number() over(order by pg_catalog.random())::integer as pos
+ select v_exam,p_user_id,selected.id,
+  pg_catalog.row_number() over(order by pg_catalog.random())::integer from (
+  select q.id
   from public.kognos_ai_questions q
   where q.user_id=p_user_id and q.institution=p_institution
    and q.review_status='auto_reviewed' and q.completed_at is null
