@@ -36,10 +36,10 @@ test('Kog removes visible Markdown emphasis without corrupting fenced and inline
  const input='Para resolver, veja **o contexto**, **o pedido** e **as pistas**.\n\n## Exemplo\n- Primeiro passo\n- Segundo passo\nCódigo: `a**b`.';
  const formatted=normalizeTutorAnswer(input);
  assert.match(formatted,/o contexto, o pedido e as pistas/);
- assert.doesNotMatch(formatted,/\\*\\*o contexto/);
+ assert.ok(!formatted.includes('**o contexto'));
  assert.match(formatted,/Exemplo/);
  assert.match(formatted,/• Primeiro passo/);
- assert.match(formatted,/`a\\*\\*b`/);
+ assert.ok(formatted.includes('`a**b`'));
 });
 test('Kog prompt requests plain-language text without Markdown',()=>{
  const prompt=buildTutorSystemPrompt(initialProfile,'Matemática');
