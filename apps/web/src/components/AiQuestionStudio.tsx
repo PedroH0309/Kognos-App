@@ -12,6 +12,7 @@ import {findLearningLesson} from '@/lib/learning-catalog';
 import {AI_BANK_PAGE_SIZE,splitGenerationBatches} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
 import {useServerReadiness} from '@/lib/use-server-readiness';
+import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string};
@@ -30,13 +31,16 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [subject,setSubject]=useState(preset?.subject??'Matemática');
  const [topic,setTopic]=useState(preset?.topic??'Porcentagem e razão');
  const [difficulty,setDifficulty]=useState<Difficulty>('intermediate');
- const [count,setCount]=useState('5');
+ const [count,setCount]=useState('1');
  const [bankScope,setBankScope]=useState<'all'|'topic'>(focusLessonId?'topic':'all');
  const [questions,setQuestions]=useState<UserAIQuestion[]>([]);
  const [totalQuestions,setTotalQuestions]=useState(0);
  const [hasMore,setHasMore]=useState(false);
  const [loadingMore,setLoadingMore]=useState(false);
  const [batchNumber,setBatchNumber]=useState(0);
+ const [draftReadyFor,setDraftReadyFor]=useState<string|null>(null);
+ const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
+ const [generationSeconds,setGenerationSeconds]=useState(0);
  const requestSerial=useRef(0);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
  const [sourceNotice,setSourceNotice]=useState('');
@@ -58,6 +62,28 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const scopeDescription=bankScope==='topic'?`${subject} · ${topic}`:`todas as matérias · ${blueprint.label}`;
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
+
+ useEffect(()=>{
+  if(!userId||focusLessonId){setDraftReadyFor(null);return;}
+  const draft=readGeneratorDraft(window.localStorage,userId);
+  if(draft){
+   setInstitution(draft.institution);setSubject(draft.subject);setTopic(draft.topic);
+   setDifficulty(draft.difficulty);setCount(draft.count);setBankScope(draft.bankScope);
+  }
+  setDraftReadyFor(userId);
+ },[userId,focusLessonId]);
+ useEffect(()=>{
+  // Wait for draft hydration before writing: don't overwrite the previous filters with defaults.
+  if(!userId||draftReadyFor!==userId||focusLessonId)return;
+  saveGeneratorDraft(window.localStorage,userId,{institution,subject,topic,difficulty,count,bankScope});
+ },[userId,draftReadyFor,focusLessonId,institution,subject,topic,difficulty,count,bankScope]);
+ useEffect(()=>{
+  if(!generating||generationStartedAt===null)return;
+  const update=()=>setGenerationSeconds(Math.floor((Date.now()-generationStartedAt)/1000));
+  update();const timer=window.setInterval(update,1000);
+  window.addEventListener('focus',update);
+  return()=>{window.clearInterval(timer);window.removeEventListener('focus',update);};
+ },[generating,generationStartedAt]);
 
  const authenticatedFetch=useCallback(async(url:string,init?:RequestInit)=>{
   const sb=getSupabase();if(!sb||!userId)throw new Error('Entre em sua conta para utilizar questões geradas por IA.');
@@ -125,7 +151,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  function changeTopic(value:string){setTopic(value);if(linkedLessonId&&!validLessonAIReference(linkedLessonId,institution,subject,value))setLinkedLessonId(null);}
  async function generate(){
   if(!userId||!canGenerate)return;
-  setGenerating(true);setError('');setNotice('');
+  setGenerating(true);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
   const parts=splitGenerationBatches(Number(count));
   let saved=0,rejected=0,failure='';
   try{
@@ -141,7 +167,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
     await refresh();
    }
    if(failure)setError(`${failure}${saved?` As ${saved} questão(ões) anteriores foram mantidas no banco.`:''}`);
-  }finally{setGenerating(false);setBatchNumber(0);}
+  }finally{setGenerating(false);setGenerationStartedAt(null);setBatchNumber(0);}
  }
  function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
  async function submitAnswer(){
@@ -176,7 +202,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
        <KognosSelect label="Quantidade" value={count} options={amountOptions} onChange={setCount}/>
       </div>
       <details className="ai-source-note ai-source-reference"><summary><BookOpenText size={15} aria-hidden="true"/><strong>{verifiedTopic?`Conteúdo vinculado a fonte revisada · ${verifiedTopic.edition}`:`Referência editorial · ${blueprint.edition}`}</strong><span>Consultar detalhes</span></summary><div><p>{verifiedTopic?`Evidência: “${verifiedTopic.evidence}”. Revisão editorial não equivale à homologação da instituição.`:blueprint.notice} <a href={verifiedTopic?.sourceUrl||blueprint.sourceUrl} target="_blank" rel="noopener noreferrer">Consultar fonte institucional</a></p>{sourceNotice&&<small>{sourceNotice}</small>}</div></details>
-      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading||!canGenerate} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Gerando lote ${batchNumber} de ${splitGenerationBatches(Number(count)).length}…`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>Até 10 por ação (lotes de 5) · cada lote utiliza sua cota diária de IA. A geração depende da NVIDIA e do Supabase.</small></div>
+      <div className="ai-generator-actions"><button className="btn primary" disabled={generating||loading||!canGenerate} onClick={()=>void generate()}><Sparkles size={16}/>{generating?`Gerando e revisando · lote ${batchNumber}/${splitGenerationBatches(Number(count)).length}`:`Gerar ${count} ${Number(count)===1?'questão':'questões'} com IA`}</button><small>{generating?`Processando há ${generationSeconds}s. Você pode mudar de guia e voltar; a geração continua enquanto a página permanecer aberta.`:'Dica: gere 1 questão para uma resposta mais rápida. A geração e a revisão independente usam duas chamadas à NVIDIA.'}</small></div>
     </section>
     <section className="dark-panel ai-bank">
       <div className="ai-bank-header"><div><h2>{inMock?'Simulados personalizados':'Meu banco de questões IA'}</h2><p>Questões privadas salvas automaticamente, disponíveis para estudo e simulado.</p></div><button type="button" className="btn outline small" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={15}/> Atualizar</button></div>
