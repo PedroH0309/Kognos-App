@@ -38,3 +38,31 @@
 @media(prefers-reduced-motion:reduce){
  .app-layout .k-complete-syllabus *, .app-layout .k-weekly-exam *{transition:none!important}
 }
+
+/* Verified account-level inventory and longitudinal review: no fictitious stats. */
+.app-layout .k-weekly-inventory{padding:15px 16px;margin:17px 0;border:1px solid var(--line);border-radius:14px;background:var(--panel-2)}
+.app-layout .k-weekly-inventory>strong{font-size:14px;color:var(--txt)}
+.app-layout .k-weekly-inventory p{margin:7px 0 12px;font-size:12px;line-height:1.55;color:var(--sub)}
+.app-layout .k-weekly-subjects{display:flex;gap:8px;flex-wrap:wrap;max-width:100%}
+.app-layout .k-weekly-subjects>span{font-size:11px;padding:7px 10px;border-radius:9px;border:1px solid var(--line);background:var(--box-bg);color:var(--txt)}
+.app-layout .k-weekly-subjects>span strong{font-variant-numeric:tabular-nums}
+.app-layout .k-weekly-report{display:grid;gap:13px;margin:19px 0}
+.app-layout .k-weekly-report>h3{font-size:16px;margin:0}
+.app-layout .k-weekly-report>p{font-size:12px;color:var(--sub);margin:0}
+.app-layout .k-weekly-report article{padding:13px 15px;border:1px solid var(--line);background:var(--panel-2);border-radius:12px}
+.app-layout .k-weekly-score-heading{display:flex;gap:8px;justify-content:space-between;font-size:12px;color:var(--txt)}
+.app-layout .k-weekly-score-heading span{font-variant-numeric:tabular-nums;white-space:nowrap}
+.app-layout .k-weekly-score-bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin:11px 0}
+.app-layout .k-weekly-score-bar>span{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#5B4DE3,#38CDE5)}
+.app-layout .k-weekly-report article small{font-size:11px;line-height:1.55;color:var(--sub)}
+.app-layout .k-weekly-history{margin-top:18px}
+.app-layout .k-weekly-history h2{font-size:19px;margin:0 0 8px}
+.app-layout .k-weekly-history>p{font-size:12px;color:var(--sub);line-height:1.5}
+.app-layout .k-weekly-history-item{display:grid;grid-template-columns:minmax(90px,1fr) 1.5fr 1.4fr;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--txt)}
+.app-layout .k-weekly-history-item span{font-variant-numeric:tabular-nums}
+.app-layout .k-weekly-history-item:last-child{border-bottom:none}
+@media(max-width:530px){
+ .app-layout .k-weekly-history-item{grid-template-columns:1fr 1fr;gap:7px}
+ .app-layout .k-weekly-history-item strong{grid-column:1/-1}
+ .app-layout .k-weekly-inventory{padding:14px 12px}
+}
