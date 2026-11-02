@@ -26,7 +26,9 @@ test('responsive design covers desktop, mobile, light and dark without removing 
  assert.match(app,/useState<'dark'\|'light'>\('light'\)/);
  assert.match(app,/kognos_theme_v1/);
  assert.match(app,/mobile-bottom-nav/);
- assert.match(app,/mobile-sidebar-scrim/);
+ const motion=read('apps/web/src/components/KognosMotion.tsx');
+ assert.match(motion,/mobile-sidebar-scrim/);
+ assert.match(app,/AnimatedSidebarScrim/);
  assert.match(app,/sidebarCollapsed/);
 });
 test('new dashboard routes to real existing modules and never invents study data',()=>{
