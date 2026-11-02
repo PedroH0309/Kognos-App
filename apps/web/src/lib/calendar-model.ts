@@ -45,7 +45,7 @@ export function formatWeekday(iso:string):string{
 }
 export function normalTime(value:unknown):string|null{
  if(typeof value!=='string'||!/^\d{2}:\d{2}(?::\d{2})?$/.test(value))return null;
- const [hour,minute,second='00']=value.split(':').map(Number);
+ const [hour,minute,second=0]=value.split(':').map(Number);
  if(hour>23||minute>59||second>59)return null;
  return `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
 }
