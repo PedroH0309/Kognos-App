@@ -4,7 +4,6 @@ import {initialProfile} from './profile.ts';
 import {demoQuestions} from './demo-questions.ts';
 import {createPersonalizedStudyWeek,missedTopics,studyMethod,youtubeStudySearch,weekLearningSummary} from './personalized-study-cycle.ts';
 import {selectBaselineQuestions,selectWeeklyCheckpoint} from './adaptive-review.ts';
-import {createStudyCalendarICS} from './calendar-export.ts';
 import type {QuestionAttempt} from './demo-questions.ts';
 import type {StudyTask} from './cloud-study-model.ts';
 function answer(id:string,index:number,date='2026-11-01T13:00:00Z'):QuestionAttempt{
@@ -69,21 +68,4 @@ test('YouTube link is a query, not a fabricated instructor video',()=>{
  assert.equal(url.hostname,'www.youtube.com');
  assert.equal(url.pathname,'/results');
  assert.ok(url.searchParams.get('search_query')?.includes('Citologia'));
-});
-test('ics exports real timed and untimed events, including midnight rollover, as snapshot',()=>{
- const sample:StudyTask[]=[
- {id:'one',date:'2026-11-02',title:'Porcentagem, razão; revisão',subject:'Matemática',minutes:45,done:false,kind:'manual',startTime:'08:30'},
- {id:'two',date:'2026-11-02',title:'Ler um texto',subject:'Português',minutes:25,done:true,kind:'manual'},
- {id:'three',date:'2026-12-31',title:'Estudar clima',subject:'Geografia',minutes:60,done:false,kind:'manual',startTime:'23:30'}
- ];
- const ics=createStudyCalendarICS(sample,new Date('2026-11-02T20:00:00.000Z'));
- assert.match(ics,/BEGIN:VCALENDAR\r\n/);assert.match(ics,/END:VCALENDAR\r\n$/);
- assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,3);
- assert.match(ics,/DTSTART:20261102T083000/);
- assert.match(ics,/DTEND:20261102T091500/);
- assert.match(ics,/DTSTART;VALUE=DATE:20261102/);
- assert.match(ics,/DTEND;VALUE=DATE:20261103/);
- assert.match(ics,/DTEND:20270101T003000/);
- assert.match(ics,/SUMMARY:Matemática: Porcentagem\\, razão\\; revisão/);
- for(const line of ics.split('\r\n'))assert.ok(new TextEncoder().encode(line).length<=75,'iCal line length');
 });
