@@ -1,3 +1,4 @@
+import {learningLessons,lessonsForSubject} from './learning-catalog.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {adjacentLesson,catalogRoadmap,trailSnapshot} from './learning-roadmap.ts';
@@ -6,7 +7,7 @@ const attempt=(questionId:string,answerIndex:number,createdAt='2026-11-01T12:00:
 
 test('fresh subject has sequential steps and zero practice evidence',()=>{
  const item=trailSnapshot('Matemática',[]);
- assert.equal(item.total,9);assert.equal(item.practiced,0);
+ assert.equal(item.total,lessonsForSubject('Matemática').length);assert.equal(item.practiced,0);
  assert.equal(item.correctSamples,0);assert.equal(item.needsReview,0);
  assert.equal(item.steps[0].number,1);assert.equal(item.next?.id,'math-percentages');
  assert.equal(item.estimatedUnpracticedMinutes,item.steps.reduce((sum,s)=>sum+s.lesson.minutes,0));
@@ -20,7 +21,7 @@ test('coverage recalculates from canonical question answer, not spoofed flags',(
  const after=trailSnapshot('Matemática',[wrong,right]);
  assert.equal(after.practiced,1);assert.equal(after.correctSamples,1);assert.equal(after.needsReview,0);
  assert.equal(after.estimatedUnpracticedMinutes,before.estimatedUnpracticedMinutes);
- assert.deepEqual(catalogRoadmap([]),{total:80,practiced:0,correctSamples:0,needsReview:0});
+ assert.deepEqual(catalogRoadmap([]),{total:learningLessons.length,practiced:0,correctSamples:0,needsReview:0});
 });
 
 test('prerequisites and next/previous lesson are stable and subject-bound',()=>{

@@ -10,7 +10,7 @@ import {parseKogStudyContext} from './kog-study-context.ts';
 test('curriculum preserves every exam topic with unique stable identities',()=>{
  const expected=new Set<string>();
  for(const [exam,b] of Object.entries(examBlueprints))for(const [subject,topics] of Object.entries(b.subjects))for(const topic of topics){expected.add(`${subject}\0${topic}`);assert.ok(curriculumTopics.some(t=>t.subject===subject&&t.topic===topic&&t.exams.includes(exam as ExamId)));}
- assert.equal(curriculumTopics.length,322);assert.equal(curriculumTopics.length,expected.size);assert.equal(new Set(curriculumTopics.map(t=>t.id)).size,expected.size);
+ assert.equal(curriculumTopics.length,expected.size);assert.equal(new Set(curriculumTopics.map(t=>t.id)).size,expected.size);
  for(const t of curriculumTopics)assert.equal(t.id,courseId(t.subject,t.topic));
 });
 test('incomplete drafts save but cannot publish; every level and task is required',()=>{
@@ -38,3 +38,4 @@ test('tutor accepts only the curriculum identifier, not supplied instructions',(
 });
 
 test('all 80 original questions are available as valid editorial drafts linked to a curriculum topic',()=>{assert.equal(editorialQuestionSeeds.length,80);for(const q of editorialQuestionSeeds){assert.ok(parseCourseDocument(q),q.id);assert.ok(curriculumTopics.some(t=>t.id===q.courseId));}});
+

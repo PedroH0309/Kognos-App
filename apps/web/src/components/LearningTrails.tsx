@@ -13,6 +13,8 @@ import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 import {linkedExamTopic} from '@/lib/lesson-ai-links';
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
+import CurriculumRoom from './CurriculumRoom';
+import {learningCatalogForExam} from '@/lib/lesson-ai-links';
 import StudySyncNotice from './StudySyncNotice';
 import SkillEvolutionPanel from './SkillEvolutionPanel';
 import {prioritySkillLessonId} from '@/lib/skill-mastery-evidence';
@@ -22,10 +24,14 @@ type Focus={subject:string;topic:string;questionId:string};
 const evidenceLabels={'not-started':'Não praticada',review:'Revisar questão','correct-sample':'Acerto registrado'} as const;
 const guestKey='kognos_demo_attempts_v1_guest';
 
-export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus,active=true}:{
- mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
+export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus,active=true,preferredExam=null}:{
+ mode:Mode;userId:string|null;preferredExam?:ExamId|null;onContextChange:(context:KogStudyContext|null)=>void;
  onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string,generateNew?:boolean)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
 }){
+ const [exam,setExam]=useState<ExamId|null>(preferredExam);
+ const catalog=useMemo(()=>learningCatalogForExam(exam),[exam]);
+ const scopedSubjects=useMemo(()=>[...new Set(catalog.map(l=>l.subject))],[catalog]);
+ useEffect(()=>setExam(preferredExam),[preferredExam]);
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
  const [selectedId,setSelectedId]=useState(focus?.lessonId??'math-percentages');
@@ -34,6 +40,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [error,setError]=useState('');
  const [restored,setRestored]=useState(false);
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
+ useEffect(()=>{if(catalog.some(l=>l.id===selectedId))return;const first=catalog[0];if(first){setSubject(first.subject);setSelectedId(first.id);}},[catalog,selectedId]);
  const detailRef=useRef<HTMLElement|null>(null);
  // The question workspace stays mounted when hidden. Defer a single updated
  // progress read until this trail becomes visible again, rather than fetching
@@ -63,7 +70,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  },[userId]);
 
  useEffect(()=>{
-  if(focus){setSubject(focus.subject);setSelectedId(focus.lessonId);setRestored(true);return;}
+  if(focus){if(!learningCatalogForExam(preferredExam).some(l=>l.id===focus.lessonId))setExam(null);setSubject(focus.subject);setSelectedId(focus.lessonId);setRestored(true);return;}
   try{const saved=localStorage.getItem(`kognos_last_lesson_v1_${userId||'guest'}`);
    if(saved){const found=findLearningLesson(saved);if(found){setSubject(found.subject);setSelectedId(found.id);}}
   }catch{/* Browser storage may be disabled. */}
@@ -76,15 +83,15 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   try{localStorage.setItem(`kognos_last_lesson_v1_${userId||'guest'}`,found.id);}catch{/* Optional local preference. */}
  },[restored,selectedId,subject,userId]);
 
- const roadmap=useMemo(()=>trailSnapshot(subject,attempts),[subject,attempts]);
- const connected=useMemo(()=>connectedCatalogProgress(attempts,aiProgress),[attempts,aiProgress]);
- const connectedTrail=useMemo(()=>connectedSubjectProgress(subject,attempts,aiProgress),[subject,attempts,aiProgress]);
+ const roadmap=useMemo(()=>trailSnapshot(subject,attempts,catalog),[subject,attempts,catalog]);
+ const connected=useMemo(()=>connectedCatalogProgress(attempts,aiProgress,catalog),[attempts,aiProgress,catalog]);
+ const connectedTrail=useMemo(()=>connectedSubjectProgress(subject,attempts,aiProgress,catalog),[subject,attempts,aiProgress,catalog]);
  const historyReady=loaded&&(!userId||!aiLoading);
  const visibleLessons=useMemo(()=>roadmap.steps.filter(step=>`${step.lesson.topic} ${step.lesson.objective}`.toLocaleLowerCase('pt-BR').includes(query.trim().toLocaleLowerCase('pt-BR'))),[roadmap.steps,query]);
  const lesson=findLearningLesson(selectedId);
  const position=lesson?.subject===subject?roadmap.steps.findIndex(step=>step.lesson.id===lesson.id):-1;
- const previous=lesson?adjacentLesson(subject,lesson.id,-1):null;
- const following=lesson?adjacentLesson(subject,lesson.id,1):null;
+ const previous=lesson?adjacentLesson(subject,lesson.id,-1,catalog):null;
+ const following=lesson?adjacentLesson(subject,lesson.id,1,catalog):null;
  const progress=connected.total?Math.round(100*connected.practiced/connected.total):0;
  const currentProgress=roadmap.total?Math.round(100*connectedTrail.practiced/roadmap.total):0;
 
@@ -95,7 +102,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  },[active,lesson?.id,subject,visibleContext]);
 
  function selectSubject(value:string){
-  setSubject(value);setSelectedId(lessonsForSubject(value)[0]?.id??'');setQuery('');
+  setSubject(value);setSelectedId(catalog.find(l=>l.subject===value)?.id??'');setQuery('');
  }
  function chooseLesson(item:LearningLesson){
   setSubject(item.subject);setSelectedId(item.id);visibleContext({kind:'lesson',lessonId:item.id});
@@ -117,6 +124,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo preparatório autoral</span>
   </div>
 
+  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label><p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
   {error&&<div className="message warning" role="alert">{error}</div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
   {isTrail&&<section className="learning-journey-summary" aria-label="Seu progresso nos roteiros">
@@ -137,11 +145,11 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   <section className="learning-journey-browser" aria-label="Selecionar matéria">
    <div className="learning-journey-browser-head">
     <div><span className="overline">{isTrail?'ESCOLHA SUA TRILHA':'ESCOLHA UMA DISCIPLINA'}</span><h2>Por onde vamos começar?</h2></div>
-    <span>{learningSubjects.length} disciplinas disponíveis</span>
+    <span>{scopedSubjects.length} disciplinas disponíveis</span>
    </div>
    <div className="learning-journey-subject-pills" role="group" aria-label="Disciplina selecionada">
-    {learningSubjects.map(item=>{
-     const count=connectedSubjectProgress(item,attempts,aiProgress);return <button type="button" key={item} className={`learning-journey-subject-pill ${item===subject?'is-active':''}`} aria-pressed={item===subject} onClick={()=>selectSubject(item)}>
+    {scopedSubjects.map(item=>{
+     const count=connectedSubjectProgress(item,attempts,aiProgress,catalog);return <button type="button" key={item} className={`learning-journey-subject-pill ${item===subject?'is-active':''}`} aria-pressed={item===subject} onClick={()=>selectSubject(item)}>
        <span>{item}</span><small>{historyReady?`${count.practiced}/${count.total}`:`${count.total} aulas`}</small>
       </button>;
     })}
@@ -174,7 +182,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
       return <button type="button" key={item.id} className={`learning-lesson-item learning-journey-step ${active?'selected':''} ${step.evidence==='correct-sample'?'has-sample':''} ${connectedEvidence.review?'needs-review':''} ${connectedEvidence.hasAI?'has-ai':''}`}
        aria-current={active?'step':undefined} onClick={()=>chooseLesson(item)}>
        <span className="learning-lesson-number">{step.evidence==='correct-sample'?<CheckCircle2 size={17}/>:String(step.number).padStart(2,'0')}</span>
-       <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{connectedEvidence.hasAI&&step.evidence==='not-started'?'Prática IA registrada':evidenceLabels[step.evidence]} · {item.minutes} min</small>{ai&&<small className="learning-ai-step-stat">IA: {ai.attempts} resposta(s) em {ai.distinctQuestions} questão(ões){ai.lastCorrect===false?' · revisar':''}</small>}{mastery&&<small className={`k-skill-stage-inline is-${mastery.stage}`}>{mastery.label} · {mastery.distinctPracticeDays} dia(s) com sequência completa</small>}{step.prerequisites.length>0&&<small className="learning-journey-prereq">Base: {step.prerequisites.map(req=>req.topic).join(', ')}</small>}</span>
+       <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{connectedEvidence.hasAI&&step.evidence==='not-started'?'Prática IA registrada':evidenceLabels[step.evidence]}{item.curriculumId?' · Aula por tema':` · ${item.minutes} min`}</small>{ai&&<small className="learning-ai-step-stat">IA: {ai.attempts} resposta(s) em {ai.distinctQuestions} questão(ões){ai.lastCorrect===false?' · revisar':''}</small>}{mastery&&<small className={`k-skill-stage-inline is-${mastery.stage}`}>{mastery.label} · {mastery.distinctPracticeDays} dia(s) com sequência completa</small>}{step.prerequisites.length>0&&<small className="learning-journey-prereq">Base: {step.prerequisites.map(req=>req.topic).join(', ')}</small>}</span>
        {connectedEvidence.review?<RotateCcw size={16}/>:<ChevronRight size={17}/>}
       </button>;
      }):<p className="muted">Nenhum assunto encontrado. Tente outra palavra.</p>}
@@ -182,7 +190,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <div className="learning-journey-key"><span><span className="dot"/>Não praticado</span><span><span className="dot review"/>Revisar</span><span><span className="dot sampled"/>Acerto registrado</span></div>
    </section>
    <section ref={detailRef} className="learning-lesson-detail dark-panel" aria-label="Aula selecionada">
-    {lesson&&lesson.subject===subject?<>
+    {lesson&&lesson.subject===subject?lesson.curriculumId?<CurriculumRoom key={lesson.id} embedded active={active} userId={userId} focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}/>:<>
      <div className="learning-lesson-head">
       <span className="overline">AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')} · {lesson.subject.toUpperCase()}</span>
       <h2>{lesson.topic}</h2>
@@ -215,6 +223,6 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     </>:<p className="muted">Escolha uma aula para começar.</p>}
    </section>
   </div>
-  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'As questões respondidas com IA alimentam seu histórico adaptativo.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Miniaulas autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
+  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'As questões respondidas com IA alimentam seu histórico adaptativo.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Conteúdos autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
  </main>;
 }

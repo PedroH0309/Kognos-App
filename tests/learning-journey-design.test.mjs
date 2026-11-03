@@ -12,8 +12,8 @@ test('Learning Paths has a compact summary and a visible journey selector instea
  assert.doesNotMatch(screen,/learning-subject-card/);
 });
 test('Roadmap steps, recommendation and lesson navigation use real callbacks',()=>{
- assert.match(screen,/trailSnapshot\(subject,attempts\)/);
- assert.match(screen,/connectedCatalogProgress\(attempts,aiProgress\)/);
+ assert.match(screen,/trailSnapshot\(subject,attempts,catalog\)/);
+ assert.match(screen,/connectedCatalogProgress\(attempts,aiProgress,catalog\)/);
  assert.match(screen,/chooseLesson\(highlight\)/);
  assert.match(screen,/chooseLesson\(following\)/);
  assert.match(screen,/chooseLesson\(previous\)/);

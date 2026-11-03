@@ -2,6 +2,7 @@
  * individual skills and required readings must be checked against the linked
  * edition-specific documents. Keep this transparent in every UI.
  */
+import {detailedHighSchool,detailedFundamental} from './detailed-syllabus.ts';
 import type {ExamId} from './exam-blueprints.ts';
 import type {StudentProfile} from './profile.ts';
 
@@ -174,7 +175,7 @@ export function expandExamSubjects(exam:ExamId,original:Record<string,readonly s
  for(const [subject,topics] of Object.entries(group)){
   // Do not invent a secondary-school syllabus for an unspecified SARESP grade.
   if(exam==='saresp'&&!['Português','Matemática','Ciências'].includes(subject))continue;
-  result[subject]=[...new Set([...(original[subject]||[]),...topics])];
+  result[subject]=[...new Set([...(original[subject]||[]),...topics,...((group===highSchool?detailedHighSchool:detailedFundamental)[subject]||[])])];
  }
  for(const [subject,topics] of Object.entries(original))if(!result[subject])
   result[subject]=[...new Set(topics)];
@@ -208,3 +209,4 @@ export function mergedSyllabus(exams:readonly ExamId[]):Record<string,readonly s
  }
  return output;
 }
+

@@ -9,8 +9,8 @@ export type TrailSnapshot = {
 };
 
 /** Introductory demo evidence: attempts are not proof that lessons were read or mastered. */
-export function trailSnapshot(subject:string,attempts:readonly QuestionAttempt[]):TrailSnapshot {
- const lessons=lessonsForSubject(subject);
+export function trailSnapshot(subject:string,attempts:readonly QuestionAttempt[],catalog:readonly LearningLesson[]=learningLessons):TrailSnapshot {
+ const lessons=catalog.filter(l=>l.subject===subject);
  const steps=lessons.map((lesson,index)=>({
   lesson,number:index+1,evidence:evidenceForLesson(lesson,attempts),
   prerequisites:lesson.prerequisites.map(id=>learningLessons.find(item=>item.id===id)).filter((item):item is LearningLesson=>Boolean(item)),
@@ -21,7 +21,7 @@ export function trailSnapshot(subject:string,attempts:readonly QuestionAttempt[]
   correctSamples:steps.filter(step=>step.evidence==='correct-sample').length,
   needsReview:steps.filter(step=>step.evidence==='review').length,
   estimatedUnpracticedMinutes:steps.filter(step=>step.evidence==='not-started').reduce((n,step)=>n+step.lesson.minutes,0),
-  next:recommendedNextLesson(subject,attempts),steps,
+  next:recommendedNextLesson(subject,attempts,catalog),steps,
  };
 }
 
@@ -36,8 +36,8 @@ export function catalogRoadmap(attempts:readonly QuestionAttempt[]) {
 }
 
 /** Can move to the next lesson without inferring completion or unlocking content based on one answer. */
-export function adjacentLesson(subject:string,lessonId:string,direction:1|-1):LearningLesson|null {
- const items=lessonsForSubject(subject);
+export function adjacentLesson(subject:string,lessonId:string,direction:1|-1,catalog:readonly LearningLesson[]=learningLessons):LearningLesson|null {
+ const items=catalog.filter(l=>l.subject===subject);
  const index=items.findIndex(item=>item.id===lessonId);
  return index<0?null:items[index+direction]??null;
 }

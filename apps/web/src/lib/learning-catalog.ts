@@ -1,9 +1,13 @@
+import {examBlueprints,type ExamId} from './exam-blueprints.ts';
+import {courseId} from './curriculum-id.ts';
 import {expandedLessons} from './learning-expansion.ts';
 import { demoQuestions } from './demo-questions.ts';
 
 /** Original, curated introductory learning content. Not official exam material. */
 export type LearningLesson = {
   id: string;
+  curriculumId?: string;
+  exams?: ExamId[];
   subject: string;
   topic: string;
   objective: string;
@@ -16,7 +20,7 @@ export type LearningLesson = {
   questionId: string;
 };
 
-export const learningLessons: readonly LearningLesson[] = [
+export const introductoryLessons: readonly LearningLesson[] = [
   {id:'math-percentages',subject:'Matemática',topic:'Porcentagem',objective:'Converter percentuais em frações ou decimais e aplicá-los a uma quantidade.',explanation:'Por cento significa a cada cem. Para calcular uma porcentagem, multiplique o valor pela taxa dividida por 100. Descontos são subtraídos do preço inicial; aumentos são adicionados.',workedExample:'Um tênis custa R$ 120. Um desconto de 10% corresponde a R$ 12, então o preço com desconto é R$ 108.',commonMistake:'Calcular a porcentagem sobre o preço já descontado, em vez de usar o preço original.',check:'Quanto representa 20% de R$ 150?',prerequisites:[],minutes:12,questionId:'q01'},
   {id:'math-equations',subject:'Matemática',topic:'Equações',objective:'Isolar a incógnita preservando a igualdade.',explanation:'Uma equação é uma igualdade com uma quantidade desconhecida. Faça a mesma operação nos dois lados para manter o equilíbrio, desfazendo somas e multiplicações na ordem inversa.',workedExample:'Para 2x + 4 = 16, subtraia 4 dos dois lados: 2x = 12. Divida ambos por 2: x = 6.',commonMistake:'Passar um termo de lado sem considerar a operação inversa.',check:'Em 4x − 5 = 15, qual é o primeiro passo?',prerequisites:[],minutes:14,questionId:'q02'},
   {id:'math-functions',subject:'Matemática',topic:'Funções',objective:'Substituir valores em uma expressão funcional e respeitar potências.',explanation:'Em uma função, a regra associa entradas a saídas. Para encontrar f(a), substitua cada x por a, inclusive os sinais e parênteses, e siga a ordem das operações.',workedExample:'Se f(x)=x²+2, então f(3)=9+2=11; se x for negativo, o quadrado continua não negativo.',commonMistake:'Interpretar (−3)² como −9 ou esquecer parênteses ao substituir números negativos.',check:'Se f(x)=3x+1, quanto vale f(4)?',prerequisites:['math-equations'],minutes:16,questionId:'q03'},
@@ -39,6 +43,23 @@ export const learningLessons: readonly LearningLesson[] = [
   {id:'geo-climate',subject:'Geografia',topic:'Climatologia',objective:'Reconhecer elementos do clima e sua relação com altitude e latitude.',explanation:'Temperatura, umidade e pressão são elementos climáticos; altitude, latitude, relevo e maritimidade influenciam padrões climáticos. Clima descreve padrões de longo prazo, não o tempo de um dia.',workedExample:'Duas cidades na mesma latitude podem ter temperaturas diferentes se uma estiver muito mais alta que a outra.',commonMistake:'Confundir tempo atmosférico momentâneo com clima regional.',check:'Qual é a diferença entre tempo atmosférico e clima?',prerequisites:['geo-maps'],minutes:16,questionId:'q20'},
   ...expandedLessons,
 ];
+
+// Every registered syllabus topic is reachable through the same learning catalog.
+// Pending curriculum entries are metadata, never fabricated mini-lessons or demo questions.
+const catalogByTopic=new Map<string,LearningLesson>(introductoryLessons.map(l=>[`${l.subject}\0${l.topic}`,l]));
+for(const [exam,blueprint] of Object.entries(examBlueprints)){
+ for(const [subject,topics] of Object.entries(blueprint.subjects))for(const topic of topics){
+  const key=`${subject}\0${topic}`;
+  const existing=catalogByTopic.get(key);
+  if(existing){existing.exams=[...new Set([...(existing.exams||[]),exam as ExamId])];continue;}
+  const id=courseId(subject,topic);
+  catalogByTopic.set(key,{id,curriculumId:id,exams:[exam as ExamId],subject,topic,
+   objective:`Estudar ${topic} e aplicar o conteúdo em questões progressivas.`,
+   explanation:'',workedExample:'',commonMistake:'',check:'',prerequisites:[],minutes:0,
+   questionId:`curriculum:${id}`});
+ }
+}
+export const learningLessons:readonly LearningLesson[]=[...catalogByTopic.values()];
 
 export const learningSubjects = [...new Set(learningLessons.map(lesson=>lesson.subject))];
 export function findLearningLesson(id:string):LearningLesson|null {return learningLessons.find(lesson=>lesson.id===id)??null;}

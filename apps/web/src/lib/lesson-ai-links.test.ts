@@ -6,8 +6,8 @@ import {lessonExamTopics,linkedExamTopic,lessonGenerationPreset,validLessonAIRef
 
 const institutions:ExamId[]=['enem','etec','fuvest','vunesp','saresp'];
 
-test('every authored introductory lesson has a server-validated generation preset',()=>{
- assert.equal(learningLessons.length,80);
+test('every study topic has a server-validated generation preset',()=>{
+ assert.ok(learningLessons.length>900);
  for(const lesson of learningLessons){
   const preset=lessonGenerationPreset(lesson.id);
   assert.ok(preset,`Missing topic bridge for ${lesson.id}`);
@@ -18,7 +18,7 @@ test('every authored introductory lesson has a server-validated generation prese
    if(topic)assert.ok(examBlueprints[id].subjects[lesson.subject]?.includes(topic));
   }
  }
- assert.equal(Object.keys(lessonExamTopics).length,80);
+ assert.equal(Object.keys(lessonExamTopics).length,learningLessons.length);
 });
 
 test('cross-subject and invented lesson tags are refused, never inferred from broad topics',()=>{

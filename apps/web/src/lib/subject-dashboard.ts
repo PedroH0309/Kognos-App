@@ -1,5 +1,5 @@
 import {demoQuestions, type QuestionAttempt} from './demo-questions.ts';
-import {learningSubjects,lessonsForSubject,type LearningLesson} from './learning-catalog.ts';
+import {learningLessons,learningSubjects,lessonsForSubject,type LearningLesson} from './learning-catalog.ts';
 import {recommendedNextLesson,subjectProgress} from './learning-progress.ts';
 import {reviewItems, type ReviewItem} from './adaptive-review.ts';
 
@@ -22,15 +22,15 @@ export type SubjectSnapshot={
  status:'not-started'|'needs-review'|'in-progress'|'sample-covered';
 };
 
-export function subjectSnapshots(attempts:readonly QuestionAttempt[],today=new Date()):SubjectSnapshot[]{
+export function subjectSnapshots(attempts:readonly QuestionAttempt[],today=new Date(),catalog:readonly LearningLesson[]=learningLessons):SubjectSnapshot[]{
  const valid=attempts.filter(a=>{
   const q=demoQuestions.find(q=>q.id===a.questionId);
   return Boolean(q&&Number.isInteger(a.answerIndex)&&a.answerIndex>=0&&a.answerIndex<q!.options.length&&Number.isFinite(Date.parse(a.createdAt)));
  });
  const scheduled=reviewItems(valid,today);
- return learningSubjects.map(subject=>{
-  const stats=subjectProgress(subject,valid);
-  const ids=new Set(lessonsForSubject(subject).map(l=>l.questionId));
+ return [...new Set(catalog.map(l=>l.subject))].map(subject=>{
+  const stats=subjectProgress(subject,valid,catalog);
+  const ids=new Set(catalog.filter(l=>l.subject===subject).map(l=>l.questionId));
   const related=valid.filter(a=>ids.has(a.questionId));
   const last=related.reduce<string|null>((latest,a)=>!latest||Date.parse(a.createdAt)>Date.parse(latest)?a.createdAt:latest,null);
   const dueReviews=scheduled.filter((item:ReviewItem)=>item.lesson.subject===subject&&item.status==='due').length;
@@ -39,7 +39,7 @@ export function subjectSnapshots(attempts:readonly QuestionAttempt[],today=new D
    subject,total:stats.total,practiced:stats.practiced,correctSamples:stats.correct,
    needsReview:stats.review,notPracticed:stats.total-stats.practiced,coverage:stats.coverage,
    attempts:related.length,dueReviews,lastAttemptAt:last,
-   recommended:recommendedNextLesson(subject,valid),status,
+   recommended:recommendedNextLesson(subject,valid,catalog),status,
   };
  });
 }
