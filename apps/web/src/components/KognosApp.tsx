@@ -3,6 +3,10 @@
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import KogAssistant from './KogAssistant';
+import {AnimatedPage,AnimatedSidebarScrim,MobileTabIndicator} from './KognosMotion';
+import ExamSources from './ExamSources';
+import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
+import {examForStudent} from '@/lib/exam-syllabus';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import KogMascot3D from './KogMascot3D';
 import WeeklyProgressChart from './WeeklyProgressChart';
@@ -405,27 +409,101 @@ function ComingSoon({view,onGo}:{view:View;onGo:(v:View)=>void}){
 }
 
 export default function KognosApp(){
- const [loading,setLoading]=useState(true);const [user,setUser]=useState<User|null>(null);const [profile,setProfile]=useState<StudentProfile|null>(null);
- const [assistantOpen,setAssistantOpen]=useState(false);
- const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);
- const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
- const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('dark');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
- const cloud=useMemo(()=>isCloudConfigured(),[]);
- useEffect(()=>{
-  let mounted=true;const sb=getSupabase();
-  const preferred=window.localStorage.getItem('kognos_theme_v1');if(preferred==='light'||preferred==='dark')setTheme(preferred);setSidebarCollapsed(window.localStorage.getItem('kognos_sidebar_collapsed_v1')==='true');
-  const loadGuest=()=>{try{const saved=window.localStorage.getItem(STORAGE_KEY);if(mounted){setProfile(saved?normalizeProfile(JSON.parse(saved)):null);setAvatarUrl(window.localStorage.getItem('kognos_guest_avatar_v1'));}}catch{if(mounted)setProfile(null);}};
-  const loadProfile=async(id:string)=>{if(!sb)return;const {data,error}=await sb.from('profiles').select('display_name,username,biography,avatar_path,preferences').eq('id',id).maybeSingle();if(!mounted)return;if(error){setProfile(null);setAvatarUrl(null);return;}
-     const prefs=data?.preferences||null;setProfile(prefs&&prefs.completedAt?normalizeProfile({...prefs,nickname:data?.display_name||prefs.nickname,username:data?.username||'',biography:data?.biography||''}):null);
-     setAvatarUrl(null);if(data?.avatar_path){const {data:signed}=await sb.storage.from('kognos-avatars').createSignedUrl(data.avatar_path,3600);if(mounted)setAvatarUrl(signed?.signedUrl||null);}
-  };
-  (async()=>{if(sb){const {data}=await sb.auth.getSession();if(!mounted)return;if(data.session?.user){setUser(data.session.user);await loadProfile(data.session.user.id);}else loadGuest();}else loadGuest();if(mounted)setLoading(false);})();
-  const {data:listener}=sb?.auth.onAuthStateChange((event,session)=>{if(!mounted)return;setUser(session?.user||null);if(event==='SIGNED_OUT'){loadGuest();setView('dashboard');}if(event==='SIGNED_IN'&&session?.user){loadProfile(session.user.id);}if(event==='PASSWORD_RECOVERY'){setRecoveryMode(true);setView('settings');}})||{data:{subscription:{unsubscribe:()=>{}}}};
-  return()=>{mounted=false;listener.subscription.unsubscribe();};
- },[]);
- async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(`Não foi possível salvar seu perfil: ${error.message}`);}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
- async function signout(){await getSupabase()?.auth.signOut();setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);}
- function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);setView(v);}setMobileMenu(false); }
+  const [loading,setLoading]=useState(true);const [user,setUser]=useState<User|null>(null);const [profile,setProfile]=useState<StudentProfile|null>(null);
+  const [profileError,setProfileError]=useState('');
+  const [reloadRequest,setReloadRequest]=useState(0);
+  const [assistantOpen,setAssistantOpen]=useState(false);
+  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [diagnosticCycle,setDiagnosticCycle]=useState<'baseline'|'weekly'>('baseline');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
+  const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
+  const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
+  const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
+  const [learningFocus,setLearningFocus]=useState<{subject:string;lessonId:string}|null>(null);
+  const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('light');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
+  const cloud=useMemo(()=>isCloudConfigured(),[]);
+  const authRequestId=useRef(0);
+  const authenticatedUserRef=useRef<string|null>(null);
+  useEffect(()=>{
+   let mounted=true;let sessionEventSeen=false;
+   const sb=getSupabase();
+   try{
+     const preferred=window.localStorage.getItem('kognos_theme_v1');
+     if(preferred==='light'||preferred==='dark')setTheme(preferred);
+     setSidebarCollapsed(window.localStorage.getItem('kognos_sidebar_collapsed_v1')==='true');
+   }catch { /* Storage restrictions must not interfere with authentication. */ }
+   if(!sb){setLoading(false);return()=>{mounted=false;};}
+   async function resolveAccount(account:User|null){
+     const requestId=++authRequestId.current;
+     if(!mounted)return;
+     const sameAccount=isSameAuthenticatedAccount(authenticatedUserRef.current,account?.id??null);
+     authenticatedUserRef.current=account?.id??null;
+     // Restore the last page only when the account actually changes or after a reload.
+     if(account&&!sameAccount)setView(readWorkspaceView(window.sessionStorage,account.id));
+     setLoading(true);setProfileError('');setUser(account);setProfile(null);setAvatarUrl(null);
+     if(!account){setEditing(false);setView('dashboard');setLoading(false);return;}
+     // An existing Auth account and a completed learning profile are different states.
+     // A fetch error must never be treated as proof of a new account.
+     let {data,error}=await sb!.from('profiles')
+       .select('display_name,username,biography,avatar_path,preferences').eq('id',account.id).maybeSingle();
+     // Some older deployments lack the optional avatar_path column. They should
+     // still be able to open an already completed profile without re-onboarding.
+     if(error && /avatar_path/i.test(error.message) && /column|schema cache|does not exist/i.test(error.message)){
+       const older=await sb!.from('profiles')
+         .select('display_name,username,biography,preferences').eq('id',account.id).maybeSingle();
+       data=older.data?{...older.data,avatar_path:null}:null;error=older.error;
+     }
+     if(!mounted||authRequestId.current!==requestId)return;
+     if(error){setProfileError(explainProfileDatabaseError(error));setLoading(false);return;}
+     setProfile(readStoredStudentProfile(data));
+     setLoading(false);
+     if(data?.avatar_path){
+       const {data:signed}=await sb!.storage.from('kognos-avatars').createSignedUrl(data.avatar_path,3600);
+       if(mounted&&authRequestId.current===requestId)setAvatarUrl(signed?.signedUrl||null);
+     }
+   }
+   const {data:listener}=sb.auth.onAuthStateChange((event,session)=>{
+     if(!mounted)return;
+     if(event==='INITIAL_SESSION')return; // getSession initializes exactly once below.
+     if(event==='SIGNED_OUT'){
+       sessionEventSeen=true;
+       setAuthOpen(false);setAssistantOpen(false);setStudyContext(null);
+       void resolveAccount(null);
+     }else if(event==='SIGNED_IN' && session?.user){
+       sessionEventSeen=true;
+       // Supabase can emit SIGNED_IN again when a tab regains focus.
+       // Never tear down the current lesson or generation for the same user.
+       if(isSameAuthenticatedAccount(authenticatedUserRef.current,session.user.id))return;
+       setAuthOpen(false);setEditing(false);
+       void resolveAccount(session.user);
+     }else if(event==='PASSWORD_RECOVERY'&&session?.user){
+       sessionEventSeen=true;
+       setRecoveryMode(true);
+       if(!isSameAuthenticatedAccount(authenticatedUserRef.current,session.user.id))void resolveAccount(session.user);
+       setView('settings');
+     }
+   });
+   void sb.auth.getSession().then(({data,error})=>{
+     if(!mounted||sessionEventSeen)return;
+     if(error){setProfileError('Não foi possível verificar sua sessão. Tente entrar novamente.');setLoading(false);return;}
+     void resolveAccount(data.session?.user||null);
+   }).catch(()=>{if(mounted&&!sessionEventSeen){setProfileError('Não foi possível verificar a sessão. Confira sua conexão e tente novamente.');setLoading(false);}});
+   return()=>{mounted=false;authRequestId.current++;listener.subscription.unsubscribe();};
+  },[reloadRequest]);
+  useEffect(()=>{
+    // Do not overwrite the stored page while the profile is still being resolved.
+    if(user?.id&&profile&&!loading&&!editing)saveWorkspaceView(window.sessionStorage,user.id,view);
+  },[user?.id,profile,loading,editing,view]);
+ async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
+ async function signout(){
+   const sb=getSupabase();if(sb)await sb.auth.signOut();
+   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);
+ }
+ function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
+ function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
+ function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
+ function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
+ function generateForLesson(lessonId:string){setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
+ function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
  function changeTheme(v:'dark'|'light'){setTheme(v);window.localStorage.setItem('kognos_theme_v1',v);}
  function toggleSidebar(){setSidebarCollapsed(old=>{localStorage.setItem('kognos_sidebar_collapsed_v1',String(!old));return !old;});}
  async function saveAccountChanges(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase indisponível.');const {error}=await sb.from('profiles').update({display_name:normalized.nickname,username:normalized.username||null,biography:normalized.biography,preferences:normalized}).eq('id',user.id);if(error){if(error.code==='23505')throw new Error('Este nome de usuário já está em uso. Escolha outro.');throw error;}}else window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));setProfile(normalized);}
@@ -458,10 +536,19 @@ export default function KognosApp(){
  <AnimatedPage page={view} disabled={disableAnimations}>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
  view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>setAssistantOpen(true)}/>:
- view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}`} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext}/>: 
- view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>: 
+ view==='subjects'?<SubjectDashboard key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
+ view==='learn'||view==='trails'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext} onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>: 
+ view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>setAssistantOpen(true)} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
+ view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
+ view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
+ view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:
+  view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlan={()=>navigate('plans')}/>:  
+ view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
+ view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)}/>: 
+ view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onDiagnostic={()=>navigate('diagnostic')} onWeeklyReview={openWeeklyReview} onLearn={openFocusedLesson} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:  
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 0.7 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','plans','tutor','profile'] as View[]).map(v=><button key={v} className={view===v?'active':''} onClick={()=>navigate(v)}><span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='plans'?'Plano':v==='tutor'?'Tutor':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
- {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>setView('dashboard')}/>}</div>;
+ </AnimatedPage>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Plano':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
