@@ -541,3 +541,15 @@ button {touch-action:manipulation;}
  * The native hidden state removes inactive screens from focus and layout. */
 .app-layout .k-retained-workspace{min-width:0;width:100%;flex:1 0 auto}
 .app-layout .k-retained-workspace[hidden]{display:none!important}
+
+/* Scoped, single-click generation from a selected learning trail lesson. */
+.app-layout .k-lesson-practice-generation{display:grid;gap:15px;padding:22px;border:1px solid var(--line);border-radius:16px}
+.app-layout .k-lesson-practice-generation-head{display:flex;align-items:start;gap:12px}
+.app-layout .k-lesson-practice-generation-head>svg{flex:none;color:#5B4DE3;margin-top:3px}
+.app-layout .k-lesson-practice-generation-head strong{font-size:16px;color:var(--txt);line-height:1.4}
+.app-layout .k-lesson-practice-generation-head p{margin:5px 0 0;color:var(--sub);line-height:1.6;font-size:12px}
+.app-layout .k-lesson-practice-pending{color:var(--sub);font-size:12px;margin:0;line-height:1.6}
+.app-layout .k-lesson-practice-actions{display:flex;flex-wrap:wrap;gap:10px}
+.app-layout .k-lesson-practice-actions .btn{min-height:44px}
+.app-layout .k-lesson-practice-generation>.privacy-note{margin:0;font-size:11px;line-height:1.6}
+@media(max-width:530px){.app-layout .k-lesson-practice-generation{padding:16px}.app-layout .k-lesson-practice-actions{flex-direction:column}.app-layout .k-lesson-practice-actions .btn{width:100%;justify-content:center}}
