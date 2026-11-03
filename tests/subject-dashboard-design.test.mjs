@@ -34,5 +34,5 @@ test('Distinct subject UI respects existing theming and mobile layouts',()=>{
  assert.match(css,/\.app-layout \.subject-kpi-grid/);
  assert.match(css,/\.app-layout \.learning-body-grid\.is-learning-first/);
  assert.match(css,/@media\(max-width:520px\)/);
- assert.match(dashboard,/aria-pressed=\{entry.subject===selected\}/);
+ assert.match(dashboard,/aria-pressed=\{entry.subject===\(snapshot\?\.subject\|\|selected\)\}/);
 });

@@ -27,7 +27,8 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
  useEffect(()=>{setVideo(null);},[detail?.revision]);
  const filtered=topics.filter(t=>(exam==='all'||t.exams.includes(exam as ExamId))&&(subject==='all'||t.subject===subject)&&`${t.topic} ${t.subject}`.toLocaleLowerCase('pt-BR').includes(search.toLocaleLowerCase('pt-BR')));
  async function generate(){if(!selected||!consent||busy)return;setBusy(true);setError('');try{await contentRequest('/api/content/generate',{method:'POST',body:JSON.stringify({id:selected,consent:true})});await reload();setDetail(await contentRequest(`/api/content?id=${selected}`));}catch(e){setError(e instanceof Error?e.message:'Falha ao desenvolver aula.');}finally{setBusy(false);}}
- return <main className={embedded?"course-room course-room-embedded":"app-content course-room"}>
+ const Container=embedded?'section':'main';
+ return <Container className={embedded?"course-room course-room-embedded":"app-content course-room"}>
   {!embedded&&<>
   <header className="course-heading"><div><span className="overline">BIBLIOTECA DE ESTUDOS</span><h1>Entenda. Pratique. <em>Avance.</em></h1><p>Fundamentos, aplicação e aprofundamento, com tarefas e referências por assunto.</p></div></header>
   {notice&&<p className="course-notice" role="status">{notice}</p>}{error&&<p className="message warning" role="alert">{error}</p>}
@@ -51,7 +52,7 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
     <div className="course-actions">{onTutor&&<button type="button" className="btn outline" onClick={onTutor}>Explicar com o Kog</button>}{onGenerateAI&&<button type="button" className="btn primary" disabled={!userId} onClick={()=>onGenerateAI(detail.topic.legacyLessonId||detail.topic.id,true)}>Praticar com 10 questões de IA</button>}<a className="btn outline" href="/">Voltar ao aplicativo</a></div>
     {detail.lesson&&<details><summary>Autoria e referências</summary><p>{detail.lesson.authorship} · {detail.lesson.license}</p><ul>{detail.lesson.sourceUrls.map(u=><li key={u}><a href={u} target="_blank" rel="noreferrer">{u}</a></li>)}</ul></details>}
    </>}</article></div>
- </main>;
+ </Container>;
 }
 function EditorialQuestion({question:q,source='editorial'}:{question:PublicCourseQuestion;source?:'editorial'|'ai'}){
  const [answer,setAnswer]=useState<number|null>(null),[result,setResult]=useState<{correct:boolean;correctIndex:number;explanation:string}|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);

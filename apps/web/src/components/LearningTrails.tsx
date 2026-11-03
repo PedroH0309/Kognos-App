@@ -172,7 +172,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
 
   <div className={`learning-body-grid learning-journey-workspace ${mode==='learn'?'is-learning-first':''}`}>
    <section className="learning-index dark-panel" aria-label={`Etapas de ${subject}`}>
-    <div className="learning-index-header"><div><span className="overline">{isTrail?'SEQUÊNCIA DA TRILHA':'NAVEGUE PELAS AULAS'}</span><h2>{isTrail?'Etapas do percurso':'Escolha uma aula'}</h2><p>{roadmap.total} conteúdos · {roadmap.estimatedUnpracticedMinutes} min de estudo estimado nos tópicos não praticados</p></div></div>
+    <div className="learning-index-header"><div><span className="overline">{isTrail?'SEQUÊNCIA DA TRILHA':'NAVEGUE PELAS AULAS'}</span><h2>{isTrail?'Etapas do percurso':'Escolha uma aula'}</h2><p>{roadmap.total} temas disponíveis para estudo</p></div></div>
     <label className="learning-search"><Search size={16} aria-hidden="true"/><span className="sr-only">Buscar tópico</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar assunto…"/></label>
     {!loaded&&<p className="muted" role="status">Carregando evidências de prática…</p>}
     <div className="learning-lesson-list learning-journey-steps">

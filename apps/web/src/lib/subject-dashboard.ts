@@ -33,7 +33,7 @@ export function subjectSnapshots(attempts:readonly QuestionAttempt[],today=new D
   const ids=new Set(catalog.filter(l=>l.subject===subject).map(l=>l.questionId));
   const related=valid.filter(a=>ids.has(a.questionId));
   const last=related.reduce<string|null>((latest,a)=>!latest||Date.parse(a.createdAt)>Date.parse(latest)?a.createdAt:latest,null);
-  const dueReviews=scheduled.filter((item:ReviewItem)=>item.lesson.subject===subject&&item.status==='due').length;
+  const dueReviews=scheduled.filter((item:ReviewItem)=>ids.has(item.question.id)&&item.status==='due').length;
   const status=stats.practiced===0?'not-started':stats.review>0?'needs-review':stats.practiced<stats.total?'in-progress':'sample-covered';
   return {
    subject,total:stats.total,practiced:stats.practiced,correctSamples:stats.correct,

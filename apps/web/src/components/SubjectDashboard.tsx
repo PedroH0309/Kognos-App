@@ -106,7 +106,7 @@ export default function SubjectDashboard({userId,preferredExam=null,onOpenTrail,
     <div className="subject-section-heading"><div><span className="overline">SUAS MATÉRIAS</span><h2>Escolha uma disciplina</h2></div><small>{snapshots.length} disponíveis</small></div>
     <div className="subject-card-list">{snapshots.map((entry,index)=>{
      const Icon=subjectIcons[index]||BookOpenText;
-     return <button type="button" className={`subject-select-card ${entry.subject===selected?'is-selected':''}`} onClick={()=>{setSelected(entry.subject);onContextChange(null);}} aria-pressed={entry.subject===selected} key={entry.subject}>
+     return <button type="button" className={`subject-select-card ${entry.subject===(snapshot?.subject||selected)?'is-selected':''}`} onClick={()=>{setSelected(entry.subject);onContextChange(null);}} aria-pressed={entry.subject===(snapshot?.subject||selected)} key={entry.subject}>
       <span className="subject-select-icon"><Icon size={21} aria-hidden="true"/></span>
       <span className="subject-select-body"><strong>{entry.subject}</strong><small>{ready?statusLabels[entry.status]:'Consultando histórico…'}</small><span className="subject-mini-progress" aria-hidden="true"><span style={{width:`${ready?entry.coverage:0}%`}}/></span></span>
       <span className="subject-select-count">{ready?`${entry.practiced}/${entry.total}`:'—'}</span>
@@ -140,7 +140,7 @@ export default function SubjectDashboard({userId,preferredExam=null,onOpenTrail,
        <span className="subject-topic-copy"><strong>{lesson.topic}</strong><small>{ready?(state==='not-started'&&linked.hasAI?'Praticado com IA':evidenceLabels[state]):'Carregando resultado…'}{lesson.curriculumId?' · Aula por tema':` · ${lesson.minutes} min estimados`}{ai?` · IA: ${ai.correct}/${ai.attempts} acertos`:''}</small>{evolution?.changePoints!==null&&evolution?.changePoints!==undefined&&<small className="k-subject-skill-delta">Evolução entre sequências: {evolution.changePoints>0?'+':''}{evolution.changePoints} pontos percentuais</small>}</span>
        <button type="button" className="subject-topic-open" onClick={()=>openTrail(lesson)} aria-label={`Abrir aula de ${lesson.topic}`} title={`Estudar ${lesson.topic}`}><ArrowRight size={17}/></button>
       </article>;
-    })}</div>
+    })}{!visibleTopics.length&&<p>Nenhum tema encontrado. Tente outro termo.</p>}</div>
     </>}
     <p className="privacy-note">Para organizar a sequência e os pré-requisitos, use Trilhas de aprendizagem. Questões demonstrativas são corrigidas no navegador; as geradas por IA são corrigidas no servidor. Os indicadores não constituem avaliação oficial.</p>
    </section>
