@@ -40,7 +40,7 @@ type PracticeFocus={subject:string;topic:string;questionId:string};
 export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenerateAI,onTutor,onContextChange}:{
  userId:string|null;
  onOpenTrail:(focus:LessonFocus)=>void;
- onPractice:(focus:PracticeFocus)=>void;onGenerateAI:(lessonId:string)=>void;
+ onPractice:(focus:PracticeFocus)=>void;onGenerateAI:(lessonId:string,generateNew?:boolean)=>void;
  onTutor:()=>void;
  onContextChange:(value:KogStudyContext|null)=>void;
 }){
@@ -75,7 +75,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
  const topics=lessonsForSubject(snapshot?.subject||selected);
  const next=snapshot?.recommended??topics[0]??null;
  function openTrail(lesson:LearningLesson){onOpenTrail({subject:lesson.subject,lessonId:lesson.id});}
- function practice(lesson:LearningLesson){onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId});}
+ function practice(lesson:LearningLesson){if(userId)onGenerateAI(lesson.id,true);else onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId});}
  function askKog(){if(next)onContextChange({kind:'lesson',lessonId:next.id});onTutor();}
  return <main className="app-content subject-dashboard-page">
   <div className="page-intro"><span className="overline">PAINEL DE MATÉRIAS</span><h1>Minhas <em>disciplinas.</em></h1><p>Veja o que já praticou em cada matéria, identifique pontos de revisão e escolha sua próxima atividade. Para seguir a sequência das aulas, abra as Trilhas de aprendizagem.</p></div>
@@ -106,7 +106,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
     <div className="subject-detail-metrics"><div><strong>{ready?snapshot.correctSamples:'—'}</strong><span>Acertos na amostra demo</span></div><div><strong>{ready?snapshot.needsReview:'—'}</strong><span>Última resposta incorreta</span></div><div><strong>{ready?snapshot.notPracticed:'—'}</strong><span>Ainda não praticados</span></div></div>
     {userId&&<div className="subject-ai-data"><Sparkles size={18}/><div><strong>{ready?`${snapshot.aiCorrect} de ${snapshot.aiAttempts} respostas IA corretas`:'Consultando respostas IA…'}</strong><small>{ready?`${snapshot.aiQuestions} questões diferentes vinculadas a ${snapshot.subject}. Não é uma medida de domínio.`:'Aguarde a sincronização do histórico privado.'}</small></div></div>}
     <div className="subject-next-action"><div><span className="overline"><Target size={15}/> PRÓXIMO PASSO SUGERIDO</span><h3>{next?.topic??'Selecione uma matéria'}</h3><p>{next?.objective??'Escolha uma aula para começar.'}</p><small>{ready&&snapshot.lastAttemptAt?`Última prática: ${new Date(snapshot.lastAttemptAt).toLocaleDateString('pt-BR')}`:'Você ainda não registrou prática nesta matéria.'}</small></div>
-     <div className="subject-next-buttons"><button type="button" className="btn primary" disabled={!ready||!next} onClick={()=>next&&openTrail(next)}>Abrir trilha <ArrowRight size={15}/></button><button type="button" className="btn outline" disabled={!ready||!next} onClick={()=>next&&practice(next)}>Praticar assunto</button><button type="button" className="btn outline" disabled={!next||!userId} onClick={()=>next&&onGenerateAI(next.id)}><Sparkles size={15}/> Questões IA</button><button type="button" className="btn outline" disabled={!next} onClick={askKog}><Sparkles size={15}/> Perguntar ao Kog</button></div>
+     <div className="subject-next-buttons"><button type="button" className="btn primary" disabled={!ready||!next} onClick={()=>next&&openTrail(next)}>Abrir trilha <ArrowRight size={15}/></button><button type="button" className="btn outline" disabled={!ready||!next} onClick={()=>next&&practice(next)}>{userId?'Gerar questões deste assunto':'Praticar demonstração'}</button><button type="button" className="btn outline" disabled={!next||!userId} onClick={()=>next&&onGenerateAI(next.id)}><Sparkles size={15}/> Questões IA</button><button type="button" className="btn outline" disabled={!next} onClick={askKog}><Sparkles size={15}/> Perguntar ao Kog</button></div>
     </div>
     <div className="subject-topics-heading"><h3>Conteúdos desta matéria</h3><span>{topics.length} miniaulas</span></div>
     <div className="subject-topic-list">{topics.map((lesson,index)=>{
