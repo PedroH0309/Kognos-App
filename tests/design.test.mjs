@@ -49,7 +49,7 @@ test('chat informa processamento externo sem interromper a cada mensagem',()=>{
 test('Kog floats globally, keeps chat state mounted, and opens from navigation',()=>{
   assert.match(app,/<KogAssistant open=\{assistantOpen\}/);
   assert.match(app,/function navigate\(v:View\)/);
-  assert.match(app,/if\(v==='tutor'\)\{setAssistantOpen\(true\)/);
+  assert.match(app,/if\(v==='tutor'\)\{openAssistant\(\)/);
   assert.match(assistant,/kog-launcher/);
   assert.match(assistant,/kog-drawer/);
   assert.match(assistant,/Escape/);
