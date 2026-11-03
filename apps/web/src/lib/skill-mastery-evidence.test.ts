@@ -71,3 +71,18 @@ test('recommendation prioritizes unfinished or struggling skills before retained
  assert.equal(prioritySkillLessonId(lessons,signals,new Date('2026-11-12T09:00:00Z')),'partial');
  assert.equal(prioritySkillLessonId(lessons,new Map(),new Date('2026-11-12T09:00:00Z')),null);
 });
+
+test('replaying the identical ten questions on another day does not establish retention',()=>{
+ const results=inferSkillEvolution('math-percentages',[
+  ...run(1,9,strong,'same'),...run(3,9,strong,'same')
+ ]);
+ assert.equal(results.comparableBlocks,2);
+ assert.equal(results.mastery.distinctPracticeDays,2);
+ assert.equal(results.mastery.stage,'developing');
+});
+test('a third distinct attempt can restore consistency after two repeated practices',()=>{
+ const results=inferSkillEvolution('math-percentages',[
+  ...run(1,9,strong,'old'),...run(3,9,strong,'old'),...run(5,9,strong,'new')
+ ]);
+ assert.equal(results.mastery.stage,'retention-observed');
+});
