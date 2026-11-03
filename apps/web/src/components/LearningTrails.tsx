@@ -14,6 +14,7 @@ import {linkedExamTopic} from '@/lib/lesson-ai-links';
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import StudySyncNotice from './StudySyncNotice';
+import SkillEvolutionPanel from './SkillEvolutionPanel';
 
 type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
@@ -22,7 +23,7 @@ const guestKey='kognos_demo_attempts_v1_guest';
 
 export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus,active=true}:{
  mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
+ onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string,generateNew?:boolean)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
@@ -33,6 +34,21 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [restored,setRestored]=useState(false);
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  const detailRef=useRef<HTMLElement|null>(null);
+ // The question workspace stays mounted when hidden. Defer a single updated
+ // progress read until this trail becomes visible again, rather than fetching
+ // during every graded answer of a ten-question practice run.
+ const historyChangedWhileAway=useRef(false);
+ useEffect(()=>{
+  const mark=()=>{historyChangedWhileAway.current=true;};
+  window.addEventListener('kognos:ai-answer-recorded',mark);
+  return()=>window.removeEventListener('kognos:ai-answer-recorded',mark);
+ },[]);
+ useEffect(()=>{
+  if(active&&historyChangedWhileAway.current){
+   historyChangedWhileAway.current=false;
+   void refreshAI();
+  }
+ },[active,refreshAI]);
  useEffect(()=>{
   let mounted=true;setLoaded(false);setError('');setAttempts([]);
   if(!userId){
@@ -181,6 +197,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      </details>
      <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>Praticar exercício <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
       <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
+     <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
        <span>{position+1} / {roadmap.total}</span>
        <button type="button" disabled={!following} onClick={()=>following&&chooseLesson(following)}>Próxima aula <ArrowRight size={15}/></button></div>

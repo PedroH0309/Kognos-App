@@ -4,6 +4,7 @@ import { KognosSelect, type KognosOption } from './KognosFields';
 import AiQuestionStudio from './AiQuestionStudio';
 import {practiceSessionSummary} from '@/lib/practice-session';
 import type {KogStudyContext} from '@/lib/kog-study-context';
+import type {StudentProfile} from '@/lib/profile';
 import {demoQuestions,statsFromAttempts,type DemoQuestion,type QuestionAttempt} from '@/lib/demo-questions';
 import {demoTopics,filterDemoQuestions} from '@/lib/question-bank';
 import {getCloudAttempts,createCloudAttempt} from '@/lib/cloud-study';
@@ -12,7 +13,7 @@ type Mode='questions'|'simulados'|'performance';
 type PracticeFocus={subject:string;topic:string;questionId:string};
 function storageKey(userId:string|null){return 'kognos_demo_attempts_v1_'+(userId||'guest');}
 
-export default function PracticeSpace({mode,userId,onTutor,onLogin,onContextChange,focus,aiFocusLessonId,active=true}:{mode:Mode;userId:string|null;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focus?:PracticeFocus|null;aiFocusLessonId?:string|null;active?:boolean}){
+export default function PracticeSpace({mode,userId,profile,onTutor,onLogin,onContextChange,onOpenLesson,onGenerateLesson,focus,aiFocusLessonId,lessonPracticeRequestId=0,active=true}:{mode:Mode;userId:string|null;profile:StudentProfile;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;onOpenLesson:(focus:{subject:string;lessonId:string})=>void;onGenerateLesson:(lessonId:string)=>void;focus?:PracticeFocus|null;aiFocusLessonId?:string|null;lessonPracticeRequestId?:number;active?:boolean}){
   const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
   const [subject,setSubject]=useState(focus?.subject??'Todas');
   const [topic,setTopic]=useState(focus?.topic??'Todos');
@@ -25,7 +26,7 @@ export default function PracticeSpace({mode,userId,onTutor,onLogin,onContextChan
   const [loaded,setLoaded]=useState(false);const [error,setError]=useState('');
   // A lesson link can arrive after this workspace was visited. Keep the
   // existing draft when merely navigating, but open the linked IA mode.
-  useEffect(()=>{if(aiFocusLessonId)setQuestionSource('ai');},[aiFocusLessonId]);
+  useEffect(()=>{if(aiFocusLessonId)setQuestionSource('ai');},[aiFocusLessonId,lessonPracticeRequestId]);
   useEffect(()=>{
     let active=true;setLoaded(false);setError('');setAttempts([]);
     if(!userId){

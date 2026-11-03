@@ -5,6 +5,7 @@ import { normalizeProfile } from '@/lib/profile';
 import {requestAI,isAIJobConfigured,AIProviderRateLimitError} from '@/lib/ai-provider';
 import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
 import {findLearningLesson} from '@/lib/learning-catalog';
+import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
 export const runtime = 'nodejs';
@@ -63,7 +64,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       }
     } else if (studyContext?.kind === 'generated_question') {
       const {data:generated,error:lookupError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
-        .select('id,subject,topic,difficulty,prompt,options,correct_index,explanation')
+        .select('id,lesson_id,institution,subject,topic,difficulty,prompt,options,correct_index,explanation')
         .eq('id',studyContext.questionId).eq('user_id',userId).neq('review_status','withdrawn').maybeSingle();
       if(lookupError)return jsonError('O banco gerado por IA requer a migração 0005.',503);
       if(generated){
@@ -76,6 +77,19 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
           if(recorded)verifiedAttempt={answerIndex:recorded.answer_index,correct:recorded.answer_index===generated.correct_index};
         }
         contextText=buildVerifiedGeneratedQuestionContext(generated,studyContext.phase,verifiedAttempt);
+        // Attach the canonical lesson only AFTER a recorded, incorrect answer.
+        // The supplied browser context cannot choose an arbitrary lesson or unlock a key.
+        if(studyContext.phase==='review'&&verifiedAttempt?.correct===false
+          &&generated.lesson_id&&validLessonAIReference(generated.lesson_id,
+            generated.institution,generated.subject,generated.topic)){
+          const lesson=findLearningLesson(generated.lesson_id);
+          if(lesson){
+            contextText+='\n'+buildVerifiedLessonContext(lesson)
+              +'\nTarefa de reforço: mostre primeiro o conceito que causou a dificuldade,'
+              +' depois o erro comum, um exemplo novo e uma pergunta curta de verificação.'
+              +' Não afirme que essa única resposta demonstra deficiência ou domínio.';
+          }
+        }
       }
     } else if (studyContext?.kind === 'planner') {
       let query = ctx.supabase.from('kognos_demo_tasks')

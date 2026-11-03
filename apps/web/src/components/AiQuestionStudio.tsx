@@ -7,7 +7,8 @@ import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exa
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
-import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from '@/lib/lesson-ai-links';
+import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId,lessonPracticeGenerationRequest,LESSON_PRACTICE_STEPS} from '@/lib/lesson-ai-links';
+import {newQuestionsForSelectedLesson} from '@/lib/lesson-practice-session';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import {AI_BANK_PAGE_SIZE} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
@@ -15,6 +16,11 @@ import {bankSyncNotice} from '@/lib/integration-feedback';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
 import {generateApprovedBatches,MAX_ATTEMPTS_PER_BATCH} from '@/lib/ai-generation-batches';
+import {getCloudTasks,createCloudTasks} from '@/lib/cloud-study';
+import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
+import {recoveryTargetForQuestion,recoveryTargetsFromGradedSession} from '@/lib/lesson-recovery';
+import type {StudentProfile} from '@/lib/profile';
+import {assessLessonMastery} from '@/lib/lesson-mastery';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
@@ -23,7 +29,7 @@ const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBluepri
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
 const amountOptions=[1,3,5,10].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
-export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextChange,focusLessonId}:{mode:Mode;userId:string|null;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null}) {
+export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,onContextChange,onOpenLesson,onGenerateLesson,focusLessonId,lessonPracticeRequestId=0}:{mode:Mode;userId:string|null;profile:StudentProfile;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;onOpenLesson:(focus:{subject:string;lessonId:string})=>void;onGenerateLesson:(lessonId:string)=>void;focusLessonId?:string|null;lessonPracticeRequestId?:number}) {
  const preset=focusLessonId?lessonGenerationPreset(focusLessonId):null;
  const readiness=useServerReadiness();
  const hasServerBank=readiness.status?.supabaseServerConfigured===true;
@@ -44,6 +50,12 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
  const [generationSeconds,setGenerationSeconds]=useState(0);
  const requestSerial=useRef(0);
+ const handledLessonPractice=useRef('');
+ const [lessonPracticeRetry,setLessonPracticeRetry]=useState(0);
+ const [lessonPracticeLoading,setLessonPracticeLoading]=useState(false);
+ const [lessonPracticeProgress,setLessonPracticeProgress]=useState(0);
+ const [lessonPracticeError,setLessonPracticeError]=useState('');
+ const [manualBankForRequest,setManualBankForRequest]=useState(0);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
  const [sourceNotice,setSourceNotice]=useState('');
  const [loading,setLoading]=useState(false),[generating,setGenerating]=useState(false),[submitting,setSubmitting]=useState(false);
@@ -51,6 +63,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [bankFetched,setBankFetched]=useState(false),[bankError,setBankError]=useState('');
  const [session,setSession]=useState<UserAIQuestion[]>([]),[cursor,setCursor]=useState(0),[choice,setChoice]=useState<number|null>(null);
  const [answers,setAnswers]=useState<Grading[]>([]),[finished,setFinished]=useState(false);
+ const [reviewBusy,setReviewBusy]=useState(false);
+ const reviewLock=useRef(false);
+ const [reviewNotice,setReviewNotice]=useState('');
  const [elapsed,setElapsed]=useState(0);
  const blueprint=examBlueprints[institution];
  const subjectOptions=Object.keys(blueprint.subjects).map(value=>({value,label:value}));
@@ -65,6 +80,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const scopeDescription=bankScope==='topic'?`${subject} · ${topic}`:`todas as matérias · ${blueprint.label}`;
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
+ const recoveryTargets=useMemo(()=>recoveryTargetsFromGradedSession(session,answers),[session,answers]);
+ const wrongQuestion=current&&answers[cursor]?.correct===false?recoveryTargetForQuestion(current):null;
+ const lessonAutostart=lessonPracticeRequestId>0&&Boolean(focusLessonId)&&manualBankForRequest!==lessonPracticeRequestId;
 
  useEffect(()=>{
   if(!userId||focusLessonId){setDraftReadyFor(null);return;}
@@ -81,12 +99,12 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   saveGeneratorDraft(window.localStorage,userId,{institution,subject,topic,difficulty,count,bankScope});
  },[userId,draftReadyFor,focusLessonId,institution,subject,topic,difficulty,count,bankScope]);
  useEffect(()=>{
-  if(!generating||generationStartedAt===null)return;
+  if((!generating&&!lessonPracticeLoading)||generationStartedAt===null)return;
   const update=()=>setGenerationSeconds(Math.floor((Date.now()-generationStartedAt)/1000));
   update();const timer=window.setInterval(update,1000);
   window.addEventListener('focus',update);
   return()=>{window.clearInterval(timer);window.removeEventListener('focus',update);};
- },[generating,generationStartedAt]);
+ },[generating,lessonPracticeLoading,generationStartedAt]);
 
  const authenticatedFetch=useCallback(async(url:string,init?:RequestInit)=>{
   const sb=getSupabase();if(!sb||!userId)throw new Error('Entre em sua conta para utilizar questões geradas por IA.');
@@ -126,7 +144,81 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    }
   }finally{if(requestId===requestSerial.current)setLoading(false);}
  },[authenticatedFetch,listUrl,userId,hasServerBank]);
- useEffect(()=>{void refresh();return()=>{requestSerial.current+=1;};},[refresh]);
+ // Lesson practice should request fresh reviewed items immediately, not spend
+ // its first network round-trip loading unrelated saved bank entries.
+ useEffect(()=>{
+  if(!lessonAutostart)void refresh();
+  return()=>{requestSerial.current+=1;};
+ },[refresh,lessonAutostart]);
+ // One learner click = one generation attempt. Never rerun merely because
+ // the status hook, saved bank or component re-rendered. React Strict Mode is
+ // also guarded by handledLessonPractice.
+ useEffect(()=>{
+  if(!lessonAutostart){
+   handledLessonPractice.current='';
+   return;
+  }
+  if(!userId||!focusLessonId||readiness.loading)return;
+  const requestKey=[userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry].join(':');
+  if(handledLessonPractice.current===requestKey)return;
+  handledLessonPractice.current=requestKey;
+  if(!canGenerate){
+   setLessonPracticeError('O servidor ainda não confirmou a geração e revisão de questões. Confira o diagnóstico de IA e tente novamente.');
+   return;
+  }
+  const generation=lessonPracticeGenerationRequest(focusLessonId,lessonPracticeRequestId+lessonPracticeRetry);
+  if(!generation){
+   setLessonPracticeError('Esta aula ainda não tem um assunto seguro vinculado ao gerador.');
+   return;
+  }
+  // Begin generating as soon as the student chooses practice for this lesson.
+  // All items are reviewed and ordered before the first question is shown.
+  setSession([]);setFinished(false);setCursor(0);setChoice(null);setAnswers([]);
+  setLessonPracticeLoading(true);setLessonPracticeProgress(0);
+  setLessonPracticeError('');setError('');setNotice('');
+  setGenerationStartedAt(Date.now());setGenerationSeconds(0);
+  // Strict Mode replays effects in development. Do not cancel the first
+  // generation on cleanup while keeping its deduplication guard.
+  // Instead, ignore results after a different practice request wins.
+  const stillCurrent=()=>handledLessonPractice.current===requestKey;
+  const attempt=async()=>{
+   const fresh:UserAIQuestion[]=[];
+   const seen=new Set<string>();
+   try{
+    for(const [index,step] of LESSON_PRACTICE_STEPS.entries()){
+     let remaining:number=step.count;
+     for(let retry=0;retry<3&&remaining>0;retry++){
+      if(!stillCurrent())return;
+      const request={...generation,difficulty:step.difficulty,count:remaining,
+       variation:((generation.variation??0)+index*3+retry)%32};
+      const data=await authenticatedFetch('/api/ai-questions/generate',{
+       method:'POST',body:JSON.stringify(request)
+      });
+      if(!stillCurrent())return;
+      const approved=newQuestionsForSelectedLesson(data,request);
+      for(const question of approved){
+       if(!seen.has(question.id)){seen.add(question.id);fresh.push(question);}
+      }
+      remaining=step.count-fresh.filter(q=>q.difficulty===step.difficulty).length;
+      if(!stillCurrent())return;
+      setLessonPracticeProgress(fresh.length);
+     }
+     if(remaining>0)throw new Error(`A revisão aprovou apenas ${fresh.length} de 10 questões. Não é possível abrir a sequência completa ainda. Tente gerar novamente.`);
+    }
+    if(!stillCurrent())return;
+    if(fresh.length!==10)throw new Error(`Foram aprovadas ${fresh.length} de 10 questões; tente novamente.`);
+    start(fresh);
+    setNotice('10 questões inéditas aprovadas para esta aula: 3 básicas, 4 intermediárias e 3 avançadas.');
+   }catch(e){
+    if(stillCurrent())setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as dez questões desta aula.');
+   }finally{
+    if(stillCurrent()){setLessonPracticeLoading(false);setGenerationStartedAt(null);}
+   }
+  };
+  void attempt();
+  
+ },[lessonAutostart,userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry,
+    readiness.loading,canGenerate,authenticatedFetch]);
  async function loadMore(){
   if(!userId||!hasServerBank||loading||loadingMore||!hasMore)return;
   const activeId=requestSerial.current,offset=questions.length;
@@ -141,12 +233,12 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   finally{if(activeId===requestSerial.current)setLoadingMore(false);}
  }
  useEffect(()=>{
-  if(!userId||!hasServerBank){setApprovedTopics([]);return;}
+  if(!userId||!hasServerBank||lessonAutostart){setApprovedTopics([]);return;}
   let active=true;
   authenticatedFetch('/api/exam-sources').then(data=>{if(active){setApprovedTopics(Array.isArray(data.topics)?data.topics:[]);setSourceNotice('');}})
    .catch(()=>{if(active){setApprovedTopics([]);setSourceNotice('Catálogo de fontes revisadas indisponível. O gerador ainda pode usar os recortes editoriais após aplicar a migração 0006.');}});
   return()=>{active=false;};
- },[authenticatedFetch,userId,hasServerBank]);
+ },[authenticatedFetch,userId,hasServerBank,lessonAutostart]);
  useEffect(()=>{if(!activeSession||!inMock)return;const started=Date.now()-elapsed*1000;const handle=window.setInterval(()=>setElapsed(Math.floor((Date.now()-started)/1000)),1000);return()=>window.clearInterval(handle);},[activeSession,inMock]);
  useEffect(()=>{
   if(!current||finished){onContextChange(null);return;}
@@ -192,7 +284,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   }finally{setGenerating(false);setGenerationStartedAt(null);}
  }
 
- function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
+ function start(list:UserAIQuestion[]){if(!list.length)return;setReviewNotice('');setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
  async function submitAnswer(){
   if(!current||choice===null||submitting||answers[cursor])return;
   setSubmitting(true);setError('');
@@ -208,6 +300,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    setTotalQuestions(old=>Math.max(0,old-1));
    setNotice(`Resposta registrada · +${xpEarned} XP. Esta questão saiu da sua lista de pendentes.`);
    window.dispatchEvent(new Event('kognos:ai-answer-recorded'));
+   // Use a server-graded attempt when the Kog tutor opens, never an
+   // unverified client-provided correct answer or guessed weakness.
+   onContextChange({kind:'generated_question',questionId:current.id,phase:'review'});
   }catch(e){
    const message=e instanceof Error?e.message:'Falha ao corrigir a resposta.';
    setError(message);
@@ -219,11 +314,36 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   }finally{setSubmitting(false);}
  }
 
+ function askKogForQuestion(questionId:string){
+  onContextChange({kind:'generated_question',questionId,phase:'review'});
+  onTutor();
+ }
+ async function scheduleMistakeReviews(){
+  if(!userId||!finished||reviewLock.current||!recoveryTargets.length)return;
+  reviewLock.current=true;setReviewBusy(true);setReviewNotice('');
+  try{
+   // One read and one batch insert after explicit student confirmation.
+   const existing=await getCloudTasks(userId);
+   const weak=recoveryTargets.map(item=>({
+    subject:item.subject,topic:item.topic,incorrect:item.wrongCount,lastWrong:true
+   }));
+   const plan=createSpacedReviewPlan(profile,existing,weak,new Date(),()=>crypto.randomUUID(),3);
+   if(plan.created.length)await createCloudTasks(userId,plan.created);
+   setReviewNotice(plan.created.length
+    ?`${plan.created.length} revisão(ões) agendada(s) no calendário do Kognos.${plan.covered?` ${plan.covered} intervalo(s) já estavam programados.`:''}${plan.skipped?` ${plan.skipped} intervalo(s) ficaram sem horário.`:''}`
+    :plan.covered?'Os intervalos disponíveis já têm revisões pendentes desses assuntos.':
+     'Não há horários livres para revisar nos próximos dias permitidos antes da prova. Ajuste suas preferências de estudo.');
+  }catch(e){
+   setReviewNotice(e instanceof Error?`Não foi possível salvar as revisões: ${e.message}`:
+    'Não foi possível salvar as revisões. Tente novamente.');
+  }finally{reviewLock.current=false;setReviewBusy(false);}
+ }
  function next(){
   if(cursor>=session.length-1){setFinished(true);setChoice(null);return;}
   setCursor(v=>v+1);setChoice(null);
  }
  const points=answers.filter(a=>a.correct).length;
+ const mastery=assessLessonMastery(session.slice(0,answers.length).map((q,i)=>({difficulty:q.difficulty,correct:answers[i].correct})));
  const sessionXP=answers.reduce((sum,a)=>sum+a.xpEarned,0);
  const duration=`${String(Math.floor(elapsed/60)).padStart(2,'0')}:${String(elapsed%60).padStart(2,'0')}`;
  return <div className="ai-studio">
@@ -267,7 +387,27 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    {userId&&session.length>0&&<section className="dark-panel ai-session">
     {finished?<>
       <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Você conquistou {sessionXP} XP nesta sessão. As questões concluídas saíram do banco de pendentes e já contam para suas Conquistas. Esta pontuação não é nota oficial nem estimativa TRI.</p>
+      <div className="k-ai-mastery-result" role="status"><strong>Avaliação formativa: {mastery.label}</strong><p>{mastery.accuracy}% de acertos · Básicas: {mastery.basic}/{session.filter(q=>q.difficulty==='basic').length} · Intermediárias: {mastery.intermediate}/{session.filter(q=>q.difficulty==='intermediate').length} · Avançadas: {mastery.advanced}/{session.filter(q=>q.difficulty==='advanced').length}.</p><p>{mastery.nextStep}</p><small>Indicador desta sessão, não nota oficial, estimativa TRI ou comprovação definitiva de domínio.</small></div>
       <div className="ai-review-results">{session.map((q,i)=><article key={q.id}><strong>{i+1}. {q.subject} — {answers[i]?.correct?'Acerto':'Revisar'}</strong><p>{q.prompt}</p><p>Gabarito: {String.fromCharCode(65+(answers[i]?.correctIndex??0))}. {answers[i]?.explanation||'Sem correção disponível.'}</p></article>)}</div>
+      {recoveryTargets.length>0&&<section className="k-ai-lesson-recovery-summary" aria-label="Plano de reforço após os erros">
+       <h3>Reforce o que ainda precisa de prática</h3>
+       <p>Estes assuntos foram identificados a partir das suas respostas corrigidas neste treino. Não representam um diagnóstico definitivo.</p>
+       <div className="k-ai-recovery-targets">{recoveryTargets.slice(0,5).map(item=><article key={item.lessonId||item.subject+'-'+item.topic}>
+        <strong>{item.subject} · {item.topic}</strong>
+        <span>{item.wrongCount} {item.wrongCount===1?'erro registrado':'erros registrados'} nesta sessão</span>
+        {item.objective&&<p>Objetivo da aula: {item.objective}</p>}
+        <div className="k-ai-recovery-buttons">
+         <button type="button" className="btn outline small" onClick={()=>askKogForQuestion(item.questionId)}>Rever o erro com Kog</button>
+         {item.lessonId&&<><button type="button" className="btn outline small" onClick={()=>onOpenLesson({subject:item.subject,lessonId:item.lessonId!})}>Reabrir miniaula</button>
+         <button type="button" className="btn outline small" onClick={()=>onGenerateLesson(item.lessonId!)}>Gerar mais 10 questões</button></>}
+        </div>
+       </article>)}</div>
+       <button type="button" className="btn primary" disabled={reviewBusy} onClick={()=>void scheduleMistakeReviews()}>
+        {reviewBusy?'Salvando revisões…':'Agendar revisões em 1, 3 e 7 dias'}
+       </button>
+       {reviewNotice&&<p role="status" className="k-ai-review-notice">{reviewNotice}</p>}
+       <small>As revisões só são incluídas no seu calendário após clicar no botão. O Kognos respeita dias disponíveis, limite diário e data da prova.</small>
+      </section>}
       <button type="button" className="btn primary" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Voltar às questões pendentes</button>
     </>:<>
       <div className="question-topline"><span>{inMock?'SIMULADO IA':'PRÁTICA IA'} · QUESTÃO {cursor+1} DE {session.length}</span><span>{current.subject} · {difficulties[current.difficulty]}</span></div>
@@ -276,6 +416,17 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
       <h2>{current.prompt}</h2>
       <div className="answer-options">{current.options.map((text,i)=><button type="button" key={i} disabled={Boolean(answers[cursor])||submitting} className={`answer-choice ${choice===i?'chosen':''} ${!inMock&&answers[cursor]&&i===answers[cursor].correctIndex?'is-correct':''}`} onClick={()=>setChoice(i)}><span>{String.fromCharCode(65+i)}</span>{text}</button>)}</div>
       {answers[cursor]&&!inMock&&<div className={`explanation-box ${answers[cursor].correct?'correct':'incorrect'}`} role="status"><strong>{answers[cursor].correct?'Correto!':'Vamos revisar'} · +{answers[cursor].xpEarned} XP</strong><p>Gabarito: {String.fromCharCode(65+answers[cursor].correctIndex)}. {answers[cursor].explanation}</p></div>}
+      {wrongQuestion&&!inMock&&<aside className="k-ai-lesson-recovery" aria-label="Reforço do conceito">
+       <strong>{wrongQuestion.lessonId?'Reforce o conceito desta aula':'Revisão do assunto'}</strong>
+       <p><b>{wrongQuestion.subject} · {wrongQuestion.topic}</b></p>
+       {wrongQuestion.explanation&&<p>{wrongQuestion.explanation}</p>}
+       {wrongQuestion.commonMistake&&<p><b>Erro comum:</b> {wrongQuestion.commonMistake}</p>}
+       <div className="k-ai-recovery-buttons">
+        <button type="button" className="btn outline small" onClick={()=>askKogForQuestion(current.id)}>Entender minha resposta com Kog</button>
+        {wrongQuestion.lessonId&&<button type="button" className="btn outline small" onClick={()=>onOpenLesson({subject:wrongQuestion.subject,lessonId:wrongQuestion.lessonId!})}>Ver explicação completa da aula</button>}
+       </div>
+       <small>O Kog usa sua tentativa corrigida para orientar a explicação, sem considerar um erro isolado prova de falta de domínio.</small>
+      </aside>}
       {answers[cursor]&&inMock&&<p className="message neutral" role="status">Resposta registrada · +{answers[cursor].xpEarned} XP. A correção ficará disponível somente no final deste simulado.</p>}
       <div className="practice-actions"><button type="button" className="btn outline" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Encerrar</button><button type="button" className="btn outline" onClick={onTutor}>{answers[cursor]&&!inMock?'Entender com Kog':'Pedir dica ao Kog'}</button>{!answers[cursor]?<button type="button" className="btn primary" disabled={choice===null||submitting} onClick={()=>void submitAnswer()}>{submitting?'Conferindo…':'Registrar resposta'}</button>:<button type="button" className="btn primary" onClick={next}>{cursor===session.length-1?'Ver resultado':'Próxima questão →'}</button>}</div>
     </>}

@@ -77,3 +77,18 @@ export function lessonGenerationPreset(lessonId:string,preferred?:ExamId){
  for(const institution of institutions){const topic=linkedExamTopic(lessonId,institution);if(topic)return {lessonId:lesson.id,institution,subject:lesson.subject,topic};}
  return null;
 }
+/** Ten graded questions per lesson. The API accepts up to five per request,
+ * so generate sequentially to protect free-provider quotas.
+ * Order: 3 basic, 4 intermediate, 3 advanced.
+ */
+export const LESSON_PRACTICE_STEPS=[
+ {difficulty:'basic',count:3},
+ {difficulty:'intermediate',count:4},
+ {difficulty:'advanced',count:3}
+] as const;
+
+export function lessonPracticeGenerationRequest(lessonId:string,run:number){
+ const preset=lessonGenerationPreset(lessonId);
+ if(!preset||!Number.isSafeInteger(run)||run<1)return null;
+ return {...preset,variation:(run-1)%12};
+}

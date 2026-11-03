@@ -541,3 +541,69 @@ button {touch-action:manipulation;}
  * The native hidden state removes inactive screens from focus and layout. */
 .app-layout .k-retained-workspace{min-width:0;width:100%;flex:1 0 auto}
 .app-layout .k-retained-workspace[hidden]{display:none!important}
+
+/* Scoped, single-click generation from a selected learning trail lesson. */
+.app-layout .k-lesson-practice-generation{display:grid;gap:15px;padding:22px;border:1px solid var(--line);border-radius:16px}
+.app-layout .k-lesson-practice-generation-head{display:flex;align-items:start;gap:12px}
+.app-layout .k-lesson-practice-generation-head>svg{flex:none;color:#5B4DE3;margin-top:3px}
+.app-layout .k-lesson-practice-generation-head strong{font-size:16px;color:var(--txt);line-height:1.4}
+.app-layout .k-lesson-practice-generation-head p{margin:5px 0 0;color:var(--sub);line-height:1.6;font-size:12px}
+.app-layout .k-lesson-practice-pending{color:var(--sub);font-size:12px;margin:0;line-height:1.6}
+.app-layout .k-lesson-practice-actions{display:flex;flex-wrap:wrap;gap:10px}
+.app-layout .k-lesson-practice-actions .btn{min-height:44px}
+.app-layout .k-lesson-practice-generation>.privacy-note{margin:0;font-size:11px;line-height:1.6}
+@media(max-width:530px){.app-layout .k-lesson-practice-generation{padding:16px}.app-layout .k-lesson-practice-actions{flex-direction:column}.app-layout .k-lesson-practice-actions .btn{width:100%;justify-content:center}}
+
+/* Contextual recovery stays inside the existing question flow; no modal or
+   extra page load is required for the mini-lesson or optional calendar action. */
+.app-layout .k-ai-lesson-recovery,.app-layout .k-ai-lesson-recovery-summary{margin-top:16px;padding:17px 19px;border-radius:14px;border:1px solid var(--line);background:var(--box-bg);display:grid;gap:9px;min-width:0}
+.app-layout .k-ai-lesson-recovery{border-left:4px solid #5B4DE3}
+.app-layout .k-ai-lesson-recovery>strong,.app-layout .k-ai-lesson-recovery-summary>h3{font-weight:750;color:var(--txt);font-size:15px;line-height:1.45;margin:0}
+.app-layout .k-ai-lesson-recovery p,.app-layout .k-ai-lesson-recovery-summary p{margin:0;color:var(--sub);line-height:1.6;font-size:12px;overflow-wrap:anywhere}
+.app-layout .k-ai-lesson-recovery p b{color:var(--txt)}
+.app-layout .k-ai-lesson-recovery>small,.app-layout .k-ai-lesson-recovery-summary>small{color:var(--sub);font-size:11px;line-height:1.6}
+.app-layout .k-ai-recovery-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:5px}
+.app-layout .k-ai-recovery-buttons .btn{min-height:40px;white-space:normal;text-align:center}
+.app-layout .k-ai-recovery-targets{display:grid;gap:10px}
+.app-layout .k-ai-recovery-targets article{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:7px}
+.app-layout .k-ai-recovery-targets strong{color:var(--txt);font-size:12px;line-height:1.5}
+.app-layout .k-ai-recovery-targets span{font-size:11px;color:var(--sub)}
+.app-layout .k-ai-lesson-recovery-summary>.btn{justify-self:start;min-height:44px}
+.app-layout .k-ai-review-notice{padding:10px 12px;background:var(--panel-2);border-radius:10px}
+@media(max-width:530px){
+ .app-layout .k-ai-lesson-recovery,.app-layout .k-ai-lesson-recovery-summary{padding:13px}
+ .app-layout .k-ai-recovery-buttons{flex-direction:column;align-items:stretch}
+ .app-layout .k-ai-recovery-buttons .btn,.app-layout .k-ai-lesson-recovery-summary>.btn{width:100%;justify-self:stretch;justify-content:center}
+}
+
+/* Skill evolution compares only server-scored AI attempts, inferred into
+   short practice blocks. No official mastery or exam-score claims. */
+.app-layout .k-skill-evolution{margin:18px 0;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--box-bg);display:grid;gap:16px;min-width:0}
+.app-layout .k-skill-evolution-heading{display:flex;align-items:start;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.app-layout .k-skill-evolution-heading .overline{display:flex;align-items:center;gap:7px;color:#5B4DE3;font-size:10px;font-weight:760}
+.app-layout .k-skill-evolution-heading h3{color:var(--txt);font-size:17px;line-height:1.35;margin:8px 0 5px}
+.app-layout .k-skill-evolution-heading p,.app-layout .k-skill-evolution-empty p{font-size:12px;line-height:1.6;margin:0;color:var(--sub)}
+.app-layout .k-skill-trend{display:inline-flex;align-items:center;padding:7px 10px;border-radius:10px;background:var(--panel-2);font-size:12px;font-weight:750;color:var(--txt);font-variant-numeric:tabular-nums}
+.app-layout .k-skill-trend.higher{border:1px solid #38CDE5}
+.app-layout .k-skill-trend.lower{border:1px solid #D88A78}
+.app-layout .k-skill-evolution-empty{display:flex;align-items:center;gap:12px;padding:16px;background:var(--panel-2);border-radius:12px}
+.app-layout .k-skill-evolution-empty svg{flex:none;color:#5B4DE3}
+.app-layout .k-skill-evolution-scroll{min-width:0;overflow-x:auto}
+.app-layout .k-skill-evolution-list{padding:0;margin:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
+.app-layout .k-skill-evolution-list li{display:grid;align-content:start;gap:9px;min-width:0;border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--panel-2)}
+.app-layout .k-skill-evolution-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--txt)}
+.app-layout .k-skill-evolution-row strong{font-size:12px}
+.app-layout .k-skill-evolution-row span{font-size:11px;font-variant-numeric:tabular-nums}
+.app-layout .k-skill-evolution-track{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.app-layout .k-skill-evolution-track>span{display:block;height:100%;background:#5B4DE3;border-radius:999px}
+.app-layout .k-skill-evolution-levels{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--sub);font-variant-numeric:tabular-nums}
+.app-layout .k-skill-evolution-list small{font-size:10px;line-height:1.5;color:var(--sub)}
+.app-layout .k-skill-evolution-analysis{display:grid;gap:7px;padding:13px 15px;border-radius:12px;background:var(--panel-2);font-size:12px;line-height:1.6}
+.app-layout .k-skill-evolution-analysis strong{color:var(--txt)}
+.app-layout .k-skill-evolution-analysis p{margin:0;color:var(--sub)}
+.app-layout .k-skill-evolution-analysis b{color:var(--txt)}
+.app-layout .k-skill-evolution-actions{display:flex;flex-wrap:wrap;gap:9px}
+.app-layout .k-skill-evolution-actions .btn{min-height:42px}
+.app-layout .k-skill-evolution-disclaimer{color:var(--sub);font-size:10px;line-height:1.6;margin:0}
+.app-layout .k-subject-skill-delta{color:#5B4DE3!important;font-weight:700}
+@media(max-width:600px){.app-layout .k-skill-evolution{padding:14px}.app-layout .k-skill-evolution-actions{flex-direction:column}.app-layout .k-skill-evolution-actions .btn{width:100%;justify-content:center}.app-layout .k-skill-evolution-list{grid-template-columns:1fr}}
