@@ -1,6 +1,7 @@
+import {localStudyGuide} from './offline-study-guide.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {examBlueprints,type ExamId} from './exam-blueprints.ts';
+import {examBlueprints,validateGenerationRequest,type ExamId} from './exam-blueprints.ts';
 import {learningLessons,introductoryLessons} from './learning-catalog.ts';
 import {learningCatalogForExam,linkedExamTopic,validLessonAIReference} from './lesson-ai-links.ts';
 import {topicForLegacyLesson} from './curriculum-catalog.ts';
@@ -16,6 +17,7 @@ test('every registered exam topic is visible, openable and accepted for AI pract
    const practiceTopic=linkedExamTopic(lesson.id,exam);
    assert.ok(practiceTopic);
    assert.ok(validLessonAIReference(lesson.id,exam,subject,practiceTopic));
+   assert.ok(validateGenerationRequest({institution:exam,subject,topic:practiceTopic,lessonId:lesson.id,difficulty:'basic',count:3}));
    assert.ok(topicForLegacyLesson(lesson.id));
   }
  }
@@ -32,6 +34,7 @@ test('new topics record server-regraded practice in the same progress pipeline',
  const summary=connectedSubjectProgress(lesson.subject,[],progress,learningCatalogForExam('enem'));
  assert.equal(summary.practiced,1);
  assert.equal(summary.aiCorrect,1);
+ assert.equal(localStudyGuide('explique esta aula',{kind:'lesson',lessonId:lesson.id}),null);
  assert.equal(lesson.explanation,''); // outline metadata must never impersonate a completed lesson
 });
 
