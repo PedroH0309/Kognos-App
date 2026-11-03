@@ -37,6 +37,6 @@ test('sync fallback never invents zero progress or exposes raw server exceptions
 test('bank load errors remain actionable but never reflect unsafe upstream content',()=>{
  assert.match(bankSyncNotice('Sua sessão expirou.'),/sessão/);
  assert.match(bankSyncNotice('Execute a migração 0009'),/migrações/);
- assert.match(bankSyncNotice('Database error with secret-token'),/tente outra vez/);
+ assert.match(bankSyncNotice('Database error with secret-token'),/tentar outra vez/);
  assert.doesNotMatch(bankSyncNotice('Database error with secret-token'),/secret-token/);
 });
