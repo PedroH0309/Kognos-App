@@ -21,7 +21,7 @@ import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
 import {recoveryTargetForQuestion,recoveryTargetsFromGradedSession} from '@/lib/lesson-recovery';
 import type {StudentProfile} from '@/lib/profile';
 import {assessLessonMastery} from '@/lib/lesson-mastery';
-import {recoverableLessonGenerationError,nextLessonReviewBatchSize,lessonGenerationFailureMessage,LESSON_REVIEW_MAX_ATTEMPTS,LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY} from '@/lib/lesson-generation-recovery';
+import {recoverableLessonGenerationError,nextLessonReviewBatchSize,lessonGenerationFailureMessage,LESSON_REVIEW_MAX_ATTEMPTS,LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY,reviewDiagnosticSummary} from '@/lib/lesson-generation-recovery';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
@@ -55,6 +55,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  const [lessonPracticeRetry,setLessonPracticeRetry]=useState(0);
  const [lessonPracticeLoading,setLessonPracticeLoading]=useState(false);
  const [lessonPracticeProgress,setLessonPracticeProgress]=useState(0);
+ const [lessonPracticeStage,setLessonPracticeStage]=useState('');
  const [lessonPracticeError,setLessonPracticeError]=useState('');
  const [manualBankForRequest,setManualBankForRequest]=useState(0);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
@@ -118,6 +119,10 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    const message=typeof result.error==='string'?result.error:'Não foi possível concluir esta operação.';
    const failure=new Error(message) as Error&{code?:string};
    if(typeof result.code==='string'&&/^[A-Z][A-Z0-9_]{2,48}$/.test(result.code))failure.code=result.code;
+   if(failure.code==='AI_REVIEW_NO_APPROVAL'){
+    const summary=reviewDiagnosticSummary(result.diagnostics);
+    if(summary)failure.message+=` Diagnóstico do lote: ${summary}.`;
+   }
    throw failure;
   }
   return result;
@@ -180,7 +185,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   // Begin generating as soon as the student chooses practice for this lesson.
   // All items are reviewed and ordered before the first question is shown.
   setSession([]);setFinished(false);setCursor(0);setChoice(null);setAnswers([]);
-  setLessonPracticeLoading(true);setLessonPracticeProgress(0);
+  setLessonPracticeLoading(true);setLessonPracticeProgress(0);setLessonPracticeStage('Preparando o primeiro lote');
   setLessonPracticeError('');setError('');setNotice('');
   setGenerationStartedAt(Date.now());setGenerationSeconds(0);
   // Strict Mode replays effects in development. Do not cancel the first
@@ -194,6 +199,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
     for(const [index,step] of LESSON_PRACTICE_STEPS.entries()){
      let remaining:number=step.count;
      let consecutiveEmpty=0;
+     let lastReviewFailure='';
      // A rejected batch (422) is recoverable. Reduce the next request to
      // two, then one item, while retaining independent server-side review.
      // Stop on rate limits, auth, database, network or provider failures.
@@ -202,6 +208,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
       const request={...generation,difficulty:step.difficulty,
        count:nextLessonReviewBatchSize(remaining,consecutiveEmpty),
        variation:((generation.variation??0)+index*8+retry)%32};
+      setLessonPracticeStage(`${difficulties[step.difficulty]} · lote de ${request.count} · tentativa ${retry+1}/${LESSON_REVIEW_MAX_ATTEMPTS}`);
       let data:unknown;
       try{
        data=await authenticatedFetch('/api/ai-questions/generate',{
@@ -210,6 +217,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
       }catch(error){
        if(!stillCurrent())return;
        if(!recoverableLessonGenerationError(error))throw error;
+       lastReviewFailure=error instanceof Error?error.message:'';
        consecutiveEmpty++;
        if(consecutiveEmpty>=LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY)break;
        continue;
@@ -229,7 +237,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
       setLessonPracticeProgress(fresh.length);
       if(consecutiveEmpty>=LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY)break;
      }
-     if(remaining>0)throw new Error(lessonGenerationFailureMessage(fresh.length));
+     if(remaining>0)throw new Error(lessonGenerationFailureMessage(fresh.length)+(lastReviewFailure?` Última análise: ${lastReviewFailure}`:''));
     }
     if(!stillCurrent())return;
     if(fresh.length!==10)throw new Error(`Foram aprovadas ${fresh.length} de 10 questões; tente novamente.`);
@@ -383,7 +391,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
     </div></div>
     {lessonPracticeError?<div className="message warning" role="alert">{lessonPracticeError}
      <p>Nenhuma questão antiga será usada como substituta.</p></div>:
-     <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Questões aprovadas: ${lessonPracticeProgress}/10 · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
+     <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Questões aprovadas: ${lessonPracticeProgress}/10 · ${lessonPracticeStage} · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
     <div className="k-lesson-practice-actions">
      {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
      <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{handledLessonPractice.current='';setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeLoading(false);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
