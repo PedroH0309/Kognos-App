@@ -6,8 +6,8 @@ const at=(questionId:string,answerIndex:number,date:string):QuestionAttempt=>({q
 const today=new Date(2026,10,1,15);
 test('review list covers precisely the canonical authored lesson/question set',()=>{
  const items=reviewItems([],today);
- assert.equal(items.length,20);
- assert.deepEqual(reviewCounts(items),{due:0,scheduled:0,notStarted:20});
+ assert.equal(items.length,80);
+ assert.deepEqual(reviewCounts(items),{due:0,scheduled:0,notStarted:80});
  assert.ok(items.every(x=>x.status==='not-started'));
 });
 test('wrong responses are due immediately; wrong client-side correct flag is not trusted',()=>{
@@ -34,8 +34,8 @@ test('date math works across month, year and daylight-saving boundaries',()=>{
 });
 test('diagnostic has one representative item per subject with no repeats',()=>{
  const list=selectExploratoryDiagnostic([]);
- assert.equal(list.length,7);assert.equal(new Set(list.map(x=>x.subject)).size,7);
- assert.equal(new Set(list.map(x=>x.id)).size,7);
+ assert.equal(list.length,16);assert.equal(new Set(list.map(x=>x.subject)).size,16);
+ assert.equal(new Set(list.map(x=>x.id)).size,16);
  const withHistory=selectExploratoryDiagnostic([at('q01',2,'2026-10-31')]);
  assert.ok(withHistory.some(q=>q.id==='q02'));
 });

@@ -84,10 +84,10 @@ export function evaluateExploratoryDiagnostic(questions:readonly DemoQuestion[],
  return {answered:results.filter(r=>r.answered).length,correct:results.filter(r=>r.answered&&r.correct).length,total:results.length,results,
   subjects:results.map(r=>({subject:r.subject,correct:r.correct,topic:r.topic,questionId:r.questionId}))};
 }
-/** Mixed author-created 20-item starting checkpoint: all curated introductory
+/** Mixed author-created 20-item starting checkpoint: the original introductory
  * topics, no claim of authentic ENEM/FUVEST/VUNESP/SARESP questions. */
 export function selectBaselineQuestions():DemoQuestion[]{
- return [...demoQuestions];
+ return demoQuestions.filter(q=>/^q(0[1-9]|1[0-9]|20)$/.test(q.id));
 }
 /** Weekly checkpoint mixes missed topics with previously-unseen topics, while
  * rotating questions based on recorded history. Never trusts user-supplied

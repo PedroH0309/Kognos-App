@@ -14,7 +14,7 @@ test('learn, trails and subjects route to distinct learning experiences',()=>{
  assert.match(app,/mode="trails" active=\{view==='trails'\}/);
  assert.match(app,/view==='subjects'\?<SubjectDashboard/);
  assert.match(app,/onPractice=\{practiceFromLesson\}/);
- assert.match(trails,/Praticar demonstração/);
+ assert.match(trails,/Praticar exercício/);
  assert.match(trails,/Questões com IA/);
  assert.match(trails,/evidenceForLesson/);
 });

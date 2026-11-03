@@ -1,4 +1,5 @@
-/** 20 original DEMONSTRATION questions; NEVER present as prior official exam items. */
+import {expandedQuestions} from './learning-expansion.ts';
+/** Original DEMONSTRATION questions; NEVER present as prior official exam items. */
 export type DemoQuestion={id:string;subject:string;topic:string;difficulty:'Básica'|'Intermediária'|'Avançada';prompt:string;options:[string,string,string,string];correct:number;explanation:string};
 export const demoQuestions:DemoQuestion[]=[
 {id:'q01',subject:'Matemática',topic:'Porcentagem',difficulty:'Básica',prompt:'Um livro custa R$ 80 e recebe um desconto de 25%. Qual é o preço final?',options:['R$ 20','R$ 55','R$ 60','R$ 75'],correct:2,explanation:'25% de 80 é 20. Logo, 80 − 20 = R$ 60.'},
@@ -21,6 +22,7 @@ export const demoQuestions:DemoQuestion[]=[
 {id:'q18',subject:'História',topic:'Revolução Industrial',difficulty:'Intermediária',prompt:'Qual transformação foi central para a Primeira Revolução Industrial?',options:['Predomínio de fábricas mecanizadas','Criação da internet','Expansão de energia nuclear','Uso industrial de computadores pessoais'],correct:0,explanation:'A mecanização e o sistema fabril transformaram a produção a partir do século XVIII.'},
 {id:'q19',subject:'Geografia',topic:'Cartografia',difficulty:'Básica',prompt:'Em um mapa de escala 1:100.000, um centímetro corresponde a:',options:['100 m','1 km','10 km','100 km'],correct:1,explanation:'100.000 cm = 1.000 m = 1 km.'},
 {id:'q20',subject:'Geografia',topic:'Climatologia',difficulty:'Intermediária',prompt:'Qual elemento tende a diminuir à medida que a altitude aumenta, em condições atmosféricas habituais?',options:['Pressão atmosférica','Latitude geográfica','Longitude','Horas do dia'],correct:0,explanation:'Em geral, a pressão atmosférica diminui com o aumento da altitude devido à menor coluna de ar acima.'},
+...expandedQuestions,
 ];
 export type QuestionAttempt={questionId:string;subject:string;correct:boolean;answerIndex:number;createdAt:string;mode:'practice'|'mock'};
 export const QUESTION_SCOPE_VERSION='v1';

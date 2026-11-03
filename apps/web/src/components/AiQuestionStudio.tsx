@@ -229,7 +229,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  return <div className="ai-studio">
    {error&&<div role="alert" className="message warning">{error}</div>}
    {notice&&<div role="status" className="message success">{notice}</div>}
-   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo demonstrativo tem 20 questões fixas. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
+   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo autoral oferece exercícios fixos com correção comentada. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
    {userId&&!session.length&&<>
     <IntegrationSetupNotice readiness={readiness}/>
     {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>{setLinkedLessonId(null);setBankScope('all');}}>Ver banco completo</button></div>}

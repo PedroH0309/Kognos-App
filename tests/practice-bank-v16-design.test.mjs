@@ -14,7 +14,7 @@ test('demo result is compact and never mislabels lifetime accuracy as a session 
  const space=read('apps/web/src/components/PracticeSpace.tsx');
  assert.match(space,/compact-practice-result/);
  assert.match(space,/sessionSummary\.accuracy/);
- assert.match(space,/Acervo demonstrativo · 20 questões fixas/);
+ assert.match(space,/Acervo demonstrativo · \{demoQuestions.length\} questões fixas/);
  assert.match(space,/onClick=\{\(\)=>switchSource\('ai'\)\}/);
 });
 test('server paginates authenticated AI questions without shipping the answer key',()=>{
@@ -28,4 +28,8 @@ test('server paginates authenticated AI questions without shipping the answer ke
  const batch=read('apps/web/src/lib/ai-generation-batches.ts');
  assert.match(batch,/splitGenerationBatches/);
  assert.match(batch,/MAX_CONCURRENT_GENERATION_BATCHES=1/);
+});
+test('lesson exercise opens authored practice even for signed-in users',()=>{
+ const space=read('apps/web/src/components/PracticeSpace.tsx');
+ assert.ok(space.includes("aiFocusLessonId?'ai':focus?'demo':userId?'ai':'demo'"));
 });
