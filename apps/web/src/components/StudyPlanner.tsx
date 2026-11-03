@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react';
 import {CalendarDays} from 'lucide-react';
 import StudySyllabus from './StudySyllabus';
 import {suggestSyllabusTopicSchedule,pendingTopicTask} from '@/lib/syllabus-quick-schedule';
+import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
 import {activeSyllabi} from '@/lib/exam-syllabus';
 import {completeExamTopicCatalog} from '@/lib/exam-blueprints';
 import {syllabusWithVerifiedTopics,type VerifiedStudyTopic} from '@/lib/verified-study-catalog';
@@ -148,6 +149,23 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
     setNotice((review?'Revisão':'Estudo')+' de '+topic+' programado para '+proposal.date+' ('+proposal.minutes+' min). Veja a atividade no calendário do Kognos.');
    });
   }
+  function scheduleSpacedReviews(){
+   if(busy||!loaded||weeklyLoading)return;
+   void run(async()=>{
+    const plan=createSpacedReviewPlan(profile,tasks,weeklyTopics,new Date(),()=>crypto.randomUUID());
+    if(!plan.created.length){
+     setNotice(plan.covered?'As revisões desses assuntos já estão no calendário.':
+      'Não há vagas suficientes nos próximos dias de estudo antes da prova. Ajuste a disponibilidade em suas preferências.');
+     return;
+    }
+    if(userId)await createCloudTasks(userId,plan.created);
+    const next=[...tasks,...plan.created].sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title,'pt-BR'));
+    if(userId)setTasks(next);else commitLocal(next);
+    setNotice(plan.created.length+' revisões foram programadas no calendário do Kognos.'
+     +(plan.skipped?' '+plan.skipped+' intervalos ficaram sem horário disponível.':'')
+     +(plan.covered?' '+plan.covered+' intervalos já estavam agendados.':''));
+   });
+  }
   function add(e:React.FormEvent){e.preventDefault();if(!title.trim()||!date)return;
     const item:StudyTask={id:crypto.randomUUID(),date,title:title.trim().slice(0,120),subject,minutes,done:false,kind:'manual',...(startTime?{startTime}:{})};
     void run(async()=>{if(userId)await createCloudTasks(userId,[item]);
@@ -193,7 +211,7 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
   const methods=studyMethod(profile);
   const evidenceLoading=historyLoading||aiEvidenceLoading||weeklyLoading||officialLoading;
   const evidenceUnavailable=Boolean(historyError||aiEvidenceError||weeklyError||officialError);
-  const unresolvedWeekly=weeklyTopics.filter(item=>item.lastWrong);
+  const unresolvedWeekly=weeklyTopics.filter(item=>item.lastWrong&&item.incorrect>0);
   function askKog(taskId?:string){onContextChange(taskId?{kind:'planner',taskId}:{kind:'planner'});onTutor();}
   return <div className="app-content study-planner"><div className="page-intro"><span className="overline">ORGANIZAÇÃO INTELIGENTE</span><h1>Seu plano de <em>estudos.</em></h1><p>Uma agenda realista, flexível e respeitosa com seu tempo.</p>{onCalendar&&<button type="button" className="btn outline k-planner-calendar-link" onClick={onCalendar}><CalendarDays size={17}/> Ver calendário</button>}</div>
     <div className="message neutral">{userId?'As atividades são sincronizadas na sua conta. As sugestões consideram sua disponibilidade, erros recentes e assuntos ainda não praticados nas amostras disponíveis.':'As atividades ficam neste navegador; sugestões utilizam somente o histórico demonstrativo local.'} Isso não é uma avaliação de domínio nem uma previsão de prova.</div>
@@ -214,6 +232,11 @@ export default function StudyPlanner({profile,userId,onContextChange,onTutor,ini
         <div>{unresolvedWeekly.slice(0,6).map(item=><span key={item.subject+'|'+item.topic}>
          {item.subject}: {item.topic} · {item.incorrect} {item.incorrect===1?'erro registrado':'erros registrados'}
         </span>)}</div>
+        <div className="k-spaced-review-actions">
+         <button type="button" className="btn outline" disabled={!loaded||busy||weeklyLoading}
+          onClick={scheduleSpacedReviews}>Programar revisões em 1, 3 e 7 dias</button>
+         <p className="privacy-note">O Kognos cria sessões curtas de recuperação ativa nos próximos dias disponíveis, sem ultrapassar seu limite diário ou a data da prova. As revisões são sugestões pedagógicas, não uma garantia de memorização.</p>
+        </div>
        </div>}
       {errorsByTopic.length>0&&<div className="k-cycle-errors"><h3>Assuntos para revisar a partir de respostas registradas</h3><div>{errorsByTopic.slice(0,5).map(item=><span key={item.subject+'-'+item.topic}>{item.subject}: {item.topic} ({item.errors} {item.errors===1?'erro':'erros'} na amostra)</span>)}</div></div>}
       {onWeeklyReview&&<div className="k-cycle-review"><div><strong>Simulado de acompanhamento semanal</strong><p>Escolha entre 20 e 90 questões inéditas, geradas a partir dos conteúdos da prova selecionada e registradas para não serem reutilizadas. A quantidade depende do banco aprovado.</p></div><button type="button" className="btn primary" onClick={onWeeklyReview}>Iniciar revisão semanal</button></div>}
