@@ -1351,3 +1351,8 @@ html:has(.theme-dark) { --scrollbar-track:#111722; --scrollbar-thumb:#45536C; --
  .app-layout .ai-generator-grid>.kg-form-field:nth-child(n){grid-column:span 1;}
  .app-layout .ai-source-reference summary>span{display:none;}
 }
+/* Retry without a misleading empty-bank state when an authenticated fetch fails. */
+.app-layout .k-bank-retry{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:var(--box-bg);border-radius:9px;padding:8px 11px;min-height:40px;margin:8px 0 0;color:var(--txt);font-size:11px;font-weight:650;cursor:pointer}
+.app-layout .k-bank-retry:disabled{cursor:wait;opacity:.6}
+.app-layout .k-bank-retry:focus-visible{outline:2px solid var(--accent-400);outline-offset:3px}
+@media(max-width:560px){.app-layout .k-bank-retry{width:100%}}
