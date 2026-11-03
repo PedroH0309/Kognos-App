@@ -40,14 +40,14 @@ function nextAction(block:SkillPracticeBlock|null,stage:SkillMasteryStage):strin
  if(block.difficulty.advanced.correct<2)return 'Pratique situações avançadas e depois repita o teste em outro dia.';
  return 'Faça outra sequência gradual para verificar estabilidade antes de avançar.';
 }
-export function assessSkillMasteryEvidence(blocks:readonly SkillPracticeBlock[]):SkillMasteryEvidence{
+export function assessSkillMasteryEvidence(blocks:readonly SkillPracticeBlock[],distinctRecentQuestions=false):SkillMasteryEvidence{
  const complete=blocks.filter(b=>b.complete&&Number.isFinite(Date.parse(b.endAt)));
  const latest=complete.at(-1)??null;
  const previous=complete.at(-2)??null;
  const completedPractices=complete.length;
  const distinctPracticeDays=new Set(complete.map(b=>b.endAt.slice(0,10))).size;
- const sufficient=Boolean(previous&&latest&&meetsBasicEvidence(previous)&&meetsBasicEvidence(latest));
- const strong=Boolean(previous&&latest&&meetsStrongEvidence(previous)&&meetsStrongEvidence(latest));
+ const sufficient=Boolean(distinctRecentQuestions&&previous&&latest&&meetsBasicEvidence(previous)&&meetsBasicEvidence(latest));
+ const strong=Boolean(distinctRecentQuestions&&previous&&latest&&meetsStrongEvidence(previous)&&meetsStrongEvidence(latest));
  const separated=Boolean(previous&&latest&&Date.parse(latest.endAt)-Date.parse(previous.endAt)>=HOURS_24);
  const stage:SkillMasteryStage=!blocks.length?'no-evidence':
   !completedPractices?'exploring':
@@ -57,8 +57,8 @@ export function assessSkillMasteryEvidence(blocks:readonly SkillPracticeBlock[])
  if(stage==='no-evidence')reason='Nenhuma tentativa de IA corrigida foi registrada nesta habilidade.';
  else if(stage==='exploring')reason='Há respostas registradas, mas nenhuma sequência completa e comparável de 10 questões.';
  else if(stage==='developing')reason=`${completedPractices} sequência(s) completa(s). Ainda faltam duas sequências recentes com bom desempenho em todos os níveis.`;
- else if(stage==='consistent')reason='As duas últimas sequências completas têm desempenho suficiente nos níveis básico, intermediário e avançado; a retenção em dias diferentes ainda precisa ser verificada.';
- else reason='As duas últimas sequências completas tiveram bom desempenho em todos os níveis e foram realizadas com intervalo de pelo menos 24 horas.';
+ else if(stage==='consistent')reason='As duas últimas sequências completas usaram questões diferentes e tiveram desempenho suficiente nos três níveis; a retenção em dias diferentes ainda precisa ser verificada.';
+ else reason='As duas últimas sequências completas usaram questões diferentes, tiveram bom desempenho nos três níveis e foram realizadas com intervalo de pelo menos 24 horas.';
  return {stage,label:stageLabels[stage],completedPractices,distinctPracticeDays,
   lastPracticedAt:blocks.at(-1)?.endAt??null,latestCompleteAccuracy:latest?.accuracy??null,
   latestLevels:latest?.difficulty??null,recommendation:nextAction(latest,stage),reason};
