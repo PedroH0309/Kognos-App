@@ -11,6 +11,7 @@ export default function SkillEvolutionPanel({evolution,sampleLimited=false,onPra
  evolution:SkillEvolution|null;sampleLimited?:boolean;onPractice:()=>void;onTutor:()=>void;
 }){
  const blocks=evolution?.blocks??[];
+ const mastery=evolution?.mastery;
  const change=evolution?.changePoints??null;
  const signal=change===null?'Aguardando duas sequências completas':
   change>0?`+${change} pontos percentuais`:
@@ -22,6 +23,13 @@ export default function SkillEvolutionPanel({evolution,sampleLimited=false,onPra
     <p>Compare suas respostas de IA nesta aula, incluindo questões básicas, intermediárias e avançadas.</p></div>
    {change!==null&&<span className={`k-skill-trend ${evolution?.direction??'same'}`}>{signal}</span>}
   </header>
+  {mastery&&<div className={`k-skill-mastery-insight is-${mastery.stage}`} role="status">
+   <div className="k-skill-mastery-insight-head"><strong>Indicador de domínio: {mastery.label}</strong>
+    <span>{mastery.completedPractices} práticas completas · {mastery.distinctPracticeDays} dias de prática</span>
+   </div>
+   <p>{mastery.reason}</p>
+   <p><b>Recomendação:</b> {mastery.recommendation}</p>
+  </div>}
   {!blocks.length?<div className="k-skill-evolution-empty">
    <BookOpenText size={18} aria-hidden="true"/><p>As práticas de IA desta aula ainda não têm respostas suficientes para formar um histórico. Inicie uma sequência para acompanhar a evolução.</p>
   </div>:<>
@@ -48,7 +56,7 @@ export default function SkillEvolutionPanel({evolution,sampleLimited=false,onPra
     <strong>{change===null?'Comparação entre sequências ainda indisponível':`Variação observada: ${signal}`}</strong>
     <p>{change===null?'São necessárias duas sequências completas com a distribuição 3 básicas, 4 intermediárias e 3 avançadas para comparar os resultados.':
      'Comparação entre as duas últimas sequências completas. É uma diferença de acertos, não uma medida definitiva de aprendizagem ou domínio.'}</p>
-    <p><b>Próximo passo:</b> {evolution?.recommendation??'Complete uma prática para receber orientação personalizada.'}</p>
+    <p><b>Próximo passo:</b> {mastery?.recommendation??evolution?.recommendation??'Complete uma prática para receber orientação personalizada.'}</p>
    </div>
   </>}
   <div className="k-skill-evolution-actions">
