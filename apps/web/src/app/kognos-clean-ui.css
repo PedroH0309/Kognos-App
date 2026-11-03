@@ -607,3 +607,51 @@ button {touch-action:manipulation;}
 .app-layout .k-skill-evolution-disclaimer{color:var(--sub);font-size:10px;line-height:1.6;margin:0}
 .app-layout .k-subject-skill-delta{color:#5B4DE3!important;font-weight:700}
 @media(max-width:600px){.app-layout .k-skill-evolution{padding:14px}.app-layout .k-skill-evolution-actions{flex-direction:column}.app-layout .k-skill-evolution-actions .btn{width:100%;justify-content:center}.app-layout .k-skill-evolution-list{grid-template-columns:1fr}}
+
+/* Evidence map: qualitative stages, not invented percentage-of-mastery.
+ * Separate the authored lesson catalog from private, server-graded trends. */
+.app-layout .k-mastery-content-tabs{display:flex;gap:8px;margin:22px 0 15px;flex-wrap:wrap}
+.app-layout .k-mastery-content-tabs button,.app-layout .k-skill-map-filters button{min-height:40px;padding:8px 14px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;color:var(--sub);font-size:12px;font-weight:700;cursor:pointer}
+.app-layout .k-mastery-content-tabs button.selected,.app-layout .k-skill-map-filters button.selected{background:#5B4DE316;border-color:#5B4DE3;color:var(--txt)}
+.app-layout .k-mastery-content-tabs button:focus-visible,.app-layout .k-skill-map-filters button:focus-visible{outline:3px solid #38CDE5;outline-offset:2px}
+.app-layout .k-skill-map{min-width:0;display:grid;gap:15px}
+.app-layout .k-skill-map-head{display:grid;gap:12px}
+.app-layout .k-skill-map-head .overline{display:flex;gap:8px;align-items:center;color:#5B4DE3;font-size:10px;font-weight:750}
+.app-layout .k-skill-map-head h3{font-size:19px;color:var(--txt);line-height:1.3;margin:7px 0}
+.app-layout .k-skill-map-head p{font-size:12px;line-height:1.65;color:var(--sub);margin:0}
+.app-layout .k-skill-map-stats{display:flex;flex-wrap:wrap;gap:9px}
+.app-layout .k-skill-map-stats>span{border:1px solid var(--line);border-radius:11px;padding:9px 12px;font-size:11px;color:var(--sub);background:var(--panel-2)}
+.app-layout .k-skill-map-stats strong{color:var(--txt);font-size:16px;font-variant-numeric:tabular-nums;margin-right:5px}
+.app-layout .k-skill-map-filters{display:flex;flex-wrap:wrap;gap:7px}
+.app-layout .k-skill-map-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));align-items:stretch;gap:11px}
+.app-layout .k-skill-map-card{display:grid;align-content:start;gap:11px;min-width:0;padding:15px;border:1px solid var(--line);border-left:4px solid var(--line);border-radius:14px;background:var(--box-bg)}
+.app-layout .k-skill-map-card.is-exploring{border-left-color:#64748B}
+.app-layout .k-skill-map-card.is-developing{border-left-color:#5B4DE3}
+.app-layout .k-skill-map-card.is-consistent{border-left-color:#38CDE5}
+.app-layout .k-skill-map-card.is-retention-observed{border-left-color:#329A86}
+.app-layout .k-skill-map-card-heading{display:grid;gap:7px}
+.app-layout .k-skill-map-card-heading strong{color:var(--txt);font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+.app-layout .k-skill-map-state{width:fit-content;font-size:10px;line-height:1.45;font-weight:760;border-radius:999px;padding:4px 9px;color:var(--txt);background:var(--panel-2)}
+.app-layout .k-skill-map-reason,.app-layout .k-skill-map-next{margin:0;color:var(--sub);font-size:11px;line-height:1.55;overflow-wrap:anywhere}
+.app-layout .k-skill-map-next{display:flex;gap:7px;align-items:flex-start}
+.app-layout .k-skill-map-next svg{flex:none;margin-top:2px;color:#5B4DE3}
+.app-layout .k-skill-map-card-meta{display:flex;flex-wrap:wrap;gap:5px 12px;color:var(--sub);font-size:10px;font-variant-numeric:tabular-nums}
+.app-layout .k-skill-map-levels{display:flex;flex-wrap:wrap;gap:6px;font-size:10px;font-weight:680}
+.app-layout .k-skill-map-levels span{padding:4px 7px;border-radius:7px;border:1px solid var(--line);color:var(--txt)}
+.app-layout .k-skill-map-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+.app-layout .k-skill-map-actions .btn{flex:1 1 100px;min-height:40px;white-space:normal;text-align:center;justify-content:center}
+.app-layout .k-skill-map-actions .btn:disabled{opacity:.5;cursor:not-allowed}
+.app-layout .k-skill-map-empty{display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);font-size:12px;line-height:1.65;color:var(--sub)}
+.app-layout .k-skill-map-empty p{margin:0}
+.app-layout .k-skill-map-disclaimer{margin:0;font-size:10px;color:var(--sub);line-height:1.7}
+.app-layout .k-skill-mastery-insight{display:grid;gap:8px;padding:14px 15px;border:1px solid var(--line);border-left:4px solid #5B4DE3;background:var(--panel-2);border-radius:12px}
+.app-layout .k-skill-mastery-insight.is-retention-observed{border-left-color:#329A86}
+.app-layout .k-skill-mastery-insight.is-consistent{border-left-color:#38CDE5}
+.app-layout .k-skill-mastery-insight-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px}
+.app-layout .k-skill-mastery-insight-head strong{color:var(--txt)}
+.app-layout .k-skill-mastery-insight-head span{font-size:11px;color:var(--sub)}
+.app-layout .k-skill-mastery-insight p{font-size:11px;line-height:1.6;color:var(--sub);margin:0}
+.app-layout .k-skill-mastery-insight b{color:var(--txt)}
+.app-layout .k-skill-stage-inline{color:var(--sub);font-weight:650}
+.app-layout .k-skill-stage-inline.is-consistent,.app-layout .k-skill-stage-inline.is-retention-observed{color:#329A86}
+@media(max-width:600px){.app-layout .k-skill-map-grid{grid-template-columns:minmax(0,1fr)}.app-layout .k-skill-map-actions{flex-direction:column}.app-layout .k-skill-map-actions .btn{width:100%;flex:auto}}
