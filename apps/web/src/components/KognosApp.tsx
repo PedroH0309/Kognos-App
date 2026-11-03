@@ -33,6 +33,7 @@ import {explainProfileDatabaseError, profileSetupIssue} from '@/lib/profile-setu
 import {readStoredStudentProfile} from '@/lib/auth-profile-routing';
 import {isRetainedStudyView,rememberStudyView,type RetainedStudyView} from '@/lib/retained-study-views';
 import {isSameAuthenticatedAccount,readWorkspaceView,saveWorkspaceView} from '@/lib/workspace-session';
+import {lessonForPracticeFocus} from '@/lib/lesson-practice-navigation';
 import { getSupabase, isCloudConfigured } from '@/lib/supabase';
 import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
@@ -531,7 +532,14 @@ export default function KognosApp(){
  function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view)setStudyContext(null);/* Preserve the current question selection when returning to the bank. */if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
- function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setLessonPracticeRequestId(0);setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
+ function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){
+  // Legacy practice shortcuts (including ReviewSpace) must not silently route
+  // signed-in students to a single fixed demo item.
+  const lesson=user?lessonForPracticeFocus(focus):null;
+  if(lesson){generateForLesson(lesson.id,true);return;}
+  setLessonPracticeRequestId(0);setAiFocusLessonId(null);
+  setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);
+ }
  function generateForLesson(lessonId:string,generateNew=false){setLessonPracticeRequestId(previous=>generateNew?previous+1:0);setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
  function changeTheme(v:'dark'|'light'){setTheme(v);window.localStorage.setItem('kognos_theme_v1',v);}
@@ -593,7 +601,7 @@ export default function KognosApp(){
    onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>
  </div>}
  {retainedViews.includes('questions')&&<div className="k-retained-workspace" hidden={view!=='questions'}>
-  <PracticeSpace key={`${user.id}-questions-${practiceFocus?.questionId||'all'}`} mode="questions" active={view==='questions'}
+  <PracticeSpace key={`${user.id}-questions-${practiceFocus?.questionId||'all'}-${aiFocusLessonId||'browse'}-${lessonPracticeRequestId}`} mode="questions" active={view==='questions'}
    userId={user.id} profile={actualProfile} focus={practiceFocus} aiFocusLessonId={aiFocusLessonId} lessonPracticeRequestId={lessonPracticeRequestId}
    onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>
  </div>}
