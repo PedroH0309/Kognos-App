@@ -40,7 +40,17 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
   // No application-level daily cap. Provider-side rate and billing limits still apply.
   const batch=await createAndReviewQuestionBatch(generation,verified||undefined);
   const approved=batch.approved;
-  if(!approved.length)return error('A revisão automática não aprovou as questões geradas. Nenhuma foi salva; tente outro tema.',422);
+  if(!approved.length){
+   // One rejected batch must not abort the entire ten-question lesson.
+   // Return only coarse, server-computed counts (never the draft, keys or
+   // reviewer rationale) so the client can retry a SMALLER batch safely.
+   console.warn('[KOGNOS][AI] no independently approved items',batch.diagnostics);
+   return NextResponse.json({
+    code:'AI_REVIEW_NO_APPROVAL',
+    error:'A revisão independente não aprovou este lote. O Kognos pode tentar outra abordagem com menos questões, sem reutilizar itens antigos.',
+    diagnostics:batch.diagnostics
+   },{status:422,headers:{'Cache-Control':'no-store'}});
+  }
   const {data:prior,error:priorError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
     .select('prompt').eq('user_id',userId).eq('institution',generation.institution)
     // Check across disciplines and topics to catch repeated wording that was
@@ -48,7 +58,10 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
     .order('created_at',{ascending:false}).limit(1000);
   if(priorError)return error('Não foi possível conferir duplicidades no banco pessoal.',503);
   const unique=excludePreviouslyGenerated(approved,(prior||[]).map(row=>row.prompt));
-  if(!unique.length)return error('As questões propostas já existem no seu banco. Tente outro nível ou conteúdo.',409);
+  if(!unique.length)return NextResponse.json({
+   code:'AI_DUPLICATE_OUTPUT',
+   error:'As questões aprovadas repetem itens existentes. O Kognos pode solicitar outros exemplos.'
+  },{status:409,headers:{'Cache-Control':'no-store'}});
   const blueprint=examBlueprints[generation.institution];
   const rows=unique.map(q=>({
    user_id:userId,institution:generation.institution,edition:verified?.edition||blueprint.edition,source_title:verified?.sourceTitle||blueprint.sourceTitle,
