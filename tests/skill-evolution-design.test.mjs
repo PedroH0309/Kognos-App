@@ -18,7 +18,7 @@ test('lesson shows per-skill progress with no secondary network request and refr
  const panel=read('apps/web/src/components/SkillEvolutionPanel.tsx');
  const subjects=read('apps/web/src/components/SubjectDashboard.tsx');
  assert.match(trails,/<SkillEvolutionPanel/);
- assert.match(trails,/aiProgress\.skillEvolution\?\.find/);
+ assert.match(trails,/aiProgress\?\.skillEvolution\?\.find/);
  assert.match(trails,/onPractice=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
  assert.match(trails,/kognos:ai-answer-recorded/);
  assert.match(trails,/if\(active&&historyChangedWhileAway\.current\)/);
