@@ -16,6 +16,10 @@ import {bankSyncNotice} from '@/lib/integration-feedback';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
 import {generateApprovedBatches,MAX_ATTEMPTS_PER_BATCH} from '@/lib/ai-generation-batches';
+import {getCloudTasks,createCloudTasks} from '@/lib/cloud-study';
+import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
+import {recoveryTargetForQuestion,recoveryTargetsFromGradedSession} from '@/lib/lesson-recovery';
+import type {StudentProfile} from '@/lib/profile';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
@@ -24,7 +28,7 @@ const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBluepri
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
 const amountOptions=[1,3,5,10].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
-export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextChange,focusLessonId,lessonPracticeRequestId=0}:{mode:Mode;userId:string|null;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null;lessonPracticeRequestId?:number}) {
+export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,onContextChange,onOpenLesson,onGenerateLesson,focusLessonId,lessonPracticeRequestId=0}:{mode:Mode;userId:string|null;profile:StudentProfile;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;onOpenLesson:(focus:{subject:string;lessonId:string})=>void;onGenerateLesson:(lessonId:string)=>void;focusLessonId?:string|null;lessonPracticeRequestId?:number}) {
  const preset=focusLessonId?lessonGenerationPreset(focusLessonId):null;
  const readiness=useServerReadiness();
  const hasServerBank=readiness.status?.supabaseServerConfigured===true;
@@ -57,6 +61,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [bankFetched,setBankFetched]=useState(false),[bankError,setBankError]=useState('');
  const [session,setSession]=useState<UserAIQuestion[]>([]),[cursor,setCursor]=useState(0),[choice,setChoice]=useState<number|null>(null);
  const [answers,setAnswers]=useState<Grading[]>([]),[finished,setFinished]=useState(false);
+ const [reviewBusy,setReviewBusy]=useState(false);
+ const reviewLock=useRef(false);
+ const [reviewNotice,setReviewNotice]=useState('');
  const [elapsed,setElapsed]=useState(0);
  const blueprint=examBlueprints[institution];
  const subjectOptions=Object.keys(blueprint.subjects).map(value=>({value,label:value}));
@@ -71,6 +78,8 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const scopeDescription=bankScope==='topic'?`${subject} · ${topic}`:`todas as matérias · ${blueprint.label}`;
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
+ const recoveryTargets=useMemo(()=>recoveryTargetsFromGradedSession(session,answers),[session,answers]);
+ const wrongQuestion=current&&answers[cursor]?.correct===false?recoveryTargetForQuestion(current):null;
  const lessonAutostart=lessonPracticeRequestId>0&&Boolean(focusLessonId)&&manualBankForRequest!==lessonPracticeRequestId;
 
  useEffect(()=>{
@@ -243,7 +252,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   }finally{setGenerating(false);setGenerationStartedAt(null);}
  }
 
- function start(list:UserAIQuestion[]){if(!list.length)return;setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
+ function start(list:UserAIQuestion[]){if(!list.length)return;setReviewNotice('');setSession([...list]);setCursor(0);setChoice(null);setAnswers([]);setFinished(false);setError('');setNotice('');setElapsed(0);}
  async function submitAnswer(){
   if(!current||choice===null||submitting||answers[cursor])return;
   setSubmitting(true);setError('');
@@ -259,6 +268,9 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    setTotalQuestions(old=>Math.max(0,old-1));
    setNotice(`Resposta registrada · +${xpEarned} XP. Esta questão saiu da sua lista de pendentes.`);
    window.dispatchEvent(new Event('kognos:ai-answer-recorded'));
+   // Use a server-graded attempt when the Kog tutor opens, never an
+   // unverified client-provided correct answer or guessed weakness.
+   onContextChange({kind:'generated_question',questionId:current.id,phase:'review'});
   }catch(e){
    const message=e instanceof Error?e.message:'Falha ao corrigir a resposta.';
    setError(message);
@@ -270,6 +282,30 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   }finally{setSubmitting(false);}
  }
 
+ function askKogForQuestion(questionId:string){
+  onContextChange({kind:'generated_question',questionId,phase:'review'});
+  onTutor();
+ }
+ async function scheduleMistakeReviews(){
+  if(!userId||!finished||reviewLock.current||!recoveryTargets.length)return;
+  reviewLock.current=true;setReviewBusy(true);setReviewNotice('');
+  try{
+   // One read and one batch insert after explicit student confirmation.
+   const existing=await getCloudTasks(userId);
+   const weak=recoveryTargets.map(item=>({
+    subject:item.subject,topic:item.topic,incorrect:item.wrongCount,lastWrong:true
+   }));
+   const plan=createSpacedReviewPlan(profile,existing,weak,new Date(),()=>crypto.randomUUID(),3);
+   if(plan.created.length)await createCloudTasks(userId,plan.created);
+   setReviewNotice(plan.created.length
+    ?`${plan.created.length} revisão(ões) agendada(s) no calendário do Kognos.${plan.covered?` ${plan.covered} intervalo(s) já estavam programados.`:''}${plan.skipped?` ${plan.skipped} intervalo(s) ficaram sem horário.`:''}`
+    :plan.covered?'Os intervalos disponíveis já têm revisões pendentes desses assuntos.':
+     'Não há horários livres para revisar nos próximos dias permitidos antes da prova. Ajuste suas preferências de estudo.');
+  }catch(e){
+   setReviewNotice(e instanceof Error?`Não foi possível salvar as revisões: ${e.message}`:
+    'Não foi possível salvar as revisões. Tente novamente.');
+  }finally{reviewLock.current=false;setReviewBusy(false);}
+ }
  function next(){
   if(cursor>=session.length-1){setFinished(true);setChoice(null);return;}
   setCursor(v=>v+1);setChoice(null);
