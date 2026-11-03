@@ -20,6 +20,7 @@ import {getCloudTasks,createCloudTasks} from '@/lib/cloud-study';
 import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
 import {recoveryTargetForQuestion,recoveryTargetsFromGradedSession} from '@/lib/lesson-recovery';
 import type {StudentProfile} from '@/lib/profile';
+import {assessLessonMastery} from '@/lib/lesson-mastery';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
@@ -333,6 +334,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   setCursor(v=>v+1);setChoice(null);
  }
  const points=answers.filter(a=>a.correct).length;
+ const mastery=assessLessonMastery(session.slice(0,answers.length).map((q,i)=>({difficulty:q.difficulty,correct:answers[i].correct})));
  const sessionXP=answers.reduce((sum,a)=>sum+a.xpEarned,0);
  const duration=`${String(Math.floor(elapsed/60)).padStart(2,'0')}:${String(elapsed%60).padStart(2,'0')}`;
  return <div className="ai-studio">
@@ -390,6 +392,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    {userId&&session.length>0&&<section className="dark-panel ai-session">
     {finished?<>
       <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Você conquistou {sessionXP} XP nesta sessão. As questões concluídas saíram do banco de pendentes e já contam para suas Conquistas. Esta pontuação não é nota oficial nem estimativa TRI.</p>
+      <div className="k-ai-mastery-result" role="status"><strong>Avaliação formativa: {mastery.label}</strong><p>{mastery.accuracy}% de acertos · Básicas: {mastery.basic}/3 · Intermediárias: {mastery.intermediate}/4 · Avançadas: {mastery.advanced}/3.</p><p>{mastery.nextStep}</p><small>Indicador desta sessão, não nota oficial, estimativa TRI ou comprovação definitiva de domínio.</small></div>
       <div className="ai-review-results">{session.map((q,i)=><article key={q.id}><strong>{i+1}. {q.subject} — {answers[i]?.correct?'Acerto':'Revisar'}</strong><p>{q.prompt}</p><p>Gabarito: {String.fromCharCode(65+(answers[i]?.correctIndex??0))}. {answers[i]?.explanation||'Sem correção disponível.'}</p></article>)}</div>
       {recoveryTargets.length>0&&<section className="k-ai-lesson-recovery-summary" aria-label="Plano de reforço após os erros">
        <h3>Reforce o que ainda precisa de prática</h3>
