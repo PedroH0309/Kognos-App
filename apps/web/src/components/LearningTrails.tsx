@@ -15,6 +15,7 @@ import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import StudySyncNotice from './StudySyncNotice';
 import SkillEvolutionPanel from './SkillEvolutionPanel';
+import {prioritySkillLessonId} from '@/lib/skill-mastery-evidence';
 
 type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
@@ -100,7 +101,10 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   setSubject(item.subject);setSelectedId(item.id);visibleContext({kind:'lesson',lessonId:item.id});
   if(window.matchMedia('(max-width: 1150px)').matches)detailRef.current?.scrollIntoView({behavior:'smooth',block:'start'});
  }
- const highlight=connectedTrail.next??roadmap.steps[0]?.lesson??null;
+ const masteryById=useMemo(()=>new Map((aiProgress?.skillEvolution??[]).map(item=>[item.lessonId,item.mastery])),[aiProgress]);
+ const nextWeakId=userId&&aiProgress?prioritySkillLessonId(roadmap.steps.map(step=>step.lesson),masteryById):null;
+ const highlight=(nextWeakId?roadmap.steps.find(step=>step.lesson.id===nextWeakId)?.lesson:null)
+  ??connectedTrail.next??roadmap.steps[0]?.lesson??null;
  const hasHistory=historyReady&&connected.practiced>0;
  const isTrail=mode==='trails';
 
@@ -166,10 +170,11 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <div className="learning-lesson-list learning-journey-steps">
      {visibleLessons.length?visibleLessons.map(step=>{
       const item=step.lesson;const active=item.id===selectedId;const connectedEvidence=connectedLessonEvidence(item,attempts,aiProgress);const ai=connectedEvidence.generated;
+       const mastery=masteryById.get(item.id);
       return <button type="button" key={item.id} className={`learning-lesson-item learning-journey-step ${active?'selected':''} ${step.evidence==='correct-sample'?'has-sample':''} ${connectedEvidence.review?'needs-review':''} ${connectedEvidence.hasAI?'has-ai':''}`}
        aria-current={active?'step':undefined} onClick={()=>chooseLesson(item)}>
        <span className="learning-lesson-number">{step.evidence==='correct-sample'?<CheckCircle2 size={17}/>:String(step.number).padStart(2,'0')}</span>
-       <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{connectedEvidence.hasAI&&step.evidence==='not-started'?'Prática IA registrada':evidenceLabels[step.evidence]} · {item.minutes} min</small>{ai&&<small className="learning-ai-step-stat">IA: {ai.attempts} resposta(s) em {ai.distinctQuestions} questão(ões){ai.lastCorrect===false?' · revisar':''}</small>}{step.prerequisites.length>0&&<small className="learning-journey-prereq">Base: {step.prerequisites.map(req=>req.topic).join(', ')}</small>}</span>
+       <span className="learning-lesson-label"><strong>{item.topic}</strong><small>{connectedEvidence.hasAI&&step.evidence==='not-started'?'Prática IA registrada':evidenceLabels[step.evidence]} · {item.minutes} min</small>{ai&&<small className="learning-ai-step-stat">IA: {ai.attempts} resposta(s) em {ai.distinctQuestions} questão(ões){ai.lastCorrect===false?' · revisar':''}</small>}{mastery&&<small className={`k-skill-stage-inline is-${mastery.stage}`}>{mastery.label} · {mastery.distinctPracticeDays} dia(s) com sequência completa</small>}{step.prerequisites.length>0&&<small className="learning-journey-prereq">Base: {step.prerequisites.map(req=>req.topic).join(', ')}</small>}</span>
        {connectedEvidence.review?<RotateCcw size={16}/>:<ChevronRight size={17}/>}
       </button>;
      }):<p className="muted">Nenhum assunto encontrado. Tente outra palavra.</p>}
