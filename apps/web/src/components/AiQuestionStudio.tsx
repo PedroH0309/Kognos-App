@@ -21,6 +21,7 @@ import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
 import {recoveryTargetForQuestion,recoveryTargetsFromGradedSession} from '@/lib/lesson-recovery';
 import type {StudentProfile} from '@/lib/profile';
 import {assessLessonMastery} from '@/lib/lesson-mastery';
+import {recoverableLessonGenerationError,nextLessonReviewBatchSize,lessonGenerationFailureMessage,LESSON_REVIEW_MAX_ATTEMPTS,LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY} from '@/lib/lesson-generation-recovery';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
@@ -113,7 +114,12 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   if(sessionError||!session||session.user.id!==userId)throw new Error('A sessão mudou ou expirou. Entre novamente.');
   const response=await fetch(url,{...init,headers:{'Content-Type':'application/json',Authorization:`Bearer ${session.access_token}`,...init?.headers},cache:'no-store'});
   const result=await response.json();
-  if(!response.ok)throw new Error(typeof result.error==='string'?result.error:'Não foi possível concluir esta operação.');
+  if(!response.ok){
+   const message=typeof result.error==='string'?result.error:'Não foi possível concluir esta operação.';
+   const failure=new Error(message) as Error&{code?:string};
+   if(typeof result.code==='string'&&/^[A-Z][A-Z0-9_]{2,48}$/.test(result.code))failure.code=result.code;
+   throw failure;
+  }
   return result;
  },[userId]);
 
@@ -187,23 +193,43 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    try{
     for(const [index,step] of LESSON_PRACTICE_STEPS.entries()){
      let remaining:number=step.count;
-     for(let retry=0;retry<3&&remaining>0;retry++){
+     let consecutiveEmpty=0;
+     // A rejected batch (422) is recoverable. Reduce the next request to
+     // two, then one item, while retaining independent server-side review.
+     // Stop on rate limits, auth, database, network or provider failures.
+     for(let retry=0;retry<LESSON_REVIEW_MAX_ATTEMPTS&&remaining>0;retry++){
       if(!stillCurrent())return;
-      const request={...generation,difficulty:step.difficulty,count:remaining,
-       variation:((generation.variation??0)+index*3+retry)%32};
-      const data=await authenticatedFetch('/api/ai-questions/generate',{
-       method:'POST',body:JSON.stringify(request)
-      });
+      const request={...generation,difficulty:step.difficulty,
+       count:nextLessonReviewBatchSize(remaining,consecutiveEmpty),
+       variation:((generation.variation??0)+index*8+retry)%32};
+      let data:unknown;
+      try{
+       data=await authenticatedFetch('/api/ai-questions/generate',{
+        method:'POST',body:JSON.stringify(request)
+       });
+      }catch(error){
+       if(!stillCurrent())return;
+       if(!recoverableLessonGenerationError(error))throw error;
+       consecutiveEmpty++;
+       if(consecutiveEmpty>=LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY)break;
+       continue;
+      }
       if(!stillCurrent())return;
       const approved=newQuestionsForSelectedLesson(data,request);
-      for(const question of approved){
-       if(!seen.has(question.id)){seen.add(question.id);fresh.push(question);}
+      if((data as {approved?:unknown})?.approved&&approved.length===0){
+       throw new Error('O servidor retornou questões fora do tema selecionado. Nenhuma será utilizada. Confira a versão do backend.');
       }
+      let added=0;
+      for(const question of approved){
+       if(!seen.has(question.id)){seen.add(question.id);fresh.push(question);added++;}
+      }
+      consecutiveEmpty=added===0?consecutiveEmpty+1:0;
       remaining=step.count-fresh.filter(q=>q.difficulty===step.difficulty).length;
       if(!stillCurrent())return;
       setLessonPracticeProgress(fresh.length);
+      if(consecutiveEmpty>=LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY)break;
      }
-     if(remaining>0)throw new Error(`A revisão aprovou apenas ${fresh.length} de 10 questões. Não é possível abrir a sequência completa ainda. Tente gerar novamente.`);
+     if(remaining>0)throw new Error(lessonGenerationFailureMessage(fresh.length));
     }
     if(!stillCurrent())return;
     if(fresh.length!==10)throw new Error(`Foram aprovadas ${fresh.length} de 10 questões; tente novamente.`);
