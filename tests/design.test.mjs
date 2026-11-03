@@ -5,6 +5,7 @@ const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
 const design=read('../apps/web/src/app/design-system.css');
 const app=read('../apps/web/src/components/KognosApp.tsx');
 const tutor=read('../apps/web/src/app/api/tutor/route.ts');
+const providers=read('../apps/web/src/lib/ai-provider.ts');
 const assistant=read('../apps/web/src/components/KogAssistant.tsx');
 const model=read('../apps/web/src/components/KogMascot3D.tsx');
 
@@ -20,14 +21,17 @@ test('scrollbar customizada e acessível e navegação móvel',()=>{
   assert.match(design,/scrollbar-color:/);
   assert.match(design,/::-webkit-scrollbar-thumb/);
   assert.match(design,/prefers-reduced-motion/);
-  assert.match(app,/mobile-sidebar-scrim/);
+  const motion=read('../apps/web/src/components/KognosMotion.tsx');
+  assert.match(motion,/mobile-sidebar-scrim/);
+  assert.match(app,/AnimatedSidebarScrim/);
   assert.match(app,/sidebarCollapsed/);
 });
 
 test('NVIDIA configurável somente no servidor, sem segredo publicado no bundle',()=>{
   assert.ok(existsSync(new URL('../CONFIGURAR_API_NVIDIA.bat',import.meta.url)));
   assert.ok(existsSync(new URL('../scripts/configurar-nvidia.ps1',import.meta.url)));
-  assert.match(tutor,/process\.env\.NVIDIA_API_KEY/);
+  assert.match(providers,/env\.NVIDIA_API_KEY/);
+  assert.match(tutor,/requestAI\('tutor'/);
   assert.doesNotMatch(app,/NEXT_PUBLIC_NVIDIA/);
   assert.doesNotMatch(app,/nvapi-[A-Za-z0-9_-]{24,}/);
   assert.doesNotMatch(design,/nvapi-[A-Za-z0-9_-]{24,}/);
@@ -35,7 +39,8 @@ test('NVIDIA configurável somente no servidor, sem segredo publicado no bundle'
 
 test('chat informa processamento externo sem interromper a cada mensagem',()=>{
   assert.match(assistant,/kog-ai-notice/);
-  assert.match(assistant,/NVIDIA/);
+  assert.match(assistant,/providerName/);
+  assert.match(assistant,/openai.com\/policies\/privacy-policy/);
   assert.doesNotMatch(app,/Marque a autorização antes de enviar/);
   assert.doesNotMatch(tutor,/body\.consent/);
 });

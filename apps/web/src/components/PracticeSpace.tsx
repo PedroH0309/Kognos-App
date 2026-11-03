@@ -3,15 +3,21 @@ import {useState,useEffect} from 'react';
 import { KognosSelect, type KognosOption } from './KognosFields';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {demoQuestions,statsFromAttempts,type DemoQuestion,type QuestionAttempt} from '@/lib/demo-questions';
+import {demoTopics,filterDemoQuestions} from '@/lib/question-bank';
 import {getCloudAttempts,createCloudAttempt} from '@/lib/cloud-study';
 
 type Mode='questions'|'simulados'|'performance';
+type PracticeFocus={subject:string;topic:string;questionId:string};
 function storageKey(userId:string|null){return 'kognos_demo_attempts_v1_'+(userId||'guest');}
 
 export default function PracticeSpace({mode,userId,onTutor,onContextChange}:{mode:Mode;userId:string|null;onTutor:()=>void;onContextChange:(context:KogStudyContext|null)=>void}){
   const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
-  const [subject,setSubject]=useState('Todas');
-  const [quiz,setQuiz]=useState<DemoQuestion[]>([]);const [position,setPosition]=useState(0);
+  const [subject,setSubject]=useState(focus?.subject??'Todas');
+  const [topic,setTopic]=useState(focus?.topic??'Todos');
+  const [difficulty,setDifficulty]=useState('Todas');
+  const [search,setSearch]=useState('');
+  const [questionSource,setQuestionSource]=useState<'ai'|'demo'>(aiFocusLessonId?'ai':userId?'ai':'demo');
+  const [quiz,setQuiz]=useState<DemoQuestion[]>([]);const [sessionAttempts,setSessionAttempts]=useState<QuestionAttempt[]>([]);const [position,setPosition]=useState(0);
   const [answer,setAnswer]=useState<number|null>(null);const [submitted,setSubmitted]=useState(false);
   const [done,setDone]=useState(false);const [pending,setPending]=useState(false);
   const [loaded,setLoaded]=useState(false);const [error,setError]=useState('');
@@ -26,16 +32,22 @@ export default function PracticeSpace({mode,userId,onTutor,onContextChange}:{mod
     return()=>{active=false;};
   },[userId]);
   const stats=statsFromAttempts(attempts);
+  const sessionSummary=practiceSessionSummary(quiz,sessionAttempts);
   const subjects=['Todas',...new Set(demoQuestions.map(q=>q.subject))];
   const subjectOptions = subjects.map(s=>({value:s,label:s==='Todas'?'Todas as disciplinas':s})) as KognosOption<string>[];
-  const filtered=demoQuestions.filter(q=>subject==='Todas'||q.subject===subject);
-  function start(questions:DemoQuestion[]){setQuiz(questions);setPosition(0);setAnswer(null);setSubmitted(false);setDone(false);setError('');}
+  const topics=demoTopics(subject);
+  const topicOptions=topics.map(v=>({value:v,label:v==='Todos'?'Todos os assuntos':v})) as KognosOption<string>[];
+  const difficultyOptions=[{value:'Todas',label:'Qualquer dificuldade'},{value:'Básica',label:'Básica'},{value:'Intermediária',label:'Intermediária'},{value:'Avançada',label:'Avançada'}];
+  const filtered=filterDemoQuestions({subject,topic:mode==='questions'?topic:'Todos',difficulty:mode==='questions'?difficulty:'Todas',search:mode==='questions'?search:''});
+  function clearSession(){setQuiz([]);setSessionAttempts([]);setPosition(0);setAnswer(null);setSubmitted(false);setDone(false);setError('');}
+  function switchSource(next:'ai'|'demo'){if(next===questionSource)return;clearSession();setQuestionSource(next);}
+  function start(questions:DemoQuestion[]){setQuiz(questions);setSessionAttempts([]);setPosition(0);setAnswer(null);setSubmitted(false);setDone(false);setError('');}
   async function confirm(){if(answer===null||submitted||pending||!loaded)return;
     const q=quiz[position];const item:QuestionAttempt={questionId:q.id,subject:q.subject,correct:q.correct===answer,answerIndex:answer,createdAt:new Date().toISOString(),mode:mode==='simulados'?'mock':'practice'};
     setPending(true);setError('');
     try{
       if(userId)await createCloudAttempt(userId,item);
-      const next=[...attempts,item];setAttempts(next);
+      const next=[...attempts,item];setAttempts(next);setSessionAttempts(old=>[...old,item]);
       if(!userId){try{localStorage.setItem(storageKey(null),JSON.stringify(next));}catch{setError('Seu navegador não permitiu salvar o resultado.');}}
       setSubmitted(true);
     }catch(e){setError(e instanceof Error?e.message:'Falha ao registrar a resposta. Tente novamente.');}

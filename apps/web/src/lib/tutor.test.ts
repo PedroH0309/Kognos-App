@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage } from './tutor.ts';
+import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normalizeTutorAnswer } from './tutor.ts';
 import { defaultForDyslexia, defaultForTDAH, initialProfile, normalizeProfile } from './profile.ts';
 
 test('perfil impede atributos desconhecidos e remove valores indevidos',()=>{

@@ -1,0 +1,106 @@
+/* KOGNOS study cycle: visual continuity with clean dashboard, dark mode,
+ * responsive activities and accessible learning prompts. */
+.app-layout .study-planner .k-cycle-panel{padding:clamp(18px,2vw,26px);margin-top:18px;margin-bottom:20px;border:1px solid var(--line);background:var(--box-bg);border-radius:19px;box-shadow:var(--k-shadow);min-width:0}
+.app-layout .study-planner .k-cycle-header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.app-layout .study-planner .k-cycle-header h2{font-size:21px;letter-spacing:-.03em;color:var(--txt);margin:7px 0}
+.app-layout .study-planner .k-cycle-header p{font-size:12px;line-height:1.65;max-width:640px;margin:0 0 14px}
+.app-layout .study-planner .k-cycle-week{padding:8px 10px;border-radius:9px;background:var(--panel-2);border:1px solid var(--line);color:var(--sub);font-size:10px;font-weight:710;white-space:nowrap}
+.app-layout .study-planner .k-cycle-progress{height:9px;background:var(--panel-2);border:1px solid var(--line);border-radius:20px;overflow:hidden;width:100%;margin:9px 0}
+.app-layout .study-planner .k-cycle-progress>span{display:block;height:100%;background:linear-gradient(90deg,#38CDE5,#18B78A);border-radius:20px;transition:width .45s ease}
+.app-layout .study-planner .k-cycle-summary{font-size:11px;color:var(--sub);line-height:1.6;margin:8px 0 17px}
+.app-layout .study-planner .k-cycle-methods{padding:15px 17px;border-radius:14px;background:var(--panel-2);margin-bottom:12px}
+.app-layout .study-planner .k-cycle-methods h3,.app-layout .study-planner .k-cycle-errors h3{font-size:13px;margin:0 0 10px;color:var(--txt);font-weight:760}
+.app-layout .study-planner .k-cycle-methods ol{margin:0;padding-left:22px;color:var(--txt);display:grid;gap:7px}
+.app-layout .study-planner .k-cycle-methods li{font-size:12px;line-height:1.55;padding-left:4px}
+.app-layout .study-planner .k-cycle-errors{border-radius:13px;border:1px solid var(--line);padding:14px;margin-bottom:12px}
+.app-layout .study-planner .k-cycle-errors>div{display:flex;gap:7px;flex-wrap:wrap}
+.app-layout .study-planner .k-cycle-errors span{display:inline-flex;border:1px solid var(--line);background:var(--panel-2);padding:7px 10px;border-radius:11px;font-size:10px;color:var(--txt)}
+.app-layout .study-planner .k-cycle-review{border-radius:14px;border:1px solid #38CDE54A;background:var(--panel-2);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 16px}
+.app-layout .study-planner .k-cycle-review strong{font-size:13px;color:var(--txt)}
+.app-layout .study-planner .k-cycle-review p{margin:5px 0 0;color:var(--sub);font-size:11px;line-height:1.5;max-width:540px}
+.app-layout .study-planner .k-cycle-review button{flex:none;font-size:12px}
+.app-layout .study-planner .task-row>label{min-width:0}
+.app-layout .study-planner .task-row-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.app-layout .study-planner .k-task-links{display:flex;flex-wrap:wrap;align-items:center;gap:7px;min-width:0}
+.app-layout .study-planner .k-task-links a,.app-layout .study-planner .k-task-links button{margin:0;white-space:normal;text-align:left}
+.app-layout .study-planner .task-row label>span{min-width:0;overflow-wrap:anywhere}
+.app-layout .study-planner .k-task-lesson,.app-layout .study-planner .k-task-video{font-size:10px;font-weight:750;display:inline-block;margin:7px 9px 0 0;padding:6px 0;border:0;background:transparent;color:#38AFC5;cursor:pointer;text-decoration:none;min-height:26px}
+.app-layout .study-planner .k-task-lesson:hover,.app-layout .study-planner .k-task-video:hover{text-decoration:underline;color:var(--txt)}
+.app-layout.theme-dark .study-planner .k-cycle-panel{box-shadow:none}
+.app-layout.theme-dark .study-planner .k-task-lesson,.app-layout.theme-dark .study-planner .k-task-video{color:#86E4F3}
+@media(max-width:920px){
+ .app-layout .study-planner .k-cycle-header{flex-direction:column;gap:6px}
+ .app-layout .study-planner .k-cycle-review{flex-direction:column;align-items:stretch}
+ .app-layout .study-planner .k-cycle-review button{width:100%}
+}
+@media(max-width:530px){
+ .app-layout .study-planner .task-row{flex-direction:column;align-items:stretch}
+ .app-layout .study-planner .task-row-actions{justify-content:flex-start}
+ .app-layout .study-planner .k-task-links{flex:1 1 100%}
+
+ .app-layout .study-planner .k-cycle-panel{margin-top:14px;padding:16px 14px}
+ .app-layout .study-planner .k-cycle-methods{padding:12px}
+ .app-layout .study-planner .k-cycle-header h2{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.app-layout .study-planner .k-cycle-progress>span{transition:none}}
+.app-layout.less-motion .study-planner .k-cycle-progress>span{transition:none}
+
+
+/* Final layout pass: rhythm in the weekly-planning card (desktop and phone).
+ * Kept here because this stylesheet is loaded after the calendar base rules. */
+.app-layout .study-planner .planner-grid > aside.dark-panel {
+ min-width:0;
+ padding:clamp(18px,2.1vw,26px);
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > h2 {
+ margin:0 0 12px;
+ line-height:1.3;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > p.muted {
+ margin:0 0 18px;
+ line-height:1.65;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > .btn.full {
+ width:100%;
+ min-height:46px;
+ padding:12px 14px;
+ margin:0;
+ line-height:1.35;
+ white-space:normal;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > .btn.full + .btn.full {
+ margin-top:12px;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel > .section-divider {
+ height:1px;
+ margin:24px 0;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel .field-stack {
+ display:flex;
+ flex-direction:column;
+ gap:15px;
+ min-width:0;
+}
+.app-layout .study-planner .planner-grid > aside.dark-panel .field-stack h3 {
+ margin:0 0 2px;
+ line-height:1.35;
+}
+/* Calendar: predictable spacing in the week strip and 44px month targets. */
+.app-layout .k-calendar-page .k-cal-page-header {margin-bottom:24px;}
+.app-layout .k-calendar-page .k-cal-top-actions {row-gap:10px;column-gap:10px;}
+.app-layout .k-calendar-page .k-cal-date-strip {margin-bottom:28px;}
+.app-layout .k-calendar-page .k-cal-week-strip {gap:clamp(7px,1.1vw,14px);padding:3px 2px 11px;}
+.app-layout .k-calendar-page .k-cal-month-grid {gap:7px 6px;}
+.app-layout .k-calendar-page .k-cal-month-grid button {min-height:44px;}
+.app-layout .k-calendar-page .k-cal-main-grid {gap:24px;}
+.app-layout .k-calendar-page .k-cal-time-row {padding-bottom:19px;}
+@media(max-width:530px) {
+ .app-layout .study-planner .planner-grid > aside.dark-panel {padding:18px 16px;}
+ .app-layout .study-planner .planner-grid > aside.dark-panel > .btn.full + .btn.full {margin-top:11px;}
+ .app-layout .k-calendar-page .k-cal-date-strip {padding:14px 10px 8px;}
+ .app-layout .k-calendar-page .k-cal-week-strip {grid-template-columns:repeat(7,minmax(39px,1fr));gap:6px;}
+ .app-layout .k-calendar-page .k-cal-top-actions .k-cal-export-button {order:4;flex:1 0 100%;}
+ .app-layout .k-calendar-page .k-cal-summary-body {flex-wrap:wrap;}
+ .app-layout .k-calendar-page .k-cal-ring {margin:auto;}
+ .app-layout .k-calendar-page .k-cal-metrics {flex:1 1 150px;}
+}

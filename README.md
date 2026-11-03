@@ -4,6 +4,97 @@
 
 Kognos is an adaptive educational web application built with **Next.js 16, React 19, TypeScript, Supabase and NVIDIA AI**. It targets school subjects, ENEM, entrance exams, ETEC, competitions and self-directed learning. The original brand uses Deep Navy, Intelligence Violet, and Progress Cyan. The UI language is Brazilian Portuguese; project documentation is in English.
 
+## What's new in v1.8 — Kog readiness and evidence-based study planner
+
+- Added a no-store `GET /api/ai-status` endpoint which exposes **only configuration presence**, never provider secrets or a claim that an upstream request succeeded.
+- Kog now detects missing NVIDIA server configuration before sending a prompt. Its clearly labeled **Local Library — No AI** mode provides an original Pythagoras explanation and guides from the 20 authored lessons. Unsupported questions are acknowledged without fake generated answers.
+- The planner combines the student's real demo attempt history and authenticated, server-graded AI practice **summary** to prioritize review topics. It respects scheduled weekdays, daily minutes and existing tasks, without inferring mastery or predicted exam results.
+- No new Supabase migration or third-party dependency is needed. Full conversational AI still requires a private `NVIDIA_API_KEY` in the server's `apps/web/.env.local` or the hosting platform's secret settings.
+
+See [Sprint 18 and NVIDIA setup](docs/KOGNOS_SPRINT_18_KOG_PLANNER.md). A presence-only readiness flag does not confirm that the provider or model is reachable.
+
+## What's new in v1.5 — AI practice linked to learning paths
+
+- Connected NVIDIA-generated questions to the **20 authored starter lessons**, with explicit, server-validated lesson-to-exam-topic mappings; generation from a lesson now opens the personal AI bank with the correct institution, subject and topic preselected.
+- Added a private authenticated `GET /api/ai-study-progress` endpoint. The server recomputes correctness using protected answer keys and only sends per-lesson counts, distinct question coverage and most recent outcome to the client — **never the key or chosen answer**.
+- **Learning Paths**, **Learn**, and **My Subjects** now display demonstration practice and linked AI practice separately. Recommendations prioritize lessons with a recent incorrect AI answer, without claiming exam readiness or long-term mastery.
+- Existing AI questions without explicit lesson metadata are mapped only when the old topic name **exactly** and uniquely matches a curated lesson. Broad/multidisciplinary institution labels are deliberately not assigned to narrow lessons.
+- Added migration [`0007_ai_lesson_links.sql`](supabase/migrations/0007_ai_lesson_links.sql), which stores a nullable validated `lesson_id` for new questions while retaining old bank records. **Apply it after 0005/0006 before using the v1.5 AI flow**. No new environment variables are required.
+- The public repository and English developer documentation are preserved. Full details: [`docs/KOGNOS_SPRINT_15_CONNECTED_AI_STUDY.md`](docs/KOGNOS_SPRINT_15_CONNECTED_AI_STUDY.md).
+
+## What's new in v1.4 — compact guided Learning Paths
+
+- **Visual redesign:** replaces the oversized visitor banner, large global percentage card and repeated tall subject cards with a compact progress strip, responsive subject chips, a focused subject overview and a clear ordered journey. The first lesson becomes visible sooner.
+- **Real guided navigation:** stages have numbered markers, prerequisite links, practice evidence states, a recommended next lesson and previous/next controls. On narrow screens selecting a step scrolls to its lesson, instead of silently updating content out of view.
+- **Resume last opened lesson:** optional user-scoped browser storage remembers the most recently opened original lesson. Explicit navigation from diagnostic results, reviews or Subjects takes precedence over the stored preference; this is not cloud progress synchronization.
+- **Honest progress states:** only saved demonstration attempts count toward practice coverage. Guest, loading, and failed-history states are clearly distinct; reading alone is not treated as an answered question or demonstrated mastery.
+- **Preserved integrations:** Subjects, Learn, Kog's lesson context, demo question practice, keyboard focus, dark/light mode and reduced-motion preferences still work. No migration, new API permission or environment variable is required.
+
+See [Sprint 1.4 notes](docs/KOGNOS_SPRINT_14_GUIDED_JOURNEYS.md). The current catalog remains **20 introductory authorial lessons**, not a complete school curriculum or an official exam archive.
+
+## What's new in v1.3 — distinct Subjects, Trails and Learn experiences
+
+- **My Subjects is now a dedicated dashboard**, not a second rendering of the trail/lesson screen. Students see seven subject cards, per-subject evidence-based practice coverage, pending review items, dates of recorded practice, a recommended next topic, and topic-level status. Every card links to its real lessons, practice sessions or contextual Kog help.
+- **Learning Paths is a sequenced curriculum navigator**, showing the catalog's stages, prerequisite hints, an introductory 20-topic practice-coverage map, and a lesson detail panel.
+- **Learn is lesson-first**, displaying the current mini-lesson prominently with compact subject switching, quick access to other lessons, and a link to the corresponding learning path.
+- All three areas reuse the **same verified demonstration attempts** in browser-local guest mode or the existing Supabase demo table when signed in; no new score, fabricated proficiency estimate, or account permission is introduced.
+- No new database migration or new environment variable is needed. This still covers only **20 introductory authorial lessons** and should not be confused with a complete school curriculum.
+
+See [Sprint 1.3 notes](docs/KOGNOS_SPRINT_13_SUBJECTS_TRAILS.md) for screen responsibilities, implementation details and limitations.
+
+## What's new in v1.2 — source workspace UI and reliable access states
+
+- **Guest-friendly source page:** replaces the large passive sign-in banner with a compact account status card and working **Sign in to my account** button using the existing Kognos authentication modal. Successful sign-in from this page keeps the user on **Matrices & Notices**, rather than unexpectedly redirecting to the dashboard.
+- **Accurate data states:** a guest, loading session, failed Supabase read, authenticated reader, and server-authorized editor are distinct. Guests and failures **never claim that zero topics were approved**; totals appear only after a successful authenticated catalog load.
+- **Editorial workspace:** adds compact catalog metrics, a clearer official-sources panel, and **Import document** / **Review candidates** tabs, including an institution filter and local search for pending proposals.
+- **Responsive layout:** improves narrow desktop and mobile stacking, keyboard focus, loading indicators, and reduced-motion behavior while preserving the Kognos color system.
+- **Same server-side permissions:** `KOGNOS_EDITOR_USER_IDS` is only read by the protected API; it is not a sign-in method or browser permission toggle. The application must recognize a valid Supabase account before checking editor eligibility. There are no schema migrations for v1.2.
+
+**Local editor setup:** Create `apps/web/.env.local` if missing (copy `apps/web/.env.example`), preserve your existing Supabase/NVIDIA settings and add `KOGNOS_EDITOR_USER_IDS=<UUID from Supabase Authentication > Users>`. Keep `.env.local` out of source control. Apply migration `0006` if not already applied, restart the Next.js server, then **sign in to the Kognos app with that exact Supabase user**. Navigate to **Matrices & Notices**. A server-confirmed editor will see the restricted editorial workspace. If the page says *guest*, use its sign-in button; if it says *read only*, compare the authenticated account's User UID with the server's allowlist.
+
+See [Sprint 1.2 notes](docs/KOGNOS_SPRINT_12_SOURCE_WORKSPACE.md). Authentication and editorial permissions have not been bypassed or relaxed.
+
+## What's new in v1.1 — source-backed exam preparation with editorial review
+
+- **Matrices & Notices page:** view human-approved, versioned topic references and the relevant institution's official source URL, edition, and short supporting excerpt.
+- **Restricted source ingestion:** Kognos editors can fetch HTML from a narrowly allowlisted official HTTPS domain or paste extracted PDF text. Raw PDF downloading/parsing is **not** implemented yet. Redirects, arbitrary network hosts, oversized pages, and unsupported MIME types are blocked.
+- **AI-assisted extraction, not automatic publication:** the NVIDIA model proposes up to 20 curriculum topics with verbatim supporting excerpts. The server rejects any proposed quote that does not appear in the submitted text. Editors must approve each topic before it becomes available in the verified source catalog. Pasted transcripts still require checking against the linked original document.
+- **Versioned provenance:** stores institution, edition, source link, SHA-256 of consulted text, editorial status, reviewer and review date. Document text is not stored in the database; only short evidence snippets are retained.
+- **Question generation integration:** students can choose a human-approved topic in the existing AI generator. The server verifies topic/source approval again before building the prompt, and links resulting private questions to the approved topic. If no topic is approved, the existing **editorial** suggestions are still available and are labeled accordingly.
+- **New migration:** apply `supabase/migrations/0006_exam_source_catalog.sql` after 0005. A server-side `KOGNOS_EDITOR_USER_IDS` allowlist is required to import or moderate sources. Never set this list via a browser-exposed environment variable.
+
+See [Sprint 1.1 notes](docs/KOGNOS_SPRINT_11_SOURCE_MATRICES.md). **No automatic polling of institutional websites, PDF parser, official exam-frequency prediction, or official publisher endorsement is claimed.**
+
+## What's new in v1.0 — AI question generation and institution-aware personal mocks
+
+- **NVIDIA-backed question generator:** authenticated learners select ENEM, ETEC or FUVEST, a subject, a topic, a difficulty, and up to five questions per request.
+- **Two-pass automated screening:** deterministic structural validation plus independent AI review of key consistency. Accepted questions are added automatically to the student's private question bank and mock simulator; they are **AI-generated, not official questions or human-approved materials**.
+- **Secure answers:** prompts/options appear in the browser, but the reference answer and explanation remain in a service-role-only Supabase table until server-graded submission. The mock interface releases feedback at the end.
+- **Kog integration:** the contextual tutor receives a verified private question ID, with no answer key during the solving phase.
+- **Versioned official source entry points:** the INEP 2026 reference matrix, official ETEC FAQ, and FUVEST 2027 programme are linked for verification. Current topic menus are an **illustrative editorial mapping**, not automated extraction from official exam documents.
+- **Required migration:** apply `supabase/migrations/0005_ai_question_bank.sql` after the existing migrations. The NVIDIA API key remains server-only. Generation shares the existing daily AI quota and makes two provider requests per generation.
+
+See [Sprint 1.0 notes](docs/KOGNOS_SPRINT_10_AI_GENERATED_EXAMS.md) for architecture, source limitations, safety, and deployment.
+
+## What's new in v0.9 — exploratory diagnostic and adaptive review
+
+- **Exploratory diagnostic:** seven original questions across seven subjects, scored only after completion, with references to follow-up lessons. This is a learning starting point, **not** a calibrated assessment or official exam score.
+- **Adaptive review (beta):** schedules revisits of demonstration topics after incorrect responses or at 1/3/7/14-day intervals following consecutive correct attempts on different days. Repeated attempts on the same item do not establish mastery.
+- **Dashboard integration:** launch the diagnostic or review queue from the homepage and sidebar, and view pending review counts from recorded attempts.
+- **Existing storage:** reuses browser-local practice records or the RLS-protected Supabase demonstration attempt table. No migration or new permissions are needed for this release.
+
+See [Sprint 0.9 notes](docs/KOGNOS_SPRINT_09_DIAGNOSTICS_REVIEWS.md) for methodology and limitations.
+
+## What's new in v0.8 — introductory lessons and question-bank discovery
+
+- **Learn / Learning Paths / My Subjects** are usable, with 20 original introductory mini-lessons grouped into seven subject tracks. Each lesson has a goal, explanation, worked example, frequent misconception, comprehension check, and a linked demonstration exercise.
+- Practice coverage is based on actual recorded demonstration attempts; it never claims mastery from a single correct answer.
+- **Question Bank** now supports filters by subject, topic and difficulty, text search, individual-question sessions, and filtered batches.
+- **Kog** recognizes the selected lesson using a validated, server-resolved lesson identifier. No answers or API credentials are taken from user-controlled context strings.
+- This small demonstration catalog is **not** a complete course, official exam archive, or verified measure of ENEM proficiency.
+
+See [Sprint 0.8 notes](docs/KOGNOS_SPRINT_08_LEARNING_PATHS.md).
+
 ## What's new in v0.7 — truly contextual Kog
 
 - Kog uses the **actual current demo question**, not merely the page name. In-progress prompts contain the question and visible alternatives but **not** the answer key.
@@ -125,3 +216,36 @@ The automated Node tests and syntax checks run locally. The production Next.js b
 Issues and pull requests are welcome from authorized contributors. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Contributions do not automatically make the proprietary source code open source.
 
 **© 2026 PedroH0309. All rights reserved.**
+
+
+## What's new in v1.7 — Login-first experience and reliable profile restoration
+
+- A standalone, responsive **sign-in/create-account screen is the entry point** when Supabase is configured. No anonymous onboarding before authentication.
+- Returning users with a saved onboarding profile are sent straight to their personal dashboard after Supabase restores the persisted session. New authenticated users without saved study preferences see the five-step personalization flow once.
+- Previously saved legacy profiles missing the newer `completedAt` marker are recognized when substantive preferences already exist; a missing profile or an empty record still requires onboarding.
+- Failed Supabase profile queries now show an **explicit retry/configuration error**, never a misleading fresh onboarding flow.
+- The session is persisted by Supabase Auth and sign-out returns to the login page. Onboarding settings remain editable from inside the app without creating a second account.
+- When cloud configuration is absent, the app displays setup guidance rather than creating a misleading local account.
+- No SQL migrations or additional secrets are required for v1.7; the existing `public.profiles` schema must be functional. See `docs/KOGNOS_SPRINT_17_AUTH_ROUTING.md`.
+
+## What's new in v1.6 — Onboarding recovery and a scalable AI bank
+
+- Correctly centered iconography in onboarding preference and accessibility chips (keyboard and screen-reader labels retained).
+- Actionable feedback for the Supabase `public.profiles` schema-cache error. **This is a database migration issue**: install `0001` before `0003`, and run all other numbered migrations in order. See [`docs/KOGNOS_SUPABASE_PROFILE_SETUP.md`](docs/KOGNOS_SUPABASE_PROFILE_SETUP.md) and the read-only `supabase/diagnostics/check_core_setup.sql`.
+- The original **20-item demonstration bank** is now explicitly labeled. The small single-item practice result is compact, shows **current-session** accuracy, and allows returning, retrying or switching to AI.
+- Anonymous visitors can open the existing sign-in dialog directly from AI or demonstration practice; signing in preserves the Question Bank or Mock Exams route.
+- The **private AI question bank** now uses authenticated owner-scoped server filtering and **40-question paginated results**, with an explicit total and a **Load more** action. This replaces the former 100-row API cap and 20-row visual preview.
+- Generation allows requesting **up to 10 original questions** via two sequential, quota-controlled, five-question NVIDIA calls. Each batch is server-reviewed, saved privately, and available in the mock pool. Duplicate prompts within the same student's topic are not added twice.
+
+### Scope and setup
+
+The app does **not** silently generate an unlimited public question catalog: the student must sign in, initiate generation, have valid Supabase and NVIDIA server configuration, and have remaining AI quota. Generated items are personal, original and automatically reviewed, **not certified official questions**. Server-side pagination does not alter answer-key access controls. Existing Supabase migrations through `0007` remain required; v1.6 introduces **no new database migration**.
+
+## What's new in v1.9 — clearer provider setup and compact AI study screens
+
+- Added a read-only, client-facing provider readiness check for the AI question generator. Missing server-side Supabase/NVIDIA configuration is displayed once in a compact, accessible panel with a setup guide and a retry action; no environment variable values are returned to the browser.
+- Generation is disabled when the server reports that required credentials are not present, but existing question-bank browsing remains available when only NVIDIA is missing.
+- The private AI question bank no longer displays a misleading count of zero when the server cannot access Supabase. It shows an unavailable state without suggesting that saved records were deleted.
+- Replaced lengthy infrastructure error banners in Learning Paths and My Subjects with small non-destructive sync notices, preserving demonstration progress.
+- Rebalanced the generator filters and made editorial source details collapsible; refined the selected trail's progress and next-lesson layout for desktop, tablet and mobile.
+- No database migration, new third-party dependency or changes to the private keys are required. Set credentials in `apps/web/.env.local` locally or in the hosting provider's server-side environment, and restart/redeploy. See `apps/web/.env.example`.
