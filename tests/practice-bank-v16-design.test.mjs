@@ -14,7 +14,7 @@ test('demo result is compact and never mislabels lifetime accuracy as a session 
  const space=read('apps/web/src/components/PracticeSpace.tsx');
  assert.match(space,/compact-practice-result/);
  assert.match(space,/sessionSummary\.accuracy/);
- assert.match(space,/Acervo demonstrativo · \{demoQuestions.length\} questões fixas/);
+ assert.doesNotMatch(space,/ai-source-tabs|practice-demo-note/);
  assert.match(space,/onClick=\{\(\)=>switchSource\('ai'\)\}/);
 });
 test('server paginates authenticated AI questions without shipping the answer key',()=>{
@@ -29,7 +29,10 @@ test('server paginates authenticated AI questions without shipping the answer ke
  assert.match(batch,/splitGenerationBatches/);
  assert.match(batch,/MAX_CONCURRENT_GENERATION_BATCHES=1/);
 });
-test('lesson exercise opens authored practice even for signed-in users',()=>{
+test('practice defaults to AI for all entry points without a demo selector',()=>{
  const space=read('apps/web/src/components/PracticeSpace.tsx');
- assert.ok(space.includes("aiFocusLessonId?'ai':focus?'demo':userId?'ai':'demo'"));
+ assert.ok(space.includes("useState<'ai'|'demo'>('ai')"));
+ assert.doesNotMatch(space,/switchSource\('demo'\)/);
+ assert.match(space,/<AiQuestionStudio/);
+ assert.doesNotMatch(space,/&&\s*\}/);
 });
