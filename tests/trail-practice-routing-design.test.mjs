@@ -12,7 +12,7 @@ test('signed-in legacy practice shortcuts generate the specific lesson instead o
 });
 test('explicit lesson requests select AI even if a cached bank workspace was in demo mode',()=>{
  const practice=read('apps/web/src/components/PracticeSpace.tsx');
- assert.match(practice,/aiFocusLessonId\?'ai':userId\?'ai':'demo'/);
+ assert.match(practice,/aiFocusLessonId\?'ai':focus\?'demo':userId\?'ai':'demo'/);
  assert.match(practice,/if\(aiFocusLessonId\)setQuestionSource\('ai'\)/);
  assert.match(practice,/\[aiFocusLessonId,lessonPracticeRequestId\]/);
 });
