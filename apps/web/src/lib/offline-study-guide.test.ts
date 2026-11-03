@@ -8,7 +8,7 @@ test('AI readiness exposes safe booleans and provider label without claiming con
  const result=publicAIReadiness(env);
  assert.equal(result.tutorConfigured,true);
  assert.equal(JSON.stringify(result).includes('SUPERSECRET'),false);
- assert.deepEqual(publicAIReadiness({}),{freeOnlyMode:true,generatorProvider:null,reviewerProvider:null,tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:false,questionGenerationConfigured:false,supabaseServerConfigured:false,offlineGuidesAvailable:true});
+ assert.deepEqual(publicAIReadiness({}),{freeOnlyMode:true,generatorProvider:null,reviewerProvider:null,tutorConfigured:false,tutorProvider:null,nvidiaKeyConfigured:false,questionGenerationConfigured:false,generatorCredentialsConfigured:false,supabaseServerConfigured:false,offlineGuidesAvailable:true});
  assert.equal(publicAIReadiness({...env,GEMINI_API_KEY:'  '}).tutorConfigured,false);
  assert.equal(result.freeOnlyMode,true);
  assert.equal(result.tutorProvider,'gemini');
