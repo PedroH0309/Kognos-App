@@ -369,6 +369,25 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
     {finished?<>
       <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Você conquistou {sessionXP} XP nesta sessão. As questões concluídas saíram do banco de pendentes e já contam para suas Conquistas. Esta pontuação não é nota oficial nem estimativa TRI.</p>
       <div className="ai-review-results">{session.map((q,i)=><article key={q.id}><strong>{i+1}. {q.subject} — {answers[i]?.correct?'Acerto':'Revisar'}</strong><p>{q.prompt}</p><p>Gabarito: {String.fromCharCode(65+(answers[i]?.correctIndex??0))}. {answers[i]?.explanation||'Sem correção disponível.'}</p></article>)}</div>
+      {recoveryTargets.length>0&&<section className="k-ai-lesson-recovery-summary" aria-label="Plano de reforço após os erros">
+       <h3>Reforce o que ainda precisa de prática</h3>
+       <p>Estes assuntos foram identificados a partir das suas respostas corrigidas neste treino. Não representam um diagnóstico definitivo.</p>
+       <div className="k-ai-recovery-targets">{recoveryTargets.slice(0,5).map(item=><article key={item.lessonId||item.subject+'-'+item.topic}>
+        <strong>{item.subject} · {item.topic}</strong>
+        <span>{item.wrongCount} {item.wrongCount===1?'erro registrado':'erros registrados'} nesta sessão</span>
+        {item.objective&&<p>Objetivo da aula: {item.objective}</p>}
+        <div className="k-ai-recovery-buttons">
+         <button type="button" className="btn outline small" onClick={()=>askKogForQuestion(item.questionId)}>Rever o erro com Kog</button>
+         {item.lessonId&&<><button type="button" className="btn outline small" onClick={()=>onOpenLesson({subject:item.subject,lessonId:item.lessonId!})}>Reabrir miniaula</button>
+         <button type="button" className="btn outline small" onClick={()=>onGenerateLesson(item.lessonId!)}>Gerar mais 3 questões</button></>}
+        </div>
+       </article>)}</div>
+       <button type="button" className="btn primary" disabled={reviewBusy} onClick={()=>void scheduleMistakeReviews()}>
+        {reviewBusy?'Salvando revisões…':'Agendar revisões em 1, 3 e 7 dias'}
+       </button>
+       {reviewNotice&&<p role="status" className="k-ai-review-notice">{reviewNotice}</p>}
+       <small>As revisões só são incluídas no seu calendário após clicar no botão. O Kognos respeita dias disponíveis, limite diário e data da prova.</small>
+      </section>}
       <button type="button" className="btn primary" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Voltar às questões pendentes</button>
     </>:<>
       <div className="question-topline"><span>{inMock?'SIMULADO IA':'PRÁTICA IA'} · QUESTÃO {cursor+1} DE {session.length}</span><span>{current.subject} · {difficulties[current.difficulty]}</span></div>
@@ -377,6 +396,17 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
       <h2>{current.prompt}</h2>
       <div className="answer-options">{current.options.map((text,i)=><button type="button" key={i} disabled={Boolean(answers[cursor])||submitting} className={`answer-choice ${choice===i?'chosen':''} ${!inMock&&answers[cursor]&&i===answers[cursor].correctIndex?'is-correct':''}`} onClick={()=>setChoice(i)}><span>{String.fromCharCode(65+i)}</span>{text}</button>)}</div>
       {answers[cursor]&&!inMock&&<div className={`explanation-box ${answers[cursor].correct?'correct':'incorrect'}`} role="status"><strong>{answers[cursor].correct?'Correto!':'Vamos revisar'} · +{answers[cursor].xpEarned} XP</strong><p>Gabarito: {String.fromCharCode(65+answers[cursor].correctIndex)}. {answers[cursor].explanation}</p></div>}
+      {wrongQuestion&&!inMock&&<aside className="k-ai-lesson-recovery" aria-label="Reforço do conceito">
+       <strong>{wrongQuestion.lessonId?'Reforce o conceito desta aula':'Revisão do assunto'}</strong>
+       <p><b>{wrongQuestion.subject} · {wrongQuestion.topic}</b></p>
+       {wrongQuestion.explanation&&<p>{wrongQuestion.explanation}</p>}
+       {wrongQuestion.commonMistake&&<p><b>Erro comum:</b> {wrongQuestion.commonMistake}</p>}
+       <div className="k-ai-recovery-buttons">
+        <button type="button" className="btn outline small" onClick={()=>askKogForQuestion(current.id)}>Entender minha resposta com Kog</button>
+        {wrongQuestion.lessonId&&<button type="button" className="btn outline small" onClick={()=>onOpenLesson({subject:wrongQuestion.subject,lessonId:wrongQuestion.lessonId!})}>Ver explicação completa da aula</button>}
+       </div>
+       <small>O Kog usa sua tentativa corrigida para orientar a explicação, sem considerar um erro isolado prova de falta de domínio.</small>
+      </aside>}
       {answers[cursor]&&inMock&&<p className="message neutral" role="status">Resposta registrada · +{answers[cursor].xpEarned} XP. A correção ficará disponível somente no final deste simulado.</p>}
       <div className="practice-actions"><button type="button" className="btn outline" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Encerrar</button><button type="button" className="btn outline" onClick={onTutor}>{answers[cursor]&&!inMock?'Entender com Kog':'Pedir dica ao Kog'}</button>{!answers[cursor]?<button type="button" className="btn primary" disabled={choice===null||submitting} onClick={()=>void submitAnswer()}>{submitting?'Conferindo…':'Registrar resposta'}</button>:<button type="button" className="btn primary" onClick={next}>{cursor===session.length-1?'Ver resultado':'Próxima questão →'}</button>}</div>
     </>}
