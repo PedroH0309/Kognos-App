@@ -49,7 +49,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [lessonPracticeRetry,setLessonPracticeRetry]=useState(0);
  const [lessonPracticeLoading,setLessonPracticeLoading]=useState(false);
  const [lessonPracticeError,setLessonPracticeError]=useState('');
- const [manualBank,setManualBank]=useState(false);
+ const [manualBankForRequest,setManualBankForRequest]=useState(0);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
  const [sourceNotice,setSourceNotice]=useState('');
  const [loading,setLoading]=useState(false),[generating,setGenerating]=useState(false),[submitting,setSubmitting]=useState(false);
@@ -71,7 +71,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const scopeDescription=bankScope==='topic'?`${subject} · ${topic}`:`todas as matérias · ${blueprint.label}`;
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
- const lessonAutostart=lessonPracticeRequestId>0&&Boolean(focusLessonId)&&!manualBank;
+ const lessonAutostart=lessonPracticeRequestId>0&&Boolean(focusLessonId)&&manualBankForRequest!==lessonPracticeRequestId;
 
  useEffect(()=>{
   if(!userId||focusLessonId){setDraftReadyFor(null);return;}
@@ -156,6 +156,8 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    setLessonPracticeError('Esta aula ainda não tem um assunto seguro vinculado ao gerador.');
    return;
   }
+  // An explicit new lesson-practice click replaces the previous in-page exercise.
+  setSession([]);setFinished(false);setCursor(0);setChoice(null);setAnswers([]);
   setLessonPracticeLoading(true);setLessonPracticeError('');setError('');setNotice('');
   setGenerationStartedAt(Date.now());setGenerationSeconds(0);
   const attempt=async()=>{
@@ -190,12 +192,12 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   finally{if(activeId===requestSerial.current)setLoadingMore(false);}
  }
  useEffect(()=>{
-  if(!userId||!hasServerBank){setApprovedTopics([]);return;}
+  if(!userId||!hasServerBank||lessonAutostart){setApprovedTopics([]);return;}
   let active=true;
   authenticatedFetch('/api/exam-sources').then(data=>{if(active){setApprovedTopics(Array.isArray(data.topics)?data.topics:[]);setSourceNotice('');}})
    .catch(()=>{if(active){setApprovedTopics([]);setSourceNotice('Catálogo de fontes revisadas indisponível. O gerador ainda pode usar os recortes editoriais após aplicar a migração 0006.');}});
   return()=>{active=false;};
- },[authenticatedFetch,userId,hasServerBank]);
+ },[authenticatedFetch,userId,hasServerBank,lessonAutostart]);
  useEffect(()=>{if(!activeSession||!inMock)return;const started=Date.now()-elapsed*1000;const handle=window.setInterval(()=>setElapsed(Math.floor((Date.now()-started)/1000)),1000);return()=>window.clearInterval(handle);},[activeSession,inMock]);
  useEffect(()=>{
   if(!current||finished){onContextChange(null);return;}
@@ -289,7 +291,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
      <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Revisando novas questões · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
     <div className="k-lesson-practice-actions">
      {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
-     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{setManualBank(true);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
+     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
     </div>
     <p className="privacy-note">O processo utiliza a configuração gratuita de IA do servidor, sujeita às cotas dos provedores. Nenhum resultado é inventado quando a geração falha.</p>
    </section>}
