@@ -29,6 +29,7 @@ test('generator checks for all required givens and independent reviewer must sti
  assert.match(generator,/Nunca pergunte o preço final de um desconto sem declarar o preço original/);
  assert.match(generator,/correct_index deve apontar exatamente/);
  assert.match(generator,/Revise exatamente/);
- assert.match(generator,/correct_index:q\.correct_index/);
+ assert.match(generator,/prompt:q\.prompt,options:q\.options/);
+ assert.doesNotMatch(generator,/index,prompt:q\.prompt,options:q\.options,correct_index/);
  assert.match(generator,/assessIndependentReview/);
 });
