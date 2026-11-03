@@ -51,7 +51,7 @@ export default function WeeklyProgressChart({points}:{points:readonly WeeklyStud
      onKeyDown={event=>{if(event.key==='Escape'){setSelected(null);setHovered(null);}}}>
      <span className="k-weekly-hit-ring" aria-hidden="true"/>
     </button>)}
-    {active&&activeIndex!==null&&<div className={`k-weekly-tooltip ${activeIndex===0?'at-start':activeIndex===6?'at-end':''}`}
+    {active&&activeIndex!==null&&<div className={`k-weekly-tooltip ${activeIndex===0?'at-start':activeIndex===6?'at-end':''} ${y(active.count)<80?'is-high':''}`}
      role="status" aria-live="polite" style={{left:`${x(activeIndex)/700*100}%`,top:`${y(active.count)/206*100}%`}}>
       <strong>{countLabel(active.count)}</strong>
       <span>{active.day} · {shortDate(active.date)}</span>
