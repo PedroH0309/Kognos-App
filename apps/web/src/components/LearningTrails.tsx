@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect,useMemo,useRef,useState} from 'react';
+import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,BookOpenText,CheckCircle2,ChevronRight,Clock3,Compass,Info,ListChecks,RotateCcw,Search,Sparkles,Target} from 'lucide-react';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import type {QuestionAttempt} from '@/lib/demo-questions';
@@ -17,9 +17,9 @@ type Focus={subject:string;topic:string;questionId:string};
 const evidenceLabels={'not-started':'Não praticada',review:'Revisar questão','correct-sample':'Acerto registrado'} as const;
 const guestKey='kognos_demo_attempts_v1_guest';
 
-export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus}:{
+export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus,active=true}:{
  mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;
+ onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
@@ -68,15 +68,17 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const progress=connected.total?Math.round(100*connected.practiced/connected.total):0;
  const currentProgress=roadmap.total?Math.round(100*connectedTrail.practiced/roadmap.total):0;
 
+ const visibleContext=useCallback((context:KogStudyContext|null)=>{if(active)onContextChange(context);},[active,onContextChange]);
  useEffect(()=>{
-  onContextChange(lesson&&lesson.subject===subject?{kind:'lesson',lessonId:lesson.id}:null);
- },[lesson?.id,subject,onContextChange]);
+  if(!active)return;
+  visibleContext(lesson&&lesson.subject===subject?{kind:'lesson',lessonId:lesson.id}:null);
+ },[active,lesson?.id,subject,visibleContext]);
 
  function selectSubject(value:string){
   setSubject(value);setSelectedId(lessonsForSubject(value)[0]?.id??'');setQuery('');
  }
  function chooseLesson(item:LearningLesson){
-  setSubject(item.subject);setSelectedId(item.id);onContextChange({kind:'lesson',lessonId:item.id});
+  setSubject(item.subject);setSelectedId(item.id);visibleContext({kind:'lesson',lessonId:item.id});
   if(window.matchMedia('(max-width: 1150px)').matches)detailRef.current?.scrollIntoView({behavior:'smooth',block:'start'});
  }
  const highlight=connectedTrail.next??roadmap.steps[0]?.lesson??null;
@@ -170,7 +172,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-lesson-block check"><h3>Confira se entendeu</h3><p>{lesson.check}</p><small>Responda com suas palavras ou peça uma explicação ao Kog.</small></div>
      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
      <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>Praticar demonstração <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
-      <button type="button" className="btn outline" onClick={()=>{onContextChange({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
+      <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
        <span>{position+1} / {roadmap.total}</span>
        <button type="button" disabled={!following} onClick={()=>following&&chooseLesson(following)}>Próxima aula <ArrowRight size={15}/></button></div>
