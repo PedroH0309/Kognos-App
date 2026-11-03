@@ -1,4 +1,5 @@
 import type {Difficulty} from './exam-blueprints.ts';
+import {assessSkillMasteryEvidence,type SkillMasteryEvidence} from './skill-mastery-evidence.ts';
 
 /** These are inferred practice blocks, not persisted session identifiers.
  * Only server-verified, owner-scoped attempts may enter this model.
@@ -15,7 +16,7 @@ export type SkillPracticeBlock={
 export type SkillEvolution={
  lessonId:string;blocks:SkillPracticeBlock[];comparableBlocks:number;
  changePoints:number|null;direction:'higher'|'lower'|'same'|'insufficient';
- recommendation:string;
+ recommendation:string;mastery:SkillMasteryEvidence;
 };
 const levels:readonly Difficulty[]=['basic','intermediate','advanced'];
 const INTERVAL_MS=90*60*1000;
@@ -31,7 +32,7 @@ function makeBlock(rows:readonly VerifiedSkillAttempt[]):SkillPracticeBlock {
   if(row.correct){correct++;difficulty[row.difficulty].correct++;}
  }
  const answered=rows.length;
- const complete=answered===10
+ const complete=answered===10&&new Set(rows.map(row=>row.questionId)).size===10
   &&difficulty.basic.answered===3&&difficulty.intermediate.answered===4
   &&difficulty.advanced.answered===3;
  return {startAt:rows[0].createdAt,endAt:rows[rows.length-1].createdAt,
@@ -64,5 +65,6 @@ export function inferSkillEvolution(lessonId:string,attempts:readonly VerifiedSk
  const direction:SkillEvolution['direction']=changePoints===null?'insufficient'
   :changePoints>=10?'higher':changePoints<=-10?'lower':'same';
  return {lessonId,blocks:blocks.slice(-6),comparableBlocks:comparable.length,
-  changePoints,direction,recommendation:recommendNextSkillStep(latest??blocks.at(-1)??null)};
+  changePoints,direction,recommendation:recommendNextSkillStep(latest??blocks.at(-1)??null),
+  mastery:assessSkillMasteryEvidence(blocks)};
 }
