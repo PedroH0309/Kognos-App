@@ -28,7 +28,21 @@ test('Kog follows teaching guidelines and does not repeat prior consent requirem
  assert.match(prompt,/explique do simples/i);
  assert.match(prompt,/mini exercício/i);
  assert.match(prompt,/não revele a alternativa correta/i);
- assert.match(prompt,/NVIDIA/);
+ assert.match(prompt,/provedor de IA escolhido no servidor/);
  assert.doesNotMatch(prompt,/somente com autorização explícita/);
  assert.match(prompt,/CONTEXTO VERIFICADO/);
+});
+test('Kog removes visible Markdown emphasis without corrupting fenced and inline code',()=>{
+ const input='Para resolver, veja **o contexto**, **o pedido** e **as pistas**.\n\n## Exemplo\n- Primeiro passo\n- Segundo passo\nCódigo: `a**b`.';
+ const formatted=normalizeTutorAnswer(input);
+ assert.match(formatted,/o contexto, o pedido e as pistas/);
+ assert.ok(!formatted.includes('**o contexto'));
+ assert.match(formatted,/Exemplo/);
+ assert.match(formatted,/• Primeiro passo/);
+ assert.ok(formatted.includes('`a**b`'));
+});
+test('Kog prompt requests plain-language text without Markdown',()=>{
+ const prompt=buildTutorSystemPrompt(initialProfile,'Matemática');
+ assert.match(prompt,/sem Markdown/);
+ assert.match(prompt,/Nunca use asteriscos duplos/);
 });
