@@ -7,7 +7,7 @@ import {inferSkillEvolution,type SkillEvolution,type VerifiedSkillAttempt} from 
 export type PrivateAIQuestionRow={id:string;lesson_id:string|null;institution:ExamId;subject:string;topic:string;correct_index:number;difficulty?:Difficulty};
 export type PrivateAIAttemptRow={question_id:string;answer_index:number;created_at:string;mode:string};
 export type AIStudyLesson={lessonId:string;attempts:number;distinctQuestions:number;correct:number;incorrect:number;practice:number;mock:number;lastCorrect:boolean|null;lastAttemptAt:string|null};
-export type AIStudyProgress={lessons:AIStudyLesson[];totalAttempts:number;unlinkedAttempts:number;sampleLimited:boolean;skillEvolution:SkillEvolution[]};
+export type AIStudyProgress={lessons:AIStudyLesson[];totalAttempts:number;unlinkedAttempts:number;sampleLimited:boolean;skillEvolution?:SkillEvolution[]};
 
 /** Never return the answer key, answer index, raw question or personal identifier to the browser. */
 export function aggregateAIStudyProgress(questions:readonly PrivateAIQuestionRow[],attempts:readonly PrivateAIAttemptRow[],sampleLimited=false):AIStudyProgress{
