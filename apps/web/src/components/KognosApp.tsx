@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import KogAssistant from './KogAssistant';
+
 import {AnimatedPage,AnimatedSidebarScrim,MobileTabIndicator} from './KognosMotion';
 
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
@@ -44,6 +44,7 @@ function WorkspaceLoading(){return <main className="app-content k-workspace-load
  <p>Preparando esta área de estudos…</p>
 </main>;}
 const workspaceLoading={loading:WorkspaceLoading};
+const KogAssistant=dynamic(()=>import('./KogAssistant'),{loading:()=> <div role="status" className="k-kog-chunk-loading">Abrindo o tutor Kog…</div>});
 const ExamSources=dynamic(()=>import('./ExamSources'),workspaceLoading);
 const PracticeSpace=dynamic(()=>import('./PracticeSpace'),workspaceLoading);
 const AchievementSpace=dynamic(()=>import('./AchievementSpace'),workspaceLoading);
@@ -432,7 +433,7 @@ export default function KognosApp(){
   const [loading,setLoading]=useState(true);const [user,setUser]=useState<User|null>(null);const [profile,setProfile]=useState<StudentProfile|null>(null);
   const [profileError,setProfileError]=useState('');
   const [reloadRequest,setReloadRequest]=useState(0);
-  const [assistantOpen,setAssistantOpen]=useState(false);
+  const [assistantOpen,setAssistantOpen]=useState(false);const [assistantInitialized,setAssistantInitialized]=useState(false);
   const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [diagnosticCycle,setDiagnosticCycle]=useState<'baseline'|'weekly'>('baseline');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
@@ -515,10 +516,11 @@ export default function KognosApp(){
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
  async function signout(){
    const sb=getSupabase();if(sb)await sb.auth.signOut();
-   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setStudyContext(null);
+   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setAssistantInitialized(false);setStudyContext(null);
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
- function navigate(v:View){ if(v==='tutor'){setAssistantOpen(true);}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function openAssistant(){setAssistantInitialized(true);setAssistantOpen(true);}
+ function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
@@ -552,23 +554,29 @@ export default function KognosApp(){
     </div>}
   </nav><div className="sidebar-bottom"><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside><AnimatedSidebarScrim open={mobileMenu} disabled={disableAnimations} onClose={()=>setMobileMenu(false)}/>
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
- <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>setAssistantOpen(true)} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
+ <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>openAssistant()} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  <AnimatedPage page={view} disabled={disableAnimations}>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
- view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>setAssistantOpen(true)}/>:
- view==='subjects'?<SubjectDashboard key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
- view==='learn'||view==='trails'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>setAssistantOpen(true)} onContextChange={setStudyContext} onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>: 
- view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>setAssistantOpen(true)} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
+ view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>openAssistant()}/>:
+ view==='subjects'?<SubjectDashboard key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
+ view==='learn'||view==='trails'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>openAssistant()} onContextChange={setStudyContext} onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>: 
+ view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
- view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:
-  view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>setAssistantOpen(true)} onPlan={()=>navigate('plans')}/>:  
- view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
- view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>setAssistantOpen(true)}/>: 
- view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onDiagnostic={()=>navigate('diagnostic')} onWeeklyReview={openWeeklyReview} onLearn={openFocusedLesson} onContextChange={setStudyContext} onTutor={()=>setAssistantOpen(true)}/>:  
+ view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>openAssistant()}/>:
+  view==='diagnostic'?<DiagnosticSpace key={`${user?.id||'guest'}-${diagnosticCycle}`} cycle={diagnosticCycle} userId={user?.id||null} onContextChange={setStudyContext} onLearn={openFocusedLesson} onTutor={()=>openAssistant()} onPlan={()=>navigate('plans')}/>:  
+ view==='reviews'?<ReviewSpace key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onPractice={practiceFromLesson} onLearn={openFocusedLesson}/>: 
+ view==='calendar'?<StudyCalendar key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onPlanner={openPlannerForDate} onTutor={()=>openAssistant()}/>: 
+ view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onDiagnostic={()=>navigate('diagnostic')} onWeeklyReview={openWeeklyReview} onLearn={openFocusedLesson} onContextChange={setStudyContext} onTutor={()=>openAssistant()}/>:  
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
  </AnimatedPage>
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Plano':'Perfil'}</button>)}</nav><KogAssistant open={assistantOpen} onOpen={()=>setAssistantOpen(true)} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Plano':'Perfil'}</button>)}</nav>{assistantInitialized
+ ?<KogAssistant open={assistantOpen} onOpen={()=>openAssistant()} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
+ :<button type="button" className="kog-launcher k-kog-lightweight-launcher" onClick={openAssistant}
+   aria-label="Abrir Kog, tutor de inteligência artificial" title="Pergunte ao Kog">
+   <span className="kog-launcher-avatar"><Image src="/brand/kog-mascot.svg" width={50} height={50} alt=""/></span>
+   <span className="kog-launcher-label">Pergunte ao Kog <Sparkles size={14}/></span>
+  </button>}
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
