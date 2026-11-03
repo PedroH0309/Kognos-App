@@ -106,3 +106,16 @@ test('syllabus entries can be scheduled to the internal calendar without exports
  assert.match(scheduler,/validCivilDate\(profile\.targetDate\)/);
  assert.doesNotMatch(list,/\.ics/);
 });
+
+test('verified weekly errors generate bounded spaced review sessions in the saved calendar',()=>{
+ const planner=read('apps/web/src/components/StudyPlanner.tsx');
+ const engine=read('apps/web/src/lib/spaced-review-plan.ts');
+ assert.match(planner,/createSpacedReviewPlan\(profile,tasks,weeklyTopics,new Date\(\),\(\)=>crypto\.randomUUID\(\)\)/);
+ assert.match(planner,/createCloudTasks\(userId,plan\.created\)/);
+ assert.match(planner,/commitLocal\(next\)/);
+ assert.match(planner,/Programar revisões em 1, 3 e 7 dias/);
+ assert.match(engine,/REVIEW_INTERVALS/);
+ assert.match(engine,/nextSyllabusTopicSlot/);
+ assert.match(engine,/lastWrong/);
+ assert.match(engine,/already/);
+});
