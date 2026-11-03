@@ -54,3 +54,11 @@ export function lessonGenerationPreset(lessonId:string,preferred?:ExamId){
  for(const institution of institutions){const topic=linkedExamTopic(lessonId,institution);if(topic)return {lessonId:lesson.id,institution,subject:lesson.subject,topic};}
  return null;
 }
+/** One explicit click in a lesson starts a small, individually reviewed batch.
+ * Never accept arbitrary client-entered subject/topic or bypass editorial links.
+ */
+export function lessonPracticeGenerationRequest(lessonId:string,run:number){
+ const preset=lessonGenerationPreset(lessonId);
+ if(!preset||!Number.isSafeInteger(run)||run<1)return null;
+ return {...preset,difficulty:'intermediate' as const,count:3,variation:(run-1)%12};
+}
