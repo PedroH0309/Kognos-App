@@ -43,18 +43,17 @@ function WorkspaceLoading(){return <main className="app-content k-workspace-load
  <span className="k-workspace-loading-pulse" aria-hidden="true"/>
  <p>Preparando esta área de estudos…</p>
 </main>;}
-const workspaceLoading={loading:WorkspaceLoading};
 const KogAssistant=dynamic(()=>import('./KogAssistant'),{loading:()=> <div role="status" className="k-kog-chunk-loading">Abrindo o tutor Kog…</div>});
-const ExamSources=dynamic(()=>import('./ExamSources'),workspaceLoading);
-const PracticeSpace=dynamic(()=>import('./PracticeSpace'),workspaceLoading);
-const AchievementSpace=dynamic(()=>import('./AchievementSpace'),workspaceLoading);
-const DiagnosticSpace=dynamic(()=>import('./DiagnosticSpace'),workspaceLoading);
-const WeeklyExamSpace=dynamic(()=>import('./WeeklyExamSpace'),workspaceLoading);
-const ReviewSpace=dynamic(()=>import('./ReviewSpace'),workspaceLoading);
-const LearningTrails=dynamic(()=>import('./LearningTrails'),workspaceLoading);
-const SubjectDashboard=dynamic(()=>import('./SubjectDashboard'),workspaceLoading);
-const StudyPlanner=dynamic(()=>import('./StudyPlanner'),workspaceLoading);
-const StudyCalendar=dynamic(()=>import('./StudyCalendar'),workspaceLoading);
+const ExamSources=dynamic(()=>import('./ExamSources'),{loading:()=> <WorkspaceLoading/>});
+const PracticeSpace=dynamic(()=>import('./PracticeSpace'),{loading:()=> <WorkspaceLoading/>});
+const AchievementSpace=dynamic(()=>import('./AchievementSpace'),{loading:()=> <WorkspaceLoading/>});
+const DiagnosticSpace=dynamic(()=>import('./DiagnosticSpace'),{loading:()=> <WorkspaceLoading/>});
+const WeeklyExamSpace=dynamic(()=>import('./WeeklyExamSpace'),{loading:()=> <WorkspaceLoading/>});
+const ReviewSpace=dynamic(()=>import('./ReviewSpace'),{loading:()=> <WorkspaceLoading/>});
+const LearningTrails=dynamic(()=>import('./LearningTrails'),{loading:()=> <WorkspaceLoading/>});
+const SubjectDashboard=dynamic(()=>import('./SubjectDashboard'),{loading:()=> <WorkspaceLoading/>});
+const StudyPlanner=dynamic(()=>import('./StudyPlanner'),{loading:()=> <WorkspaceLoading/>});
+const StudyCalendar=dynamic(()=>import('./StudyCalendar'),{loading:()=> <WorkspaceLoading/>});
 
 const STORAGE_KEY='kognos_guest_profile_v1';
 type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'weekly'|'plans'|'reviews'|'performance';
