@@ -208,14 +208,13 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
       <p>Conteúdo autoral Kognos. Relação editorial com os roteiros abaixo; não é aula oficial nem garantia de cobrança. Confira a edição e a série nos documentos da instituição.</p>
       <ul>{(Object.keys(examBlueprints) as ExamId[]).filter(id=>linkedExamTopic(lesson.id,id)).map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noreferrer">{id==='vunesp'?'UNESP / VUNESP':examBlueprints[id].label}</a> · {linkedExamTopic(lesson.id,id)}</li>)}</ul>
      </details>
-     {userId&&aiProgress&&<SkillEvolutionPanel
-      evolution={aiProgress.skillEvolution?.find(item=>item.lessonId===lesson.id)??null}
-      sampleLimited={aiProgress.sampleLimited}
+     {userId&&<SkillEvolutionPanel
+      evolution={aiProgress?.skillEvolution?.find(item=>item.lessonId===lesson.id)??null}
+      sampleLimited={aiProgress?.sampleLimited??false}
       onPractice={()=>onGenerateAI(lesson.id,true)}
       onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}
      />}
-     <div className="learning-lesson-actions"><button type="button" className="btn primary" disabled={!userId} onClick={()=>onGenerateAI(lesson.id,true)} title={!userId?'Entre em sua conta para praticar com IA':'Gerar e iniciar questões de IA vinculadas à aula'}><Sparkles size={15}/> Praticar com 10 questões de IA <ArrowRight size={16}/></button>
-      <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
+     {!userId&&<div className="learning-lesson-actions"><button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>}
      <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
        <span>{position+1} / {roadmap.total}</span>
