@@ -24,7 +24,8 @@ test('Context and guest storage remain scoped, progress uses actual attempts',()
  assert.match(screen,/kognos_demo_attempts_v1_guest/);
  assert.match(screen,/kognos_last_lesson_v1_\$\{userId\|\|'guest'\}/);
  assert.match(screen,/evidenceForLesson\(lesson,attempts\)/);
- assert.match(screen,/onContextChange\(\{kind:'lesson',lessonId:item.id\}\)/);
+ assert.match(screen,/visibleContext\(\{kind:'lesson',lessonId:item.id\}\)/);
+ assert.match(screen,/if\(!active\)return/);
 });
 test('Journeys have keyboard focus, compact responsive layout and reduced motion support',()=>{
  assert.match(css,/learning-journey-subject-pill:focus-visible/);
