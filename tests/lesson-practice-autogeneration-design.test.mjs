@@ -8,14 +8,14 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  const subjects=read('apps/web/src/components/SubjectDashboard.tsx');
  const app=read('apps/web/src/components/KognosApp.tsx');
  const practice=read('apps/web/src/components/PracticeSpace.tsx');
- assert.match(trails,/userId\?onGenerateAI\(lesson\.id,true\):onPractice\(/);
- assert.match(trails,/Praticar com 10 questões graduais/);
+ assert.match(trails,/disabled=\{!userId\} onClick=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
+ assert.match(trails,/Praticar com 10 questões de IA/);
  assert.match(subjects,/if\(userId\)onGenerateAI\(lesson\.id,true\)/);
  assert.match(app,/function generateForLesson\(lessonId:string,generateNew=false\)/);
  assert.match(app,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
  assert.match(practice,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
  assert.match(practice,/\[aiFocusLessonId,lessonPracticeRequestId\]/);
- assert.match(trails,/Praticar exercício/); // explicit offline guest fallback remains.
+ assert.doesNotMatch(trails,/onClick=[^\n]*onPractice\(/); // All new lesson practice uses reviewed AI questions.
 });
 test('one-click lesson practice uses reviewed API batches and opens exactly ten graded questions',()=>{
  const studio=read('apps/web/src/components/AiQuestionStudio.tsx');

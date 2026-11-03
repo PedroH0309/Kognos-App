@@ -17,7 +17,7 @@ test('Roadmap steps, recommendation and lesson navigation use real callbacks',()
  assert.match(screen,/chooseLesson\(highlight\)/);
  assert.match(screen,/chooseLesson\(following\)/);
  assert.match(screen,/chooseLesson\(previous\)/);
- assert.match(screen,/onPractice\(\{subject:lesson.subject/);
+ assert.match(screen,/onClick=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
  assert.match(screen,/onSeeTrails\(\{subject:lesson.subject/);
 });
 test('Context and guest storage remain scoped, progress uses actual attempts',()=>{
