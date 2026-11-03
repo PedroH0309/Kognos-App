@@ -23,6 +23,9 @@ export default function PracticeSpace({mode,userId,onTutor,onLogin,onContextChan
   const [answer,setAnswer]=useState<number|null>(null);const [submitted,setSubmitted]=useState(false);
   const [done,setDone]=useState(false);const [pending,setPending]=useState(false);
   const [loaded,setLoaded]=useState(false);const [error,setError]=useState('');
+  // A lesson link can arrive after this workspace was visited. Keep the
+  // existing draft when merely navigating, but open the linked IA mode.
+  useEffect(()=>{if(aiFocusLessonId)setQuestionSource('ai');},[aiFocusLessonId]);
   useEffect(()=>{
     let active=true;setLoaded(false);setError('');setAttempts([]);
     if(!userId){
