@@ -112,7 +112,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   <div className="page-intro learning-journey-intro">
    <div><span className="overline">{isTrail?'ROTEIROS DE APRENDIZAGEM':'SALA DE ESTUDO'}</span>
     <h1>{isTrail?'Seu caminho para ': 'Hora de '}<em>{isTrail?'aprender.':'aprender.'}</em></h1>
-    <p>{isTrail?'Escolha a matéria, acompanhe as etapas e avance no seu ritmo.':'Estude a aula, resolva uma questão e continue quando estiver pronto.'}</p>
+    <p>{isTrail?'Escolha a matéria, acompanhe as etapas e avance no seu ritmo.':'Estude a aula e pratique com questões originais geradas e corrigidas por IA.'}</p>
    </div>
    <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo preparatório autoral</span>
   </div>
@@ -124,7 +124,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <span className="learning-journey-mark"><Compass size={21}/></span>
     <div className="learning-journey-summary-copy"><span className="overline">SUA JORNADA</span>
      <strong>{!historyReady?'Carregando seu histórico…':hasHistory?'Continue de onde parou':'Comece sua primeira trilha'}</strong>
-     <small>{historyReady?`${connected.practiced} de ${connected.total} tópicos com prática (demo + IA)`:'Consultando suas tentativas registradas'}</small>
+     <small>{historyReady?`${connected.practiced} de ${connected.total} tópicos com prática`:'Consultando suas tentativas registradas'}</small>
     </div>
    </div>
    <div className="learning-journey-summary-progress">
@@ -206,7 +206,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
       onPractice={()=>onGenerateAI(lesson.id,true)}
       onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}
      />}
-     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>userId?onGenerateAI(lesson.id,true):onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>{userId?'Praticar com 10 questões graduais':'Praticar exercício'} <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
+     <div className="learning-lesson-actions"><button type="button" className="btn primary" disabled={!userId} onClick={()=>onGenerateAI(lesson.id,true)} title={!userId?'Entre em sua conta para praticar com IA':'Gerar e iniciar questões de IA vinculadas à aula'}><Sparkles size={15}/> Praticar com 10 questões de IA <ArrowRight size={16}/></button>
       <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
      <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
@@ -215,6 +215,6 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     </>:<p className="muted">Escolha uma aula para começar.</p>}
    </section>
   </div>
-  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'Prática demonstrativa e tentativas IA vinculadas aparecem em indicadores separados.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Miniaulas autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
+  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'As questões respondidas com IA alimentam seu histórico adaptativo.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Miniaulas autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
  </main>;
 }

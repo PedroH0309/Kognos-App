@@ -595,7 +595,7 @@ export default function KognosApp(){
  {/* Cache only visited lessons and practice screens. Hidden panels are not
      focusable, do not occupy layout space and never mount for another account. */}
  {retainedViews.includes('learn')&&<div className="k-retained-workspace" hidden={view!=='learn'}>
-  <CurriculumRoom key={`${user.id}-learn`} active={view==='learn'} focus={view==='learn'?learningFocus:null}
+  <CurriculumRoom key={`${user.id}-learn`} active={view==='learn'} focus={view==='learn'?learningFocus:null} preferredExam={examForStudent(actualProfile)}
    userId={user.id} onTutor={()=>openAssistant()} onContextChange={setStudyContext}
    onGenerateAI={generateForLesson}/>
  </div>}
