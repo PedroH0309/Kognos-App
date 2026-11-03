@@ -17,10 +17,10 @@ test('AI generator is gated by real server readiness, with one compact setup not
 });
 test('missing server bank cannot show a misleading zero saved items',()=>{
  const src=read('apps/web/src/components/AiQuestionStudio.tsx');
- assert.match(src,/hasServerBank\?\(loading\?'…':totalQuestions\):'—'/);
- assert.match(src,/hasServerBank&&!!bank\.length/);
- assert.match(src,/!hasServerBank&&<div className="k-bank-connection"/);
- assert.match(src,/hasServerBank&&!loading&&!bank\.length/);
+ assert.match(src,/hasServerBank\?\(loading\?'…':bankFetched\?totalQuestions:'—'\):'—'/);
+ assert.match(src,/hasServerBank&&bankFetched&&!!bank\.length/);
+ assert.match(src,/\(!hasServerBank\|\|\(!loading&&!bankFetched\)\)&&<div className="k-bank-connection"/);
+ assert.match(src,/hasServerBank&&bankFetched&&!loading&&!bank\.length/);
 });
 test('lesson/source screens keep demo data while reporting AI sync issues discreetly',()=>{
  const trails=read('apps/web/src/components/LearningTrails.tsx');
@@ -42,4 +42,18 @@ test('responsive selectors, collapsible source reference and progress bar are wi
  assert.match(trails,/learning-journey-subject-status/);
  const readme=read('README.md');
  assert.match(readme,/What's new in v1\.9/);
+});
+test('free-mode setup notice does not misidentify NVIDIA as mandatory and the bank has a retry state',()=>{
+ const feedback=read('apps/web/src/lib/integration-feedback.ts');
+ const notice=read('apps/web/src/components/IntegrationSetupNotice.tsx');
+ const studio=read('apps/web/src/components/AiQuestionStudio.tsx');
+ assert.match(feedback,/generatorCredentialsConfigured/);
+ assert.match(notice,/GROQ_API_KEY/);
+ assert.match(notice,/GEMINI_API_KEY/);
+ assert.match(notice,/não é obrigatória neste modo/);
+ assert.match(studio,/bankSyncNotice\(/);
+ assert.match(studio,/setBankFetched\(false\)/);
+ assert.match(studio,/setBankFetched\(true\)/);
+ assert.match(studio,/bankFetched&&/);
+ assert.match(studio,/k-bank-retry/);
 });
