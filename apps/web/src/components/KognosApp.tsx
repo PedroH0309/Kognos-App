@@ -1,10 +1,11 @@
 'use client';
 
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import KogAssistant from './KogAssistant';
 import {AnimatedPage,AnimatedSidebarScrim,MobileTabIndicator} from './KognosMotion';
-import ExamSources from './ExamSources';
+
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {examForStudent} from '@/lib/exam-syllabus';
 import type {KogStudyContext} from '@/lib/kog-study-context';
@@ -14,17 +15,17 @@ import {weeklyStudyActivity,type WeeklyStudyPoint} from '@/lib/dashboard-weekly-
 import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls';
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
 import AccountSettings, {ProfileAvatar} from './AccountSettings';
-import PracticeSpace from './PracticeSpace';
-import AchievementSpace from './AchievementSpace';
+
+
 import type {AchievementSummary} from '@/lib/ai-achievements';
-import DiagnosticSpace from './DiagnosticSpace';
-import WeeklyExamSpace from './WeeklyExamSpace';
-import ReviewSpace from './ReviewSpace';
+
+
+
 import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
-import LearningTrails from './LearningTrails';
-import SubjectDashboard from './SubjectDashboard';
-import StudyPlanner from './StudyPlanner';
-import StudyCalendar from './StudyCalendar';
+
+
+
+
 import {statsFromAttempts,type QuestionAttempt} from '@/lib/demo-questions';
 import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, Zap, type LucideIcon} from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
@@ -34,6 +35,25 @@ import {isSameAuthenticatedAccount,readWorkspaceView,saveWorkspaceView} from '@/
 import { getSupabase, isCloudConfigured } from '@/lib/supabase';
 import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
 import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLabels, initialProfile, normalizeProfile, styleLabels, type Adaptation, type Goal, type StudentProfile, type TeachingStyle } from '@/lib/profile';
+
+/** Avoid downloading every study workspace before the login/dashboard is visible.
+ * Next.js preloads each route's code when that workspace is first selected.
+ */
+function WorkspaceLoading(){return <main className="app-content k-workspace-loading" role="status" aria-live="polite">
+ <span className="k-workspace-loading-pulse" aria-hidden="true"/>
+ <p>Preparando esta área de estudos…</p>
+</main>;}
+const workspaceLoading={loading:WorkspaceLoading};
+const ExamSources=dynamic(()=>import('./ExamSources'),workspaceLoading);
+const PracticeSpace=dynamic(()=>import('./PracticeSpace'),workspaceLoading);
+const AchievementSpace=dynamic(()=>import('./AchievementSpace'),workspaceLoading);
+const DiagnosticSpace=dynamic(()=>import('./DiagnosticSpace'),workspaceLoading);
+const WeeklyExamSpace=dynamic(()=>import('./WeeklyExamSpace'),workspaceLoading);
+const ReviewSpace=dynamic(()=>import('./ReviewSpace'),workspaceLoading);
+const LearningTrails=dynamic(()=>import('./LearningTrails'),workspaceLoading);
+const SubjectDashboard=dynamic(()=>import('./SubjectDashboard'),workspaceLoading);
+const StudyPlanner=dynamic(()=>import('./StudyPlanner'),workspaceLoading);
+const StudyCalendar=dynamic(()=>import('./StudyCalendar'),workspaceLoading);
 
 const STORAGE_KEY='kognos_guest_profile_v1';
 type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'weekly'|'plans'|'reviews'|'performance';
