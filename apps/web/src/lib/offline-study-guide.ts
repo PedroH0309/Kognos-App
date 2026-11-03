@@ -1,4 +1,4 @@
-import {findLearningLesson,learningLessons,type LearningLesson} from './learning-catalog.ts';
+import {findLearningLesson,introductoryLessons,type LearningLesson} from './learning-catalog.ts';
 
 export type LocalStudyContext={kind:string;lessonId?:string;phase?:string}|null;
 export type OfflineGuide={content:string;topic:string};
@@ -17,8 +17,8 @@ export function localStudyGuide(message:string,context:LocalStudyContext=null):O
  if(!value)return null;
  if(/\b(pitagor|pythagor)/.test(value))return pitagoras;
  const focused=context?.kind==='lesson'&&context.lessonId?findLearningLesson(context.lessonId):null;
- if(focused && /\b(expli|entend|exempl|revis|resum|ajud|duvid|aula|estud)/.test(value))return fromLesson(focused);
- const topics=learningLessons.filter(l=>{
+ if(focused && !focused.curriculumId && /\b(expli|entend|exempl|revis|resum|ajud|duvid|aula|estud)/.test(value))return fromLesson(focused);
+ const topics=introductoryLessons.filter(l=>{
   const topic=normalize(l.topic);
   return topic.length>=6 && new RegExp(`\\b${topic.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`).test(value);
  });

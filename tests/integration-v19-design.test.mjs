@@ -29,7 +29,7 @@ test('lesson/source screens keep demo data while reporting AI sync issues discre
  assert.match(trails,/<StudySyncNotice error=\{aiError\}/);
  assert.match(subjects,/<StudySyncNotice error=\{aiError\}/);
  assert.match(hint,/studySyncNotice\(error\)/);
- assert.match(trails,/connectedCatalogProgress\(attempts,aiProgress\)/);
+ assert.match(trails,/connectedCatalogProgress\(attempts,aiProgress,catalog\)/);
 });
 test('responsive selectors, collapsible source reference and progress bar are wired',()=>{
  const studio=read('apps/web/src/components/AiQuestionStudio.tsx');
@@ -57,3 +57,4 @@ test('free-mode setup notice does not misidentify NVIDIA as mandatory and the ba
  assert.match(studio,/bankFetched&&/);
  assert.match(studio,/k-bank-retry/);
 });
+

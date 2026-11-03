@@ -11,14 +11,14 @@ export function evidenceForLesson(lesson:LearningLesson,attempts:readonly Questi
  if(!question || !Number.isInteger(last.answerIndex))return 'review';
  return last.answerIndex===question.correct?'correct-sample':'review';
 }
-export function subjectProgress(subject:string,attempts:readonly QuestionAttempt[]){
- const lessons=learningLessons.filter(l=>l.subject===subject);
+export function subjectProgress(subject:string,attempts:readonly QuestionAttempt[],catalog:readonly LearningLesson[]=learningLessons){
+ const lessons=catalog.filter(l=>l.subject===subject);
  const practiced=lessons.filter(l=>evidenceForLesson(l,attempts)!=='not-started').length;
  const correct=lessons.filter(l=>evidenceForLesson(l,attempts)==='correct-sample').length;
  return {total:lessons.length,practiced,correct,review:practiced-correct,coverage:lessons.length?Math.round(100*practiced/lessons.length):0};
 }
-export function recommendedNextLesson(subject:string,attempts:readonly QuestionAttempt[]):LearningLesson|null {
- const lessons=learningLessons.filter(l=>l.subject===subject);
+export function recommendedNextLesson(subject:string,attempts:readonly QuestionAttempt[],catalog:readonly LearningLesson[]=learningLessons):LearningLesson|null {
+ const lessons=catalog.filter(l=>l.subject===subject);
  return lessons.find(l=>evidenceForLesson(l,attempts)==='review')??
  lessons.find(l=>evidenceForLesson(l,attempts)==='not-started' && l.prerequisites.every(req=>{
    const prerequisite=learningLessons.find(p=>p.id===req);

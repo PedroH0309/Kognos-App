@@ -64,7 +64,7 @@ export function validLessonAIReference(lessonId:string,institution:ExamId,subjec
  *  an old generated question belongs to a narrower lesson (e.g. Movimento e forças != Cinemática). */
 export function inferLegacyLessonId(institution:ExamId,subject:string,topic:string):string|null {
  const normalize=(v:string)=>v.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('pt-BR').trim();
- const matching=learningLessons.filter(lesson=>lesson.subject===subject&&
+ const matching=learningLessons.filter(lesson=>!lesson.curriculumId&&lesson.subject===subject&&
   normalize(lesson.topic)===normalize(topic)&&linkedExamTopic(lesson.id,institution)===topic);
  return matching.length===1?matching[0].id:null;
 }
@@ -91,4 +91,10 @@ export function lessonPracticeGenerationRequest(lessonId:string,run:number){
  const preset=lessonGenerationPreset(lessonId);
  if(!preset||!Number.isSafeInteger(run)||run<1)return null;
  return {...preset,variation:(run-1)%12};
+}
+
+
+/** Shared exam scope for the subject dashboard and learning trails. */
+export function learningCatalogForExam(exam:ExamId|null){
+ return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))):[...learningLessons];
 }

@@ -13,7 +13,7 @@ export function studyPriorities(attempts:readonly QuestionAttempt[],ai:AIStudyPr
   const progress=connectedSubjectProgress(subject,attempts,ai);
   return {subject,topic:progress.next?.topic||'Revisão de fundamentos',needsReview:progress.review>0,reviewItems:progress.review,
    practiced:progress.practiced,total:progress.total,aiAttempts:progress.aiAttempts,
-   priority:progress.review>0?200+progress.review*10:(progress.practiced===0?100:70)+Math.max(0,progress.total-progress.practiced)*3-index/100};
+   priority:progress.review>0?200+progress.review*10:(progress.practiced===0?100:70)+(progress.total?Math.max(0,progress.total-progress.practiced)/progress.total:0)*20-index/100};
  }).sort((a,b)=>b.priority-a.priority||a.subject.localeCompare(b.subject,'pt-BR'));
 }
 function dateKey(d:Date){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}

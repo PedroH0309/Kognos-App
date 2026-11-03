@@ -1,5 +1,5 @@
 import {demoQuestions, type DemoQuestion, type QuestionAttempt} from './demo-questions.ts';
-import {learningLessons, type LearningLesson} from './learning-catalog.ts';
+import {introductoryLessons, type LearningLesson} from './learning-catalog.ts';
 
 /**
  * Small, transparent demonstration scheduler. Repeating one original question
@@ -33,7 +33,7 @@ export function localDateKey(value:Date):string {
 }
 export function reviewItems(attempts:readonly QuestionAttempt[],now=new Date()):ReviewItem[] {
  const today=localDateKey(now);
- return learningLessons.map((lesson):ReviewItem=>{
+ return introductoryLessons.map((lesson):ReviewItem=>{
   const question=demoQuestions.find(q=>q.id===lesson.questionId);
   if(!question)throw new Error(`Missing question for lesson ${lesson.id}`);
   const valid=attempts.filter(a=>a.questionId===question.id&&Number.isInteger(a.answerIndex)&&a.answerIndex>=0&&a.answerIndex<question.options.length&&dayOf(a.createdAt))
@@ -119,3 +119,4 @@ export function selectWeeklyCheckpoint(attempts:readonly QuestionAttempt[],limit
  }
  return output.slice(0,target);
 }
+

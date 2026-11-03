@@ -26,5 +26,5 @@ test('learning paths, subjects and question bank share an explicit lesson focus'
  assert.match(studio,/focusLessonId/);
  assert.match(studio,/activeLessonLink/);
  assert.match(read('apps/web/src/components/LearningTrails.tsx'),/onGenerateAI\(lesson\.id,true\)/);
- assert.match(read('apps/web/src/components/SubjectDashboard.tsx'),/onGenerateAI\(next.id\)/);
+ assert.match(read('apps/web/src/components/SubjectDashboard.tsx'),/onGenerateAI\(lesson.id,true\)/);
 });

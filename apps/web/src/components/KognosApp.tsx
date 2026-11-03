@@ -578,7 +578,7 @@ export default function KognosApp(){
  <AnimatedPage page={view} disabled={disableAnimations}>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
  view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>openAssistant()}/>:
- view==='subjects'?<SubjectDashboard key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
+ view==='subjects'?<SubjectDashboard preferredExam={examForStudent(actualProfile)} key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
  isRetainedStudyView(view)?(!retainedViews.includes(view)?<WorkspaceLoading/>:null):
  view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-performance`} mode="performance" userId={user?.id||null} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
@@ -600,7 +600,7 @@ export default function KognosApp(){
    onGenerateAI={generateForLesson}/>
  </div>}
  {retainedViews.includes('trails')&&<div className="k-retained-workspace" hidden={view!=='trails'}>
-  <LearningTrails key={`${user.id}-trails`} mode="trails" active={view==='trails'} focus={view==='trails'?learningFocus:null}
+  <LearningTrails key={`${user.id}-trails`} preferredExam={examForStudent(actualProfile)} mode="trails" active={view==='trails'} focus={view==='trails'?learningFocus:null}
    userId={user.id} onTutor={()=>openAssistant()} onContextChange={setStudyContext}
    onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>
  </div>}

@@ -13,7 +13,7 @@ test('My Subjects is an independent panel, not a copy of Learning Trails',()=>{
  assert.match(app,/onOpenTrail=\{openFocusedLesson\}/);
  assert.match(dashboard,/PAINEL DE MATÉRIAS/);
  assert.match(dashboard,/Cobertura de prática/);
- assert.match(dashboard,/subjectSnapshots\(attempts\)/);
+ assert.match(dashboard,/subjectSnapshots\(attempts,new Date\(\),catalog\)/);
  assert.doesNotMatch(dashboard,/Entenda o conceito/);
 });
 test('Learn is lesson-first, Trails emphasizes compact sequential steps',()=>{
@@ -34,5 +34,5 @@ test('Distinct subject UI respects existing theming and mobile layouts',()=>{
  assert.match(css,/\.app-layout \.subject-kpi-grid/);
  assert.match(css,/\.app-layout \.learning-body-grid\.is-learning-first/);
  assert.match(css,/@media\(max-width:520px\)/);
- assert.match(dashboard,/aria-pressed=\{entry.subject===selected\}/);
+ assert.match(dashboard,/aria-pressed=\{entry.subject===\(snapshot\?\.subject\|\|selected\)\}/);
 });
