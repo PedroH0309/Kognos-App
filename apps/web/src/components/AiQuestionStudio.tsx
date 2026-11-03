@@ -7,7 +7,8 @@ import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exa
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
-import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from '@/lib/lesson-ai-links';
+import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId,lessonPracticeGenerationRequest} from '@/lib/lesson-ai-links';
+import {newQuestionsForSelectedLesson} from '@/lib/lesson-practice-session';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import {AI_BANK_PAGE_SIZE} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
@@ -23,7 +24,7 @@ const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBluepri
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
 const amountOptions=[1,3,5,10].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
-export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextChange,focusLessonId}:{mode:Mode;userId:string|null;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null}) {
+export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextChange,focusLessonId,lessonPracticeRequestId=0}:{mode:Mode;userId:string|null;onTutor:()=>void;onLogin:()=>void;onContextChange:(context:KogStudyContext|null)=>void;focusLessonId?:string|null;lessonPracticeRequestId?:number}) {
  const preset=focusLessonId?lessonGenerationPreset(focusLessonId):null;
  const readiness=useServerReadiness();
  const hasServerBank=readiness.status?.supabaseServerConfigured===true;
@@ -44,6 +45,11 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [generationStartedAt,setGenerationStartedAt]=useState<number|null>(null);
  const [generationSeconds,setGenerationSeconds]=useState(0);
  const requestSerial=useRef(0);
+ const handledLessonPractice=useRef('');
+ const [lessonPracticeRetry,setLessonPracticeRetry]=useState(0);
+ const [lessonPracticeLoading,setLessonPracticeLoading]=useState(false);
+ const [lessonPracticeError,setLessonPracticeError]=useState('');
+ const [manualBank,setManualBank]=useState(false);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
  const [sourceNotice,setSourceNotice]=useState('');
  const [loading,setLoading]=useState(false),[generating,setGenerating]=useState(false),[submitting,setSubmitting]=useState(false);
@@ -65,6 +71,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const scopeDescription=bankScope==='topic'?`${subject} · ${topic}`:`todas as matérias · ${blueprint.label}`;
  const current=session[cursor];
  const activeSession=session.length>0&&!finished;
+ const lessonAutostart=lessonPracticeRequestId>0&&Boolean(focusLessonId)&&!manualBank;
 
  useEffect(()=>{
   if(!userId||focusLessonId){setDraftReadyFor(null);return;}
@@ -81,12 +88,12 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
   saveGeneratorDraft(window.localStorage,userId,{institution,subject,topic,difficulty,count,bankScope});
  },[userId,draftReadyFor,focusLessonId,institution,subject,topic,difficulty,count,bankScope]);
  useEffect(()=>{
-  if(!generating||generationStartedAt===null)return;
+  if((!generating&&!lessonPracticeLoading)||generationStartedAt===null)return;
   const update=()=>setGenerationSeconds(Math.floor((Date.now()-generationStartedAt)/1000));
   update();const timer=window.setInterval(update,1000);
   window.addEventListener('focus',update);
   return()=>{window.clearInterval(timer);window.removeEventListener('focus',update);};
- },[generating,generationStartedAt]);
+ },[generating,lessonPracticeLoading,generationStartedAt]);
 
  const authenticatedFetch=useCallback(async(url:string,init?:RequestInit)=>{
   const sb=getSupabase();if(!sb||!userId)throw new Error('Entre em sua conta para utilizar questões geradas por IA.');
@@ -126,7 +133,49 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    }
   }finally{if(requestId===requestSerial.current)setLoading(false);}
  },[authenticatedFetch,listUrl,userId,hasServerBank]);
- useEffect(()=>{void refresh();return()=>{requestSerial.current+=1;};},[refresh]);
+ // Lesson practice should request fresh reviewed items immediately, not spend
+ // its first network round-trip loading unrelated saved bank entries.
+ useEffect(()=>{
+  if(!lessonAutostart)void refresh();
+  return()=>{requestSerial.current+=1;};
+ },[refresh,lessonAutostart]);
+ // One learner click = one generation attempt. Never rerun merely because
+ // the status hook, saved bank or component re-rendered. React Strict Mode is
+ // also guarded by handledLessonPractice.
+ useEffect(()=>{
+  if(!lessonAutostart||!userId||!focusLessonId||readiness.loading)return;
+  const requestKey=[userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry].join(':');
+  if(handledLessonPractice.current===requestKey)return;
+  handledLessonPractice.current=requestKey;
+  if(!canGenerate){
+   setLessonPracticeError('O servidor ainda não confirmou a geração e revisão de questões. Confira o diagnóstico de IA e tente novamente.');
+   return;
+  }
+  const generation=lessonPracticeGenerationRequest(focusLessonId,lessonPracticeRequestId+lessonPracticeRetry);
+  if(!generation){
+   setLessonPracticeError('Esta aula ainda não tem um assunto seguro vinculado ao gerador.');
+   return;
+  }
+  setLessonPracticeLoading(true);setLessonPracticeError('');setError('');setNotice('');
+  setGenerationStartedAt(Date.now());setGenerationSeconds(0);
+  const attempt=async()=>{
+   try{
+    const data=await authenticatedFetch('/api/ai-questions/generate',{
+     method:'POST',body:JSON.stringify(generation)
+    });
+    const fresh=newQuestionsForSelectedLesson(data,generation);
+    if(!fresh.length)throw new Error('A geração não retornou questões novas, revisadas e vinculadas a esta aula.');
+    start(fresh);
+    setNotice(`${fresh.length} ${fresh.length===1?'questão nova aprovada':'questões novas aprovadas'} para esta aula. ${fresh.length<generation.count?'A revisão aprovou menos questões que o solicitado; nenhuma antiga foi reutilizada.':''}`);
+   }catch(e){
+    setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as questões desta aula.');
+   }finally{
+    setLessonPracticeLoading(false);setGenerationStartedAt(null);
+   }
+  };
+  void attempt();
+ },[lessonAutostart,userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry,
+    readiness.loading,canGenerate,authenticatedFetch]);
  async function loadMore(){
   if(!userId||!hasServerBank||loading||loadingMore||!hasMore)return;
   const activeId=requestSerial.current,offset=questions.length;
@@ -230,7 +279,21 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
    {error&&<div role="alert" className="message warning">{error}</div>}
    {notice&&<div role="status" className="message success">{notice}</div>}
    {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo demonstrativo tem 20 questões fixas. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
-   {userId&&!session.length&&<>
+   {userId&&!session.length&&lessonAutostart&&<section className="dark-panel k-lesson-practice-generation" role="status" aria-live="polite">
+    <div className="k-lesson-practice-generation-head"><Sparkles size={22}/><div>
+     <strong>{linkedLesson? `Preparando exercícios de ${linkedLesson.topic}`:'Preparando exercícios desta aula'}</strong>
+     <p>O Kognos solicita 3 questões autorais novas, verifica os gabaritos e abre o treino somente com os itens aprovados.</p>
+    </div></div>
+    {lessonPracticeError?<div className="message warning" role="alert">{lessonPracticeError}
+     <p>Nenhuma questão antiga será usada como substituta.</p></div>:
+     <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Revisando novas questões · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
+    <div className="k-lesson-practice-actions">
+     {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
+     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{setManualBank(true);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
+    </div>
+    <p className="privacy-note">O processo utiliza a configuração gratuita de IA do servidor, sujeita às cotas dos provedores. Nenhum resultado é inventado quando a geração falha.</p>
+   </section>}
+   {userId&&!session.length&&!lessonAutostart&&<>
     <IntegrationSetupNotice readiness={readiness}/>
     {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>{setLinkedLessonId(null);setBankScope('all');}}>Ver banco completo</button></div>}
     <section className="dark-panel ai-studio-generator">
