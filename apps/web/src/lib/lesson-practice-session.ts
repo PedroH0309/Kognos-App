@@ -30,7 +30,16 @@ export function newQuestionsForSelectedLesson(
    ||typeof q.source_title!=='string'||typeof q.source_url!=='string'
    ||typeof q.edition!=='string'||typeof q.created_at!=='string')continue;
   distinct.add(q.id);
-  out.push(value as NewLessonQuestion);
+  // Explicitly project only public fields; never propagate an accidental
+  // answer-key field from an upstream response into browser state.
+  out.push({
+   id:q.id as string,lesson_id:q.lesson_id as string,
+   institution:q.institution as ExamId,subject:q.subject as string,topic:q.topic as string,
+   difficulty:q.difficulty as Difficulty,prompt:q.prompt as string,options:q.options as string[],
+   source_title:q.source_title as string,source_url:q.source_url as string,
+   source_kind:q.source_kind==='editor_approved_source'?'editor_approved_source':'editorial',
+   edition:q.edition as string,created_at:q.created_at as string,review_status:'auto_reviewed'
+  });
  }
  return out.slice(0,preset.count);
 }
