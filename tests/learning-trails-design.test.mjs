@@ -15,7 +15,8 @@ test('learn, trails and subjects route to distinct learning experiences',()=>{
  assert.match(app,/view==='subjects'\?<SubjectDashboard/);
  assert.match(app,/onPractice=\{practiceFromLesson\}/);
  assert.doesNotMatch(trails,/onClick=[^\n]*onPractice\(/);
- assert.match(trails,/Praticar com 10 questões de IA/);
+ assert.doesNotMatch(trails,/Praticar com 10 questões de IA/);
+ assert.match(trails,/onPractice=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
  assert.match(trails,/evidenceForLesson/);
 });
 test('question bank has topic/difficulty filters, search, and individual practice',()=>{
