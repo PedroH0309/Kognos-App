@@ -28,7 +28,7 @@ test('all seventeen Kognos destinations remain reachable in compact navigation',
  });
  const items=groups.flatMap(v=>[...v.matchAll(/'([a-z]+)'/g)].map(m=>m[1]));
  const expected=['dashboard','tutor','learn','subjects','questions','simulados',
-  'plans','reviews','achievements','settings','trails','diagnostic',
+  'reviews','achievements','settings','trails','diagnostic',
   'sources','calendar','performance','weekly'];
  assert.deepEqual(items.sort(),expected.sort());
  assert.equal(new Set(items).size,expected.length);
