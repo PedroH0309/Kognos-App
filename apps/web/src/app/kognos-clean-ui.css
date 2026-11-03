@@ -536,3 +536,8 @@ button {touch-action:manipulation;}
 .app-layout .k-kog-chunk-loading{position:fixed;right:22px;bottom:22px;z-index:51;padding:12px 16px;border-radius:12px;background:var(--box-bg);border:1px solid var(--line);color:var(--txt);box-shadow:0 12px 32px #101B3325;font-size:12px;font-weight:650}
 .app-layout .k-kog-lightweight-launcher{touch-action:manipulation}
 @media(max-width:700px){.app-layout .k-kog-chunk-loading{right:14px;bottom:94px;left:14px;text-align:center}}
+
+/* Keep an in-progress exercise or lesson mounted after first access.
+ * The native hidden state removes inactive screens from focus and layout. */
+.app-layout .k-retained-workspace{min-width:0;width:100%;flex:1 0 auto}
+.app-layout .k-retained-workspace[hidden]{display:none!important}
