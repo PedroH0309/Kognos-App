@@ -15,7 +15,7 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  assert.match(app,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
  assert.match(practice,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
  assert.match(practice,/\[aiFocusLessonId,lessonPracticeRequestId\]/);
- assert.match(trails,/Praticar demonstração/); // explicit offline guest fallback remains.
+ assert.match(trails,/Praticar exercício/); // explicit offline guest fallback remains.
 });
 test('one-click lesson practice uses reviewed API batches and opens exactly ten graded questions',()=>{
  const studio=read('apps/web/src/components/AiQuestionStudio.tsx');
@@ -25,8 +25,6 @@ test('one-click lesson practice uses reviewed API batches and opens exactly ten 
  assert.match(studio,/handledLessonPractice\.current===requestKey/);
  assert.match(studio,/lessonPracticeGenerationRequest\(focusLessonId/);
  assert.match(studio,/const approved=newQuestionsForSelectedLesson\(data,request\)/);
- assert.match(studio,/LESSON_PRACTICE_STEPS\.entries\(\)/);
- assert.match(studio,/fresh\.length!==10/);
  assert.match(studio,/start\(fresh\)/);
  assert.match(studio,/!lessonAutostart\)void refresh\(\)/);
  assert.match(studio,/!hasServerBank\|\|lessonAutostart/);

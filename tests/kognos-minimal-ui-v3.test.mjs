@@ -19,7 +19,7 @@ test('sidebar no longer uses AI-violet or a purple promotional card',()=>{
 });
 
 test('all seventeen Kognos destinations remain reachable in compact navigation',()=>{
- const slices=['NAV_PRIMARY:View[]','NAV_SECONDARY:View[]','NAV_MORE:View[]'];
+ const slices=['NAV_PRIMARY:View[]','NAV_PRACTICE:View[]','NAV_SECONDARY:View[]','NAV_MORE:View[]'];
  const groups=slices.map(label=>{
   const begin=app.indexOf('const '+label);
   assert.ok(begin>=0,label);
@@ -35,6 +35,7 @@ test('all seventeen Kognos destinations remain reachable in compact navigation',
  assert.match(app,/SideNavigationItem key=\{key\}/);
  assert.match(app,/setMobileMenu\(false\)/);
  assert.match(app,/aria-controls="kognos-more-navigation"/);
+ assert.match(app,/aria-controls="kognos-practice-navigation"/);
 });
 
 test('new login is an original dark hero above a white form on all screen sizes',()=>{

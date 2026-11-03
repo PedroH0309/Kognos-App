@@ -350,7 +350,21 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    {error&&<div role="alert" className="message warning">{error}</div>}
    {notice&&<div role="status" className="message success">{notice}</div>}
    {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo autoral oferece exercícios fixos com correção comentada. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
-   {userId&&!session.length&&<>
+   {userId&&!session.length&&lessonAutostart&&<section className="dark-panel k-lesson-practice-generation" role="status" aria-live="polite">
+    <div className="k-lesson-practice-generation-head"><Sparkles size={22}/><div>
+     <strong>{linkedLesson? `Preparando exercícios de ${linkedLesson.topic}`:'Preparando exercícios desta aula'}</strong>
+     <p>O Kognos prepara 10 questões inéditas em ordem crescente de dificuldade: 3 básicas, 4 intermediárias e 3 avançadas. O treino começa automaticamente após a revisão.</p>
+    </div></div>
+    {lessonPracticeError?<div className="message warning" role="alert">{lessonPracticeError}
+     <p>Nenhuma questão antiga será usada como substituta.</p></div>:
+     <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Questões aprovadas: ${lessonPracticeProgress}/10 · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
+    <div className="k-lesson-practice-actions">
+     {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
+     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{handledLessonPractice.current='';setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeLoading(false);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
+    </div>
+    <p className="privacy-note">O processo utiliza a configuração gratuita de IA do servidor, sujeita às cotas dos provedores. Nenhum resultado é inventado quando a geração falha.</p>
+   </section>}
+   {userId&&!session.length&&!lessonAutostart&&<>
     <IntegrationSetupNotice readiness={readiness}/>
     {linkedLesson&&<div className="ai-lesson-focus"><BookOpenText size={18}/><span><strong>Questões para a aula: {linkedLesson.topic}</strong><small>Questões vinculadas à trilha. O banco filtra apenas esta aula; resultados continuam privados.</small></span><button type="button" className="btn outline small" onClick={()=>{setLinkedLessonId(null);setBankScope('all');}}>Ver banco completo</button></div>}
     <section className="dark-panel ai-studio-generator">

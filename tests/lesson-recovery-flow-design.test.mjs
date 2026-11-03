@@ -44,5 +44,5 @@ test('recovery does not reveal solutions before grading or during mock tests',()
  assert.ok(studio.includes('session.length>0'));
  assert.ok(studio.includes('recoveryTargets.length>0'));
  assert.ok(studio.includes('Reabrir miniaula'));
- assert.ok(studio.includes('Gerar mais 10 questões'));
+ assert.ok(studio.includes('onGenerateLesson(item.lessonId!)'));
 });
