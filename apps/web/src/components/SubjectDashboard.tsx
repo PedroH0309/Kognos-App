@@ -11,6 +11,8 @@ import {subjectDashboardTotals,subjectSnapshots,type SubjectSnapshot} from '@/li
 import {connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 import StudySyncNotice from './StudySyncNotice';
+import SkillMasteryMap from './SkillMasteryMap';
+import {prioritySkillLessonId} from '@/lib/skill-mastery-evidence';
 
 const descriptions:Record<string,string>={
  'Matemática':'Números, funções, probabilidade e resolução de problemas.',
@@ -45,6 +47,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
  onContextChange:(value:KogStudyContext|null)=>void;
 }){
  const [selected,setSelected]=useState('Matemática');
+ const [contentTab,setContentTab]=useState<'map'|'catalog'>('map');
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [loaded,setLoaded]=useState(false);
  const [error,setError]=useState('');
@@ -73,7 +76,9 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
  const totals=useMemo(()=>subjectDashboardTotals(snapshots),[snapshots]);
  const snapshot=snapshots.find(s=>s.subject===selected)??snapshots[0];
  const topics=lessonsForSubject(snapshot?.subject||selected);
- const next=snapshot?.recommended??topics[0]??null;
+ const skillEvidenceById=useMemo(()=>new Map((aiProgress?.skillEvolution??[]).map(item=>[item.lessonId,item.mastery])),[aiProgress]);
+ const priorityId=userId&&aiProgress?prioritySkillLessonId(topics,skillEvidenceById):null;
+ const next=topics.find(item=>item.id===priorityId)??snapshot?.recommended??topics[0]??null;
  function openTrail(lesson:LearningLesson){onOpenTrail({subject:lesson.subject,lessonId:lesson.id});}
  function practice(lesson:LearningLesson){if(userId)onGenerateAI(lesson.id,true);else onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId});}
  function askKog(){if(next)onContextChange({kind:'lesson',lessonId:next.id});onTutor();}
@@ -108,6 +113,16 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
     <div className="subject-next-action"><div><span className="overline"><Target size={15}/> PRÓXIMO PASSO SUGERIDO</span><h3>{next?.topic??'Selecione uma matéria'}</h3><p>{next?.objective??'Escolha uma aula para começar.'}</p><small>{ready&&snapshot.lastAttemptAt?`Última prática: ${new Date(snapshot.lastAttemptAt).toLocaleDateString('pt-BR')}`:'Você ainda não registrou prática nesta matéria.'}</small></div>
      <div className="subject-next-buttons"><button type="button" className="btn primary" disabled={!ready||!next} onClick={()=>next&&openTrail(next)}>Abrir trilha <ArrowRight size={15}/></button><button type="button" className="btn outline" disabled={!ready||!next} onClick={()=>next&&practice(next)}>{userId?'Praticar com 10 questões graduais':'Praticar demonstração'}</button><button type="button" className="btn outline" disabled={!next||!userId} onClick={()=>next&&onGenerateAI(next.id)}><Sparkles size={15}/> Questões IA</button><button type="button" className="btn outline" disabled={!next} onClick={askKog}><Sparkles size={15}/> Perguntar ao Kog</button></div>
     </div>
+    <div className="k-mastery-content-tabs" role="group" aria-label="Escolher visualização das habilidades">
+     <button type="button" className={contentTab==='map'?'selected':''} aria-pressed={contentTab==='map'} onClick={()=>setContentTab('map')}>Mapa de domínio</button>
+     <button type="button" className={contentTab==='catalog'?'selected':''} aria-pressed={contentTab==='catalog'} onClick={()=>setContentTab('catalog')}>Lista de aulas</button>
+    </div>
+    {contentTab==='map'?
+      !userId?<div className="k-skill-map-empty">Entre em uma conta para acompanhar evidências de aprendizagem de questões corrigidas pela IA.</div>:
+      !aiProgress?<div className="k-skill-map-empty" role="status">{aiLoading?'Consultando suas evidências de aprendizagem…':'O mapa está indisponível. Consulte o aviso de sincronização acima.'}</div>:
+      <SkillMasteryMap lessons={topics} evolutions={aiProgress.skillEvolution??[]} sampleLimited={aiProgress.sampleLimited}
+       onOpenLesson={openTrail} onPractice={lessonId=>onGenerateAI(lessonId,true)}/>
+    :<>
     <div className="subject-topics-heading"><h3>Conteúdos desta matéria</h3><span>{topics.length} miniaulas</span></div>
     <div className="subject-topic-list">{topics.map((lesson,index)=>{
       const state=loaded?evidenceForLesson(lesson,attempts):'not-started';const linked=connectedLessonEvidence(lesson,attempts,aiProgress);const ai=linked.generated;
@@ -118,6 +133,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
        <button type="button" className="subject-topic-open" onClick={()=>openTrail(lesson)} aria-label={`Abrir aula de ${lesson.topic}`} title={`Estudar ${lesson.topic}`}><ArrowRight size={17}/></button>
       </article>;
     })}</div>
+    </>}
     <p className="privacy-note">Para organizar a sequência e os pré-requisitos, use Trilhas de aprendizagem. Questões demonstrativas são corrigidas no navegador; as geradas por IA são corrigidas no servidor. Os indicadores não constituem avaliação oficial.</p>
    </section>
   </div>
