@@ -9,6 +9,8 @@ export type AIReadiness = {
   tutorProvider: AIProvider|null;
   nvidiaKeyConfigured: boolean;
   questionGenerationConfigured: boolean;
+  /** Provider credentials are present for generation and independent review, regardless of DB configuration. */
+  generatorCredentialsConfigured: boolean;
   supabaseServerConfigured: boolean;
   offlineGuidesAvailable: boolean;
 };
@@ -27,6 +29,7 @@ export function publicAIReadiness(config: Record<string,string|undefined>): AIRe
     tutorProvider:tutorReady?resolveAIProvider('tutor',config)?.provider??null:null,
     nvidiaKeyConfigured:nvidiaConfigured,
     questionGenerationConfigured:generatorReady && supabaseServerConfigured,
+    generatorCredentialsConfigured:generatorReady,
     supabaseServerConfigured,
     offlineGuidesAvailable:true,
   };
