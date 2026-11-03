@@ -25,7 +25,7 @@ export default function PracticeSpace({mode,userId,onTutor,onLogin,onContextChan
   const [loaded,setLoaded]=useState(false);const [error,setError]=useState('');
   // A lesson link can arrive after this workspace was visited. Keep the
   // existing draft when merely navigating, but open the linked IA mode.
-  useEffect(()=>{if(aiFocusLessonId)setQuestionSource('ai');},[aiFocusLessonId]);
+  useEffect(()=>{if(aiFocusLessonId)setQuestionSource('ai');},[aiFocusLessonId,lessonPracticeRequestId]);
   useEffect(()=>{
     let active=true;setLoaded(false);setError('');setAttempts([]);
     if(!userId){
