@@ -14,6 +14,7 @@ import {linkedExamTopic} from '@/lib/lesson-ai-links';
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import StudySyncNotice from './StudySyncNotice';
+import SkillEvolutionPanel from './SkillEvolutionPanel';
 
 type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
@@ -33,6 +34,21 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [restored,setRestored]=useState(false);
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  const detailRef=useRef<HTMLElement|null>(null);
+ // The question workspace stays mounted when hidden. Defer a single updated
+ // progress read until this trail becomes visible again, rather than fetching
+ // during every graded answer of a ten-question practice run.
+ const historyChangedWhileAway=useRef(false);
+ useEffect(()=>{
+  const mark=()=>{historyChangedWhileAway.current=true;};
+  window.addEventListener('kognos:ai-answer-recorded',mark);
+  return()=>window.removeEventListener('kognos:ai-answer-recorded',mark);
+ },[]);
+ useEffect(()=>{
+  if(active&&historyChangedWhileAway.current){
+   historyChangedWhileAway.current=false;
+   void refreshAI();
+  }
+ },[active,refreshAI]);
  useEffect(()=>{
   let mounted=true;setLoaded(false);setError('');setAttempts([]);
   if(!userId){

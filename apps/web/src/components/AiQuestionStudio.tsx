@@ -20,6 +20,7 @@ import {getCloudTasks,createCloudTasks} from '@/lib/cloud-study';
 import {createSpacedReviewPlan} from '@/lib/spaced-review-plan';
 import {recoveryTargetForQuestion,recoveryTargetsFromGradedSession} from '@/lib/lesson-recovery';
 import type {StudentProfile} from '@/lib/profile';
+import {assessLessonMastery} from '@/lib/lesson-mastery';
 
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
@@ -153,7 +154,11 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  // the status hook, saved bank or component re-rendered. React Strict Mode is
  // also guarded by handledLessonPractice.
  useEffect(()=>{
-  if(!lessonAutostart||!userId||!focusLessonId||readiness.loading)return;
+  if(!lessonAutostart){
+   handledLessonPractice.current='';
+   return;
+  }
+  if(!userId||!focusLessonId||readiness.loading)return;
   const requestKey=[userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry].join(':');
   if(handledLessonPractice.current===requestKey)return;
   handledLessonPractice.current=requestKey;
@@ -172,7 +177,10 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   setLessonPracticeLoading(true);setLessonPracticeProgress(0);
   setLessonPracticeError('');setError('');setNotice('');
   setGenerationStartedAt(Date.now());setGenerationSeconds(0);
-  let cancelled=false;
+  // Strict Mode replays effects in development. Do not cancel the first
+  // generation on cleanup while keeping its deduplication guard.
+  // Instead, ignore results after a different practice request wins.
+  const stillCurrent=()=>handledLessonPractice.current===requestKey;
   const attempt=async()=>{
    const fresh:UserAIQuestion[]=[];
    const seen=new Set<string>();
@@ -180,33 +188,35 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
     for(const [index,step] of LESSON_PRACTICE_STEPS.entries()){
      let remaining:number=step.count;
      for(let retry=0;retry<3&&remaining>0;retry++){
+      if(!stillCurrent())return;
       const request={...generation,difficulty:step.difficulty,count:remaining,
        variation:((generation.variation??0)+index*3+retry)%32};
       const data=await authenticatedFetch('/api/ai-questions/generate',{
        method:'POST',body:JSON.stringify(request)
       });
+      if(!stillCurrent())return;
       const approved=newQuestionsForSelectedLesson(data,request);
       for(const question of approved){
        if(!seen.has(question.id)){seen.add(question.id);fresh.push(question);}
       }
       remaining=step.count-fresh.filter(q=>q.difficulty===step.difficulty).length;
-      if(cancelled)return;
+      if(!stillCurrent())return;
       setLessonPracticeProgress(fresh.length);
      }
      if(remaining>0)throw new Error(`A revisão aprovou apenas ${fresh.length} de 10 questões. Não é possível abrir a sequência completa ainda. Tente gerar novamente.`);
     }
-    if(cancelled)return;
+    if(!stillCurrent())return;
     if(fresh.length!==10)throw new Error(`Foram aprovadas ${fresh.length} de 10 questões; tente novamente.`);
     start(fresh);
     setNotice('10 questões inéditas aprovadas para esta aula: 3 básicas, 4 intermediárias e 3 avançadas.');
    }catch(e){
-    if(!cancelled)setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as dez questões desta aula.');
+    if(stillCurrent())setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as dez questões desta aula.');
    }finally{
-    if(!cancelled){setLessonPracticeLoading(false);setGenerationStartedAt(null);}
+    if(stillCurrent()){setLessonPracticeLoading(false);setGenerationStartedAt(null);}
    }
   };
   void attempt();
-  return()=>{cancelled=true;};
+  
  },[lessonAutostart,userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry,
     readiness.loading,canGenerate,authenticatedFetch]);
  async function loadMore(){
@@ -333,6 +343,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   setCursor(v=>v+1);setChoice(null);
  }
  const points=answers.filter(a=>a.correct).length;
+ const mastery=assessLessonMastery(session.slice(0,answers.length).map((q,i)=>({difficulty:q.difficulty,correct:answers[i].correct})));
  const sessionXP=answers.reduce((sum,a)=>sum+a.xpEarned,0);
  const duration=`${String(Math.floor(elapsed/60)).padStart(2,'0')}:${String(elapsed%60).padStart(2,'0')}`;
  return <div className="ai-studio">
@@ -349,7 +360,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
      <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Questões aprovadas: ${lessonPracticeProgress}/10 · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
     <div className="k-lesson-practice-actions">
      {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
-     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
+     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{handledLessonPractice.current='';setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeLoading(false);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
     </div>
     <p className="privacy-note">O processo utiliza a configuração gratuita de IA do servidor, sujeita às cotas dos provedores. Nenhum resultado é inventado quando a geração falha.</p>
    </section>}
@@ -390,6 +401,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    {userId&&session.length>0&&<section className="dark-panel ai-session">
     {finished?<>
       <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Você conquistou {sessionXP} XP nesta sessão. As questões concluídas saíram do banco de pendentes e já contam para suas Conquistas. Esta pontuação não é nota oficial nem estimativa TRI.</p>
+      <div className="k-ai-mastery-result" role="status"><strong>Avaliação formativa: {mastery.label}</strong><p>{mastery.accuracy}% de acertos · Básicas: {mastery.basic}/{session.filter(q=>q.difficulty==='basic').length} · Intermediárias: {mastery.intermediate}/{session.filter(q=>q.difficulty==='intermediate').length} · Avançadas: {mastery.advanced}/{session.filter(q=>q.difficulty==='advanced').length}.</p><p>{mastery.nextStep}</p><small>Indicador desta sessão, não nota oficial, estimativa TRI ou comprovação definitiva de domínio.</small></div>
       <div className="ai-review-results">{session.map((q,i)=><article key={q.id}><strong>{i+1}. {q.subject} — {answers[i]?.correct?'Acerto':'Revisar'}</strong><p>{q.prompt}</p><p>Gabarito: {String.fromCharCode(65+(answers[i]?.correctIndex??0))}. {answers[i]?.explanation||'Sem correção disponível.'}</p></article>)}</div>
       {recoveryTargets.length>0&&<section className="k-ai-lesson-recovery-summary" aria-label="Plano de reforço após os erros">
        <h3>Reforce o que ainda precisa de prática</h3>

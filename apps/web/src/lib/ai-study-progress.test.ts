@@ -30,3 +30,26 @@ test('ignores malformed answer indices and timestamps, without claiming measured
  assert.equal(r.lessons[0].lastCorrect,false);
  assert.equal(r.lessons[0].incorrect,1);
 });
+
+test('skill evolution uses only server-regraded practice attempts with validated difficulty',()=>{
+ const qs=[{...question('basic','math-percentages'),difficulty:'basic' as const},
+  {...question('advanced','math-percentages'),difficulty:'advanced' as const},
+  {...question('invalid','math-equations'),difficulty:'basic' as const}];
+ const records=[attempt('basic',2,'2026-11-02T10:00:00Z'),
+  attempt('advanced',1,'2026-11-02T10:05:00Z'),
+  attempt('basic',0,'2026-11-03T10:00:00Z','mock'),
+  attempt('invalid',2,'2026-11-03T10:05:00Z')];
+ const progress=aggregateAIStudyProgress(qs,records);
+ const skill=progress.skillEvolution.find(item=>item.lessonId==='math-percentages');
+ assert.ok(skill);
+ assert.equal(skill.blocks.length,1);
+ assert.equal(skill.blocks[0].answered,2);
+ assert.equal(skill.blocks[0].correct,1);
+ assert.equal(skill.blocks[0].difficulty.basic.correct,1);
+ assert.equal(skill.blocks[0].difficulty.advanced.correct,0);
+ assert.equal(skill.changePoints,null);
+ assert.equal(JSON.stringify(progress).includes('answer_index'),false);
+ assert.equal(JSON.stringify(progress).includes('correct_index'),false);
+ assert.equal(JSON.stringify(progress).includes('questionId'),false);
+ assert.equal(progress.unlinkedAttempts,1);
+});

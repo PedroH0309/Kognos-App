@@ -9,7 +9,7 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
  if(!userId)return error('Entre em sua conta para consultar o desempenho gerado por IA.',401);
  // Both queries MUST be scoped to the owner. The correct_index is used only inside this route.
  const {data:questions,error:qError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
-  .select('id,lesson_id,institution,subject,topic,correct_index')
+  .select('id,lesson_id,institution,subject,topic,difficulty,correct_index')
   .eq('user_id',userId).neq('review_status','withdrawn').order('created_at',{ascending:false}).limit(501);
  if(qError)return error('Banco de IA indisponível. Execute a migração 0007 após a 0005.',503);
  const known=(questions||[]).slice(0,500) as PrivateAIQuestionRow[];
