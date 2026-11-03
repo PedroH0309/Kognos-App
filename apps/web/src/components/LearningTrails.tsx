@@ -19,7 +19,7 @@ const guestKey='kognos_demo_attempts_v1_guest';
 
 export default function LearningTrails({mode,userId,onContextChange,onTutor,onPractice,onGenerateAI,onSeeTrails,focus,active=true}:{
  mode:Mode;userId:string|null;onContextChange:(context:KogStudyContext|null)=>void;
- onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
+ onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string,generateNew?:boolean)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
 }){
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
@@ -171,8 +171,9 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-lesson-block mistake"><h3>Erro comum</h3><p>{lesson.commonMistake}</p></div>
      <div className="learning-lesson-block check"><h3>Confira se entendeu</h3><p>{lesson.check}</p><small>Responda com suas palavras ou peça uma explicação ao Kog.</small></div>
      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
-     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>Praticar demonstração <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
+     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>userId?onGenerateAI(lesson.id,true):onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>{userId?'Gerar 3 questões desta aula com IA':'Praticar demonstração'} <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
       <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
+     <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
        <span>{position+1} / {roadmap.total}</span>
        <button type="button" disabled={!following} onClick={()=>following&&chooseLesson(following)}>Próxima aula <ArrowRight size={15}/></button></div>
