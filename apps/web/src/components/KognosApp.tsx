@@ -31,6 +31,7 @@ import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, Cal
 import type { User } from '@supabase/supabase-js';
 import {explainProfileDatabaseError, profileSetupIssue} from '@/lib/profile-setup';
 import {readStoredStudentProfile} from '@/lib/auth-profile-routing';
+import {isRetainedStudyView,rememberStudyView,type RetainedStudyView} from '@/lib/retained-study-views';
 import {isSameAuthenticatedAccount,readWorkspaceView,saveWorkspaceView} from '@/lib/workspace-session';
 import { getSupabase, isCloudConfigured } from '@/lib/supabase';
 import { getCloudAttempts, getCloudTasks } from '@/lib/cloud-study';
@@ -433,6 +434,7 @@ export default function KognosApp(){
   const [profileError,setProfileError]=useState('');
   const [reloadRequest,setReloadRequest]=useState(0);
   const [assistantOpen,setAssistantOpen]=useState(false);const [assistantInitialized,setAssistantInitialized]=useState(false);
+   const [retainedViews,setRetainedViews]=useState<readonly RetainedStudyView[]>([]);
   const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [diagnosticCycle,setDiagnosticCycle]=useState<'baseline'|'weekly'>('baseline');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
@@ -455,6 +457,7 @@ export default function KognosApp(){
      const requestId=++authRequestId.current;
      if(!mounted)return;
      const sameAccount=isSameAuthenticatedAccount(authenticatedUserRef.current,account?.id??null);
+     if(!sameAccount)setRetainedViews([]); // Clear prior account's retained drafts.
      authenticatedUserRef.current=account?.id??null;
      // Restore the last page only when the account actually changes or after a reload.
      if(account&&!sameAccount)setView(readWorkspaceView(window.sessionStorage,account.id));
@@ -512,14 +515,18 @@ export default function KognosApp(){
     // Do not overwrite the stored page while the profile is still being resolved.
     if(user?.id&&profile&&!loading&&!editing)saveWorkspaceView(window.sessionStorage,user.id,view);
   },[user?.id,profile,loading,editing,view]);
+  useEffect(()=>{
+   if(user?.id&&profile&&isRetainedStudyView(view))
+    setRetainedViews(previous=>rememberStudyView(previous,view));
+  },[user?.id,profile,view]);
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
  async function signout(){
    const sb=getSupabase();if(sb)await sb.auth.signOut();
-   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setAssistantInitialized(false);setStudyContext(null);
+   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setAssistantInitialized(false);setRetainedViews([]);setStudyContext(null);
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function openAssistant(){setAssistantInitialized(true);setAssistantOpen(true);}
- function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view)setStudyContext(null);if(v==='questions'){setPracticeFocus(null);setAiFocusLessonId(null);}if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view)setStudyContext(null);/* Preserve the current question selection when returning to the bank. */if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
@@ -558,8 +565,8 @@ export default function KognosApp(){
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
  view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>openAssistant()}/>:
  view==='subjects'?<SubjectDashboard key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
- view==='learn'||view==='trails'?<LearningTrails key={`${user?.id||'guest'}-${view}-${learningFocus?.lessonId||'all'}`} focus={learningFocus} mode={view} userId={user?.id||null} onTutor={()=>openAssistant()} onContextChange={setStudyContext} onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>: 
- view==='questions'||view==='simulados'||view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-${view}-${practiceFocus?.questionId||'all'}`} mode={view} userId={user?.id||null} focus={view==='questions'?practiceFocus:null} aiFocusLessonId={view==='questions'?aiFocusLessonId:null} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
+ isRetainedStudyView(view)?(!retainedViews.includes(view)?<WorkspaceLoading/>:null):
+ view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-performance`} mode="performance" userId={user?.id||null} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
  view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>openAssistant()}/>:
@@ -569,7 +576,29 @@ export default function KognosApp(){
  view==='plans'?<StudyPlanner key={user?.id||'guest'} profile={actualProfile} userId={user?.id||null} initialDate={plannerDate||undefined} onCalendar={()=>navigate('calendar')} onDiagnostic={()=>navigate('diagnostic')} onWeeklyReview={openWeeklyReview} onLearn={openFocusedLesson} onContextChange={setStudyContext} onTutor={()=>openAssistant()}/>:  
  view==='profile'||view==='settings'?<AccountSettings key={`${user?.id||'guest'}-${view}`} user={user} profile={actualProfile} avatarUrl={avatarUrl} onSave={saveAccountChanges} onAvatarChanged={changeAvatar} onLogin={()=>setAuthOpen(true)} onPreferences={()=>setEditing(true)} onSignout={signout} theme={theme} onThemeChange={changeTheme} recoveryMode={recoveryMode} openSecurity={view==='settings'}/>:
  <ComingSoon view={view} onGo={navigate}/>}
+
  </AnimatedPage>
+ {/* Cache only visited lessons and practice screens. Hidden panels are not
+     focusable, do not occupy layout space and never mount for another account. */}
+ {retainedViews.includes('learn')&&<div className="k-retained-workspace" hidden={view!=='learn'}>
+  <LearningTrails key={`${user.id}-learn`} mode="learn" active={view==='learn'} focus={view==='learn'?learningFocus:null}
+   userId={user.id} onTutor={()=>openAssistant()} onContextChange={setStudyContext}
+   onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>
+ </div>}
+ {retainedViews.includes('trails')&&<div className="k-retained-workspace" hidden={view!=='trails'}>
+  <LearningTrails key={`${user.id}-trails`} mode="trails" active={view==='trails'} focus={view==='trails'?learningFocus:null}
+   userId={user.id} onTutor={()=>openAssistant()} onContextChange={setStudyContext}
+   onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>
+ </div>}
+ {retainedViews.includes('questions')&&<div className="k-retained-workspace" hidden={view!=='questions'}>
+  <PracticeSpace key={`${user.id}-questions-${practiceFocus?.questionId||'all'}`} mode="questions" active={view==='questions'}
+   userId={user.id} focus={practiceFocus} aiFocusLessonId={aiFocusLessonId}
+   onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>
+ </div>}
+ {retainedViews.includes('simulados')&&<div className="k-retained-workspace" hidden={view!=='simulados'}>
+  <PracticeSpace key={`${user.id}-simulados`} mode="simulados" active={view==='simulados'}
+   userId={user.id} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>
+ </div>}
  <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Plano':'Perfil'}</button>)}</nav>{assistantInitialized
  ?<KogAssistant open={assistantOpen} onOpen={()=>openAssistant()} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
  :<button type="button" className="kog-launcher k-kog-lightweight-launcher" onClick={openAssistant}
