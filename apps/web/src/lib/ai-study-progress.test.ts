@@ -40,7 +40,7 @@ test('skill evolution uses only server-regraded practice attempts with validated
   attempt('basic',0,'2026-11-03T10:00:00Z','mock'),
   attempt('invalid',2,'2026-11-03T10:05:00Z')];
  const progress=aggregateAIStudyProgress(qs,records);
- const skill=progress.skillEvolution.find(item=>item.lessonId==='math-percentages');
+ const skill=progress.skillEvolution?.find(item=>item.lessonId==='math-percentages');
  assert.ok(skill);
  assert.equal(skill.blocks.length,1);
  assert.equal(skill.blocks[0].answered,2);
