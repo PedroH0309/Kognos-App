@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {recoverableLessonGenerationError,nextLessonReviewBatchSize,
- lessonGenerationFailureMessage,LESSON_REVIEW_MAX_ATTEMPTS,
+ lessonGenerationFailureMessage,reviewDiagnosticSummary,LESSON_REVIEW_MAX_ATTEMPTS,
  LESSON_REVIEW_MAX_CONSECUTIVE_EMPTY} from './lesson-generation-recovery.ts';
 
 const fault=(code:string)=>Object.assign(new Error('Server-controlled safe message'),{code});
@@ -29,4 +29,17 @@ test('terminal failure warns about reviewed shortfall, not falsely completed pra
  assert.match(lessonGenerationFailureMessage(0),/nenhum item passou/);
  assert.match(lessonGenerationFailureMessage(4),/4 de 10/);
  assert.match(lessonGenerationFailureMessage(4),/continuam no seu banco/);
+});
+
+test('safe counters explain invalid or disputed reviews without revealing model text',()=>{
+ const summary=reviewDiagnosticSummary({
+  generated:3,structurallyMissing:0,pedagogicallyRejected:1,
+  answerDisagreements:2,missingReview:0,extra:'private model text'
+ });
+ assert.match(summary,/geradas: 3/);
+ assert.match(summary,/gabaritos divergentes: 2/);
+ assert.match(summary,/reprovadas pelo revisor: 1/);
+ assert.doesNotMatch(summary,/private model text/);
+ assert.equal(reviewDiagnosticSummary({generated:-10}), '');
+ assert.equal(reviewDiagnosticSummary(null),'');
 });
