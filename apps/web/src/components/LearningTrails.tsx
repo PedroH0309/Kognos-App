@@ -11,6 +11,7 @@ import {adjacentLesson,trailSnapshot} from '@/lib/learning-roadmap';
 import {connectedCatalogProgress,connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 import StudySyncNotice from './StudySyncNotice';
+import SkillEvolutionPanel from './SkillEvolutionPanel';
 
 type Mode='learn'|'trails';
 type Focus={subject:string;topic:string;questionId:string};
@@ -30,6 +31,21 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [restored,setRestored]=useState(false);
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  const detailRef=useRef<HTMLElement|null>(null);
+ // The question workspace stays mounted when hidden. Defer a single updated
+ // progress read until this trail becomes visible again, rather than fetching
+ // during every graded answer of a ten-question practice run.
+ const historyChangedWhileAway=useRef(false);
+ useEffect(()=>{
+  const mark=()=>{historyChangedWhileAway.current=true;};
+  window.addEventListener('kognos:ai-answer-recorded',mark);
+  return()=>window.removeEventListener('kognos:ai-answer-recorded',mark);
+ },[]);
+ useEffect(()=>{
+  if(active&&historyChangedWhileAway.current){
+   historyChangedWhileAway.current=false;
+   void refreshAI();
+  }
+ },[active,refreshAI]);
  useEffect(()=>{
   let mounted=true;setLoaded(false);setError('');setAttempts([]);
   if(!userId){
@@ -171,6 +187,12 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-lesson-block mistake"><h3>Erro comum</h3><p>{lesson.commonMistake}</p></div>
      <div className="learning-lesson-block check"><h3>Confira se entendeu</h3><p>{lesson.check}</p><small>Responda com suas palavras ou peça uma explicação ao Kog.</small></div>
      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
+     {userId&&aiProgress&&<SkillEvolutionPanel
+      evolution={aiProgress.skillEvolution?.find(item=>item.lessonId===lesson.id)??null}
+      sampleLimited={aiProgress.sampleLimited}
+      onPractice={()=>onGenerateAI(lesson.id,true)}
+      onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}
+     />}
      <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>userId?onGenerateAI(lesson.id,true):onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>{userId?'Praticar com 10 questões graduais':'Praticar demonstração'} <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
       <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
      <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
