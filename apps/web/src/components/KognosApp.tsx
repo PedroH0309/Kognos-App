@@ -439,6 +439,8 @@ export default function KognosApp(){
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
   const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
+  // Increment only after an explicit learner click. Never autogenerate on ordinary navigation.
+  const [lessonPracticeRequestId,setLessonPracticeRequestId]=useState(0);
   const [learningFocus,setLearningFocus]=useState<{subject:string;lessonId:string}|null>(null);
   const [avatarUrl,setAvatarUrl]=useState<string|null>(null);const [theme,setTheme]=useState<'dark'|'light'>('light');const [recoveryMode,setRecoveryMode]=useState(false);const [searchOpen,setSearchOpen]=useState(false);const [search,setSearch]=useState('');
   const cloud=useMemo(()=>isCloudConfigured(),[]);
@@ -522,15 +524,15 @@ export default function KognosApp(){
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
  async function signout(){
    const sb=getSupabase();if(sb)await sb.auth.signOut();
-   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setAssistantInitialized(false);setRetainedViews([]);setStudyContext(null);
+   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setAssistantInitialized(false);setRetainedViews([]);setLessonPracticeRequestId(0);setStudyContext(null);
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function openAssistant(){setAssistantInitialized(true);setAssistantOpen(true);}
  function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view)setStudyContext(null);/* Preserve the current question selection when returning to the bank. */if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
- function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
- function generateForLesson(lessonId:string){setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
+ function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){setLessonPracticeRequestId(0);setAiFocusLessonId(null);setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);}
+ function generateForLesson(lessonId:string,generateNew=false){setLessonPracticeRequestId(previous=>generateNew?previous+1:0);setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
  function changeTheme(v:'dark'|'light'){setTheme(v);window.localStorage.setItem('kognos_theme_v1',v);}
  function toggleSidebar(){setSidebarCollapsed(old=>{localStorage.setItem('kognos_sidebar_collapsed_v1',String(!old));return !old;});}
@@ -592,7 +594,7 @@ export default function KognosApp(){
  </div>}
  {retainedViews.includes('questions')&&<div className="k-retained-workspace" hidden={view!=='questions'}>
   <PracticeSpace key={`${user.id}-questions-${practiceFocus?.questionId||'all'}`} mode="questions" active={view==='questions'}
-   userId={user.id} focus={practiceFocus} aiFocusLessonId={aiFocusLessonId}
+   userId={user.id} focus={practiceFocus} aiFocusLessonId={aiFocusLessonId} lessonPracticeRequestId={lessonPracticeRequestId}
    onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>
  </div>}
  {retainedViews.includes('simulados')&&<div className="k-retained-workspace" hidden={view!=='simulados'}>
