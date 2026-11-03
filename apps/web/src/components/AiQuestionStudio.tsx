@@ -11,6 +11,7 @@ import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from 
 import {findLearningLesson} from '@/lib/learning-catalog';
 import {AI_BANK_PAGE_SIZE} from '@/lib/ai-bank-paging';
 import IntegrationSetupNotice from './IntegrationSetupNotice';
+import {bankSyncNotice} from '@/lib/integration-feedback';
 import {useServerReadiness} from '@/lib/use-server-readiness';
 import {readGeneratorDraft,saveGeneratorDraft} from '@/lib/ai-generator-draft';
 import {generateApprovedBatches,MAX_ATTEMPTS_PER_BATCH} from '@/lib/ai-generation-batches';
@@ -47,6 +48,7 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  const [sourceNotice,setSourceNotice]=useState('');
  const [loading,setLoading]=useState(false),[generating,setGenerating]=useState(false),[submitting,setSubmitting]=useState(false);
  const [error,setError]=useState(''),[notice,setNotice]=useState('');
+ const [bankFetched,setBankFetched]=useState(false),[bankError,setBankError]=useState('');
  const [session,setSession]=useState<UserAIQuestion[]>([]),[cursor,setCursor]=useState(0),[choice,setChoice]=useState<number|null>(null);
  const [answers,setAnswers]=useState<Grading[]>([]),[finished,setFinished]=useState(false);
  const [elapsed,setElapsed]=useState(0);
@@ -105,16 +107,24 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
  },[institution,inMock,difficulty,bankScope,subject,topic]);
  const refresh=useCallback(async()=>{
   const requestId=++requestSerial.current;
-  if(!userId||!hasServerBank){setQuestions([]);setTotalQuestions(0);setHasMore(false);setLoading(false);setError('');return;}
-  setLoading(true);setError('');
+  if(!userId||!hasServerBank){
+   setQuestions([]);setTotalQuestions(0);setHasMore(false);
+   setBankFetched(false);setBankError('');setLoading(false);setError('');return;
+  }
+  setLoading(true);setBankFetched(false);setBankError('');setError('');
   try{
    const data=await authenticatedFetch(listUrl(0));
    if(requestId!==requestSerial.current)return;
-   setQuestions(Array.isArray(data.questions)?data.questions:[]);
-   setTotalQuestions(Number(data.total)||0);
-   setHasMore(data.hasMore===true);
-  }catch(e){if(requestId===requestSerial.current){setQuestions([]);setTotalQuestions(0);setHasMore(false);setError(e instanceof Error?e.message:'Falha ao carregar as questões.');}}
-  finally{if(requestId===requestSerial.current)setLoading(false);}
+   if(!Array.isArray(data.questions)||!Number.isInteger(data.total)||data.total<0||typeof data.hasMore!=='boolean')
+    throw new Error('Resposta inválida do banco.');
+   setQuestions(data.questions);setTotalQuestions(data.total);
+   setHasMore(data.hasMore);setBankFetched(true);
+  }catch(e){
+   if(requestId===requestSerial.current){
+    setQuestions([]);setTotalQuestions(0);setHasMore(false);
+    setBankFetched(false);setBankError(bankSyncNotice(e instanceof Error?e.message:''));
+   }
+  }finally{if(requestId===requestSerial.current)setLoading(false);}
  },[authenticatedFetch,listUrl,userId,hasServerBank]);
  useEffect(()=>{void refresh();return()=>{requestSerial.current+=1;};},[refresh]);
  async function loadMore(){
@@ -238,16 +248,19 @@ export default function AiQuestionStudio({mode,userId,onTutor,onLogin,onContextC
     <section className="dark-panel ai-bank">
       <div className="ai-bank-header"><div><h2>{inMock?'Simulados personalizados':'Meu banco de questões IA'}</h2><p>Somente questões pendentes aparecem aqui. Ao responder, elas saem desta fila e rendem XP em Conquistas.</p></div><button type="button" className="btn outline small" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={15}/> Atualizar</button></div>
       <div className="ai-bank-scope" role="group" aria-label="Filtrar banco pessoal"><button type="button" className={bankScope==='all'?'selected':''} aria-pressed={bankScope==='all'} onClick={()=>{setBankScope('all');setLinkedLessonId(null);}}>Toda a instituição</button><button type="button" className={bankScope==='topic'?'selected':''} aria-pressed={bankScope==='topic'} onClick={()=>setBankScope('topic')}>Assunto selecionado</button></div>
-      <div className="ai-bank-counter"><strong>{hasServerBank?(loading?'…':totalQuestions):'—'}</strong><span>{hasServerBank?`${totalQuestions===1?'questão pendente':'questões pendentes'} neste filtro · ${scopeDescription}${inMock?` · ${difficulties[difficulty]}`:''}`:'Banco aguardando conexão com o servidor'}<small>{hasServerBank?(loading?'Consultando banco…':`${questions.length} carregadas nesta página`):'Os registros existentes continuam protegidos no Supabase'}</small></span></div>
-      {!hasServerBank&&<div className="k-bank-connection" role="status">O Kognos ainda não conseguiu consultar seu banco de IA. Configure as variáveis do servidor e use <strong>Verificar novamente</strong> no painel acima.</div>}
+      <div className="ai-bank-counter"><strong>{hasServerBank?(loading?'…':bankFetched?totalQuestions:'—'):'—'}</strong><span>{hasServerBank&&bankFetched?`${totalQuestions===1?'questão pendente':'questões pendentes'} neste filtro · ${scopeDescription}${inMock?` · ${difficulties[difficulty]}`:''}` :'Banco aguardando consulta confirmada'}<small>{loading?'Consultando banco…':hasServerBank&&bankFetched?`${questions.length} carregadas nesta página`:'O total de questões ainda não foi confirmado'}</small></span></div>
+      {(!hasServerBank||(!loading&&!bankFetched))&&<div className="k-bank-connection" role="status">
+        {hasServerBank?bankError||'Não foi possível confirmar a consulta ao banco.':readiness.loading?'Verificando a conexão do servidor…':'A consulta ao banco de IA ainda não está disponível. Confira a configuração do servidor no aviso acima.'}
+        <button type="button" className="k-bank-retry" disabled={loading||readiness.loading} onClick={()=>void (hasServerBank?refresh():readiness.refresh())}><RefreshCw size={14}/> Tentar novamente</button>
+       </div>}
       {hasServerBank&&loading&&<p role="status" className="muted">Carregando questões...</p>}
-      {hasServerBank&&!loading&&!bank.length&&<p className="ai-empty">Nenhuma questão pendente neste filtro. Questões concluídas não podem ser respondidas novamente para ganhar XP; escolha outro assunto ou gere novas questões.</p>}
-      {hasServerBank&&!!bank.length&&<>
+      {hasServerBank&&bankFetched&&!loading&&!bank.length&&<p className="ai-empty">Nenhuma questão pendente neste filtro. Questões concluídas não podem ser respondidas novamente para ganhar XP; escolha outro assunto ou gere novas questões.</p>}
+      {hasServerBank&&bankFetched&&!!bank.length&&<>
        <button type="button" className="btn primary" onClick={()=>start(bank.slice(0,Math.min(20,bank.length)))}>{inMock?'Iniciar simulado de IA':'Praticar questões do banco'} ({Math.min(20,bank.length)})</button>
        <div className="ai-question-list">{bank.map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>{q.source_kind==='editor_approved_source'?'IA · assunto vinculado a matriz revisada':'IA · assunto editorial'} · resposta verificada automaticamente, sem homologação do item</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
       </>}
-      {hasServerBank&&hasMore&&<button type="button" className="btn outline ai-load-more" disabled={loadingMore||loading} onClick={()=>void loadMore()}>{loadingMore?'Carregando…':`Carregar mais questões (${questions.length} de ${totalQuestions})`}</button>}
-      {hasServerBank&&!hasMore&&totalQuestions>0&&<p className="ai-end-of-results">Todas as {totalQuestions} questões pendentes deste filtro foram carregadas.</p>}
+      {hasServerBank&&bankFetched&&hasMore&&<button type="button" className="btn outline ai-load-more" disabled={loadingMore||loading} onClick={()=>void loadMore()}>{loadingMore?'Carregando…':`Carregar mais questões (${questions.length} de ${totalQuestions})`}</button>}
+      {hasServerBank&&bankFetched&&!hasMore&&totalQuestions>0&&<p className="ai-end-of-results">Todas as {totalQuestions} questões pendentes deste filtro foram carregadas.</p>}
       <p className="privacy-note">A revisão automática não garante ausência de erros. Questões geradas não são oficiais e não entram no banco de outros alunos sem revisão humana.</p>
     </section>
    </>}
