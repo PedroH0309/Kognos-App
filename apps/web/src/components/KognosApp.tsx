@@ -88,9 +88,10 @@ const NAV_ICONS:Record<View,LucideIcon>={
 /** All existing routes remain reachable, but the sidebar uses the compact
  * hierarchy of the requested E-Study reference instead of long AI-colored groups.
  */
-const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects','questions','simulados'];
-const NAV_SECONDARY:View[]=['calendar','plans','reviews','achievements','settings'];
-const NAV_MORE:View[]=['trails','diagnostic','weekly','sources','performance','profile'];
+const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects'];
+const NAV_SECONDARY:View[]=['calendar','plans'];
+const NAV_PRACTICE:View[]=['questions','simulados'];
+const NAV_MORE:View[]=['trails','diagnostic','weekly','sources','performance','reviews','achievements','settings'];
 const SHORT_NAV_LABELS:Partial<Record<View,string>>={
  dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
  questions:'Questões',simulados:'Simulados',plans:'Meu plano',
@@ -436,7 +437,7 @@ export default function KognosApp(){
   const [reloadRequest,setReloadRequest]=useState(0);
   const [assistantOpen,setAssistantOpen]=useState(false);const [assistantInitialized,setAssistantInitialized]=useState(false);
    const [retainedViews,setRetainedViews]=useState<readonly RetainedStudyView[]>([]);
-  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [diagnosticCycle,setDiagnosticCycle]=useState<'baseline'|'weekly'>('baseline');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);
+  const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [diagnosticCycle,setDiagnosticCycle]=useState<'baseline'|'weekly'>('baseline');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);const [practiceMenuOpen,setPracticeMenuOpen]=useState(false);
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
   const [practiceFocus,setPracticeFocus]=useState<{subject:string;topic:string;questionId:string}|null>(null);
   const [aiFocusLessonId,setAiFocusLessonId]=useState<string|null>(null);
@@ -549,18 +550,20 @@ export default function KognosApp(){
  if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
  return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">
     <div className="k-nav-set k-nav-main">{NAV_PRIMARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
+    <button type="button" className={`k-nav-more-toggle ${NAV_PRACTICE.includes(view)?'selected':''}`}
+      onClick={()=>setPracticeMenuOpen(open=>!open)} aria-expanded={practiceMenuOpen||NAV_PRACTICE.includes(view)} aria-controls="kognos-practice-navigation">
+      <span className="k-side-icon"><ListChecks size={18} strokeWidth={1.8}/></span><span className="k-side-label">Praticar</span>
+      <span className="k-side-chevron"><ArrowRight size={15}/></span>
+    </button>
+    {(practiceMenuOpen||NAV_PRACTICE.includes(view))&&<div id="kognos-practice-navigation" className="k-nav-set k-nav-expanded">{NAV_PRACTICE.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>}
     <div className="k-nav-separator" aria-hidden="true"/>
     <div className="k-nav-set k-nav-secondary">{NAV_SECONDARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
     <button type="button" className={`k-nav-more-toggle ${NAV_MORE.includes(view)?'selected':''}`}
-      onClick={()=>setMoreMenuOpen(open=>!open)} aria-expanded={moreMenuOpen||NAV_MORE.includes(view)}
-      aria-controls="kognos-more-navigation">
-      <span className="k-side-icon"><Menu size={18} strokeWidth={1.8}/></span>
-      <span className="k-side-label">Mais recursos</span>
+      onClick={()=>setMoreMenuOpen(open=>!open)} aria-expanded={moreMenuOpen||NAV_MORE.includes(view)} aria-controls="kognos-more-navigation">
+      <span className="k-side-icon"><Menu size={18} strokeWidth={1.8}/></span><span className="k-side-label">Mais recursos</span>
       <span className="k-side-chevron"><ArrowRight size={15}/></span>
     </button>
-    {(moreMenuOpen||NAV_MORE.includes(view))&&<div id="kognos-more-navigation" className="k-nav-set k-nav-expanded">
-      {NAV_MORE.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}
-    </div>}
+    {(moreMenuOpen||NAV_MORE.includes(view))&&<div id="kognos-more-navigation" className="k-nav-set k-nav-expanded">{NAV_MORE.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>}
   </nav><div className="sidebar-bottom"><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside><AnimatedSidebarScrim open={mobileMenu} disabled={disableAnimations} onClose={()=>setMobileMenu(false)}/>
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>openAssistant()} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
