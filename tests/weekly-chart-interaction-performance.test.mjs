@@ -30,7 +30,7 @@ test('startup does not statically import heavy study workspaces or load the tuto
  const screens=['PracticeSpace','AchievementSpace','DiagnosticSpace','WeeklyExamSpace',
   'ReviewSpace','LearningTrails','SubjectDashboard','StudyPlanner','StudyCalendar','ExamSources'];
  for(const screen of screens){
-  assert.ok(app.includes(`const ${screen}=dynamic(()=>import('./${screen}'),workspaceLoading);`),screen);
+  assert.ok(app.includes(`const ${screen}=dynamic(()=>import('./${screen}'),{loading:()=> <WorkspaceLoading/>});`),screen);
   assert.ok(!app.includes(`import ${screen} from './${screen}';`),screen);
  }
  assert.match(app,/const KogAssistant=dynamic\(\(\)=>import\('\.\/KogAssistant'\)/);
