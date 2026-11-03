@@ -22,3 +22,26 @@ export function lessonGenerationFailureMessage(approved:number):string{
   ?`Apenas ${approved} de 10 questões foram aprovadas. As restantes não passaram pela revisão. As aprovadas continuam no seu banco; tente novamente mais tarde para obter um treino completo.`
   :'A geração respondeu, mas nenhum item passou pela revisão independente, mesmo após novas tentativas em lotes menores. Verifique o diagnóstico do gerador ou ajuste o provedor de revisão (Gemini/Groq). Nenhuma questão não verificada será usada.';
 }
+
+/** Safe aggregate counters only. Never expose reviewer explanations or
+ * generated answer keys in the client-facing failure details.
+ */
+export function reviewDiagnosticSummary(value:unknown):string{
+ if(!value||typeof value!=='object'||Array.isArray(value))return '';
+ const record=value as Record<string,unknown>;
+ const safe=(key:string):number|null=>{
+  const n=record[key];
+  return typeof n==='number'&&Number.isInteger(n)&&n>=0&&n<=1000?n:null;
+ };
+ const fields:[string,string][]=[
+  ['generated','geradas'],['structurallyMissing','malformadas'],
+  ['pedagogicallyRejected','reprovadas pelo revisor'],
+  ['answerDisagreements','gabaritos divergentes'],
+  ['missingReview','revisões ausentes']
+ ];
+ const parts=fields.map(([key,label])=>{
+  const value=safe(key);
+  return value===null?'':`${label}: ${value}`;
+ }).filter(Boolean);
+ return parts.join('; ');
+}
