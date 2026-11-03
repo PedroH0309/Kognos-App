@@ -8,8 +8,9 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  const subjects=read('apps/web/src/components/SubjectDashboard.tsx');
  const app=read('apps/web/src/components/KognosApp.tsx');
  const practice=read('apps/web/src/components/PracticeSpace.tsx');
- assert.match(trails,/disabled=\{!userId\} onClick=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
- assert.match(trails,/Praticar com 10 questões de IA/);
+ assert.match(trails,/\{userId&&<SkillEvolutionPanel/);
+ assert.doesNotMatch(trails,/Praticar com 10 questões de IA/);
+ assert.match(trails,/onPractice=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
  assert.match(subjects,/if\(userId\)onGenerateAI\(lesson\.id,true\)/);
  assert.match(app,/function generateForLesson\(lessonId:string,generateNew=false\)/);
  assert.match(app,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
