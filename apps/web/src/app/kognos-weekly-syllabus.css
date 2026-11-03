@@ -110,3 +110,9 @@
 .app-layout .k-syllabus-topic.review .k-syllabus-schedule:not(:disabled){border-color:#C47B38;color:#B3682F}
 .app-layout .k-syllabus-topic.review .k-syllabus-schedule:not(:disabled):hover{background:#C47B38;color:white}
 @media(prefers-reduced-motion:reduce){.app-layout .k-syllabus-schedule{transition:none}}
+
+/* Inline spaced-revision scheduling in the weekly diagnostic panel. */
+.app-layout .k-spaced-review-actions{display:grid;align-items:start;gap:8px;margin-top:14px}
+.app-layout .k-spaced-review-actions .btn{justify-self:start;min-height:44px;max-width:100%;white-space:normal}
+.app-layout .k-spaced-review-actions .privacy-note{margin:0;max-width:66ch;line-height:1.55}
+@media(max-width:560px){.app-layout .k-spaced-review-actions .btn{width:100%;justify-self:stretch}}
