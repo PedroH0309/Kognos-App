@@ -14,9 +14,9 @@ const cloud=read('apps/web/src/lib/cloud-study.ts');
 test('real calendar replaces the coming-soon placeholder and is reachable on mobile and desktop',()=>{
  assert.ok(!app.includes("{key:'calendar',icon:'▣',label:'Calendário',status:'Em construção'}"));
  assert.match(app,/view==='calendar'\?<StudyCalendar/);
- assert.match(app,/NAV_SECONDARY:View\[\]=\['calendar','plans'/);
+ assert.match(app,/NAV_SECONDARY:View\[\]=\['calendar'\]/);
  assert.match(app,/\['dashboard','learn','questions','calendar','profile'\]/);
- assert.match(app,/v==='calendar'\?'Plano'/);
+ assert.match(app,/v==='calendar'\?'Calendário'/);
  assert.match(app,/onPlanner=\{openPlannerForDate\}/);
  assert.match(app,/onCalendar=\{\(\)=>navigate\('calendar'\)\}/);
  assert.match(planner,/initialDate\?\:string/);
