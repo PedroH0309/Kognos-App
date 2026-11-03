@@ -60,11 +60,18 @@ export function inferSkillEvolution(lessonId:string,attempts:readonly VerifiedSk
  }
  const blocks=groups.map(makeBlock);
  const comparable=blocks.filter(b=>b.complete);
+ // A repeat of the same item in a later practice can test recognition
+ // rather than transfer. Require different question IDs across the latest
+ // two complete blocks before using them as consistency/retention evidence.
+ const latestTwo=groups.map((rows,i)=>({rows,block:blocks[i]})).filter(x=>x.block.complete).slice(-2);
+ const earlierIds=new Set(latestTwo[0]?.rows.map(row=>row.questionId)??[]);
+ const distinctRecentQuestions=latestTwo.length===2
+  &&latestTwo[1].rows.every(row=>!earlierIds.has(row.questionId));
  const previous=comparable.at(-2),latest=comparable.at(-1);
  const changePoints=latest&&previous?latest.accuracy-previous.accuracy:null;
  const direction:SkillEvolution['direction']=changePoints===null?'insufficient'
   :changePoints>=10?'higher':changePoints<=-10?'lower':'same';
  return {lessonId,blocks:blocks.slice(-6),comparableBlocks:comparable.length,
   changePoints,direction,recommendation:recommendNextSkillStep(latest??blocks.at(-1)??null),
-  mastery:assessSkillMasteryEvidence(blocks)};
+  mastery:assessSkillMasteryEvidence(blocks,distinctRecentQuestions)};
 }
