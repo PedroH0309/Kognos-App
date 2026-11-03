@@ -2,7 +2,10 @@ import { NextResponse } from 'next/server';
 import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normalizeTutorAnswer } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
-import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
+import {requestAI,isAIJobConfigured,AIProviderRateLimitError} from '@/lib/ai-provider';
+import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
+import {findLearningLesson} from '@/lib/learning-catalog';
+import { parseKogStudyContext, buildVerifiedQuestionContext, buildVerifiedGeneratedQuestionContext, buildVerifiedPlanContext, buildVerifiedPerformanceContext, buildVerifiedLessonContext, findDemoQuestion, type VerifiedDemoAttempt, type VerifiedStudyTask } from '@/lib/kog-study-context';
 
 export const runtime = 'nodejs';
 
@@ -40,7 +43,10 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
     const studyContext = parseKogStudyContext(body.studyContext);
     let contextText = '';
     let effectiveSubject = subject;
-    if (studyContext?.kind === 'question') {
+    if(studyContext?.kind === 'lesson') {
+      const lesson=findLearningLesson(studyContext.lessonId);
+      if(lesson){effectiveSubject=lesson.subject;contextText=buildVerifiedLessonContext(lesson);}
+    } else if (studyContext?.kind === 'question') {
       const question = findDemoQuestion(studyContext.questionId);
       if(question) {
         effectiveSubject = question.subject;
@@ -54,6 +60,22 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
           if(recorded) attempt={answerIndex:recorded.answer_index,correct:recorded.answer_index===question.correct};
         }
         contextText=buildVerifiedQuestionContext(studyContext,attempt)||'';
+      }
+    } else if (studyContext?.kind === 'generated_question') {
+      const {data:generated,error:lookupError}=await ctx.supabaseAdmin.from('kognos_ai_questions')
+        .select('id,subject,topic,difficulty,prompt,options,correct_index,explanation')
+        .eq('id',studyContext.questionId).eq('user_id',userId).neq('review_status','withdrawn').maybeSingle();
+      if(lookupError)return jsonError('O banco gerado por IA requer a migração 0005.',503);
+      if(generated){
+        effectiveSubject=generated.subject;
+        let verifiedAttempt:VerifiedDemoAttempt|null=null;
+        if(studyContext.phase==='review'){
+          const {data:recorded,error:attemptError}=await ctx.supabaseAdmin.from('kognos_ai_attempts')
+            .select('answer_index').eq('user_id',userId).eq('question_id',generated.id).order('created_at',{ascending:false}).limit(1).maybeSingle();
+          if(attemptError)return jsonError('Não foi possível verificar sua resposta.',503);
+          if(recorded)verifiedAttempt={answerIndex:recorded.answer_index,correct:recorded.answer_index===generated.correct_index};
+        }
+        contextText=buildVerifiedGeneratedQuestionContext(generated,studyContext.phase,verifiedAttempt);
       }
     } else if (studyContext?.kind === 'planner') {
       let query = ctx.supabase.from('kognos_demo_tasks')
@@ -82,6 +104,7 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       }
       contextText=buildVerifiedPerformanceContext({answered:counted,correct,bySubject:[...totals.values()]});
     }
+    // No application-level daily cap. Provider-side rate and billing limits still apply.
     const messages = [
       { role: 'system', content: buildTutorSystemPrompt(profile, effectiveSubject, contextText) },
       ...sanitizeHistory(body.history),
