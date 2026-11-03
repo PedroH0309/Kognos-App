@@ -1,4 +1,5 @@
 import {splitGenerationBatches} from './ai-bank-paging.ts';
+import {recoverableLessonGenerationError} from './lesson-generation-recovery.ts';
 
 export const MAX_ATTEMPTS_PER_BATCH=3;
 /** Provider APIs have shared rate limits. Never fan out all ten calls at once. */
@@ -69,7 +70,7 @@ export async function generateApprovedBatches(
      onSaved?.(saved);
     }catch(e){
      const reason=e instanceof Error?e.message:'Falha durante a geração de questões.';
-     if(recoverableGenerationError(reason))continue;
+     if(recoverableLessonGenerationError(e)||recoverableGenerationError(reason))continue;
      // Other in-flight requests finish, and their approved items remain saved.
      if(!error)error=reason;
      cancelled=true;
