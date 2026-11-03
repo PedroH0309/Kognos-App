@@ -7,7 +7,7 @@ import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exa
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
-import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId,lessonPracticeGenerationRequest} from '@/lib/lesson-ai-links';
+import {lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId,lessonPracticeGenerationRequest,LESSON_PRACTICE_STEPS} from '@/lib/lesson-ai-links';
 import {newQuestionsForSelectedLesson} from '@/lib/lesson-practice-session';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import {AI_BANK_PAGE_SIZE} from '@/lib/ai-bank-paging';
@@ -52,6 +52,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  const handledLessonPractice=useRef('');
  const [lessonPracticeRetry,setLessonPracticeRetry]=useState(0);
  const [lessonPracticeLoading,setLessonPracticeLoading]=useState(false);
+ const [lessonPracticeProgress,setLessonPracticeProgress]=useState(0);
  const [lessonPracticeError,setLessonPracticeError]=useState('');
  const [manualBankForRequest,setManualBankForRequest]=useState(0);
  const [approvedTopics,setApprovedTopics]=useState<ApprovedSyllabusTopic[]>([]);
@@ -165,26 +166,47 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    setLessonPracticeError('Esta aula ainda não tem um assunto seguro vinculado ao gerador.');
    return;
   }
-  // An explicit new lesson-practice click replaces the previous in-page exercise.
+  // Begin generating as soon as the student chooses practice for this lesson.
+  // All items are reviewed and ordered before the first question is shown.
   setSession([]);setFinished(false);setCursor(0);setChoice(null);setAnswers([]);
-  setLessonPracticeLoading(true);setLessonPracticeError('');setError('');setNotice('');
+  setLessonPracticeLoading(true);setLessonPracticeProgress(0);
+  setLessonPracticeError('');setError('');setNotice('');
   setGenerationStartedAt(Date.now());setGenerationSeconds(0);
+  let cancelled=false;
   const attempt=async()=>{
+   const fresh:UserAIQuestion[]=[];
+   const seen=new Set<string>();
    try{
-    const data=await authenticatedFetch('/api/ai-questions/generate',{
-     method:'POST',body:JSON.stringify(generation)
-    });
-    const fresh=newQuestionsForSelectedLesson(data,generation);
-    if(!fresh.length)throw new Error('A geração não retornou questões novas, revisadas e vinculadas a esta aula.');
+    for(const [index,step] of LESSON_PRACTICE_STEPS.entries()){
+     let remaining:number=step.count;
+     for(let retry=0;retry<3&&remaining>0;retry++){
+      const request={...generation,difficulty:step.difficulty,count:remaining,
+       variation:((generation.variation??0)+index*3+retry)%32};
+      const data=await authenticatedFetch('/api/ai-questions/generate',{
+       method:'POST',body:JSON.stringify(request)
+      });
+      const approved=newQuestionsForSelectedLesson(data,request);
+      for(const question of approved){
+       if(!seen.has(question.id)){seen.add(question.id);fresh.push(question);}
+      }
+      remaining=step.count-fresh.filter(q=>q.difficulty===step.difficulty).length;
+      if(cancelled)return;
+      setLessonPracticeProgress(fresh.length);
+     }
+     if(remaining>0)throw new Error(`A revisão aprovou apenas ${fresh.length} de 10 questões. Não é possível abrir a sequência completa ainda. Tente gerar novamente.`);
+    }
+    if(cancelled)return;
+    if(fresh.length!==10)throw new Error(`Foram aprovadas ${fresh.length} de 10 questões; tente novamente.`);
     start(fresh);
-    setNotice(`${fresh.length} ${fresh.length===1?'questão nova aprovada':'questões novas aprovadas'} para esta aula. ${fresh.length<generation.count?'A revisão aprovou menos questões que o solicitado; nenhuma antiga foi reutilizada.':''}`);
+    setNotice('10 questões inéditas aprovadas para esta aula: 3 básicas, 4 intermediárias e 3 avançadas.');
    }catch(e){
-    setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as questões desta aula.');
+    if(!cancelled)setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as dez questões desta aula.');
    }finally{
-    setLessonPracticeLoading(false);setGenerationStartedAt(null);
+    if(!cancelled){setLessonPracticeLoading(false);setGenerationStartedAt(null);}
    }
   };
   void attempt();
+  return()=>{cancelled=true;};
  },[lessonAutostart,userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry,
     readiness.loading,canGenerate,authenticatedFetch]);
  async function loadMore(){
@@ -320,11 +342,11 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
    {userId&&!session.length&&lessonAutostart&&<section className="dark-panel k-lesson-practice-generation" role="status" aria-live="polite">
     <div className="k-lesson-practice-generation-head"><Sparkles size={22}/><div>
      <strong>{linkedLesson? `Preparando exercícios de ${linkedLesson.topic}`:'Preparando exercícios desta aula'}</strong>
-     <p>O Kognos solicita 3 questões autorais novas, verifica os gabaritos e abre o treino somente com os itens aprovados.</p>
+     <p>O Kognos prepara 10 questões inéditas em ordem crescente de dificuldade: 3 básicas, 4 intermediárias e 3 avançadas. O treino começa automaticamente após a revisão.</p>
     </div></div>
     {lessonPracticeError?<div className="message warning" role="alert">{lessonPracticeError}
      <p>Nenhuma questão antiga será usada como substituta.</p></div>:
-     <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Revisando novas questões · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
+     <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Questões aprovadas: ${lessonPracticeProgress}/10 · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
     <div className="k-lesson-practice-actions">
      {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
      <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
@@ -379,7 +401,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
         <div className="k-ai-recovery-buttons">
          <button type="button" className="btn outline small" onClick={()=>askKogForQuestion(item.questionId)}>Rever o erro com Kog</button>
          {item.lessonId&&<><button type="button" className="btn outline small" onClick={()=>onOpenLesson({subject:item.subject,lessonId:item.lessonId!})}>Reabrir miniaula</button>
-         <button type="button" className="btn outline small" onClick={()=>onGenerateLesson(item.lessonId!)}>Gerar mais 3 questões</button></>}
+         <button type="button" className="btn outline small" onClick={()=>onGenerateLesson(item.lessonId!)}>Gerar mais 10 questões</button></>}
         </div>
        </article>)}</div>
        <button type="button" className="btn primary" disabled={reviewBusy} onClick={()=>void scheduleMistakeReviews()}>

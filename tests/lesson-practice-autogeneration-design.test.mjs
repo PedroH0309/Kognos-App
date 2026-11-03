@@ -9,7 +9,7 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  const app=read('apps/web/src/components/KognosApp.tsx');
  const practice=read('apps/web/src/components/PracticeSpace.tsx');
  assert.match(trails,/userId\?onGenerateAI\(lesson\.id,true\):onPractice\(/);
- assert.match(trails,/Gerar 3 questões desta aula com IA/);
+ assert.match(trails,/Praticar com 10 questões graduais/);
  assert.match(subjects,/if\(userId\)onGenerateAI\(lesson\.id,true\)/);
  assert.match(app,/function generateForLesson\(lessonId:string,generateNew=false\)/);
  assert.match(app,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
@@ -24,7 +24,7 @@ test('one-click new lesson practice uses the reviewed API and opens exactly its 
  assert.match(studio,/lessonPracticeRequestId>0&&Boolean\(focusLessonId\)/);
  assert.match(studio,/handledLessonPractice\.current===requestKey/);
  assert.match(studio,/lessonPracticeGenerationRequest\(focusLessonId/);
- assert.match(studio,/const fresh=newQuestionsForSelectedLesson\(data,generation\)/);
+ assert.match(studio,/const approved=newQuestionsForSelectedLesson\(data,request\)/);
  assert.match(studio,/start\(fresh\)/);
  assert.match(studio,/!lessonAutostart\)void refresh\(\)/);
  assert.match(studio,/!hasServerBank\|\|lessonAutostart/);
