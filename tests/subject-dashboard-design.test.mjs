@@ -8,7 +8,7 @@ const learn=readFileSync('apps/web/src/components/LearningTrails.tsx','utf8');
 const css=readFileSync('apps/web/src/app/design-system.css','utf8');
 
 test('My Subjects is an independent panel, not a copy of Learning Trails',()=>{
- assert.match(app,/const SubjectDashboard=dynamic\(\(\)=>import\('\.\/SubjectDashboard'\),workspaceLoading\)/);
+ assert.match(app,/const SubjectDashboard=dynamic\(\(\)=>import\('\.\/SubjectDashboard'\),\{loading:\(\)=> <WorkspaceLoading\/>\}\)/);
  assert.match(app,/view==='subjects'\?<SubjectDashboard/);
  assert.match(app,/onOpenTrail=\{openFocusedLesson\}/);
  assert.match(dashboard,/PAINEL DE MATÉRIAS/);
