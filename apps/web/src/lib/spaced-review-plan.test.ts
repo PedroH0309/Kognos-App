@@ -40,7 +40,8 @@ test('preserves existing tasks, daily capacity and user-selected exam cutoff',()
  const result=createSpacedReviewPlan({...profile,targetDate:'2026-11-06'},busy,weak,monday,()=>crypto.randomUUID());
  assert.equal(busy.length,1);
  assert.deepEqual(result.created.map(t=>t.date),['2026-11-05']);
- assert.equal(result.skipped,2);
+ assert.equal(result.skipped,1);
+ assert.equal(result.covered,1);
  assert.ok(result.created.every(t=>t.date<='2026-11-06'));
 });
 test('does not exceed the daily budget with multiple weak topics',()=>{
