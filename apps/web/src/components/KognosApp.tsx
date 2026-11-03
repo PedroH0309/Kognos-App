@@ -568,7 +568,7 @@ export default function KognosApp(){
  view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>openAssistant()}/>:
  view==='subjects'?<SubjectDashboard key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
  isRetainedStudyView(view)?(!retainedViews.includes(view)?<WorkspaceLoading/>:null):
- view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-performance`} mode="performance" userId={user?.id||null} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>: 
+ view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-performance`} mode="performance" userId={user?.id||null} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>: 
  view==='sources'?<ExamSources key={user?.id||'guest'} userId={user?.id||null} onLogin={()=>setAuthOpen(true)} onQuestionBank={()=>navigate('questions')}/>: 
  view==='achievements'?<AchievementSpace key={user?.id||'guest'} userId={user?.id||null} onPractice={()=>navigate('questions')}/>: 
  view==='weekly'?<WeeklyExamSpace key={user?.id||'guest'} userId={user?.id||null} profile={actualProfile} onBank={()=>navigate('simulados')} onPlanner={()=>navigate('plans')} onContextChange={setStudyContext} onTutor={()=>openAssistant()}/>:
@@ -594,12 +594,12 @@ export default function KognosApp(){
  </div>}
  {retainedViews.includes('questions')&&<div className="k-retained-workspace" hidden={view!=='questions'}>
   <PracticeSpace key={`${user.id}-questions-${practiceFocus?.questionId||'all'}`} mode="questions" active={view==='questions'}
-   userId={user.id} focus={practiceFocus} aiFocusLessonId={aiFocusLessonId} lessonPracticeRequestId={lessonPracticeRequestId}
-   onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>
+   userId={user.id} profile={actualProfile} focus={practiceFocus} aiFocusLessonId={aiFocusLessonId} lessonPracticeRequestId={lessonPracticeRequestId}
+   onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>
  </div>}
  {retainedViews.includes('simulados')&&<div className="k-retained-workspace" hidden={view!=='simulados'}>
   <PracticeSpace key={`${user.id}-simulados`} mode="simulados" active={view==='simulados'}
-   userId={user.id} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext}/>
+   userId={user.id} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>
  </div>}
  <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Plano':'Perfil'}</button>)}</nav>{assistantInitialized
  ?<KogAssistant open={assistantOpen} onOpen={()=>openAssistant()} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
