@@ -15,7 +15,7 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  assert.match(app,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
  assert.match(practice,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
  assert.match(practice,/\[aiFocusLessonId,lessonPracticeRequestId\]/);
- assert.match(trails,/Praticar demonstração/); // explicit offline guest fallback remains.
+ assert.match(trails,/Praticar exercício/); // explicit offline guest fallback remains.
 });
 test('one-click new lesson practice uses the reviewed API and opens exactly its returned questions',()=>{
  const studio=read('apps/web/src/components/AiQuestionStudio.tsx');

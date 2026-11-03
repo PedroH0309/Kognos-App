@@ -12,7 +12,11 @@
     "start": "npm --workspace @kognos/web run start",
     "lint": "npm --workspace @kognos/web run lint",
     "test": "node --test packages/education-engine/test/*.test.mjs && node --experimental-strip-types --test apps/web/src/lib/*.test.ts",
-    "typecheck": "npm --workspace @kognos/web exec tsc --noEmit",
-    "test:design": "node --test tests/*.test.mjs"
+    "typecheck": "npm --workspace @kognos/web exec -- tsc --noEmit",
+    "test:design": "node --test tests/*.test.mjs",
+    "test:content-db": "node --test tests/security/*.test.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.15"
   }
 }

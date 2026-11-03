@@ -10,6 +10,9 @@ import {evidenceForLesson} from '@/lib/learning-progress';
 import {adjacentLesson,trailSnapshot} from '@/lib/learning-roadmap';
 import {connectedCatalogProgress,connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
+import {linkedExamTopic} from '@/lib/lesson-ai-links';
+import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
+import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import StudySyncNotice from './StudySyncNotice';
 
 type Mode='learn'|'trails';
@@ -91,7 +94,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <h1>{isTrail?'Seu caminho para ': 'Hora de '}<em>{isTrail?'aprender.':'aprender.'}</em></h1>
     <p>{isTrail?'Escolha a matéria, acompanhe as etapas e avance no seu ritmo.':'Estude a aula, resolva uma questão e continue quando estiver pronto.'}</p>
    </div>
-   <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo introdutório</span>
+   <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo preparatório autoral</span>
   </div>
 
   {error&&<div className="message warning" role="alert">{error}</div>}
@@ -141,7 +144,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
 
   <div className={`learning-body-grid learning-journey-workspace ${mode==='learn'?'is-learning-first':''}`}>
    <section className="learning-index dark-panel" aria-label={`Etapas de ${subject}`}>
-    <div className="learning-index-header"><div><span className="overline">{isTrail?'SEQUÊNCIA DA TRILHA':'NAVEGUE PELAS AULAS'}</span><h2>{isTrail?'Etapas do percurso':'Escolha uma aula'}</h2><p>{roadmap.total} conteúdos · {roadmap.estimatedUnpracticedMinutes} min de leitura estimada nos tópicos não praticados</p></div></div>
+    <div className="learning-index-header"><div><span className="overline">{isTrail?'SEQUÊNCIA DA TRILHA':'NAVEGUE PELAS AULAS'}</span><h2>{isTrail?'Etapas do percurso':'Escolha uma aula'}</h2><p>{roadmap.total} conteúdos · {roadmap.estimatedUnpracticedMinutes} min de estudo estimado nos tópicos não praticados</p></div></div>
     <label className="learning-search"><Search size={16} aria-hidden="true"/><span className="sr-only">Buscar tópico</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar assunto…"/></label>
     {!loaded&&<p className="muted" role="status">Carregando evidências de prática…</p>}
     <div className="learning-lesson-list learning-journey-steps">
@@ -162,7 +165,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-lesson-head">
       <span className="overline">AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')} · {lesson.subject.toUpperCase()}</span>
       <h2>{lesson.topic}</h2>
-      <div className="learning-lesson-tags"><span><Clock3 size={14}/> {lesson.minutes} min de leitura</span><span><ListChecks size={14}/> 1 exercício autoral</span><span>{evidenceLabels[evidenceForLesson(lesson,attempts)]}</span></div>
+      <div className="learning-lesson-tags"><span><Clock3 size={14}/> {lesson.minutes} min de estudo estimado</span><span><ListChecks size={14}/> 1 exercício autoral</span><span>{evidenceLabels[evidenceForLesson(lesson,attempts)]}</span></div>
      </div>
      <div className="learning-pedagogy"><span className="learning-pedagogy-icon"><Target size={18}/></span><div><strong>Objetivo da aula</strong><p>{lesson.objective}</p></div></div>
      {lesson.prerequisites.length>0&&<div className="learning-prereqs"><strong>Antes desta aula:</strong> {lesson.prerequisites.map(id=>findLearningLesson(id)).filter((item):item is LearningLesson=>Boolean(item)).map((item,i)=><button type="button" key={item.id} onClick={()=>chooseLesson(item)}>{i>0?', ':''}{item.topic} <ArrowRight size={12}/></button>)}</div>}
@@ -171,7 +174,12 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-lesson-block mistake"><h3>Erro comum</h3><p>{lesson.commonMistake}</p></div>
      <div className="learning-lesson-block check"><h3>Confira se entendeu</h3><p>{lesson.check}</p><small>Responda com suas palavras ou peça uma explicação ao Kog.</small></div>
      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
-     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>userId?onGenerateAI(lesson.id,true):onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>{userId?'Gerar 3 questões desta aula com IA':'Praticar demonstração'} <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
+     <details className="learning-lesson-block learning-catalog-references">
+      <summary>Referências e provas relacionadas</summary>
+      <p>Conteúdo autoral Kognos. Relação editorial com os roteiros abaixo; não é aula oficial nem garantia de cobrança. Confira a edição e a série nos documentos da instituição.</p>
+      <ul>{(Object.keys(examBlueprints) as ExamId[]).filter(id=>linkedExamTopic(lesson.id,id)).map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noreferrer">{id==='vunesp'?'UNESP / VUNESP':examBlueprints[id].label}</a> · {linkedExamTopic(lesson.id,id)}</li>)}</ul>
+     </details>
+     <div className="learning-lesson-actions"><button type="button" className="btn primary" onClick={()=>userId?onGenerateAI(lesson.id,true):onPractice({subject:lesson.subject,topic:lesson.topic,questionId:lesson.questionId})}>{userId?'Gerar 3 questões desta aula com IA':'Praticar exercício'} <ArrowRight size={16}/></button><button type="button" className="btn outline" disabled={!userId} onClick={()=>onGenerateAI(lesson.id)} title={!userId?'Entre em sua conta para gerar questões por IA':'Abrir questões IA vinculadas à aula'}><Sparkles size={15}/> Questões com IA</button>
       <button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>
      <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
      <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
@@ -180,6 +188,6 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     </>:<p className="muted">Escolha uma aula para começar.</p>}
    </section>
   </div>
-  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'Prática demonstrativa e tentativas IA vinculadas aparecem em indicadores separados.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Os materiais ainda são introdutórios; uma resposta isolada não demonstra domínio.</p>
+  <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'Prática demonstrativa e tentativas IA vinculadas aparecem em indicadores separados.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Miniaulas autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
  </main>;
 }

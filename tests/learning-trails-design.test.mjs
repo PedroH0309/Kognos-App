@@ -10,11 +10,11 @@ const css=readFileSync('apps/web/src/app/design-system.css','utf8');
 test('learn, trails and subjects route to distinct learning experiences',()=>{
  assert.match(app,/retainedViews.includes\('learn'\)/);
  assert.match(app,/retainedViews.includes\('trails'\)/);
- assert.match(app,/mode="learn" active=\{view==='learn'\}/);
+ assert.match(app,/<CurriculumRoom[^>]*active=\{view==='learn'\}/);
  assert.match(app,/mode="trails" active=\{view==='trails'\}/);
  assert.match(app,/view==='subjects'\?<SubjectDashboard/);
  assert.match(app,/onPractice=\{practiceFromLesson\}/);
- assert.match(trails,/Praticar demonstração/);
+ assert.match(trails,/Praticar exercício/);
  assert.match(trails,/Questões com IA/);
  assert.match(trails,/evidenceForLesson/);
 });

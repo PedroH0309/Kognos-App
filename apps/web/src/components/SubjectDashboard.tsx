@@ -83,7 +83,7 @@ export default function SubjectDashboard({userId,onOpenTrail,onPractice,onGenera
   {error&&<div className="message warning" role="alert"><span>{error} Verifique o acesso ao seu histórico.</span> <button type="button" className="btn outline small" onClick={()=>void load()}>Tentar novamente</button></div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
   <section className="subject-kpi-grid" aria-label="Visão geral das disciplinas">
-   <article><LibraryBig size={20}/><span>Matérias disponíveis</span><strong>{totals.subjects}</strong><small>Catálogo introdutório</small></article>
+   <article><LibraryBig size={20}/><span>Matérias disponíveis</span><strong>{totals.subjects}</strong><small>Catálogo preparatório autoral</small></article>
    <article><BookOpenText size={20}/><span>Matérias praticadas</span><strong>{ready?totals.active:'—'}</strong><small>Com pelo menos uma tentativa</small></article>
    <article><CheckCircle2 size={20}/><span>Assuntos praticados</span><strong>{ready?`${totals.practiced}/${totals.total}`:'—'}</strong><small>Miniaulas com tentativas</small></article>
    <article><RotateCcw size={20}/><span>Revisões vencidas</span><strong>{ready?totals.due:'—'}</strong><small>Agenda dos exercícios demonstrativos</small></article>

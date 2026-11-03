@@ -4,10 +4,10 @@ import {learningLessons} from './learning-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 import {lessonExamTopics,linkedExamTopic,lessonGenerationPreset,validLessonAIReference,inferLegacyLessonId} from './lesson-ai-links.ts';
 
-const institutions:ExamId[]=['enem','etec','fuvest'];
+const institutions:ExamId[]=['enem','etec','fuvest','vunesp','saresp'];
 
 test('every authored introductory lesson has a server-validated generation preset',()=>{
- assert.equal(learningLessons.length,20);
+ assert.equal(learningLessons.length,80);
  for(const lesson of learningLessons){
   const preset=lessonGenerationPreset(lesson.id);
   assert.ok(preset,`Missing topic bridge for ${lesson.id}`);
@@ -18,7 +18,7 @@ test('every authored introductory lesson has a server-validated generation prese
    if(topic)assert.ok(examBlueprints[id].subjects[lesson.subject]?.includes(topic));
   }
  }
- assert.equal(Object.keys(lessonExamTopics).length,20);
+ assert.equal(Object.keys(lessonExamTopics).length,80);
 });
 
 test('cross-subject and invented lesson tags are refused, never inferred from broad topics',()=>{

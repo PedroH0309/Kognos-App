@@ -316,7 +316,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  return <div className="ai-studio">
    {error&&<div role="alert" className="message warning">{error}</div>}
    {notice&&<div role="status" className="message success">{notice}</div>}
-   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo demonstrativo tem 20 questões fixas. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
+   {!userId&&<div className="dark-panel ai-signin ai-signin-action"><ShieldCheck size={23}/><div><h2>Entre para construir seu banco de IA</h2><p>O acervo autoral oferece exercícios fixos com correção comentada. Com sua conta você gera questões com IA, salva no Supabase, registra pontos e monta simulados.</p><button type="button" className="btn primary" onClick={onLogin}>Entrar ou criar conta</button></div></div>}
    {userId&&!session.length&&lessonAutostart&&<section className="dark-panel k-lesson-practice-generation" role="status" aria-live="polite">
     <div className="k-lesson-practice-generation-head"><Sparkles size={22}/><div>
      <strong>{linkedLesson? `Preparando exercícios de ${linkedLesson.topic}`:'Preparando exercícios desta aula'}</strong>

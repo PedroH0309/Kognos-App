@@ -5,6 +5,7 @@ import {findLearningLesson,type LearningLesson} from './learning-catalog.ts';
 export type KogStudyContext =
   | {kind:'question'; questionId:string; phase:'solving'|'review'}
   | {kind:'lesson'; lessonId:string}
+  | {kind:'curriculum'; courseId:string}
   | {kind:'generated_question'; questionId:string; phase:'solving'|'review'}
   | {kind:'planner'; taskId?:string}
   | {kind:'performance'};
@@ -20,6 +21,7 @@ export function parseKogStudyContext(value:unknown):KogStudyContext|null {
   if(v.kind==='question' && typeof v.questionId==='string' && /^q\d{2,4}$/.test(v.questionId) && (v.phase==='solving'||v.phase==='review')) {
     return {kind:'question',questionId:v.questionId,phase:v.phase};
   }
+  if(v.kind==='curriculum' && typeof v.courseId==='string' && /^[a-z][a-z0-9-]{2,90}$/.test(v.courseId))return {kind:'curriculum',courseId:v.courseId};
   if(v.kind==='lesson' && typeof v.lessonId==='string' && /^[a-z][a-z0-9-]{2,48}$/.test(v.lessonId))return {kind:'lesson',lessonId:v.lessonId};
   if(v.kind==='generated_question' && typeof v.questionId==='string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v.questionId) && (v.phase==='solving'||v.phase==='review'))return {kind:'generated_question',questionId:v.questionId,phase:v.phase};
   if(v.kind==='planner'){

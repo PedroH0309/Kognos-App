@@ -51,6 +51,7 @@ const AchievementSpace=dynamic(()=>import('./AchievementSpace'),{loading:()=> <W
 const DiagnosticSpace=dynamic(()=>import('./DiagnosticSpace'),{loading:()=> <WorkspaceLoading/>});
 const WeeklyExamSpace=dynamic(()=>import('./WeeklyExamSpace'),{loading:()=> <WorkspaceLoading/>});
 const ReviewSpace=dynamic(()=>import('./ReviewSpace'),{loading:()=> <WorkspaceLoading/>});
+const CurriculumRoom=dynamic(()=>import('./CurriculumRoom'),{loading:()=> <WorkspaceLoading/>});
 const LearningTrails=dynamic(()=>import('./LearningTrails'),{loading:()=> <WorkspaceLoading/>});
 const SubjectDashboard=dynamic(()=>import('./SubjectDashboard'),{loading:()=> <WorkspaceLoading/>});
 const StudyPlanner=dynamic(()=>import('./StudyPlanner'),{loading:()=> <WorkspaceLoading/>});
@@ -583,9 +584,9 @@ export default function KognosApp(){
  {/* Cache only visited lessons and practice screens. Hidden panels are not
      focusable, do not occupy layout space and never mount for another account. */}
  {retainedViews.includes('learn')&&<div className="k-retained-workspace" hidden={view!=='learn'}>
-  <LearningTrails key={`${user.id}-learn`} mode="learn" active={view==='learn'} focus={view==='learn'?learningFocus:null}
+  <CurriculumRoom key={`${user.id}-learn`} active={view==='learn'} focus={view==='learn'?learningFocus:null}
    userId={user.id} onTutor={()=>openAssistant()} onContextChange={setStudyContext}
-   onPractice={practiceFromLesson} onGenerateAI={generateForLesson} onSeeTrails={openFocusedLesson}/>
+   onGenerateAI={generateForLesson}/>
  </div>}
  {retainedViews.includes('trails')&&<div className="k-retained-workspace" hidden={view!=='trails'}>
   <LearningTrails key={`${user.id}-trails`} mode="trails" active={view==='trails'} focus={view==='trails'?learningFocus:null}
