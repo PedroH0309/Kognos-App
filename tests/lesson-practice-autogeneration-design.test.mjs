@@ -9,7 +9,7 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  const app=read('apps/web/src/components/KognosApp.tsx');
  const practice=read('apps/web/src/components/PracticeSpace.tsx');
  assert.match(trails,/userId\?onGenerateAI\(lesson\.id,true\):onPractice\(/);
- assert.match(trails,/Gerar 3 questões desta aula com IA/);
+ assert.match(trails,/Praticar com 10 questões graduais/);
  assert.match(subjects,/if\(userId\)onGenerateAI\(lesson\.id,true\)/);
  assert.match(app,/function generateForLesson\(lessonId:string,generateNew=false\)/);
  assert.match(app,/lessonPracticeRequestId=\{lessonPracticeRequestId\}/);
@@ -17,14 +17,16 @@ test('signed-in lesson and subject actions request fresh AI questions, not saved
  assert.match(practice,/\[aiFocusLessonId,lessonPracticeRequestId\]/);
  assert.match(trails,/Praticar demonstração/); // explicit offline guest fallback remains.
 });
-test('one-click new lesson practice uses the reviewed API and opens exactly its returned questions',()=>{
+test('one-click lesson practice uses reviewed API batches and opens exactly ten graded questions',()=>{
  const studio=read('apps/web/src/components/AiQuestionStudio.tsx');
  const engine=read('apps/web/src/lib/nvidia-question-engine.ts');
  const backend=read('apps/web/src/app/api/ai-questions/generate/route.ts');
  assert.match(studio,/lessonPracticeRequestId>0&&Boolean\(focusLessonId\)/);
  assert.match(studio,/handledLessonPractice\.current===requestKey/);
  assert.match(studio,/lessonPracticeGenerationRequest\(focusLessonId/);
- assert.match(studio,/const fresh=newQuestionsForSelectedLesson\(data,generation\)/);
+ assert.match(studio,/const approved=newQuestionsForSelectedLesson\(data,request\)/);
+ assert.match(studio,/LESSON_PRACTICE_STEPS\.entries\(\)/);
+ assert.match(studio,/fresh\.length!==10/);
  assert.match(studio,/start\(fresh\)/);
  assert.match(studio,/!lessonAutostart\)void refresh\(\)/);
  assert.match(studio,/!hasServerBank\|\|lessonAutostart/);
