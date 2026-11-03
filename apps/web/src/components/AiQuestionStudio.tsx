@@ -154,7 +154,11 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  // the status hook, saved bank or component re-rendered. React Strict Mode is
  // also guarded by handledLessonPractice.
  useEffect(()=>{
-  if(!lessonAutostart||!userId||!focusLessonId||readiness.loading)return;
+  if(!lessonAutostart){
+   handledLessonPractice.current='';
+   return;
+  }
+  if(!userId||!focusLessonId||readiness.loading)return;
   const requestKey=[userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry].join(':');
   if(handledLessonPractice.current===requestKey)return;
   handledLessonPractice.current=requestKey;
@@ -173,7 +177,10 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   setLessonPracticeLoading(true);setLessonPracticeProgress(0);
   setLessonPracticeError('');setError('');setNotice('');
   setGenerationStartedAt(Date.now());setGenerationSeconds(0);
-  let cancelled=false;
+  // Strict Mode replays effects in development. Do not cancel the first
+  // generation on cleanup while keeping its deduplication guard.
+  // Instead, ignore results after a different practice request wins.
+  const stillCurrent=()=>handledLessonPractice.current===requestKey;
   const attempt=async()=>{
    const fresh:UserAIQuestion[]=[];
    const seen=new Set<string>();
@@ -181,33 +188,35 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
     for(const [index,step] of LESSON_PRACTICE_STEPS.entries()){
      let remaining:number=step.count;
      for(let retry=0;retry<3&&remaining>0;retry++){
+      if(!stillCurrent())return;
       const request={...generation,difficulty:step.difficulty,count:remaining,
        variation:((generation.variation??0)+index*3+retry)%32};
       const data=await authenticatedFetch('/api/ai-questions/generate',{
        method:'POST',body:JSON.stringify(request)
       });
+      if(!stillCurrent())return;
       const approved=newQuestionsForSelectedLesson(data,request);
       for(const question of approved){
        if(!seen.has(question.id)){seen.add(question.id);fresh.push(question);}
       }
       remaining=step.count-fresh.filter(q=>q.difficulty===step.difficulty).length;
-      if(cancelled)return;
+      if(!stillCurrent())return;
       setLessonPracticeProgress(fresh.length);
      }
      if(remaining>0)throw new Error(`A revisão aprovou apenas ${fresh.length} de 10 questões. Não é possível abrir a sequência completa ainda. Tente gerar novamente.`);
     }
-    if(cancelled)return;
+    if(!stillCurrent())return;
     if(fresh.length!==10)throw new Error(`Foram aprovadas ${fresh.length} de 10 questões; tente novamente.`);
     start(fresh);
     setNotice('10 questões inéditas aprovadas para esta aula: 3 básicas, 4 intermediárias e 3 avançadas.');
    }catch(e){
-    if(!cancelled)setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as dez questões desta aula.');
+    if(stillCurrent())setLessonPracticeError(e instanceof Error?e.message:'Não foi possível gerar as dez questões desta aula.');
    }finally{
-    if(!cancelled){setLessonPracticeLoading(false);setGenerationStartedAt(null);}
+    if(stillCurrent()){setLessonPracticeLoading(false);setGenerationStartedAt(null);}
    }
   };
   void attempt();
-  return()=>{cancelled=true;};
+  
  },[lessonAutostart,userId,focusLessonId,lessonPracticeRequestId,lessonPracticeRetry,
     readiness.loading,canGenerate,authenticatedFetch]);
  async function loadMore(){
@@ -351,7 +360,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
      <p className="k-lesson-practice-pending">{lessonPracticeLoading?`Questões aprovadas: ${lessonPracticeProgress}/10 · ${generationSeconds}s`:'Verificando a disponibilidade da geração…'}</p>}
     <div className="k-lesson-practice-actions">
      {lessonPracticeError&&<button type="button" className="btn primary" onClick={()=>setLessonPracticeRetry(value=>value+1)}><RefreshCw size={15}/> Tentar gerar novamente</button>}
-     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
+     <button type="button" className="btn outline" disabled={lessonPracticeLoading} onClick={()=>{handledLessonPractice.current='';setManualBankForRequest(lessonPracticeRequestId);setLessonPracticeLoading(false);setLessonPracticeError('');}}>Abrir banco existente manualmente</button>
     </div>
     <p className="privacy-note">O processo utiliza a configuração gratuita de IA do servidor, sujeita às cotas dos provedores. Nenhum resultado é inventado quando a geração falha.</p>
    </section>}
