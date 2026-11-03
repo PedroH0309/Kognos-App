@@ -34,7 +34,7 @@ test('startup does not statically import heavy study workspaces or load the tuto
   assert.ok(!app.includes(`import ${screen} from './${screen}';`),screen);
  }
  assert.match(app,/const KogAssistant=dynamic\(\(\)=>import\('\.\/KogAssistant'\)/);
- assert.match(app,/assistantInitialized\?<KogAssistant open=\{assistantOpen\}/);
+ assert.match(app,/assistantInitialized\s*\?\s*<KogAssistant open=\{assistantOpen\}/);
  assert.match(app,/function openAssistant\(\)\{setAssistantInitialized\(true\);setAssistantOpen\(true\);\}/);
  assert.match(app,/k-kog-lightweight-launcher/);
  assert.match(app,/WorkspaceLoading/);
