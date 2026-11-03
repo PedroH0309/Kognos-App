@@ -522,3 +522,12 @@ button {touch-action:manipulation;}
 .app-layout .k-weekly-dot.is-active{stroke:#38CDE5;stroke-width:4}
 .app-layout .k-weekly-interaction-hint{font-size:10px;color:var(--sub);margin:11px 0 0}
 @media(prefers-reduced-motion:reduce){.app-layout .k-weekly-hit-ring{transition:none}}
+
+/* Suspense-like workspace placeholder while Next.js fetches an infrequently
+ * opened route. Avoid a blank flash when navigating on slower connections.
+ */
+.app-layout .k-workspace-loading{min-height:40vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;color:var(--sub);text-align:center}
+.app-layout .k-workspace-loading-pulse{width:37px;height:37px;border-radius:50%;border:3px solid var(--line);border-top-color:#5B4DE3;animation:k-workspace-spin .8s linear infinite}
+.app-layout .k-workspace-loading p{margin:0;font-size:12px}
+@keyframes k-workspace-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.app-layout .k-workspace-loading-pulse{animation:none;border-top-color:#38CDE5}}
