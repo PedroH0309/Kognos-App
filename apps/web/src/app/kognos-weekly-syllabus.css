@@ -100,3 +100,13 @@
 .app-layout .k-syllabus-verified>a{font-size:11px;color:#38AFC5;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .app-layout .k-syllabus-verified>small{font-size:11px;line-height:1.6;color:var(--sub);max-width:none;text-align:left}
 @media(max-width:530px){.app-layout .k-syllabus-verified{padding:10px}}
+
+/* One-click syllabus -> Kognos calendar. Buttons stay usable on touch devices
+ * and keep each distinct topic visible without adding modal friction. */
+.app-layout .k-syllabus-schedule{grid-column:1/-1;justify-self:start;min-height:40px;padding:8px 12px;margin:3px 0 0;border:1px solid #5B4DE3;border-radius:10px;background:transparent;color:#5B4DE3;font-size:11px;font-weight:750;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.app-layout .k-syllabus-schedule:not(:disabled):hover{background:#5B4DE3;color:white}
+.app-layout .k-syllabus-schedule:focus-visible{outline:3px solid #38CDE5;outline-offset:3px}
+.app-layout .k-syllabus-schedule:disabled{opacity:.58;cursor:not-allowed}
+.app-layout .k-syllabus-topic.review .k-syllabus-schedule:not(:disabled){border-color:#C47B38;color:#B3682F}
+.app-layout .k-syllabus-topic.review .k-syllabus-schedule:not(:disabled):hover{background:#C47B38;color:white}
+@media(prefers-reduced-motion:reduce){.app-layout .k-syllabus-schedule{transition:none}}
