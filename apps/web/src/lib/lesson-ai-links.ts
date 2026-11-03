@@ -2,7 +2,7 @@ import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 import {findLearningLesson,learningLessons} from './learning-catalog.ts';
 
 /** Explicit editorial bridges. These are NOT a claim that the institution endorses the lesson. */
-export const lessonExamTopics: Readonly<Record<string,Partial<Record<ExamId,string>>>> = {
+const introductoryExamTopics: Readonly<Record<string,Partial<Record<ExamId,string>>>> = {
  'math-percentages':{enem:'Porcentagem e razão',etec:'Porcentagem e proporções'},
  'math-equations':{etec:'Equações e problemas'},
  'math-functions':{enem:'Funções e gráficos',fuvest:'Funções e modelagem'},
@@ -24,6 +24,29 @@ export const lessonExamTopics: Readonly<Record<string,Partial<Record<ExamId,stri
  'geo-maps':{enem:'Cartografia',etec:'Mapas e escalas'},
  'geo-climate':{enem:'Clima e ambiente',fuvest:'Climatologia'},
 };
+
+// Exact editorial topic matches only: never infer cross-subject or fuzzy links.
+const expandedExamTopics: Record<string,Partial<Record<ExamId,string>>> = {};
+for(const lesson of learningLessons){
+ const links:Partial<Record<ExamId,string>>={};
+ for(const institution of Object.keys(examBlueprints) as ExamId[]){
+  if(examBlueprints[institution].subjects[lesson.subject]?.includes(lesson.topic))links[institution]=lesson.topic;
+ }
+ expandedExamTopics[lesson.id]={...links,...introductoryExamTopics[lesson.id]};
+}
+const fundamentalBridges:Record<string,string>={
+ 'math-ratios':'Razões, proporções e regra de três',
+ 'math-geometry':'Semelhança e teorema de Pitágoras',
+ 'math-statistics':'Estatística, gráficos e tabelas',
+ 'pt-cohesion':'Coesão e coerência',
+ 'pt-language':'Variação linguística',
+ 'pt-figures':'Figuras de linguagem e sentidos do texto',
+ 'pt-syntax':'Sintaxe, concordância e regência',
+};
+for(const [id,topic] of Object.entries(fundamentalBridges)){
+ expandedExamTopics[id]={...expandedExamTopics[id],etec:topic,saresp:topic};
+}
+export const lessonExamTopics:Readonly<Record<string,Partial<Record<ExamId,string>>>>=expandedExamTopics;
 
 export function linkedExamTopic(lessonId:string,institution:ExamId):string|null {
  const lesson=findLearningLesson(lessonId);
@@ -50,7 +73,7 @@ export function inferLegacyLessonId(institution:ExamId,subject:string,topic:stri
 export function lessonGenerationPreset(lessonId:string,preferred?:ExamId){
  const lesson=findLearningLesson(lessonId);
  if(!lesson)return null;
- const institutions:ExamId[]=preferred?[preferred,'enem','etec','fuvest']:['enem','etec','fuvest'];
+ const institutions:ExamId[]=preferred?[preferred,'enem','etec','fuvest','vunesp','saresp']:['enem','etec','fuvest','vunesp','saresp'];
  for(const institution of institutions){const topic=linkedExamTopic(lessonId,institution);if(topic)return {lessonId:lesson.id,institution,subject:lesson.subject,topic};}
  return null;
 }
