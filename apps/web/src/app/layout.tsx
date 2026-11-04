@@ -15,6 +15,7 @@ import "./kognos-classrooms.css";
 import "./kognos-math-labs.css";
 import "./kognos-math-stage2.css";
 import "./kognos-study-explorer.css";
+import "./kognos-science-labs.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",
