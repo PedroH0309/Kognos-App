@@ -12,7 +12,9 @@ test('education-only filtering runs in authenticated tutor route before external
  const call=route.indexOf("requestAI('tutor'");
  assert.ok(guard>=0&&call>guard,'guard must run before calling the provider');
  assert.match(route,/enforcePedagogicalTutorAnswer\(answer\)/);
- assert.doesNotMatch(route,/reserve_ai_quota|Cota diária esgotada/);
+ assert.match(route,/reserve_ai_quota/);
+ assert.ok(route.indexOf("rpc('reserve_ai_quota'")>guard,'Only allowed educational requests may consume tutor quota');
+ assert.ok(route.indexOf("rpc('reserve_ai_quota'")<call,'Quota must be reserved before the provider call');
 });
 test('tutor UI uses the same educational guard and no code response is displayed',()=>{
  const ui=read('apps/web/src/components/KogAssistant.tsx');
