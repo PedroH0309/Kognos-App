@@ -29,7 +29,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
  const [solutions,setSolutions]=useState<Record<string,boolean>>({});
  const method=studyMethodForSubject(subject);
  const authored=Boolean(lesson||introduction);
- const status=lesson?'AULA DESENVOLVIDA':introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
+ const status=lesson?(lesson.review==='introductory'?'AULA-BASE PRÉ-CARREGADA · REVISÃO DOCENTE PENDENTE':'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
  const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>t.level===section.level)
   .map((_,i)=>idFor(section.level,i))):introduction?['intro']:[];
@@ -59,7 +59,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
      <div className="k-lesson-chapter-heading"><span>{sectionNumber(i)}</span><div><small>{levels[section.level]}</small><h4>{section.title}</h4></div></div>
      <TextBlocks value={section.explanation}/>
     </article>)}
-    <p className="k-lesson-source">Material {lesson.review==='ai_reviewed'?'revisado automaticamente por IA, sem homologação docente':'editorial'} · autoria: {lesson.authorship}.</p>
+    <p className="k-lesson-source">{lesson.review==='introductory'?'Material inicial, montado com modelos didáticos e orientações curriculares; não representa aula integral revisada por professor.':lesson.review==='ai_reviewed'?'Material revisado automaticamente por IA, sem homologação docente.':'Material editorial.'} Autoria: {lesson.authorship}.</p>
    </>}
    {!lesson&&introduction&&<>
     <div className="k-lesson-objective"><strong>Objetivo da introdução</strong><p>{introduction.objective}</p></div>
