@@ -7,6 +7,7 @@ import {starterCoverage,starterLesson} from './starter-lessons.ts';
 
 test('Every subject beyond mathematics receives an individually authored foundation lesson',()=>{
  const all=new Set(deepCrossSubjectTopics.map(item=>item.subject));
+ assert.equal(deepCrossSubjectTopics.length,30,'Expected 30 authored cross-disciplinary lessons, not generic templates');
  assert.equal(all.size,15,'Coverage includes the other fifteen subject areas');
  for(const entry of deepCrossSubjectTopics){
   const topic=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.topic);
