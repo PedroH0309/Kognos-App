@@ -93,14 +93,6 @@ const broadStudyMethods:Record<string,{concept:string;method:string;example:stri
   example:'Ao investigar dissolução de um sólido, compare condições controladas e observe alterações sem presumir automaticamente reação química.',
   warning:'Uma única observação sem controle adequado não confirma uma lei geral.'}
 };
-const missing:SubjectSeed={
- terms:'Aprender este tema requer definir seus conceitos, observar exemplos verificáveis e relacionar o assunto ao contexto curricular apresentado. Este módulo inicial organiza a investigação sem substituir uma aula revisada por especialistas.',
- method:'Leia a descrição específica do programa, identifique os termos essenciais, busque evidências e compare casos diferentes. Se não houver informação suficiente, registre a dúvida sem inventar uma explicação.',
- example:'Construa um exemplo original compatível com os conceitos estudados e justifique, com base no material da disciplina, por que ele representa o assunto.',
- pitfall:'Uma descrição de programa não equivale automaticamente à explicação completa do fenômeno, e não autoriza conclusões sem evidência.',
- question:'Quais conceitos precisam ser definidos e quais evidências permitiriam verificar uma explicação deste conteúdo?',
- answer:'A resposta deve mencionar os conceitos destacados no roteiro e apresentar evidências verificáveis. A verificação depende de material editorial especializado.'
-};
 function shorten(value:string,max:number){return value.length<=max?value:value.slice(0,max-1).trimEnd()+'…';}
 export function starterCoverage(topic:CurriculumTopic):StarterCoverage{
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
