@@ -1329,6 +1329,195 @@ const lessons:LessonSpec[] = [
         "Alterações em genes reguladores podem permitir proliferação inadequada e outras vantagens celulares. A formação e progressão de tumores são processos multifatoriais que envolvem diversos eventos genéticos e contextuais."
       ]
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Era Vargas",
+    "objective": "Relacionar a Revolução de 1930, o governo provisório, a constitucionalização de 1934, o Estado Novo e as políticas trabalhistas aos conflitos sociais e políticos do Brasil.",
+    "sections": [
+      {
+        "title": "1930, crise oligárquica e governo provisório",
+        "explanation": "A chegada de Getúlio Vargas ao poder em 1930 ocorreu num contexto de disputas entre elites estaduais, crise de 1929, descontentamentos militares e conflitos sobre a sucessão presidencial. O movimento que depôs Washington Luís encerrou a Primeira República, mas não representou participação política uniforme de toda a população. No Governo Provisório (1930–1934), Vargas centralizou decisões federais e nomeou interventores para estados, redefinindo relações entre poder central e grupos regionais. A Revolução Constitucionalista de 1932, com forte mobilização em São Paulo, contestou aspectos dessa centralização e exigiu uma nova constituição. A Assembleia Constituinte aprovou a Constituição de 1934, que ampliou disposições sociais e reorganizou regras eleitorais.",
+        "example": "Um quadro cronológico original pode distinguir 1930, ruptura política e início do governo provisório; 1932, conflito constitucionalista; e 1934, nova Constituição. Assim se evita afirmar que a ditadura do Estado Novo foi instituída imediatamente após 1930.",
+        "pitfall": "Tratar o movimento de 1930 como revolução social homogênea ou dizer que a Constituição de 1934 foi promulgada logo no dia da deposição de Washington Luís."
+      },
+      {
+        "title": "Constituição de 1934 e Estado Novo",
+        "explanation": "Após a Constituição de 1934, Vargas passou a governar em fase constitucional, mas o ambiente político permaneceu polarizado. A Ação Integralista Brasileira e a Aliança Nacional Libertadora expressaram projetos distintos, enquanto conflitos sociais e anticomunismo influenciaram decisões do governo. Em 1937, Vargas implantou o Estado Novo, regime autoritário que fechou o Congresso, cancelou eleições e impôs uma nova constituição. A propaganda oficial se fortaleceu, notadamente por meio do Departamento de Imprensa e Propaganda (DIP), criado em 1939, e a censura restringiu a oposição. A centralização política combinou projetos de industrialização e intervenção estatal com supressão de liberdades; ambos os aspectos precisam integrar a análise.",
+        "example": "Compare dois documentos hipotéticos: um discurso oficial que exalta unidade nacional e uma manifestação censurada que denuncia falta de eleições. O primeiro ajuda a compreender a propaganda do regime; o segundo mostra limites da participação política sob a ditadura.",
+        "pitfall": "Classificar o Estado Novo como regime plenamente democrático por ter implementado medidas trabalhistas ou confundir 1934 com a constituição autoritária de 1937."
+      },
+      {
+        "title": "Legislação trabalhista, industrialização e desfecho",
+        "explanation": "Durante o período, o Estado expandiu sua atuação em relações de trabalho e na economia. A Consolidação das Leis do Trabalho (CLT), de 1943, reuniu e sistematizou normas trabalhistas existentes, mas a extensão de direitos variou entre categorias e não significou proteção universal imediata aos trabalhadores rurais. O governo buscou fortalecer setores industriais estratégicos e a presença do Estado na economia, como demonstra a criação da Companhia Siderúrgica Nacional. Vargas combinou aproximação política com o trabalho urbano organizado e mecanismos de controle sindical. Em 1945, pressões pela redemocratização e transformações ligadas ao fim da Segunda Guerra levaram à sua deposição. Seu retorno à presidência por eleição em 1951 pertence a outro período, que não deve ser confundido com 1930–1945.",
+        "example": "Ao analisar a CLT de 1943, um estudante pode identificar direitos e regulação das relações de emprego urbano, mas também perguntar quais trabalhadores foram efetivamente abrangidos e como o Estado controlava organizações sindicais naquele contexto.",
+        "pitfall": "Afirmar que Vargas criou do zero todos os direitos trabalhistas ou que a CLT garantiu as mesmas proteções a todas as atividades e regiões brasileiras."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Organize cronologicamente: Constituição de 1934, movimento de 1930 e Estado Novo de 1937.",
+        "Use os anos para separar fases políticas.",
+        "A sequência correta é 1930, ruptura da Primeira República; 1934, nova Constituição; 1937, implantação do Estado Novo. Esses eventos representam fases distintas do governo Vargas."
+      ],
+      [
+        "basic",
+        "Que conflito em 1932 pressionou o governo Vargas por constitucionalização?",
+        "Considere o movimento de São Paulo.",
+        "A Revolução Constitucionalista de 1932, com participação especialmente forte em São Paulo, contestou a centralização do governo e reivindicou uma nova organização constitucional."
+      ],
+      [
+        "intermediate",
+        "Explique por que o Estado Novo pode ser caracterizado como ditadura.",
+        "Observe instituições representativas e liberdades civis.",
+        "O Estado Novo fechou o Congresso, suprimiu eleições e censurou a oposição, concentrando poder no Executivo. Essas características configuram autoritarismo, apesar de medidas de modernização econômica."
+      ],
+      [
+        "intermediate",
+        "Qual foi o papel da CLT de 1943, e por que ela não deve ser descrita como proteção universal imediata?",
+        "Diferencie sistematização legal e alcance social.",
+        "A CLT reuniu e sistematizou legislação trabalhista e estabeleceu regras para relações de trabalho. Sua cobertura e aplicação variavam; muitos trabalhadores rurais não receberam as mesmas garantias naquele contexto."
+      ],
+      [
+        "advanced",
+        "Compare modernização industrial e controle político durante o Estado Novo sem tratar um aspecto como justificativa do outro.",
+        "Considere economia e liberdades políticas separadamente.",
+        "O regime impulsionou políticas de industrialização e intervenção estatal, mas simultaneamente restringiu direitos políticos e expressão. O avanço econômico não transforma censura ou fechamento do Congresso em instituições democráticas."
+      ],
+      [
+        "advanced",
+        "Por que a presidência iniciada em 1951 não deve ser chamada de continuação direta do Estado Novo?",
+        "Reconheça a deposição de 1945 e a eleição posterior.",
+        "Vargas foi deposto em 1945, houve reorganização política e ele voltou à presidência por eleição em 1951. Trata-se de outro contexto institucional, distinto da ditadura de 1937–1945."
+      ]
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Fusos horários",
+    "objective": "Calcular diferenças de horário a partir da rotação terrestre e da longitude, distinguindo hora solar teórica, hora legal e mudanças de data.",
+    "sections": [
+      {
+        "title": "Rotação, meridianos e 15 graus por hora",
+        "explanation": "A Terra realiza uma rotação completa de aproximadamente 360° em cerca de 24 horas, o que corresponde a 15° de longitude por hora ou a 1° a cada quatro minutos em um modelo geométrico simplificado. Localidades a leste tendem a apresentar horário solar mais adiantado que localidades a oeste, pois alcançam posições relativas ao Sol antes no movimento de rotação. Esse raciocínio é útil para cálculos escolares de hora solar, mas não descreve automaticamente os fusos civis de cada país. A hora legal segue decisões administrativas, fronteiras políticas e mudanças legislativas; um município pode usar o horário de uma zona cujo meridiano central não coincide com sua longitude.",
+        "example": "Duas localidades hipotéticas no mesmo paralelo, em 30° O e 45° O, estão separadas por 15° de longitude. No modelo de hora solar, o ponto a 30° O está uma hora adiantado em relação ao de 45° O porque fica mais a leste.",
+        "pitfall": "Confundir o cálculo geométrico por meridianos com a hora oficial de qualquer cidade ou somar horas quando se desloca para oeste."
+      },
+      {
+        "title": "UTC, fuso civil e conversão de horários",
+        "explanation": "UTC é um padrão de referência para horários globais. Um local com fuso UTC−3 apresenta, em condições fixas, três horas a menos que UTC; UTC+2 indica duas horas a mais. Para converter de UTC−3 para UTC+2, acrescente cinco horas, pois +2−(−3)=5. Se o resultado ultrapassar 24 h ou ficar negativo, ajuste também o dia. Horários de verão e decisões oficiais podem alterar offsets ao longo do tempo, por isso a data é importante em situações reais. A diferença entre offsets civis não precisa ser de uma hora inteira em todos os países. Em exercícios, use sempre os fusos fornecidos pelo enunciado quando ele especificar convenções simplificadas.",
+        "example": "Se uma reunião ocorre às 20h de terça-feira em UTC−3 e outra localidade usa UTC+2 na mesma data, o horário correspondente é 01h de quarta-feira. O cálculo é 20+5=25, isto é, 01h do dia seguinte.",
+        "pitfall": "Calcular apenas o horário no relógio sem verificar mudança de data ou considerar UTC−3 como três horas à frente de UTC."
+      },
+      {
+        "title": "Linha Internacional de Data e casos reais",
+        "explanation": "A Linha Internacional de Data aproxima-se do antimeridiano de 180°, mas faz desvios para respeitar decisões e territórios. Cruzá-la pode exigir alteração de data civil, dependendo do sentido de deslocamento. Isso não significa mudar a duração física do dia experimentado por uma pessoa; a mudança é uma convenção de calendário para coordenar horários globais. Em uma viagem real, passagens aéreas, fusos legais e duração do trajeto precisam ser considerados conjuntamente. A diferença de longitude ajuda a entender a distribuição aproximada dos horários, porém não permite inferir a hora atual de qualquer país sem consultar sua regra legal para a data específica.",
+        "example": "Um viajante parte de uma localidade em UTC+12 às 10h de segunda-feira e se comunica com outra em UTC−10 no mesmo instante. Pelo modelo de offsets, a segunda localidade está 22 horas atrás, logo são 12h de domingo; o calendário local é diferente.",
+        "pitfall": "Afirmar que a linha de data coincide integralmente com o meridiano de 180° ou aplicar um offset atual a eventos históricos sem conferir mudanças legais."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "No modelo de hora solar, qual diferença corresponde a 45° de longitude?",
+        "Use 15° para cada hora.",
+        "Como 45°/15° por hora = 3 horas, duas localidades separadas por 45° de longitude apresentam diferença de aproximadamente 3 horas solares, no modelo simplificado."
+      ],
+      [
+        "basic",
+        "Em um horário civil fixo UTC−3, que horas são quando UTC marca 18h do mesmo dia?",
+        "Subtraia três horas de UTC.",
+        "Em UTC−3, 18h UTC correspondem a 15h do mesmo dia. O sinal negativo indica atraso em relação à referência, não antecipação."
+      ],
+      [
+        "intermediate",
+        "Quando são 22h em UTC−3, que horas são em UTC+2 no mesmo instante?",
+        "A diferença entre os offsets é de cinco horas.",
+        "Some cinco horas a 22h: são 03h do dia seguinte em UTC+2. O horário e a data devem ser ajustados conjuntamente."
+      ],
+      [
+        "intermediate",
+        "No modelo de hora solar, qual local fica mais adiantado: 60° O ou 30° O? Em quanto tempo?",
+        "Mais a leste significa menos graus a oeste.",
+        "30° O está mais a leste que 60° O. A diferença de 30° equivale a aproximadamente duas horas solares; 30° O está duas horas adiantado nesse modelo."
+      ],
+      [
+        "advanced",
+        "Uma chamada começa às 23h de segunda-feira em UTC+1. Qual é o horário equivalente em UTC−4?",
+        "Calcule o destino menos a origem: −4−(+1).",
+        "O fuso de destino está cinco horas atrás: 23−5=18h. Portanto, são 18h da mesma segunda-feira em UTC−4, supondo offsets fixos."
+      ],
+      [
+        "advanced",
+        "Explique por que 15° de diferença de longitude não garantem exatamente uma hora de diferença nos relógios oficiais.",
+        "Diferencie horário solar e hora legal.",
+        "A divisão em 15° é aproximação geométrica de hora solar. Fusos oficiais seguem fronteiras e decisões políticas; há offsets fracionários e mudanças sazonais ou históricas."
+      ]
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Aristóteles e a lógica",
+    "objective": "Identificar a estrutura de argumentos categóricos na tradição aristotélica e distinguir validade, verdade de premissas, inferência e falácias.",
+    "sections": [
+      {
+        "title": "Proposição, termo e argumento",
+        "explanation": "Na tradição associada a Aristóteles, a lógica investiga formas de raciocínio e condições pelas quais conclusões seguem de premissas. Um argumento não é uma afirmação isolada: contém uma ou mais premissas e uma conclusão. Na análise categórica, proposições podem relacionar classes, como “Todo A é B”, “Nenhum A é B” ou “Algum A é B”. É fundamental distinguir estrutura de conteúdo: uma inferência pode ser válida mesmo quando alguma premissa é falsa; validade diz respeito à impossibilidade de premissas verdadeiras acompanharem conclusão falsa naquela forma. Termos como “todo” e “algum” determinam a quantidade lógica da afirmação. A lógica antiga possui escopo próprio e não se confunde com toda a lógica formal moderna.",
+        "example": "Premissas: “Todos os mamíferos são vertebrados” e “Todas as baleias são mamíferos”. Conclusão: “Todas as baleias são vertebrados”. O termo médio “mamíferos” conecta as classes; aceitar as premissas obriga a conclusão dentro dessa forma.",
+        "pitfall": "Achar que um argumento com conclusão factual verdadeira é necessariamente válido, mesmo que essa conclusão não decorra das premissas."
+      },
+      {
+        "title": "Silogismo categórico e formas válidas",
+        "explanation": "Um silogismo categórico clássico articula duas premissas e uma conclusão envolvendo três termos: maior, menor e médio. O termo médio aparece nas premissas e estabelece a ligação inferencial, mas não precisa aparecer na conclusão. Um padrão válido conhecido é: todo M é P; todo S é M; portanto, todo S é P. Porém, não basta reunir três frases com “todo” para obter validade. A distribuição dos termos e a quantidade das proposições importam; a existência de membros nas classes também deve ser tratada com cuidado em interpretações modernas. A análise escolar pode começar por diagramas de conjuntos para visualizar inclusão e exclusão, evitando confiar somente na familiaridade verbal das frases.",
+        "example": "“Todos os felinos são mamíferos. Todos os tigres são felinos. Logo, todos os tigres são mamíferos.” Nos conjuntos, a classe dos tigres está contida na dos felinos, que está contida na dos mamíferos. A transitividade da inclusão sustenta a conclusão.",
+        "pitfall": "Inverter uma inclusão sem justificativa: de “Todos os cães são mamíferos” não segue que “Todos os mamíferos são cães”."
+      },
+      {
+        "title": "Falácias, validade e argumentos cotidianos",
+        "explanation": "Uma falácia formal acontece quando a estrutura inferencial não garante a conclusão. Por exemplo: “Se chove, a rua molha; a rua molhou; logo choveu” afirma o consequente e ignora explicações alternativas, como limpeza da rua. Essa forma é melhor estudada pela lógica proposicional, mas ajuda a diferenciar raciocínio válido de persuasão aparente. Na tradição aristotélica, a relação entre lógica, demonstração e conhecimento também envolve conteúdo das premissas e explicação das causas. Para avaliar um argumento, primeiro organize premissas e conclusão; em seguida teste se haveria um caso com premissas verdadeiras e conclusão falsa. Separadamente, investigue se as premissas têm sustentação factual.",
+        "example": "Argumento inválido: “Todos os pássaros são animais. Todos os cães são animais. Logo, todos os cães são pássaros.” As premissas são verdadeiras, mas a conclusão falsa. A estrutura não liga a classe dos cães à dos pássaros, apenas ao conjunto amplo dos animais.",
+        "pitfall": "Confundir uma fala convincente com uma dedução válida ou rejeitar um argumento formalmente válido só porque sua conclusão parece incomum."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Identifique premissas e conclusão: “Todo quadrado é retângulo; esta figura é quadrado; logo, é retângulo”.",
+        "Localize a afirmação introduzida por “logo”.",
+        "As premissas são “Todo quadrado é retângulo” e “Esta figura é quadrado”. A conclusão é “Esta figura é retângulo”, que segue logicamente da inclusão."
+      ],
+      [
+        "basic",
+        "Explique a diferença entre validade lógica e verdade factual de uma premissa.",
+        "Uma propriedade pertence à estrutura; outra, ao conteúdo.",
+        "Validade significa que não é possível ter todas as premissas verdadeiras e a conclusão falsa naquela forma. Verdade factual avalia cada afirmação sobre o mundo."
+      ],
+      [
+        "intermediate",
+        "Conclua validamente: “Todos os violinos são instrumentos de corda; todos os instrumentos de corda são instrumentos musicais”.",
+        "Use inclusão transitiva.",
+        "A conclusão é “Todos os violinos são instrumentos musicais”. Se a classe dos violinos está contida na de instrumentos de corda, que está na de instrumentos musicais, a inclusão final segue."
+      ],
+      [
+        "intermediate",
+        "Avalie “Todos os cães são mamíferos; todos os gatos são mamíferos; portanto todos os gatos são cães”.",
+        "Compartilhar uma classe ampla não garante inclusão entre subclasses.",
+        "O raciocínio é inválido. As duas premissas apenas incluem cães e gatos na classe dos mamíferos; não estabelecem que uma dessas subclasses esteja contida na outra."
+      ],
+      [
+        "advanced",
+        "Por que “Se estudo, melhoro; melhorei; logo, estudei” não é uma inferência garantida?",
+        "Procure outros motivos possíveis para melhorar.",
+        "A forma afirma o consequente: a melhoria pode ter outras causas. Saber que estudar é suficiente sob uma condição não prova que tenha sido a causa exclusiva da melhoria."
+      ],
+      [
+        "advanced",
+        "Como testar se uma conclusão decorre de premissas categóricas sem depender apenas da intuição?",
+        "Desenhe classes e procure um contraexemplo.",
+        "Representações de conjuntos e análise dos termos permitem verificar se todas as situações compatíveis com as premissas obrigam a conclusão. Um contraexemplo com premissas verdadeiras e conclusão falsa refuta a validade."
+      ]
+    ]
   }
 ];
 const lookup=new Map(lessons.map(item=>[item.subject+'\0'+item.topic,item]));
