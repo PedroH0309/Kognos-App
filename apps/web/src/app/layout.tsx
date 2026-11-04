@@ -11,6 +11,7 @@ import "./kognos-profile-planner-fixes.css";
 import "./kognos-calendar.css";
 import "./kognos-study-cycle.css";
 import "./kognos-weekly-syllabus.css";
+import "./kognos-classrooms.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",

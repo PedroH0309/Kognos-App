@@ -18,6 +18,7 @@ import CurriculumRoom from './CurriculumRoom';
 import {learningCatalogForExam} from '@/lib/lesson-ai-links';
 import StudySyncNotice from './StudySyncNotice';
 import SkillEvolutionPanel from './SkillEvolutionPanel';
+import InteractiveIntroLesson from './InteractiveIntroLesson';
 import {prioritySkillLessonId} from '@/lib/skill-mastery-evidence';
 
 type Mode='learn'|'trails';
@@ -37,6 +38,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
  const [selectedId,setSelectedId]=useState(focus?.lessonId??'math-percentages');
+ const [mobilePane,setMobilePane]=useState<'list'|'lesson'>(focus?.lessonId?'lesson':'list');
  const [query,setQuery]=useState('');
  const [loaded,setLoaded]=useState(false);
  const [error,setError]=useState('');
@@ -44,6 +46,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  useEffect(()=>{if(catalog.some(l=>l.id===selectedId))return;const first=catalog[0];if(first){setSubject(first.subject);setSelectedId(first.id);}},[catalog,selectedId]);
  const detailRef=useRef<HTMLElement|null>(null);
+ const indexRef=useRef<HTMLElement|null>(null);
  // The question workspace stays mounted when hidden. Defer a single updated
  // progress read until this trail becomes visible again, rather than fetching
  // during every graded answer of a ten-question practice run.
@@ -72,7 +75,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  },[userId]);
 
  useEffect(()=>{
-  if(focus){if(!learningCatalogForExam(preferredExam).some(l=>l.id===focus.lessonId))setExam(null);setSubject(focus.subject);setSelectedId(focus.lessonId);setRestored(true);return;}
+  if(focus){if(!learningCatalogForExam(preferredExam).some(l=>l.id===focus.lessonId))setExam(null);setSubject(focus.subject);setSelectedId(focus.lessonId);setMobilePane('lesson');setRestored(true);return;}
   try{const saved=localStorage.getItem(`kognos_last_lesson_v1_${userId||'guest'}`);
    if(saved){const found=findLearningLesson(saved);if(found){setSubject(found.subject);setSelectedId(found.id);}}
   }catch{/* Browser storage may be disabled. */}
@@ -104,12 +107,15 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  },[active,lesson?.id,subject,visibleContext]);
 
  function selectSubject(value:string){
-  setSubject(value);setSelectedId(catalog.find(l=>l.subject===value)?.id??'');setQuery('');
+  setSubject(value);setSelectedId(catalog.find(l=>l.subject===value)?.id??'');setQuery('');setMobilePane('list');
  }
  function chooseLesson(item:LearningLesson){
-  setSubject(item.subject);setSelectedId(item.id);visibleContext({kind:'lesson',lessonId:item.id});
+  setSubject(item.subject);setSelectedId(item.id);setMobilePane('lesson');visibleContext({kind:'lesson',lessonId:item.id});
   if(window.matchMedia('(max-width: 1150px)').matches)detailRef.current?.scrollIntoView({behavior:'smooth',block:'start'});
  }
+ useEffect(()=>{
+  if(active&&mobilePane==='lesson'&&window.matchMedia('(max-width: 760px)').matches){detailRef.current?.scrollIntoView({behavior:'auto',block:'start'});}
+ },[active,mobilePane,selectedId]);
  const masteryById=useMemo(()=>new Map((aiProgress?.skillEvolution??[]).map(item=>[item.lessonId,item.mastery])),[aiProgress]);
  const nextWeakId=userId&&aiProgress?prioritySkillLessonId(roadmap.steps.map(step=>step.lesson),masteryById):null;
  const highlight=(nextWeakId?roadmap.steps.find(step=>step.lesson.id===nextWeakId)?.lesson:null)
@@ -172,8 +178,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     </button>}
   </section>
 
-  <div className={`learning-body-grid learning-journey-workspace ${mode==='learn'?'is-learning-first':''}`}>
-   <section className="learning-index dark-panel" aria-label={`Etapas de ${subject}`}>
+  <div className={`learning-body-grid learning-journey-workspace ${mode==='learn'?'is-learning-first':''} ${mobilePane==='lesson'?'is-mobile-lesson':'is-mobile-list'}`}>
+   <section ref={indexRef} className="learning-index dark-panel" aria-label={`Etapas de ${subject}`}>
     <div className="learning-index-header"><div><span className="overline">{isTrail?'SEQUÊNCIA DA TRILHA':'NAVEGUE PELAS AULAS'}</span><h2>{isTrail?'Etapas do percurso':'Escolha uma aula'}</h2><p>{roadmap.total} temas disponíveis para estudo</p></div></div>
     <label className="learning-search"><Search size={16} aria-hidden="true"/><span className="sr-only">Buscar tópico</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar assunto…"/></label>
     {!loaded&&<p className="muted" role="status">Carregando evidências de prática…</p>}
@@ -192,6 +198,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <div className="learning-journey-key"><span><span className="dot"/>Não praticado</span><span><span className="dot review"/>Revisar</span><span><span className="dot sampled"/>Acerto registrado</span></div>
    </section>
    <section ref={detailRef} className="learning-lesson-detail dark-panel" aria-label="Aula selecionada">
+    <button type="button" className="k-classroom-back" onClick={()=>{setMobilePane('list');requestAnimationFrame(()=>indexRef.current?.scrollIntoView({behavior:'smooth',block:'start'}));}}><ArrowLeft size={16} aria-hidden="true"/> Voltar às aulas de {subject}</button>
     {lesson&&lesson.subject===subject?lesson.curriculumId?<CurriculumRoom key={lesson.id} embedded active={active} userId={userId} focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}/>:<>
      <div className="learning-lesson-head">
       <span className="overline">AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')} · {lesson.subject.toUpperCase()}</span>
@@ -200,10 +207,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      </div>
      <div className="learning-pedagogy"><span className="learning-pedagogy-icon"><Target size={18}/></span><div><strong>Objetivo da aula</strong><p>{lesson.objective}</p></div></div>
      {lesson.prerequisites.length>0&&<div className="learning-prereqs"><strong>Antes desta aula:</strong> {lesson.prerequisites.map(id=>findLearningLesson(id)).filter((item):item is LearningLesson=>Boolean(item)).map((item,i)=><button type="button" key={item.id} onClick={()=>chooseLesson(item)}>{i>0?', ':''}{item.topic} <ArrowRight size={12}/></button>)}</div>}
-     <div className="learning-lesson-block"><h3>Entenda o conceito</h3><p>{lesson.explanation}</p></div>
-     <div className="learning-lesson-block"><h3>Exemplo resolvido</h3><p>{lesson.workedExample}</p></div>
-     <div className="learning-lesson-block mistake"><h3>Erro comum</h3><p>{lesson.commonMistake}</p></div>
-     <div className="learning-lesson-block check"><h3>Confira se entendeu</h3><p>{lesson.check}</p><small>Responda com suas palavras ou peça uma explicação ao Kog.</small></div>
+     <InteractiveIntroLesson key={lesson.id} lesson={lesson} onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
      <details className="learning-lesson-block learning-catalog-references">
       <summary>Referências e provas relacionadas</summary>
