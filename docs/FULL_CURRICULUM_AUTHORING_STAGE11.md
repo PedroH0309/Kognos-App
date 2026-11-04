@@ -1,59 +1,48 @@
-# Etapa 11 — Repertório aprofundado por disciplina
+# Etapa 11 — Aulas aprofundadas, redigidas individualmente
 
-## Escopo
-Meta: uma aula substantiva, específica e resolvida para cada tema do catálogo de ENEM, ETEC, FUVEST, VUNESP e Provão Paulista. A auditoria executada no GitHub Actions em 04/11/2026 identificou **1.512 temas distintos no catálogo unificado**. A base granular contém 683 entradas do ensino médio e 201 do fundamental, além de outros títulos e itens específicos das matrizes e do Provão Paulista.
+## Decisão editorial
 
-Esta etapa NÃO completa todo o repertório: há **20 aulas específicas** nesta branch (5 Matemática + uma em cada uma das outras 15 disciplinas), **0 módulos gerados pela API e 1.492 temas pendentes** de aprofundamento. Foi criado o processo para gerar e armazenar lotes por tema. Demais temas mantêm materiais introdutórios da Etapa 10 e não devem ser apresentados como aulas integralmente aprofundadas.
+Por solicitação do responsável pelo Kognos, a biblioteca NÃO usa pipelines de produção textual em lote com Gemini, Groq ou serviços similares. O roteiro anterior de geração automática foi retirado nesta branch, inclusive CLI, workflow, registro de material gerado e testes exclusivos desse processo.
 
-## Funcionalidades
-- Deep math lessons: cinco assuntos, 15 capítulos e 30 atividades resolvidas.
-- Deep cross-subject lessons: quinze disciplinas adicionais, 45 capítulos e 90 atividades próprias.
-- Produção externa com Gemini ou Groq, com um prompt dedicado a cada tópico e metadados derivados do catálogo.
-- Validação obrigatória de três seções, explicações, exemplos resolvidos, seis atividades distribuídas pelas dificuldades, pistas, soluções, não repetição literal e rótulos de revisão.
-- Arquivos por tema em content/generated-lessons. Uma compilação gera apps/web/src/lib/generated-deep-lessons.ts para acesso offline sem chamada de IA ao abrir a aula.
-- Retomada incremental, sem sobrescrever aulas produzidas e validadas. Lotes e quotas podem ser ajustados.
+O desenvolvimento ocorre por aulas explicitamente escritas e revisáveis no código. O assistente redige cada módulo com conceitos, demonstrações, exercícios e resoluções de acordo com o tema. Isso continua sendo conteúdo **assistido por inteligência artificial**, não autoria humana ou homologação docente. Não afirmar que textos receberam validação de professor.
 
-A revisão estrutural não equivale à revisão pedagógica de cada fato, exercício ou explicação. Autoria de material assistido por IA deve permanecer identificada. O campo review continua introductory, nunca editor automaticamente. Aulas publicadas/retiradas no Supabase mantêm precedência.
+## Cobertura real
 
-## Diagnóstico sem API
-Na raiz do projeto:
+- Auditoria anterior do índice unificado: **1.512 temas curriculares** distintos dos roteiros ENEM, FUVEST, ETEC, VUNESP e Provão Paulista.
+- Atualmente, esta branch contém **38 aulas desenvolvidas de modo específico**: 8 de Matemática e 30 nas outras 15 disciplinas.
+- **114 capítulos e 228 atividades** com pistas e resoluções: três capítulos e seis atividades por aula.
+- Os **1.474 temas restantes** conservam as introduções ou guias da Etapa 10; não devem ser anunciados como aulas aprofundadas.
+- A publicação editorial no Supabase é prioritária; registros arquivados ou retirados não são reativados por fallback.
 
-    npm run content:audit
+## Organização pedagógica
 
-Esse comando mostra o número real de assuntos no catálogo, os aprofundados manualmente, os salvos offline e os pendentes.
+1. Fundamentos: definições, pressupostos e explicações próprias do tema.
+2. Aplicação: demonstrações, procedimentos e exemplos resolvidos.
+3. Aprofundamento: limites dos modelos, interpretação e tarefas contextualizadas.
+4. Atividades: duas básicas, duas intermediárias e duas avançadas, com pistas e resoluções comentadas.
+5. Progressão: o aluno continua na navegação Matérias → Conteúdos → Aula, com leitura, atividades, explicações e avanço.
 
-## Autoria por lotes
-Configure GEMINI_API_KEY ou GROQ_API_KEY localmente, sem enviar a chave ao frontend, a logs ou ao repositório. Exemplo em PowerShell:
+Cada tema deve apresentar terminologia correta, contexto verificável, unidades e restrições adequadas quando houver cálculos; em ciências humanas, diferenciar evidências, interpretações e simplificações históricas. Evitar citações inventadas e cópias de questões oficiais.
 
-    $env:GEMINI_API_KEY = "sua-chave-local"
-    npm run content:generate -- --provider gemini --subject "Biologia" --limit 10
+## Arquivos
 
-Prosseguir gradualmente por todos os temas, mantendo o estado:
+- `apps/web/src/lib/deep-math-lessons.ts`: oito módulos de Matemática.
+- `apps/web/src/lib/deep-cross-subject-lessons.ts`: trinta módulos de quinze outras disciplinas.
+- `apps/web/src/lib/starter-lessons.ts`: seleção de aula escrita por tópico, preservando fallback e IDs.
+- Testes de cobertura e validade: `deep-math-lessons.test.ts`, `deep-cross-subject-lessons.test.ts` e `starter-lessons.test.ts`.
 
-    npm run content:generate -- --provider gemini --limit 10
+## Verificações
 
-Para percorrer tudo enquanto a API permitir e as quotas comportarem:
+```sh
+npm test
+npm run test:content-db
+npm run test:design
+npm run typecheck
+npm run build
+```
 
-    npm run content:generate -- --provider gemini --all
+Esses testes verificam schema, integração e consistência estrutural; não garantem revisão científica integral de cada afirmação ou gabarito. A inspeção editorial e visual permanece pendente, inclusive em dispositivos móveis.
 
-Usar --model para alterar o identificador do modelo; --retries e --pause-ms ajustam tentativas e intervalo. Ao gerar, o conteúdo fica gravado no repositório local, sem geração na experiência de leitura.
+## Critério de finalização
 
-Para reconstituir o índice estático:
-
-    npm run content:rebuild
-
-Para validar:
-
-    npm test
-    npm run test:content-db
-    npm run test:design
-    npm run typecheck
-    npm run build
-
-## Ações no GitHub
-O workflow manual de autoria fica disponível após inclusão do arquivo na branch padrão do GitHub. Enquanto o PR estiver aberto, o CLI local já pode ser executado na branch da implementação. Requer segredos configurados no Actions e execução em branch de trabalho (nunca diretamente na main). Limita a 50 aulas por execução, recompila o índice, executa todos os testes e comita o material na branch.
-
-A possibilidade de utilização gratuita depende da quota e do plano do provedor; nenhuma API gratuita garante geração ilimitada de centenas de aulas. Modelos, limites e preços mudam.
-
-## Definição de pronto
-Somente declarar cobertura total quando o diagnóstico indicar zero pendências, os conteúdos forem específicos e substanciais, a consistência pedagógica for revisada, o leitor e os testes funcionarem no celular e desktop e o Supabase não tiver sido comprometido. A revisão humana é necessária antes de declarar aulas homologadas.
+A entrega não pode ser descrita como acervo completo antes de serem escritas aulas específicas para todos os 1.512 temas cadastrados, com verificação dos assuntos e exercícios. Enquanto isso, registrar explicitamente pendências. O aprofundamento de todas as disciplinas exigirá acréscimos editoriais sucessivos, sem geração automática por provedores externos.
