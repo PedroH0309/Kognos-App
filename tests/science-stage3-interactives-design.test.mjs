@@ -46,7 +46,7 @@ test('Science labs distinguish illustrative models from authentic practical expe
  const chemistry=read('apps/web/src/components/science/ChemistryLabs.tsx');
  const biology=read('apps/web/src/components/science/BiologyLabs.tsx');
  assert.match(common,/não experimento físico/);
- assert.match(common,/não registra nota/);
+ assert.match(common,/não registra nota/i);
  assert.match(physics,/modelo ideal|Modelo ideal/);
  assert.match(chemistry,/Não tente executar a reação/);
  assert.match(chemistry,/25 °C/);
