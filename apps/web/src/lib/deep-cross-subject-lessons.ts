@@ -1707,6 +1707,195 @@ const lessons:LessonSpec[] = [
         "O respeito é necessário, mas barreiras materiais, horários, transporte e falta de adaptação também restringem acesso. A inclusão exige medidas concretas e acompanhamento de sua eficácia."
       ]
     ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Present perfect e past perfect",
+    "objective": "Usar present perfect e past perfect para organizar relações entre passado e presente ou dois momentos passados, distinguindo-os do simple past.",
+    "sections": [
+      {
+        "title": "Present perfect: forma e sentido",
+        "explanation": "O present perfect é formado por have/has + past participle: “I have studied”, “She has finished”. Ele pode relacionar acontecimentos passados ao presente, como experiências de vida (“I have visited Recife”), situações com efeitos atuais (“She has lost her keys”) ou ações iniciadas no passado que continuam (“They have lived here for five years”). O sentido depende de contexto e variedade da língua inglesa; não há tradução única em português. Em geral, o simple past é usado para eventos concluídos em tempo passado explicitamente delimitado, como “I visited Recife in 2020”. Os marcadores ever, never, already, yet, since e for ajudam, mas não substituem a análise do enunciado.",
+        "example": "“She has broken her glasses” pode destacar a consequência presente de estar sem óculos utilizáveis. “She broke her glasses yesterday” situa o evento em um passado definido. Em “I have studied English since 2022”, o estudo começou em 2022 e continua até o presente.",
+        "pitfall": "Usar present perfect automaticamente com qualquer verbo no passado ou escrever “I have went” em vez do particípio “I have gone”."
+      },
+      {
+        "title": "Past perfect: anterioridade no passado",
+        "explanation": "O past perfect usa had + past participle para indicar que um fato ocorreu antes de outro ponto de referência passado: “When I arrived, the film had started”. A forma “had” é igual para todas as pessoas; em negações aparece “had not” e em perguntas “Had you finished?”. O tempo ajuda a ordenar acontecimentos, mas pode ser desnecessário se a sequência já está inequívoca pelo contexto. Conectores como before, after e by the time frequentemente aparecem, porém não determinam isoladamente o tempo verbal. Na interpretação, identifique primeiro o momento de referência: present perfect conecta-se ao presente; past perfect estabelece anterioridade em um passado já referido.",
+        "example": "“When the teacher entered, the students had opened their books.” Primeiro os estudantes abriram os livros; depois a professora entrou. Se o texto disser apenas “The teacher entered and the students opened their books”, sugere sequência diferente de ações no simple past.",
+        "pitfall": "Interpretar past perfect como se sempre designasse um passado muito distante em anos; o essencial é anterioridade a outro momento passado."
+      },
+      {
+        "title": "Comparação, negações e interpretação textual",
+        "explanation": "Em provas, observe quem realizou a ação, se ela terminou, qual referência temporal é indicada e que resultado permanece relevante. “I have never seen that movie” é experiência até o momento da fala; “I had never seen that movie before last Friday” estabelece limite anterior a sexta-feira passada. Em variedades do inglês, determinados contextos permitem alternância entre present perfect e simple past sem identidade completa de foco informacional. Ao produzir frases, confirme particípios irregulares — seen, written, gone, eaten — e evite que um advérbio de tempo fechado conflite com a relação temporal pretendida. A tradução literal do português pode esconder diferenças de aspecto.",
+        "example": "Leia “By the time Ana called, Lucas had already left”. A saída de Lucas ocorreu antes da ligação. Já “Lucas has left” informa, conforme o contexto, uma saída anterior com consequência relevante agora. Uma prova pode exigir reconhecer essa diferença sem pedir tradução palavra por palavra.",
+        "pitfall": "Confundir “had” auxiliar do past perfect com verbo principal de posse ou deduzir a ordem dos fatos apenas da ordem das frases."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Complete corretamente a ideia “She ___ finished the project” usando present perfect.",
+        "Para she/he/it, use has + particípio.",
+        "A forma correta é “She has finished the project”. O auxiliar “has” concorda com “she”, e “finished” é o particípio regular de “finish”."
+      ],
+      [
+        "basic",
+        "Identifique qual frase situa o evento em tempo passado fechado: “I have visited London” ou “I visited London in 2018”.",
+        "Procure um marcador temporal definido.",
+        "“I visited London in 2018” usa simple past e situa a viagem em 2018. “I have visited London” destaca uma experiência até o presente, sem informar momento específico."
+      ],
+      [
+        "intermediate",
+        "Explique a diferença entre “I have lived here for three years” e “I lived here for three years”.",
+        "Verifique a relação com o momento da fala.",
+        "A primeira frase normalmente indica situação iniciada há três anos que continua agora. A segunda apresenta uma moradia de três anos como período passado concluído, dependendo do contexto."
+      ],
+      [
+        "intermediate",
+        "Ordene os eventos em “When Pedro arrived, the meeting had begun”.",
+        "O past perfect indica o evento anterior.",
+        "A reunião começou primeiro; Pedro chegou depois. “Had begun” marca anterioridade em relação ao ponto passado “arrived”, que está no simple past."
+      ],
+      [
+        "advanced",
+        "Traduza o sentido temporal de “They had already eaten before the guests came”.",
+        "O advérbio already reforça anterioridade.",
+        "Eles já tinham comido antes da chegada dos convidados. O past perfect “had eaten” situa a refeição antes de “the guests came”, outro evento passado."
+      ],
+      [
+        "advanced",
+        "Corrija “She has wrote the report yesterday” para uma frase adequada à referência temporal dada.",
+        "Combine yesterday com simple past e o passado de write.",
+        "“She wrote the report yesterday” descreve um evento concluído ontem. Se fosse usado present perfect em outro contexto, o particípio seria “written”, não “wrote”."
+      ]
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Tempos do passado em espanhol",
+    "objective": "Distinguir pretérito perfecto simple, pretérito imperfecto e pretérito perfecto compuesto pela organização temporal e pelo aspecto dos acontecimentos.",
+    "sections": [
+      {
+        "title": "Pretérito perfecto simple e eventos delimitados",
+        "explanation": "O pretérito perfecto simple, também chamado indefinido em certas gramáticas escolares, normalmente apresenta eventos concluídos em um intervalo passado delimitado: “Ayer estudié”, “El año pasado viajamos”. Formas como fui, tuve, hice e estuve são frequentes e possuem irregularidades; sua escolha não pode ser feita só pela semelhança com o português. Em narrativas, o tempo pode fazer avançar a sequência de fatos: “Entró, cerró la puerta y llamó”. Marcadores temporais fornecem pistas, mas o contraste com outros pretéritos depende do modo como o falante constrói o evento. Diferentes variedades do espanhol distribuem esses tempos de formas que não são idênticas.",
+        "example": "“Ayer Marta compró un libro y volvió a casa.” Os verbos “compró” e “volvió” apresentam acontecimentos concluídos e sucessivos no passado delimitado por “ayer”. A tradução contextual é “Ontem Marta comprou um livro e voltou para casa”.",
+        "pitfall": "Tomar o termo “perfecto” como indicação de evento moralmente correto ou presumir que todas as regiões usam tempos compostos do mesmo modo."
+      },
+      {
+        "title": "Pretérito imperfecto e pano de fundo",
+        "explanation": "O pretérito imperfecto descreve situações habituais, estados e ações em progresso no passado, frequentemente sem destacar seu ponto final. “Cuando era niño, jugaba en la plaza” apresenta hábito; “Llovía cuando salimos” constrói pano de fundo para outro evento. Terminações regulares incluem -aba para verbos em -ar e -ía para muitos verbos em -er e -ir, com exceções como era, iba e veía. Em narrativas, perfeito simples e imperfeito podem coexistir: um situa eventos pontuais, o outro fornece descrição, costume ou ação em andamento. A escolha pode variar com a perspectiva narrativa, não é uma tradução mecânica entre formas brasileiras.",
+        "example": "“Mientras Ana leía, sonó el teléfono.” O verbo “leía” indica ação em curso no passado; “sonó” apresenta o acontecimento que irrompe. Trocar ambos por perfeito simples mudaria a organização narrativa da cena.",
+        "pitfall": "Usar imperfeito para qualquer ação distante no tempo ou concluir que ele sempre descreve algo que nunca terminou."
+      },
+      {
+        "title": "Pretérito perfecto compuesto e variação",
+        "explanation": "O pretérito perfecto compuesto é formado por presente de haber + particípio: “He estudiado”, “Has llegado”, “Hemos visto”. Em muitas variedades, pode marcar passado relacionado a um período que inclui o presente, como “Hoy he hablado con ella”. Entretanto, em várias regiões latino-americanas, o pretérito perfecto simple é empregado em contextos em que outras variedades prefeririam o composto. A interpretação exige atenção à origem textual e à situação comunicativa, sem declarar uma variedade errada. Particípios irregulares comuns incluem hecho, dicho, visto e escrito. Para responder bem, determine se o enunciado enfatiza conclusão pontual, hábito passado ou vínculo do evento com o momento atual.",
+        "example": "“Esta semana he leído dos artículos” pode destacar um período ainda em curso no uso peninsular frequente. Em outras variedades, “Esta semana leí dos artículos” também pode aparecer; a escolha precisa ser analisada no contexto regional.",
+        "pitfall": "Afirmar que “he leído” e “leí” são sempre equivalentes ou que apenas uma das formas é legítima em todo o mundo hispanofalante."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Qual tempo predomina em “Ayer visitamos el museo” e que pista temporal aparece?",
+        "Observe “ayer” e o verbo “visitamos”.",
+        "O enunciado apresenta um evento concluído ontem pelo pretérito perfecto simple, com “ayer” delimitando o período passado. “Visitamos” pode depender do contexto para identificação morfológica, mas a pista favorece essa leitura."
+      ],
+      [
+        "basic",
+        "Em “Cuando era pequeño, jugaba al fútbol”, explique o valor de “jugaba”.",
+        "Procure hábito ou repetição no passado.",
+        "“Jugaba” está no pretérito imperfecto e sugere uma atividade habitual durante a infância, não uma partida única com início e fim especificados."
+      ],
+      [
+        "intermediate",
+        "Diferencie os papéis de “leía” e “sonó” na frase “Mientras leía, sonó el teléfono”.",
+        "Uma ação estava em andamento quando outra ocorreu.",
+        "“Leía” fornece ação em curso no pretérito imperfecto; “sonó” situa um acontecimento pontual no perfecto simple. O contraste organiza a narrativa temporal."
+      ],
+      [
+        "intermediate",
+        "Complete “Yo ___ hecho la tarea” com o auxiliar necessário ao pretérito perfecto compuesto.",
+        "Use a forma presente de haber para yo.",
+        "A forma correta é “Yo he hecho la tarea”. “He” é auxiliar do verbo haber, e “hecho” é particípio irregular de hacer."
+      ],
+      [
+        "advanced",
+        "Por que “Hoy he trabajado” e “Hoy trabajé” podem coexistir em variedades diferentes do espanhol?",
+        "Considere diferenças regionais de preferência temporal.",
+        "O perfecto compuesto pode salientar relação com período ainda aberto, enquanto o simple pode ser usado em contextos similares em diversas variedades. Não se deve transformar uma preferência regional em regra universal."
+      ],
+      [
+        "advanced",
+        "Um narrador escreve “La calle estaba vacía cuando llegó el tren”. Explique a função dos dois tempos.",
+        "Distingua estado de fundo e acontecimento.",
+        "“Estaba” apresenta o estado da rua como pano de fundo no imperfecto; “llegó” marca a chegada pontual no perfecto simple, situando a mudança na cena narrada."
+      ]
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Reações químicas no cotidiano",
+    "objective": "Reconhecer sinais e limites da identificação de transformações químicas, diferenciá-las de mudanças físicas e relacioná-las à conservação de átomos.",
+    "sections": [
+      {
+        "title": "Transformação física e transformação química",
+        "explanation": "Uma transformação química envolve mudança na composição das espécies químicas presentes, com formação de substâncias diferentes das originais; uma mudança física altera estado, distribuição, forma ou organização sem necessariamente mudar a identidade química. Ferver água pura produz vapor de H₂O e é mudança física. A reação de ferro com oxigênio e água pode resultar em produtos associados à ferrugem, transformação química. Cor, cheiro, temperatura e liberação de gás podem servir como indícios, mas nenhum sinal isolado prova que houve reação: a ebulição também libera bolhas de vapor sem alterar a fórmula da água. Uma investigação segura compara propriedades e composição antes e depois do fenômeno.",
+        "example": "Ao dissolver açúcar em água, as moléculas de sacarose permanecem presentes, embora dispersas; a solução é um exemplo comum de processo físico de dissolução. Ao aquecer açúcar até sofrer decomposição e caramelização, podem ocorrer transformações químicas com formação de novas espécies.",
+        "pitfall": "Afirmar que qualquer formação de bolhas é reação química ou classificar dissolução como reação apenas porque o sólido desapareceu da vista."
+      },
+      {
+        "title": "Reagentes, produtos e conservação",
+        "explanation": "Em uma equação química, reagentes aparecem à esquerda e produtos à direita. Balancear significa ajustar coeficientes para conservar o número de átomos de cada elemento, sem alterar os índices das fórmulas. A lei da conservação da massa aplica-se ao conjunto de um sistema fechado durante reações químicas comuns: átomos não surgem nem desaparecem no processo representado. Em sistemas abertos, a massa observada pode diminuir se um gás escapa, sem violação da conservação total. A reação entre bicarbonato de sódio e um ácido libera dióxido de carbono em condições apropriadas; a quantidade de gás e o restante dos produtos dependem da composição e das condições.",
+        "example": "Na reação simplificada 2H₂ + O₂ → 2H₂O, existem quatro átomos de hidrogênio e dois de oxigênio em cada lado. Os coeficientes 2,1,2 conservam as quantidades atômicas, embora a estrutura das moléculas seja reorganizada.",
+        "pitfall": "Trocar H₂O por H₂O₂ para balancear uma equação, alterando a substância em vez de ajustar quantidades."
+      },
+      {
+        "title": "Velocidade de reação, evidências e segurança",
+        "explanation": "Reações químicas dependem de condições, como temperatura, superfície de contato, concentração e presença de catalisadores. Alimentos podem sofrer oxidação, objetos metálicos podem corroer e combustíveis liberam energia em reações de combustão. Nem toda reação é rápida ou visível e nem toda mudança energética envolve reação. Comparar fenômenos requer controle de variáveis: duas amostras de mesmo material podem reagir em velocidades diferentes se expostas a ambientes diferentes. A interpretação escolar deve evitar experimentos domésticos perigosos; misturar produtos de limpeza, por exemplo, pode liberar gases tóxicos, e não constitui demonstração segura de química.",
+        "example": "Uma maçã cortada pode apresentar escurecimento relacionado a reações de oxidação enzimática em contato com oxigênio. O exemplo permite discutir condições e velocidade de transformação sem supor que qualquer alteração de cor tenha a mesma causa.",
+        "pitfall": "Propor mistura de substâncias de limpeza como experiência ou concluir que toda mudança de temperatura prova ocorrência de reação química."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Ferver água pura é transformação química? Explique com base na identidade da substância.",
+        "Compare fórmula química do líquido e do vapor.",
+        "Não. A vaporização muda o estado físico de H₂O líquida para H₂O gasosa, mas não modifica a composição química da molécula, sendo transformação física."
+      ],
+      [
+        "basic",
+        "Cite um exemplo cotidiano de reação química e indique por que envolve novas substâncias.",
+        "Observe oxidação, combustão ou decomposição.",
+        "A corrosão do ferro pode formar óxidos e hidróxidos de ferro, substâncias diferentes do metal inicial, em presença de condições adequadas de água e oxigênio."
+      ],
+      [
+        "intermediate",
+        "Balanceie H₂ + O₂ → H₂O sem alterar os índices das fórmulas.",
+        "Ajuste apenas coeficientes para igualar átomos.",
+        "A forma balanceada é 2H₂ + O₂ → 2H₂O. Nos dois lados há quatro átomos de hidrogênio e dois de oxigênio, respeitando conservação de átomos."
+      ],
+      [
+        "intermediate",
+        "Por que uma reação que libera gás em copo aberto pode apresentar diminuição da massa medida?",
+        "Considere o que escapa do sistema observado.",
+        "Parte dos produtos gasosos pode sair do recipiente e deixar de ser medida na balança. Isso não viola a conservação de massa do sistema completo, que inclui o gás escapado."
+      ],
+      [
+        "advanced",
+        "Como distinguir experimentalmente, com segurança e evidências, dissolução física de uma possível reação?",
+        "Não considere desaparecimento visual suficiente.",
+        "É necessário investigar composição e propriedades antes e depois, controlar condições e verificar formação de espécies novas. Uma substância dissolvida pode permanecer quimicamente intacta, apesar de invisível."
+      ],
+      [
+        "advanced",
+        "Um estudante afirma que qualquer bolha na água representa formação de gás por reação. Avalie.",
+        "Compare ebulição e reação com liberação de gás.",
+        "A afirmação é falsa: bolhas de água fervendo podem conter vapor de H₂O produzido por mudança física. Determinar reação exige outras evidências e análise das substâncias envolvidas."
+      ]
+    ]
   }
 ];
 const lookup=new Map(lessons.map(item=>[item.subject+'\0'+item.topic,item]));
