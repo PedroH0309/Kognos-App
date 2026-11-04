@@ -70,3 +70,25 @@ test('Styles are responsive, focus-visible and do not hide provider attribution'
  assert.match(read('apps/web/src/app/layout.tsx'),/kognos-external-and-3d-labs\.css/);
  assert.match(read('apps/web/.env.example'),/NEXT_PUBLIC_PHET_MODE=noncommercial-confirmed/);
 });
+
+test('A native zoomable 3D cell is available without third-party art and has an accessible 2D fallback',()=>{
+ const cell=read('apps/web/src/components/science/Cell3DViewer.tsx');
+ const switcher=read('apps/web/src/components/science/CellAnatomyLab.tsx');
+ assert.match(cell,/new THREE\.WebGLRenderer/);
+ assert.match(cell,/OrbitControls/);
+ assert.match(cell,/controls\.enableZoom=true/);
+ assert.match(cell,/raycaster\.intersectObjects/);
+ assert.match(cell,/selectionHandler\.current/);
+ assert.match(cell,/renderer\.dispose\(\)/);
+ assert.match(cell,/controls\.dispose\(\)/);
+ assert.match(cell,/ResizeObserver/);
+ assert.match(cell,/não representam uma micrografia real/);
+ assert.match(switcher,/Cell3DViewer/);
+ assert.match(switcher,/view==='3d'/);
+ assert.match(switcher,/Esquema 2D/);
+ assert.match(switcher,/cellParts\[type\]/);
+ assert.doesNotMatch(cell,/fetch\(|localStorage\.setItem\(|contentRequest\(/);
+ const css=read('apps/web/src/app/kognos-external-and-3d-labs.css');
+ assert.match(css,/k-cell-3d-viewport/);
+ assert.match(css,/k-cell-view-chooser/);
+});
