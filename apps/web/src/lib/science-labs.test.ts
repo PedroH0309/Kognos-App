@@ -41,6 +41,7 @@ test('Physics calculations are dimensionally consistent',()=>{
  assert.equal(circuitValues(12,4,'parallel')?.current,6);
  assert.equal(circuitValues(12,4,'single')?.power,36);
  const temp=temperatureScales(0);
+ if(!temp)throw new Error('Zero Celsius should be valid');
  assert.equal(temp.kelvin,273.15);
  assert.equal(temp.fahrenheit,32);
  assert.equal(temperatureScales(-274),null);
