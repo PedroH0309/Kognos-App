@@ -236,3 +236,7 @@
 @media(max-width:760px){
  .k-lab-detail{scroll-margin-top:calc(84px + env(safe-area-inset-top));}
 }
+
+@media(max-width:760px){
+ .k-study-space-tabs{scroll-margin-top:calc(78px + env(safe-area-inset-top));}
+}
