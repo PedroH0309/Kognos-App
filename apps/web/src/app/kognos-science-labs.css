@@ -1,0 +1,115 @@
+/* Kognos Science Stage 3: subject-specific, ungraded interactive experiments.
+ * Uses the existing light/dark design token palette and 44px touch targets. */
+.k-science-workspace{min-width:0;max-width:100%;overflow-wrap:anywhere;margin:16px 0;}
+.k-science-lab{
+ --science-ink:var(--txt,#101B33);
+ --science-muted:var(--sub,#66758C);
+ --science-line:var(--line,#DFE5EF);
+ --science-surface:var(--box-bg,#fff);
+ --science-soft:var(--panel-2,#EDF1F7);
+ min-width:0;width:100%;padding:clamp(13px,2.5vw,24px);
+ background:var(--science-surface);border:1px solid var(--science-line);
+ border-radius:16px;color:var(--science-ink);
+}
+.k-science-lab *{box-sizing:border-box;}
+.k-science-lab-header{margin-bottom:17px;}
+.k-science-lab-header .overline{display:block;font-size:10px;letter-spacing:.08em;
+ font-weight:820;color:var(--violet,#5B4DE3);line-height:1.4;}
+.k-science-lab-header h3{font-size:clamp(19px,2.8vw,26px);color:var(--science-ink);
+ margin:9px 0 6px;line-height:1.25;letter-spacing:-.025em;overflow-wrap:anywhere;}
+.k-science-lab-header p,.app-layout .course-reader .k-science-lab-header p{
+ font-size:13px;line-height:1.7;margin:0;color:var(--science-muted);}
+.k-science-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:15px 0 17px;}
+.k-science-slider{display:grid;gap:10px;min-width:0;
+ padding:12px 14px;background:var(--science-soft);border:1px solid var(--science-line);
+ border-radius:12px;font-size:12px;color:var(--science-ink);}
+.k-science-slider>span{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px;}
+.k-science-slider strong{font-variant-numeric:tabular-nums;color:var(--violet,#5B4DE3);font-weight:800;}
+.k-science-slider input[type=range]{width:100%;min-width:0;max-width:100%;accent-color:#5B4DE3;cursor:pointer;touch-action:pan-y;}
+.k-science-visual{min-width:0;width:100%;padding:12px;background:var(--science-soft);border:1px solid var(--science-line);border-radius:13px;margin:14px 0;}
+.k-science-visual svg{display:block;max-width:550px;width:100%;height:auto;margin:0 auto;overflow:hidden;}
+.k-science-visual svg text{pointer-events:none;user-select:none;}
+.k-science-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0;}
+.k-science-output{display:grid;gap:7px;min-width:0;border:1px solid var(--science-line);
+ border-radius:12px;padding:13px 14px;background:var(--science-soft);}
+.k-science-output>span{font-size:11px;color:var(--science-muted);line-height:1.45;}
+.k-science-output>strong{font-size:clamp(14px,2.5vw,20px);line-height:1.35;
+ color:var(--science-ink);overflow-wrap:anywhere;font-variant-numeric:tabular-nums;}
+.k-science-note,.app-layout .course-reader .k-science-note{margin:16px 0!important;
+ padding:12px 15px;border-left:3px solid #38CDE5;background:var(--science-soft);
+ border-radius:0 9px 9px 0;color:var(--science-muted)!important;
+ line-height:1.65!important;font-size:12px!important;}
+.k-science-disclaimer,.app-layout .course-reader .k-science-disclaimer{
+ padding-top:13px;margin:20px 0 0!important;border-top:1px solid var(--science-line);
+ color:var(--science-muted)!important;font-size:11px!important;line-height:1.6!important;}
+.k-science-choice,.k-science-cell-stages{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+.k-science-choice button,.k-science-cell-stages button{
+ min-height:44px;min-width:0;padding:9px 13px;border:1px solid var(--science-line);
+ border-radius:10px;background:var(--science-soft);color:var(--science-ink);
+ font-size:12px;font-weight:720;cursor:pointer;
+}
+.k-science-choice button[aria-pressed=true],.k-science-cell-stages button[aria-pressed=true]{
+ background:#5B4DE3;color:#fff;border-color:#5B4DE3;
+}
+.k-science-lab button:focus-visible,.k-science-lab input:focus-visible,
+.k-science-lab select:focus-visible{outline:2px solid #38CDE5;outline-offset:3px;}
+.k-science-lab button:disabled{opacity:.4;cursor:not-allowed;}
+.k-science-reaction{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+ gap:13px;margin:16px 0;padding:18px 10px;border:1px solid var(--science-line);
+ border-radius:12px;background:var(--science-soft);color:var(--science-ink);}
+.k-science-reaction>strong{font-size:clamp(17px,3.7vw,25px);color:var(--violet,#5B4DE3);}
+.k-science-reaction>span{font-size:17px;}
+.k-science-select{display:grid;gap:8px;min-width:0;font-size:12px;font-weight:720;color:var(--science-ink);}
+.k-science-select select{width:100%;min-width:0;min-height:44px;padding:8px 10px;
+ border:1px solid var(--science-line);background:var(--science-surface);color:var(--science-ink);
+ border-radius:10px;font-size:13px;}
+.k-science-punnett{display:grid;grid-template-columns:repeat(2,minmax(0,135px));
+ justify-content:center;gap:7px;margin:16px 0;}
+.k-science-punnett>div{min-height:85px;display:grid;place-items:center;
+ border:1px solid #5B4DE3;border-radius:11px;background:color-mix(in srgb,#5B4DE3 12%,var(--science-surface));
+ color:var(--science-ink);font-size:24px;font-weight:800;}
+.k-science-punnett>div.is-recessive{border-color:#38CDE5;background:color-mix(in srgb,#38CDE5 17%,var(--science-surface));}
+.k-science-trophic{display:flex;flex-direction:column;align-items:center;gap:6px;
+ min-height:230px;margin:15px 0;justify-content:center;
+ padding:17px;border:1px solid var(--science-line);border-radius:13px;background:var(--science-soft);}
+.k-science-trophic-row{min-width:0;min-height:46px;display:flex;justify-content:center;align-items:center;
+ flex-wrap:wrap;gap:8px;padding:6px;border-radius:8px;color:#fff;
+ background:#5B4DE3;text-align:center;line-height:1.3;}
+.k-science-trophic-row:nth-child(2){background:#4D67BE;}
+.k-science-trophic-row:nth-child(3){background:#3684AC;}
+.k-science-trophic-row:nth-child(4){background:#1B7289;}
+.k-science-trophic-row strong{font-size:11px;}
+.k-science-trophic-row span{font-size:11px;font-variant-numeric:tabular-nums;}
+.k-science-cell-stages button{display:flex;align-items:center;gap:8px;}
+.k-science-cell-stages button>span{display:grid;place-items:center;width:21px;height:21px;
+ background:var(--science-surface);color:var(--violet,#5B4DE3);border-radius:50%;font-size:11px;}
+.k-science-solutions{display:flex;gap:18px;align-items:end;justify-content:center;
+ border:1px solid var(--science-line);background:var(--science-soft);border-radius:13px;padding:20px;margin:14px 0;}
+.k-science-solutions>div{display:grid;gap:9px;justify-items:center;min-width:0;}
+.k-science-solutions small{font-size:11px;color:var(--science-ink);}
+.k-science-beaker{width:76px;height:112px;display:flex;align-items:flex-end;
+ border:3px solid #5B4DE3;border-top:0;border-radius:0 0 9px 9px;padding:3px;}
+.k-science-beaker span{display:block;width:100%;background:#38CDE5;border-radius:0 0 4px 4px;}
+.k-science-arrow{align-self:center;font-size:23px;font-weight:800;color:var(--violet,#5B4DE3);}
+.k-science-ph-track{position:relative;margin:22px 0 17px;padding:0 8px 22px;}
+.k-science-ph-gradient{height:24px;border-radius:9px;
+ background:linear-gradient(90deg,#d85467,#eebd68,#74c88c,#519ec9,#5B4DE3);}
+.k-science-ph-track>span{position:absolute;top:-8px;height:40px;width:5px;
+ border:3px solid var(--science-ink);border-radius:9px;background:var(--science-surface);}
+.k-science-ph-axis{display:flex;justify-content:space-between;gap:9px;margin-top:8px;}
+.k-science-ph-axis small{font-size:10px;color:var(--science-muted);}
+@media(max-width:760px){
+ .k-science-lab{padding:12px;border-radius:13px;}
+ .k-science-controls{grid-template-columns:minmax(0,1fr);gap:8px;}
+ .k-science-grid{gap:8px;}
+ .k-science-output{padding:11px;}
+ .k-science-visual{padding:7px;}
+ .k-science-trophic{padding:10px;}
+ .k-science-trophic-row{min-height:48px;}
+ .k-science-trophic-row strong,.k-science-trophic-row span{font-size:10px;}
+ .k-science-cell-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;}
+ .k-science-cell-stages button{padding:8px 5px;justify-content:center;font-size:11px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .k-science-lab *{transition:none!important;animation:none!important;scroll-behavior:auto!important;}
+}
