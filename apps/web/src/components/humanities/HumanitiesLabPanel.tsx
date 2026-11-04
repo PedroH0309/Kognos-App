@@ -19,11 +19,14 @@ const labs={
  'sociology-work':dynamic(()=>import('./SociologyLabs').then(m=>m.SociologyWorkLab)),
  'sociology-culture':dynamic(()=>import('./SociologyLabs').then(m=>m.SociologyCultureLab)),
  'sociology-citizenship':dynamic(()=>import('./SociologyLabs').then(m=>m.SociologyCitizenshipLab))
-} satisfies Record<HumanitiesKind,ComponentType>;
+} satisfies Record<HumanitiesKind,ComponentType<{topic?:string}>>;
 
 export default function HumanitiesLabPanel(topic:HumanitiesTopic){
  const kind=resolveHumanitiesLab(topic);
  if(!kind)return null;
  const Lab=labs[kind];
- return <div className="k-humanities-workspace" data-humanities-lab={kind}><Lab/></div>;
+ return <div className="k-humanities-workspace" data-humanities-lab={kind}>
+  <p className="k-humanities-context">Tema selecionado: <strong>{topic.topic}</strong>. O laboratório oferece uma exploração autoral representativa e não substitui a aula completa deste tema.</p>
+  <Lab topic={topic.topic}/>
+ </div>;
 }
