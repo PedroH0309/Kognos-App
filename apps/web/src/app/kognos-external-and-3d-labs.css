@@ -97,3 +97,33 @@
 @media(prefers-reduced-motion:reduce){
  .k-external-lab *, .k-drag-geometry-canvas *,.k-molecule-3d-canvas *{transition:none!important;animation:none!important;}
 }
+
+/* Native 3D cell explorer shares the selectable organelle descriptions with 2D. */
+.k-cell-view-chooser{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0;}
+.k-cell-view-chooser button,.k-cell-3d-toolbar button{
+ min-height:44px;min-width:0;padding:10px 14px;border:1px solid var(--line,#DFE5EF);
+ border-radius:10px;background:var(--panel-2,#EDF1F7);color:var(--txt,#101B33);
+ font-size:12px;font-weight:720;cursor:pointer;
+}
+.k-cell-view-chooser button[aria-pressed=true]{
+ background:#5B4DE3;color:#fff;border-color:#5B4DE3;
+}
+.k-cell-3d-viewport{width:100%;max-width:100%;aspect-ratio:4/3;
+ min-height:270px;max-height:520px;background:radial-gradient(circle at 50% 50%,#9dd5e955,var(--panel-2,#EDF1F7));
+ border:1px solid var(--line,#DFE5EF);border-radius:15px;
+ overflow:hidden;touch-action:none;}
+.k-cell-3d-viewport canvas{touch-action:none;}
+.k-cell-3d-viewport>p{padding:20px;font-size:13px;line-height:1.75;}
+.k-cell-3d-toolbar{display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:9px;margin:12px 0;}
+.k-cell-3d-toolbar span{font-size:11px;line-height:1.6;color:var(--sub,#66758C);}
+.k-cell-3d-notice,.app-layout .course-reader .k-cell-3d-notice{
+ padding:11px 14px;border-radius:10px;background:var(--panel-2,#EDF1F7);
+ color:var(--sub,#66758C)!important;font-size:11px!important;line-height:1.65!important;}
+.k-cell-view-chooser button:focus-visible,.k-cell-3d-toolbar button:focus-visible{
+ outline:2px solid #38CDE5;outline-offset:3px;
+}
+@media(max-width:760px){
+ .k-cell-3d-viewport{aspect-ratio:1;min-height:280px;}
+ .k-cell-view-chooser button{flex:1 1 115px;}
+}
