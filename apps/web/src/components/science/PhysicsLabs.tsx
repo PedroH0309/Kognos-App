@@ -10,8 +10,11 @@ export function MotionLab(){
   const t=i*0.125,s=motionAt(initial,acceleration,t)?.position??0;
   return {t,s};
  });
- const largest=Math.max(1,...points.map(p=>Math.abs(p.s)));
- const curve=points.map((p,i)=>(i?'L':'M')+(30+p.t*29)+' '+(170-135*p.s/largest)).join(' ');
+ const minimum=Math.min(0,...points.map(p=>p.s));
+ const maximum=Math.max(0,...points.map(p=>p.s));
+ const span=Math.max(1,maximum-minimum);
+ const ordinate=(position:number)=>170-145*(position-minimum)/span;
+ const curve=points.map((p,i)=>(i?'L':'M')+(30+p.t*29)+' '+ordinate(p.s)).join(' ');
  return <ScienceStage subject="Física" title="Movimento uniformemente variado" description="Altere velocidade inicial, aceleração e tempo. Observe deslocamento e velocidade resultante.">
   <div className="k-science-controls">
    <ScienceSlider label="Velocidade inicial" value={initial} min={-10} max={20} step={1} unit=" m/s" onChange={setInitial}/>
@@ -23,7 +26,7 @@ export function MotionLab(){
     <line x1="27" x2="325" y1="170" y2="170" stroke="currentColor" opacity=".5"/>
     <line x1="30" x2="30" y1="10" y2="195" stroke="currentColor" opacity=".5"/>
     <path d={curve} stroke="#5B4DE3" strokeWidth="3" fill="none"/>
-    <circle cx={30+time*29} cy={170-135*(data?.position??0)/largest} r="5" fill="#38CDE5" stroke="#101B33" strokeWidth="1.5"/>
+    <circle cx={30+time*29} cy={ordinate(data?.position??0)} r="5" fill="#38CDE5" stroke="#101B33" strokeWidth="1.5"/>
     <text x="309" y="191" fill="currentColor" fontSize="11">t (s)</text><text x="36" y="14" fill="currentColor" fontSize="11">s (m)</text>
    </svg>
   </div>
