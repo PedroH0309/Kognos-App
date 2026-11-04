@@ -28,7 +28,7 @@ test('Scientific notation formats decimal movement without incorrect floating pa
  assert.equal(scientificDecimal(3.2,-3),'0,0032');
  assert.equal(scientificDecimal(4.5,4),'45000');
  assert.equal(scientificDecimal(-1.25,2),'-125');
- assert.equal(calculateScientific(3.2,3,4,2,'multiply').result,12800);
+ assert.equal(calculateScientific(3.2,3,4,2,'multiply').result,1280000);
  assert.equal(calculateScientific(3.2,3,4,2,'divide').result,8);
  assert.ok(Math.abs(calculateScientific(3.2,3,4,2,'add').result-3600)<1e-8);
 });
