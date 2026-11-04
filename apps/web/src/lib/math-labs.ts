@@ -1,21 +1,35 @@
 /** Pure, curriculum-scoped learning calculations. No scores or attempts are stored. */
 export type MathLabKind =
  | 'scientific' | 'percentage' | 'equations' | 'functions'
- | 'geometry' | 'probability' | 'statistics' | 'trigonometry';
+ | 'geometry' | 'probability' | 'statistics' | 'trigonometry'
+ | 'number-sets' | 'proportion' | 'sequences' | 'exponential-log'
+ | 'combinatorics' | 'linear-systems' | 'solids' | 'unit-conversion'
+ | 'periodic-waves';
 export type MathTopic={subject:string;topic:string;description?:string;unit?:string};
 const fold=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+/** Specific official topic phrases take priority over generic unit labels.
+ * Never select a 2D geometry lab for 3D solids or a triangle lab for periodic waves. */
 export function resolveMathLab({subject,topic,description='',unit=''}:MathTopic):MathLabKind|null{
  if(fold(subject).trim()!=='matematica')return null;
  const text=fold(topic+' '+description);
  const unitText=fold(unit);
  if(/notacao cientifica|potencias? de (base )?dez|ordens? de grandeza/.test(text))return 'scientific';
+ if(/sistema internacional de medidas|convers(ao|oes) de unidades|unidades e conversoes/.test(text)||unitText==='sistemas de medidas')return 'unit-conversion';
+ if(/poliedro|corpos redondos|volumes?|capacidade|vistas ortogonais|figura espacial|geometria espacial/.test(text)||unitText==='geometria espacial')return 'solids';
+ if(/funcoes? seno e cosseno|fenomenos periodicos|medidas, relacoes entre arcos|arcos e angulos/.test(text))return 'periodic-waves';
  if(/trigonometri|seno|cosseno|tangente|relac(ao|oes) trigonometrica/.test(text))return 'trigonometry';
- if(/probabilidade|combinatoria|espaco amostral|eventos aleatorios/.test(text))return 'probability';
- if(/estatistic|media aritmetica|mediana|moda estatistica|variancia|desvio padrao|histograma|graficos? (de barras|de setores)|leitura de graficos|tabelas? e graficos/.test(text))return 'statistics';
- if(/geometria|perimetro|areas? de figuras|circunferencia|poligono|quadrilatero|semelhanca de triangulos|teorema de pitagoras/.test(text))return 'geometry';
+ if(/sequenc|progress(ao|oes) aritmet|progress(ao|oes) geometr|lei de recorrencia/.test(text))return 'sequences';
+ if(/logaritm|exponencial/.test(text))return 'exponential-log';
+ if(/sistemas? lineares|sistema de equacoes lineares|sistema linear/.test(text)||unitText==='sistemas lineares')return 'linear-systems';
+ if(/probabilidade|espaco amostral|eventos aleatorios/.test(text)||unitText==='probabilidade')return 'probability';
+ if(/arranjos?|permutac|combinac|analise combinatoria|principios? multiplicativo|problemas de contagem/.test(text)||unitText==='analise combinatoria')return 'combinatorics';
+ if(/estatistic|media aritmetica|mediana|moda estatistica|medidas de tendencia central|variancia|desvio padrao|histograma|graficos? (de barras|de setores)|leitura de graficos|tabelas? e graficos/.test(text)||unitText==='tratamento da informacao')return 'statistics';
+ if(/geometria|perimetro|areas? de figuras|circunferencia|poligono|quadrilatero|semelhanca de triangulos|teorema de pitagoras/.test(text)||unitText==='geometria plana')return 'geometry';
+ if(/porcent|percentu|taxas? e indices|juros simples/.test(text))return 'percentage';
+ if(/razoes?|proporc|regra de tres|relacao entre grandezas|densidade demografica|velocidade, densidade/.test(text))return 'proportion';
  if(/func(ao|oes)|graficos? de funcoes|dominio e imagem/.test(text)||unitText==='funcoes')return 'functions';
- if(/equac(ao|oes)|inequac|sistemas? lineares|bhaskara/.test(text))return 'equations';
- if(/porcent|percentu|razao|proporc|taxas? e indices|juros simples|regra de tres/.test(text))return 'percentage';
+ if(/equac(ao|oes)|inequac|bhaskara/.test(text))return 'equations';
+ if(/numeros? naturais?|conjuntos numericos|numeros? inteiros?|racionais? e reais|reta numerica/.test(text)||unitText==='conjuntos numericos')return 'number-sets';
  if(/graficos?|tabelas|dados quantitativos/.test(text))return 'statistics';
  return null;
 }
