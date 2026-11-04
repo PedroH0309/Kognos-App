@@ -6,6 +6,7 @@ import {
  numberSetExamples
 } from './math-labs-extended.ts';
 import {resolveMathLab} from './math-labs.ts';
+import {provaoTopics} from './provao-paulista.ts';
 
 test('arithmetic and geometric progressions return terms, general term and sums',()=>{
  assert.deepEqual(sequenceModel('arithmetic',3,2,4),{terms:[3,5,7,9],nth:9,sum:24});
@@ -87,4 +88,14 @@ test('specific matches override overly broad old math categories',()=>{
  assert.equal(lab('Arcos e ângulos: medidas, relações entre arcos','Trigonometria'),'periodic-waves');
  assert.equal(lab('Seno, cosseno e tangente em triângulos retângulos'),'trigonometry');
  assert.equal(resolveMathLab({subject:'Química',topic:'Função exponencial'}),null);
+});
+
+test('Every official Provão Paulista Mathematics entry resolves to a specific topic family',()=>{
+ const entries=provaoTopics.filter(row=>row.subject==='Matemática');
+ assert.ok(entries.length>=60,'The current official Mathematics syllabus changed; review coverage');
+ for(const row of entries){
+  const lab=resolveMathLab({subject:row.subject,topic:row.topic,
+   description:row.description,unit:row.unit});
+  assert.notEqual(lab,null,'No matching lab for '+row.grade+'ª série '+row.code+': '+row.description);
+ }
 });
