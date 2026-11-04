@@ -18,8 +18,8 @@ import PhETSimulationPanel from './PhETSimulationPanel';
 import TopicVisualStudio from './TopicVisualStudio';
 
 type LabInfo={topic:CurriculumTopic;description?:string;unit?:string;kind:ReturnType<typeof describeLaboratory>};
-export default function LaboratoryHub({exam=null,grade=null,onOpenLesson}:{
- exam?:ExamId|null;grade?:ProvaoGrade|null;onOpenLesson?:(topic:CurriculumTopic)=>void;
+export default function LaboratoryHub({exam=null,grade=null,initialTopicId=null,initialSubject=null,onOpenLesson}:{
+ exam?:ExamId|null;grade?:ProvaoGrade|null;initialTopicId?:string|null;initialSubject?:string|null;onOpenLesson?:(topic:CurriculumTopic)=>void;
 }){
  const catalog=useMemo<LabInfo[]>(()=>curriculumTopics
   .filter(t=>(!exam||t.exams.includes(exam))&&(!exam||exam!=='saresp'||isProvaoTopic(t.subject,t.topic,grade)))
@@ -29,10 +29,13 @@ export default function LaboratoryHub({exam=null,grade=null,onOpenLesson}:{
    return {topic,description,unit,kind:describeLaboratory({subject:topic.subject,topic:topic.topic,description,unit})};
   }),[exam,grade]);
  const subjects=useMemo(()=>[...new Set(catalog.map(t=>t.topic.subject))].sort((a,b)=>a.localeCompare(b,'pt-BR')),[catalog]);
- const [subject,setSubject]=useState('Matemática');
+ const [subject,setSubject]=useState(initialSubject??'Matemática');
  const [search,setSearch]=useState('');
- const [showAll,setShowAll]=useState(false);
- const [selectedId,setSelectedId]=useState<string|null>(null);
+ const [showAll,setShowAll]=useState(()=>{
+  const initial=catalog.find(item=>item.topic.id===initialTopicId);
+  return Boolean(initial&&initial.kind.status==='general');
+ });
+ const [selectedId,setSelectedId]=useState<string|null>(initialTopicId);
  const [mobileOpen,setMobileOpen]=useState(false);
  const currentSubject=subjects.includes(subject)?subject:(subjects[0]??'');
  const filtered=useMemo(()=>catalog.filter(item=>item.topic.subject===currentSubject
