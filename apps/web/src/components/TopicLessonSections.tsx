@@ -18,9 +18,10 @@ function TextBlocks({value}:{value:string}){
 /** Reading-first layout for individually selected curricular lessons.
  * Does not fabricate missing educational content or auto-grade free text.
  */
-export default function TopicLessonSections({view,subject,topic,lesson,introduction,onTutor}:{
+export default function TopicLessonSections({view,subject,topic,lesson,introduction,onTutor,onActivityProgress}:{
  view:LessonPane;subject:string;topic:string;
  lesson?:CourseLesson|null;introduction?:LearningLesson|null;onTutor?:()=>void;
+ onActivityProgress?:(allAnswered:boolean)=>void;
 }){
  const [drafts,setDrafts]=useState<Record<string,string>>({});
  const [hints,setHints]=useState<Record<string,boolean>>({});
@@ -30,6 +31,13 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
  const authored=Boolean(lesson||introduction);
  const status=lesson?'AULA DESENVOLVIDA':introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
+ const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>t.level===section.level)
+  .map((_,i)=>idFor(section.level,i))):introduction?['intro']:[];
+ const answered=exerciseIds.filter(id=>Boolean(drafts[id]?.trim())).length;
+ function updateDraft(id:string,value:string){
+  const next={...drafts,[id]:value};setDrafts(next);
+  onActivityProgress?.(exerciseIds.length>0&&exerciseIds.every(key=>Boolean(next[key]?.trim())));
+ }
  return <section className="k-lesson-reading-room" aria-label={lessonPanes.find(p=>p.id===view)?.label+' de '+topic}>
   <header className="k-lesson-reading-intro">
    <span className="overline">{status}</span>
@@ -61,6 +69,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
    </>}
   </>}
   {view==='activities'&&<>
+   {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Respostas preenchidas: {answered} de {exerciseIds.length}. A conclusão indica apenas campos preenchidos, não correção.</p>}
    {lesson&&lesson.sections.map((section,i)=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level);
     return <article className="k-lesson-chapter" key={section.level}>
@@ -71,7 +80,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
        <span className="k-lesson-exercise-number"><CheckSquare size={16}/> EXERCÍCIO {j+1}</span>
        <p className="k-lesson-question">{task.prompt}</p>
        <label>Sua resolução ou interpretação
-        <textarea rows={4} value={drafts[id]??''} onChange={e=>setDrafts(v=>({...v,[id]:e.target.value}))}
+        <textarea rows={4} value={drafts[id]??''} onChange={e=>updateDraft(id,e.target.value)}
          placeholder="Desenvolva a resposta com suas palavras. Este rascunho fica somente na tela."/>
        </label>
        <button type="button" aria-expanded={Boolean(hints[id])} onClick={()=>setHints(prev=>({...prev,[id]:!prev[id]}))}>
@@ -86,7 +95,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
    {!lesson&&introduction&&<article className="k-lesson-chapter">
     <h4>Verifique a compreensão do conceito</h4><p className="k-lesson-question">{introduction.check}</p>
     <label className="k-lesson-draft">Seu raciocínio
-     <textarea rows={5} value={drafts['intro']??''} onChange={e=>setDrafts(v=>({...v,intro:e.target.value}))}
+     <textarea rows={5} value={drafts['intro']??''} onChange={e=>updateDraft('intro',e.target.value)}
       placeholder="Escreva sua hipótese ou solução antes de ler o exemplo."/>
     </label><p className="k-lesson-exercise-help">Compare sua resposta ao exemplo na aba Explicações. Esta tarefa introdutória não gera nota.</p>
    </article>}

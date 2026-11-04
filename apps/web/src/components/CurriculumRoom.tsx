@@ -11,6 +11,7 @@ import type {LearningLesson} from '@/lib/learning-catalog';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {contentRequest} from '@/lib/content-client';
 import TopicLessonSections from './TopicLessonSections';
+import CurriculumStudyFlow from './CurriculumStudyFlow';
 import InteractiveIntroLesson from './InteractiveIntroLesson';
 import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
@@ -26,7 +27,22 @@ import {resolveMathLab} from '@/lib/math-labs';
 type Topic=CurriculumTopic&{status:string};
 type Detail={topic:CurriculumTopic;lesson:CourseLesson|null;introduction:LearningLesson|null;videos:CourseVideo[];questions:PublicCourseQuestion[];revision:number|null;configured:boolean};
 const statusLabels:Record<string,string>={published:'Aula desenvolvida',introduction:'Introdução disponível',outline:'Tema mapeado',draft:'Em revisão'};
-export default function CurriculumRoom({userId=null,active=true,focus,preferredExam=null,embedded=false,onContextChange,onTutor,onGenerateAI,onOpenLab}:{userId?:string|null;active?:boolean;focus?:{lessonId:string;subject:string}|null;preferredExam?:ExamId|null;embedded?:boolean;onContextChange?:(c:KogStudyContext|null)=>void;onTutor?:()=>void;onGenerateAI?:(id:string,fresh?:boolean)=>void;onOpenLab?:(topic:CurriculumTopic)=>void}){
+type CurriculumRoomProps={
+ userId?:string|null;active?:boolean;focus?:{lessonId:string;subject:string}|null;
+ preferredExam?:ExamId|null;embedded?:boolean;
+ onContextChange?:(c:KogStudyContext|null)=>void;onTutor?:()=>void;
+ onGenerateAI?:(id:string,fresh?:boolean)=>void;
+ onOpenLab?:(topic:CurriculumTopic)=>void;
+ onActivityProgress?:(done:boolean)=>void;
+};
+export default function CurriculumRoom(props:CurriculumRoomProps){
+ if(props.embedded)return <EmbeddedCurriculumRoom {...props}/>;
+ return <CurriculumStudyFlow preferredExam={props.preferredExam} focus={props.focus}
+  renderLesson={(topic,onActivityProgress)=><EmbeddedCurriculumRoom key={topic.id} {...props}
+   embedded focus={{lessonId:topic.id,subject:topic.subject}}
+   onActivityProgress={onActivityProgress}/>}/>;
+}
+function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=null,embedded=false,onContextChange,onTutor,onGenerateAI,onOpenLab,onActivityProgress}:CurriculumRoomProps){
  const [topics,setTopics]=useState<Topic[]>([]),[exam,setExam]=useState<string>(preferredExam??'all'),[subject,setSubject]=useState('all'),[search,setSearch]=useState(''),[limit,setLimit]=useState(40);
  const [provaoGrade,setProvaoGrade]=useState<ProvaoGrade|null>(null);
  const [selected,setSelected]=useState<string|null>(null),[detail,setDetail]=useState<Detail|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[consent,setConsent]=useState(false),[video,setVideo]=useState<CourseVideo|null>(null);
@@ -64,7 +80,7 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
   {embedded&&error&&<p className="message warning" role="alert">{error}</p>}
   <div className="course-layout" style={embedded?{display:'block'}:undefined}>{!embedded&&<aside className="course-index" aria-label="Assuntos do currículo">{filtered.slice(0,limit).map(t=><button type="button" key={t.id} aria-pressed={selected===t.id} disabled={busy} onClick={()=>setSelected(t.id)}><small>{t.subject}</small><strong>{t.topic}</strong><span>{statusLabels[t.status]||'Em revisão'}</span></button>)}{!filtered.length&&<p>Nenhum tema encontrado para estes filtros.</p>}{filtered.length>limit&&<button type="button" onClick={()=>setLimit(n=>n+40)}>Mostrar mais 40 temas</button>}</aside>}
    <article key={selected} className="course-reader" aria-live="polite">{!selected?<div className="course-empty"><h2>Escolha um assunto</h2><p>O roteiro inclui todas as entradas cadastradas para as cinco provas. Uma aula desenvolvida contém três níveis e tarefas com resolução.</p><p>Os temas ainda sem aula aparecem identificados; o Kog pode desenvolver e revisar o conteúdo quando você solicitar.</p></div>:!detail?<p>{error?'Conteúdo indisponível.':'Carregando o assunto…'}</p>:<>
-    <span className="overline">{detail.topic.subject}</span><h2>{detail.topic.topic}</h2>{findProvaoTopic(detail.topic.subject,detail.topic.topic)&&<details className="course-reference"><summary>Correspondência ao Provão Paulista 2026</summary><p>{findProvaoTopic(detail.topic.subject,detail.topic.topic)!.description}</p><p>Unidade: {findProvaoTopic(detail.topic.subject,detail.topic.topic)!.unit}</p><small>{provaoTopics.filter(t=>t.subject===detail.topic.subject&&t.topic===detail.topic.topic).map(t=>`${t.grade}ª série · item ${t.code} · página ${t.page}`).join(' / ')}</small></details>}<details className="course-reference"><summary>Ver matriz ou edital oficial</summary><p>O tema é organizado editorialmente pelo Kognos e associado às fontes oficiais abaixo. A aula explica o conteúdo com autoria própria; a lista não reproduz nem garante cobertura integral do documento.</p><ul>{detail.topic.exams.map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noreferrer">{officialSyllabusSources[id].title} · {officialSyllabusSources[id].edition}</a></li>)}</ul></details>
+    <span className="overline">{detail.topic.subject}</span><h2>{detail.topic.topic}</h2>{readerTab==='materials'&&findProvaoTopic(detail.topic.subject,detail.topic.topic)&&<details className="course-reference"><summary>Correspondência ao Provão Paulista 2026</summary><p>{findProvaoTopic(detail.topic.subject,detail.topic.topic)!.description}</p><p>Unidade: {findProvaoTopic(detail.topic.subject,detail.topic.topic)!.unit}</p><small>{provaoTopics.filter(t=>t.subject===detail.topic.subject&&t.topic===detail.topic.topic).map(t=>`${t.grade}ª série · item ${t.code} · página ${t.page}`).join(' / ')}</small></details>}{readerTab==='materials'&&<details className="course-reference"><summary>Ver matriz ou edital oficial</summary><p>O tema é organizado editorialmente pelo Kognos e associado às fontes oficiais abaixo. A aula explica o conteúdo com autoria própria; a lista não reproduz nem garante cobertura integral do documento.</p><ul>{detail.topic.exams.map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noreferrer">{officialSyllabusSources[id].title} · {officialSyllabusSources[id].edition}</a></li>)}</ul></details>}
      <nav className="k-curriculum-tabs k-lesson-pane-tabs" aria-label={'Seções da aula de '+detail.topic.subject}>
       <button type="button" aria-pressed={readerTab==='lesson'} onClick={()=>setReaderTab('lesson')}>Aula em texto</button>
       <button type="button" aria-pressed={readerTab==='activities'} onClick={()=>setReaderTab('activities')}>Atividades</button>
@@ -74,7 +90,8 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
      </nav>
      {(['lesson','activities','explanations'] as const).map(pane=><div key={pane} hidden={readerTab!==pane}>
       <TopicLessonSections view={pane==='lesson'?'content':pane} subject={detail.topic.subject}
-       topic={detail.topic.topic} lesson={detail.lesson} introduction={detail.introduction} onTutor={onTutor}/>
+       topic={detail.topic.topic} lesson={detail.lesson} introduction={detail.introduction} onTutor={onTutor}
+        onActivityProgress={pane==='activities'?onActivityProgress:undefined}/>
      </div>)}
      {readerTab==='lesson'&&!detail.lesson&&<div className="course-generation">
       <h3>Desenvolver aula completa com o Kog</h3>
