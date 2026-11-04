@@ -56,6 +56,15 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [studySpace,setStudySpace]=useState<'lessons'|'laboratory'>('lessons');
  const [labTarget,setLabTarget]=useState<{id:string;subject:string}|null>(null);
  const [legacyPane,setLegacyPane]=useState<LessonPane|'materials'|'evolution'>('content');
+ useEffect(()=>{
+  if(!active||studySpace!=='laboratory')return;
+  const frame=requestAnimationFrame(()=>{
+   if(window.matchMedia('(max-width: 760px)').matches){
+    spaceNavRef.current?.scrollIntoView({behavior:'auto',block:'start'});
+   }
+  });
+  return()=>cancelAnimationFrame(frame);
+ },[active,studySpace]);
  useEffect(()=>{setLegacyPane('content');},[selectedId]);
  const [query,setQuery]=useState('');
  const [loaded,setLoaded]=useState(false);
@@ -64,6 +73,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  useEffect(()=>{if(catalog.some(l=>l.id===selectedId))return;const first=catalog[0];if(first){setSubject(first.subject);setSelectedId(first.id);}},[catalog,selectedId]);
  const detailRef=useRef<HTMLElement|null>(null);
+ const spaceNavRef=useRef<HTMLElement|null>(null);
  const indexRef=useRef<HTMLElement|null>(null);
  // The question workspace stays mounted when hidden. Defer a single updated
  // progress read until this trail becomes visible again, rather than fetching
@@ -157,7 +167,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo preparatório autoral</span>
   </div>
 
-  <nav className="k-study-space-tabs" aria-label="Espaços de estudo">
+  <nav ref={spaceNavRef} className="k-study-space-tabs" aria-label="Espaços de estudo">
    <button type="button" aria-pressed={studySpace==='lessons'} onClick={()=>setStudySpace('lessons')}><BookOpenText size={18}/> Aulas por matéria</button>
    <button type="button" aria-pressed={studySpace==='laboratory'} onClick={()=>setStudySpace('laboratory')}><Compass size={18}/> Laboratório interativo</button>
   </nav>
