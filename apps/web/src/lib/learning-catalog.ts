@@ -1,3 +1,4 @@
+import {findProvaoTopic} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 import {courseId} from './curriculum-id.ts';
 import {expandedLessons} from './learning-expansion.ts';
@@ -54,7 +55,7 @@ for(const [exam,blueprint] of Object.entries(examBlueprints)){
   if(existing){existing.exams=[...new Set([...(existing.exams||[]),exam as ExamId])];continue;}
   const id=courseId(subject,topic);
   catalogByTopic.set(key,{id,curriculumId:id,exams:[exam as ExamId],subject,topic,
-   objective:`Estudar ${topic} e aplicar o conteúdo em questões progressivas.`,
+   objective:findProvaoTopic(subject,topic)?.description??`Estudar ${topic} e aplicar o conteúdo em questões progressivas.`,
    explanation:'',workedExample:'',commonMistake:'',check:'',prerequisites:[],minutes:0,
    questionId:`curriculum:${id}`});
  }
@@ -70,3 +71,4 @@ export function questionForLesson(lesson:LearningLesson){return demoQuestions.fi
 export function findLessonByQuestionId(id:string):LearningLesson|undefined {
  return learningLessons.find(lesson=>lesson.questionId===id);
 }
+

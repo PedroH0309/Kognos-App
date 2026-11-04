@@ -1,4 +1,5 @@
 'use client';
+import {type ProvaoGrade} from '@/lib/provao-paulista';
 
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,BookOpenText,CheckCircle2,ChevronRight,Clock3,Compass,Info,ListChecks,RotateCcw,Search,Sparkles,Target} from 'lucide-react';
@@ -29,7 +30,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  onTutor:()=>void;onPractice:(focus:Focus)=>void;onGenerateAI:(lessonId:string,generateNew?:boolean)=>void;onSeeTrails:(focus:{subject:string;lessonId:string})=>void;focus?:{subject:string;lessonId:string}|null;active?:boolean;
 }){
  const [exam,setExam]=useState<ExamId|null>(preferredExam);
- const catalog=useMemo(()=>learningCatalogForExam(exam),[exam]);
+ const [provaoGrade,setProvaoGrade]=useState<ProvaoGrade|null>(null);
+ const catalog=useMemo(()=>learningCatalogForExam(exam,provaoGrade),[exam,provaoGrade]);
  const scopedSubjects=useMemo(()=>[...new Set(catalog.map(l=>l.subject))],[catalog]);
  useEffect(()=>setExam(preferredExam),[preferredExam]);
  const [attempts,setAttempts]=useState<QuestionAttempt[]>([]);
@@ -124,7 +126,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo preparatório autoral</span>
   </div>
 
-  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label><p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
+  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
   {error&&<div className="message warning" role="alert">{error}</div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
   {isTrail&&<section className="learning-journey-summary" aria-label="Seu progresso nos roteiros">
@@ -225,3 +227,4 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'As questões respondidas com IA alimentam seu histórico adaptativo.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Conteúdos autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
  </main>;
 }
+

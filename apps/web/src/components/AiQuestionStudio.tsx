@@ -3,7 +3,7 @@
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {BrainCircuit,BookOpenText,ShieldCheck,RefreshCw,Clock3,CheckCircle2,AlertTriangle,Sparkles} from 'lucide-react';
 import {KognosSelect} from './KognosFields';
-import {examBlueprints,difficulties,type ExamId,type Difficulty} from '@/lib/exam-blueprints';
+import {examBlueprints,studySubjectsForExam,difficulties,type ExamId,type Difficulty} from '@/lib/exam-blueprints';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
@@ -70,10 +70,11 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  const [reviewNotice,setReviewNotice]=useState('');
  const [elapsed,setElapsed]=useState(0);
  const blueprint=examBlueprints[institution];
- const subjectOptions=Object.keys(blueprint.subjects).map(value=>({value,label:value}));
+ const studySubjects=studySubjectsForExam(institution);
+ const subjectOptions=Object.keys(studySubjects).map(value=>({value,label:value}));
  const matched=approvedTopics.filter(t=>t.institution===institution&&t.subject===subject);
  const verifiedTopic=matched.find(t=>t.topic===topic);
- const allTopics=[...new Set([...(blueprint.subjects[subject]||[]),...matched.map(x=>x.topic)])];
+ const allTopics=[...new Set([...(studySubjects[subject]||[]),...matched.map(x=>x.topic)])];
  const topicOptions=allTopics.map(value=>({value,label:matched.some(x=>x.topic===value)?`${value} · fonte revisada`:value}));
  const inMock=mode==='simulados';
  const linkedLesson=linkedLessonId?findLearningLesson(linkedLessonId):null;
@@ -281,10 +282,10 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  function changeInstitution(value:ExamId){
   setInstitution(value);const preferred=linkedLessonId?lessonGenerationPreset(linkedLessonId,value):null;
   const exact=preferred?.institution===value?preferred:null;
-  const first=Object.keys(examBlueprints[value].subjects)[0];setSubject(exact?.subject??first);setTopic(exact?.topic??examBlueprints[value].subjects[first][0]);
+  const first=Object.keys(studySubjectsForExam(value))[0];setSubject(exact?.subject??first);setTopic(exact?.topic??studySubjectsForExam(value)[first][0]);
   if(!exact)setLinkedLessonId(null);
  }
- function changeSubject(value:string){setSubject(value);setTopic(blueprint.subjects[value][0]);setLinkedLessonId(null);}
+ function changeSubject(value:string){setSubject(value);setTopic(studySubjects[value][0]);setLinkedLessonId(null);}
  function changeTopic(value:string){setTopic(value);if(linkedLessonId&&!validLessonAIReference(linkedLessonId,institution,subject,value))setLinkedLessonId(null);}
  async function generate(){
   if(!userId||!canGenerate||generating)return;

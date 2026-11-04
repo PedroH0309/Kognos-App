@@ -1,4 +1,5 @@
 'use client';
+import {type ProvaoGrade} from '@/lib/provao-paulista';
 
 import {useCallback,useEffect,useMemo,useState} from 'react';
 import {ArrowRight,BookOpenText,ChartNoAxesColumn,CheckCircle2,Clock3,Compass,GraduationCap,LibraryBig,RotateCcw,Sparkles,Target} from 'lucide-react';
@@ -50,7 +51,8 @@ export default function SubjectDashboard({userId,preferredExam=null,onOpenTrail,
 }){
  const [exam,setExam]=useState<ExamId|null>(preferredExam);
  const [query,setQuery]=useState('');
- const catalog=useMemo(()=>learningCatalogForExam(exam),[exam]);
+ const [provaoGrade,setProvaoGrade]=useState<ProvaoGrade|null>(null);
+ const catalog=useMemo(()=>learningCatalogForExam(exam,provaoGrade),[exam,provaoGrade]);
  useEffect(()=>setExam(preferredExam),[preferredExam]);
  const [selected,setSelected]=useState('Matemática');
  const [contentTab,setContentTab]=useState<'map'|'catalog'>('catalog');
@@ -91,7 +93,7 @@ export default function SubjectDashboard({userId,preferredExam=null,onOpenTrail,
  function askKog(){if(next)onContextChange({kind:'lesson',lessonId:next.id});onTutor();}
  return <main className="app-content subject-dashboard-page">
   <div className="page-intro"><span className="overline">PAINEL DE MATÉRIAS</span><h1>Minhas <em>disciplinas.</em></h1><p>Veja o que já praticou em cada matéria, identifique pontos de revisão e escolha sua próxima atividade. Para seguir a sequência das aulas, abra as Trilhas de aprendizagem.</p></div>
-  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label><p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
+  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
   <div className="message neutral" role="note">Cobertura de {totals.total} temas de estudo, considerando tentativas demonstrativas e questões de IA vinculadas (quando disponíveis). Não é nota nem prova de domínio. {userId?'Histórico sincronizado com sua conta.':'No modo visitante, o histórico fica neste navegador.'}</div>
   {error&&<div className="message warning" role="alert"><span>{error} Verifique o acesso ao seu histórico.</span> <button type="button" className="btn outline small" onClick={()=>void load()}>Tentar novamente</button></div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
@@ -147,3 +149,4 @@ export default function SubjectDashboard({userId,preferredExam=null,onOpenTrail,
   </div>
  </main>;
 }
+

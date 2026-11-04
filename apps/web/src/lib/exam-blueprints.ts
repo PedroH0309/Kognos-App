@@ -1,3 +1,4 @@
+import {provaoSubjects} from './provao-paulista.ts';
 import {expandExamSubjects} from './exam-syllabus.ts';
 /** Versioned *orientation* maps, not machine-ingested official syllabi. */
 export type ExamId = 'enem'|'etec'|'fuvest'|'saresp'|'vunesp';
@@ -37,14 +38,14 @@ export const examBlueprints: Record<ExamId,{
     notice:'Roteiro editorial preliminar, não uma matriz oficial de conteúdos. Verifique modalidade, edital e prova anterior. O formato e o número de questões dependem da seleção.'
   },
   saresp:{
-    label:'SARESP — São Paulo',edition:'Orientação de estudos — conferir série e edição',
-    sourceTitle:'Secretaria de Educação SP — SARESP',sourceUrl:'https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-01822/pt-br',sourceCheckedOn:'2026-11-02',
+    label:'Provão Paulista (ensino médio)',edition:'2026 · Edital 10/2026, Anexo VII',
+    sourceTitle:'Provão Paulista Seriado — conteúdo programático por série',sourceUrl:'https://provaopaulistaseriado.vunesp.com.br/',sourceCheckedOn:'2026-11-03',
     subjects:expandExamSubjects('saresp',{
       Matemática:['Porcentagem e proporção','Equações e problemas','Leitura de gráficos','Geometria'],
       Português:['Interpretação de textos','Gêneros textuais','Argumentação e linguagem'],
       Ciências:['Fenômenos naturais','Ecologia e ambiente','Matéria e energia']
     }),
-    notice:'SARESP é avaliação de rendimento escolar, não vestibular. Este é um roteiro orientativo autoral: conteúdo e disciplinas variam com o ano/série e a edição; confira o material oficial da Secretaria.'
+    notice:'Provão Paulista Seriado: seleção do ensino médio realizada no âmbito do SARESP. Escolha a série para consultar o Anexo VII do edital 2026. Não confundir com o SARESP do ensino fundamental. Aulas e questões do Kognos são autorais.'
   },
   vunesp:{
     label:'VUNESP — estilo de banca',edition:'Roteiro preparatório por edital',
@@ -109,3 +110,7 @@ export function completeExamTopicCatalog(exams:readonly ExamId[]):Record<string,
  }
  return output;
 }
+
+
+/** The legacy SARESP union is accepted for existing saved records only. */
+export function studySubjectsForExam(exam:ExamId){return exam==='saresp'?provaoSubjects():examBlueprints[exam].subjects;}

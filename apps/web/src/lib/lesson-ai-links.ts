@@ -1,3 +1,4 @@
+import {isProvaoTopic,type ProvaoGrade} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 import {findLearningLesson,learningLessons} from './learning-catalog.ts';
 
@@ -95,6 +96,7 @@ export function lessonPracticeGenerationRequest(lessonId:string,run:number){
 
 
 /** Shared exam scope for the subject dashboard and learning trails. */
-export function learningCatalogForExam(exam:ExamId|null){
- return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))):[...learningLessons];
+export function learningCatalogForExam(exam:ExamId|null,grade:ProvaoGrade|null=null){
+ return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))&&(exam!=='saresp'||isProvaoTopic(lesson.subject,lesson.topic,grade))):[...learningLessons];
 }
+
