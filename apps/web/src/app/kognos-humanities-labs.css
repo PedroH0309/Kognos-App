@@ -234,3 +234,11 @@
 @media(prefers-reduced-motion:reduce){
  .k-humanities-lab *{scroll-behavior:auto!important;transition:none!important;animation:none!important;}
 }
+
+.k-humanities-context,.app-layout .course-reader .k-humanities-context{
+ font-size:12px!important;color:var(--sub,#66758C)!important;line-height:1.6!important;
+ margin:0 0 12px!important;padding:10px 13px;
+ border:1px solid var(--line,#DFE5EF);border-radius:10px;
+ background:var(--panel-2,#EDF1F7);
+}
+.k-humanities-context strong{color:var(--txt,#101B33);}
