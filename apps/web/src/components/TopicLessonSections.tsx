@@ -4,6 +4,8 @@ import {BookOpenText,CheckSquare,Lightbulb,ChevronDown,ArrowRight} from 'lucide-
 import {levels,type CourseLesson} from '@/lib/course-content';
 import type {LearningLesson} from '@/lib/learning-catalog';
 import {studyMethodForSubject} from '@/lib/study-exploration';
+import {everydayContextFor} from '@/lib/everyday-lesson-contexts';
+import {courseId} from '@/lib/curriculum-id';
 
 export type LessonPane='content'|'activities'|'explanations';
 export const lessonPanes:{id:LessonPane;label:string;description:string}[]=[
@@ -18,9 +20,10 @@ function TextBlocks({value}:{value:string}){
 /** Reading-first layout for individually selected curricular lessons.
  * Does not fabricate missing educational content or auto-grade free text.
  */
-export default function TopicLessonSections({view,subject,topic,lesson,introduction,onTutor,onActivityProgress}:{
+export default function TopicLessonSections({view,subject,topic,lesson,introduction,onTutor,onActivityProgress,onRelatedTopic}:{
  view:LessonPane;subject:string;topic:string;
  lesson?:CourseLesson|null;introduction?:LearningLesson|null;onTutor?:()=>void;
+ onRelatedTopic?:(topicId:string)=>void;
  onActivityProgress?:(allAnswered:boolean)=>void;
 }){
  const [drafts,setDrafts]=useState<Record<string,string>>({});
@@ -30,6 +33,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
  const method=studyMethodForSubject(subject);
  const authored=Boolean(lesson||introduction);
  const individuallyAuthored=Boolean(lesson?.authorship.includes('aula autoral'));
+ const situation=everydayContextFor(lesson);
 
  const status=lesson?(lesson.review==='introductory'?(individuallyAuthored?'AULA AUTORAL APROFUNDADA · REVISÃO DOCENTE PENDENTE':'AULA-BASE PRÉ-CARREGADA · REVISÃO DOCENTE PENDENTE'):'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
@@ -56,11 +60,32 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   </div>}
   {view==='content'&&<>
    {lesson&&<>
+    {situation&&<section className="k-lesson-everyday-problem" aria-label="Problema do cotidiano">
+     <span className="k-lesson-everyday-label">COMECE PELO COTIDIANO</span>
+     <h4>O que você faria nesta situação?</h4>
+     <p>{situation.context}</p>
+     <p className="k-lesson-everyday-question"><strong>Desafio:</strong> {situation.question}</p>
+     <small>Exemplo didático contextualizado; dados e personagens podem ser hipotéticos. A resolução comentada está em Explicações.</small>
+    </section>}
     <div className="k-lesson-objective"><strong>Objetivo de aprendizagem</strong><p>{lesson.objective}</p></div>
     {lesson.sections.map((section,i)=><article className="k-lesson-chapter" key={section.level}>
      <div className="k-lesson-chapter-heading"><span>{sectionNumber(i)}</span><div><small>{levels[section.level]}</small><h4>{section.title}</h4></div></div>
      <TextBlocks value={section.explanation}/>
     </article>)}
+    {situation&&<section className="k-lesson-topic-connections" aria-label="Conexões entre aulas">
+     <span className="k-lesson-everyday-label">AMPLIE SEU REPERTÓRIO</span>
+     <h4>Como este assunto se conecta a outros?</h4>
+     <p>As relações abaixo ajudam a aplicar o que você aprendeu em outra matéria ou tema.</p>
+     <div className="k-lesson-connections-list">
+      {situation.connections.map(connection=>{
+       const id=courseId(connection.subject,connection.topic);
+       const details=<><small>{connection.subject}</small><strong>{connection.topic}</strong><span>{connection.reason}</span></>;
+       return onRelatedTopic?
+        <button type="button" key={id} onClick={()=>onRelatedTopic(id)} aria-label={'Abrir conteúdo relacionado: '+connection.subject+' — '+connection.topic}>{details}<ArrowRight size={17} aria-hidden="true"/></button>:
+        <div className="k-lesson-connection-readonly" key={id}>{details}</div>;
+      })}
+     </div>
+    </section>}
     <p className="k-lesson-source">{lesson.review==='introductory'?individuallyAuthored?'Conteúdo específico com teoria, exemplos e exercícios originais, ainda sem revisão docente.':'Material inicial, montado com modelos didáticos e orientações curriculares; não representa aula integral revisada por professor.':lesson.review==='ai_reviewed'?'Material revisado automaticamente por IA, sem homologação docente.':'Material editorial.'} Autoria: {lesson.authorship}.</p>
    </>}
    {!lesson&&introduction&&<>
@@ -106,6 +131,11 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
     <p>Estas são orientações gerais de estudo, não exercícios específicos ou questões oficiais.</p></div>}
   </>}
   {view==='explanations'&&<>
+   {situation&&<article className="k-lesson-problem-answer">
+    <span className="k-lesson-everyday-label">RETOMANDO O DESAFIO INICIAL</span>
+    <h4>Como resolver a situação?</h4>
+    <p>{situation.answer}</p>
+   </article>}
    {lesson&&lesson.sections.map((section,i)=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level);
     const open=Boolean(steps[section.level]);
