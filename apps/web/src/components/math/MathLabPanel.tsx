@@ -1,5 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
+import type {ComponentType} from 'react';
 import {resolveMathLab,type MathLabKind,type MathTopic} from '@/lib/math-labs';
 
 /** Only the selected topic's simulation is downloaded. No server requests,
@@ -13,7 +14,7 @@ const labs={
  probability:dynamic(()=>import('./ProbabilityLab')),
  statistics:dynamic(()=>import('./StatisticsLab')),
  trigonometry:dynamic(()=>import('./TrigonometryLab'))
-} satisfies Record<MathLabKind,React.ComponentType>;
+} satisfies Record<MathLabKind,ComponentType>;
 export default function MathLabPanel(topic:MathTopic){
  const kind=resolveMathLab(topic);
  if(!kind)return null;
