@@ -4,6 +4,7 @@ import { withSupabase } from '@supabase/server';
 import { buildTutorSystemPrompt, sanitizeHistory, validateTutorMessage, normalizeTutorAnswer } from '@/lib/tutor';
 import { normalizeProfile } from '@/lib/profile';
 import {requestAI,isAIJobConfigured,AIProviderRateLimitError} from '@/lib/ai-provider';
+import {tutorDailyRequestLimit} from '@/lib/tutor-usage-policy';
 import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
 import {findLearningLesson} from '@/lib/learning-catalog';
 import {validLessonAIReference} from '@/lib/lesson-ai-links';
@@ -126,12 +127,18 @@ const authenticatedTutor = withSupabase({ auth: 'user', audience: 'authenticated
       }
       contextText=buildVerifiedPerformanceContext({answered:counted,correct,bySubject:[...totals.values()]});
     }
-    // No application-level daily cap. Provider-side rate and billing limits still apply.
+    // Reserve quota in PostgreSQL before any paid provider call. This shared,
+    // per-account counter also protects generation across multiple web instances.
     const messages = [
       { role: 'system', content: buildTutorSystemPrompt(profile, effectiveSubject, contextText) },
       ...sanitizeHistory(body.history),
       { role: 'user', content: (body.message as string).trim() },
     ];
+    const {data:reserved,error:quotaError}=await ctx.supabaseAdmin.rpc('reserve_ai_quota',{
+      p_user_id:userId,p_daily_limit:tutorDailyRequestLimit()
+    });
+    if(quotaError)return jsonError('Controle de uso indisponível. Confira a migração 0002.',503);
+    if(!reserved)return jsonError('Limite diário compartilhado de ações com IA atingido. Tente novamente após a renovação.',429);
     const answer = await requestAI('tutor',messages as {role:'system'|'user'|'assistant';content:string}[],1250,0.55);
     return NextResponse.json(
       { answer: normalizeTutorAnswer(enforcePedagogicalTutorAnswer(answer)).slice(0, 12000) },

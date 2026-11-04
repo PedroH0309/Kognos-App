@@ -18,7 +18,7 @@ export async function contentAdmin(request:Request){
  const identity=await contentIdentity(request);if('response' in identity)return identity;
  const {data,error}=await identity.db.from('kognos_content_admins').select('user_id').eq('user_id',identity.user.id).maybeSingle();
  if(error)return {response:contentJson({error:'Execute a migração 0015_editorial_courses.sql para ativar o painel.'},503)} as const;
- if(!data)return {response:contentJson({error:'Sua conta não tem permissão de administrador.',userId:identity.user.id},403)} as const;
+ if(!data)return {response:contentJson({error:'Sua conta não tem permissão de administrador.'},403)} as const;
  return identity;
 }
 export async function smallJson(request:Request,limit=160000):Promise<unknown>{
