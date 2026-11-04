@@ -24,7 +24,7 @@ export function resolveMathLab({subject,topic,description='',unit=''}:MathTopic)
  if(/probabilidade|espaco amostral|eventos aleatorios/.test(text)||unitText==='probabilidade')return 'probability';
  if(/arranjos?|permutac|combinac|analise combinatoria|principios? multiplicativo|problemas de contagem/.test(text)||unitText==='analise combinatoria')return 'combinatorics';
  if(/estatistic|media aritmetica|mediana|moda estatistica|medidas de tendencia central|variancia|desvio padrao|histograma|graficos? (de barras|de setores)|leitura de graficos|tabelas? e graficos/.test(text)||unitText==='tratamento da informacao')return 'statistics';
- if(/geometria|perimetro|areas? de figuras|circunferencia|poligono|quadrilatero|semelhanca de triangulos|teorema de pitagoras/.test(text))return 'geometry';
+ if(/geometria|perimetro|areas? de figuras|circunferencia|poligono|quadrilatero|semelhanca de triangulos|teorema de pitagoras/.test(text)||unitText==='geometria plana')return 'geometry';
  if(/porcent|percentu|taxas? e indices|juros simples/.test(text))return 'percentage';
  if(/razoes?|proporc|regra de tres|relacao entre grandezas|densidade demografica|velocidade, densidade/.test(text))return 'proportion';
  if(/func(ao|oes)|graficos? de funcoes|dominio e imagem/.test(text)||unitText==='funcoes')return 'functions';
