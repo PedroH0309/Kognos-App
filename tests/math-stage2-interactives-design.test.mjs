@@ -17,21 +17,22 @@ test('Stage 2 contains nine lazy-loaded specialized math lab screens',()=>{
   assert.doesNotMatch(component,/contentRequest\(|\/api\/ai-questions\/submit|recordAttempt\(|localStorage\.setItem|fetch\(/);
  }
 });
-test('Existing eight math labs remain unchanged and grade/practice stay isolated',()=>{
+test('Existing eight math labs are preserved in the independent hub and grading remains isolated',()=>{
  const registry=read('apps/web/src/components/math/MathLabPanel.tsx');
  for(const name of ['ScientificNotationLab','PercentageExplorer','EquationWorkbench',
-  'FunctionGraphLab','GeometryWorkbench','ProbabilityLab','StatisticsLab','TrigonometryLab']){
-  assert.ok(registry.includes(name),name+' was removed');
- }
+  'FunctionGraphLab','GeometryWorkbench','ProbabilityLab','StatisticsLab','TrigonometryLab'])
+   assert.ok(registry.includes(name),name+' was removed');
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- assert.match(room,/readerTab==='explore'/);
- assert.match(room,/<MathLabPanel/);
- assert.match(trails,/<MathLabPanel/);
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(trails,/<LaboratoryHub/);
+ assert.match(room,/<TopicLessonSections/);
  assert.match(room,/SkillEvolutionPanel/);
  assert.match(trails,/SkillEvolutionPanel/);
  assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);
 });
+
 test('Extra math interfaces retain accessible controls and mobile-first styling',()=>{
  const css=read('apps/web/src/app/kognos-math-stage2.css');
  assert.match(css,/@media\(max-width:760px\)/);
