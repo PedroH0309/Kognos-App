@@ -414,6 +414,246 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "solution": "De i+m=40, m=40−i. Então 20i+10(40−i)=620 ⇒ 10i=220 ⇒ i=22 e m=18. Conferência: 22+18=40; 22×20+18×10=620 reais."
       }
     ]
+  },
+  "Função quadrática": {
+    "objective": "Estudar a função f(x)=ax²+bx+c, com a≠0, determinando raízes reais, concavidade, vértice, sinais e interpretação de problemas de máximo e mínimo.",
+    "prerequisites": [],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Modelo quadrático, concavidade e zeros",
+        "explanation": "Uma função quadrática real possui forma f(x)=ax²+bx+c, com a diferente de zero. Seu gráfico é uma parábola: a>0 indica concavidade voltada para cima; a<0, para baixo. O coeficiente c é a ordenada do ponto onde a curva encontra o eixo vertical, pois f(0)=c. Os zeros reais são soluções da equação ax²+bx+c=0. O discriminante Δ=b²−4ac indica: Δ>0, dois zeros reais distintos; Δ=0, um zero real duplo; Δ<0, nenhum zero real. A fórmula x=(−b±√Δ)/(2a) precisa ser aplicada com parênteses e sinais corretos. Se a função representa uma área ou preço, o domínio real de interesse pode ser mais restrito do que todos os reais.",
+        "steps": [
+          "Identifique a, b e c na expressão completa, incluindo os sinais.",
+          "Calcule Δ e determine quantos zeros reais são possíveis.",
+          "Se houver zeros reais, aplique Bhaskara e verifique cada um por substituição."
+        ],
+        "example": "Para f(x)=x²−5x+6, a=1, b=−5 e c=6. Δ=(−5)²−4×1×6=25−24=1. Então x=(5±1)/2 fornece x=2 ou x=3. O gráfico tem concavidade para cima e intercepta o eixo vertical no ponto (0,6).",
+        "pitfall": "Esquecer que b=−5 no exemplo, escrever −b=−5 ou assumir que Δ<0 significa que a função não existe."
+      },
+      {
+        "level": "intermediate",
+        "title": "Vértice, eixo de simetria e imagem",
+        "explanation": "O vértice da parábola é o ponto onde ocorre o valor mínimo (a>0) ou máximo (a<0) da função no domínio real. Sua abscissa é x_v=−b/(2a), e sua ordenada pode ser calculada por y_v=f(x_v) ou por −Δ/(4a). A reta vertical x=x_v é eixo de simetria do gráfico. Completando quadrados, f(x)=a(x−x_v)²+y_v, forma que deixa o extremo visível. Para a>0, a imagem nos reais é [y_v,+∞); para a<0, é (−∞,y_v]. Interpretar resultados exige identificar se x descreve tempo, comprimento ou outra grandeza e verificar valores admissíveis.",
+        "steps": [
+          "Calcule x_v usando os coeficientes identificados.",
+          "Substitua x_v na expressão da função para achar y_v.",
+          "Interprete máximo ou mínimo conforme o sinal de a e as restrições do contexto."
+        ],
+        "example": "Para f(x)=−2x²+8x+1, temos x_v=−8/(2×−2)=2. O valor no vértice é f(2)=−8+16+1=9. Como a<0, a função atinge máximo 9 nos reais, em x=2, e seu eixo de simetria é x=2.",
+        "pitfall": "Afirmar que toda parábola possui mínimo, ignorando que a<0 indica máximo; ou interpretar x_v negativo como tempo fisicamente válido sem examinar o contexto."
+      },
+      {
+        "level": "advanced",
+        "title": "Inequações, intervalos e modelagem",
+        "explanation": "O sinal de uma função quadrática pode ser investigado pela concavidade e pelas raízes. Se a>0 e há duas raízes distintas r1<r2, a função é positiva fora do intervalo entre elas e negativa no interior. Se a<0, o padrão se inverte. Em desigualdades com ≥ ou ≤, inclua as raízes; com > ou <, exclua-as. Para problemas reais, formule f(x) a partir das informações, escolha um domínio compatível e interprete o extremo sem confundir valor da variável com valor da função. Modelos quadráticos são aproximações em certas situações e não autorizam extrapolação ilimitada, como supor crescimento permanente de lucro ou altura.",
+        "steps": [
+          "Fatore ou calcule as raízes reais e organize-as em ordem.",
+          "Determine o sinal de a e analise os intervalos separados pelas raízes.",
+          "Escolha intervalos que satisfazem a desigualdade e confira condições físicas."
+        ],
+        "example": "Resolva x²−5x+6≤0. Fatorando, (x−2)(x−3)≤0. A parábola tem concavidade positiva e zera em 2 e 3, logo fica não positiva entre as raízes, incluindo extremos. Solução: x∈[2,3].",
+        "pitfall": "Trocar o sinal do intervalo de solução ou esquecer que igualdade permite os extremos quando a desigualdade usa ≤ ou ≥."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Determine as raízes reais da função f(x)=x²−7x+12 e confira os valores por fatoração.",
+        "hint": "Procure dois números de soma 7 e produto 12.",
+        "solution": "x²−7x+12=(x−3)(x−4). Para o produto ser zero, x−3=0 ou x−4=0. Portanto as raízes são x=3 e x=4. Ambas anulam a expressão."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual a concavidade e o ponto em que a função f(x)=−3x²+6x−2 intercepta o eixo y?",
+        "hint": "Observe o sinal de a e calcule f(0).",
+        "solution": "Como a=−3<0, a parábola tem concavidade voltada para baixo. Em x=0, f(0)=−2. Logo a interseção com o eixo vertical é (0,−2)."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Calcule as coordenadas do vértice de f(x)=x²−6x+5 e indique se é máximo ou mínimo.",
+        "hint": "Use x_v=−b/(2a) e depois f(x_v).",
+        "solution": "a=1 e b=−6. Assim x_v=6/2=3 e y_v=f(3)=9−18+5=−4. O vértice é (3,−4); como a>0, corresponde a um mínimo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Determine o valor máximo da função f(x)=−x²+4x+3 para x real, mostrando o cálculo.",
+        "hint": "O coeficiente de x² é negativo; calcule o vértice.",
+        "solution": "a=−1 e b=4. x_v=−4/(−2)=2. Então f(2)=−4+8+3=7. O valor máximo é 7, atingido em x=2, pois a concavidade é negativa."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Resolva a inequação x²−9>0 e apresente a solução como união de intervalos reais.",
+        "hint": "Fatore como diferença de quadrados.",
+        "solution": "x²−9=(x−3)(x+3), com raízes −3 e 3. Como a>0, o produto é positivo fora das raízes; o sinal é estrito, portanto x∈(−∞,−3)∪(3,+∞)."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um objeto tem altura h(t)=−5t²+20t+1 em metros, para t≥0. Quando ocorre a altura máxima e qual é ela?",
+        "hint": "Calcule o vértice e confirme que t≥0.",
+        "solution": "t_v=−20/(2×−5)=2 s. h(2)=−5×4+20×2+1=21 m. Como a<0, essa é a altura máxima do modelo e t=2 está no domínio físico."
+      }
+    ]
+  },
+  "Progressão aritmética": {
+    "objective": "Identificar progressões aritméticas, calcular termos e somas finitas e resolver problemas de variação linear discreta.",
+    "prerequisites": [],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Razão e termo geral",
+        "explanation": "Uma progressão aritmética (PA) é uma sequência de números em que a diferença entre dois termos consecutivos é constante. Essa diferença é a razão r: r=a₂−a₁=a₃−a₂. A fórmula do termo geral é a_n=a₁+(n−1)r, para n inteiro positivo. Se r>0, a PA é crescente; se r<0, decrescente; se r=0, constante. A sequência 3,7,11,15 tem razão 4. É preciso lembrar que o índice do primeiro termo é n=1, motivo de aparecer n−1 na expressão. Uma PA descreve variação por acréscimos iguais, e não por multiplicações sucessivas como numa progressão geométrica.",
+        "steps": [
+          "Calcule diferenças entre termos consecutivos e confira que são iguais.",
+          "Identifique a₁, r e o índice n desejado.",
+          "Aplique a fórmula e teste o resultado calculando termos vizinhos."
+        ],
+        "example": "Uma PA começa em 5 e aumenta 3 unidades a cada termo: 5,8,11,14,... O oitavo termo é a₈=5+(8−1)×3=26. O sétimo vale 23 e o nono vale 29, confirmando diferença 3.",
+        "pitfall": "Usar a_n=a₁+nr, o que desloca o resultado uma razão, ou confundir diferença constante com razão multiplicativa."
+      },
+      {
+        "level": "intermediate",
+        "title": "Soma de termos de uma PA",
+        "explanation": "A soma S_n dos n primeiros termos de uma PA finita pode ser calculada por S_n=n(a₁+a_n)/2. A fórmula decorre da observação de que o primeiro e o último termos somam o mesmo valor que o segundo e o penúltimo, formando pares. Para usar a soma, conheça a₁, r e n ou encontre a_n primeiro. A fórmula não exige que todos os termos sejam positivos: funciona com razões negativas e sequências que cruzam zero. Em problemas práticos, a unidade da soma deve refletir o que os termos representam; uma sequência de valores monetários acumulados não pode ser confundida com saldo final único.",
+        "steps": [
+          "Encontre o último termo usando o índice correto.",
+          "Substitua a₁, a_n e n na expressão da soma.",
+          "Confira, quando possível, uma pequena soma direta ou por pares."
+        ],
+        "example": "Calcule a soma dos dez primeiros termos de 2,5,8,... A razão é 3 e a₁₀=2+9×3=29. Então S₁₀=10(2+29)/2=155. O pareamento 2+29=31, 5+26=31 e assim por diante confirma o cálculo.",
+        "pitfall": "Confundir S_n com a_n ou somar apenas primeiro e último termos sem multiplicar pelo número de pares."
+      },
+      {
+        "level": "advanced",
+        "title": "Problemas inversos e padrões discretos",
+        "explanation": "Em problemas inversos, pode ser preciso recuperar n ou r a partir de dois termos. Se a_p e a_q são conhecidos, a_q−a_p=(q−p)r, de modo que r=(a_q−a_p)/(q−p), quando p≠q. A PA é a versão discreta de um comportamento linear: a diferença é constante entre índices consecutivos, mas isso não torna qualquer conjunto de dados uma PA. Num planejamento com pagamentos que sobem por valor fixo a cada mês, os valores mensais podem formar PA; se sobem por uma porcentagem fixa, em geral formam PG. A interpretação do contexto e o domínio de índices positivos devem ser verificados antes de concluir.",
+        "steps": [
+          "Traduza índices e termos conhecidos em equações.",
+          "Isole a razão usando diferenças entre índices.",
+          "Retorne à situação para verificar número de termos e unidades."
+        ],
+        "example": "Se a₄=14 e a₉=34 em uma PA, então 34−14=(9−4)r, logo r=20/5=4. Como a₄=a₁+3r, a₁=14−12=2. O termo geral é a_n=2+4(n−1)=4n−2.",
+        "pitfall": "Dividir a diferença dos termos por q−p+1, em vez de pela diferença entre índices, ou aplicar PA a crescimento percentual."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "A sequência 4,9,14,19,... é uma PA? Determine sua razão e o sexto termo.",
+        "hint": "Subtraia termos consecutivos e aplique a_n=a₁+(n−1)r.",
+        "solution": "As diferenças são 5, então é uma PA de razão r=5. a₆=4+(6−1)×5=29. A sequência é crescente porque r>0."
+      },
+      {
+        "level": "basic",
+        "prompt": "Determine o décimo termo de uma PA com primeiro termo 10 e razão −2.",
+        "hint": "O índice 10 implica nove incrementos.",
+        "solution": "a₁₀=10+(10−1)×(−2)=10−18=−8. Como a razão é negativa, a PA decresce de duas unidades por passo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Calcule a soma dos primeiros 12 termos da PA 1,3,5,... usando a fórmula.",
+        "hint": "Encontre a₁₂ e depois S₁₂=12(a₁+a₁₂)/2.",
+        "solution": "A razão é 2 e a₁₂=1+11×2=23. Portanto S₁₂=12(1+23)/2=144. Trata-se da soma dos 12 primeiros ímpares."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma PA tem a₁=7 e a₅=23. Determine a razão.",
+        "hint": "Existem quatro intervalos entre os índices 1 e 5.",
+        "solution": "Pela fórmula, a₅=7+4r=23. Assim 4r=16 e r=4. A PA começa 7,11,15,19,23, confirmando a razão."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Se a₃=11 e a₈=31 numa PA, calcule a₁ e a razão r.",
+        "hint": "A diferença entre termos corresponde a cinco razões.",
+        "solution": "31−11=(8−3)r=5r; logo r=4. Como a₃=a₁+2r, temos a₁=11−8=3. Verificação: a₈=3+7×4=31."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um estudante guarda R$ 20 no primeiro mês e aumenta o depósito mensal em R$ 5 por seis meses. Qual o total depositado?",
+        "hint": "Os depósitos formam PA; encontre o último e a soma.",
+        "solution": "Os depósitos são 20,25,30,35,40,45 reais. A soma é S₆=6(20+45)/2=195 reais. O total depositado difere do depósito do último mês."
+      }
+    ]
+  },
+  "Probabilidade condicional": {
+    "objective": "Distinguir probabilidade simples e condicional, aplicar P(A|B)=P(A∩B)/P(B) e reconhecer quando eventos são independentes.",
+    "prerequisites": [],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Universo condicionado e probabilidade",
+        "explanation": "Probabilidade condicional trata da chance de um evento A quando sabemos que B ocorreu. Se P(B)>0, a definição é P(A|B)=P(A∩B)/P(B). O símbolo “|” pode ser lido como “dado que”. A informação de B restringe o universo de resultados possíveis, por isso o denominador deixa de ser o total original. Em experimentos finitos equiprováveis, conte os resultados que atendem a B e, dentro deles, os que também atendem a A. Esse procedimento não exige assumir independência. O enunciado deve indicar claramente qual evento é o condicionado: P(A|B) e P(B|A) geralmente são diferentes.",
+        "steps": [
+          "Identifique a informação conhecida e escreva o evento B.",
+          "Conte ou calcule P(A∩B) e P(B).",
+          "Divida pelo denominador condicionado, desde que P(B)>0."
+        ],
+        "example": "Uma turma tem 20 alunos: 12 fazem esporte, dos quais 5 também praticam música. Se um aluno é escolhido entre os que fazem esporte, a probabilidade de praticar música é 5/12, e não 5/20, pois a condição restringiu a turma aos 12 esportistas.",
+        "pitfall": "Trocar P(A|B) por P(B|A) ou manter o total da amostra como denominador mesmo depois de aplicar a condição."
+      },
+      {
+        "level": "intermediate",
+        "title": "Interseção, tabelas e independência",
+        "explanation": "Da definição condicional obtemos P(A∩B)=P(A|B)P(B), que é a regra do produto. Dois eventos com probabilidades positivas são independentes quando P(A|B)=P(A), equivalente a P(A∩B)=P(A)P(B). Independência não significa que A e B sejam mutuamente exclusivos: eventos exclusivos com probabilidade positiva não podem ocorrer juntos e, portanto, não são independentes. Tabelas de dupla entrada ajudam a identificar interseções, totais por linha e totais por coluna. As frequências podem representar probabilidades empíricas, mas em amostras pequenas não constituem garantias sobre toda a população.",
+        "steps": [
+          "Organize resultados em uma tabela e marque interseções.",
+          "Calcule as proporções condicionais dividindo pelo total da linha ou coluna correta.",
+          "Compare a condicional com a marginal se a questão pedir independência."
+        ],
+        "example": "Numa pesquisa de 100 pessoas, 40 usam ônibus, 20 usam bicicleta e 10 usam ambos. P(bicicleta|ônibus)=10/40=25%. Como P(bicicleta)=20/100=20%, os eventos não são independentes nessa distribuição de frequências.",
+        "pitfall": "Concluir independência porque dois eventos são diferentes ou porque as porcentagens envolvidas parecem próximas."
+      },
+      {
+        "level": "advanced",
+        "title": "Árvores, testes e atualização de evidências",
+        "explanation": "Árvores de probabilidade organizam decisões sucessivas: cada ramo é interpretado com a probabilidade condicionada ao caminho anterior, e a probabilidade de um percurso completo resulta do produto dos ramos. A probabilidade total soma percursos mutuamente exclusivos que levam ao mesmo evento. Em testes de triagem, a chance de uma pessoa realmente ter uma condição após resultado positivo depende tanto das características do teste quanto da frequência prévia da condição no grupo, fenômeno ligado ao raciocínio bayesiano. Não é adequado inferir P(condição|positivo) apenas da sensibilidade. Em exercícios, construa tabela de contagens hipotéticas antes de manipular porcentagens complexas.",
+        "steps": [
+          "Defina eventos e sua base de referência antes de montar a árvore.",
+          "Multiplique probabilidades condicionais ao longo de cada percurso.",
+          "Some caminhos exclusivos para obter o total e então condicione, se necessário."
+        ],
+        "example": "Em 1000 itens hipotéticos, 100 são defeituosos. Um teste marca positivo em 90 defeituosos e em 45 não defeituosos. Entre os 135 positivos, 90 são defeituosos. Assim P(defeito|positivo)=90/135≈66,7%, não 90%. O resultado depende da composição do grupo.",
+        "pitfall": "Confundir P(teste positivo|defeito) com P(defeito|teste positivo) ou somar probabilidades de percursos sobrepostos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma turma tem 15 alunas e 10 alunos; das alunas, 6 fazem teatro. Se a pessoa escolhida é aluna, qual a probabilidade de fazer teatro?",
+        "hint": "O universo condicionado são apenas as 15 alunas.",
+        "solution": "Entre as 15 alunas, 6 fazem teatro. Assim P(teatro|aluna)=6/15=2/5=40%. O total 25 não é o denominador após condicionar."
+      },
+      {
+        "level": "basic",
+        "prompt": "Explique o significado de P(A|B) e por que P(B) precisa ser maior que zero.",
+        "hint": "A barra vertical significa “dado que”.",
+        "solution": "P(A|B) mede a chance de A sabendo que B ocorreu. Pela definição divide-se P(A∩B) por P(B), que precisa ser não nulo para a divisão estar definida."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Se P(A)=0,4, P(B)=0,5 e P(A∩B)=0,2, os eventos são independentes?",
+        "hint": "Compare P(A∩B) e P(A)×P(B).",
+        "solution": "P(A)P(B)=0,4×0,5=0,2, igual à interseção dada. Nesse modelo, A e B são independentes, pois satisfazem a condição P(A∩B)=P(A)P(B)."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma pesquisa tem 80 participantes; 32 praticam natação, e 12 destes também correm. Calcule P(corrida|natação).",
+        "hint": "Use como denominador os 32 praticantes de natação.",
+        "solution": "P(corrida|natação)=12/32=3/8=37,5%. A condicional não é 12/80 porque o enunciado informa que a pessoa pratica natação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num teste hipotético, há 40 positivos verdadeiros e 10 falsos positivos. Qual a chance de condição presente dado resultado positivo?",
+        "hint": "Conte apenas os casos que receberam resultado positivo.",
+        "solution": "Há 50 resultados positivos no total, dos quais 40 representam condição presente. Portanto P(condição|positivo)=40/50=80%. A proporção depende desta população hipotética."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma caixa tem 3 bolas vermelhas e 2 azuis. Retiram-se duas sem reposição. Qual P(segunda vermelha|primeira azul)?",
+        "hint": "Depois de sair uma azul, restam quatro bolas na caixa.",
+        "solution": "Após uma azul ser retirada, restam 3 vermelhas e 1 azul, totalizando 4. Assim P(segunda vermelha|primeira azul)=3/4=75%."
+      }
+    ]
   }
 };
 
