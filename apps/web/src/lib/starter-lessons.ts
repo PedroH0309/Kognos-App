@@ -4,6 +4,7 @@ import {examBlueprints} from './exam-blueprints.ts';
 import {findLearningLesson} from './learning-catalog.ts';
 import {findProvaoTopic} from './provao-paulista.ts';
 import {matchTeachingSeed,teachingSeedCount,type SubjectSeed} from './starter-lesson-patterns.ts';
+import {deepMathLesson,deepMathTopicNames} from './deep-math-lessons.ts';
 
 /** Offline curriculum-wide teaching modules.
  * IMPORTANT: auto-assembled introductory content is not a teacher-reviewed
@@ -95,6 +96,7 @@ const broadStudyMethods:Record<string,{concept:string;method:string;example:stri
 };
 function shorten(value:string,max:number){return value.length<=max?value:value.slice(0,max-1).trimEnd()+'…';}
 export function starterCoverage(topic:CurriculumTopic):StarterCoverage{
+ if(topic.subject==='Matemática'&&deepMathTopicNames.includes(topic.topic))return 'thematic';
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  if(legacy)return 'curated';
  const ref=findProvaoTopic(topic.subject,topic.topic);
@@ -106,6 +108,8 @@ export function starterCoverageCounts(topics:readonly CurriculumTopic[]){
  return stats;
 }
 export function starterLesson(topic:CurriculumTopic):CourseLesson{
+ const developed=deepMathLesson(topic);
+ if(developed)return developed;
  const ref=findProvaoTopic(topic.subject,topic.topic);
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  const seed=matchTeachingSeed(topic.subject,topic.topic+' '+(ref?.description??''));
