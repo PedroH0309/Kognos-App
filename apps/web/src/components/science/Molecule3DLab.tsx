@@ -11,6 +11,8 @@ export default function Molecule3DLab(){
  const [webglError,setWebglError]=useState(false);
  const stage=useRef<HTMLDivElement|null>(null);
  const reset=useRef<(()=>void)|null>(null);
+ const rerenderScene=useRef<(()=>void)|null>(null);
+ const sphereHandles=useRef<THREE.Mesh[]>([]);
  const molecule:Molecule3D=molecules[index];
  useEffect(()=>{
   const host=stage.current;
@@ -62,8 +64,8 @@ export default function Molecule3DLab(){
    const style=atomStyle[atom.element];
    const material=new THREE.MeshStandardMaterial({
     color:style.color,metalness:.1,roughness:.34,
-    emissive:atomIndex===selectedAtom?0x253d92:0x000000,
-    emissiveIntensity:atomIndex===selectedAtom?.36:0
+    emissive:atomIndex===0?0x253d92:0x000000,
+    emissiveIntensity:atomIndex===0?.36:0
    });
    const sphere=new THREE.Mesh(spheresGeometry,material);
    sphere.position.set(...atom.at);
@@ -74,6 +76,8 @@ export default function Molecule3DLab(){
   });
 
   const render=()=>renderer.render(scene,camera);
+  rerenderScene.current=render;
+  sphereHandles.current=spheres;
   const onResize=()=>{
    const {width,height}=host.getBoundingClientRect();
    if(width<=0||height<=0)return;
@@ -105,7 +109,7 @@ export default function Molecule3DLab(){
    camera.position.set(0,0,10);controls.target.set(0,0,0);controls.update();render();
   };
   return()=>{
-   reset.current=null;
+   reset.current=null;rerenderScene.current=null;sphereHandles.current=[];
    renderer.domElement.removeEventListener('pointerdown',downHandler);
    renderer.domElement.removeEventListener('pointerup',upHandler);
    observer.disconnect();
@@ -116,7 +120,15 @@ export default function Molecule3DLab(){
    renderer.dispose();
    if(host.contains(renderer.domElement))host.removeChild(renderer.domElement);
   };
- },[molecule,selectedAtom]);
+ },[molecule]);
+ useEffect(()=>{
+  sphereHandles.current.forEach((mesh,i)=>{
+   const material=mesh.material as THREE.MeshStandardMaterial;
+   material.emissive.setHex(i===selectedAtom?0x253d92:0x000000);
+   material.emissiveIntensity=i===selectedAtom?.36:0;
+  });
+  rerenderScene.current?.();
+ },[selectedAtom,molecule]);
  const atom=molecule.atoms[selectedAtom]??molecule.atoms[0];
  const selectedName=atomStyle[atom.element].label;
  return <ScienceStage subject="Química" title="Moléculas em 3D — laboratório livre"
