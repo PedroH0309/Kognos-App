@@ -48,7 +48,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   <header className="k-lesson-reading-intro">
    <span className="overline">{status}</span>
    <h3>{view==='content'?'Estude o conteúdo':view==='activities'?'Coloque em prática':'Entenda o raciocínio'}</h3>
-   <p>{view==='content'?'Leia a explicação no seu ritmo, sem interromper o texto com controles de simulação.':
+   <p>{view==='content'?situation?'Comece pelo problema do cotidiano. Depois compreenda a teoria e explore conexões com outras aulas.':'Leia a explicação no seu ritmo, sem interromper o texto com controles de simulação.':
     view==='activities'?'Resolva os desafios autorais deste assunto. Respostas livres não são corrigidas automaticamente.':
     'Confira exemplos, resoluções passo a passo e os erros mais comuns do conteúdo.'}</p>
   </header>
