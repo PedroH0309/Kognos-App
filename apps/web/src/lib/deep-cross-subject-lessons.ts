@@ -636,6 +636,321 @@ const lessons:LessonSpec[] = [
         "'Ordenador' aparece com frequência na Espanha, enquanto 'computadora' é comum em diversos países latino-americanos. Ambas podem nomear computador, e a variante deve ser interpretada pelo contexto."
       ]
     ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Sócrates e os sofistas",
+    "objective": "Diferenciar aspectos da investigação socrática e do ensino sofístico no contexto ateniense, considerando fontes, argumentação, retórica e limites de generalização.",
+    "sections": [
+      {
+        "title": "Atenas, debate público e educação",
+        "explanation": "No século V a.C., a vida pública de Atenas incentivou debates sobre educação, virtude, política e uso da palavra. Sofistas como Protágoras e Górgias atuavam como professores e especialistas em argumentação, frequentemente recebendo remuneração, mas constituíam um grupo heterogêneo. Sócrates, conhecido sobretudo por relatos de Platão e Xenofonte, tornou-se associado à investigação das definições e ao exame crítico de crenças. Não é adequado representar todos os sofistas como enganadores, pois parte desse retrato provém de adversários filosóficos. Também não possuímos textos escritos diretamente por Sócrates, o que impõe cautela histórica na atribuição de teses.",
+        "example": "Imagine uma assembleia debatendo se uma lei é justa. Um professor de retórica pode treinar cidadãos para defender argumentos eficazmente em público; uma investigação socrática perguntaria o que significa 'justiça', procurando inconsistências nas respostas. São práticas que podem se cruzar, e não categorias totalmente isoladas.",
+        "pitfall": "Repetir a fórmula 'Sócrates buscava a verdade e todos os sofistas defendiam mentiras', sem considerar a diversidade intelectual e a parcialidade das fontes."
+      },
+      {
+        "title": "Pergunta, refutação e aporia",
+        "explanation": "A conversação socrática frequentemente começa com uma pergunta conceitual: 'O que é coragem?' ou 'O que é virtude?'. O interlocutor oferece definição, Sócrates testa sua consistência por exemplos e contraexemplos e a resposta pode chegar a uma aporia, uma dificuldade assumida sem solução definitiva. O procedimento de exame e refutação é por vezes chamado elenchus. A ironia socrática e a maiêutica aparecem em interpretações posteriores e diálogos específicos; não se deve tratá-las como roteiro rígido de todas as conversas históricas. O valor filosófico reside em reconhecer pressupostos e revisar afirmações contraditórias.",
+        "example": "Se alguém define coragem como 'não sentir medo', pode-se apresentar o caso de quem reconhece o perigo, sente medo e ainda assim age para proteger outra pessoa. O contraexemplo mostra que a definição inicial é insuficiente e precisa ser refinada, não que toda coragem tenha sido definitivamente definida.",
+        "pitfall": "Entender que a refutação automática de uma definição prova sua negação absoluta ou que todo diálogo socrático alcança consenso final."
+      },
+      {
+        "title": "Retórica, relativismo e crítica das fontes",
+        "explanation": "Protágoras é associado à conhecida formulação de que o ser humano é medida das coisas, frequentemente interpretada no debate sobre relativismo; o sentido preciso exige análise das fontes antigas e de seus contextos. Górgias discutiu potência da linguagem e persuasão, mostrando como o discurso pode influenciar crenças. Sócrates aparece em diálogos platônicos questionando a relação entre persuasão, conhecimento e virtude. Na leitura filosófica, diferencie argumento válido, argumento persuasivo e conhecimento justificado; um discurso pode persuadir sem demonstrar. Compare reconstruções historiográficas e evite atribuir a todos os sofistas uma mesma doutrina.",
+        "example": "Num tribunal hipotético, duas falas podem emocionar o público com intensidade diferente. Uma análise retórica descreve recursos de persuasão; uma análise lógica pergunta se as conclusões decorrem das premissas e quais evidências sustentam as acusações. O efeito persuasivo, por si só, não assegura verdade.",
+        "pitfall": "Confundir habilidade retórica com prova lógica e reproduzir avaliações de Platão sobre sofistas como fatos neutros e incontestados."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Qual problema histórico surge ao afirmar com certeza que Sócrates escreveu determinada obra?",
+        "Considere a transmissão de seus ensinamentos.",
+        "Não há obras filosóficas escritas por Sócrates preservadas como sua autoria; grande parte de nossas informações vem de relatos de outros autores, especialmente Platão e Xenofonte. As atribuições exigem cautela."
+      ],
+      [
+        "basic",
+        "Explique por que os sofistas não devem ser tratados como um grupo intelectualmente uniforme.",
+        "Compare interesses e autores distintos.",
+        "'Sofistas' designa figuras diferentes, com métodos e ideias próprios, como Protágoras e Górgias. Reuni-los em uma única doutrina ignora divergências e efeitos de fontes adversariais."
+      ],
+      [
+        "intermediate",
+        "Um aluno define justiça como 'fazer sempre o que a maioria decide'. Proponha uma pergunta socrática que teste a definição.",
+        "Use um contraexemplo que desafie a universalidade.",
+        "Uma pergunta possível é: 'Se a maioria decidir punir um inocente, a decisão ainda será justa?' O contraexemplo força o aluno a repensar se a vontade majoritária basta como critério de justiça."
+      ],
+      [
+        "intermediate",
+        "Por que chegar a uma aporia não representa necessariamente fracasso filosófico?",
+        "O objetivo pode ser expor pressupostos inconsistentes.",
+        "A aporia mostra que a resposta inicial enfrenta dificuldades e que conceitos aparentemente claros exigem investigação. Reconhecer limites do próprio conhecimento pode orientar novas perguntas."
+      ],
+      [
+        "advanced",
+        "Diferencie persuasão de demonstração em uma discussão pública.",
+        "Avalie conexão lógica entre premissas e conclusão.",
+        "Persuasão descreve o efeito de convencer um público; demonstração requer relação justificável entre premissas, argumentos e conclusão. Um discurso emocional pode persuadir sem estabelecer validade ou verdade."
+      ],
+      [
+        "advanced",
+        "Analise a dificuldade de reconstruir a posição histórica dos sofistas a partir de diálogos platônicos.",
+        "Identifique autoria, intenção e perspectiva da fonte.",
+        "Diálogos de Platão são textos filosófico-literários com escolhas de representação. Eles fornecem evidências importantes, mas podem valorizar a perspectiva socrática e criticar adversários; precisam ser confrontados com outras fontes."
+      ]
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Durkheim: fato social e solidariedade",
+    "objective": "Explicar fato social e seus atributos, diferenciar solidariedade mecânica e orgânica e relacionar divisão social do trabalho, instituições e integração social.",
+    "sections": [
+      {
+        "title": "Fatos sociais e método sociológico",
+        "explanation": "Émile Durkheim definiu fatos sociais como modos de agir, pensar e sentir externos aos indivíduos e dotados de poder de coerção, além de apresentarem generalidade no interior de uma coletividade. Leis, sistemas escolares e convenções de linguagem podem ser analisados sociologicamente porque antecedem o indivíduo e orientam comportamentos por sanções ou expectativas. 'Coerção' não se limita à força policial: inclui pressões difusas como reprovação social. Em As Regras do Método Sociológico, Durkheim defendeu tratar fatos sociais como coisas, isto é, investigá-los como objetos com critérios e evidências, em vez de reduzi-los a impressões subjetivas.",
+        "example": "Uma escola estabelece horários e regras de frequência antes da matrícula de um aluno. A instituição organiza sua conduta e pode aplicar consequências por atrasos. A regra não depende da vontade isolada do aluno e representa um exemplo didático de pressão social institucionalizada.",
+        "pitfall": "Supor que fato social só existe quando há polícia ou que todo hábito individual, por ser repetido, é automaticamente fato social."
+      },
+      {
+        "title": "Solidariedade mecânica e orgânica",
+        "explanation": "Na teoria durkheimiana, solidariedade designa os vínculos que integram uma sociedade. Solidariedade mecânica predominaria em contextos de menor diferenciação funcional, nos quais semelhanças de crenças e práticas sustentam forte consciência coletiva. Solidariedade orgânica está relacionada a maior divisão do trabalho e interdependência entre funções especializadas: pessoas dependem de atividades de outras para manter a vida social. Não se trata de superioridade moral automática de um tipo; são categorias analíticas para comparar formas de coesão. A associação entre organização social e tipos de direito também integra o argumento de Durkheim.",
+        "example": "Em uma sociedade com funções produtivas pouco diferenciadas, a coesão pode estar ligada a crenças e costumes compartilhados. Em uma cidade moderna, agricultores, profissionais de saúde, professores, transportadores e técnicos exercem funções distintas, mas dependem reciprocamente do trabalho uns dos outros.",
+        "pitfall": "Interpretar solidariedade mecânica como máquinas ou orgânica como biologia literal; os nomes são analogias sociológicas de formas de integração."
+      },
+      {
+        "title": "Anomia, diferenciação e crítica",
+        "explanation": "A crescente especialização pode intensificar interdependências, mas também gerar desregulação quando normas e expectativas não acompanham as transformações sociais; Durkheim relacionou esse risco à anomia. A integração não resulta automaticamente da divisão do trabalho: é preciso examinar instituições, regras, conflitos e desigualdades. Em A Divisão do Trabalho Social, a questão central inclui o que mantém grupos coesos em meio à diferenciação. Em análises atuais, suas categorias podem ser comparadas a interpretações de conflito e poder de outras tradições sociológicas; a aplicação deve evitar tratar mudanças históricas complexas como evolução linear inevitável.",
+        "example": "Quando uma atividade econômica se transforma rapidamente, pessoas podem enfrentar regras pouco claras sobre direitos e obrigações. O caso hipotético ajuda a discutir anomia como enfraquecimento de orientação normativa, mas não prova que todo conflito moderno resulte de falta de normas.",
+        "pitfall": "Reduzir anomia a ausência absoluta de leis ou afirmar que mais especialização elimina automaticamente desigualdades e conflitos sociais."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Explique exterioridade e coerção de um fato social usando um exemplo escolar.",
+        "Pense em regras existentes antes da chegada do estudante.",
+        "O regulamento escolar existe antes da matrícula do aluno e expressa exterioridade; expectativas de frequência e sanções por descumprimento ilustram coerção social e institucional, sem depender apenas de força física."
+      ],
+      [
+        "basic",
+        "Por que um gosto individual não é necessariamente um fato social para Durkheim?",
+        "Procure generalidade, exterioridade e coerção.",
+        "Uma preferência isolada não apresenta necessariamente origem exterior, generalidade ou pressão coletiva. Para caracterizar fato social é preciso analisar padrões compartilhados e mecanismos sociais de imposição."
+      ],
+      [
+        "intermediate",
+        "Compare solidariedade mecânica e orgânica em termos de integração.",
+        "Diferencie semelhança coletiva de especialização funcional.",
+        "A mecânica se fundamenta em semelhanças de crenças e práticas, enquanto a orgânica decorre sobretudo da interdependência entre funções sociais diferenciadas. São modelos analíticos, não rótulos de valor."
+      ],
+      [
+        "intermediate",
+        "Explique por que a divisão do trabalho pode gerar interdependência.",
+        "Considere funções especializadas que dependem umas das outras.",
+        "Em uma sociedade complexa, ninguém produz isoladamente todos os bens e serviços que utiliza. As funções especializadas criam relações de dependência recíproca entre pessoas e organizações."
+      ],
+      [
+        "advanced",
+        "Uma transformação econômica rápida desorganiza expectativas sobre direitos e deveres. Qual conceito durkheimiano ajuda a analisar o problema?",
+        "Considere a insuficiência de normas reguladoras.",
+        "Anomia designa um estado de regulação social fragilizada ou inadequada. O conceito permite analisar problemas de integração quando normas e instituições não acompanham transformações, mas exige contexto empírico."
+      ],
+      [
+        "advanced",
+        "Por que é incorreto concluir que a solidariedade orgânica elimina conflitos e desigualdades?",
+        "Diferencie interdependência de harmonia completa.",
+        "A especialização aumenta dependências, mas não impede assimetrias de poder, conflitos distributivos e fragilidades normativas. A coesão precisa ser examinada juntamente com formas concretas de regulação e desigualdade."
+      ]
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Elementos visuais: ponto, linha, cor, forma e textura",
+    "objective": "Descrever e analisar ponto, linha, cor, forma e textura em produções visuais, relacionando composição, contraste, técnica e efeitos expressivos.",
+    "sections": [
+      {
+        "title": "Ponto, linha e construção visual",
+        "explanation": "O ponto pode marcar posição, criar ritmo e organizar áreas de concentração no campo visual. A linha estabelece direção, delimita contornos e conduz o olhar; linhas verticais, horizontais ou diagonais produzem relações compositivas distintas, embora nenhum significado seja universal. Formas podem ser geométricas ou orgânicas e se organizar por repetição, sobreposição e contraste. Em uma obra, esses elementos interagem com escala, espaço negativo e enquadramento. Análise visual é descrição fundamentada antes de interpretação pessoal: identificar o que realmente aparece ajuda a justificar efeitos de movimento, equilíbrio, tensão ou repouso.",
+        "example": "Imagine um cartaz original com uma única linha diagonal espessa, vários pontos pequenos no canto inferior e um círculo grande no topo. A diagonal direciona o olhar, os pontos criam ritmo e o círculo pode funcionar como foco compositivo pela escala. O efeito deve ser analisado dentro do contexto do cartaz.",
+        "pitfall": "Afirmar que toda diagonal 'significa violência' ou que um ponto isolado possui o mesmo sentido em qualquer obra, sem examinar a composição."
+      },
+      {
+        "title": "Cor, luz e relações cromáticas",
+        "explanation": "Cor envolve tonalidade, saturação e luminosidade. Relações entre cores podem estabelecer contraste, continuidade, hierarquia e atmosfera; cores complementares, como pares opostos em certas rodas cromáticas, produzem contraste notável, mas sua percepção depende de materiais, iluminação e contexto cultural. Em produção digital, as cores são frequentemente representadas por componentes RGB de luz; pigmentos de impressão usam sistemas de mistura subtrativa, como CMYK, com propriedades práticas diferentes. Uma imagem de baixa saturação pode sugerir outra atmosfera que a mesma composição em cores intensas, sem que haja interpretação única ou obrigatória.",
+        "example": "Um infográfico original coloca títulos em azul-escuro sobre fundo claro e dados-chave em laranja de forte contraste. A diferença de luminosidade e tonalidade orienta a hierarquia de leitura. Se o título e o fundo tivessem contraste insuficiente, a legibilidade diminuiria, independentemente do gosto estético.",
+        "pitfall": "Confundir modelos físicos de luz e pigmento ou reduzir interpretações cromáticas a regras universais como 'vermelho sempre significa perigo'."
+      },
+      {
+        "title": "Textura, materialidade e leitura crítica",
+        "explanation": "Textura pode ser tátil, relacionada à superfície real do objeto, ou visual, simulada por marcas, fotografias e padrões. Em pintura, gravura, fotografia ou design digital, técnicas distintas produzem sugestões de rugosidade, brilho ou profundidade. A composição também depende da relação entre elementos e propósito comunicativo: uma obra pode questionar convenções ou produzir ambiguidade. Ao analisar uma imagem, descreva escolhas de cor, forma, linha e textura, proponha hipóteses de função e busque evidências no suporte e no contexto. Interpretar não equivale a inventar intenção do artista sem fonte.",
+        "example": "Um desenho feito com hachuras cruzadas pode criar a aparência visual de uma parede rugosa mesmo em papel liso. A textura percebida é simulada por linhas e variações de densidade. Em uma escultura de madeira entalhada, a textura também pode ser efetivamente tátil.",
+        "pitfall": "Tratar textura visual representada como se necessariamente fosse textura física da superfície ou atribuir mensagem única sem suporte."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Defina um possível papel da linha diagonal na composição de um cartaz visual.",
+        "Analise direção e condução do olhar.",
+        "Uma linha diagonal pode produzir direção, orientar o percurso visual e criar tensão compositiva. O efeito não é fixo e depende do contexto, espessura e relação com outros elementos."
+      ],
+      [
+        "basic",
+        "Explique a diferença entre forma geométrica e forma orgânica numa ilustração.",
+        "Observe regularidade e contornos.",
+        "Formas geométricas são frequentemente construídas por relações matemáticas reconhecíveis, como círculos e triângulos. Formas orgânicas tendem a ter contornos irregulares ou associados a configurações naturais."
+      ],
+      [
+        "intermediate",
+        "Como o contraste de luminosidade contribui para a leitura de um infográfico?",
+        "Considere distinção entre texto e fundo.",
+        "Diferenças adequadas de luminosidade entre texto e fundo aumentam a legibilidade e a hierarquia. Um contraste muito baixo pode tornar informações difíceis de perceber, sobretudo para alguns leitores."
+      ],
+      [
+        "intermediate",
+        "Por que RGB e CMYK não descrevem exatamente o mesmo processo físico de mistura de cores?",
+        "Um sistema parte da luz; o outro, de pigmentos e tintas.",
+        "RGB modela combinação aditiva de luz em telas, enquanto CMYK é usado em processos de impressão com tintas que absorvem e refletem luz. As gamas e resultados práticos não são idênticos."
+      ],
+      [
+        "advanced",
+        "Compare textura tátil e textura visual em uma escultura de madeira e uma fotografia de madeira.",
+        "Diferencie relevo da superfície real e aparência registrada.",
+        "Na escultura, o relevo pode ser tocado e produzir sensação tátil. Na fotografia, a textura de madeira é representada visualmente por contrastes e detalhes, embora o papel ou a tela possam ser lisos."
+      ],
+      [
+        "advanced",
+        "Uma imagem usa círculos repetidos, fundo escuro e um ponto brilhante isolado. Proponha uma leitura visual fundamentada sem alegar intenção comprovada.",
+        "Descreva escala, repetição e contraste antes da hipótese.",
+        "A repetição de círculos cria ritmo; o fundo escuro destaca o ponto brilhante por contraste, sugerindo foco de atenção. Essa análise descreve efeitos visuais possíveis, não prova uma mensagem autoral definitiva."
+      ]
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esportes coletivos e individuais",
+    "objective": "Comparar organização tática, regras, habilidades motoras e cooperação em esportes coletivos e individuais, considerando inclusão, ética e diferentes contextos de prática.",
+    "sections": [
+      {
+        "title": "Classificação, regras e práticas esportivas",
+        "explanation": "Uma distinção didática frequente separa modalidades individuais, como atletismo em provas de corrida, e coletivas, como voleibol e basquetebol. Essa classificação não explica tudo: atletas individuais participam de equipes técnicas e competições por equipe, enquanto esportes coletivos requerem decisões e habilidades pessoais. Cada modalidade possui regras sobre espaço, pontuação, tempo e interação entre participantes. Entender o funcionamento básico é necessário antes de avaliar desempenho. Algumas modalidades envolvem interação direta com adversários, outras funcionam por comparação de marcas, tempos ou pontuações sem disputa simultânea de bola.",
+        "example": "No voleibol, uma equipe costuma organizar recepção, levantamento e ataque dentro das regras de contatos, promovendo interdependência entre jogadores. Numa prova de salto em distância, a marca individual depende de técnica e condições da execução; ambos exigem planejamento, treino e regras, mas a organização competitiva difere.",
+        "pitfall": "Afirmar que atletas de esportes individuais não cooperam com ninguém ou que jogadores de esportes coletivos não respondem individualmente por decisões."
+      },
+      {
+        "title": "Tática, técnica e tomada de decisão",
+        "explanation": "Técnica corresponde a maneiras de executar gestos motores, enquanto tática envolve escolhas adequadas à situação, aos colegas, adversários e objetivos. No basquetebol, controlar a bola e arremessar são ações técnicas, mas decidir quando passar, infiltrar ou lançar depende da leitura tática. Em modalidades individuais, a distribuição de esforço durante uma corrida e a escolha do momento para acelerar também envolvem planejamento tático. O desempenho é influenciado por preparação física, condições de treino e contexto, mas estratégias não garantem vitória. A prática pedagógica pode adaptar regras e materiais para promover participação.",
+        "example": "Em um jogo de futsal, um atleta sem a bola se desloca para abrir uma linha de passe; essa movimentação favorece a solução coletiva do problema ofensivo. Em uma prova de 800 metros, um corredor pode controlar o ritmo das primeiras voltas para evitar fadiga prematura e completar melhor a distância.",
+        "pitfall": "Confundir habilidade técnica com escolha tática ou atribuir uma derrota apenas ao esforço individual, ignorando condições e decisões coletivas."
+      },
+      {
+        "title": "Inclusão, ética e cultura corporal",
+        "explanation": "Esportes são práticas culturais com significados que ultrapassam recordes e resultados. Regras adaptadas, formatos cooperativos e materiais acessíveis permitem diferentes formas de participação, inclusive de pessoas com deficiência. O respeito a adversários, arbitragem e colegas integra a ética esportiva; fair play não exige ausência de competitividade, mas compromisso com regras e dignidade dos participantes. A mídia e a lógica de alto rendimento influenciam a visibilidade de modalidades e atletas, mas a educação física escolar busca também aprendizagem, saúde, sociabilidade e acesso ao lazer. Nenhuma modalidade deve ser associada a um único gênero ou padrão corporal.",
+        "example": "Uma turma adapta o voleibol com bola mais leve, campo reduzido e possibilidade de contato adicional durante uma atividade introdutória. O objetivo pedagógico é ampliar participação e aprendizagem de posicionamento e cooperação, sem alegar que essas regras são as oficiais de competições federadas.",
+        "pitfall": "Tratar resultados de alto rendimento como sinônimo automático de saúde ou excluir praticantes por diferenças de capacidade, gênero ou experiência."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Dê um exemplo de esporte coletivo e individual e justifique a classificação.",
+        "Considere organização da competição e participação direta de equipes.",
+        "O voleibol é coletivo porque equipes organizam conjuntamente as ações de jogo. O salto em distância é uma modalidade individual de atletismo, embora o atleta possa contar com equipe técnica e competir por pontos coletivos."
+      ],
+      [
+        "basic",
+        "Diferencie técnica e tática usando o basquetebol.",
+        "Compare execução de gesto e decisão situacional.",
+        "Arremessar com controle corporal é uma ação técnica. Decidir passar a bola a um colega livre em vez de arremessar sob marcação é uma escolha tática dependente do contexto do jogo."
+      ],
+      [
+        "intermediate",
+        "Por que deslocamento sem a bola é importante em esportes coletivos?",
+        "Considere organização do espaço e opções de passe.",
+        "Movimentos sem a bola podem abrir linhas de passe, ocupar espaços livres e desequilibrar marcações. Eles contribuem para a organização coletiva mesmo sem produzir imediatamente um ponto."
+      ],
+      [
+        "intermediate",
+        "Uma prova de corrida individual pode exigir estratégia? Dê um exemplo.",
+        "Pense na distribuição do ritmo ao longo do percurso.",
+        "Sim. Um corredor pode controlar o ritmo nos primeiros quilômetros para administrar esforço e acelerar no trecho final. A estratégia depende da distância, do condicionamento e das condições da prova."
+      ],
+      [
+        "advanced",
+        "Explique uma adaptação de regra que favoreça participação numa aula de voleibol e delimite seu objetivo.",
+        "Diferencie atividade escolar de competição oficial.",
+        "Permitir um contato extra por equipe ou usar bola mais leve pode ampliar oportunidades de recepção e cooperação entre iniciantes. A regra adaptada serve à aprendizagem, não representa regra oficial federada."
+      ],
+      [
+        "advanced",
+        "Por que é inadequado avaliar saúde de um estudante apenas por seu desempenho esportivo?",
+        "Considere fatores biológicos, sociais e de acesso.",
+        "Desempenho depende de treinamento, modalidade, contexto e múltiplas condições. Saúde é multidimensional e não se reduz a recordes, força ou aparência corporal, exigindo avaliação mais ampla."
+      ]
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Estados físicos e mudanças de estado",
+    "objective": "Explicar sólidos, líquidos e gases pelo modelo de partículas e identificar fusão, vaporização, condensação, solidificação e sublimação, relacionando calor, temperatura e pressão.",
+    "sections": [
+      {
+        "title": "Modelos de partículas nos estados físicos",
+        "explanation": "No modelo corpuscular, a matéria é constituída por partículas em movimento e com interações entre si. Nos sólidos, as partículas em geral mantêm posições relativas e vibram; líquidos têm volume aproximadamente definido e assumem forma do recipiente; gases ocupam o volume disponível, podendo ser comprimidos de modo significativo. O comportamento de diferentes substâncias depende de interações e condições de pressão e temperatura. O modelo escolar é uma simplificação: não significa que partículas sejam pequenas esferas rígidas ou que deixem de se mover em um sólido. Compressibilidade e distância média entre partículas ajudam a explicar diferenças observáveis.",
+        "example": "Ao colocar água líquida em copos de formatos diferentes, ela muda de forma, mas mantém aproximadamente o volume. O ar em uma seringa tampada pode reduzir seu volume com pressão no êmbolo, porque um gás possui maior compressibilidade nas condições comuns.",
+        "pitfall": "Afirmar que as partículas de um sólido ficam completamente imóveis ou que os gases não têm massa."
+      },
+      {
+        "title": "Mudanças de estado e energia",
+        "explanation": "Fusão é passagem de sólido para líquido; solidificação, de líquido para sólido. Vaporização é passagem de líquido para gás e pode ocorrer por evaporação ou ebulição; condensação é o processo inverso. Sublimação é passagem direta sólido-gás, e deposição ou ressublimação o sentido inverso. Durante uma mudança de fase de uma substância pura em condições de pressão controlada, a energia transferida pode modificar interações entre partículas sem aumentar a temperatura enquanto coexistem as fases. Isso explica por que a água pura em ebulição à pressão atmosférica padrão pode manter temperatura aproximadamente constante apesar do fornecimento de calor.",
+        "example": "O gelo retirado do congelador aquece até atingir a temperatura de fusão, depois parte da energia recebida transforma gelo em água líquida. Quando todo o gelo derrete, novo aquecimento pode elevar a temperatura do líquido. O processo depende da pressão, do material e das condições do sistema.",
+        "pitfall": "Confundir evaporação com ebulição: evaporação pode ocorrer na superfície em diferentes temperaturas; ebulição envolve formação de bolhas no líquido sob condições apropriadas."
+      },
+      {
+        "title": "Temperatura, pressão e situações cotidianas",
+        "explanation": "A pressão externa altera a temperatura de ebulição: em altitudes elevadas, onde a pressão atmosférica é menor, a água geralmente ferve a temperaturas inferiores à de ebulição ao nível do mar. Panelas de pressão elevam a pressão interna e permitem maior temperatura de ebulição. A condensação de vapor de água pode formar gotículas em superfícies frias, o que é diferente de 'água saindo do vidro'. Não confunda calor, energia transferida por diferença de temperatura, com temperatura, que é uma propriedade de estado relacionada ao comportamento térmico do sistema. Curvas de aquecimento permitem distinguir aquecimento em uma fase de transições.",
+        "example": "Ao aproximar um copo muito frio de ar úmido, gotículas podem aparecer do lado de fora. O vapor presente no ar encontra a superfície fria, perde energia e condensa. Essa água não atravessou o vidro; sua origem é a umidade do ambiente.",
+        "pitfall": "Afirmar que toda água ferve exatamente a 100 °C independentemente da pressão, altitude e composição."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Como variam forma e volume de um líquido comum quando é colocado em recipientes diferentes?",
+        "Compare sólido, líquido e gás.",
+        "Um líquido assume a forma da porção do recipiente que ocupa, mas mantém aproximadamente seu volume em condições normais. Isso difere do gás, que tende a preencher todo o volume disponível."
+      ],
+      [
+        "basic",
+        "Identifique as mudanças: gelo vira água; vapor vira gotículas; água vira gelo.",
+        "Use o sentido de cada transformação.",
+        "Gelo para água é fusão; vapor para gotículas é condensação ou liquefação; água para gelo é solidificação. São mudanças de estado físico, sem alterar a fórmula da água."
+      ],
+      [
+        "intermediate",
+        "Diferencie evaporação e ebulição sem afirmar que só uma delas depende de energia.",
+        "Uma ocorre na superfície; outra envolve bolhas no líquido.",
+        "Evaporação ocorre na superfície mesmo sem atingir o ponto de ebulição; ebulição é vaporização com formação de bolhas no interior do líquido sob condições apropriadas. Ambas envolvem processos energéticos."
+      ],
+      [
+        "intermediate",
+        "Por que a temperatura pode permanecer constante enquanto gelo puro derrete em condições controladas?",
+        "Considere energia usada para mudar a fase.",
+        "Durante a fusão em condições de pressão definidas, energia fornecida é absorvida na transformação de fase, modificando interações entre partículas. Enquanto coexistem sólido e líquido, a temperatura pode ficar aproximadamente constante."
+      ],
+      [
+        "advanced",
+        "Por que a água pode ferver abaixo de 100 °C em lugares de grande altitude?",
+        "Pense na pressão atmosférica.",
+        "Em altitude elevada, a pressão atmosférica em geral diminui. A ebulição ocorre quando a pressão de vapor permite formação sustentada de bolhas; assim, a temperatura de ebulição da água pode ser menor."
+      ],
+      [
+        "advanced",
+        "De onde vêm gotículas que aparecem na parte externa de um copo com líquido muito frio?",
+        "Identifique a presença de vapor de água no ar.",
+        "O vapor de água do ar esfria ao entrar em contato com a superfície do copo e pode condensar, formando gotículas. A água não atravessa o vidro; vem da umidade atmosférica."
+      ]
+    ]
   }
 ];
 const lookup=new Map(lessons.map(item=>[item.subject+'\0'+item.topic,item]));
