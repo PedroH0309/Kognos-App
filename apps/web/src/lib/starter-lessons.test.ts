@@ -46,7 +46,7 @@ test('Science and mathematics seeds include original subject-specific solved pra
  const sampleTopics=[
   ['Matemática','Notação científica','6 × 10^5'],
   ['Matemática','Porcentagem','R$ 100'],
-  ['Física','Corrente elétrica','3 A'],
+  ['Física','Corrente elétrica','10 V'],
   ['Química','Estequiometria','2 mol'],
   ['Biologia','Mitose e meiose','23 cromossomos'],
   ['Geografia','Escala cartográfica','1 km'],
