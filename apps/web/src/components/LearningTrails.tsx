@@ -15,6 +15,7 @@ import {linkedExamTopic} from '@/lib/lesson-ai-links';
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import CurriculumRoom from './CurriculumRoom';
+import {curriculumTopics} from '@/lib/curriculum-catalog';
 import LaboratoryHub from './LaboratoryHub';
 import TopicLessonSections,{lessonPanes,type LessonPane} from './TopicLessonSections';
 import {learningCatalogForExam} from '@/lib/lesson-ai-links';
@@ -53,6 +54,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [selectedId,setSelectedId]=useState(focus?.lessonId??'math-percentages');
  const [mobilePane,setMobilePane]=useState<'list'|'lesson'>(focus?.lessonId?'lesson':'list');
  const [studySpace,setStudySpace]=useState<'lessons'|'laboratory'>('lessons');
+ const [labTarget,setLabTarget]=useState<{id:string;subject:string}|null>(null);
  const [legacyPane,setLegacyPane]=useState<LessonPane|'materials'|'evolution'>('content');
  useEffect(()=>{setLegacyPane('content');},[selectedId]);
  const [query,setQuery]=useState('');
@@ -159,7 +161,8 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <button type="button" aria-pressed={studySpace==='lessons'} onClick={()=>setStudySpace('lessons')}><BookOpenText size={18}/> Aulas por matéria</button>
    <button type="button" aria-pressed={studySpace==='laboratory'} onClick={()=>setStudySpace('laboratory')}><Compass size={18}/> Laboratório interativo</button>
   </nav>
-  {studySpace==='laboratory'?<LaboratoryHub key={'lab-'+(exam??'all')+'-'+(provaoGrade??'all')} exam={exam} grade={provaoGrade}
+  {studySpace==='laboratory'?<LaboratoryHub key={'lab-'+(labTarget?.id??'overview')+'-'+(exam??'all')+'-'+(provaoGrade??'all')}
+   initialTopicId={labTarget?.id} initialSubject={labTarget?.subject} exam={exam} grade={provaoGrade}
    onOpenLesson={topic=>{
     const matched=catalog.find(l=>l.curriculumId===topic.id||(l.subject===topic.subject&&l.topic===topic.topic));
     if(matched){chooseLesson(matched);setStudySpace('lessons');}
@@ -232,13 +235,18 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <section ref={detailRef} className="learning-lesson-detail dark-panel" aria-label="Aula selecionada">
     <button type="button" className="k-classroom-back" onClick={()=>{setMobilePane('list');requestAnimationFrame(()=>indexRef.current?.scrollIntoView({behavior:'smooth',block:'start'}));}}><ArrowLeft size={16} aria-hidden="true"/> Voltar às aulas de {subject}</button>
     {lesson&&lesson.subject===subject?lesson.curriculumId?<CurriculumRoom key={lesson.id} embedded active={active} userId={userId}
-     focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}/>:<>
+     focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}
+     onOpenLab={topic=>{setLabTarget({id:topic.id,subject:topic.subject});setStudySpace('laboratory');}}/>:<>
      <header className="k-lesson-page-header">
       <span className="overline">{lesson.subject.toLocaleUpperCase('pt-BR')} · AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')}</span>
       <h2>{lesson.topic}</h2>
       <p>{lesson.objective}</p>
       <small><Clock3 size={14}/> Introdução autoral · {lesson.minutes} minutos estimados</small>
      </header>
+     <button type="button" className="k-lesson-to-lab" onClick={()=>{
+      const match=curriculumTopics.find(t=>t.id===lesson.curriculumId||(t.subject===lesson.subject&&t.topic===lesson.topic));
+      setLabTarget({id:match?.id??'',subject:lesson.subject});setStudySpace('laboratory');
+     }}>Abrir laboratórios desta matéria</button>
      <nav className="k-lesson-pane-tabs" aria-label="Seções da aula selecionada">
       {lessonPanes.map(pane=><button type="button" key={pane.id} aria-pressed={legacyPane===pane.id}
        onClick={()=>setLegacyPane(pane.id)}>{pane.label}</button>)}
