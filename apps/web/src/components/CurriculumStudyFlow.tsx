@@ -95,7 +95,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
      return <button type="button" className="k-curriculum-subject-card" key={item.name} onClick={()=>chooseSubject(item.name)}>
       <span className="k-curriculum-subject-icon"><Icon size={23} aria-hidden="true"/></span>
       <span className="k-curriculum-subject-label"><strong>{item.name}</strong>
-       <small>{item.total} conteúdos · {item.developed} aulas desenvolvidas · {item.introduced} introduções</small></span>
+       <small>{item.total} conteúdos · {scoped.filter(t=>t.subject===item.name&&['starter','guided'].includes(t.status)).length} materiais-base · {item.developed} aulas desenvolvidas</small></span>
       <ChevronRight size={19} aria-hidden="true"/>
      </button>;
     })}
