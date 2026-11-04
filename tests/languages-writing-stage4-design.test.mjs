@@ -21,21 +21,24 @@ test('Each of ten language workshops has distinct authored interactive behavior 
   assert.doesNotMatch(code,/contentRequest\(|localStorage\.setItem\(|fetch\(|\/api\/ai-questions/);
  }
 });
-test('The official curriculum and legacy introductions both render matching workshop and generic explorer',()=>{
- const curriculum=read('apps/web/src/components/CurriculumRoom.tsx');
+test('Language workshops remain topic matched in the independent lab and preserve the curricular reader',()=>{
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- for(const content of [curriculum,trails]){
-  assert.match(content,/resolveLanguageLab/);
-  assert.match(content,/<LanguageLabPanel/);
-  assert.match(content,/<StudyExplorationPanel/);
-  assert.match(content,/<MathLabPanel/);
-  assert.match(content,/<ScienceLabPanel/);
-  assert.match(content,/SkillEvolutionPanel/);
- }
- assert.match(curriculum,/readerTab==='explore'/);
- assert.match(curriculum,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);
+ const catalog=read('apps/web/src/lib/laboratory-catalog.ts');
+ assert.match(catalog,/resolveLanguageLab/);
+ assert.match(hub,/<LanguageLabPanel/);
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<ScienceLabPanel/);
+ assert.match(hub,/<TopicVisualStudio/);
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(room,/readerTab==='explanations'/);
+ assert.match(room,/SkillEvolutionPanel/);
+ assert.match(trails,/SkillEvolutionPanel/);
+ assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);
  assert.match(trails,/onGenerateAI\(lesson\.id,true\)/);
 });
+
 test('Exercises rely on original texts, evidence and do not fake scoring of written responses',()=>{
  const core=read('apps/web/src/lib/language-labs.ts');
  const common=read('apps/web/src/components/languages/LanguageLabCommon.tsx');
