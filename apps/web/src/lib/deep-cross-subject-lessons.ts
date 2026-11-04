@@ -1140,6 +1140,195 @@ const lessons:LessonSpec[] = [
         "Exemplo: “A conectividade desigual restringe o acesso a pesquisas, plataformas e comunicação escolar. Para estudantes sem internet estável, tarefas digitais podem representar obstáculos adicionais, evidenciando a necessidade de alternativas inclusivas.”"
       ]
     ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Leis de Newton",
+    "objective": "Identificar forças reais e aplicar as três leis de Newton em referenciais aproximadamente inerciais, analisando forças resultantes, diagramas de corpo livre e pares ação-reação.",
+    "sections": [
+      {
+        "title": "Primeira lei e interpretação da inércia",
+        "explanation": "A primeira lei estabelece que um corpo permanece em repouso ou em movimento retilíneo uniforme se a força resultante sobre ele for nula, em um referencial inercial. A inércia não é uma força: é a propriedade de resistir a alterações do estado de movimento, ligada à massa. Força é interação capaz de alterar velocidade ou deformar corpos; uma velocidade constante não requer força resultante constante. Para construir um diagrama de corpo livre, isole um único objeto e desenhe somente forças que atuam nele, como peso, normal, tração e atrito. Direção e sentido devem ser explícitos; o cancelamento de duas forças depende de módulos iguais e orientações opostas sobre o mesmo corpo.",
+        "example": "Um livro de 2 kg permanece parado sobre uma mesa horizontal. Adotando g≈10 m/s², seu peso é 20 N para baixo. Se não há outras forças verticais, a normal da mesa é de 20 N para cima; a resultante é zero. O livro não está 'sem forças': há equilíbrio.",
+        "pitfall": "Afirmar que um corpo em movimento precisa de uma força no sentido da velocidade ou representar pares ação-reação no diagrama de um só corpo."
+      },
+      {
+        "title": "Segunda lei, massa e aceleração",
+        "explanation": "A segunda lei relaciona força resultante e aceleração pela equação vetorial ΣF = m·a, para massa constante em referencial inercial. No SI, uma força de 1 N corresponde a 1 kg·m/s². A aceleração aponta na direção da resultante, não necessariamente na direção da velocidade; um corpo que freia pode ter aceleração oposta ao movimento. É essencial decompor forças em eixos, conferir unidades e determinar qual corpo está sendo analisado. O peso é a força gravitacional próxima à superfície da Terra, aproximadamente P=mg, enquanto a massa expressa inércia e não varia com o valor local de g. A normal não é automaticamente igual ao peso: depende das outras forças e da aceleração perpendicular à superfície.",
+        "example": "Um carrinho de 4 kg recebe força horizontal de 30 N à direita e atrito de 10 N à esquerda. A resultante horizontal é 20 N à direita. Pela segunda lei, a=20/4=5 m/s² à direita. O cálculo não implica que a velocidade inicial era zero nem define a distância sem mais dados.",
+        "pitfall": "Usar a força aplicada isoladamente em ΣF=ma quando existem outras forças ou supor que normal e peso são sempre iguais."
+      },
+      {
+        "title": "Terceira lei, interações e situações combinadas",
+        "explanation": "A terceira lei diz que as forças de interação entre dois corpos aparecem em pares de mesma intensidade e direção, sentidos opostos, aplicadas a corpos diferentes. Assim, a força que o pé exerce no chão e a força que o chão exerce no pé formam um par ação-reação e não se cancelam no diagrama de um único corpo. Em problemas com sistemas de blocos, analise primeiro o sistema para descobrir a aceleração comum e depois cada bloco para obter forças internas, desde que as hipóteses de contato e movimento sejam válidas. Diferencie atrito estático, que se ajusta até um limite, de atrito cinético, que atua durante deslizamento conforme o modelo usado. A regra física deve ser aplicada com condições claras, não apenas por memorização de fórmula.",
+        "example": "Dois blocos de 2 kg e 3 kg, em contato sobre superfície horizontal sem atrito, são empurrados juntos por 20 N. A aceleração do conjunto é 20/(2+3)=4 m/s². Para acelerar o bloco de 3 kg, o contato deve exercer 3×4=12 N nele. A reação de 12 N age sobre o bloco de 2 kg.",
+        "pitfall": "Dizer que peso e força normal são um par da terceira lei: ambos atuam no mesmo corpo e, portanto, não constituem par ação-reação."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Um corpo está em movimento retilíneo com velocidade constante. O que se pode afirmar sobre a força resultante em referencial inercial?",
+        "Recorde a primeira lei de Newton.",
+        "A força resultante é nula, pois a aceleração é zero. O corpo pode continuar com velocidade não nula sem precisar de uma resultante na direção do movimento."
+      ],
+      [
+        "basic",
+        "Calcule o módulo do peso de um objeto de 6 kg próximo à Terra, adotando g=10 m/s².",
+        "Use o módulo P=mg e indique unidade.",
+        "P=6×10=60 N. A força peso aponta verticalmente para baixo. A massa continua 6 kg; o peso é a força gravitacional e se mede em newtons."
+      ],
+      [
+        "intermediate",
+        "Um bloco de 5 kg recebe forças horizontais de 18 N para a direita e 8 N para a esquerda. Determine a aceleração.",
+        "Subtraia forças opostas antes de aplicar a segunda lei.",
+        "ΣF=18−8=10 N à direita. Pela segunda lei, a=ΣF/m=10/5=2 m/s² à direita, supondo que nenhuma outra força horizontal atue."
+      ],
+      [
+        "intermediate",
+        "Um elevador acelera para cima. A normal sobre uma pessoa é maior, menor ou igual ao peso dela? Justifique.",
+        "Adote o eixo vertical positivo para cima.",
+        "Pela segunda lei, N−mg=ma. Como a>0, N=mg+ma e portanto a normal supera o peso. A igualdade só valeria se a aceleração vertical fosse zero."
+      ],
+      [
+        "advanced",
+        "Um estudante diz que o livro não cai porque o peso e a normal são forças de ação-reação. Corrija o argumento.",
+        "Pares da terceira lei atuam em objetos diferentes.",
+        "Peso e normal podem se equilibrar, mas ambos agem no livro, portanto não formam par ação-reação. A reação ao peso do livro é a atração gravitacional do livro sobre a Terra; a reação à normal age sobre a mesa."
+      ],
+      [
+        "advanced",
+        "Dois blocos de massas 2 kg e 3 kg são puxados por 15 N em superfície sem atrito. Qual a aceleração conjunta?",
+        "Trate os dois blocos como um sistema sem atrito.",
+        "A massa total é 5 kg. Considerando a força externa resultante de 15 N, a=15/5=3 m/s². Forças internas entre blocos não alteram a resultante do sistema."
+      ]
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Cálculo estequiométrico",
+    "objective": "Resolver relações entre massas, mols e partículas a partir de equações químicas corretamente balanceadas, incluindo reagente limitante e rendimento.",
+    "sections": [
+      {
+        "title": "Balanceamento e proporção de mols",
+        "explanation": "A estequiometria usa a conservação dos átomos para estabelecer proporções entre espécies em uma reação. Primeiro é preciso escrever e balancear a equação; coeficientes indicam proporções de quantidade de matéria, não igualdades diretas de massa. Na reação 2H₂ + O₂ → 2H₂O, dois mols de hidrogênio molecular reagem com um mol de oxigênio molecular para formar dois mols de água, no caso ideal descrito. A fórmula química fornece a quantidade de átomos por entidade: o índice 2 de H₂ não é o coeficiente da reação. Converter entre massa e mol exige massa molar M, usando n=m/M; para converter mols em entidades, multiplique por N_A. Problemas exigem unidade e espécie explicitadas.",
+        "example": "Considere 4 mol de H₂ reagindo com O₂ suficiente segundo 2H₂+O₂→2H₂O. A razão H₂:H₂O é 2:2, portanto podem formar-se 4 mol de H₂O. Com massa molar 18 g/mol, a massa de água correspondente é 4×18=72 g, sob reação completa.",
+        "pitfall": "Comparar números em gramas diretamente com coeficientes em mol ou alterar índices das fórmulas para tentar balancear a equação."
+      },
+      {
+        "title": "Reagente limitante e excesso",
+        "explanation": "Quando dois reagentes são fornecidos em proporções diferentes das estequiométricas, um se esgota primeiro e limita a quantidade máxima de produto. É preciso converter massas em mols, dividir a quantidade disponível pelo coeficiente da espécie e comparar os valores: o menor avanço teórico determina o reagente limitante. O outro permanece em excesso se não houver reações paralelas. Não se escolhe o limitante apenas pela menor massa ou pelo menor número de mols isoladamente: coeficientes importam. Após identificar o limitante, calcule o produto pelo coeficiente correspondente e, se solicitado, a quantidade de reagente que sobra. O resultado teórico pressupõe conversão completa do limitante.",
+        "example": "Para N₂+3H₂→2NH₃, suponha 2 mol de N₂ e 3 mol de H₂. Cada 1 mol de N₂ exige 3 mol de H₂; logo H₂ limita a reação e só 1 mol de N₂ reage. Formam-se 2 mol de NH₃ e sobra 1 mol de N₂, assumindo conversão completa.",
+        "pitfall": "Declarar limitante o reagente de menor massa, sem considerar as proporções da reação balanceada."
+      },
+      {
+        "title": "Rendimento, pureza e interpretação",
+        "explanation": "O rendimento percentual compara a quantidade efetivamente obtida com a quantidade teórica: η = quantidade real/quantidade teórica ×100%. A pureza indica a fração de substância ativa em uma amostra: se 100 g de sólido têm 80% de pureza em massa, somente 80 g correspondem ao reagente especificado. Em problemas simples, calcule a massa pura antes de converter para mols e aplique o rendimento após obter o produto teórico. Essas porcentagens descrevem aspectos diferentes e não devem ser usadas como se fossem a mesma grandeza. Em laboratório ou indústria, perdas de produto e reações incompletas podem afetar o resultado, mas não se deve inventar mecanismos quando o problema não os informa.",
+        "example": "Uma reação prevê produzir teoricamente 50 g de sólido e fornece 40 g coletados. O rendimento é 40/50×100%=80%. Se uma etapa anterior começasse com 100 g de reagente com 90% de pureza, seriam apenas 90 g de reagente ativo para o cálculo estequiométrico.",
+        "pitfall": "Aplicar rendimento antes de identificar o produto teórico ou usar massa da mistura inteira como se fosse massa de reagente puro."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Na reação 2H₂ + O₂ → 2H₂O, quantos mols de O₂ são necessários para reagir com 8 mol de H₂?",
+        "Observe a razão dos coeficientes 2:1.",
+        "Para cada 2 mol de H₂ é necessário 1 mol de O₂. Com 8 mol de H₂, o oxigênio exigido é 8×(1/2)=4 mol, supondo a transformação representada."
+      ],
+      [
+        "basic",
+        "Calcule quantos mols existem em 44 g de CO₂ com massa molar igual a 44 g/mol.",
+        "Use n=m/M antes de aplicar coeficientes.",
+        "A quantidade de matéria é n=44 g/(44 g/mol)=1 mol de CO₂. O cálculo não depende de uma reação, apenas da relação entre massa e massa molar."
+      ],
+      [
+        "intermediate",
+        "Na reação N₂ + 3H₂ → 2NH₃, com 2 mol de N₂ e 3 mol de H₂, identifique o limitante e o produto teórico.",
+        "Compare os reagentes com os coeficientes balanceados.",
+        "H₂ é limitante porque 3 mol de H₂ reagem com somente 1 mol de N₂. Produzem-se 2 mol de NH₃ e sobra 1 mol de N₂, no modelo de conversão completa."
+      ],
+      [
+        "intermediate",
+        "Um reagente sólido de massa 200 g tem pureza de 75%. Qual massa deve entrar no cálculo como substância reativa?",
+        "Converta a porcentagem para fração decimal.",
+        "A massa de substância pura é 200×0,75=150 g. Os 50 g restantes pertencem a outras substâncias e não devem ser contados como reagente ativo."
+      ],
+      [
+        "advanced",
+        "Uma reação prevê 80 g de produto, mas são coletados 68 g. Calcule o rendimento percentual e interprete.",
+        "Divida massa real pela massa teórica.",
+        "η=(68/80)×100%=85%. O resultado indica que o produto isolado representa 85% da previsão teórica; não especifica a causa das perdas."
+      ],
+      [
+        "advanced",
+        "Na reação 2Mg + O₂ → 2MgO, com 48 g de Mg e 64 g de O₂, identifique o reagente limitante. Use Mg=24 g/mol e O₂=32 g/mol.",
+        "Converta massas em mols e compare com os coeficientes.",
+        "48 g de Mg são 2 mol e 64 g de O₂ são 2 mol. Para 2 mol de Mg, apenas 1 mol de O₂ é necessário. Assim, Mg limita a reação e sobra 1 mol de O₂."
+      ]
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Ciclo celular e mitose",
+    "objective": "Relacionar intérfase, replicação do DNA, etapas da mitose e citocinese à manutenção de células somáticas e à estabilidade da informação genética.",
+    "sections": [
+      {
+        "title": "Interfase e preparação para divisão",
+        "explanation": "O ciclo celular inclui a intérfase e a fase M, composta por divisão nuclear e geralmente citocinese. Na intérfase, G1 envolve crescimento e atividades metabólicas; durante S ocorre replicação do DNA; em G2 há preparação adicional para divisão. Algumas células saem do ciclo proliferativo e permanecem em G0 por períodos variáveis. Ao final da fase S, o número de cromossomos definido por centrômeros não necessariamente dobra, mas cada cromossomo replicado possui duas cromátides-irmãs. Pontos de controle participam da regulação e ajudam a evitar divisão com danos graves ao DNA. O processo pode variar entre tipos celulares, por isso representações escolares são esquemas úteis, não descrições exaustivas.",
+        "example": "Uma célula humana somática diploide tem 46 cromossomos em G1. Depois da fase S, continua com 46 cromossomos replicados, que possuem 92 cromátides ao todo. O conteúdo de DNA dobrou, mas o número de cromossomos, pela contagem de centrômeros, ainda é 46.",
+        "pitfall": "Dizer que a replicação na fase S transforma uma célula humana com 46 cromossomos em uma célula com 92 cromossomos antes da separação das cromátides."
+      },
+      {
+        "title": "Fases da mitose e separação cromossômica",
+        "explanation": "Na prófase os cromossomos se condensam e ocorre organização do fuso; eventos de ruptura do envelope nuclear são frequentemente tratados como prometáfase em descrições mais detalhadas. Na metáfase, cromossomos se alinham na região equatorial e se conectam ao aparato de segregação por cinetócoros. Na anáfase, cromátides-irmãs se separam e migram para polos opostos, passando a ser consideradas cromossomos-filhos independentes. Na telófase, cromossomos chegam aos polos e núcleos se reorganizam. A citocinese divide o citoplasma, por mecanismos distintos em células animais e vegetais. Não há pareamento de cromossomos homólogos como evento característico da mitose, diferentemente da meiose I.",
+        "example": "Se uma célula com 2n=4 cromossomos conclui a fase S e passa pela mitose com segregação correta, cada novo núcleo recebe quatro cromossomos. A mitose conserva o conjunto cromossômico nuclear; não reduz 2n a n.",
+        "pitfall": "Confundir separação de cromátides-irmãs da mitose com separação de homólogos da primeira divisão meiótica."
+      },
+      {
+        "title": "Funções biológicas e falhas de controle",
+        "explanation": "A mitose contribui para crescimento, renovação de tecidos e reprodução assexuada de determinados organismos, embora esses processos envolvam outras etapas e regulações. A estabilidade genética depende de replicação e segregação adequadas, não de identidade absoluta em todos os casos: mutações podem ocorrer. Em tecidos multicelulares, sinais internos e externos regulam proliferação e morte celular. Alterações em genes de controle do ciclo celular podem favorecer proliferação desordenada, elemento importante da biologia do câncer, mas um tumor não é consequência automática de uma única mutação. Para interpretar microscopia, observe cromossomos condensados, alinhamento, migração e reorganização nuclear em vez de decorar apenas nomes das fases.",
+        "example": "Uma ferida superficial pode desencadear sinais que estimulam proliferação de células em tecidos envolvidos na reparação. A mitose fornece novas células para substituição, enquanto diferenciação, migração e outras respostas celulares também participam do reparo.",
+        "pitfall": "Afirmar que toda divisão mitótica gera organismos novos ou que células-filhas nunca apresentam mutações."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Em que fase da intérfase ocorre a duplicação do DNA e qual é sua consequência para cromátides?",
+        "Identifique as fases G1, S e G2.",
+        "A duplicação do DNA ocorre na fase S. Após a replicação, cada cromossomo usualmente possui duas cromátides-irmãs associadas, que serão separadas durante a divisão."
+      ],
+      [
+        "basic",
+        "Qual evento nuclear caracteriza a metáfase da mitose?",
+        "Pense no posicionamento dos cromossomos antes da segregação.",
+        "Na metáfase, cromossomos replicados se alinham na região equatorial e estabelecem conexões com o fuso. Esse alinhamento precede a separação das cromátides."
+      ],
+      [
+        "intermediate",
+        "Uma célula humana tem 46 cromossomos em G1. Quantos cromossomos e cromátides possui após S, antes da anáfase?",
+        "Conte cromossomos pelos centrômeros e cromátides pelo DNA replicado.",
+        "Depois da fase S há 46 cromossomos duplicados, cada um com duas cromátides-irmãs, totalizando 92 cromátides. O DNA dobrou, mas não a contagem de centrômeros."
+      ],
+      [
+        "intermediate",
+        "Por que a citocinese não deve ser confundida com a separação de cromátides?",
+        "Diferencie núcleo e citoplasma.",
+        "Separar cromátides-irmãs é evento da anáfase da mitose nuclear. A citocinese é a divisão do citoplasma em duas células, frequentemente coordenada com a telófase."
+      ],
+      [
+        "advanced",
+        "Compare o resultado cromossômico de uma mitose típica com a redução cromossômica da meiose.",
+        "Considere ploidia das células-filhas.",
+        "Na mitose, os novos núcleos conservam a ploidia nuclear de partida, se a segregação ocorrer corretamente. A meiose inclui duas divisões e reduz a ploidia, formando células haploides em organismos diploides."
+      ],
+      [
+        "advanced",
+        "Por que erros de controle do ciclo celular podem contribuir para câncer, sem serem a causa única em todos os casos?",
+        "Analise proliferação, mutação e mecanismos regulatórios.",
+        "Alterações em genes reguladores podem permitir proliferação inadequada e outras vantagens celulares. A formação e progressão de tumores são processos multifatoriais que envolvem diversos eventos genéticos e contextuais."
+      ]
+    ]
   }
 ];
 const lookup=new Map(lessons.map(item=>[item.subject+'\0'+item.topic,item]));
