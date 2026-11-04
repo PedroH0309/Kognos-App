@@ -25,20 +25,20 @@ test('Stage 5 implements twelve separate stateful and lazy-loaded humanities lab
  assert.doesNotMatch(router,/localStorage\.setItem\(|contentRequest\(|fetch\(/);
 });
 
-test('All matching topics get the specialized lab without losing the guided explorer or existing modules',()=>{
- for(const file of ['CurriculumRoom','LearningTrails']){
-  const content=read('apps/web/src/components/'+file+'.tsx');
-  assert.match(content,/resolveHumanitiesLab/);
-  assert.match(content,/<HumanitiesLabPanel/);
-  assert.match(content,/<StudyExplorationPanel/);
-  assert.match(content,/<MathLabPanel/);
-  assert.match(content,/<ScienceLabPanel/);
-  assert.match(content,/<LanguageLabPanel/);
-  assert.match(content,/SkillEvolutionPanel/);
- }
+test('Humanities labs remain selectable by subject and topic while study and progress stay independent',()=>{
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- assert.match(room,/readerTab==='explore'/);
+ const catalog=read('apps/web/src/lib/laboratory-catalog.ts');
+ assert.match(catalog,/resolveHumanitiesLab/);
+ assert.match(hub,/<HumanitiesLabPanel/);
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<ScienceLabPanel/);
+ assert.match(hub,/<LanguageLabPanel/);
+ assert.match(hub,/<TopicVisualStudio/);
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(room,/SkillEvolutionPanel/);
+ assert.match(trails,/SkillEvolutionPanel/);
  assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);
  assert.match(trails,/onGenerateAI\(lesson\.id,true\)/);
 });

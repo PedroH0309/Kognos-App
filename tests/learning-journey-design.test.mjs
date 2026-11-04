@@ -20,13 +20,16 @@ test('Roadmap steps, recommendation and lesson navigation use real callbacks',()
  assert.match(screen,/onPractice=\{\(\)=>onGenerateAI\(lesson\.id,true\)\}/);
  assert.match(screen,/onSeeTrails\(\{subject:lesson.subject/);
 });
-test('Context and guest storage remain scoped, progress uses actual attempts',()=>{
+test('Context and guest storage remain scoped and progress is computed from actual attempts',()=>{
  assert.match(screen,/kognos_demo_attempts_v1_guest/);
  assert.match(screen,/kognos_last_lesson_v1_\$\{userId\|\|'guest'\}/);
- assert.match(screen,/evidenceForLesson\(lesson,attempts\)/);
+ assert.match(screen,/connectedLessonEvidence\(lesson,attempts,aiProgress\)/);
+ assert.match(screen,/trailSnapshot\(subject,attempts,catalog\)/);
+ assert.match(screen,/getCloudAttempts\(userId\)/);
  assert.match(screen,/visibleContext\(\{kind:'lesson',lessonId:item.id\}\)/);
  assert.match(screen,/if\(!active\)return/);
 });
+
 test('Journeys have keyboard focus, compact responsive layout and reduced motion support',()=>{
  assert.match(css,/learning-journey-subject-pill:focus-visible/);
  assert.match(css,/@media\(max-width:720px\)/);

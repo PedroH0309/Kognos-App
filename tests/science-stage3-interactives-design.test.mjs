@@ -26,20 +26,22 @@ test('Each of 12 science experiments is a real stateful component with lazy rout
  assert.match(model,/if\(group==='biologia'\)/);
  assert.doesNotMatch(registry,/fetch\(|localStorage\.setItem\(/);
 });
-test('All science laboratories are mounted in curriculum and legacy trails without replacing guided study',()=>{
+test('All science laboratories remain in the independent hub without replacing lesson and progress',()=>{
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- for(const contents of [room,trails]){
-  assert.match(contents,/resolveScienceLab/);
-  assert.match(contents,/<ScienceLabPanel/);
-  assert.match(contents,/<StudyExplorationPanel/);
-  assert.match(contents,/SkillEvolutionPanel/);
-  assert.match(contents,/<MathLabPanel/);
- }
- assert.match(room,/readerTab==='explore'/);
+ const catalog=read('apps/web/src/lib/laboratory-catalog.ts');
+ assert.match(catalog,/resolveScienceLab/);
+ assert.match(hub,/<ScienceLabPanel/);
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<TopicVisualStudio/);
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(room,/SkillEvolutionPanel/);
+ assert.match(trails,/SkillEvolutionPanel/);
  assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);
  assert.match(trails,/onGenerateAI\(lesson\.id,true\)/);
 });
+
 test('Science labs distinguish illustrative models from authentic practical experiments and scored progress',()=>{
  const common=read('apps/web/src/components/science/ScienceLabCommon.tsx');
  const physics=read('apps/web/src/components/science/PhysicsLabs.tsx');

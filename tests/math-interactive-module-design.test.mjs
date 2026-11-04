@@ -15,19 +15,22 @@ test('Mathematics has eight separately lazy-loaded interactive modules',()=>{
   assert.doesNotMatch(body,/\/api\/ai-questions|\/api\/content\/answer|contentRequest\(/);
  }
 });
-test('Interactive Math is available in curriculum and legacy rooms, without changing practice',()=>{
- const curriculum=read('apps/web/src/components/CurriculumRoom.tsx');
+test('Interactive Math is independently accessible by subject without changing lesson practice',()=>{
+ const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- assert.match(curriculum,/readerTab==='explore'/);
- assert.match(curriculum,/resolveMathLab/);
- assert.match(curriculum,/<MathLabPanel/);
- assert.match(trails,/k-math-explore-details/);
- assert.match(trails,/<MathLabPanel/);
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<MathVisualPlayground/);
+ assert.match(hub,/resolveMathLab/);
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(room,/onOpenLab\(detail\.topic\)/);
+ assert.match(trails,/<LaboratoryHub/);
+ assert.match(room,/SkillEvolutionPanel/);
  assert.match(trails,/SkillEvolutionPanel/);
- assert.match(curriculum,/SkillEvolutionPanel/);
- assert.match(trails,/onGenerateAI\(lesson.id,true\)/);
- assert.match(curriculum,/onGenerateAI\(detail.topic.legacyLessonId\|\|detail.topic.id,true\)/);
+ assert.match(trails,/onGenerateAI\(lesson\.id,true\)/);
+ assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);
 });
+
 test('Study controls remain independent of account progress and support mobile sizes',()=>{
  const core=read('apps/web/src/lib/math-labs.ts');
  const css=read('apps/web/src/app/kognos-math-labs.css');

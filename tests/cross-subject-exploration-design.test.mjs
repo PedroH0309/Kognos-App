@@ -3,22 +3,33 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 
-test('Every curricular topic has an exploration tab even when no math simulator matches',()=>{
+test('Every curriculum topic remains reachable from the independent Laboratory Hub',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
- assert.match(room,/<button type="button" aria-pressed=\{readerTab==='explore'\}/);
- assert.doesNotMatch(room,/\{mathLab&&<button type="button" aria-pressed=\{readerTab==='explore'\}/);
- assert.match(room,/\{readerTab==='explore'&&<>/);
- assert.match(room,/<StudyExplorationPanel/);
- assert.match(room,/lesson=\{detail\.lesson\} introduction=\{detail\.introduction\}/);
- assert.match(room,/\{mathLab&&<MathLabPanel/);
+ const trails=read('apps/web/src/components/LearningTrails.tsx');
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ assert.match(room,/onOpenLab\(detail\.topic\)/);
+ assert.match(room,/readerTab==='lesson'/);
+ assert.match(room,/readerTab==='activities'/);
+ assert.match(room,/readerTab==='explanations'/);
+ assert.match(trails,/studySpace==='laboratory'/);
+ assert.match(trails,/<LaboratoryHub/);
+ assert.match(hub,/curriculumTopics/);
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<TopicVisualStudio/);
 });
 
-test('All existing introductory subject lessons have the same optional study exploration',()=>{
+test('Introductory lessons preserve authored explanations and link to the independent laboratory',()=>{
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- assert.match(trails,/<StudyExplorationPanel key=\{lesson\.id\}/);
- assert.match(trails,/Exploração interativa de \{lesson\.subject\}/);
- assert.match(trails,/\{mathLab&&<MathLabPanel/);
- assert.match(trails,/<InteractiveIntroLesson/);
+ const reader=read('apps/web/src/components/TopicLessonSections.tsx');
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ assert.match(trails,/lessonPanes\.map/);
+ assert.match(trails,/<TopicLessonSections/);
+ assert.match(trails,/Abrir laboratórios desta matéria/);
+ assert.match(reader,/introduction\.explanation/);
+ assert.match(reader,/introduction\.workedExample/);
+ assert.match(reader,/introduction\.check/);
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<ScienceLabPanel/);
 });
 
 test('Developed course lessons, introductions and outlines keep honest completion labels',()=>{
@@ -51,14 +62,19 @@ test('The exploration is three-stage, subject-aware and does not write practice 
  assert.match(trails,/onGenerateAI\(lesson\.id,true\)/);
 });
 
-test('Existing lesson levels and math simulations remain available without replacing real study materials',()=>{
+test('Developed lesson levels remain authored and math simulators live in the separate hub',()=>{
  const curriculum=read('apps/web/src/components/CurriculumRoom.tsx');
- assert.match(curriculum,/<InteractiveCourseLesson/);
- assert.match(curriculum,/<InteractiveIntroLesson/);
- assert.match(curriculum,/<MathLabPanel/);
+ const reader=read('apps/web/src/components/TopicLessonSections.tsx');
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ assert.match(curriculum,/<TopicLessonSections/);
+ assert.match(reader,/lesson\.sections\.map/);
+ assert.match(reader,/lesson\.tasks\.filter/);
+ assert.match(hub,/<MathLabPanel/);
+ assert.match(hub,/<ScienceLabPanel/);
  assert.match(curriculum,/readerTab==='materials'/);
  const css=read('apps/web/src/app/kognos-study-explorer.css');
  assert.match(css,/@media\(max-width:760px\)/);
  assert.match(css,/k-study-stage-navigation/);
  assert.match(read('apps/web/src/app/layout.tsx'),/kognos-study-explorer\.css/);
 });
+

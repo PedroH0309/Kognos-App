@@ -15,6 +15,9 @@ import {linkedExamTopic} from '@/lib/lesson-ai-links';
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import CurriculumRoom from './CurriculumRoom';
+import {curriculumTopics} from '@/lib/curriculum-catalog';
+import LaboratoryHub from './LaboratoryHub';
+import TopicLessonSections,{lessonPanes,type LessonPane} from './TopicLessonSections';
 import {learningCatalogForExam} from '@/lib/lesson-ai-links';
 import StudySyncNotice from './StudySyncNotice';
 import SkillEvolutionPanel from './SkillEvolutionPanel';
@@ -50,6 +53,19 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const [subject,setSubject]=useState(focus?.subject??'Matemática');
  const [selectedId,setSelectedId]=useState(focus?.lessonId??'math-percentages');
  const [mobilePane,setMobilePane]=useState<'list'|'lesson'>(focus?.lessonId?'lesson':'list');
+ const [studySpace,setStudySpace]=useState<'lessons'|'laboratory'>('lessons');
+ const [labTarget,setLabTarget]=useState<{id:string;subject:string}|null>(null);
+ const [legacyPane,setLegacyPane]=useState<LessonPane|'materials'|'evolution'>('content');
+ useEffect(()=>{
+  if(!active||studySpace!=='laboratory')return;
+  const frame=requestAnimationFrame(()=>{
+   if(window.matchMedia('(max-width: 760px)').matches){
+    spaceNavRef.current?.scrollIntoView({behavior:'auto',block:'start'});
+   }
+  });
+  return()=>cancelAnimationFrame(frame);
+ },[active,studySpace]);
+ useEffect(()=>{setLegacyPane('content');},[selectedId]);
  const [query,setQuery]=useState('');
  const [loaded,setLoaded]=useState(false);
  const [error,setError]=useState('');
@@ -57,6 +73,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  useEffect(()=>{if(catalog.some(l=>l.id===selectedId))return;const first=catalog[0];if(first){setSubject(first.subject);setSelectedId(first.id);}},[catalog,selectedId]);
  const detailRef=useRef<HTMLElement|null>(null);
+ const spaceNavRef=useRef<HTMLElement|null>(null);
  const indexRef=useRef<HTMLElement|null>(null);
  // The question workspace stays mounted when hidden. Defer a single updated
  // progress read until this trail becomes visible again, rather than fetching
@@ -126,11 +143,14 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  }
  function chooseLesson(item:LearningLesson){
   setSubject(item.subject);setSelectedId(item.id);setMobilePane('lesson');visibleContext({kind:'lesson',lessonId:item.id});
-  if(window.matchMedia('(max-width: 1150px)').matches)detailRef.current?.scrollIntoView({behavior:'smooth',block:'start'});
+  // Delay scrolling until React renders the selected lesson.
  }
  useEffect(()=>{
-  if(active&&mobilePane==='lesson'&&window.matchMedia('(max-width: 760px)').matches){detailRef.current?.scrollIntoView({behavior:'auto',block:'start'});}
- },[active,mobilePane,selectedId]);
+  if(active&&studySpace==='lessons'&&mobilePane==='lesson'&&window.matchMedia('(max-width: 760px)').matches){
+   const frame=requestAnimationFrame(()=>detailRef.current?.scrollIntoView({behavior:'auto',block:'start'}));
+   return()=>cancelAnimationFrame(frame);
+  }
+ },[active,mobilePane,selectedId,studySpace]);
  const masteryById=useMemo(()=>new Map((aiProgress?.skillEvolution??[]).map(item=>[item.lessonId,item.mastery])),[aiProgress]);
  const nextWeakId=userId&&aiProgress?prioritySkillLessonId(roadmap.steps.map(step=>step.lesson),masteryById):null;
  const highlight=(nextWeakId?roadmap.steps.find(step=>step.lesson.id===nextWeakId)?.lesson:null)
@@ -147,6 +167,26 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <span className="learning-journey-edition"><BookOpenText size={14}/> Catálogo preparatório autoral</span>
   </div>
 
+  <nav ref={spaceNavRef} className="k-study-space-tabs" aria-label="Espaços de estudo">
+   <button type="button" aria-pressed={studySpace==='lessons'} onClick={()=>setStudySpace('lessons')}><BookOpenText size={18}/> Aulas por matéria</button>
+   <button type="button" aria-pressed={studySpace==='laboratory'} onClick={()=>setStudySpace('laboratory')}><Compass size={18}/> Laboratório interativo</button>
+  </nav>
+  {studySpace==='laboratory'?<>
+   <div className="course-filters k-lab-exam-filters">
+    <label>Currículo<select value={exam||'all'} onChange={e=>{setExam(e.target.value==='all'?null:e.target.value as ExamId);setLabTarget(null);}}>
+     <option value="all">Todos os currículos</option>
+     {Object.entries(examBlueprints).map(([id,b])=><option key={id} value={id}>{b.label}</option>)}</select></label>
+    {exam==='saresp'&&<label>Série<select value={provaoGrade??'all'}
+     onChange={e=>{setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade);setLabTarget(null);}}>
+     <option value="all">Todas as séries</option><option value="1">1ª série</option><option value="2">2ª série</option><option value="3">3ª série</option>
+    </select></label>}
+   </div>
+   <LaboratoryHub key={'lab-'+(labTarget?.id??'overview')+'-'+(exam??'all')+'-'+(provaoGrade??'all')}
+   initialTopicId={labTarget?.id} initialSubject={labTarget?.subject} exam={exam} grade={provaoGrade}
+   onOpenLesson={topic=>{
+    const matched=catalog.find(l=>l.curriculumId===topic.id||(l.subject===topic.subject&&l.topic===topic.topic));
+    if(matched){chooseLesson(matched);setStudySpace('lessons');}
+   }}/></>:<>
   <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
   {error&&<div className="message warning" role="alert">{error}</div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
@@ -214,46 +254,55 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    </section>
    <section ref={detailRef} className="learning-lesson-detail dark-panel" aria-label="Aula selecionada">
     <button type="button" className="k-classroom-back" onClick={()=>{setMobilePane('list');requestAnimationFrame(()=>indexRef.current?.scrollIntoView({behavior:'smooth',block:'start'}));}}><ArrowLeft size={16} aria-hidden="true"/> Voltar às aulas de {subject}</button>
-    {lesson&&lesson.subject===subject?lesson.curriculumId?<CurriculumRoom key={lesson.id} embedded active={active} userId={userId} focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}/>:<>
-     <div className="learning-lesson-head">
-      <span className="overline">AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')} · {lesson.subject.toUpperCase()}</span>
+    {lesson&&lesson.subject===subject?lesson.curriculumId?<CurriculumRoom key={lesson.id} embedded active={active} userId={userId}
+     focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}
+     onOpenLab={topic=>{setLabTarget({id:topic.id,subject:topic.subject});setStudySpace('laboratory');}}/>:<>
+     <header className="k-lesson-page-header">
+      <span className="overline">{lesson.subject.toLocaleUpperCase('pt-BR')} · AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')}</span>
       <h2>{lesson.topic}</h2>
-      <div className="learning-lesson-tags"><span><Clock3 size={14}/> {lesson.minutes} min de estudo estimado</span><span><ListChecks size={14}/> 1 exercício autoral</span><span>{evidenceLabels[evidenceForLesson(lesson,attempts)]}</span></div>
-     </div>
-     <div className="learning-pedagogy"><span className="learning-pedagogy-icon"><Target size={18}/></span><div><strong>Objetivo da aula</strong><p>{lesson.objective}</p></div></div>
-     {lesson.prerequisites.length>0&&<div className="learning-prereqs"><strong>Antes desta aula:</strong> {lesson.prerequisites.map(id=>findLearningLesson(id)).filter((item):item is LearningLesson=>Boolean(item)).map((item,i)=><button type="button" key={item.id} onClick={()=>chooseLesson(item)}>{i>0?', ':''}{item.topic} <ArrowRight size={12}/></button>)}</div>}
-     <InteractiveIntroLesson key={lesson.id} lesson={lesson} onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
-     <details className="k-math-explore-details k-study-explore-details">
-      <summary>Exploração interativa de {lesson.subject}</summary>
-      {mathLab&&<MathLabPanel key={'math-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
-      {lesson.subject==='Matemática'&&!mathLab&&<MathVisualPlayground key={'math-base-'+lesson.id} topic={lesson.topic}/>}
-      {scienceLab&&<ScienceLabPanel key={'science-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
-      {languageLab&&<LanguageLabPanel key={'language-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
-      {humanitiesLab&&<HumanitiesLabPanel key={'humanities-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
-      <PhETSimulationPanel key={'phet-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>
-      <StudyExplorationPanel key={lesson.id} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
-        onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
-     </details>
-     <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
-     <details className="learning-lesson-block learning-catalog-references">
-      <summary>Referências e provas relacionadas</summary>
-      <p>Conteúdo autoral Kognos. Relação editorial com os roteiros abaixo; não é aula oficial nem garantia de cobrança. Confira a edição e a série nos documentos da instituição.</p>
-      <ul>{(Object.keys(examBlueprints) as ExamId[]).filter(id=>linkedExamTopic(lesson.id,id)).map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noreferrer">{id==='vunesp'?'UNESP / VUNESP':examBlueprints[id].label}</a> · {linkedExamTopic(lesson.id,id)}</li>)}</ul>
-     </details>
-     {userId&&<SkillEvolutionPanel
-      evolution={aiProgress?.skillEvolution?.find(item=>item.lessonId===lesson.id)??null}
-      sampleLimited={aiProgress?.sampleLimited??false}
-      onPractice={()=>onGenerateAI(lesson.id,true)}
-      onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}
-     />}
-     {!userId&&<div className="learning-lesson-actions"><button type="button" className="btn outline" onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>}
-     <p className="privacy-note">{userId?'Ao praticar, o Kognos cria novas questões autorais para o objetivo específico desta aula, revisa as respostas e abre o treino automaticamente. A geração depende das cotas gratuitas dos provedores.':'No modo visitante, a prática demonstra uma questão fixa. Entre em sua conta para gerar questões inéditas sobre a aula com IA.'}</p>
-     <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous} onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
-       <span>{position+1} / {roadmap.total}</span>
-       <button type="button" disabled={!following} onClick={()=>following&&chooseLesson(following)}>Próxima aula <ArrowRight size={15}/></button></div>
+      <p>{lesson.objective}</p>
+      <small><Clock3 size={14}/> Introdução autoral · {lesson.minutes} minutos estimados</small>
+     </header>
+     <button type="button" className="k-lesson-to-lab" onClick={()=>{
+      const match=curriculumTopics.find(t=>t.id===lesson.curriculumId||(t.subject===lesson.subject&&t.topic===lesson.topic));
+      setLabTarget({id:match?.id??'',subject:lesson.subject});setStudySpace('laboratory');
+     }}>Abrir laboratórios desta matéria</button>
+     <nav className="k-lesson-pane-tabs" aria-label="Seções da aula selecionada">
+      {lessonPanes.map(pane=><button type="button" key={pane.id} aria-pressed={legacyPane===pane.id}
+       onClick={()=>setLegacyPane(pane.id)}>{pane.label}</button>)}
+      <button type="button" aria-pressed={legacyPane==='materials'} onClick={()=>setLegacyPane('materials')}>Materiais</button>
+      <button type="button" aria-pressed={legacyPane==='evolution'} onClick={()=>setLegacyPane('evolution')}>Evolução</button>
+     </nav>
+     {lessonPanes.map(pane=><div key={pane.id} hidden={legacyPane!==pane.id}>
+      <TopicLessonSections view={pane.id} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
+       onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
+     </div>)}
+     {legacyPane==='materials'&&<section className="k-lesson-reference-room" aria-label="Referências do assunto">
+      <h3>Materiais e referências</h3>
+      <p>Conteúdo autoral do Kognos associado editorialmente aos programas de estudo; não equivale a uma aula oficial do exame.</p>
+      <ul>{(Object.keys(examBlueprints) as ExamId[]).filter(id=>linkedExamTopic(lesson.id,id))
+       .map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noopener noreferrer">
+         {id==='vunesp'?'UNESP / VUNESP':examBlueprints[id].label} · {linkedExamTopic(lesson.id,id)}</a></li>)}</ul>
+     </section>}
+     {legacyPane==='evolution'&&<>
+      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;
+       return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
+      {userId&&<SkillEvolutionPanel evolution={aiProgress?.skillEvolution?.find(item=>item.lessonId===lesson.id)??null}
+       sampleLimited={aiProgress?.sampleLimited??false} onPractice={()=>onGenerateAI(lesson.id,true)}
+       onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>}
+      {!userId&&<div className="learning-lesson-actions"><button type="button" className="btn outline"
+       onClick={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}><Sparkles size={15}/> Estudar com Kog</button></div>}
+      <p className="privacy-note">A evolução por habilidade depende de tentativas registradas de prática, não dos rascunhos locais da aula.</p>
+     </>}
+     <div className="learning-journey-lesson-nav"><button type="button" disabled={!previous}
+      onClick={()=>previous&&chooseLesson(previous)}><ArrowLeft size={15}/> Anterior</button>
+      <span>{position+1} / {roadmap.total}</span>
+      <button type="button" disabled={!following} onClick={()=>following&&chooseLesson(following)}>
+       Próxima aula <ArrowRight size={15}/></button></div>
     </>:<p className="muted">Escolha uma aula para começar.</p>}
    </section>
   </div>
+  </>}
   <p className="learning-journey-footnote"><Info size={15} aria-hidden="true"/>{userId?'As questões respondidas com IA alimentam seu histórico adaptativo.':'Modo visitante: histórico demonstrativo guardado no navegador; entre para usar IA.'} Conteúdos autorais de preparação, sem cobertura integral dos editais; uma resposta isolada não demonstra domínio.</p>
  </main>;
 }
