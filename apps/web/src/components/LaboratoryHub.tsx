@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useMemo,useState} from 'react';
+import {useEffect,useMemo,useRef,useState} from 'react';
 import {FlaskConical,ArrowLeft,Search,BookOpen,Box,SlidersHorizontal} from 'lucide-react';
 import {curriculumTopics,type CurriculumTopic} from '@/lib/curriculum-catalog';
 import {findProvaoTopic,isProvaoTopic,type ProvaoGrade} from '@/lib/provao-paulista';
@@ -37,12 +37,22 @@ export default function LaboratoryHub({exam=null,grade=null,initialTopicId=null,
  });
  const [selectedId,setSelectedId]=useState<string|null>(initialTopicId);
  const [mobileOpen,setMobileOpen]=useState(false);
+ const detailRef=useRef<HTMLElement|null>(null);
  const currentSubject=subjects.includes(subject)?subject:(subjects[0]??'');
  const filtered=useMemo(()=>catalog.filter(item=>item.topic.subject===currentSubject
   &&(showAll||item.kind.status==='specialized')
   &&item.topic.topic.toLocaleLowerCase('pt-BR').includes(search.trim().toLocaleLowerCase('pt-BR'))),[catalog,currentSubject,showAll,search]);
  const active=filtered.find(item=>item.topic.id===selectedId)??filtered[0]??null;
  useEffect(()=>{setMobileOpen(false);},[currentSubject,exam,grade]);
+ useEffect(()=>{
+  if(!mobileOpen)return;
+  const frame=requestAnimationFrame(()=>{
+   if(window.matchMedia('(max-width: 760px)').matches){
+    detailRef.current?.scrollIntoView({behavior:'auto',block:'start'});
+   }
+  });
+  return()=>cancelAnimationFrame(frame);
+ },[mobileOpen,active?.topic.id]);
  function selectSubject(next:string){
   setSubject(next);setSelectedId(null);setSearch('');setMobileOpen(false);
  }
@@ -81,7 +91,7 @@ export default function LaboratoryHub({exam=null,grade=null,initialTopicId=null,
      {!filtered.length&&<p className="k-lab-empty">Nenhum laboratório encontrado com estes filtros. Ative os mapas gerais para consultar outros temas.</p>}
     </div>
    </aside>
-   <article className="k-lab-detail" aria-label="Experiência interativa selecionada">
+   <article ref={detailRef} className="k-lab-detail" aria-label="Experiência interativa selecionada">
     <button className="k-lab-back" type="button" onClick={()=>setMobileOpen(false)}><ArrowLeft size={16}/> Outros temas de {currentSubject}</button>
     {entry&&ref&&active?<div key={entry.id}>
      <header className="k-lab-detail-head">
