@@ -19,6 +19,7 @@ import {learningCatalogForExam} from '@/lib/lesson-ai-links';
 import StudySyncNotice from './StudySyncNotice';
 import SkillEvolutionPanel from './SkillEvolutionPanel';
 import InteractiveIntroLesson from './InteractiveIntroLesson';
+import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
 import {resolveMathLab} from '@/lib/math-labs';
 import {prioritySkillLessonId} from '@/lib/skill-mastery-evidence';
@@ -211,7 +212,12 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <div className="learning-pedagogy"><span className="learning-pedagogy-icon"><Target size={18}/></span><div><strong>Objetivo da aula</strong><p>{lesson.objective}</p></div></div>
      {lesson.prerequisites.length>0&&<div className="learning-prereqs"><strong>Antes desta aula:</strong> {lesson.prerequisites.map(id=>findLearningLesson(id)).filter((item):item is LearningLesson=>Boolean(item)).map((item,i)=><button type="button" key={item.id} onClick={()=>chooseLesson(item)}>{i>0?', ':''}{item.topic} <ArrowRight size={12}/></button>)}</div>}
      <InteractiveIntroLesson key={lesson.id} lesson={lesson} onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
-     {mathLab&&<details className="k-math-explore-details"><summary>Exploração interativa de Matemática</summary><MathLabPanel key={lesson.id} subject={lesson.subject} topic={lesson.topic}/></details>}
+     <details className="k-math-explore-details k-study-explore-details">
+      <summary>Exploração interativa de {lesson.subject}</summary>
+      {mathLab&&<MathLabPanel key={'math-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
+      <StudyExplorationPanel key={lesson.id} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
+        onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
+     </details>
      <div className="learning-ai-lesson-summary">{aiProgress&&(()=>{const summary=connectedLessonEvidence(lesson,attempts,aiProgress).generated;return summary?<><strong>Questões IA vinculadas: {summary.distinctQuestions}</strong><span>{summary.correct} acerto(s) em {summary.attempts} tentativa(s) · {summary.incorrect} erro(s). Esses dados não representam proficiência.</span></>:<span>Ainda não há questões IA respondidas e vinculadas a esta aula.</span>;})()}</div>
      <details className="learning-lesson-block learning-catalog-references">
       <summary>Referências e provas relacionadas</summary>
