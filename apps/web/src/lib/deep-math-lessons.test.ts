@@ -5,8 +5,8 @@ import {parseCourseDocument} from './course-content.ts';
 import {deepMathLesson,deepMathTopicNames} from './deep-math-lessons.ts';
 import {starterCoverage,starterLesson} from './starter-lessons.ts';
 
-test('All five individually authored mathematics topics are present in the curriculum and parse as lessons',()=>{
- assert.equal(deepMathTopicNames.length,5);
+test('All eight individually authored mathematics topics are present in the curriculum and parse as lessons',()=>{
+ assert.equal(deepMathTopicNames.length,8);
  for(const name of deepMathTopicNames){
   const topic=curriculumTopics.find(item=>item.subject==='Matemática'&&item.topic===name);
   assert.ok(topic,'Missing curriculum topic: '+name);
