@@ -24,7 +24,7 @@ export const molecules:readonly Molecule3D[]=[
   bonds:[[0,1],[0,2],[0,3],[0,4]]},
  {id:'ammonia',name:'Amônia',formula:'NH₃',geometry:'Piramidal trigonal',angle:'≈ 107°',
   explanation:'O nitrogênio forma três ligações N–H e possui um par isolado. A distribuição de elétrons é aproximadamente tetraédrica, mas a forma molecular é piramidal.',
-  atoms:[{element:'N',at:[0,.42,0]},{element:'H',at:[1.3,-.68,0]},{element:'H',at:[-.65,-.68,1.126]},{element:'H',at:[-.65,-.68,-1.126]}],
+  atoms:[{element:'N',at:[0,.35,0]},{element:'H',at:[1.3,-.17,0]},{element:'H',at:[-.65,-.17,1.126]},{element:'H',at:[-.65,-.17,-1.126]}],
   bonds:[[0,1],[0,2],[0,3]]}
 ];
 export const atomStyle:Record<ElementSymbol,{label:string;color:number;radius:number}>={
