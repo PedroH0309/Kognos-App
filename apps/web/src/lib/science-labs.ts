@@ -3,7 +3,7 @@
  * Selected experiments illustrate ONE part of an official syllabus item, not all its subtopics.
  */
 import {isCellStructureTopic} from './visual-study-models.ts';
-export type ScienceKind='cell-anatomy'|'motion'|'waves'|'circuits'|'thermal'
+export type ScienceKind='cell-anatomy'|'molecules-3d'|'motion'|'waves'|'circuits'|'thermal'
  |'atom'|'stoichiometry'|'solutions'|'ph'
  |'genetics'|'trophic'|'population'|'cell-cycle';
 export type ScienceTopic={subject:string;topic:string;description?:string;unit?:string};
@@ -19,6 +19,7 @@ export function resolveScienceLab({subject,topic,description='',unit=''}:Science
   if(/velocidade e aceleracao|func(ao|oes) horaria|cinematica|movimentos uniformes|movimentos retilineos|queda livre|representacao grafica, em funcao do tempo/.test(raw)||chapter==='cinematica.')return 'motion';
  }
  if(group==='quimica'){
+  if(/geometria molecular|ligac(ao|oes) covalentes?|moleculas? e sua geometria|polaridade molecular|ligacoes moleculares/.test(raw))return 'molecules-3d';
   if(/produto ionico da agua|escalas de ph|escala de ph|poh\b|indicadores.*neutralizacao/.test(raw))return 'ph';
   if(/operacoes envolvendo solucoes|diluic(ao|oes)|concentrac(ao|oes)|solucoes aquosas: conceito/.test(raw))return 'solutions';
   if(/calculos estequiometricos|aspectos quantitativos das transformacoes|lei de lavoisier|lei de proust|equacoes quimicas e balanceamento/.test(raw))return 'stoichiometry';

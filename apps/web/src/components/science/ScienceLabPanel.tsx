@@ -7,6 +7,7 @@ import {resolveScienceLab,type ScienceKind,type ScienceTopic} from '@/lib/scienc
  * experiment uploads or inferred learning outcomes are generated. */
 const labs={
  'cell-anatomy':dynamic(()=>import('./CellAnatomyLab')),
+ 'molecules-3d':dynamic(()=>import('./Molecule3DLab')),
  motion:dynamic(()=>import('./PhysicsLabs').then(m=>m.MotionLab)),
  waves:dynamic(()=>import('./PhysicsLabs').then(m=>m.WavesLab)),
  circuits:dynamic(()=>import('./PhysicsLabs').then(m=>m.CircuitsLab)),

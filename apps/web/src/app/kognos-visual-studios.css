@@ -193,3 +193,12 @@
   animation:none!important;transition:none!important;scroll-behavior:auto!important;
  }
 }
+
+/* On narrow screens the desktop horizontal arrow rotated into the text label.
+ * Keep the connection visible without overlapping the "RETOMADA" caption. */
+@media(max-width:760px){
+ .k-intertext-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 0;}
+ .k-intertext-link svg{display:none;}
+ .k-intertext-link::before{content:"↓";display:block;font-size:24px;font-weight:800;line-height:1;color:var(--violet,#5B4DE3);}
+ .k-intertext-link span{display:block;position:static;line-height:1.6;font-size:10px;max-width:100%;text-align:center;}
+}
