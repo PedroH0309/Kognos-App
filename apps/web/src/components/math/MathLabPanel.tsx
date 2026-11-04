@@ -13,7 +13,16 @@ const labs={
  geometry:dynamic(()=>import('./GeometryWorkbench')),
  probability:dynamic(()=>import('./ProbabilityLab')),
  statistics:dynamic(()=>import('./StatisticsLab')),
- trigonometry:dynamic(()=>import('./TrigonometryLab'))
+ trigonometry:dynamic(()=>import('./TrigonometryLab')),
+ 'number-sets':dynamic(()=>import('./NumberSetsLab')),
+ proportion:dynamic(()=>import('./ProportionalityLab')),
+ sequences:dynamic(()=>import('./SequenceLab')),
+ 'exponential-log':dynamic(()=>import('./ExponentialLogLab')),
+ combinatorics:dynamic(()=>import('./CombinatoricsLab')),
+ 'linear-systems':dynamic(()=>import('./LinearSystemsLab')),
+ solids:dynamic(()=>import('./SolidGeometryLab')),
+ 'unit-conversion':dynamic(()=>import('./UnitConversionLab')),
+ 'periodic-waves':dynamic(()=>import('./PeriodicWaveLab'))
 } satisfies Record<MathLabKind,ComponentType>;
 export default function MathLabPanel(topic:MathTopic){
  const kind=resolveMathLab(topic);
