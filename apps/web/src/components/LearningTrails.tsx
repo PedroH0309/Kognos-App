@@ -137,7 +137,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  }
  useEffect(()=>{
   if(active&&studySpace==='lessons'&&mobilePane==='lesson'&&window.matchMedia('(max-width: 760px)').matches){
-   const frame=requestAnimationFrame(()=>detailRef.current?.scrollIntoView({behavior:'instant',block:'start'}));
+   const frame=requestAnimationFrame(()=>detailRef.current?.scrollIntoView({behavior:'auto',block:'start'}));
    return()=>cancelAnimationFrame(frame);
   }
  },[active,mobilePane,selectedId,studySpace]);
