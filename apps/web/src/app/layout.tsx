@@ -13,6 +13,7 @@ import "./kognos-study-cycle.css";
 import "./kognos-weekly-syllabus.css";
 import "./kognos-classrooms.css";
 import "./kognos-math-labs.css";
+import "./kognos-math-stage2.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",
