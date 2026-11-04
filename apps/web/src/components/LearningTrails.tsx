@@ -21,6 +21,7 @@ import SkillEvolutionPanel from './SkillEvolutionPanel';
 import InteractiveIntroLesson from './InteractiveIntroLesson';
 import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
+import PhETSimulationPanel from './PhETSimulationPanel';
 import MathVisualPlayground from './math/MathVisualPlayground';
 import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
@@ -229,6 +230,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
       {scienceLab&&<ScienceLabPanel key={'science-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
       {languageLab&&<LanguageLabPanel key={'language-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
       {humanitiesLab&&<HumanitiesLabPanel key={'humanities-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
+      <PhETSimulationPanel key={'phet-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>
       <StudyExplorationPanel key={lesson.id} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
         onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
      </details>
