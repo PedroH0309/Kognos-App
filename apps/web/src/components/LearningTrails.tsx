@@ -46,6 +46,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const {data:aiProgress,loading:aiLoading,error:aiError,refresh:refreshAI}=useAIStudyProgress(userId);
  useEffect(()=>{if(catalog.some(l=>l.id===selectedId))return;const first=catalog[0];if(first){setSubject(first.subject);setSelectedId(first.id);}},[catalog,selectedId]);
  const detailRef=useRef<HTMLElement|null>(null);
+ const indexRef=useRef<HTMLElement|null>(null);
  // The question workspace stays mounted when hidden. Defer a single updated
  // progress read until this trail becomes visible again, rather than fetching
  // during every graded answer of a ten-question practice run.
@@ -178,7 +179,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
   </section>
 
   <div className={`learning-body-grid learning-journey-workspace ${mode==='learn'?'is-learning-first':''} ${mobilePane==='lesson'?'is-mobile-lesson':'is-mobile-list'}`}>
-   <section className="learning-index dark-panel" aria-label={`Etapas de ${subject}`}>
+   <section ref={indexRef} className="learning-index dark-panel" aria-label={`Etapas de ${subject}`}>
     <div className="learning-index-header"><div><span className="overline">{isTrail?'SEQUÊNCIA DA TRILHA':'NAVEGUE PELAS AULAS'}</span><h2>{isTrail?'Etapas do percurso':'Escolha uma aula'}</h2><p>{roadmap.total} temas disponíveis para estudo</p></div></div>
     <label className="learning-search"><Search size={16} aria-hidden="true"/><span className="sr-only">Buscar tópico</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar assunto…"/></label>
     {!loaded&&<p className="muted" role="status">Carregando evidências de prática…</p>}
@@ -197,7 +198,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     <div className="learning-journey-key"><span><span className="dot"/>Não praticado</span><span><span className="dot review"/>Revisar</span><span><span className="dot sampled"/>Acerto registrado</span></div>
    </section>
    <section ref={detailRef} className="learning-lesson-detail dark-panel" aria-label="Aula selecionada">
-    <button type="button" className="k-classroom-back" onClick={()=>setMobilePane('list')}><ArrowLeft size={16} aria-hidden="true"/> Voltar às aulas de {subject}</button>
+    <button type="button" className="k-classroom-back" onClick={()=>{setMobilePane('list');requestAnimationFrame(()=>indexRef.current?.scrollIntoView({behavior:'smooth',block:'start'}));}}><ArrowLeft size={16} aria-hidden="true"/> Voltar às aulas de {subject}</button>
     {lesson&&lesson.subject===subject?lesson.curriculumId?<CurriculumRoom key={lesson.id} embedded active={active} userId={userId} focus={{subject:lesson.subject,lessonId:lesson.id}} onContextChange={visibleContext} onTutor={onTutor} onGenerateAI={onGenerateAI}/>:<>
      <div className="learning-lesson-head">
       <span className="overline">AULA {String(position+1).padStart(2,'0')} DE {String(roadmap.total).padStart(2,'0')} · {lesson.subject.toUpperCase()}</span>
