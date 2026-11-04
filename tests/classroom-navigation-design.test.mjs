@@ -4,17 +4,20 @@ import {readFileSync} from 'node:fs';
 
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 
-test('published lesson uses one interactive stage at a time instead of stacking all three levels',()=>{
+test('published lessons present separate authored theory, activities and resolved examples',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
- const studio=read('apps/web/src/components/InteractiveCourseLesson.tsx');
- assert.match(room,/<InteractiveCourseLesson/);
- assert.doesNotMatch(room,/lesson\.sections\.map\(section=>/);
- assert.match(studio,/lesson\.sections\.find\(item=>item\.level===level\)/);
- assert.match(studio,/setLevel\(item\);setStage\('concept'\)/);
- assert.match(studio,/section\.steps\.slice\(0,shown\)/);
- assert.match(studio,/task\.hint/);
- assert.match(studio,/task\.solution/);
- assert.match(studio,/setDrafts/);
+ const reading=read('apps/web/src/components/TopicLessonSections.tsx');
+ const legacy=read('apps/web/src/components/InteractiveCourseLesson.tsx');
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(room,/readerTab==='activities'/);
+ assert.match(room,/readerTab==='explanations'/);
+ assert.match(reading,/lesson\.sections\.map/);
+ assert.match(reading,/lesson\.tasks\.filter/);
+ assert.match(reading,/section\.steps\.map/);
+ assert.match(reading,/task\.solution/);
+ assert.match(reading,/section\.pitfall/);
+ assert.match(legacy,/section\.steps\.slice\(0,shown\)/);
+ assert.doesNotMatch(reading,/recordAttempt\(|contentRequest\(/);
 });
 
 test('curriculum topics have distinct lesson, materials, and evolution views',()=>{
