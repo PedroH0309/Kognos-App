@@ -231,3 +231,8 @@
  .k-lesson-pane-tabs *, .k-lab-hub *, .k-study-space-tabs *, .k-lesson-reading-room *{
  transition:none!important;animation:none!important;scroll-behavior:auto!important;}
 }
+
+/* Align newly selected experiments below the compact fixed app header. */
+@media(max-width:760px){
+ .k-lab-detail{scroll-margin-top:calc(84px + env(safe-area-inset-top));}
+}
