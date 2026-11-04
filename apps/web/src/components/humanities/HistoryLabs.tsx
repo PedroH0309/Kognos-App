@@ -9,7 +9,6 @@ export function HistoryTimelineLab(){
  const [checked,setChecked]=useState(false);
  const timeline=historicalTimelines[collection];
  const milestones=timeline.milestones;
- const yearMin=milestones[0].year,yearMax=milestones[milestones.length-1].year;
  const chronology=chronologicalOrder(milestones,order);
  function chooseCollection(next:number){setCollection(next);setSelected(0);setOrder([2,0,4,1,5,3]);setChecked(false);}
  function move(index:number,delta:number){const target=index+delta;if(target<0||target>=order.length)return;
@@ -26,7 +25,7 @@ export function HistoryTimelineLab(){
   <div className="k-humanities-timeline" role="group" aria-label="Selecione um marco histórico">
    <div className="k-humanities-timeline-track" aria-hidden="true"/>
    {milestones.map((event,i)=><button key={event.year} type="button" onClick={()=>setSelected(i)}
-    aria-pressed={selected===i} style={{left:(4+92*(event.year-yearMin)/Math.max(1,yearMax-yearMin))+'%'}}>
+    aria-pressed={selected===i} style={{left:(10+80*i/Math.max(1,milestones.length-1))+'%'}}>
      <span>{event.year}</span>
     </button>)}
   </div>
@@ -37,7 +36,7 @@ export function HistoryTimelineLab(){
    <small>Referência de data e evento: {milestones[selected].reference}. Texto explicativo original do Kognos.</small>
   </div>
   <h4>Organize a cronologia</h4>
-  <p className="k-humanities-subtext">Use as setas para ordenar seis marcos por ano. Uma sequência temporal não demonstra, por si só, relação de causa e efeito.</p>
+  <p className="k-humanities-subtext">Use as setas para ordenar seis marcos por ano. Os pontos estão espaçados igualmente para facilitar a leitura: as distâncias na linha não representam a duração real entre acontecimentos. Uma sequência temporal não demonstra, por si só, relação de causa e efeito.</p>
   <ol className="k-humanities-reorder">{order.map((index,position)=><li key={index}><span><strong>{milestones[index].label}</strong> · {milestones[index].year}</span>
    <div><button type="button" aria-label={'Mover marco '+(position+1)+' para cima'} disabled={position===0} onClick={()=>move(position,-1)}>↑</button>
     <button type="button" aria-label={'Mover marco '+(position+1)+' para baixo'} disabled={position===5} onClick={()=>move(position,1)}>↓</button></div></li>)}</ol>
