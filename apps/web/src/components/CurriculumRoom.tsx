@@ -26,7 +26,7 @@ import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveMathLab} from '@/lib/math-labs';
 type Topic=CurriculumTopic&{status:string};
 type Detail={topic:CurriculumTopic;lesson:CourseLesson|null;introduction:LearningLesson|null;videos:CourseVideo[];questions:PublicCourseQuestion[];revision:number|null;configured:boolean};
-const statusLabels:Record<string,string>={published:'Aula desenvolvida',introduction:'Introdução disponível',outline:'Tema mapeado',draft:'Em revisão'};
+const statusLabels:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada',guided:'Guia introdutório pré-carregado',introduction:'Introdução disponível',outline:'Tema mapeado',draft:'Em revisão'};
 type CurriculumRoomProps={
  userId?:string|null;active?:boolean;focus?:{lessonId:string;subject:string}|null;
  preferredExam?:ExamId|null;embedded?:boolean;
@@ -93,9 +93,9 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
        topic={detail.topic.topic} lesson={detail.lesson} introduction={detail.introduction} onTutor={onTutor}
         onActivityProgress={pane==='activities'?onActivityProgress:undefined}/>
      </div>)}
-     {readerTab==='lesson'&&!detail.lesson&&<div className="course-generation">
+     {readerTab==='lesson'&&(!detail.lesson||detail.lesson.review==='introductory')&&<div className="course-generation">
       <h3>Desenvolver aula completa com o Kog</h3>
-      <p>O tema ainda não tem uma aula editorial desenvolvida. A IA pode criar um material original, sujeito a revisão automática e limites do serviço. Isso não equivale à homologação de um professor.</p>
+      <p>Este conteúdo apresenta uma base introdutória. A IA pode desenvolver um material mais completo, sujeito a revisão automática e limites do serviço. Isso não equivale à homologação de um professor.</p>
       <label className="course-check"><input type="checkbox" checked={consent} onChange={e=>setConsent(e.target.checked)}/>Autorizo desenvolver este assunto com IA.</label>
       <button type="button" className="btn primary" disabled={!consent||busy||!detail.configured} onClick={generate}>
        {busy?'Desenvolvendo e revisando a aula…':'Desenvolver aula completa'}</button>
