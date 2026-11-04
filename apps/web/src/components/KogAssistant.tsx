@@ -2,12 +2,11 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUp, BookOpenText, Check, ChevronDown, Maximize2, Minimize2, MessageCircle, RotateCcw, Send, Sparkles, X } from 'lucide-react';
+import { ArrowLeft, BookOpenText, Check, FileText, Lightbulb, ListChecks, MessageCircle, RotateCcw, Send, Sparkles, X } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 import { getSupabase } from '@/lib/supabase';
 import { goalLabels, type StudentProfile } from '@/lib/profile';
 import {findLearningLesson} from '@/lib/learning-catalog';
-import KogMascot3D from './KogMascot3D';
 import { KognosSelect, type KognosOption } from './KognosFields';
 import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-context';
 import {contextualKogPrompts,previewKogStudyContext,findDemoQuestion,type KogStudyContext} from '@/lib/kog-study-context';
@@ -19,8 +18,8 @@ import type {AIReadiness} from '@/lib/ai-readiness';
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
 const SUBJECTS = ['Matemática','Física','Química','Biologia','História','Geografia','Português','Literatura','Inglês','Redação','Filosofia','Sociologia','Raciocínio lógico','Geral'];
 
-export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,context,studyContext}:{
-  open:boolean;onOpen:()=>void;onClose:()=>void;profile:StudentProfile;user:User|null;onLogin:()=>void;context:KogContext;studyContext:KogStudyContext|null;
+export default function KogAssistant({active,onBack,profile,user,onLogin,context,studyContext}:{
+  active:boolean;onBack:()=>void;profile:StudentProfile;user:User|null;onLogin:()=>void;context:KogContext;studyContext:KogStudyContext|null;
 }) {
   const [messages,setMessages] = useState<ChatMessage[]>([]);
   const [draft,setDraft] = useState('');
@@ -29,11 +28,9 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
   const [error,setError] = useState('');
   const [readiness,setReadiness] = useState<AIReadiness|null>(null);
   const [checkingReadiness,setCheckingReadiness] = useState(false);
-  const [expanded,setExpanded] = useState(false);
   const [notice,setNotice] = useState(true);
   const scrollRef=useRef<HTMLDivElement>(null);
   const textRef=useRef<HTMLTextAreaElement>(null);
-  const launcherRef=useRef<HTMLButtonElement>(null);
   const inFlightRef=useRef(false);
   const currentUserRef=useRef(user?.id||'guest');
   const activeSubject=subjectForView(context);
@@ -47,9 +44,9 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     activeProvider==='groq'?'https://groq.com/privacy-policy/':
     activeProvider==='nvidia'?'https://www.nvidia.com/en-us/about-nvidia/privacy-policy/':null;
 
-  useEffect(() => {if(open) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[open]);
+  useEffect(() => {if(active && window.matchMedia('(min-width: 701px)').matches) {const t=window.setTimeout(()=>textRef.current?.focus(),120);return()=>window.clearTimeout(t);}},[active]);
   useEffect(()=>{
-    if(!open)return;
+    if(!active)return;
     const controller=new AbortController();
     setCheckingReadiness(true);
     fetch('/api/ai-status',{cache:'no-store',signal:controller.signal}).then(async res=>{
@@ -59,8 +56,8 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
       if(!controller.signal.aborted)setReadiness(data as AIReadiness);
     }).catch(()=>{if(!controller.signal.aborted)setReadiness(null);}).finally(()=>{if(!controller.signal.aborted)setCheckingReadiness(false);});
     return()=>controller.abort();
-  },[open]);
-  useEffect(() => {scrollRef.current?.scrollTo({top:scrollRef.current.scrollHeight,behavior:'smooth'});},[messages,pending,open]);
+  },[active]);
+  useEffect(() => {scrollRef.current?.scrollTo({top:scrollRef.current.scrollHeight,behavior:'smooth'});},[messages,pending,active]);
   useEffect(() => {
     if(studyContext?.kind==='lesson')setSubject(findLearningLesson(studyContext.lessonId)?.subject||'Geral');
     else if(studyContext?.kind==='question')setSubject(findDemoQuestion(studyContext.questionId)?.subject||'Geral');
@@ -72,19 +69,6 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     const next=user?.id||'guest';
     if(currentUserRef.current!==next){setMessages([]);setDraft('');setError('');currentUserRef.current=next;}
   },[user?.id]);
-  useEffect(() => {
-    if(!open)return;
-    const onKey=(event:KeyboardEvent)=>{if(event.key==='Escape'){event.preventDefault();onClose();launcherRef.current?.focus();}};
-    document.addEventListener('keydown',onKey);
-    return()=>document.removeEventListener('keydown',onKey);
-  },[open,onClose]);
-  useEffect(()=>{
-    if(!open || window.matchMedia('(min-width: 701px)').matches)return;
-    // On small screens, the drawer behaves as a bottom sheet and locks page scrolling.
-    const previous=document.body.style.overflow;document.body.style.overflow='hidden';
-    return()=>{document.body.style.overflow=previous;};
-  },[open]);
-
   async function send(event:React.FormEvent) {
     event.preventDefault();
     if(inFlightRef.current || pending || !draft.trim())return;
@@ -135,38 +119,31 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
     finally{inFlightRef.current=false;setPending(false);}
   }
   function fillPrompt(value:string){setDraft(value.slice(0,3000));textRef.current?.focus();}
-  return <>
-    <button ref={launcherRef} type="button" className={`kog-launcher ${open?'kog-launcher-hidden':''}`} onClick={onOpen}
-      aria-label="Abrir Kog, o tutor de inteligência artificial" title="Pergunte ao Kog">
-      <span className="kog-launcher-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={50} height={50}/></span>
-      <span className="kog-launcher-label">Pergunte ao Kog <Sparkles size={14}/></span>
-    </button>
-    {open&&<>
-      <button type="button" className="kog-drawer-scrim" aria-label="Fechar tutor" onClick={onClose}/>
-      <section className={`kog-drawer ${expanded?'kog-drawer-expanded':''}`} role="dialog" aria-modal={false} aria-label="Kog, seu tutor de inteligência artificial">
-        <header className="kog-drawer-header">
-          <div className="kog-header-badge"><Image src="/brand/kog-mascot.svg" width={38} height={38} alt=""/></div>
-          <div className="kog-header-label"><strong>Kog <span>· seu tutor IA</span></strong><small><span className="kog-status-dot"/> Seu assistente de estudos</small></div>
-          <div className="kog-header-actions">
-            <button type="button" title={expanded?'Reduzir painel':'Expandir painel'} aria-label={expanded?'Reduzir painel':'Expandir painel'} onClick={()=>setExpanded(x=>!x)}><span className="desktop-only">{expanded?<Minimize2 size={17}/>:<Maximize2 size={17}/>}</span><span className="mobile-only"><ChevronDown size={18}/></span></button>
-            <button type="button" title="Fechar tutor" aria-label="Fechar tutor" onClick={()=>{onClose();launcherRef.current?.focus();}}><X size={20}/></button>
-          </div>
-        </header>
+  return <section className={`kog-page ${messages.length===0?'kog-page-empty':''}`} aria-label="Conversa com o tutor Kog">
+    <header className="kog-page-header">
+      <div className="kog-page-identity">
+        <span className="kog-page-brand"><Image src="/brand/kog-mascot.svg" alt="" width={38} height={38}/></span>
+        <div><strong>Tutor Kog</strong><small>Seu espaço de estudos com inteligência artificial</small></div>
+      </div>
+      <div className="kog-page-header-actions">
+        <button type="button" onClick={onBack} aria-label="Voltar à página anterior"><ArrowLeft size={17}/> Voltar</button>
+        <button type="button" onClick={()=>{setMessages([]);setDraft("");setError("");}} aria-label="Iniciar nova conversa"><RotateCcw size={17}/> Nova conversa</button>
+      </div>
+    </header>
         <div className="kog-dialog-body" ref={scrollRef} role="log" aria-live="polite" aria-label="Conversa com o tutor">
           {messages.length===0?<>
             <div className="kog-greeting">
-              <KogMascot3D/>
+              <Image className="kog-page-welcome-avatar" src="/brand/kog-mascot.svg" alt="" width={62} height={62}/>
               <div className="kog-greeting-copy"><span><Sparkles size={15}/> SEU PROFESSOR PARTICULAR</span><h2>Olá, {profile.nickname.split(' ')[0]||'estudante'}!</h2><p>Sou o Kog, seu tutor de estudos. Explico matérias, ajudo a interpretar exercícios e reviso conceitos com você. Não gero código nem trabalhos prontos.</p></div>
             </div>
             <div className="kog-context-card"><BookOpenText size={16}/><span>{contextLabel?<><strong>{contextLabel}</strong> · O Kog vai considerar essa atividade ao responder.</>:<>Seu foco: <strong>{goalLabels[profile.goal]}</strong> · Ajuda contextual na área <strong>{context==='dashboard'?'Visão geral':context}</strong></>}</span></div>
-            <p className="kog-suggestions-title">Por onde começamos?</p>
-            <div className="kog-suggestions">{readiness&&!readiness.tutorConfigured&&<button type="button" onClick={()=>fillPrompt("Me explique teorema de Pitágoras")}><BookOpenText size={14}/> Teorema de Pitágoras <ArrowUp size={13}/></button>}{suggested.map(item=><button type="button" key={item} onClick={()=>fillPrompt(item)}><Sparkles size={14} aria-hidden="true"/>{item}<ArrowUp size={13} aria-hidden="true"/></button>)}</div>
+
           </>:messages.map((message,index)=><div key={`${index}-${message.role}`} className={`kog-message-row ${message.role}`}>
             {message.role==='assistant'&&<span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span>}
             <div className="kog-message-text">{message.role==='assistant'?normalizeTutorAnswer(enforcePedagogicalTutorAnswer(message.content)):message.content}</div>
           </div>)}
           {pending&&<div className="kog-message-row assistant"><span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span><div className="kog-message-text kog-thinking"><span/><span/><span/><small>Preparando uma explicação…</small></div></div>}
-          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.tutorProvider?'A chave de API do tutor não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia de Pitágoras</button></div></div>}
+          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.tutorProvider?'A chave de API do tutor não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia: Teorema de Pitágoras</button></div></div>}
           {checkingReadiness&&<p className="kog-readiness-check" role="status">Verificando configuração do tutor…</p>}
           {error&&<div className="kog-chat-error" role="alert">{error}<button type="button" onClick={()=>setError('')} aria-label="Dispensar erro"><X size={14}/></button></div>}
         </div>
@@ -176,10 +153,14 @@ export default function KogAssistant({open,onOpen,onClose,profile,user,onLogin,c
           <form onSubmit={send} className="kog-input-area"><div className="kog-input-head"><KognosSelect compact label="Disciplina" value={subject} options={subjectOptions} onChange={setSubject} className="kog-subject-select" /><small>{draft.length}/3000</small></div>
             <div className="kog-input-wrap"><textarea ref={textRef} value={draft} onChange={e=>setDraft(e.target.value)} maxLength={3000} rows={2} placeholder="Pergunte sobre uma matéria ou exercício…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form?.requestSubmit();}}}/><button type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled={!draft.trim()||pending} className="kog-send-btn"><Send size={18}/></button></div>
           </form>
+          {messages.length===0&&<div className="kog-page-actions" aria-label="Sugestões para começar">
+            <button type="button" onClick={()=>fillPrompt(suggested[0]||"Explique este conteúdo do básico ao avançado.")}><BookOpenText size={17}/> Explique sobre</button>
+            <button type="button" onClick={()=>fillPrompt("Crie um resumo para revisar o tema que eu indicar, com os pontos mais importantes.")}><FileText size={17}/> Criar resumo</button>
+            <button type="button" onClick={()=>fillPrompt("Crie uma questão de estudo sobre o tema que eu indicar e depois explique a resolução.")}><ListChecks size={17}/> Gerar questão</button>
+            <button type="button" onClick={()=>fillPrompt("Dê dicas práticas para estudar melhor este assunto e revisar meus erros.")}><Lightbulb size={17}/> Dicas de estudo</button>
+          </div>}
           {!user&&<p className="kog-login-tip"><MessageCircle size={14}/> Entre na sua conta para conversar com o Kog. <button onClick={onLogin} type="button">Entrar</button></p>}
           {notice?<p className="kog-ai-notice">As mensagens e o contexto de estudo são processados por {providerName} para gerar respostas. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>} <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
         </div>
-      </section>
-    </>}
-  </>;
+  </section>;
 }

@@ -423,10 +423,6 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
   </main>;
 }
 
-function TutorLanding({profile,onOpen}:{profile:StudentProfile;onOpen:()=>void}) {
-  return <div className="app-content kog-landing"><div className="kog-landing-content"><span className="overline">UM PROFESSOR AO SEU LADO</span><h1>Conheça o <em>Kog.</em></h1><p>Seu tutor IA agora acompanha você em qualquer parte do Kognos, sem interromper os estudos. Peça explicações, exemplos e exercícios contextualizados, com o estilo que você escolheu no onboarding.</p><div className="kog-landing-tags"><span><Sparkles size={14}/> Didática adaptativa</span><span><BookOpenCheck size={14}/> Explicações passo a passo</span><span><Target size={14}/> Foco em {goalLabels[profile.goal]}</span></div><button type="button" className="btn primary" onClick={onOpen}>Abrir o Kog na lateral <Sparkles size={17}/></button><small>O chat é processado por um provedor externo de IA. Verifique informações importantes e evite compartilhar dados sensíveis.</small></div><KogMascot3D/></div>;
-}
-
 function ComingSoon({view,onGo}:{view:View;onGo:(v:View)=>void}){
  const item=NAV.find(x=>x.key===view);
  return <div className="app-content"><div className="coming-soon"><span className="coming-icon">◇</span><p className="overline">NO ROADMAP DO KOGNOS</p><h1>{item?.label}</h1><p>Estamos implementando este módulo gradualmente, conectado ao banco e ao motor de aprendizagem. Não vamos mostrar dados fictícios como se fossem seus.</p><div><button className="btn primary" onClick={()=>onGo('tutor')}>Conversar com o tutor</button><button className="btn outline" onClick={()=>onGo('dashboard')}>Voltar ao início</button></div></div></div>;
@@ -436,7 +432,7 @@ export default function KognosApp(){
   const [loading,setLoading]=useState(true);const [user,setUser]=useState<User|null>(null);const [profile,setProfile]=useState<StudentProfile|null>(null);
   const [profileError,setProfileError]=useState('');
   const [reloadRequest,setReloadRequest]=useState(0);
-  const [assistantOpen,setAssistantOpen]=useState(false);const [assistantInitialized,setAssistantInitialized]=useState(false);
+  const [assistantInitialized,setAssistantInitialized]=useState(false);const [tutorReturnView,setTutorReturnView]=useState<View>('dashboard');
    const [retainedViews,setRetainedViews]=useState<readonly RetainedStudyView[]>([]);
   const [view,setView]=useState<View>('dashboard');const [editing,setEditing]=useState(false);const [authOpen,setAuthOpen]=useState(false);const [plannerDate,setPlannerDate]=useState('');const [diagnosticCycle,setDiagnosticCycle]=useState<'baseline'|'weekly'>('baseline');const [mobileMenu,setMobileMenu]=useState(false);const [sidebarCollapsed,setSidebarCollapsed]=useState(false);const [moreMenuOpen,setMoreMenuOpen]=useState(false);const [practiceMenuOpen,setPracticeMenuOpen]=useState(false);
   const [studyContext,setStudyContext]=useState<KogStudyContext|null>(null);
@@ -493,7 +489,7 @@ export default function KognosApp(){
      if(event==='INITIAL_SESSION')return; // getSession initializes exactly once below.
      if(event==='SIGNED_OUT'){
        sessionEventSeen=true;
-       setAuthOpen(false);setAssistantOpen(false);setStudyContext(null);
+       setAuthOpen(false);setAssistantInitialized(false);setStudyContext(null);
        void resolveAccount(null);
      }else if(event==='SIGNED_IN' && session?.user){
        sessionEventSeen=true;
@@ -527,11 +523,11 @@ export default function KognosApp(){
  async function saveProfile(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase não configurado.');const {error}=await sb.from('profiles').upsert({id:user.id,display_name:normalized.nickname||null,username:normalized.username||null,biography:normalized.biography,education_stage:normalized.stage,preferences:normalized},{onConflict:'id'});if(error)throw new Error(explainProfileDatabaseError(error));}else{window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));}setProfile(normalized);setEditing(false);setView('dashboard');}
  async function signout(){
    const sb=getSupabase();if(sb)await sb.auth.signOut();
-   setAvatarUrl(null);setMobileMenu(false);setAssistantOpen(false);setAssistantInitialized(false);setRetainedViews([]);setLessonPracticeRequestId(0);setStudyContext(null);
+   setAvatarUrl(null);setMobileMenu(false);setAssistantInitialized(false);setRetainedViews([]);setLessonPracticeRequestId(0);setStudyContext(null);
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
- function openAssistant(){setAssistantInitialized(true);setAssistantOpen(true);}
- function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view)setStudyContext(null);/* Preserve the current question selection when returning to the bank. */if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function openAssistant(){if(view!=='tutor')setTutorReturnView(view);setAssistantInitialized(true);setView('tutor');setMobileMenu(false);}
+ function navigate(v:View){ if(v==='tutor'){openAssistant();}else{const returningFromTutor=view==='tutor'&&v===tutorReturnView; if(v!==view&&!returningFromTutor)setStudyContext(null);/* Keep the current lesson and study plan on the return trip from Kog. */if(!returningFromTutor&&(v==='learn'||v==='trails'||v==='subjects'))setLearningFocus(null);if(!returningFromTutor&&v==='plans')setPlannerDate('');if(!returningFromTutor&&v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){
@@ -577,7 +573,7 @@ export default function KognosApp(){
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.key!=='plans'&&x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>openAssistant()} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  <AnimatedPage page={view} disabled={disableAnimations}>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
- view==='tutor'?<TutorLanding profile={actualProfile} onOpen={()=>openAssistant()}/>:
+ view==='tutor'?null:
  view==='subjects'?<SubjectDashboard preferredExam={examForStudent(actualProfile)} key={user?.id||'guest'} userId={user?.id||null} onContextChange={setStudyContext} onTutor={()=>openAssistant()} onOpenTrail={openFocusedLesson} onPractice={practiceFromLesson} onGenerateAI={generateForLesson}/>: 
  isRetainedStudyView(view)?(!retainedViews.includes(view)?<WorkspaceLoading/>:null):
  view==='performance'?<PracticeSpace key={`${user?.id||'guest'}-performance`} mode="performance" userId={user?.id||null} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>: 
@@ -592,6 +588,10 @@ export default function KognosApp(){
  <ComingSoon view={view} onGo={navigate}/>}
 
  </AnimatedPage>
+ {/* The tutor is a dedicated workspace, retained after first visit so the conversation survives tab changes. */}
+ {(assistantInitialized||view==='tutor')&&<div className="kognos-tutor-workspace" hidden={view!=='tutor'}>
+   <KogAssistant key={user.id} active={view==='tutor'} onBack={()=>navigate(tutorReturnView)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={tutorReturnView} studyContext={studyContext}/>
+ </div>}
  {/* Cache only visited lessons and practice screens. Hidden panels are not
      focusable, do not occupy layout space and never mount for another account. */}
  {retainedViews.includes('learn')&&<div className="k-retained-workspace" hidden={view!=='learn'}>
@@ -613,12 +613,6 @@ export default function KognosApp(){
   <PracticeSpace key={`${user.id}-simulados`} mode="simulados" active={view==='simulados'}
    userId={user.id} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>
  </div>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Calendário':'Perfil'}</button>)}</nav>{assistantInitialized
- ?<KogAssistant open={assistantOpen} onOpen={()=>openAssistant()} onClose={()=>setAssistantOpen(false)} profile={actualProfile} user={user} onLogin={()=>setAuthOpen(true)} context={view} studyContext={studyContext}/>
- :<button type="button" className="kog-launcher k-kog-lightweight-launcher" onClick={openAssistant}
-   aria-label="Abrir Kog, tutor de inteligência artificial" title="Pergunte ao Kog">
-   <span className="kog-launcher-avatar"><Image src="/brand/kog-mascot.svg" width={50} height={50} alt=""/></span>
-   <span className="kog-launcher-label">Pergunte ao Kog <Sparkles size={14}/></span>
-  </button>}
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Calendário':'Perfil'}</button>)}</nav>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
