@@ -14,7 +14,10 @@
     "test": "node --test packages/education-engine/test/*.test.mjs && node --experimental-strip-types --test apps/web/src/lib/*.test.ts",
     "typecheck": "npm --workspace @kognos/web exec -- tsc --noEmit",
     "test:design": "node --test tests/*.test.mjs",
-    "test:content-db": "node --test tests/security/*.test.mjs"
+    "test:content-db": "node --test tests/security/*.test.mjs",
+    "content:audit": "node --experimental-strip-types scripts/generate-course-library.mjs --audit",
+    "content:rebuild": "node --experimental-strip-types scripts/generate-course-library.mjs --rebuild",
+    "content:generate": "node --experimental-strip-types scripts/generate-course-library.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.15"
