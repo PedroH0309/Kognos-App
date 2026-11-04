@@ -18,6 +18,7 @@ import {curriculumTopics} from '../apps/web/src/lib/curriculum-catalog.ts';
 import {findProvaoTopic} from '../apps/web/src/lib/provao-paulista.ts';
 import {examBlueprints} from '../apps/web/src/lib/exam-blueprints.ts';
 import {deepMathTopicNames} from '../apps/web/src/lib/deep-math-lessons.ts';
+import {deepCrossSubjectTopics} from '../apps/web/src/lib/deep-cross-subject-lessons.ts';
 import {buildRegistryModule,fingerprint,lessonPrompt,parseResponse,responseText,validateGenerated} from './content-generation-core.mjs';
 
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
@@ -44,7 +45,7 @@ if(!Number.isFinite(pauseMs)||pauseMs<0||pauseMs>600000)throw Error('pause-ms mu
 if(!['gemini','groq'].includes(provider))throw Error('Provider must be gemini or groq');
 const key=provider==='gemini'?process.env.GEMINI_API_KEY:process.env.GROQ_API_KEY;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const authored=new Set(deepMathTopicNames.map(name=>'Matemática\0'+name));
+const authored=new Set([...deepMathTopicNames.map(name=>'Matemática\0'+name),...deepCrossSubjectTopics.map(item=>item.subject+'\0'+item.topic)]);
 const isAuthored=topic=>authored.has(topic.subject+'\0'+topic.topic);
 const safeId=id=>/^[a-z][a-z0-9-]{2,90}$/.test(id);
 const persistedPath=id=>{if(!safeId(id))throw Error('Invalid curriculum id');return join(outputDirectory,id+'.json');};
