@@ -332,7 +332,7 @@ export const everydayContexts:readonly EverydayContext[] = [
   {
     "subject": "Espanhol",
     "topic": "Tempos do passado em espanhol",
-    "context": "Duas pessoas contam uma viagem: “Cuando era niña, viajaba con mi familia. El año pasado viajé sola.”",
+    "context": "Duas pessoas contam uma viagem: “Cuando era niña, viajaba con mi familia. El año pasado viajé sola.” Elas discutem a diferença entre hábito e episódio único.",
     "question": "Por que os verbos “viajaba” e “viajé” descrevem experiências passadas de modos diferentes?",
     "answer": "“Viajaba” apresenta hábito ou repetição na infância (imperfecto); “viajé” situa uma viagem concluída no ano anterior (perfecto simple). O contexto temporal determina a diferença.",
     "connections": [
@@ -693,7 +693,7 @@ export const everydayContexts:readonly EverydayContext[] = [
   {
     "subject": "Ciências",
     "topic": "Estados físicos e mudanças de estado",
-    "context": "Um copo com bebida gelada fica coberto de gotículas do lado de fora durante uma tarde úmida.",
+    "context": "Um copo com bebida gelada fica coberto de gotículas do lado de fora durante uma tarde úmida, mesmo sem vazamentos ou rachaduras no vidro.",
     "question": "A água atravessou o vidro ou houve outro processo físico?",
     "answer": "O vapor de água presente no ar pode se condensar ao entrar em contato com a superfície fria. As gotículas externas não precisam ter atravessado o vidro.",
     "connections": [
@@ -712,7 +712,7 @@ export const everydayContexts:readonly EverydayContext[] = [
   {
     "subject": "Ciências",
     "topic": "Reações químicas no cotidiano",
-    "context": "Uma grade de ferro exposta à chuva apresenta ferrugem; ao lado, uma poça d'água evapora ao sol.",
+    "context": "Uma grade de ferro exposta à chuva apresenta ferrugem; ao lado, uma poça d'água evapora ao sol. Os fenômenos são observados no mesmo espaço.",
     "question": "Por que os dois fenômenos não devem ser classificados como a mesma transformação?",
     "answer": "A corrosão envolve reações que formam novas espécies químicas a partir do ferro, oxigênio e água. A evaporação transforma água líquida em vapor de H₂O, preservando sua identidade química.",
     "connections": [
