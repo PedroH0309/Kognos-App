@@ -537,6 +537,196 @@ export const everydayContexts:readonly EverydayContext[] = [
         "reason": "Localizar horários e condições em avisos internacionais exige leitura pontual cuidadosa."
       }
     ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Sócrates e os sofistas",
+    "context": "Numa discussão escolar sobre a proibição de celulares, um grupo apresenta argumentos muito persuasivos, mas ninguém explica o que entende por “uso responsável”.",
+    "question": "Que tipo de pergunta permitiria investigar o conceito em vez de apenas escolher o discurso mais convincente?",
+    "answer": "Uma pergunta socrática possível é “O que torna um uso responsável?”. Em seguida, compare definições e procure contraexemplos. A força retórica de um discurso não prova sua correção.",
+    "connections": [
+      {
+        "subject": "Filosofia",
+        "topic": "Aristóteles e a lógica",
+        "reason": "Depois de definir conceitos, examine se as conclusões realmente seguem das premissas."
+      },
+      {
+        "subject": "Português",
+        "topic": "Informações explícitas e inferências",
+        "reason": "Diferenciar evidência de interpretação é essencial no debate público."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Aristóteles e a lógica",
+    "context": "Em uma campanha esportiva, lê-se o raciocínio: “Todos os atletas treinam. Carla treina. Logo, Carla é atleta”.",
+    "question": "A conclusão decorre necessariamente das premissas apresentadas?",
+    "answer": "Não. A premissa diz que atletas pertencem à classe de pessoas que treinam, não que todas as pessoas que treinam sejam atletas. O argumento afirma uma inclusão inversa sem justificativa.",
+    "connections": [
+      {
+        "subject": "Filosofia",
+        "topic": "Sócrates e os sofistas",
+        "reason": "Perguntas e contraexemplos ajudam a testar conceitos e raciocínios."
+      },
+      {
+        "subject": "Redação",
+        "topic": "Formulação de tese",
+        "reason": "Uma tese depende de premissas que realmente sustentem sua conclusão."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Durkheim: fato social e solidariedade",
+    "context": "Na fila de uma cantina, estudantes geralmente aguardam a vez mesmo quando não há um aviso escrito. Quem passa à frente costuma receber reprovação.",
+    "question": "Como a situação ajuda a reconhecer uma norma social e por que essa reprovação não depende de uma lei estatal?",
+    "answer": "A regra compartilhada e a pressão do grupo exemplificam exterioridade e coerção social. Para Durkheim, sanções difusas podem orientar comportamentos sem envolver polícia ou lei formal.",
+    "connections": [
+      {
+        "subject": "Sociologia",
+        "topic": "Weber: ação social e dominação",
+        "reason": "Além de observar a norma, é possível investigar que sentido os estudantes atribuem ao ato de respeitá-la."
+      },
+      {
+        "subject": "História",
+        "topic": "Revolução Industrial",
+        "reason": "A organização do tempo e a disciplina em instituições também têm trajetórias históricas."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Weber: ação social e dominação",
+    "context": "Duas pessoas participam da mesma campanha de reciclagem: uma por convicção ambiental; outra pretende melhorar a imagem do próprio negócio.",
+    "question": "Por que a mesma atividade externa pode corresponder a diferentes orientações de ação social?",
+    "answer": "No primeiro caso, a motivação descrita aproxima-se da ação orientada por valores; no segundo, da ação racional com relação a fins. São tipos ideais, e ações reais podem combinar motivos.",
+    "connections": [
+      {
+        "subject": "Sociologia",
+        "topic": "Durkheim: fato social e solidariedade",
+        "reason": "Compare o sentido atribuído pelo indivíduo com normas e instituições compartilhadas."
+      },
+      {
+        "subject": "Redação",
+        "topic": "Repertório sociocultural produtivo",
+        "reason": "Conceitos sociológicos podem fundamentar argumentos sobre participação coletiva se forem explicados."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Elementos visuais: ponto, linha, cor, forma e textura",
+    "context": "Um cartaz de campanha escolar usa letras cinza-claro sobre fundo branco e uma ilustração muito detalhada. Muitos leitores têm dificuldade para localizar o horário.",
+    "question": "Quais elementos visuais podem melhorar a hierarquia sem alterar a informação?",
+    "answer": "Aumentar o contraste entre texto e fundo, criar destaque para o horário e reduzir elementos concorrentes pode facilitar a leitura. As decisões envolvem cor, forma, escala e composição.",
+    "connections": [
+      {
+        "subject": "Arte",
+        "topic": "Fotografia, cinema e audiovisual",
+        "reason": "Enquadramento e contraste também direcionam a atenção em fotografia e vídeo."
+      },
+      {
+        "subject": "Português",
+        "topic": "Coesão referencial",
+        "reason": "A comunicação visual e a linguagem verbal precisam indicar com clareza a que informação se referem."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Fotografia, cinema e audiovisual",
+    "context": "Duas fotos do mesmo parque aparecem num jornal: uma mostra uma lixeira transbordando em close-up e outra mostra o parque inteiro com diferentes áreas.",
+    "question": "Por que nenhuma delas, sozinha, permite concluir qual é a situação geral de limpeza do parque?",
+    "answer": "Enquadramentos selecionam partes diferentes da cena. O close-up destaca uma ocorrência localizada e o plano amplo acrescenta contexto, mas ambos exigem mais evidências para generalizar.",
+    "connections": [
+      {
+        "subject": "Arte",
+        "topic": "Elementos visuais: ponto, linha, cor, forma e textura",
+        "reason": "Linha, contraste e composição influenciam o percurso do olhar."
+      },
+      {
+        "subject": "Literatura",
+        "topic": "Narrador e foco narrativo",
+        "reason": "A seleção visual de informações se aproxima da escolha de perspectiva numa narrativa."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esportes coletivos e individuais",
+    "context": "Numa aula de voleibol, um aluno executa bem o saque, mas a equipe perde pontos por falta de comunicação durante a recepção.",
+    "question": "Qual é a diferença entre dominar um gesto técnico e tomar decisões táticas coletivas?",
+    "answer": "O saque é uma habilidade técnica. Posicionamento, comunicação e escolha de quem recebe envolvem organização tática e cooperação. Um bom gesto individual não garante bom desempenho coletivo.",
+    "connections": [
+      {
+        "subject": "Educação Física",
+        "topic": "Preconceito e inclusão no esporte",
+        "reason": "Organizar papéis e adaptações pode ampliar a participação de colegas com diferentes níveis."
+      },
+      {
+        "subject": "Física",
+        "topic": "Leis de Newton",
+        "reason": "O movimento da bola envolve forças, mas a estratégia coletiva não se reduz à mecânica."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Preconceito e inclusão no esporte",
+    "context": "Numa aula de futsal, estudantes com menos experiência ficam sempre como reservas, embora o objetivo seja aprender e participar.",
+    "question": "Que mudança concreta pode ampliar a inclusão sem confundir aula escolar com competição profissional?",
+    "answer": "Rodízio de participação, equipes equilibradas e regras adaptadas para iniciantes podem criar oportunidades reais de aprendizagem. É importante ouvir a turma e verificar se a adaptação funciona.",
+    "connections": [
+      {
+        "subject": "Educação Física",
+        "topic": "Esportes coletivos e individuais",
+        "reason": "Entender regras e tática ajuda a adaptar atividades sem abandonar seus objetivos."
+      },
+      {
+        "subject": "Sociologia",
+        "topic": "Durkheim: fato social e solidariedade",
+        "reason": "Normas informais de um grupo podem reforçar exclusão ou promover cooperação."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Estados físicos e mudanças de estado",
+    "context": "Um copo com bebida gelada fica coberto de gotículas do lado de fora durante uma tarde úmida.",
+    "question": "A água atravessou o vidro ou houve outro processo físico?",
+    "answer": "O vapor de água presente no ar pode se condensar ao entrar em contato com a superfície fria. As gotículas externas não precisam ter atravessado o vidro.",
+    "connections": [
+      {
+        "subject": "Ciências",
+        "topic": "Reações químicas no cotidiano",
+        "reason": "Condensação é mudança física e deve ser diferenciada de formação de novas substâncias."
+      },
+      {
+        "subject": "Biologia",
+        "topic": "Membrana plasmática e transporte",
+        "reason": "Movimentação de água entre células e meios externos envolve gradientes e membranas, não condensação."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Reações químicas no cotidiano",
+    "context": "Uma grade de ferro exposta à chuva apresenta ferrugem; ao lado, uma poça d'água evapora ao sol.",
+    "question": "Por que os dois fenômenos não devem ser classificados como a mesma transformação?",
+    "answer": "A corrosão envolve reações que formam novas espécies químicas a partir do ferro, oxigênio e água. A evaporação transforma água líquida em vapor de H₂O, preservando sua identidade química.",
+    "connections": [
+      {
+        "subject": "Ciências",
+        "topic": "Estados físicos e mudanças de estado",
+        "reason": "Evaporação e condensação preservam a identidade química da água."
+      },
+      {
+        "subject": "Química",
+        "topic": "Cálculo estequiométrico",
+        "reason": "As reações químicas podem ser descritas por equações balanceadas e conservação de átomos."
+      }
+    ]
   }
 ];
 const bySubjectTopic=new Map(everydayContexts.map(item=>[item.subject+'\0'+item.topic,item]));
