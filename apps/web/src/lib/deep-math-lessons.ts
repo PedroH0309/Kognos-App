@@ -147,7 +147,7 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "level": "basic",
         "prompt": "Uma corrida de 150 km levou 2 h e 30 min. Qual foi a velocidade média em km/h?",
         "hint": "Converta 30 minutos para 0,5 hora.",
-        "solution": "O tempo é 2,5 h. Velocidade média=150 km/2,5 h=60 km/h."
+        "solution": "O tempo é 2,5 h, pois 30 min = 0,5 h. Velocidade média = distância/tempo = 150 km/2,5 h = 60 km/h. A unidade final é km/h, como pedido."
       },
       {
         "level": "intermediate",
@@ -159,7 +159,7 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "level": "intermediate",
         "prompt": "Oito torneiras idênticas enchem um reservatório em 6 horas. Sob vazão constante, quanto tempo levariam 12 torneiras?",
         "hint": "O produto entre número de torneiras e tempo deve permanecer constante.",
-        "solution": "8×6=48 torneira-horas. Com 12 torneiras, o tempo é 48/12=4 horas."
+        "solution": "O volume do reservatório é fixo. O produto número de torneiras × tempo é constante: 8×6=48 torneira-horas. Com 12 torneiras, o tempo é 48/12=4 horas."
       },
       {
         "level": "advanced",
@@ -233,13 +233,13 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "level": "intermediate",
         "prompt": "R$ 1500 são aplicados a juros simples de 3% ao mês por 4 meses. Determine juros e montante.",
         "hint": "Use J=C×i×t com i=0,03.",
-        "solution": "J=1500×0,03×4=R$ 180. Montante M=1500+180=R$ 1680."
+        "solution": "A taxa de 3% ao mês é 0,03 por mês. Como os juros são simples, J=C×i×t=1500×0,03×4=R$ 180. Montante M=C+J=1500+180=R$ 1680."
       },
       {
         "level": "intermediate",
         "prompt": "R$ 2000 são aplicados a juros compostos de 5% ao ano por 2 anos. Qual é o montante?",
         "hint": "Multiplique pelo fator 1,05 duas vezes.",
-        "solution": "M=2000×(1,05)²=2000×1,1025=R$ 2205. Os juros totais são R$ 205."
+        "solution": "Em juros compostos, o fator 1,05 aplica-se ao saldo de cada ano. Montante M=2000×(1,05)²=2000×1,1025=R$ 2205. Os juros totais são M−C=2205−2000=R$ 205."
       },
       {
         "level": "advanced",
@@ -301,7 +301,7 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "level": "basic",
         "prompt": "Calcule (3²×3⁴)/3³.",
         "hint": "Some expoentes do numerador e subtraia o do denominador.",
-        "solution": "3^(2+4−3)=3³=27, pois o denominador é diferente de zero."
+        "solution": "Ao multiplicar potências de mesma base, some os expoentes: 2+4=6. Ao dividir por 3³, subtraia 3: 3^(6−3)=3³=27. A base do denominador é diferente de zero."
       },
       {
         "level": "basic",
@@ -313,13 +313,13 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "level": "intermediate",
         "prompt": "Simplifique √98−√8.",
         "hint": "Fatore 98=49×2 e 8=4×2.",
-        "solution": "√98=7√2 e √8=2√2. Portanto √98−√8=5√2."
+        "solution": "Fatore os radicandos em quadrados perfeitos: 98=49×2 e 8=4×2. Então √98=7√2 e √8=2√2. Subtraia os coeficientes: (7−2)√2=5√2."
       },
       {
         "level": "intermediate",
         "prompt": "Simplifique √(x²) para x=−7. Explique por que o resultado não é x.",
         "hint": "A raiz quadrada principal é não negativa.",
-        "solution": "√((−7)²)=√49=7=|−7|. A identidade geral nos reais é √(x²)=|x|."
+        "solution": "Substituindo x por −7, primeiro calcule o quadrado: (−7)²=49. A raiz quadrada principal é não negativa: √49=7. Portanto √(x²)=|x|=7, e não x=−7."
       },
       {
         "level": "advanced",
@@ -387,13 +387,13 @@ const mathLessonSpecs:Record<string,MathLessonSpec>={
         "level": "basic",
         "prompt": "Resolva x/3+2=7.",
         "hint": "Subtraia 2 dos dois membros e multiplique por 3.",
-        "solution": "x/3=5 ⇒ x=15. Verificação: 15/3+2=5+2=7."
+        "solution": "Subtraia 2 dos dois membros: x/3+2−2=7−2, portanto x/3=5. Multiplique ambos os membros por 3: x=15. Verificação na equação original: 15/3+2=7."
       },
       {
         "level": "intermediate",
         "prompt": "Resolva −2x+5<13 e represente o conjunto solução por intervalo.",
         "hint": "Ao dividir por −2, inverta o sinal.",
-        "solution": "−2x<8 ⇒ x>−4. Intervalo (−4,+∞), com extremo −4 não incluído."
+        "solution": "Subtraia 5 dos dois membros: −2x<8. Divida ambos por −2 e inverta a desigualdade: x>−4. O intervalo solução é (−4,+∞), sem incluir −4 porque a relação é estrita."
       },
       {
         "level": "intermediate",
