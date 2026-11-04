@@ -32,3 +32,6 @@ Execute na raiz: npm test; npm run test:content-db; npm run test:design; npm run
 Teste manual: Matemática / funções quadráticas -> simulação PhET; Matemática / geometria plana -> arrastar dimensões, conferir área/perímetro; Química / modelos atômicos -> Monte um Átomo; Química / geometria molecular -> visualizador 3D, rotação e seleção de átomos + simulação oficial; Química / cálculos estequiométricos -> reagentes/limitação; Química / escala pH -> experimento PhET; compare carregamento e permissão em outra série e em tela pequena.
 
 **Não equivale a criar simulação específica para todos os tópicos**: aulas sem correspondência ainda usam os laboratórios nativos ou o estúdio visual universal. A avaliação adaptativa continua separada.
+
+## Ampliação da célula (3D sem dependências externas)
+O laboratório de Biologia existente agora apresenta por padrão a experiência Cell3DViewer, construída com a dependência Three.js do projeto. O aluno pode girar e dar zoom na célula animal, vegetal ou procarionte; selecionar organelas no espaço, usar os botões da lista para foco acessível e alternar a qualquer momento para o esquema 2D existente. O diagrama não copia modelos Labster e não pretende reproduzir dimensões biológicas. Caso WebGL não esteja disponível, o modo 2D permanece como alternativa.
