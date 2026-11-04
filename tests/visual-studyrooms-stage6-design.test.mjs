@@ -23,7 +23,7 @@ test('Interactive cellular model contains genuine SVG elements, clickable anatom
  const cell=read('apps/web/src/components/science/CellAnatomyLab.tsx');
  const science=read('apps/web/src/components/science/ScienceLabPanel.tsx');
  assert.match(cell,/<svg viewBox=/);
- assert.match(cell,/Célula animal/);
+ assert.match(cell,/cellKinds\.find/);
  assert.match(cell,/cellKinds\.map/);
  assert.match(cell,/setZoom/);
  assert.match(cell,/role="button"/);
