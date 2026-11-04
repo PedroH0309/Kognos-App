@@ -19,7 +19,7 @@ test('Math curriculum selects the correct lab without interfering with other sub
  assert.equal(math('Gráfico de funções expressas por uma sentença','Funções'),'functions');
  assert.equal(math('Introdução a polinômios','Funções'),'functions');
  assert.equal(math('Leitura de gráficos'),'statistics');
- assert.equal(math('Números naturais'),null);
+ assert.equal(math('Números naturais'),'number-sets');
  assert.equal(resolveMathLab({subject:'Química',topic:'Equações químicas'}),null);
  assert.equal(resolveMathLab({subject:'Física',topic:'Notação científica'}),null);
 });
