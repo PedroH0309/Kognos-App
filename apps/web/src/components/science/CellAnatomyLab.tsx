@@ -1,5 +1,5 @@
 'use client';
-import {useState,type KeyboardEvent} from 'react';
+import {useState,type KeyboardEvent,type ReactNode} from 'react';
 import {cellKinds,cellParts,parts,cellPartAvailable,type CellPart,type CellType} from '@/lib/visual-study-models';
 import {ScienceStage} from './ScienceLabCommon';
 
@@ -16,7 +16,7 @@ export default function CellAnatomyLab(){
  const active=cellPartAvailable(type,selected)?selected:available[0];
  const fill=(part:CellPart,base:string)=>active===part?'#f4cb67':base;
  const typeChange=(next:CellType)=>{setType(next);setSelected(next==='prokaryote'?'dna':'nucleus');};
- function target(part:CellPart,child:React.ReactNode){
+ function target(part:CellPart,child:ReactNode){
   return <g role="button" tabIndex={0} aria-label={'Selecionar '+parts[part].label}
    onClick={()=>focus(part)} onKeyDown={event=>onKey(event,part)}
    style={{cursor:'pointer'}}>{child}<title>{parts[part].label}</title></g>;
