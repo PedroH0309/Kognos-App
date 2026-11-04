@@ -1,0 +1,87 @@
+name: Kognos - Generate full curriculum library
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Free-tier API provider (matching repository secret required)
+        required: true
+        default: gemini
+        type: choice
+        options:
+          - gemini
+          - groq
+      subject:
+        description: Optional subject or empty for all
+        required: false
+        type: string
+      limit:
+        description: Maximum lessons in this run (free quotas may be lower)
+        required: true
+        default: "10"
+        type: string
+      model:
+        description: Optional provider model ID
+        required: false
+        type: string
+permissions:
+  contents: write
+jobs:
+  generate:
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: authoring-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate authoring request
+        shell: bash
+        env:
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          if ! [[ "$LIMIT" =~ ^[1-9][0-9]*$ ]] || [ "$LIMIT" -gt 50 ]; then
+            echo "The batch limit must be an integer from 1 through 50."
+            exit 1
+          fi
+      - name: Generate, validate and save prebuilt lessons
+        shell: bash
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PROVIDER: ${{ inputs.provider }}
+          MODEL: ${{ inputs.model }}
+          SUBJECT: ${{ inputs.subject }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          cmd=(node --experimental-strip-types scripts/generate-course-library.mjs --provider "$PROVIDER" --limit "$LIMIT" --pause-ms 2000)
+          if [ -n "$MODEL" ]; then cmd+=(--model "$MODEL"); fi
+          if [ -n "$SUBJECT" ]; then cmd+=(--subject "$SUBJECT"); fi
+          "${cmd[@]}"
+      - name: Validate repository tests and build
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+          npm run test:content-db
+          npm run test:design
+          npm run typecheck
+          npm run build
+      - name: Commit authored content to feature branch
+        shell: bash
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "kognos-content-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/generated-lessons apps/web/src/lib/generated-deep-lessons.ts
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "content: expand verified offline lesson batch"
+          git push origin "HEAD:refs/heads/$TARGET_BRANCH"
