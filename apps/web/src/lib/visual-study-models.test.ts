@@ -41,7 +41,7 @@ test('Real Biology curricular structure and plasma membrane topics use the visua
  }
  assert.equal(isCellStructureTopic('Química',cases[0]),false);
  assert.equal(resolveScienceLab({subject:'Biologia',topic:'Divisões celulares: mitose e meiose'}),'cell-cycle');
- assert.equal(resolveScienceLab({subject:'Biologia',topic:'Genética mendeliana'}),null);
+ assert.equal(resolveScienceLab({subject:'Biologia',topic:'Doenças causadas por fungos'}),null);
 });
 test('Intertextuality has real authored contrast modes, and only Portuguese subject routes into it',()=>{
  const topic='Intertextualidade e interdiscursividade';
