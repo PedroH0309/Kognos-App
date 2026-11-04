@@ -18,19 +18,20 @@ test('Official third-party simulations load on demand only with local permission
  assert.match(models,/noncommercial-confirmed/);
  assert.doesNotMatch(panel,/fetch\(|contentRequest\(|localStorage\.setItem/);
 });
-test('Embedded simulations work in both learning experiences while keeping first-party study labs',()=>{
+test('Embedded simulations live in the independent lab and stay linked from both lesson experiences',()=>{
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- for(const code of [room,trails]){
-  assert.match(code,/import PhETSimulationPanel/);
-  assert.match(code,/<PhETSimulationPanel/);
-  assert.match(code,/<MathLabPanel/);
-  assert.match(code,/<ScienceLabPanel/);
-  assert.match(code,/<StudyExplorationPanel/);
-  assert.match(code,/SkillEvolutionPanel/);
- }
- assert.match(room,/readerTab==='explore'/);
+ for(const term of ['PhETSimulationPanel','MathLabPanel','ScienceLabPanel','LanguageLabPanel','HumanitiesLabPanel'])
+  assert.match(hub,new RegExp('<'+term));
+ assert.match(room,/onOpenLab\(detail\.topic\)/);
+ assert.match(room,/readerTab==='lesson'/);
+ assert.match(trails,/<LaboratoryHub/);
+ assert.match(trails,/studySpace==='laboratory'/);
+ assert.match(room,/SkillEvolutionPanel/);
+ assert.match(trails,/SkillEvolutionPanel/);
 });
+
 test('A full Three.js molecule scene has touch rotation, zoom, atom inspection and cleanup',()=>{
  const viewer=read('apps/web/src/components/science/Molecule3DLab.tsx');
  const router=read('apps/web/src/components/science/ScienceLabPanel.tsx');
