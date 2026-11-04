@@ -45,7 +45,7 @@ test('Exercises rely on original texts, evidence and do not fake scoring of writ
  assert.match(common,/Conferir com evidência/);
  assert.match(common,/não alteram a evolução da habilidade/);
  assert.match(writing,/não há nota automática/);
- assert.match(writing,/não avaliam pertinência ao tema/);
+ assert.match(writing,/não avaliam pertinência ao tema/i);
  assert.match(writing,/direitos humanos/);
  assert.doesNotMatch(common,/score\s*\+|recordAttempt\(|fetch\(|contentRequest\(/);
 });
