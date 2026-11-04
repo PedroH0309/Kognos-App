@@ -347,6 +347,196 @@ export const everydayContexts:readonly EverydayContext[] = [
         "reason": "Lembranças narradas em primeira pessoa revelam a seleção temporal feita pelo narrador."
       }
     ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Velocidade média e instantânea",
+    "context": "Uma ciclista percorre 12 km entre casa e a escola em 30 minutos. Ela também precisa saber se o percurso teve paradas.",
+    "question": "Qual foi a rapidez média e por que ela não revela a velocidade em cada instante?",
+    "answer": "Como 30 minutos correspondem a 0,5 h, a rapidez média é 12/0,5=24 km/h. É possível ter parado ou acelerado em trechos; a média não descreve automaticamente o movimento instantâneo.",
+    "connections": [
+      {
+        "subject": "Geografia",
+        "topic": "Coordenadas geográficas",
+        "reason": "Mapas ajudam a localizar o início, o destino e o percurso utilizado."
+      },
+      {
+        "subject": "Física",
+        "topic": "Leis de Newton",
+        "reason": "Mudanças na velocidade exigem analisar a força resultante sobre o corpo."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Leis de Newton",
+    "context": "Um carrinho de supermercado com massa total de 10 kg recebe uma força horizontal resultante de 20 N, em um modelo sem outras forças horizontais não compensadas.",
+    "question": "Qual aceleração resulta da força e por que ela não indica diretamente a velocidade final?",
+    "answer": "Pela segunda lei, a=F/m=20/10=2 m/s². Para determinar a velocidade final é preciso conhecer a velocidade inicial e o tempo durante o qual a aceleração atua.",
+    "connections": [
+      {
+        "subject": "Física",
+        "topic": "Velocidade média e instantânea",
+        "reason": "Aceleração altera a velocidade; a distinção entre média e instantânea ajuda a interpretar o movimento."
+      },
+      {
+        "subject": "Matemática",
+        "topic": "Função quadrática",
+        "reason": "Sob aceleração constante, o modelo da posição envolve uma expressão quadrática no tempo."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Mol e constante de Avogadro",
+    "context": "Em uma atividade de química, uma amostra de água pura tem massa de 18 g. Não é viável contar suas moléculas uma a uma.",
+    "question": "Como a massa se relaciona com o mol e por que a contagem usa notação científica?",
+    "answer": "A massa molar aproximada da água é 18 g/mol. Portanto, 18 g correspondem a cerca de 1 mol ou 6,022×10²³ moléculas de H₂O. A notação científica expressa esse número enorme sem perder a ordem de grandeza.",
+    "connections": [
+      {
+        "subject": "Matemática",
+        "topic": "Potências, radicais e notação científica",
+        "reason": "Expoentes permitem expressar e operar contagens microscópicas."
+      },
+      {
+        "subject": "Química",
+        "topic": "Cálculo estequiométrico",
+        "reason": "O mol é a ponte entre coeficientes de reação, partículas e massas."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Cálculo estequiométrico",
+    "context": "Em um problema didático sobre produção de água, a equação balanceada é 2H₂ + O₂ → 2H₂O. Há 4 mol de H₂ e oxigênio suficiente.",
+    "question": "Quantos mols de água poderiam ser formados no modelo de reação completa?",
+    "answer": "A razão entre H₂ e H₂O é 2:2, portanto 4 mol de H₂ podem produzir 4 mol de H₂O. O cálculo pressupõe reação completa, sem perdas, e não descreve um experimento doméstico.",
+    "connections": [
+      {
+        "subject": "Química",
+        "topic": "Mol e constante de Avogadro",
+        "reason": "Converter mols em massas ou partículas requer massa molar e constante de Avogadro."
+      },
+      {
+        "subject": "Ciências",
+        "topic": "Reações químicas no cotidiano",
+        "reason": "O balanceamento decorre da conservação dos átomos nas transformações químicas."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Membrana plasmática e transporte",
+    "context": "Ao colocar sal sobre algumas folhas cortadas de verduras, pode aparecer líquido na superfície depois de algum tempo.",
+    "question": "Como a diferença de concentração ajuda a explicar a movimentação de água e o que não se deve concluir automaticamente?",
+    "answer": "O sal pode criar um ambiente externo hipertônico, favorecendo saída de água das células por osmose. A intensidade depende do tecido e das condições; o líquido observado não prova que todas as células se comportaram identicamente.",
+    "connections": [
+      {
+        "subject": "Ciências",
+        "topic": "Estados físicos e mudanças de estado",
+        "reason": "Movimento de água por membranas não é a mesma coisa que evaporação ou condensação."
+      },
+      {
+        "subject": "Biologia",
+        "topic": "Ciclo celular e mitose",
+        "reason": "O controle de trocas pela membrana é necessário para células em crescimento e divisão."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Ciclo celular e mitose",
+    "context": "Depois de um ferimento superficial, tecidos envolvidos na reparação podem produzir novas células para substituir parte das células perdidas.",
+    "question": "Por que a duplicação do DNA precisa ocorrer antes da mitose e qual é o resultado cromossômico típico?",
+    "answer": "Na fase S, o DNA é replicado para que as cromátides sejam separadas durante a mitose. Se a segregação for correta, os novos núcleos conservam a ploidia original; reparação tecidual também envolve outros processos.",
+    "connections": [
+      {
+        "subject": "Biologia",
+        "topic": "Membrana plasmática e transporte",
+        "reason": "Células em reparação dependem de trocas controladas de substâncias."
+      },
+      {
+        "subject": "Matemática",
+        "topic": "Potências, radicais e notação científica",
+        "reason": "Modelos de crescimento celular podem usar potências, sem supor que populações cresçam indefinidamente."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Revolução Industrial",
+    "context": "Uma etiqueta de roupa mostra uma cadeia de produção que envolve tecido, máquinas, transporte e venda. O estudante investiga como essa organização do trabalho se consolidou historicamente.",
+    "question": "O que mudou com a industrialização e por que é inadequado atribuir a mudança a uma única invenção?",
+    "answer": "A industrialização articulou mecanização, fábricas, energia, capital, comércio e mudanças nas relações de trabalho. A primeira fase britânica envolveu vários processos históricos; máquinas isoladas não explicam a transformação social.",
+    "connections": [
+      {
+        "subject": "Sociologia",
+        "topic": "Durkheim: fato social e solidariedade",
+        "reason": "A especialização das funções produtivas ajuda a discutir divisão do trabalho e interdependência."
+      },
+      {
+        "subject": "História",
+        "topic": "Era Vargas",
+        "reason": "A industrialização brasileira teve trajetórias e intervenções estatais em outra época e contexto."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Era Vargas",
+    "context": "Ao consultar a origem de direitos trabalhistas, um estudante encontra a CLT de 1943 e percebe que ela reuniu normas num período autoritário do Brasil.",
+    "question": "Como avaliar avanços na legislação sem confundir política social e democracia?",
+    "answer": "A CLT sistematizou regras trabalhistas em 1943, com alcance desigual entre categorias. O Estado Novo, iniciado em 1937, restringiu liberdades políticas; legislação social não o tornou democrático.",
+    "connections": [
+      {
+        "subject": "História",
+        "topic": "Revolução Industrial",
+        "reason": "Mudanças no trabalho industrial ajudam a compreender debates posteriores sobre proteção social."
+      },
+      {
+        "subject": "Sociologia",
+        "topic": "Weber: ação social e dominação",
+        "reason": "A autoridade estatal e suas formas de legitimação podem ser analisadas sem confundir obediência e justiça."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Coordenadas geográficas",
+    "context": "Um mapa digital registra um ponto pela latitude −23° e longitude −46°, na convenção de sinais. O usuário precisa identificar a localização relativa do ponto.",
+    "question": "Em que hemisférios o ponto está e quais informações as coordenadas, isoladamente, não oferecem?",
+    "answer": "Latitude negativa indica sul do Equador; longitude negativa, oeste de Greenwich. As coordenadas angulares não dizem, sozinhas, altitude, tempo de viagem nem condições das ruas.",
+    "connections": [
+      {
+        "subject": "Geografia",
+        "topic": "Fusos horários",
+        "reason": "A longitude ajuda a entender diferenças de hora solar entre localidades."
+      },
+      {
+        "subject": "Matemática",
+        "topic": "Razões, escalas e proporcionalidade",
+        "reason": "Escalas cartográficas relacionam distâncias no mapa com medidas no terreno."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Fusos horários",
+    "context": "Uma chamada remota é marcada para 20h numa localidade UTC−3; outra pessoa está em UTC+2, com os offsets fornecidos para essa data.",
+    "question": "Que horas será para a segunda pessoa, inclusive a data relativa?",
+    "answer": "A diferença é +2−(−3)=5 horas. Portanto, 20h em UTC−3 correspondem a 01h do dia seguinte em UTC+2, assumindo que os offsets informados sejam válidos.",
+    "connections": [
+      {
+        "subject": "Geografia",
+        "topic": "Coordenadas geográficas",
+        "reason": "Meridianos ajudam a entender a origem geométrica das diferenças de hora solar."
+      },
+      {
+        "subject": "Inglês",
+        "topic": "Skimming e scanning",
+        "reason": "Localizar horários e condições em avisos internacionais exige leitura pontual cuidadosa."
+      }
+    ]
   }
 ];
 const bySubjectTopic=new Map(everydayContexts.map(item=>[item.subject+'\0'+item.topic,item]));
