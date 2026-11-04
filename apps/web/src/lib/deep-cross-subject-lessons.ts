@@ -1518,6 +1518,195 @@ const lessons:LessonSpec[] = [
         "Representações de conjuntos e análise dos termos permitem verificar se todas as situações compatíveis com as premissas obrigam a conclusão. Um contraexemplo com premissas verdadeiras e conclusão falsa refuta a validade."
       ]
     ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Weber: ação social e dominação",
+    "objective": "Definir ação social na sociologia compreensiva e distinguir tipos ideais de ação e fundamentos de legitimidade da dominação em Weber.",
+    "sections": [
+      {
+        "title": "Ação social e sentido atribuído",
+        "explanation": "Para Max Weber, a ação social é uma conduta humana à qual o agente atribui sentido e que se orienta pelo comportamento de outras pessoas, real ou esperado. Nem todo movimento corporal é ação social: um espirro involuntário não possui necessariamente orientação pelo outro; acenar para cumprimentar alguém pode possuir. A sociologia compreensiva busca interpretar os sentidos e também explicar relações causais, evitando reduzir o indivíduo a uma causa psicológica única. Weber construiu tipos ideais como instrumentos analíticos: são modelos acentuados de traços de fenômenos que ajudam a comparar situações reais, não retratos exatos de qualquer pessoa ou julgamento moral de comportamento.",
+        "example": "Um estudante estuda para ser aprovado e atender às expectativas da família; pode haver orientação a fins e a outras pessoas. Outro estudante abre um guarda-chuva apenas por reflexo ao sentir água; sem sentido dirigido ao comportamento alheio, a descrição não demonstra ação social.",
+        "pitfall": "Interpretar qualquer comportamento humano como ação social no sentido weberiano, sem identificar orientação significativa ao outro."
+      },
+      {
+        "title": "Quatro tipos de orientação da ação",
+        "explanation": "A tipologia de Weber distingue ação racional com relação a fins, quando meios são calculados para alcançar objetivos; racional com relação a valores, quando a ação se orienta por convicção independentemente dos resultados; afetiva, quando predomina a expressão de emoções; e tradicional, quando o hábito e costumes conduzem a conduta. São tipos ideais, e uma mesma situação pode combinar motivações. Classificar requer compreender o sentido atribuído, não apenas olhar o movimento externo. Doações podem ser orientadas por valor religioso, cálculo de reconhecimento público, emoção diante de sofrimento ou tradição familiar. O observador não deve deduzir o motivo com certeza sem evidências.",
+        "example": "Uma pessoa participa de manifestação porque considera a causa moralmente obrigatória, mesmo prevendo custos pessoais: o caso sugere orientação por valores. Outra pode participar visando contatos profissionais: nesse cenário hipotético, a orientação a fins ganha destaque.",
+        "pitfall": "Supor que uma ação possui sempre um único tipo puro ou atribuir motivações internas a pessoas reais sem evidência."
+      },
+      {
+        "title": "Dominação legítima, Estado e burocracia",
+        "explanation": "Dominação, em Weber, envolve a probabilidade de que ordens encontrem obediência em determinado grupo. A estabilidade dessa obediência pode se apoiar em legitimidade tradicional, ligada ao costume; carismática, baseada na devoção a qualidades atribuídas a um líder; ou legal-racional, vinculada a regras impessoais e cargos instituídos. São novamente tipos ideais que podem se misturar em casos concretos. A burocracia moderna se associa à autoridade legal-racional, com competências definidas, hierarquia administrativa e registro documental. Seu funcionamento pode trazer previsibilidade, mas também gerar rigidez e problemas de responsabilidade. Weber não descreve toda obediência como justa, nem defende que qualquer autoridade existente seja legítima moralmente.",
+        "example": "Num concurso para um cargo público, a autoridade de quem assume decorre formalmente das regras e competências do cargo, não de relações familiares ou admiração pessoal. Esse exemplo ajuda a distinguir dominação legal-racional de legitimidades tradicional e carismática.",
+        "pitfall": "Confundir 'legítima' na análise sociológica com aprovação ética automática ou tratar o tipo carismático como mero sinônimo de simpatia pessoal."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Explique por que cumprimentar alguém pode constituir ação social, enquanto um espirro involuntário geralmente não.",
+        "Considere sentido subjetivo e orientação ao comportamento de outra pessoa.",
+        "Um cumprimento possui sentido dirigido ao outro e considera uma interação. O espirro involuntário, isoladamente, não é orientado significativamente ao comportamento de alguém."
+      ],
+      [
+        "basic",
+        "O que é um tipo ideal na metodologia de Weber?",
+        "É um instrumento de comparação, não uma pessoa exemplar.",
+        "Um tipo ideal é um modelo analítico construído enfatizando certos traços de fenômenos. Serve para interpretar realidades complexas, sem exigir que casos concretos correspondam perfeitamente ao modelo."
+      ],
+      [
+        "intermediate",
+        "Uma pessoa escolhe o caminho mais rápido para chegar a uma entrevista. Qual orientação da ação tende a predominar?",
+        "Ela compara meios para alcançar um objetivo.",
+        "Predomina a ação racional com relação a fins: calcula-se o meio mais eficiente para atingir o objetivo. Essa leitura depende do sentido hipotético apresentado no enunciado."
+      ],
+      [
+        "intermediate",
+        "Uma pessoa mantém um costume familiar mesmo sem considerar suas consequências. Qual tipo de ação isso exemplifica?",
+        "Procure hábitos transmitidos e repetidos.",
+        "O caso se aproxima da ação tradicional, orientada pelo hábito e pelo costume. Em situações concretas, outras razões podem coexistir, mas o enunciado enfatiza tradição."
+      ],
+      [
+        "advanced",
+        "Diferencie dominação tradicional e legal-racional usando exemplos de fundamento da autoridade.",
+        "Compare costume com regras impessoais.",
+        "A tradicional apoia-se no reconhecimento de costumes antigos e posições herdadas. A legal-racional apoia-se em normas formais e competências de cargos, como numa administração pública."
+      ],
+      [
+        "advanced",
+        "Por que uma organização burocrática pode ser previsível e ao mesmo tempo rígida?",
+        "Relacione regras escritas, hierarquia e flexibilidade.",
+        "Competências e procedimentos definidos favorecem previsibilidade e continuidade, mas podem produzir excesso de formalismo e dificuldade de adaptação. Trata-se de possibilidades analíticas, não de resultados universais."
+      ]
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Fotografia, cinema e audiovisual",
+    "objective": "Analisar enquadramento, planos, luz, montagem e som em produções audiovisuais, distinguindo registro, construção narrativa e interpretação.",
+    "sections": [
+      {
+        "title": "Fotografia: enquadramento e luz",
+        "explanation": "Fotografia registra uma distribuição luminosa por meio de um dispositivo técnico, mas não é cópia neutra e completa da realidade. O enquadramento seleciona o que entra e o que fica fora da imagem; ângulo, distância, foco e iluminação alteram a percepção. Um plano geral situa ambientes, enquanto um close-up destaca detalhes, sem que existam efeitos psicológicos universais. A direção da luz pode produzir sombras que enfatizam textura e volume; contraste e cor participam da linguagem visual. Para analisar uma fotografia, descreva primeiro elementos observáveis, depois proponha interpretações vinculadas ao contexto de produção e circulação. Também considere direitos de imagem e consentimento quando pessoas são fotografadas.",
+        "example": "Imagine duas fotografias originais de uma praça: um plano aberto mostra árvores, calçadas e circulação de pessoas; um close-up de uma mão plantando uma muda concentra atenção no gesto. As duas registram o mesmo espaço, mas constroem narrativas visuais diferentes pela seleção de informação.",
+        "pitfall": "Afirmar que uma fotografia não envolve escolhas autorais por ter sido produzida com câmera ou supor que um enquadramento sempre comunica a mesma emoção."
+      },
+      {
+        "title": "Cinema: plano, cena, sequência e montagem",
+        "explanation": "No audiovisual, o plano corresponde a um trecho contínuo de imagem entre cortes, enquanto uma cena organiza ações em situação dramática e uma sequência pode reunir cenas relacionadas. A montagem define a ordem, a duração e a relação entre imagens, criando continuidade, contraste, simultaneidade ou ruptura temporal. A interpretação de um mesmo plano pode mudar conforme o que aparece antes e depois dele. Movimento de câmera, profundidade de campo e posição dos atores também orientam o olhar. Uma análise cuidadosa identifica escolhas materiais concretas, sem inventar intenções de diretores ou reduzir a linguagem cinematográfica a fórmulas rígidas.",
+        "example": "Um curta mostra primeiro um prato vazio, depois o rosto preocupado de uma personagem e, por fim, uma cozinha fechada. A montagem convida à inferência de falta de alimento ou dificuldade de acesso, embora nenhum plano isolado conte toda a situação.",
+        "pitfall": "Confundir plano com cena ou interpretar cortes como simples erros de gravação, ignorando suas funções na construção do sentido."
+      },
+      {
+        "title": "Som, narrativa e leitura crítica das imagens",
+        "explanation": "A trilha sonora, diálogos, ruídos ambientes e silêncio integram a produção de significado. Som diegético pertence ao universo da narrativa — por exemplo, uma rádio ouvida pelos personagens — enquanto som não diegético pode ser música acrescentada para o público. Essa distinção é analítica: a relação entre som e imagem pode ser ambígua. Documentários também envolvem escolhas de edição, entrevista, duração e ordem das cenas, apesar do compromisso com referências a acontecimentos reais. Ao avaliar um produto audiovisual, pergunte de onde vieram imagens, quem fala, que contexto foi omitido e se há manipulação ou uso não autorizado.",
+        "example": "Em uma cena, uma personagem fecha a porta e a música dramática continua mesmo sem fonte sonora na história: a trilha provavelmente é não diegética. Se um rádio tocando aparece dentro do quarto, seu som pertence ao espaço narrativo.",
+        "pitfall": "Supor que todo documentário é neutro por usar imagens reais ou que toda música ouvida pelo espectador é necessariamente ouvida pelos personagens."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Qual a diferença fundamental entre enquadramento aberto e close-up na análise de uma fotografia?",
+        "Observe quantidade de contexto visual disponível.",
+        "O enquadramento aberto apresenta mais relações espaciais e elementos ambientais; o close-up destaca um detalhe ou expressão. Ambos são escolhas de linguagem, não garantias de uma interpretação única."
+      ],
+      [
+        "basic",
+        "Explique por que uma fotografia não é um registro totalmente neutro.",
+        "Pense no que fica fora do quadro.",
+        "Quem fotografa escolhe perspectiva, recorte, luz e momento do registro. Essas decisões tornam certos elementos visíveis e omitem outros, influenciando a leitura da imagem."
+      ],
+      [
+        "intermediate",
+        "Defina plano e cena e indique por que não são sinônimos no cinema.",
+        "Um se relaciona a tomadas contínuas; outro, a unidades dramáticas.",
+        "Plano é um trecho contínuo de imagem entre cortes; cena organiza ações em uma situação narrativa, podendo conter vários planos. Uma sequência pode reunir diferentes cenas."
+      ],
+      [
+        "intermediate",
+        "Como a montagem pode modificar o sentido de uma expressão facial filmada?",
+        "Considere imagens anteriores e posteriores ao rosto.",
+        "Um rosto neutro pode parecer preocupado, interessado ou satisfeito conforme as imagens adjacentes. A montagem cria relações de sentido que vão além do conteúdo de um único plano."
+      ],
+      [
+        "advanced",
+        "Classifique o som de um rádio presente na sala da personagem e uma trilha sonora que só o público escuta.",
+        "Diferencie a fonte sonora dentro e fora do universo da narrativa.",
+        "O rádio da sala produz som diegético, integrante do mundo ficcional. A trilha acrescentada apenas para o espectador é não diegética, mesmo que também influencie emoções e interpretações."
+      ],
+      [
+        "advanced",
+        "Que perguntas críticas ajudam a analisar a credibilidade de um documentário com imagens reais?",
+        "Investigue autoria, seleção e contexto.",
+        "É preciso observar origem das imagens, recortes de edição, fontes entrevistadas, informações omitidas e possível distorção contextual. Usar imagens reais não elimina escolhas narrativas nem garante neutralidade."
+      ]
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Preconceito e inclusão no esporte",
+    "objective": "Identificar barreiras sociais e estruturais à participação esportiva e propor adaptações responsáveis que ampliem inclusão sem reduzir pessoas a estereótipos.",
+    "sections": [
+      {
+        "title": "Acesso e barreiras à participação",
+        "explanation": "O esporte é prática cultural e direito de participação, mas as oportunidades não se distribuem igualmente. Barreiras podem envolver renda, disponibilidade de espaços, transporte, equipamentos, horários, normas de gênero, discriminação e acessibilidade. Preconceitos contra pessoas com deficiência, mulheres, pessoas de determinados grupos sociais ou iniciantes podem afastar participantes e restringir trajetórias esportivas. A análise deve distinguir capacidade individual de oportunidades sociais: desempenho não pode ser usado como medida universal de valor de uma pessoa. Na escola, observar quem participa efetivamente, quem recebe incentivo e quais regras excluem pessoas é parte do trabalho pedagógico.",
+        "example": "Uma escola possui somente uma quadra com atividades sempre organizadas para a mesma equipe. Estudantes iniciantes podem permanecer sem participação real. Rodízio planejado, grupos variados e metas cooperativas podem ampliar oportunidades sem apagar objetivos de aprendizagem.",
+        "pitfall": "Afirmar que excluir participantes por experiência ou corpo é necessário para qualquer prática esportiva, confundindo alto rendimento com educação física escolar."
+      },
+      {
+        "title": "Adaptações, acessibilidade e justiça",
+        "explanation": "Incluir não significa simplesmente colocar todos no mesmo espaço e manter condições que impedem parte do grupo de jogar. Adaptações podem envolver equipamento, tamanho da quadra, tempo de participação, comunicação visual ou sonora e regras ajustadas à atividade. A escolha precisa considerar segurança, autonomia e preferências dos participantes, sem impor práticas como se toda pessoa com determinada deficiência tivesse necessidades idênticas. Em modalidades paralímpicas, classificações esportivas e regulamentos próprios procuram organizar disputas justas, mas variam por modalidade. Em contexto escolar, uma adaptação pode ser pedagogicamente legítima sem equivaler a regra oficial da federação.",
+        "example": "Numa aula de vôlei para iniciantes, o professor reduz a altura da rede e usa bola mais leve; em outra atividade, orientações visuais e sinais combinados complementam avisos sonoros. O objetivo é ampliar acesso à tomada de decisão e à cooperação.",
+        "pitfall": "Presumir que basta mudar uma regra para produzir inclusão, sem ouvir os participantes nem observar se a adaptação resolveu a barreira concreta."
+      },
+      {
+        "title": "Respeito, mídia e protagonismo",
+        "explanation": "O fair play envolve respeito a regras, adversários, arbitragem e integridade dos participantes, mas ações de inclusão também dependem de instituições, equipes e políticas públicas. A representação na mídia pode valorizar atletas e ampliar visibilidade de modalidades, embora também reforce estereótipos quando reduz pessoas a histórias de superação ou aparência física. A análise crítica pergunta quem aparece, quais condições de treino são mostradas, quem é ouvido e quais desigualdades permanecem invisíveis. Projetos de esporte comunitário devem considerar continuidade, segurança, acesso e participação na decisão, não apenas eventos pontuais.",
+        "example": "Uma reportagem descreve uma atleta exclusivamente como 'exemplo de superação', omitindo treinamento, técnica e resultados esportivos. Uma abordagem mais completa mostra suas estratégias de competição, contexto da modalidade e barreiras de acesso sem apagar a pessoa como atleta.",
+        "pitfall": "Confundir representatividade com mera presença simbólica ou tratar respeito individual como solução completa de desigualdades estruturais."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Cite duas barreiras distintas que podem impedir estudantes de participar de atividades esportivas.",
+        "Considere recursos materiais e atitudes sociais.",
+        "Falta de transporte e equipamentos é barreira material; discriminação por deficiência ou gênero é barreira social. Ambas podem restringir participação mesmo quando há interesse e disposição."
+      ],
+      [
+        "basic",
+        "Por que alto desempenho competitivo não deve ser o único critério de acesso a aulas de educação física?",
+        "Diferencie objetivos escolares e alto rendimento.",
+        "A educação física escolar visa aprendizagem, participação, saúde e cultura corporal. Exigir desempenho elevado como condição de acesso exclui iniciantes e restringe esses objetivos pedagógicos."
+      ],
+      [
+        "intermediate",
+        "Proponha uma adaptação para uma aula com jogadores iniciantes em voleibol e explique o objetivo.",
+        "Pense em rede, bola e oportunidade de contato.",
+        "Usar bola mais leve ou reduzir a altura da rede pode facilitar recepção e ataque iniciais, ampliando envolvimento dos estudantes. A escolha deve ser avaliada com os participantes e a segurança."
+      ],
+      [
+        "intermediate",
+        "Como diferenciar uma adaptação pedagógica de uma alteração oficial em competição federada?",
+        "Observe finalidade da prática e regulamento.",
+        "Na aula, regras podem ser ajustadas para favorecer aprendizagem e inclusão. Em competição oficial, aplicam-se regulamentos específicos; uma adaptação escolar não altera automaticamente a regra federada."
+      ],
+      [
+        "advanced",
+        "Analise o limite de uma reportagem que só apresenta uma atleta com deficiência como símbolo de superação.",
+        "Considere a identidade esportiva e o treinamento da atleta.",
+        "A reportagem pode invisibilizar competência técnica, preparação e resultados da atleta, transformando sua trajetória em estereótipo. Uma cobertura mais completa mostra a modalidade e a própria voz da participante."
+      ],
+      [
+        "advanced",
+        "Por que a inclusão esportiva exige mais do que pedir que os colegas respeitem uns aos outros?",
+        "Considere infraestrutura, recursos e políticas organizacionais.",
+        "O respeito é necessário, mas barreiras materiais, horários, transporte e falta de adaptação também restringem acesso. A inclusão exige medidas concretas e acompanhamento de sua eficácia."
+      ]
+    ]
   }
 ];
 const lookup=new Map(lessons.map(item=>[item.subject+'\0'+item.topic,item]));
