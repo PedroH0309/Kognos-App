@@ -1,0 +1,99 @@
+/* Licensed external simulation cards and first-party manipulable scientific models.
+ * Do not mask third-party PhET attribution or its official branding.
+ */
+.k-external-lab{
+ --sim-ink:var(--txt,#101B33);--sim-muted:var(--sub,#66758C);
+ --sim-line:var(--line,#DFE5EF);--sim-bg:var(--box-bg,#fff);
+ --sim-soft:var(--panel-2,#EDF1F7);
+ width:100%;min-width:0;padding:clamp(14px,2.5vw,24px);box-sizing:border-box;
+ border:1px solid var(--sim-line);border-radius:16px;background:var(--sim-bg);
+ color:var(--sim-ink);margin:18px 0;overflow-wrap:anywhere;
+}
+.k-external-lab *{box-sizing:border-box;}
+.k-external-head .overline{display:block;color:var(--violet,#5B4DE3);letter-spacing:.08em;font-size:10px;font-weight:800;}
+.k-external-head h3{color:var(--sim-ink);margin:9px 0;font-size:clamp(19px,3vw,26px);}
+.k-external-head p,.app-layout .course-reader .k-external-head p{
+ margin:8px 0 13px;color:var(--sim-muted);font-size:13px;line-height:1.7;
+}
+.k-external-picker{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
+.k-external-picker button,.k-external-permission button,.k-external-toolbar button{
+ min-height:44px;padding:10px 13px;border-radius:10px;border:1px solid var(--sim-line);
+ background:var(--sim-soft);color:var(--sim-ink);cursor:pointer;font-size:12px;font-weight:730;
+}
+.k-external-picker button[aria-pressed=true],.k-external-permission .k-external-load{
+ color:#fff;background:#5B4DE3;border-color:#5B4DE3;
+}
+.k-external-summary{padding:13px 15px;background:var(--sim-soft);border:1px solid var(--sim-line);
+ border-radius:11px;margin:15px 0;}
+.k-external-summary h4{font-size:16px;margin:0 0 5px;color:var(--sim-ink);}
+.k-external-summary p,.app-layout .course-reader .k-external-summary p{
+ margin:6px 0;color:var(--sim-ink);font-size:13px;line-height:1.65;}
+.k-external-summary small{font-size:11px;color:var(--sim-muted);}
+.k-external-frame-shell{width:100%;min-width:0;overflow:hidden;border-radius:12px;
+ border:1px solid var(--sim-line);background:var(--sim-soft);}
+.k-external-permission{display:flex;align-items:center;justify-content:center;
+ flex-direction:column;text-align:center;gap:12px;min-height:240px;
+ padding:clamp(15px,3vw,25px);background:var(--sim-soft);
+}
+.k-external-permission h4{color:var(--sim-ink);font-size:17px;margin:0;}
+.k-external-permission p,.app-layout .course-reader .k-external-permission p{
+ font-size:12px;line-height:1.75;color:var(--sim-muted);margin:0;max-width:620px;}
+.k-external-permission a,.k-external-toolbar a{font-size:12px;font-weight:740;
+ color:var(--violet,#5B4DE3);text-decoration:underline;}
+.k-external-iframe{width:100%;height:clamp(370px,75vw,620px);border:0;display:block;background:#f5f6fd;}
+.k-external-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+ background:var(--sim-bg);padding:9px;}
+.k-external-credits,.k-external-note,
+.app-layout .course-reader .k-external-credits,.app-layout .course-reader .k-external-note{
+ color:var(--sim-muted)!important;font-size:11px!important;line-height:1.7!important;margin:14px 0 0!important;}
+.k-external-credits a{color:var(--violet,#5B4DE3);text-decoration:underline;}
+.k-external-note{padding-top:12px;border-top:1px solid var(--sim-line);}
+.k-external-frame-shell:fullscreen{width:100vw;height:100vh;display:flex;flex-direction:column;
+ border:0;border-radius:0;background:var(--sim-bg);}
+.k-external-frame-shell:fullscreen .k-external-iframe{height:auto;flex:1;min-height:0;}
+.k-molecule-choices,.k-molecule-atoms{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0;}
+.k-molecule-choices button,.k-molecule-atoms button,.k-molecule-controls button{
+ min-height:44px;border:1px solid var(--science-line,var(--line,#DFE5EF));
+ border-radius:10px;background:var(--science-soft,var(--panel-2,#EDF1F7));
+ padding:9px 12px;font-size:12px;font-weight:700;
+ color:var(--science-ink,var(--txt,#101B33));cursor:pointer;
+}
+.k-molecule-choices button[aria-pressed=true],.k-molecule-atoms button[aria-pressed=true]{
+ color:var(--violet,#5B4DE3);border-color:#5B4DE3;
+ background:color-mix(in srgb,#5B4DE3 12%,var(--science-surface,var(--box-bg,#fff)));
+}
+.k-molecule-3d-canvas{aspect-ratio:4/3;min-height:260px;width:100%;max-height:525px;
+ border:1px solid var(--science-line,var(--line,#DFE5EF));border-radius:14px;
+ background:radial-gradient(circle at 50% 40%,#bdd4ef66,var(--science-soft,var(--panel-2,#EDF1F7)));
+ overflow:hidden;position:relative;touch-action:none;}
+.k-molecule-3d-canvas canvas{touch-action:none;}
+.k-molecule-3d-canvas>p{padding:20px;font-size:13px;line-height:1.7;}
+.k-molecule-controls{display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:9px;margin:12px 0;}
+.k-molecule-controls span{font-size:11px;color:var(--science-muted,var(--sub,#66758C));}
+.k-molecule-inspector{background:var(--science-soft,var(--panel-2,#EDF1F7));
+ border-left:4px solid #38CDE5;border-radius:0 11px 11px 0;padding:14px;
+ color:var(--science-ink,var(--txt,#101B33));margin:15px 0;}
+.k-molecule-inspector>span{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--violet,#5B4DE3);}
+.k-molecule-inspector h4{font-size:18px;margin:7px 0;color:var(--science-ink,var(--txt,#101B33));}
+.k-molecule-inspector p,.app-layout .course-reader .k-molecule-inspector p{
+ font-size:13px;line-height:1.7;color:var(--science-ink,var(--txt,#101B33));margin:8px 0;}
+.k-drag-geometry-canvas{width:100%;margin:15px 0;min-width:0;padding:10px;
+ background:var(--math-soft,var(--panel-2,#EDF1F7));
+ border:1px solid var(--math-line,var(--line,#DFE5EF));border-radius:13px;}
+.k-drag-geometry-canvas svg{display:block;width:100%;height:auto;max-width:570px;margin:auto;}
+.k-drag-geometry-handle{cursor:grab;touch-action:none;}
+.k-drag-geometry-handle:active{cursor:grabbing;}
+.k-external-lab button:focus-visible,.k-external-lab a:focus-visible,
+.k-molecule-choices button:focus-visible,.k-molecule-atoms button:focus-visible,
+.k-molecule-controls button:focus-visible{outline:2px solid #38CDE5;outline-offset:3px;}
+@media(max-width:760px){
+ .k-external-lab{padding:12px;}
+ .k-external-iframe{height:420px;}
+ .k-external-toolbar button,.k-external-toolbar a{flex:1 1 120px;text-align:center;}
+ .k-molecule-3d-canvas{aspect-ratio:1/1;min-height:270px;}
+ .k-molecule-choices button{flex:1 1 118px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .k-external-lab *, .k-drag-geometry-canvas *,.k-molecule-3d-canvas *{transition:none!important;animation:none!important;}
+}
