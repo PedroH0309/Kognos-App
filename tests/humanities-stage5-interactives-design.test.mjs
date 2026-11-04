@@ -62,7 +62,7 @@ test('Philosophical ethics and social inquiry do not assert automatic moral or p
  const sociology=read('apps/web/src/components/humanities/SociologyLabs.tsx');
  const common=read('apps/web/src/components/humanities/HumanitiesLabCommon.tsx');
  assert.match(philosophy,/não confunda argumento válido com premissas verdadeiras/);
- assert.match(philosophy,/não declara uma única resposta moral automática/);
+ assert.match(philosophy,/sem declarar uma única resposta moral automática/);
  assert.match(sociology,/não recomenda posicionamento partidário/);
  assert.match(common,/sem nota ou correção oficial/);
  assert.match(common,/não são salvas nem alteram o mapa de domínio/);
