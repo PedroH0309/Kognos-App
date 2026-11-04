@@ -34,9 +34,10 @@ test('startup does not statically import heavy study workspaces or load the tuto
   assert.ok(!app.includes(`import ${screen} from './${screen}';`),screen);
  }
  assert.match(app,/const KogAssistant=dynamic\(\(\)=>import\('\.\/KogAssistant'\)/);
- assert.match(app,/assistantInitialized\s*\?\s*<KogAssistant open=\{assistantOpen\}/);
- assert.match(app,/function openAssistant\(\)\{setAssistantInitialized\(true\);setAssistantOpen\(true\);\}/);
- assert.match(app,/k-kog-lightweight-launcher/);
+ assert.match(app,/assistantInitialized\|\|view==='tutor'/);
+ assert.match(app,/<KogAssistant key=\{user\.id\} active=\{view==='tutor'\}/);
+ assert.match(app,/function openAssistant\(\)\{if\(view!=='tutor'\)setTutorReturnView\(view\);setAssistantInitialized\(true\);setView\('tutor'\)/);
+ assert.doesNotMatch(app,/k-kog-lightweight-launcher|kog-launcher/);
  assert.match(app,/WorkspaceLoading/);
  assert.match(read('apps/web/src/app/kognos-clean-ui.css'),/prefers-reduced-motion/);
 });
