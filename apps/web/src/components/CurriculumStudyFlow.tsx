@@ -1,7 +1,7 @@
 'use client';
 import {useCallback,useEffect,useRef,useState,type ReactNode} from 'react';
 import {ArrowLeft,ArrowRight,BookOpenText,BookOpenCheck,Calculator,FlaskConical,Dna,Globe2,Languages,Landmark,Scale,PenLine,Atom,Users,ChevronRight,CheckCircle2,Search} from 'lucide-react';
-import type {CurriculumTopic} from '@/lib/curriculum-catalog';
+import {topicForLegacyLesson,type CurriculumTopic} from '@/lib/curriculum-catalog';
 import type {ExamId} from '@/lib/exam-blueprints';
 import {examBlueprints} from '@/lib/exam-blueprints';
 import type {ProvaoGrade} from '@/lib/provao-paulista';
@@ -25,7 +25,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  const [grade,setGrade]=useState<ProvaoGrade|null>(null);
  const [subject,setSubject]=useState(focus?.subject??'');
  const [search,setSearch]=useState('');
- const [selected,setSelected]=useState(focus?.lessonId??'');
+ const [selected,setSelected]=useState(focus?.lessonId?(topicForLegacyLesson(focus.lessonId)?.id??focus.lessonId):'');
  const [step,setStep]=useState<CurriculumStep>(focus?.lessonId?'lesson':'subjects');
  const [readingConfirmed,setReadingConfirmed]=useState(false);
  const [activitiesAnswered,setActivitiesAnswered]=useState(false);
@@ -44,7 +44,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  useEffect(()=>{void load();},[load]);
  useEffect(()=>{setExam(preferredExam??'all');},[preferredExam]);
  useEffect(()=>{
-  if(focus?.lessonId){setSelected(focus.lessonId);setSubject(focus.subject);setStep('lesson');}
+  if(focus?.lessonId){setSelected(topicForLegacyLesson(focus.lessonId)?.id??focus.lessonId);setSubject(focus.subject);setStep('lesson');}
  },[focus?.lessonId,focus?.subject]);
  useEffect(()=>{
   const frame=requestAnimationFrame(()=>top.current?.scrollIntoView({behavior:'auto',block:'start'}));
