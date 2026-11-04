@@ -16,6 +16,8 @@ import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
 import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
+import HumanitiesLabPanel from './humanities/HumanitiesLabPanel';
+import {resolveHumanitiesLab} from '@/lib/humanities-labs';
 import {resolveLanguageLab} from '@/lib/language-labs';
 import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveMathLab} from '@/lib/math-labs';
@@ -47,6 +49,7 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
  const mathLab=detail?resolveMathLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
  const scienceLab=detail?resolveScienceLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
  const languageLab=detail?resolveLanguageLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
+ const humanitiesLab=detail?resolveHumanitiesLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
  async function generate(){if(!selected||!consent||busy)return;setBusy(true);setError('');try{await contentRequest('/api/content/generate',{method:'POST',body:JSON.stringify({id:selected,consent:true})});await reload();setDetail(await contentRequest(`/api/content?id=${selected}`));}catch(e){setError(e instanceof Error?e.message:'Falha ao desenvolver aula.');}finally{setBusy(false);}}
  const Container=embedded?'section':'main';
  return <Container className={embedded?"course-room course-room-embedded":"app-content course-room"}>
@@ -70,6 +73,7 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
      {mathLab&&<MathLabPanel key={'math-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
      {scienceLab&&<ScienceLabPanel key={'science-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
      {languageLab&&<LanguageLabPanel key={'language-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
+     {humanitiesLab&&<HumanitiesLabPanel key={'humanities-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
      <StudyExplorationPanel key={detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit} lesson={detail.lesson} introduction={detail.introduction} onTutor={onTutor}/>
     </>}
     {readerTab==='materials'&&<><section className="course-videos"><h3>Videoaulas por assunto</h3>{detail.videos.length?detail.videos.map((v,i)=><div className="course-video-card" key={`${v.videoId}-${v.start}-${i}`}><strong>{v.title}</strong><span>{v.author} · início em {formatVideoTime(v.start)}</span><div><button type="button" className="btn outline" onClick={()=>setVideo(v)}>Assistir aqui</button><a className="btn outline" href={videoLink(v)} target="_blank" rel="noreferrer">Abrir no YouTube</a></div><small>{v.verification==='chapter_index'?'Horário do índice de capítulos; sem revisão audiovisual integral.':'Trecho conferido pelo editor.'} <a href={v.evidenceUrl} target="_blank" rel="noreferrer">Fonte do horário</a></small></div>):<p>Ainda não há trecho com horário verificado para este assunto. O administrador pode adicionar uma videoaula.</p>}{video&&<div className="course-player"><button type="button" onClick={()=>setVideo(null)}>Fechar vídeo</button><iframe title={video.title} src={videoEmbed(video)} allow="encrypted-media; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/></div>}</section>
