@@ -21,7 +21,7 @@ export default function ProbabilityLab(){
    <MathOutput label="Azuis observadas">{blueDraws} de {draws}</MathOutput>
    <MathOutput label="Frequência experimental">{empirical===null?'—':nice(empirical,1)+'%'}</MathOutput></div>
   <div className="k-math-buttons"><button type="button" className="k-math-action" disabled={!expected} onClick={draw}>Sortear uma bola</button>
-   <button type="button" disabled={!expected} onClick={()=>{for(let i=0;i<10;i++)drawOne();function drawOne(){/* intentionally not used */} const count=Array.from({length:10},()=>Math.random()*(blue+orange)<blue).filter(Boolean).length;setDraws(n=>n+10);setBlueDraws(n=>n+count);setLatest('Lote de 10 sorteios');}}>Sortear 10 vezes</button>
+   <button type="button" disabled={!expected} onClick={()=>{const count=Array.from({length:10},()=>Math.random()*(blue+orange)<blue).filter(Boolean).length;setDraws(n=>n+10);setBlueDraws(n=>n+count);setLatest('Lote de 10 sorteios');}}>Sortear 10 vezes</button>
    <button type="button" onClick={reset}>Reiniciar</button></div>
   <p className="k-math-tip" role="status">{latest?`Último sorteio: ${latest}. `:''}Cada sorteio é independente e a bola retorna à urna. Com mais sorteios, a frequência tende a se aproximar da chance teórica, mas não precisa coincidir.</p>
  </MathStage>;
