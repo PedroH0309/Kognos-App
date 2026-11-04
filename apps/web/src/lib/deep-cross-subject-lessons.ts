@@ -951,6 +951,195 @@ const lessons:LessonSpec[] = [
         "O vapor de água do ar esfria ao entrar em contato com a superfície do copo e pode condensar, formando gotículas. A água não atravessa o vidro; vem da umidade atmosférica."
       ]
     ]
+  },
+  {
+    "subject": "Português",
+    "topic": "Coesão referencial",
+    "objective": "Identificar e empregar mecanismos de retomada e antecipação de referentes em textos, eliminando ambiguidades e reconhecendo seus efeitos de progressão.",
+    "sections": [
+      {
+        "title": "Referentes, retomadas e cadeias coesivas",
+        "explanation": "A coesão referencial permite que um texto mantenha a continuidade de seus participantes e ideias sem repetir o mesmo nome continuamente. Um referente pode ser introduzido por um sintagma nominal, como “uma pesquisadora”, e retomado por pronome, elipse, sinônimo contextual ou expressão descritiva. Em “Uma pesquisadora publicou o relatório. Ela apresentou os dados”, o pronome “ela” retoma “uma pesquisadora”: é uma anáfora. A referência não depende apenas da proximidade física das palavras, mas de concordância e de compatibilidade semântica. Também há catáfora, quando um termo antecipa informação que virá adiante, como em “Só desejo isto: concluir o trabalho”.",
+        "example": "Texto original: “Marina adotou um cachorro. O animal era idoso, mas ela o levou para casa.” A expressão “o animal” retoma “um cachorro”; “ela” retoma “Marina”; “o” retoma o cachorro. A cadeia evita repetições e preserva participantes distintos.",
+        "pitfall": "Pressupor que um pronome sempre retoma o substantivo mais próximo, mesmo quando a concordância ou o sentido apontam para outro referente."
+      },
+      {
+        "title": "Substituição lexical, elipse e ambiguidade",
+        "explanation": "Além de pronomes, nomes podem ser retomados por expressões mais gerais ou específicas, como “o veículo” depois de “um ônibus”, desde que o contexto sustente a equivalência. Uma elipse omite um termo recuperável: “Ana leu o artigo; Bruno, a resenha” omite o verbo “leu” no segundo segmento. Essas estratégias ajudam a evitar repetição excessiva, mas não tornam qualquer substituição correta: chamar “uma promessa” de “a conquista” altera a avaliação do fato. Ambiguidade referencial surge quando dois antecedentes são plausíveis. Para corrigi-la, é possível repetir o nome ou reestruturar a ordem dos termos, sobretudo em textos informativos que exigem precisão.",
+        "example": "“Lívia falou com Clara quando ela chegou.” Sem contexto, “ela” pode indicar Lívia ou Clara. Uma reescrita desambiguadora é “Quando Clara chegou, Lívia falou com ela”, se a chegada foi de Clara. Se foi de Lívia, escreva “Ao chegar, Lívia falou com Clara”.",
+        "pitfall": "Substituir uma expressão por outra de valor avaliativo diferente ou deixar pronomes com dois antecedentes igualmente possíveis."
+      },
+      {
+        "title": "Progressão informacional e efeito argumentativo",
+        "explanation": "Uma cadeia referencial também pode contribuir para a argumentação. Ao retomar um projeto como “a iniciativa” ou “a proposta controversa”, o autor não apenas economiza palavras: ele pode orientar a avaliação do leitor. É preciso distinguir retomada neutra, categorização e julgamento embutido na escolha lexical. Em questões de interpretação, localize o antecedente e verifique se a substituição conserva sentido, número, gênero e perspectiva. A coesão referencial interage com a coerência, mas não a garante: um texto pode retomar nomes corretamente e ainda apresentar contradições. A análise deve considerar o gênero textual e os efeitos de sentido de cada opção.",
+        "example": "Original: “A prefeitura propôs reorganizar linhas de ônibus. A medida será debatida na próxima semana.” “A medida” retoma a proposta. Reescrever “A solução definitiva será debatida” adiciona certeza e julgamento que não estavam na primeira frase.",
+        "pitfall": "Classificar toda repetição como erro ou imaginar que uma cadeia de pronomes bem construída garante que o texto seja logicamente coerente."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Na frase “João viu um documentário. Ele recomendou o filme aos amigos”, indique o antecedente de “ele”.",
+        "Procure o sujeito humano compatível com o pronome.",
+        "O pronome pessoal “ele” retoma João, que é o participante humano introduzido na primeira frase. A retomada evita repetir seu nome e mantém a referência ao recomendador."
+      ],
+      [
+        "basic",
+        "Explique o que é uma anáfora usando um exemplo próprio com retomada pronominal.",
+        "Introduza o referente antes do elemento que o retoma.",
+        "Na frase original “A professora chegou. Ela iniciou a aula”, “ela” retoma “a professora”. Isso é anáfora porque a referência aponta para um termo já apresentado no discurso."
+      ],
+      [
+        "intermediate",
+        "Reescreva “Paula visitou Bianca quando ela ficou doente” deixando claro que Bianca estava doente.",
+        "Use nome próprio ou uma oração temporal que elimine a dupla interpretação.",
+        "Uma solução é “Quando Bianca ficou doente, Paula foi visitá-la”. O nome “Bianca” é associado diretamente à doença, e “-la” retoma a pessoa visitada, eliminando a ambiguidade pretendida."
+      ],
+      [
+        "intermediate",
+        "Em “A empresa anunciou mudanças. A iniciativa começará em abril”, explique a retomada lexical.",
+        "Observe a expressão usada na segunda frase.",
+        "“A iniciativa” retoma as mudanças anunciadas, funcionando como expressão nominal resumidora. O leitor compreende que a implementação das mudanças está prevista para abril."
+      ],
+      [
+        "advanced",
+        "Analise por que trocar “a proposta” por “a decisão acertada” pode alterar a argumentação em um texto jornalístico.",
+        "Considere os valores avaliativos embutidos nos substantivos.",
+        "“A proposta” pode apresentar um projeto em discussão, enquanto “a decisão acertada” pressupõe aprovação e pode sugerir que a decisão já foi tomada. A troca não é apenas coesiva; altera o posicionamento."
+      ],
+      [
+        "advanced",
+        "No trecho “O pesquisador leu o artigo e a aluna, o relatório”, identifique o termo elíptico e explique o efeito.",
+        "Reconstrua a segunda oração com o verbo omitido.",
+        "O verbo “leu” está omitido após “a aluna”: “a aluna leu o relatório”. A elipse mantém o paralelismo entre ações e evita repetir um verbo recuperável no contexto."
+      ]
+    ]
+  },
+  {
+    "subject": "Literatura",
+    "topic": "Romantismo: poesia e gerações",
+    "objective": "Reconhecer os três conjuntos didáticos de tendências da poesia romântica brasileira e analisar seus recursos, contextos históricos e limitações classificatórias.",
+    "sections": [
+      {
+        "title": "Romantismo brasileiro e nacionalismo",
+        "explanation": "O Romantismo brasileiro se consolidou no século XIX, em um cenário posterior à Independência, articulando imaginação, subjetividade e construção de imagens da nação. Na poesia, Gonçalves Dias é frequentemente associado à tendência indianista e nacionalista, em que paisagens, memória e figuras indígenas foram mobilizadas como símbolos de identidade. Essas representações não são documentos etnográficos neutros: idealizam grupos indígenas e devem ser discutidas criticamente, considerando silenciamentos e a visão de autores letrados da época. O eu lírico não se confunde necessariamente com a biografia do poeta. A divisão em três gerações é útil para estudo, mas não resume toda a diversidade da produção romântica.",
+        "example": "Num poema original de estudo, um eu lírico distante de sua terra afirma: “Na memória, o rio parece mais vasto do que ao vê-lo”. A nostalgia e a idealização da paisagem lembram procedimentos de construção afetiva da pátria, sem copiar poemas históricos.",
+        "pitfall": "Tratar a representação idealizada do indígena como descrição fiel da pluralidade dos povos originários ou reduzir toda a primeira geração a um único tema."
+      },
+      {
+        "title": "Ultrarromantismo e interioridade",
+        "explanation": "A chamada segunda geração costuma receber o nome de ultrarromântica e enfatiza estados emocionais intensos, idealização amorosa, solidão, fantasia, tédio, sofrimento e reflexões sobre morte. Álvares de Azevedo é referência importante dessa tendência, embora sua escrita também contenha ironia e contrastes entre idealização e cotidiano. O termo “mal do século” é uma convenção crítica, não diagnóstico de todos os autores ou personagens. O estudo precisa observar recursos de linguagem, imagens simbólicas, apóstrofes e a construção de uma voz lírica. É incorreto deduzir que todo sentimento enunciado foi vivido exatamente como narrado pelo poeta.",
+        "example": "Versos originais: “Na janela escura, invento a estrela que não vi; / amo o nome que o vento disse, não a pessoa que perdi.” A distância entre objeto real e construção imaginária ilustra a idealização afetiva e a centralidade da interioridade.",
+        "pitfall": "Confundir o eu lírico com o autor e interpretar toda imagem sombria como prova de experiência biográfica verdadeira."
+      },
+      {
+        "title": "Condoreirismo e crítica social",
+        "explanation": "A terceira tendência é frequentemente chamada condoreira e associada à eloquência, ao tom público e a temas de liberdade, justiça e denúncia de violências. Castro Alves é central nas discussões sobre poesia abolicionista, especialmente na crítica à escravidão. Metáforas amplas, apelos ao leitor, hipérboles e imagens de grande escala buscam produzir impacto coletivo. É fundamental relacionar a obra ao debate abolicionista do século XIX, sem supor que todos os textos tiveram idêntica posição política ou que a abolição tenha resultado apenas da atuação intelectual. A categoria “geração” não indica fronteiras rígidas: autores e procedimentos podem se sobrepor.",
+        "example": "Verso original: “Que cidade celebra a luz, se mantém a porta fechada a quem trabalha sem liberdade?” O uso de interrogação retórica e oposição entre celebração e injustiça exemplifica uma poesia voltada à crítica pública.",
+        "pitfall": "Interpretar a poesia abolicionista como relato que explica sozinho o fim da escravidão ou memorizar nomes de gerações sem analisar recursos do texto."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Associe o indianismo e a idealização da paisagem ao contexto de formação de identidade nacional no Brasil do século XIX.",
+        "Considere o período posterior à Independência.",
+        "O projeto de representar símbolos da nação favoreceu a idealização da natureza e de figuras indígenas. Essa construção, porém, expressava escolhas literárias e visões sociais, não um retrato neutro de todos os povos indígenas."
+      ],
+      [
+        "basic",
+        "Explique por que eu lírico e poeta não devem ser confundidos na leitura de um poema romântico.",
+        "Separe voz construída no texto e pessoa histórica.",
+        "O eu lírico é a instância de enunciação do poema; suas emoções e experiências podem ser inventadas ou transformadas artisticamente. Não há autorização para tomá-las como autobiografia sem evidências adicionais."
+      ],
+      [
+        "intermediate",
+        "Um poema fala de amor impossível, fantasia e solidão noturna. Que tendência romântica ele poderia exemplificar, e qual cuidado é necessário?",
+        "Lembre da associação didática com ultrarromantismo.",
+        "O conjunto de imagens aproxima o poema da tendência ultrarromântica. Entretanto, classificar com segurança exige observar linguagem, contexto e obra; temas isolados podem aparecer em autores distintos."
+      ],
+      [
+        "intermediate",
+        "Compare a finalidade predominante de um poema nacionalista e de um poema ultrarromântico.",
+        "Observe construção de identidade coletiva e foco na interioridade.",
+        "O nacionalista tende a valorizar símbolos culturais ou paisagísticos de uma comunidade; o ultrarromântico costuma enfatizar conflitos afetivos e subjetivos. As categorias são tendências e podem coexistir."
+      ],
+      [
+        "advanced",
+        "Uma leitura diz que os indígenas românticos são representações históricas exatas. Avalie criticamente essa afirmação.",
+        "Reflita sobre idealização e posição social dos autores.",
+        "A literatura indianista usa convenções estéticas e projetos nacionais que podem idealizar ou estereotipar indígenas. Ela é relevante como documento de mentalidades e linguagem, mas não substitui fontes indígenas e históricas."
+      ],
+      [
+        "advanced",
+        "Analise como uma pergunta retórica poderia intensificar uma crítica abolicionista em poesia condoreira.",
+        "Considere efeitos de interpelação do leitor.",
+        "Uma pergunta retórica pode confrontar o leitor com uma contradição moral, estimulando julgamento e indignação. A força persuasiva deriva da forma e do contexto, não equivale automaticamente a prova histórica."
+      ]
+    ]
+  },
+  {
+    "subject": "Redação",
+    "topic": "Repertório sociocultural produtivo",
+    "objective": "Selecionar, contextualizar e relacionar conhecimentos históricos, científicos e culturais a uma tese, distinguindo repertório produtivo de referência decorativa.",
+    "sections": [
+      {
+        "title": "O que torna o repertório pertinente",
+        "explanation": "Em textos argumentativos, repertório sociocultural é o uso de conhecimentos, fatos, conceitos, pesquisas ou obras para iluminar uma questão. Ele não equivale à quantidade de nomes famosos citados. Um repertório produtivo precisa ser pertinente ao tema e integrado ao raciocínio do parágrafo: a referência ajuda a explicar um mecanismo, sustentar uma comparação ou qualificar um argumento. É legítimo usar conhecimentos escolares bem compreendidos, como cidadania na Constituição, urbanização ou transformações do trabalho, mas sem atribuir dados ou frases que não se conhecem. O foco está no vínculo entre repertório, tese e análise desenvolvida.",
+        "example": "Tema hipotético: acesso à água potável. Referência pertinente: conceitos de saneamento e saúde pública. A frase “A ausência de coleta e tratamento adequados pode aumentar riscos de doenças transmitidas pela água” fundamenta um mecanismo; citar um cientista sem relacioná-lo ao problema seria apenas adorno.",
+        "pitfall": "Inserir autor, série ou dado estatístico ao acaso para parecer culto, sem explicar o que esse elemento demonstra no argumento."
+      },
+      {
+        "title": "Contextualização e integração no parágrafo",
+        "explanation": "Um desenvolvimento consistente apresenta ideia central, evidência ou repertório e análise que explicita a relação entre ambos. A referência precisa ser apresentada com precisão suficiente para que o leitor compreenda seu papel, mesmo sem conhecer a obra citada. Comparações históricas exigem reconhecer diferenças de época; conceitos científicos devem ser usados nas condições em que valem. Evite um parágrafo composto apenas de citação e conclusão vaga. Também não basta acrescentar “isso mostra que”: explique a relação causal, social ou interpretativa e conecte-a ao problema delimitado pela tese.",
+        "example": "Tese: planejamento urbano influencia acesso à escola. Desenvolvimento possível: “A segregação socioespacial distribui moradias e serviços de forma desigual. Quando escolas e transportes se concentram em certas áreas, estudantes de bairros afastados podem enfrentar deslocamentos longos. Isso cria obstáculos de permanência escolar.” O conceito está integrado à explicação.",
+        "pitfall": "Apresentar um conceito verdadeiro e concluir algo que não decorre dele ou comparar períodos diferentes sem reconhecer limitações."
+      },
+      {
+        "title": "Fontes confiáveis, ética e revisão",
+        "explanation": "A redação não exige decorar números exatos a qualquer custo. Se não houver segurança sobre um dado, prefira uma análise qualitativa correta ou uma fonte cuja informação possa ser verificada. Citações literais só devem aparecer quando a formulação e a autoria forem conhecidas; caso contrário, uma paráfrase conceitual fiel é mais segura. Durante a revisão, pergunte se a referência fortalece um argumento concreto e se foi desenvolvida em pelo menos uma frase de análise. Critérios de correção variam por exame e gênero: no ENEM, repertório legitimado, pertinente e produtivo dialoga com a avaliação argumentativa, mas não garante por si só nota máxima.",
+        "example": "Versão fraca: “Segundo um grande pensador, educação é tudo. Portanto, precisamos melhorar.” Versão mais forte: “A aprendizagem depende também de condições de acesso e permanência. Assim, investimento em transporte escolar e apoio pedagógico pode reduzir barreiras que não se resolvem apenas com motivação individual.”",
+        "pitfall": "Inventar citações ou porcentagens e supor que mencionar uma instituição renomada, sem fonte nem análise, torna o argumento automaticamente válido."
+      }
+    ],
+    "tasks": [
+      [
+        "basic",
+        "Explique a diferença entre referência decorativa e repertório produtivo em uma redação sobre mobilidade urbana.",
+        "Pergunte se o repertório ajuda a justificar a tese.",
+        "Uma menção decorativa aparece sem análise. Um repertório produtivo, como o conceito de segregação socioespacial, explica por que áreas periféricas podem enfrentar maiores dificuldades de acesso a transporte e serviços."
+      ],
+      [
+        "basic",
+        "Escolha um conceito escolar útil para discutir saneamento básico e justifique sua pertinência.",
+        "Relacione saneamento a saúde pública.",
+        "O conceito de transmissão de doenças por água contaminada pode sustentar a importância de tratamento de água e esgoto. Ele é pertinente porque ajuda a explicar consequências da infraestrutura insuficiente."
+      ],
+      [
+        "intermediate",
+        "Melhore o trecho “A revolução industrial existiu e hoje o trabalho é difícil” usando comparação historicamente cuidadosa.",
+        "Conecte mudanças laborais a um problema específico.",
+        "Uma versão melhor: “A industrialização ampliou novas formas de organização do trabalho; hoje, a discussão sobre jornadas e proteção social mostra que mudanças tecnológicas continuam exigindo análise das condições laborais.”"
+      ],
+      [
+        "intermediate",
+        "Por que uma estatística sem fonte verificável pode enfraquecer a argumentação?",
+        "Considere precisão e credibilidade.",
+        "Um número sem origem ou contexto pode ser inventado, desatualizado ou inadequado ao recorte. É preferível usar dado verificável ou formular uma análise qualitativa fundamentada sem falsa exatidão."
+      ],
+      [
+        "advanced",
+        "Analise o problema de usar uma citação falsa de um filósofo famoso como prova em redação.",
+        "Avalie autoridade, verificabilidade e coerência.",
+        "A citação inventada compromete a credibilidade e não fornece evidência real. Mesmo uma citação verdadeira precisaria ser contextualizada e relacionada às premissas do argumento."
+      ],
+      [
+        "advanced",
+        "Construa um parágrafo breve que articule desigualdade digital e permanência escolar sem recorrer a dado inventado.",
+        "Formule tese parcial, mecanismo e consequência.",
+        "Exemplo: “A conectividade desigual restringe o acesso a pesquisas, plataformas e comunicação escolar. Para estudantes sem internet estável, tarefas digitais podem representar obstáculos adicionais, evidenciando a necessidade de alternativas inclusivas.”"
+      ]
+    ]
   }
 ];
 const lookup=new Map(lessons.map(item=>[item.subject+'\0'+item.topic,item]));
