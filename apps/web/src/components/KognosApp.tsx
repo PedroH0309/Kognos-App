@@ -527,7 +527,7 @@ export default function KognosApp(){
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function openAssistant(){if(view!=='tutor')setTutorReturnView(view);setAssistantInitialized(true);setView('tutor');setMobileMenu(false);}
- function navigate(v:View){ if(v==='tutor'){openAssistant();}else{if(v!==view && !(view==='tutor' && v===tutorReturnView))setStudyContext(null);/* Keep the lesson context when returning from Kog. */if(v==='learn'||v==='trails'||v==='subjects')setLearningFocus(null);if(v==='plans')setPlannerDate('');if(v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function navigate(v:View){ if(v==='tutor'){openAssistant();}else{const returningFromTutor=view==='tutor'&&v===tutorReturnView; if(v!==view&&!returningFromTutor)setStudyContext(null);/* Keep the current lesson and study plan on the return trip from Kog. */if(!returningFromTutor&&(v==='learn'||v==='trails'||v==='subjects'))setLearningFocus(null);if(!returningFromTutor&&v==='plans')setPlannerDate('');if(!returningFromTutor&&v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){
