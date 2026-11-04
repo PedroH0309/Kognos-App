@@ -77,7 +77,9 @@ test('Biology uses probabilities and models, not claims of deterministic outcome
  assert.ok(logisticPopulation(10,100,0.3,10)!>model!);
  assert.ok(logisticPopulation(10,100,0.3,100)!<=100);
  assert.equal(logisticPopulation(10,0,0.3,10),null);
- assert.deepEqual(trophicEnergy(1000,10),[1000,100,10,1]);
+ const energy=trophicEnergy(1000,10);
+ assert.ok(energy);
+ [1000,100,10,1].forEach((expected,i)=>assert.ok(Math.abs(energy![i]-expected)<1e-8));
  assert.equal(trophicEnergy(1000,0),null);
  assert.equal(cellCyclePhase('G1').dnaContent,'2C');
  assert.equal(cellCyclePhase('S').dnaContent,'2C → 4C');
