@@ -46,16 +46,20 @@ test('chat informa processamento externo sem interromper a cada mensagem',()=>{
 });
 
 
-test('Kog floats globally, keeps chat state mounted, and opens from navigation',()=>{
-  assert.match(app,/<KogAssistant open=\{assistantOpen\}/);
-  assert.match(app,/function navigate\(v:View\)/);
-  assert.match(app,/if\(v==='tutor'\)\{openAssistant\(\)/);
-  assert.match(assistant,/kog-launcher/);
-  assert.match(assistant,/kog-drawer/);
-  assert.match(assistant,/Escape/);
-  assert.match(assistant,/quickPromptForView/);
-  assert.match(assistant,/currentUserRef/);
-  assert.match(design,/@media\(max-width:700px\)/);
+test('Kog opens as a dedicated page and keeps the chat mounted between navigation changes',()=>{
+  assert.match(app, /<KogAssistant key=\{user.id\} active=\{view==='tutor'\}/);
+  assert.match(app, /className="kognos-tutor-workspace" hidden=\{view!=='tutor'\}/);
+  assert.match(app, /if\(v==='tutor'\)\{openAssistant\(\)/);
+  assert.match(app, /setTutorReturnView\(view\)/);
+  assert.doesNotMatch(app, /kog-launcher|assistantOpen/);
+  assert.match(assistant, /className=\{`kog-page/);
+  assert.doesNotMatch(assistant, /kog-launcher|kog-drawer-scrim|role="dialog"/);
+  assert.match(assistant, /quickPromptForView/);
+  assert.match(assistant, /currentUserRef/);
+  const style=read('../apps/web/src/app/kognos-tutor-page.css');
+  assert.match(style, /\.kognos-tutor-workspace\[hidden\]/);
+  assert.match(style, /\.kog-page-empty/);
+  assert.match(style, /@media\(max-width:560px\)/);
 });
 
 test('mascot uses genuine Three.js 3D meshes and respects reduced motion',()=>{
