@@ -971,7 +971,7 @@ export function deepCrossSubjectLesson(topic:CurriculumTopic):CourseLesson|null{
  const sourceUrls=[...new Set(topic.exams.map(exam=>examBlueprints[exam]?.sourceUrl).filter((x):x is string=>Boolean(x?.startsWith('https://'))))];
  return {kind:'lesson',id:topic.id,subject:topic.subject,topic:topic.topic,exams:topic.exams,
   objective:spec.objective,prerequisites:[],sections,tasks,videos:[],
-  authorship:'Kognos — aula autoral específica, revisão docente pendente',
+  authorship:'Kognos — aula autoral específica; sem homologação docente',
   license:'Conteúdo preparatório original do Kognos, não oficial',
   sourceUrls,review:'introductory'};
 }
