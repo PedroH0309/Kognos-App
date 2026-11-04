@@ -56,6 +56,10 @@ const methods:Record<string,StudyMethod>={
   'Qual pergunta ou conceito organiza este problema filosófico?',
   'Que tese e razões precisam ser examinadas?',
   'Que objeção, pressuposto ou limite merece discussão?']},
+ 'Redação':{title:'Planejar uma argumentação',promptLabels:['Tema e recorte','Tese e argumentos','Coesão e revisão'],questions:[
+  'Qual é o recorte do tema e o que os textos de apoio permitem compreender?',
+  'Que tese pode ser defendida e quais evidências sustentam seus argumentos?',
+  'Como verificar a coerência, a coesão e os critérios exigidos pela proposta?']},
  'Sociologia':{title:'Examinar fenômenos sociais',promptLabels:['Fenômeno e contexto','Conceitos e agentes','Dados e contrapontos'],questions:[
   'Que prática, instituição ou relação social está em análise?',
   'Quais conceitos e grupos ajudam a explicar esse fenômeno?',
