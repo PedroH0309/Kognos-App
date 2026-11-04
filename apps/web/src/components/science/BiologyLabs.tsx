@@ -69,7 +69,7 @@ export function TrophicLab(){
    <ScienceSlider label="Transferência por nível" min={5} max={20} step={1} value={efficiency} onChange={setEfficiency} unit="%"/>
   </div>
   <div className="k-science-trophic" role="img" aria-label={'Pirâmide de energia com eficiência de transferência de '+efficiency+' por cento'}>
-   {energy?.slice().reverse().map((value,i)=><div key={i} className="k-science-trophic-row" style={{width:Math.max(28,95-i*21)+'%'}}>
+   {energy?.slice().reverse().map((value,i)=><div key={i} className="k-science-trophic-row" style={{width:Math.min(95,32+i*21)+'%'}}>
     <strong>{labels[3-i]}</strong><span>{fmt(value,2)} kJ</span></div>)}
   </div>
   <div className="k-science-grid"><ScienceOutput label="Energia de consumidores primários">{fmt(energy?.[1]??NaN,2)} kJ</ScienceOutput>
