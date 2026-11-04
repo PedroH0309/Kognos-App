@@ -161,12 +161,22 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <button type="button" aria-pressed={studySpace==='lessons'} onClick={()=>setStudySpace('lessons')}><BookOpenText size={18}/> Aulas por matéria</button>
    <button type="button" aria-pressed={studySpace==='laboratory'} onClick={()=>setStudySpace('laboratory')}><Compass size={18}/> Laboratório interativo</button>
   </nav>
-  {studySpace==='laboratory'?<LaboratoryHub key={'lab-'+(labTarget?.id??'overview')+'-'+(exam??'all')+'-'+(provaoGrade??'all')}
+  {studySpace==='laboratory'?<>
+   <div className="course-filters k-lab-exam-filters">
+    <label>Currículo<select value={exam||'all'} onChange={e=>{setExam(e.target.value==='all'?null:e.target.value as ExamId);setLabTarget(null);}}>
+     <option value="all">Todos os currículos</option>
+     {Object.entries(examBlueprints).map(([id,b])=><option key={id} value={id}>{b.label}</option>)}</select></label>
+    {exam==='saresp'&&<label>Série<select value={provaoGrade??'all'}
+     onChange={e=>{setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade);setLabTarget(null);}}>
+     <option value="all">Todas as séries</option><option value="1">1ª série</option><option value="2">2ª série</option><option value="3">3ª série</option>
+    </select></label>}
+   </div>
+   <LaboratoryHub key={'lab-'+(labTarget?.id??'overview')+'-'+(exam??'all')+'-'+(provaoGrade??'all')}
    initialTopicId={labTarget?.id} initialSubject={labTarget?.subject} exam={exam} grade={provaoGrade}
    onOpenLesson={topic=>{
     const matched=catalog.find(l=>l.curriculumId===topic.id||(l.subject===topic.subject&&l.topic===topic.topic));
     if(matched){chooseLesson(matched);setStudySpace('lessons');}
-   }}/>:<>
+   }}/></>:<>
   <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
   {error&&<div className="message warning" role="alert">{error}</div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
@@ -253,9 +263,10 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
       <button type="button" aria-pressed={legacyPane==='materials'} onClick={()=>setLegacyPane('materials')}>Materiais</button>
       <button type="button" aria-pressed={legacyPane==='evolution'} onClick={()=>setLegacyPane('evolution')}>Evolução</button>
      </nav>
-     {(legacyPane==='content'||legacyPane==='activities'||legacyPane==='explanations')&&<TopicLessonSections
-      key={lesson.id} view={legacyPane} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
-      onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>}
+     {lessonPanes.map(pane=><div key={pane.id} hidden={legacyPane!==pane.id}>
+      <TopicLessonSections view={pane.id} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
+       onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
+     </div>)}
      {legacyPane==='materials'&&<section className="k-lesson-reference-room" aria-label="Referências do assunto">
       <h3>Materiais e referências</h3>
       <p>Conteúdo autoral do Kognos associado editorialmente aos programas de estudo; não equivale a uma aula oficial do exame.</p>
