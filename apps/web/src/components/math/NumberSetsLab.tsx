@@ -9,7 +9,7 @@ export default function NumberSetsLab(){
  const [guess,setGuess]=useState<string|null>(null);
  const example=numberSetExamples[selected];
  const cx=150+example.value*23;
- const group=groups.find(value=>!example.groups.includes(value as never))??'Reais';
+ const group=groups[(selected+2)%groups.length];
  return <MathStage title="Números e conjuntos numéricos" description="Compare números naturais, inteiros, racionais, irracionais e reais na reta numérica.">
   <label className="k-math-select">Escolha um número
    <select value={selected} onChange={e=>{setSelected(Number(e.target.value));setGuess(null);}}>
