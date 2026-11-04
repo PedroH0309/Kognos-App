@@ -7,6 +7,7 @@ import {resolveLanguageLab,type LanguageLabKind,type LanguageTopic} from '@/lib/
  * Only relevant drills are loaded. Unmatched subjects retain general exploration.
  */
 const labs={
+ 'pt-intertext':dynamic(()=>import('./IntertextualityLab')),
  'pt-reading':dynamic(()=>import('./PortugueseLabs').then(m=>m.PortugueseReadingLab)),
  'pt-grammar':dynamic(()=>import('./PortugueseLabs').then(m=>m.PortugueseGrammarLab)),
  'pt-cohesion':dynamic(()=>import('./PortugueseLabs').then(m=>m.PortugueseCohesionLab)),

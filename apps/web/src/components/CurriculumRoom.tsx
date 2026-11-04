@@ -14,6 +14,7 @@ import InteractiveCourseLesson from './InteractiveCourseLesson';
 import InteractiveIntroLesson from './InteractiveIntroLesson';
 import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
+import MathVisualPlayground from './math/MathVisualPlayground';
 import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
 import HumanitiesLabPanel from './humanities/HumanitiesLabPanel';
@@ -67,10 +68,12 @@ export default function CurriculumRoom({userId=null,active=true,focus,preferredE
     {readerTab==='lesson'&&(detail.lesson?<><p>{detail.lesson.objective}</p><p className="course-notice">{detail.lesson.review==='ai_reviewed'?'Desenvolvida e revisada automaticamente por IA; ainda sem homologação de professor.':'Conteúdo editorial.'}</p>{detail.lesson.prerequisites.length>0&&<details><summary>Antes de começar</summary><ul>{detail.lesson.prerequisites.map((p,i)=><li key={i}>{p}</li>)}</ul></details>}
      <InteractiveCourseLesson key={detail.lesson.id} lesson={detail.lesson} onTutor={onTutor}/>
     </>:<><p className="course-notice">{detail.introduction?'Há uma introdução a este tema. A aula progressiva ainda não foi desenvolvida.':'Este tema faz parte do roteiro, mas ainda não tem aula desenvolvida.'}</p>{detail.introduction&&<InteractiveIntroLesson key={detail.introduction.id} lesson={detail.introduction} onTutor={onTutor}/>}
+     <button type="button" className="btn primary k-start-visual" onClick={()=>setReaderTab('explore')}>Abrir experiência visual deste tema</button>
      <div className="course-generation"><h3>Desenvolver com o Kog</h3><p>A IA prepara fundamentos, aplicação, aprofundamento e tarefas, passa por uma segunda revisão automática e salva a aula no catálogo. Somente o assunto curricular é enviado aos provedores.</p><label className="course-check"><input type="checkbox" checked={consent} onChange={e=>setConsent(e.target.checked)}/>Autorizo desenvolver este assunto com IA.</label><button type="button" className="btn primary" disabled={!consent||busy||!detail.configured} onClick={generate}>{busy?'Desenvolvendo e revisando a aula…':'Desenvolver aula completa'}</button><small>É necessário entrar na sua conta. Limites do servidor e do provedor se aplicam.</small></div>
     </>)}
     {readerTab==='explore'&&<>
      {mathLab&&<MathLabPanel key={'math-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
+     {detail.topic.subject==='Matemática'&&!mathLab&&<MathVisualPlayground key={'math-base-'+detail.topic.id} topic={detail.topic.topic}/>}
      {scienceLab&&<ScienceLabPanel key={'science-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
      {languageLab&&<LanguageLabPanel key={'language-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}
      {humanitiesLab&&<HumanitiesLabPanel key={'humanities-'+detail.topic.id} subject={detail.topic.subject} topic={detail.topic.topic} description={provaoRef?.description} unit={provaoRef?.unit}/>}

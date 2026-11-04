@@ -2,7 +2,8 @@
  * Calculations run locally and never represent an assessed Kognos attempt.
  * Selected experiments illustrate ONE part of an official syllabus item, not all its subtopics.
  */
-export type ScienceKind='motion'|'waves'|'circuits'|'thermal'
+import {isCellStructureTopic} from './visual-study-models.ts';
+export type ScienceKind='cell-anatomy'|'motion'|'waves'|'circuits'|'thermal'
  |'atom'|'stoichiometry'|'solutions'|'ph'
  |'genetics'|'trophic'|'population'|'cell-cycle';
 export type ScienceTopic={subject:string;topic:string;description?:string;unit?:string};
@@ -24,6 +25,7 @@ export function resolveScienceLab({subject,topic,description='',unit=''}:Science
   if(/modelos atomicos|numero atomico|numero de massa|isotopos|estrutura do atomo|eletrosfera/.test(raw))return 'atom';
  }
  if(group==='biologia'){
+  if(isCellStructureTopic(subject,topic,description))return 'cell-anatomy';
   if(/divisoes celulares|mitose|meiose|ciclo celular/.test(raw))return 'cell-cycle';
   if(/1.? e 2.? lei de gregor mendel|mendelian|mendel|conceitos basicos de genetica/.test(raw))return 'genetics';
   if(/piramides ecologicas|pir(â|a)mides? de energia|niveis troficos/.test(raw))return 'trophic';

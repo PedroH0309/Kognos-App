@@ -3,6 +3,7 @@
 import {useState} from 'react';
 import {ArrowDown,ArrowLeft,ArrowRight,ArrowUp,BookOpen,CheckCircle2,Lightbulb,RefreshCw} from 'lucide-react';
 import type {ExplorerMaterial} from '@/lib/study-exploration';
+import TopicVisualStudio from './TopicVisualStudio';
 import {
  contentMaturity,explorerChallenge,explorerSourceLabel,referenceCards,studyMethodForSubject
 } from '@/lib/study-exploration';
@@ -55,9 +56,10 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
   <header className="k-study-explorer-heading">
    <span className="overline"><BookOpen size={15} aria-hidden="true"/> {subject.toLocaleUpperCase('pt-BR')} · EXPLORAÇÃO ORIENTADA</span>
    <h3>{method.title}</h3>
-   <p>Use as referências reais deste assunto para construir seu raciocínio. As perguntas abaixo são roteiros de estudo, não um gabarito automático.</p>
+   <p>Explore primeiro o mapa visual do tema. Os roteiros escritos e a tentativa própria ficam disponíveis depois, como aprofundamento opcional.</p>
    <small className="k-study-maturity">{maturityLabels[maturity]}</small>
   </header>
+  <TopicVisualStudio {...input}/>
   <nav className="k-study-stage-navigation" aria-label="Etapas de investigação">
    {stages.map((item,index)=><button key={item.id} type="button" aria-pressed={stage===item.id}
     onClick={()=>setStage(item.id)}>
@@ -65,7 +67,7 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
    </button>)}
   </nav>
   {stage==='investigate'&&<div className="k-study-stage-body">
-   <h4>Investigue o conteúdo do tema</h4>
+   <h4>Explore o material de referência</h4>
    <p className="k-study-muted">{explorerSourceLabel(input)}. Selecione os itens para destacar as partes disponíveis da referência.</p>
    <div className="k-study-reference-list" role="group" aria-label="Trechos disponíveis da referência">
     {cards.map((item,index)=><button type="button" key={index}
@@ -73,19 +75,21 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
    </div>
    <blockquote className="k-study-reference-text">{cards[reference]??topic}</blockquote>
    <p className="k-study-muted">Esses trechos são provenientes do cadastro curricular ou da aula selecionada; não são uma explicação completa criada pelo explorador.</p>
-   <div className="k-study-question-list">
-    {method.questions.map((question,index)=><div key={index}><span>{index+1}</span><p>{question}</p></div>)}
-   </div>
+   <details className="k-study-notes-details"><summary>Consultar perguntas para aprofundar</summary>
+    <div className="k-study-question-list">
+     {method.questions.map((question,index)=><div key={index}><span>{index+1}</span><p>{question}</p></div>)}
+    </div>
+   </details>
   </div>}
   {stage==='organize'&&<div className="k-study-stage-body">
-   <h4>Organize o raciocínio</h4>
-   <p className="k-study-muted">Registre o que compreendeu em três dimensões próprias de {subject}. Suas notas ficam apenas nesta tela e não são corrigidas automaticamente.</p>
-   <div className="k-study-note-grid">
+   <h4>Organize e compare</h4>
+   <p className="k-study-muted">No mapa visual você pode alternar o foco e rearranjar os eixos. Se quiser, registre observações sem nota.</p>
+   <details className="k-study-notes-details"><summary>Escrever observações (opcional)</summary><div className="k-study-note-grid">
     {method.promptLabels.map((label,index)=><label key={label}>{label}
      <textarea rows={3} value={notes[index]} placeholder={method.questions[index]}
       onChange={e=>setNotes(current=>current.map((value,i)=>i===index?e.target.value:value) as [string,string,string])}/>
     </label>)}
-   </div>
+   </div></details>
    {steps.length>=2&&<div className="k-study-order-activity">
     <h4>Ordene as etapas do material desenvolvido</h4>
     <p className="k-study-muted">Reorganize os passos reais da primeira seção da aula, na ordem proposta pelo material.</p>

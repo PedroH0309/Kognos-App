@@ -3,7 +3,8 @@
  * All excerpts, questions and feedback are original Kognos material.
  * This is not an extraction of any protected exam or competitor material.
  */
-export type LanguageLabKind='pt-reading'|'pt-grammar'|'pt-cohesion'|
+import {isIntertextTopic} from './visual-study-models.ts';
+export type LanguageLabKind='pt-intertext'|'pt-reading'|'pt-grammar'|'pt-cohesion'|
  'en-reading'|'en-modals'|'en-reference'|
  'essay-theme'|'essay-structure'|'essay-cohesion'|'essay-intervention';
 export type LanguageTopic={subject:string;topic:string;unit?:string;description?:string};
@@ -14,6 +15,7 @@ export function resolveLanguageLab({subject,topic,description='',unit=''}:Langua
  const text=fold(topic+' '+description);
  const chapter=fold(unit);
  if(group==='portugues'){
+  if(isIntertextTopic(subject,topic))return 'pt-intertext';
   if(/coesao|coerencia|conectiv|coordenac|subordinac|articulac(ao|oes) do texto|articulac(ao|oes) de oracoes/.test(text))return 'pt-cohesion';
   if(/concordancia|classes de palavras|classe de palavras|flexao nominal|flexao verbal|morfossintax|regencia nominal|regencia verbal/.test(text)||chapter==='morfossintaxe')return 'pt-grammar';
   if(/interpretac|compreensao|significac|denotac|conotac|figuras de linguagem|generos literarios|genero textual|intertextualidade|relac(ao|oes) do texto|discursos?:|leitura de texto|interacao entre texto/.test(text))return 'pt-reading';
