@@ -19,6 +19,7 @@ import "./kognos-science-labs.css";
 import "./kognos-languages-writing.css";
 import "./kognos-humanities-labs.css";
 import "./kognos-visual-studios.css";
+import "./kognos-external-and-3d-labs.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",
