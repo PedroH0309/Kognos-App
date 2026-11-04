@@ -21,6 +21,7 @@ import SkillEvolutionPanel from './SkillEvolutionPanel';
 import InteractiveIntroLesson from './InteractiveIntroLesson';
 import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
+import MathVisualPlayground from './math/MathVisualPlayground';
 import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
 import HumanitiesLabPanel from './humanities/HumanitiesLabPanel';
@@ -224,6 +225,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      <details className="k-math-explore-details k-study-explore-details">
       <summary>Exploração interativa de {lesson.subject}</summary>
       {mathLab&&<MathLabPanel key={'math-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
+      {lesson.subject==='Matemática'&&!mathLab&&<MathVisualPlayground key={'math-base-'+lesson.id} topic={lesson.topic}/>}
       {scienceLab&&<ScienceLabPanel key={'science-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
       {languageLab&&<LanguageLabPanel key={'language-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
       {humanitiesLab&&<HumanitiesLabPanel key={'humanities-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
