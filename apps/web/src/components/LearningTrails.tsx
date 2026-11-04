@@ -22,6 +22,8 @@ import InteractiveIntroLesson from './InteractiveIntroLesson';
 import StudyExplorationPanel from './StudyExplorationPanel';
 import MathLabPanel from './math/MathLabPanel';
 import ScienceLabPanel from './science/ScienceLabPanel';
+import LanguageLabPanel from './languages/LanguageLabPanel';
+import {resolveLanguageLab} from '@/lib/language-labs';
 import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveMathLab} from '@/lib/math-labs';
 import {prioritySkillLessonId} from '@/lib/skill-mastery-evidence';
@@ -101,6 +103,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
  const lesson=findLearningLesson(selectedId);
  const mathLab=lesson?resolveMathLab({subject:lesson.subject,topic:lesson.topic}):null;
  const scienceLab=lesson?resolveScienceLab({subject:lesson.subject,topic:lesson.topic}):null;
+ const languageLab=lesson?resolveLanguageLab({subject:lesson.subject,topic:lesson.topic}):null;
  const position=lesson?.subject===subject?roadmap.steps.findIndex(step=>step.lesson.id===lesson.id):-1;
  const previous=lesson?adjacentLesson(subject,lesson.id,-1,catalog):null;
  const following=lesson?adjacentLesson(subject,lesson.id,1,catalog):null;
@@ -219,6 +222,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
       <summary>Exploração interativa de {lesson.subject}</summary>
       {mathLab&&<MathLabPanel key={'math-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
       {scienceLab&&<ScienceLabPanel key={'science-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
+      {languageLab&&<LanguageLabPanel key={'language-'+lesson.id} subject={lesson.subject} topic={lesson.topic}/>}
       <StudyExplorationPanel key={lesson.id} subject={lesson.subject} topic={lesson.topic} introduction={lesson}
         onTutor={()=>{visibleContext({kind:'lesson',lessonId:lesson.id});onTutor();}}/>
      </details>
