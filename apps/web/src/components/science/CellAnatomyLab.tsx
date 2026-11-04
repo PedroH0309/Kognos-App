@@ -1,5 +1,7 @@
 'use client';
 import {useState,type KeyboardEvent,type ReactNode} from 'react';
+import dynamic from 'next/dynamic';
+const Cell3DViewer=dynamic(()=>import('./Cell3DViewer'),{ssr:false});
 import {cellKinds,cellParts,parts,cellPartAvailable,type CellPart,type CellType} from '@/lib/visual-study-models';
 import {ScienceStage} from './ScienceLabCommon';
 
@@ -8,6 +10,7 @@ export default function CellAnatomyLab(){
  const [selected,setSelected]=useState<CellPart>('nucleus');
  const [zoom,setZoom]=useState(100);
  const [showLabels,setShowLabels]=useState(true);
+ const [view,setView]=useState<'3d'|'2d'>('3d');
  const available=cellParts[type];
  const focus=(part:CellPart)=>{if(cellPartAvailable(type,part))setSelected(part);};
  const onKey=(event:KeyboardEvent<SVGGElement>,part:CellPart)=>{
@@ -23,11 +26,16 @@ export default function CellAnatomyLab(){
  }
  const scale=zoom/100;
  return <ScienceStage subject="Biologia" title="Célula interativa: estruturas e funções"
-  description="Toque nas estruturas para inspecionar sua função. Compare células animal, vegetal e procarionte e amplie o esquema.">
+  description="Explore uma célula tridimensional original: arraste para girar, dê zoom e selecione as estruturas. O esquema 2D continua disponível como alternativa.">
   <div className="k-cell-controls" role="group" aria-label="Tipo de célula">
    {cellKinds.map(item=><button key={item.id} type="button" aria-pressed={type===item.id}
     onClick={()=>typeChange(item.id)}>{item.label}</button>)}
   </div>
+  <div className="k-cell-view-chooser" role="group" aria-label="Visualização da célula">
+   <button type="button" aria-pressed={view==='3d'} onClick={()=>setView('3d')}>Explorar em 3D</button>
+   <button type="button" aria-pressed={view==='2d'} onClick={()=>setView('2d')}>Esquema 2D</button>
+  </div>
+  {view==='3d'?<Cell3DViewer type={type} selected={active} onSelect={focus}/>:<>
   <div className="k-cell-canvas">
    <svg viewBox="0 0 360 270" role="group" aria-label={'Diagrama simplificado de '+cellKinds.find(x=>x.id===type)?.label}>
     <g transform={'translate(180 136) scale('+scale+') translate(-180 -136)'}>
@@ -82,6 +90,7 @@ export default function CellAnatomyLab(){
    <label className="k-cell-label-toggle"><input type="checkbox" checked={showLabels}
     onChange={e=>setShowLabels(e.target.checked)}/> Mostrar rótulos</label>
   </div>
+  </>}
   <div className="k-cell-parts" role="group" aria-label="Selecionar estrutura celular">
    {available.map(part=><button key={part} type="button" aria-pressed={active===part}
     onClick={()=>focus(part)}>{parts[part].label}</button>)}
