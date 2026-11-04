@@ -3,22 +3,23 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 
-test('Every curriculum topic opens a visual map rather than a default three-textarea questionnaire',()=>{
+test('Every curriculum topic has a visual investigation map in the independent Lab Hub',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const explorer=read('apps/web/src/components/StudyExplorationPanel.tsx');
  const studio=read('apps/web/src/components/TopicVisualStudio.tsx');
- assert.match(room,/readerTab==='explore'/);
- assert.match(room,/Abrir experiência visual deste tema/);
- assert.match(room,/<StudyExplorationPanel/);
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
+ assert.match(room,/onOpenLab\(detail\.topic\)/);
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(hub,/<TopicVisualStudio/);
  assert.match(explorer,/<TopicVisualStudio \{\.\.\.input\}\/>/);
  assert.match(explorer,/Escrever observações \(opcional\)/);
- assert.match(explorer,/<details className="k-study-notes-details">/);
  assert.match(studio,/k-visual-concept-map/);
  assert.match(studio,/k-visual-lenses/);
  assert.match(studio,/k-visual-flow-card/);
  assert.match(studio,/setOrder/);
  assert.match(studio,/aria-pressed/);
 });
+
 test('Interactive cellular model contains genuine SVG elements, clickable anatomy and zoom',()=>{
  const cell=read('apps/web/src/components/science/CellAnatomyLab.tsx');
  const science=read('apps/web/src/components/science/ScienceLabPanel.tsx');
@@ -45,24 +46,26 @@ test('The screenshot topic intertextuality has a dedicated manipulable text-comp
  assert.match(lab,/markShared/);
  assert.match(panel,/import\('\.\/IntertextualityLab'\)/);
 });
-test('Mathematics preserves seventeen specialist labs and adds graphical sandbox to unmatched topics',()=>{
+test('Mathematics keeps seventeen specialist labs and general graph sandbox in independent Lab Hub',()=>{
  const router=read('apps/web/src/components/math/MathLabPanel.tsx');
  const sandbox=read('apps/web/src/components/math/MathVisualPlayground.tsx');
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
+ const hub=read('apps/web/src/components/LaboratoryHub.tsx');
  assert.equal([...router.matchAll(/dynamic\(\(\)=>import\('\.\/[^']+'\)\)/g)].length,17);
  assert.match(sandbox,/<svg viewBox=/);
  assert.match(sandbox,/setSlope/);
  assert.match(sandbox,/setIntercept/);
  assert.match(sandbox,/setX/);
  assert.match(sandbox,/não deve ser confundido com um simulador específico/);
- assert.match(room,/detail\.topic\.subject==='Matemática'&&!mathLab&&<MathVisualPlayground/);
- assert.match(trails,/lesson\.subject==='Matemática'&&!mathLab&&<MathVisualPlayground/);
- assert.match(room,/<ScienceLabPanel/);
- assert.match(room,/<LanguageLabPanel/);
- assert.match(room,/<HumanitiesLabPanel/);
- assert.match(trails,/<StudyExplorationPanel/);
+ assert.match(hub,/entry\.subject==='Matemática'&&!math&&<MathVisualPlayground/);
+ assert.match(hub,/<ScienceLabPanel/);
+ assert.match(hub,/<LanguageLabPanel/);
+ assert.match(hub,/<HumanitiesLabPanel/);
+ assert.match(room,/<TopicLessonSections/);
+ assert.match(trails,/<LaboratoryHub/);
 });
+
 test('New visual interactions do not write graded attempts, call AI or store user data',()=>{
  const paths=[
  'apps/web/src/components/TopicVisualStudio.tsx',
