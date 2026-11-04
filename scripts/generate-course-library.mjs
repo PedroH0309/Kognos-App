@@ -117,16 +117,22 @@ async function main(){
  const alreadyAuthored=topics.filter(isAuthored).length;
  const alreadyGenerated=topics.filter(t=>records.has(t.id)).length;
  const pending=topics.filter(t=>!isAuthored(t)&&!records.has(t.id));
+ const bySubject=Object.values(Object.groupBy(topics,t=>t.subject)).map(items=>({
+  subject:items[0].subject,total:items.length,
+  authored:items.filter(isAuthored).length,
+  generated:items.filter(t=>records.has(t.id)).length,
+  pending:items.filter(t=>!isAuthored(t)&&!records.has(t.id)).length
+ })).sort((a,b)=>a.subject.localeCompare(b.subject,'pt-BR'));
  console.log(JSON.stringify({
   allCatalogCount:curriculumTopics.length,selected:topics.length,
   authoredDeep:alreadyAuthored,generatedOffline:alreadyGenerated,
-  pendingToDeepen:pending.length,provider:model,subject:subject||'all'
+  pendingToDeepen:pending.length,bySubject,provider:model,subject:subject||'all'
  },null,2));
  if(audit)return;
  if(rebuild){await buildRegistry(records);return;}
  if(!key)throw Error('Missing '+(provider==='gemini'?'GEMINI_API_KEY':'GROQ_API_KEY')+
   '. Configure it locally. No remote request was made.');
- let succeeded=0,failed=0;
+ let succeeded=0,failed=0,quotaReached=false;
  const hashes=new Set([...records.values()].map(fingerprint));
  for(const topic of pending.slice(0,limit)){
   const ref=findProvaoTopic(topic.subject,topic.topic);
@@ -150,15 +156,18 @@ async function main(){
     console.error('FAIL '+topic.id+' ['+attempt+'/'+retries+'] '+
      (status?'HTTP '+status:'generation or quality failure'));
     if(status===401||status===403||status===402)throw Error('Provider authentication or billing restriction: HTTP '+status);
-    if(attempt<retries)await sleep(Math.min(30000,pauseMs*(2**attempt)));
+    if(status===429&&attempt===retries){quotaReached=true;break;}
+    if(attempt<retries)await sleep(Math.min(60000,pauseMs*(2**attempt)));
+    if(!status&&String(error?.message||'').startsWith('Quality gate:'))console.error(String(error.message).slice(0,450));
    }
   }
+  if(quotaReached){console.warn('Provider quota reached; valid files already saved. Resume in a later batch.');break;}
   if(!success)failed++;
   if(pauseMs>0)await sleep(pauseMs);
  }
  await buildRegistry(records);
- console.log(JSON.stringify({generatedThisRun:succeeded,failedThisRun:failed,
+ console.log(JSON.stringify({generatedThisRun:succeeded,failedThisRun:failed,quotaReached,
   totalPrebuilt:records.size,pending:pending.length-succeeded},null,2));
- if(failed)process.exitCode=1;
+ if(failed)console.warn('Some topics were not generated and remain pending; no invalid lesson was saved.');
 }
 main().catch(e=>{console.error(String(e?.message||e));process.exitCode=1;});
