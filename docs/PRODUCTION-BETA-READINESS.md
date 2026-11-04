@@ -18,7 +18,7 @@ Esta documentação acompanha a branch `hardening/kog-tutor-public-beta`. A bran
 4. Com duas contas de aluno, confirme isolamento do histórico, respostas e perfil. Os testes PGlite não substituem essa verificação no banco real.
 5. Com o Tutor configurado, confirme mensagem pedagógica, correção contextual e bloqueio por quota com `TUTOR_DAILY_REQUEST_LIMIT=1` em ambiente de teste. A primeira mensagem autorizada consome uma unidade; a próxima deve receber 429 sem consumir outra chamada ao provedor. O contador da cota é compartilhado com outras funcionalidades de IA.
 6. Configure limites financeiros e de taxa no provedor de IA, monitore erros e valide termos, privacidade, exclusão de dados e backups.
-7. Execute `npm ci`, `npm test`, `npm run test:content-db`, `npm run test:design`, `npm run typecheck` e `npm run build`.
+7. Execute `npm install --no-audit --no-fund`, `npm test`, `npm run test:content-db`, `npm run test:design`, `npm run typecheck` e `npm run build`.
 
 ## Endereço do beta sem comprar domínio
 
@@ -31,7 +31,7 @@ Configure um novo serviço **Node**, conectado ao repositório `PedroH0309/Kogno
 | Source | Repositório GitHub conectado |
 | Branch | `hardening/kog-tutor-public-beta` durante a validação |
 | Root Directory | `.` |
-| Build Command | `npm ci --no-audit --no-fund && npm run build` |
+| Build Command | `npm install --no-audit --no-fund && npm run build` |
 | Start Command | `npm --workspace @kognos/web run start -- --hostname 0.0.0.0 --port $PORT` |
 | Runtime | Node.js 22 |
 | Plan | Free, somente para beta e validação |
