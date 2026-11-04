@@ -1,3 +1,4 @@
+import {provaoSubjects,provaoSourceUrl} from './provao-paulista.ts';
 /** Curated broad preparatory index. It is not a verbatim official syllabus:
  * individual skills and required readings must be checked against the linked
  * edition-specific documents. Keep this transparent in every UI.
@@ -166,7 +167,7 @@ export const officialSyllabusSources:Record<ExamId,{title:string;url:string;edit
  fuvest:{title:'FUVEST — Programa do Vestibular da USP',url:'https://www.fuvest.br/wp-content/uploads/fuvest2027-programa-vestibular.pdf',edition:'2027',note:'Consulte o programa PDF e a lista atual de obras obrigatórias; ambas podem variar por edição.'},
  vunesp:{title:'VUNESP — Vestibular UNESP 2027',url:'https://www.vunesp.com.br/VNSP2514',edition:'UNESP 2027 (referência)',note:'VUNESP organiza vários exames. Confirme qual vestibular e edital se aplicam; este roteiro é do ensino médio.'},
  etec:{title:'Vestibulinho ETEC — Manual e documentação',url:'https://vestibulinho.etec.sp.gov.br/documentos/',edition:'Verificar semestre e modalidade',note:'A base é dos anos finais do ensino fundamental; modalidades técnicas podem cobrar outros conteúdos.'},
- saresp:{title:'Secretaria de Educação SP — Matrizes e Currículo Paulista',url:'https://atendimento.educacao.sp.gov.br/knowledgebase/article/SED-08378/pt-br',edition:'Verificar série e ano',note:'SARESP não é vestibular. Matérias e habilidades dependem da série e do ano de aplicação.'}
+ saresp:{title:'Provão Paulista Seriado — Edital SEDUC 10/2026, Anexo VII',url:provaoSourceUrl,edition:'2026 · 1ª, 2ª e 3ª séries do ensino médio',note:'Programa do ensino médio por série. O SARESP do ensino fundamental possui outra matriz.'}
 };
 /** Study coverage: union with the original, already supported generation topics. */
 export function expandExamSubjects(exam:ExamId,original:Record<string,readonly string[]>):Record<string,readonly string[]>{
@@ -179,6 +180,9 @@ export function expandExamSubjects(exam:ExamId,original:Record<string,readonly s
  }
  for(const [subject,topics] of Object.entries(original))if(!result[subject])
   result[subject]=[...new Set(topics)];
+ // Retain old SARESP topics only for saved question/history compatibility.
+ // Student screens use the official high-school subset via learningCatalogForExam.
+ if(exam==='saresp')for(const [subject,topics] of Object.entries(provaoSubjects()))result[subject]=[...new Set([...(result[subject]||[]),...topics])];
  if(exam==='fuvest'){
   result.Literatura=[...new Set([...(result.Literatura||[]),
    ...fuvest2027RequiredReading.map(book=>'Leitura obrigatória FUVEST 2027: '+book.title+' — '+book.author)])];
@@ -192,7 +196,7 @@ export function examForStudent(profile:Pick<StudentProfile,'goal'|'targetName'|'
  const target=profile.targetName.toLowerCase();
  if(/fuvest|usp/.test(target))return 'fuvest';
  if(/unesp|vunesp/.test(target))return 'vunesp';
- if(/saresp/.test(target))return 'saresp';
+ if(/saresp|prov[aã]o|paulista/.test(target))return 'saresp';
  return null;
 }
 export function activeSyllabi(profile:Pick<StudentProfile,'goal'|'targetName'|'examFocus'|'syllabusExams'>):ExamId[]{
@@ -209,4 +213,5 @@ export function mergedSyllabus(exams:readonly ExamId[]):Record<string,readonly s
  }
  return output;
 }
+
 

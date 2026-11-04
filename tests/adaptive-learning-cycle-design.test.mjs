@@ -45,7 +45,7 @@ test('official external references distinguish VUNESP organizer from SARESP eval
  assert.match(blueprints,/saresp:\{/);
  assert.match(blueprints,/vunesp:\{/);
  assert.match(blueprints,/https:\/\/www\.vunesp\.com\.br\//);
- assert.match(blueprints,/SARESP é avaliação de rendimento escolar/);
+ assert.match(blueprints,/Não confundir com o SARESP do ensino fundamental/);
  assert.match(blueprints,/NÃO são cadernos oficiais/);
  assert.match(blueprints,/sourceCheckedOn:'2026-11-02'/);
 });
@@ -58,3 +58,4 @@ test('visuals adapt to dark/light and mobile while respecting reduced motion',()
  assert.match(styles,/theme-dark/);
  assert.ok(layout.indexOf('import "./kognos-study-cycle.css"')>layout.indexOf('import "./kognos-calendar.css"'));
 });
+

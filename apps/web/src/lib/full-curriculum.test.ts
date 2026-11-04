@@ -1,7 +1,7 @@
 import {localStudyGuide} from './offline-study-guide.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {examBlueprints,validateGenerationRequest,type ExamId} from './exam-blueprints.ts';
+import {examBlueprints,studySubjectsForExam,validateGenerationRequest,type ExamId} from './exam-blueprints.ts';
 import {learningLessons,introductoryLessons} from './learning-catalog.ts';
 import {learningCatalogForExam,linkedExamTopic,validLessonAIReference} from './lesson-ai-links.ts';
 import {topicForLegacyLesson} from './curriculum-catalog.ts';
@@ -11,7 +11,7 @@ import {connectedSubjectProgress} from './connected-learning.ts';
 test('every registered exam topic is visible, openable and accepted for AI practice',()=>{
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
   const catalog=learningCatalogForExam(exam);
-  for(const [subject,topics] of Object.entries(examBlueprints[exam].subjects))for(const topic of topics){
+  for(const [subject,topics] of Object.entries(studySubjectsForExam(exam)))for(const topic of topics){
    const lesson=catalog.find(l=>l.subject===subject&&l.topic===topic);
    assert.ok(lesson,`${exam}: ${subject} / ${topic}`);
    const practiceTopic=linkedExamTopic(lesson.id,exam);

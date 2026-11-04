@@ -17,7 +17,9 @@ test('ETEC and SARESP are treated as their own grade-dependent tracks',()=>{
  const saresp=expandExamSubjects('saresp',{});
  assert.ok(etec.Matemática.some(topic=>topic.includes('Pitágoras')));
  assert.ok(saresp.Ciências.some(topic=>topic.includes('Ecologia')));
- assert.ok(!saresp.Filosofia);
+ assert.ok(saresp.Filosofia?.length);
+ assert.ok(saresp.Sociologia?.length);
+ assert.ok(saresp.Física?.length);
 });
 test('changing primary examination can replace or combine study scopes',()=>{
  const p={...initialProfile,goal:'vestibular' as const,targetName:'UNESP 2027',examFocus:null};
@@ -32,7 +34,7 @@ test('each integrated edition points to an institutional website',()=>{
  for(const item of Object.values(officialSyllabusSources)){
   const uri=new URL(item.url);
   assert.equal(uri.protocol,'https:');
-  assert.ok(['www.gov.br','www.fuvest.br','www.vunesp.com.br','vestibulinho.etec.sp.gov.br','atendimento.educacao.sp.gov.br'].includes(uri.host));
+  assert.ok(['www.gov.br','www.fuvest.br','www.vunesp.com.br','vestibulinho.etec.sp.gov.br','atendimento.educacao.sp.gov.br','stcdndev.blob.core.windows.net'].includes(uri.host));
  }
 });
 
@@ -53,3 +55,4 @@ test('integrated catalog preserves legacy generated question scopes for weekly r
  assert.ok(catalog.Literatura.some(topic=>topic.includes('Opúsculo Humanitário')));
  assert.equal(new Set(catalog.Matemática).size,catalog.Matemática.length);
 });
+

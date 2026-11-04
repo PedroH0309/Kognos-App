@@ -1,3 +1,4 @@
+import {findProvaoTopic} from './provao-paulista.ts';
 import {examBlueprints,difficulties,type GenerationRequest} from './exam-blueprints.ts';
 import {assessIndependentReview,validateModelQuestions,type ValidatedQuestion} from './ai-question-validation.ts';
 import {requestAI} from './ai-provider.ts';
@@ -59,7 +60,8 @@ export async function createAndReviewQuestionBatch(request:GenerationRequest,ver
 
  const perspective=request.variation===undefined?'':questionPerspectives[request.variation%questionPerspectives.length];
  const scope=verified?`Instituição: ${blueprint.label}; edição da fonte aprovada: ${verified.edition}; disciplina: ${request.subject}; tópico aprovado: ${request.topic}; evidência textual de matriz revisada: ${verified.evidence}; URL da fonte: ${verified.sourceUrl}; dificuldade: ${difficulties[request.difficulty]}. Não prometa incidência ou questões oficiais.`:`Prova de referência: ${blueprint.label}; edição: ${blueprint.edition}; área: ${request.subject}; recorte editorial: ${request.topic}; complexidade: ${difficulties[request.difficulty]}. Este pedido NÃO tem tema confirmado em matriz importada.`;
- const scopedReference=scope+lessonScope;
+ const officialTopic=request.institution==='saresp'?findProvaoTopic(request.subject,request.topic):null;
+ const scopedReference=scope+lessonScope+(officialTopic?`\nRecorte do Anexo VII do Provão Paulista 2026: ${officialTopic.description}. Unidade: ${officialTopic.unit}. Não se limite ao título abreviado.`:'');
  const variationNote=perspective?`\nAbordagem sugerida para diversificar: ${perspective}. Use somente se compatível com o tema e a disciplina; não altere o nível, a quantidade de alternativas nem a matriz selecionada. Evite repetir perguntas muito genéricas.`:'';
 
  const original=await requestNvidia([
@@ -102,3 +104,4 @@ export async function createAndReviewQuestionBatch(request:GenerationRequest,ver
 export async function createAndReviewQuestions(request:GenerationRequest,verified?:VerifiedSyllabusReference):Promise<ValidatedQuestion[]>{
  return (await createAndReviewQuestionBatch(request,verified)).approved;
 }
+
