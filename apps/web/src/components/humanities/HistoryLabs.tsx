@@ -3,8 +3,9 @@ import {useState} from 'react';
 import {historicalTimelines,chronologicalOrder,sourceScenarios,historyCauseCards} from '@/lib/humanities-labs';
 import {HumanitiesStage,HumanitiesField,ChoiceRow} from './HumanitiesLabCommon';
 
-export function HistoryTimelineLab(){
- const [collection,setCollection]=useState(0),[selected,setSelected]=useState(0);
+export function HistoryTimelineLab({topic=''}:{topic?:string}){
+ const worldTheme=/revolu(c|ç)[aã]o francesa|revolu(c|ç)[aã]o russa|guerra mundial|guerra fria|mundo contempor[aâ]neo|uni[aã]o sovi[eé]tica|nazifascismo|[áa]sia|[áa]frica/i.test(topic);
+ const [collection,setCollection]=useState(worldTheme?1:0),[selected,setSelected]=useState(0);
  const [order,setOrder]=useState<number[]>([2,0,4,1,5,3]);
  const [checked,setChecked]=useState(false);
  const timeline=historicalTimelines[collection];
@@ -70,8 +71,9 @@ export function HistorySourcesLab(){
   <p className="k-humanities-subtext">Estes trechos não são documentos primários autênticos e não podem ser usados como evidência de época em uma redação ou pesquisa histórica.</p>
  </HumanitiesStage>;
 }
-export function HistoryCausalityLab(){
- const [focus,setFocus]=useState('Revolução Industrial');
+export function HistoryCausalityLab({topic=''}:{topic?:string}){
+ const first=/coloniza|escrav|cana|algod[aã]o|ouro/i.test(topic)?'Colonização e trabalho':/movimentos sociais|direitos|classe oper[aá]ria/i.test(topic)?'Movimentos sociais e direitos':'Revolução Industrial';
+ const [focus,setFocus]=useState(first);
  const [order,setOrder]=useState([2,0,1]),[checked,setChecked]=useState(false);
  const [factor,setFactor]=useState(''),[actors,setActors]=useState(''),[changes,setChanges]=useState('');
  function move(index:number,delta:number){const target=index+delta;if(target<0||target>=3)return;
