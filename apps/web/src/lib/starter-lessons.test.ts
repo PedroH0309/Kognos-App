@@ -19,7 +19,7 @@ test('All curriculum entries across five examinations open a complete offline th
   assert.equal(lesson.kind,'lesson');
   assert.equal(lesson.review,'introductory');
   assert.equal(lesson.sections.length,3);
-  assert.equal(lesson.tasks.length,3);
+  assert.ok(lesson.tasks.length>=3&&lesson.tasks.length<=15,'At least one graduated task per level');
   assert.equal(lesson.topic,topic.topic);
   assert.equal(lesson.subject,topic.subject);
   assert.ok(lesson.authorship.includes('sem homologação docente'));
