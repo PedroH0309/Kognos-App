@@ -1,9 +1,9 @@
 # Etapa 11 — Repertório aprofundado por disciplina
 
 ## Escopo
-Meta: uma aula substantiva, específica e resolvida para cada tema do catálogo de ENEM, ETEC, FUVEST, VUNESP e Provão Paulista. A base granular contém 683 entradas do ensino médio e 201 do fundamental, antes de deduplicar exames e acrescentar itens específicos do Provão Paulista.
+Meta: uma aula substantiva, específica e resolvida para cada tema do catálogo de ENEM, ETEC, FUVEST, VUNESP e Provão Paulista. A auditoria executada no GitHub Actions em 04/11/2026 identificou **1.512 temas distintos no catálogo unificado**. A base granular contém 683 entradas do ensino médio e 201 do fundamental, além de outros títulos e itens específicos das matrizes e do Provão Paulista.
 
-Esta etapa NÃO completa todo o repertório: há 20 aulas específicas já implementadas nesta branch (5 Matemática + uma em cada uma das outras 15 disciplinas), mais um processo para gerar e armazenar lotes por tema. Demais temas mantêm materiais introdutórios da Etapa 10 e não devem ser apresentados como aulas integralmente aprofundadas.
+Esta etapa NÃO completa todo o repertório: há **20 aulas específicas** nesta branch (5 Matemática + uma em cada uma das outras 15 disciplinas), **0 módulos gerados pela API e 1.492 temas pendentes** de aprofundamento. Foi criado o processo para gerar e armazenar lotes por tema. Demais temas mantêm materiais introdutórios da Etapa 10 e não devem ser apresentados como aulas integralmente aprofundadas.
 
 ## Funcionalidades
 - Deep math lessons: cinco assuntos, 15 capítulos e 30 atividades resolvidas.
@@ -51,7 +51,7 @@ Para validar:
     npm run build
 
 ## Ações no GitHub
-O workflow manual de autoria fica disponível após inclusão do arquivo na branch padrão do GitHub. Requer segredos configurados no Actions e execução em branch de trabalho (nunca diretamente na main). Limita a 50 aulas por execução, recompila o índice, executa todos os testes e comita o material na branch.
+O workflow manual de autoria fica disponível após inclusão do arquivo na branch padrão do GitHub. Enquanto o PR estiver aberto, o CLI local já pode ser executado na branch da implementação. Requer segredos configurados no Actions e execução em branch de trabalho (nunca diretamente na main). Limita a 50 aulas por execução, recompila o índice, executa todos os testes e comita o material na branch.
 
 A possibilidade de utilização gratuita depende da quota e do plano do provedor; nenhuma API gratuita garante geração ilimitada de centenas de aulas. Modelos, limites e preços mudam.
 
