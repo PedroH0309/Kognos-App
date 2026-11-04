@@ -26,7 +26,7 @@ import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveMathLab} from '@/lib/math-labs';
 type Topic=CurriculumTopic&{status:string};
 type Detail={topic:CurriculumTopic;lesson:CourseLesson|null;introduction:LearningLesson|null;videos:CourseVideo[];questions:PublicCourseQuestion[];revision:number|null;configured:boolean};
-const statusLabels:Record<string,string>={published:'Aula desenvolvida',introduction:'Introdução disponível',outline:'Tema mapeado',draft:'Em revisão'};
+const statusLabels:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada',guided:'Guia introdutório pré-carregado',introduction:'Introdução disponível',outline:'Tema mapeado',draft:'Em revisão'};
 type CurriculumRoomProps={
  userId?:string|null;active?:boolean;focus?:{lessonId:string;subject:string}|null;
  preferredExam?:ExamId|null;embedded?:boolean;
@@ -75,7 +75,7 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
   <header className="course-heading"><div><span className="overline">BIBLIOTECA DE ESTUDOS</span><h1>Entenda. Pratique. <em>Avance.</em></h1><p>Fundamentos, aplicação e aprofundamento, com tarefas e referências por assunto.</p></div></header>
   {notice&&<p className="course-notice" role="status">{notice}</p>}{error&&<p className="message warning" role="alert">{error}</p>}
   <div className="course-filters"><label>Prova<select aria-label="Prova" value={exam} onChange={e=>{setExam(e.target.value);setLimit(40);}}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,x])=><option key={id} value={id}>{id==='vunesp'?'UNESP / VUNESP':x.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>{setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade);setSubject('all');setLimit(40);}}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<label>Disciplina<select aria-label="Disciplina" value={subject} onChange={e=>{setSubject(e.target.value);setLimit(40);}}><option value="all">Todas as disciplinas</option>{[...new Set(topics.filter(t=>exam!=='saresp'||isProvaoTopic(t.subject,t.topic,provaoGrade)).map(t=>t.subject))].map(s=><option key={s}>{s}</option>)}</select></label><label>Buscar assunto<input type="search" value={search} placeholder="Ex.: logaritmos, genética, revoluções…" onChange={e=>{setSearch(e.target.value);setLimit(40);}}/></label></div>
-  <p className="course-coverage"><strong>{filtered.length}</strong> temas no roteiro · <strong>{filtered.filter(t=>t.status==='published').length}</strong> aulas desenvolvidas · <strong>{filtered.filter(t=>t.status==='introduction').length}</strong> introduções. O índice editorial não certifica cobertura integral de cada edição.</p>
+  <p className="course-coverage"><strong>{filtered.length}</strong> temas no roteiro · <strong>{filtered.filter(t=>t.status==='published').length}</strong> aulas desenvolvidas · <strong>{filtered.filter(t=>t.status==='introduction').length}</strong> introduções · <strong>{filtered.filter(t=>t.status==='starter'||t.status==='guided').length}</strong> materiais-base pré-carregados. A cobertura editorial completa ainda exige revisão.</p>
   </>}
   {embedded&&error&&<p className="message warning" role="alert">{error}</p>}
   <div className="course-layout" style={embedded?{display:'block'}:undefined}>{!embedded&&<aside className="course-index" aria-label="Assuntos do currículo">{filtered.slice(0,limit).map(t=><button type="button" key={t.id} aria-pressed={selected===t.id} disabled={busy} onClick={()=>setSelected(t.id)}><small>{t.subject}</small><strong>{t.topic}</strong><span>{statusLabels[t.status]||'Em revisão'}</span></button>)}{!filtered.length&&<p>Nenhum tema encontrado para estes filtros.</p>}{filtered.length>limit&&<button type="button" onClick={()=>setLimit(n=>n+40)}>Mostrar mais 40 temas</button>}</aside>}
@@ -93,9 +93,9 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
        topic={detail.topic.topic} lesson={detail.lesson} introduction={detail.introduction} onTutor={onTutor}
         onActivityProgress={pane==='activities'?onActivityProgress:undefined}/>
      </div>)}
-     {readerTab==='lesson'&&!detail.lesson&&<div className="course-generation">
+     {readerTab==='lesson'&&(!detail.lesson||detail.lesson.review==='introductory')&&<div className="course-generation">
       <h3>Desenvolver aula completa com o Kog</h3>
-      <p>O tema ainda não tem uma aula editorial desenvolvida. A IA pode criar um material original, sujeito a revisão automática e limites do serviço. Isso não equivale à homologação de um professor.</p>
+      <p>Este conteúdo apresenta uma base introdutória. A IA pode desenvolver um material mais completo, sujeito a revisão automática e limites do serviço. Isso não equivale à homologação de um professor.</p>
       <label className="course-check"><input type="checkbox" checked={consent} onChange={e=>setConsent(e.target.checked)}/>Autorizo desenvolver este assunto com IA.</label>
       <button type="button" className="btn primary" disabled={!consent||busy||!detail.configured} onClick={generate}>
        {busy?'Desenvolvendo e revisando a aula…':'Desenvolver aula completa'}</button>

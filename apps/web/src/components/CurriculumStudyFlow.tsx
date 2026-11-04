@@ -13,7 +13,7 @@ type Props={
  focus?:{lessonId:string;subject:string}|null;
  renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void)=>ReactNode;
 };
-const statuses:Record<string,string>={published:'Aula desenvolvida',introduction:'Introdução disponível',outline:'Tema mapeado, sem aula',draft:'Em revisão'};
+const statuses:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada · revisão pendente',guided:'Guia inicial pré-carregado · aprofundamento pendente',introduction:'Introdução disponível',outline:'Tema mapeado, sem aula',draft:'Em revisão'};
 const icons:Record<string,typeof Calculator>={
  'Matemática':Calculator,'Português':BookOpenText,'Inglês':Languages,'Redação':PenLine,
  'Física':Atom,'Química':FlaskConical,'Biologia':Dna,'História':Landmark,
@@ -57,7 +57,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  const current=subjectTopics.find(topic=>topic.id===selected)??topics.find(topic=>topic.id===selected)??null;
  const next=current?nextCurriculumTopic(subjectTopics,current.id):null;
  const position=current?subjectTopics.findIndex(topic=>topic.id===current.id)+1:0;
- const hasLesson=Boolean(current&&['published','introduction'].includes(current.status));
+ const hasLesson=Boolean(current&&['published','introduction','starter','guided'].includes(current.status));
  const ready=canFinishLesson(hasLesson,readingConfirmed,activitiesAnswered,true);
  function resetCompletion(){setReadingConfirmed(false);setActivitiesAnswered(false);}
  function chooseSubject(name:string){
@@ -95,7 +95,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
      return <button type="button" className="k-curriculum-subject-card" key={item.name} onClick={()=>chooseSubject(item.name)}>
       <span className="k-curriculum-subject-icon"><Icon size={23} aria-hidden="true"/></span>
       <span className="k-curriculum-subject-label"><strong>{item.name}</strong>
-       <small>{item.total} conteúdos · {item.developed} aulas desenvolvidas · {item.introduced} introduções</small></span>
+       <small>{item.total} conteúdos · {scoped.filter(t=>t.subject===item.name&&['starter','guided'].includes(t.status)).length} materiais-base · {item.developed} aulas desenvolvidas</small></span>
       <ChevronRight size={19} aria-hidden="true"/>
      </button>;
     })}
