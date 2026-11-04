@@ -5,9 +5,9 @@ import {buildRegistryModule,fingerprint,lessonPrompt,parseResponse,responseText,
 const topic={id:'matematica-fracoes-e-operacoes',subject:'Matemática',topic:'Frações e operações',exams:['enem','fuvest']};
 const section=(level,index)=>({
  level,title:'Fundamentos sólidos de frações '+index,
- explanation:('Uma fração representa uma divisão cujo denominador não é zero. Para somar duas frações, igualamos denominadores e preservamos numeradores proporcionais. ').repeat(6),
+ explanation:('Uma fração representa uma divisão cujo denominador não é zero. Para somar duas frações, igualamos denominadores e preservamos numeradores proporcionais. ').repeat(6)+' Etapa didática distinta '+index+'.',
  steps:['Identifique todos os denominadores presentes.','Calcule um múltiplo comum e reescreva cada parcela.','Efetue a operação, simplifique e confira o resultado.'],
- example:('Para calcular 1/3 + 1/4, use 12 como denominador comum: 4/12 + 3/12 = 7/12. Isso corresponde a uma soma de partes fracionárias e não a 2/7. ').repeat(2),
+ example:('Para calcular 1/3 + 1/4, use 12 como denominador comum: 4/12 + 3/12 = 7/12. Isso corresponde a uma soma de partes fracionárias e não a 2/7. ').repeat(2)+' Exemplo do estágio '+index+'.',
  pitfall:'Somar os denominadores diretamente altera o significado das partes do inteiro e gera resultado incorreto.'
 });
 const task=(level,n)=>({
