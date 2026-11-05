@@ -9,6 +9,7 @@ import {stage15Topics} from './authored-lessons-stage15.ts';
 import {stage16Topics} from './authored-lessons-stage16.ts';
 import {stage17Topics} from './authored-lessons-stage17.ts';
 import {stage18Topics} from './authored-lessons-stage18.ts';
+import {stage19Topics} from './authored-lessons-stage19.ts';
 import {everydayContexts,everydayContextFor} from './everyday-lesson-contexts.ts';
 import {starterLesson} from './starter-lessons.ts';
 
@@ -21,9 +22,10 @@ test('Every authored lesson starts with a distinct concrete situation and a solv
   ...stage15Topics,
   ...stage16Topics,
   ...stage17Topics,
-  ...stage18Topics
+  ...stage18Topics,
+  ...stage19Topics
  ];
- assert.equal(authored.length,197);
+ assert.equal(authored.length,261);
  assert.equal(everydayContexts.length,authored.length);
  const expected=new Set(authored.map(x=>x.subject+'\0'+x.topic));
  const seen=new Set();
@@ -49,7 +51,7 @@ test('Every authored lesson starts with a distinct concrete situation and a solv
    references.add(refKey);
   }
  }
- assert.equal(seen.size,197);
+ assert.equal(seen.size,261);
 });
 test('Published editorial materials do not receive an unrelated starter situation',()=>{
  const original=everydayContexts[0];
