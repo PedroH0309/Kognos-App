@@ -103,8 +103,8 @@ export const stage19Geography:TopicSeed[]=[
       ],
       [
         "Geografia",
-        "Relevo brasileiro",
-        "A relação entre declividade, água e erosão ajuda a explicar processos de modelagem do relevo."
+        "Biomas e formações vegetais",
+        "A cobertura vegetal de cada ambiente influencia proteção superficial, infiltração e vulnerabilidade à erosão do solo."
       ]
     ]
   },
