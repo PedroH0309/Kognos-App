@@ -734,6 +734,246 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Verbos modais",
+    "objective": "Interpretar can, could, must, should, may e might segundo o contexto, distinguindo capacidade, possibilidade, obrigação, proibição e recomendação.",
+    "sections": [
+      {
+        "title": "Modal verbs e sentido no contexto",
+        "explanation": "Em inglês, verbos modais como can, could, may, might, must e should aparecem antes do verbo principal em sua forma base, sem “to” na construção mais comum: “She can swim”, “You must register”. Eles expressam modalidades, isto é, graus de possibilidade, capacidade, necessidade, obrigação, permissão ou aconselhamento. Não possuem tradução fixa: “can” pode indicar capacidade ou permissão, dependendo do enunciado. Em geral, não acrescentamos -s ao modal na terceira pessoa: “He can”, não “He cans”. Em perguntas e negativas, o próprio modal participa da construção, sem exigir “do”: “Can you help?” e “You cannot enter”. Em textos de prova, o contexto social e o gênero textual são tão importantes quanto a forma gramatical.",
+        "example": "Num aviso de biblioteca, “Students can borrow two books” apresenta permissão segundo as regras. Já “Students can read academic articles in English” pode descrever capacidade. A mesma forma verbal desempenha funções diferentes, identificáveis pela situação.",
+        "pitfall": "Traduzir can sempre como “conseguir” ou acrescentar “to” depois de must e should em estruturas simples."
+      },
+      {
+        "title": "Obrigações, conselhos e proibições",
+        "explanation": "“Must” costuma expressar forte necessidade ou obrigação segundo uma norma ou avaliação do falante; “should” indica recomendação, expectativa ou conselho, geralmente com força menor. “Must not” indica proibição: “You must not enter”. É diferente de “do not have to”, que indica ausência de obrigação: “You do not have to attend” significa que a presença não é exigida, não que seja proibida. “May” pode sinalizar permissão formal ou possibilidade, enquanto “might” frequentemente indica possibilidade incerta; suas diferenças dependem do contexto, não de porcentagens universais de certeza. Em avisos escolares e formulários, entender a distinção entre obrigatoriedade e escolha evita erros práticos.",
+        "example": "“You must submit the form by Friday” exige entrega até sexta-feira. “You should review your answers” recomenda revisão. “You must not share passwords” proíbe compartilhar senhas. “You do not have to print the form” informa que imprimir não é obrigatório.",
+        "pitfall": "Confundir “mustn't” com “don't have to”, trocando uma proibição por simples ausência de necessidade."
+      },
+      {
+        "title": "Inferência modal, polidez e limites da tradução",
+        "explanation": "Modais também aparecem em hipóteses e inferências. “She might be at home” indica possibilidade, não afirmação comprovada. “That must be the correct door”, conforme o contexto, pode expressar uma conclusão considerada forte pelo falante e não uma obrigação. “Could you open the window?” normalmente funciona como pedido educado, não apenas pergunta sobre capacidade física. Ao interpretar, observe interlocutores, pontuação, verbo principal e pistas de situação. Para inferir algo em provas de leitura, não converta “might” em fato consumado nem “should” em comando legal. A modalização é importante para distinguir opinião, recomendação, risco e certeza, especialmente em textos científicos, manchetes e comunicados.",
+        "example": "Uma notícia afirma “The new policy may reduce waiting times”. O texto apresenta uma possibilidade, não garantia de redução. Reescrever como “will reduce waiting times” aumentaria indevidamente o grau de certeza sem novas evidências.",
+        "pitfall": "Assumir que “must” representa sempre obrigação ou transformar uma hipótese marcada por may/might em previsão certa."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Corrija “She cans speak English” e explique a regra.",
+        "hint": "Modal não recebe -s na terceira pessoa do singular.",
+        "solution": "A forma adequada é “She can speak English”. Verbos modais como can permanecem invariáveis nessa pessoa e vêm seguidos do verbo principal em sua forma base."
+      },
+      {
+        "level": "basic",
+        "prompt": "Traduza o sentido de “You must not share your password”.",
+        "hint": "Must not indica proibição, não ausência de obrigação.",
+        "solution": "O aviso informa que você não deve compartilhar a senha, expressando proibição. Não é equivalente a “você não precisa compartilhá-la”, que usaria outra construção."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Compare “You should register” e “You must register” em um aviso.",
+        "hint": "Considere recomendação versus obrigação.",
+        "solution": "“Should register” recomenda a inscrição; “must register” a apresenta como obrigatória. O leitor deve verificar contexto e regras para não confundir conselho com exigência."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em “The bus might arrive late”, qual é o grau de compromisso com a afirmação?",
+        "hint": "Might expressa possibilidade.",
+        "solution": "A frase indica que existe possibilidade de atraso, mas não o confirma. O modal impede concluir que o ônibus necessariamente chegará depois do horário."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique a diferença entre “Students mustn't leave” e “Students don't have to leave”.",
+        "hint": "Uma frase proíbe; a outra remove uma exigência.",
+        "solution": "“Mustn't leave” proíbe a saída dos estudantes; “don't have to leave” informa que sair não é obrigatório. Trocar uma construção pela outra altera radicalmente a orientação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que “Could you send the file?” pode ser pedido educado, não apenas teste de capacidade?",
+        "hint": "Observe a função comunicativa entre falante e interlocutor.",
+        "solution": "Em interação cotidiana, a pergunta com could frequentemente formula solicitação de modo cortês. A interpretação pragmática depende da relação entre interlocutores e do objetivo do enunciado."
+      }
+    ],
+    "everyday": {
+      "context": "Um estudante recebe instruções de uma inscrição internacional: “You must upload an ID. You may attach a portfolio. You must not share your password.” Ele precisa separar obrigação, opção e proibição.",
+      "question": "Quais ações são obrigatórias, permitidas e proibidas, sem traduzir os modais literalmente?",
+      "answer": "Must upload estabelece obrigação de anexar identificação; may attach indica permissão/opção de incluir portfólio; must not share proíbe compartilhar a senha. A diferença altera como a inscrição deve ser preenchida.",
+      "connections": [
+        {
+          "subject": "Inglês",
+          "topic": "Skimming e scanning",
+          "reason": "Localizar prazos, permissões e palavras-chave em avisos permite agir corretamente sem traduzir cada termo."
+        },
+        {
+          "subject": "Português",
+          "topic": "Coesão sequencial e conectivos",
+          "reason": "A interpretação de condições e consequências em comunicados também exige atenção às relações lógicas expressas."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Conectores argumentativos em espanhol",
+    "objective": "Identificar adição, contraste, causa, consequência e concessão em textos espanhóis, escolhendo conectores pertinentes e evitando traduções automáticas.",
+    "sections": [
+      {
+        "title": "Conectores e estrutura da argumentação",
+        "explanation": "Em espanhol, conectores orientam relações entre ideias de um texto. “Además” acrescenta informação; “sin embargo” e “no obstante” introduzem contraste; “porque” pode explicar causa; “por eso” ou “por lo tanto” podem apresentar consequência ou conclusão; “aunque” expressa concessão em contextos comuns. Um bom leitor identifica o vínculo entre proposições antes de escolher equivalência em português. Conectores não são enfeites: usar “sin embargo” entre causa e resultado transforma o sentido. A posição e a pontuação podem variar conforme a estrutura do período e o gênero. Em um texto argumentativo, separar dados de conclusões também é fundamental: a presença de “por lo tanto” não garante validade da inferência.",
+        "example": "“El autobús llegó tarde; por eso, perdimos la primera clase” apresenta atraso como causa da perda da aula. “El autobús llegó tarde; sin embargo, llegamos a tiempo” apresenta um resultado que contraria a expectativa criada pelo atraso. As frases não comunicam a mesma relação.",
+        "pitfall": "Traduzir todos os conectores por “entretanto” ou supor que palavras semelhantes entre português e espanhol tenham sempre idêntica função."
+      },
+      {
+        "title": "Causa, finalidade e concessão",
+        "explanation": "A expressão “porque” frequentemente apresenta causa: “No salimos porque llovía”. “Para que” indica finalidade e normalmente introduz uma oração com subjuntivo: “Organizamos el horario para que todos puedan asistir”. “Aunque” pode introduzir contraste concessivo, e sua relação com os modos verbais pode variar conforme se trate de fato assumido ou situação hipotética. “A pesar de” também expressa concessão, mas pede construção sintática adequada. É necessário distinguir a justificativa do objetivo: alguém pode estudar porque deseja aprender (motivo) e organizar um plano para que tenha tempo (finalidade). A tradução isolada não resolve todas as escolhas gramaticais; o contexto determina o sentido esperado.",
+        "example": "“Cerraron la biblioteca porque hubo una avería” explica a causa do fechamento. “Repararon la puerta para que los lectores pudieran entrar” indica finalidade da ação de reparar. “Aunque llovía, hubo reunión” expressa concessão.",
+        "pitfall": "Trocar “porque” por “para que”, confundindo motivo de uma ação com a finalidade buscada, ou apagar o contraste introduzido por “aunque”."
+      },
+      {
+        "title": "Leitura crítica e produção de pequenos argumentos",
+        "explanation": "Ao ler notícia, cartaz ou artigo de opinião, destaque o ponto de vista, a evidência apresentada e a função dos conectores. “En cambio” pode estabelecer contraste comparativo; “por ejemplo” introduz ilustração; “en conclusión” marca fechamento do raciocínio. As escolhas precisam concordar com o encadeamento das ideias, não apenas com a sonoridade. Para reescrever um parágrafo, primeiro formule a relação em linguagem simples, depois selecione um conector espanhol e confira tempo verbal e pontuação. Lembre que as variedades do espanhol apresentam preferências estilísticas, o que não torna automaticamente uma construção regional incorreta. Em provas, o aluno deve justificar a resposta pela frase completa.",
+        "example": "Parágrafo original: “Muchos estudiantes usan el transporte público. Además, algunas líneas tienen horarios limitados. Por eso, informar los cambios puede facilitar la organización de sus trayectos.” Há acréscimo de informação e conclusão moderada, sem alegar que todos terão acesso garantido.",
+        "pitfall": "Usar conector de conclusão para afirmar algo que não foi estabelecido ou interpretar diferenças regionais como erro de idioma."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual relação “sin embargo” estabelece em “Estudió mucho; sin embargo, estaba nerviosa”?",
+        "hint": "O segundo fato contraria uma expectativa possível.",
+        "solution": "“Sin embargo” marca contraste: apesar do estudo, a pessoa estava nervosa. O conectivo não apresenta nervosismo como consequência necessária do esforço de estudo."
+      },
+      {
+        "level": "basic",
+        "prompt": "Complete “No fuimos al parque ___ llovía” com um conector causal.",
+        "hint": "Procure a palavra que corresponde a “porque”.",
+        "solution": "A forma adequada é “No fuimos al parque porque llovía”. O conector introduce a razão apresentada para não ir ao parque, mantendo a relação causal."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique a função de “para que” em “Publicaron avisos para que todos se informaran”.",
+        "hint": "Pergunte qual objetivo se busca alcançar.",
+        "solution": "“Para que” introduz a finalidade da publicação dos avisos: possibilitar que todos recebam informação. A construção apresenta objetivo e não a causa de os avisos terem sido publicados."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Reescreva usando contraste: “La entrada era gratuita. Poca gente asistió”.",
+        "hint": "Use sin embargo sem mudar os fatos.",
+        "solution": "“La entrada era gratuita; sin embargo, poca gente asistió.” A nova frase enfatiza que a baixa presença contrastou com a gratuidade, sem inventar a causa da participação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um texto diz “La encuesta consultó a diez estudiantes; por lo tanto, toda la ciudad piensa igual”. Avalie.",
+        "hint": "Observe o alcance da amostra e a conclusão.",
+        "solution": "O conectivo marca conclusão, mas os dados de dez estudantes não autorizam generalizar à cidade inteira. Um conectivo não transforma uma inferência sem evidência em argumento válido."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare “porque” e “aunque” nas frases “Salió porque llovía” e “Salió aunque llovía”.",
+        "hint": "Uma indica causa; a outra, obstáculo não impeditivo.",
+        "solution": "Na primeira frase, a chuva é apresentada como motivo da saída. Na segunda, a saída ocorreu apesar da chuva, contrariando expectativa. O conector muda a relação lógica do enunciado."
+      }
+    ],
+    "everyday": {
+      "context": "Uma escola publica em espanhol que uma oficina continuará mesmo com chuva: “Aunque llueva, la actividad se realizará”. Um estudante interpreta que a chuva é o motivo da realização.",
+      "question": "O que “aunque” realmente informa e qual diferença haveria se o aviso usasse “porque”?",
+      "answer": "“Aunque” marca concessão: a atividade poderá ocorrer apesar da chuva. “Porque” indicaria a chuva como causa da atividade, alterando indevidamente o sentido do aviso.",
+      "connections": [
+        {
+          "subject": "Espanhol",
+          "topic": "Tempos do passado em espanhol",
+          "reason": "Conectores e flexões verbais organizam acontecimentos e perspectivas temporais em relatos e comunicados."
+        },
+        {
+          "subject": "Português",
+          "topic": "Coesão sequencial e conectivos",
+          "reason": "Comparar concessão e causalidade em duas línguas ajuda a reconhecer argumentos semanticamente diferentes."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Argumentação e falácias",
+    "objective": "Reconstruir argumentos com premissas e conclusão, diferenciar validade de persuasão e reconhecer erros argumentativos sem rotular toda divergência como falácia.",
+    "sections": [
+      {
+        "title": "Identificar premissas, conclusão e inferência",
+        "explanation": "Argumentar é oferecer razões para sustentar uma conclusão. Uma premissa é uma afirmação utilizada como apoio; a conclusão é o que se pretende estabelecer com base nela. Expressões como “porque”, “logo” e “portanto” podem oferecer pistas, mas não determinam sozinhas o papel lógico de uma frase. A validade de um argumento dedutivo significa que não há caso possível, segundo a forma do argumento, em que todas as premissas sejam verdadeiras e a conclusão seja falsa. Já a solidez exige também premissas verdadeiras. Um argumento indutivo, por outro lado, pretende conferir apoio provável à conclusão e precisa ser avaliado por força da evidência e qualidade da amostra. Essa distinção evita reduzir discussão filosófica a frases impressionantes.",
+        "example": "Argumento dedutivo válido: “Todos os livros da caixa A têm etiqueta azul. Este livro veio da caixa A. Portanto, tem etiqueta azul”. A conclusão segue das premissas. Para saber se o argumento é também sólido, seria preciso verificar se as premissas são verdadeiras no caso real.",
+        "pitfall": "Confundir conclusão verdadeira com inferência válida ou acreditar que uma palavra como “portanto” comprova por si só a conclusão."
+      },
+      {
+        "title": "Falácias comuns: ataque pessoal e falsa causa",
+        "explanation": "Uma falácia é um problema de raciocínio ou justificativa que enfraquece a inferência. Ataque pessoal ocorre quando se rejeita uma ideia apenas por características irrelevantes de quem a apresenta, em vez de analisar as razões. Falsa causa aparece quando se supõe relação causal sem evidência suficiente, por exemplo porque dois acontecimentos ocorreram em sequência. Generalização apressada transforma poucos casos em regra ampla sem base representativa. Falso dilema apresenta apenas duas alternativas quando há outras possibilidades relevantes. Nem toda menção à pessoa é falácia: credibilidade, conflito de interesses e competência podem ser pertinentes em certos contextos. Para classificar um caso, reconstrua o argumento e explique exatamente por que a evidência não sustenta a conclusão.",
+        "example": "Uma propaganda afirma: “Depois que colocaram um cartaz, a escola recebeu mais inscrições. Logo o cartaz causou o aumento”. A sequência temporal, isoladamente, não exclui outras causas, como calendário de matrículas ou divulgação por outras vias.",
+        "pitfall": "Chamar toda opinião diferente de falácia ou supor que um ataque à pessoa nunca possa ser relevante, mesmo quando se discutem testemunho e conflito de interesses."
+      },
+      {
+        "title": "Como responder criticamente a argumentos cotidianos",
+        "explanation": "A análise crítica deve ser proporcional e verificável. Primeiro identifique a tese; depois localize fatos, hipóteses e pressupostos; em seguida examine se a inferência é válida, plausível ou insuficiente. Em debates de políticas públicas, efeitos de medidas precisam de indicadores e comparações cuidadosas, não apenas de coincidência de datas. Em textos persuasivos, emoção e retórica podem mobilizar atenção, mas não substituem evidência. A melhor resposta a um argumento fraco costuma mostrar um contraexemplo, uma explicação alternativa ou informação ausente, sem humilhar o interlocutor. Filosofia e leitura crítica se conectam porque ambas exigem diferenciar o que o texto diz daquilo que o leitor está autorizado a concluir.",
+        "example": "A frase “Duas pessoas que estudaram com vídeos foram aprovadas; então vídeos garantem aprovação” não considera outras formas de estudo, preparação prévia nem participantes que não foram aprovados. Uma conclusão adequada dependeria de comparação sistemática, não de dois relatos.",
+        "pitfall": "Concluir que uma afirmação é falsa apenas porque o argumento oferecido para ela é fraco; a conclusão pode ser verdadeira por outras razões."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Identifique a conclusão: “Toda pessoa inscrita deve apresentar documento; Laura está inscrita; logo, Laura deve apresentar documento”.",
+        "hint": "Procure o que se afirma com base nas duas frases anteriores.",
+        "solution": "A conclusão é que Laura deve apresentar documento. As premissas estabelecem a regra para inscritos e afirmam que Laura pertence a esse grupo, sustentando a conclusão."
+      },
+      {
+        "level": "basic",
+        "prompt": "O que distingue validade de solidez em um argumento dedutivo?",
+        "hint": "Uma trata de estrutura; outra inclui verdade das premissas.",
+        "solution": "Validade significa que a forma não permite premissas verdadeiras e conclusão falsa; solidez exige validade e premissas verdadeiras. Um argumento pode ser válido e não sólido."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Identifique o problema em “A proposta é ruim porque seu autor é jovem”.",
+        "hint": "A idade, sozinha, refuta a ideia apresentada?",
+        "solution": "Há ataque pessoal quando a idade substitui avaliação das razões da proposta. Para criticar a medida, seria necessário examinar seus objetivos, custos e evidências, não apenas a pessoa que a apresentou."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que “tomou café e depois passou na prova; logo, o café causou a aprovação” é inferência inadequada?",
+        "hint": "Considere explicações alternativas e dados ausentes.",
+        "solution": "A sequência temporal não estabelece causalidade. Estudo prévio, outras condições e coincidência podem explicar o resultado; seria preciso investigação adicional para sustentar a hipótese causal."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma fala diz “Ou proibimos todos os celulares, ou a escola nunca terá concentração”. Que problema lógico pode haver?",
+        "hint": "Procure medidas intermediárias não examinadas.",
+        "solution": "O enunciado pode apresentar falso dilema ao ignorar alternativas, como regras de uso e atividades pedagógicas específicas. Para avaliar a política, é necessário comparar opções e evidências."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que demonstrar que um argumento é falho não prova necessariamente que sua conclusão é falsa.",
+        "hint": "Uma conclusão pode ter outras justificativas.",
+        "solution": "Uma inferência inválida ou evidência insuficiente não estabelece a falsidade da tese. A conclusão pode ser verdadeira por razões independentes; o que foi refutado é o apoio oferecido."
+      }
+    ],
+    "everyday": {
+      "context": "Num grupo escolar, alguém escreve: “A proposta de biblioteca é ruim porque o representante de turma é muito novo”. Outros estudantes discordam, mas não sabem explicar o erro do argumento.",
+      "question": "Qual premissa está sendo usada contra a proposta e por que ela não basta para avaliar a medida?",
+      "answer": "A idade do representante é apresentada como razão para rejeitar a proposta, sem relação demonstrada com sua qualidade. É preciso avaliar viabilidade, acesso e custos da biblioteca; a crítica à pessoa não substitui uma análise da ideia.",
+      "connections": [
+        {
+          "subject": "Filosofia",
+          "topic": "Aristóteles e a lógica",
+          "reason": "Distinguir premissas e conclusão é o primeiro passo para examinar se uma inferência segue das informações apresentadas."
+        },
+        {
+          "subject": "Redação",
+          "topic": "Repertório sociocultural produtivo",
+          "reason": "Uma referência só sustenta um texto argumentativo quando oferece apoio pertinente, não apenas prestígio ou impacto retórico."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
