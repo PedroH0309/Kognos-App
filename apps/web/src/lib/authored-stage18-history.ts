@@ -166,8 +166,8 @@ export const stage18History:LessonBlueprint[]=[
       ],
       [
         "História",
-        "Cristianismo e mundo bizantino",
-        "A continuidade oriental e transformações cristãs contextualizam o período posterior à queda do Império ocidental."
+        "Primeira República brasileira",
+        "Comparar República romana e Primeira República brasileira ajuda a perceber diferenças históricas de cidadania e representação."
       ]
     ]
   },
@@ -223,8 +223,8 @@ export const stage18History:LessonBlueprint[]=[
       ],
       [
         "História",
-        "Colonização portuguesa na América",
-        "A formação de estruturas administrativas e econômicas da colônia explica o contexto dos engenhos e do comércio."
+        "Abolição e pós-abolição",
+        "A continuidade histórica da escravidão e seus efeitos após 1888 ajuda a contextualizar relações de trabalho coloniais."
       ]
     ]
   }
