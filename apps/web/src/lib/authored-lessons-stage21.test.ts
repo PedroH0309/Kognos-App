@@ -90,9 +90,10 @@ test('Stage 21 adds 64 new deep subject-specific lessons, without overwriting ea
   }
  }
  assert.deepEqual(missingReferences,[],'Link targets must resolve to fully authored lessons');
- assert.equal(subjects.size,15,'All previously uncovered subjects represented, no duplicate PE syllabus');
+ assert.equal(subjects.size,14,'No repeated Spanish or PE syllabus topics');
  assert.equal(subjects.get('Matemática'),8);
- assert.equal(subjects.get('Espanhol'),1,'Avoid duplicating previously completed Spanish topics');
+ assert.equal(subjects.get('Inglês'),5,'Add a distinct English topic without duplicating the completed Spanish syllabus');
+ assert.equal(subjects.has('Espanhol'),false,'Do not reauthor Spanish courses already present');
  assert.equal(subjects.get('Física'),7);
  assert.equal(subjects.get('Química'),6);
 });
