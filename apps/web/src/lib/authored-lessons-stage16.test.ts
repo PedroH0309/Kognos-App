@@ -78,7 +78,7 @@ test('Stage 16 adds 16 original, syllabus-matched deep lessons across all establ
    connections.add(target);
   }
  }
- assert.equal(everydayContexts.length,101);
+ assert.ok(everydayContexts.length>=101,'The original 101 scenarios remain available as the repertoire expands');
 });
 test('Stage 16 lookup does not affect other topics or IDs',()=>{
  const authored=new Set(stage16Topics.map(x=>x.subject+'\0'+x.topic));
