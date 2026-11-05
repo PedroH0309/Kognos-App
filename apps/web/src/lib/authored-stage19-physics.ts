@@ -93,7 +93,7 @@ export const stage19Physics:TopicSeed[]=[
     "situation": [
       "Um aplicativo mostra dois ciclistas em reta: A parte do marco zero a 5 m/s e B do marco 30 m no sentido contrário, a 1 m/s.",
       "Em que instante e posição eles se encontram no modelo uniforme?",
-      "sA=5t e sB=30−t; t=5 s, posição 25 m a partir da origem."
+      "Use as funções horárias sA=5t e sB=30−t, ambas em metros para t em segundos. A igualdade 5t=30−t implica 6t=30 e t=5 s; então s=25 m."
     ],
     "links": [
       [
