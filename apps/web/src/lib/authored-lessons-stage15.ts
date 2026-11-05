@@ -930,6 +930,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Redação",
+    "topic": "Desenvolvimento e tópico frasal",
+    "objective": "Planejar parágrafos argumentativos com tópico frasal, fundamentação e análise, mantendo relação explícita entre tese, evidências e conclusão.",
+    "sections": [
+      {
+        "title": "Tópico frasal define a função do parágrafo",
+        "explanation": "O tópico frasal é uma frase ou conjunto curto de enunciados que apresenta a ideia central de um parágrafo de desenvolvimento. Numa redação argumentativa, ele ajuda a mostrar qual aspecto da tese será defendido em seguida. Não precisa ser sempre a primeira frase em qualquer gênero, mas a abertura explícita costuma facilitar a leitura em textos escolares. Um tópico frasal não é apenas repetir o tema geral: deve enunciar uma relação discutível e específica. Se a tese afirma que barreiras de transporte e informação dificultam acesso a bibliotecas, um parágrafo pode desenvolver insuficiência de transporte e outro comunicação de horários. Assim, cada bloco contribui com função própria para a demonstração. O texto evita digressões quando cada informação apresentada pode ser vinculada à ideia principal do parágrafo.",
+        "example": "Para a tese 'dificuldades de transporte limitam o acesso a serviços culturais', um tópico frasal possível é: 'A baixa frequência de ônibus pode tornar inviável a ida a bibliotecas em determinados horários'.",
+        "pitfall": "Usar um tópico frasal tão amplo quanto 'a sociedade tem problemas', sem indicar qual relação o parágrafo irá demonstrar.",
+        "steps": [
+          "Identifique o argumento específico do parágrafo antes de escrever exemplos.",
+          "Verifique se a ideia central ajuda realmente a sustentar a tese da introdução."
+        ]
+      },
+      {
+        "title": "Fundamentar não é apenas citar um dado ou autor",
+        "explanation": "Um parágrafo argumentativo precisa desenvolver uma razão que justifique sua afirmação. Exemplos, conceitos e dados podem apoiar o raciocínio, mas devem ser pertinentes e contextualizados. Dizer que um filósofo famoso 'falou sobre sociedade' não demonstra relação específica com o problema; citar porcentagem sem fonte ou população definida também não fornece boa evidência. A fundamentação deve explicar o mecanismo pelo qual a causa apresentada produz ou agrava uma consequência, reconhecendo limites e condições. O leitor precisa entender por que o exemplo foi escolhido e como ele sustenta a afirmação. Uma organização útil é tópico frasal, explicação, evidência contextualizada e análise que retorna ao argumento; trata-se de orientação de escrita, não fórmula obrigatória para qualquer gênero. Não invente estatísticas para parecer convincente.",
+        "example": "Frase inicial: 'A irregularidade de horários pode reduzir o acesso à biblioteca'. Fundamentação: 'Quem depende do último ônibus pode não conseguir voltar após o fechamento, mesmo que o serviço esteja disponível'.",
+        "pitfall": "Acumular exemplos sem explicar sua relação com a tese ou apresentar estatística hipotética como resultado de pesquisa real.",
+        "steps": [
+          "Para cada evidência, explique de modo explícito que aspecto do argumento ela sustenta.",
+          "Distinga um exemplo hipotético, que ilustra um mecanismo, de um dado empírico verificado."
+        ]
+      },
+      {
+        "title": "Coesão e fechamento do desenvolvimento",
+        "explanation": "O desenvolvimento precisa mostrar progressão: uma frase esclarece a anterior ou adiciona fundamento novo. Conectivos de causa, consequência, oposição e exemplificação podem tornar essas relações visíveis, mas só funcionam quando o raciocínio já está coerente. O fechamento de parágrafo pode indicar a consequência do argumento ou ligá-lo à tese, sem repetir literalmente a primeira frase. Em uma redação sobre acesso a equipamentos públicos, não convém abrir tópico sobre transporte e terminar com discussão desconectada de redes sociais. A revisão pode perguntar: qual é a ideia deste parágrafo? Qual evidência foi apresentada? Foi analisada? O encerramento retorna à tese? Se duas frases introduzem argumentos incompatíveis, talvez devam ser reorganizadas em blocos diferentes. A clareza não depende de palavras difíceis, mas de encadeamento demonstrável entre afirmações e justificativas.",
+        "example": "Após explicar a baixa frequência de ônibus, um fechamento coerente seria: 'Desse modo, a existência da biblioteca não basta para assegurar seu uso por quem enfrenta barreiras de mobilidade'.",
+        "pitfall": "Achar que muitos conectivos substituem coerência ou iniciar um parágrafo sobre uma causa e terminar em assunto sem ligação.",
+        "steps": [
+          "Leia as frases em sequência e nomeie a função lógica de cada uma.",
+          "Reescreva a conclusão local para retomar apenas a causa efetivamente analisada."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O que é tópico frasal num parágrafo de desenvolvimento?",
+        "hint": "Procure a ideia central que será explicada.",
+        "solution": "É o enunciado que apresenta o argumento principal do parágrafo, orientando a justificativa e a seleção de exemplos."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que 'a sociedade tem muitos problemas' é tópico frasal pouco útil?",
+        "hint": "Falta recorte específico da tese.",
+        "solution": "A frase é genérica e não indica qual causa ou relação será demonstrada. Um bom tópico frasal delimita a função do desenvolvimento."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Transforme 'transporte' em tópico frasal sobre acesso a bibliotecas.",
+        "hint": "Declare uma relação causal plausível.",
+        "solution": "Uma possibilidade é: 'A baixa frequência de transporte coletivo pode limitar o acesso de estudantes a bibliotecas públicas'. A frase pode ser fundamentada depois."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que citar uma pesquisa sem apresentar população e data pode enfraquecer o texto?",
+        "hint": "Falta contexto para interpretar a informação.",
+        "solution": "Sem identificar origem, público e período, o leitor não consegue avaliar alcance e pertinência dos números. A citação isolada não substitui análise."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um parágrafo afirma que transporte dificulta leitura, mas só desenvolve publicidade online. Qual a falha?",
+        "hint": "Compare tópico inicial e justificativas.",
+        "solution": "O parágrafo perde unidade argumentativa porque as explicações não demonstram o mecanismo indicado no tópico frasal. Deve retomar transporte ou criar bloco distinto."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Crie fechamento coerente para parágrafo que explicou demora de ônibus até serviços culturais.",
+        "hint": "Retome a implicação da barreira estudada.",
+        "solution": "Uma conclusão possível é: 'Assim, ampliar equipamentos culturais sem considerar o deslocamento pode manter desigualdades de acesso'. Ela deriva da justificativa apresentada."
+      }
+    ],
+    "everyday": {
+      "context": "Um estudante escreve redação defendendo mais acesso a bibliotecas. O primeiro parágrafo fala de transporte, publicidade, internet e merenda sem esclarecer como essas ideias sustentam a tese.",
+      "question": "Como o tópico frasal ajuda a escolher quais explicações pertencem ao parágrafo?",
+      "answer": "O tópico frasal delimita o argumento; se o foco é transporte, as evidências devem explicar deslocamento e acesso. Outros aspectos podem formar novos parágrafos, se contribuírem para a tese.",
+      "connections": [
+        {
+          "subject": "Redação",
+          "topic": "Formulação de tese",
+          "reason": "O desenvolvimento precisa decompor a posição central em argumentos específicos, sem substituir ou abandonar a tese."
+        },
+        {
+          "subject": "Português",
+          "topic": "Coesão sequencial e conectivos",
+          "reason": "As relações entre explicação, exemplo e conclusão exigem progressão lógica, não apenas conectivos decorativos."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Voz passiva em inglês",
+    "objective": "Interpretar voz ativa e passiva em inglês, formar estruturas com be e particípio e identificar quando o agente pode ser omitido sem alterar a informação essencial.",
+    "sections": [
+      {
+        "title": "Quem pratica e quem recebe a ação",
+        "explanation": "Na voz ativa, o sujeito costuma exercer o papel de agente em frases transitivas simples: 'The school published the notice'. Na voz passiva correspondente, o objeto da ativa torna-se sujeito gramatical: 'The notice was published by the school'. A estrutura básica é uma forma adequada do verbo 'be' seguida de past participle. O agente pode aparecer introduzido por 'by', mas nem sempre é necessário ou conhecido. A escolha de voz altera o foco informacional, sem mudar obrigatoriamente o acontecimento descrito. É preciso preservar tempo verbal: 'publishes' corresponde, no presente simples, a 'is published'; 'published' no passado corresponde a 'was published'. Nem todo verbo intransitivo admite passiva natural, porque não há objeto direto para assumir a posição de sujeito.",
+        "example": "Ativa: 'Students clean the classroom'. Passiva: 'The classroom is cleaned by students'. O destaque passa do grupo que realiza a ação ao local que a recebe.",
+        "pitfall": "Usar 'is clean' como equivalente universal de 'is cleaned', confundindo adjetivo de estado com estrutura passiva.",
+        "steps": [
+          "Identifique agente, verbo e objeto da frase ativa.",
+          "Promova o objeto para sujeito e preserve o tempo com be + particípio."
+        ]
+      },
+      {
+        "title": "Presente, passado e futuro em construções passivas",
+        "explanation": "A voz passiva combina um auxiliar adequado ao tempo e aspecto verbal com o particípio principal. No presente simples: 'The forms are checked'. No passado simples: 'The forms were checked'. No futuro com will: 'The forms will be checked'. No present perfect: 'The forms have been checked'. O particípio de verbos irregulares exige atenção: write→written, make→made, see→seen. Sujeito e auxiliar devem concordar: 'The report is published' e 'The reports are published'. Em negativas e perguntas, os auxiliares recebem a modificação: 'The result was not announced' e 'Was the result announced?'. Traduzir palavra por palavra pode esconder que a passiva é usada para dar centralidade ao procedimento ou ao objeto, como em relatórios e notícias.",
+        "example": "Para 'Someone wrote the report yesterday', a versão passiva possível é 'The report was written yesterday'. 'Written' é particípio irregular e 'was' preserva passado simples.",
+        "pitfall": "Escrever 'was wrote' em vez de 'was written' ou manter auxiliar no singular quando sujeito passivo é plural.",
+        "steps": [
+          "Selecione o auxiliar pelo tempo e número do sujeito passivo.",
+          "Verifique o particípio principal, especialmente em verbos irregulares."
+        ]
+      },
+      {
+        "title": "Agente omitido e responsabilidade no texto",
+        "explanation": "Em manchetes e textos científicos, o agente pode ser desconhecido, irrelevante para a finalidade ou deliberadamente omitido: 'The samples were analyzed' informa o procedimento, mas não quem o realizou. A omissão não prova fraude, embora possa dificultar responsabilização em certos contextos. Para interpretar criticamente, pergunte se o texto fornece fonte, método e autoria quando esses dados são necessários. Nem toda ocorrência de be + palavra terminada em -ed é uma passiva inequívoca: particípios também podem funcionar como adjetivos, e o contexto decide. A escolha estilística deve servir ao propósito: ativa pode deixar responsabilidades claras; passiva pode priorizar processo ou resultado. Em questões de vestibular, compare as informações mantidas e o que foi retirado ou deslocado de foco.",
+        "example": "'The data were collected in June' destaca a coleta e a data. Se a reportagem precisa atribuir responsabilidade, acrescentar 'by the research team' pode ser relevante, desde que essa autoria tenha sido verificada.",
+        "pitfall": "Concluir que toda passiva procura ocultar culpados ou que a retirada do agente altera automaticamente o tempo verbal do fato.",
+        "steps": [
+          "Determine se a identidade do agente é necessária para interpretar a afirmação.",
+          "Examine se a voz passiva enfatiza resultado, procedimento ou omite informação relevante."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Transforme 'The school publishes the timetable' em voz passiva no presente simples.",
+        "hint": "Use is + particípio do verbo publish.",
+        "solution": "'The timetable is published by the school.' O cronograma torna-se sujeito, e o auxiliar is preserva o presente simples."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual é o particípio de write na frase passiva 'The letter was ___'?",
+        "hint": "Não use o simple past wrote.",
+        "solution": "A forma correta é 'written': 'The letter was written'. A estrutura exige particípio, não o passado simples do verbo irregular."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Passe 'Students cleaned the classroom' para voz passiva no passado.",
+        "hint": "Use was + cleaned, considerando classroom singular.",
+        "solution": "'The classroom was cleaned by students'. O passado é preservado por was e o objeto da ativa torna-se sujeito."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Como traduzir o foco de 'The report will be published tomorrow'?",
+        "hint": "Observe will be + particípio.",
+        "solution": "A frase destaca que o relatório será publicado amanhã. O agente responsável não foi informado, mas o futuro e o evento estão claros."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que 'The forms were checked' não revela quem verificou os formulários?",
+        "hint": "O complemento com by pode ser omitido.",
+        "solution": "A frase está na voz passiva e não inclui agente introduzido por by. Pode ser necessário consultar a fonte se a identidade for relevante."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que 'The door is closed' pode ser ambígua entre estado e passiva.",
+        "hint": "Considere closed como adjetivo ou particípio.",
+        "solution": "Dependendo do contexto, closed descreve condição da porta ou resultado de ação. Nem toda combinação de be com particípio é claramente passiva sem contexto."
+      }
+    ],
+    "everyday": {
+      "context": "Um aviso internacional informa: 'The exam dates were changed'. Os alunos entendem que as datas foram alteradas, mas tentam descobrir qual instituição realizou a alteração.",
+      "question": "Por que a frase comunica a mudança sem identificar quem a realizou?",
+      "answer": "Ela usa voz passiva: 'the exam dates' é sujeito que recebe a ação, 'were changed' preserva passado, e o agente não aparece. A origem da decisão exige outra informação.",
+      "connections": [
+        {
+          "subject": "Inglês",
+          "topic": "Present perfect e past perfect",
+          "reason": "A comparação mostra como auxiliares e particípios organizam relações de tempo, mesmo em construções diferentes da passiva."
+        },
+        {
+          "subject": "Português",
+          "topic": "Informações explícitas e inferências",
+          "reason": "Omissão de agente não autoriza inventar quem realizou a ação; é necessário distinguir informação declarada de suposição."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
