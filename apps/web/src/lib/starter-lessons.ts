@@ -8,6 +8,7 @@ import {deepMathLesson,deepMathTopicNames} from './deep-math-lessons.ts';
 import {deepCrossSubjectLesson,deepCrossSubjectTopics} from './deep-cross-subject-lessons.ts';
 import {stage13Lesson,stage13Topics} from './authored-lessons-stage13.ts';
 import {stage14Lesson,stage14Topics} from './authored-lessons-stage14.ts';
+import {stage15Lesson,stage15Topics} from './authored-lessons-stage15.ts';
 
 /** Offline curriculum-wide teaching modules.
  * IMPORTANT: auto-assembled introductory content is not a teacher-reviewed
@@ -103,6 +104,7 @@ export function starterCoverage(topic:CurriculumTopic):StarterCoverage{
  if(deepCrossSubjectTopics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
  if(stage13Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
  if(stage14Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
+ if(stage15Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  if(legacy)return 'curated';
  const ref=findProvaoTopic(topic.subject,topic.topic);
@@ -122,6 +124,8 @@ export function starterLesson(topic:CurriculumTopic):CourseLesson{
  if(stage13)return stage13;
  const stage14=stage14Lesson(topic);
  if(stage14)return stage14;
+ const stage15=stage15Lesson(topic);
+ if(stage15)return stage15;
  const ref=findProvaoTopic(topic.subject,topic.topic);
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  const seed=matchTeachingSeed(topic.subject,topic.topic+' '+(ref?.description??''));
