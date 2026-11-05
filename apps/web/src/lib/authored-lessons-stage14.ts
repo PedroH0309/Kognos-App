@@ -654,6 +654,326 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "História",
+    "topic": "Redemocratização e Constituição de 1988",
+    "objective": "Compreender a transição política brasileira após a ditadura militar, a Assembleia Constituinte e a ampliação de direitos na Constituição de 1988, distinguindo previsão jurídica de efetivação.",
+    "sections": [
+      {
+        "title": "Abertura política e mobilização pela democracia",
+        "explanation": "A transição brasileira do regime militar para a ordem democrática foi um processo gradual e disputado, que envolveu mobilização de movimentos sociais, entidades profissionais, sindicatos, estudantes, grupos pela anistia e setores políticos diversos. A campanha Diretas Já, em 1983–1984, reuniu manifestações por eleições presidenciais diretas, mas a proposta de emenda Dante de Oliveira não alcançou os votos necessários na Câmara dos Deputados em 1984. A eleição presidencial de 1985 ocorreu pelo Colégio Eleitoral, de maneira indireta; Tancredo Neves foi eleito, mas adoeceu e não tomou posse, e José Sarney assumiu a Presidência. É importante distinguir o retorno ao governo civil da consolidação das instituições democráticas, que exigiu mudanças legais e continuou sendo objeto de debate. A história desse período não resulta da ação isolada de uma liderança.",
+        "example": "Uma linha do tempo pode registrar Diretas Já em 1983–1984, eleição presidencial indireta em 1985, Assembleia Constituinte instalada em 1987 e promulgação da Constituição em 1988. Cada marco representa uma etapa institucional diferente.",
+        "pitfall": "Afirmar que as manifestações de 1984 produziram imediatamente eleição presidencial direta em 1985 ou confundir posse de um governo civil com realização plena de todos os direitos."
+      },
+      {
+        "title": "Constituinte, direitos e organização do Estado",
+        "explanation": "A Assembleia Nacional Constituinte, instalada em 1987, elaborou a Constituição promulgada em 5 de outubro de 1988. Conhecida como Constituição Cidadã, ela consolidou fundamentos democráticos, ampliou direitos e garantias e estruturou competências dos poderes e entes federativos. Direitos sociais, participação política e princípios para políticas públicas ganharam centralidade, incluindo disposições sobre saúde e educação. A Constituição estabeleceu a saúde como direito de todos e dever do Estado, base para a organização do Sistema Único de Saúde, cuja regulamentação foi desenvolvida posteriormente. O voto é obrigatório para eleitores de 18 a 70 anos alfabetizados, com exceções previstas, e facultativo para determinados grupos, como pessoas analfabetas, maiores de 70 anos e jovens de 16 e 17 anos, conforme as regras constitucionais. Discutir cidadania exige ler dispositivos e sua aplicação histórica.",
+        "example": "Uma escola debate direito à educação. A Constituição fornece normas e deveres estatais, mas a existência do direito escrito não prova que todos os estudantes tenham escola acessível e condições materiais iguais em qualquer município.",
+        "pitfall": "Confundir promulgação de um direito com sua implementação imediata e uniforme ou atribuir à Constituição normas detalhadas de serviços que dependem de regulamentação."
+      },
+      {
+        "title": "Direitos formais, participação e permanências",
+        "explanation": "A democratização não apaga automaticamente desigualdades históricas, disputas de memória e desafios de participação. O período posterior a 1988 envolve eleições diretas, debates sobre políticas sociais, direitos de grupos diversos e atuação de instituições de fiscalização e representação. Para avaliar um direito, diferencie garantia constitucional, legislação infraconstitucional, implementação administrativa e acesso efetivo. Uma pesquisa sobre uma unidade de saúde, por exemplo, precisa verificar se existe serviço, atendimento disponível, qualidade, transporte e recursos, não apenas citar o texto legal. Comparar experiências de grupos e regiões ajuda a evitar generalizações. A leitura crítica também deve considerar que a Constituição pode ser emendada por procedimentos específicos, portanto normas e políticas públicas podem mudar ao longo do tempo sem que a origem histórica de 1988 perca relevância.",
+        "example": "Um município pode reconhecer formalmente direitos de acessibilidade e ainda possuir prédios públicos com barreiras físicas. A análise histórica e cívica distingue norma, fiscalização e execução, sem concluir que o direito é inexistente por causa da falha de implementação.",
+        "pitfall": "Afirmar que a Constituição sozinha resolveu problemas de representação, saúde ou educação ou que direitos sociais dependem exclusivamente da vontade de quem os utiliza."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em que data foi promulgada a Constituição brasileira conhecida como Cidadã?",
+        "hint": "Considere o mês de outubro de 1988.",
+        "solution": "A Constituição foi promulgada em 5 de outubro de 1988. O texto resultou de processo constituinte iniciado em 1987, no contexto da redemocratização."
+      },
+      {
+        "level": "basic",
+        "prompt": "O movimento Diretas Já defendia qual mudança política no início dos anos 1980?",
+        "hint": "Diferencie eleição direta e escolha por colégio eleitoral.",
+        "solution": "Defendia eleições diretas para presidente da República. A eleição presidencial de 1985 ainda ocorreu de modo indireto, pelo Colégio Eleitoral."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que a vitória da campanha Diretas Já não deve ser descrita como eleição direta de 1985?",
+        "hint": "A emenda não recebeu aprovação suficiente.",
+        "solution": "A proposta de emenda para eleição direta não foi aprovada em 1984; em 1985, a escolha ocorreu indiretamente. O movimento foi importante na mobilização democrática sem produzir aquela eleição direta imediata."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique a relação entre Constituição de 1988 e direito à saúde.",
+        "hint": "Separe direito constitucional e sistema organizado.",
+        "solution": "A Constituição reconheceu saúde como direito de todos e dever do Estado, fundamento da organização do SUS. A prestação concreta do serviço depende também de regulamentação e implementação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um estudante diz que uma lei garante igualdade de acesso, logo todos já têm atendimento igual. Avalie.",
+        "hint": "Distinga texto normativo de condições reais.",
+        "solution": "A garantia jurídica define deveres e direitos, mas não prova execução uniforme. É preciso verificar infraestrutura, recursos, distâncias, gestão e condições materiais de acesso."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare o fim do governo militar e a consolidação democrática como processos históricos.",
+        "hint": "Considere 1985, 1987 e 1988.",
+        "solution": "O retorno ao governo civil ocorreu em 1985; a elaboração e promulgação da Constituição entre 1987 e 1988 estruturaram uma nova ordem jurídica. A efetivação democrática continuou sujeita a disputas."
+      }
+    ],
+    "everyday": {
+      "context": "Durante uma visita a uma unidade de saúde, estudantes discutem por que o atendimento público é apresentado como direito e por que a distância até a unidade ainda pode dificultar o acesso de algumas famílias.",
+      "question": "O que a Constituição de 1988 garante e por que isso não elimina imediatamente todas as barreiras de atendimento?",
+      "answer": "A Constituição reconhece a saúde como direito de todos e dever do Estado. A efetivação exige regulamentação, recursos, profissionais, infraestrutura e acesso territorial; o direito formal não resolve sozinho essas condições.",
+      "connections": [
+        {
+          "subject": "História",
+          "topic": "Abolição e pós-abolição",
+          "reason": "Os dois processos históricos mostram a importância de diferenciar reconhecimento jurídico e igualdade material efetiva."
+        },
+        {
+          "subject": "Geografia",
+          "topic": "Segregação socioespacial",
+          "reason": "A distribuição territorial de equipamentos e transportes ajuda a compreender por que um direito legal pode ter acesso desigual."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Mudanças climáticas globais",
+    "objective": "Explicar a intensificação antrópica do efeito estufa, distinguir variabilidade meteorológica de tendência climática e comparar mitigação com adaptação.",
+    "sections": [
+      {
+        "title": "Efeito estufa natural e intensificação humana",
+        "explanation": "O efeito estufa é processo físico natural pelo qual gases atmosféricos absorvem e emitem radiação infravermelha, contribuindo para a temperatura da superfície terrestre. A presença desse mecanismo é importante para a vida; o problema climático contemporâneo relaciona-se à intensificação causada principalmente por emissões humanas de gases como dióxido de carbono e metano e por mudanças no uso da terra. Combustão de combustíveis fósseis, desmatamento e certas atividades agropecuárias têm participações diferentes conforme local e período. O clima é descrito por padrões de longo prazo, diferentemente do tempo meteorológico de um dia. Uma tarde fria não refuta tendência de aquecimento global; também não se deve atribuir automaticamente todo evento extremo a uma única causa sem estudo específico.",
+        "example": "Uma cidade pode ter uma semana com temperaturas abaixo da média histórica e ainda experimentar tendência de aquecimento em séries de décadas. A comparação exige observações de longo prazo e métodos estatísticos adequados.",
+        "pitfall": "Afirmar que o efeito estufa é inteiramente artificial ou que um episódio frio elimina evidências de mudanças climáticas."
+      },
+      {
+        "title": "Sistemas climáticos, impactos e desigualdades",
+        "explanation": "Mudanças na temperatura média global podem influenciar precipitação, ondas de calor, disponibilidade de água e riscos de eventos extremos, mas os efeitos variam por região e por tipo de fenômeno. Processos de circulação atmosférica, correntes oceânicas, relevo e uso do solo influenciam condições locais. Além de perigos físicos, o risco depende da exposição e da vulnerabilidade das populações: comunidades sem infraestrutura de drenagem, moradia segura ou acesso a serviços podem sofrer mais danos diante de evento similar. O conhecimento geográfico combina observações, modelos e dados de múltiplas fontes; ele não autoriza previsões exatas sobre cada cidade sem informação adicional. Em provas, conecte o mecanismo climático ao tipo de impacto e reconheça que desigualdade social altera as consequências.",
+        "example": "Duas áreas da mesma cidade podem receber chuva intensa semelhante, mas a presença de encostas ocupadas, drenagem insuficiente ou áreas impermeabilizadas altera a exposição a deslizamentos e alagamentos.",
+        "pitfall": "Concluir que todo lugar terá o mesmo tipo de mudança climática ou que fenômenos extremos possuem impacto independente da ocupação territorial."
+      },
+      {
+        "title": "Mitigação, adaptação e avaliação de propostas",
+        "explanation": "Mitigação reúne medidas para reduzir emissões de gases de efeito estufa ou ampliar remoção de carbono da atmosfera; adaptação busca diminuir danos e aumentar capacidade de lidar com impactos climáticos já existentes ou esperados. Melhorar eficiência energética e diminuir emissões de transportes são exemplos de mitigação quando realmente reduzem gases; revisar drenagem e sistemas de alerta pode ser adaptação. Algumas iniciativas oferecem ambos os benefícios, mas não se deve usar os termos como sinônimos. Uma proposta deve apresentar responsável, mecanismo e indicadores realistas, além de reconhecer limitações de custo, escala e contexto. As decisões envolvem ciência, planejamento público e participação social, sendo inadequado atribuir responsabilidade igual a populações que emitem quantidades muito diferentes e possuem meios de ação desiguais.",
+        "example": "Um município pode melhorar a drenagem de áreas sujeitas a inundações como adaptação e investir em ônibus com menores emissões por passageiro como mitigação, desde que a comparação de impactos seja efetivamente demonstrada.",
+        "pitfall": "Chamar qualquer obra de mitigação sem mostrar redução de emissões ou prometer que uma medida local elimina o aquecimento global."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Explique por que o efeito estufa não é um fenômeno inteiramente ruim.",
+        "hint": "Considere sua função natural no balanço de energia da Terra.",
+        "solution": "O efeito estufa natural contribui para manter temperaturas compatíveis com a vida. A preocupação atual envolve sua intensificação por atividades humanas que aumentam concentrações de gases."
+      },
+      {
+        "level": "basic",
+        "prompt": "Uma frente fria isolada refuta o aquecimento global? Justifique.",
+        "hint": "Separe tempo meteorológico e clima.",
+        "solution": "Não. Uma frente fria descreve condições de curto prazo numa região. Tendências climáticas são avaliadas por séries e observações de longo prazo, em escala adequada."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Classifique revisão de drenagem urbana e redução de emissões do transporte como adaptação ou mitigação.",
+        "hint": "Uma reduz impactos; outra atua na causa climática.",
+        "solution": "Revisar drenagem para enfrentar chuvas intensas é adaptação. Reduzir emissões por transporte é mitigação, quando a política efetivamente diminui gases."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que duas comunidades expostas à mesma chuva podem apresentar danos diferentes?",
+        "hint": "Analise exposição e vulnerabilidade.",
+        "solution": "Ocupação de áreas de risco, qualidade da moradia, drenagem e recursos de resposta alteram a vulnerabilidade. O fenômeno físico não determina sozinho o dano social."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma campanha afirma que plantar dez árvores resolverá o aquecimento do planeta. Avalie.",
+        "hint": "Compare escala da medida e causas globais.",
+        "solution": "Árvores podem oferecer benefícios locais e contribuir para remoção de carbono, mas dez árvores não anulam emissões globais nem resolvem causas estruturais. Escala e manutenção importam."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que atribuir a causa de um alagamento específico apenas às mudanças climáticas é precipitado?",
+        "hint": "Considere impermeabilização, drenagem e estudo de atribuição.",
+        "solution": "O alagamento depende de precipitação, ocupação e infraestrutura local, entre outros fatores. Avaliar contribuição da mudança climática exige dados e análise especializada, não apenas coincidência temporal."
+      }
+    ],
+    "everyday": {
+      "context": "Duas ruas de uma cidade recebem uma chuva intensa semelhante. Uma delas apresenta alagamento recorrente e a outra tem boa drenagem. Um vídeo atribui toda a diferença exclusivamente ao aquecimento global.",
+      "question": "Que fatores locais precisam ser considerados e como distinguir adaptação urbana de redução de emissões?",
+      "answer": "Impermeabilização, ocupação e drenagem podem explicar parte da diferença. Melhorar a drenagem é adaptação; reduzir emissões de gases estufa é mitigação. A contribuição climática para eventos exige análise.",
+      "connections": [
+        {
+          "subject": "Ciências",
+          "topic": "Ciclos da água e do carbono",
+          "reason": "O ciclo hidrológico e o ciclo do carbono ajudam a explicar precipitação e circulação de carbono em sistemas naturais."
+        },
+        {
+          "subject": "Geografia",
+          "topic": "Segregação socioespacial",
+          "reason": "Diferenças de infraestrutura e vulnerabilidade territorial influenciam como eventos climáticos afetam a população."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Ciclos da água e do carbono",
+    "objective": "Representar etapas do ciclo da água e do ciclo do carbono, distinguindo circulação da matéria, transferência de energia e mudanças humanas nos fluxos.",
+    "sections": [
+      {
+        "title": "O ciclo da água no ambiente",
+        "explanation": "A água circula entre oceanos, corpos d'água, solo, seres vivos e atmosfera por processos como evaporação, transpiração, condensação, precipitação, infiltração e escoamento superficial. A evaporação transforma água líquida em vapor, enquanto a condensação forma gotículas sob condições adequadas; nenhuma dessas mudanças altera a identidade química H₂O. A evapotranspiração reúne componentes da evaporação e da transpiração da vegetação. Nem toda chuva infiltra no solo, pois impermeabilização, intensidade da precipitação, relevo e características do terreno influenciam destinos da água. O ciclo não significa percurso idêntico para toda molécula nem garantia de água potável em qualquer etapa. O consumo humano, a qualidade da água e o abastecimento dependem de outros processos de tratamento, captação e gestão.",
+        "example": "Depois de uma chuva, parte da água de um jardim infiltra no solo, parte escoa para uma calçada e parte pode voltar à atmosfera posteriormente por evaporação e transpiração. A proporção depende das condições locais.",
+        "pitfall": "Afirmar que toda água precipitada chega aos rios ou que a evaporação remove automaticamente todos os contaminantes de qualquer sistema real."
+      },
+      {
+        "title": "Carbono: fotossíntese, respiração e decomposição",
+        "explanation": "O carbono está presente no dióxido de carbono atmosférico, na matéria orgânica, em águas e sedimentos, em rochas e em combustíveis fósseis. Na fotossíntese, organismos produtores incorporam carbono inorgânico em moléculas orgânicas, usando energia luminosa. Respiração, decomposição e combustão podem devolver CO₂ ao ambiente em quantidades e condições diferentes. O carbono também circula por trocas entre atmosfera e oceanos, além de processos geológicos de longo prazo. A matéria circula entre reservatórios, mas a energia capturada na fotossíntese flui e se dissipa; não é reciclada do mesmo modo. Em uma cadeia alimentar, o carbono da biomassa pode passar de produtores a consumidores e decompositores, conectando ecologia e química. É essencial não imaginar um único circuito rápido e fechado para todo átomo de carbono.",
+        "example": "Uma planta incorpora carbono do CO₂ em matéria orgânica; quando partes da planta são consumidas e posteriormente decompostas, parte desse carbono pode retornar ao ambiente como CO₂ por processos metabólicos.",
+        "pitfall": "Afirmar que o carbono circula apenas por animais e plantas, sem oceanos e rochas, ou confundir reciclagem de matéria com reciclagem de energia."
+      },
+      {
+        "title": "Alterações humanas e relações entre ciclos",
+        "explanation": "Desmatamento, impermeabilização urbana, mudanças na agricultura e combustão de combustíveis fósseis alteram fluxos dos ciclos da água e do carbono. Reduzir cobertura vegetal pode modificar evapotranspiração, infiltração, escoamento e armazenamento de carbono, mas a magnitude depende do ecossistema e de condições locais. Emissão de CO₂ pela queima de carbono fóssil desloca carbono armazenado por longos períodos para a atmosfera. A conexão com mudanças climáticas exige compreender balanços em escala de tempo e múltiplos gases, não atribuir cada chuva a um único processo. Projetos locais de conservação do solo e vegetação podem oferecer benefícios, mas não equivalem à restauração integral do sistema global. Na análise de problemas, distinga processos físicos, químicos e biológicos e reconheça a escala envolvida em cada um.",
+        "example": "Numa área hipotética de solo anteriormente permeável que recebe pavimento, menos água pode infiltrar e mais escoar superficialmente durante chuva intensa. Isso modifica caminhos locais da água sem suspender o ciclo hidrológico global.",
+        "pitfall": "Concluir que a urbanização interrompe o ciclo da água ou que uma intervenção isolada consegue normalizar todos os fluxos de carbono."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite três processos do ciclo da água e descreva a direção de um deles.",
+        "hint": "Considere evaporação, condensação e precipitação.",
+        "solution": "Evaporação, condensação e precipitação são processos do ciclo. Na evaporação, água líquida passa para o estado gasoso, podendo alcançar a atmosfera."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual processo incorpora carbono do CO₂ em matéria orgânica de plantas?",
+        "hint": "Ocorre em organismos produtores sob energia luminosa.",
+        "solution": "A fotossíntese incorpora carbono inorgânico em compostos orgânicos. Não significa que todo carbono de uma planta venha diretamente do solo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que uma calçada impermeável pode aumentar o escoamento durante chuva?",
+        "hint": "Compare infiltração no solo com pavimento.",
+        "solution": "O pavimento pode reduzir a infiltração e favorecer água escoando pela superfície. A magnitude depende de declividade, chuva e drenagem disponível."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique como decompositores participam do ciclo do carbono.",
+        "hint": "Eles transformam matéria orgânica e respiram.",
+        "solution": "Decompositores utilizam matéria orgânica e podem liberar CO₂ por metabolismo, transformando carbono de resíduos em formas que seguem circulando no ambiente."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que energia e carbono não devem ser descritos como ciclos idênticos num ecossistema?",
+        "hint": "Matéria se conserva e energia pode ser dissipada como calor.",
+        "solution": "Átomos de carbono podem circular entre reservatórios; energia entra, sofre transformações e é dissipada, sem retornar integralmente à forma inicial por reciclagem."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Relacione a queima de combustíveis fósseis a uma mudança no ciclo do carbono.",
+        "hint": "Pense em carbono geológico armazenado por longos períodos.",
+        "solution": "A combustão transfere carbono antes armazenado em reservatórios geológicos para formas atmosféricas, inclusive CO₂, alterando fluxos e contribuindo para intensificação do efeito estufa."
+      }
+    ],
+    "everyday": {
+      "context": "Durante uma chuva forte, a água desaparece rapidamente num jardim de terra, mas escorre pela calçada pavimentada. A turma também investiga como as plantas do jardim participam do ciclo do carbono.",
+      "question": "Qual é a relação entre infiltração, evapotranspiração e fotossíntese sem confundir ciclo da água com ciclo do carbono?",
+      "answer": "O solo pode permitir infiltração, e plantas contribuem para transpiração e fotossíntese. A água circula por mudanças físicas e fluxos; o carbono é incorporado em matéria orgânica e retorna por processos biológicos e químicos.",
+      "connections": [
+        {
+          "subject": "Geografia",
+          "topic": "Mudanças climáticas globais",
+          "reason": "A circulação de água e de carbono se relaciona a padrões climáticos, emissões e respostas ambientais em diferentes escalas."
+        },
+        {
+          "subject": "Ciências",
+          "topic": "Cadeias e teias alimentares",
+          "reason": "A fotossíntese incorpora carbono em produtores, que alimentam níveis tróficos, enquanto decompositores participam da reciclagem de matéria."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Indústria cultural e cultura de massa",
+    "objective": "Analisar produção, circulação e consumo de bens culturais em larga escala, diferenciando crítica social, audiência, algoritmos e possibilidades de apropriação ativa.",
+    "sections": [
+      {
+        "title": "Cultura de massa e a ideia de indústria cultural",
+        "explanation": "A noção de indústria cultural é associada à crítica de Theodor Adorno e Max Horkheimer sobre produção padronizada de bens culturais em sociedades capitalistas. O conceito destaca como interesses econômicos, publicidade e formatos repetidos podem influenciar consumo e percepção. Não significa que toda obra popular seja artisticamente inferior ou que todas as pessoas sejam receptoras passivas sem capacidade crítica. Cultura de massa designa circulação de produtos culturais para públicos amplos, enquanto a indústria cultural é uma perspectiva crítica específica sobre a lógica de produção e distribuição. Para analisar música, séries ou publicidade, é útil perguntar quem produz, quem financia, por quais meios circula e que padrões se repetem. A crítica sociológica deve observar evidências e relações de mercado, não simplesmente desqualificar gostos pessoais.",
+        "example": "Uma plataforma apresenta séries com formatos semelhantes e publicidade integrada. A repetição pode ser analisada como estratégia de mercado e expectativa de audiência, mas a qualidade de cada obra exige exame independente.",
+        "pitfall": "Usar o termo 'indústria cultural' apenas como insulto para manifestações populares ou imaginar que consumo em massa determina opinião igual em todos os indivíduos."
+      },
+      {
+        "title": "Audiência, publicidade e algoritmos",
+        "explanation": "Meios de comunicação selecionam o que circula por decisões editoriais, contratos comerciais e modelos de recomendação. Em plataformas digitais, sistemas de recomendação utilizam sinais de comportamento e objetivos configurados para ordenar conteúdos; não se deve supor que um algoritmo único controla todas as pessoas ou que cada recomendação decorre de intenção consciente de manipular. Publicidade procura atrair atenção, gerar reconhecimento ou estimular consumo, mas seus efeitos dependem de contexto e público. Os produtos também podem expressar identidades coletivas, produzir crítica social e ser reinterpretados por espectadores. Uma análise sociológica consistente diferencia propriedade da empresa, modelo de negócio, forma estética e interpretação do usuário, sem confundir popularidade com valor cultural universal.",
+        "example": "Dois estudantes recebem recomendações diferentes de vídeos porque seu histórico de uso e configurações não são idênticos. Isso ilustra seleção mediada por plataformas, mas não prova que suas preferências serão determinadas inteiramente por essa seleção.",
+        "pitfall": "Afirmar que todo conteúdo recomendado é necessariamente propaganda paga ou que a tecnologia elimina autonomia de todos os usuários."
+      },
+      {
+        "title": "Produção cultural, desigualdade e leitura crítica",
+        "explanation": "A circulação cultural envolve acesso a equipamentos, conectividade, tempo, formação artística e condições de distribuição. Artistas independentes podem usar plataformas para alcançar públicos, mas enfrentam concorrência e assimetrias de visibilidade. Públicos não são homogêneos: podem resistir, criar releituras e transformar significados de obras e mensagens. Em pesquisas, a quantidade de visualizações é um dado de alcance, não medida direta de qualidade artística, compreensão ou concordância. É importante separar conceito sociológico de julgamento moral do consumo e relacionar obras ao seu contexto histórico. O aluno pode examinar como uma tendência se dissemina, como patrocinadores influenciam a apresentação e que espaços restam para diversidade cultural, sem inventar receitas financeiras nem intenções secretas de produtores.",
+        "example": "Uma canção local pode atingir público amplo por compartilhamentos, embora o destaque comercial de determinada playlist também dependa de contratos e regras da plataforma. Para explicar o caso seria necessário identificar fontes, não supor números.",
+        "pitfall": "Confundir alcance com aprovação crítica ou declarar que público amplo impede criatividade e expressão de identidades."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "A quais pensadores se associa o conceito de indústria cultural?",
+        "hint": "Considere a tradição crítica da Escola de Frankfurt.",
+        "solution": "A expressão está associada especialmente a Theodor Adorno e Max Horkheimer, que analisaram a produção cultural nas relações de mercado capitalistas."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que uma música popular não pode ser classificada como artisticamente ruim só por alcançar público grande?",
+        "hint": "Popularidade e qualidade estética não são medidas equivalentes.",
+        "solution": "O alcance informa circulação e audiência, mas não determina qualidade ou significado. É necessário analisar a obra e seus contextos sem desqualificar o público."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cite duas dimensões que ajudam a estudar uma série numa plataforma de streaming.",
+        "hint": "Pense em financiamento e circulação.",
+        "solution": "É relevante investigar financiamento e modelo de distribuição, além de padrões estéticos e publicidade. Esses aspectos explicam condições de produção sem substituir análise da obra."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que recomendações algorítmicas não significam que todos terão os mesmos interesses?",
+        "hint": "Há diferentes sinais de uso e interpretações.",
+        "solution": "Sistemas podem considerar dados e configurações variados; usuários também interpretam e escolhem de modos diferentes. Recomendar não garante aceitação nem comportamento uniforme."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma marca afirma que um vídeo com milhões de visualizações prova apoio de todos. Avalie.",
+        "hint": "Visualização não é concordância.",
+        "solution": "O número de visualizações mede exposição ou acesso segundo regras da plataforma, não aprovação universal. Pessoas podem assistir por crítica, curiosidade ou outros motivos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Como analisar indústria cultural sem afirmar que públicos são totalmente passivos?",
+        "hint": "Considere releituras, críticas e criação independente.",
+        "solution": "A investigação pode reconhecer interesses econômicos e padronização, mas também observar resistência, interpretações diversas e produção independente de obras culturais."
+      }
+    ],
+    "everyday": {
+      "context": "Um vídeo musical aparece repetidamente nas recomendações de muitos estudantes. Um colega conclui que ele é o melhor de todos os tempos porque acumulou milhões de visualizações.",
+      "question": "Por que alcance de mercado, circulação algorítmica e qualidade cultural não devem ser tratados como a mesma coisa?",
+      "answer": "Visualizações mostram alcance segundo critérios da plataforma, não qualidade estética nem concordância. A sociologia examina produção, financiamento, recomendação e recepção sem desqualificar automaticamente obras populares.",
+      "connections": [
+        {
+          "subject": "Arte",
+          "topic": "Arte e tecnologia",
+          "reason": "As ferramentas digitais afetam criação, edição e circulação, enquanto a análise artística examina efeitos estéticos e autoria."
+        },
+        {
+          "subject": "Português",
+          "topic": "Checagem de fontes e desinformação",
+          "reason": "Números de interação e autoridade aparente precisam ser interpretados antes de sustentar conclusões sobre qualidade ou apoio."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
