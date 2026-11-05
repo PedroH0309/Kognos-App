@@ -56,55 +56,55 @@ export const stage19Biology:AuthoredLessonSeed[]=[
   },
   {
     "subject": "Biologia",
-    "topic": "Fotossíntese e quimiossíntese",
-    "objective": "Explicar produção de matéria orgânica por autotróficos e distinguir energia luminosa e química sem confundir fonte de carbono com fonte de energia.",
+    "topic": "Heredogramas",
+    "objective": "Interpretar símbolos e padrões de herança em heredogramas, calculando probabilidades sem atribuir diagnósticos genéticos definitivos a indivíduos reais.",
     "chapters": [
       [
-        "Fotossíntese transforma energia",
-        "Fotossíntese oxigênica de plantas, algas e cianobactérias usa energia luminosa para sustentar síntese de compostos orgânicos a partir de CO₂ e água, liberando oxigênio. A equação global é simplificação de muitas reações e não significa transformação direta de luz em glicose num único passo. O oxigênio liberado provém da água nas condições típicas.",
-        "Plantas cultivadas sob luz podem incorporar carbono do CO₂ atmosférico à matéria orgânica, além de absorver minerais do solo.",
-        "Toda massa de uma árvore surge exclusivamente de nutrientes retirados da terra.",
-        "De onde vem parte importante do carbono dos açúcares produzidos por plantas?",
-        "Considere o gás absorvido durante a fotossíntese.",
-        "O carbono é incorporado principalmente a partir do CO₂ atmosférico fixado em reações bioquímicas, não somente do solo.",
-        "O solo fornece água e minerais, mas grande parte do carbono da biomassa vegetal pode derivar de CO₂ do ar."
+        "Símbolos e relações familiares",
+        "Heredogramas são representações convencionais de relações familiares e presença ou ausência de característica definida. Quadrados e círculos costumam indicar sexos em convenções didáticas tradicionais, e preenchimentos representam fenótipos conforme legenda; não se deve inferir identidade ou condição pessoal real apenas pelo desenho. Uma característica pode depender de vários genes e ambiente, exigindo cautela com interpretações.",
+        "Num esquema hipotético, dois irmãos são ligados ao mesmo par de responsáveis. A marcação de um fenótipo só tem sentido com legenda explícita.",
+        "Um símbolo preenchido em heredograma prova diagnóstico real e revela integralmente o genótipo da pessoa.",
+        "Por que a legenda é necessária antes de interpretar quadrados e círculos?",
+        "Ela define convenções e o fenótipo marcado.",
+        "A legenda esclarece quais símbolos representam relações e características; o desenho isolado não basta para inferir genótipos.",
+        "Heredogramas são modelos; símbolos precisam ser contextualizados e não constituem exame clínico conclusivo."
       ],
       [
-        "Etapas fotoquímicas e fixação",
-        "Reações dependentes de luz geram gradiente de prótons, ATP e poder redutor, enquanto o ciclo de Calvin utiliza ATP e NADPH para fixar carbono. A expressão 'fase escura' não significa que essas reações só ocorram durante a noite. A disponibilidade de água, luz e CO₂ limita taxas sob diferentes condições; plantas também realizam respiração celular.",
-        "Um aumento de luz não mantém crescimento indefinido quando CO₂, água ou outros fatores tornam-se limitantes.",
-        "O ciclo de Calvin acontece obrigatoriamente só no escuro, enquanto plantas deixam de respirar sob luz.",
-        "Qual processo utiliza ATP e NADPH para fixar carbono na fotossíntese?",
-        "Considere reações do ciclo de Calvin.",
-        "O ciclo de Calvin usa energia e poder redutor produzidos por etapas luminosas para incorporar carbono em compostos orgânicos.",
-        "O nome informal fase escura não estabelece horário noturno obrigatório, e fotossíntese não substitui respiração celular."
+        "Herança autossômica recessiva",
+        "Uma característica autossômica recessiva mendeliana simples pode se expressar em indivíduos aa e aparecer em descendente de pais Aa não afetados. Sob cruzamento Aa×Aa, espera-se 1/4 AA, 1/2 Aa e 1/4 aa. A probabilidade de cada nascimento não obriga famílias pequenas a produzir proporção exata. Fenótipos complexos não seguem automaticamente esse padrão.",
+        "Dois responsáveis portadores heterozigotos Aa podem ter descendente aa com chance de 25% no modelo sem fatores adicionais.",
+        "Se ambos os pais não manifestam o fenótipo, é impossível que tenham descendente com herança recessiva.",
+        "Qual a probabilidade de aa em cruzamento Aa×Aa no modelo recessivo?",
+        "Monte as quatro combinações de gametas A e a.",
+        "A combinação aa ocorre em uma das quatro combinações equiprováveis, portanto a chance é 1/4 ou 25%.",
+        "Portadores Aa podem não expressar característica recessiva e ainda transmitir a; ausência de fenótipo não elimina essa possibilidade."
       ],
       [
-        "Quimiossíntese e fonte energética",
-        "Certos microrganismos quimioautotróficos utilizam energia obtida da oxidação de substâncias inorgânicas para fixar carbono, sem depender diretamente de luz. A quimiossíntese não é idêntica à fermentação, nem ocorre em todos os ambientes e organismos. Distinguir fonte de energia e fonte de carbono ajuda a analisar ecossistemas sem luz solar direta.",
-        "Microrganismos em ambientes sem luz podem obter energia de compostos reduzidos, dependendo de metabolismos específicos, e fixar carbono.",
-        "Todo organismo produtor precisa receber luz solar diretamente para sintetizar matéria orgânica.",
-        "Como organismos quimioautotróficos obtêm energia para produzir biomassa?",
-        "Considere oxidação de compostos inorgânicos.",
-        "Eles podem usar energia química liberada por reações de oxidação de substâncias inorgânicas e fixar CO₂, sem luz direta.",
-        "A produção primária pode depender de energia química em certos ecossistemas; luz é essencial à fotossíntese, não à quimiossíntese."
+        "Inferências e limites dos dados",
+        "Padrões de ocorrência em gerações ajudam a levantar hipóteses sobre herança dominante, recessiva ou ligada ao sexo, mas amostra pequena, penetrância incompleta e condições multifatoriais podem confundir conclusões. A identificação de risco em pessoas reais depende de avaliação especializada e não de exercício escolar isolado. O leitor deve informar hipóteses antes de calcular.",
+        "Uma característica presente em várias gerações pode sugerir dominância, mas também exigir investigar penetrância, ambiente e registros.",
+        "Se um fenótipo aparece em todas as gerações, está provado que seu gene é dominante em qualquer circunstância.",
+        "Por que um heredograma pequeno pode não determinar o mecanismo genético com certeza?",
+        "Considere penetrância e tamanho da família.",
+        "Padrões parecidos podem surgir de modelos diferentes, e poucos indivíduos oferecem informação limitada sobre herança e contexto.",
+        "A inferência é hipótese condicionada a um modelo; observação de familiares não substitui testes e orientação genética apropriados."
       ]
     ],
     "situation": [
-      "Um grupo estuda ecossistema profundo sem luz e declara que não pode haver produtores porque toda formação de matéria orgânica depende diretamente de luz solar.",
-      "Que processo alternativo permite produção primária em alguns ambientes sem luz?",
-      "Microrganismos quimioautotróficos podem oxidar substâncias inorgânicas e usar a energia liberada para fixar carbono em matéria orgânica."
+      "Um estudante vê dois pais não afetados e um filho afetado em heredograma fictício e declara que o caso é impossível, porque características só aparecem quando os dois pais as manifestam.",
+      "Como herança autossômica recessiva pode explicar esse padrão e qual cautela se aplica fora do exercício?",
+      "Pais Aa podem não manifestar fenótipo e ter descendente aa com probabilidade 25% no modelo. Dados reais exigem avaliação clínica especializada."
     ],
     "links": [
       [
         "Biologia",
-        "Respiração celular",
-        "Comparar vias de transformação de energia ajuda a diferenciar respiração heterotrófica e produção autotrófica."
+        "Primeira lei de Mendel",
+        "A segregação dos alelos durante formação de gametas permite compreender transmissão autossômica recessiva."
       ],
       [
-        "Ciências",
-        "Cadeias e teias alimentares",
-        "Produtores sustentam relações alimentares ao incorporar energia e carbono em biomassa utilizável por consumidores."
+        "Biologia",
+        "Segunda lei de Mendel",
+        "Problemas com múltiplos loci exigem distinguir segregação de alelos e independência entre genes."
       ]
     ]
   },
