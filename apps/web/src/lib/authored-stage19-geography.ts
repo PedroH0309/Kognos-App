@@ -98,8 +98,8 @@ export const stage19Geography:AuthoredLessonSeed[]=[
     "links": [
       [
         "Matemática",
-        "Gráficos estatísticos e distribuição de frequências",
-        "A leitura de pirâmides e taxas exige interpretar escalas, proporções e distribuições populacionais."
+        "Média aritmética e ponderada",
+        "Médias e proporções permitem interpretar dados populacionais sem confundir valores agregados e grupos etários."
       ],
       [
         "Sociologia",
