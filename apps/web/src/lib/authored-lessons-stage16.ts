@@ -746,6 +746,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Redação",
+    "topic": "Leitura da proposta e recorte temático",
+    "objective": "Ler o comando de produção textual, delimitar tema e gênero e construir um recorte argumentativo coerente antes de planejar tese e desenvolvimento.",
+    "sections": [
+      {
+        "title": "Tema, comando e gênero são dimensões diferentes",
+        "explanation": "Em uma prova de redação, o tema indica o assunto delimitado; o comando define a tarefa e pode incluir exigências de gênero, objetivo, público, extensão ou perspectiva. Textos motivadores oferecem contexto, mas não autorizam copiar trechos sem elaboração nem substituir o que o enunciado pede. Uma proposta sobre 'desafios de acesso à leitura nas escolas públicas brasileiras' não equivale a um tema amplo sobre importância dos livros, porque possui recortes de problema, espaço e instituição. Antes de escrever, identifique substantivos e expressões restritivas do comando, distinguindo o centro da discussão de exemplos secundários. Em vestibulares diferentes, gêneros e critérios podem variar; aplicar automaticamente o formato do ENEM a qualquer produção é erro. A primeira etapa é registrar em palavras próprias o problema específico e o tipo de resposta solicitado, sem acrescentar um assunto que não está autorizado pelo enunciado.",
+        "example": "Se o tema é 'desafios do transporte escolar em áreas rurais', falar apenas de trânsito em grandes capitais afasta o texto da população e da dificuldade delimitadas.",
+        "pitfall": "Tratar palavras isoladas do tema como autorização para discutir qualquer assunto vagamente relacionado ou ignorar gênero solicitado.",
+        "steps": [
+          "Sublinhe o problema central, o recorte espacial ou social e a tarefa expressa no comando.",
+          "Reformule o tema numa pergunta objetiva para verificar se você compreendeu a proposta."
+        ]
+      },
+      {
+        "title": "Como construir um recorte argumentativo produtivo",
+        "explanation": "Recortar o tema significa escolher um aspecto pertinente e suficientemente específico para desenvolver argumentos dentro do espaço disponível. Uma tese precisa responder ao problema indicado, e não apenas repetir palavras do comando. Para um tema sobre acesso a equipamentos culturais, por exemplo, é possível priorizar mobilidade e disponibilidade de horários, se essas causas forem plausíveis e relacionadas ao recorte. Escolher muitos problemas sem ligação costuma gerar texto superficial. A seleção exige distinguir causa, consequência e proposta de ação: a falta de transporte pode ser causa, a dificuldade de frequentar bibliotecas uma consequência, e a revisão de linhas uma possível intervenção. O recorte deve permitir uso de exemplos e conceitos verificáveis; não precisa ser o único caminho legítimo, mas deve manter coerência entre introdução, desenvolvimento e conclusão.",
+        "example": "No tema hipotético 'barreiras à leitura pública em cidades médias', a tese pode focar horários restritos e dificuldade de deslocamento, em vez de tentar discutir todos os problemas da educação brasileira.",
+        "pitfall": "Defender tese tão genérica que qualquer exemplo parece caber ou criar recorte não presente na proposta e perder o assunto central.",
+        "steps": [
+          "Escolha uma ou duas relações plausíveis que respondam diretamente à pergunta da proposta.",
+          "Separe as relações em argumentos que possam ser desenvolvidos com evidências e exemplos próprios."
+        ]
+      },
+      {
+        "title": "Fuga ao tema, tangenciamento e revisão",
+        "explanation": "Fuga ao tema ocorre quando o texto deixa de abordar o assunto solicitado; tangenciamento ocorre quando se aproxima apenas de aspectos periféricos, sem enfrentar adequadamente o núcleo. As classificações e consequências são específicas de cada exame, portanto não se deve anunciar pontuações universais sem consultar edital e matriz. Na revisão, compare a tese e cada parágrafo com a formulação original do tema. Se a proposta discute 'desinformação científica em redes sociais', uma redação sobre tecnologia em geral pode tangenciar sem explicar circulação de informação científica. Os textos motivadores ajudam a compreender o cenário, mas não representam automaticamente fontes que devam ser reproduzidas. Uma checagem final deve identificar: qual questão foi respondida? Quais causas e consequências foram analisadas? O gênero e o público foram respeitados? O repertório usado realmente explica o problema? Essas perguntas ajudam a manter foco e profundidade.",
+        "example": "Um parágrafo inteiro que elogia aplicativos, sem relacioná-los à circulação de boatos científicos indicada na proposta, deve ser reescrito para demonstrar vínculo com o problema.",
+        "pitfall": "Achar que mencionar uma palavra do tema basta para evitar fuga, mesmo sem explicar a questão central da proposta.",
+        "steps": [
+          "Releia o comando ao lado da tese e de cada tópico frasal para identificar desvios.",
+          "Corte ou reformule trechos sem relação demonstrável com a questão central e o gênero exigido."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em tema sobre transporte escolar rural, citar só trânsito de metrópoles mantém o recorte?",
+        "hint": "Compare o espaço e a população pedidos no tema.",
+        "solution": "Não. O trânsito urbano pode ser contexto, mas não responde por si às dificuldades do transporte de estudantes em áreas rurais."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual a diferença entre tema e gênero numa proposta de redação?",
+        "hint": "Um é assunto; o outro, forma comunicativa pedida.",
+        "solution": "Tema é o problema ou assunto delimitado; gênero é o tipo textual solicitado, como artigo de opinião ou carta, com finalidades e convenções específicas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Formule uma pergunta orientadora para 'desafios do acesso a bibliotecas públicas por jovens'.",
+        "hint": "Transforme o tema num problema delimitado.",
+        "solution": "Uma possibilidade é: 'Quais barreiras dificultam que jovens utilizem bibliotecas públicas e como enfrentá-las?'. A pergunta mantém público, serviço e problema."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Diferencie causa e consequência no enunciado 'ônibus pouco frequentes dificultam acesso à leitura'.",
+        "hint": "Pergunte o que produz a dificuldade e qual efeito decorre.",
+        "solution": "A baixa frequência de ônibus é causa possível; a redução do acesso à leitura e à biblioteca é consequência a ser analisada."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que falar sobre tecnologia em geral pode tangenciar tema sobre desinformação científica online.",
+        "hint": "A questão central é a circulação de informação científica enganosa.",
+        "solution": "Tecnologia é um campo amplo; sem investigar conteúdos, meios de difusão e efeitos da desinformação científica, o texto não enfrenta o recorte exigido."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma redação cita dados interessantes que não se ligam à tese. É melhor mantê-los pelo impacto?",
+        "hint": "Repertório só ajuda se sustentar o argumento central.",
+        "solution": "Não. Dados desconectados prejudicam progressão e foco. É melhor explicar relação pertinente ou retirar a referência para desenvolver o que o comando exige."
+      }
+    ],
+    "everyday": {
+      "context": "Um estudante recebe proposta sobre acesso de jovens a bibliotecas públicas, mas prepara um texto inteiro sobre os benefícios gerais da leitura. A introdução parece adequada, porém os parágrafos não discutem acesso.",
+      "question": "Como reformular o recorte para desenvolver o problema solicitado sem mudar completamente o tema?",
+      "answer": "É preciso destacar os obstáculos de acesso, como transporte e horários, e organizar tese e parágrafos em torno dessas causas, usando leitura como contexto, não como substituto do problema.",
+      "connections": [
+        {
+          "subject": "Redação",
+          "topic": "Formulação de tese",
+          "reason": "A tese precisa responder ao recorte definido pelo comando, orientando quais argumentos entram na redação."
+        },
+        {
+          "subject": "Redação",
+          "topic": "Desenvolvimento e tópico frasal",
+          "reason": "Cada tópico frasal deve aprofundar uma relação ligada à questão central delimitada na proposta."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
