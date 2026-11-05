@@ -56,109 +56,109 @@ export const stage19English:AuthoredLessonSeed[]=[
   },
   {
     "subject": "Inglês",
-    "topic": "Orações condicionais em inglês",
-    "objective": "Interpretar condicionais zero, first, second e third em inglês, relacionando hipóteses, probabilidade e consequência temporal.",
+    "topic": "Artigos e quantificadores em inglês",
+    "objective": "Usar a, an, the e quantificadores adequados a substantivos contáveis e incontáveis, interpretando quantidade e referência em textos ingleses.",
     "chapters": [
       [
-        "Condição geral e possibilidade futura",
-        "Zero conditional pode expressar generalizações em estruturas com present + present, como 'If water freezes, it expands' em condições usuais. First conditional costuma abordar possibilidade futura com 'if + present, will + base verb': 'If it rains, we will stay home'. A oração com if não usa obrigatoriamente will nesse padrão escolar.",
-        "'If I finish early, I will call you' apresenta condição possível, sem confirmar que a ligação acontecerá.",
-        "Em first conditional, a oração após if deve conter obrigatoriamente will para indicar futuro.",
-        "Complete 'If it rains, we ___ stay inside' no padrão first conditional.",
-        "Use will antes da base stay.",
-        "'If it rains, we will stay inside' expressa ação futura condicionada à chuva.",
-        "O uso comum do first conditional apresenta presente na condição e will na consequência, não will obrigatório em ambas."
+        "Artigos indefinidos e definidos",
+        "A e an são artigos indefinidos para referência singular contável, com escolha baseada no som seguinte: an apple, a university. The identifica referente definido no contexto, sem significar que toda ocorrência de substantivo precisa de artigo. Nomes incontáveis geralmente não recebem a/an diretamente na acepção usual, exigindo unidade de medida quando necessário.",
+        "'She bought an umbrella' usa an por som vocálico; 'a university' usa a por som inicial consonantal /juː/.",
+        "An é usado diante de qualquer palavra escrita com a vogal u, sem considerar a pronúncia.",
+        "Qual artigo completa '___ hour later' em inglês padrão?",
+        "Hour começa com h não pronunciado.",
+        "A forma é 'an hour later', porque o som inicial de hour é vocálico, apesar da letra h.",
+        "A regra de a/an é fonética, não uma contagem automática de letras vogais e consoantes."
       ],
       [
-        "Hipótese remota e second conditional",
-        "A second conditional normalmente usa 'if + past simple, would + base verb' para hipóteses pouco prováveis, irreais ou imaginadas no presente/futuro. A forma past na oração condicional não indica automaticamente evento ocorrido no passado. 'If I had more time, I would read' imagina situação distinta da atual.",
-        "'If I were taller, I would play' pode expressar hipótese imaginária, sem afirmar que a altura mudou.",
-        "Second conditional relata necessariamente fato passado que já aconteceu.",
-        "O que significa 'If I had a car, I would visit you'?",
-        "Considere posse hipotética.",
-        "O falante imagina ter carro e, sob essa condição, visitar a pessoa; a frase não afirma que possui carro.",
-        "O passado formal na condição indica distanciamento hipotético, não relato obrigatório de acontecimento já realizado."
+        "Contáveis, incontáveis e unidades",
+        "Many costuma acompanhar plurais contáveis, enquanto much aparece com incontáveis em construções típicas. Some e any podem variar conforme afirmação, pergunta e negação, com usos pragmáticos diferentes. Substantivos como information e advice são normalmente incontáveis no inglês padrão e pedem unidades como a piece of information, quando contamos ocorrências.",
+        "'We received two pieces of advice' conta unidades de conselho, não 'two advices' como plural regular padrão.",
+        "Information e advice sempre admitem plural regular informations e advices em inglês padrão.",
+        "Complete 'How ___ water do we need?' com many ou much.",
+        "Water é incontável no uso geral.",
+        "'How much water do we need?' é adequado porque water é tratado como nome incontável nesse contexto.",
+        "Much relaciona-se a quantidade de massa ou substância não contável; many é usado com unidades contáveis plurais."
       ],
       [
-        "Hipóteses sobre passado e third conditional",
-        "Third conditional pode expressar situação contrafactual passada com 'if + past perfect, would have + particípio': 'If I had studied, I would have passed'. A estrutura não prova causas reais, mas comunica avaliação hipotética. Condicionais mistas também existem; em vestibulares, leia o contexto em vez de encaixar toda frase num único rótulo.",
-        "'If we had left earlier, we would have arrived on time' imagina consequência diferente num passado que não aconteceu assim.",
-        "Third conditional comprova que a consequência imaginada realmente ocorreu no passado.",
-        "Explique o que é hipotético em 'If she had called, I would have answered'.",
-        "Observe had called e would have answered.",
-        "A frase imagina que ela ligasse no passado e que eu atendesse; não afirma que a ligação e resposta ocorreram.",
-        "A terceira condicional expressa cenário contrafactual, e a consequência depende de uma condição não realizada na interpretação comum."
+        "Quantificadores e sentido de afirmações",
+        "Few e a few podem produzir avaliações distintas: few enfatiza quantidade insuficiente ou pequena; a few pode indicar existência de alguns itens. Little e a little apresentam contraste semelhante com nomes incontáveis. A escolha de quantificador pode alterar interpretação de notícia, instrução ou anúncio, e não se deve concluir uma quantidade exata sem números.",
+        "'A few students arrived' informa que alguns chegaram, enquanto 'few students arrived' enfatiza que poucos chegaram no contexto.",
+        "Few e a few são equivalentes absolutos e sempre expressam a mesma avaliação de quantidade.",
+        "Que diferença pode existir entre 'few options' e 'a few options'?",
+        "Observe presença do artigo a.",
+        "'Few options' pode salientar escassez; 'a few options' informa a existência de algumas possibilidades, com avaliação menos negativa.",
+        "O determinante a modifica a leitura pragmática da quantidade; as expressões não são sempre intercambiáveis."
       ]
     ],
     "situation": [
-      "Um estudante lê 'If I had known about the test, I would have studied' e interpreta que a pessoa de fato sabia e estudou, ignorando a hipótese passada.",
-      "Que relação temporal e contrafactual a construção expressa?",
-      "A pessoa imagina que, se tivesse sabido da prova, teria estudado. A fala sugere que não sabia ou não estudou daquela forma."
+      "Um aviso informa 'We need a little water' e um estudante traduz que não há nenhuma água disponível, tratando a little e little como idênticos.",
+      "Como a presença de a muda o sentido do quantificador na frase?",
+      "A little indica alguma quantidade de água, potencialmente suficiente ao contexto; little isolado pode enfatizar quantidade pequena ou insuficiente."
     ],
     "links": [
       [
         "Inglês",
-        "Formas de futuro em inglês",
-        "First conditional utiliza formas futuras em consequência e exige distinguir previsão de evento comprovado."
+        "Pronomes e referências textuais em inglês",
+        "Determinantes e pronomes ajudam a identificar referentes e quantidades em frases e textos."
       ],
       [
-        "Espanhol",
-        "Futuro e condicional em espanhol",
-        "Comparar estruturas condicionais em duas línguas reforça a distinção entre condição real e cenário hipotético."
+        "Português",
+        "Informações explícitas e inferências",
+        "Quantificadores e artigos podem restringir afirmações, exigindo atenção ao que o texto realmente informa."
       ]
     ]
   },
   {
     "subject": "Inglês",
-    "topic": "Voz passiva em inglês",
-    "objective": "Identificar e produzir voz passiva básica com be + particípio passado e interpretar a escolha de destacar ação ou agente.",
+    "topic": "Phrasal verbs",
+    "objective": "Interpretar phrasal verbs por contexto e estrutura, reconhecendo sentidos idiomáticos e casos de separabilidade sem traduções literais automáticas.",
     "chapters": [
       [
-        "Foco no paciente da ação",
-        "Na voz ativa, o sujeito frequentemente realiza a ação; na passiva inglesa, o sujeito recebe ou é afetado por ela, usando be em tempo apropriado mais particípio passado. 'The team repaired the bridge' pode ser reformulada como 'The bridge was repaired by the team'. A mudança conserva informação central, mas altera o foco discursivo.",
-        "'The museum was opened in 1990' informa abertura e data, sem precisar nomear quem inaugurou o museu.",
-        "Uma frase passiva inglesa é formada apenas acrescentando -ing ao verbo principal.",
-        "Transforme 'The worker cleaned the room' em passiva.",
-        "Use was + particípio cleaned.",
-        "'The room was cleaned by the worker.' O objeto da ativa torna-se sujeito da passiva.",
-        "A voz passiva comum exige forma de be e particípio passado; -ing sozinho não é marcador suficiente de passiva."
+        "Verbo e partícula podem formar unidade",
+        "Phrasal verbs combinam verbo e uma ou mais partículas que podem criar sentido diferente da soma das palavras isoladas. Turn on pode significar ligar um dispositivo, enquanto give up pode significar desistir. O significado depende do contexto, da acepção e do complemento; não é seguro traduzir on ou up de maneira fixa em todas as ocorrências.",
+        "'Please turn on the lights' pede ligar as luzes; não se trata de girar fisicamente o objeto para uma direção.",
+        "Todo phrasal verb pode ser traduzido somando literalmente o verbo e cada partícula.",
+        "O que significa 'give up' em 'Don't give up on your project'?",
+        "Considere persistência no projeto.",
+        "A expressão quer dizer não desistir do projeto, e não oferecer fisicamente algo para cima.",
+        "O conjunto verbo-partícula pode adquirir significado idiomático; traduzir palavra por palavra distorce a mensagem."
       ],
       [
-        "Tempo e concordância de be",
-        "A forma do auxiliar indica tempo e concorda com o novo sujeito: 'is built', 'was built', 'were built', 'will be built'. Verbos irregulares exigem particípios próprios, como written e made. Nem todo verbo admite transformação passiva em qualquer uso, especialmente quando não possui objeto apropriado. O agente pode ser apresentado com by se relevante.",
-        "'The letters were written yesterday' usa were porque letters está no plural, e written é particípio irregular.",
-        "O auxiliar da passiva nunca muda de forma porque o particípio já apresenta o tempo verbal.",
-        "Complete 'The reports ___ published last week' com was ou were.",
-        "Reports é plural e evento passado.",
-        "'The reports were published last week' usa were no passado plural e published no particípio.",
-        "Be expressa tempo e concordância na passiva; o particípio não elimina necessidade de auxiliar apropriado."
+        "Ordem de palavras e objeto",
+        "Alguns phrasal verbs transitivos são separáveis: turn off the lamp ou turn the lamp off; com pronome objeto, a posição usual é turn it off, não turn off it. Outros são inseparáveis, como look after someone, e precisam de construção própria. A gramática do objeto e o significado precisam ser aprendidos juntos.",
+        "'Turn it off' é forma comum para desligar um aparelho mencionado; 'look after her' significa cuidar dela.",
+        "Todos os phrasal verbs aceitam mover qualquer pronome para depois da partícula sem alteração de gramática.",
+        "Qual construção é natural: 'turn off it' ou 'turn it off'?",
+        "O pronome objeto vem antes da partícula num separável.",
+        "'Turn it off' é a forma usual, pois o pronome objeto it fica entre o verbo e a partícula.",
+        "A separabilidade varia por verbo; num phrasal verb separável como turn off, pronomes objetos costumam ocupar posição interna."
       ],
       [
-        "Agente omitido e leitura crítica",
-        "Textos administrativos e notícias podem usar passiva quando agente é desconhecido, irrelevante ou deliberadamente não mencionado. 'Mistakes were made' não informa quem cometeu os erros, o que pode ser relevante numa investigação. A ausência do agente não prova intenção de ocultação, mas convida leitor a perguntar quem atuou e com quais evidências.",
-        "'The files were deleted' descreve exclusão dos arquivos, mas não especifica se foi falha automática ou ação humana.",
-        "Toda frase passiva sem by declara que ninguém foi responsável pelo acontecimento.",
-        "O que não se sabe em 'The window was broken' sem contexto adicional?",
-        "Procure agente não expresso.",
-        "Não se identifica quem ou o que quebrou a janela, embora se informe que ela foi quebrada.",
-        "A passiva pode omitir agente sem negar sua existência; responsabilidade depende de outras fontes e informações."
+        "Inferência contextual e polissemia",
+        "Um phrasal verb pode ter várias acepções dependendo de gênero e situação; take off pode ser tirar peça de roupa ou decolar em contexto de avião. Dicionários ajudam, mas exemplos com frases completas são necessários para selecionar acepção. Em exames de leitura, a resposta deve considerar sujeito e situação, sem transformar uma tradução conhecida em significado universal.",
+        "'The plane took off at six' informa decolagem, enquanto 'He took off his coat' indica retirar o casaco.",
+        "Take off sempre significa decolar, mesmo quando o objeto é um casaco ou sapato.",
+        "O que significa take off em 'She took off her shoes'?",
+        "Observe objeto shoes.",
+        "A frase indica que ela tirou os sapatos, sentido diferente daquele associado à decolagem de aeronaves.",
+        "Phrasal verbs podem ser polissêmicos; a escolha do sentido depende de verbo, objeto e contexto da oração."
       ]
     ],
     "situation": [
-      "Uma notícia em inglês diz 'The data were deleted yesterday' e um estudante afirma que isso prova automaticamente culpa da equipe de TI, embora ninguém seja citado.",
-      "O que a voz passiva informa e o que permanece indeterminado?",
-      "A frase comunica exclusão dos dados no dia anterior; o agente não está indicado, portanto atribuir culpa exige outras evidências."
+      "Uma pessoa lê 'The plane took off' e 'She took off her jacket' e usa a mesma tradução 'decolou' para ambas. O segundo resultado fica sem sentido.",
+      "Como o contexto modifica o significado de take off nos dois casos?",
+      "Na primeira frase, a aeronave decolou; na segunda, a pessoa tirou a jaqueta. O complemento e a situação determinam a acepção."
     ],
     "links": [
       [
         "Inglês",
-        "Passado simples e contínuo",
-        "A forma was/were em construções passivas precisa ser interpretada segundo o tempo verbal da frase."
+        "Inferência de sentidos em inglês",
+        "Pistas de contexto ajudam a escolher o significado de phrasal verbs polissêmicos."
       ],
       [
-        "Português",
-        "Gêneros jornalísticos",
-        "A escolha de mencionar ou omitir agentes pode influenciar leitura crítica de relatos informativos."
+        "Inglês",
+        "Passado simples e contínuo",
+        "O phrasal verb pode aparecer flexionado no passado, exigindo análise de tempo e aspecto em narrativas."
       ]
     ]
   },
