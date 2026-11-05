@@ -49,8 +49,8 @@ export const stage19Literature:TopicSeed[]=[
       ],
       [
         "Literatura",
-        "Gênero lírico",
-        "A noção de eu lírico permite diferenciar voz artística e autor empírico."
+        "Versificação, rima e ritmo",
+        "A organização sonora de cantigas ajuda a analisar ritmo e repetição na poesia medieval."
       ]
     ]
   },
