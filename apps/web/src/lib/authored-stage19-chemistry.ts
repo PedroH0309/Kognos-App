@@ -201,7 +201,7 @@ export const stage19Chemistry:TopicSeed[]=[
     "situation": [
       "Um estudante prepara 44 g de CO₂ e conclui que há 44 mol da substância porque escreveu o valor da massa sem conferir a massa molar.",
       "Quantos mol de CO₂ estão presentes e que relação corrige a conta?",
-      "Com M(CO₂)=44 g/mol, n=m/M=44/44=1 mol de moléculas de CO₂."
+      "A massa molar de CO₂ é 12+2×16=44 g/mol. Como n=m/M, a amostra de 44 g corresponde a 44/44=1 mol de moléculas de CO₂, não a 44 mol."
     ],
     "links": [
       [
