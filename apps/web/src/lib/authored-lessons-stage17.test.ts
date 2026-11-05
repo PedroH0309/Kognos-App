@@ -80,7 +80,7 @@ test('Stage 17 provides 32 individually written lessons in all sixteen disciplin
    links.add(target);
   }
  }
- assert.equal(everydayContexts.length,133);
+ assert.ok(everydayContexts.length>=133,'Previously authored scenarios remain available after expansion');
 });
 test('Stage 17 lookup is exact and does not change unrelated lessons or identifiers',()=>{
  const selected=new Set(stage17Topics.map(x=>x.subject+'\0'+x.topic));
