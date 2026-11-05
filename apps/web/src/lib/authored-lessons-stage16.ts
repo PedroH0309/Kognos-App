@@ -1206,6 +1206,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Arte",
+    "topic": "Arte indígena",
+    "objective": "Interpretar expressões artísticas de diferentes povos indígenas no Brasil, relacionando materiais, usos, autoria e contextos sem generalizações ou apropriação indevida.",
+    "sections": [
+      {
+        "title": "Diversidade de povos e linguagens artísticas",
+        "explanation": "A expressão 'arte indígena' reúne manifestações de muitos povos com histórias, línguas, técnicas e sistemas de conhecimento distintos. Não corresponde a um único estilo visual nem se limita a objetos antigos expostos em museus. Pinturas corporais, grafismos, cerâmicas, cestarias, cantos, narrativas, performances e produções contemporâneas podem exercer funções estéticas, sociais, territoriais, espirituais e políticas que variam segundo o povo e o contexto. Um grafismo não possui significado universal apenas por apresentar linhas geométricas; é necessário conhecer sua autoria e as condições em que pode ser compartilhado. O estudo não deve separar arbitrariamente arte de vida cotidiana sem considerar interpretações dos próprios produtores. Observar os materiais e formas é importante, mas não substitui a escuta dos sujeitos que criam e utilizam as obras, nem autoriza afirmar que todos os indígenas vivem da mesma maneira.",
+        "example": "Uma cesta produzida por artesã de uma comunidade específica pode reunir conhecimentos de coleta, preparação de fibras, desenho e usos sociais. Ela não deve ser apresentada como modelo único para todos os povos.",
+        "pitfall": "Tratar povos indígenas como grupo homogêneo, associar suas obras somente ao passado ou inventar sentidos para grafismos sem fonte.",
+        "steps": [
+          "Descreva primeiro materiais, técnicas e características observáveis do objeto ou imagem.",
+          "Identifique o povo e a autoria quando houver dados confiáveis, evitando interpretações universais."
+        ]
+      },
+      {
+        "title": "Grafismos, materiais e significados situados",
+        "explanation": "Linhas, formas, repetições e contrastes são elementos visuais analisáveis em diferentes produções artísticas, mas seus significados dependem de tradições específicas, autoria e situações de uso. Materiais como fibras vegetais, argila, pigmentos e madeira podem exigir conhecimentos ambientais e técnicos detalhados, transmitidos e transformados entre gerações. Não se deve presumir que qualquer símbolo visto numa fotografia seja livre para cópia comercial, especialmente quando possui uso ritual ou comunitário restrito. A análise escolar pode comparar composição, textura e ritmo visual sem reproduzir conteúdos que a própria comunidade não autoriza divulgar. A preservação de materiais não é equivalente à preservação de conhecimentos: terra, acesso ao ambiente, língua e continuidade das práticas podem ser fundamentais. Respeitar propriedade intelectual e consentimento faz parte do trabalho artístico e de pesquisa.",
+        "example": "Ao analisar uma pintura corporal fotografada com autorização, a turma pode descrever contraste e repetição de formas. Para afirmar seus significados simbólicos, precisa de explicação da comunidade ou fonte responsável.",
+        "pitfall": "Atribuir significado sagrado a todo desenho geométrico ou considerar uma imagem encontrada online automaticamente disponível para uso comercial.",
+        "steps": [
+          "Diferencie descrição formal de interpretação simbólica que depende de fonte e consentimento.",
+          "Verifique se o material pode ser reproduzido e como a autoria deve ser reconhecida."
+        ]
+      },
+      {
+        "title": "Arte contemporânea, autoria e representação",
+        "explanation": "Artistas indígenas contemporâneos participam de exposições, audiovisual, literatura, instalações e mídias digitais, combinando materiais e linguagens diversas. Descrever essa produção como 'menos autêntica' por usar tecnologia reproduz uma ideia equivocada de culturas imutáveis. Obras podem dialogar com defesa de territórios, memória, cotidiano, política e experimentação estética, sem que todos os artistas escolham os mesmos temas. A instituição que exibe uma obra deve, quando possível, apresentar autoria e contexto de produção em vez de enquadrá-la apenas como curiosidade exótica. Estudantes podem elaborar projetos inspirados em procedimentos de observação e composição, mas precisam distinguir diálogo artístico respeitoso de cópia indevida de símbolos específicos. A leitura crítica considera também quem seleciona o acervo e quais vozes participam da mediação cultural. A diversidade indígena pertence ao presente, não somente aos livros sobre colonização.",
+        "example": "Uma exposição contemporânea pode reunir vídeo, desenho e fotografia realizados por artistas indígenas identificados. O uso de recursos digitais não elimina sua autoria ou relação com experiências culturais.",
+        "pitfall": "Afirmar que a cultura indígena deixou de existir quando artistas utilizam celular, fotografia ou outras tecnologias contemporâneas.",
+        "steps": [
+          "Considere autoria e escolhas estéticas de cada obra sem reduzir o artista a representante de todos os povos.",
+          "Analise como museus e plataformas contextualizam as produções e reconhecem seus criadores."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Por que 'arte indígena' não designa um único estilo compartilhado por todos os povos?",
+        "hint": "Existem diferentes povos, línguas e histórias.",
+        "solution": "Porque abrange produções de comunidades diversas, com técnicas e significados específicos, sem uma linguagem estética única e universal."
+      },
+      {
+        "level": "basic",
+        "prompt": "Cite dois materiais possíveis em produções artísticas indígenas sem atribuí-los a todos os povos.",
+        "hint": "Considere fibras, argila e madeira.",
+        "solution": "Fibras vegetais e argila são exemplos possíveis; seu uso varia entre comunidades e não determina que todos produzam objetos iguais."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma foto mostra grafismo sem identificação. Podemos afirmar seu significado espiritual exato?",
+        "hint": "Faltam autoria, contexto e explicação da comunidade.",
+        "solution": "Não. É possível descrever formas observáveis, mas interpretação simbólica exige informação contextual e fonte confiável."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que uma obra indígena criada em vídeo digital pode ser expressão cultural contemporânea legítima?",
+        "hint": "Tecnologia não elimina identidade cultural.",
+        "solution": "Porque culturas se transformam e artistas escolhem diversos meios de expressão. Usar tecnologia não torna uma obra menos autêntica."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Qual cuidado é necessário ao reproduzir símbolos culturais em produto comercial?",
+        "hint": "Considere direitos, autorização e contexto.",
+        "solution": "É necessário investigar autoria, usos permitidos e consentimento quando cabível; encontrar imagem na internet não concede direito irrestrito de exploração."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Como uma exposição pode evitar tratar artistas indígenas apenas como curiosidade exótica?",
+        "hint": "Dê espaço a autoria, contexto e voz dos produtores.",
+        "solution": "A apresentação pode identificar artistas e povos, oferecer contextualização construída com participação responsável e reconhecer sua atuação contemporânea."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma prepara exposição sobre produções de povos indígenas e encontra um grafismo na internet sem autoria. Alguns estudantes querem usá-lo na marca de uma loja, afirmando que todo desenho indígena é de domínio público.",
+      "question": "Que informações e cuidados são necessários antes de atribuir significado ao grafismo ou utilizá-lo comercialmente?",
+      "answer": "É necessário verificar povo, autoria, significado e condições de uso, inclusive autorizações pertinentes. A descrição visual não garante interpretação simbólica nem permissão comercial.",
+      "connections": [
+        {
+          "subject": "Arte",
+          "topic": "Arte e tecnologia",
+          "reason": "Artistas indígenas contemporâneos podem utilizar ferramentas digitais sem que a tecnologia diminua a legitimidade de sua expressão."
+        },
+        {
+          "subject": "Sociologia",
+          "topic": "Cultura e etnocentrismo",
+          "reason": "A análise precisa reconhecer diversidade cultural e evitar atribuir inferioridade ou significados universais a práticas de outros grupos."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
