@@ -1390,6 +1390,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Circuitos elétricos simples",
+    "objective": "Explicar corrente, tensão e resistência em circuitos de baixa tensão, interpretar ligações em série e paralelo e aplicar a lei de Ohm em exercícios sem orientar manipulação de rede elétrica.",
+    "sections": [
+      {
+        "title": "Para existir corrente é necessário caminho fechado",
+        "explanation": "Num circuito elétrico básico, uma fonte estabelece diferença de potencial entre terminais e pode promover corrente quando há caminho condutor fechado. Corrente elétrica mede a taxa de passagem de carga, em ampères (A); tensão, em volts (V), expressa diferença de potencial elétrico; resistência, em ohms (Ω), relaciona oposição à corrente em materiais e componentes sob condições apropriadas. Uma bateria, fios e lâmpada podem formar um circuito didático, mas abrir o interruptor interrompe o caminho e, no modelo simples, a lâmpada apaga. A corrente não é 'gasta' pela lâmpada no sentido de deixar de existir como carga: energia elétrica é transferida para luz e calor, enquanto cargas circulam. Circuitos reais incluem propriedades dos materiais, resistência interna e condições de segurança. A análise escolar deve ocorrer com esquemas ou kits adequados de baixa tensão sob supervisão, nunca por experiências com tomadas.",
+        "example": "Em um esquema com bateria e uma pequena lâmpada, fechar o interruptor completa o caminho, permitindo corrente; abrir o interruptor interrompe o fluxo e a lâmpada apaga no modelo.",
+        "pitfall": "Afirmar que a carga elétrica desaparece ao atravessar uma lâmpada ou experimentar circuitos com tomadas para comprovar conceitos escolares.",
+        "steps": [
+          "Localize fonte, condutores, receptor e interruptor no esquema antes de calcular grandezas.",
+          "Verifique se há caminho fechado e diferencie fluxo de carga de transferência de energia."
+        ]
+      },
+      {
+        "title": "Lei de Ohm e unidades do modelo",
+        "explanation": "Para um resistor ôhmico sob condições em que sua resistência é aproximadamente constante, a lei de Ohm relaciona tensão, corrente e resistência por U=R·I. Se um resistor de 6 Ω recebe diferença de potencial de 12 V, a corrente idealizada é I=12/6=2 A. Essa equação não permite tratar qualquer componente eletrônico como resistor de R constante: lâmpadas incandescentes, diodos e outras peças podem apresentar relações não lineares. Valores do exercício devem ser acompanhados de unidade correta e do componente a que se referem. A tensão da fonte não é energia total consumida; potência pode ser calculada por P=U·I em contextos apropriados, e energia depende do tempo de funcionamento. A corrente elétrica possui direção convencional adotada, distinta do movimento dos elétrons metálicos. Em provas, é essencial explicitar simplificações e resistências consideradas.",
+        "example": "Num resistor ideal de 10 Ω, uma tensão de 5 V produziria I=0,5 A, assumindo comportamento ôhmico e condições constantes de temperatura.",
+        "pitfall": "Aplicar U=RI com resistência fixa a qualquer dispositivo sem verificar condições ou confundir volt, ampère e watt.",
+        "steps": [
+          "Identifique a qual resistor e a qual trecho do circuito se referem U, I e R.",
+          "Use U=RI somente no modelo indicado e confira as unidades de cada grandeza."
+        ]
+      },
+      {
+        "title": "Série e paralelo não respondem do mesmo modo",
+        "explanation": "Em um circuito em série ideal, os componentes são atravessados pela mesma corrente e a resistência equivalente de resistores é soma das resistências: Req=R1+R2. Se um componente abre o circuito e não há caminho alternativo, todos os demais deixam de receber corrente. Em uma associação em paralelo, cada ramo fica submetido à mesma diferença de potencial entre os nós de conexão, enquanto a corrente total é soma das correntes dos ramos. Para resistores em paralelo, 1/Req=1/R1+1/R2; a resistência equivalente de resistores positivos é menor que a menor resistência do conjunto. Em instalações reais, fios, fontes e dispositivos podem introduzir outros fatores. A comparação esclarece por que circuitos com caminhos independentes podem continuar funcionando quando um ramo falha, sem orientar intervenções em redes domésticas. Segurança e dimensionamento elétrico são responsabilidade técnica.",
+        "example": "Dois resistores de 4 Ω em série resultam Req=8 Ω; em paralelo, Req=2 Ω, no modelo ideal. A forma de ligação altera a corrente total para mesma tensão da fonte.",
+        "pitfall": "Supor que tensão e corrente são iguais em todos os elementos de série e paralelo, ou tentar verificar associações usando a fiação da casa.",
+        "steps": [
+          "Identifique quais componentes compartilham corrente no mesmo caminho e quais compartilham tensão entre nós.",
+          "Calcule a resistência equivalente segundo a ligação e verifique se o resultado é coerente."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O que acontece com a corrente num circuito didático simples quando o interruptor abre?",
+        "hint": "Um caminho completo é necessário para a corrente.",
+        "solution": "O circuito fica interrompido e, no modelo básico com um único caminho, deixa de circular corrente pela lâmpada."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual unidade corresponde a corrente elétrica, tensão e resistência?",
+        "hint": "Diferencie A, V e Ω.",
+        "solution": "Corrente é medida em ampères (A); tensão em volts (V); resistência em ohms (Ω). São grandezas diferentes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um resistor ôhmico de 6 Ω recebe 12 V. Calcule a corrente.",
+        "hint": "Use I=U/R para resistor ideal.",
+        "solution": "I=12/6=2 A, supondo resistência constante no intervalo considerado e fonte idealizada."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Dois resistores de 3 Ω e 5 Ω são ligados em série. Qual Req?",
+        "hint": "Some resistências na ligação em série.",
+        "solution": "Req=3+5=8 Ω. No modelo ideal, a mesma corrente percorre ambos os resistores."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Dois resistores de 4 Ω são ligados em paralelo. Calcule Req.",
+        "hint": "Use 1/Req=1/4+1/4.",
+        "solution": "1/Req=2/4=1/2, então Req=2 Ω. A resistência equivalente fica abaixo de 4 Ω."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que uma lâmpada que apaga em um ramo paralelo não precisa apagar todas as outras?",
+        "hint": "Há caminhos independentes para corrente.",
+        "solution": "Se os ramos restantes continuarem ligados à fonte, eles podem receber corrente por outros caminhos. Isso difere de um circuito simples em série."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma utiliza apenas diagramas e um kit didático seguro de baixa tensão. Em um esquema, duas lâmpadas estão no mesmo caminho; em outro, cada uma está num ramo independente.",
+      "question": "Por que uma lâmpada desconectada pode interromper tudo na série, mas não necessariamente todos os ramos em paralelo?",
+      "answer": "Na série existe um único caminho de corrente, que se interrompe quando um componente abre o circuito. Em paralelo, outros ramos podem permanecer fechados e alimentados.",
+      "connections": [
+        {
+          "subject": "Física",
+          "topic": "Potência e consumo de energia elétrica",
+          "reason": "Corrente e tensão permitem calcular potência de componentes no modelo apropriado, conectando circuito a consumo energético."
+        },
+        {
+          "subject": "Ciências",
+          "topic": "Formas e transformações de energia",
+          "reason": "Lâmpadas transformam energia elétrica em luz e energia térmica, sem consumir a própria carga elétrica que circula."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
