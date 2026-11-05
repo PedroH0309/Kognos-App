@@ -215,5 +215,59 @@ export const stage19Math:AuthoredLessonSeed[]=[
         "Quadrados e raízes são operações indispensáveis para aplicar e verificar a igualdade pitagórica."
       ]
     ]
+  },
+  {
+    "subject": "Matemática",
+    "topic": "Razão e proporção",
+    "objective": "Comparar grandezas por razões com unidades coerentes, resolver proporções e reconhecer quando relações são ou não diretamente proporcionais.",
+    "chapters": [
+      [
+        "Razão compara duas grandezas",
+        "Razão entre a e b, com b diferente de zero, é quociente a/b com interpretação dependente de unidades. Comparar 2 litros por pessoa ou 3 livros para 5 estudantes descreve relações, não apenas frações isoladas. Antes de simplificar, identifique grandezas e converta unidades se necessário; razão entre comprimentos pode ser adimensional quando unidades coincidem.",
+        "Uma mistura didática tem 2 copos de concentrado para 6 de água; a razão concentrado/água é 2/6=1/3, não 2/8.",
+        "A razão entre duas quantidades é sempre obtida somando-as e depois dividindo por dois.",
+        "Qual razão entre 8 bicicletas e 20 estudantes, na ordem bicicletas por estudantes?",
+        "Escreva 8/20 e simplifique.",
+        "A razão é 8/20=2/5 bicicleta por estudante no contexto, sem afirmar que cada aluno recebe uma fração física de bicicleta.",
+        "Razão compara mediante quociente e depende da ordem; média aritmética e soma não descrevem a mesma relação."
+      ],
+      [
+        "Proporções preservam razões",
+        "Uma proporção estabelece igualdade entre duas razões a/b=c/d, com denominadores não nulos. A multiplicação cruzada ad=bc pode ser usada para encontrar incógnitas, mas não substitui a interpretação de unidades e correspondência entre grandezas. Em grandezas diretamente proporcionais, o quociente entre valores correspondentes permanece constante em condições definidas.",
+        "Se 3 pacotes custam R$ 15 e o preço por pacote não muda, 5 pacotes custam R$ 25 porque 15/3=25/5=5.",
+        "Qualquer relação crescente entre duas variáveis é automaticamente uma proporção direta.",
+        "Se 4 cadernos custam R$ 28 com preço unitário fixo, quanto custam 7?",
+        "Preço unitário é 28/4 reais.",
+        "Cada caderno custa R$ 7, portanto sete custam 7×7=R$ 49 no modelo diretamente proporcional.",
+        "Crescimento simultâneo não basta: a proporcionalidade direta exige razão constante, o que pode falhar sob taxas fixas e descontos."
+      ],
+      [
+        "Proporcionalidade e escala",
+        "Escalas, receitas e taxas usam razões, mas precisam de unidades e hipóteses. Um mapa com escala 1:100.000 representa um centímetro no papel para cem mil centímetros reais sob essa definição. Se houver cobrança fixa além do preço variável, custo total deixa de ser diretamente proporcional à quantidade, embora ainda possa ser função afim.",
+        "Uma tarifa de R$ 10 de adesão mais R$ 2 por ingresso não é diretamente proporcional ao número de ingressos por causa do termo fixo.",
+        "Toda expressão y=ax+b, com quaisquer valores de b, representa proporcionalidade direta entre x e y.",
+        "Uma mapa em escala 1:50.000 mostra 3 cm de distância. Quantos quilômetros representa?",
+        "Multiplique três por cinquenta mil centímetros e converta.",
+        "3×50.000=150.000 cm=1.500 m=1,5 km na escala indicada, considerando medida em linha no mapa.",
+        "A escala é relação proporcional entre distâncias correspondentes, mas custos com termo fixo não possuem razão y/x constante."
+      ]
+    ],
+    "situation": [
+      "Uma feira cobra R$ 10 de entrada e R$ 5 por atividade. Um aluno afirma que o custo de seis atividades é três vezes o custo de duas, porque a quantidade triplicou.",
+      "Qual é o custo real em cada caso e por que a cobrança fixa impede proporção direta?",
+      "Duas atividades custam 10+2×5=R$ 20; seis custam 10+6×5=R$ 40, apenas o dobro, devido à entrada fixa."
+    ],
+    "links": [
+      [
+        "Matemática",
+        "Frações e operações",
+        "Simplificação de frações e equivalência de quocientes são fundamentos para representar razões."
+      ],
+      [
+        "Matemática",
+        "Regra de três simples",
+        "O cálculo de valores correspondentes na regra de três exige identificar a relação de proporcionalidade aplicável."
+      ]
+    ]
   }
 ];
