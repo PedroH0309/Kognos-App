@@ -654,6 +654,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Literatura",
+    "topic": "Barroco brasileiro",
+    "objective": "Analisar antítese, paradoxo, cultismo e conceptismo na literatura barroca colonial, contextualizando autores, gêneros e efeitos retóricos.",
+    "sections": [
+      {
+        "title": "Contrastes e tensões da linguagem barroca",
+        "explanation": "O Barroco literário no território brasileiro costuma ser estudado a partir de produções do século XVII, em diálogo com condições religiosas, políticas e estéticas do período colonial. Textos podem explorar contrastes entre corpo e espírito, desejo e moral, aparência e essência, usando antíteses, paradoxos, hipérboles e imagens elaboradas. Essas características não são exclusivas do Barroco e precisam ser reconhecidas no funcionamento do texto, não só em listas decoradas. A ideia de literatura brasileira do período também exige cuidado: a sociedade colonial não correspondia ao país independente atual, e obras circulavam sob tradições culturais e instituições do mundo português. Para compreender uma passagem, destaque palavras que produzem tensão e explique seu efeito na perspectiva do eu lírico ou da voz discursiva. O exercício de leitura deve separar interpretação literária de comprovação histórica sobre pessoas reais.",
+        "example": "Num verso original para estudo, 'Procuro a paz, mas carrego a guerra no pensamento', o contraste entre paz e guerra ajuda a expressar conflito interior, sem ser citação histórica.",
+        "pitfall": "Classificar qualquer poema com oposição de palavras como Barroco ou atribuir uma identidade nacional contemporânea automaticamente a textos coloniais.",
+        "steps": [
+          "Sublinhe termos e imagens que realmente constroem oposições no trecho apresentado.",
+          "Explique como o contraste contribui para o conflito, sem classificar a obra por um único recurso."
+        ]
+      },
+      {
+        "title": "Cultismo, conceptismo e formas de persuasão",
+        "explanation": "O cultismo é frequentemente descrito como elaboração expressiva de palavras, imagens, sonoridades e jogos de linguagem; o conceptismo destaca encadeamentos de ideias, raciocínios e argumentos. Trata-se de categorias didáticas que podem coexistir numa mesma composição, não de regras que separam rigidamente escritores. Gregório de Matos é figura associada à poesia de temática religiosa, amorosa e satírica na Bahia colonial, embora a autoria de peças específicas possa exigir investigação. Padre Antônio Vieira se destacou por sermões cuja linguagem religiosa e retórica articulava argumentos, imagens e interesses de seu contexto. Um sermão tem finalidade de persuasão e não é documento neutro da sociedade colonial. Em vestibulares, a boa resposta indica o recurso da passagem e como ele orienta o leitor, em vez de apenas nomear conceptismo sem apresentar o raciocínio observado.",
+        "example": "Uma fala fictícia pergunta repetidamente por que alguém condena o luxo e, ao mesmo tempo, o pratica. O encadeamento das perguntas conduz um argumento crítico, ilustrando raciocínio persuasivo.",
+        "pitfall": "Tratar cultismo como texto sem pensamento ou conceptismo como linguagem que nunca utiliza metáforas e imagens.",
+        "steps": [
+          "Identifique o encadeamento das razões, perguntas retóricas e eventuais jogos de palavras.",
+          "Explique se os recursos atuam juntos na persuasão e no efeito expressivo do texto."
+        ]
+      },
+      {
+        "title": "Sátira e contexto histórico precisam ser lidos criticamente",
+        "explanation": "A sátira é recurso capaz de destacar contradições sociais por ironia, ridicularização e exagero. Em textos barrocos, pode incidir sobre costumes, hierarquias, religiosidade e autoridades, mas exige análise de quem fala, de quem é criticado e do público ao qual se dirige. Uma voz satírica pode questionar injustiças e também reproduzir estereótipos de seu tempo; não é necessário aceitar seus julgamentos para compreender a construção literária. A sociedade colonial incluía relações de escravidão e diferentes posições de poder, que não podem ser apagadas quando se usa uma obra como repertório histórico. Da mesma forma, personagens e imagens de um poema não constituem amostra estatística de uma cidade. A comparação entre textos e arte visual barroca é produtiva quando destaca semelhanças de efeito e diferenças de linguagem entre palavra, escultura e pintura.",
+        "example": "Um poema satírico inventado descreve uma autoridade que elogia simplicidade e ostenta roupas caras. O contraste produz crítica de hipocrisia, sem demonstrar que todos os administradores coloniais agiam assim.",
+        "pitfall": "Tratar exagero poético como descrição literal de pessoas históricas ou adotar preconceitos da voz do texto como critérios atuais.",
+        "steps": [
+          "Localize o alvo da sátira e a contradição que organiza o efeito humorístico ou crítico.",
+          "Contextualize as relações sociais antes de generalizar o conteúdo poético como fato histórico."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O que é antítese e como aparece frequentemente em textos barrocos?",
+        "hint": "Considere a aproximação de sentidos opostos.",
+        "solution": "Antítese aproxima termos ou ideias opostos para destacar tensões, como paz e conflito, recurso frequente mas não exclusivo do Barroco."
+      },
+      {
+        "level": "basic",
+        "prompt": "Cite um tipo de tensão temática frequentemente estudado no Barroco.",
+        "hint": "Pense em corpo e espiritualidade.",
+        "solution": "A oposição entre desejo material e valores espirituais é tema recorrente em diferentes obras barrocas, embora não seja obrigatório em todas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Diferencie cultismo de conceptismo sem separá-los rigidamente.",
+        "hint": "Um enfatiza trabalho verbal e outro o raciocínio.",
+        "solution": "Cultismo destaca imagens e jogos de linguagem; conceptismo enfatiza relações argumentativas entre ideias. Ambos podem coexistir."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que sermões de Vieira podem ser analisados como textos persuasivos?",
+        "hint": "Observe organização de argumentos e interlocutores.",
+        "solution": "Sermões visam orientar ideias e condutas mediante recursos retóricos, exemplos e raciocínios, exigindo análise de finalidade e público."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que um poema satírico sobre um governante não prova como agiam todos os governantes?",
+        "hint": "É preciso distinguir representação e dados históricos.",
+        "solution": "A sátira trabalha seleção, ironia e exagero. A conclusão sobre todas as autoridades exigiria fontes documentais e um recorte histórico adequado."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare oposição num poema barroco e contraste numa igreja barroca.",
+        "hint": "Diferencie palavra de composição visual.",
+        "solution": "O poema pode empregar antíteses verbais; a igreja pode usar luz, linhas e ornamentação para contrastes visuais. Efeitos podem dialogar, mas técnicas não são idênticas."
+      }
+    ],
+    "everyday": {
+      "context": "Uma exposição escolar apresenta um texto com palavras opostas como luz e sombra ao lado de uma fotografia de igreja colonial com forte contraste de iluminação. Um aluno declara que se trata da mesma técnica.",
+      "question": "Qual é a relação entre os efeitos de contraste nas duas obras e por que suas linguagens são diferentes?",
+      "answer": "Na literatura, o contraste pode ser construído por antíteses e organização verbal; na arte visual, por luz, forma e espaço. Há aproximação de efeito, não identidade de técnica.",
+      "connections": [
+        {
+          "subject": "Arte",
+          "topic": "Arte barroca brasileira",
+          "reason": "A composição visual barroca permite comparar contrastes de luz e forma com tensões expressas pela linguagem verbal."
+        },
+        {
+          "subject": "Literatura",
+          "topic": "Realismo brasileiro",
+          "reason": "Comparar escolas mostra maneiras diferentes de construir crítica social, ironia e perspectiva narrativa."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
