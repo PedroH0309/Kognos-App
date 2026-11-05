@@ -5,6 +5,7 @@
 import type {CourseLesson} from './course-content.ts';
 import {stage13EverydayContexts} from './authored-lessons-stage13.ts';
 import {stage14EverydayContexts} from './authored-lessons-stage14.ts';
+import {stage15EverydayContexts} from './authored-lessons-stage15.ts';
 export type ContextConnection={subject:string;topic:string;reason:string};
 export type EverydayContext={subject:string;topic:string;context:string;question:string;answer:string;connections:readonly ContextConnection[]};
 const earlierEverydayContexts:readonly EverydayContext[] = [
@@ -731,7 +732,7 @@ const earlierEverydayContexts:readonly EverydayContext[] = [
     ]
   }
 ];
-export const everydayContexts:readonly EverydayContext[]=[...earlierEverydayContexts,...stage13EverydayContexts,...stage14EverydayContexts];
+export const everydayContexts:readonly EverydayContext[]=[...earlierEverydayContexts,...stage13EverydayContexts,...stage14EverydayContexts,...stage15EverydayContexts];
 const bySubjectTopic=new Map(everydayContexts.map(item=>[item.subject+'\0'+item.topic,item]));
 /** Never override published editorial lessons with an unrelated offline scenario. */
 export function everydayContextFor(lesson:CourseLesson|null|undefined):EverydayContext|null{
