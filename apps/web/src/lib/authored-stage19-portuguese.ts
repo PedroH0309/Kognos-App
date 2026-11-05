@@ -44,13 +44,13 @@ export const stage19Portuguese:AuthoredLessonSeed[]=[
     "links": [
       [
         "Português",
-        "Termos essenciais da oração",
-        "Sujeito e núcleo são categorias essenciais para decidir a concordância verbal."
+        "Pontuação e efeitos de sentido",
+        "Identificar sujeito e predicado facilita tanto a concordância quanto a decisão de não separá-los por vírgula."
       ],
       [
-        "Redação",
-        "Revisão gramatical e reescrita",
-        "Revisão de concordância contribui para adequação formal do texto argumentativo."
+        "Português",
+        "Coesão referencial",
+        "Reconhecer núcleos e referentes ajuda a compreender relações entre termos e verbos nas orações."
       ]
     ]
   },
@@ -98,13 +98,13 @@ export const stage19Portuguese:AuthoredLessonSeed[]=[
     "links": [
       [
         "Português",
-        "Regência verbal e nominal",
-        "A preposição exigida por verbos e nomes é requisito para analisar se a crase ocorre."
+        "Concordância verbal",
+        "A análise da estrutura sintática ajuda a compreender normas de concordância e as condições gramaticais da crase."
       ],
       [
         "Português",
-        "Norma-padrão e adequação linguística",
-        "A aplicação de crase na escrita formal depende de convenções e da estrutura sintática."
+        "Pontuação e efeitos de sentido",
+        "O estudo das funções sintáticas orienta tanto regras de pontuação quanto presença de preposições na escrita."
       ]
     ]
   },
