@@ -30,7 +30,7 @@ test('Stage 21 adds 64 new deep subject-specific lessons, without overwriting ea
  assert.equal(new Set(stage21Topics.map(key)).size,64,'New lessons must have distinct subject/topic identities');
  const all=new Set([...previous,...stage21Topics.map(key)]);
  assert.equal(all.size,369,'Every added lesson must cover a previously unprepared topic');
- assert.equal(everydayContexts.length,369);
+ assert.ok(everydayContexts.length>=369,'Future authored stages retain the first 369 contexts');
 
  const subjects=new Map<string,number>();
  const examples=new Set<string>();
