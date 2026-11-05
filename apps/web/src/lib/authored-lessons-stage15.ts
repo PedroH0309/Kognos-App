@@ -194,6 +194,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Química",
+    "topic": "Equilíbrio químico e constantes",
+    "objective": "Reconhecer o equilíbrio químico dinâmico, construir expressões de Kc para reações balanceadas e interpretar perturbações sem confundir velocidades e concentrações.",
+    "sections": [
+      {
+        "title": "O equilíbrio continua reagindo",
+        "explanation": "Uma transformação química reversível pode ocorrer nos sentidos direto e inverso. No equilíbrio químico, sob condições adequadas e constantes, as duas velocidades tornam-se iguais, de modo que concentrações macroscópicas se mantêm constantes com o tempo. Isso não significa que as moléculas pararam de reagir ou que as concentrações de reagentes e produtos sejam idênticas. Uma reação pode atingir equilíbrio com quantidade de produto muito maior ou muito menor que a de reagente. A interpretação depende do sistema e de suas condições, como temperatura e eventual perda de substâncias. Em recipientes abertos, a saída de produtos gasosos pode impedir a mesma situação de equilíbrio de um sistema fechado. Nas provas, procure as duas direções da reação e diferencie velocidade de composição antes de fazer qualquer cálculo de constante.",
+        "example": "Em uma reação hipotética A ⇌ B, [A] pode estabilizar em 0,20 mol/L e [B] em 0,80 mol/L, sem contradição: o equilíbrio exige velocidades iguais, não concentrações iguais.",
+        "pitfall": "Definir equilíbrio como cessação completa das reações ou como mistura obrigatoriamente composta por partes iguais.",
+        "steps": [
+          "Identifique a reação reversível e as condições que precisam permanecer constantes.",
+          "Analise velocidades direta e inversa sem exigir concentrações iguais."
+        ]
+      },
+      {
+        "title": "A expressão de Kc vem dos coeficientes da reação",
+        "explanation": "Para uma reação homogênea aA+bB⇌cC+dD, a expressão escolar de Kc é [C]^c[D]^d/([A]^a[B]^b), usando concentrações de equilíbrio sob aproximações adequadas. Os expoentes correspondem aos coeficientes estequiométricos da equação balanceada. Na descrição termodinâmica rigorosa, constantes são expressas por atividades; o uso direto de concentrações é uma simplificação didática frequentemente adequada às questões. Sólidos puros e líquidos puros não entram explicitamente nas expressões usuais, pois suas atividades são consideradas constantes. Um valor elevado de Kc indica favorecimento relativo de produtos nas condições indicadas, não conversão garantida de 100%. A constante varia com a temperatura, enquanto valores iniciais de concentração não podem ser substituídos como se fossem resultados de equilíbrio. Sempre identifique estados físicos e balanceie a equação.",
+        "example": "Para H₂(g)+I₂(g)⇌2HI(g), Kc=[HI]²/([H₂][I₂]). Se as concentrações de equilíbrio forem 0,40, 0,20 e 0,10 mol/L, respectivamente, Kc=0,16/(0,02)=8, no modelo.",
+        "pitfall": "Esquecer os coeficientes como expoentes ou incluir sólidos puros na expressão de Kc em exercício escolar.",
+        "steps": [
+          "Balanceie a reação e escreva as espécies adequadas em produtos sobre reagentes.",
+          "Use somente concentrações de equilíbrio para substituir números na expressão."
+        ]
+      },
+      {
+        "title": "Mudanças no equilíbrio e limites da regra qualitativa",
+        "explanation": "Perturbações de concentração, temperatura e pressão podem deslocar a composição de um sistema em equilíbrio. O princípio de Le Chatelier prevê qualitativamente tendências de resposta em muitas situações, mas a aplicação exige identificar a natureza da perturbação. Aumentar a concentração de um reagente pode favorecer seu consumo, dependendo da reação. Em equilíbrio gasoso ideal, uma compressão que altera o volume tende a favorecer o lado com menos mols gasosos, se os números diferirem; não basta afirmar que maior pressão favorece sempre produtos. Temperatura modifica K e, no modelo qualitativo, o aumento pode favorecer o sentido endotérmico. Catalisadores aceleram caminhos de reação e a chegada ao equilíbrio, mas não alteram sua composição final nem o valor de K na mesma temperatura. O raciocínio deve separar transformação cinética de alteração termodinâmica.",
+        "example": "Uma reação hipotética apresenta dois mols de gases no lado reagente e um no produto. Uma redução de volume a temperatura constante pode favorecer o lado com menos mols gasosos sob aproximação ideal.",
+        "pitfall": "Afirmar que qualquer catalisador aumenta K ou que comprimir um sistema gasoso sempre favorece os produtos.",
+        "steps": [
+          "Conte mols gasosos e identifique exatamente qual variável foi modificada.",
+          "Conclua o sentido provável da resposta sem confundir rapidez da reação com posição do equilíbrio."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O equilíbrio químico significa que as duas reações foram interrompidas?",
+        "hint": "Considere as velocidades nos dois sentidos.",
+        "solution": "Não. O equilíbrio é dinâmico: as reações continuam com velocidades direta e inversa iguais, mantendo as concentrações macroscópicas constantes."
+      },
+      {
+        "level": "basic",
+        "prompt": "Equilíbrio exige a mesma concentração de reagentes e produtos?",
+        "hint": "Igualdade de velocidades é diferente de igualdade de quantidades.",
+        "solution": "Não. A composição pode favorecer reagentes ou produtos; o requisito cinético é igualdade das velocidades opostas nas condições de equilíbrio."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Escreva Kc para N₂(g)+3H₂(g)⇌2NH₃(g).",
+        "hint": "Os coeficientes entram como expoentes.",
+        "solution": "Kc=[NH₃]²/([N₂][H₂]³), utilizando concentrações de equilíbrio dentro da aproximação da atividade por concentração."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Para A⇌B, [A]=0,20 e [B]=0,60 mol/L no equilíbrio. Determine Kc.",
+        "hint": "A expressão é [B]/[A].",
+        "solution": "Kc=0,60/0,20=3 na temperatura e nas condições do enunciado. O número não indica que a reação parou."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que um catalisador não muda a posição do equilíbrio.",
+        "hint": "Ele influencia os caminhos cinéticos, não a constante termodinâmica.",
+        "solution": "Um catalisador acelera os sentidos direto e inverso, podendo reduzir o tempo até o equilíbrio, mas não modifica K nem a composição final em temperatura fixa."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Numa reação gasosa com igual número de mols de gás em ambos os lados, comprimir favorece obrigatoriamente produtos?",
+        "hint": "Compare mols gasosos antes de concluir.",
+        "solution": "Não. Se ambos os lados têm o mesmo total de mols gasosos, uma compressão ideal pode não favorecer um deles. A reação e as condições precisam ser avaliadas."
+      }
+    ],
+    "everyday": {
+      "context": "Em um laboratório supervisionado, as concentrações de substâncias de uma reação reversível ficam constantes após algum tempo. A turma conclui que as moléculas não estão mais reagindo.",
+      "question": "Por que a estabilidade observada não significa ausência de reações microscópicas?",
+      "answer": "Porque a reação direta e a inversa continuam, mas apresentam velocidades iguais. O equilíbrio mantém a composição macroscópica apesar de processos contínuos.",
+      "connections": [
+        {
+          "subject": "Química",
+          "topic": "Cálculo estequiométrico",
+          "reason": "Os coeficientes da equação balanceada determinam expoentes nas expressões de constantes de equilíbrio."
+        },
+        {
+          "subject": "Química",
+          "topic": "pH e pOH",
+          "reason": "Equilíbrios entre espécies em solução contribuem para compreender a concentração de íons e o comportamento ácido-base."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Fotossíntese e quimiossíntese",
+    "objective": "Comparar formas autotróficas de fixação de carbono por luz ou energia química, interpretando a origem do oxigênio e os limites das equações simplificadas.",
+    "sections": [
+      {
+        "title": "Fotossíntese fixa carbono utilizando luz",
+        "explanation": "Na fotossíntese oxigênica, plantas, algas e cianobactérias captam energia luminosa e utilizam CO₂ para incorporar carbono em matéria orgânica. A equação global simplificada 6CO₂+6H₂O→C₆H₁₂O₆+6O₂, com energia luminosa, mostra o balanço geral, mas não todas as etapas e os produtos metabólicos imediatos. O oxigênio liberado vem da água, não do CO₂. Nas plantas, cloroplastos contêm estruturas e pigmentos que participam das transformações. A formação de matéria orgânica ajuda a sustentar cadeias alimentares, mas a planta também realiza respiração celular: um processo não elimina o outro. A taxa fotossintética depende de luminosidade, água, CO₂, temperatura e outros fatores, portanto não cresce indefinidamente com qualquer um deles isoladamente. É importante diferenciar origem da energia e origem dos átomos incorporados.",
+        "example": "Uma planta cultivada sob condições adequadas pode incorporar átomos de carbono do CO₂ atmosférico na biomassa. Isso não significa que toda sua massa venha de nutrientes minerais do solo.",
+        "pitfall": "Dizer que plantas não respiram durante o dia ou que o oxigênio molecular liberado provém do CO₂.",
+        "steps": [
+          "Localize luz como fonte energética e CO₂ como origem de carbono fixado.",
+          "Diferencie a origem do O₂ liberado e a composição simplificada dos produtos."
+        ]
+      },
+      {
+        "title": "Reações luminosas e ciclo de Calvin",
+        "explanation": "Nas plantas, reações fotoquímicas ocorrem associadas às membranas dos tilacoides, onde a energia luminosa possibilita produção de ATP e poder redutor, incluindo NADPH; na fotossíntese oxigênica, a água é fonte de elétrons e o O₂ pode ser liberado. O ciclo de Calvin ocorre no estroma e utiliza ATP e NADPH na fixação de carbono do CO₂ em compostos orgânicos. O termo escolar 'fase escura' pode sugerir incorretamente que o ciclo exige ausência de luz: ele não usa fótons diretamente da mesma forma que as reações fotoquímicas, mas depende de seus produtos e não é necessariamente noturno. O aumento de luz pode elevar atividade fotossintética até que outros fatores se tornem limitantes. Em provas, a função das etapas importa mais do que decorar nomes isolados.",
+        "example": "Se a luz aumenta num cultivo com água disponível, a atividade fotossintética pode responder até que CO₂, temperatura ou outra condição limite o processo; o ganho não é ilimitado.",
+        "pitfall": "Afirmar que o ciclo de Calvin ocorre somente à noite ou que mais luz sempre gera mais fotossíntese sem limite.",
+        "steps": [
+          "Identifique tilacoides e seus produtos energéticos nas reações fotoquímicas.",
+          "Associe estroma e fixação de CO₂ ao ciclo de Calvin."
+        ]
+      },
+      {
+        "title": "Quimiossíntese e autotrofia sem luz",
+        "explanation": "Certos microrganismos autotróficos conseguem obter energia a partir da oxidação de substâncias inorgânicas e utilizá-la para fixar carbono inorgânico. Em linguagem escolar, essa produção é chamada quimiossíntese, embora as rotas metabólicas variem entre organismos. A fonte de energia pode estar associada a compostos de nitrogênio, enxofre ou ferro, não à absorção de luz. Isso ajuda a explicar como algumas redes ecológicas podem sustentar produção primária em ambientes sem iluminação. Porém nem todo microrganismo que vive em lugar escuro é quimioautotrófico: muitos são consumidores ou decompositores. Não é correto tratar fotossíntese e quimiossíntese como reações idênticas que apenas trocam fonte de luz por outra fonte; organismos, substratos e subprodutos são diversos. A distinção essencial envolve energia para fixar carbono.",
+        "example": "Uma bactéria nitrificante pode liberar energia ao oxidar certas espécies inorgânicas de nitrogênio, utilizando-a em processos que sustentam autotrofia, sem necessidade de luz solar.",
+        "pitfall": "Confundir quimiossíntese com fermentação ou afirmar que qualquer bactéria presente em escuridão fixa carbono.",
+        "steps": [
+          "Identifique a reação química que fornece energia ao organismo.",
+          "Compare com a captação luminosa na fotossíntese e examine a origem do carbono."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual é a principal fonte de energia da fotossíntese de plantas?",
+        "hint": "Considere energia absorvida por pigmentos.",
+        "solution": "É a energia luminosa, convertida em energia química nas etapas fotoquímicas e usada para apoiar a fixação de carbono."
+      },
+      {
+        "level": "basic",
+        "prompt": "O O₂ liberado na fotossíntese oxigênica tem origem em qual substância?",
+        "hint": "Pense na quebra e oxidação da água.",
+        "solution": "O oxigênio liberado provém da água que fornece elétrons; CO₂ fornece o carbono incorporado em compostos orgânicos."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Para que servem ATP e NADPH das reações luminosas?",
+        "hint": "Relacione energia e poder redutor ao carbono.",
+        "solution": "Fornecem energia e poder redutor para etapas da fixação de CO₂, incluindo o ciclo de Calvin nos cloroplastos."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que a expressão 'fase escura' pode induzir erro sobre o ciclo de Calvin?",
+        "hint": "Ele não exige escuridão e depende de ATP e NADPH.",
+        "solution": "O ciclo não utiliza fótons diretamente nas mesmas reações, mas depende de produtos gerados na fase fotoquímica. Não ocorre obrigatoriamente no escuro."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Diferencie as fontes de energia de fotossíntese e quimiossíntese.",
+        "hint": "Luz versus oxidação de compostos inorgânicos.",
+        "solution": "A fotossíntese utiliza energia luminosa, enquanto quimioautótrofos podem obter energia de reações de oxidação de substâncias inorgânicas para fixar carbono."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que elevar a luminosidade não garante aumento indefinido da fotossíntese?",
+        "hint": "Outras condições tornam-se limitantes.",
+        "solution": "Água, CO₂, temperatura e processos metabólicos limitam a taxa. Um único fator abundante não elimina as demais restrições."
+      }
+    ],
+    "everyday": {
+      "context": "Uma aula compara uma planta que recebe luz com microrganismos que podem produzir matéria orgânica usando energia de reações químicas, mesmo num ambiente sem iluminação.",
+      "question": "Por que nem todo organismo autotrófico precisa de luz e que elemento ambos podem incorporar à matéria orgânica?",
+      "answer": "Plantas fotossintetizantes captam luz, enquanto quimioautótrofos podem aproveitar energia de oxidações inorgânicas. Em ambos os casos, carbono inorgânico pode ser fixado em compostos orgânicos.",
+      "connections": [
+        {
+          "subject": "Ciências",
+          "topic": "Cadeias e teias alimentares",
+          "reason": "A produção primária por organismos autotróficos sustenta relações de alimentação em muitas comunidades."
+        },
+        {
+          "subject": "Ciências",
+          "topic": "Ciclos da água e do carbono",
+          "reason": "A incorporação de carbono por produtores participa do ciclo do carbono, e a água integra as reações da fotossíntese."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
