@@ -110,60 +110,6 @@ export const stage19Spanish:AuthoredLessonSeed[]=[
   },
   {
     "subject": "Espanhol",
-    "topic": "Subjuntivo em espanhol",
-    "objective": "Reconhecer usos do presente e do imperfeito do subjuntivo em desejos, possibilidade e hipóteses, relacionando conjunções e contexto.",
-    "chapters": [
-      [
-        "Desejo e possibilidade no presente",
-        "O subjuntivo espanhol aparece em construções de desejo, dúvida, finalidade e situações não afirmadas como fato, dependendo de gatilhos sintáticos e semânticos. 'Espero que vengas' apresenta expectativa, não confirmação de chegada. Verbos regulares no presente do subjuntivo usam terminações características e formas irregulares precisam de estudo.",
-        "'Quiero que estudies' apresenta desejo dirigido a outra pessoa; não informa que ela já estuda ou estudou.",
-        "Toda oração introduzida por que obrigatoriamente usa indicativo porque comunica um fato.",
-        "Complete 'Espero que tú ___ (venir) mañana' com forma adequada.",
-        "O presente do subjuntivo de venir para tú é vengas.",
-        "'Espero que tú vengas mañana' expressa expectativa de chegada, sem tratá-la como acontecimento confirmado.",
-        "Desejo e expectativa podem selecionar subjuntivo; a forma verbal não declara realização obrigatória do evento."
-      ],
-      [
-        "Hipóteses com si",
-        "Em construções hipotéticas como 'Si tuviera tiempo, viajaría', a oração com si usa frequentemente imperfeito do subjuntivo e a consequência condicional. Não é regra que todo si exija subjuntivo: hipóteses realizáveis usam indicativo em muitos contextos, como 'Si tengo tiempo, iré'. Ler a relação de possibilidade é mais importante que memorizar um único padrão.",
-        "'Si estudiara más, entendería mejor' imagina condição, enquanto 'Si estudio hoy, terminaré' propõe possibilidade.",
-        "Depois de si sempre se usa imperfeito do subjuntivo, mesmo para condição futura provável.",
-        "Qual contraste existe entre 'Si tengo tiempo' e 'Si tuviera tiempo'?",
-        "Um usa indicativo e outro hipótese mais remota.",
-        "A primeira pode expressar condição realizável; a segunda apresenta situação hipotética ou menos provável em muitos contextos.",
-        "O verbo após si varia conforme tipo de condição; uma regra única apagaria diferença de hipótese e realidade."
-      ],
-      [
-        "Conjunções e modo verbal",
-        "Construções com para que, antes de que e embora semelhantes podem exigir subjuntivo conforme a relação expressa. É necessário observar sujeito, tempo e concordância, evitando traduzir mecanicamente regras do português. Uma frase pode expressar incerteza sem ausência absoluta de evidência; o modo verbal organiza a atitude do enunciador.",
-        "'Te escribo para que sepas la noticia' expressa finalidade do ato de escrever, não comprova que destinatário já soube.",
-        "Se uma frase expressa finalidade, o resultado pretendido necessariamente já aconteceu.",
-        "Que valor comunica 'Estudio para que mis notas mejoren'?",
-        "Para que indica finalidade.",
-        "A pessoa estuda com objetivo de melhorar as notas; a melhora desejada não é descrita como fato confirmado.",
-        "O subjuntivo em oração final comunica objetivo possível, não a realização inevitável da consequência."
-      ]
-    ],
-    "situation": [
-      "Um aviso diz 'Esperamos que participen', e a turma interpreta que todos já participaram obrigatoriamente. Outra frase diz 'Si tuviéramos tiempo, visitaríamos el museo'.",
-      "Como subjuntivo e condicional distinguem expectativa de participação e hipótese sobre tempo disponível?",
-      "A primeira expressa esperança de participação; a segunda imagina visita condicionada a tempo que não está apresentado como disponível."
-    ],
-    "links": [
-      [
-        "Espanhol",
-        "Futuro e condicional em espanhol",
-        "Condições hipotéticas combinam formas do subjuntivo e do condicional em construções específicas."
-      ],
-      [
-        "Espanhol",
-        "Presente do indicativo em espanhol",
-        "Comparar indicativo e subjuntivo esclarece diferença entre afirmação, desejo e hipótese."
-      ]
-    ]
-  },
-  {
-    "subject": "Espanhol",
     "topic": "Gêneros textuais e multimodalidade em espanhol",
     "objective": "Ler avisos, reportagens e tirinhas em espanhol integrando texto verbal, imagens e contexto sem extrapolar informações.",
     "chapters": [
