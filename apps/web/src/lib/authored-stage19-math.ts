@@ -164,55 +164,109 @@ export const stage19Math:TopicSeed[]=[
   },
   {
     "subject": "Matemática",
-    "topic": "Média aritmética e ponderada",
-    "objective": "Calcular e interpretar médias simples e ponderadas, considerando pesos, valores extremos e o conjunto de referência.",
+    "topic": "Mediana e moda",
+    "objective": "Calcular mediana e moda em conjuntos numéricos, interpretando distribuições assimétricas e diferenças em relação à média.",
     "chapters": [
       [
-        "Média aritmética",
-        "A média aritmética simples soma observações e divide pelo número de valores. É um resumo numérico que pode ser influenciado por valores extremos; não descreve obrigatoriamente a experiência da maioria. Antes de calcular, verifique unidades e quais registros realmente pertencem ao grupo.",
-        "Notas 6, 8 e 10 têm média (6+8+10)/3=8, embora nenhuma dessas observações precise coincidir com a mediana de qualquer outro grupo.",
-        "A média é sempre um valor observado por alguma pessoa do grupo pesquisado.",
-        "Calcule a média de 4, 7 e 10.",
-        "Some 21 e divida por três.",
-        "A média é 7; nesse conjunto coincide com um valor observado, mas isso não ocorre necessariamente.",
-        "A média pode assumir valor que não existe entre os registros; é uma medida de centro numérica."
+        "Mediana após ordenar",
+        "A mediana é valor central de dados ordenados. Para quantidade ímpar, corresponde à posição intermediária; para quantidade par, utiliza a média dos dois valores centrais. Sua interpretação depende de registros incluídos e permite resumir distribuições em que extremos distorcem a média. Não se deve selecionar o número central antes de ordenar os valores.",
+        "Nas rendas hipotéticas 1000, 1200 e 9000 reais, a mediana é 1200, enquanto a média é cerca de 3733,33.",
+        "A mediana é sempre o maior número de um conjunto porque representa o valor mais importante.",
+        "Qual a mediana de 9, 2, 5, 8 e 3?",
+        "Ordene os cinco números e escolha o terceiro.",
+        "Ordenando 2,3,5,8,9, a posição central é 5, que corresponde à mediana.",
+        "A mediana depende da posição dos dados ordenados; um extremo não ocupa necessariamente a posição central."
       ],
       [
-        "Média ponderada",
-        "Quando as observações têm importâncias ou frequências diferentes, a média ponderada soma produtos valor×peso e divide pela soma dos pesos. Usar pesos sem normalização gera resultado incoerente. Um exame em que prova pesa três e trabalho pesa um deve considerar a proporção 3:1.",
-        "Com prova 8 (peso 3) e tarefa 6 (peso 1), média=(8×3+6×1)/4=7,5.",
-        "Na média ponderada, basta somar os produtos sem dividir pela soma dos pesos.",
-        "Calcule média de 5 (peso 2) e 9 (peso 3).",
-        "O peso total é cinco.",
-        "(5×2+9×3)/5=37/5=7,4; a média respeita a proporção de importância.",
-        "É necessário dividir pela soma dos pesos; o total de produtos não é uma média."
+        "Tamanho par e moda",
+        "Quando há número par de registros, a mediana é a média dos dois centrais ordenados. A moda é o valor ou categoria de maior frequência; pode não existir moda única, ocorrer empate ou haver diferentes modas. Média, mediana e moda respondem a perguntas distintas, e a variável pode até ser qualitativa.",
+        "Para 1,2,2,4 a mediana é (2+2)/2=2, e a moda também é 2 porque aparece mais vezes.",
+        "Todo conjunto de dados possui uma única moda, e ela sempre coincide com a mediana.",
+        "Encontre moda da lista 2,3,3,4,4,5.",
+        "Conte a frequência de cada valor.",
+        "A lista é bimodal: 3 e 4 aparecem duas vezes, enquanto os outros aparecem uma vez.",
+        "A moda exige identificar frequências máximas, e pode haver empate em vez de um único valor."
       ],
       [
-        "Interpretação e limitação",
-        "A média não revela, sozinha, dispersão ou desigualdade. Dois grupos podem ter mesma média e composições muito diferentes. Quando há extremos, compare mediana, amplitude e distribuição conforme a pergunta; se os dados são monetários, períodos e populações devem ser compatíveis.",
-        "Rendas 1, 1 e 10 mil possuem média 4 mil e mediana 1 mil: a média sozinha sugere distribuição enganosa.",
-        "Se duas turmas têm igual média, todos os estudantes obtiveram notas próximas.",
-        "As notas 2,8 e 5,5 têm a mesma média?",
-        "Calcule média de cada par.",
-        "Ambos os pares têm média 5, embora um seja disperso e outro constante.",
-        "Igualdade de médias não implica igualdade da variância ou dos resultados individuais."
+        "Distribuição e escolha da medida",
+        "A mediana é menos influenciada por valores extremos que a média, mas não mostra sozinha dispersão. Em uma comparação de rendas, medidas centrais precisam ser acompanhadas de universo, unidade e período; em categorias não ordenáveis, a mediana nem sempre faz sentido. A moda pode representar tamanho de roupa mais vendido, mesmo sem média aritmética aplicável.",
+        "Em tamanhos P,P,M,M,M,G, a moda é M; calcular média numérica dessas letras não seria procedimento adequado.",
+        "A mediana e a moda substituem todos os gráficos porque revelam cada detalhe da distribuição.",
+        "Por que moda é apropriada para identificar tamanho de camiseta mais vendido?",
+        "A variável é categoria com frequências.",
+        "Porque a moda identifica a categoria mais frequente, sem exigir média numérica de letras.",
+        "Uma medida central resume informação, mas não revela todos os valores nem a dispersão."
       ]
     ],
     "situation": [
-      "Uma escola anuncia média de notas 7 na turma A e 7 na turma B, concluindo que todos aprenderam exatamente no mesmo nível. A primeira tem notas 7,7 e a segunda 4,10.",
-      "Qual falha existe no uso isolado da média e o que pode complementar a comparação?",
-      "As médias são iguais, mas a dispersão difere; distribuição, mediana, amplitude e resultados por habilidade complementam a análise."
+      "Uma cantina analisa tempos de fila de 2, 3, 3, 4 e 25 minutos. A média é elevada pela espera excepcional de 25 minutos, e o funcionário afirma que o atendimento típico demora sempre 7,4 minutos.",
+      "Qual é a mediana e a moda dos tempos e por que ajudam a interpretar o conjunto?",
+      "A mediana é 3 minutos e a moda também é 3 minutos. O valor extremo de 25 eleva a média, que não representa cada atendimento."
     ],
     "links": [
       [
+        "Matemática",
+        "Média aritmética e ponderada",
+        "A comparação entre média e mediana mostra como valores extremos podem alterar medidas de tendência central de maneira diferente."
+      ],
+      [
         "Sociologia",
         "Desigualdade de renda",
-        "As medidas de tendência central podem esconder concentrações extremas na distribuição de recursos."
+        "Mediana e média de rendimentos podem divergir quando há concentração de renda, exigindo interpretação cuidadosa."
+      ]
+    ]
+  },
+  {
+    "subject": "Matemática",
+    "topic": "Variância e desvio padrão",
+    "objective": "Calcular variância populacional e desvio padrão de dados simples e interpretar dispersão com unidades apropriadas.",
+    "chapters": [
+      [
+        "Desvios em relação à média",
+        "Dispersão mostra quão distantes os valores ficam de medida central. A variância populacional usa a média dos quadrados dos desvios em relação à média aritmética, evitando cancelamento entre desvios positivos e negativos. Ela requer conjunto de dados quantitativos e unidade ao quadrado, não a mesma unidade original da variável.",
+        "Para observações 2,4,6, a média é 4, os desvios são −2,0,2 e a soma dos quadrados dos desvios é 8.",
+        "Basta somar desvios simples em relação à média para medir variação, pois eles nunca se anulam.",
+        "Para valores 1,3,5, qual soma dos quadrados dos desvios em relação à média?",
+        "A média é 3; calcule (1−3)²+(3−3)²+(5−3)².",
+        "A soma é 4+0+4=8, porque os desvios foram elevados ao quadrado antes da soma.",
+        "Os desvios simples em torno da média somam zero; os quadrados permitem medir magnitude da dispersão."
+      ],
+      [
+        "Variância populacional e amostral",
+        "Para população finita de N observações, a variância é a soma dos quadrados dos desvios dividida por N. Uma estimativa amostral convencional usa denominador n−1 em certas situações, e confundir os dois casos muda o resultado. Antes da conta, identifique se a questão define população ou amostra.",
+        "Para a população 2,4,6, média=4 e variância populacional=(4+0+4)/3=8/3 unidades².",
+        "Todas as variâncias devem ser divididas por n−1, inclusive quando o problema fornece a população inteira.",
+        "Qual variância populacional de 0 e 4?",
+        "A média é 2 e o denominador é N=2.",
+        "A soma dos quadrados dos desvios é 4+4=8; variância populacional=8/2=4.",
+        "O denominador deve corresponder ao conceito solicitado: população completa não usa automaticamente n−1."
+      ],
+      [
+        "Desvio padrão e comparação",
+        "O desvio padrão é a raiz quadrada da variância e volta à unidade original da variável, facilitando interpretação. Dois grupos podem ter mesma média e desvios padrão diferentes, mas isso não prova automaticamente causa da diferença. Para comparar contextos, considere unidades, amostras e escala, inclusive quando há valores extremos.",
+        "As turmas com notas [5,5] e [2,8] têm média 5, mas o segundo conjunto apresenta maior desvio padrão.",
+        "Se duas turmas têm a mesma média, seus desvios padrão são obrigatoriamente idênticos.",
+        "Compare desvio padrão populacional de [5,5] e [2,8].",
+        "Ambos têm média 5; calcule os quadrados dos desvios.",
+        "[5,5] tem desvio padrão 0; [2,8] tem variância 9 e desvio padrão 3, em pontos de nota.",
+        "A igualdade da média não determina a dispersão; o desvio padrão resume as distâncias em relação a ela."
+      ]
+    ],
+    "situation": [
+      "Duas turmas apresentam média 5 numa avaliação. Na turma A, os estudantes tiveram 5 e 5; na turma B, 2 e 8. Um coordenador afirma que as duas turmas apresentam variação igual.",
+      "Qual desvio padrão populacional de cada turma e o que a comparação revela?",
+      "A turma A tem desvio padrão 0; a B tem variância 9 e desvio padrão 3, embora as médias sejam iguais. Os resultados são ilustrativos."
+    ],
+    "links": [
+      [
+        "Matemática",
+        "Média aritmética e ponderada",
+        "A média é o centro utilizado para calcular os desvios que entram na variância e no desvio padrão."
       ],
       [
         "Matemática",
-        "Probabilidade condicional",
-        "O cuidado em definir o conjunto de referência é comum a médias, frequências e probabilidades condicionadas."
+        "Mediana e moda",
+        "A comparação entre medidas de posição e dispersão mostra por que um único resumo estatístico é insuficiente."
       ]
     ]
   }
