@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {parseCourseDocument} from './course-content.ts';
+import type {CourseTask} from './course-content.ts';
 import {deepMathTopicNames} from './deep-math-lessons.ts';
 import {deepCrossSubjectTopics} from './deep-cross-subject-lessons.ts';
 import {stage13Topics} from './authored-lessons-stage13.ts';
@@ -62,9 +63,9 @@ test('Stage 18 adds 64 topic-specific courses via a reusable editorial template,
   assert.equal(lesson.tasks.length,6);
   assert.equal(new Set(lesson.tasks.map(t=>t.prompt)).size,6,'No repeated question within an authored course');
   for(const level of ['basic','intermediate','advanced']){
-   const questions=lesson.tasks.filter(x=>x.level===level);
+   const questions:CourseTask[]=lesson.tasks.filter((task:CourseTask)=>task.level===level);
    assert.equal(questions.length,2);
-   assert.ok(questions.some(x=>x.prompt.startsWith('Analise a afirmação')),'Each level needs an error-diagnosis problem');
+   assert.ok(questions.some((task:CourseTask)=>task.prompt.startsWith('Analise a afirmação')),'Each level needs an error-diagnosis problem');
   }
   for(const task of lesson.tasks){
    assert.ok(task.prompt.length>=25);
