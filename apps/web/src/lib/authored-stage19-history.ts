@@ -152,13 +152,13 @@ export const stage19History:AuthoredLessonSeed[]=[
     "links": [
       [
         "História",
-        "Imperialismo e neocolonialismo",
-        "Disputas imperiais e rivalidades entre potências ajudam a contextualizar tensões que precederam 1914."
+        "Revolução Industrial",
+        "A industrialização alterou tecnologias, transporte e capacidade de produção mobilizadas nos conflitos europeus."
       ],
       [
         "História",
-        "Revolução Russa",
-        "A guerra agravou crises políticas na Rússia, embora a revolução tenha causas próprias e desdobramentos específicos."
+        "Primeira República brasileira",
+        "O período da Primeira República fornece contexto à posição política e participação do Brasil na guerra."
       ]
     ]
   },
