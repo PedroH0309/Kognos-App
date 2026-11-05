@@ -1114,6 +1114,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Cultura e etnocentrismo",
+    "objective": "Interpretar cultura como produção social plural e identificar etnocentrismo, relativismo metodológico e desigualdades de poder sem naturalizar preconceitos.",
+    "sections": [
+      {
+        "title": "Cultura não é apenas arte ou erudição",
+        "explanation": "Em Sociologia, cultura inclui práticas, valores, conhecimentos, símbolos, crenças, técnicas e modos de organização aprendidos e compartilhados socialmente. O termo não se limita a livros, museus ou escolaridade elevada. Alimentação, festas, linguagens, modos de trabalhar e formas de convivência são dimensões culturais, mas não são praticadas uniformemente por todas as pessoas de um grupo. Culturas transformam-se com contato, conflitos, tecnologias e mudanças históricas. Descrever uma prática como cultural não significa que seja biologicamente determinada nem que todos os seus participantes concordem com ela. Para analisar uma situação, pergunte quem participa, em qual contexto, quais significados atribui e quais relações de poder influenciam sua circulação. Essa abordagem evita reduzir pessoas a estereótipos de origem e permite reconhecer diversidade interna em comunidades.",
+        "example": "Uma receita de família pode reunir ingredientes trazidos por migrações e técnicas locais. Essa combinação ilustra transformação cultural, sem representar obrigatoriamente todas as famílias de uma região.",
+        "pitfall": "Achar que cultura é sinônimo de refinamento intelectual ou afirmar que cada povo possui hábitos idênticos e permanentes.",
+        "steps": [
+          "Identifique práticas, símbolos e conhecimentos presentes numa situação social concreta.",
+          "Verifique se sua descrição reconhece diversidade entre pessoas e transformações históricas."
+        ]
+      },
+      {
+        "title": "Etnocentrismo e interpretação da diferença",
+        "explanation": "Etnocentrismo ocorre quando uma pessoa ou grupo avalia costumes de outros a partir dos próprios padrões como se estes fossem medida universal de valor. Estranhar uma prática não significa automaticamente discriminar, mas considerá-la inferior só por ser diferente pode expressar julgamento etnocêntrico. A análise sociológica procura compreender significados no contexto em que práticas se desenvolveram, sem presumir que a sociedade observada seja homogênea. O relativismo cultural, como orientação metodológica, ajuda a suspender julgamentos precipitados para investigar práticas e perspectivas; não exige aprovar toda conduta nem abandonar princípios de direitos humanos. Questões envolvendo violência, desigualdade e direitos requerem exame ético e histórico específico. Comparar costumes deve levar em conta quem tem poder para definir o que parece normal, civilizado ou legítimo em situações concretas.",
+        "example": "Um estudante ridiculariza o alimento tradicional de outra comunidade por não fazer parte da sua rotina. Uma investigação cultural perguntaria pelo significado, história e preparo, não pela superioridade do gosto pessoal.",
+        "pitfall": "Confundir esforço de compreensão sociológica com obrigação de concordar com qualquer prática, ou usar 'diferente' como equivalente a 'inferior'.",
+        "steps": [
+          "Identifique qual padrão próprio está sendo usado para avaliar o comportamento de terceiros.",
+          "Reformule o julgamento como pergunta contextualizada sobre origem, significado e diversidade."
+        ]
+      },
+      {
+        "title": "Respeito, direitos e circulação cultural",
+        "explanation": "O contato entre culturas ocorre por migração, comércio, redes sociais, escola e inúmeros outros meios, podendo gerar trocas criativas e também assimetrias de poder. É necessário distinguir conhecer e valorizar práticas de povos diferentes de apresentar suas produções como se fossem objetos sem autores, história ou direitos. Em debates escolares, uma pessoa pode descrever sua própria experiência sem ser tomada como representante única de todo um grupo. O respeito intercultural exige reconhecer sujeitos, condições de produção e contextos de uso; também é legítimo discutir práticas à luz de direitos fundamentais sem hostilizar uma população inteira. Para analisar representações em mídia e publicidade, observe se aparecem vozes da comunidade ou apenas estereótipos externos. O estudo de cultura contribui para leitura crítica da linguagem, arte e relações sociais.",
+        "example": "Uma exposição escolar sobre celebrações locais pode convidar participantes a explicar significados e autorizações de uso de imagens, evitando generalizar uma entrevista para toda a comunidade.",
+        "pitfall": "Apresentar uma pessoa como porta-voz obrigatória de todos que compartilham sua origem ou utilizar símbolos culturais sem respeito ao contexto.",
+        "steps": [
+          "Diferencie troca cultural, representação e apropriação sem atribuir intenções ocultas sem dados.",
+          "Inclua perspectivas dos grupos envolvidos e avalie eventuais impactos sobre direitos e reconhecimento."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Por que cultura não pode ser reduzida à frequência a museus ou à leitura de livros?",
+        "hint": "Considere práticas e conhecimentos cotidianos.",
+        "solution": "Porque cultura abrange práticas, valores, linguagens e conhecimentos socialmente aprendidos, presentes em muitos contextos além da arte erudita."
+      },
+      {
+        "level": "basic",
+        "prompt": "O que caracteriza um julgamento etnocêntrico?",
+        "hint": "Observe qual padrão é tratado como universal.",
+        "solution": "É avaliar práticas de outros grupos pelo próprio padrão e considerá-las inferiores apenas por não corresponderem a ele."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma turma ridiculariza um alimento tradicional por desconhecê-lo. Como investigar sem etnocentrismo?",
+        "hint": "Pergunte pela história e significados no contexto.",
+        "solution": "É adequado conhecer os ingredientes, a história, os sentidos e as pessoas envolvidas, em vez de transformar estranhamento em hierarquia cultural."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Relativismo cultural metodológico significa que toda prática deve ser aprovada?",
+        "hint": "Compreender não equivale a concordar com qualquer conduta.",
+        "solution": "Não. O método incentiva análise contextual e suspensão de juízos precipitados, sem eliminar debate sobre direitos, violência e responsabilidade."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que uma entrevista não representa necessariamente todos os membros de uma comunidade?",
+        "hint": "Há diversidade interna de pessoas e experiências.",
+        "solution": "Uma entrevista apresenta a perspectiva de uma pessoa em determinado contexto; generalizar ao grupo inteiro exige evidências e atenção à diversidade."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Como analisar uso de uma tradição cultural numa campanha publicitária?",
+        "hint": "Considere autoria, contexto e representação.",
+        "solution": "É necessário examinar quem produziu a campanha, como a tradição é retratada, a participação da comunidade e os riscos de estereótipos ou exploração."
+      }
+    ],
+    "everyday": {
+      "context": "Numa feira cultural da escola, estudantes apresentam comidas e celebrações de diferentes comunidades. Alguns colegas afirmam que uma tradição é 'atrasada' porque não se parece com os costumes de suas famílias.",
+      "question": "Por que considerar o próprio costume como medida universal é etnocentrismo e como investigar a tradição de maneira sociológica?",
+      "answer": "O julgamento impõe um padrão local como superior. Uma análise sociológica procura história, significados, participantes e contexto, sem transformar diferença em inferioridade.",
+      "connections": [
+        {
+          "subject": "Português",
+          "topic": "Variação regional, social e histórica",
+          "reason": "A diversidade de modos de falar é parte de práticas sociais e não pode ser usada para hierarquizar grupos humanos."
+        },
+        {
+          "subject": "Sociologia",
+          "topic": "Indústria cultural e cultura de massa",
+          "reason": "A circulação comercial de conteúdos pode modificar representações culturais e ampliar ou limitar a visibilidade de certos grupos."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
