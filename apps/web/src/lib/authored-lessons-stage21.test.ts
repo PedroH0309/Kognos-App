@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
-import {parseCourseDocument} from './course-content.ts';
+import {parseCourseDocument,type CourseTask} from './course-content.ts';
 import {deepMathTopicNames} from './deep-math-lessons.ts';
 import {deepCrossSubjectTopics} from './deep-cross-subject-lessons.ts';
 import {stage13Topics} from './authored-lessons-stage13.ts';
@@ -68,9 +68,9 @@ test('Stage 21 adds 64 new deep subject-specific lessons, without overwriting ea
   assert.equal(lesson.tasks.length,6,'Two graded tasks per chapter');
   assert.equal(new Set(lesson.tasks.map(q=>q.prompt)).size,6,'Practice prompts must vary');
   for(const level of ['basic','intermediate','advanced']){
-   const tasks=lesson.tasks.filter(q=>q.level===level);
-   assert.equal(tasks.length,2,'Expected two exercises for '+level+': '+id);
-   assert.equal(tasks.filter(q=>q.prompt.startsWith('Analise a afirmação')).length,1);
+   const levelTasks:CourseTask[]=lesson.tasks.filter((q:CourseTask)=>q.level===level);
+   assert.equal(levelTasks.length,2,'Expected two exercises for '+level+': '+id);
+   assert.equal(levelTasks.filter((q:CourseTask)=>q.prompt.startsWith('Analise a afirmação')).length,1);
   }
   const caseStudy=stage21EverydayContexts.find(x=>key(x)===id);
   assert.ok(caseStudy,'Original everyday scenario: '+id);
