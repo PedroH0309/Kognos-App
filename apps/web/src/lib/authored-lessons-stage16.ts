@@ -378,6 +378,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "História",
+    "topic": "Tráfico atlântico e resistências",
+    "objective": "Explicar o tráfico atlântico de africanos escravizados, seu caráter coercitivo e o protagonismo das resistências, distinguindo proibição do tráfico e abolição da escravidão.",
+    "sections": [
+      {
+        "title": "Tráfico transatlântico e deslocamento forçado",
+        "explanation": "O tráfico transatlântico de africanos escravizados conectou interesses comerciais, governos e redes de aprisionamento e venda de pessoas, com violência, coerção e deslocamento forçado. O Brasil foi importante destino desse tráfico ao longo de séculos; pessoas escravizadas trabalharam em plantações, mineração, atividades urbanas e muitos outros serviços. Não se deve tratar africanos como um grupo homogêneo: vinham de regiões com línguas, culturas e experiências diversas, e não participaram dessas viagens por escolha livre. Registros de portos e transações permitem reconstruir parte das redes comerciais, mas não retratam de maneira integral a vida e a resistência de cada pessoa. Para uma leitura histórica responsável, diferencie números de embarques, processos de exploração e experiências que a documentação pode silenciar.",
+        "example": "Um registro de embarcação no século XIX pode informar origem e destino de um trajeto, mas não comprova sozinho as experiências particulares de todas as pessoas deslocadas.",
+        "pitfall": "Chamar o tráfico de imigração voluntária ou supor que toda pessoa africana escravizada possuía exatamente a mesma história.",
+        "steps": [
+          "Identifique quem foi submetido ao deslocamento forçado e quais interesses sustentavam o comércio.",
+          "Compare o que o documento registra com vivências e relações de poder que ele pode omitir."
+        ]
+      },
+      {
+        "title": "Quilombos, negociações e diferentes resistências",
+        "explanation": "Pessoas escravizadas protagonizaram muitas formas de resistência, incluindo fugas, formação de quilombos, revoltas, negociações, ações judiciais em determinadas circunstâncias e redes de apoio comunitário. Quilombos não eram todos iguais e se constituíram em diferentes épocas e regiões, com formas variadas de organização. Palmares é referência importante, mas não resume sozinho a história dessas experiências. A preservação e recriação de práticas culturais, a organização familiar e estratégias para obter maior autonomia também devem ser estudadas com atenção ao contexto e às fontes. É incorreto imaginar que somente grandes confrontos armados representaram resistência; nem todas as estratégias deixaram documentação abundante. Uma análise histórica deve perguntar quem participou, quais condições enfrentava e quais resultados podem ser de fato demonstrados.",
+        "example": "Uma carta sobre fuga de pessoas escravizadas revela um episódio de resistência, mas é necessário cruzá-la com outras fontes para compreender redes de apoio e desdobramentos.",
+        "pitfall": "Descrever escravizados como totalmente passivos ou afirmar que todos os quilombos seguiram o mesmo modelo de organização.",
+        "steps": [
+          "Classifique resistências coletivas e individuais sem reduzir a história a revoltas famosas.",
+          "Considere limites das fontes antes de deduzir motivações particulares e trajetórias completas."
+        ]
+      },
+      {
+        "title": "As leis de 1831, 1850 e 1888 não dizem a mesma coisa",
+        "explanation": "A lei de 1831 proibiu a importação de africanos escravizados no Brasil, mas foi amplamente descumprida, e o tráfico clandestino persistiu. A Lei Eusébio de Queirós de 1850 estabeleceu repressão mais efetiva ao tráfico atlântico destinado ao Brasil, contribuindo para seu encerramento. Nenhuma das duas leis extinguiu automaticamente a escravidão dentro do território brasileiro; o fim jurídico dessa instituição ocorreu em 13 de maio de 1888, com a Lei Áurea. A história dessas transformações inclui pressões internacionais, mudanças econômicas, resistências de pessoas escravizadas e mobilização abolicionista. Não é adequado apresentar a abolição como concessão generosa de uma única liderança. A mudança da lei não assegurou, por si só, igualdade material a quem havia sido escravizado.",
+        "example": "Numa linha do tempo, 1831 corresponde à proibição inicial da importação, 1850 à repressão mais eficaz ao tráfico transatlântico e 1888 à abolição jurídica.",
+        "pitfall": "Afirmar que a Lei de 1850 libertou todas as pessoas escravizadas ou que a proibição de 1831 foi inteiramente cumprida.",
+        "steps": [
+          "Organize a linha do tempo distinguindo tráfico atlântico e escravidão interna.",
+          "Relacione transformações jurídicas ao protagonismo de pessoas escravizadas e movimentos abolicionistas."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Por que o tráfico atlântico de africanos escravizados não deve ser descrito como migração voluntária?",
+        "hint": "Considere coerção, aprisionamento e perda de liberdade.",
+        "solution": "O tráfico envolvia aprisionamento, comercialização de pessoas e deslocamento forçado. Não se tratou de decisão livre de migração."
+      },
+      {
+        "level": "basic",
+        "prompt": "Cite duas formas de resistência de pessoas escravizadas no Brasil.",
+        "hint": "Pense em organizações coletivas e ações individuais.",
+        "solution": "Fugas e formação de quilombos são exemplos; revoltas, negociações e ações judiciais também ocorreram em contextos diferentes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "O que mudou entre a lei de 1831 e a Lei Eusébio de Queirós de 1850?",
+        "hint": "Uma proibição foi largamente descumprida; a outra trouxe repressão mais eficaz.",
+        "solution": "A lei de 1831 proibiu a importação de africanos escravizados, mas teve aplicação insuficiente; a de 1850 estabeleceu medidas mais eficazes de repressão ao tráfico atlântico."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que o fim do tráfico em 1850 não significou o fim da escravidão brasileira?",
+        "hint": "As medidas regulavam atividades distintas.",
+        "solution": "O tráfico atlântico se referia à entrada de pessoas escravizadas, enquanto a escravidão interna continuou legal até 1888."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma lista portuária traz quantidade de pessoas desembarcadas. Por que ela não revela toda a história do tráfico?",
+        "hint": "Registros administrativos não documentam integralmente experiências pessoais.",
+        "solution": "A lista pode revelar fluxos comerciais, mas não descreve completamente as condições de coerção, trajetórias, relações e resistências das pessoas afetadas."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que resistências devem ser incluídas ao estudar a abolição.",
+        "hint": "Mudanças legais resultam de processos históricos de conflito.",
+        "solution": "Pessoas escravizadas e libertas atuaram por diversas formas de resistência e organização, contribuindo para pressões e transformações que antecederam 1888."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma visita um memorial e encontra três datas: 1831, 1850 e 1888. O guia afirma que todas significam o fim da escravidão e que a liberdade dependeu somente de uma decisão política.",
+      "question": "O que cada data representa e por que a participação das pessoas escravizadas precisa fazer parte da explicação?",
+      "answer": "1831 foi a proibição inicial da importação, pouco cumprida; 1850 trouxe repressão mais eficaz ao tráfico atlântico; 1888 extinguiu a escravidão. Resistências contribuíram para o processo histórico.",
+      "connections": [
+        {
+          "subject": "História",
+          "topic": "Abolição e pós-abolição",
+          "reason": "A trajetória até a Lei Áurea e as dificuldades posteriores mostram a diferença entre fim do tráfico e direitos efetivos."
+        },
+        {
+          "subject": "Literatura",
+          "topic": "Naturalismo brasileiro",
+          "reason": "Textos do fim do século XIX precisam ser situados nas hierarquias sociais do período escravista e pós-abolição."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
