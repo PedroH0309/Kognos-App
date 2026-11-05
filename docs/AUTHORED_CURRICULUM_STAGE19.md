@@ -10,17 +10,17 @@ Cada aula oferece três capítulos autorais de dificuldade progressiva com expli
 
 | Disciplina | Aulas específicas da etapa |
 | --- | --- |
-| Matemática | MDC e MMC; Juros simples; Sistemas de equações; Teorema de Pitágoras |
+| Matemática | MDC e MMC; Juros simples; Sistemas de equações; Teorema de Pitágoras; Razão e proporção |
 | Física | Movimento uniforme; Energia cinética; Potência e rendimento; Impulso e quantidade de movimento |
 | Química | Distribuição eletrônica; Massa molar; Diluição e mistura de soluções; Ácidos, bases, sais e óxidos |
-| Biologia | Carboidratos; Fotossíntese e quimiossíntese; Segunda lei de Mendel; Seleção natural e adaptação |
+| Biologia | Carboidratos; Heredogramas; Segunda lei de Mendel; Seleção natural e adaptação |
 | História | Revolução Francesa; Independência do Brasil; Primeira Guerra Mundial; Ditadura militar brasileira |
 | Geografia | Matriz energética brasileira; Transição demográfica; Migrações internas e internacionais; Problemas ambientais urbanos |
 | Português | Concordância verbal; Crase; Pontuação e efeitos de sentido; Argumentação e estratégias persuasivas |
-| Literatura | Trovadorismo; Naturalismo brasileiro; Semana de Arte Moderna; Literatura indígena brasileira |
-| Redação | Contra-argumentação; Competências da redação do ENEM; Fuga ao tema e tangenciamento; Artigo de opinião |
-| Inglês | Inferência de sentidos em inglês; Orações condicionais em inglês; Voz passiva em inglês; Conectivos e relações lógico-discursivas em inglês |
-| Espanhol | Inferência e vocabulário em espanhol; Possessivos e demonstrativos em espanhol; Subjuntivo em espanhol; Gêneros textuais e multimodalidade em espanhol |
+| Literatura | Trovadorismo; Modernismo: romance de 1930; Semana de Arte Moderna; Literatura indígena brasileira |
+| Redação | Exemplificação e comparação; Competências da redação do ENEM; Fuga ao tema e tangenciamento; Artigo de opinião |
+| Inglês | Inferência de sentidos em inglês; Artigos e quantificadores em inglês; Phrasal verbs; Conectivos e relações lógico-discursivas em inglês |
+| Espanhol | Inferência e vocabulário em espanhol; Possessivos e demonstrativos em espanhol; Gêneros textuais e multimodalidade em espanhol |
 | Filosofia | Empirismo de Locke e Hume; Criticismo de Kant; Liberdade e responsabilidade; Democracia, cidadania e justiça |
 | Sociologia | Taylorismo, fordismo e toyotismo; Movimentos sociais; Cidadania e direitos humanos; Globalização e sociedade em rede |
 | Arte | Patrimônio material e imaterial; Arte na Antiguidade; Arte medieval; Cultura popular e erudita |
