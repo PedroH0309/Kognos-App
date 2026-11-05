@@ -157,8 +157,8 @@ export const stage19Geography:TopicSeed[]=[
       ],
       [
         "Ciências",
-        "Formas e transformações de energia",
-        "A transformação de energia e as perdas associadas ajudam a interpretar tecnologias de geração."
+        "Circuitos elétricos simples",
+        "Circuitos permitem interpretar como a eletricidade fornecida por diferentes fontes é utilizada por dispositivos conectados."
       ]
     ]
   },
