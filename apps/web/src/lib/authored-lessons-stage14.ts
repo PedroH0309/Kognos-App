@@ -14,7 +14,7 @@ type Spec={
  sections:Chapter[];tasks:Practice[];
  everyday:Pick<EverydayContext,'context'|'question'|'answer'|'connections'>;
 };
-const specs:Spec[] = []
+const specs:Spec[] = [];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
 export const stage14Topics=specs.map(({subject,topic})=>({subject,topic}));
 export const stage14EverydayContexts:readonly EverydayContext[]=specs.map(s=>({subject:s.subject,topic:s.topic,...s.everyday}));
