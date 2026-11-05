@@ -53,7 +53,7 @@ export const stage17Batch7:Stage17Spec[]=[
         "level": "intermediate",
         "prompt": "Qual forma corresponde a yo do verbo tener?",
         "hint": "É uma irregularidade específica na primeira pessoa.",
-        "solution": "A forma é tengo; em 'Yo tengo un libro', ela expressa posse no presente."
+        "solution": "A forma é tengo; em 'Yo tengo un libro', ela expressa posse no presente. Não se usa a forma regular teno nesse caso."
       },
       {
         "level": "intermediate",
