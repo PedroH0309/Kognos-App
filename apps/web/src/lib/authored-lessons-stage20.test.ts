@@ -27,7 +27,7 @@ test('Stage 20 adds 16 independently written lessons without altering previous 2
  assert.equal(stage20EverydayContexts.length,16);
  const all=new Set([...previous,...stage20Topics.map(key)]);
  assert.equal(all.size,305,'New topics must not replace authored courses');
- assert.equal(everydayContexts.length,305);
+ assert.ok(everydayContexts.length>=305,'Future stages preserve all 305 previous scenarios');
  for(const seed of stage20Seeds){
   const k=key(seed);
   const catalog=curriculumTopics.find(t=>key(t)===k);
