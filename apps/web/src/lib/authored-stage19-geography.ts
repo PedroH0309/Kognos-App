@@ -50,7 +50,7 @@ export const stage19Geography:TopicSeed[]=[
       [
         "Geografia",
         "Formação e conservação dos solos",
-        "Processos de intemperismo e erosão relacionam relevo, solo e transformação da paisagem."
+        "A erosão modela formas de relevo e também influencia a formação, a conservação e a perda de solo."
       ]
     ]
   },
@@ -102,9 +102,9 @@ export const stage19Geography:TopicSeed[]=[
         "A declividade e os processos geomorfológicos ajudam a compreender formação e perda de solos."
       ],
       [
-        "Ciências",
-        "Rochas, solos e erosão",
-        "A relação entre rochas, intemperismo e erosão constitui base das práticas de conservação."
+        "Geografia",
+        "Relevo brasileiro",
+        "A relação entre declividade, água e erosão ajuda a explicar processos de modelagem do relevo."
       ]
     ]
   },
@@ -151,9 +151,9 @@ export const stage19Geography:TopicSeed[]=[
     ],
     "links": [
       [
-        "Geografia",
-        "Matriz energética brasileira",
-        "O estudo da participação das fontes exige diferenciar matriz elétrica da energética total."
+        "Física",
+        "Potência e consumo de energia elétrica",
+        "Potência instalada e energia consumida são grandezas distintas importantes para interpretar sistemas de geração."
       ],
       [
         "Ciências",
@@ -205,9 +205,9 @@ export const stage19Geography:TopicSeed[]=[
     ],
     "links": [
       [
-        "Geografia",
-        "Crescimento populacional",
-        "Taxas de natalidade e mortalidade fornecem componentes fundamentais da mudança demográfica."
+        "Matemática",
+        "Média aritmética e ponderada",
+        "Médias e indicadores agregados de natalidade e mortalidade exigem interpretar a população de referência."
       ],
       [
         "Sociologia",
