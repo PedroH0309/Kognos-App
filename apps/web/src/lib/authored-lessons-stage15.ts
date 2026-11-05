@@ -1298,6 +1298,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esporte, mídia e consumo",
+    "objective": "Analisar relações entre práticas esportivas, publicidade, transmissão, representatividade e consumo sem confundir rendimento, popularidade e direitos de participação.",
+    "sections": [
+      {
+        "title": "O esporte como prática cultural e produto midiático",
+        "explanation": "O esporte pode ser vivido como lazer, educação, competição ou profissão e também circular como produto midiático. Transmissões, contratos de patrocínio, marcas de equipamentos e cobertura jornalística influenciam a visibilidade de modalidades e atletas. Essa circulação não significa que toda prática esportiva tenha finalidade comercial ou que participação dependa de produtos de marca. Grandes eventos podem movimentar recursos e atrair público, mas efeitos econômicos e sociais precisam de dados e recortes para serem avaliados, sem repetir números sem fonte. A mídia escolhe enquadramentos, histórias e personagens, produzindo narrativas que podem destacar desempenho, nacionalidade ou rivalidade. O estudante deve perceber diferenças entre informação esportiva, opinião e conteúdo publicitário, especialmente quando recomendações de consumo aparecem junto a resultados. A cultura corporal também inclui práticas comunitárias e locais fora das grandes transmissões.",
+        "example": "Uma reportagem destaca um campeonato muito patrocinado, enquanto um torneio escolar recebe pouca atenção. A diferença de visibilidade não indica que a segunda prática tenha menor valor para os participantes.",
+        "pitfall": "Concluir que esporte não televisionado é menos importante ou que audiência elevada prova qualidade de formação esportiva.",
+        "steps": [
+          "Identifique se o conteúdo informa, opina ou anuncia um produto.",
+          "Compare o esporte como experiência de participação e como conteúdo comercializado."
+        ]
+      },
+      {
+        "title": "Publicidade, atletas e imagem corporal",
+        "explanation": "Atletas podem atuar em campanhas publicitárias e produzir conteúdos patrocinados, mas isso não transforma todos os produtos divulgados em necessidades para praticantes. Estratégias de marketing podem associar desempenho a determinado calçado, bebida ou aparência, embora o resultado esportivo dependa de treino, equipe, técnicas, contexto e outras condições. O uso da imagem de atletas também pode promover representatividade de modalidades menos visíveis, mas deve evitar reduzir pessoas a estereótipos de gênero, deficiência ou origem social. A leitura crítica pergunta quem financia a mensagem, qual promessa é feita e quais evidências sustentam o benefício alegado. A análise de saúde não deve recomendar produtos de risco ou associar valor pessoal à composição corporal. Em práticas escolares, o acesso deve ser possível com equipamentos adequados e seguros, sem impor consumo de marcas específicas.",
+        "example": "Uma propaganda afirma que comprar determinada chuteira fará qualquer estudante jogar como um profissional. A comparação é persuasiva, mas não demonstra causalidade entre marca e habilidade.",
+        "pitfall": "Confundir testemunho de atleta com teste científico de produto ou usar aparência física como medida universal de saúde.",
+        "steps": [
+          "Investigue quem patrocina a mensagem e que promessa precisa de evidências.",
+          "Separe desempenho técnico de publicidade e de padrões estéticos impostos."
+        ]
+      },
+      {
+        "title": "Representatividade e desigualdade de visibilidade",
+        "explanation": "Modos diferentes de cobertura esportiva podem ampliar ou restringir reconhecimento de atletas e práticas. Modalidades femininas, paralímpicas, comunitárias ou de menor apelo comercial podem receber menos espaço em determinados meios, mas a intensidade e as causas variam por veículo e época. Contar minutos de transmissão, analisar linguagem de manchetes e observar a presença de patrocinadores são métodos mais consistentes do que declarar uma desigualdade com base em um único exemplo. Representatividade não significa apenas mostrar uma pessoa: também importa quem fala, se são reconhecidos seus resultados e como a modalidade é explicada. Projetos escolares podem valorizar diferentes habilidades e trajetórias, ampliando repertório cultural para além de esportes dominantes. A leitura crítica do consumo exige observar como plataformas, publicidade e hábitos sociais influenciam a circulação esportiva sem presumir que todo espectador seja passivo.",
+        "example": "Uma turma analisa uma semana de notícias esportivas e registra quais modalidades aparecem, quanto espaço recebem e se atletas são descritos por técnica ou somente aparência. O estudo permite hipóteses, não conclusões nacionais automáticas.",
+        "pitfall": "Afirmar que qualquer pequena amostra representa toda a mídia ou tratar presença simbólica como inclusão esportiva efetiva.",
+        "steps": [
+          "Defina quais meios, datas e critérios de cobertura serão observados.",
+          "Relacione visibilidade à oportunidade de participação sem confundi-las."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite duas formas pelas quais a mídia participa da circulação do esporte.",
+        "hint": "Considere transmissão e publicidade.",
+        "solution": "Transmissões de eventos e anúncios de patrocinadores ampliam a circulação de imagens e informações, mas não resumem todas as formas de viver o esporte."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que audiência não determina valor educativo de uma modalidade?",
+        "hint": "Participação e aprendizagem não se medem apenas por números.",
+        "solution": "Um esporte pouco televisionado pode desenvolver cooperação, técnica e cultura corporal. Audiência mede alcance de mídia, não valor educativo universal."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma propaganda afirma que a marca da chuteira garante habilidade. Qual o problema?",
+        "hint": "Separe produto e desempenho construído.",
+        "solution": "O anúncio associa compra a desempenho sem comprovar causalidade. Técnica, prática e contexto influenciam habilidades, e equipamento não garante resultado."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Como distinguir reportagem e publicidade em uma publicação esportiva?",
+        "hint": "Procure patrocínio, finalidade e evidências.",
+        "solution": "A reportagem busca informar sobre acontecimentos sob critérios jornalísticos; publicidade promove produto ou marca. Conteúdos mistos exigem transparência sobre patrocínio."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Como avaliar representatividade usando uma amostra de notícias esportivas?",
+        "hint": "Defina período, veículo e critérios antes de generalizar.",
+        "solution": "Pode-se contar modalidades, espaço e linguagem num período e conjunto de veículos delimitados. Isso não autoriza conclusões sobre toda a mídia sem amostra adequada."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que patrocínio de atleta não prova que o produto anunciado é necessário a todos?",
+        "hint": "Endosso comercial não substitui evidência e necessidade individual.",
+        "solution": "A parceria representa relação comercial. Benefícios do produto dependem de evidências e contexto, e a participação esportiva não pode ser condicionada a uma marca."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma de educação física assiste a uma transmissão de esporte profissional cheia de marcas. No recreio, colegas afirmam que só quem compra o mesmo equipamento poderá praticar bem a modalidade.",
+      "question": "Como separar publicidade, desempenho e participação esportiva sem desqualificar a experiência profissional ou escolar?",
+      "answer": "Patrocínio financia divulgação e associa marcas a atletas, mas não demonstra que a compra produza habilidade. Prática, aprendizagem e acesso seguro são distintos de consumo de marcas.",
+      "connections": [
+        {
+          "subject": "Sociologia",
+          "topic": "Indústria cultural e cultura de massa",
+          "reason": "A relação entre audiência, patrocínio e distribuição de conteúdos ajuda a interpretar a economia da visibilidade esportiva."
+        },
+        {
+          "subject": "Educação Física",
+          "topic": "Preconceito e inclusão no esporte",
+          "reason": "Participar da cultura corporal não deve depender de marca, gênero ou padrão estético, e a inclusão exige acesso real."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Saneamento básico",
+    "objective": "Explicar abastecimento de água, esgotamento sanitário, resíduos e drenagem, relacionando saúde coletiva, ambiente e desigualdades sem confundir tratamento de água com tratamento de esgoto.",
+    "sections": [
+      {
+        "title": "Água para consumo: captação, tratamento e distribuição",
+        "explanation": "O saneamento básico abrange serviços de abastecimento de água potável, esgotamento sanitário, manejo de resíduos sólidos e drenagem e manejo de águas pluviais urbanas, conforme a organização legal brasileira. Na água destinada ao consumo humano, uma estação pode incluir etapas como coagulação, floculação, decantação, filtração e desinfecção, dependendo da qualidade da água e da tecnologia empregada. O objetivo é atender padrões de potabilidade, não simplesmente deixar a água transparente. Uma água límpida pode conter microrganismos ou substâncias inadequadas; a aparência não substitui análise. A potabilidade é questão de saúde coletiva e requer monitoramento, manutenção de redes e proteção de mananciais. Não se deve transformar uma lista escolar de etapas em instrução caseira de tornar qualquer água desconhecida segura para beber.",
+        "example": "Em um modelo de estação, partículas podem ser agrupadas e separadas antes da filtração, seguida de desinfecção adequada. A presença de etapas não dispensa medição da qualidade final.",
+        "pitfall": "Afirmar que água transparente é sempre potável ou que filtração simples elimina todos os riscos químicos e biológicos.",
+        "steps": [
+          "Identifique a origem da água e a finalidade de cada etapa do tratamento.",
+          "Diferencie remoção de partículas de desinfecção e monitoramento da potabilidade."
+        ]
+      },
+      {
+        "title": "Esgoto, resíduos e riscos à saúde coletiva",
+        "explanation": "O esgotamento sanitário envolve coleta, transporte, tratamento e destinação apropriada de esgotos, reduzindo contaminação de rios, solos e ambientes de circulação humana. Sistemas distintos podem ter processos físicos, biológicos e químicos, e a tecnologia necessária depende das condições locais. O tratamento de esgoto não é o mesmo que tornar água potável; mesmo um efluente tratado precisa atender condições específicas para determinado destino. A coleta e o manejo de resíduos sólidos também importam, pois descarte inadequado pode obstruir drenagem, contaminar ambientes e ampliar riscos sanitários. A relação entre saneamento e doenças depende de exposição, microrganismos e condições sociais; não se deve afirmar que todo problema de saúde possui uma única causa ambiental. Em estudos, explique o percurso de contaminação e as medidas de prevenção coletiva.",
+        "example": "Se esgoto sem tratamento alcança uma fonte de abastecimento, podem aumentar riscos de contaminação. A gestão precisa atuar tanto na coleta e tratamento de esgoto quanto na proteção e análise da água.",
+        "pitfall": "Confundir coleta de esgoto com tratamento efetivo ou apresentar efluente tratado como automaticamente potável.",
+        "steps": [
+          "Localize a origem de resíduos ou esgoto e seu possível caminho até o ambiente.",
+          "Distinga coleta, tratamento e destino final, avaliando a finalidade de cada etapa."
+        ]
+      },
+      {
+        "title": "Drenagem, desigualdade e planejamento urbano",
+        "explanation": "A drenagem urbana organiza o escoamento de águas de chuva para reduzir riscos de alagamentos, em conjunto com planejamento territorial e manutenção de estruturas. Solo impermeabilizado, relevo, intensidade de chuva e resíduos em bueiros influenciam o escoamento, mas uma enchente não pode ser explicada apenas pelo lixo de moradores. A oferta desigual de redes de água e esgoto, equipamentos e drenagem está relacionada a decisões históricas de infraestrutura e investimento. Comunidades com menor cobertura de serviços podem enfrentar exposições diferentes, o que deve ser analisado com dados, respeito e sem culpabilização. Soluções dependem do diagnóstico: ampliar redes, manter sistemas, proteger mananciais e planejar ocupação são medidas complementares, não garantias absolutas contra todo evento extremo. Em vestibulares, conecte ciclos da água, urbanização e saúde pública sem abandonar o mecanismo físico ou biológico.",
+        "example": "Duas ruas recebem chuva intensa; uma tem solo permeável e drenagem adequada, outra tem pavimento extenso e bueiros bloqueados. Podem apresentar escoamentos diferentes sem que o clima seja necessariamente a única explicação.",
+        "pitfall": "Culpar exclusivamente moradores por falta de saneamento ou prometer que limpar um bueiro resolve todos os riscos de inundação.",
+        "steps": [
+          "Relacione impermeabilização, relevo e redes de drenagem ao problema observado.",
+          "Separe responsabilidades institucionais e causas físicas antes de propor soluções."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite os quatro grupos de serviços compreendidos em saneamento básico no Brasil.",
+        "hint": "Pense em água, esgoto, resíduos e chuva.",
+        "solution": "Abastecimento de água potável, esgotamento sanitário, manejo de resíduos sólidos e drenagem/manejo de águas pluviais urbanas integram o saneamento básico."
+      },
+      {
+        "level": "basic",
+        "prompt": "Água transparente é necessariamente potável? Explique.",
+        "hint": "A aparência não mede todos os contaminantes.",
+        "solution": "Não. Pode conter microrganismos ou substâncias inadequadas. Potabilidade exige padrões e monitoramento, não apenas transparência visual."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual a diferença entre tratar esgoto e preparar água potável?",
+        "hint": "Considere origem e finalidade dos dois processos.",
+        "solution": "Tratamento de esgoto busca reduzir contaminantes de efluentes para destinação apropriada; tratamento de água de abastecimento busca atender padrões de consumo humano."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que coleta de esgoto não significa automaticamente tratamento adequado?",
+        "hint": "Etapas de coleta e tratamento são distintas.",
+        "solution": "Uma rede pode transportar esgoto sem garantir tratamento eficaz ou destino correto. É preciso verificar toda a cadeia do serviço."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que pavimentação pode aumentar escoamento superficial durante chuva.",
+        "hint": "Menor infiltração pode direcionar água para ruas.",
+        "solution": "Superfícies impermeáveis reduzem infiltração e podem aumentar o volume que escoa rapidamente, dependendo de chuva, relevo e infraestrutura."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que a falta de saneamento não deve ser atribuída apenas a escolhas individuais dos moradores?",
+        "hint": "Rede e investimento são responsabilidades coletivas e institucionais.",
+        "solution": "A cobertura envolve planejamento público, financiamento e infraestrutura; moradores não controlam sozinhos redes de distribuição, coleta, tratamento e drenagem."
+      }
+    ],
+    "everyday": {
+      "context": "Depois de uma chuva, uma rua alaga e a água parece limpa em alguns pontos. A turma conclui que não há risco porque ela não tem cor nem cheiro forte e que a responsabilidade é apenas de quem mora ali.",
+      "question": "Por que transparência visual não demonstra potabilidade e como infraestrutura urbana influencia o problema?",
+      "answer": "Aparência não comprova ausência de contaminantes. Drenagem, esgoto, resíduos, impermeabilização e manutenção de redes influenciam os riscos, exigindo gestão coletiva e análise de qualidade.",
+      "connections": [
+        {
+          "subject": "Ciências",
+          "topic": "Ciclos da água e do carbono",
+          "reason": "Infiltração e escoamento participam do ciclo hidrológico, mas saneamento inclui tratamento e proteção da qualidade da água."
+        },
+        {
+          "subject": "Geografia",
+          "topic": "Segregação socioespacial",
+          "reason": "A distribuição desigual de redes de água, esgoto e drenagem ajuda a explicar diferenças de exposição e acesso aos serviços."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
