@@ -470,6 +470,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Escalas cartográficas",
+    "objective": "Ler escalas gráficas e numéricas, converter distâncias e interpretar diferenças entre distância reta e deslocamento real sobre uma rede urbana.",
+    "sections": [
+      {
+        "title": "O que significa escala em um mapa",
+        "explanation": "Escala cartográfica é a razão entre uma distância representada no mapa e a distância correspondente na superfície terrestre, medidas na mesma unidade. Na escala 1:100.000, um centímetro no mapa representa cem mil centímetros, isto é, um quilômetro no terreno, quando se considera a distância cartográfica adequada. A escrita 1:100.000 não significa que cada centímetro represente cem mil quilômetros. Escala é uma redução proporcional num modelo, não o tamanho físico de um arquivo digital nem a qualidade da impressão. Antes de calcular, identifique se a escala é numérica ou gráfica e se a medida foi feita entre pontos em linha reta ou ao longo de um trajeto. Como a Terra é curva e os mapas utilizam projeções, distorções e condições de uso precisam ser consideradas em trabalhos mais exigentes. Em provas escolares, os exercícios usualmente indicam uma escala para uma distância determinada.",
+        "example": "Em um mapa de escala 1:50.000, a distância de 2 cm entre dois pontos equivale a 100.000 cm, ou 1 km, na representação cartográfica proposta.",
+        "pitfall": "Multiplicar comprimentos que estão em unidades diferentes sem converter ou interpretar o denominador da escala como quilômetros diretamente.",
+        "steps": [
+          "Registre a medida no mapa e o denominador da escala com unidades coerentes.",
+          "Converta o resultado de centímetros do terreno para metros ou quilômetros quando necessário."
+        ]
+      },
+      {
+        "title": "Escala grande e escala pequena",
+        "explanation": "Na cartografia, uma escala grande possui denominador menor, por exemplo 1:10.000; uma escala pequena utiliza denominador maior, como 1:5.000.000. Isso ocorre porque 1/10.000 é uma fração maior que 1/5.000. Mapas em escalas grandes permitem, em geral, representar áreas menores com mais detalhes locais; escalas pequenas abrangem territórios extensos e generalizam objetos. O nível de detalhamento também depende do propósito, da simbologia e dos dados, não apenas do número. Quando um mapa impresso é ampliado ou reduzido por cópia, a escala numérica original deixa de corresponder às novas medidas se não for recalculada. Uma barra de escala ampliada junto com o desenho pode preservar a possibilidade de medir. Em telas digitais, o zoom e a atualização da escala exigem atenção para não usar valores de uma visualização anterior.",
+        "example": "Um plano de bairro em 1:5.000 mostra quarteirões com mais detalhe que um mapa regional em 1:1.000.000, que cobre uma área maior e simplifica representações.",
+        "pitfall": "Concluir que 1:1.000.000 é maior do que 1:5.000 apenas porque o denominador é numericamente maior.",
+        "steps": [
+          "Compare os valores das frações antes de decidir qual escala é maior.",
+          "Observe como a escala escolhida modifica área representada e detalhes úteis ao objetivo."
+        ]
+      },
+      {
+        "title": "Distância no mapa não é tempo de viagem",
+        "explanation": "Uma medida em linha reta entre dois locais não representa necessariamente a distância percorrida por ruas, estradas ou trilhas. Pontes, curvas, rios, relevo, semáforos, paradas e modos de transporte podem alterar comprimento e duração de um trajeto. Um mapa em escala 1:100.000 pode indicar que escola e biblioteca estão separadas por 3 km em linha reta, mas o itinerário do ônibus pode ter distância maior. Para estimar tempo, seriam necessários dados de velocidade, esperas e rede de transporte, além da distância efetivamente percorrida. Mapas também podem representar áreas por projeções que preservam certas propriedades e distorcem outras, especialmente em escalas globais. Em uma resposta precisa, indique qual distância foi medida e evite prometer uma duração de viagem apenas pela escala.",
+        "example": "Uma biblioteca está a 4 cm da escola num mapa 1:100.000, indicando 4 km em linha reta. A rota por avenidas pode ser mais longa e não se pode deduzir a duração da viagem sem dados adicionais.",
+        "pitfall": "Tratar distância cartográfica reta como itinerário obrigatório e converter quilômetros diretamente em minutos sem velocidade ou informação de trajeto.",
+        "steps": [
+          "Diferencie distância em linha reta de distância ao longo de ruas e estradas.",
+          "Não anuncie tempo de percurso sem informações de velocidade, paradas e acesso."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em escala 1:100.000, quanto representa 1 cm no terreno?",
+        "hint": "Converta 100.000 centímetros em quilômetros.",
+        "solution": "1 cm do mapa representa 100.000 cm no terreno, equivalentes a 1 km na distância cartográfica correspondente."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual é a escala maior: 1:10.000 ou 1:500.000?",
+        "hint": "Compare as frações, não apenas os denominadores.",
+        "solution": "A escala 1:10.000 é maior porque sua fração é maior; costuma permitir representação local com mais detalhes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um mapa 1:50.000 apresenta 4 cm entre dois pontos. Calcule a distância real.",
+        "hint": "Multiplique 4 cm pelo denominador da escala.",
+        "solution": "A distância é 4×50.000=200.000 cm, ou 2 km, segundo o modelo de escala apresentado."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma distância de 6 km será representada em escala 1:200.000. Qual comprimento no mapa?",
+        "hint": "Seis quilômetros equivalem a 600.000 centímetros.",
+        "solution": "No mapa, a distância é 600.000/200.000=3 cm, respeitando unidades iguais antes de aplicar a escala."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma cópia impressa amplia o mapa ao dobro. A antiga escala numérica continua válida?",
+        "hint": "O desenho mudou de tamanho e a razão também.",
+        "solution": "Não. A escala numérica precisa ser recalculada, porque as medidas no papel mudaram. Uma barra gráfica ampliada proporcionalmente continua permitindo leitura."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Dois pontos estão a 3 km em linha reta. Pode-se afirmar que o ônibus percorre exatamente 3 km?",
+        "hint": "Trajetos podem exigir curvas, desvios e pontos de parada.",
+        "solution": "Não. A distância reta é apenas uma medida espacial; o itinerário pela rede viária pode ser maior e depende das ruas disponíveis."
+      }
+    ],
+    "everyday": {
+      "context": "Um estudante mede 3 cm entre uma escola e um parque num mapa 1:100.000 e afirma que o ônibus percorre exatamente 3 km e que chegará em três minutos.",
+      "question": "O que a escala realmente permite concluir e quais informações faltam sobre o transporte?",
+      "answer": "A escala indica 3 km de distância cartográfica entre os pontos. A rota real pode ser mais longa e o tempo depende de velocidade, paradas e trânsito.",
+      "connections": [
+        {
+          "subject": "Geografia",
+          "topic": "Coordenadas geográficas",
+          "reason": "As coordenadas permitem localizar pontos, enquanto a escala relaciona medidas desenhadas a distâncias reais."
+        },
+        {
+          "subject": "Geografia",
+          "topic": "Segregação socioespacial",
+          "reason": "A distribuição de redes e serviços mostra por que distância geográfica e acesso efetivo não são a mesma coisa."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
