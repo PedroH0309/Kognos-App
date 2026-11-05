@@ -93,7 +93,7 @@ export const stage19Chemistry:AuthoredLessonSeed[]=[
     "situation": [
       "Um estudante precisa preparar uma quantidade de matéria de 0,5 mol de água para um exercício e afirma que bastam 0,5 g, confundindo a unidade mol com gramas.",
       "Qual massa corresponde a 0,5 mol de H₂O se M≈18 g/mol?",
-      "m=nM=0,5×18=9 g. A massa de meio mol é metade da massa molar, não 0,5 g."
+      "m=nM=0,5×18=9 g. A massa de meio mol é metade da massa molar, não 0,5 g. A unidade mol não corresponde a um grama fixo de substância."
     ],
     "links": [
       [
@@ -182,7 +182,6 @@ export const stage19Chemistry:AuthoredLessonSeed[]=[
         "Sais frequentemente são compostos iônicos constituídos de cátions e ânions, e podem surgir de reações ácido-base. Neutralização em modelo simples pode produzir sal e água, mas nem toda mistura ácido-base termina em pH sete, devido à força das espécies, proporções e equilíbrios. Não realize experiências com reagentes cáusticos fora de laboratório supervisionado.",
         "HCl+NaOH→NaCl+H₂O, em proporção estequiométrica e condições adequadas, é exemplo escolar de neutralização.",
         "Toda neutralização sempre produz solução final exatamente neutra com pH 7.",
-        "Indique produtos e verifique proporções reagentes na equação.",
         "Complete HNO₃+KOH→___+H₂O na reação idealizada.",
         "Combine K⁺ e NO₃⁻ no sal.",
         "O sal é KNO₃: HNO₃+KOH→KNO₃+H₂O. A equação está balanceada no modelo.",
@@ -193,7 +192,6 @@ export const stage19Chemistry:AuthoredLessonSeed[]=[
         "Óxidos são compostos binários de oxigênio com outro elemento segundo convenções de nomenclatura, com ressalvas para espécies especiais. CO₂ e CaO diferem em propriedades; alguns óxidos reagem com água formando espécies ácidas ou básicas, mas outros são anfóteros ou praticamente insolúveis. É incorreto afirmar que todos são poluentes ou que todos reagem da mesma forma.",
         "CO₂ pode produzir espécies ácidas em água, enquanto CaO pode formar Ca(OH)₂ por reação com água.",
         "Todo óxido é um gás tóxico que provoca o mesmo efeito em água.",
-        "Classifique composição e examine comportamento específico da substância.",
         "Qual fórmula representa óxido de cálcio formado por Ca e O?",
         "Considere Ca²⁺ e O²⁻.",
         "CaO é a proporção mínima neutra entre Ca²⁺ e O²⁻; é um óxido que pode reagir com água formando hidróxido de cálcio.",
