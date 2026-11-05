@@ -562,6 +562,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Português",
+    "topic": "Fato, opinião e ponto de vista",
+    "objective": "Identificar afirmações verificáveis, opiniões e diferentes perspectivas em textos, avaliando evidências e evitando generalizações sem contexto.",
+    "sections": [
+      {
+        "title": "Informação verificável e avaliação não são sinônimos",
+        "explanation": "Uma afirmação factual descreve um acontecimento ou estado que, em princípio, pode ser confrontado com evidências. A frase 'A biblioteca fecha às 17 horas' permite consultar calendário ou aviso oficial; 'A biblioteca fecha cedo demais' apresenta avaliação, dependente das necessidades de quem fala. Uma afirmação verificável não é automaticamente verdadeira: pode conter erro ou informação desatualizada. Da mesma forma, uma opinião não precisa ser mera preferência sem fundamento; pode ser sustentada por dados e critérios explícitos. A leitura crítica identifica o que é afirmado, o que é interpretado e que tipo de comprovação seria relevante. Em provas de língua portuguesa, números, citações e tom seguro não bastam para distinguir verdade, avaliação ou certeza. É preciso examinar a estrutura completa da frase e o contexto em que circula.",
+        "example": "Um relatório informa: 'A praça recebeu novos bancos em agosto'. Uma pessoa comenta: 'A praça ficou muito mais acolhedora'. A primeira alegação é verificável; a segunda envolve avaliação da experiência.",
+        "pitfall": "Tratar toda afirmação com número como fato confirmado ou declarar que opiniões nunca podem apresentar fundamentos sólidos.",
+        "steps": [
+          "Localize expressões que descrevem acontecimentos e outras que avaliam sua qualidade.",
+          "Indique qual fonte permitiria confirmar cada alegação factual e qual critério sustenta a avaliação."
+        ]
+      },
+      {
+        "title": "Ponto de vista e escolhas do autor",
+        "explanation": "Ponto de vista é a perspectiva a partir da qual alguém seleciona, organiza e interpreta fatos. Dois textos sobre o mesmo acontecimento podem destacar aspectos distintos sem necessariamente se contradizerem: um informa o aumento de horários de uma unidade de saúde, outro ressalta dificuldades de deslocamento até ela. Isso exige observar título, fontes citadas, personagens incluídos e informações omitidas. A seleção de conteúdo não prova intenção de manipular; tal intenção demanda evidências adicionais. Expressões como 'segundo o levantamento' atribuem informação a uma fonte, enquanto 'é evidente' reivindica segurança sem necessariamente fornecê-la. A leitura cuidadosa compara o conteúdo que os textos efetivamente apresentam, não características presumidas de seus autores. A identificação de perspectivas é importante em reportagens, editoriais, anúncios e também em narrativas literárias com narradores pouco confiáveis.",
+        "example": "Uma notícia destaca que uma escola ampliou biblioteca; outra destaca que ela ainda não abre à noite. Ambas podem ter dados corretos e enfoques diferentes, a verificar pelas fontes.",
+        "pitfall": "Concluir que perspectivas distintas são sempre mentiras ou atribuir interesses ocultos ao autor sem provas suficientes.",
+        "steps": [
+          "Compare títulos, fontes e aspectos do evento escolhidos por cada texto.",
+          "Separe desacordos de interpretação de contradições factuais que podem ser verificadas."
+        ]
+      },
+      {
+        "title": "Como usar evidências sem ampliar indevidamente uma conclusão",
+        "explanation": "Dados permitem sustentar interpretações apenas dentro de seu alcance. Se seis entre dez entrevistados preferem certo serviço, é possível descrever 60% daquela amostra, mas não afirmar automaticamente preferência de toda uma cidade. Fatos verificáveis, análises e recomendações exercem funções distintas no argumento: 'os dados mostram' descreve uma fonte, 'isso sugere' apresenta inferência e 'a escola deveria' introduz recomendação. Uma conclusão justa reconhece tamanho de amostra, período, forma de coleta e eventuais limitações. O objetivo não é tratar todas as opiniões como igualmente fundamentadas: algumas possuem respaldo metodológico e outras não. Em redações de vestibular, o estudante deve distinguir observação e interpretação, evitando cifras inventadas ou citações sem origem para tornar o texto mais convincente.",
+        "example": "Numa pesquisa hipotética com 30 estudantes, 18 preferem avisos digitais. A fração é 18/30=60%, mas o resultado descreve apenas os participantes dessa pesquisa.",
+        "pitfall": "Generalizar o resultado de um pequeno grupo para milhões de pessoas ou confundir popularidade com validade de uma afirmação.",
+        "steps": [
+          "Identifique tamanho, seleção e período da amostra antes de transformar dados em argumentos.",
+          "Escreva uma conclusão proporcional às informações, marcando o que ainda é hipótese."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Classifique: 'A loja abre às 9 horas' e 'A loja abre tarde demais'.",
+        "hint": "Uma frase permite verificar horário; a outra avalia.",
+        "solution": "A primeira é uma afirmação factual verificável em informações de funcionamento. A segunda expressa opinião sobre a adequação do horário."
+      },
+      {
+        "level": "basic",
+        "prompt": "Uma afirmação verificável pode estar incorreta? Dê uma razão.",
+        "hint": "Verificabilidade não significa confirmação.",
+        "solution": "Sim. A frase 'a prova será amanhã' pode ser contrariada pelo calendário oficial, mesmo que seu conteúdo seja verificável."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Duas reportagens destacam lados diferentes de uma reforma escolar. Isso prova que uma mentiu?",
+        "hint": "Verifique dados e possíveis contradições.",
+        "solution": "Não. Enquadramentos diferentes podem coexistir sem falsidade; é necessário investigar informações factuais e omissões importantes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que ouvir apenas dez alunos não basta para definir a opinião de todos os estudantes brasileiros?",
+        "hint": "Amostra reduzida e não representativa.",
+        "solution": "Os dez alunos representam apenas o conjunto entrevistado. Sem amostragem adequada, extrapolar para o país inteiro não tem fundamento."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma pesquisa afirma 'a maioria aprovou', mas não informa participantes. O que está faltando?",
+        "hint": "Procure método, tamanho e população de referência.",
+        "solution": "Faltam número de participantes, seleção, período e pergunta aplicada. Sem isso, não é possível avaliar o alcance da conclusão."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um texto usa 'é óbvio que' para justificar uma alegação. Isso substitui evidência?",
+        "hint": "A expressão de convicção não demonstra o fato.",
+        "solution": "Não. A segurança retórica de quem escreve não substitui dados, documentação ou raciocínio válido a favor da alegação."
+      }
+    ],
+    "everyday": {
+      "context": "Duas pessoas observam que a biblioteca municipal fecha às 17 horas. Uma considera o horário suficiente; outra afirma que estudantes do turno noturno podem perder acesso.",
+      "question": "Qual informação pode ser conferida oficialmente e quais avaliações exigem critérios ou dados sobre usuários?",
+      "answer": "O horário é informação verificável. Julgar se é suficiente é avaliação; investigar possíveis prejuízos requer conhecer horários e necessidades dos estudantes.",
+      "connections": [
+        {
+          "subject": "Português",
+          "topic": "Checagem de fontes e desinformação",
+          "reason": "Diferenciar alegações verificáveis de interpretações ajuda a escolher fontes e evidências adequadas."
+        },
+        {
+          "subject": "Redação",
+          "topic": "Contra-argumentação",
+          "reason": "Reconhecer pontos de vista diferentes permite responder a objeções sem tratar opiniões como provas definitivas."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
