@@ -30,32 +30,33 @@ import {stage19Sociology} from './authored-stage19-sociology.ts';
 import {stage19Art} from './authored-stage19-art.ts';
 import {stage19PE} from './authored-stage19-pe.ts';
 import {stage19Science} from './authored-stage19-science.ts';
+import {stage19Extras} from './authored-stage19-extras.ts';
 
 const authoredSeeds=[
  ...stage19Math,...stage19Physics,...stage19Chemistry,...stage19Biology,
  ...stage19History,...stage19Geography,...stage19Portuguese,...stage19Literature,
  ...stage19Writing,...stage19English,...stage19Spanish,...stage19Philosophy,
- ...stage19Sociology,...stage19Art,...stage19PE,...stage19Science
+ ...stage19Sociology,...stage19Art,...stage19PE,...stage19Science,...stage19Extras
 ];
 const key=(x:{subject:string;topic:string})=>x.subject+'\0'+x.topic;
-test('Stage 19 contains 64 new lessons and 192 chapters with distinct editorial content',()=>{
+test('Stage 19 consolidates 92 unique lessons from both drafts without overwriting existing material',()=>{
  const previous=new Set([
   ...deepMathTopicNames.map(topic=>key({subject:'Matemática',topic})),
   ...[...deepCrossSubjectTopics,...stage13Topics,...stage14Topics,...stage15Topics,...stage16Topics,...stage17Topics,...stage18Topics].map(key)
  ]);
  assert.equal(previous.size,197);
- assert.equal(stage19Topics.length,64);
- assert.equal(authoredSeeds.length,64);
- assert.equal(stage19EverydayContexts.length,64);
- assert.equal(new Set(stage19Topics.map(key)).size,64);
+ assert.equal(stage19Topics.length,92);
+ assert.equal(authoredSeeds.length,92);
+ assert.equal(stage19EverydayContexts.length,92);
+ assert.equal(new Set(stage19Topics.map(key)).size,92);
  const all=new Set([...previous,...stage19Topics.map(key)]);
- assert.equal(all.size,261,'Every stage must add genuinely new syllabus topics');
+ assert.equal(all.size,289,'Every stage must add genuinely new syllabus topics');
  const counts=new Map<string,number>();
  for(const topic of stage19Topics)counts.set(topic.subject,(counts.get(topic.subject)??0)+1);
  assert.equal(counts.size,16);
- assert.equal(counts.get('Matemática'),5);
+ assert.equal(counts.get('Matemática'),7,'Two complementary math topics should be retained');
  assert.equal(counts.get('Espanhol'),3,'The Spanish 15-topic detailed syllabus is already covered');
- for(const [subject,count] of counts)if(!['Matemática','Espanhol'].includes(subject))assert.equal(count,4);
+ for(const [subject,count] of counts)assert.ok(count>=(subject==='Espanhol'?3:4),'Every subject keeps its original authored coverage: '+subject);
  const seenExamples=new Set<string>();
  for(const seed of authoredSeeds){
   const id=key(seed);
@@ -112,7 +113,7 @@ test('Stage 19 contains 64 new lessons and 192 chapters with distinct editorial 
    links.add(target);
   }
  }
- assert.equal(everydayContexts.length,261);
+ assert.equal(everydayContexts.length,289);
 });
 test('Stage 19 lookup does not modify other syllabus lessons or IDs',()=>{
  const selected=new Set(stage19Topics.map(key));
