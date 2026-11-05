@@ -32,7 +32,7 @@ export const stage19Math:AuthoredLessonSeed[]=[
         "Todo problema que menciona dois números deve ser resolvido com MMC, por ser um múltiplo comum.",
         "Uma escola fará kits iguais com 28 borrachas e 42 lápis; qual máximo de kits?",
         "A questão solicita maior quantidade de grupos sem sobra.",
-        "MDC(28,42)=14. Cada kit tem 28/14=2 borrachas e 42/14=3 lápis.",
+        "MDC(28,42)=14. Cada kit tem 28/14=2 borrachas e 42/14=3 lápis. A regra exige usar integralmente as duas quantidades.",
         "O agrupamento exige divisor comum de todas as quantidades. MMC resolveria encontro de períodos, não o máximo de kits sem sobras."
       ]
     ],
@@ -66,7 +66,7 @@ export const stage19Math:AuthoredLessonSeed[]=[
         "Juros simples são calculados a cada mês sobre o saldo já acrescido dos juros anteriores.",
         "Calcule os juros de R$ 800 a 1,5% ao mês por quatro meses.",
         "Converta 1,5% para 0,015 e use J=C·i·t.",
-        "J=800×0,015×4=R$ 48. O montante, sem outros encargos, é R$ 848.",
+        "J=800×0,015×4=R$ 48. O montante, sem outros encargos, é R$ 848. O valor final não incorpora tarifas adicionais.",
         "No regime simples, cada período gera a mesma parcela calculada sobre C inicial; juros sobre juros caracterizam outro regime."
       ],
       [
@@ -128,7 +128,7 @@ export const stage19Math:AuthoredLessonSeed[]=[
         "Na substituição, uma equação é isolada para uma incógnita e inserida na outra. Na eliminação, combinam-se equações de modo a cancelar uma incógnita, mantendo equivalência. Ambas devem produzir o mesmo resultado para sistemas com solução única. É necessário aplicar operações aos dois membros para não alterar a solução indevidamente.",
         "Subtraindo a+i=30 de 2a+i=50, obtemos a=20; então i=10, satisfazendo os dois preços.",
         "Somar duas equações permite apagar qualquer incógnita sem analisar coeficientes e sinais.",
-        "Resolva x+y=11 e x−y=3.",
+        "Resolva x+y=11 e x−y=3, apresentando a eliminação e a verificação.",
         "Some as equações para eliminar y.",
         "2x=14, então x=7 e y=4. A verificação dá 7+4=11 e 7−4=3.",
         "A eliminação só ocorre quando os coeficientes se cancelam. É preciso preparar as equações com multiplicações válidas quando necessário."
@@ -183,7 +183,7 @@ export const stage19Math:AuthoredLessonSeed[]=[
         "Se hipotenusa mede 13 e um cateto 5, o outro é √(169−25)=√144=12 unidades.",
         "O cateto desconhecido sempre corresponde à hipotenusa menos o outro cateto.",
         "Determine cateto de triângulo retângulo com hipotenusa 17 e outro cateto 8.",
-        "Calcule √(17²−8²).",
+        "Calcule √(17²−8²). Considere os lados do triângulo retângulo.",
         "√(289−64)=√225=15. Os lados 8, 15 e 17 satisfazem 8²+15²=17².",
         "Não se subtraem diretamente os lados. O teorema relaciona quadrados dos comprimentos, e só depois se extrai raiz."
       ],
