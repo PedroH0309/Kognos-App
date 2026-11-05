@@ -14,7 +14,328 @@ type Spec={
  sections:Chapter[];tasks:Practice[];
  everyday:Pick<EverydayContext,'context'|'question'|'answer'|'connections'>;
 };
-const specs:Spec[] = [];
+const specs:Spec[] = [
+  {
+    "subject": "Matemática",
+    "topic": "Média aritmética e ponderada",
+    "objective": "Calcular e interpretar médias simples e ponderadas, justificando pesos e evitando generalizações a partir de um único valor.",
+    "sections": [
+      {
+        "title": "Média simples e o significado do resultado",
+        "explanation": "A média aritmética simples é a soma das observações dividida pela quantidade de valores. Ela descreve uma medida central, mas não representa obrigatoriamente o valor de cada indivíduo do grupo. Para as notas 5, 7, 8 e 10, a média é (5+7+8+10)/4=7,5. Antes de calcular, identifique unidade, período, população observada e possíveis valores ausentes. Uma média pode esconder variação: tempos de deslocamento 10, 10, 10 e 50 minutos produzem média 20, mesmo com três pessoas gastando só dez minutos. A interpretação responsável compara a média com distribuição e, quando necessário, mediana. Em questões de prova, a operação correta deve responder ao que efetivamente foi perguntado, não apenas à presença da palavra 'média'.",
+        "example": "Uma equipe levou 12, 18, 20 e 30 minutos até a escola em quatro dias. A soma foi 80 minutos e a média 80/4=20. Não se pode afirmar que todos os percursos levaram 20 minutos.",
+        "pitfall": "Tratar a média como descrição de cada observação ou esquecer de dividir pela quantidade de valores realmente considerados."
+      },
+      {
+        "title": "Pesos diferentes exigem média ponderada",
+        "explanation": "Quando os valores têm quantidades ou importâncias diferentes, utiliza-se a média ponderada: soma dos produtos valor×peso dividida pela soma dos pesos. Uma nota 6 com peso 2 e uma nota 9 com peso 3 produzem (6×2+9×3)/(2+3)=39/5=7,8, em vez de 7,5. Pesos podem representar frequência, número de pessoas ou critérios de avaliação; não são escolhidos por preferência do aluno. Para porcentagens que somam 100%, usar os percentuais convertidos em frações é equivalente a dividir pela soma dos pesos. Quando grupos têm tamanhos diferentes, calcular simplesmente a média de suas médias pode distorcer o resultado. O denominador é tão importante quanto o numerador: deve representar o total de pesos coerente com a pergunta.",
+        "example": "Uma loja vende 2 cadernos a R$ 12 e 8 a R$ 15. O valor médio por item vendido é (2×12+8×15)/10=R$ 14,40, e não R$ 13,50.",
+        "pitfall": "Fazer a média simples de médias de grupos de tamanhos diferentes sem levar em conta a quantidade de elementos."
+      },
+      {
+        "title": "Como avaliar médias publicadas em pesquisas",
+        "explanation": "Em reportagens e gráficos, é essencial conferir quais pessoas ou objetos foram incluídos, como a amostra foi escolhida e se os pesos são apropriados. Duas escolas com média de desempenho semelhante podem ter distribuições muito distintas, e isso importa para planejar apoio pedagógico. Uma média elevada não prova que todos obtiveram resultados elevados; nem uma média baixa permite concluir que ninguém foi bem. Quando uma pesquisa apresenta renda média, valores extremos podem elevar o resultado sem alterar a condição da maioria. Questões de ENEM e vestibulares frequentemente testam leitura crítica de estatísticas, não apenas fórmula. Para combinar grupos, multiplique a média de cada grupo pelo seu tamanho, some as contribuições e divida pelo total de participantes; depois discuta o alcance dos dados.",
+        "example": "Uma turma de 10 alunos tem média 6; outra, de 30 alunos, tem média 8. A média conjunta é (10×6+30×8)/40=7,5. A média simples de 6 e 8 daria 7, que não representa os 40 estudantes.",
+        "pitfall": "Supor que uma média é prova de causalidade ou atribuir o resultado de uma amostra pequena a toda a população."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Calcule a média aritmética de 6, 8, 10 e 12.",
+        "hint": "Some os quatro números e divida por quatro.",
+        "solution": "A soma é 36 e existem quatro observações. Portanto, a média aritmética é 36/4=9. O valor central não precisa coincidir com um dos elementos."
+      },
+      {
+        "level": "basic",
+        "prompt": "As viagens demoraram 15, 25 e 35 minutos. Qual foi a média?",
+        "hint": "Considere três trajetos com o mesmo peso.",
+        "solution": "A soma dos tempos é 75 minutos. A média é 75/3=25 minutos, embora nenhum dos outros dois percursos tenha exatamente esse tempo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma atividade de nota 7 tem peso 2 e outra de nota 9 tem peso 3. Qual a média ponderada?",
+        "hint": "Use produtos nota×peso e soma dos pesos 5.",
+        "solution": "A soma ponderada é 7×2+9×3=14+27=41. Dividindo por 5, a média é 8,2. A nota de peso 3 influencia mais o resultado."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma papelaria vende 3 itens por R$ 10 e 7 por R$ 20. Determine o preço médio unitário.",
+        "hint": "O total arrecadado deve ser dividido pelo número de itens.",
+        "solution": "A receita é 3×10+7×20=170 reais para dez itens. Logo o valor médio por item é R$ 17, e não R$ 15, que ignoraria as frequências."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma turma de 10 alunos tem média 6; outra de 30 tem média 8. Calcule a média conjunta.",
+        "hint": "Multiplique cada média pelo tamanho da turma.",
+        "solution": "A soma representada é 10×6+30×8=300. Dividindo por 40 alunos, a média conjunta é 7,5. Fazer (6+8)/2=7 ignora tamanhos distintos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Os valores 10, 10, 10 e 50 têm média 20. Explique por que ela pode ocultar a realidade do grupo.",
+        "hint": "Compare média, mediana e distribuição.",
+        "solution": "A média é 80/4=20, mas três dos quatro valores são 10. A mediana é 10, mostrando que a média foi puxada para cima pelo valor extremo 50."
+      }
+    ],
+    "everyday": {
+      "context": "Duas turmas fazem a mesma avaliação: dez estudantes obtiveram média 6 e trinta estudantes, média 8. Um mural anuncia média geral 7 porque somou as duas médias e dividiu por dois.",
+      "question": "Por que esse resultado não representa os quarenta estudantes e qual é a média correta?",
+      "answer": "As turmas têm tamanhos diferentes. A média conjunta é (10×6+30×8)/(10+30)=300/40=7,5, pois cada grupo precisa contribuir conforme seu número de estudantes.",
+      "connections": [
+        {
+          "subject": "Matemática",
+          "topic": "Probabilidade condicional",
+          "reason": "Ambos os conteúdos exigem escolher o universo de referência correto antes de dividir ou interpretar percentuais."
+        },
+        {
+          "subject": "Redação",
+          "topic": "Repertório sociocultural produtivo",
+          "reason": "Dados usados para fundamentar teses precisam ser interpretados com contexto e representatividade."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Física",
+    "topic": "Potência e consumo de energia elétrica",
+    "objective": "Calcular consumo elétrico em kWh e estimar custo com potência e tempo, distinguindo energia, potência e tarifas reais.",
+    "sections": [
+      {
+        "title": "Watts, quilowatts e quilowatt-hora",
+        "explanation": "Potência é a taxa de transformação ou transferência de energia, P=ΔE/Δt. No SI, a potência é medida em watts, sendo 1 W=1 joule por segundo. A energia elétrica de uma conta residencial costuma ser expressa em quilowatt-hora, que é unidade de energia, não de potência. Um equipamento de 1000 W possui potência de 1 kW e, se mantiver essa potência durante duas horas, consumirá 2 kWh. Um quilowatt-hora corresponde a 3,6 milhões de joules. A comparação entre equipamentos exige observar duração de uso, pois um aparelho menos potente pode consumir mais energia se permanecer ligado por muito tempo. A potência nominal no rótulo nem sempre é a potência efetiva em todos os modos; termostatos e controles variam o consumo durante o uso.",
+        "example": "Uma lâmpada de 10 W durante 100 horas consome 1 kWh. Um secador de 1000 W por 30 minutos usa 0,5 kWh. Maior potência não significa obrigatoriamente maior consumo num intervalo escolhido.",
+        "pitfall": "Tratar W e kWh como equivalentes ou esquecer de converter minutos para horas e watts para quilowatts."
+      },
+      {
+        "title": "Como estimar o consumo e o valor cobrado",
+        "explanation": "Se a potência é aproximadamente constante, a energia em kWh é E=P(kW)×t(h). Um equipamento de 1500 W equivale a 1,5 kW; usado por duas horas, consome 3 kWh no modelo. Sob tarifa hipotética de R$ 0,80 por kWh, essa energia custaria R$ 2,40. Não se deve apresentar esse cálculo como fatura real: impostos, componentes tarifários, bandeiras, taxas e mudanças de consumo podem alterar a cobrança. Aparelhos com termostato, ciclos e regulagem de velocidade variam a potência média. Para comparar eficiência, considere a mesma tarefa executada, e não apenas dois números de watts isolados. Um consumo previsto é uma estimativa cujas hipóteses precisam ser declaradas.",
+        "example": "Um ventilador de 75 W utilizado por oito horas consome 0,075×8=0,6 kWh. Com preço hipotético de R$ 1/kWh, a parcela estimada de energia é R$ 0,60.",
+        "pitfall": "Multiplicar a potência máxima de aparelho que liga e desliga por 24 horas e afirmar que a estimativa é medição exata."
+      },
+      {
+        "title": "Relações de potência e decisões seguras",
+        "explanation": "Em certos circuitos, a potência elétrica pode ser calculada por P=U·I, com U a tensão no elemento e I a corrente através dele. Para resistores ideais, também valem P=RI² e P=U²/R, associadas à lei de Ohm. Essas equações exigem condições de aplicação e não são instruções para manipular tomadas. Uma boa análise de consumo identifica finalidade, potência média durante a utilização e tempo acumulado. A economia de energia depende da combinação desses fatores, da eficiência e do uso responsável, não de truques eletrônicos caseiros. Questões sobre consumo podem integrar porcentagens e gráficos, mas a grandeza física deve permanecer identificada: potência em W ou kW, tempo em h, energia em kWh e custo na moeda informada.",
+        "example": "Se um equipamento hipotético de iluminação mantém 12 W durante cinco horas, E=0,012×5=0,06 kWh. Se outra luminária equivalente usa 8 W no mesmo período, consome 0,04 kWh; isso compara energia para serviço semelhante.",
+        "pitfall": "Concluir que uma potência baixa necessariamente produz maior eficiência ou tentar verificar fórmulas em instalações energizadas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma lâmpada de 20 W fica ligada por 5 horas. Qual o consumo em kWh?",
+        "hint": "20 W=0,020 kW.",
+        "solution": "E=0,020×5=0,10 kWh. Os watts representam potência; o resultado em kWh representa energia acumulada durante as cinco horas."
+      },
+      {
+        "level": "basic",
+        "prompt": "Explique a diferença entre 1 kW e 1 kWh.",
+        "hint": "Uma unidade é taxa de energia e a outra é energia.",
+        "solution": "1 kW equivale a potência de 1000 W. 1 kWh equivale à energia transformada por potência constante de 1 kW durante uma hora, ou 3,6 MJ."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um aparelho de 1000 W funciona durante 45 minutos. Calcule o consumo.",
+        "hint": "45 minutos=0,75 hora.",
+        "solution": "A potência é 1 kW e o tempo 0,75 h. O consumo idealizado é E=1×0,75=0,75 kWh, assumindo potência constante."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Para 2,5 kWh e tarifa hipotética de R$ 0,90/kWh, qual a parcela estimada de energia?",
+        "hint": "Multiplique consumo por preço unitário.",
+        "solution": "2,5×0,90=R$ 2,25. O valor não inclui outros componentes de uma conta real de energia, como tributos ou tarifas adicionais."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare 2000 W durante 15 minutos com 500 W durante duas horas. Qual consome mais?",
+        "hint": "Converta potência e tempo em kW e h.",
+        "solution": "O primeiro consome 2×0,25=0,5 kWh; o segundo, 0,5×2=1,0 kWh. Portanto, o menos potente consumiu mais por operar durante mais tempo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que potência nominal de um equipamento com termostato pode superestimar o consumo diário?",
+        "hint": "Observe ciclos ligados e desligados.",
+        "solution": "Um termostato pode interromper o aquecimento em parte do período. Multiplicar a potência máxima por todas as horas supõe atividade constante que pode não ocorrer."
+      }
+    ],
+    "everyday": {
+      "context": "Uma família compara um ventilador de 80 W ligado por oito horas a um aparelho de 1200 W usado durante trinta minutos. A pessoa que lê o rótulo pensa que o mais potente sempre consome mais.",
+      "question": "Qual equipamento usou mais energia nos períodos descritos, supondo potência constante?",
+      "answer": "O ventilador consome 0,080×8=0,64 kWh; o segundo equipamento, 1,2×0,5=0,60 kWh. O ventilador consumiu ligeiramente mais porque funcionou por mais tempo.",
+      "connections": [
+        {
+          "subject": "Física",
+          "topic": "Conservação da energia mecânica",
+          "reason": "Energia e potência são grandezas diferentes: uma descreve quantidade transferida e a outra a taxa dessa transformação."
+        },
+        {
+          "subject": "Matemática",
+          "topic": "Porcentagem e juros",
+          "reason": "Tarifas, reajustes e comparações de custos exigem interpretar preços e variações proporcionais."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Química",
+    "topic": "pH e pOH",
+    "objective": "Aplicar escala logarítmica de pH a modelos aquosos e calcular pOH sob condições indicadas, diferenciando concentração e segurança química.",
+    "sections": [
+      {
+        "title": "pH e a escala logarítmica",
+        "explanation": "O pH é relacionado à atividade dos íons oxônio em solução aquosa. Em exercícios com soluções diluídas, costuma-se aproximar pH=−log[H₃O⁺], usando concentração em mol/L como aproximação de atividade. Uma unidade a menos no pH corresponde, nessas condições comparáveis, a dez vezes mais concentração de íons oxônio. Portanto, a diferença de pH 3 para pH 5 corresponde a fator 100, e não a duas vezes mais. A escala não é obrigatoriamente limitada de 0 a 14 em toda situação; condições concentradas podem produzir valores fora desse intervalo. O pH por si só também não determina se um produto é seguro, pois risco envolve composição, exposição e outras propriedades. Distinguir definição, aproximação e interpretação ajuda a resolver questões sem inventar resultados laboratoriais.",
+        "example": "Em soluções hipotéticas com [H₃O⁺]=10⁻³ mol/L e 10⁻⁵ mol/L, os pH aproximados são 3 e 5. A primeira contém aproximadamente cem vezes mais íons oxônio por volume comparável.",
+        "pitfall": "Tratar a diferença de duas unidades como diferença linear ou declarar segurança de uma substância apenas pelo pH."
+      },
+      {
+        "title": "pOH, neutralidade e influência da temperatura",
+        "explanation": "Em soluções aquosas a aproximadamente 25 °C, o produto iônico da água é frequentemente aproximado por Kw=10⁻¹⁴, e a relação escolar usual é pH+pOH≈14. O pOH é −log[OH⁻] na aproximação de concentração. Nessas condições, uma solução aquosa neutra tem pH próximo de 7; valores abaixo são associados a maior acidez e acima a maior basicidade. Porém Kw depende da temperatura, de modo que a neutralidade não corresponde necessariamente a pH exato de 7 em toda temperatura. Força ácida e concentração não são sinônimos: a força se relaciona ao comportamento de dissociação ou ionização, enquanto concentração mede quantidade presente por volume. Resolver exercícios requer verificar quais hipóteses o enunciado oferece.",
+        "example": "A 25 °C, uma solução hipotética com pOH=4 apresenta pH≈10, sendo básica na aproximação escolar. Se pH=6, o pOH aproximado é 8.",
+        "pitfall": "Usar pH+pOH=14 como identidade exata para qualquer temperatura ou confundir ácido fraco com solução necessariamente diluída."
+      },
+      {
+        "title": "Diluição e limites dos modelos de ácido-base",
+        "explanation": "Diluir altera concentrações, mas a mudança do pH depende das espécies e dos equilíbrios presentes. No caso idealizado de ácido forte monoprótico suficientemente diluído e completamente dissociado, reduzir a concentração por fator dez pode aumentar o pH em cerca de uma unidade, enquanto o modelo for adequado. Ácidos fracos e soluções tamponadas respondem de modo diferente; não se deve aplicar a regra automaticamente. Indicadores mudam de cor em faixas de pH e medidores requerem calibração para resultados confiáveis. O aluno pode analisar tabelas fornecidas numa prova sem manipular substâncias reais. Misturar produtos de limpeza para testar acidez é perigoso e não constitui experimento escolar apropriado. O conceito químico deve ajudar a interpretar dados, não a produzir práticas sem orientação.",
+        "example": "Para HCl idealizado a 25 °C, soluções diluídas com concentrações 10⁻² e 10⁻³ mol/L podem ter pH aproximado 2 e 3, desde que a dissociação e as aproximações do modelo sejam válidas.",
+        "pitfall": "Afirmar que toda diluição multiplica o pH por dez ou tentar determinar o pH de misturas reais apenas pela fórmula simplificada."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Calcule pH para [H₃O⁺]=10⁻⁴ mol/L num modelo diluído.",
+        "hint": "Use pH=−log₁₀[H₃O⁺].",
+        "solution": "pH≈−log₁₀(10⁻⁴)=4. A classificação é ácida em comparação à neutralidade aproximada de pH 7 a 25 °C."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual tem mais íons oxônio: pH 3 ou pH 5, nas mesmas condições?",
+        "hint": "Compare diferenças de duas unidades logarítmicas.",
+        "solution": "A solução com pH 3 tem concentração de H₃O⁺ cerca de 10²=100 vezes maior que aquela de pH 5, segundo o modelo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "A 25 °C, calcule pOH de solução com pH 9.",
+        "hint": "Use pH+pOH≈14.",
+        "solution": "pOH≈14−9=5. Nesse modelo, a solução é básica porque apresenta pH acima da neutralidade aproximada a 25 °C."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma solução tem pOH 3 a 25 °C. Qual pH e classificação?",
+        "hint": "Subtraia de 14.",
+        "solution": "pH≈14−3=11. Assim, a solução é básica nas condições de equilíbrio aquoso assumidas no exercício."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que pH 2 não significa apenas uma unidade linear a mais de acidez que pH 3?",
+        "hint": "A escala representa logaritmos.",
+        "solution": "A diferença de uma unidade corresponde a fator dez na concentração aproximada de H₃O⁺. Portanto, a comparação é multiplicativa, não uma diferença aditiva."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que neutralidade nem sempre corresponde a pH igual a 7.",
+        "hint": "Observe a dependência de Kw com a temperatura.",
+        "solution": "A autoionização da água muda com a temperatura e altera o pH neutro. O valor 7 é aproximação associada a cerca de 25 °C."
+      }
+    ],
+    "everyday": {
+      "context": "Em uma atividade didática, dois frascos de solução aquosa são descritos com pH 3 e pH 5. Um estudante acha que a primeira solução possui somente duas vezes mais íons oxônio.",
+      "question": "Como interpretar corretamente uma diferença de duas unidades na escala logarítmica?",
+      "answer": "Sob o modelo de soluções diluídas comparáveis, pH 3 indica concentração de H₃O⁺ aproximadamente cem vezes maior que pH 5, porque cada unidade representa fator dez.",
+      "connections": [
+        {
+          "subject": "Química",
+          "topic": "Concentração comum e molaridade",
+          "reason": "O pH aproximado utiliza a concentração de uma espécie química por volume, expressa em mol/L no modelo."
+        },
+        {
+          "subject": "Ciências",
+          "topic": "Reações químicas no cotidiano",
+          "reason": "O comportamento ácido-base se relaciona a reações e espécies em solução, mas indícios visuais não substituem medidas confiáveis."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Imunidade, vacinas e soros",
+    "objective": "Compreender defesas inatas e adaptativas e comparar resposta induzida por vacina com recebimento de anticorpos prontos, sem extrapolações médicas.",
+    "sections": [
+      {
+        "title": "Barreiras, células e reconhecimento de antígenos",
+        "explanation": "O sistema imunológico reúne barreiras físicas, células e moléculas que protegem o organismo. A pele e certas secreções ajudam a impedir a entrada de agentes; células fagocitárias e processos inflamatórios integram respostas inatas. Linfócitos B e T participam da imunidade adaptativa, na qual populações celulares reconhecem antígenos e podem criar resposta específica. Anticorpos são proteínas produzidas por células derivadas de linfócitos B e exercem funções de reconhecimento e participação na defesa. A resposta imune não se reduz a anticorpos, e sua presença num exame não significa proteção absoluta. O modelo didático distingue fases, mas processos reais dependem de interações complexas entre células, tecidos e condições de saúde. Em provas, convém separar imunidade inata, adaptativa, ativa e passiva.",
+        "example": "A pele íntegra limita a entrada de microrganismos e constitui barreira inata. Uma resposta específica de linfócitos após contato com antígeno exemplifica a participação da imunidade adaptativa.",
+        "pitfall": "Afirmar que somente anticorpos defendem o organismo ou que encontrar anticorpos garante proteção completa e permanente."
+      },
+      {
+        "title": "Vacinas e formação de memória imunológica",
+        "explanation": "Vacinas apresentam antígenos ou instruções para produzi-los de acordo com diferentes tecnologias, estimulando respostas imunes que podem gerar memória específica. Em contato posterior com o agente, componentes da resposta adaptativa podem reagir de modo mais rápido ou eficaz. A proteção varia conforme vacina, doença, esquema de doses e características da pessoa; vacinas podem reduzir risco de doença grave e, em alguns casos, de infecção e transmissão, em intensidades distintas. Não existe uma porcentagem de proteção idêntica para todas. Campanhas e calendários de imunização seguem orientações sanitárias atualizadas, não fórmulas universais de uma aula de biologia. A noção de proteção coletiva depende da doença e da circulação do agente. O aluno deve relacionar mecanismo de memória e finalidade preventiva sem prometer ausência total de doença.",
+        "example": "Um modelo escolar descreve uma vacina que estimula linfócitos específicos e forma células de memória. Em exposição futura, o sistema pode responder com maior rapidez, sem que isso garanta que nenhum sintoma ocorrerá.",
+        "pitfall": "Confundir vacinação com tratamento imediato de qualquer infecção ou supor que uma dose gera proteção absoluta para toda a vida."
+      },
+      {
+        "title": "Anticorpos prontos: imunização passiva",
+        "explanation": "Soros imunológicos e outras preparações de anticorpos podem ser administrados em indicações específicas para fornecer anticorpos já prontos. Isso caracteriza imunização passiva: a proteção ou ação pode ocorrer de maneira mais imediata, mas geralmente é temporária e não produz o mesmo tipo de memória que a imunização ativa. Não se deve equiparar todos os soros, pois indicação, riscos, composição e protocolos diferem. Em situações de exposição a agentes ou toxinas, a conduta cabe a serviços de saúde, não a decisões com base num quadro escolar. O contraste conceitual é quem produziu os anticorpos e qual duração esperada, sem equiparar duração a garantia de eficácia. Nas questões, identificar a relação entre antígeno, linfócitos, memória e anticorpos prontos resolve a maioria dos exemplos clássicos.",
+        "example": "Se alguém recebe anticorpos específicos previamente produzidos, o caso ilustra imunização passiva. Se recebe vacina para estimular sua própria resposta, ilustra imunização ativa, sob protocolos próprios.",
+        "pitfall": "Achar que soros e vacinas são sinônimos ou que anticorpos prontos sempre induzem memória imune duradoura."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite uma defesa inata e um componente da resposta adaptativa.",
+        "hint": "Pense em barreira física e linfócitos.",
+        "solution": "A pele íntegra é barreira inata. Linfócitos B e T integram respostas adaptativas específicas, que podem formar memória imunológica."
+      },
+      {
+        "level": "basic",
+        "prompt": "O que significa memória imunológica no contexto de uma vacina?",
+        "hint": "Compare respostas ao primeiro e ao contato posterior.",
+        "solution": "Trata-se de uma capacidade da resposta adaptativa de reconhecer um antígeno anteriormente encontrado e responder de forma diferenciada e muitas vezes mais rápida."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Compare imunização ativa e passiva quanto à origem dos anticorpos.",
+        "hint": "No primeiro caso o organismo responde; no segundo recebe moléculas prontas.",
+        "solution": "A ativa estimula o próprio sistema imunológico e pode gerar memória. A passiva oferece anticorpos prontos e normalmente tem efeito temporário."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que uma vacina não implica que nenhuma pessoa vacinada ficará doente?",
+        "hint": "Considere eficácia variável e tipo de proteção.",
+        "solution": "O grau de proteção varia com a vacina, o agente e o indivíduo. Algumas vacinas reduzem principalmente a doença grave, sem impedir todas as infecções."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um estudante diz que detectar anticorpos prova imunidade absoluta. Qual o problema dessa conclusão?",
+        "hint": "A imunidade possui vários mecanismos.",
+        "solution": "A presença isolada de anticorpos não mostra toda a proteção. Respostas celulares, agente específico e contexto clínico também importam para avaliar eficácia."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que uma aula não pode orientar qual soro deve ser usado num acidente real?",
+        "hint": "Protocolos específicos exigem avaliação profissional.",
+        "solution": "Soros têm indicações, riscos e modos de uso que dependem do acidente e da avaliação de serviços de saúde. O conteúdo escolar explica mecanismos, não substitui atendimento."
+      }
+    ],
+    "everyday": {
+      "context": "Um mural escolar compara uma campanha de vacinação de rotina a informações sobre soros usados em atendimentos específicos. Um estudante conclui que ambos sempre produzem memória duradoura.",
+      "question": "Qual a diferença entre estimular a defesa do próprio organismo e receber anticorpos já preparados?",
+      "answer": "A vacinação busca ativar a resposta imune e pode formar memória; a administração de anticorpos prontos caracteriza imunização passiva e costuma oferecer efeito temporário. Indicações reais exigem avaliação profissional.",
+      "connections": [
+        {
+          "subject": "Filosofia",
+          "topic": "Argumentação e falácias",
+          "reason": "A avaliação de afirmações de saúde exige distinguir evidências de generalizações e identificar raciocínios equivocados."
+        },
+        {
+          "subject": "Sociologia",
+          "topic": "Trabalho e divisão social",
+          "reason": "Campanhas de imunização dependem de atividades coordenadas de diversos profissionais e instituições de saúde."
+        }
+      ]
+    }
+  }
+];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
 export const stage14Topics=specs.map(({subject,topic})=>({subject,topic}));
 export const stage14EverydayContexts:readonly EverydayContext[]=specs.map(s=>({subject:s.subject,topic:s.topic,...s.everyday}));
