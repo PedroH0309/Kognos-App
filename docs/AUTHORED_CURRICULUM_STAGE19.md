@@ -23,28 +23,28 @@ A etapa consolida **92 assuntos distintos antes não aprofundados** (64 do lote 
 | Educação Física | Ginásticas e práticas de condicionamento; Práticas corporais de aventura; Sedentarismo e qualidade de vida; Práticas corporais e sustentabilidade |
 | Ciências | Modelos atômicos introdutórios; Magnetismo; Plantas e fotossíntese; Vírus e prevenção de doenças |
 
-A distribuição não é uniformemente quatro por disciplina: Matemática recebe **5** e Espanhol **3**, pois o tema `Subjuntivo em espanhol` já possuía aula aprofundada na Etapa 14, e o currículo detalhado de Espanhol contém 15 tópicos, que ficam integralmente preparados após esta etapa. Também se evitou duplicar `Média aritmética e ponderada`, de uma etapa anterior.
+No lote principal, a distribuição não era uniformemente quatro por disciplina: Matemática recebia **5** e Espanhol **3**, pois o tema `Subjuntivo em espanhol` já possuía aula aprofundada na Etapa 14, e o currículo detalhado de Espanhol contém 15 tópicos, que ficam integralmente preparados após esta etapa. Após a incorporação dos 28 temas exclusivos do outro PR, Matemática recebe **7 aulas novas**, e outras disciplinas também ganham conteúdo adicional. Evitou-se duplicar `Média aritmética e ponderada`, de uma etapa anterior.
 
 ## Cobertura acumulada após incorporação dos PRs #76, #77 e deste PR
 
 | Medida | Antes da Etapa 19 | Adição | Total |
 | --- | ---: | ---: | ---: |
-| Aulas específicas | 197 | 64 | **261** |
-| Capítulos | 591 | 192 | **783** |
-| Exercícios com solução | 1182 | 384 | **1566** |
-| Situações cotidianas | 197 | 64 | **261** |
-| Links de conhecimento | 394 | 128 | **522** |
+| Aulas específicas | 197 | 92 | **289** |
+| Capítulos | 591 | 276 | **867** |
+| Exercícios com solução | 1182 | 552 | **1734** |
+| Situações cotidianas | 197 | 92 | **289** |
+| Links de conhecimento | 394 | 184 | **578** |
 
 Dos **1.512** assuntos auditados anteriormente no catálogo global, **1.223 ainda não têm aula específica aprofundada**, embora tenham conteúdo introdutório de apoio. Os números de cobertura dependem dos merges em ordem; não representam aulas já disponíveis na `main` enquanto os PRs estiverem abertos.
 
 ## Implementação
 
 - `authored-stage19-seed.ts`: padroniza oito campos editoriais por capítulo, preservando teoria, problema, pista, resolução e explicação do erro escritos para cada tema.
-- `authored-stage19-{discipline}.ts`: 16 arquivos organizados por área com as 92 aulas originais.
+- `authored-stage19-{discipline}.ts`: 16 arquivos organizados por área com 64 aulas do lote principal; `authored-stage19-extras.ts` recupera outras 28 aulas distintas do PR #78.
 - `authored-lessons-stage19.ts`: agregador estático que utiliza `renderAuthoredBlueprint` da etapa anterior sem modificar API nem banco de dados.
 - `starter-lessons.ts` e `everyday-lesson-contexts.ts`: aulas por assunto canônico e contextos associados, preservando o fluxo **Matérias → Conteúdos → Aula**.
-- `authored-lessons-stage19.test.ts`: verificações de unicidade, ID estável, autoria sem revisão docente, 192 capítulos, 384 exercícios, links preparados e 261 cenários.
-- `everyday-lesson-contexts.test.ts`: atualização da expectativa de 197 para 261 sem apagar casos anteriores.
+- `authored-lessons-stage19.test.ts`: verificações de unicidade, ID estável, autoria sem revisão docente, 276 capítulos, 552 exercícios, links preparados e 289 cenários.
+- `everyday-lesson-contexts.test.ts`: atualização da expectativa de 197 para 289 sem apagar casos anteriores.
 
 Preservados dados, progresso, permissões, Supabase, autenticação, cotas, esquemas SQL, variáveis de ambiente e funcionalidades de prática. Exemplos numéricos e cenários são didáticos, não dados observados nem questões oficiais copiadas. Testes de software não constituem revisão pedagógica especializada.
 
