@@ -17,15 +17,15 @@ Esta etapa cria **64 aulas individuais novas**, reutilizando o modelo editorial 
 | Português | 5 |
 | Literatura | 4 |
 | Redação | 4 |
-| Inglês | 4 |
-| Espanhol | 1 |
+| Inglês | 5 |
+| Espanhol | 0 |
 | Filosofia | 3 |
 | Sociologia | 3 |
 | Arte | 3 |
 | Ciências | 1 |
 | Educação Física | 0 |
 
-Educação Física não recebe tema repetido nesta rodada. O recorte espanhol também evita recontar matérias já preparadas.
+Educação Física não recebe tema repetido nesta rodada. O repertório específico de Espanhol já estava coberto neste catálogo e não foi duplicado; uma quinta aula de Inglês, sobre advérbios e marcadores temporais, substitui o tema espanhol repetido.
 
 ### Metodologia
 
