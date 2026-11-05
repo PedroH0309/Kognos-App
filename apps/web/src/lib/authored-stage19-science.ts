@@ -205,14 +205,14 @@ export const stage19Science:TopicSeed[]=[
     ],
     "links": [
       [
-        "Ciências",
-        "Vacinação e saúde coletiva",
-        "A proteção da comunidade envolve imunização, vigilância e medidas específicas contra agentes infecciosos."
+        "Biologia",
+        "Imunidade, vacinas e soros",
+        "A imunização depende das respostas imunes e ajuda a compreender estratégias de prevenção de certas doenças virais."
       ],
       [
-        "Ciências",
-        "Bactérias, fungos e protozoários",
-        "Comparar grupos biológicos ajuda a distinguir alvos de tratamento e vias de transmissão."
+        "Biologia",
+        "Células procarióticas e eucarióticas",
+        "Comparar vírus com células bacterianas e eucarióticas ajuda a identificar por que não são organismos celulares."
       ]
     ]
   }
