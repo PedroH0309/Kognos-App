@@ -103,14 +103,14 @@ export const stage18Science:LessonBlueprint[]=[
     ],
     "links": [
       [
-        "Física",
-        "Ondas e propriedades das ondas",
-        "A luz apresenta natureza ondulatória e fenômenos ópticos exigem compreender propagação e comprimento de onda."
+        "Ciências",
+        "Calor e temperatura",
+        "A luz e a radiação térmica envolvem fenômenos eletromagnéticos, com interações e faixas de frequência distintas."
       ],
       [
-        "Ciências",
-        "Som e audição",
-        "A comparação entre ondas luminosas e sonoras ajuda a distinguir meio de propagação e propriedades físicas."
+        "Arte",
+        "Fotografia, cinema e audiovisual",
+        "Câmeras e lentes utilizam princípios ópticos para registrar e organizar imagens."
       ]
     ]
   },
@@ -165,9 +165,9 @@ export const stage18Science:LessonBlueprint[]=[
         "A produção de ATP ocorre por processos metabólicos celulares que utilizam substratos e, em vias aeróbicas, oxigênio."
       ],
       [
-        "Ciências",
-        "Circulação e excreção",
-        "O sistema circulatório transporta gases e nutrientes absorvidos aos tecidos e integra órgãos e funções."
+        "Biologia",
+        "Proteínas e enzimas",
+        "As enzimas digestivas participam de reações que quebram nutrientes antes da absorção no intestino delgado."
       ]
     ]
   },
