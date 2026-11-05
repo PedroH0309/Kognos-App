@@ -1298,6 +1298,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Jogos e brincadeiras tradicionais",
+    "objective": "Analisar jogos e brincadeiras como práticas culturais com regras negociáveis, aprendizagem coletiva, memória social e participação inclusiva.",
+    "sections": [
+      {
+        "title": "Brincadeiras são práticas culturais, não apenas passatempos",
+        "explanation": "Jogos e brincadeiras tradicionais circulam entre famílias, escolas e comunidades, transmitindo e transformando regras, cantigas, movimentos e modos de cooperação. Esconde-esconde, amarelinha, rodas e outros exemplos apresentam variações conforme local, idade, espaço e grupo; não existe necessariamente um modelo universal de cada brincadeira. Algumas possuem objetivo de competição, outras de expressão, exploração ou colaboração. Conhecer origem e memória de uma prática ajuda a valorizar repertórios culturais, mas é inadequado afirmar autoria exata ou uma procedência única sem fonte histórica. A educação física pode usar brincadeiras para desenvolver coordenação, tomada de decisão e convivência, sem reduzir participantes à velocidade ou ao desempenho. O modo de organizar o espaço também influencia segurança e acesso: regras podem ser adaptadas para incluir diferentes capacidades e contextos.",
+        "example": "Uma turma de diferentes bairros compara duas versões de amarelinha, com desenhos e regras distintos. A variação ilustra transmissão e transformação cultural, não uma versão 'certa' e outra 'errada'.",
+        "pitfall": "Afirmar que toda brincadeira possui regra única em qualquer lugar ou considerar jogos não competitivos menos educativos.",
+        "steps": [
+          "Peça aos participantes que descrevam regras locais antes de decidir como realizar a atividade.",
+          "Observe quais movimentos, cooperações e escolhas são mobilizados pelo jogo."
+        ]
+      },
+      {
+        "title": "Regras, negociação e inclusão na participação",
+        "explanation": "Regras organizam turnos, objetivos e limites, mas em muitos jogos recreativos podem ser negociadas para adaptar espaço, idade, segurança e participação. Uma adaptação deve preservar elementos da experiência sem excluir alguém por deficiência, diferença de habilidade ou pouca familiaridade com a prática. Por exemplo, ampliar o tempo de resposta, modificar a distância de lançamento ou utilizar materiais acessíveis pode permitir envolvimento efetivo, dependendo da situação. Isso não significa impor a mesma adaptação a todas as pessoas: é necessário ouvir os participantes. Disputas sobre regras também oferecem oportunidade de discutir cooperação e resolução de conflitos. Em vez de afirmar que uma criança 'não sabe brincar' porque utiliza outra versão, é produtivo comparar combinações e decidir coletivamente quais orientações valerão naquela partida.",
+        "example": "Num jogo de arremesso recreativo, o grupo pode combinar diferentes distâncias de lançamento para ampliar participação, mantendo o objetivo compartilhado e respeitando segurança.",
+        "pitfall": "Confundir regra negociável de brincadeira escolar com ausência de regras ou adaptar atividade sem escutar quem será diretamente afetado.",
+        "steps": [
+          "Identifique o que a regra organiza e quais barreiras surgem para participantes diferentes.",
+          "Negocie mudanças específicas e confira se elas tornam a participação mais efetiva."
+        ]
+      },
+      {
+        "title": "Memória social, espaços públicos e direito ao brincar",
+        "explanation": "Brincadeiras podem formar parte da memória de grupos e circular por relatos de diferentes gerações, modificando-se ao longo do tempo. O acesso ao brincar depende também de espaços seguros, tempo disponível, convivência e condições do ambiente. Praças, pátios, ruas e espaços comunitários oferecem oportunidades diferentes, e a ausência de local adequado não deve ser atribuída exclusivamente à vontade individual. Pesquisas escolares podem registrar variantes de jogos por entrevistas com consentimento e contexto, sem concluir que uma experiência representa toda uma comunidade. Comparar regras antigas e atuais permite perceber transformações culturais e efeitos de tecnologias, urbanização e rotina, sem declarar que brincadeiras contemporâneas são necessariamente inferiores às de épocas passadas. A educação física pode articular diversidade cultural e inclusão por meio dessas práticas, respeitando autonomia e segurança.",
+        "example": "Uma pesquisa escolar pode perguntar a familiares quais brincadeiras conheciam, registrar variações e compará-las com as atuais, deixando claro que os relatos descrevem experiências particulares.",
+        "pitfall": "Idealizar o passado como época em que todos brincavam igualmente ou tratar falta de espaço público como falha moral dos estudantes.",
+        "steps": [
+          "Registre a origem e o contexto dos relatos utilizados para reconstruir memórias de jogos.",
+          "Analise barreiras de acesso a espaços e proponha adaptações compatíveis com cada comunidade."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Por que brincadeiras tradicionais podem ter regras diferentes entre regiões?",
+        "hint": "Pense em transmissão cultural e adaptações locais.",
+        "solution": "Porque regras e materiais podem ser modificados em comunidades e épocas distintas, sem que uma versão seja obrigatoriamente a única legítima."
+      },
+      {
+        "level": "basic",
+        "prompt": "Cite uma dimensão educativa de um jogo que não dependa de vencer.",
+        "hint": "Considere cooperação e tomada de decisões.",
+        "solution": "Brincadeiras podem desenvolver cooperação, coordenação, negociação de regras e convivência mesmo quando não há vencedor definido."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Como adaptar um jogo escolar para incluir alguém com necessidade de maior tempo de resposta?",
+        "hint": "Negocie condições que preservem a participação.",
+        "solution": "O grupo pode ampliar o tempo disponível ou modificar a dinâmica, ouvindo a pessoa envolvida e verificando se a participação se torna efetiva."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que uma variante local de amarelinha não é automaticamente erro?",
+        "hint": "A brincadeira não possui necessariamente uma norma universal.",
+        "solution": "Jogos tradicionais podem apresentar versões legítimas conforme comunidade, espaço e época. O grupo deve combinar qual conjunto de regras utilizará."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma entrevista com um familiar permite afirmar que todos de sua geração brincavam do mesmo jeito?",
+        "hint": "Uma lembrança não representa uma população inteira.",
+        "solution": "Não. A entrevista descreve experiência individual ou localizada; generalizações exigem outras fontes e análise de diferenças sociais e regionais."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique como a urbanização pode afetar oportunidades de brincar sem determinar o comportamento de todos.",
+        "hint": "Considere disponibilidade e segurança dos espaços.",
+        "solution": "Mudanças no uso de praças, ruas e pátios podem ampliar ou restringir opções, mas as experiências variam conforme infraestrutura, tempo e relações comunitárias."
+      }
+    ],
+    "everyday": {
+      "context": "Durante uma aula, estudantes de bairros diferentes propõem regras diferentes para a mesma brincadeira. O grupo decide que uma versão está errada e deixa de fora colegas que não conseguem acompanhar o ritmo.",
+      "question": "Como a origem cultural das regras e a possibilidade de adaptação ajudam a organizar um jogo acessível?",
+      "answer": "As regras podem variar entre comunidades. O grupo pode negociar uma versão comum e ajustar ritmo, espaço ou materiais para incluir participantes, sem tratar diferenças como incapacidade.",
+      "connections": [
+        {
+          "subject": "Educação Física",
+          "topic": "Preconceito e inclusão no esporte",
+          "reason": "Ajustar condições de participação e evitar julgamentos de habilidade amplia inclusão em jogos e práticas corporais."
+        },
+        {
+          "subject": "Sociologia",
+          "topic": "Cultura e etnocentrismo",
+          "reason": "A variedade de regras e costumes mostra como práticas culturais mudam e não devem ser hierarquizadas por familiaridade pessoal."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
