@@ -2,55 +2,55 @@ import type {AuthoredLessonSeed} from './authored-lesson-recipe.ts';
 export const stage19Writing:AuthoredLessonSeed[]=[
   {
     "subject": "Redação",
-    "topic": "Contra-argumentação",
-    "objective": "Reconhecer objeções pertinentes e refutá-las com razões e limites, sem caricaturar perspectivas contrárias ou abandonar a tese.",
+    "topic": "Exemplificação e comparação",
+    "objective": "Selecionar exemplos e comparações que esclareçam argumentos, reconhecendo limites de analogias e evitando generalizar casos isolados.",
     "chapters": [
       [
-        "Objeção não é desvio de tema",
-        "Contra-argumentar significa considerar uma objeção relevante à tese e respondê-la de forma fundamentada. A objeção precisa ser apresentada com fidelidade, em vez de versão enfraquecida que ninguém defenderia. Um texto pode reconhecer benefício real de uma proposta e ainda sustentar que custos ou barreiras justificam ajustes.",
-        "Em debate sobre bibliotecas digitais, reconhecer acesso remoto e discutir a exclusão de pessoas sem internet pode fortalecer proposta inclusiva.",
-        "Refutar uma posição contrária é inventar a versão mais absurda da opinião do outro.",
-        "Qual objeção plausível existe à proposta de substituir toda biblioteca física por aplicativo?",
-        "Considere quem não possui internet ou equipamento.",
-        "A substituição exclusiva pode excluir pessoas sem acesso digital ou que necessitam de serviços presenciais; é objeção relevante à universalização.",
-        "Uma objeção bem construída deve representar risco ou limitação real, não caricatura para ser facilmente ridicularizada."
+        "Exemplo ilustra mecanismo",
+        "Um exemplo pode tornar argumento abstrato mais concreto, mas seu valor depende da ligação explícita com a tese. Exemplo hipotético deve ser apresentado como tal e não como dado observado. Uma situação individual pode ilustrar possibilidade, sem mostrar frequência nacional. O texto precisa explicar por que aquele caso é pertinente ao problema.",
+        "Para discutir acesso a museus, um caso hipotético de jovem que depende de ônibus noturno ilustra uma barreira de deslocamento.",
+        "Um exemplo particular comprova automaticamente a situação de todas as pessoas do país.",
+        "Como incluir exemplo de transporte urbano em argumento sobre acesso cultural?",
+        "Relacione horário de ônibus e oportunidade de visita.",
+        "Explique que a ausência de transporte num horário pode dificultar a visita para quem depende do serviço, sem generalizar a todos.",
+        "Exemplos ajudam a visualizar mecanismos, mas não substituem estatística representativa quando a tese é quantitativa."
       ],
       [
-        "Concessão e resposta",
-        "Uma concessão admite parte da validade de um argumento oposto, mas mostra por que isso não elimina a tese. Expressões como 'embora' e 'ainda que' podem sinalizar o movimento, sem substituir mecanismo explicativo. A refutação deve ligar evidências e prioridades ao problema, evitando apenas dizer que o adversário está errado.",
-        "'Embora plataformas ampliem alcance, a oferta presencial continua necessária para públicos sem conexão' integra reconhecimento e resposta.",
-        "Conceder um aspecto verdadeiro ao outro lado torna impossível sustentar uma posição própria.",
-        "Como refutar a alegação de que toda aula deveria ser apenas online por reduzir deslocamentos?",
-        "Reconheça benefício e examine acesso desigual.",
-        "É possível admitir redução de deslocamentos e defender alternativa presencial para quem não dispõe de conectividade ou ambiente adequado.",
-        "Concessões podem tornar o argumento mais rigoroso, porque mostram condições em que a tese precisa de qualificação."
+        "Comparação exige critérios comuns",
+        "Comparar situações pode evidenciar semelhanças e diferenças quando as dimensões usadas são equivalentes. Comparar frequência de bibliotecas em cidades de populações distintas exige indicadores proporcionais e dados de mesma época. Analogias permitem compreender temas novos, mas nenhuma semelhança implica identidade de todas as características.",
+        "Comparar bibliotecas por 100 mil habitantes é diferente de comparar apenas o número absoluto de bibliotecas em duas cidades.",
+        "Duas cidades com igual número de bibliotecas oferecem necessariamente acesso equivalente a seus habitantes.",
+        "Qual critério melhora comparação de acesso a bibliotecas entre cidades de tamanhos diferentes?",
+        "Use população como denominador.",
+        "A relação entre quantidade de bibliotecas e população pode melhorar comparabilidade, junto com localização e outros fatores.",
+        "Contagens absolutas sem contexto podem ocultar diferenças de população, deslocamento e distribuição territorial."
       ],
       [
-        "Evidência e proporcionalidade",
-        "A refutação mais forte responde à razão central da objeção, com dados verificáveis ou lógica contextual. Um caso isolado não comprova impossibilidade universal, e uma estatística não pertinente não resolve a controvérsia. Em temas complexos, explicitar condições de aplicabilidade evita falsas dicotomias entre tudo ou nada.",
-        "Um curso híbrido pode combinar vantagens digitais e presenciais, respondendo a públicos distintos sem abolir uma modalidade.",
-        "Uma única experiência ruim com aplicativo prova que todo ensino digital fracassa sempre.",
-        "Como usar um contraexemplo sem generalizar exageradamente sua conclusão?",
-        "Limite-o ao mecanismo que ele demonstra.",
-        "Mostre que uma afirmação universal tem exceção relevante, mas não conclua o oposto universal sem evidências adicionais.",
-        "Contraexemplo pode invalidar tese absoluta, mas não demonstra sozinho frequência, causalidade ou superioridade global."
+        "Analogia e argumentação crítica",
+        "Analogia aproxima relações de campos diferentes, servindo para explicar sem ser demonstração factual. É preciso identificar onde a semelhança deixa de valer e evitar equivalência entre pessoas e objetos em temas sociais. Um texto rigoroso integra exemplo à análise e explicita a limitação da comparação, em vez de encerrar parágrafo com metáfora impactante.",
+        "Comparar acesso à informação a uma ponte pode ilustrar ligação entre pessoas e serviços, sem medir qualidade de infraestrutura.",
+        "Uma analogia convincente funciona como prova científica de que duas situações são idênticas.",
+        "Por que metáfora de 'ponte para oportunidades' não garante acesso efetivo?",
+        "É recurso interpretativo, não medição.",
+        "A imagem sugere conexão e possibilidades, mas a efetividade depende de dados sobre transporte, serviços e condições de acesso.",
+        "Analogia orienta compreensão de uma relação, sem assegurar equivalência total ou substituir evidências concretas."
       ]
     ],
     "situation": [
-      "Numa redação sobre bibliotecas digitais, um estudante afirma que críticos da digitalização 'odeiam tecnologia'. Outro propõe reconhecer benefícios e responder à questão do acesso desigual.",
-      "Como formular uma objeção fiel e refutá-la sem atacar um grupo imaginário?",
-      "Reconheça que plataformas facilitam acesso remoto, mas explique que usuários sem internet ou equipamentos precisam de alternativas e infraestrutura."
+      "Uma redação compara uma cidade de 10 mil pessoas e outra de um milhão apenas pelo número bruto de bibliotecas, concluindo que o acesso é idêntico onde existem dez unidades.",
+      "Como reescrever a comparação para considerar população e outras condições de acesso?",
+      "Compare indicadores relativos e localização, horários e transporte, explicando limitações da comparação em vez de usar apenas contagem absoluta."
     ],
     "links": [
       [
         "Redação",
         "Argumentação por causa e consequência",
-        "Responder a objeções exige examinar relações causais e condições em que uma justificativa é válida."
+        "Exemplos podem ilustrar mecanismos causais quando conectados à tese com explicação adequada."
       ],
       [
-        "Filosofia",
-        "Argumentação e falácias",
-        "Evitar espantalhos e generalizações precipitadas melhora a qualidade lógica da refutação."
+        "Redação",
+        "Seleção e uso de dados e citações",
+        "Comparações numéricas exigem fontes, denominadores e contextos compatíveis para sustentar afirmações."
       ]
     ]
   },
