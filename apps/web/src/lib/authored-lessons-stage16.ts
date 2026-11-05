@@ -1022,6 +1022,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Indução e dedução",
+    "objective": "Distinguir argumentos dedutivos e indutivos, avaliar validade e força da evidência e reconhecer limites de generalizações a partir de exemplos.",
+    "sections": [
+      {
+        "title": "Dedução e relação necessária entre premissas",
+        "explanation": "Um argumento dedutivo pretende que a conclusão decorra necessariamente das premissas, se a estrutura for válida. 'Todos os materiais da caixa A são recicláveis; este material veio da caixa A; logo, é reciclável' apresenta uma forma dedutiva cuja validade pode ser avaliada independentemente da verdade concreta das premissas. Um argumento é válido quando não há situação possível em que todas as suas premissas sejam verdadeiras e sua conclusão falsa. Para ser sólido, além de válido, precisa ter premissas verdadeiras. Por isso, uma conclusão correta não torna qualquer raciocínio válido, assim como uma forma válida pode partir de premissa empiricamente falsa. A dedução pode ocorrer com regras gerais, condicionais e relações matemáticas; é necessário reconstruir o enunciado com precisão para não acrescentar pressupostos que não foram expressos.",
+        "example": "Se todos os livros de uma estante são emprestáveis e um volume pertence àquela estante, então ele é emprestável, desde que as premissas usadas sejam verdadeiras no contexto.",
+        "pitfall": "Confundir validade lógica com verdade das premissas ou presumir que qualquer conclusão verdadeira foi demonstrada corretamente.",
+        "steps": [
+          "Identifique explicitamente quais frases funcionam como premissas e qual é a conclusão.",
+          "Pergunte se haveria cenário com premissas verdadeiras e conclusão falsa para testar validade."
+        ]
+      },
+      {
+        "title": "Indução e evidências que sustentam probabilidades",
+        "explanation": "Na indução, observações particulares apoiam generalizações ou previsões que não são logicamente necessárias. Observar que vários ônibus de uma linha chegaram atrasados pode aumentar a plausibilidade de novos atrasos, mas não demonstra que o próximo ônibus necessariamente atrasará. A força de um argumento indutivo depende de quantidade e qualidade de dados, representatividade, condições comparáveis e explicações alternativas. Uma amostra grande ainda pode estar enviesada se incluir somente uma faixa de horário; uma amostra pequena e bem descrita pode apoiar conclusão restrita, mas não universal. O raciocínio indutivo é importante em ciência, pesquisa social e decisões cotidianas, sem ser equivalente a palpite arbitrário. O leitor deve distinguir probabilidade, frequência observada e certeza, especialmente quando uma propaganda generaliza opiniões de poucos clientes.",
+        "example": "Se oito de dez viagens observadas num horário específico atrasaram, é possível descrever o histórico daquela amostra, mas não garantir que todas as viagens futuras atrasarão.",
+        "pitfall": "Afirmar que observações repetidas tornam a conclusão indutiva absolutamente certa ou ignorar viés na seleção dos casos.",
+        "steps": [
+          "Identifique a população observada e como os exemplos foram selecionados.",
+          "Formule conclusão proporcional à evidência, mencionando incerteza relevante."
+        ]
+      },
+      {
+        "title": "Comparação crítica e limites de inferência",
+        "explanation": "Dedução e indução são ferramentas diferentes, não formas de pensamento em que uma é sempre superior. A dedução permite verificar necessidade lógica dada uma estrutura; a indução ajuda a ampliar conhecimento empírico com risco controlado de erro. Uma previsão sobre chuva pode apoiar-se em observações e modelos e ainda ser incerta, enquanto a dedução de uma regra matemática pode ser necessária dentro de suas premissas. Também há argumentos inválidos que parecem convincentes: afirmar 'Se chove, a rua molha; a rua molhou; logo, choveu' ignora outras causas possíveis. Esse erro é chamado afirmação do consequente. Avaliar raciocínios exige examinar conectivos, universo de referência, critérios e relação entre premissas e conclusão, evitando a ilusão de que confiança verbal ou autoridade substitui argumento. Em vestibulares, reconstruir a forma do argumento costuma esclarecer a alternativa correta.",
+        "example": "Uma rua molhada pode resultar de chuva, limpeza ou vazamento. A conclusão de que necessariamente choveu não decorre apenas da condição 'se chover, a rua molha'.",
+        "pitfall": "Concluir que todos os argumentos com 'se' são válidos ou considerar toda incerteza indutiva equivalente à ausência de evidência.",
+        "steps": [
+          "Reescreva o argumento numa forma lógica simples e procure explicações alternativas.",
+          "Diferencie impossibilidade lógica de erro de previsão ou limitação dos dados observados."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O que caracteriza um argumento dedutivo válido?",
+        "hint": "Considere necessidade entre premissas e conclusão.",
+        "solution": "Não é possível ter premissas verdadeiras e conclusão falsa na forma do argumento; a validade é uma relação lógica."
+      },
+      {
+        "level": "basic",
+        "prompt": "Observar três ônibus atrasados garante que o quarto atrasará?",
+        "hint": "Uma amostra não garante um evento futuro.",
+        "solution": "Não. O raciocínio indutivo pode apoiar uma expectativa, mas não torna a previsão logicamente necessária."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Diferencie validade e solidez num argumento dedutivo.",
+        "hint": "Uma trata da estrutura; a outra também da verdade.",
+        "solution": "Um argumento válido tem forma que preserva verdade das premissas para a conclusão; um argumento sólido é válido e possui premissas verdadeiras."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que amostragem enviesada prejudica generalização indutiva?",
+        "hint": "Considere quem ficou fora dos dados.",
+        "solution": "A seleção pode representar apenas parte específica da população; generalizar resultados para todos sem justificativa reduz a força da inferência."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Analise: 'Se chove, a rua molha. A rua está molhada. Logo, choveu'.",
+        "hint": "Busque outras explicações para rua molhada.",
+        "solution": "A inferência é inválida: a rua pode estar molhada por limpeza ou vazamento. Trata-se de afirmação do consequente."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma previsão apoiada por muitos dados é sempre dedutiva? Explique.",
+        "hint": "Força empírica não é necessidade lógica.",
+        "solution": "Não. Uma conclusão pode ser fortemente sustentada por dados e ainda permanecer indutiva e revisável; a dedução exige relação de necessidade entre premissas."
+      }
+    ],
+    "everyday": {
+      "context": "Uma estudante vê o ônibus chegar atrasado em cinco manhãs e afirma que amanhã ele obrigatoriamente atrasará. Outro colega tenta provar a previsão apenas dizendo que ela 'sempre está certa'.",
+      "question": "A conclusão sobre amanhã é dedutiva ou indutiva e o que seria necessário para avaliá-la melhor?",
+      "answer": "É uma previsão indutiva, não necessária. Seria útil examinar amostra maior, horários, condições e causas dos atrasos; a confiança de quem fala não substitui evidências.",
+      "connections": [
+        {
+          "subject": "Filosofia",
+          "topic": "Argumentação e falácias",
+          "reason": "Reconhecer erros de inferência e premissas insuficientes é essencial para distinguir argumentos persuasivos de argumentos bem construídos."
+        },
+        {
+          "subject": "Filosofia",
+          "topic": "Filosofia da ciência",
+          "reason": "A ciência utiliza inferências a partir de dados e modelos, exigindo transparência metodológica e conclusões revisáveis."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
