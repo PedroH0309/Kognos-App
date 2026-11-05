@@ -217,9 +217,9 @@ export const stage18Art:LessonBlueprint[]=[
     ],
     "links": [
       [
-        "Literatura",
-        "Gênero dramático",
-        "O gênero dramático dialoga com realização cênica, mas texto e encenação possuem recursos diferentes."
+        "Arte",
+        "Modernismo brasileiro",
+        "A experimentação modernista em diferentes artes oferece contexto para comparar escolhas de representação teatral e visual."
       ],
       [
         "Arte",
