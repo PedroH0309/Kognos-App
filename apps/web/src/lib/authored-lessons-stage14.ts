@@ -974,6 +974,326 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Subjuntivo em espanhol",
+    "objective": "Identificar funções do presente do subjuntivo em desejo, dúvida, finalidade e hipótese, distinguindo-o do indicativo em enunciados contextualizados.",
+    "sections": [
+      {
+        "title": "Indicativo e subjuntivo: atitude diante da informação",
+        "explanation": "Em espanhol, os modos verbais ajudam a indicar como o falante apresenta uma situação. O indicativo frequentemente introduz fatos afirmados ou apresentados como conhecidos: “Sé que la biblioteca abre hoy”. O subjuntivo aparece em diversos contextos de desejo, dúvida, possibilidade, avaliação e dependência: “Espero que la biblioteca abra mañana”. Não se trata de afirmar que todo subjuntivo expressa evento impossível; ele pode referir-se também a acontecimentos futuros possíveis ou a fatos avaliados pelo falante. Muitas construções exigem atenção à oração principal, à conjunção “que” e ao sujeito da subordinada. A forma “abre” é indicativo no exemplo; “abra” é presente do subjuntivo. A leitura precisa observar intenção e contexto, pois traduzir cada verbo isoladamente não revela a relação entre certeza, expectativa e hipótese.",
+        "example": "“La profesora dice que el examen es mañana” apresenta o calendário como informação afirmada. “La profesora espera que el examen sea mañana” registra uma expectativa, não uma confirmação do dia da prova.",
+        "pitfall": "Declarar que o subjuntivo indica sempre mentira ou impossibilidade, ou escolher o modo pela tradução isolada da palavra 'que'."
+      },
+      {
+        "title": "Formação do presente e construções frequentes",
+        "explanation": "Para muitos verbos regulares, o presente do subjuntivo pode ser construído a partir da primeira pessoa do presente do indicativo, retirando a terminação -o e acrescentando terminações específicas: hablar → hable, hables, hable, hablemos, habléis, hablen; comer → coma, comas, coma, comamos, comáis, coman; vivir → viva, vivas, viva, vivamos, viváis, vivan. Há verbos irregulares, como ser → sea, estar → esté, ir → vaya, haber → haya e saber → sepa. Desejos com “ojalá” frequentemente usam subjuntivo: “Ojalá lleguen a tiempo”. Expressões como “es importante que” podem introduzir avaliação e exigir subjuntivo. O estudo não consiste em decorar uma conjugação sem situação: a função da frase determina por que aquela forma foi escolhida.",
+        "example": "“Es necesario que los alumnos entreguen el formulario” usa “entreguen” após expressão de necessidade. Já “Los alumnos entregan el formulario todos los viernes” apresenta hábito com indicativo.",
+        "pitfall": "Escrever “espero que viene” onde a construção de desejo pede “espero que venga”, ignorando a seleção de modo pela oração principal."
+      },
+      {
+        "title": "Dúvida, negação e conectores com referência futura",
+        "explanation": "Em contextos frequentes, “creo que” afirmativo costuma selecionar indicativo quando se apresenta uma crença como afirmação: “Creo que está aquí”. Já “no creo que” pode selecionar subjuntivo: “No creo que esté aquí”, indicando negação ou dúvida da proposição. Essas são tendências sintáticas importantes, mas usos regionais e contextuais exigem análise cuidadosa. Conjunções de finalidade como “para que” tipicamente introduzem subjuntivo: “Estudia para que puedas aprender”. Com “cuando” referindo-se a evento futuro ainda não realizado, é comum usar presente do subjuntivo: “Cuando llegues, avísame”; em hábitos, o indicativo pode aparecer: “Cuando llego, aviso”. O contraste mostra que modo e tempo atuam juntos para organizar o sentido do enunciado. Em provas, observe a situação comunicativa antes de marcar a alternativa.",
+        "example": "“Cuando llega el autobús, todos suben” pode descrever rotina. “Cuando llegue el autobús, subiremos” projeta a chegada ainda futura. O uso de “llega” e “llegue” altera a referência temporal da frase.",
+        "pitfall": "Afirmar que ‘cuando’ sempre exige subjuntivo ou interpretar todo subjuntivo como uma ação já realizada no passado."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em “Espero que Ana venga”, qual forma verbal está no subjuntivo e por quê?",
+        "hint": "O verbo principal expressa desejo ou expectativa.",
+        "solution": "“Venga” é presente do subjuntivo de venir. O falante manifesta expectativa sobre a chegada de Ana, não confirma que ela já aconteceu."
+      },
+      {
+        "level": "basic",
+        "prompt": "Complete “Ojalá ellos ___ a tiempo” com o presente do subjuntivo de llegar.",
+        "hint": "A forma de ellos/ellas termina em -en.",
+        "solution": "A forma adequada é “lleguen”: “Ojalá ellos lleguen a tiempo”. “Ojalá” introduz um desejo, que nesse contexto pede subjuntivo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Compare “Sé que el examen es mañana” e “Espero que el examen sea mañana”.",
+        "hint": "Uma frase afirma informação e outra apresenta expectativa.",
+        "solution": "“Es” no indicativo apresenta o exame amanhã como informação conhecida; “sea” no subjuntivo indica esperança, sem confirmar oficialmente a data."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Complete “Estudia para que tú ___ aprobar” com o verbo poder.",
+        "hint": "O presente do subjuntivo de poder para tú é puedas.",
+        "solution": "A frase é “Estudia para que tú puedas aprobar”. “Para que” indica a finalidade de estudar, e “puedas” está no subjuntivo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique o contraste entre “Cuando llega el tren, salimos” e “Cuando llegue el tren, saldremos”.",
+        "hint": "Compare hábito e referência ao futuro.",
+        "solution": "A primeira pode descrever uma rotina com indicativo. A segunda refere-se a chegada futura ainda não ocorrida e usa subjuntivo “llegue” com consequência futura."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que não se deve afirmar que todo subjuntivo descreve acontecimento impossível?",
+        "hint": "Ele pode expressar desejos futuros plausíveis.",
+        "solution": "O modo pode aparecer em expectativas, finalidades e eventos futuros perfeitamente possíveis. Ele marca a relação discursiva do falante com a proposição, não impossibilidade universal."
+      }
+    ],
+    "everyday": {
+      "context": "Um aluno lê dois comunicados de uma escola hispanofalante: “Sabemos que la clase es el lunes” e “Esperamos que la clase sea el lunes”. Ele pensa que ambos confirmam a mesma data.",
+      "question": "Qual dos avisos afirma o calendário e qual apresenta apenas expectativa?",
+      "answer": "“Sabemos que ... es” apresenta a segunda-feira como informação conhecida. “Esperamos que ... sea” expressa desejo ou expectativa, sem comprovar que a aula foi confirmada.",
+      "connections": [
+        {
+          "subject": "Espanhol",
+          "topic": "Conectores argumentativos em espanhol",
+          "reason": "Modo verbal e conectores definem como uma informação se relaciona a hipóteses, finalidades e argumentos."
+        },
+        {
+          "subject": "Inglês",
+          "topic": "Orações condicionais em inglês",
+          "reason": "As duas línguas usam recursos gramaticais diferentes para separar fatos afirmados de situações futuras condicionais ou hipotéticas."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia da ciência",
+    "objective": "Analisar observação, hipótese, evidência, teste e revisão do conhecimento científico, distinguindo explicação rigorosa de certeza absoluta ou autoridade pessoal.",
+    "sections": [
+      {
+        "title": "O que diferencia uma hipótese de uma conclusão sustentada",
+        "explanation": "Uma hipótese científica é uma proposta de explicação ou relação que precisa ser confrontada com observações, raciocínios e métodos adequados. A ciência não começa sempre pelo mesmo procedimento e não existe uma sequência universal de passos idêntica para todas as disciplinas. Algumas investigações usam experimentos controlados; outras trabalham com observações astronômicas, modelos matemáticos, documentos ou registros históricos da natureza. O essencial é formular perguntas claras, explicitar critérios e tornar os resultados avaliáveis pela comunidade competente. Uma correlação entre dois fenômenos não demonstra automaticamente causalidade; fatores não medidos podem explicar a associação. Um experimento isolado não resolve necessariamente toda uma controvérsia. A filosofia da ciência examina tanto como se produz evidência quanto os limites de sua interpretação.",
+        "example": "Uma escola observa mais erros em dias quentes. Isso permite formular hipótese de que temperatura afete atenção, mas não comprova causalidade: duração da prova, ventilação e outras condições precisam ser consideradas.",
+        "pitfall": "Tratar qualquer opinião formulada como hipótese científica já confirmada, ou imaginar que toda área deve usar exatamente o mesmo desenho experimental."
+      },
+      {
+        "title": "Teste crítico, falsificabilidade e revisão",
+        "explanation": "Karl Popper destacou a importância de formular teorias que possam, em princípio, ser confrontadas com observações capazes de refutá-las. A ideia de falsificabilidade é critério filosófico influente, não descrição completa de todas as práticas científicas. Um resultado incompatível com uma previsão exige examinar também condições de teste, instrumentos e hipóteses auxiliares, sem permitir que qualquer teoria seja protegida indefinidamente de críticas. A confirmação repetida aumenta confiança em certas condições, mas não prova logicamente que uma generalização universal jamais terá exceções. A revisão por pares pode detectar falhas, porém não substitui replicação, transparência e novas evidências. Conhecimento científico é revisável e isso não o torna equivalente a palpite sem fundamento.",
+        "example": "Uma hipótese afirma que determinado material sempre flutua em água em condições especificadas. Encontrar um caso confiável em que afunda exige revisar a afirmação ou as condições. Não basta ignorar a observação discordante.",
+        "pitfall": "Afirmar que só é ciência aquilo que foi imediatamente refutado ou que revisão de teoria prova inutilidade de todas as evidências anteriores."
+      },
+      {
+        "title": "Modelos, incerteza e responsabilidade pública",
+        "explanation": "Modelos científicos simplificam aspectos do mundo para responder perguntas específicas. Um modelo de queda sem resistência do ar é útil em certas condições, mas não descreve igualmente uma folha e uma esfera caindo em todas as situações. O valor do modelo depende de sua capacidade explicativa, de previsões adequadas e do reconhecimento de limites. Medidas incluem incertezas e escolhas metodológicas, que devem ser comunicadas de modo proporcional; 'há margem de erro' não significa que qualquer resultado seja arbitrário. Em debates públicos, evidência deve ser avaliada por método, fontes e compatibilidade com conhecimentos estabelecidos, não apenas por prestígio de quem fala. A filosofia da ciência se conecta à educação midiática ao exigir cuidado com extrapolações, alegações absolutas e uso descontextualizado de números.",
+        "example": "Um modelo que usa consumo constante de energia prevê custo aproximado de um aparelho. Se o termostato alterna períodos ligados e desligados, o modelo precisa ser ajustado para prever melhor a situação real.",
+        "pitfall": "Confundir simplificação declarada com fraude ou considerar que a presença de incerteza torna todas as conclusões igualmente prováveis."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual a diferença entre formular hipótese e demonstrar conclusão com evidências?",
+        "hint": "Uma hipótese ainda precisa ser testada.",
+        "solution": "A hipótese propõe explicação investigável. Uma conclusão sustentada depende de evidências e métodos que permitam avaliar a proposta, respeitando limites do estudo."
+      },
+      {
+        "level": "basic",
+        "prompt": "Uma correlação entre calor e erros escolares comprova causalidade direta?",
+        "hint": "Outras condições podem afetar os resultados.",
+        "solution": "Não. A associação sugere pergunta de pesquisa, mas outras variáveis precisam ser investigadas antes de atribuir relação causal."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique de modo simples o critério de falsificabilidade associado a Popper.",
+        "hint": "Considere o que poderia contradizer uma teoria.",
+        "solution": "Uma proposta é falsificável quando há observações concebíveis que poderiam demonstrar sua inadequação. Isso não é o único aspecto da ciência e depende de condições de teste claras."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que revisão por pares não é garantia de que um estudo nunca será corrigido?",
+        "hint": "Novas evidências podem surgir depois da publicação.",
+        "solution": "A revisão pode identificar problemas antes da publicação, mas não elimina todas as falhas. Replicação, novos dados e crítica metodológica continuam necessários."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um modelo de energia supõe potência constante, embora o equipamento use termostato. Como avaliar o resultado?",
+        "hint": "Veja a hipótese e a situação real.",
+        "solution": "O cálculo pode fornecer estimativa sob condição explicitada, mas não medição exata do consumo com termostato. Ajustar o modelo exige dados do perfil real de potência."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que uma afirmação científica ser revisável não a torna um simples palpite?",
+        "hint": "Distinga revisão com evidências e opinião sem método.",
+        "solution": "Conclusões científicas dependem de procedimentos, dados e crítica pública. A possibilidade de revisão faz parte do controle de qualidade e não equivale à ausência de fundamentação."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma observa que estudantes cometem mais erros numa tarde quente. Um colega anuncia que a temperatura foi a única causa, embora ninguém tenha registrado horário, ventilação ou dificuldade das atividades.",
+      "question": "Que diferença existe entre observar associação e demonstrar uma relação causal por investigação?",
+      "answer": "A observação sugere hipótese, mas não isola causalidade. É necessário controlar ou analisar outras variáveis, esclarecer métodos e avaliar resultados antes de concluir que o calor foi a única causa.",
+      "connections": [
+        {
+          "subject": "Filosofia",
+          "topic": "Argumentação e falácias",
+          "reason": "Investigar causas requer reconhecer inferências inválidas, como assumir causalidade apenas por coincidência ou sequência."
+        },
+        {
+          "subject": "Português",
+          "topic": "Checagem de fontes e desinformação",
+          "reason": "Uma afirmação científica divulgada ao público precisa apresentar fonte, método e limites em vez de certeza sem base."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Arte",
+    "topic": "Música: ritmo, melodia, harmonia e timbre",
+    "objective": "Distinguir parâmetros e organizações da linguagem musical por ritmo, melodia, harmonia e timbre, relacionando escolhas sonoras a contextos culturais.",
+    "sections": [
+      {
+        "title": "Ritmo: organização de durações e acentos",
+        "explanation": "Ritmo envolve organização temporal de sons e silêncios, durações, acentos e padrões de repetição ou variação. Pulsação é referência regular percebida em determinadas músicas, enquanto ritmo pode combinar durações diferentes sobre essa referência ou mesmo apresentar organização sem pulsação evidente. Andamento descreve a velocidade de ocorrência das pulsações, não a intensidade sonora. Uma sequência de palmas regulares pode representar a pulsação de uma atividade, enquanto passos alternados, pausas e acentos formam padrão rítmico. Há muitas tradições musicais com formas próprias de medir e sentir tempo; não se deve tratar notação ocidental como descrição de toda prática cultural. A análise pode observar onde há pausa, repetição, deslocamento de acento e contraste de durações, sem exigir reprodução de uma obra protegida.",
+        "example": "Numa atividade original, quatro batidas igualmente espaçadas sustentam dois padrões: uma sequência acentua a primeira e a terceira, outra destaca a segunda e a quarta. A pulsação pode permanecer, mas a sensação rítmica muda.",
+        "pitfall": "Confundir ritmo com velocidade ou afirmar que toda música possui batidas regulares exatamente iguais."
+      },
+      {
+        "title": "Melodia e harmonia desempenham papéis diferentes",
+        "explanation": "Melodia é organização de alturas e durações percebida como linha musical, com movimentos, repetições e pausas. Harmonia envolve relações entre sons simultâneos e suas sucessões, estudadas de maneiras variadas nas tradições musicais. Em uma canção com voz e acompanhamento, a linha vocal pode funcionar como melodia enquanto acordes e outras relações sustentam organização harmônica; porém música pode existir sem acompanhamento harmônico baseado em acordes. Altura musical não é volume: sons graves e agudos diferem em frequência, enquanto intensidade depende de outra dimensão acústica. A análise deve reconhecer que categorias ocidentais são ferramentas entre outras e que não há uma única regra de beleza ou combinação correta para todas as culturas. Comparar melodias curtas originais e ambientes sonoros permite perceber direção e repetição sem copiar obras.",
+        "example": "Uma pessoa canta uma sequência inventada de três alturas ascendentes e depois retorna à altura inicial: isso descreve contorno melódico. Um instrumento que sustenta sons simultâneos pode modificar a percepção harmônica sem alterar essa sequência.",
+        "pitfall": "Chamar qualquer mudança de volume de 'melodia mais aguda' ou afirmar que música só existe quando há acordes."
+      },
+      {
+        "title": "Timbre, instrumentos e repertórios culturais",
+        "explanation": "Timbre é uma qualidade perceptiva que permite distinguir fontes sonoras mesmo quando altura e intensidade são semelhantes, envolvendo composição espectral, ataque, decaimento e outros aspectos do som. Uma flauta e um violino podem tocar notas com frequência fundamental semelhante, mas apresentar características sonoras diferentes. O timbre também muda com técnica de execução, material, acústica do ambiente e recursos de gravação. Em produções digitais, efeitos podem transformar características sonoras e criar novas possibilidades expressivas; reconhecer esses recursos não significa que instrumentos acústicos sejam superiores ou inferiores. Analisar música em contexto envolve escolhas estéticas, usos sociais e tradições, sem atribuir todo um estilo a uma única comunidade. Ritmo, melodia, harmonia e timbre interagem, mas são dimensões analíticas diferentes.",
+        "example": "Dois instrumentos executam a mesma nota musical em intensidade parecida, mas um apresenta ataque percussivo e outro som sustentado. O contraste ajuda a reconhecer timbres, mesmo sem mudança na altura fundamental.",
+        "pitfall": "Confundir timbre com volume ou presumir que instrumentos iguais produzirão exatamente o mesmo timbre em qualquer execução."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual dimensão musical organiza durações, pausas e acentos ao longo do tempo?",
+        "hint": "Pense em pulsação e padrões temporais.",
+        "solution": "É o ritmo, que organiza durações, silêncios e acentos. Ele não é simplesmente a velocidade de execução de uma música."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual a diferença entre som mais agudo e som mais alto em volume?",
+        "hint": "Uma característica é altura e outra, intensidade.",
+        "solution": "Agudo e grave dizem respeito à altura musical, relacionada a frequências; volume se relaciona à intensidade sonora. São dimensões distintas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma linha vocal apresenta notas que sobem e descem. Que aspecto está em destaque?",
+        "hint": "Considere sucessão de alturas.",
+        "solution": "A sucessão de alturas e durações constitui um contorno melódico. A análise diz respeito à melodia, sem depender de acordes de acompanhamento."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma flauta e um violino tocam nota semelhante e mesma intensidade. Por que podem soar diferentes?",
+        "hint": "Considere ataque e espectro sonoro.",
+        "solution": "Os instrumentos possuem timbres diferentes, relacionados à composição espectral e à evolução temporal do som, mesmo com altura fundamental semelhante."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que ritmo e andamento não são sinônimos?",
+        "hint": "Um se refere à organização temporal; outro, à velocidade.",
+        "solution": "O andamento indica rapidez da pulsação quando presente; o ritmo organiza durações, acentos e silêncios. Padrões rítmicos distintos podem ocorrer no mesmo andamento."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma peça musical não apresenta acordes ocidentais. Isso significa que não é música?",
+        "hint": "Considere diversidade de tradições sonoras.",
+        "solution": "Não. A organização musical varia entre culturas e pode privilegiar melodia, ritmo, timbre ou outras relações. A presença de acordes não define universalmente o que é música."
+      }
+    ],
+    "everyday": {
+      "context": "Na escola, dois grupos apresentam uma mesma sequência de batidas em velocidades semelhantes, mas um acentua o começo de cada conjunto e outro acentua o meio. Os colegas acham que só mudou o volume.",
+      "question": "Qual componente da linguagem musical explica a mudança de acentos sem alteração obrigatória do andamento?",
+      "answer": "O padrão rítmico mudou: a organização dos acentos altera a percepção do tempo. Andamento descreve rapidez, e intensidade descreve volume; essas dimensões não são equivalentes.",
+      "connections": [
+        {
+          "subject": "Arte",
+          "topic": "Fotografia, cinema e audiovisual",
+          "reason": "A organização de som e silêncio participa do tempo narrativo em filmes e pode modificar a interpretação das imagens."
+        },
+        {
+          "subject": "Arte",
+          "topic": "Arte e tecnologia",
+          "reason": "Gravação e edição digital transformam timbres e padrões sonoros, mostrando como ferramentas influenciam processos criativos."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Capacidades físicas e treinamento",
+    "objective": "Identificar capacidades físicas e princípios gerais de adaptação, progressão e recuperação sem transformar conceitos escolares em prescrição de exercícios individuais.",
+    "sections": [
+      {
+        "title": "Força, resistência, velocidade e flexibilidade",
+        "explanation": "Capacidades físicas são dimensões do desempenho corporal, como força muscular, resistência cardiorrespiratória ou muscular, velocidade e flexibilidade, estudadas em conjunto com coordenação e outras competências de movimento. Força envolve produção de tensão pelos músculos; resistência relaciona-se à manutenção de atividades ao longo do tempo; velocidade envolve rapidez de ações em certas tarefas; flexibilidade refere-se à amplitude de movimento em articulações sob condições específicas. Não existe uma capacidade universalmente mais importante em todas as modalidades. Uma partida coletiva pode exigir força, deslocamento, leitura tática e cooperação. Avaliar o desempenho de uma pessoa requer considerar experiência, contextos e condições individuais. A educação física escolar desenvolve entendimento e participação, não julgamento de valor por padrões corporais.",
+        "example": "Um estudante consegue sustentar caminhada confortável por período longo, enquanto outro realiza deslocamentos curtos mais rápidos. Isso não estabelece quem é 'melhor fisicamente' em todas as tarefas; as exigências e capacidades avaliadas diferem.",
+        "pitfall": "Confundir força com velocidade ou usar aparência corporal para atribuir qualidade física sem observação adequada."
+      },
+      {
+        "title": "Especificidade, progressão e recuperação",
+        "explanation": "A adaptação a práticas corporais depende da relação entre estímulo, recuperação e características individuais. O princípio da especificidade indica que a melhora tende a estar relacionada às exigências treinadas; aprimorar um movimento não garante melhora equivalente em qualquer outro. Progressão significa ajustar demandas ao longo do tempo, respeitando limites e segurança, sem exigir aumento contínuo e ilimitado. O repouso e a recuperação fazem parte da adaptação, e dor não deve ser tratada como prova obrigatória de eficiência. As recomendações de prática variam por idade, condição de saúde, objetivo e acompanhamento; uma aula conceitual não define cargas, repetições ou intensidade apropriadas para um indivíduo. Na escola, planejamento responsável valoriza autonomia, percepção de esforço e participação inclusiva.",
+        "example": "Uma atividade de caminhada regularmente praticada pode favorecer determinadas adaptações, mas isso não garante melhora automática em coordenação específica de uma modalidade que não foi exercitada.",
+        "pitfall": "Afirmar que mais intensidade sempre é melhor ou que a ausência de dor prova falta de efeito de uma prática corporal."
+      },
+      {
+        "title": "Desempenho, ética e condições de acesso",
+        "explanation": "Resultados de práticas corporais dependem de possibilidades materiais, espaços, transporte, tempo livre, segurança e oportunidades de aprendizagem. Um estudante com menos acesso a quadras ou equipamentos não deve ser considerado menos dedicado apenas por apresentar pouca experiência. Avaliações escolares precisam distinguir aquisição de habilidades de rendimento competitivo; adaptações podem ser necessárias para participação de pessoas com condições diferentes. No esporte de alto rendimento, as regras e os controles específicos possuem finalidades próprias, mas não devem ser importados automaticamente para qualquer aula de educação física. Em projetos comunitários, é importante oferecer modalidades diversas e acompanhamento seguro, sem criar promessas de saúde ou estética universais. O foco deve recair sobre desenvolvimento progressivo e respeito aos participantes.",
+        "example": "Uma escola oferece apenas corrida de velocidade, deixando de lado atividades de equilíbrio, coordenação, resistência e jogos. Ampliar propostas permite desenvolver repertório corporal mais variado e diminuir exclusões por perfil inicial.",
+        "pitfall": "Classificar estudantes como incapazes por um único teste ou presumir que todos têm acesso a treinamento e recuperação iguais."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite duas capacidades físicas e diga o que cada uma descreve.",
+        "hint": "Escolha entre força, velocidade, resistência ou flexibilidade.",
+        "solution": "Força envolve produção de tensão muscular; resistência relaciona-se à capacidade de manter atividade ao longo do tempo. São aspectos diferentes do desempenho."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que velocidade e resistência não são a mesma capacidade?",
+        "hint": "Compare esforço curto e manutenção prolongada.",
+        "solution": "Velocidade envolve rapidez em movimentos ou deslocamentos; resistência descreve manutenção de esforços por duração relevante. Uma pessoa pode apresentar desempenhos diferentes em cada tarefa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique o princípio da especificidade no treinamento.",
+        "hint": "A adaptação depende do tipo de exigência treinada.",
+        "solution": "Adaptações tendem a corresponder às demandas das práticas realizadas. Melhorar numa tarefa não garante melhora proporcional em qualquer outra atividade."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que recuperação faz parte do processo de adaptação?",
+        "hint": "Estímulo e descanso se relacionam.",
+        "solution": "A recuperação permite respostas do organismo após o esforço e ajuda a evitar excesso de demanda. Aumento contínuo de carga sem descanso não é princípio seguro."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma avaliação usa apenas corrida de 50 metros para julgar toda a aptidão física. Qual o problema?",
+        "hint": "Uma tarefa mede aspectos restritos.",
+        "solution": "A corrida curta pode avaliar componentes de velocidade, mas não resume resistência, flexibilidade, coordenação e outras capacidades. O julgamento global seria inadequado."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que um programa escolar de atividades deve considerar acessibilidade e preferências?",
+        "hint": "Barreiras diferentes afetam participação real.",
+        "solution": "Espaço, equipamentos, segurança e condições dos participantes influenciam oportunidades. Adaptar propostas amplia aprendizagem e evita excluir pessoas por um único padrão de rendimento."
+      }
+    ],
+    "everyday": {
+      "context": "Uma escola mede apenas o tempo de corrida curta e anuncia que os alunos mais rápidos têm a melhor aptidão física. Alguns estudantes se destacam em resistência e coordenação, mas não aparecem no resultado.",
+      "question": "Por que um teste de velocidade isolado não avalia todas as capacidades físicas de uma pessoa?",
+      "answer": "Velocidade é apenas uma dimensão. Força, resistência, flexibilidade, coordenação e exigências específicas precisam ser consideradas; o resultado de uma corrida curta não define aptidão global nem valor pessoal.",
+      "connections": [
+        {
+          "subject": "Educação Física",
+          "topic": "Atividade física e saúde",
+          "reason": "Compreender esforço, prática cotidiana e recuperação evita confundir desempenho competitivo com condição geral de saúde."
+        },
+        {
+          "subject": "Educação Física",
+          "topic": "Preconceito e inclusão no esporte",
+          "reason": "Diversificar critérios e adaptar atividades reduz exclusão de estudantes com experiências e capacidades diferentes."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
