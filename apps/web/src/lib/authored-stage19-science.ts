@@ -102,9 +102,9 @@ export const stage19Science:TopicSeed[]=[
         "Correntes elétricas em condutores podem criar campos magnéticos em dispositivos e experimentos seguros."
       ],
       [
-        "Física",
-        "Ondas e propriedades das ondas",
-        "Campos elétricos e magnéticos aparecem na descrição de ondas eletromagnéticas, com conceitos adicionais."
+        "Ciências",
+        "Luz, reflexão e refração",
+        "A luz é uma onda eletromagnética, conectando os conceitos de campos magnéticos e elétricos à interpretação de fenômenos ópticos."
       ]
     ]
   },
