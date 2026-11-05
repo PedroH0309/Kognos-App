@@ -42,11 +42,11 @@ test('Every curriculum lesson has its own reading text, practice and explanatory
  assert.match(reading,/introduction\.workedExample/);
  assert.match(reading,/introduction\.commonMistake/);
 });
-test('Lessons without authored content keep an honest maturity status and can request the AI workflow',()=>{
+test('Lessons without authored content keep an honest maturity status without AI-generated lectures',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const reading=read('apps/web/src/components/TopicLessonSections.tsx');
- assert.match(room,/Desenvolver aula completa com o Kog/);
- assert.match(room,/Autorizo desenvolver este assunto com IA/);
+ assert.match(room,/Aprofundamento editorial ainda em elaboração/);
+ assert.doesNotMatch(room,/Desenvolver aula completa com o Kog|Autorizo desenvolver este assunto com IA/);
  assert.match(reading,/SEM AULA EDITORIAL/);
  assert.match(reading,/Não apresentamos textos gerados automaticamente como se fossem uma aula validada/);
  assert.match(reading,/Estas são orientações gerais de estudo, não exercícios específicos/);
