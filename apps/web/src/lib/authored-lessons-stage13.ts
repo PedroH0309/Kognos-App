@@ -494,6 +494,246 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "História",
+    "topic": "Abolição e pós-abolição",
+    "objective": "Examinar a abolição da escravidão no Brasil como processo de lutas, legislação e transformações econômicas, discutindo limites sociais e cidadania no pós-1888.",
+    "sections": [
+      {
+        "title": "Escravidão, resistência e lutas pela abolição",
+        "explanation": "A escravidão no Brasil foi uma instituição construída historicamente por leis, coerção, violência, interesses econômicos e hierarquias raciais. Pessoas escravizadas não foram agentes passivos: fugas, quilombos, negociações, ações judiciais, redes de solidariedade, rebeliões e estratégias cotidianas contribuíram para enfraquecer o sistema. Ao longo do século XIX, mudanças no tráfico atlântico, pressões políticas e movimentos abolicionistas ampliaram disputas. A Lei Eusébio de Queirós, de 1850, proibiu o tráfico transatlântico de africanos escravizados para o Brasil com mecanismos de repressão mais eficazes que iniciativas anteriores, mas não acabou com a escravidão interna. É preciso distinguir interesses de grupos abolicionistas, iniciativas de pessoas escravizadas e medidas de governos, sem atribuir a liberdade à ação isolada de uma figura histórica.",
+        "example": "Uma linha do tempo documentada pode relacionar 1850, proibição do tráfico atlântico com aplicação mais efetiva; 1871, Lei do Ventre Livre; 1885, Lei dos Sexagenários; e 1888, Lei Áurea. Esses marcos devem ser estudados junto a mobilizações sociais e resistências, e não como favores espontâneos.",
+        "pitfall": "Reduzir a abolição a uma assinatura em 1888, apagando a luta de pessoas negras escravizadas e libertas ou confundindo proibição do tráfico com fim da escravidão."
+      },
+      {
+        "title": "Leis graduais e a Lei Áurea de 1888",
+        "explanation": "As leis abolicionistas anteriores a 1888 impuseram limites e condições à passagem para o trabalho livre. A Lei do Ventre Livre, de 1871, reconheceu formalmente como livres os filhos de mulheres escravizadas nascidos depois de sua promulgação, mas estabeleceu mecanismos de tutela e prestação de serviços que restringiam a liberdade efetiva dessas crianças. A Lei dos Sexagenários, de 1885, tratou de pessoas escravizadas a partir dos 60 anos sob condições e limites de aplicação. Em 13 de maio de 1888, a Lei Áurea extinguiu legalmente a escravidão no Brasil, sem prever um amplo programa de distribuição de terras, reparação ou integração econômica para a população liberta. A leitura histórica deve relacionar texto legal e condições materiais, distinguindo reconhecimento jurídico de igualdade social realizada.",
+        "example": "Um ex-escravizado reconhecido como pessoa livre em 1888 poderia, juridicamente, deixar de estar sujeito à propriedade de terceiros. Isso não significava receber automaticamente casa, escola, terra, salário suficiente ou proteção efetiva contra discriminação; cada dimensão dependia de políticas e relações sociais.",
+        "pitfall": "Afirmar que as leis graduais garantiram liberdade irrestrita a todos os abrangidos ou que a assinatura da Lei Áurea resolveu automaticamente desigualdades econômicas."
+      },
+      {
+        "title": "Pós-abolição: trabalho, exclusões e protagonismo",
+        "explanation": "Depois de 1888, o fim legal da escravidão não eliminou racismo, barreiras ao trabalho, restrições no acesso à terra, educação e direitos em condições iguais. A sociedade brasileira passou por reorganizações do mercado de trabalho, migração, imigração e relações políticas que variaram entre regiões. Pessoas negras libertas e seus descendentes criaram associações, instituições de apoio, jornais, redes familiares e formas de participação pública. Analisar o pós-abolição implica observar tanto permanências estruturais quanto iniciativas de resistência e conquista de direitos, evitando descrever ex-escravizados apenas como vítimas. Fontes como registros de trabalho, imprensa negra, correspondências e estudos historiográficos permitem examinar experiências variadas sem inventar trajetórias individuais. A história desse período ajuda a compreender debates de cidadania, memória e desigualdade na atualidade.",
+        "example": "Uma pesquisa escolar pode comparar a definição legal de liberdade em 1888 com documentos históricos sobre acesso a ocupações, moradia e instrução. A comparação permite perguntar se a liberdade formal veio acompanhada de oportunidades equivalentes, sem concluir que todas as cidades viveram a mesma experiência.",
+        "pitfall": "Confundir abolição jurídica com reparação integral ou reduzir a história de pessoas negras após 1888 exclusivamente à ausência de direitos, ignorando suas organizações e ações."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O que a Lei Eusébio de Queirós de 1850 buscou combater e o que ela não extinguiu?",
+        "hint": "Separe tráfico atlântico e escravidão no território brasileiro.",
+        "solution": "A lei proibiu o tráfico transatlântico de africanos escravizados, com repressão mais efetiva. Ela não extinguiu a escravidão interna, que permaneceu legal no Brasil até 1888."
+      },
+      {
+        "level": "basic",
+        "prompt": "Em que data a escravidão foi abolida legalmente no Brasil e qual o nome da lei?",
+        "hint": "Considere o marco jurídico de maio de 1888.",
+        "solution": "A Lei Áurea foi assinada em 13 de maio de 1888 e extinguiu juridicamente a escravidão no Brasil. A medida deve ser relacionada a mobilizações e lutas abolicionistas anteriores."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que a Lei do Ventre Livre de 1871 não significou liberdade plena e imediata para todas as crianças abrangidas?",
+        "hint": "Observe condições de tutela e prestação de serviços.",
+        "solution": "Embora declarasse livres crianças nascidas de mulheres escravizadas após sua promulgação, a lei incluiu condições de tutela e serviços que restringiam a autonomia efetiva. O texto legal e sua aplicação devem ser analisados conjuntamente."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cite duas formas pelas quais pessoas escravizadas participaram das lutas contra a escravidão.",
+        "hint": "Considere resistências individuais e coletivas.",
+        "solution": "Fugas e formação de quilombos, por exemplo, constituíram formas de resistência e organização; ações judiciais e redes de solidariedade também foram relevantes. Essas iniciativas devem integrar a explicação histórica."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que a abolição de 1888 não deve ser confundida com igualdade econômica imediata.",
+        "hint": "Analise a ausência de amplo programa de inclusão material.",
+        "solution": "A lei extinguiu uma relação jurídica de propriedade sobre pessoas, mas não instituiu distribuição abrangente de terras ou reparação social. Racismo e desigualdades persistiram, exigindo considerar condições de trabalho, moradia e educação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Que cuidado metodológico é necessário ao usar documentos de uma única cidade para descrever o pós-abolição brasileiro?",
+        "hint": "Considere variações regionais, fontes e representatividade.",
+        "solution": "Experiências de trabalho, participação e discriminação variavam entre regiões e grupos. Um conjunto local de fontes permite analisar seu contexto, mas não autoriza generalizar suas conclusões ao país inteiro."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma visita um memorial sobre a abolição e encontra apenas a data de 13 de maio de 1888. O professor pergunta quem lutou pela liberdade antes da assinatura da lei e como a vida mudou depois dela.",
+      "question": "Por que a data é indispensável, mas insuficiente para compreender a abolição e o pós-abolição?",
+      "answer": "1888 marca o fim jurídico da escravidão, porém a liberdade foi resultado de lutas de pessoas escravizadas, libertas e movimentos abolicionistas. Depois, acesso à terra, trabalho, moradia e direitos não foi garantido automaticamente.",
+      "connections": [
+        {
+          "subject": "História",
+          "topic": "Era Vargas",
+          "reason": "A comparação ajuda a separar mudanças legais e relações sociais em períodos diferentes da história do trabalho brasileiro."
+        },
+        {
+          "subject": "Redação",
+          "topic": "Repertório sociocultural produtivo",
+          "reason": "Datas e processos históricos só sustentam argumentos sociais quando são contextualizados e relacionados à tese."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Segregação socioespacial",
+    "objective": "Compreender a distribuição desigual de moradia, infraestrutura, serviços e oportunidades no espaço urbano, distinguindo localização de explicações socioeconômicas.",
+    "sections": [
+      {
+        "title": "Espaço urbano e desigualdade de acesso",
+        "explanation": "Segregação socioespacial descreve a concentração ou separação territorial de grupos e condições sociais no espaço urbano, relacionada a renda, mercados imobiliários, políticas públicas, infraestrutura e outras relações históricas. Não significa que toda periferia seja homogênea ou que morar distante do centro determine individualmente pobreza. Uma cidade pode apresentar bairros próximos fisicamente com acesso muito diferente a saneamento, transporte, parques e equipamentos culturais. O conceito exige observar padrões e processos de produção do espaço, não culpabilizar moradores por seu endereço. Indicadores territoriais ajudam a identificar diferenças, mas precisam de recorte temporal e fontes. Para o estudante, comparar percursos até escolas, hospitais ou bibliotecas é uma forma concreta de perceber como o espaço interfere em oportunidades.",
+        "example": "Num município hipotético, um bairro está a 2 km de uma unidade de atendimento, mas possui poucas opções de transporte; outro, a 5 km, dispõe de várias conexões. A distância em linha reta não determina por si só o tempo de acesso e tampouco resolve a análise das condições sociais de cada área.",
+        "pitfall": "Assumir que endereço define capacidades pessoais ou usar mapas de renda para atribuir características morais aos moradores de cada bairro."
+      },
+      {
+        "title": "Deslocamento, infraestrutura e indicadores",
+        "explanation": "A segregação pode ser estudada pela distribuição de equipamentos e redes urbanas: escolas, unidades de saúde, postos de trabalho, vias de circulação, saneamento e áreas verdes. Para analisar mobilidade, considere tempo de viagem, frequência de transporte, custo, acessibilidade e segurança, e não somente quilômetros. Mapas temáticos permitem relacionar dados territoriais, mas correlação espacial não demonstra causalidade automática: dois fenômenos concentrados na mesma área podem ter causas distintas. É preciso distinguir acesso potencial de uso efetivo de um serviço; haver biblioteca no bairro não prova que todas as famílias consigam frequentá-la em seu horário de funcionamento. A escala também importa: médias municipais podem ocultar diferenças grandes entre bairros e setores censitários.",
+        "example": "Uma pesquisa didática fictícia apresenta trajetos de 15 e 45 minutos para duas pessoas que percorrem distâncias semelhantes até uma escola. Diferenças na frequência dos ônibus podem explicar parte do resultado. Ainda seria necessário conferir horários, condições de tráfego e trajetos antes de formular uma política.",
+        "pitfall": "Interpretar proximidade geográfica como garantia de acesso igual ou inferir causas sociais a partir de um único mapa sem dados complementares."
+      },
+      {
+        "title": "Planejamento urbano e ação pública",
+        "explanation": "Políticas de mobilidade, habitação e uso do solo podem reduzir ou aprofundar desigualdades de acesso. O planejamento territorial deve considerar localização de escolas, emprego, saúde, moradias e transporte, além da participação dos grupos diretamente afetados. Medidas como corredores de ônibus, adaptação de calçadas, abertura de equipamentos públicos e revisão de rotas têm impactos que dependem de recursos, prioridades e execução. Não existe solução única para cidades com tamanhos, redes e histórias diferentes. Ao propor intervenção, separe diagnóstico, mecanismo e objetivo mensurável, evitando culpar habitantes de bairros marginalizados. Uma análise mais completa pode combinar observação de campo, dados públicos identificados e relatos de moradores com diferentes experiências.",
+        "example": "Se estudantes demoram muito para chegar a uma biblioteca que fecha cedo, ampliar seu horário de atendimento e revisar ligações de transporte podem ser medidas complementares, desde que haja demanda e viabilidade. O objetivo é reduzir a barreira de acesso, não garantir uso universal por decreto.",
+        "pitfall": "Prometer que uma obra isolada elimina toda segregação ou tratar desigualdade de infraestrutura como escolha individual dos moradores."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Defina segregação socioespacial em linguagem própria sem associá-la a defeitos individuais de moradores.",
+        "hint": "Foque na distribuição de grupos, serviços e oportunidades pelo território.",
+        "solution": "É a distribuição desigual ou separação territorial de condições sociais e grupos no espaço urbano, produzida por processos históricos, econômicos e políticos. Não descreve o valor ou a capacidade das pessoas."
+      },
+      {
+        "level": "basic",
+        "prompt": "Cite duas dimensões de acesso urbano que vão além da distância em quilômetros.",
+        "hint": "Considere custo, frequência e acessibilidade.",
+        "solution": "Frequência e preço do transporte, por exemplo, podem determinar se uma escola é acessível. Segurança e acessibilidade física também influenciam o uso de equipamentos públicos."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Dois bairros estão a 5 km do centro, mas seus moradores levam 20 e 60 minutos para chegar. Que dado deve ser investigado?",
+        "hint": "Avalie rede e intervalos do transporte.",
+        "solution": "Deve-se comparar rotas, frequência de ônibus, tempo de espera, trânsito e modos disponíveis. Distância semelhante não implica a mesma experiência de mobilidade urbana."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que a média de acesso a saneamento de uma cidade pode ocultar desigualdades?",
+        "hint": "Pense na distribuição espacial dos serviços.",
+        "solution": "A média agrega regiões que podem ter cobertura muito diferente. Mapas por bairro ou setor e dados temporalmente comparáveis revelam desigualdades que o valor único esconde."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma pessoa conclui que bairros com poucos parques têm moradores que não se interessam por lazer. Avalie a inferência.",
+        "hint": "Diferencie infraestrutura disponível de preferências individuais.",
+        "solution": "A inferência não decorre do mapa. A escassez de parques pode resultar de decisões urbanas e disponibilidade de terrenos, sem demonstrar falta de interesse dos moradores por espaços de lazer."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Proponha uma medida municipal plausível para reduzir dificuldades de acesso a bibliotecas.",
+        "hint": "Conecte diagnóstico de horários e transporte a um responsável e meio.",
+        "solution": "Uma secretaria municipal pode avaliar horários e trajetos com consulta aos usuários e ajustar atendimento ou conexões de transporte quando viável. O sucesso deve ser medido por acesso efetivo, não apenas anúncios."
+      }
+    ],
+    "everyday": {
+      "context": "Dois estudantes moram a cinco quilômetros da escola. Um chega em vinte minutos com linha direta; outro leva uma hora porque precisa esperar duas conexões. O mapa mostra distâncias parecidas, mas trajetos distintos.",
+      "question": "Por que a distância sozinha não explica o acesso à educação e qual conceito geográfico ajuda a interpretar essa diferença?",
+      "answer": "Frequência, preço, rotas e infraestrutura influenciam oportunidades de acesso. A segregação socioespacial investiga como serviços e condições de mobilidade se distribuem desigualmente, sem atribuir características negativas aos moradores.",
+      "connections": [
+        {
+          "subject": "Geografia",
+          "topic": "Coordenadas geográficas",
+          "reason": "Coordenadas localizam pontos, mas não informam sozinhas a qualidade das redes de transporte entre eles."
+        },
+        {
+          "subject": "Redação",
+          "topic": "Proposta de intervenção: agente, ação, meio, finalidade e detalhamento",
+          "reason": "Um diagnóstico de acesso urbano pode fundamentar uma proposta específica com responsáveis, meios e avaliação de resultados."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Trabalho e divisão social",
+    "objective": "Analisar especialização de atividades produtivas e sociais, comparando funções, interdependência, organização do trabalho e desigualdade em diferentes contextos.",
+    "sections": [
+      {
+        "title": "Divisão do trabalho e interdependência",
+        "explanation": "Divisão do trabalho é a distribuição de tarefas e funções entre pessoas, grupos ou instituições. Em uma padaria, por exemplo, algumas atividades envolvem produção, outras compras, atendimento, limpeza e transporte, mas um único trabalhador pode realizar várias funções. A especialização pode elevar produtividade, acumular conhecimentos técnicos e criar interdependência entre pessoas. Ao mesmo tempo, não é neutra: tarefas são distribuídas em condições históricas e relações de poder, com diferenças de remuneração, prestígio e proteção. É importante distinguir divisão técnica do trabalho dentro de uma organização e divisão social do trabalho, relacionada à repartição mais ampla de atividades na sociedade. Descrever funções não basta para explicar se as relações são justas ou como os benefícios são distribuídos.",
+        "example": "Uma refeição escolar depende de agricultores, transporte, compra pública, cozinheiras, equipe de limpeza e organização de horários. Nenhuma etapa isolada explica o serviço inteiro; o exemplo evidencia interdependência, que não significa salários ou reconhecimento equivalentes.",
+        "pitfall": "Afirmar que divisão do trabalho é apenas distribuição eficiente de tarefas, desconsiderando instituições e desigualdades, ou supor que toda especialização implica colaboração sem conflitos."
+      },
+      {
+        "title": "Durkheim, solidariedade e organização social",
+        "explanation": "Émile Durkheim analisou a divisão do trabalho social como fenômeno ligado à diferenciação das funções e às formas de solidariedade. A solidariedade mecânica refere-se, como tipo analítico, à coesão associada a semelhanças compartilhadas; a orgânica, à interdependência criada por funções diferenciadas. Os termos não descrevem máquinas e organismos literalmente, e uma sociedade real pode apresentar elementos variados. O desenvolvimento de especialização não garante ausência de conflitos; Durkheim também discutiu formas anormais da divisão do trabalho. Comparar essa abordagem com a organização observável de hospitais, escolas ou transportes ajuda a distinguir interdependência funcional de distribuição equitativa de poder e recursos.",
+        "example": "Numa equipe de saúde, diferentes profissionais podem desempenhar tarefas interdependentes para prestar atendimento. A complementaridade de funções ajuda a ilustrar solidariedade orgânica, mas não comprova que a instituição seja livre de hierarquias ou conflitos.",
+        "pitfall": "Confundir solidariedade orgânica com compaixão individual ou julgar que pessoas especializadas sempre recebem reconhecimento proporcional à sua contribuição."
+      },
+      {
+        "title": "História do trabalho, desigualdade e tecnologia",
+        "explanation": "As relações de trabalho mudaram com a industrialização, legislação social, organização sindical e tecnologias. A divisão das tarefas pode se intensificar com plataformas digitais que distribuem pedidos e organizam serviços por algoritmos, mas os efeitos sobre remuneração e proteção dependem de regras, mercado e negociação. Para analisar um emprego, observe jornada, previsibilidade de renda, autonomia, segurança e representação coletiva, sem supor que uma categoria possua experiência uniforme. A comparação histórica exige cuidado: oficinas artesanais, fábricas de diferentes épocas e serviços por aplicativo não são equivalentes, embora permitam investigar especialização, controle e remuneração. Em estudos, diferencie exemplos hipotéticos de levantamentos empíricos com fonte e período identificados.",
+        "example": "Um entregador pode receber pedidos por plataforma enquanto o estabelecimento prepara a comida e outra equipe administra pagamentos. A tecnologia reorganiza a coordenação de tarefas; isso não informa automaticamente as condições de trabalho sem dados sobre contratos, custos e proteção.",
+        "pitfall": "Tratar tecnologia como causa única e inevitável de precarização ou melhoria e afirmar que todo trabalhador de aplicativos possui a mesma condição."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Diferencie divisão técnica de tarefas numa empresa e divisão social do trabalho.",
+        "hint": "Uma é interna a uma atividade organizada; a outra, mais ampla na sociedade.",
+        "solution": "A divisão técnica distribui etapas de produção ou serviço dentro de uma organização. A divisão social descreve a repartição mais ampla de funções, ocupações e atividades interdependentes na sociedade."
+      },
+      {
+        "level": "basic",
+        "prompt": "Em uma escola, explique por que professores, limpeza e alimentação exemplificam interdependência.",
+        "hint": "Nenhuma função, isolada, mantém todas as atividades.",
+        "solution": "O funcionamento da escola depende de tarefas diferentes e coordenadas. O exemplo mostra complementaridade entre funções, sem indicar que todas possuam o mesmo salário ou reconhecimento institucional."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "O que Durkheim chamou de solidariedade orgânica e como ela se relaciona com especialização?",
+        "hint": "Pense em funções diferentes que dependem umas das outras.",
+        "solution": "A solidariedade orgânica está ligada à interdependência entre funções diferenciadas em sociedades complexas. A especialização pode aproximar pessoas por necessidade mútua, mas não elimina conflitos sociais."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que uma equipe muito especializada não é necessariamente uma equipe sem desigualdade?",
+        "hint": "Compare tarefas e poder de decisão.",
+        "solution": "A especialização organiza funções, porém decisões, remuneração e prestígio podem continuar desigualmente distribuídos. A análise precisa considerar instituições, contratos e relações de poder."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Que fatores deveriam ser examinados para avaliar trabalho mediado por plataformas digitais sem generalização?",
+        "hint": "Considere jornada, custos, proteção e escolhas individuais.",
+        "solution": "É necessário observar remuneração líquida, horas, segurança, autonomia, regras contratuais e diversidade de experiências. Uma plataforma não define sozinha todas as condições de seus trabalhadores."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare divisão do trabalho numa oficina artesanal e numa fábrica, evitando afirmar uma regra universal.",
+        "hint": "Pense em escala e fragmentação sem transformar tendências em leis obrigatórias.",
+        "solution": "Uma oficina pode concentrar várias etapas por trabalhador, enquanto fábricas frequentemente fragmentam tarefas e ampliam coordenação. Esses são padrões possíveis que variam por setor, tecnologia e período histórico."
+      }
+    ],
+    "everyday": {
+      "context": "Na merenda escolar, o alimento começa na produção agrícola, é transportado, comprado, preparado, servido e recolhido. Um estudante observa que muitos profissionais participam, mas nem todos possuem as mesmas condições de trabalho.",
+      "question": "Como explicar a interdependência dessas atividades sem concluir que divisão de tarefas garante igualdade?",
+      "answer": "A divisão técnica e social do trabalho organiza funções complementares, como cultivo, logística, cozinha e atendimento. A colaboração não determina automaticamente remuneração, poder ou proteção iguais; essas condições precisam de análise específica.",
+      "connections": [
+        {
+          "subject": "Sociologia",
+          "topic": "Durkheim: fato social e solidariedade",
+          "reason": "A interdependência entre ocupações permite relacionar especialização à solidariedade orgânica como conceito de análise social."
+        },
+        {
+          "subject": "História",
+          "topic": "Revolução Industrial",
+          "reason": "O desenvolvimento de fábricas e novas formas de coordenação produtiva ajuda a contextualizar mudanças na divisão das tarefas."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
