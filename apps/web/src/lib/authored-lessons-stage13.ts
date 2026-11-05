@@ -254,6 +254,246 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Física",
+    "topic": "Conservação da energia mecânica",
+    "objective": "Relacionar energia cinética e potencial a transformações de energia e aplicar conservação da energia mecânica apenas sob as condições corretas.",
+    "sections": [
+      {
+        "title": "Energia mecânica como soma de duas parcelas",
+        "explanation": "Em muitos movimentos, descrevemos a energia mecânica como a soma da energia cinética, associada ao movimento, e da energia potencial, associada à configuração do sistema. Para um corpo de massa m e velocidade v, Ec=mv²/2. Próximo à superfície terrestre, quando a aceleração gravitacional pode ser tratada como aproximadamente constante, Ep,g=mgh em relação a um nível de referência escolhido. A energia cinética nunca é negativa, enquanto o valor numérico de uma energia potencial depende da referência. As duas possuem unidade joule (J), equivalente a kg·m²/s². Quando a altura diminui e a velocidade aumenta, parte da energia potencial gravitacional pode transformar-se em energia cinética. A explicação não exige supor que velocidade e altura sejam proporcionais.",
+        "example": "Um carrinho de 2 kg está inicialmente a 5 m de altura, praticamente em repouso. Adotando g=10 m/s², sua energia potencial gravitacional em relação ao solo é 2×10×5=100 J, e sua energia cinética inicial é aproximadamente zero. Se não houver dissipação, essa energia pode aparecer como energia cinética ao descer.",
+        "pitfall": "Confundir massa em quilogramas com peso em newtons ou afirmar que energia potencial gravitacional possui valor absoluto independente da referência."
+      },
+      {
+        "title": "Quando a energia mecânica se conserva",
+        "explanation": "A energia mecânica é constante para um sistema apropriado quando o trabalho das forças não conservativas é nulo, em condições em que as energias consideradas descrevem o processo. Em um modelo sem atrito, Ec inicial + Ep inicial = Ec final + Ep final. A velocidade pode ser calculada por essa igualdade, tomando cuidado para usar o mesmo nível de referência nas alturas. O princípio de conservação da energia em sentido amplo continua válido mesmo com atrito; o que pode diminuir é a parcela mecânica, transferida para energia interna e outras formas. Uma rampa real com atrito, portanto, não conserva necessariamente energia mecânica. A escolha de incluir corpo, Terra e outras partes no sistema afeta a interpretação das transferências.",
+        "example": "Um bloco parte do repouso a 1,8 m de altura numa pista ideal sem atrito. Igualando mgh=mv²/2 e usando g=10 m/s²: v²=2×10×1,8=36 e v=6 m/s no ponto mais baixo. A massa se cancela porque o modelo usa apenas gravidade e não inclui outras forças dissipativas.",
+        "pitfall": "Aplicar Ec+Ep constante a qualquer sistema com atrito relevante, ignorando trabalho de forças dissipativas."
+      },
+      {
+        "title": "Trabalho não conservativo e limites de modelos",
+        "explanation": "Quando atrito ou resistência do ar realizam trabalho, a variação da energia mecânica depende dessas forças: ΔEmec=Wnão conservativo, sob definições consistentes de sistema e forças. O atrito cinético geralmente reduz a energia mecânica do movimento ao transferi-la para energia interna de superfícies; isso não equivale ao desaparecimento de energia. O mesmo sistema pode ser estudado pela segunda lei de Newton e pelo teorema trabalho–energia, mas as perguntas e grandezas mudam. Em problemas, identifique se há motor, impulso externo ou contato deformável antes de usar uma igualdade simplificada. Contextos como freios, montanhas-russas e quedas fornecem bons modelos desde que os dados sejam hipóteses explícitas.",
+        "example": "Uma bicicleta e seu ciclista possuem 500 J de energia mecânica num instante e 420 J depois de frear num trecho horizontal, sob modelo simplificado. A variação mecânica é −80 J. Essa diferença foi transferida para outras formas, como energia interna, e não foi destruída.",
+        "pitfall": "Tomar uma diminuição de energia mecânica como violação da conservação total da energia ou atribuir valor exato à dissipação sem saber o sistema escolhido."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Calcule a energia cinética de um carrinho de 4 kg que se move a 3 m/s.",
+        "hint": "Use Ec=mv²/2 em unidades do SI.",
+        "solution": "Ec=4×3²/2=4×9/2=18 J. A velocidade deve ser elevada ao quadrado; por isso dobrar a velocidade quadruplica a energia cinética, mantida a massa."
+      },
+      {
+        "level": "basic",
+        "prompt": "Um objeto de 3 kg está a 2 m do nível de referência, com g=10 m/s². Calcule sua energia potencial.",
+        "hint": "Use Ep=mgh e informe o nível adotado.",
+        "solution": "Ep=3×10×2=60 J em relação ao nível h=0 escolhido. Se o nível de referência mudar, o valor isolado de Ep também muda, mas diferenças de energia permanecem relevantes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Num trilho sem atrito, um corpo parte do repouso de altura 5 m. Encontre a rapidez ao chegar ao nível zero, com g=10 m/s².",
+        "hint": "Conserve mgh+mv²/2 e cancele a massa.",
+        "solution": "m×10×5=mv²/2, logo v²=100 e v=10 m/s. Isso pressupõe ausência de forças dissipativas e velocidade inicial nula; a massa não altera a rapidez nesse modelo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma bola sobe verticalmente sem resistência do ar. O que acontece com Ec e Ep durante a subida?",
+        "hint": "A velocidade diminui enquanto a altura aumenta.",
+        "solution": "A energia cinética diminui e a energia potencial gravitacional aumenta. Em modelo ideal, a soma permanece constante. No ponto mais alto, a velocidade vertical é momentaneamente nula."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um ciclista possui energia mecânica de 1200 J e, após frear, 900 J no modelo adotado. Interprete a variação.",
+        "hint": "Calcule energia final menos inicial.",
+        "solution": "ΔEmec=900−1200=−300 J. Houve redução de 300 J da parcela mecânica, transferida a outras formas de energia; não se conclui que a energia total desapareceu."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que a conservação de energia mecânica não pode ser aplicada sem ressalva a uma montanha-russa real?",
+        "hint": "Considere atrito nos trilhos e resistência do ar.",
+        "solution": "Forças dissipativas transferem parte da energia mecânica para energia interna e outras formas, alterando Ec+Ep. A conservação total da energia continua, mas um modelo ideal sem dissipação seria apenas aproximação."
+      }
+    ],
+    "everyday": {
+      "context": "Numa pista de skate, uma pessoa desce uma rampa a partir de uma altura conhecida. A velocidade aumenta durante a descida, mas o atrito pode impedir que toda a energia inicial apareça como movimento.",
+      "question": "Como relacionar altura, rapidez e perdas sem dizer que energia foi criada ou destruída?",
+      "answer": "No modelo sem atrito, a energia potencial gravitacional diminui e se transforma em energia cinética, mantendo Ec+Ep. Com atrito, parte é transferida para outras formas, como energia interna; a energia total continua conservada.",
+      "connections": [
+        {
+          "subject": "Física",
+          "topic": "Leis de Newton",
+          "reason": "A análise das forças explica aceleração e atrito, enquanto a energia descreve transferências ao longo do percurso."
+        },
+        {
+          "subject": "Física",
+          "topic": "Velocidade média e instantânea",
+          "reason": "A velocidade instantânea no fim da descida não é igual à rapidez média ao longo de todo o trajeto."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Química",
+    "topic": "Concentração comum e molaridade",
+    "objective": "Calcular concentração comum em g/L e molaridade em mol/L, diferenciar soluto de solução e analisar diluições com unidades e condições de validade.",
+    "sections": [
+      {
+        "title": "Soluto, solvente e concentração comum",
+        "explanation": "Uma solução é uma mistura homogênea, nas condições consideradas, de duas ou mais substâncias. Na linguagem escolar, chamamos soluto ao componente cuja concentração acompanhamos e solvente ao meio de dissolução, embora a designação dependa do sistema. A concentração comum, C=m_soluto/V_solução, expressa massa de soluto por volume total de solução, frequentemente em g/L. O denominador não é, em geral, o volume isolado do solvente: os volumes podem não ser aditivos. Converter mL em L é indispensável antes de substituir em unidades padronizadas. Concentração não diz sozinha se a substância é segura, e a ausência de cor não indica solução diluída. Não se deve interpretar o rótulo de um produto real sem verificar qual espécie e unidade ele apresenta.",
+        "example": "Em um exercício de laboratório, dissolvem-se 12 g de um soluto e ajusta-se o volume final da solução para 300 mL (0,300 L). A concentração comum é C=12/0,300=40 g/L. O volume informado é o da solução preparada, não necessariamente o de água adicionado.",
+        "pitfall": "Dividir gramas por mililitros e informar g/L sem converter unidades, ou usar volume de solvente em vez de volume final da solução."
+      },
+      {
+        "title": "Molaridade: quantidade de matéria em volume",
+        "explanation": "A concentração em quantidade de matéria, frequentemente chamada molaridade, é c=n_soluto/V_solução, geralmente expressa em mol/L. A conversão entre massa e mol usa n=m/M, sendo M a massa molar em g/mol. Assim, c=m/(M·V), desde que as unidades sejam compatíveis. Para NaCl, uma massa molar aproximada é 58,5 g/mol; a concentração em mol/L descreve quantidade de unidades de fórmula por volume, não diretamente a concentração individual de cada íon em soluções reais. É necessário distinguir concentração química de densidade da solução: densidade é massa total por volume, não massa apenas do soluto. A molaridade depende da temperatura se o volume mudar significativamente, detalhe importante para medições precisas.",
+        "example": "Se 5,85 g de NaCl são dissolvidos e o volume final ajustado para 0,500 L, n≈5,85/58,5=0,100 mol. Portanto c=0,100/0,500=0,200 mol/L. Esse resultado depende de uma preparação hipotética e das aproximações fornecidas.",
+        "pitfall": "Usar o número 58,5 como se fosse volume ou confundir 0,200 mol/L com 0,200 g/L, que são grandezas diferentes."
+      },
+      {
+        "title": "Diluição e leitura crítica de rótulos",
+        "explanation": "Ao adicionar solvente sem retirar nem transformar o soluto, a quantidade de matéria desse soluto permanece constante, enquanto o volume e a concentração mudam. No modelo de diluição, c1V1=c2V2, usando volumes compatíveis e concentração referida à mesma espécie química. A equação não deve ser aplicada quando há reação, precipitação significativa ou perda de soluto. Em soluções domésticas, rótulos podem apresentar porcentagem em massa, massa por volume ou outras unidades, e essas expressões não são equivalentes sem informações adicionais. Tampouco se deve incentivar misturas de produtos de limpeza: reações entre componentes podem produzir gases perigosos. A interpretação adequada inclui substância identificada, unidade, condições e finalidade do cálculo.",
+        "example": "Uma amostra hipotética de 100 mL de solução 1,0 mol/L recebe solvente até atingir volume final 500 mL. Pela conservação dos mols: c2=(1,0×100)/500=0,20 mol/L. O número de mols do soluto permanece 0,100 mol; apenas a concentração diminui.",
+        "pitfall": "Achar que diluir elimina substâncias ou reduz a quantidade total de soluto sem que haja remoção ou reação."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Determine C em g/L para 10 g de soluto em 250 mL de solução.",
+        "hint": "Converta 250 mL para 0,250 L.",
+        "solution": "C=10 g/0,250 L=40 g/L. A concentração corresponde à massa de soluto por volume total da solução, não por volume apenas de solvente."
+      },
+      {
+        "level": "basic",
+        "prompt": "Explique a diferença entre concentração comum e molaridade.",
+        "hint": "Uma é massa por volume; a outra, quantidade de matéria por volume.",
+        "solution": "Concentração comum usa g/L: massa do soluto dividida pelo volume da solução. Molaridade usa mol/L: quantidade de matéria do soluto dividida pelo volume da solução."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma solução contém 0,25 mol de soluto em 500 mL de volume final. Calcule sua molaridade.",
+        "hint": "V=0,500 L; use c=n/V.",
+        "solution": "c=0,25 mol/0,500 L=0,50 mol/L. É importante não manter o denominador como 500 sem conversão, pois isso resultaria em mol/mL."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Dissolvem-se 18 g de uma substância com M=60 g/mol até 200 mL de solução. Calcule c.",
+        "hint": "Converta primeiro m em n usando n=m/M.",
+        "solution": "n=18/60=0,30 mol. Como V=0,200 L, a molaridade é c=0,30/0,200=1,5 mol/L, assumindo que o soluto permanece dissolvido."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma solução de 2,0 mol/L, com volume 50 mL, é diluída até 200 mL. Qual a concentração final?",
+        "hint": "Utilize c1V1=c2V2, sem mudar a espécie.",
+        "solution": "c2=(2,0×50)/200=0,50 mol/L. O volume quadruplicou e a concentração caiu a um quarto, mantendo constante a quantidade de matéria do soluto."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que uma solução não se torna necessariamente segura apenas por ser mais diluída.",
+        "hint": "Considere identidade da substância, concentração final e contexto de exposição.",
+        "solution": "A segurança depende da substância e da situação, não apenas da diluição relativa. Uma concentração menor pode continuar inadequada, e misturar substâncias pode causar reações perigosas."
+      }
+    ],
+    "everyday": {
+      "context": "Em um laboratório escolar, dois frascos transparentes contêm a mesma substância dissolvida em água, mas em concentrações distintas. Só observar a cor não revela quantos gramas estão dissolvidos.",
+      "question": "Que medida permite comparar os frascos de forma objetiva: massa por volume ou apenas aparência?",
+      "answer": "Pode-se calcular C=m_soluto/V_solução em g/L ou a molaridade n/V em mol/L, com as unidades identificadas. A transparência não prova concentrações iguais e não autoriza experimentos com substâncias desconhecidas.",
+      "connections": [
+        {
+          "subject": "Química",
+          "topic": "Mol e constante de Avogadro",
+          "reason": "A molaridade depende da quantidade de matéria, cuja unidade é o mol e cuja contagem se relaciona à constante de Avogadro."
+        },
+        {
+          "subject": "Matemática",
+          "topic": "Razões, escalas e proporcionalidade",
+          "reason": "Massa por volume é uma razão; ao diluir uma mesma quantidade de soluto, o aumento de volume reduz a concentração."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Primeira lei de Mendel",
+    "objective": "Interpretar segregação dos alelos durante formação de gametas e resolver cruzamentos monogênicos simples, explicitando hipóteses e limitações do modelo mendeliano.",
+    "sections": [
+      {
+        "title": "Gene, alelos e segregação na formação dos gametas",
+        "explanation": "Na explicação mendeliana clássica, organismos diploides possuem, em geral, dois alelos de um locus autossômico, herdados dos genitores. Durante a meiose, os cromossomos homólogos se separam e, consequentemente, cada gameta recebe um dos alelos do par, no modelo sem eventos cromossômicos atípicos. Um indivíduo Aa pode produzir gametas com A ou a, e a união dos gametas restabelece o par de alelos no descendente. Genótipo é a combinação de alelos; fenótipo é a característica observada, que também pode depender do ambiente e de outros genes. A primeira lei é frequentemente chamada lei da segregação e não afirma que todas as características humanas sejam explicadas por um único par de alelos. Além disso, dominância se refere à expressão fenotípica em um contexto genético, não à frequência populacional nem à 'força' de um gene.",
+        "example": "Imagine plantas didáticas com genótipos AA, Aa e aa para uma característica com dominância completa, em condições controladas. Plantas Aa produzem dois tipos de gametas, A e a, em proporções esperadas de 50% cada. O fenótipo de Aa coincide com o de AA apenas sob o modelo de dominância completa adotado.",
+        "pitfall": "Afirmar que um alelo dominante é sempre mais comum na natureza ou que todos os gametas de uma planta heterozigota carregam o mesmo alelo."
+      },
+      {
+        "title": "Quadrado de Punnett e probabilidades",
+        "explanation": "Para um cruzamento Aa×Aa, cada genitor produz dois tipos possíveis de gametas, A e a, com probabilidades esperadas iguais no modelo simples. Combinando as possibilidades, os genótipos dos descendentes apresentam proporções esperadas 1 AA:2 Aa:1 aa. Se A manifesta dominância completa sobre a, a proporção fenotípica esperada será 3:1; se não há dominância completa, não se pode inferir esse mesmo resultado fenotípico. Proporções são probabilidades por descendente, não garantias sobre quatro indivíduos de uma família. Nascimentos são eventos independentes sob determinadas hipóteses e não têm obrigação de 'compensar' resultados anteriores. O quadro de Punnett representa combinações possíveis, não o processo molecular completo da fecundação.",
+        "example": "Num cruzamento hipotético de duas plantas Aa, o quadro combina A e a de cada genitor: AA, Aa, Aa e aa. Logo P(aa)=1/4=25%. Isso significa chance esperada para cada descendente sob o modelo, e não que a cada quatro sementes exatamente uma será aa.",
+        "pitfall": "Confundir a proporção 1:2:1 de genótipos com resultado 3:1 de fenótipos em situações sem dominância completa."
+      },
+      {
+        "title": "Hereditariedade real, ambiente e exceções",
+        "explanation": "Muitos caracteres são poligênicos, influenciados pelo ambiente ou apresentam padrões como codominância, dominância incompleta, alelos múltiplos e ligação ao sexo. Por isso, exemplos escolares simplificados não devem ser apresentados como explicação de inteligência, aparência global ou comportamentos complexos. Mesmo para um caráter monogênico, mutações, alterações cromossômicas e diferenças na penetrância ou expressividade podem tornar a previsão mais complexa. Em aconselhamento genético real, a interpretação exige informações clínicas e especializadas; um diagrama de quatro quadrinhos não serve para diagnosticar ninguém. A primeira lei continua valiosa porque fundamenta a separação de alelos e os cálculos de probabilidade elementar, estabelecendo ponte entre meiose, gametas e transmissão hereditária.",
+        "example": "Em plantas, uma característica modelada por um único locus pode seguir razão mendeliana simples sob condições específicas. A cor dos olhos humanos, por outro lado, envolve diferentes genes e processos, portanto não pode ser prevista corretamente apenas com um quadro simples de “castanho dominante sobre azul”.",
+        "pitfall": "Aplicar o quadro Aa×Aa a qualquer traço humano sem verificar o mecanismo genético envolvido e sem distinguir probabilidade de certeza."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Quais tipos de gametas são esperados para um indivíduo Aa num locus autossômico segundo o modelo mendeliano?",
+        "hint": "Cada gameta recebe um dos alelos do par.",
+        "solution": "São esperados gametas com alelo A e gametas com alelo a, em proporções de 50% cada no modelo simples de segregação equilibrada. O gameta não recebe simultaneamente ambos os alelos do mesmo locus."
+      },
+      {
+        "level": "basic",
+        "prompt": "Diferencie genótipo e fenótipo com um exemplo hipotético.",
+        "hint": "Um representa informação genética; o outro, característica observada.",
+        "solution": "Genótipo é a combinação de alelos, como Aa. Fenótipo é a característica expressa, que sob dominância completa pode ser igual em AA e Aa. Fatores ambientais e outros genes também podem influenciar fenótipos reais."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Num cruzamento Aa×Aa, qual a proporção genotípica esperada dos descendentes?",
+        "hint": "Monte as combinações AA, Aa, aA e aa.",
+        "solution": "As combinações equiprováveis são AA, Aa, aA e aa. Como Aa e aA representam o mesmo genótipo, a razão esperada é 1 AA : 2 Aa : 1 aa, ou 25%, 50% e 25%."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual P(aa) no cruzamento Aa×aa sob segregação mendeliana simples?",
+        "hint": "Um genitor produz A/a; o outro, apenas a.",
+        "solution": "As possibilidades esperadas são Aa e aa, cada uma com 50% de chance. Assim P(aa)=1/2=50%. O resultado pressupõe gametas viáveis e probabilidades iguais como no modelo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que a chance de 25% de um genótipo não garante um descendente em quatro?",
+        "hint": "Distinga probabilidade por evento e frequência em amostras pequenas.",
+        "solution": "O valor 25% é uma chance por descendente sob hipóteses do modelo. Em quatro nascimentos ou sementes podem ocorrer zero, um ou vários indivíduos com esse genótipo; a proporção 1:3 é expectativa de longo prazo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que usar dominância simples para prever altura ou inteligência humanas é cientificamente inadequado.",
+        "hint": "Considere múltiplos genes e ambiente.",
+        "solution": "Altura e aspectos cognitivos são características complexas, influenciadas por muitos genes e fatores ambientais. Reduzi-las a um par dominante/recessivo ignora sua natureza multifatorial e não fornece previsão válida."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma cultiva plantas com uma característica hipotética controlada por um único gene. Duas plantas de genótipo Aa são cruzadas, e os estudantes querem prever a proporção de um genótipo aa nas sementes.",
+      "question": "Que probabilidade o quadro de Punnett prevê e por que ela não é garantia para apenas quatro sementes?",
+      "answer": "Aa×Aa fornece AA, Aa, Aa e aa, portanto P(aa)=25% sob o modelo mendeliano simples. A probabilidade vale para cada descendente; uma amostra pequena pode apresentar proporção observada diferente.",
+      "connections": [
+        {
+          "subject": "Biologia",
+          "topic": "Ciclo celular e mitose",
+          "reason": "Comparar meiose e mitose permite compreender por que a formação de gametas altera a combinação de alelos enquanto a mitose normalmente conserva a ploidia."
+        },
+        {
+          "subject": "Matemática",
+          "topic": "Probabilidade condicional",
+          "reason": "Os cruzamentos exigem distinguir chances de combinações genéticas e condições conhecidas, sem prometer resultados exatos em amostras pequenas."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
