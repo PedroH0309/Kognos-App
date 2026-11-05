@@ -138,7 +138,6 @@ export const stage19Math:TopicSeed[]=[
         "Duas retas podem se cruzar num ponto (solução única), coincidir (infinitas soluções) ou ser paralelas distintas (nenhuma solução). No contexto, mesmo uma solução algébrica única pode ser rejeitada se representa quantidade negativa de pessoas ou unidades fracionárias impossíveis. Sempre verifique a solução e suas restrições.",
         "x+y=3 e 2x+2y=6 representam a mesma reta e possuem infinitas soluções, não uma única.",
         "Todo sistema com duas equações e duas incógnitas possui necessariamente uma solução única.",
-        "Classifique o sistema antes de concluir que o cálculo terá um par exclusivo.",
         "O sistema x+y=4 e x+y=7 tem solução?",
         "Compare os lados esquerdos idênticos.",
         "Não há solução, pois o mesmo x+y não pode ser simultaneamente quatro e sete.",
@@ -193,7 +192,6 @@ export const stage19Math:TopicSeed[]=[
         "A média não revela, sozinha, dispersão ou desigualdade. Dois grupos podem ter mesma média e composições muito diferentes. Quando há extremos, compare mediana, amplitude e distribuição conforme a pergunta; se os dados são monetários, períodos e populações devem ser compatíveis.",
         "Rendas 1, 1 e 10 mil possuem média 4 mil e mediana 1 mil: a média sozinha sugere distribuição enganosa.",
         "Se duas turmas têm igual média, todos os estudantes obtiveram notas próximas.",
-        "Compare conjuntos diferentes com igual média.",
         "As notas 2,8 e 5,5 têm a mesma média?",
         "Calcule média de cada par.",
         "Ambos os pares têm média 5, embora um seja disperso e outro constante.",
@@ -213,8 +211,8 @@ export const stage19Math:TopicSeed[]=[
       ],
       [
         "Matemática",
-        "Gráficos estatísticos e distribuição de frequências",
-        "Representações de frequência ajudam a explicar por que grupos com médias iguais podem diferir muito."
+        "Probabilidade condicional",
+        "O cuidado em definir o conjunto de referência é comum a médias, frequências e probabilidades condicionadas."
       ]
     ]
   }
