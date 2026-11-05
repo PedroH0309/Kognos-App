@@ -1114,6 +1114,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Variação linguística e voseo",
+    "objective": "Compreender diversidade regional do espanhol, distinguindo voseo, tuteo e formas de tratamento sem considerar variedades americanas inferiores à norma peninsular.",
+    "sections": [
+      {
+        "title": "O espanhol tem variedades legítimas",
+        "explanation": "O espanhol é utilizado em países e comunidades com trajetórias históricas e sociais distintas, portanto não há uma única pronúncia ou repertório de palavras usado uniformemente por todos os falantes. Variações regionais podem envolver vocabulário, sons, construções e formas de tratamento. O tuteo usa tú em muitos contextos informais; o voseo utiliza vos em diversas regiões da América, com conjugação que varia por localidade. O uso de usted pode marcar formalidade, respeito ou proximidade em situações diferentes. A escolha depende de relações sociais e do contexto, não de superioridade ou inferioridade de um país. Em provas, o primeiro passo é identificar interlocutor e região quando informada; uma palavra como 'ordenador' ou 'computadora' pode revelar uso regional, mas não identifica com certeza a nacionalidade de uma pessoa.",
+        "example": "Em certas variedades rioplatenses, '¿Vos tenés tiempo?' corresponde aproximadamente a 'Você tem tempo?'. Em outras regiões, '¿Tú tienes tiempo?' é forma informal usual.",
+        "pitfall": "Tratar uma conjugação com vos como erro gramatical ou afirmar que todos os países latino-americanos usam exatamente o mesmo tratamento.",
+        "steps": [
+          "Identifique o pronome e a relação entre interlocutores antes de julgar o registro.",
+          "Considere diversidade regional sem generalizar a todos os falantes de um país."
+        ]
+      },
+      {
+        "title": "Voseo e tuteo: conjugação e contexto",
+        "explanation": "Em variedades como a rioplatense, o voseo pode aparecer em 'vos sos', 'vos tenés', 'vos hablás', 'vos vivís' e imperativos como 'hablá'. Esses exemplos não constituem regra única para todo voseo: há variedades que usam vos com flexões diferentes ou combinam pronome e formas verbais de outras maneiras. No tuteo, são comuns 'tú eres', 'tú tienes', 'tú hablas' e 'tú vives'. Ambas as formas podem ser adequadas em suas comunidades. A interpretação depende da frase real, pois a mesma forma ortográfica pode ter funções diferentes conforme variedade. Na produção escolar, o estudante deve usar conjugação coerente com a variedade trabalhada, sem misturar padrões por desconhecimento e sem estigmatizar interlocutores que escolhem outro tratamento.",
+        "example": "Num diálogo informal rioplatense inventado, 'Vos hablás muy rápido' usa pronome vos e forma hablás. A versão com tuteo seria 'Tú hablas muy rápido', sem que uma seja universalmente melhor.",
+        "pitfall": "Supor que todo voseo usa a mesma terminação ou converter vos automaticamente em vosotros, que possui outra distribuição e função.",
+        "steps": [
+          "Observe a flexão verbal que acompanha vos no exemplo regional apresentado.",
+          "Compare com tú mantendo pessoa gramatical e intenção comunicativa."
+        ]
+      },
+      {
+        "title": "Usted, ustedes e competência intercultural",
+        "explanation": "O tratamento com usted e ustedes é importante para leitura de anúncios, formulários, entrevistas e comunicações institucionais. Em grande parte da América hispanofalante, ustedes é forma plural corrente tanto em situações formais quanto informais; na Espanha, vosotros e vosotras aparecem em muitas variedades informais, enquanto ustedes tem outros usos. Mesmo dentro de cada país existem diferenças sociais e regionais. Entender variedades ajuda a não interpretar tratamento formal como hostilidade ou linguagem informal como falta de educação. Gênero textual, idade dos interlocutores, normas locais e contexto institucional influenciam escolhas. Para questões de vestibular, classifique marcas regionais com base no texto e evite inferir caráter, escolaridade ou nacionalidade exata a partir de uma única forma linguística.",
+        "example": "Um aviso de curso escrito 'Ustedes pueden inscribirse hasta el viernes' dirige-se a várias pessoas. A presença de ustedes não permite concluir sozinha se o público é tratado com formalidade.",
+        "pitfall": "Confundir ustedes com tratamento obrigatoriamente cerimonioso em qualquer país ou inferir nacionalidade de alguém apenas pelo uso de vos.",
+        "steps": [
+          "Separe pluralidade dos interlocutores de eventual grau de formalidade.",
+          "Verifique a variedade e o gênero antes de interpretar escolha de pronome."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em '¿Vos tenés tiempo?', que forma de tratamento aparece?",
+        "hint": "Observe pronome usado no enunciado.",
+        "solution": "A frase usa voseo, com vos e uma conjugação frequente em variedades rioplatenses. Não é erro de espanhol."
+      },
+      {
+        "level": "basic",
+        "prompt": "Em que o tuteo e o voseo podem diferir?",
+        "hint": "Compare pronomes e flexões verbais.",
+        "solution": "Tuteo utiliza tú em contextos informais; voseo utiliza vos em diferentes variedades americanas, frequentemente com flexões específicas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Transforme 'Vos hablás español' para tuteo informal corrente.",
+        "hint": "Use tú e o verbo hablas.",
+        "solution": "Uma versão com tuteo é 'Tú hablas español'. A ideia é semelhante, mas muda a forma de tratamento e a flexão verbal."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que 'ustedes' não indica necessariamente formalidade máxima em toda a América?",
+        "hint": "Pense no plural usado em diferentes regiões.",
+        "solution": "Em muitas variedades americanas, ustedes é o plural corrente para diferentes graus de formalidade. Sua presença isolada não determina a relação social."
+      },
+      {
+        "level": "advanced",
+        "prompt": "É correto afirmar que todo falante que usa vos é argentino?",
+        "hint": "O voseo existe em várias regiões.",
+        "solution": "Não. O voseo também ocorre em outras áreas hispanofalantes, com variações de frequência e conjugação; a forma não identifica uma nacionalidade exata."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que não se deve corrigir 'vos sos' para 'tú eres' como se a primeira estivesse errada?",
+        "hint": "Considere normas regionais diferentes.",
+        "solution": "'Vos sos' é construção legítima em variedades que empregam voseo, enquanto 'tú eres' corresponde a tuteo. A adequação depende do contexto e da variedade."
+      }
+    ],
+    "everyday": {
+      "context": "Numa troca de mensagens, uma estudante recebe '¿Vos tenés el material?' de colega hispanofalante. Outro estudante afirma que é erro, porque aprendeu somente '¿Tú tienes el material?' no livro.",
+      "question": "Como explicar as duas formas sem hierarquizar falantes ou países?",
+      "answer": "São formas de tratamento de variedades distintas: voseo com vos tenés e tuteo com tú tienes. Ambas podem ser adequadas conforme região e relação entre interlocutores.",
+      "connections": [
+        {
+          "subject": "Espanhol",
+          "topic": "Tempos do passado em espanhol",
+          "reason": "Variedades regionais podem influenciar escolhas de formas verbais, incluindo usos de pretéritos em contextos diferentes."
+        },
+        {
+          "subject": "Português",
+          "topic": "Variação regional, social e histórica",
+          "reason": "Comparar voseo e tuteo com variantes brasileiras mostra que variação linguística não significa inferioridade de falantes."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Arte",
+    "topic": "Arte barroca brasileira",
+    "objective": "Interpretar elementos formais, materiais e contextos do Barroco produzido no Brasil colonial, diferenciando patrimônio artístico, religiosidade e relações sociais.",
+    "sections": [
+      {
+        "title": "Barroco no Brasil: forma e contexto colonial",
+        "explanation": "A arte barroca presente no Brasil colonial se desenvolveu em contextos e períodos variados, especialmente entre os séculos XVII e XVIII e em continuidades posteriores, envolvendo arquitetura, escultura, pintura e decoração de igrejas. Características recorrentes podem incluir movimento visual, ornamentação, contrastes de luz e sombra, linhas curvas e composições dramáticas, mas não aparecem sempre do mesmo modo em toda obra. Relações com a Igreja Católica e com encomendas de grupos locais foram relevantes, sem esgotar as funções culturais da produção. O estudo exige distinguir arquitetura externa, talha interna, pintura de teto e escultura: são materiais e técnicas distintos. Uma igreja muito ornamentada não prova sozinha que toda a arte de uma cidade seguiu a mesma estética. O Barroco brasileiro não deve ser visto como simples cópia passiva da Europa, pois oficinas, artistas e contextos locais produziram adaptações.",
+        "example": "Em uma igreja colonial hipotética, uma talha dourada com linhas curvas e composição dinâmica pode orientar o olhar para o altar. O efeito visual depende da organização do espaço e dos materiais.",
+        "pitfall": "Classificar qualquer decoração antiga como barroca ou afirmar que todas as obras coloniais possuíam ornamentação idêntica.",
+        "steps": [
+          "Identifique forma, material e função do elemento artístico observado.",
+          "Relacione o objeto ao contexto de encomenda e circulação sem supor origem única."
+        ]
+      },
+      {
+        "title": "Minas Gerais, oficinas e autoria artística",
+        "explanation": "Em Minas Gerais, o crescimento de centros urbanos ligados à mineração contribuiu para encomendas de edifícios religiosos e obras de arte, envolvendo diferentes artistas, artesãos e trabalhadores. Antônio Francisco Lisboa, conhecido como Aleijadinho, é figura central na historiografia do período, mas atribuições de obras podem exigir documentação e análise especializada; não é correto atribuir a ele toda escultura religiosa antiga de Minas. Pintores como Manuel da Costa Ataíde também contribuíram para repertórios visuais importantes, em técnicas e projetos específicos. As obras resultavam frequentemente de trabalho de oficinas e participação de múltiplas pessoas, muitas vezes invisibilizadas em registros históricos. A vida colonial envolveu desigualdades e escravidão, que não devem ser apagadas por uma apresentação apenas celebratória do patrimônio. A análise relaciona estética, materiais, encomenda e condições sociais.",
+        "example": "Uma visita a um conjunto de igrejas em Minas pode comparar pintura de teto, talha e escultura, perguntando por autoria documentada, material empregado e organização dos trabalhadores envolvidos.",
+        "pitfall": "Atribuir automaticamente a Aleijadinho qualquer igreja barroca mineira ou estudar patrimônio sem considerar a sociedade colonial em que foi produzido.",
+        "steps": [
+          "Observe dados de autoria e técnica antes de identificar o artista.",
+          "Analise o papel das oficinas e das relações sociais nas encomendas."
+        ]
+      },
+      {
+        "title": "Preservação do patrimônio e leitura crítica",
+        "explanation": "Patrimônio artístico envolve objetos e espaços que diferentes grupos atribuem valor histórico e cultural, sujeitos a conservação, estudo e interpretação. Observar uma igreja colonial pode revelar escolhas de composição, luz e materiais, mas também permite perguntar quem teve acesso ao espaço, quem financiou a obra e quem executou trabalhos. Conservação e restauro exigem metodologias especializadas para evitar perdas ou alterações indevidas; não basta repintar um objeto para torná-lo 'como novo'. Museus e espaços históricos podem apresentar diferentes versões de um mesmo passado, destacando alguns atores e omitindo outros. O aluno deve separar descrição visual de inferência sobre intenção do artista e usar fontes quando fizer afirmações sobre datas e autoria. A relação com outras artes ajuda a perceber que contraste e movimento visual não pertencem apenas a um estilo histórico.",
+        "example": "Uma visita escolar compara fotos antigas e atuais do interior de uma igreja. Identificar alterações materiais pode ajudar a discutir conservação, sem atribuir automaticamente cada diferença a restauração malfeita.",
+        "pitfall": "Tratar patrimônio como objeto congelado sem história ou concluir autoria e intenção somente a partir de aparência visual.",
+        "steps": [
+          "Descreva características visuais antes de formular interpretações históricas.",
+          "Busque informações documentadas sobre autoria, conservação e usos do espaço."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite duas características visuais frequentemente associadas ao Barroco.",
+        "hint": "Considere movimento, contraste e ornamentação.",
+        "solution": "Contrastes de luz e sombra e ornamentação dinâmica são características frequentes, embora sua presença varie entre obras e contextos."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que uma pintura de teto e uma talha de madeira não são a mesma técnica?",
+        "hint": "Compare suportes e materiais.",
+        "solution": "A pintura utiliza pigmentos aplicados sobre suporte, enquanto a talha envolve trabalho de entalhe em material como madeira; ambas podem compor um mesmo espaço."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual cuidado é necessário ao atribuir obra colonial a Aleijadinho?",
+        "hint": "A semelhança visual não basta como prova.",
+        "solution": "É preciso consultar documentação e análise especializada; atribuir todas as esculturas antigas de Minas a um artista apaga oficinas e outros produtores."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Como a mineração em Minas Gerais se relacionou à produção artística colonial?",
+        "hint": "Considere expansão urbana e encomendas.",
+        "solution": "O crescimento de centros urbanos e recursos ligados à mineração contribuiu para encomendas religiosas e artísticas, em contextos sociais desiguais."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que uma visita a patrimônio colonial também deve abordar a escravidão?",
+        "hint": "A produção artística ocorreu numa sociedade com trabalho desigual.",
+        "solution": "Porque financiamento, trabalho e circulação de obras faziam parte de relações coloniais que incluíam escravidão e hierarquias sociais, relevantes para interpretar a produção."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique a diferença entre descrever a forma de uma igreja e inferir intenção de seu autor.",
+        "hint": "Uma observação direta não prova intenção.",
+        "solution": "É possível descrever curvas e contrastes observáveis; atribuir intenção específica a determinado artista exige documentação e análise contextual adicionais."
+      }
+    ],
+    "everyday": {
+      "context": "Em visita escolar a uma igreja colonial mineira, estudantes observam talhas douradas, pinturas no teto e esculturas. Um colega afirma que todas as peças foram feitas pelo mesmo artista por parecerem semelhantes.",
+      "question": "Que elementos devem ser examinados para interpretar estilo, materiais e autoria sem fazer atribuições precipitadas?",
+      "answer": "É preciso distinguir técnicas e suportes, descrever a composição e consultar documentos sobre autoria e oficinas. Semelhança visual isolada não prova que todas as obras são da mesma pessoa.",
+      "connections": [
+        {
+          "subject": "Arte",
+          "topic": "Elementos visuais: ponto, linha, cor, forma e textura",
+          "reason": "Linhas curvas, contraste, textura e composição ajudam a descrever obras barrocas sem depender só do rótulo histórico."
+        },
+        {
+          "subject": "Arte",
+          "topic": "Arte e tecnologia",
+          "reason": "Materiais, ferramentas e técnicas de oficinas mostram como recursos tecnológicos participam da criação e da conservação artística."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
