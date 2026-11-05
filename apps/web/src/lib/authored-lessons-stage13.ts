@@ -974,6 +974,246 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Arte",
+    "topic": "Arte e tecnologia",
+    "objective": "Analisar como tecnologias transformam criação, circulação e recepção de imagens, sons e obras, considerando autoria, edição, repertório cultural e ética.",
+    "sections": [
+      {
+        "title": "Ferramentas técnicas e escolhas artísticas",
+        "explanation": "Arte e tecnologia se relacionam há muito tempo: pigmentos, impressão, fotografia, cinema, gravação sonora e ferramentas digitais modificam possibilidades de criação e distribuição. Uma ferramenta não decide sozinha a qualidade estética de uma obra. O sentido emerge de escolhas de composição, repertório cultural, intenção comunicativa e recepção do público. Em meios digitais, camadas, recortes, animações e filtros permitem transformar imagens, mas cada recurso produz efeitos perceptivos específicos. Para analisar um cartaz ou vídeo, descreva os elementos observáveis — contraste, enquadramento, ritmo, relação entre texto e imagem — antes de atribuir emoções ou intenções ao autor. A tecnologia pode ampliar acesso à produção cultural, mas também depende de equipamentos, infraestrutura e aprendizagem.",
+        "example": "Uma campanha escolar é apresentada em cartaz impresso e vídeo curto. O cartaz usa hierarquia visual para destacar o horário; o vídeo acrescenta movimento e som para organizar a atenção ao longo do tempo. Nenhum formato garante comunicação melhor sem considerar público e contexto.",
+        "pitfall": "Dizer que um trabalho criado digitalmente deixa de ser artístico, ou que todo efeito visual bonito possui comunicação adequada."
+      },
+      {
+        "title": "Autoria, edição e circulação",
+        "explanation": "Imagens digitais podem ser copiadas, recortadas, remixadas e distribuídas em segundos. Isso torna importante reconhecer autoria, licenças de uso e contexto de circulação. Uma fotografia real pode transmitir informação enganosa quando recebe legenda falsa ou recorte que oculta elementos decisivos. Da mesma forma, ferramentas de inteligência artificial podem produzir imagens sintéticas, mas não substituem a responsabilidade por atribuição correta, direitos e transparência sobre alterações relevantes. Em atividades escolares, citar a origem de materiais e respeitar autorizações é parte da prática artística, sem precisar proibir todas as formas de apropriação ou transformação. Analisar a mídia requer distinguir edição legítima de manipulação que induz conclusões falsas.",
+        "example": "Um aluno encontra uma fotografia de manifestação e a usa para ilustrar outro evento, sem verificar data nem local. Mesmo que a imagem não tenha sido alterada, a legenda pode criar informação falsa. Uma apresentação responsável identifica contexto e usa material com autorização pertinente.",
+        "pitfall": "Supor que uma imagem é verdadeira só porque parece fotográfica ou que estar publicada na internet significa ausência de direitos autorais."
+      },
+      {
+        "title": "Interatividade, público e leitura crítica",
+        "explanation": "Obras digitais podem responder ao toque, ao movimento ou a escolhas do participante. Instalações, jogos e experiências audiovisuais organizam o tempo e a participação do público de modo diferente de imagens estáticas. A interpretação depende também do dispositivo, da acessibilidade e das condições de apresentação: vídeos sem legendas podem excluir parte do público; contrastes fracos dificultam leitura. Comparar versões de uma mesma obra em dispositivos diferentes ajuda a perceber relações entre forma, conteúdo e contexto. A tecnologia é recurso de expressão, não finalidade obrigatória, e sua avaliação envolve impacto artístico, clareza, acesso e questões éticas. O aluno deve sustentar interpretações por detalhes observáveis em vez de generalizar que mídias novas são sempre superiores.",
+        "example": "Uma exposição escolar permite que visitantes escolham diferentes áudios para acompanhar uma sequência de imagens. O sentido muda conforme a trilha e o caminho escolhido. Para torná-la acessível, podem ser oferecidos textos alternativos e legendas dos áudios.",
+        "pitfall": "Definir interatividade apenas como presença de botão ou considerar que mais efeitos garantem mais compreensão."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cite duas escolhas artísticas presentes tanto em cartazes impressos quanto em peças digitais.",
+        "hint": "Considere contraste, cor, forma e hierarquia.",
+        "solution": "Cor e contraste, por exemplo, influenciam legibilidade e destaque em ambos os formatos. Enquadramento, composição e escala também são decisões criativas, independentemente da ferramenta usada."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que uma fotografia não prova sozinha a veracidade de uma legenda?",
+        "hint": "A imagem pode ser antiga ou fora de contexto.",
+        "solution": "Uma fotografia pode ter sido produzida em outro lugar ou época. Mesmo sem edição, uma legenda equivocada altera sua interpretação, exigindo verificação de autoria, data e contexto."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique uma diferença entre criar um cartaz e um vídeo de campanha sobre leitura.",
+        "hint": "Um material é estático; o outro organiza som e duração.",
+        "solution": "O cartaz apresenta informações simultâneas pela composição espacial. O vídeo pode organizar informações no tempo e combinar imagem em movimento, voz e som, produzindo possibilidades narrativas distintas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma apresentação usa foto de artista sem indicar autoria. Que prática editorial seria adequada?",
+        "hint": "Considere licença e atribuição.",
+        "solution": "Identificar a fonte e o autor, conferir licença e obter autorização quando necessário é uma prática responsável. Divulgação na internet não implica que todo uso esteja liberado."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Analise por que uma obra audiovisual sem legendas pode ter menor acessibilidade.",
+        "hint": "Pense no acesso à informação sonora por públicos diferentes.",
+        "solution": "Pessoas que não ouvem o áudio ou assistem sem som podem perder diálogos e informações. Legendas e alternativas textuais podem ampliar acesso sem eliminar a proposta estética da obra."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Diferencie manipulação desinformativa e transformação artística ao editar uma fotografia.",
+        "hint": "Observe contexto, intenção declarada e como o material é apresentado.",
+        "solution": "Transformação artística pode assumir explicitamente sua natureza criativa. Quando uma edição é apresentada como registro factual e induz erro sobre evento real, há risco de desinformação; transparência é essencial."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma cria cartazes digitais para divulgar uma feira cultural e encontra uma imagem na internet. Alguém sugere usá-la sem crédito porque “está disponível para todo mundo”, e outro aluno altera a legenda.",
+      "question": "Que cuidados com autoria e contexto mantêm o trabalho criativo sem apresentar uma informação enganosa?",
+      "answer": "É preciso verificar a licença ou obter autorização, identificar autoria quando exigido e conferir se a imagem corresponde ao evento descrito. Alterações artísticas podem ser legítimas, mas não devem ser vendidas como registro factual falso.",
+      "connections": [
+        {
+          "subject": "Arte",
+          "topic": "Fotografia, cinema e audiovisual",
+          "reason": "Enquadramento e montagem mostram como recursos técnicos selecionam informações e influenciam o sentido de uma imagem."
+        },
+        {
+          "subject": "Português",
+          "topic": "Informações explícitas e inferências",
+          "reason": "A leitura crítica separa o que a imagem e sua legenda realmente mostram das conclusões que não podem ser comprovadas."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Atividade física e saúde",
+    "objective": "Distinguir atividade física, exercício e condicionamento, relacionando práticas corporais a contextos de saúde e participação sem prescrições individualizadas.",
+    "sections": [
+      {
+        "title": "Atividade física, exercício e prática cotidiana",
+        "explanation": "Atividade física corresponde a movimentos corporais produzidos por músculos esqueléticos que elevam o gasto energético em relação ao repouso, em contextos como deslocamento ativo, trabalho, lazer e tarefas domésticas. Exercício físico é um subconjunto geralmente planejado, estruturado e repetitivo, com objetivo de melhorar ou manter componentes da aptidão física. Esporte pode envolver competição e regras próprias, mas nem toda atividade física é esporte. A participação regular pode oferecer benefícios físicos, sociais e emocionais, porém essas relações dependem de intensidade, contexto e condições individuais. Em educação física escolar, a meta inclui compreensão da cultura corporal e possibilidade de escolha, não avaliar valor pessoal apenas por desempenho. É inadequado transformar recomendações gerais em prescrição individual sem conhecer necessidades e limitações.",
+        "example": "Ir a pé a uma biblioteca é atividade física de deslocamento. Seguir uma caminhada planejada, com duração e progressão ajustadas, pode ser exercício. Participar de uma partida de basquete acrescenta regras e decisões esportivas, mas todos os casos podem envolver movimento.",
+        "pitfall": "Afirmar que apenas academia conta como atividade física ou recomendar uma carga específica para uma pessoa sem conhecer sua situação de saúde."
+      },
+      {
+        "title": "Intensidade, recuperação e diferentes capacidades",
+        "explanation": "Práticas corporais diferem por duração, intensidade, frequência e exigência de capacidades como resistência, força, coordenação e flexibilidade. O desenvolvimento de aptidão envolve adaptações e recuperação, não apenas aumentar continuamente a carga. Escalas subjetivas de esforço podem auxiliar a percepção da intensidade, enquanto medidas fisiológicas requerem contexto e interpretação adequada. Pessoas de idades e condições variadas podem precisar de adaptações diferentes, e uma prática inclusiva considera segurança, autonomia e preferência. O descanso participa do processo de adaptação; desconforto intenso ou dor não são metas necessárias de aprendizagem. A escola deve apresentar esses princípios sem diagnosticar estudantes, promover comparação humilhante ou reduzir saúde a aparência corporal.",
+        "example": "Duas pessoas caminham pelo mesmo percurso em ritmos confortáveis para cada uma. A atividade pode representar intensidades relativas diferentes, pois condicionamento e contexto variam. Comparar apenas velocidade não demonstra que uma delas se esforçou mais.",
+        "pitfall": "Tratar intensidade absoluta igual como esforço subjetivo igual para todas as pessoas ou associar sofrimento à eficácia obrigatória do treino."
+      },
+      {
+        "title": "Saúde coletiva, oportunidades e barreiras",
+        "explanation": "Adotar uma prática corporal não depende somente de motivação. Calçadas seguras, espaços de lazer, tempo disponível, transporte, renda, acessibilidade e relações sociais influenciam oportunidades de participação. Projetos escolares podem ampliar repertório apresentando danças, jogos, práticas ao ar livre, modalidades adaptadas e atividades coletivas, sem transformar uma preferência em obrigação moral. Discussões sobre saúde devem evitar estigmatizar corpos ou pessoas com deficiência e respeitar informações pessoais. Analisar dados de pesquisas exige distinguir associação estatística de causa direta e considerar grupos e períodos. A educação física pode conectar planejamento urbano, inclusão e hábitos, valorizando autonomia e decisões informadas, sem alegar que uma única modalidade atende a todas as necessidades.",
+        "example": "Uma praça iluminada com calçadas acessíveis e espaços para brincar pode facilitar práticas corporais. Isso não garante participação universal: horários, segurança percebida, preferências e acesso ao transporte também interferem, exigindo análise local.",
+        "pitfall": "Culpar indivíduos por barreiras estruturais de acesso ao movimento ou concluir que um programa isolado resolve todos os fatores de saúde."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Explique a diferença entre atividade física e exercício físico planejado.",
+        "hint": "Pense em movimento cotidiano e objetivo estruturado.",
+        "solution": "Atividade física inclui movimentos cotidianos que elevam gasto energético. Exercício é prática geralmente planejada e repetida para manter ou desenvolver capacidades. Todo exercício é atividade física, mas nem toda atividade é exercício."
+      },
+      {
+        "level": "basic",
+        "prompt": "Ir caminhando até a escola pode ser atividade física mesmo sem competição? Justifique.",
+        "hint": "Esporte competitivo não é requisito.",
+        "solution": "Sim. Caminhar envolve movimento corporal com gasto energético e pode ser atividade física de transporte. Não é necessário competir ou frequentar academia para essa classificação."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que pessoas que percorrem a mesma distância não necessariamente realizam esforço equivalente?",
+        "hint": "Compare condicionamento, ritmo e condições individuais.",
+        "solution": "O esforço relativo depende de intensidade, condição física e fatores contextuais. A distância é apenas uma variável e não permite inferir isoladamente carga fisiológica ou sensação de esforço de cada pessoa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual a importância da recuperação na prática de exercício físico?",
+        "hint": "Considere adaptação entre sessões.",
+        "solution": "Recuperação possibilita que o organismo responda às exigências da atividade e ajuda a evitar excesso de carga. Aumentar esforço sem descanso não garante melhores resultados e pode trazer riscos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique como uma calçada inacessível pode interferir na prática corporal de moradores.",
+        "hint": "Analise barreiras ambientais e não vontade individual.",
+        "solution": "Obstáculos físicos podem impedir deslocamentos ativos e limitar autonomia de certas pessoas. Isso mostra que oportunidades de atividade física dependem também de políticas urbanas e acessibilidade."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que associar aparência física diretamente à saúde é inadequado?",
+        "hint": "Aparência não fornece avaliação completa de múltiplos fatores.",
+        "solution": "Saúde envolve dimensões diversas e não pode ser inferida apenas do corpo visível. Julgamentos estéticos podem reforçar estigmas e substituir avaliações contextuais e informações confiáveis."
+      }
+    ],
+    "everyday": {
+      "context": "Dois estudantes caminham diariamente até a escola, mas um considera o trajeto leve e o outro precisa de mais pausas. Alguns colegas dizem que só atividades de academia contam como exercício para saúde.",
+      "question": "Como distinguir movimento cotidiano, exercício planejado e esforço relativo sem julgar a saúde pela aparência?",
+      "answer": "O deslocamento é atividade física mesmo sem academia. Exercício envolve planejamento; o esforço relativo varia com o contexto e as pessoas. Não é possível diagnosticar saúde ou prescrever treino apenas pela aparência ou por um trajeto.",
+      "connections": [
+        {
+          "subject": "Educação Física",
+          "topic": "Preconceito e inclusão no esporte",
+          "reason": "Práticas corporais devem respeitar diferenças de capacidade e remover barreiras sem atribuir valor às pessoas por desempenho."
+        },
+        {
+          "subject": "Geografia",
+          "topic": "Segregação socioespacial",
+          "reason": "Infraestrutura urbana, calçadas e acesso a espaços de lazer ajudam a explicar oportunidades desiguais de movimento."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Cadeias e teias alimentares",
+    "objective": "Representar relações alimentares em ecossistemas, identificar níveis tróficos e explicar fluxo de energia, reciclagem de matéria e impactos de mudanças ambientais.",
+    "sections": [
+      {
+        "title": "Quem se alimenta de quem: cadeias e setas",
+        "explanation": "Uma cadeia alimentar é representação simplificada de transferências de matéria e energia por relações de alimentação em um ecossistema. Produtores, como plantas e algas fotossintetizantes, incorporam energia luminosa em substâncias orgânicas; consumidores obtêm matéria e energia alimentando-se de outros organismos. Setas costumam apontar do recurso alimentar para o organismo que o consome, indicando direção da transferência: capim → gafanhoto → ave, por exemplo. Decompositores, como fungos e bactérias, atuam sobre matéria orgânica de diferentes níveis e participam da reciclagem de nutrientes. Uma teia alimentar combina cadeias interconectadas, aproximando-se mais da complexidade das relações reais. Os papéis podem variar com a fase de vida e com a dieta de um organismo, de modo que uma lista fixa nem sempre descreve todo o sistema.",
+        "example": "Em um terreno hipotético, capim é consumido por gafanhotos, que podem ser consumidos por pássaros. As setas ficam capim → gafanhoto → pássaro porque mostram a transferência do alimento ao consumidor. Se aves também consomem sementes, mais de uma cadeia pode integrar uma teia.",
+        "pitfall": "Desenhar a seta apontando do predador para a presa quando o exercício exige mostrar fluxo de alimento e energia."
+      },
+      {
+        "title": "Fluxo de energia e ciclos da matéria",
+        "explanation": "A energia disponível diminui, em geral, ao longo de transferências entre níveis tróficos porque organismos utilizam energia no metabolismo e parte é dissipada como calor. Por isso, a energia não circula indefinidamente em ciclos fechados na teia alimentar; há entrada, transformação e dissipação. A matéria, em contraste, é transformada e reciclada por processos biogeoquímicos, incluindo decomposição e incorporação pelos produtores. Pirâmides de energia não são equivalentes a pirâmides de número de indivíduos, que podem apresentar arranjos diferentes. A eficiência de transferência não possui uma porcentagem idêntica em todos os ecossistemas; valores escolares aproximados devem ser identificados como modelos. O conceito ajuda a entender por que mudanças num nível podem afetar outros, mas não permite prever resultados exatos sem dados.",
+        "example": "Um modelo didático supõe 10.000 kJ em produtores e 1.000 kJ no nível seguinte. A transferência de 10% é hipótese escolhida para o cálculo, não lei universal. A energia restante foi usada em processos biológicos ou dissipada, e a matéria continua participando de ciclos.",
+        "pitfall": "Dizer que a energia perdida de um nível desaparece completamente ou que toda cadeia possui eficiência obrigatória de 10%."
+      },
+      {
+        "title": "Alterações ambientais e redes de efeitos",
+        "explanation": "Retirar ou reduzir uma população pode alterar disponibilidade de alimento, competição e pressão de predação para outras espécies. Como teias contêm várias conexões, o resultado depende de alternativas alimentares, capacidade de recuperação, condições do habitat e relações com outros processos ambientais. Mudanças no uso do solo, poluição e introdução de espécies podem transformar cadeias e teias. Não é correto concluir automaticamente que eliminar um predador sempre aumenta a população de sua presa de forma permanente; recursos e outros fatores também limitam crescimento. Para investigar um caso real, seriam necessários observações, períodos e espécies identificadas. Em atividades escolares, mapas de relações podem ser usados para formular hipóteses e reconhecer incertezas, sem confundir hipótese ecológica com previsão garantida.",
+        "example": "Se uma área perde grande quantidade de plantas que alimentavam insetos, alguns consumidores podem enfrentar menor disponibilidade de alimento. O efeito sobre pássaros dependerá da existência de outras fontes alimentares, migração e mudanças na população de insetos.",
+        "pitfall": "Tratar uma teia alimentar como uma única cadeia rígida ou prometer que uma alteração produzirá exatamente a mesma consequência em qualquer ecossistema."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Na cadeia capim → gafanhoto → ave, identifique produtor e consumidores.",
+        "hint": "O produtor é o organismo fotossintetizante.",
+        "solution": "O capim é produtor porque realiza fotossíntese; gafanhoto e ave atuam como consumidores nos níveis apresentados. As setas apontam do alimento para quem o consome."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual a diferença entre cadeia e teia alimentar?",
+        "hint": "Uma é sequência simples; outra reúne várias relações.",
+        "solution": "Cadeia é uma sequência simplificada de transferências alimentares. Teia reúne cadeias interligadas e representa com maior riqueza a diversidade de relações de um ecossistema."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que a energia disponível costuma diminuir ao passar de um nível trófico para outro?",
+        "hint": "Considere metabolismo e dissipação de calor.",
+        "solution": "Organismos usam parte da energia para manutenção e atividades, dissipando parcela como calor. Assim, nem toda energia de um nível se torna biomassa disponível ao próximo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique o papel dos decompositores e distinga reciclagem de matéria de fluxo de energia.",
+        "hint": "Fungos e bactérias atuam sobre matéria orgânica.",
+        "solution": "Decompositores transformam matéria orgânica e devolvem nutrientes ao ambiente. A matéria pode participar novamente de ciclos, mas a energia sofre transferências e dissipação, não reciclagem equivalente."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma população de insetos diminuiu. É correto concluir que todas as aves da área também diminuirão?",
+        "hint": "Considere dietas variadas e relações de teia.",
+        "solution": "Não necessariamente. Algumas aves podem depender desses insetos, enquanto outras têm alimentos alternativos ou migraram. O efeito requer dados locais e conhecimento das conexões da teia."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num modelo hipotético, produtores têm 5.000 kJ e consumidores primários recebem 500 kJ. Qual a fração transferida?",
+        "hint": "Divida 500 por 5.000 e multiplique por 100.",
+        "solution": "A transferência é 500/5.000=0,10 ou 10% no modelo proposto. Esse número não deve ser generalizado automaticamente a todos os ecossistemas."
+      }
+    ],
+    "everyday": {
+      "context": "Depois de uma reforma no jardim de uma escola, diminuem as plantas e alguns insetos se tornam menos comuns. Estudantes também percebem que certas aves passam a aparecer com menor frequência.",
+      "question": "Como uma teia alimentar ajuda a formular hipóteses sem afirmar que a reforma causou sozinha todas as mudanças?",
+      "answer": "Plantas podem alimentar insetos, que por sua vez servem de alimento a aves. A redução das plantas pode afetar várias conexões, mas confirmação exige observação, outras fontes de alimento e condições do ambiente.",
+      "connections": [
+        {
+          "subject": "Biologia",
+          "topic": "Membrana plasmática e transporte",
+          "reason": "Os organismos da teia dependem de trocas de substâncias em suas células, ainda que a cadeia alimentar descreva relações numa escala ecológica."
+        },
+        {
+          "subject": "Ciências",
+          "topic": "Reações químicas no cotidiano",
+          "reason": "A decomposição transforma substâncias da matéria orgânica, contribuindo para reciclagem de nutrientes, sem reciclar a energia do mesmo modo."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
