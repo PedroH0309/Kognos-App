@@ -123,7 +123,7 @@ const specs:Spec[] = [
       {
         "level": "basic",
         "prompt": "Uma lâmpada de 20 W fica ligada por 5 horas. Qual o consumo em kWh?",
-        "hint": "20 W=0,020 kW.",
+        "hint": "Converta 20 watts para 0,020 quilowatt antes de multiplicar pelo tempo.",
         "solution": "E=0,020×5=0,10 kWh. Os watts representam potência; o resultado em kWh representa energia acumulada durante as cinco horas."
       },
       {
@@ -221,13 +221,13 @@ const specs:Spec[] = [
       {
         "level": "intermediate",
         "prompt": "Uma solução tem pOH 3 a 25 °C. Qual pH e classificação?",
-        "hint": "Subtraia de 14.",
+        "hint": "A 25 °C, use a relação aproximada pH+pOH=14.",
         "solution": "pH≈14−3=11. Assim, a solução é básica nas condições de equilíbrio aquoso assumidas no exercício."
       },
       {
         "level": "advanced",
         "prompt": "Por que pH 2 não significa apenas uma unidade linear a mais de acidez que pH 3?",
-        "hint": "A escala representa logaritmos.",
+        "hint": "Cada unidade da escala de pH corresponde a um fator dez no modelo aproximado.",
         "solution": "A diferença de uma unidade corresponde a fator dez na concentração aproximada de H₃O⁺. Portanto, a comparação é multiplicativa, não uma diferença aditiva."
       },
       {
