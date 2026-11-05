@@ -57,26 +57,26 @@ const specs:Spec[] = [
       {
         "level": "basic",
         "prompt": "Calcule o quinto termo de uma PG com a₁=4 e q=2.",
-        "hint": "Use a₅=a₁q⁴.",
+        "hint": "Utilize a fórmula do termo geral a₅=a₁q⁴ e confira a sequência.",
         "solution": "a₅=4×2⁴=4×16=64. A sequência é 4, 8, 16, 32, 64, confirmando o valor calculado."
       },
       {
         "level": "intermediate",
         "prompt": "Um valor inicial de R$ 100 cai 10% em duas etapas. Qual o final?",
         "hint": "Multiplique por 0,90 duas vezes.",
-        "solution": "O valor fica 100×0,90×0,90=R$ 81. A redução acumulada foi de 19%, não 20%."
+        "solution": "O valor fica 100×0,90×0,90=R$ 81. A redução acumulada foi de R$ 19 sobre R$ 100, isto é, 19%, não 20%, porque o segundo desconto incide sobre R$ 90."
       },
       {
         "level": "intermediate",
         "prompt": "Qual a soma dos quatro primeiros termos da PG 3, 6, 12, 24?",
         "hint": "Some diretamente ou use a fórmula Sₙ.",
-        "solution": "S₄=3+6+12+24=45. Pela fórmula, 3(2⁴−1)/(2−1)=45, o mesmo resultado."
+        "solution": "S₄=3+6+12+24=45. Pela fórmula para q≠1, S₄=3(2⁴−1)/(2−1)=45. Os cálculos coincidem porque somam as mesmas quatro parcelas."
       },
       {
         "level": "advanced",
         "prompt": "Numa PG de razão positiva, a₂=12 e a₄=108. Ache q e a₁.",
         "hint": "A razão entre a₄ e a₂ é q².",
-        "solution": "q²=108/12=9, então q=3 pela condição de positividade. Assim a₁=12/3=4."
+        "solution": "q²=a₄/a₂=108/12=9. Como o enunciado informa que a razão é positiva, q=3. Assim, a₁=12/3=4, e a sequência começa 4, 12, 36, 108."
       },
       {
         "level": "advanced",
@@ -121,7 +121,7 @@ const specs:Spec[] = [
       {
         "title": "Q=mcΔT e unidades de calor específico",
         "explanation": "Quando o calor específico do material pode ser tratado como constante num intervalo, a transferência de calor sensível é representada por Q=m·c·ΔT. A variação térmica é ΔT=Tfinal−Tinicial, e c descreve energia por unidade de massa e por unidade de variação de temperatura. Se a massa estiver em quilogramas, c pode ser expresso em J/(kg·°C), produzindo Q em joules. Para diferenças de temperatura, um incremento de 1 °C equivale a incremento de 1 K. Se a temperatura do corpo diminui, ΔT é negativo e o sinal do Q convencionalmente indica energia cedida pelo corpo. Calcule com unidades coerentes, porque massa em gramas com c dado por quilograma produz erro de mil vezes. O modelo não descreve sozinho mudanças de fase nem efeitos de variações importantes de calor específico.",
-        "example": "Para 2 kg de água, adotando c≈4200 J/(kg·°C) e aquecimento de 20 para 25 °C, Q=2×4200×5=42.000 J, sem mudança de fase.",
+        "example": "Para 2 kg de água, adotando c≈4200 J/(kg·°C) e aquecimento de 20 para 25 °C, Q=2×4200×5=42.000 J, sem mudança de fase. O exemplo considera o calor específico aproximadamente constante no intervalo informado.",
         "pitfall": "Aplicar temperatura final no lugar da variação ou misturar massa em gramas com unidade por quilograma.",
         "steps": [
           "Converta massa e calor específico para unidades compatíveis.",
@@ -131,7 +131,7 @@ const specs:Spec[] = [
       {
         "title": "Capacidade térmica do corpo e trocas térmicas",
         "explanation": "A capacidade térmica de um corpo é C=Q/ΔT nas condições do modelo e, para material aproximadamente homogêneo com calor específico constante, C=m·c. A unidade pode ser J/°C ou J/K. O calor específico caracteriza propriedade por massa, enquanto a capacidade térmica considera o corpo inteiro. Assim, duas porções do mesmo material em massas diferentes possuem o mesmo c aproximado, mas capacidades térmicas diferentes. Em um sistema isolado ideal, a energia cedida por um corpo pode ser recebida por outro, sem troca líquida com o ambiente; numa experiência real, recipiente e ar também participam. Ao discutir equilíbrio térmico, declare se perdas são desprezadas. A temperatura final da mistura depende de massas, materiais e condições, não da simples média das temperaturas em todo caso.",
-        "example": "Um bloco de 0,5 kg com c=800 J/(kg·°C) possui C=400 J/°C; elevar sua temperatura em 3 °C exige aproximadamente 1200 J.",
+        "example": "Um bloco de 0,5 kg com c=800 J/(kg·°C) possui C=400 J/°C; elevar sua temperatura em 3 °C exige aproximadamente 1200 J. Esse valor é uma aproximação para o modelo descrito.",
         "pitfall": "Confundir C de um objeto com c de um material ou ignorar o calor absorvido pelo recipiente.",
         "steps": [
           "Calcule a capacidade do corpo multiplicando massa por calor específico.",
@@ -161,13 +161,13 @@ const specs:Spec[] = [
       {
         "level": "intermediate",
         "prompt": "Calcule a capacidade térmica de 2 kg de material com c=900 J/(kg·°C).",
-        "hint": "Use C=m·c.",
+        "hint": "Multiplique a massa pelo calor específico do material para obter C.",
         "solution": "C=2×900=1800 J/°C. Essa é a capacidade do corpo inteiro, não o calor específico por quilograma."
       },
       {
         "level": "advanced",
         "prompt": "Massas de 1 kg e 3 kg do mesmo material recebem o mesmo Q. Qual sofre maior ΔT?",
-        "hint": "Use ΔT=Q/(mc).",
+        "hint": "Use ΔT=Q/(mc) e compare o efeito das duas massas.",
         "solution": "Para o mesmo Q e c, a porção de 1 kg aquece três vezes mais que a de 3 kg, no modelo sem perdas."
       },
       {
