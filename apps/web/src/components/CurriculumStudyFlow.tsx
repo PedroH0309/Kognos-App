@@ -11,7 +11,7 @@ import {canFinishLesson,curriculumSubjects,curriculumSubjectTopics,nextCurriculu
 type Props={
  preferredExam?:ExamId|null;
  focus?:{lessonId:string;subject:string}|null;
- renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void)=>ReactNode;
+ renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void,onRelatedTopic:(topicId:string)=>void)=>ReactNode;
 };
 const statuses:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada · revisão pendente',guided:'Guia inicial pré-carregado · aprofundamento pendente',introduction:'Introdução disponível',outline:'Tema mapeado, sem aula',draft:'Em revisão'};
 const icons:Record<string,typeof Calculator>={
@@ -67,6 +67,12 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
   setSubject(topic.subject);setSelected(topic.id);resetCompletion();setStep('lesson');
  }
  function nextLesson(){if(next&&(!hasLesson||ready))chooseTopic(next);}
+ function openRelatedTopic(topicId:string){
+  const target=topics.find(item=>item.id===topicId);
+  if(!target)return;
+  if(!scoped.some(item=>item.id===topicId)){setExam('all');setGrade(null);}
+  chooseTopic(target);
+ }
  return <main className="app-content course-room k-curriculum-flow">
   <div ref={top} className="k-curriculum-flow-anchor" aria-hidden="true"/>
   {loadError&&<div className="message warning" role="alert">{loadError}
@@ -136,7 +142,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
     <span className="k-curriculum-maturity">{statuses[current.status]??'Em revisão'}</span>
    </header>
     <article className="k-curriculum-dedicated-reader" key={current.id}>
-     {renderLesson(current,setActivitiesAnswered)}
+     {renderLesson(current,setActivitiesAnswered,openRelatedTopic)}
     </article>
     <footer className="k-curriculum-lesson-progress">
      <div className="k-curriculum-progress-head"><BookOpenCheck size={21}/><div>

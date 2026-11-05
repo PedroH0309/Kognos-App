@@ -16,7 +16,9 @@ test('The Estudos entry renders subject selector before topic list and dedicated
  assert.match(flow,/k-curriculum-dedicated-reader/);
  assert.match(flow,/curriculumSubjects\(scoped\)/);
  assert.match(flow,/curriculumSubjectTopics\(scoped,subject\)/);
- assert.match(flow,/renderLesson\(current,setActivitiesAnswered\)/);
+ assert.match(flow,/renderLesson\(current,setActivitiesAnswered,openRelatedTopic\)/);
+ assert.match(flow,/function openRelatedTopic\(topicId:string\)/);
+ assert.match(room,/onNavigateTopic=\{onRelatedTopic\}/);
 });
 test('Each lesson has all existing reading/practice/explanation/material/evolution options',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');

@@ -34,15 +34,17 @@ type CurriculumRoomProps={
  onGenerateAI?:(id:string,fresh?:boolean)=>void;
  onOpenLab?:(topic:CurriculumTopic)=>void;
  onActivityProgress?:(done:boolean)=>void;
+ onNavigateTopic?:(topicId:string)=>void;
 };
 export default function CurriculumRoom(props:CurriculumRoomProps){
  if(props.embedded)return <EmbeddedCurriculumRoom {...props}/>;
  return <CurriculumStudyFlow preferredExam={props.preferredExam} focus={props.focus}
-  renderLesson={(topic,onActivityProgress)=><EmbeddedCurriculumRoom key={topic.id} {...props}
+  renderLesson={(topic,onActivityProgress,onRelatedTopic)=><EmbeddedCurriculumRoom key={topic.id} {...props}
+   onNavigateTopic={onRelatedTopic}
    embedded focus={{lessonId:topic.id,subject:topic.subject}}
    onActivityProgress={onActivityProgress}/>}/>;
 }
-function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=null,embedded=false,onContextChange,onTutor,onGenerateAI,onOpenLab,onActivityProgress}:CurriculumRoomProps){
+function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=null,embedded=false,onContextChange,onTutor,onGenerateAI,onOpenLab,onActivityProgress,onNavigateTopic}:CurriculumRoomProps){
  const [topics,setTopics]=useState<Topic[]>([]),[exam,setExam]=useState<string>(preferredExam??'all'),[subject,setSubject]=useState('all'),[search,setSearch]=useState(''),[limit,setLimit]=useState(40);
  const [provaoGrade,setProvaoGrade]=useState<ProvaoGrade|null>(null);
  const [selected,setSelected]=useState<string|null>(null),[detail,setDetail]=useState<Detail|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[consent,setConsent]=useState(false),[video,setVideo]=useState<CourseVideo|null>(null);
@@ -91,7 +93,8 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
      {(['lesson','activities','explanations'] as const).map(pane=><div key={pane} hidden={readerTab!==pane}>
       <TopicLessonSections view={pane==='lesson'?'content':pane} subject={detail.topic.subject}
        topic={detail.topic.topic} lesson={detail.lesson} introduction={detail.introduction} onTutor={onTutor}
-        onActivityProgress={pane==='activities'?onActivityProgress:undefined}/>
+        onActivityProgress={pane==='activities'?onActivityProgress:undefined}
+        onRelatedTopic={onNavigateTopic??((id)=>{const target=topics.find(item=>item.id===id);if(target){setSelected(id);setSubject(target.subject);setExam('all');setSearch('');}})}/>
      </div>)}
      {readerTab==='lesson'&&(!detail.lesson||detail.lesson.review==='introductory')&&<div className="course-generation">
       <h3>Desenvolver aula completa com o Kog</h3>
