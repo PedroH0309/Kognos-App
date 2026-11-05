@@ -746,6 +746,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Português",
+    "topic": "Variação regional, social e histórica",
+    "objective": "Reconhecer variedades linguísticas e adequação ao contexto, diferenciando diferenças de uso, norma-padrão e preconceito linguístico.",
+    "sections": [
+      {
+        "title": "A língua varia conforme pessoas e situações",
+        "explanation": "Uma língua não é usada de maneira idêntica por todas as pessoas. Há variação regional, relacionada ao espaço geográfico; social, ligada a redes de convivência e condições socioculturais; histórica, associada a transformações ao longo do tempo; e situacional, vinculada a interlocutores e gêneros. Vocabulário, pronúncia e construções podem mudar sem impedir comunicação entre falantes. Uma palavra cotidiana de determinada região pode ter equivalente em outra, e uma expressão familiar pode não ser esperada num documento jurídico. Diferença linguística não indica inferioridade intelectual nem deficiência moral. Para interpretar um enunciado, pergunte quem fala, com quem, em qual situação, para qual finalidade e por qual meio. Esse procedimento permite estudar língua como prática social, não apenas como coleção de erros a corrigir.",
+        "example": "Em regiões distintas do Brasil, pessoas podem empregar 'mandioca', 'aipim' ou 'macaxeira' para denominar o mesmo alimento em determinados contextos; a escolha lexical revela repertórios, não inteligência.",
+        "pitfall": "Chamar um sotaque regional de incapacidade de falar ou presumir que todos os moradores de uma região usam exatamente as mesmas palavras.",
+        "steps": [
+          "Identifique interlocutores, situação e finalidade de uma fala antes de julgá-la.",
+          "Separe variação lexical, pronúncia e organização das frases."
+        ]
+      },
+      {
+        "title": "Norma-padrão, convenções e adequação",
+        "explanation": "A norma-padrão é um conjunto de convenções codificadas para determinados usos formais, especialmente na escrita, mas não representa integralmente o português falado por uma pessoa ou grupo. Aprender a utilizá-la pode ampliar oportunidades em gêneros como redações de vestibular, relatórios e requerimentos. Isso não exige desqualificar variedades populares ou expressões informais: há adequação ou inadequação ao contexto e há convenções exigidas por certos exames. Um diálogo por aplicativo, uma apresentação acadêmica e uma crônica podem empregar registros diferentes por escolhas comunicativas legítimas. Ao revisar um texto escolar, vale perguntar se a construção atende à situação e às regras da tarefa, explicando alterações sem tratar a variedade habitual do aluno como inferior. É necessário distinguir norma formal de padrões reais de uso, que também variam historicamente.",
+        "example": "Numa mensagem a um amigo, 'tô chegando' pode ser adequado; num requerimento administrativo, 'estou a caminho' pode corresponder melhor ao registro esperado. A diferença está na finalidade comunicativa.",
+        "pitfall": "Confundir norma-padrão com único modo legítimo de falar e usar correção escolar para discriminar sotaques ou classes sociais.",
+        "steps": [
+          "Determine se a situação requer registro informal, semiformal ou convenções de escrita formal.",
+          "Revise a adequação ao gênero sem equiparar uma variedade a inferioridade humana."
+        ]
+      },
+      {
+        "title": "Mudança histórica e combate ao preconceito",
+        "explanation": "Línguas mudam com contatos culturais, tecnologia, migração e transformações sociais. Palavras antigas podem ganhar novos sentidos; neologismos surgem e expressões antes frequentes podem cair em desuso. A mudança não significa necessariamente empobrecimento: é característica de sistemas vivos de comunicação. O preconceito linguístico ocorre quando modos de falar são tratados como sinais de menor valor das pessoas ou de certos grupos, ignorando condições históricas e sociais do uso. Em debates públicos, é importante diferenciar a análise de uma frase num contexto formal da desqualificação do falante. Nenhuma regra escolar isolada permite concluir caráter, competência profissional ou origem exata de uma pessoa. No vestibular, reconhecer variedades exige interpretar situações e perceber que textos literários podem representar falas diversas como recurso de construção de personagens.",
+        "example": "Um anúncio antigo pode empregar palavras e grafias que hoje parecem incomuns. A comparação com anúncios atuais informa mudanças linguísticas e culturais, não prova que falantes de uma época eram menos competentes.",
+        "pitfall": "Supor que toda mudança na língua é corrupção ou inferir escolaridade individual somente pelo modo como uma pessoa se expressa.",
+        "steps": [
+          "Compare exemplos históricos considerando a época e o meio em que circulavam.",
+          "Ao identificar variação, evite transformá-la em estereótipo sobre um grupo social."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O uso de 'aipim', 'mandioca' e 'macaxeira' exemplifica qual fenômeno?",
+        "hint": "Considere diferentes repertórios regionais.",
+        "solution": "É exemplo de variação lexical regional em determinados contextos. As formas não tornam uma pessoa mais competente que outra."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que diferentes sotaques não indicam níveis diferentes de inteligência?",
+        "hint": "Língua e valor pessoal não são a mesma coisa.",
+        "solution": "Sotaques são formas de variação fonética social e histórica. Não fornecem medida de inteligência nem justificam hierarquizar falantes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique a diferença entre fala informal e norma-padrão num requerimento oficial.",
+        "hint": "Considere gênero e finalidade da escrita.",
+        "solution": "Um requerimento costuma exigir convenções formais, enquanto a fala cotidiana pode ser apropriada em interações informais. Adequação depende da situação."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma crônica reproduz fala regional. Isso é necessariamente erro do escritor?",
+        "hint": "Considere caracterização e efeito expressivo.",
+        "solution": "Não. A variedade pode ser recurso literário para representar vozes e situações. Sua função deve ser analisada no texto, sem corrigir automaticamente toda diferença."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que corrigir uma redação formal não autoriza afirmar que a fala cotidiana do aluno é inferior?",
+        "hint": "Separe convenção de julgamento sobre pessoas.",
+        "solution": "Uma avaliação verifica adequação a normas do gênero exigido. Essa tarefa não estabelece inferioridade da variedade usada em outras situações."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma palavra antiga desapareceu do uso comum. Isso prova que a língua piorou?",
+        "hint": "Mudança e perda de qualidade não são equivalentes.",
+        "solution": "Não. Variações de frequência e sentido fazem parte da mudança histórica; avaliar qualidade exigiria critério específico, não mera comparação nostálgica."
+      }
+    ],
+    "everyday": {
+      "context": "Uma escola recebe duas versões de um aviso: uma mensagem entre colegas usa 'tô chegando' e um comunicado oficial usa 'estou a caminho'. Alguém diz que a primeira forma prova falta de inteligência.",
+      "question": "Como explicar a diferença de registro sem tratar quem fala de forma informal como menos capaz?",
+      "answer": "As duas expressões podem cumprir funções em contextos diferentes. A norma-padrão atende a convenções de escrita formal, enquanto a forma informal pode ser adequada na conversa cotidiana; nenhuma mede inteligência.",
+      "connections": [
+        {
+          "subject": "Português",
+          "topic": "Coesão referencial",
+          "reason": "A clareza de quem ou do que se fala também depende de escolhas linguísticas adequadas ao gênero e aos interlocutores."
+        },
+        {
+          "subject": "Literatura",
+          "topic": "Narrador e foco narrativo",
+          "reason": "Narradores e personagens podem empregar registros diferentes para construir perspectiva, voz e contexto social."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Literatura",
+    "topic": "Naturalismo brasileiro",
+    "objective": "Identificar características do Naturalismo na literatura brasileira, relacionando narrador, meio social e explicações científicas de época sem validar determinismos pseudocientíficos.",
+    "sections": [
+      {
+        "title": "Naturalismo e contexto do século XIX",
+        "explanation": "O Naturalismo brasileiro costuma ser associado à publicação de O Cortiço, de Aluísio Azevedo, em 1890, entre outras obras da época. O movimento relaciona-se a debates científicos e sociais do século XIX e costuma enfatizar condições de vida, conflitos coletivos e influências atribuídas ao meio, à hereditariedade e a relações materiais sobre personagens. Essas ideias aparecem em construções ficcionais e não devem ser aceitas automaticamente como verdades científicas contemporâneas. Naturalismo e Realismo possuem proximidades, incluindo crítica social e atenção a comportamentos, mas não formam conjuntos perfeitamente separados. Uma obra pode empregar narrador observador, descrição minuciosa e personagens em contextos de desigualdade, construindo determinados efeitos de interpretação. Ao ler um trecho, identifique procedimentos literários concretos antes de classificar a escola.",
+        "example": "Um romance imaginário descreve condições de moradia e relações entre moradores para construir retrato coletivo. A descrição pode sugerir influência do ambiente, mas permanece escolha artística do autor.",
+        "pitfall": "Afirmar que Naturalismo é ciência comprovada ou que uma obra se torna naturalista apenas por apresentar pessoas em situação de pobreza.",
+        "steps": [
+          "Observe o papel da descrição do meio e da coletividade na narrativa.",
+          "Contextualize as ideias científicas do século XIX sem tratá-las como conclusões atuais."
+        ]
+      },
+      {
+        "title": "Meio, hereditariedade e determinismo como ideias literárias",
+        "explanation": "Parte da ficção naturalista explorou a hipótese de que comportamentos seriam fortemente determinados por ambiente, herança biológica e condições sociais. Essas representações podem revelar como escritores de seu tempo dialogavam com correntes como o positivismo e discursos cientificistas. Entretanto, atribuir automaticamente características morais ou intelectuais a herança, raça ou grupo social constitui generalização inadequada e pode reproduzir teorias discriminatórias historicamente difundidas. O leitor deve distinguir como a obra representa pessoas daquilo que estudos científicos atuais sustentam. Em análise literária, a referência a determinismo pode ser pista de escola estética, mas não valida a explicação usada. Descrições do espaço e de corpos também podem ser criticadas quanto à perspectiva do narrador e a estereótipos.",
+        "example": "Um narrador fictício afirma que todos os moradores de determinada rua agem igualmente por causa do clima. A afirmação indica visão determinista do narrador, não uma lei científica sobre aquelas pessoas.",
+        "pitfall": "Reproduzir determinismo racial ou social de narradores como se fosse explicação biologicamente válida para comportamentos humanos.",
+        "steps": [
+          "Identifique generalizações feitas pelo narrador e que evidências o texto oferece.",
+          "Separe o contexto intelectual da obra de interpretações científicas atuais."
+        ]
+      },
+      {
+        "title": "Coletividade, narrador e crítica social",
+        "explanation": "Uma narrativa naturalista pode construir ambientes densos com múltiplos personagens, fazendo do espaço e das relações de trabalho elementos relevantes do enredo. Em O Cortiço, a moradia coletiva tem papel central na organização narrativa, permitindo observar tensões econômicas, exploração e hierarquias representadas no século XIX. Não se deve ler o romance como levantamento estatístico de toda população brasileira ou tomar suas descrições como fatos sem mediação. O narrador seleciona imagens, enfatiza corpos e ações e organiza julgamentos que precisam ser analisados criticamente. A proximidade com o Realismo aparece na crítica a relações sociais, enquanto a ênfase em tendências deterministas e em certos procedimentos descritivos pode diferenciá-los para fins escolares. A análise mais produtiva pergunta como a linguagem constrói o problema e quais visões de sociedade estão em disputa.",
+        "example": "Uma sequência de cenas inventadas mostra trabalhadores compartilhando moradia e enfrentando cobranças de aluguel. A organização do espaço pode apoiar leitura de desigualdade sem provar que cada pessoa da época viveu assim.",
+        "pitfall": "Confundir narrador com autor ou reduzir a obra inteira à documentação fiel de um ambiente urbano.",
+        "steps": [
+          "Descreva o espaço narrativo e como ele afeta relações entre personagens.",
+          "Compare recursos de crítica social no Naturalismo e no Realismo sem impor fronteiras rígidas."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual romance de 1890 é marco comum do Naturalismo brasileiro?",
+        "hint": "Considere a obra de Aluísio Azevedo.",
+        "solution": "O Cortiço, de Aluísio Azevedo, publicado em 1890, é referência importante do Naturalismo brasileiro, sem resumir sozinho toda a produção do movimento."
+      },
+      {
+        "level": "basic",
+        "prompt": "O que significa determinismo no debate sobre Naturalismo?",
+        "hint": "Pense em explicações por meio e herança.",
+        "solution": "É tendência de apresentar comportamentos como fortemente condicionados por fatores externos e hereditários. Na obra, essa visão deve ser analisada historicamente, não validada automaticamente."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que um narrador naturalista não é equivalente a um pesquisador neutro?",
+        "hint": "O texto literário envolve escolhas de linguagem.",
+        "solution": "A narração seleciona acontecimentos e descrições e constrói efeitos estéticos e julgamentos. Mesmo com aparência de observação, é representação ficcional."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Como o espaço coletivo pode participar do enredo em romances naturalistas?",
+        "hint": "Considere relações de convivência e trabalho.",
+        "solution": "A moradia e as condições materiais podem estruturar conflitos entre personagens e produzir crítica social, sem serem cenário puramente decorativo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que não se deve repetir explicações raciais deterministas de obras oitocentistas como ciência atual?",
+        "hint": "São discursos historicamente situados e potencialmente discriminatórios.",
+        "solution": "A representação literária revela ideias de época, mas não constitui evidência científica válida sobre grupos. A análise crítica separa contexto, estereótipos e conhecimento contemporâneo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare Naturalismo e Realismo sem afirmar que só um aborda desigualdade.",
+        "hint": "Observe diferenças de procedimentos, não exclusividade de temas.",
+        "solution": "Ambos podem abordar contradições sociais; textos naturalistas frequentemente intensificam atenção ao meio e a explicações deterministas, que devem ser contextualizadas criticamente."
+      }
+    ],
+    "everyday": {
+      "context": "Uma turma lê uma descrição de moradia coletiva num romance do século XIX. Um narrador atribui atitudes de personagens ao ambiente em que vivem, e colegas concluem que o livro comprova uma lei científica.",
+      "question": "Como reconhecer uma perspectiva naturalista sem transformar a ficção e o determinismo da época em ciência atual?",
+      "answer": "A obra pode usar descrição do meio e uma visão determinista para construir personagens. Isso é procedimento literário historicamente situado, não evidência científica universal.",
+      "connections": [
+        {
+          "subject": "Literatura",
+          "topic": "Realismo brasileiro",
+          "reason": "Os dois movimentos compartilham interesse por crítica social, mas a ênfase naturalista em certas explicações deterministas requer análise específica."
+        },
+        {
+          "subject": "Sociologia",
+          "topic": "Marx: classes sociais e conflito",
+          "reason": "Condições de trabalho e desigualdade podem ser estudadas estruturalmente sem reduzir pessoas a características biológicas supostas."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
