@@ -562,6 +562,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Marx: classes sociais e conflito",
+    "objective": "Analisar classes sociais e relações de produção em Marx, relacionando propriedade dos meios de produção, trabalho assalariado, conflito e formas de alienação.",
+    "sections": [
+      {
+        "title": "Classes sociais e relações de produção",
+        "explanation": "Na análise de Karl Marx, classes sociais são compreendidas pela posição dos grupos nas relações de produção, e não apenas por faixas de renda. No capitalismo, a burguesia se caracteriza, no modelo teórico, pela propriedade dos meios de produção, enquanto o proletariado depende da venda de sua força de trabalho. Empresas e trabalhadores reais apresentam configurações complexas, com autônomos, trabalhadores do setor público, cooperativas e outras posições; a tipologia ajuda a examinar relações estruturais, não a rotular qualquer pessoa pela aparência. Trabalho, capital, propriedade e controle de decisões produtivas são elementos centrais. A relação entre classes pode incluir cooperação no processo produtivo e conflito de interesses sobre remuneração, condições de trabalho e apropriação de resultados. Compreender o conceito exige olhar instituições e organização econômica, sem reduzir todas as identidades humanas à classe.",
+        "example": "Numa fábrica hipotética, trabalhadores recebem salários por sua atividade, enquanto proprietários decidem investimentos e retêm resultados financeiros conforme contratos e leis. O exemplo permite distinguir trabalho assalariado de propriedade dos meios de produção.",
+        "pitfall": "Definir classe marxiana apenas pela quantidade de dinheiro no banco ou supor que cada trabalhador possui exatamente a mesma condição.",
+        "steps": [
+          "Identifique quem controla os meios de produção e quem depende de vender força de trabalho.",
+          "Diferencie posição estrutural na produção de renda individual ou estilo de vida."
+        ]
+      },
+      {
+        "title": "Valor, exploração e mais-valia como conceitos teóricos",
+        "explanation": "Marx desenvolveu uma crítica da produção capitalista utilizando conceitos como mercadoria, trabalho socialmente necessário, valor e mais-valia. Em sua teoria, a força de trabalho é adquirida mediante salário, e o processo produtivo pode gerar valor superior ao valor pago por essa força de trabalho. A diferença teórica está associada à mais-valia e constitui ponto central de sua explicação da exploração capitalista. Não é correto identificar mais-valia simplesmente com o lucro contábil de qualquer empresa: preços, custos, circulação e categorias econômicas precisam ser distinguidos. Tampouco se obtém uma medida rigorosa de exploração dividindo faturamento pelo salário de uma pessoa. A teoria marxiana é uma perspectiva analítica influente, debatida e reinterpretada, que deve ser apresentada como teoria, não como lei econômica aceita sem controvérsia por todas as escolas.",
+        "example": "Uma loja vende produtos cuja receita supera parte das despesas com salários, mas esse fato isolado não permite calcular 'mais-valia' diretamente. Seria necessário distinguir receita, custos, trabalho e as categorias da teoria de Marx.",
+        "pitfall": "Confundir faturamento com valor criado no trabalho ou tratar toda diferença entre preço de venda e salário como cálculo suficiente da mais-valia.",
+        "steps": [
+          "Separe força de trabalho, processo produtivo e resultados econômicos na exposição da teoria.",
+          "Não confunda categorias de Marx com indicadores contábeis simples e sem contexto."
+        ]
+      },
+      {
+        "title": "Alienação, conflitos e transformações no trabalho",
+        "explanation": "A alienação em Marx envolve relações pelas quais o trabalhador pode perder controle sobre o produto, o processo e sentidos de sua atividade em determinadas formas de organização do trabalho. O conceito não significa apenas estar entediado ou distraído, embora experiências de falta de autonomia possam ajudar a introduzir o problema. A divisão técnica de tarefas, a propriedade e a organização hierárquica influenciam condições concretas, mas seus efeitos variam historicamente. Sindicatos, legislação, negociação coletiva, automação e plataformas digitais modificam conflitos e possibilidades de ação, sem eliminar necessariamente diferenças de poder. Uma leitura sociológica cuidadosa pergunta quem decide, quais condições existem e quais interesses estão em disputa, evitando atribuir motivação única a todo empregador ou empregado. O conceito pode ser comparado à divisão do trabalho em Durkheim, reconhecendo questões teóricas diferentes.",
+        "example": "Numa tarefa fictícia, uma pessoa repete uma pequena etapa de produção sem acompanhar o resultado completo nem participar de decisões. Isso pode ilustrar dimensões da alienação, mas não prova que todas as ocupações industriais funcionem desse modo.",
+        "pitfall": "Usar alienação apenas como sinônimo de falta de concentração ou afirmar que qualquer atividade repetitiva é necessariamente alienada no mesmo sentido.",
+        "steps": [
+          "Examine autonomia, relação com o produto e controle do processo de trabalho.",
+          "Compare análises de conflito com análises de interdependência, sem tratá-las como equivalentes."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Na teoria de Marx, o que distingue burguesia e proletariado?",
+        "hint": "Considere propriedade dos meios de produção e venda da força de trabalho.",
+        "solution": "Na tipologia marxiana do capitalismo, burguesia controla meios de produção e proletariado depende principalmente da venda de força de trabalho; não se trata apenas de diferença de renda."
+      },
+      {
+        "level": "basic",
+        "prompt": "Por que classe social em Marx não é simplesmente uma faixa de salário?",
+        "hint": "A posição na produção inclui propriedade e controle.",
+        "solution": "O conceito se relaciona às relações de produção, como propriedade dos meios e dependência do salário. Pessoas com rendas próximas podem ocupar posições estruturais distintas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique mais-valia sem confundi-la com o lucro contábil.",
+        "hint": "Considere valor produzido e valor da força de trabalho.",
+        "solution": "Na crítica de Marx, mais-valia é conceito ligado à diferença entre valor criado pelo trabalho e valor da força de trabalho. Não é automaticamente o lucro informado num balanço."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Como a divisão das tarefas pode relacionar-se à alienação segundo Marx?",
+        "hint": "Considere controle sobre processo e produto.",
+        "solution": "Quando o trabalhador tem pouco controle sobre produto, decisões e processo, podem aparecer dimensões da alienação descrita por Marx. A análise depende de condições concretas."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que faturamento de uma empresa menos salários não calcula rigorosamente mais-valia?",
+        "hint": "Distinga receita, custos e conceitos teóricos.",
+        "solution": "O faturamento incorpora transações e preços e não equivale diretamente a valor produzido. A teoria requer categorias específicas e não se resume à subtração de despesas salariais."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare conflito de classes em Marx com interdependência do trabalho em Durkheim.",
+        "hint": "São enfoques diferentes sobre relações sociais.",
+        "solution": "Marx destaca relações de propriedade e conflitos de interesse na produção; Durkheim examina divisão de funções e formas de solidariedade. Um enfoque não reduz o outro a erro."
+      }
+    ],
+    "everyday": {
+      "context": "Um grupo estuda uma plataforma de entregas. Algumas pessoas controlam o serviço e definem regras, enquanto outras realizam entregas e recebem pagamentos variáveis. Um colega diz que a diferença é apenas de salários.",
+      "question": "Por que uma análise marxiana pergunta também quem controla os meios e as condições de produção?",
+      "answer": "Porque classe e conflito, na teoria de Marx, envolvem propriedade, controle e dependência do trabalho, além da remuneração. O exemplo não autoriza classificar toda pessoa da plataforma de modo automático.",
+      "connections": [
+        {
+          "subject": "Sociologia",
+          "topic": "Trabalho e divisão social",
+          "reason": "O trabalho pode ser analisado pela distribuição de funções e também por propriedade, autonomia e relações de poder."
+        },
+        {
+          "subject": "História",
+          "topic": "Revolução Industrial",
+          "reason": "A industrialização e a expansão do trabalho assalariado ajudam a contextualizar o desenvolvimento histórico da crítica de Marx."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Contratualismo: Hobbes, Locke e Rousseau",
+    "objective": "Comparar os modelos filosóficos de contrato social em Hobbes, Locke e Rousseau, distinguindo estado de natureza, legitimidade política e limites de poder.",
+    "sections": [
+      {
+        "title": "Contrato social: uma hipótese sobre legitimidade",
+        "explanation": "Teorias contratualistas procuram justificar a formação e a legitimidade da autoridade política a partir de uma situação concebida sem governo civil. O chamado estado de natureza é uma construção filosófica distinta em cada autor, não um período histórico documentado de modo idêntico. Thomas Hobbes, John Locke e Jean-Jacques Rousseau utilizaram essa hipótese para discutir liberdade, segurança, direitos e obrigação política, chegando a modelos diferentes. Não se deve afirmar que os três defenderam a mesma forma de Estado ou que uma sociedade real assinou literalmente um contrato único. A comparação exige identificar que problema cada autor tenta resolver e qual autoridade considera legítima. A teoria oferece instrumentos para avaliar decisões políticas, mas não substitui história institucional nem a leitura de leis existentes.",
+        "example": "Numa escola que precisa estabelecer regras de uso comum, os estudantes podem debater por que aceitar limites individuais. A analogia introduz legitimidade e acordo, mas uma sala de aula não reproduz literalmente o contrato social dos filósofos.",
+        "pitfall": "Tratar estado de natureza como relato histórico comprovado ou afirmar que todos os contratualistas chegaram às mesmas conclusões.",
+        "steps": [
+          "Separe o problema de convivência da solução política defendida por cada autor.",
+          "Compare as hipóteses filosóficas sem transformá-las em fatos arqueológicos."
+        ]
+      },
+      {
+        "title": "Hobbes e Locke: segurança e limites do governo",
+        "explanation": "Para Hobbes, no estado de natureza sem autoridade comum eficaz, a insegurança e o conflito são riscos centrais. A instituição de poder soberano forte é proposta como saída para garantir paz, embora a discussão sobre obrigações e autodefesa seja mais complexa do que uma fórmula de obediência irrestrita. Locke desenvolve outra concepção: indivíduos possuem direitos naturais, com destaque para vida, liberdade e propriedade, e o governo civil deve protegê-los. Quando a autoridade viola sistematicamente os fins para os quais foi constituída, Locke admite resistência sob condições de sua teoria. Isso não permite atribuir a ambos defesa do mesmo absolutismo nem considerar Locke idêntico às democracias constitucionais atuais. São propostas formuladas em contextos históricos e políticos diferentes, que exigem análise de seus argumentos.",
+        "example": "Se uma autoridade cria regra para reduzir conflitos, Hobbes favorece pensar a necessidade de poder comum eficaz; Locke leva a perguntar se a regra protege direitos e se o governo permanece limitado por sua finalidade.",
+        "pitfall": "Resumir Hobbes como defesa de violência e Locke como ausência de Estado, apagando a estrutura de seus modelos.",
+        "steps": [
+          "Identifique qual problema a autoridade soberana enfrenta na teoria de Hobbes.",
+          "Em Locke, examine o papel dos direitos naturais e dos limites de legitimidade do governo."
+        ]
+      },
+      {
+        "title": "Rousseau, vontade geral e participação",
+        "explanation": "Rousseau desenvolve uma crítica às desigualdades e propõe pensar associação política em que cidadãos, como corpo coletivo, participem da elaboração de regras legítimas. No Contrato Social, a soberania está ligada ao povo e à vontade geral, conceito que não deve ser confundido automaticamente com a soma de preferências particulares ou com a opinião de qualquer governante que diga representá-la. Sua teoria exige distinguir interesse comum, leis gerais e facções ou interesses privados. Rousseau não oferece simplesmente a mesma solução que Hobbes ou Locke; as diferenças aparecem no sentido de liberdade e na origem da autoridade legítima. O debate contemporâneo pode usar essas categorias para examinar participação e direitos, mas instituições atuais não são cópias perfeitas de nenhum desses modelos. É importante contextualizar também tensões e limites de cada teoria.",
+        "example": "Em decisão sobre regras gerais de uma comunidade, a pergunta inspirada em Rousseau é se o procedimento e o conteúdo da lei podem expressar interesse comum, e não apenas benefício de um grupo influente.",
+        "pitfall": "Confundir vontade geral com opinião de maioria momentânea ou supor que o governante pode alegá-la sem qualquer participação e limite.",
+        "steps": [
+          "Distinga interesse comum de soma de interesses particulares.",
+          "Compare soberania popular em Rousseau com os modelos de autoridade de Hobbes e Locke."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O estado de natureza é um fato histórico idêntico nos três contratualistas?",
+        "hint": "Pense em experimento filosófico, não relatório histórico.",
+        "solution": "Não. É uma construção teórica usada de modos diferentes para discutir legitimidade política, direitos e autoridade."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual problema central Hobbes procura enfrentar ao justificar o Estado?",
+        "hint": "Considere insegurança e ausência de autoridade comum.",
+        "solution": "Hobbes destaca riscos de conflito e insegurança na ausência de poder comum eficaz; o soberano é concebido como forma de garantir paz."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual é o papel dos direitos naturais na teoria política de Locke?",
+        "hint": "Lembre vida, liberdade e propriedade.",
+        "solution": "Em Locke, a autoridade civil deve proteger direitos naturais e tem legitimidade vinculada a esse objetivo, admitindo-se resistência sob condições de violação."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que vontade geral em Rousseau não é mera soma de gostos individuais?",
+        "hint": "Diferencie interesse comum e preferências particulares.",
+        "solution": "A vontade geral é conceito relativo ao interesse comum e à soberania popular; não equivale automaticamente à soma dos desejos privados de cada cidadão."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare o papel do soberano em Hobbes e os limites do governo em Locke.",
+        "hint": "Analise segurança e proteção de direitos.",
+        "solution": "Hobbes enfatiza poder comum capaz de manter paz; Locke subordina governo à proteção dos direitos naturais e admite contestação de abusos conforme sua teoria."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que não é correto dizer que as democracias atuais copiam integralmente Rousseau?",
+        "hint": "Instituições históricas possuem outras influências.",
+        "solution": "O modelo de soberania e vontade geral de Rousseau influencia debates, mas democracias atuais combinam instituições e tradições distintas, com procedimentos não idênticos ao seu projeto."
+      }
+    ],
+    "everyday": {
+      "context": "Uma escola discute novas regras para uso compartilhado de espaços. Alguns estudantes priorizam autoridade para evitar conflitos; outros exigem garantias de direitos e participação nas decisões.",
+      "question": "Como os modelos de Hobbes, Locke e Rousseau orientariam perguntas diferentes sobre essas regras?",
+      "answer": "Hobbes destaca segurança e autoridade comum; Locke, proteção dos direitos e limites do governo; Rousseau, soberania coletiva e interesse comum. Os modelos não devem ser confundidos com regras escolares literais.",
+      "connections": [
+        {
+          "subject": "Filosofia",
+          "topic": "Argumentação e falácias",
+          "reason": "Comparar as premissas dos autores exige examinar se cada conclusão sobre autoridade decorre do modelo apresentado."
+        },
+        {
+          "subject": "História",
+          "topic": "Redemocratização e Constituição de 1988",
+          "reason": "A reflexão sobre legitimidade e direitos pode ser relacionada à organização constitucional, sem igualar teorias clássicas a instituições brasileiras atuais."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
