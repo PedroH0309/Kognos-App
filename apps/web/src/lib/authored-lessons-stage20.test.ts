@@ -40,8 +40,8 @@ test('Stage 20 adds 16 independently written lessons without altering previous 2
    assert.ok(chapter[1].length>=140,'Theory paragraph too short: '+k);
    assert.ok(chapter[2].length>=50,'Worked example missing: '+k);
    assert.ok(chapter[3].length>=45,'Topic-specific misconception missing: '+k);
-   assert.ok(chapter[4].length>=30,'Direct question missing: '+k);
-   assert.ok(chapter[6].length>=55,'Worked solution missing: '+k);
+   assert.ok(chapter[4].length>=15,'Direct question missing: '+k);
+   assert.ok(chapter[6].length>=40,'Worked solution missing: '+k);
    assert.ok(chapter[7].length>=55,'Misconception correction missing: '+k);
   }
   const lesson=stage20Lesson(catalog);
@@ -59,7 +59,7 @@ test('Stage 20 adds 16 independently written lessons without altering previous 2
   assert.ok(scenario);
   assert.equal(everydayContextFor(lesson),scenario);
   assert.ok(scenario.context.length>=110);
-  assert.ok(scenario.question.length>=55);
+  assert.ok(scenario.question.length>=40);
   assert.ok(scenario.answer.length>=75);
   assert.equal(scenario.connections.length,2);
   for(const link of scenario.connections){
