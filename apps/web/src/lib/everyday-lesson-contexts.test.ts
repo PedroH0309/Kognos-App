@@ -25,7 +25,7 @@ test('Every authored lesson starts with a distinct concrete situation and a solv
   ...stage18Topics,
   ...stage19Topics
  ];
- assert.equal(authored.length,261);
+ assert.equal(authored.length,289);
  assert.equal(everydayContexts.length,authored.length);
  const expected=new Set(authored.map(x=>x.subject+'\0'+x.topic));
  const seen=new Set();
@@ -51,7 +51,7 @@ test('Every authored lesson starts with a distinct concrete situation and a solv
    references.add(refKey);
   }
  }
- assert.equal(seen.size,261);
+ assert.equal(seen.size,289);
 });
 test('Published editorial materials do not receive an unrelated starter situation',()=>{
  const original=everydayContexts[0];
