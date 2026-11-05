@@ -56,55 +56,55 @@ export const stage19Literature:AuthoredLessonSeed[]=[
   },
   {
     "subject": "Literatura",
-    "topic": "Naturalismo brasileiro",
-    "objective": "Ler tendências naturalistas no Brasil, reconhecendo determinismo, observação de ambientes e limites de discursos cientificistas de época.",
+    "topic": "Modernismo: romance de 1930",
+    "objective": "Interpretar romances brasileiros associados ao período de 1930, analisando narrador, linguagem e conflitos sociais sem reduzir ficção a relatório histórico.",
     "chapters": [
       [
-        "Naturalismo e contexto científico",
-        "O Naturalismo brasileiro, associado ao fim do século XIX, dialogou com correntes científicas e interpretações deterministas de seu tempo. Textos tendem a observar ambientes, condições materiais e relações sociais, mas isso não significa que apresentem diagnósticos científicos válidos hoje. A voz narrativa seleciona e interpreta aspectos do mundo ficcional.",
-        "Uma descrição de cortiço pode relacionar espaço, trabalho e conflitos sociais, sem funcionar como pesquisa estatística da população real.",
-        "Um romance naturalista é relatório científico neutro que comprova qualquer ideia de sua época.",
-        "Como deve ser lida uma explicação determinista sobre personagens num romance naturalista?",
-        "Considere o contexto intelectual e a construção ficcional.",
-        "Como traço narrativo ligado a ideias de época, passível de análise crítica; não como prova de que indivíduos são determinados biologicamente.",
-        "Narrativas podem reproduzir teorias hoje questionadas, e a representação literária não substitui avaliação científica independente."
+        "Romance e contexto dos anos 1930",
+        "A prosa brasileira frequentemente chamada de romance de 1930 reuniu obras com diferentes perspectivas sobre relações sociais, regionalismos, cidade, desigualdade e transformação política. Não se trata de escola estilística uniforme nem de texto que representa automaticamente toda a população de determinada região. A análise literária exige observar narrador, personagens e escolhas de linguagem.",
+        "Vidas Secas, de Graciliano Ramos, articula condições sociais, ambiente e construção narrativa própria, sem apresentar estatística de famílias sertanejas.",
+        "Todo romance da década de 1930 é documento científico neutro da sociedade representada.",
+        "Por que cenário de seca em romance não deve ser confundido com levantamento demográfico?",
+        "Considere ficção e perspectiva narrativa.",
+        "A obra seleciona personagens, linguagem e situações para produzir interpretação literária; dados sobre população exigem fontes independentes.",
+        "A literatura pode dialogar criticamente com a história, mas não funciona automaticamente como amostra estatística de um território."
       ],
       [
-        "Ambiente e conflito social",
-        "O ambiente pode assumir papel na caracterização de personagens e nas relações entre condições econômicas, moradia e trabalho. Em obras como O Cortiço, de Aluísio Azevedo, narrador e personagens articulam percepções sobre diferenças sociais e sexualidade de modo historicamente situado. É necessário analisar também preconceitos presentes na representação.",
-        "Descrever espaço superlotado pode sugerir tensão coletiva, mas não autoriza concluir que moradores reais compartilham os mesmos comportamentos.",
-        "Um ambiente literário determina necessariamente o caráter de todos os habitantes reais de espaços parecidos.",
-        "Por que espaço e personagem devem ser analisados em conjunto na ficção naturalista?",
-        "Observe como a descrição orienta conflito narrativo.",
-        "Porque o narrador pode construir relação entre condições do espaço, comportamento representado e conflitos sociais.",
-        "Representação literária seleciona situações e perspectivas; não demonstra comportamento universal de uma categoria social."
+        "Narrador e elaboração estética",
+        "Autores como Graciliano Ramos, Rachel de Queiroz e José Lins do Rego apresentam procedimentos narrativos diferentes. A concisão de certas obras e a focalização sobre experiências individuais podem produzir crítica sem discurso explicitamente panfletário. Não basta identificar tema social: estrutura, focalização, ritmo e linguagem são parte da construção do sentido.",
+        "Um narrador pode restringir informações à percepção de personagens, produzindo efeitos diferentes de uma narração que descreve tudo de fora.",
+        "Todos os romances do período utilizam o mesmo narrador e a mesma linguagem por retratarem problemas sociais.",
+        "Que aspecto formal deve ser comparado entre dois romances que tratam de dificuldades rurais?",
+        "Observe quem narra e como as cenas são construídas.",
+        "Foco narrativo, seleção de vocabulário e organização das cenas ajudam a explicar diferenças estéticas entre obras.",
+        "Compartilhar tema não significa identidade de técnica, voz literária ou posicionamento entre diferentes autores."
       ],
       [
-        "Comparação com Realismo",
-        "Realismo e Naturalismo compartilham atenção à crítica de relações sociais em parte do período, mas não são gêneros idênticos. Determinismo, descrições minuciosas e aproximações com ciências da época recebem ênfases distintas. Uma análise boa compara passagens específicas, em vez de afirmar que todo texto com detalhes pertence automaticamente a uma escola.",
-        "Uma ironia psicológica num romance realista e uma explicação ambiental em obra naturalista podem criticar sociedade por técnicas diferentes.",
-        "Qualquer texto com narrador observador e descrições detalhadas é necessariamente naturalista.",
-        "Que diferença analítica pode existir entre crítica realista e explicação naturalista?",
-        "Compare ironia, personagens e determinismo.",
-        "Uma obra realista pode explorar ironia e contradição psicológica; uma naturalista pode enfatizar ambiente e ideias deterministas.",
-        "Escolas têm tendências sobrepostas, mas detalhe descritivo isolado não determina classificação nem intenção do texto."
+        "Crítica social e interpretação responsável",
+        "Um romance pode representar violência, pobreza ou desigualdade sem afirmar que todos os indivíduos de um grupo partilham características fixas. Contexto de publicação, recepção e relações de poder devem informar a leitura. Comparações com Pré-modernismo e outras tradições ajudam a observar permanências e mudanças, mas rótulos de período não substituem análise textual.",
+        "Uma personagem submetida a migração por dificuldades econômicas não representa automaticamente a trajetória de todas as famílias do sertão.",
+        "Uma personagem ficcional descreve necessariamente a experiência exata de todas as pessoas de sua região.",
+        "Como usar romance de 1930 como repertório sem generalizar a vida de uma personagem?",
+        "Relacione tema à obra e delimite a interpretação.",
+        "É possível explicar como o romance representa certos conflitos sociais e reconhecer que se trata de elaboração ficcional situada.",
+        "Uma situação literária ilustra problemas e perspectivas, mas não prova frequência ou comportamento universal de um grupo real."
       ]
     ],
     "situation": [
-      "Um aluno afirma que O Cortiço é prova científica de que moradores de habitações coletivas têm comportamento determinado por sua origem e pelo ambiente, porque o narrador descreve seus hábitos.",
-      "Por que a obra precisa ser analisada como ficção e também à luz das ideias deterministas do século XIX?",
-      "O romance constrói personagens e relações a partir de perspectivas literárias de época, incluindo pressupostos criticáveis; não é evidência científica universal."
+      "Um aluno utiliza Vidas Secas para afirmar que toda pessoa do sertão brasileiro viveu exatamente os episódios dos personagens, sem distinguir criação literária e dado histórico.",
+      "Como o romance pode enriquecer repertório sobre condições sociais sem virar generalização indevida?",
+      "A obra fornece perspectiva literária sobre conflitos e desigualdades; para afirmar prevalência ou eventos reais são necessárias fontes históricas e sociais."
     ],
     "links": [
       [
         "Literatura",
-        "Realismo brasileiro",
-        "A comparação revela modos diferentes de crítica social e representação narrativa do final do século XIX."
+        "Pré-modernismo brasileiro",
+        "Comparar períodos permite estudar permanências de crítica social e mudanças de linguagem e foco narrativo."
       ],
       [
-        "Literatura",
-        "Pré-modernismo brasileiro",
-        "A leitura das condições sociais representadas evolui em outras obras, com debates distintos sobre país e desigualdade."
+        "História",
+        "Era Vargas",
+        "O contexto político e social de 1930 ajuda a situar publicação e debates, sem reduzir os romances a documentos políticos."
       ]
     ]
   },
