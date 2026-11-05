@@ -151,9 +151,9 @@ export const stage19Sociology:TopicSeed[]=[
     ],
     "links": [
       [
-        "Sociologia",
-        "Cidadania e direitos humanos",
-        "A luta por direitos pode envolver formas coletivas de reivindicação e participação pública."
+        "História",
+        "Redemocratização e Constituição de 1988",
+        "As mobilizações por direitos e democracia ajudam a compreender a participação social na redemocratização brasileira."
       ],
       [
         "Sociologia",
