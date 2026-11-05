@@ -21,7 +21,10 @@ test('Stage 19 provides sixty-four new topic-specific lessons through the shared
  const subjectCounts=new Map<string,number>();
  for(const item of stage19Topics)subjectCounts.set(item.subject,(subjectCounts.get(item.subject)??0)+1);
  assert.equal(subjectCounts.size,16);
- for(const count of subjectCounts.values())assert.equal(count,4);
+ for(const [subject,count] of subjectCounts){
+  const expected=subject==='Matemática'?5:subject==='Espanhol'?3:4;
+  assert.equal(count,expected,'Only genuinely missing canonical topics may be counted: '+subject);
+ }
  const previous=new Set([
   ...deepMathTopicNames.map(topic=>'Matemática'+'\0'+topic),
   ...deepCrossSubjectTopics.map(x=>x.subject+'\0'+x.topic),
