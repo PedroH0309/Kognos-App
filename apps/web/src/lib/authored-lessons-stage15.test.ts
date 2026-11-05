@@ -76,7 +76,7 @@ test('Stage 15 contains sixteen distinct deep lessons in all sixteen established
    links.add(target);
   }
  }
- assert.equal(everydayContexts.length,85);
+ assert.ok(everydayContexts.length>=85,'Existing 85 authored scenarios must remain available as new stages are added');
 });
 test('Stage 15 lookup never supplies unrelated course IDs',()=>{
  const names=new Set(stage15Topics.map(t=>t.subject+'\0'+t.topic));
