@@ -930,6 +930,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Futuro e condicional em espanhol",
+    "objective": "Interpretar e construir formas de futuro e condicional em espanhol, diferenciando previsões, planos, hipóteses e pedidos corteses.",
+    "sections": [
+      {
+        "title": "Futuro simples e expressões de plano",
+        "explanation": "O futuro simples espanhol pode ser formado com infinitivo e terminações como -é, -ás, -á, -emos, -éis e -án, por exemplo hablaré, comerás e vivirán. Alguns verbos têm radical irregular: tener→tendré, salir→saldré e poder→podré. A perífrase ir a + infinitivo também exprime futuro, intenção ou planejamento, como 'Voy a estudiar mañana', mas os usos das duas construções não se reduzem a uma regra única de distância temporal. O futuro simples pode ainda transmitir suposição em determinados contextos. Em leitura, identifique quem fala, se anuncia compromisso real ou expectativa e se há calendário ou dado de apoio. Uma previsão não equivale a fato confirmado. A construção precisa concordar com o sujeito e deve ser interpretada no gênero: anúncio de aula, notícia, plano e conversa não comunicam exatamente o mesmo grau de certeza.",
+        "example": "'Mañana visitaré la biblioteca' usa futuro simples para um plano anunciado. 'Voy a visitar la biblioteca' utiliza perífrase com ir a, que também pode indicar intenção de visita futura.",
+        "pitfall": "Afirmar que toda frase no futuro confirma que o evento acontecerá ou que ir a sempre se refere apenas às próximas horas.",
+        "steps": [
+          "Localize o momento futuro e identifique se o enunciado expressa plano, previsão ou suposição.",
+          "Conjugue o verbo pelo sujeito, verificando radicais irregulares quando necessário."
+        ]
+      },
+      {
+        "title": "Condicional simples e situações hipotéticas",
+        "explanation": "O condicional simples utiliza geralmente terminações -ía, -ías, -ía, -íamos, -íais e -ían acrescentadas ao infinitivo, com radicais irregulares semelhantes aos do futuro em vários verbos: tener→tendría e poder→podría. A construção frequentemente expressa hipóteses, consequências dependentes de condição e pedidos educados: 'Me gustaría participar' apresenta desejo, e '¿Podrías ayudarme?' pode formular solicitação cortês. É importante não confundir condicional com passado cronológico apenas porque a forma termina em -ía. Em frases como 'Si tuviera tiempo, estudiaría más', a hipótese aparece com imperfecto de subjuntivo na oração com si e condicional na consequência. A escolha verbal precisa respeitar a relação de sentido; nem todo si exige condicional e nem todo condicional anuncia situação impossível.",
+        "example": "'Si tuviera más tiempo, leería cada día' apresenta situação imaginada e consequência. '¿Podrías enviar el archivo?' funciona como pedido cortês em um contexto comum.",
+        "pitfall": "Traduzir condicional como evento passado realizado ou usar automaticamente 'si tendría' no modelo escolar de hipótese irreal.",
+        "steps": [
+          "Identifique se a forma expressa consequência hipotética, desejo ou cortesia.",
+          "Diferencie a oração de condição com si da oração que apresenta a consequência."
+        ]
+      },
+      {
+        "title": "Futuro, hipótese e responsabilidade na interpretação",
+        "explanation": "Em comunicados e textos argumentativos, diferença entre 'se hará', 'se haría' e 'se va a hacer' pode alterar o grau de compromisso informado. O condicional também aparece em certos registros jornalísticos para atribuir informação ainda não confirmada, mas isso depende do contexto e não deve ser entendido como marca universal de boato. Uma redação precisa distinguir promessa, possibilidade e resultado condicionado: 'El curso empezará el lunes' anuncia início; 'El curso empezaría si hubiera inscripciones suficientes' condiciona o acontecimento. Para não exagerar uma fonte, leia advérbios, verbos e condições adjacentes. Os usos regionais e os gêneros podem apresentar diferentes preferências sem que uma única construção determine toda a certeza do falante. Ao responder provas, cite a palavra ou oração que sustenta a interpretação da hipótese.",
+        "example": "Um aviso hipotético diz 'El taller se realizará si hay suficientes participantes'. O início depende de uma condição: o texto não confirma por si que já houve inscrições suficientes.",
+        "pitfall": "Confundir anúncio condicionado com confirmação e transformar probabilidades comunicadas em fatos ocorridos.",
+        "steps": [
+          "Sublinhe a condição que precisa ser cumprida para o evento acontecer.",
+          "Reescreva a conclusão em português sem atribuir certeza maior que a expressa no original."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Complete 'Mañana yo ___ (estudiar)' no futuro simples.",
+        "hint": "Adicione -é ao infinitivo estudar em espanhol.",
+        "solution": "A forma é estudiaré: 'Mañana yo estudiaré'. O enunciado anuncia uma ação futura."
+      },
+      {
+        "level": "basic",
+        "prompt": "Qual é o futuro simples de tener para yo?",
+        "hint": "O radical do verbo é irregular: tendr-.",
+        "solution": "A forma é tendré. No futuro, tener apresenta radical tendr- mais a terminação -é."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique a função de '¿Podrías ayudarme?' num diálogo.",
+        "hint": "O condicional pode tornar o pedido mais cortês.",
+        "solution": "A frase frequentemente funciona como solicitação educada, não como relato de uma ajuda que ocorreu no passado."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Interprete 'Si tuviera tiempo, viajaría' sem afirmar que a viagem aconteceu.",
+        "hint": "A oração com si estabelece uma hipótese.",
+        "solution": "O falante imagina viajar caso tivesse tempo. A frase não afirma que a viagem foi realizada."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare 'El curso empezará' com 'El curso empezaría si hubiera alumnos'.",
+        "hint": "Uma frase anuncia futuro; a outra condiciona o resultado.",
+        "solution": "A primeira apresenta início futuro; a segunda o deixa dependente de uma condição, portanto não confirma realização."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que uma manchete em condicional não deve ser lida automaticamente como fato confirmado?",
+        "hint": "A forma pode indicar distância informativa ou hipótese.",
+        "solution": "O condicional pode expressar informação ainda atribuída ou incerta em determinados gêneros. É preciso verificar fontes e contexto antes de afirmar o evento."
+      }
+    ],
+    "everyday": {
+      "context": "Uma escola publica dois avisos em espanhol: 'El curso comenzará en diciembre' e 'El curso comenzaría si hubiera inscripciones suficientes'. Um aluno considera os dois compromissos equivalentes.",
+      "question": "Como futuro e condicional diferenciam anúncio de acontecimento e consequência dependente de hipótese?",
+      "answer": "Comenzará anuncia início futuro. Comenzaría si hubiera inscripciones suficientes condiciona o início à quantidade de inscrições; não confirma que a condição será cumprida.",
+      "connections": [
+        {
+          "subject": "Espanhol",
+          "topic": "Subjuntivo em espanhol",
+          "reason": "Construções condicionais hipotéticas usam formas do subjuntivo na oração introduzida por si em padrões específicos."
+        },
+        {
+          "subject": "Inglês",
+          "topic": "Orações condicionais em inglês",
+          "reason": "Comparar condições em duas línguas ajuda a distinguir fato, possibilidade e consequência hipotética."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
