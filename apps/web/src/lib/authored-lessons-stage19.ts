@@ -1,4 +1,4 @@
-/** Stage 19: another 64 static courses; all three chapters, questions, corrections
+/** Stage 19: 92 static courses; all three chapters, questions, corrections
  * and everyday cases are individually written per topic. No lecture-time AI calls.
  */
 import type {CurriculumTopic} from './curriculum-catalog.ts';
@@ -22,6 +22,7 @@ import {stage19Sociology} from './authored-stage19-sociology.ts';
 import {stage19Art} from './authored-stage19-art.ts';
 import {stage19PE} from './authored-stage19-pe.ts';
 import {stage19Science} from './authored-stage19-science.ts';
+import {stage19Extras} from './authored-stage19-extras.ts';
 
 const specs:readonly LessonBlueprint[]=[
  ...stage19Math.map(expandTopicSeed),
@@ -40,6 +41,7 @@ const specs:readonly LessonBlueprint[]=[
  ...stage19Art.map(expandTopicSeed),
  ...stage19PE.map(expandTopicSeed),
  ...stage19Science.map(expandTopicSeed),
+ ...stage19Extras.map(expandTopicSeed),
 ];
 const byKey=new Map(specs.map(x=>[x.subject+'\0'+x.topic,x]));
 export const stage19Topics=specs.map(({subject,topic})=>({subject,topic}));
