@@ -52,7 +52,7 @@ export const stage18Physics:LessonBlueprint[]=[
       ],
       [
         "Matemática",
-        "Notação científica e ordem de grandeza",
+        "Potências, radicais e notação científica",
         "Prefixos decimais e potências de dez tornam mais claras medidas muito grandes ou muito pequenas."
       ]
     ]
