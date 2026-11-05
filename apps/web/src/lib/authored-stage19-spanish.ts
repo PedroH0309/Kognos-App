@@ -110,60 +110,6 @@ export const stage19Spanish:TopicSeed[]=[
   },
   {
     "subject": "Espanhol",
-    "topic": "Subjuntivo em espanhol",
-    "objective": "Interpretar presente do subjuntivo em desejos, hipóteses e orações de finalidade, distinguindo-o do indicativo.",
-    "chapters": [
-      [
-        "Dúvida e desejo",
-        "O subjuntivo espanhol pode aparecer em construções de desejo, incerteza ou avaliação, como 'Espero que vengas'. Sua presença depende do verbo principal e da relação entre orações, não significa automaticamente que o evento seja impossível. A flexão do presente exige atenção a radicais irregulares.",
-        "'Quiero que estudies' apresenta desejo direcionado a outra pessoa, não notícia de estudo concluído.",
-        "Qualquer verbo depois de que deve obrigatoriamente estar no subjuntivo.",
-        "Complete 'Espero que tú ___ (venir)' no presente do subjuntivo.",
-        "A forma de venir para tú é vengas.",
-        "'Espero que tú vengas' comunica expectativa e desejo.",
-        "O conector que sozinho não determina modo; a construção e valor discursivo também importam."
-      ],
-      [
-        "Indicativo e subjuntivo",
-        "Em padrões usuais, 'Creo que viene' pode expressar crença afirmativa e 'No creo que venga' negação da crença, com alteração do modo. Regras não são absolutas em todas as variedades e contextos, mas ajudam a analisar atitude do enunciador. A escolha afeta grau de compromisso com a proposição.",
-        "'Es posible que llueva' sinaliza possibilidade e usa llueva, em vez de informar chuva confirmada.",
-        "Expressar possibilidade com subjuntivo comprova que o fato já ocorreu.",
-        "Que forma é apropriada em 'Es posible que ___ (llover)'?",
-        "Pense no presente do subjuntivo.",
-        "'Es posible que llueva'; o evento é apresentado como possível.",
-        "Possibilidade não equivale a fato confirmado, e o modo reflete a postura comunicativa."
-      ],
-      [
-        "Finalidade e construções",
-        "Conectores como para que podem introduzir finalidade com subjuntivo quando sujeitos são distintos em exemplos usuais. É necessário diferenciar a ação desejada da ação realizada e respeitar concordância verbal. Um objetivo não prova que o resultado foi alcançado.",
-        "'Te escribo para que entiendas' informa finalidade da mensagem, não garante compreensão efetiva.",
-        "O uso de para que garante que a finalidade aconteceu de fato.",
-        "Em 'Estudio para que mis padres ___ (estar) tranquilos', qual forma usar?",
-        "Use presente subjuntivo para ellos.",
-        "'Estén' é forma apropriada: 'para que mis padres estén tranquilos'.",
-        "A oração final apresenta objetivo, não confirmação de que o estado desejado já ocorreu."
-      ]
-    ],
-    "situation": [
-      "Um anúncio em espanhol diz 'Hacemos cambios para que tengas una mejor experiencia'. Um aluno afirma que todas as pessoas já tiveram melhora comprovada.",
-      "Como a expressão de finalidade impede essa conclusão automática?",
-      "Para que tengas expressa objetivo desejado da mudança, não resultado verificado para todos os usuários."
-    ],
-    "links": [
-      [
-        "Espanhol",
-        "Futuro e condicional em espanhol",
-        "Hipóteses e condições exigem distinguir consequência imaginada e fato realizado."
-      ],
-      [
-        "Espanhol",
-        "Presente do indicativo em espanhol",
-        "Comparar formas do indicativo com subjuntivo evidencia diferenças de modalidade e conjugação."
-      ]
-    ]
-  },
-  {
-    "subject": "Espanhol",
     "topic": "Gêneros textuais e multimodalidade em espanhol",
     "objective": "Reconhecer a interação entre texto, imagem e finalidade de avisos, tirinhas e campanhas em espanhol.",
     "chapters": [
