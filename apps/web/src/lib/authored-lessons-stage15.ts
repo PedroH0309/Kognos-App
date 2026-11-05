@@ -378,6 +378,190 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "História",
+    "topic": "Primeira República brasileira",
+    "objective": "Examinar instituições, economia e conflitos da Primeira República (1889–1930), relacionando voto, coronelismo, oligarquias e contestação social sem apagar diferenças regionais.",
+    "sections": [
+      {
+        "title": "República proclamada e participação limitada",
+        "explanation": "A República brasileira foi proclamada em 15 de novembro de 1889, encerrando a monarquia. A Constituição de 1891 instituiu regime republicano federativo e presidencialista, com transformações nas relações entre União e estados. Isso não significou sufrágio universal: mulheres não tinham direito de votar nas eleições nacionais, analfabetos foram excluídos e a participação política era limitada por outras condições e práticas. A fase de 1889 a 1930 é chamada Primeira República, embora não tenha sido politicamente homogênea. O novo arranjo favoreceu disputas entre elites regionais e reorganizou relações de poder, sem eliminar desigualdades herdadas do Império. Ao avaliar cidadania, diferencie mudança na forma de governo, regras eleitorais e possibilidade concreta de participação de diferentes grupos sociais.",
+        "example": "Um comunicado de 1891 poderia anunciar uma Constituição republicana, mas isso não permitiria concluir que toda a população adulta passou a participar diretamente das eleições.",
+        "pitfall": "Confundir proclamação da República com implantação imediata de eleições inclusivas ou supor que o período inteiro teve governos idênticos.",
+        "steps": [
+          "Identifique 1889 como mudança institucional e 1891 como novo marco constitucional.",
+          "Compare direitos políticos formais e exclusões efetivas do eleitorado."
+        ]
+      },
+      {
+        "title": "Coronelismo, economia e acordos políticos",
+        "explanation": "O coronelismo foi analisado historicamente como sistema de relações entre poderes locais, dependências sociais e estruturas políticas, especialmente em contextos rurais. Práticas como pressão sobre eleitores, controle de recursos e negociação de apoios ajudaram a sustentar determinados grupos. A expressão 'política do café com leite' é uma simplificação didática de arranjos e disputas entre oligarquias, principalmente ligadas a São Paulo e Minas Gerais, sem descrever toda sucessão presidencial como acordo automático entre apenas dois estados. A economia cafeeira teve grande importância, mas outras atividades regionais coexistiram. O voto aberto e mecanismos de pressão contribuíam para limitar autonomia eleitoral, porém experiências variavam por município. Compreender o sistema exige relacionar instituições, economia e dependências, evitando tratar toda a população como agente passivo.",
+        "example": "Em um município hipotético, um grande proprietário condiciona oportunidades de trabalho ao apoio de determinado candidato. O exemplo ajuda a discutir coerção e poder local sem afirmar que ocorreu exatamente assim em todos os municípios.",
+        "pitfall": "Interpretar 'café com leite' como lei constitucional ou considerar que coronelismo significa apenas a existência de um fazendeiro rico.",
+        "steps": [
+          "Relacione dependência local, votação e negociação entre níveis de poder.",
+          "Diferencie expressões históricas simplificadoras de instituições e situações concretas."
+        ]
+      },
+      {
+        "title": "Revoltas, trabalho e crise do regime",
+        "explanation": "A Primeira República foi marcada por diferentes mobilizações e conflitos. A Revolta da Vacina, em 1904, no Rio de Janeiro, ocorreu num contexto de reformas urbanas, medidas sanitárias autoritárias e tensões políticas; não deve ser descrita simplesmente como recusa geral à ciência. A Revolta da Chibata, em 1910, denunciou violência e castigos na Marinha. Greves operárias, incluindo as mobilizações de 1917, relacionaram-se a condições de trabalho e organização de trabalhadores. Movimento tenentista e disputas entre grupos políticos também marcaram os anos 1920. A ruptura de 1930 encerrou a Primeira República e abriu nova configuração de poder, sem equivaler a revolução social uniforme para toda a população. Estudar esses acontecimentos permite perceber disputas por direitos, participação e poder que não cabem na imagem de regime sem oposição.",
+        "example": "Um estudante que pesquisa a greve geral de 1917 deve relacionar mobilização, reivindicações laborais e contexto urbano, em vez de deduzir que o Brasil inteiro parou exatamente da mesma forma.",
+        "pitfall": "Atribuir todas as revoltas às mesmas causas ou apresentar a passagem de 1930 como solução automática de conflitos sociais.",
+        "steps": [
+          "Identifique quem participou de cada movimento e quais reivindicações apresentou.",
+          "Compare as diferentes causas antes de relacioná-las à crise institucional de 1930."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em quais anos começou e terminou, convencionalmente, a Primeira República brasileira?",
+        "hint": "Associe a Proclamação e a ruptura de 1930.",
+        "solution": "O período é convencionalmente delimitado de 1889, Proclamação da República, a 1930, momento de ruptura do arranjo político e ascensão do novo governo."
+      },
+      {
+        "level": "basic",
+        "prompt": "A Constituição de 1891 instituiu voto universal para toda população adulta?",
+        "hint": "Lembre-se de exclusões, como analfabetismo e gênero.",
+        "solution": "Não. A participação eleitoral era limitada: mulheres não votavam nas eleições nacionais e analfabetos estavam excluídos, entre outras restrições."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Explique o coronelismo sem reduzi-lo à existência de um proprietário rural.",
+        "hint": "Considere dependência social e poder político.",
+        "solution": "Coronelismo envolvia relações de influência e negociação política local, dependência econômica e mecanismos de controle eleitoral, variando conforme o contexto."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que 'política do café com leite' não explica toda a sucessão presidencial?",
+        "hint": "É uma síntese de disputas mais amplas.",
+        "solution": "A expressão destaca articulações de elites, sobretudo paulistas e mineiras, mas outras regiões, grupos e conflitos também influenciaram escolhas políticas."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Por que a Revolta da Vacina de 1904 não deve ser explicada apenas como oposição a vacinas?",
+        "hint": "Considere reformas urbanas e formas de imposição estatal.",
+        "solution": "O episódio envolveu medidas sanitárias coercitivas, reformas urbanas e tensões sociais e políticas. Reduzi-lo a rejeição à ciência elimina aspectos essenciais do contexto."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Relacione greves de 1917 e a crise da Primeira República sem igualar os dois acontecimentos.",
+        "hint": "Diferencie trabalhadores e conflitos políticos.",
+        "solution": "As greves revelaram reivindicações e organização de trabalhadores num regime com tensões sociais. A crise de 1930 incluiu também disputas entre elites e militares, com causas e atores variados."
+      }
+    ],
+    "everyday": {
+      "context": "Durante uma visita a um museu, uma turma observa que o Brasil era república desde 1889, mas mulheres e pessoas analfabetas não participavam das eleições nacionais do período como os estudantes imaginavam.",
+      "question": "Por que mudar de monarquia para república não significou automaticamente participação política universal?",
+      "answer": "A Proclamação mudou a forma de governo, mas regras eleitorais e relações de poder continuaram restringindo participação. Direitos políticos dependem de instituições e lutas históricas.",
+      "connections": [
+        {
+          "subject": "História",
+          "topic": "Redemocratização e Constituição de 1988",
+          "reason": "Comparar arranjos constitucionais ajuda a perceber mudanças de cidadania e participação entre períodos diferentes."
+        },
+        {
+          "subject": "História",
+          "topic": "Era Vargas",
+          "reason": "A ruptura de 1930 abriu outro período de organização estatal e trabalhista, sem apagar conflitos anteriores."
+        }
+      ]
+    }
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Urbanização brasileira",
+    "objective": "Interpretar o processo histórico de urbanização do Brasil, suas relações com industrialização, migração e redes urbanas e desigualdades de infraestrutura.",
+    "sections": [
+      {
+        "title": "Urbanização como mudança populacional e espacial",
+        "explanation": "Urbanização envolve aumento da proporção de população residente em áreas classificadas como urbanas e transformações na organização de cidades e redes de serviços. No Brasil, ganhou força ao longo do século XX, em associação a industrialização, mudanças no campo, atividades econômicas e migrações internas. A definição estatística de área urbana depende de critérios administrativos e metodológicos do país; por isso, comparar porcentagens históricas exige observar fontes e classificações. Urbanização não significa que todas as cidades cresceram no mesmo ritmo nem que o campo desapareceu. A cidade reúne moradia, trabalho, transporte e serviços, e pode expandir-se fisicamente enquanto o acesso a oportunidades permanece desigual. Em vestibulares, é essencial diferenciar crescimento absoluto de população urbana, proporção urbana e expansão territorial da mancha construída.",
+        "example": "Um município pode ter população urbana aumentando de 20 mil para 30 mil pessoas, enquanto a população rural cai. Para dizer se houve aumento da proporção urbana, também precisamos da população total em cada data.",
+        "pitfall": "Tratar toda urbanização como industrialização ou concluir que cidades passam a oferecer serviços de qualidade uniforme pelo simples crescimento populacional.",
+        "steps": [
+          "Distinga aumento numérico de moradores urbanos de aumento da proporção urbana.",
+          "Identifique fatores econômicos e migratórios sem declarar causa única."
+        ]
+      },
+      {
+        "title": "Industrialização, migrações e redes de cidades",
+        "explanation": "O crescimento de atividades industriais e de serviços atraiu trabalhadores para centros urbanos, junto a mudanças na estrutura agrária e à busca por oportunidades. Correntes migratórias tiveram diferentes origens e destinos; não se deve afirmar que toda migração no século XX foi do Nordeste para São Paulo, nem que apenas fatores econômicos atuaram. Cidades possuem conexões de comércio, serviços, trabalho e transportes, formando redes urbanas com diferentes graus de centralidade. Uma pessoa pode morar num município e deslocar-se diariamente para trabalhar ou estudar em outro, situação de mobilidade pendular que não implica mudança definitiva de residência. A metropolização envolve integração de atividades e infraestrutura em grandes aglomerações, com limites institucionais variados. Analisar mapas ajuda a entender funções e fluxos, sem equiparar tamanho populacional a qualidade de vida.",
+        "example": "Uma estudante mora numa cidade e viaja diariamente à cidade vizinha para estudar. O deslocamento é pendular, diferente de migração permanente; a relação revela conexões numa rede urbana.",
+        "pitfall": "Chamar qualquer viagem diária de migração ou supor que toda cidade grande possua melhores oportunidades para todos.",
+        "steps": [
+          "Classifique fluxos conforme duração e mudança ou não da residência.",
+          "Observe serviços e conexões entre municípios para interpretar rede urbana."
+        ]
+      },
+      {
+        "title": "Infraestrutura, desigualdade e planejamento",
+        "explanation": "Urbanização rápida, políticas habitacionais insuficientes e desigualdade de renda podem contribuir para áreas com diferentes níveis de acesso a saneamento, transporte e moradia segura. Isso não significa que periferias sejam homogêneas ou que seus moradores sejam responsáveis por deficiências de infraestrutura. A segregação socioespacial descreve padrões de distribuição desigual de grupos e serviços, enquanto a urbanização é processo histórico mais amplo de crescimento e organização urbana. A impermeabilização do solo e a ocupação de áreas de risco podem agravar problemas de drenagem, dependendo de relevo e chuvas. Propostas de planejamento devem relacionar diagnóstico, órgão responsável e efeito esperado, sem prometer que uma obra isolada resolverá todos os problemas. Para avaliar uma política, compare acesso efetivo a serviços, e não apenas presença de equipamentos num mapa.",
+        "example": "Uma biblioteca está a 3 km de dois bairros, mas apenas um possui linha de ônibus frequente. A distância é igual, porém o acesso real difere por rede e tempo de deslocamento.",
+        "pitfall": "Confundir crescimento urbano com melhoria social automática ou responsabilizar moradores por ausência histórica de serviços públicos.",
+        "steps": [
+          "Relacione infraestrutura e ocupação do território a problemas específicos.",
+          "Proponha soluções proporcionais aos dados disponíveis e à competência dos agentes."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "O que significa urbanização em termos de população e território?",
+        "hint": "Considere proporção urbana e organização das cidades.",
+        "solution": "Urbanização envolve crescimento da participação da população em áreas urbanas e transformações das cidades. O conceito não é sinônimo de industrialização."
+      },
+      {
+        "level": "basic",
+        "prompt": "O deslocamento diário para estudar em outra cidade é necessariamente migração?",
+        "hint": "A pessoa muda de residência permanentemente?",
+        "solution": "Não. Quando a pessoa continua morando na origem e se desloca periodicamente, trata-se de mobilidade pendular, distinta de migração com mudança de residência."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Por que crescimento absoluto da população urbana não comprova sozinho aumento de sua proporção?",
+        "hint": "É preciso conhecer o total da população.",
+        "solution": "A proporção depende da população urbana dividida pela população total. Ambas podem crescer em ritmos diferentes, alterando ou não a porcentagem urbana."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cite duas relações históricas importantes para entender a urbanização brasileira no século XX.",
+        "hint": "Pense em produção e fluxos populacionais.",
+        "solution": "Industrialização e expansão de serviços, além de migrações internas e transformações no campo, contribuíram para o crescimento e reorganização de centros urbanos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Duas áreas têm mesma distância até hospital, mas tempos diferentes de acesso. O que investigar?",
+        "hint": "Olhe transporte e acessibilidade, não só quilômetros.",
+        "solution": "É necessário avaliar frequência, preço, rotas, condições viárias, acessibilidade e horários. Proximidade geográfica não garante acesso efetivo igual."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Explique por que crescimento urbano acelerado não causa sempre o mesmo problema em toda cidade.",
+        "hint": "Considere relevo, planejamento e infraestrutura.",
+        "solution": "Impactos dependem de políticas públicas, organização territorial, renda, relevo e infraestrutura. Não existe uma consequência idêntica e inevitável para todos os municípios."
+      }
+    ],
+    "everyday": {
+      "context": "Dois bairros de um município estão na mesma distância em linha reta da escola. Um tem transporte frequente e outro apresenta longas esperas, embora a cidade tenha crescido nas últimas décadas.",
+      "question": "Por que o crescimento urbano não significa necessariamente que todos os estudantes passaram a ter igual acesso aos serviços?",
+      "answer": "Urbanização altera população e organização espacial, mas transportes, equipamentos e políticas podem distribuir oportunidades de forma desigual. Distância não é sinônimo de acesso efetivo.",
+      "connections": [
+        {
+          "subject": "Geografia",
+          "topic": "Segregação socioespacial",
+          "reason": "A distribuição desigual de transportes, moradia e serviços ajuda a analisar os efeitos sociais de diferentes padrões de urbanização."
+        },
+        {
+          "subject": "História",
+          "topic": "Revolução Industrial",
+          "reason": "Mudanças na produção e no trabalho contribuíram para transformações urbanas, em ritmos distintos nos diferentes países."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
