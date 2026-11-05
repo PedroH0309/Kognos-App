@@ -52,8 +52,8 @@ export const stage18Chemistry:LessonBlueprint[]=[
       ],
       [
         "Ciências",
-        "Substâncias e misturas",
-        "A classificação de sistemas em componentes e fases é um fundamento compartilhado com Ciências."
+        "Separação de misturas",
+        "Os conceitos de fases e componentes permitem compreender que propriedades tornam cada processo de separação adequado."
       ]
     ]
   },
