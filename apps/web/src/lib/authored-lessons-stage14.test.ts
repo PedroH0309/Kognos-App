@@ -65,7 +65,7 @@ test('Stage 14 delivers sixteen individual courses, each in a different register
   }
  }
  assert.equal(visited.size,16);
- assert.equal(everydayContexts.length,69);
+ assert.ok(everydayContexts.length>=69,'The previous 69 authored scenarios must remain available as new stages expand');
 });
 test('Stage 14 lookup is exact and does not alter unrelated curriculum records',()=>{
  const keys=new Set(stage14Topics.map(t=>t.subject+'\0'+t.topic));
