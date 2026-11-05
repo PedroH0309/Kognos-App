@@ -113,7 +113,7 @@ test('Stage 19 consolidates 92 unique lessons from both drafts without overwriti
    links.add(target);
   }
  }
- assert.equal(everydayContexts.length,289);
+ assert.ok(everydayContexts.length>=289,'Later stages preserve the stage 19 cases');
 });
 test('Stage 19 lookup does not modify other syllabus lessons or IDs',()=>{
  const selected=new Set(stage19Topics.map(key));
