@@ -8,7 +8,7 @@ export const stage17Batch1:Stage17Spec[]=[
       {
         "title": "Igualdades, incógnitas e modelos",
         "explanation": "Uma equação representa uma igualdade entre expressões. Resolver 3x+5=20 significa encontrar o valor de x que torna verdadeiros os dois lados: x=5. A incógnita tem significado no problema, como preço, quantidade ou duração, e essa unidade deve aparecer na resposta. Uma equação do primeiro grau pode ser reduzida a ax+b=0 com a diferente de zero. Operações realizadas igualmente nos dois membros preservam a solução, como somar ou subtrair o mesmo valor. A equação não é apenas uma receita de passar números para o outro lado: é uma relação que precisa continuar válida após cada transformação. Em compras, contar pessoas ou produtos impõe ainda restrições sobre valores inteiros e não negativos.",
-        "example": "Uma loja cobra R$ 5 por embalagem e R$ 3 por caderno. Se o pedido totalizou R$ 20, então 3x+5=20, e x=5 cadernos.",
+        "example": "Uma loja cobra R$ 5 por embalagem e R$ 3 por caderno. Se o pedido totalizou R$ 20, então 3x+5=20, e x=5 cadernos. O frete e a embalagem são custos distintos, que precisam entrar separadamente no modelo.",
         "pitfall": "Alterar apenas um lado da equação ou aceitar valor negativo de quantidade de produtos sem discutir o domínio.",
         "steps": [
           "Defina a incógnita com unidade e traduza separadamente taxa fixa e parcela variável.",
@@ -18,7 +18,7 @@ export const stage17Batch1:Stage17Spec[]=[
       {
         "title": "Distributividade e casos de solução",
         "explanation": "Parênteses e frações precisam ser tratados corretamente. Em 2(x+3)=16, a distributiva resulta 2x+6=16 e a solução é x=5. Reunir termos semelhantes evita confundir x+x com x². Quando multiplicamos uma equação por um valor, esse fator não pode ser zero se quisermos preservar equivalência sem perder informação. Se houver denominadores com incógnitas, devemos registrar valores proibidos antes de eliminar frações. Equações lineares também podem resultar em identidades, como 2(x+1)=2x+2, válidas para qualquer valor do domínio, ou contradições, como x+2=x+5, sem solução. Portanto, o procedimento não garante sempre uma única resposta: a igualdade final precisa ser interpretada.",
-        "example": "A equação 3(x−2)=9 fica 3x−6=9 e 3x=15; logo x=5. Verificando: 3(5−2)=9.",
+        "example": "A equação 3(x−2)=9 fica 3x−6=9 e 3x=15; logo x=5. Verificando: 3(5−2)=9. Substituir o número cinco no enunciado mostra por que a distributividade foi aplicada corretamente a ambos os termos.",
         "pitfall": "Distribuir multiplicação apenas ao primeiro termo do parêntese ou afirmar solução única diante de igualdade 0=0.",
         "steps": [
           "Expanda parênteses e reúna os termos sem esquecer sinais de subtração.",
@@ -28,7 +28,7 @@ export const stage17Batch1:Stage17Spec[]=[
       {
         "title": "A solução precisa respeitar o contexto",
         "explanation": "A modelagem traduz palavras em relações e é etapa essencial da matemática aplicada. Um plano com taxa de adesão de R$ 25 e mensalidade de R$ 15 produz 25+15m=100 para um total de R$ 100; daí m=5 meses no modelo. Como meses de cobrança são contados em inteiros, não se deve arredondar qualquer fração obtida sem examinar o contrato. Em problemas de comprimento, valores decimais podem fazer sentido, e em temperatura valores negativos são possíveis. Uma taxa fixa impede proporcionalidade direta entre quantidade e total, de modo que regra de três não substitui toda equação linear. Antes de apresentar a resposta, verifique se os dados representam o mesmo período, se não faltam taxas e se o valor encontrado realmente responde à pergunta feita.",
-        "example": "Uma associação cobra R$ 25 de inscrição e R$ 15 por visita. Se a despesa foi R$ 100, 25+15v=100 fornece v=5 visitas.",
+        "example": "Uma associação cobra R$ 25 de inscrição e R$ 15 por visita. Se a despesa foi R$ 100, 25+15v=100 fornece v=5 visitas. O resultado depende de cada visita ter o mesmo preço, sem descontos ou outras cobranças.",
         "pitfall": "Achar que toda equação representa uma proporção ou tratar resultados decimais como contagens inteiras automaticamente.",
         "steps": [
           "Compare as condições e restrições físicas da incógnita com o valor algébrico encontrado.",
@@ -41,7 +41,7 @@ export const stage17Batch1:Stage17Spec[]=[
         "level": "basic",
         "prompt": "Resolva x+7=19 e confirme por substituição.",
         "hint": "Subtraia sete em ambos os lados da igualdade.",
-        "solution": "x=19−7=12. A verificação fornece 12+7=19, igual ao segundo membro."
+        "solution": "x=19−7=12. A verificação fornece 12+7=19, igual ao segundo membro. A conferência demonstra que a solução preserva os dois membros originais."
       },
       {
         "level": "basic",
@@ -53,13 +53,13 @@ export const stage17Batch1:Stage17Spec[]=[
         "level": "intermediate",
         "prompt": "Resolva 2(x+3)=22 aplicando corretamente a distributividade.",
         "hint": "Expanda os parênteses antes de isolar a incógnita.",
-        "solution": "2x+6=22, então 2x=16 e x=8. Verificando: 2(8+3)=22."
+        "solution": "2x+6=22, então 2x=16 e x=8. Verificando: 2(8+3)=22. Cada transformação preservou a igualdade, e a distribuição alcançou os dois termos."
       },
       {
         "level": "intermediate",
         "prompt": "Uma encomenda custa R$ 6 fixos mais R$ 4 por item. Total R$ 30: quantos itens?",
         "hint": "Use 6+4x=30 para representar o preço.",
-        "solution": "4x=24 e x=6 itens. A conta confirma: 6+4×6=30 reais."
+        "solution": "4x=24 e x=6 itens. A conta confirma: 6+4×6=30 reais. A parcela fixa de seis reais aparece apenas uma vez no pedido e não por unidade."
       },
       {
         "level": "advanced",
@@ -145,7 +145,7 @@ export const stage17Batch1:Stage17Spec[]=[
         "level": "intermediate",
         "prompt": "Sobre R$ 500 a 10% por dois períodos, quanto corresponde somente aos juros?",
         "hint": "Calcule M e retire o capital inicial.",
-        "solution": "M=500×1,1²=R$ 605; os juros totalizam 605−500=R$ 105."
+        "solution": "M=500×1,1²=R$ 605; os juros totalizam 605−500=R$ 105. O rendimento do segundo período incide também sobre os juros do primeiro."
       },
       {
         "level": "intermediate",
