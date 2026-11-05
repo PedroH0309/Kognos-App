@@ -3,9 +3,10 @@
  * Cada conexão aponta para um tema existente da biblioteca.
  */
 import type {CourseLesson} from './course-content.ts';
+import {stage13EverydayContexts} from './authored-lessons-stage13.ts';
 export type ContextConnection={subject:string;topic:string;reason:string};
 export type EverydayContext={subject:string;topic:string;context:string;question:string;answer:string;connections:readonly ContextConnection[]};
-export const everydayContexts:readonly EverydayContext[] = [
+const earlierEverydayContexts:readonly EverydayContext[] = [
   {
     "subject": "Matemática",
     "topic": "Operações, divisibilidade e conjuntos numéricos",
@@ -729,6 +730,7 @@ export const everydayContexts:readonly EverydayContext[] = [
     ]
   }
 ];
+export const everydayContexts:readonly EverydayContext[]=[...earlierEverydayContexts,...stage13EverydayContexts];
 const bySubjectTopic=new Map(everydayContexts.map(item=>[item.subject+'\0'+item.topic,item]));
 /** Never override published editorial lessons with an unrelated offline scenario. */
 export function everydayContextFor(lesson:CourseLesson|null|undefined):EverydayContext|null{

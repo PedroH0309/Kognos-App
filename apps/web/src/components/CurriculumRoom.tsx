@@ -47,7 +47,7 @@ export default function CurriculumRoom(props:CurriculumRoomProps){
 function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=null,embedded=false,onContextChange,onTutor,onGenerateAI,onOpenLab,onActivityProgress,onNavigateTopic}:CurriculumRoomProps){
  const [topics,setTopics]=useState<Topic[]>([]),[exam,setExam]=useState<string>(preferredExam??'all'),[subject,setSubject]=useState('all'),[search,setSearch]=useState(''),[limit,setLimit]=useState(40);
  const [provaoGrade,setProvaoGrade]=useState<ProvaoGrade|null>(null);
- const [selected,setSelected]=useState<string|null>(null),[detail,setDetail]=useState<Detail|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[consent,setConsent]=useState(false),[video,setVideo]=useState<CourseVideo|null>(null);
+ const [selected,setSelected]=useState<string|null>(null),[detail,setDetail]=useState<Detail|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[video,setVideo]=useState<CourseVideo|null>(null);
  const [readerTab,setReaderTab]=useState<'lesson'|'activities'|'explanations'|'materials'|'evolution'>('lesson');
  const {data:aiProgress,error:progressError,refresh:refreshProgress}=useAIStudyProgress(userId);
  useEffect(()=>{if(active&&userId)void refreshProgress();},[active,userId,refreshProgress]);
@@ -70,7 +70,7 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
  const scienceLab=detail?resolveScienceLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
  const languageLab=detail?resolveLanguageLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
  const humanitiesLab=detail?resolveHumanitiesLab({subject:detail.topic.subject,topic:detail.topic.topic,description:provaoRef?.description,unit:provaoRef?.unit}):null;
- async function generate(){if(!selected||!consent||busy)return;setBusy(true);setError('');try{await contentRequest('/api/content/generate',{method:'POST',body:JSON.stringify({id:selected,consent:true})});await reload();setDetail(await contentRequest(`/api/content?id=${selected}`));}catch(e){setError(e instanceof Error?e.message:'Falha ao desenvolver aula.');}finally{setBusy(false);}}
+
  const Container=embedded?'section':'main';
  return <Container className={embedded?"course-room course-room-embedded":"app-content course-room"}>
   {!embedded&&<>
@@ -80,7 +80,7 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
   <p className="course-coverage"><strong>{filtered.length}</strong> temas no roteiro · <strong>{filtered.filter(t=>t.status==='published').length}</strong> aulas desenvolvidas · <strong>{filtered.filter(t=>t.status==='introduction').length}</strong> introduções · <strong>{filtered.filter(t=>t.status==='starter'||t.status==='guided').length}</strong> materiais-base pré-carregados. A cobertura editorial completa ainda exige revisão.</p>
   </>}
   {embedded&&error&&<p className="message warning" role="alert">{error}</p>}
-  <div className="course-layout" style={embedded?{display:'block'}:undefined}>{!embedded&&<aside className="course-index" aria-label="Assuntos do currículo">{filtered.slice(0,limit).map(t=><button type="button" key={t.id} aria-pressed={selected===t.id} disabled={busy} onClick={()=>setSelected(t.id)}><small>{t.subject}</small><strong>{t.topic}</strong><span>{statusLabels[t.status]||'Em revisão'}</span></button>)}{!filtered.length&&<p>Nenhum tema encontrado para estes filtros.</p>}{filtered.length>limit&&<button type="button" onClick={()=>setLimit(n=>n+40)}>Mostrar mais 40 temas</button>}</aside>}
+  <div className="course-layout" style={embedded?{display:'block'}:undefined}>{!embedded&&<aside className="course-index" aria-label="Assuntos do currículo">{filtered.slice(0,limit).map(t=><button type="button" key={t.id} aria-pressed={selected===t.id} onClick={()=>setSelected(t.id)}><small>{t.subject}</small><strong>{t.topic}</strong><span>{statusLabels[t.status]||'Em revisão'}</span></button>)}{!filtered.length&&<p>Nenhum tema encontrado para estes filtros.</p>}{filtered.length>limit&&<button type="button" onClick={()=>setLimit(n=>n+40)}>Mostrar mais 40 temas</button>}</aside>}
    <article key={selected} className="course-reader" aria-live="polite">{!selected?<div className="course-empty"><h2>Escolha um assunto</h2><p>O roteiro inclui todas as entradas cadastradas para as cinco provas. Uma aula desenvolvida contém três níveis e tarefas com resolução.</p><p>Os temas ainda sem aula aparecem identificados; o Kog pode desenvolver e revisar o conteúdo quando você solicitar.</p></div>:!detail?<p>{error?'Conteúdo indisponível.':'Carregando o assunto…'}</p>:<>
     <span className="overline">{detail.topic.subject}</span><h2>{detail.topic.topic}</h2>{readerTab==='materials'&&findProvaoTopic(detail.topic.subject,detail.topic.topic)&&<details className="course-reference"><summary>Correspondência ao Provão Paulista 2026</summary><p>{findProvaoTopic(detail.topic.subject,detail.topic.topic)!.description}</p><p>Unidade: {findProvaoTopic(detail.topic.subject,detail.topic.topic)!.unit}</p><small>{provaoTopics.filter(t=>t.subject===detail.topic.subject&&t.topic===detail.topic.topic).map(t=>`${t.grade}ª série · item ${t.code} · página ${t.page}`).join(' / ')}</small></details>}{readerTab==='materials'&&<details className="course-reference"><summary>Ver matriz ou edital oficial</summary><p>O tema é organizado editorialmente pelo Kognos e associado às fontes oficiais abaixo. A aula explica o conteúdo com autoria própria; a lista não reproduz nem garante cobertura integral do documento.</p><ul>{detail.topic.exams.map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noreferrer">{officialSyllabusSources[id].title} · {officialSyllabusSources[id].edition}</a></li>)}</ul></details>}
      <nav className="k-curriculum-tabs k-lesson-pane-tabs" aria-label={'Seções da aula de '+detail.topic.subject}>
@@ -96,14 +96,10 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
         onActivityProgress={pane==='activities'?onActivityProgress:undefined}
         onRelatedTopic={onNavigateTopic??((id)=>{const target=topics.find(item=>item.id===id);if(target){setSelected(id);setSubject(target.subject);setExam('all');setSearch('');}})}/>
      </div>)}
-     {readerTab==='lesson'&&(!detail.lesson||detail.lesson.review==='introductory')&&<div className="course-generation">
-      <h3>Desenvolver aula completa com o Kog</h3>
-      <p>Este conteúdo apresenta uma base introdutória. A IA pode desenvolver um material mais completo, sujeito a revisão automática e limites do serviço. Isso não equivale à homologação de um professor.</p>
-      <label className="course-check"><input type="checkbox" checked={consent} onChange={e=>setConsent(e.target.checked)}/>Autorizo desenvolver este assunto com IA.</label>
-      <button type="button" className="btn primary" disabled={!consent||busy||!detail.configured} onClick={generate}>
-       {busy?'Desenvolvendo e revisando a aula…':'Desenvolver aula completa'}</button>
-      <small>É necessário entrar na conta. Somente o tema curricular é enviado aos provedores, respeitando cotas e permissões.</small>
-     </div>}
+     {readerTab==='lesson'&&(!detail.lesson||(detail.lesson.review==='introductory'&&!detail.lesson.authorship.includes('aula autoral')))&&<aside className="course-notice" role="status">
+      <strong>Aprofundamento editorial ainda em elaboração.</strong>
+      <p>Este assunto possui material inicial. As próximas aulas completas serão escritas e incorporadas ao catálogo pelo projeto, sem geração automática durante o estudo.</p>
+     </aside>}
      {onOpenLab&&<button type="button" className="k-lesson-to-lab" onClick={()=>onOpenLab(detail.topic)}>
       Abrir este tema no Laboratório interativo
      </button>}
