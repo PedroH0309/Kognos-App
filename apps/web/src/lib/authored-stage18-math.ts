@@ -52,8 +52,8 @@ export const stage18Math:LessonBlueprint[]=[
       ],
       [
         "Matemática",
-        "MDC e MMC",
-        "Múltiplos comuns facilitam a soma e a subtração de frações com denominadores diferentes."
+        "Operações, divisibilidade e conjuntos numéricos",
+        "A divisibilidade e a noção de múltiplos ajudam a obter denominadores comuns em operações com frações."
       ]
     ]
   },
@@ -81,7 +81,7 @@ export const stage18Math:LessonBlueprint[]=[
         "Identifique multiplicação, divisão ou potência de potência antes de escolher a propriedade.",
         "Simplifique (3²)³/3⁴.",
         "Multiplique e depois subtraia os expoentes.",
-        "(3²)³=3⁶, e 3⁶/3⁴=3²=9; a base permanece três.",
+        "Primeiro, (3²)³=3⁶. Em seguida, 3⁶/3⁴=3²=9, porque subtraímos os expoentes apenas na divisão de mesma base.",
         "As propriedades de expoentes são identidades ligadas à multiplicação e divisão; somas exigem cálculo ou fatoração diferente."
       ],
       [
@@ -97,7 +97,7 @@ export const stage18Math:LessonBlueprint[]=[
       ]
     ],
     "situation": [
-      "Um aluno prevê que a duplicação de dados em quatro etapas produzirá 2×4=8 combinações; outro propõe 2⁴.",
+      "Um aluno prevê que a duplicação de dados em quatro etapas produzirá 2×4=8 combinações; outro propõe 2⁴. As escolhas da simulação são independentes e oferecem apenas duas opções por etapa.",
       "Quantos resultados há no modelo e qual interpretação do expoente é apropriada?",
       "São 16 combinações, pois existem quatro escolhas de duas possibilidades cada: 2×2×2×2=2⁴=16."
     ],
@@ -110,7 +110,7 @@ export const stage18Math:LessonBlueprint[]=[
       [
         "Matemática",
         "Potências, radicais e notação científica",
-        "O conteúdo integra expoentes, radicais e representações de números pequenos e grandes."
+        "O estudo conjunto de expoentes e radicais fundamenta representações científicas e suas operações."
       ]
     ]
   },
@@ -127,7 +127,7 @@ export const stage18Math:LessonBlueprint[]=[
         "Reorganize a expressão para identificar a, b e c sem trocar sinais.",
         "Determine os coeficientes de 2x²−7x=3.",
         "Leve o 3 para o primeiro membro.",
-        "2x²−7x−3=0; portanto a=2, b=−7, c=−3.",
+        "Os coeficientes são a=2, b=−7 e c=−3. É importante levar o número três ao primeiro membro antes de identificar a, b e c.",
         "O grau dois permite no máximo duas raízes reais, mas pode haver raiz dupla ou nenhuma, conforme o discriminante."
       ],
       [
@@ -194,7 +194,7 @@ export const stage18Math:LessonBlueprint[]=[
         "Uma reta descendente necessariamente tem valores negativos em todo seu domínio.",
         "Determine os interceptos com os eixos para desenhar a reta.",
         "Determine a raiz de f(x)=−2x+6.",
-        "Resolva −2x+6=0.",
+        "Resolva a equação −2x+6=0 para encontrar o zero da função.",
         "−2x=−6, então x=3. A reta cruza o eixo horizontal em (3,0).",
         "Ser decrescente significa que y diminui quando x cresce, não que todos os valores de y sejam negativos."
       ],
