@@ -215,7 +215,7 @@ const specs:Spec[] = [
       {
         "level": "intermediate",
         "prompt": "A 25 °C, calcule pOH de solução com pH 9.",
-        "hint": "Use pH+pOH≈14.",
+        "hint": "A 25 °C, considere a relação aproximada pH+pOH=14.",
         "solution": "pOH≈14−9=5. Nesse modelo, a solução é básica porque apresenta pH acima da neutralidade aproximada a 25 °C."
       },
       {
