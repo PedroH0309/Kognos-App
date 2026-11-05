@@ -838,6 +838,98 @@ const specs:Spec[] = [
         }
       ]
     }
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Passado simples e contínuo",
+    "objective": "Distinguir eventos concluídos, ações em andamento e acontecimentos que interrompem outras atividades utilizando simple past e past continuous.",
+    "sections": [
+      {
+        "title": "Simple past e fatos concluídos",
+        "explanation": "O simple past apresenta frequentemente ações e estados situados num momento anterior ao presente. Em afirmações com verbos regulares, a terminação -ed é comum, enquanto os irregulares têm formas próprias: go→went, see→saw e write→wrote. Nas perguntas e negativas com verbos comuns, o auxiliar did marca o passado e o verbo principal permanece na forma base: 'Did you go?' e 'I did not go'. O verbo be apresenta formas como was e were e não usa essa mesma construção. Expressões como yesterday, last week e in 2020 ajudam a localizar eventos, mas o contexto é determinante. Não é correto afirmar que o simple past só descreve ações curtas: 'She lived there for ten years' também utiliza simple past. Na leitura, identifique quem realizou a ação, quando e qual aspecto do tempo foi enfatizado.",
+        "example": "'The team finished the project last Friday' informa que o projeto foi concluído na sexta-feira passada. 'Did the team finish it?' pergunta pelo mesmo evento, usando finish na forma base depois de did.",
+        "pitfall": "Escrever 'did went' em pergunta, misturando duas marcas de passado, ou tratar a forma simples como ação necessariamente instantânea.",
+        "steps": [
+          "Localize o marcador temporal e identifique o acontecimento narrado como concluído.",
+          "Use o verbo no passado em afirmativas e sua forma base depois de did em perguntas."
+        ]
+      },
+      {
+        "title": "Past continuous e ação em andamento",
+        "explanation": "O past continuous combina was ou were com verbo terminado em -ing e costuma representar ação em andamento num momento passado: 'At eight, I was studying'. A forma não confirma por si só quando a ação começou ou terminou, apenas que ela se encontrava em curso no instante descrito. Em 'They were playing when the rain started', o jogo fornece o cenário e o início da chuva é evento situado nesse cenário. Também é possível descrever ações simultâneas sem interrupção: 'While she was cooking, he was reading'. A escolha de was e were depende do sujeito, e as regras de escrita de -ing podem exigir ajustes em verbos como run→running. A leitura deve diferenciar aspecto durativo de causa: eventos próximos no tempo não mantêm necessariamente relação causal. O modelo básico serve para interpretar narrativas, avisos e experiências no passado.",
+        "example": "'At noon, the students were rehearsing' destaca ensaio em andamento ao meio-dia; a frase não informa se o ensaio começou às 11 horas nem se terminou às 13 horas.",
+        "pitfall": "Confundir past continuous com present continuous ou afirmar que todo -ing representa atividade interrompida.",
+        "steps": [
+          "Identifique o instante passado usado como referência e a ação que estava em curso.",
+          "Escolha was ou were de acordo com o sujeito e aplique -ing corretamente."
+        ]
+      },
+      {
+        "title": "When, while e organização temporal",
+        "explanation": "When e while podem relacionar eventos e atividades em narrativas; não são fórmulas que exigem sempre o mesmo tempo verbal. 'I was reading when the lights went out' representa leitura em andamento e queda de energia ocorrendo durante ela. 'While I was reading, my sister was cooking' apresenta simultaneidade. O simple past pode destacar ocorrência ou sequência; o past continuous costuma oferecer fundo durativo, mas o sentido exato depende de contexto e escolhas narrativas. É importante separar descrição temporal de explicação causal: as luzes não apagaram necessariamente porque alguém lia. Para interpretar textos, destaque os verbos, identifique quais acontecimentos foram concluídos e quais foram mostrados como ações em curso, sem inventar início e fim ausentes. Essa análise se conecta a inferências e ao uso de tempos compostos no inglês.",
+        "example": "'While the bus was moving, the driver heard a noise' relata o veículo em movimento quando um ruído foi ouvido; o enunciado não demonstra o que causou o som.",
+        "pitfall": "Interpretar when sempre como explicação de causa ou atribuir ao past continuous horários de início e término não informados.",
+        "steps": [
+          "Distinga evento de fundo e ocorrência pontual na frase completa.",
+          "Cheque se o texto realmente sustenta qualquer conclusão sobre causalidade ou duração total."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Complete 'Yesterday I ___ to school' com o simple past de go.",
+        "hint": "Go possui forma irregular.",
+        "solution": "A forma correta é went: 'Yesterday I went to school'. Yesterday situa o evento no passado."
+      },
+      {
+        "level": "basic",
+        "prompt": "Complete 'At nine, she ___ studying' com was ou were.",
+        "hint": "O sujeito she exige singular.",
+        "solution": "A forma é was: 'At nine, she was studying'. A ação é apresentada como em andamento naquele momento passado."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Corrija 'Did he went to the library?' para formar pergunta.",
+        "hint": "Após did, use o verbo na forma base.",
+        "solution": "A forma correta é 'Did he go to the library?'. Did já marca o passado da pergunta."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Interprete 'I was reading when the phone rang' quanto à ordem das ações.",
+        "hint": "Uma atividade estava em curso quando ocorreu outra.",
+        "solution": "A leitura estava em andamento quando o telefone tocou. A frase não afirma que a leitura provocou o toque."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Crie frase com duas ações simultâneas: I/study e my sister/cook.",
+        "hint": "Utilize while e formas no past continuous.",
+        "solution": "'While I was studying, my sister was cooking.' Ambas as ações são mostradas em andamento no mesmo intervalo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "A frase 'They were walking at six' informa quando a caminhada começou?",
+        "hint": "Veja o aspecto em andamento no momento de referência.",
+        "solution": "Não. Ela indica que a caminhada estava ocorrendo às seis, mas não especifica início ou término."
+      }
+    ],
+    "everyday": {
+      "context": "Um estudante lê a mensagem 'I was studying when the power went out'. Ele interpreta que a pessoa já havia concluído o estudo e que o estudo causou o apagão.",
+      "question": "O que estava acontecendo e qual evento ocorreu durante a atividade, segundo os tempos verbais?",
+      "answer": "Was studying descreve estudo em curso. Went out descreve a queda de energia que ocorreu naquele momento. Não se informa término do estudo nem relação causal.",
+      "connections": [
+        {
+          "subject": "Inglês",
+          "topic": "Present perfect e past perfect",
+          "reason": "A comparação entre tempos ajuda a compreender anterioridade, duração e conclusão de acontecimentos em narrativas."
+        },
+        {
+          "subject": "Português",
+          "topic": "Informações explícitas e inferências",
+          "reason": "Entender o tempo verbal ajuda a separar informações explicitamente narradas de inferências não justificadas."
+        }
+      ]
+    }
   }
 ];
 const lookup=new Map(specs.map(s=>[s.subject+'\0'+s.topic,s]));
