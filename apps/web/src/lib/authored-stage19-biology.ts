@@ -206,13 +206,13 @@ export const stage19Biology:AuthoredLessonSeed[]=[
     "links": [
       [
         "Biologia",
-        "Mutações gênicas e cromossômicas",
-        "Mutações contribuem para a variação hereditária sobre a qual seleção e outros processos evolutivos atuam."
+        "Ácidos nucleicos",
+        "Alterações no material genético produzem parte da variação hereditária que pode participar de processos seletivos."
       ],
       [
         "Biologia",
-        "Evidências da evolução",
-        "Mudanças observáveis na frequência de variantes ajudam a sustentar a compreensão de processos evolutivos."
+        "Segunda lei de Mendel",
+        "A transmissão combinada de alelos ilustra mecanismos de hereditariedade que podem influenciar variação populacional."
       ]
     ]
   }
