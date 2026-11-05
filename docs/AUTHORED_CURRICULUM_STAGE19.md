@@ -1,6 +1,6 @@
-# Etapa 19 — mais 64 aulas autorais específicas, com modelo compacto
+# Etapa 19 — 92 aulas autorais específicas, com modelo compacto
 
-A etapa adiciona **64 assuntos antes não aprofundados**, com três capítulos e seis questões comentadas cada um. O material é escrito especificamente por assunto, com situações contextualizadas e correções de equívocos; a montagem da interface e dos exercícios usa o modelo editorial reutilizável da Etapa 18. A autoria é assistida por IA durante o desenvolvimento, mas **não há chamada de IA ao abrir a aula**; todo o conteúdo é versionado estaticamente. Ainda **não passou por homologação docente**.
+A etapa consolida **92 assuntos distintos antes não aprofundados** (64 do lote principal e outros 28 exclusivos do PR #78), com três capítulos e seis questões comentadas cada um. O material é escrito especificamente por assunto, com situações contextualizadas e correções de equívocos; a montagem da interface e dos exercícios usa o modelo editorial reutilizável da Etapa 18. A autoria é assistida por IA durante o desenvolvimento, mas **não há chamada de IA ao abrir a aula**; todo o conteúdo é versionado estaticamente. Ainda **não passou por homologação docente**.
 
 ## Conteúdos incorporados
 
@@ -35,12 +35,12 @@ A distribuição não é uniformemente quatro por disciplina: Matemática recebe
 | Situações cotidianas | 197 | 64 | **261** |
 | Links de conhecimento | 394 | 128 | **522** |
 
-Dos **1.512** assuntos auditados anteriormente no catálogo global, **1.251 ainda não têm aula específica aprofundada**, embora tenham conteúdo introdutório de apoio. Os números de cobertura dependem dos merges em ordem; não representam aulas já disponíveis na `main` enquanto os PRs estiverem abertos.
+Dos **1.512** assuntos auditados anteriormente no catálogo global, **1.223 ainda não têm aula específica aprofundada**, embora tenham conteúdo introdutório de apoio. Os números de cobertura dependem dos merges em ordem; não representam aulas já disponíveis na `main` enquanto os PRs estiverem abertos.
 
 ## Implementação
 
 - `authored-stage19-seed.ts`: padroniza oito campos editoriais por capítulo, preservando teoria, problema, pista, resolução e explicação do erro escritos para cada tema.
-- `authored-stage19-{discipline}.ts`: 16 arquivos organizados por área com as 64 aulas originais.
+- `authored-stage19-{discipline}.ts`: 16 arquivos organizados por área com as 92 aulas originais.
 - `authored-lessons-stage19.ts`: agregador estático que utiliza `renderAuthoredBlueprint` da etapa anterior sem modificar API nem banco de dados.
 - `starter-lessons.ts` e `everyday-lesson-contexts.ts`: aulas por assunto canônico e contextos associados, preservando o fluxo **Matérias → Conteúdos → Aula**.
 - `authored-lessons-stage19.test.ts`: verificações de unicidade, ID estável, autoria sem revisão docente, 192 capítulos, 384 exercícios, links preparados e 261 cenários.
@@ -51,3 +51,10 @@ Preservados dados, progresso, permissões, Supabase, autenticação, cotas, esqu
 ## Sequência de PRs
 
 **PR #76** (Etapa 17) e **PR #77** (Etapa 18) ainda não haviam sido incorporados à `main` quando este lote foi iniciado. O novo PR parte de `feat/curriculum-blueprint-stage18-64`; é um PR **encadeado**, que precisa da integração dos anteriores antes de alterar sua base para `main`. Não realizar merges automaticamente.
+
+
+## Consolidação de PRs duplicados
+
+Foi identificado que os PRs #78 e #79 haviam sido abertos separadamente para a mesma Etapa 19, contendo 36 temas coincidentes e 28 exclusivos em cada um. Para não perder trabalho nem sobrescrever aulas, este branch foi ampliado para **92 temas únicos**, incorporando em `authored-stage19-extras.ts` os 28 temas exclusivos do PR #78. A integração usa `expandTopicSeed` e verifica unicidade e links. **Integrar apenas o PR #79**, após os anteriores #76 e #77, e não realizar merge do PR #78, que será marcado como substituído.
+
+**Total condicionado à integração de #76, #77 e #79:** 289 aulas individuais, 867 capítulos, 1.734 exercícios resolvidos, 289 problemas cotidianos, 578 conexões. Dos 1.512 temas do catálogo, 1.223 permaneceriam com conteúdo introdutório. Esses números são de cobertura editorial de código, **não significam homologação por docente**.
