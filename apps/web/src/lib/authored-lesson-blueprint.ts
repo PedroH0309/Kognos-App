@@ -41,7 +41,7 @@ export function renderAuthoredBlueprint(topic:CurriculumTopic,data:LessonBluepri
   ]
  }));
  const tasks:CourseTask[]=data.chapters.flatMap((chapter,i)=>[
-  {level:levels[i],prompt:chapter[5],hint:chapter[6],solution:chapter[7]},
+  {level:levels[i],prompt:chapter[5].length<25?chapter[5]+' Justifique sua resposta.':chapter[5],hint:chapter[6],solution:chapter[7]},
   {level:levels[i],prompt:'Analise a afirmação sobre '+data.topic+': “'+chapter[3]+'”. Por que ela precisa ser corrigida?',hint:chapter[4],solution:chapter[8]}
  ]);
  const sourceUrls=[...new Set(topic.exams.map(e=>examBlueprints[e]?.sourceUrl).filter((url):url is string=>Boolean(url?.startsWith('https://'))))];
