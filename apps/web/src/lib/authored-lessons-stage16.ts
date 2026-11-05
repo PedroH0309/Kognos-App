@@ -149,13 +149,13 @@ const specs:Spec[] = [
       {
         "level": "basic",
         "prompt": "Uma velocidade passa de 4 para 16 m/s em 3 s, com aceleração constante. Calcule a.",
-        "hint": "Use a=(v−v₀)/Δt.",
+        "hint": "Calcule a variação de velocidade e divida pelos três segundos.",
         "solution": "a=(16−4)/3=4 m/s². A variação da velocidade foi de 12 m/s durante três segundos."
       },
       {
         "level": "intermediate",
         "prompt": "Um carrinho parte do repouso e acelera a 2 m/s² durante 4 s. Qual deslocamento?",
-        "hint": "Use Δs=v₀t+at²/2.",
+        "hint": "Aplique Δs=v₀t+at²/2, lembrando que a velocidade inicial é zero.",
         "solution": "Δs=0×4+(2×4²)/2=16 m. O resultado depende da aceleração constante e do referencial de movimento retilíneo."
       },
       {
@@ -167,7 +167,7 @@ const specs:Spec[] = [
       {
         "level": "advanced",
         "prompt": "Um veículo a 20 m/s freia com a=−5 m/s² até parar. Calcule distância de frenagem ideal.",
-        "hint": "Use 0=v₀²+2aΔs.",
+        "hint": "Use a equação de Torricelli: v²=v₀²+2aΔs com v final zero.",
         "solution": "0=400−10Δs, então Δs=40 m. Esse valor não inclui a distância percorrida durante reação do motorista."
       },
       {
@@ -1455,7 +1455,7 @@ const specs:Spec[] = [
       {
         "level": "advanced",
         "prompt": "Dois resistores de 4 Ω são ligados em paralelo. Calcule Req.",
-        "hint": "Use 1/Req=1/4+1/4.",
+        "hint": "Some as duas frações de resistências inversas: 1/Req=1/4+1/4.",
         "solution": "1/Req=2/4=1/2, então Req=2 Ω. A resistência equivalente fica abaixo de 4 Ω."
       },
       {
@@ -1476,9 +1476,9 @@ const specs:Spec[] = [
           "reason": "Corrente e tensão permitem calcular potência de componentes no modelo apropriado, conectando circuito a consumo energético."
         },
         {
-          "subject": "Ciências",
-          "topic": "Formas e transformações de energia",
-          "reason": "Lâmpadas transformam energia elétrica em luz e energia térmica, sem consumir a própria carga elétrica que circula."
+          "subject": "Física",
+          "topic": "Calor sensível e capacidade térmica",
+          "reason": "O aquecimento de componentes pode ser relacionado a transferências de energia e variação de temperatura discutidas na calorimetria."
         }
       ]
     }
