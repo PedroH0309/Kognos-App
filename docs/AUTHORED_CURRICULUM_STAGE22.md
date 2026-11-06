@@ -1,8 +1,8 @@
-# Kognos — Etapa 22: 56 aulas autorais aprofundadas
+# Kognos — Etapa 22: 56 aulas autorais aprofundadas e sem tópicos repetidos
 
 ## Continuidade editorial
 
-Esta etapa parte da branch `feat/curriculum-stage21-extended-batch`, do PR #81. Mantém conteúdo, identificadores, progresso e organização de todas as etapas anteriores. Não recria a aplicação, não modifica chaves, permissões ou banco de dados e não aciona IA ao aluno acessar material.
+Esta etapa parte da branch `feat/curriculum-stage21-extended-batch`, do PR #81, que já foi incorporado à sua base encadeada. Mantém conteúdo, identificadores, progresso e organização de todas as etapas anteriores. Não recria a aplicação, não modifica chaves, permissões ou banco de dados e não aciona IA ao aluno acessar material.
 
 ## Lote escrito e integrado
 
@@ -16,13 +16,12 @@ Esta etapa parte da branch `feat/curriculum-stage21-extended-batch`, do PR #81. 
 | Geografia | 4 |
 | Português | 4 |
 | Literatura | 4 |
-| Filosofia | 3 |
-| Sociologia | 3 |
 | Arte | 2 |
-| Ciências | 2 |
+| Ciências | 10 |
 | Inglês | 2 |
-| Redação | 2 |
 | **Total** | **56** |
+
+A auditoria encontrou oito temas de Filosofia, Sociologia e Redação já existentes no repertório autoral; foram preservados e **substituídos no novo lote** por oito temas inéditos de Ciências: Biomas brasileiros, Biodiversidade e conservação, Rochas, solos e erosão, Tectônica e vulcanismo, Movimentos da Terra, Fases da Lua e eclipses, Estações do ano e Tecnologia e sustentabilidade. A substituição evita sobrescrever a história pedagógica e o conteúdo anterior.
 
 Aula por tema: objetivo mensurável, três capítulos de básico a avançado, um exemplo numérico ou conceitual específico em cada capítulo, equívoco diagnosticado e corrigido, pistas e resolução em seis exercícios, um caso aplicado com resposta detalhada, duas conexões explicadas com temas já aprofundados. Os textos expõem hipóteses e limites dos modelos, distinguem fenômenos reais de exemplos didáticos e trabalham comparação de causas, conceitos e fontes.
 
