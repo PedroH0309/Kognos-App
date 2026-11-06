@@ -19,16 +19,16 @@ import {stage24Seeds,stage24Topics,stage24Lesson,stage24EverydayContexts} from '
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
 import {everydayContexts,everydayContextFor} from './everyday-lesson-contexts.ts';
 const key=(x:{subject:string;topic:string})=>x.subject+'\0'+x.topic;
-test('Stage24 adds six new math/chemistry/biology authored lessons, never shadowing prior 431',()=>{
+test('Stage24 adds two new chemistry authored lessons, never shadowing prior 431',()=>{
  const previous=new Set([...deepMathTopicNames.map(topic=>key({subject:'Matemática',topic})),...[...deepCrossSubjectTopics,...stage13Topics,...stage14Topics,...stage15Topics,...stage16Topics,...stage17Topics,...stage18Topics,...stage19Topics,...stage20Topics,...stage21Topics,...stage22Topics,...stage23Topics].map(key)]);
  assert.equal(previous.size,431);
- assert.equal(stage24Seeds.length,6);
- assert.equal(stage24Topics.length,6);
- assert.equal(stage24EverydayContexts.length,6);
+ assert.equal(stage24Seeds.length,2);
+ assert.equal(stage24Topics.length,2);
+ assert.equal(stage24EverydayContexts.length,2);
  const newKeys=stage24Topics.map(key);
- assert.equal(new Set(newKeys).size,6);
+ assert.equal(new Set(newKeys).size,2);
  assert.deepEqual(newKeys.filter(x=>previous.has(x)),[],'New lessons cannot overwrite previous topics');
- assert.equal(everydayContexts.length,437);
+ assert.equal(everydayContexts.length,433);
  const available=new Set([...previous,...newKeys]);
  const brokenLinks:string[]=[];
  for(const seed of stage24Seeds){
