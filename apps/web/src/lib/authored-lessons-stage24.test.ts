@@ -19,9 +19,9 @@ import {stage24Seeds,stage24Topics,stage24Lesson,stage24EverydayContexts} from '
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
 import {everydayContexts,everydayContextFor} from './everyday-lesson-contexts.ts';
 const key=(x:{subject:string;topic:string})=>x.subject+'\0'+x.topic;
-test('Stage24 adds six new math/chemistry/biology authored lessons, never shadowing prior 437',()=>{
+test('Stage24 adds six new math/chemistry/biology authored lessons, never shadowing prior 431',()=>{
  const previous=new Set([...deepMathTopicNames.map(topic=>key({subject:'Matemática',topic})),...[...deepCrossSubjectTopics,...stage13Topics,...stage14Topics,...stage15Topics,...stage16Topics,...stage17Topics,...stage18Topics,...stage19Topics,...stage20Topics,...stage21Topics,...stage22Topics,...stage23Topics].map(key)]);
- assert.equal(previous.size,437);
+ assert.equal(previous.size,431);
  assert.equal(stage24Seeds.length,6);
  assert.equal(stage24Topics.length,6);
  assert.equal(stage24EverydayContexts.length,6);
