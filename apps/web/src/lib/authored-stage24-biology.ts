@@ -76,8 +76,8 @@ export const stage24Biology:TopicSeed[]=[
     "Com p=0,7 e q=0,3, esperam-se aproximadamente 49% AA, 42% Aa e 9% aa no modelo idealizado.",
     "A expressão p²+2pq+q² prova que todas as populações reais estão sempre em equilíbrio genético.",
     "Se p=0,8 e q=0,2, qual proporção esperada de heterozigotos?",
-    "Use 2pq.",
-    "2·0,8·0,2=0,32, ou 32% no equilíbrio ideal.",
+    "Use a fórmula 2pq para heterozigotos.",
+    "2·0,8·0,2=0,32, ou 32% dos indivíduos heterozigotos no equilíbrio ideal.",
     "O resultado é expectativa do modelo, não medição automática de uma população real."
    ],
    [
