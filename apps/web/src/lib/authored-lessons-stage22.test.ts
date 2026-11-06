@@ -89,11 +89,15 @@ test('Stage 22 adds 56 new, independently researched topics without replacing 36
   }
  }
  assert.deepEqual(brokenLinks,[],'Connections must target previously authored or new lessons');
- assert.equal(subjects.size,14);
+ assert.equal(subjects.size,11);
  assert.equal(subjects.get('Matemática'),8);
  assert.equal(subjects.get('Física'),6);
  assert.equal(subjects.get('Química'),6);
  assert.equal(subjects.get('Biologia'),6);
+ assert.equal(subjects.get('Ciências'),10);
+ assert.equal(subjects.has('Filosofia'),false);
+ assert.equal(subjects.has('Sociologia'),false);
+ assert.equal(subjects.has('Redação'),false);
 });
 
 test('Stage 22 does not shadow earlier routes or alter unselected syllabus topics',()=>{
