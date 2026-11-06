@@ -77,7 +77,7 @@ export const stage24Math:TopicSeed[]=[
     "O resto da divisão por x−a é sempre o coeficiente independente do polinômio.",
     "Qual o resto de x³−2x+5 dividido por x−2?",
     "Use P(2) sem dividir completamente.",
-    "P(2)=8−4+5=9, então o resto é 9.",
+    "P(2)=8−4+5=9, então o resto da divisão por x−2 é 9, conforme o teorema do resto.",
     "O teorema do resto depende do valor a no divisor e não apenas do termo constante."
    ],
    [
