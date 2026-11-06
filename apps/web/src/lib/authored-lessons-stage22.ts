@@ -15,11 +15,12 @@ import {stage22History} from './authored-stage22-history.ts';
 import {stage22Geography} from './authored-stage22-geography.ts';
 import {stage22Portuguese} from './authored-stage22-portuguese.ts';
 import {stage22Literature} from './authored-stage22-literature.ts';
-import {stage22Society} from './authored-stage22-society.ts';
+import {stage22EarthLife} from './authored-stage22-earth-life.ts';
+import {stage22SpaceTech} from './authored-stage22-space-tech.ts';
 import {stage22ArtScience} from './authored-stage22-art-science.ts';
 import {stage22LanguagesWriting} from './authored-stage22-languages-writing.ts';
 
-export const stage22Seeds=[...stage22Math,...stage22Physics,...stage22Chemistry,...stage22Biology,...stage22History,...stage22Geography,...stage22Portuguese,...stage22Literature,...stage22Society,...stage22ArtScience,...stage22LanguagesWriting];
+export const stage22Seeds=[...stage22Math,...stage22Physics,...stage22Chemistry,...stage22Biology,...stage22History,...stage22Geography,...stage22Portuguese,...stage22Literature,...stage22ArtScience,...stage22LanguagesWriting,...stage22EarthLife,...stage22SpaceTech];
 const specs:readonly LessonBlueprint[]=stage22Seeds.map(expandTopicSeed);
 const byKey=new Map(specs.map(item=>[item.subject+'\0'+item.topic,item]));
 export const stage22Topics=specs.map(({subject,topic})=>({subject,topic}));
