@@ -30,7 +30,8 @@ test('Stage 22 adds 56 new, independently researched topics without replacing 36
  assert.equal(stage22EverydayContexts.length,56);
  const newKeys=stage22Topics.map(key);
  assert.equal(new Set(newKeys).size,56,'No repeated identity inside stage 22');
- assert.deepEqual(newKeys.filter(k=>previous.has(k)),[],'Previously authored courses cannot be reauthored');
+ const candidates=curriculumTopics.filter(t=>['Arte','Ciências','Física','Química','Inglês','Educação Física','Geografia'].includes(t.subject)&&!previous.has(key(t))&&!newKeys.includes(key(t))).map(t=>key(t));
+ assert.deepEqual(newKeys.filter(k=>previous.has(k)),[],'Previously authored courses cannot be reauthored. AVAILABLE: '+candidates.join(' | '));
  const available=new Set([...previous,...newKeys]);
  assert.equal(available.size,425,'All 56 must add previously unprepared topics');
  assert.equal(everydayContexts.length,425);
