@@ -45,7 +45,7 @@ export const stage24Chemistry:TopicSeed[]=[
   "links": [
    [
     "Química",
-    "Equilíbrio iônico",
+    "Equilíbrio químico e constantes",
     "A hidrólise é descrita por equilíbrios de transferência de prótons e suas constantes."
    ],
    [
