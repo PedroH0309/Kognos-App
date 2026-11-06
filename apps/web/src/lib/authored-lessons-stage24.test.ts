@@ -28,7 +28,7 @@ test('Stage24 adds two new chemistry authored lessons, never shadowing prior 431
  const newKeys=stage24Topics.map(key);
  assert.equal(new Set(newKeys).size,2);
  assert.deepEqual(newKeys.filter(x=>previous.has(x)),[],'New lessons cannot overwrite previous topics');
- assert.equal(everydayContexts.length,433);
+ assert.ok(everydayContexts.length>=433,'Subsequent curriculum stages retain stage24 contexts');
  const available=new Set([...previous,...newKeys]);
  const brokenLinks:string[]=[];
  for(const seed of stage24Seeds){
