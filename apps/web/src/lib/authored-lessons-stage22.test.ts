@@ -34,7 +34,7 @@ test('Stage 22 adds 56 new, independently researched topics without replacing 36
  assert.deepEqual(newKeys.filter(k=>previous.has(k)),[],'Previously authored courses cannot be reauthored. AVAILABLE: '+candidates.join(' | '));
  const available=new Set([...previous,...newKeys]);
  assert.equal(available.size,425,'All 56 must add previously unprepared topics');
- assert.equal(everydayContexts.length,425);
+ assert.ok(everydayContexts.length>=425,'Later authored stages preserve all stage22 contexts');
 
  const allExamples=new Set<string>();
  const brokenLinks:string[]=[];
