@@ -50,7 +50,7 @@ export const stage25Chemistry:TopicSeed[]=[
    ],
    [
     "Química",
-    "Energia de ativação e catálise",
+    "Fatores que alteram a velocidade",
     "A barreira cinética precisa ser diferenciada do balanço de energias de ligação entre reagentes e produtos."
    ]
   ]
