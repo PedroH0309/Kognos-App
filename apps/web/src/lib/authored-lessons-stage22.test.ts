@@ -30,7 +30,7 @@ test('Stage 22 adds 56 new, independently researched topics without replacing 36
  assert.equal(stage22EverydayContexts.length,56);
  const newKeys=stage22Topics.map(key);
  assert.equal(new Set(newKeys).size,56,'No repeated identity inside stage 22');
- for(const k of newKeys)assert.ok(!previous.has(k),'Previously authored course cannot be reauthored: '+k);
+ assert.deepEqual(newKeys.filter(k=>previous.has(k)),[],'Previously authored courses cannot be reauthored');
  const available=new Set([...previous,...newKeys]);
  assert.equal(available.size,425,'All 56 must add previously unprepared topics');
  assert.equal(everydayContexts.length,425);
