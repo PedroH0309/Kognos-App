@@ -17,6 +17,7 @@ import {stage20Lesson,stage20Topics} from './authored-lessons-stage20.ts';
 import {stage21Lesson,stage21Topics} from './authored-lessons-stage21.ts';
 import {stage22Lesson,stage22Topics} from './authored-lessons-stage22.ts';
 import {stage23Lesson,stage23Topics} from './authored-lessons-stage23.ts';
+import {stage24Lesson,stage24Topics} from './authored-lessons-stage24.ts';
 
 /** Offline curriculum-wide teaching modules.
  * IMPORTANT: auto-assembled introductory content is not a teacher-reviewed
@@ -121,6 +122,7 @@ export function starterCoverage(topic:CurriculumTopic):StarterCoverage{
  if(stage21Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
  if(stage22Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
   if(stage23Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
+  if(stage24Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  if(legacy)return 'curated';
  const ref=findProvaoTopic(topic.subject,topic.topic);
@@ -158,6 +160,8 @@ export function starterLesson(topic:CurriculumTopic):CourseLesson{
  if(stage22)return stage22;
   const stage23=stage23Lesson(topic);
   if(stage23)return stage23;
+  const stage24=stage24Lesson(topic);
+  if(stage24)return stage24;
  const ref=findProvaoTopic(topic.subject,topic.topic);
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  const seed=matchTeachingSeed(topic.subject,topic.topic+' '+(ref?.description??''));
