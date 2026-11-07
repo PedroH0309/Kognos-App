@@ -93,7 +93,7 @@ export function provaoDetailedLesson(topic:CurriculumTopic):CourseLesson|null{
   objective:source.objective,prerequisites:source.prerequisites,sections:source.sections,tasks:source.tasks,
   videos:[],authorship:'Kognos — aula autoral específica sobre o escopo do Provão Paulista; sem homologação docente',
   license:'Material preparatório original do Kognos; não oficial',
-  sourceUrls,review:'introductory'};
+  sourceUrls,syllabusScope:ref.description,review:'introductory'};
 }
 export function hasProvaoDetailedLesson(topic:CurriculumTopic){
  const ref=findProvaoTopic(topic.subject,topic.topic);
