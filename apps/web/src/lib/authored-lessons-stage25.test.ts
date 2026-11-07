@@ -29,7 +29,7 @@ test('Stage25 adds 12 new STEM and physiology authored lessons without shadowing
  const newKeys=stage25Topics.map(key);
  assert.equal(new Set(newKeys).size,12);
  assert.deepEqual(newKeys.filter(x=>previous.has(x)),[],'New lessons cannot overwrite previous topics');
- assert.equal(everydayContexts.length,445);
+ assert.ok(everydayContexts.length>=445,'Subsequent curriculum stages retain stage25 contexts');
  const available=new Set([...previous,...newKeys]);
  const brokenLinks:string[]=[];
  for(const seed of stage25Seeds){
