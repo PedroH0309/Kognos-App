@@ -14,6 +14,11 @@ import {stage16Lesson} from './authored-lessons-stage16.ts';
 import {stage17Lesson} from './authored-lessons-stage17.ts';
 type Bridge={subject:string;includes:string;to:string;from?:string};
 const links:readonly Bridge[]=[
+ // Redação: critérios do Anexo VI com conteúdos autorais de apoio.
+ {subject:'Redação',includes:'interpretar a proposta e os textos auxiliares',to:'Leitura da proposta e recorte temático'},
+ {subject:'Redação',includes:'construir tese, argumentos e conclusão',to:'Formulação de tese'},
+ {subject:'Redação',includes:'relacionar palavras, orações e parágrafos',to:'Coesão sequencial e conectivos',from:'Português'},
+ {subject:'Redação',includes:'elaborar intervenção relacionada ao tema',to:'Proposta de intervenção: agente, ação, meio, finalidade e detalhamento'},
  // Português e literatura: interpretação, funcionamento da língua e história literária.
  {subject:'Português',includes:'distinção entre variedades linguísticas',to:'Variação regional, social e histórica'},
  {subject:'Português',includes:'níveis de significação do texto',to:'Informações explícitas e inferências'},
