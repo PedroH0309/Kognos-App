@@ -23,6 +23,7 @@ import "./kognos-external-and-3d-labs.css";
 import "./kognos-study-rooms-stage8.css";
 import "./kognos-curriculum-flow-stage9.css";
 import "./kognos-tutor-page.css";
+import "./kognos-universal-lessons.css";
 import "./kognos-auth-motion.css";
 
 export const metadata: Metadata = {

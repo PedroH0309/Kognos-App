@@ -17,14 +17,15 @@ test('Existing classroom and new curriculum navigation correctly label preloaded
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const flow=read('apps/web/src/components/CurriculumStudyFlow.tsx');
  const reader=read('apps/web/src/components/TopicLessonSections.tsx');
+ const universal=read('apps/web/src/components/UniversalLessonReader.tsx');
  assert.match(room,/Aula-base pré-carregada/);
  assert.match(room,/detail\.lesson\.review==='introductory'/);
  assert.match(flow,/Guia inicial pré-carregado/);
  assert.match(flow,/Aula-base pré-carregada/);
  assert.match(flow,/starter','guided/);
  assert.match(reader,/REVISÃO DOCENTE PENDENTE/);
- assert.match(reader,/não representa aula integral revisada por professor/);
- assert.match(reader,/lesson\.sections\.map/);
+ assert.match(universal,/não substitui uma aula completa revisada por especialista/);
+ assert.match(universal,/lesson\.sections\.map/);
  assert.match(reader,/lesson\.tasks\.filter/);
  assert.match(reader,/task\.solution/);
  assert.match(reader,/onActivityProgress/);

@@ -6,7 +6,7 @@ import {isProvaoTopic,type ProvaoGrade} from './provao-paulista.ts';
  * Keep original editorial order, do not label a mapped topic as a full lesson.
  */
 export type CurriculumListTopic=CurriculumTopic&{status:string};
-export type CurriculumStep='subjects'|'topics'|'lesson';
+export type CurriculumStep='subjects'|'topics'|'lesson'|'review';
 export function scopedCurriculum<T extends CurriculumListTopic>(
  topics:readonly T[],exam:ExamId|'all',grade:ProvaoGrade|null
 ):T[]{

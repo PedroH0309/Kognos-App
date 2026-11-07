@@ -6,12 +6,15 @@ import type {ExamId} from '@/lib/exam-blueprints';
 import {examBlueprints} from '@/lib/exam-blueprints';
 import type {ProvaoGrade} from '@/lib/provao-paulista';
 import {contentRequest} from '@/lib/content-client';
+import {groupLearningBlocks} from '@/lib/curriculum-learning-blocks';
+import type {CourseLesson} from '@/lib/course-content';
 import {canFinishLesson,curriculumSubjects,curriculumSubjectTopics,nextCurriculumTopic,scopedCurriculum,type CurriculumStep,type CurriculumListTopic} from '@/lib/curriculum-navigation';
 
 type Props={
  preferredExam?:ExamId|null;
  focus?:{lessonId:string;subject:string}|null;
  renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void,onRelatedTopic:(topicId:string)=>void)=>ReactNode;
+ onOpenSimulados?:()=>void;
 };
 const statuses:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada · revisão pendente',guided:'Guia inicial pré-carregado · aprofundamento pendente',introduction:'Introdução disponível',outline:'Tema mapeado, sem aula',draft:'Em revisão'};
 const icons:Record<string,typeof Calculator>={
@@ -19,7 +22,7 @@ const icons:Record<string,typeof Calculator>={
  'Física':Atom,'Química':FlaskConical,'Biologia':Dna,'História':Landmark,
  'Geografia':Globe2,'Filosofia':Scale,'Sociologia':Users
 };
-export default function CurriculumStudyFlow({preferredExam=null,focus=null,renderLesson}:Props){
+export default function CurriculumStudyFlow({preferredExam=null,focus=null,renderLesson,onOpenSimulados}:Props){
  const [topics,setTopics]=useState<CurriculumListTopic[]>([]);
  const [exam,setExam]=useState<ExamId|'all'>(preferredExam??'all');
  const [grade,setGrade]=useState<ProvaoGrade|null>(null);
@@ -31,6 +34,10 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  const [activitiesAnswered,setActivitiesAnswered]=useState(false);
  const [loadError,setLoadError]=useState('');
  const [loading,setLoading]=useState(true);
+ const [reviewBlockId,setReviewBlockId]=useState('');
+ const [reviewPage,setReviewPage]=useState(0);
+ const [reviewLoading,setReviewLoading]=useState(false);
+ const [reviewNotes,setReviewNotes]=useState<Array<{id:string;topic:string;objective:string;concepts:string[];note?:string}>>([]);
  const top=useRef<HTMLDivElement|null>(null);
  const load=useCallback(async()=>{
   try{
@@ -54,6 +61,29 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  const subjects=curriculumSubjects(scoped);
  const subjectTopics=curriculumSubjectTopics(scoped,subject);
  const visibleTopics=subjectTopics.filter(topic=>topic.topic.toLocaleLowerCase('pt-BR').includes(search.toLocaleLowerCase('pt-BR')));
+ const visibleBlocks=groupLearningBlocks(visibleTopics,subject);
+ const blocks=groupLearningBlocks(subjectTopics,subject);
+ const reviewBlock=blocks.find(block=>block.id===reviewBlockId)??null;
+ const reviewPerPage=6;
+ useEffect(()=>{
+  if(step!=='review'||!reviewBlock)return;
+  let cancelled=false;
+  setReviewLoading(true);
+  const slice=reviewBlock.topics.slice(reviewPage*reviewPerPage,(reviewPage+1)*reviewPerPage);
+  void Promise.all(slice.map(async item=>{
+   try{
+    const response=await contentRequest('/api/content?id='+encodeURIComponent(item.id));
+    const lesson=response.lesson as CourseLesson|null;
+    if(!lesson)return {id:item.id,topic:item.topic,objective:'Conteúdo ainda não publicado.',concepts:[],note:'Sem aula específica para revisão.'};
+    return {id:item.id,topic:item.topic,objective:lesson.objective,concepts:lesson.sections.map(section=>
+     section.title+' — '+section.explanation.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ])/u)[0].slice(0,280)
+    ),...(lesson.review==='introductory'?{note:'Material-base: conferir com fontes e aprofundamento editorial.'}:{})};
+   }catch{
+    return {id:item.id,topic:item.topic,objective:'Material de revisão indisponível.',concepts:[],note:'Tente abrir a aula novamente.'};
+   }
+  })).then(result=>{if(!cancelled){setReviewNotes(result);setReviewLoading(false);}});
+  return()=>{cancelled=true;};
+ },[step,reviewBlockId,reviewPage,topics]);
  const current=subjectTopics.find(topic=>topic.id===selected)??topics.find(topic=>topic.id===selected)??null;
  const next=current?nextCurriculumTopic(subjectTopics,current.id):null;
  const position=current?subjectTopics.findIndex(topic=>topic.id===current.id)+1:0;
@@ -65,6 +95,9 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  }
  function chooseTopic(topic:CurriculumListTopic){
   setSubject(topic.subject);setSelected(topic.id);resetCompletion();setStep('lesson');
+ }
+ function openReview(blockId:string){
+  setReviewBlockId(blockId);setReviewPage(0);setReviewNotes([]);setStep('review');
  }
  function nextLesson(){if(next&&(!hasLesson||ready))chooseTopic(next);}
  function openRelatedTopic(topicId:string){
@@ -122,14 +155,51 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
    </label>
    <p className="k-curriculum-topic-count">{visibleTopics.length} de {subjectTopics.length} conteúdos</p>
    <div className="k-curriculum-topic-list">
-    {visibleTopics.map(topic=><button className="k-curriculum-topic-row" type="button" key={topic.id} onClick={()=>chooseTopic(topic)}>
-     <span className="k-curriculum-topic-num">{String(subjectTopics.indexOf(topic)+1).padStart(2,'0')}</span>
-     <span className="k-curriculum-topic-copy"><strong>{topic.topic}</strong>
-      <small>{statuses[topic.status]??'Em revisão'}</small></span>
-     <ArrowRight size={18} aria-hidden="true"/>
-    </button>)}
+    {visibleBlocks.map(block=><section className="k-curriculum-learning-block" key={block.id}>
+     <header className="k-curriculum-learning-block-head">
+      <div><small>BLOCO / UNIDADE · {block.source==='curricular'?'Unidade curricular cadastrada':'Organização de estudo'}</small>
+       <h2>{block.title}</h2><p>{block.topics.length} aulas/assuntos deste bloco</p></div>
+      <button type="button" onClick={()=>openReview(block.id)}>Revisão do bloco <BookOpenCheck size={16}/></button>
+     </header>
+     <div className="k-curriculum-block-topics">
+      {block.topics.map(topic=><button className="k-curriculum-topic-row" type="button" key={topic.id} onClick={()=>chooseTopic(topic)}>
+       <span className="k-curriculum-topic-num">{String(subjectTopics.indexOf(topic)+1).padStart(2,'0')}</span>
+       <span className="k-curriculum-topic-copy"><strong>{topic.topic}</strong>
+        <small>{statuses[topic.status]??'Em revisão'}</small></span>
+       <ArrowRight size={18} aria-hidden="true"/>
+      </button>)}
+     </div>
+    </section>)}
    </div>
    {!visibleTopics.length&&<p className="k-curriculum-empty">Não encontramos conteúdos para essa pesquisa.</p>}
+  </section>}
+  {step==='review'&&reviewBlock&&<section className="k-curriculum-step k-curriculum-block-review" aria-label={'Revisão de '+reviewBlock.title}>
+   <button type="button" className="k-curriculum-back" onClick={()=>setStep('topics')}><ArrowLeft size={17}/> Voltar aos conteúdos</button>
+   <header className="k-curriculum-flow-head"><span className="overline">REVISÃO DO BLOCO · {subject.toLocaleUpperCase('pt-BR')}</span>
+    <h1>{reviewBlock.title}</h1>
+    <p>Folha de revisão com objetivos e trechos reais de cada aula. Reveja os assuntos, resolva as atividades e avance aos simulados corrigidos do Kognos.</p>
+   </header>
+   <p className="k-curriculum-block-count">{reviewBlock.topics.length} conteúdos · páginas de {reviewPerPage} aulas</p>
+   {reviewLoading&&<p role="status">Preparando os conceitos já registrados neste bloco…</p>}
+   {!reviewLoading&&<div className="k-curriculum-review-list">
+    {reviewNotes.map(note=><article key={note.id} className="k-curriculum-review-card">
+     <h2>{note.topic}</h2><p><strong>Objetivo:</strong> {note.objective}</p>
+     {note.concepts.length>0&&<ul>{note.concepts.map((value,index)=><li key={index}>{value}</li>)}</ul>}
+     {note.note&&<p className="k-curriculum-review-note">{note.note}</p>}
+     <button type="button" onClick={()=>{const item=reviewBlock.topics.find(t=>t.id===note.id);if(item)chooseTopic(item);}}>Revisar esta aula <ArrowRight size={16}/></button>
+    </article>)}
+   </div>}
+   <div className="k-curriculum-review-pages">
+    <button type="button" disabled={reviewPage===0} onClick={()=>setReviewPage(p=>p-1)}>Página anterior</button>
+    <span>Página {reviewPage+1} de {Math.ceil(reviewBlock.topics.length/reviewPerPage)}</span>
+    <button type="button" disabled={(reviewPage+1)*reviewPerPage>=reviewBlock.topics.length} onClick={()=>setReviewPage(p=>p+1)}>Próxima página</button>
+   </div>
+   <div className="k-curriculum-review-exam">
+    <h2>Simulado de fixação e revisão direcionada</h2>
+    <p>Na seção Simulados, as respostas podem ser corrigidas e analisadas de acordo com as questões disponíveis. O mapa de domínio é construído apenas com tentativas registradas, não com a leitura.</p>
+    {onOpenSimulados?<button type="button" onClick={onOpenSimulados}>Abrir simulados do Kognos <ArrowRight size={18}/></button>:
+     <p>Abra a área Simulados pelo menu para fazer questões corrigidas. Questões específicas deste bloco dependem do banco disponível.</p>}
+   </div>
   </section>}
   {step==='lesson'&&<section className="k-curriculum-step k-curriculum-lesson-step" aria-label={'Aula '+(current?.topic??'selecionada')}>
    <div className="k-curriculum-lesson-toolbar">
