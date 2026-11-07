@@ -11,6 +11,7 @@ import MathLabPanel from './math/MathLabPanel';
 import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
 import HumanitiesLabPanel from './humanities/HumanitiesLabPanel';
+import EcologyEnergyLab from './science/EcologyEnergyLab';
 import {resolveMathLab} from '@/lib/math-labs';
 import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveLanguageLab} from '@/lib/language-labs';
@@ -21,7 +22,8 @@ import {resolveHumanitiesLab} from '@/lib/humanities-labs';
  * This is layout/pacing, NOT automated pedagogical rewriting or new facts.
  */
 export function lessonReadingBlocks(text:string):string[]{
- return text.split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean).flatMap(paragraph=>{
+ return text.replace(/^(?:Este é um módulo introdutório pré-carregado[^\n]*|Aula específica do Kognos; revisão docente pendente\.|Este é um módulo introdutório pré-carregado, ampliado com[^\n]*)(?:\n\n)?/i,'')
+ .split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean).flatMap(paragraph=>{
   const sentences=paragraph.split(/(?<=[.!?])\s+(?=[A-ZÁÀÃÂÉÊÍÓÔÕÚÜÇ“"«])/u).map(s=>s.trim()).filter(Boolean);
   if(sentences.length<3)return [paragraph];
   const blocks:string[]=[];
@@ -45,6 +47,7 @@ function ConceptMap({lesson}:{lesson:CourseLesson}){
 }
 
 function TopicLab({subject,topic}:{subject:string;topic:string}){
+ if(subject==='Biologia'&&topic.startsWith('Principais conceitos de Ecologia'))return <EcologyEnergyLab/>;
  const match={subject,topic};
  if(resolveMathLab(match))return <MathLabPanel {...match}/>;
  if(resolveScienceLab(match))return <ScienceLabPanel {...match}/>;
@@ -125,7 +128,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
  const assessed=Object.keys(results).length;
  const hasSpecificContext=Boolean(situation);
  const labs={subject,topic};
- const hasLab=Boolean(resolveMathLab(labs)||resolveScienceLab(labs)||resolveLanguageLab(labs)||resolveHumanitiesLab(labs));
+ const hasLab=Boolean((subject==='Biologia'&&topic.startsWith('Principais conceitos de Ecologia'))||resolveMathLab(labs)||resolveScienceLab(labs)||resolveLanguageLab(labs)||resolveHumanitiesLab(labs));
  if(!lesson&&!introduction)return <div className="k-lesson-unavailable" role="status">
   Este conteúdo está no roteiro, mas ainda não possui material didático específico. Nenhuma aula completa será simulada automaticamente.
  </div>;
@@ -134,10 +137,12 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    <div className="k-universal-eyebrow">{subject} · Unidade de estudo</div>
    <h3>{topic}</h3>
    <div className="k-universal-metadata">
-    <span>{lesson?.review==='editor'?'Aula editorial':lesson?.review==='ai_reviewed'?'Revisão automática, sem homologação':lesson?'Material introdutório · revisão docente pendente':'Introdução · não é aula completa'}</span>
+    <span>{lesson?.review==='editor'?'Aula editorial':lesson?.review==='ai_reviewed'?'Revisão automática, sem homologação':lesson?.supportTopic?'Apoio temático parcial · revisão docente pendente':lesson?.authorship.includes('módulo introdutório estruturado')?'Roteiro introdutório · aula completa pendente':lesson?'Aula autoral · revisão docente pendente':'Introdução · não é aula completa'}</span>
     <span>Leitura e prática: ~{estimatedMinutes} min (estimativa)</span>
     <span>{lesson?lesson.sections.length+' etapas progressivas':'1 introdução'}</span>
    </div>
+   {lesson?.supportTopic&&<p className="k-universal-scope-note" role="note"><strong>Conteúdo de apoio correspondente a:</strong> {lesson.supportTopic}. Esta aula aprofundada aborda uma parte relacionada do assunto; outros pontos previstos no edital ainda necessitam de material editorial específico.</p>}
+   {lesson?.authorship.includes('módulo introdutório estruturado')&&<p className="k-universal-scope-note" role="note"><strong>Desenvolvimento pendente:</strong> este assunto tem apenas conceitos e exercícios introdutórios. Não representa uma aula aprofundada sobre todo o item do edital.</p>}
    <div className="k-universal-objectives"><strong>01 · Objetivo de aprendizagem</strong>
     <p>{lesson?.objective??introduction?.objective}</p>
     {!!lesson?.prerequisites.length&&<p className="k-universal-prereqs"><strong>Pré-requisitos:</strong> {lesson.prerequisites.join(' · ')}</p>}
