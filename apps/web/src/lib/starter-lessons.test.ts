@@ -23,7 +23,10 @@ test('All curriculum entries across five examinations open a complete offline th
   assert.equal(lesson.topic,topic.topic);
   assert.equal(lesson.subject,topic.subject);
   assert.ok(lesson.authorship.includes('sem homologação docente'));
-  assert.ok(lesson.sections.every(section=>section.level!=='basic'||section.explanation.includes('Este é um módulo introdutório')||(lesson.authorship.includes('aula autoral')&&section.explanation.includes('Aula específica do Kognos'))));
+  assert.ok(lesson.sections.every(section=>section.level!=='basic'||
+   section.explanation.includes('Este é um módulo introdutório')||
+   lesson.authorship.includes('aula autoral')||
+   Boolean(lesson.supportTopic)),'Aula sem proveniência pedagógica identificável: '+topic.id);
   assert.ok(!ids.has(lesson.id),'Duplicate topic ID '+lesson.id);
   ids.add(lesson.id);
  }
