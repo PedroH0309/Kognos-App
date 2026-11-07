@@ -1,0 +1,86 @@
+/* Kognos authentication illustration: subtle, CSS-only motion.
+ * Runs without JavaScript or extra network requests.
+ * Keep login forms interactive, focus order unchanged, and motion optional.
+ */
+@keyframes k-auth-stage-enter {
+  from { opacity:0; transform:translate3d(0,14px,0); }
+  to { opacity:1; transform:translate3d(0,0,0); }
+}
+@keyframes k-auth-art-breathe {
+  0%,100% { transform:translate3d(0,0,0) rotate(-1deg) scale(1); }
+  50% { transform:translate3d(0,-7px,0) rotate(1deg) scale(1.014); }
+}
+@keyframes k-auth-orb-drift {
+  0%,100% { transform:translate3d(0,0,0); }
+  50% { transform:translate3d(6px,-12px,0); }
+}
+@keyframes k-auth-orb-drift-reverse {
+  0%,100% { transform:translate3d(0,0,0); }
+  50% { transform:translate3d(-7px,9px,0); }
+}
+@keyframes k-auth-orb-shimmer {
+  0%,100% { opacity:.66; transform:scale(.86); }
+  50% { opacity:1; transform:scale(1.12); }
+}
+@keyframes k-auth-stage-glow {
+  0%,100% { opacity:.35; transform:translate3d(0,0,0); }
+  50% { opacity:.65; transform:translate3d(-8px,4px,0); }
+}
+.k-auth-v2.k-auth-gateway .k-auth-stage-brand {
+  animation:k-auth-stage-enter .68s cubic-bezier(.22,1,.36,1) both;
+}
+.k-auth-v2.k-auth-gateway .k-auth-portrait-scene {
+  isolation:isolate;
+}
+.k-auth-v2.k-auth-gateway .k-auth-portrait-scene::before {
+  content:""; pointer-events:none; position:absolute;
+  inset:18% 17% 11%; z-index:-1;
+  border-radius:50%;
+  background:radial-gradient(ellipse,#5B4DE31D 0%,#38CDE51A 38%,transparent 74%);
+  filter:blur(17px);
+  animation:k-auth-stage-glow 9s ease-in-out infinite;
+}
+.k-auth-v2.k-auth-gateway .k-auth-portrait-scene img {
+  animation:k-auth-stage-enter .78s cubic-bezier(.2,.8,.2,1) both,
+            k-auth-art-breathe 7.5s ease-in-out 1s infinite;
+  transform-origin:center center;
+  will-change:transform;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story h1 {
+  animation:k-auth-stage-enter .75s .12s cubic-bezier(.22,1,.36,1) both;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story-main>p {
+  animation:k-auth-stage-enter .75s .24s cubic-bezier(.22,1,.36,1) both;
+}
+.k-auth-v2.k-auth-gateway .k-auth-story-bubble {
+  transform-origin:center;
+  will-change:transform;
+}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-one {
+  animation:k-auth-orb-drift 7.3s ease-in-out infinite;
+}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-two {
+  animation:k-auth-orb-drift-reverse 6.4s ease-in-out -2s infinite;
+}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-three {
+  animation:k-auth-orb-shimmer 4s ease-in-out -1s infinite;
+}
+.k-auth-v2.k-auth-gateway .k-auth-bubble-four {
+  animation:k-auth-orb-drift 6s ease-in-out -3s infinite;
+}
+.k-auth-v2.k-auth-gateway .k-auth-form-shell {
+  animation:k-auth-stage-enter .7s .3s cubic-bezier(.22,1,.36,1) both;
+}
+@media(prefers-reduced-motion:reduce){
+  .k-auth-v2.k-auth-gateway .k-auth-stage-brand,
+  .k-auth-v2.k-auth-gateway .k-auth-portrait-scene img,
+  .k-auth-v2.k-auth-gateway .k-auth-portrait-scene::before,
+  .k-auth-v2.k-auth-gateway .k-auth-story h1,
+  .k-auth-v2.k-auth-gateway .k-auth-story-main>p,
+  .k-auth-v2.k-auth-gateway .k-auth-story-bubble,
+  .k-auth-v2.k-auth-gateway .k-auth-form-shell {
+    animation:none!important;
+    transform:none!important;
+    will-change:auto;
+  }
+}
