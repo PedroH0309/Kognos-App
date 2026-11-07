@@ -26,6 +26,7 @@ test('Every curriculum lesson has its own reading text, practice and explanatory
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
  const reading=read('apps/web/src/components/TopicLessonSections.tsx');
+ const universal=read('apps/web/src/components/UniversalLessonReader.tsx');
  for(const word of ['Aula em texto','Atividades','Explicações','Materiais','Evolução'])
   assert.ok(room.includes(word),word);
  assert.match(room,/readerTab==='activities'/);
@@ -35,12 +36,12 @@ test('Every curriculum lesson has its own reading text, practice and explanatory
  assert.match(trails,/<TopicLessonSections/);
  assert.match(reading,/lesson\.sections\.map/);
  assert.match(reading,/lesson\.tasks\.filter/);
- assert.match(reading,/section\.explanation/);
+ assert.match(universal,/section\.explanation/);
  assert.match(reading,/task\.prompt/);
  assert.match(reading,/task\.solution/);
- assert.match(reading,/section\.pitfall/);
- assert.match(reading,/introduction\.workedExample/);
- assert.match(reading,/introduction\.commonMistake/);
+ assert.match(universal,/section\.pitfall/);
+ assert.match(universal,/introduction\.workedExample/);
+ assert.match(universal,/introduction\.commonMistake/);
 });
 test('Lessons without authored content keep an honest maturity status without AI-generated lectures',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
