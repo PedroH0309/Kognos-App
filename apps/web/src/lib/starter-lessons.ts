@@ -11,6 +11,8 @@ import {stage14Lesson,stage14Topics} from './authored-lessons-stage14.ts';
 import {stage15Lesson,stage15Topics} from './authored-lessons-stage15.ts';
 import {stage16Lesson,stage16Topics} from './authored-lessons-stage16.ts';
 import {stage17Lesson,stage17Topics} from './authored-lessons-stage17.ts';
+import {provaoDetailedLesson,hasProvaoDetailedLesson} from './provao-detailed-lessons.ts';
+import {supportingProvaoLesson,hasSupportingProvaoLesson} from './provao-topic-bridges.ts';
 
 /** Offline curriculum-wide teaching modules.
  * IMPORTANT: auto-assembled introductory content is not a teacher-reviewed
@@ -102,6 +104,7 @@ const broadStudyMethods:Record<string,{concept:string;method:string;example:stri
 };
 function shorten(value:string,max:number){return value.length<=max?value:value.slice(0,max-1).trimEnd()+'…';}
 export function starterCoverage(topic:CurriculumTopic):StarterCoverage{
+ if(hasProvaoDetailedLesson(topic)||hasSupportingProvaoLesson(topic))return 'thematic';
  if(topic.subject==='Matemática'&&deepMathTopicNames.includes(topic.topic))return 'thematic';
  if(deepCrossSubjectTopics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
  if(stage13Topics.some(item=>item.subject===topic.subject&&item.topic===topic.topic))return 'thematic';
@@ -120,6 +123,8 @@ export function starterCoverageCounts(topics:readonly CurriculumTopic[]){
  return stats;
 }
 export function starterLesson(topic:CurriculumTopic):CourseLesson{
+ const specific=provaoDetailedLesson(topic);
+ if(specific)return specific;
  const developed=deepMathLesson(topic);
  if(developed)return developed;
  const crossSubject=deepCrossSubjectLesson(topic);
@@ -134,6 +139,8 @@ export function starterLesson(topic:CurriculumTopic):CourseLesson{
  if(stage16)return stage16;
  const stage17=stage17Lesson(topic);
  if(stage17)return stage17;
+ const related=supportingProvaoLesson(topic);
+ if(related)return related;
  const ref=findProvaoTopic(topic.subject,topic.topic);
  const legacy=topic.legacyLessonId?findLearningLesson(topic.legacyLessonId):null;
  const seed=matchTeachingSeed(topic.subject,topic.topic+' '+(ref?.description??''));
