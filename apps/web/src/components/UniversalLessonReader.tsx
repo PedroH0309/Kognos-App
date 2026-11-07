@@ -147,8 +147,8 @@ function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
    <small>Lista de competências previstas; não significa que todos os conteúdos tenham sido ensinados neste roteiro.</small>
   </section>
   <section className="k-universal-chapter">
-   <h4>06 · Exemplo comentado, comparações e limitações</h4>
-   <ReadingBlocks value={first.example}/>
+   <h4>06 · Comparação e limites do exemplo</h4>
+   <p>Use o exemplo acima para examinar em que condições a explicação é válida. Compare o caso à advertência seguinte.</p>
    <div className="k-universal-comparison">
     <h5>07 · Atenção ao erro frequente</h5><ReadingBlocks value={first.pitfall}/>
    </div>
@@ -208,9 +208,9 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    {situation?<><ReadingBlocks value={situation.context}/><p><strong>Desafio inicial:</strong> {situation.question}</p>
     <details><summary>Ver como a situação é resolvida</summary><ReadingBlocks value={situation.answer}/></details>
     <small>Contexto didático autoral; dados podem ser hipotéticos.</small></>:
-    <><p>Comece por este exemplo do material e procure identificar o conceito que explica o resultado:</p>
+    <>{isGenericStarter?<><p>Antes de ler o material, tente responder a esta pergunta:</p><p><strong>{lesson?.tasks[0]?.prompt}</strong></p><small>Questão orientadora. A explicação inicial aparece na seção seguinte.</small></>:<><p>Comece por este exemplo do material e procure identificar o conceito que explica o resultado:</p>
      <ReadingBlocks value={lesson?.sections[0]?.example??introduction?.workedExample??''}/>
-     <small>Exemplo de referência do material, não um caso cotidiano verificado.</small></>}
+     <small>Exemplo de referência do material, não um caso cotidiano verificado.</small></>}</>}
   </section>
   {lesson?isGenericStarter?<GuidedIntro lesson={lesson} subject={subject}/>:<>
    <section className="k-universal-visual" aria-label="Mapa do percurso">
