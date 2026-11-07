@@ -6,7 +6,7 @@ import {provaoTopics} from './provao-paulista.ts';
 import {starterCoverage,starterLesson} from './starter-lessons.ts';
 import {parseCourseDocument} from './course-content.ts';
 
-const read=(path:string)=>readFileSync(new URL('../../../'+path,import.meta.url),'utf8');
+const read=(path:string)=>readFileSync(new URL('../../../../'+path,import.meta.url),'utf8');
 const find=(subject:string,part:string)=>{
  const row=provaoTopics.find(item=>item.subject===subject&&item.description.includes(part));
  assert.ok(row,'Missing syllabus fixture '+subject+' / '+part);
