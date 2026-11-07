@@ -132,7 +132,7 @@ export function supportingProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
   if(!original)continue;
   return {...original,id:topic.id,subject:topic.subject,topic:topic.topic,exams:topic.exams,
    objective:original.objective,review:'introductory',
-   supportTopic:(bridge.from??topic.subject)+' · '+bridge.to,
+   supportTopic:(bridge.from??topic.subject)+' · '+bridge.to,syllabusScope:ref.description,
    authorship:'Kognos — material autoral de apoio correlato; correspondência parcial com o programa, sem homologação docente'};
  }
  return null;
