@@ -21,13 +21,15 @@ test('Every curriculum topic remains reachable from the independent Laboratory H
 test('Introductory lessons preserve authored explanations and link to the independent laboratory',()=>{
  const trails=read('apps/web/src/components/LearningTrails.tsx');
  const reader=read('apps/web/src/components/TopicLessonSections.tsx');
+ const universal=read('apps/web/src/components/UniversalLessonReader.tsx');
  const hub=read('apps/web/src/components/LaboratoryHub.tsx');
  assert.match(trails,/lessonPanes\.map/);
  assert.match(trails,/<TopicLessonSections/);
  assert.match(trails,/Abrir laboratórios desta matéria/);
- assert.match(reader,/introduction\.explanation/);
- assert.match(reader,/introduction\.workedExample/);
- assert.match(reader,/introduction\.check/);
+ assert.match(reader,/<UniversalLessonReader/);
+ assert.match(universal,/introduction\.explanation/);
+ assert.match(universal,/introduction\?\.workedExample/);
+ assert.match(universal,/introduction\.check/);
  assert.match(hub,/<MathLabPanel/);
  assert.match(hub,/<ScienceLabPanel/);
 });
