@@ -60,7 +60,7 @@ function QuickCheck({task,level,onResult}:{task:CourseTask;level:string;onResult
  const [selfResult,setSelfResult]=useState<'understood'|'review'|null>(null);
  function choose(result:'understood'|'review'){setSelfResult(result);onResult(result);}
  return <div className="k-universal-quick-check">
-  <div className="k-universal-check-heading"><span>TESTE RÁPIDO · {level}</span><p>Responda antes de revelar a resolução. Esta checagem é formativa e não vale nota.</p></div>
+  <div className="k-universal-check-heading"><span>09 · Teste rápido · {level}</span><p>Responda antes de revelar a resolução. Esta checagem é formativa e não vale nota.</p></div>
   <p className="k-universal-prompt">{task.prompt}</p>
   <label>Seu raciocínio
    <textarea value={response} onChange={event=>setResponse(event.target.value)} rows={3} placeholder="Explique por que sua resposta faz sentido."/>
@@ -170,7 +170,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     {onLab&&<button type="button" onClick={onLab}>Abrir mais recursos no Laboratório <ArrowRight size={15}/></button>}
    </section>}
    <section className="k-universal-summary" aria-label="Consolidação da aula">
-    <h4>09 · Consolidação e folha de revisão</h4>
+    <h4>10 · Consolidação e folha de revisão</h4>
     <p>Antes de avançar, recupere com suas palavras os conceitos essenciais de cada etapa:</p>
     <ol>{lesson.sections.map(section=><li key={section.level}><strong>{section.title}.</strong> {lessonReadingBlocks(section.explanation)[0]}</li>)}</ol>
     <p><strong>Como investigar este assunto:</strong> {method.title.toLocaleLowerCase('pt-BR')}. {method.questions[0]}</p>
@@ -186,7 +186,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    <h4>03 · Conceito central</h4><ReadingBlocks value={introduction.explanation}/>
    <h4>04 · Aplicação explicada</h4><ReadingBlocks value={introduction.workedExample}/>
    <div className="k-universal-comparison"><strong>07 · Erro frequente</strong><ReadingBlocks value={introduction.commonMistake}/></div>
-   <div className="k-universal-quick-check"><h4>08 · Teste de compreensão</h4><p>{introduction.check}</p>
+   <div className="k-universal-quick-check"><h4>09 · Teste de compreensão</h4><p>{introduction.check}</p>
     <p>Responda na aba Atividades e confira a referência em Explicações. Este assunto ainda exige uma aula aprofundada.</p>
    </div>
    <p className="k-universal-caution">Material introdutório: ainda não há progressão completa, simulado próprio ou diagnóstico de domínio.</p>
