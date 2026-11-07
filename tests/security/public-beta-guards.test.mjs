@@ -25,3 +25,15 @@ test('Tutor Kog must reserve a database quota before every provider request',asy
  assert.match(route,/if\(!reserved\)return jsonError/);
  assert.match(route,/if \(!isAIJobConfigured\('tutor'\)\)/);
 });
+
+test('public question generation is authenticated and reserves shared quota before any provider calls',async()=>{
+ const route=await read('apps/web/src/app/api/ai-questions/generate/route.ts');
+ assert.match(route,/withSupabase\(\{auth:'user'/);
+ const reservation=route.indexOf("rpc('reserve_ai_quota'");
+ const providerCall=route.indexOf('await createAndReviewQuestionBatch(');
+ assert.ok(reservation>=0,'Question generation must reserve a per-user quota');
+ assert.ok(providerCall>reservation,'Quota reservation must happen before generation or review');
+ assert.match(route,/p_user_id:userId,p_daily_limit:tutorDailyRequestLimit\(\)/);
+ assert.match(route,/if\(quotaError\)return error\([^\n]+503\)/);
+ assert.match(route,/if\(!reserved\)return error\([^\n]+429\)/);
+});
