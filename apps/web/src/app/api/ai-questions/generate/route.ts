@@ -8,6 +8,7 @@ import {validLessonAIReference} from '@/lib/lesson-ai-links';
 import type {VerifiedSyllabusReference} from '@/lib/nvidia-question-engine';
 import {describeGenerationError} from '@/lib/ai-generation-errors';
 import {isAIJobConfigured,AIProviderRequestError,AIProviderRateLimitError} from '@/lib/ai-provider';
+import {tutorDailyRequestLimit} from '@/lib/tutor-usage-policy';
 
 export const runtime='nodejs';
 export const maxDuration=180;
@@ -36,8 +37,14 @@ const handler=withSupabase({auth:'user',audience:'authenticated',issuer:'https:/
    verified={edition:source.edition,sourceTitle:source.source_title,sourceUrl:source.source_url,evidence:topic.evidence_excerpt};
    sourceTopicId=topic.id;
   }
-  // Validate approved source provenance before invoking a paid provider.
-  // No application-level daily cap. Provider-side rate and billing limits still apply.
+  // A public beta must not expose the shared provider keys to unlimited requests.
+  // Reserve atomically in PostgreSQL, sharing the same per-account UTC daily quota as Kog.
+  // If migration 0002 is missing, fail closed rather than calling the provider.
+  const {data:reserved,error:quotaError}=await ctx.supabaseAdmin.rpc('reserve_ai_quota',{
+   p_user_id:userId,p_daily_limit:tutorDailyRequestLimit()
+  });
+  if(quotaError)return error('Controle diário de IA indisponível. Confira a migração 0002.',503);
+  if(!reserved)return error('Limite diário compartilhado de ações com IA atingido. Tente novamente após a renovação.',429);
   const batch=await createAndReviewQuestionBatch(generation,verified||undefined);
   const approved=batch.approved;
   if(!approved.length){

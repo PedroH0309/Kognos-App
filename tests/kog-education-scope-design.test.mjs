@@ -29,11 +29,15 @@ test('system prompt strictly limits replies to teaching rather than software gen
  assert.match(tutor,/Se a solicitação não for de aprendizagem/);
 });
 
-test('authenticated generation does not apply a Kognos daily quota',()=>{
+test('public question generation enforces shared per-account quota before external provider calls',()=>{
  const route=read('apps/web/src/app/api/ai-questions/generate/route.ts');
  assert.match(route,/withSupabase/);
  assert.match(route,/auth:'user'/);
  assert.match(route,/validateGenerationRequest/);
- assert.match(route,/createAndReviewQuestionBatch/);
- assert.doesNotMatch(route,/reserve_ai_quota|Cota diária esgotada/);
+ const reserved=route.indexOf("rpc('reserve_ai_quota'");
+ const provider=route.indexOf('await createAndReviewQuestionBatch(');
+ assert.ok(reserved>route.indexOf('validateGenerationRequest('),'Only validated requests may consume quota');
+ assert.ok(provider>reserved,'Quota must be reserved before the provider is called');
+ assert.match(route,/tutorDailyRequestLimit\(\)/);
+ assert.match(route,/if\(!reserved\)return error\([^\n]+429\)/);
 });
