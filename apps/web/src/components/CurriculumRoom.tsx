@@ -35,10 +35,11 @@ type CurriculumRoomProps={
  onOpenLab?:(topic:CurriculumTopic)=>void;
  onActivityProgress?:(done:boolean)=>void;
  onNavigateTopic?:(topicId:string)=>void;
+ onOpenSimulados?:()=>void;
 };
 export default function CurriculumRoom(props:CurriculumRoomProps){
  if(props.embedded)return <EmbeddedCurriculumRoom {...props}/>;
- return <CurriculumStudyFlow preferredExam={props.preferredExam} focus={props.focus}
+ return <CurriculumStudyFlow preferredExam={props.preferredExam} focus={props.focus} onOpenSimulados={props.onOpenSimulados}
   renderLesson={(topic,onActivityProgress,onRelatedTopic)=><EmbeddedCurriculumRoom key={topic.id} {...props}
    onNavigateTopic={onRelatedTopic}
    embedded focus={{lessonId:topic.id,subject:topic.subject}}
