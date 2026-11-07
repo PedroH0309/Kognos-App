@@ -27,7 +27,7 @@ test('Stage23 adds six new science/physics authored lessons, never shadowing pri
  const newKeys=stage23Topics.map(key);
  assert.equal(new Set(newKeys).size,6);
  assert.deepEqual(newKeys.filter(x=>previous.has(x)),[],'New lessons cannot overwrite previous topics');
- assert.equal(everydayContexts.length,431);
+ assert.ok(everydayContexts.length>=431,'Future authored stages must retain all 431 contexts');
  const available=new Set([...previous,...newKeys]);
  const brokenLinks:string[]=[];
  for(const seed of stage23Seeds){
