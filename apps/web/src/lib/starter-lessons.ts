@@ -209,7 +209,7 @@ export function starterLesson(topic:CurriculumTopic):CourseLesson{
   prerequisites:legacy?.prerequisites??[],sections,tasks,videos:[],
   authorship:'Kognos — módulo introdutório estruturado a partir do repertório temático; sem homologação docente',
   license:'Conteúdo preparatório original do Kognos, não oficial',
-  sourceUrls,review:'introductory'
+  sourceUrls,syllabusScope:ref?.description,review:'introductory'
  };
 }
 export const availableStarterSubjects=Object.keys(broadStudyMethods);
