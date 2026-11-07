@@ -597,7 +597,7 @@ export default function KognosApp(){
  {retainedViews.includes('learn')&&<div className="k-retained-workspace" hidden={view!=='learn'}>
   <CurriculumRoom key={`${user.id}-learn`} active={view==='learn'} focus={view==='learn'?learningFocus:null} preferredExam={examForStudent(actualProfile)}
    userId={user.id} onTutor={()=>openAssistant()} onContextChange={setStudyContext}
-   onGenerateAI={generateForLesson}/>
+   onGenerateAI={generateForLesson} onOpenSimulados={()=>navigate('simulados')}/>
  </div>}
  {retainedViews.includes('trails')&&<div className="k-retained-workspace" hidden={view!=='trails'}>
   <LearningTrails key={`${user.id}-trails`} preferredExam={examForStudent(actualProfile)} mode="trails" active={view==='trails'} focus={view==='trails'?learningFocus:null}
