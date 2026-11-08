@@ -50,7 +50,7 @@ export function parseCourseDocument(raw:unknown,complete=true):CourseDocument|nu
   if(!t||typeof t!=='object'||!Object.hasOwn(levels,t.level)||!bodyText(t.prompt,15,4000)||!bodyText(t.hint,10,2000)||!bodyText(t.solution,20,8000))return null;
   const hasChoices=t.options!==undefined||t.correctIndex!==undefined;
   if(hasChoices&&(!Array.isArray(t.options)||t.options.length!==4||
-   !t.options.every(option=>isText(option,complete?1:0,1000))||
+   !t.options.every((option:unknown)=>isText(option,complete?1:0,1000))||
    (complete&&new Set(t.options).size!==4)||
    !Number.isInteger(t.correctIndex)||Number(t.correctIndex)<0||Number(t.correctIndex)>3))return null;
   tasks.push({level:t.level,prompt:t.prompt,hint:t.hint,solution:t.solution,
