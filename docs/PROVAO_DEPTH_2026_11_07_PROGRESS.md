@@ -10,32 +10,34 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **45 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **135 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **135 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **50 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **150 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **150 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
 ### Lista exata das aulas novas
 
-### Biologia (5)
+### Biologia (6)
 - Pirâmides ecológicas
 - Sucessão ecológica
 - Herança de grupos sanguíneos na espécie humana
 - Código genético e síntese proteica
 - Evidências da evolução biológica
+- Divisões celulares: compreensão das funções da mitose e da meiose
 
 ### Filosofia (3)
 - O contratualismo clássico
 - Direitos Humanos
 - A Filosofia e o filosofar
 
-### Física (5)
+### Física (6)
 - Escalas termométricas. As escalas Celsius
 - Comprimento de onda, período e frequência
 - Primeira e segunda Leis da Termodinâmica
 - Fenômeno da refração. Índice de refração absoluto
 - Lei de Coulomb. Campo elétrico
+- Leis de Newton: Princípio da inércia
 
 ### Geografia (4)
 - Os espaços supranacionais
@@ -43,24 +45,26 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Intemperismo, erosão
 - A geopolítica da água
 
-### História (6)
+### História (7)
 - Iluminismo e Liberalismo
 - A Revolução Francesa e a era napoleônica
 - Primeira Guerra Mundial
 - Revolução Russa
 - Segunda Guerra Mundial
 - A Guerra Fria e os conflitos regionais
+- O Regime Civil-Militar
 
 ### Inglês (2)
 - Localização de informação específica
 - Compreensão da relação entre conteúdos de diferentes textos
 
-### Matemática (5)
+### Matemática (6)
 - Porcentagem, taxas e índices
 - Função exponencial e função logarítmica
 - Arranjos, permutações e combinações simples
 - Áreas de polígonos
 - Poliedros e corpos redondos - cálculo de áreas, volume e capacidade
+- Função quadrática: Conceitos e resolução de problemas
 
 ### Português (5)
 - Concordância nominal e concordância verbal
@@ -69,7 +73,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Classes de palavras: substantivo, artigo
 - Frase, oração e período
 
-### Química (7)
+### Química (8)
 - Equações químicas e balanceamento
 - Cinética química
 - Reações de oxirredução e números de oxidação
@@ -77,6 +81,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Reações nucleares: fissão e fusão nucleares
 - Principais características e propriedades de ácidos, bases, sais e óxidos
 - Equilíbrio em sistemas homogêneos e heterogêneos
+- Modelos atômicos de Dalton, Thomson, Rutherford e Bohr
 
 ### Sociologia (3)
 - Pluralismo cultural: a persistência do etnocentrismo
@@ -85,7 +90,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **319 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 319 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **314 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 314 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -110,3 +115,7 @@ Adicionados cinco módulos originais com três níveis e questões de alternativ
 ## Verificação transversal de avaliação objetiva
 
 O teste `provao-depth-coverage.test.ts` passou a percorrer as aulas aprofundadas pelo catálogo completo e a rejeitar questões sem quatro alternativas distintas, sem gabarito indexado válido ou sem correção comentada suficiente. Também verifica a presença de avaliação em cada um dos três níveis e a integração com o conversor editorial. Essa garantia vale para o material embarcado e não constitui auditoria das aulas externas publicadas no Supabase. O commit de teste aguarda sua própria execução de CI antes de ser considerado aprovado.
+
+## Sexta leva — aprofundamento específico de bases curriculares
+
+Acrescentadas cinco aulas autorais do edital: **Leis de Newton**, **funções quadráticas**, **modelos atômicos**, **mitose e meiose**, **Regime Civil-Militar brasileiro**. Foram elaborados 15 capítulos com casos resolvidos, erros conceituais e 15 questões A–D com gabarito verificado em teste dedicado `provao-depth-batch06.test.ts`. O PR permanece em rascunho e o conteúdo editorial publicado no Supabase mantém precedência. Status de homologação docente não foi alterado.
