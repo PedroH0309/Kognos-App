@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **101 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **303 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **303 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **102 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **306 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **306 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -126,7 +126,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **263 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **262 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -219,3 +219,9 @@ Cinco aulas autorais específicas foram incorporadas ao resolvedor: **tratamento
 ## Décima oitava leva — balanceamento, geometria, gravitação, sucessão e industrialização
 
 Foram registradas cinco aulas originais: **equações químicas e balanceamento**, **geometria molecular** (Química), **gravitação universal e campo gravitacional** (Física), **sucessão ecológica** (Biologia) e **Revolução Industrial** (História). São 15 capítulos específicos com pelo menos 750 caracteres por explicação, 15 exemplos resolvidos e 15 questões A–D com respostas e comentários, condições de validade e erros frequentes. O teste `provao-depth-batch18.test.ts` verifica correspondência única com o catálogo, IDs preservados, estrutura, exemplos, alternativas e gabaritos. Cobertura editorial acumulada declarada: **101/364**, com **263 entradas ainda não cobertas por esta série**; não implica cobertura integral de ENEM, ETEC, Fuvest ou Vunesp. A 17ª leva passou na [CI #42473055078](https://github.com/PedroH0309/Kognos-App/actions/runs/42473055078). A 18ª leva requer validação independente no GitHub Actions. Conteúdo autoral não oficial, sem homologação docente; não mesclar ou publicar antes de revisão.
+
+## Correção de auditoria da 18ª leva e 19ª leva
+
+A execução [CI #42473589965](https://github.com/PedroH0309/Kognos-App/actions/runs/42473589965) falhou nos testes unitários: quatro temas da 18ª leva já estavam cadastrados em módulos anteriores (**balanceamento**, **geometria molecular**, **sucessão ecológica** e **Revolução Industrial**). A contagem anunciada de 101 era incorreta; havia apenas **97 entradas únicas**. Removemos os quatro registros duplicados de `provao-depth-batch18-core.ts`, preservando apenas **gravitação universal**, e ajustamos seu teste. As aulas anteriores desses quatro temas permanecem preservadas. 
+
+A 19ª leva acrescenta cinco aulas autorais específicas: **eletronegatividade e polaridade molecular**; **interações íon–dipolo** (Química); **força peso, normal, tração e atrito** (Física); **fisiologia comparada dos animais** (Biologia); **ocupação do litoral e do interior colonial** (História). São 15 capítulos com explicações de pelo menos 750 caracteres, exemplos resolvidos, limites, erros comuns e 15 questões objetivas A–D com gabaritos comentados. A contagem prevista após deduplicação é **102/364** entradas únicas, **306 capítulos** e **306 questões**, com **262 entradas ainda fora desta série**, sujeita à confirmação pela auditoria automatizada. `provao-depth-batch19.test.ts` acrescenta verificação de unicidade de todas as chaves, identidade de cada tema e contrato pedagógico. A CI da nova revisão está pendente; não alegar aprovação, homologação docente, merge ou deploy.
