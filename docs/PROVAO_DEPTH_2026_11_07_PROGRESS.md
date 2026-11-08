@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **96 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **288 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **288 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **101 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **303 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **303 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -126,7 +126,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **268 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **263 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -215,3 +215,7 @@ Foram incluídas cinco aulas originais: **fórmulas químicas empíricas e molec
 ## Décima sétima leva — água, cinemática, reprodução, colonização e deposição ácida
 
 Cinco aulas autorais específicas foram incorporadas ao resolvedor: **tratamento de água** e **óxidos e chuva ácida** (Química); **velocidade e aceleração escalar/vetorial** (Física); **reprodução assexuada e sexuada em animais** (Biologia); e **mercantilismo e colonização** (História). São 15 capítulos com explicações de 750+ caracteres e 15 exemplos resolvidos, além de 15 questões exclusivamente objetivas com quatro alternativas distintas, gabaritos e correções comentadas. O teste `provao-depth-batch17.test.ts` verifica identidade curricular, preservação dos IDs, autoria, profundidade e respostas. Cobertura editorial da série: **96/364**, com **268 entradas restantes**. A auditoria do catálogo multi-exame continua necessária. Conteúdo não oficial, não homologado por docentes; a CI desta leva deve ser verificada antes de qualquer afirmação de aprovação.
+
+## Décima oitava leva — balanceamento, geometria, gravitação, sucessão e industrialização
+
+Foram registradas cinco aulas originais: **equações químicas e balanceamento**, **geometria molecular** (Química), **gravitação universal e campo gravitacional** (Física), **sucessão ecológica** (Biologia) e **Revolução Industrial** (História). São 15 capítulos específicos com pelo menos 750 caracteres por explicação, 15 exemplos resolvidos e 15 questões A–D com respostas e comentários, condições de validade e erros frequentes. O teste `provao-depth-batch18.test.ts` verifica correspondência única com o catálogo, IDs preservados, estrutura, exemplos, alternativas e gabaritos. Cobertura editorial acumulada declarada: **101/364**, com **263 entradas ainda não cobertas por esta série**; não implica cobertura integral de ENEM, ETEC, Fuvest ou Vunesp. A 17ª leva passou na [CI #42473055078](https://github.com/PedroH0309/Kognos-App/actions/runs/42473055078). A 18ª leva requer validação independente no GitHub Actions. Conteúdo autoral não oficial, sem homologação docente; não mesclar ou publicar antes de revisão.
