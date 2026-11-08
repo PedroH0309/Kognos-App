@@ -1,17 +1,18 @@
 'use client';
 
 import {useEffect,useRef,useState} from 'react';
-import {BookOpen,CalendarDays,ClipboardList,House,UserRound} from 'lucide-react';
+import {Clock3,House,PieChart,Search,UserRound} from 'lucide-react';
 import {motion,useReducedMotion} from 'motion/react';
 
 /** Same destinations as the previous mobile bar: only presentation changes.
+ * Mobile icons and expanding selection follow the supplied dark pill reference.
  * Motion reuses the existing dependency instead of adding animate-ui/Tailwind.
  */
 export const mobileQuickItems=[
  {view:'dashboard',label:'Início',Icon:House},
- {view:'learn',label:'Estudar',Icon:BookOpen},
- {view:'questions',label:'Questões',Icon:ClipboardList},
- {view:'calendar',label:'Calendário',Icon:CalendarDays},
+ {view:'learn',label:'Estudar',Icon:Search},
+ {view:'questions',label:'Questões',Icon:PieChart},
+ {view:'calendar',label:'Calendário',Icon:Clock3},
  {view:'profile',label:'Perfil',Icon:UserRound}
 ] as const;
 export type MobileQuickView=(typeof mobileQuickItems)[number]['view'];
