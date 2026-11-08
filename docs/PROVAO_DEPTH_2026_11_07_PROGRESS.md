@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **121 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **363 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **363 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **126 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **378 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **378 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -97,7 +97,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Frase, oração e período
 - Coordenação e subordinação. Conectivos
 
-### Química (19)
+### Química (24)
 - Operações envolvendo soluções (diluições e misturas de soluções com ou sem reação química)
 - Potenciais-padrão de redução
 - Número atômico e de massa. Semelhanças entre átomos
@@ -117,6 +117,11 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Produto iônico da água e escalas de pH e pOH
 - Cálculos estequiométricos: massa, volume, quantidade de matéria (mol), massa molar
 - Solubilidade e concentrações (porcentagem, ppm, g/L, mol/L, mol/kg, conversões de unidades)
+- Origem, ocorrência e uso dos materiais
+- Ocorrência e Importância da água para a vida
+- Representação de substâncias e de transformações químicas
+- Elementos químicos e Classificação Periódica: história, organização, representação e…
+- Características gerais das ligações químicas: ligação covalente, ligação iônica e ligação metálica
 
 ### Sociologia (4)
 - Pluralismo cultural: a persistência do etnocentrismo
@@ -126,7 +131,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **262 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **238 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -264,3 +269,7 @@ A execução #628 falhou em oito testes unitários porque o registro editorial a
 A solução definitiva substituiu **somente o quinto registro redundante do lote 23** por **Química — Soluções aquosas: conceito e classificação**, identificado como item distinto do programa oficial e ausente dos lotes anteriores. A nova aula original inclui três capítulos de 750+ caracteres sobre dissolução e partículas em solução, saturação e solubilidade, concentração molar e eletrólitos, com três exemplos resolvidos e três questões objetivas A–D com soluções comentadas. O teste `provao-depth-batch23.test.ts` verifica a identidade oficial, os três níveis, a profundidade e os gabaritos; `provao-depth-coverage.test.ts` agora identifica explicitamente chaves duplicadas em caso de regressão.
 
 **Cobertura prevista para validação na CI:** 121/364 temas distintos, 363 capítulos, 363 questões objetivas e 243 itens do Provão restantes. A validação completa só será declarada quando GitHub Actions passar em testes unitários, segurança com dois usuários, design, TypeScript e build. ENEM, ETEC, Fuvest e Vunesp ainda não têm aprofundamento integral. Material autoral Kognos, não oficial, sem homologação docente. PR #93 permanece em rascunho, sem merge e sem deploy público.
+
+## Lote 24 — 2026-11-08
+
+Cinco aulas específicas de Química acrescentadas à branch, cada uma com três capítulos autorais progressivos, exemplos resolvidos e três questões objetivas com quatro alternativas, índice correto e correção. O total de 126 aulas e 238 itens ainda pendentes corresponde à contagem de registros específicos do Provão; o catálogo completo de ENEM, ETEC, Fuvest e Vunesp continua incompleto. A auditoria automática (`provao-depth-coverage.test.ts`) é a fonte operacional de verdade; não confundir texto no repositório com revisão pedagógica, publicação Supabase ou deploy. A homologação docente permanece pendente.
