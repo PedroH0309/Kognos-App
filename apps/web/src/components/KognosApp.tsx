@@ -12,6 +12,7 @@ import {examForStudent} from '@/lib/exam-syllabus';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import KogMascot3D from './KogMascot3D';
 import WeeklyProgressChart from './WeeklyProgressChart';
+import KognosLoadingOverlay from './KognosLoadingOverlay';
 import {weeklyStudyActivity,type WeeklyStudyPoint} from '@/lib/dashboard-weekly-activity';
 import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls';
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
@@ -43,11 +44,8 @@ import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLa
 /** Avoid downloading every study workspace before the login/dashboard is visible.
  * Next.js preloads each route's code when that workspace is first selected.
  */
-function WorkspaceLoading(){return <main className="app-content k-workspace-loading" role="status" aria-live="polite">
- <span className="k-workspace-loading-pulse" aria-hidden="true"/>
- <p>Preparando esta área de estudos…</p>
-</main>;}
-const KogAssistant=dynamic(()=>import('./KogAssistant'),{loading:()=> <div role="status" className="k-kog-chunk-loading">Abrindo o tutor Kog…</div>});
+function WorkspaceLoading(){return <main className="app-content k-workspace-loading"><KognosLoadingOverlay label="Preparando área de estudos"/></main>;}
+const KogAssistant=dynamic(()=>import('./KogAssistant'),{loading:()=> <KognosLoadingOverlay label="Abrindo o tutor Kog"/>});
 const ExamSources=dynamic(()=>import('./ExamSources'),{loading:()=> <WorkspaceLoading/>});
 const PracticeSpace=dynamic(()=>import('./PracticeSpace'),{loading:()=> <WorkspaceLoading/>});
 const AchievementSpace=dynamic(()=>import('./AchievementSpace'),{loading:()=> <WorkspaceLoading/>});
@@ -550,7 +548,7 @@ export default function KognosApp(){
  const actualProfile=profile??initialProfile;
  const accessibility=[actualProfile.adaptations.includes('larger_text')?'larger-text':'',actualProfile.adaptations.includes('high_contrast')?'strong-contrast':'',actualProfile.adaptations.includes('reduced_distractions')?'less-motion':''].join(' ');
  const disableAnimations=actualProfile.adaptations.includes('reduced_distractions');
- if(loading)return <div className="loading-page"><Logo/><p>Preparando seu espaço de aprendizagem…</p></div>;
+ if(loading)return <div className="loading-page"><Logo/><KognosLoadingOverlay label="Preparando seu espaço de aprendizagem"/></div>;
  if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
  if(!user)return <div className={`theme-${theme}`}><AuthModal standalone theme={theme} onThemeChange={changeTheme} onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
