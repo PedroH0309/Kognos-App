@@ -52,7 +52,7 @@ test('Study navigation explicitly links available content stages and omits irrel
   assert.ok(reader.includes("number:'"+number+"'"),number);
  assert.match(reader,/LessonContentsNav hasVisual=\{Boolean\(lesson\)\}/);
  assert.match(reader,/hasLab=\{Boolean\(lesson&&!isGenericStarter&&hasLab\)\}/);
- assert.match(reader,/id=\{'k-lesson-objectives'\}/);
+ assert.match(reader,/id="k-lesson-objectives"/);
  assert.match(reader,/if\(resolveMathLab\(match\)\)/);
  assert.match(reader,/if\(resolveScienceLab\(match\)\)/);
  assert.match(reader,/if\(resolveLanguageLab\(match\)\)/);
