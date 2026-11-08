@@ -146,7 +146,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
           "48 W"
         ],
         "correctIndex": 2,
-        "hint": "Use P=UI.",
+        "hint": "Multiplique a tensão pela corrente: P = U × I, em watts.",
         "solution": "A alternativa C está correta: P=12×3=36 W. A multiplicação de tensão em volts pela corrente em ampères fornece potência em watts. As demais opções não resultam da multiplicação das grandezas fornecidas."
       },
       {
