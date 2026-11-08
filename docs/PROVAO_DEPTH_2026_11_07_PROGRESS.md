@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **55 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **165 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **165 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **57 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **171 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **171 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -57,9 +57,10 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - O Regime Civil-Militar
 - Revolução Industrial
 
-### Inglês (2)
+### Inglês (3)
 - Localização de informação específica
 - Compreensão da relação entre conteúdos de diferentes textos
+- Compreensão crítica de textos: discriminação entre fato e opinião
 
 ### Matemática (7)
 - Porcentagem, taxas e índices
@@ -70,12 +71,13 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Função quadrática: Conceitos e resolução de problemas
 - Probabilidade da união e da intersecção de dois ou mais eventos
 
-### Português (5)
+### Português (6)
 - Concordância nominal e concordância verbal
 - Figuras de Linguagem
 - Regência nominal e regência verbal
 - Classes de palavras: substantivo, artigo
 - Frase, oração e período
+- Coordenação e subordinação. Conectivos
 
 ### Química (9)
 - Equações químicas e balanceamento
@@ -95,7 +97,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **309 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 309 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **307 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 307 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -128,3 +130,7 @@ Acrescentadas cinco aulas autorais do edital: **Leis de Newton**, **funções qu
 ## Sétima leva — prática disciplinar com problemas próprios
 
 Mais cinco aulas específicas: geometria molecular e polaridade (Química), metabolismo energético e comparação de rotas celulares (Biologia), calor sensível/latente e calorimetria (Física), união e interseção de eventos e probabilidade condicional (Matemática), Revolução Industrial e conflitos sociais (História). Todas têm fundamentos, aplicação progressiva, caso numérico ou contextual completo por nível e quinze questões objetivas A–D. Os testes dedicados validam seus identificadores e gabaritos, sem substituir revisão pedagógica humana.
+
+## Oitava leva — leitura crítica e sintaxe em contexto
+
+Acrescentadas duas aulas autorais específicas: **coordenação, subordinação e conectivos** (Português) e **distinção entre fatos, opiniões, inferências e evidências em inglês** (Inglês). Cada uma possui três níveis, exemplos de interpretação e reescrita, erros de leitura frequentes e três questões A–D comentadas. Identificadores curriculares preservados e homologação docente ainda pendente.
