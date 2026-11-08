@@ -478,3 +478,17 @@ Foram adicionadas **cinco aulas originais específicas** (15 capítulos e 15 que
 Os testes de regressão percorrem o catálogo de todos os cinco exames, exigem nenhuma questão fabricada via matching, e testam especificamente o vazamento de alternativas de Mecânica na aula de Termodinâmica. Outros testes verificam comprimento, resoluções, unicidade, gabarito e correspondência estrita com o Provão. **Cobertura prevista:** pelo menos **176/364 entradas aprofundadas**, no máximo **188 fora da categoria `deep_specific`** se esse mínimo for exato; confirmar quantitativos em execução da CI, e não confundir os temas dos demais exames com tópicos concluídos.
 
 As aulas são autorais, **não oficiais, sem homologação docente**, e não copiam provas comerciais. Não se alteraram IDs curriculares, dados, Auth, Supabase, RLS, chaves de API, a base `legacy/` ou fontes publicadas. Permanece necessária uma auditoria independente das publicações do Supabase e revisão docente especializada. PR em rascunho, sem merge e sem deploy; testes unitários, segurança de dois usuários, design, tipagem e build devem ser confirmados no GitHub Actions.
+
+## Lote 36 — aprofundamento autoral por disciplina (2026-11-08)
+
+Cinco novos assuntos oficiais foram escolhidos depois da consulta aos PRs abertos, à branch principal e à auditoria do Kognos. Registro integrado ao resolvedor estrito com `provao-depth-batch36-science.ts` e `provao-depth-batch36-history.ts`:
+
+1. **Química — Estabilização de átomos pela formação de ligações e Teoria do Octeto.** Valência, íons e rede cristalina; diagramas de Lewis de água e ligações covalentes; exceções (BF₃, espécies com elétrons ímpares), cargas formais e limites do modelo.
+2. **Física — Propagação por condução, convecção e irradiação.** Lei de condução em placa plana, convecção natural/forçada com coeficiente de troca e lei de Stefan–Boltzmann, incluindo hipóteses e unidades.
+3. **Biologia — Ameaças antrópicas a ecossistemas terrestres e aquáticos.** Fragmentação, bordas e biodiversidade; eutrofização e oxigênio dissolvido; aquecimento, mitigação, adaptação e eficácia de restauração.
+4. **História — Produção artística na colônia: diálogos e tensões culturais.** Oficinas e encomendas; irmandades, religiosidades e conflitos de fontes; patrimônio, restaurações e limites da sobrevivência material.
+5. **História — Redemocratização: a Nova República.** Abertura e Diretas Já; eleição indireta em 1985, posse de Sarney, Constituinte e Constituição; eleições diretas em 1989, garantias e permanências.
+
+São **15 capítulos** novos com explicações originais ≥750 caracteres cada, **15 exemplos específicos resolvidos** com análise e passos, e **15 MCQs originais A–D**, cada uma com `correctIndex`, gabarito comentado ≥140 caracteres, alternativas distintas e sem perguntas dissertativas. O novo teste de lote confirma correspondência temática, IDs preservados, autoria, profundidade, níveis e ausência de falas genéricas ou alternativas emprestadas. Todo conteúdo é **original, não oficial e sem homologação docente**. Não foram modificados `legacy/`, Auth, RLS, dados, bancos Supabase ou chaves de API.
+
+A auditoria deve apresentar ao menos **181 entradas `deep_specific` em 364 temas do Provão**, com no máximo **183 ainda não aprofundados** se a contagem for exata; não declarar contagem validada antes da execução de CI. Os assuntos do ENEM, ETEC, Fuvest e Vunesp continuam com lacunas próprias. Não fazer merge/deploy sem revisão autorizada. A revisão especializada por docentes permanece pendente mesmo após testes automatizados.
