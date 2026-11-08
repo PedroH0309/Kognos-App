@@ -35,6 +35,7 @@ import {provaoDepthBatch18Core} from './provao-depth-batch18-core.ts';
 import {provaoDepthBatch19Core} from './provao-depth-batch19-core.ts';
 import {provaoDepthBatch20Core} from './provao-depth-batch20-core.ts';
 import {provaoDepthBatch21Core} from './provao-depth-batch21-core.ts';
+import {provaoDepthBatch22Core} from './provao-depth-batch22-core.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -44,7 +45,7 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core];
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
