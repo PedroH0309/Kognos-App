@@ -4,6 +4,7 @@ import {curriculumTopics} from './curriculum-catalog.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
+import type {CourseSection,CourseTask} from './course-content.ts';
 const cases=[
  {subject:'Química',prefix:'Lei de Lavoisier e Lei de Proust',answers:[2,0,2]},
  {subject:'Física',prefix:'Potência elétrica. Efeito joule. Consumo de energia elétrica. O quilowatt-hora',answers:[2,1,0]},
@@ -23,7 +24,7 @@ test('batch 11: five exact syllabus topics, 15 substantive chapters and 15 origi
   assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
   assert.deepEqual(lesson.tasks.map(q=>q.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const s=lesson.sections[i],q=lesson.tasks[i];
+   const s:CourseSection=lesson.sections[i],q:CourseTask=lesson.tasks[i];
    assert.ok(s.explanation.length>=750,'Insufficient specific explanation '+item.prefix+' '+i);
    assert.ok(s.example.length>=180,'Missing worked example '+item.prefix+' '+i);
    assert.ok(s.pitfall.length>=50&&s.steps.length>=3,'Missing pitfalls or process '+item.prefix);
