@@ -270,179 +270,179 @@ export const provaoDepthBatch25Core:readonly DeepTopicSpec[]=[
   },
   {
     "subject": "Química",
-    "topicStart": "Interações do tipo íon-dipolo",
-    "objective": "Investigar interações do tipo íon-dipolo com modelos físicos e químicos consistentes, identificando propriedades, realizando inferências e cálculos, confrontando alternativas e explicitando condições de validade e limitações experimentais.",
+    "topicStart": "Solubilidade e temperatura de ebulição",
+    "objective": "Analisar solubilidade e temperatura de ebulição por meio de conceitos científicos específicos, cálculos e interpretação de evidências, distinguindo modelos ideais, aplicações e exceções com justificativas verificáveis.",
     "prerequisites": [
-      "Íons e cargas elétricas",
-      "Polaridade molecular",
-      "Dissolução e hidratação"
+      "Soluções e misturas homogêneas",
+      "Forças intermoleculares",
+      "Temperatura e pressão"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: atração entre íon e molécula polar",
-        "explanation": "Interações íon-dipolo ocorrem entre uma espécie eletricamente carregada, como Na⁺ ou Cl⁻, e uma molécula com momento de dipolo permanente, como H₂O. A molécula de água possui geometria angular e distribuição desigual de carga: a região próxima ao oxigênio apresenta carga parcial negativa, enquanto as regiões próximas aos hidrogênios são parcialmente positivas. Por isso, moléculas de água tendem a orientar o oxigênio em direção a cátions e os hidrogênios em direção a ânions. Trata-se de interação eletrostática entre partículas, não de formação obrigatória de uma nova ligação covalente com cada íon. A intensidade depende da carga, tamanho do íon, polaridade do solvente e distância entre espécies. Não se deve confundir íon-dipolo com dipolo-dipolo, que envolve duas moléculas polares neutras, nem com ligação iônica em um cristal. A hidratação de íons contribui para a estabilização de espécies dissolvidas e ajuda a explicar por que muitos sais podem se dispersar em água. Contudo, a presença dessa interação não garante solubilidade ilimitada.",
-        "example": "Ao dissolver NaCl em água, represente Na⁺ cercado por moléculas orientadas com O voltado ao cátion e Cl⁻ cercado por moléculas com H voltado ao ânion. Verifique os sinais das cargas parciais antes de desenhar a orientação.",
-        "pitfall": "Confundir mecanismo microscópico com aparência macroscópica ou classificação isolada.",
+        "title": "Conceitos: solubilidade e saturação",
+        "explanation": "Solubilidade é a quantidade máxima de soluto que pode dissolver-se em determinada quantidade de solvente sob condições especificadas, quando se estabelece equilíbrio com a fase não dissolvida. Em água, a solubilidade de sólidos varia com temperatura e com a identidade das espécies; não há regra universal de que aquecer sempre aumenta a solubilidade de qualquer substância. Solução insaturada contém menos soluto que o limite de equilíbrio; saturada está no limite; supersaturada pode conter temporariamente mais soluto que o valor de equilíbrio e tende a ser instável frente a perturbações. Velocidade de dissolução é conceito diferente: agitação e redução do tamanho dos cristais podem acelerar a dissolução sem necessariamente mudar a solubilidade de equilíbrio. Para gases dissolvidos, aumento de pressão parcial frequentemente aumenta a solubilidade na aproximação da lei de Henry, desde que não haja reação relevante e que a temperatura seja constante. A composição do solvente, o pH e reações químicas podem modificar o equilíbrio. A curva de solubilidade deve ser lida com suas unidades e temperatura, não como porcentagem automaticamente.",
+        "example": "Um sal apresenta solubilidade de 30 g por 100 g de água a 20 °C. Em 200 g de água, o máximo no modelo é 60 g. Se forem adicionados 70 g, 10 g permanecem não dissolvidos em equilíbrio, admitindo tempo suficiente.",
+        "pitfall": "Não confundir definições científicas com exemplos ou analogias isoladas.",
         "steps": [
-          "Identifique a espécie, os dados e o estado físico ou carga.",
-          "Aplique a regra, modelo ou cálculo e justifique os passos.",
-          "Confira conservação, unidades, alternativas e limites do resultado."
+          "Identifique espécies, dados e condições do caso.",
+          "Aplique a definição, a proporção ou o modelo passo a passo.",
+          "Confira a resposta, unidades e condições de validade."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: dissolução e balanço energético",
-        "explanation": "Dissolver um sólido iônico envolve competir com as interações da rede cristalina e formar novas interações entre íons e solvente. A separação dos íons exige energia, enquanto sua solvatação pode liberar energia; o balanço influencia a entalpia de dissolução. Mesmo que a dissolução absorva calor, ela pode ser espontânea se a variação de energia livre favorecer o processo, porque entropia também importa. Não se pode prever solubilidade apenas dizendo que a água é polar: algumas redes cristalinas são muito estáveis e pouco solúveis, como ocorre com certos sais. Em solução, íons hidratados participam da condução elétrica; moléculas neutras de açúcar, embora interajam com água, não se comportam como eletrólitos fortes. A expressão 'semelhante dissolve semelhante' é uma heurística, não uma lei que substitua análise de rede, solvatação, temperatura e equilíbrio. Em problemas quantitativos, a concentração molar mede mols por litro de solução, não por litro de solvente puro. Identifique sempre qual espécie está sendo contada e se a dissolução foi completa.",
-        "example": "Dissolva 0,20 mol de NaCl e complete para 0,50 L de solução, admitindo dissociação completa. Calcule c(NaCl)=0,20/0,50=0,40 mol/L; então c(Na⁺)=c(Cl⁻)=0,40 mol/L, desconsiderando outras fontes de íons.",
-        "pitfall": "Ignorar concentração, carga, unidade ou estado físico ao aplicar uma regra.",
+        "title": "Aplicação: ebulição e pressão externa",
+        "explanation": "Um líquido entra em ebulição quando sua pressão de vapor alcança a pressão externa, permitindo a formação de bolhas estáveis no interior. Ao diminuir a pressão atmosférica, a temperatura de ebulição da água diminui; por isso, em altitudes elevadas, a água pode ferver abaixo de 100 °C. Ao aumentar a pressão externa em equipamento apropriado, a temperatura de ebulição sobe. Evaporação, diferentemente, pode ocorrer na superfície a temperaturas inferiores ao ponto de ebulição. Solutos não voláteis dissolvidos podem elevar a temperatura de ebulição do solvente, um efeito coligativo que depende aproximadamente da concentração de partículas em soluções diluídas ideais. Não se deve confundir temperatura de ebulição com quantidade de calor fornecida: aquecer mais rapidamente reduz o tempo até a ebulição, mas não altera necessariamente a temperatura de ebulição sob pressão constante. Misturas podem apresentar intervalos de ebulição e composição do vapor diferente da do líquido. Uma interpretação correta informa pressão, composição e aproximações.",
+        "example": "Duas panelas com água pura estão a pressões externas diferentes. Primeiro identifique que a ebulição ocorre quando pressão de vapor iguala a externa; depois compare: sob menor pressão, a temperatura de ebulição é menor; por fim, explique a consequência para o cozimento.",
+        "pitfall": "Não aplicar fórmulas sem unidades e condições explícitas.",
         "steps": [
-          "Identifique a espécie, os dados e o estado físico ou carga.",
-          "Aplique a regra, modelo ou cálculo e justifique os passos.",
-          "Confira conservação, unidades, alternativas e limites do resultado."
+          "Identifique espécies, dados e condições do caso.",
+          "Aplique a definição, a proporção ou o modelo passo a passo.",
+          "Confira a resposta, unidades e condições de validade."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: carga, raio e seletividade",
-        "explanation": "A força de interação íon-dipolo depende do campo elétrico do íon e da orientação da molécula polar. Íons pequenos e altamente carregados costumam apresentar hidratação intensa, mas o comportamento real depende também da estrutura do solvente e da energia de desidratação necessária para outras reações. Íons hidratados têm tamanho efetivo diferente do raio cristalográfico; por isso mobilidade em solução não segue necessariamente a mesma ordem dos raios iônicos isolados. A água pode estabilizar íons e alterar equilíbrios químicos, incluindo dissociação de ácidos e precipitação de sais. Uma solução saturada está em equilíbrio dinâmico entre dissolução e recristalização, não significa que as partículas deixaram de se mover. Em separações químicas, selecionar solventes ou agentes complexantes modifica a estabilidade relativa de espécies, mas não transforma qualquer sal em solúvel. Ao interpretar experimentos, distinga energia de rede, energia de solvatação e efeitos entrópicos. O modelo íon-dipolo explica uma contribuição essencial, não todas as forças presentes numa solução concentrada.",
-        "example": "Uma solução contém 0,10 mol de CaCl₂ em 1,0 L, supondo dissociação completa. Há 0,10 mol/L de Ca²⁺ e 0,20 mol/L de Cl⁻; a hidratação orienta o oxigênio da água ao redor do cátion e os hidrogênios ao redor dos ânions.",
-        "pitfall": "Generalizar o modelo simplificado sem considerar exceções e condições reais.",
+        "title": "Aprofundamento: partículas dissolvidas e separações",
+        "explanation": "A elevação ebuliométrica ideal pode ser aproximada por ΔT_b=iK_b m, onde m é a molalidade, K_b a constante do solvente e i um fator de partículas efetivas. A expressão pressupõe solução suficientemente diluída e comportamento próximo do ideal; para eletrólitos reais, associação iônica e interações alteram i. O efeito não significa que qualquer sal possa ser adicionado indefinidamente: a solubilidade limita a composição e precipitação pode ocorrer. A destilação utiliza diferenças de volatilidade e equilíbrio líquido-vapor para separar componentes, mas uma única etapa não garante pureza completa. Misturas azeotrópicas são exemplos de limitação da destilação simples sob pressão fixa. Para analisar uma solução, separe três grandezas: quantidade dissolvida no equilíbrio, rapidez de dissolução e temperatura de ebulição. Alterar a temperatura pode mudar simultaneamente essas propriedades, mas por mecanismos distintos. Em aplicações industriais, pressão, energia necessária e corrosão também influenciam a escolha de separação, sem que a fórmula coligativa substitua dados experimentais.",
+        "example": "Para solução ideal não eletrolítica com m=0,50 mol/kg e Kb=0,512 °C kg/mol, use i=1. Calcule ΔTb=1×0,512×0,50=0,256 °C. A 1 atm, estime ebulição da água em 100,256 °C, se a aproximação for válida.",
+        "pitfall": "Não generalizar modelos aproximados a sistemas reais sem verificar exceções.",
         "steps": [
-          "Identifique a espécie, os dados e o estado físico ou carga.",
-          "Aplique a regra, modelo ou cálculo e justifique os passos.",
-          "Confira conservação, unidades, alternativas e limites do resultado."
+          "Identifique espécies, dados e condições do caso.",
+          "Aplique a definição, a proporção ou o modelo passo a passo.",
+          "Confira a resposta, unidades e condições de validade."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Como a água tende a orientar-se ao redor de Na⁺?",
+        "prompt": "Uma solução saturada de um sólido significa que:",
         "options": [
-          "Com o oxigênio parcialmente negativo voltado ao cátion",
-          "Com os hidrogênios parcialmente positivos voltados ao cátion",
-          "Sem orientação preferencial possível",
-          "Com átomos de sódio covalentemente ligados à água"
+          "Não há soluto presente",
+          "Atingiu o limite de dissolução de equilíbrio nas condições dadas",
+          "Todo soluto evaporou",
+          "Não existem partículas dissolvidas"
         ],
-        "correctIndex": 0,
-        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
-        "solution": "Na água, a região do oxigênio é parcialmente negativa e é atraída pelo Na⁺. A orientação favorece hidratação por interação íon-dipolo, sem exigir nova ligação covalente com cada molécula."
+        "correctIndex": 1,
+        "hint": "Relacione o enunciado ao mecanismo e descarte alternativas que contradigam as hipóteses.",
+        "solution": "Saturação indica o limite de solubilidade sob temperatura e composição definidas, com equilíbrio entre soluto dissolvido e fase excedente quando presente. Não significa ausência de soluto."
       },
       {
         "level": "intermediate",
-        "prompt": "Dissolver 0,20 mol de NaCl em 0,50 L de solução dá qual concentração formal?",
+        "prompt": "Por que água ferve a temperatura menor em altitude elevada?",
         "options": [
-          "0,10 mol/L",
-          "0,20 mol/L",
-          "0,40 mol/L",
-          "2,50 mol/L"
+          "Porque sua massa molar diminui",
+          "Porque a água se transforma em outro elemento",
+          "Porque a pressão externa é menor",
+          "Porque a pressão de vapor deixa de existir"
         ],
         "correctIndex": 2,
-        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
-        "solution": "Concentração molar é n/V: 0,20 mol/0,50 L=0,40 mol/L. A conta pressupõe volume final de solução de 0,50 L, e não apenas volume inicial de água."
+        "hint": "Relacione o enunciado ao mecanismo e descarte alternativas que contradigam as hipóteses.",
+        "solution": "A ebulição ocorre quando a pressão de vapor iguala a pressão externa. Em altitude elevada, a pressão atmosférica menor é alcançada a temperatura mais baixa, sem alterar a identidade química da água."
       },
       {
         "level": "advanced",
-        "prompt": "Em 1 L de solução com 0,10 mol de CaCl₂ totalmente dissociado, qual é [Cl⁻]?",
+        "prompt": "Para ΔTb=iKbm com i=1, Kb=0,512 e m=0,50, qual a elevação estimada?",
         "options": [
-          "0,05 mol/L",
-          "0,10 mol/L",
-          "0,15 mol/L",
-          "0,20 mol/L"
+          "0,0256 °C",
+          "1,024 °C",
+          "0,512 °C",
+          "0,256 °C"
         ],
         "correctIndex": 3,
-        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
-        "solution": "Cada unidade de fórmula CaCl₂ fornece dois íons Cl⁻. Logo 0,10 mol de sal gera 0,20 mol de Cl⁻ em 1 L, resultando 0,20 mol/L no modelo de dissociação completa."
+        "hint": "Relacione o enunciado ao mecanismo e descarte alternativas que contradigam as hipóteses.",
+        "solution": "Multiplique i×Kb×m: 1×0,512×0,50=0,256 °C. A relação aproxima uma solução ideal diluída com soluto não volátil; não se aplica indiscriminadamente a qualquer concentração."
       }
     ]
   },
   {
     "subject": "Química",
-    "topicStart": "A eletrosfera e o diagrama de Linus Pauling",
-    "objective": "Investigar a eletrosfera e o diagrama de linus pauling com modelos físicos e químicos consistentes, identificando propriedades, realizando inferências e cálculos, confrontando alternativas e explicitando condições de validade e limitações experimentais.",
+    "topicStart": "Noção de monômeros e polímeros",
+    "objective": "Analisar noção de monômeros e polímeros por meio de conceitos científicos específicos, cálculos e interpretação de evidências, distinguindo modelos ideais, aplicações e exceções com justificativas verificáveis.",
     "prerequisites": [
-      "Número atômico e elétrons",
-      "Subníveis s, p, d e f",
-      "Princípio da exclusão de Pauli"
+      "Ligações covalentes",
+      "Moléculas orgânicas",
+      "Reações de síntese e conservação de massa"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: distribuição em subníveis",
-        "explanation": "A eletrosfera é descrita por estados eletrônicos quantizados, e não por elétrons girando em órbitas planetárias clássicas. Em uma abordagem escolar, níveis principais n e subníveis s, p, d e f organizam a distribuição eletrônica. Um subnível s comporta até 2 elétrons, p até 6, d até 10 e f até 14, porque cada orbital admite no máximo dois elétrons com spins opostos. O diagrama de Linus Pauling é um recurso mnemônico para a ordem aproximada de preenchimento de subníveis em átomos neutros no estado fundamental. A sequência começa 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p. O princípio de Aufbau orienta o preenchimento de estados de menor energia, mas a energia relativa dos subníveis depende do átomo e de sua configuração. O princípio de Pauli e a regra de Hund complementam a distribuição: orbitais degenerados recebem elétrons desemparelhados antes de emparelhar. O diagrama não determina sozinho geometria orbital, ligações químicas ou comportamento de qualquer íon.",
-        "example": "Para oxigênio neutro (Z=8), distribua 8 elétrons: 1s² recebe 2; 2s² recebe 2; restam 4 para 2p⁴. A soma dos expoentes 2+2+4=8 confere com Z. No 2p, aplique Hund antes de emparelhar.",
-        "pitfall": "Confundir mecanismo microscópico com aparência macroscópica ou classificação isolada.",
+        "title": "Conceitos: unidades repetitivas e macromoléculas",
+        "explanation": "Polímeros são macromoléculas formadas por muitas unidades estruturais repetitivas; monômeros são moléculas capazes de participar da formação de cadeias ou redes poliméricas. No polietileno, unidades derivadas do eteno formam uma cadeia com repetição aproximada –CH₂–CH₂–, mas a molécula de eteno C₂H₄ possui uma ligação dupla que é transformada na polimerização por adição. O grau de polimerização corresponde aproximadamente ao número de unidades repetitivas por cadeia e influencia a massa molar, que normalmente se distribui entre diferentes comprimentos. Polímeros naturais incluem celulose e proteínas, enquanto muitos plásticos comerciais são sintéticos; a origem natural não garante biodegradação rápida e a origem sintética não determina toxicidade por si só. Polímero, plástico e resina não são sinônimos perfeitos: aditivos, cargas e processamento alteram propriedades do produto. Cadeias lineares, ramificadas e reticuladas exibem mobilidade e comportamento mecânico distintos. A estrutura química e as interações entre cadeias explicam melhor o material que apenas sua aparência.",
+        "example": "No eteno CH₂=CH₂, identifique a dupla ligação. Na adição, ela se transforma em ligações simples que unem unidades; escreva n CH₂=CH₂ → [–CH₂–CH₂–]n. A proporção atômica é preservada no modelo de adição.",
+        "pitfall": "Não confundir definições científicas com exemplos ou analogias isoladas.",
         "steps": [
-          "Identifique a espécie, os dados e o estado físico ou carga.",
-          "Aplique a regra, modelo ou cálculo e justifique os passos.",
-          "Confira conservação, unidades, alternativas e limites do resultado."
+          "Identifique espécies, dados e condições do caso.",
+          "Aplique a definição, a proporção ou o modelo passo a passo.",
+          "Confira a resposta, unidades e condições de validade."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: átomos, íons e elétrons de valência",
-        "explanation": "Em um átomo neutro, número de elétrons é igual ao número atômico Z. Para formar um cátion, removem-se elétrons; para formar um ânion, adicionam-se. Sódio neutro (Z=11) tem configuração 1s² 2s² 2p⁶ 3s¹; o cátion Na⁺ perde o elétron 3s, ficando com 10 elétrons. Cloro neutro (Z=17) termina em 3s² 3p⁵ e Cl⁻ ganha um elétron, terminando em 3p⁶. A contagem de elétrons não deve ser confundida com o número de prótons, que permanece constante numa ionização comum. Em elementos representativos, a camada mais externa auxilia na previsão de valência, mas a reatividade não se reduz mecanicamente à busca de octeto. Íons de metais de transição exigem cuidado: após preencher 4s antes de 3d em átomos neutros, elétrons 4s são geralmente removidos primeiro na formação de cátions. Exceções à ordem simples de preenchimento também existem em alguns átomos neutros, como cromo e cobre. Declare sempre se a espécie é neutra ou ionizada.",
-        "example": "Para Na⁺, comece com Z=11 e 11 elétrons no átomo neutro. Remova um elétron para a carga +1, restando 10; distribua 1s² 2s² 2p⁶. Não altere Z, pois ionização não transforma sódio em neônio.",
-        "pitfall": "Ignorar concentração, carga, unidade ou estado físico ao aplicar uma regra.",
+        "title": "Aplicação: adição, condensação e propriedades",
+        "explanation": "Polimerização por adição une monômeros insaturados sem gerar obrigatoriamente pequenas moléculas como subprodutos em cada etapa; o polietileno é um exemplo escolar. Na polimerização por condensação, reações entre grupos funcionais podem formar ligações e liberar pequenas moléculas, como água, em sistemas específicos. Poliésteres e poliamidas ilustram a importância da química dos grupos funcionais. Não se deve classificar todo polímero por um único mecanismo sem conhecer sua rota de síntese. Termoplásticos podem amolecer e ser reprocessados sob aquecimento em condições adequadas, enquanto termorrígidos fortemente reticulados não fundem como cadeias independentes e podem degradar com calor excessivo. A presença de plastificantes e o grau de cristalinidade alteram flexibilidade e resistência. Reciclagem mecânica pode degradar cadeias ou acumular contaminantes, e identificação do tipo de polímero é necessária antes de misturar resíduos. A decisão sobre uso depende de propriedades, exposição e infraestrutura de coleta.",
+        "example": "Compare um recipiente de polietileno e uma peça de resina epóxi reticulada. Identifique cadeias mais móveis no termoplástico e rede de ligações no termorrígido; preveja maior facilidade de remoldagem do primeiro, sem supor que todo aquecimento seja seguro.",
+        "pitfall": "Não aplicar fórmulas sem unidades e condições explícitas.",
         "steps": [
-          "Identifique a espécie, os dados e o estado físico ou carga.",
-          "Aplique a regra, modelo ou cálculo e justifique os passos.",
-          "Confira conservação, unidades, alternativas e limites do resultado."
+          "Identifique espécies, dados e condições do caso.",
+          "Aplique a definição, a proporção ou o modelo passo a passo.",
+          "Confira a resposta, unidades e condições de validade."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: Hund, Pauli e exceções",
-        "explanation": "Orbitais de um mesmo subnível p possuem três orientações espaciais no modelo atômico, cada uma admitindo até dois elétrons. Pela regra de Hund, elétrons ocupam inicialmente orbitais degenerados separados com spins paralelos antes de emparelhar; assim, em 2p³ do nitrogênio, há três elétrons desemparelhados. Em 2p⁴ do oxigênio, um orbital passa a conter par, restando dois elétrons desemparelhados. A exclusão de Pauli impede que dois elétrons do mesmo átomo compartilhem os quatro números quânticos. Configurações como Cr [Ar] 3d⁵ 4s¹ e Cu [Ar] 3d¹⁰ 4s¹ mostram limitações do preenchimento mecânico, relacionadas a diferenças pequenas de energia e estabilização eletrônica. A ordem energética muda em íons e em ambientes de ligação, portanto o diagrama escolar não é uma tabela universal de energias. Magnetismo, espectros e propriedades químicas exigem modelos adicionais. Ao resolver exercícios, confirme soma dos elétrons, carga, capacidade de subníveis e existência de exceções conhecidas antes de aceitar uma distribuição.",
-        "example": "Para N neutro (Z=7), obtenha 1s² 2s² 2p³. Distribua os três elétrons p em três orbitais separados, conforme Hund; conte três desemparelhados. Para O (Z=8), 2p⁴ exige um par e dois desemparelhados.",
-        "pitfall": "Generalizar o modelo simplificado sem considerar exceções e condições reais.",
+        "title": "Aprofundamento: massa molar e destino ambiental",
+        "explanation": "Em uma cadeia ideal com n unidades repetitivas de massa molar M₀, a massa molar aproximada é M≈nM₀, desprezando a contribuição de grupos terminais. Para polietileno, a unidade C₂H₄ tem massa molar aproximada de 28 g/mol; uma cadeia ideal com 1000 unidades apresenta M≈28 000 g/mol. Materiais reais contêm distribuições de tamanhos e podem ser caracterizados por médias numéricas e ponderais, que não são intercambiáveis. A durabilidade química de um polímero pode ser vantajosa em equipamentos e problemática em descarte; degradação por luz, oxidação e ação microbiana depende de ligações, aditivos e ambiente. Fragmentar plástico em partículas menores não demonstra mineralização completa em CO₂, água e biomassa. Biodegradabilidade, compostabilidade industrial e reciclabilidade são categorias distintas, sujeitas a critérios e infraestrutura. Avaliar impacto exige considerar extração de matéria-prima, fabricação, uso, coleta e destino final, sem declarar que qualquer material é sempre superior.",
+        "example": "Para 1000 unidades de C₂H₄, M₀=2×12+4×1=28 g/mol. Multiplique n×M₀=1000×28=28 000 g/mol. O cálculo aproxima uma cadeia ideal, desconsiderando grupos terminais e distribuição de massas.",
+        "pitfall": "Não generalizar modelos aproximados a sistemas reais sem verificar exceções.",
         "steps": [
-          "Identifique a espécie, os dados e o estado físico ou carga.",
-          "Aplique a regra, modelo ou cálculo e justifique os passos.",
-          "Confira conservação, unidades, alternativas e limites do resultado."
+          "Identifique espécies, dados e condições do caso.",
+          "Aplique a definição, a proporção ou o modelo passo a passo.",
+          "Confira a resposta, unidades e condições de validade."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual a configuração fundamental aproximada do oxigênio neutro (Z=8)?",
+        "prompt": "Qual é a unidade repetitiva aproximada do polietileno?",
         "options": [
-          "1s² 2s² 2p⁴",
-          "1s² 2s⁶",
-          "1s² 2p⁶",
-          "1s² 2s² 3s⁴"
+          "–CH₂–CH₂–",
+          "–Na–Cl–",
+          "–SiO₂–H₂O–",
+          "–Fe–O–"
         ],
         "correctIndex": 0,
-        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
-        "solution": "O oxigênio neutro possui 8 elétrons. Preencha 1s², 2s² e 2p⁴, somando 2+2+4=8; as outras opções excedem capacidades ou ignoram a ordem escolar de preenchimento."
+        "hint": "Relacione o enunciado ao mecanismo e descarte alternativas que contradigam as hipóteses.",
+        "solution": "A polimerização por adição do eteno forma cadeias de unidades –CH₂–CH₂–. NaCl é composto iônico e as outras opções não representam a unidade repetitiva do polietileno."
       },
       {
         "level": "intermediate",
-        "prompt": "Quantos elétrons há em Na⁺ se Z=11?",
+        "prompt": "Qual característica distingue frequentemente um termorrígido fortemente reticulado?",
         "options": [
-          "12",
-          "11",
-          "10",
-          "9"
+          "Pode sempre ser remoldado sem alteração",
+          "Não contém ligações covalentes",
+          "Não funde como cadeias independentes e pode degradar com aquecimento",
+          "É obrigatoriamente biodegradável"
         ],
         "correctIndex": 2,
-        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
-        "solution": "Um átomo neutro de Na tem 11 elétrons; a carga +1 significa perda de um elétron, restando 10. O número de prótons continua 11, pois a ionização não altera o elemento."
+        "hint": "Relacione o enunciado ao mecanismo e descarte alternativas que contradigam as hipóteses.",
+        "solution": "A rede covalente reticulada restringe o escoamento das cadeias, ao contrário de muitos termoplásticos. Aquecimento excessivo pode provocar degradação, não simples fusão reversível."
       },
       {
         "level": "advanced",
-        "prompt": "Quantos elétrons desemparelhados há no nitrogênio neutro (Z=7) no estado fundamental?",
+        "prompt": "Qual massa molar aproximada tem uma cadeia ideal com 1000 unidades C₂H₄ (28 g/mol)?",
         "options": [
-          "0",
-          "1",
-          "2",
-          "3"
+          "280 g/mol",
+          "2 800 g/mol",
+          "280 000 g/mol",
+          "28 000 g/mol"
         ],
         "correctIndex": 3,
-        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
-        "solution": "A configuração 1s² 2s² 2p³ tem três elétrons no subnível p. Pela regra de Hund, ocupam separadamente os três orbitais p, produzindo três elétrons desemparelhados."
+        "hint": "Relacione o enunciado ao mecanismo e descarte alternativas que contradigam as hipóteses.",
+        "solution": "A massa molar aproximada é n×M₀=1000×28=28 000 g/mol, desprezando grupos terminais. Polímeros reais têm distribuição de comprimentos, então a amostra não possui necessariamente uma única massa molar."
       }
     ]
   }
