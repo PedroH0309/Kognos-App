@@ -155,3 +155,7 @@ Aulas específicas novas: **cartografia como linguagem espacial** (escalas, proj
 ## Décima primeira leva — Ciências da Natureza e História
 
 Cinco temas específicos: **Lei de Lavoisier e Lei de Proust** e **produto iônico da água, pH e pOH** (Química); **potência elétrica, efeito Joule e kWh** (Física); **ciclos da água, carbono, oxigênio e nitrogênio** (Biologia); **Primeira República, economia cafeeira, movimentos sociais e crise de 1930** (História). Quinze capítulos progressivos com explicações de mais de 750 caracteres, exemplos resolvidos, limites dos modelos, erros frequentes e quinze questões A–D originais. Validação transversal e teste dedicado verificam gabaritos, cobertura e preservação de IDs. Revisão docente ainda pendente.
+
+## Verificação de regressão — 2026-11-08
+
+A execução GitHub Actions #42440731240 falhou em três testes por um `hint` curto na questão básica de potência elétrica (`Use P=UI.`), abaixo do limite de dez caracteres do validador editorial. O texto da dica foi substituído por uma orientação completa, preservando o gabarito. A execução #42444887367 passou dos testes unitários e segurança/design, mas falhou no TypeScript estrito (`TS7022`) na declaração conjunta de `s` e `q` em `provao-depth-batch11.test.ts`. As variáveis foram tipadas explicitamente como `CourseSection` e `CourseTask` em commit posterior. **Não considerar a branch validada até que um novo workflow complete todas as etapas com sucesso.** Nenhum novo tema foi contabilizado nessa correção; a cobertura permanece em 66/364 no Provão.
