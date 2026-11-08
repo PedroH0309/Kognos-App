@@ -269,7 +269,7 @@ test('batch 34 adds five new exact nonoverlapping syllabus lessons with detailed
    assert.ok(section.steps.length>=3&&section.pitfall.length>=50);
    assert.equal(task.options?.length,4);
    assert.equal(new Set(task.options).size,4);
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
    assert.ok(task.solution.length>=140);
    assert.equal(lessonTaskChoice(lesson,task).source,'editorial');
   }
