@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
+import type {CourseSection,CourseTask} from './course-content.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
@@ -25,7 +26,7 @@ test('batch 07 deep lessons are exactly grounded in syllabus, with fully multipl
   assert.equal(lesson.sections.length,3);
   assert.deepEqual(lesson.tasks.map(q=>q.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const section=lesson.sections[i],question=lesson.tasks[i];
+   const section:CourseSection=lesson.sections[i],question:CourseTask=lesson.tasks[i];
    assert.ok(section.explanation.length>=750&&section.example.length>=180&&section.steps.length>=3&&section.pitfall.length>=50,'Must explain and demonstrate actual subject content');
    assert.equal(question.options?.length,4);
    assert.equal(new Set(question.options).size,4);
