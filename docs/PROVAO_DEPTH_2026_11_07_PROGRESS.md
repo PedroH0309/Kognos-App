@@ -116,7 +116,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **288 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 293 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **288 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 288 conteúdos ausentes**, e tampouco significam que os 76 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -181,3 +181,7 @@ A CI do commit `2d704cf` falhou em dois testes unitários relacionados à qualid
 ## Lote 13 — Química, Física, Biologia e História
 
 Foram acrescentadas cinco aulas específicas, com três capítulos por tema e três questões de quatro alternativas por aula: diluição e misturas com/sem reação; decaimento radioativo, datação e radioisótopos; trabalho de forças conservativas e não conservativas; cladogramas e sinapomorfias; feudalismo, vassalagem e transformações medievais. Os quinze capítulos apresentam explicação autoral longa, exemplo calculado ou analisado, hipóteses de validade e erros frequentes. A validação de respostas e gabaritos é coberta por `provao-depth-batch13.test.ts`; revisão docente ainda pendente. Cobertura offline: 76 de 364 entradas do Provão nesta série, 288 fora; catálogo multi-exame maior continua pendente. A CI deve ser consultada no commit mais recente antes de qualquer alegação de aprovação.
+
+## Revisão da décima terceira leva — correção de regressões da CI
+
+O GitHub Actions #42457518704 falhou nos testes unitários antes de executar segurança, design, TypeScript e build. A inspeção dos logs apontou dois defeitos de qualidade em `provao-depth-batch13-core.ts`: objetivos didáticos curtos demais para o contrato de conteúdo (`objective.length >= 75`) e ressalva de vassalagem/servidão inferior a 50 caracteres. Foram substituídos os cinco objetivos por objetivos mensuráveis e específicos de cada assunto, e esclarecida a diferença histórica entre vassalagem e servidão. Os critérios de teste não foram enfraquecidos; gabaritos, IDs e dados dos usuários não foram alterados. Nova CI precisa concluir antes de declarar a branch validada. Esta execução priorizou reparar o bloqueio de qualidade anterior e não acrescentou cinco novos temas; a contagem permanece 76/364.
