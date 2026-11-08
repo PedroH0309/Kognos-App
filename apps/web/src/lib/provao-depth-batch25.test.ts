@@ -9,8 +9,8 @@ import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 
 const cases=[
  ['Propriedade de substâncias moleculares, iônicas e metálicas',[1,2,3]],
- ['Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular',[1,2,3]],
- ['Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos',[1,2,0]],
+ ['Propriedades físicas dos compostos orgânicos',[1,2,3]],
+ ['Principais radicais funcionais e funções orgânicas',[1,2,3]],
  ['Solubilidade e temperatura de ebulição',[1,2,3]],
  ['Noção de monômeros e polímeros',[0,2,3]]
 ] as const;
