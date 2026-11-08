@@ -37,7 +37,7 @@ test('Every curriculum lesson has its own reading text, practice and explanatory
  assert.match(reading,/lesson\.sections\.map/);
  assert.match(reading,/lesson\.tasks\.filter/);
  assert.match(universal,/section\.explanation/);
- assert.match(reading,/task\.prompt/);
+ assert.match(reading,/lessonTaskChoice\(lesson,task\)/);
  assert.match(reading,/task\.solution/);
  assert.match(universal,/section\.pitfall/);
  assert.match(universal,/introduction\.workedExample/);
