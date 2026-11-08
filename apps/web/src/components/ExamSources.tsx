@@ -10,7 +10,7 @@ import {getSourceWorkspaceState,sourceWorkspaceMetrics} from '@/lib/source-works
 
 type ReviewTopic={id:string;source_id:string;subject:string;topic:string;evidence_excerpt:string;review_status:string};
 type ReviewSource={id:string;institution:ExamId;edition:string;source_title:string;source_url:string;source_method:ImportMethod;review_status:string;created_at:string};
-const examOptions=(publicExamEntries() as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,b])=>({value,label:b.label}));
+const examOptions=publicExamEntries().map(([value,b])=>({value,label:b.label}));
 const methodOptions:{value:ImportMethod;label:string}[]=[{value:'official_html',label:'Ler página HTML oficial'},{value:'manual_transcript',label:'Colar texto de PDF ou documento'}];
 
 export default function ExamSources({userId,onLogin,onQuestionBank}:{userId:string|null;onLogin:()=>void;onQuestionBank:()=>void}){
