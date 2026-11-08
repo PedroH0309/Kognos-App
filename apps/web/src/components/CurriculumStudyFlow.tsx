@@ -13,7 +13,7 @@ import {canFinishLesson,curriculumSubjects,curriculumSubjectTopics,nextCurriculu
 type Props={
  preferredExam?:ExamId|null;
  focus?:{lessonId:string;subject:string}|null;
- renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void,onRelatedTopic:(topicId:string)=>void)=>ReactNode;
+ renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void,onRelatedTopic:(topicId:string)=>void,onReadingEnd:()=>void)=>ReactNode;
  onOpenSimulados?:()=>void;
 };
 const statuses:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada · revisão pendente',guided:'Guia inicial pré-carregado · aprofundamento pendente',introduction:'Introdução disponível',outline:'Tema mapeado, sem aula',draft:'Em revisão'};
@@ -212,7 +212,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
     <span className="k-curriculum-maturity">{statuses[current.status]??'Em revisão'}</span>
    </header>
     <article className="k-curriculum-dedicated-reader" key={current.id}>
-     {renderLesson(current,setActivitiesAnswered,openRelatedTopic)}
+     {renderLesson(current,setActivitiesAnswered,openRelatedTopic,()=>setReadingConfirmed(true))}
     </article>
     <footer className="k-curriculum-lesson-progress">
      <div className="k-curriculum-progress-head"><BookOpenCheck size={21}/><div>
@@ -223,7 +223,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
      {hasLesson&&<div className="k-curriculum-progress-items">
       <label className="k-curriculum-check"><input type="checkbox" checked={readingConfirmed}
        onChange={e=>setReadingConfirmed(e.target.checked)}/>
-       <span>Concluí a leitura de toda a aula</span></label>
+       <span>{readingConfirmed?'Leitura da aula concluída':'Concluí a leitura de toda a aula'}</span></label>
       <span className={activitiesAnswered?'is-done':''}>{activitiesAnswered?<CheckCircle2 size={18}/>:<PenLine size={18}/>}
        {activitiesAnswered?'Atividades preenchidas':'Responda às atividades da aba Atividades'}</span>
      </div>}
@@ -234,7 +234,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
       </button>:<button type="button" className="k-curriculum-next" onClick={()=>chooseSubject(subject)}>
        Fim dos temas · Voltar aos conteúdos <ArrowRight size={18}/></button>}
      </div>
-     {hasLesson&&!ready&&<p className="k-curriculum-progress-help">Para avançar, confirme a leitura e preencha todas as respostas dos exercícios da aba Atividades. Isso não constitui correção ou aprovação automática.</p>}
+     {hasLesson&&!ready&&<p className="k-curriculum-progress-help">A leitura é identificada automaticamente ao chegar ao final da aba Aula em texto. Depois, responda às atividades para avançar. Se necessário, você pode marcar a caixa manualmente. Isso não constitui correção ou aprovação automática.</p>}
      {next&&<p className="k-curriculum-next-label">Próximo assunto: {next.topic}</p>}
     </footer>
    </>:<div className="k-curriculum-empty"><h2>Assunto indisponível neste filtro.</h2>
