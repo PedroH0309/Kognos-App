@@ -45,6 +45,11 @@ import {provaoDepthBatch27Waves} from './provao-depth-batch27-waves.ts';
 import {provaoDepthBatch27Investigation} from './provao-depth-batch27-investigation.ts';
 import {provaoDepthBatch27Destiny} from './provao-depth-batch27-destiny.ts';
 import {provaoDepthBatch27Monopolies} from './provao-depth-batch27-monopolies.ts';
+import {provaoDepthBatch28Thermochemistry} from './provao-depth-batch28-thermochemistry.ts';
+import {provaoDepthBatch28HeatEngines} from './provao-depth-batch28-heat-engines.ts';
+import {provaoDepthBatch28Conservation} from './provao-depth-batch28-conservation.ts';
+import {provaoDepthBatch28Nationalism} from './provao-depth-batch28-nationalism.ts';
+import {provaoDepthBatch28Labour} from './provao-depth-batch28-labour.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -54,7 +59,7 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core,...provaoDepthBatch23Core,...provaoDepthBatch24Core,...provaoDepthBatch25Core,...provaoDepthBatch26Core,...provaoDepthBatch27Optics,...provaoDepthBatch27Waves,...provaoDepthBatch27Investigation,...provaoDepthBatch27Destiny,...provaoDepthBatch27Monopolies];
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core,...provaoDepthBatch23Core,...provaoDepthBatch24Core,...provaoDepthBatch25Core,...provaoDepthBatch26Core,...provaoDepthBatch27Optics,...provaoDepthBatch27Waves,...provaoDepthBatch27Investigation,...provaoDepthBatch27Destiny,...provaoDepthBatch27Monopolies,...provaoDepthBatch28Thermochemistry,...provaoDepthBatch28HeatEngines,...provaoDepthBatch28Conservation,...provaoDepthBatch28Nationalism,...provaoDepthBatch28Labour];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
