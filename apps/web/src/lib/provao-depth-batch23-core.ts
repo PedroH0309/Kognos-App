@@ -359,90 +359,90 @@ export const provaoDepthBatch23Core:readonly DeepTopicSpec[]=[
   },
   {
     "subject": "Química",
-    "topicStart": "Modelos atômicos de Dalton, Thomson, Rutherford e Bohr",
-    "objective": "Comparar modelos atômicos historicamente, suas evidências e limites, distinguindo núcleo, elétrons e espectros.",
+    "topicStart": "A eletrosfera e o diagrama de Linus Pauling",
+    "objective": "Explicar níveis, subníveis e distribuição eletrônica pelo diagrama de Linus Pauling, distinguindo capacidade, ordem energética, íons e exceções de configuração.",
     "prerequisites": [
-      "Conservação de massa",
-      "Carga elétrica",
-      "Radiação e espectros"
+      "Número atômico e elétrons",
+      "Estrutura atômica e carga elétrica",
+      "Noção de níveis e subníveis de energia"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: Dalton e Thomson: matéria e elétrons",
-        "explanation": "Dalton propôs no início do século XIX um modelo corpuscular para explicar regularidades das combinações químicas: elementos seriam constituídos por átomos e compostos apresentariam proporções definidas. Sua concepção de átomo indivisível foi superada pela descoberta de partículas subatômicas, mas a ideia de conservação dos átomos nas reações químicas comuns permaneceu útil em modelos posteriores. Experimentos com raios catódicos levaram Thomson a identificar partículas negativas, os elétrons, presentes em materiais distintos. Thomson propôs um modelo com carga positiva distribuída e elétrons incrustados, capaz de representar neutralidade elétrica, mas incapaz de explicar adequadamente espalhamento de partículas alfa em grandes ângulos. A história dos modelos não é sequência de erros inúteis: cada modelo organiza observações disponíveis e apresenta limites verificáveis. Não é rigoroso dizer que Dalton observou diretamente átomos com microscópio ou que Thomson já conhecia a estrutura nuclear atual.",
-        "example": "Se um átomo neutro contém quatro elétrons, sua carga negativa total é −4e; o modelo de Thomson exigia +4e distribuídos para neutralidade. A conta explica carga total, não a distribuição real do núcleo. Confira a unidade, o contexto e a condição de validade antes de extrapolar o resultado.",
-        "pitfall": "Não substitua uma observação pela conclusão: identifique o mecanismo que a justifica.",
+        "title": "Conceitos: camadas, subníveis e capacidade eletrônica",
+        "explanation": "A eletrosfera é descrita por estados eletrônicos quantizados, e não por pequenas esferas em trajetórias planetárias. Na notação de configuração, o número principal n indica a camada; a letra s, p, d ou f identifica o subnível, relacionado ao número quântico azimutal. Um orbital comporta no máximo dois elétrons com spins opostos, conforme o princípio de exclusão de Pauli. Como os subníveis s, p, d e f possuem respectivamente 1, 3, 5 e 7 orbitais, suas capacidades máximas são 2, 6, 10 e 14 elétrons. O número atômico Z determina o número de prótons; em um átomo neutro, também determina a quantidade de elétrons. Para preencher uma configuração, conte os elétrons disponíveis, escolha a ordem energética aproximada de ocupação e confira se a soma dos expoentes coincide com Z. O diagrama é um recurso mnemônico útil para átomos no estado fundamental, não uma representação de órbitas físicas.",
+        "example": "Para o oxigênio neutro, Z=8: 1s² acomoda 2 elétrons, 2s² mais 2 e 2p⁴ os 4 restantes. Soma: 2+2+4=8. O subnível p admite até 6 elétrons, portanto 2p⁴ é permitido; 2p⁷ seria impossível.",
+        "pitfall": "Não confunda capacidade máxima de um subnível com sua ocupação efetiva; nem trate o diagrama como órbitas desenhadas no espaço.",
         "steps": [
-          "Identifique a pergunta, os dados e o conceito relevante.",
-          "Aplique as relações e compare as alternativas plausíveis.",
-          "Verifique unidades, condições e interpretação do resultado."
+          "Determine Z e a carga da espécie para obter a quantidade de elétrons.",
+          "Preencha subníveis sem exceder as capacidades 2, 6, 10 e 14.",
+          "Some os expoentes e confira a quantidade total de elétrons."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: Rutherford e o núcleo",
-        "explanation": "No experimento associado a Rutherford, Geiger e Marsden, partículas alfa foram dirigidas contra uma folha metálica muito fina. A maioria atravessou com pequenos desvios, enquanto pequena fração sofreu grandes deflexões. Isso sustentou a interpretação de que a maior parte do volume atômico é pouco densa e a carga positiva se concentra em região nuclear diminuta. O modelo nuclear explica qualitativamente os grandes desvios pela repulsão eletrostática, mas a descrição clássica de elétrons orbitando o núcleo apresenta problema: cargas aceleradas deveriam emitir radiação continuamente e perder energia. O experimento não mostrou diretamente elétrons em órbitas circulares nem provou a existência de níveis quantizados. O núcleo contém prótons e, conforme o isótopo, nêutrons; estes foram descobertos posteriormente, não no experimento inicial de Rutherford. A interpretação de dados deve separar observação, inferência e aperfeiçoamentos teóricos posteriores.",
-        "example": "Em um feixe com 10 000 partículas alfa, se 9 950 atravessam com pequenos desvios e 50 sofrem grande deflexão, a fração de grandes desvios é 50/10000=0,5%. O padrão sustenta núcleo compacto, não átomo maciço. Confira a unidade, o contexto e a condição de validade antes de extrapolar o resultado.",
-        "pitfall": "Não confunda relações entre grandezas distintas; verifique a hipótese de aplicação.",
+        "title": "Aplicação: ordem energética e princípio de Aufbau",
+        "explanation": "O diagrama de Linus Pauling organiza, para muitos átomos neutros, uma sequência aproximada de preenchimento de subníveis: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, entre outros. A ordem não é simplesmente crescente pelo número da camada: 4s é normalmente preenchido antes de 3d em átomos neutros de baixa energia. O princípio de Aufbau orienta a ocupação dos estados de menor energia disponíveis; a regra de Hund acrescenta que, em orbitais degenerados de um mesmo subnível, elétrons ocupam inicialmente orbitais separados com spins paralelos. Essas regras explicam por que o nitrogênio 1s² 2s² 2p³ tem três elétrons desemparelhados em 2p no modelo de orbitais. Para representar íons, primeiro determine quantos elétrons foram ganhos ou perdidos. Em metais de transição, a remoção de elétrons pode ocorrer de 4s antes de 3d, mesmo que 4s tenha sido preenchido primeiro. A ordem mnemônica não substitui análise energética detalhada nem elimina exceções experimentais.",
+        "example": "Para cálcio neutro (Z=20), distribua 1s² 2s² 2p⁶ 3s² 3p⁶ 4s²: 2+2+6+2+6+2=20. Para Ca²⁺, retire os dois elétrons de 4s, resultando em 18 elétrons e configuração equivalente à do argônio.",
+        "pitfall": "Não aplique a ordem de preenchimento como regra automática de remoção em todos os cátions, especialmente metais de transição.",
         "steps": [
-          "Identifique a pergunta, os dados e o conceito relevante.",
-          "Aplique as relações e compare as alternativas plausíveis.",
-          "Verifique unidades, condições e interpretação do resultado."
+          "Identifique o total de elétrons após considerar a carga.",
+          "Siga a ordem de energia e aplique Pauli e Hund.",
+          "Confira o estado eletrônico e a retirada de elétrons nos íons."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: Bohr, espectros e limites quânticos",
-        "explanation": "Bohr introduziu órbitas estacionárias quantizadas para o átomo de hidrogênio, nas quais o elétron não emitiria energia continuamente. Transições entre níveis envolvem absorção ou emissão de fóton com energia ΔE=hν, correspondendo à diferença de energias entre estados. Para hidrogênio, Eₙ≈−13,6 eV/n²; uma transição de n=3 para n=2 libera cerca de 1,89 eV, calculada por E₃≈−1,51 eV e E₂≈−3,40 eV. Esse modelo reproduz várias linhas espectrais do hidrogênio, mas não descreve adequadamente todos os átomos multieletrônicos e detalhes de estrutura fina. A mecânica quântica moderna usa orbitais como distribuições de probabilidade, não pequenas trajetórias planetárias definidas. A sequência histórica evidencia refinamento de hipóteses à luz de resultados experimentais e novas ferramentas matemáticas. A energia emitida é positiva para fóton, enquanto a variação de energia do átomo que desce de nível é negativa.",
-        "example": "Para hidrogênio n=3→n=2: E₃=−13,6/9≈−1,51 eV; E₂=−13,6/4=−3,40 eV. O átomo perde 1,89 eV, emitidos em fóton de energia 1,89 eV. Confira a unidade, o contexto e a condição de validade antes de extrapolar o resultado.",
-        "pitfall": "Evite generalizar além das condições e evidências disponíveis; explicite limitações.",
+        "title": "Aprofundamento: exceções, orbitais e interpretação física",
+        "explanation": "Configurações eletrônicas são modelos do estado quântico de sistemas multieletrônicos. A energia de cada orbital depende de interações elétron-núcleo e elétron-elétron, blindagem e penetração; por isso, a ordem de subníveis pode variar entre elementos e íons. Cromo (Z=24) apresenta configuração fundamental frequentemente escrita [Ar] 3d⁵ 4s¹, em vez da previsão mecânica [Ar] 3d⁴ 4s². Cobre (Z=29) apresenta [Ar] 3d¹⁰ 4s¹, e não [Ar] 3d⁹ 4s². Não é correto explicar essas exceções exclusivamente por uma regra universal de 'subnível semipreenchido ou cheio': o balanço energético completo envolve várias contribuições. Para ferro neutro, a configuração abreviada é [Ar] 3d⁶ 4s²; para Fe²⁺, a representação usual é [Ar] 3d⁶. Um orbital descreve uma distribuição de probabilidade, não uma trajetória determinística. O diagrama fornece uma primeira aproximação escolar; previsões espectroscópicas finas exigem modelos quânticos mais completos.",
+        "example": "No ferro neutro, Z=26: [Ar] representa 18 elétrons; 3d⁶ adiciona 6 e 4s² mais 2, totalizando 26. Para Fe³⁺, retire primeiro os dois elétrons 4s e depois um de 3d: [Ar] 3d⁵, com 23 elétrons.",
+        "pitfall": "Não presuma que o último subnível preenchido é sempre o primeiro a perder elétrons, nem trate exceções como erros experimentais.",
         "steps": [
-          "Identifique a pergunta, os dados e o conceito relevante.",
-          "Aplique as relações e compare as alternativas plausíveis.",
-          "Verifique unidades, condições e interpretação do resultado."
+          "Escreva a configuração do átomo neutro e verifique a contagem.",
+          "Para íons, considere a ordem de retirada e a estabilidade relativa.",
+          "Confronte previsões do diagrama com configurações experimentais conhecidas."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual evidência contribuiu para a descoberta do elétron por Thomson?",
+        "prompt": "Qual é a capacidade máxima de elétrons de um subnível p?",
         "options": [
-          "Linhas de absorção do Sol",
-          "Raios catódicos",
-          "Fissão nuclear",
-          "Ondas gravitacionais"
+          "2 elétrons",
+          "6 elétrons",
+          "10 elétrons",
+          "14 elétrons"
         ],
         "correctIndex": 1,
-        "hint": "Leia os dados e confronte cada alternativa com o conceito específico.",
-        "solution": "Thomson estudou raios catódicos e inferiu partículas negativas comuns à matéria, os elétrons. Isso tornou inadequado tratar o átomo como indivisível. As alternativas restantes confundem o mecanismo, a definição ou a proporção e por isso não resolvem o caso."
+        "hint": "O subnível p contém três orbitais, cada um com até dois elétrons.",
+        "solution": "O subnível p possui três orbitais e, pelo princípio de exclusão de Pauli, cada orbital comporta no máximo dois elétrons. Logo, 3 × 2 = 6 elétrons. Dois é a capacidade de s; dez, de d; e quatorze, de f. Essa capacidade é máxima, não a ocupação obrigatória."
       },
       {
         "level": "intermediate",
-        "prompt": "O espalhamento de partículas alfa em grandes ângulos indicou:",
+        "prompt": "Qual configuração corresponde ao cálcio neutro (Z=20) no estado fundamental?",
         "options": [
-          "Átomo uniformemente maciço",
-          "Ausência de carga positiva",
-          "Região nuclear pequena com carga positiva concentrada",
-          "Órbitas eletrônicas quantizadas"
+          "[Ar] 3d²",
+          "[Ar] 4s²",
+          "[Ar] 4p²",
+          "[Ar] 3d¹ 4s¹"
         ],
-        "correctIndex": 2,
-        "hint": "Leia os dados e confronte cada alternativa com o conceito específico.",
-        "solution": "Grandes desvios de partículas alfa exigem forte repulsão concentrada numa pequena região. Rutherford inferiu um núcleo compacto; níveis quantizados foram propostos depois. As alternativas restantes confundem o mecanismo, a definição ou a proporção e por isso não resolvem o caso."
+        "correctIndex": 1,
+        "hint": "O argônio reúne 18 elétrons; faltam dois para completar Z=20.",
+        "solution": "[Ar] corresponde a 18 elétrons. Os dois seguintes ocupam 4s no preenchimento usual do cálcio neutro, produzindo [Ar] 4s², total 20. As outras alternativas têm 20 elétrons formalmente em alguns casos, mas não representam a configuração fundamental observada do cálcio."
       },
       {
         "level": "advanced",
-        "prompt": "Pelo modelo de Bohr, a transição de n=3 para n=2 no hidrogênio:",
+        "prompt": "Qual configuração abreviada representa usualmente o íon Fe²⁺, partindo do ferro neutro [Ar] 3d⁶ 4s²?",
         "options": [
-          "Absorve 1,89 eV",
-          "Não altera energia",
-          "Libera 13,6 eV",
-          "Emite fóton de aproximadamente 1,89 eV"
+          "[Ar] 3d⁴ 4s²",
+          "[Ar] 3d⁶",
+          "[Ar] 3d⁸",
+          "[Ar] 3d⁵ 4s¹"
         ],
-        "correctIndex": 3,
-        "hint": "Leia os dados e confronte cada alternativa com o conceito específico.",
-        "solution": "E₃≈−1,51 eV e E₂=−3,40 eV. A diferença de energia do átomo é −1,89 eV; o fóton emitido possui energia positiva de aproximadamente 1,89 eV. As alternativas restantes confundem o mecanismo, a definição ou a proporção e por isso não resolvem o caso."
+        "correctIndex": 1,
+        "hint": "Na formação desse cátion, os elétrons 4s são removidos antes dos 3d.",
+        "solution": "O ferro neutro possui 26 elétrons e configuração [Ar] 3d⁶ 4s². Ao formar Fe²⁺, perde dois elétrons, ambos do subnível 4s, ficando com [Ar] 3d⁶ e 24 elétrons. O erro comum é retirar elétrons 3d apenas porque 3d aparece depois na ordem mnemônica."
       }
     ]
   }
