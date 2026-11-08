@@ -26,7 +26,7 @@ import {recoverableLessonGenerationError,nextLessonReviewBatchSize,lessonGenerat
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
 type Mode='questions'|'simulados';
-const examOptions=(publicExamEntries() as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
+const examOptions=publicExamEntries().map(([value,item])=>({value,label:item.label}));
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
 const amountOptions=[1,3,5,10].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
