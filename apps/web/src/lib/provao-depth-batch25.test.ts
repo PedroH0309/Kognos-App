@@ -8,11 +8,11 @@ import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 
 const cases=[
- ['Estado físico e propriedades dos materiais',[1,2,1]],
+ ['Propriedade de substâncias moleculares, iônicas e metálicas',[1,2,3]],
  ['Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular',[1,2,3]],
  ['Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos',[1,2,0]],
- ['Óxidos e a chuva ácida',[0,2,3]],
- ['Tratamento de água',[1,2,3]]
+ ['Interações do tipo íon-dipolo',[0,2,3]],
+ ['A eletrosfera e o diagrama de Linus Pauling',[0,2,3]]
 ] as const;
 
 test('batch 25: five unique exact chemistry syllabus lessons, worked examples and verified objective answers',()=>{
