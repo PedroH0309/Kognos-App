@@ -36,7 +36,10 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
  const individuallyAuthored=Boolean(lesson?.authorship.includes('aula autoral'));
  const situation=everydayContextFor(lesson);
 
- const status=lesson?(lesson.review==='introductory'?(individuallyAuthored?'AULA AUTORAL APROFUNDADA · REVISÃO DOCENTE PENDENTE':'AULA-BASE PRÉ-CARREGADA · REVISÃO DOCENTE PENDENTE'):'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
+ const status=lesson?(lesson.supportTopic?'APOIO AUTORAL PARCIAL · OUTROS PONTOS PENDENTES':
+  lesson.authorship.includes('módulo introdutório estruturado')?'ROTEIRO INTRODUTÓRIO · AULA COMPLETA PENDENTE':
+  lesson.review==='introductory'?(individuallyAuthored?'AULA AUTORAL · REVISÃO DOCENTE PENDENTE':'MATERIAL DE ESTUDO · REVISÃO DOCENTE PENDENTE'):
+  'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
  const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>t.level===section.level)
   .map((_,i)=>idFor(section.level,i))):introduction?['intro']:[];
@@ -49,7 +52,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   <header className="k-lesson-reading-intro">
    <span className="overline">{status}</span>
    <h3>{view==='content'?'Estude o conteúdo':view==='activities'?'Coloque em prática':'Entenda o raciocínio'}</h3>
-   <p>{view==='content'?situation?'Comece pelo problema do cotidiano. Depois compreenda a teoria e explore conexões com outras aulas.':'Leia a explicação no seu ritmo, sem interromper o texto com controles de simulação.':
+   <p>{view==='content'?'Siga as etapas de objetivos, contexto, conceitos, exemplos, comparações, prática formativa e consolidação.':
     view==='activities'?'Resolva os desafios autorais deste assunto. Respostas livres não são corrigidas automaticamente.':
     'Confira exemplos, resoluções passo a passo e os erros mais comuns do conteúdo.'}</p>
   </header>
