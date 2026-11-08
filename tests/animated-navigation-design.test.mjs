@@ -65,3 +65,42 @@ test('responsive styling and reduced motion are loaded after legacy nav styles',
  assert.ok(!mobile.includes('fetch('));
  assert.ok(!tabs.includes('fetch('));
 });
+
+
+test('latest mobile reference uses dark dock and expands only the active blue navigation pill',()=>{
+ for(const mapping of ["view:'dashboard',label:'Início',Icon:House",
+   "view:'learn',label:'Estudar',Icon:Search",
+   "view:'questions',label:'Questões',Icon:PieChart",
+   "view:'calendar',label:'Calendário',Icon:Clock3",
+   "view:'profile',label:'Perfil',Icon:UserRound"]){
+  assert.ok(mobile.includes(mapping),mapping);
+ }
+ assert.match(css,/Navigation reference update/);
+ assert.match(css,/background:#1D1F24/);
+ assert.match(css,/background:#2D4D75/);
+ assert.match(css,/color:#59A9FF/);
+ assert.match(css,/flex-grow:2\.15/);
+ assert.match(css,/\.k-mobile-nav-button\.active \.k-mobile-nav-label/);
+ assert.match(css,/\[data-minimized=true\] \.k-mobile-nav-button \.k-mobile-nav-label/);
+});
+
+test('desktop sidebar follows expanded and compact light/dark references without losing routes',()=>{
+ assert.match(app,/className=\{.app-layout theme-\$\{theme\} \$\{sidebarCollapsed/);
+ assert.match(app,/kognos_sidebar_collapsed_v1/);
+ assert.match(app,/className="sidebar-collapse-btn"/);
+ assert.match(app,/k-sidebar-mode/);
+ assert.match(app,/k-sidebar-signout/);
+ assert.match(app,/onClick=\{\(\)=>void signout\(\)\}/);
+ assert.match(app,/role="switch" aria-label="Modo escuro" aria-checked=\{theme==='dark'\}/);
+ assert.match(app,/onClick=\{\(\)=>changeTheme\(theme==='dark'\?'light':'dark'\)\}/);
+ assert.match(css,/\.app-layout\.theme-dark \.app-sidebar/);
+ assert.match(css,/background:#052033/);
+ assert.match(css,/background:#FFFFFF/);
+ assert.match(css,/background:#E5F3FC/);
+ assert.match(css,/background:#647F92/);
+ assert.match(css,/\.app-layout\.sidebar-collapsed \.app-sidebar \.k-sidebar-utility-label/);
+ assert.match(css,/\.app-layout\.sidebar-collapsed \.app-sidebar \.side-nav-item \.k-side-label/);
+ assert.match(css,/@media\(min-width:921px\)/);
+ assert.match(css,/@media\(max-width:920px\)/);
+ assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+});
