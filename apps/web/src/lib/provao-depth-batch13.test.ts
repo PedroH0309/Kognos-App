@@ -1,4 +1,5 @@
 import {test} from 'node:test';
+import type {CourseSection,CourseTask} from './course-content.ts';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
@@ -25,7 +26,7 @@ test('batch 13 contains five exact official topics and 15 substantive objective 
   assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
   assert.equal(new Set(lesson.sections.map(s=>s.example)).size,3);
   for(let i=0;i<3;i++){
-   const section=lesson.sections[i],task=lesson.tasks[i];
+   const section:CourseSection=lesson.sections[i],task:CourseTask=lesson.tasks[i];
    assert.ok(section.explanation.length>=750,'Theory too short '+prefix);
    assert.ok(section.example.length>=180,'Worked example too short '+prefix);
    assert.ok(section.pitfall.length>=50);
