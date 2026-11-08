@@ -175,36 +175,36 @@ function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
  const sample=lesson.tasks.find(task=>task.level==='intermediate')??lesson.tasks[0];
  const concepts=lesson.syllabusScope?.split(/;\s*|\.\s+(?=[A-ZÀ-Ú])/u).map(x=>x.trim()).filter(x=>x.length>=12)??[];
  return <div className="k-universal-guide">
-  <section className="k-universal-context">
+  <section className="k-universal-context" id="k-lesson-concept">
    <h4>03 · Comece pelo conceito central</h4>
    <ReadingBlocks value={first.explanation}/>
    <p className="k-universal-guide-label">Exemplo inicial</p>
    <ReadingBlocks value={first.example}/>
   </section>
-  <section className="k-universal-chapter">
+  <section className="k-universal-chapter" id="k-lesson-development">
    <h4>04 · Aprenda a investigar o assunto</h4>
    <ReadingBlocks value={application.explanation}/>
    <ol className="k-universal-guide-steps">{method.questions.map((question,i)=><li key={i}>{question}</li>)}</ol>
    <p className="k-universal-caution">Estas perguntas orientam a investigação; não substituem conceitos específicos ainda não publicados.</p>
   </section>
-  <section className="k-universal-visual">
+  <section className="k-universal-visual" id="k-lesson-visual">
    <h4>05 · Tópicos do edital que precisam ser dominados</h4>
    {concepts.length?<ul className="k-universal-guide-list">{concepts.map((text,i)=><li key={i}>{text}</li>)}</ul>:
     <p>Este guia se refere ao tema: {lesson.topic}.</p>}
    <small>Lista de competências previstas; não significa que todos os conteúdos tenham sido ensinados neste roteiro.</small>
   </section>
-  <section className="k-universal-chapter">
+  <section className="k-universal-chapter" id="k-lesson-examples">
    <h4>06 · Comparação e limites do exemplo</h4>
    <p>Use o exemplo acima para examinar em que condições a explicação é válida. Compare o caso à advertência seguinte.</p>
-   <div className="k-universal-comparison">
+   <div className="k-universal-comparison" id="k-lesson-comparisons">
     <h5>07 · Atenção ao erro frequente</h5><ReadingBlocks value={first.pitfall}/>
    </div>
   </section>
-  {sample&&<section className="k-universal-chapter">
+  {sample&&<section className="k-universal-chapter" id="k-lesson-check">
    <h4>09 · Verifique uma ideia fundamental</h4>
    <QuickCheck task={sample} level="Roteiro de estudo" onResult={setReview}/>
   </section>}
-  <section className="k-universal-summary">
+  <section className="k-universal-summary" id="k-lesson-summary">
    <h4>10 · Consolidação provisória</h4>
    <p><strong>Conceito inicial:</strong> {lessonReadingBlocks(first.explanation)[0]??'Consulte os objetivos do conteúdo.'}</p>
    <p><strong>Ponto de atenção:</strong> {first.pitfall}</p>
