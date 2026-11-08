@@ -96,3 +96,24 @@ test('every deep lesson is assessed exclusively through verified four-option mul
  }
  assert.equal(checked.size,deepProvaoTopicKeys.length,'Every authored topic must be included in the full-catalog assessment audit');
 });
+
+test('all five exam catalogues report depth by exam without counting shared lessons twice',()=>{
+ const counts=new Map<string,{total:number;deep:number;pending:number}>();
+ for(const topic of curriculumTopics){
+  for(const exam of topic.exams){
+   const row=counts.get(exam)??{total:0,deep:0,pending:0};
+   row.total++;
+   if(deepProvaoLesson(topic))row.deep++;
+   else row.pending++;
+   counts.set(exam,row);
+  }
+ }
+ assert.deepEqual([...counts.keys()].sort(),['enem','etec','fuvest','saresp','vunesp']);
+ for(const [exam,row] of counts){
+  assert.equal(row.deep+row.pending,row.total,exam+' must be fully audited');
+  assert.ok(row.total>0,exam+' has no topics');
+ }
+ assert.equal(counts.get('saresp')?.total,364);
+ assert.equal(counts.get('saresp')?.deep,deepProvaoTopicKeys.length);
+ console.log('EXAM_DEPTH_BY_INSTITUTION '+JSON.stringify(Object.fromEntries(counts)));
+});
