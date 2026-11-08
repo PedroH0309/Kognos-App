@@ -28,7 +28,7 @@ import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
 
 
 import {statsFromAttempts,type QuestionAttempt} from '@/lib/demo-questions';
-import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, Zap, type LucideIcon} from 'lucide-react';
+import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, LogOut, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, Zap, type LucideIcon} from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 import {explainProfileDatabaseError, profileSetupIssue} from '@/lib/profile-setup';
 import {readStoredStudentProfile} from '@/lib/auth-profile-routing';
@@ -569,7 +569,26 @@ export default function KognosApp(){
       <span className="k-side-chevron"><ArrowRight size={15}/></span>
     </button>
     {(moreMenuOpen||NAV_MORE.includes(view))&&<div id="kognos-more-navigation" className="k-nav-set k-nav-expanded">{NAV_MORE.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>}
-  </nav><div className="sidebar-bottom"><button title="Meu perfil" className="side-user" onClick={()=>setView('profile')}><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/><span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b></button></div></aside><AnimatedSidebarScrim open={mobileMenu} disabled={disableAnimations} onClose={()=>setMobileMenu(false)}/>
+  </nav><div className="sidebar-bottom">
+  <button type="button" className="k-sidebar-utility k-sidebar-mode"
+    role="switch" aria-label="Modo escuro" aria-checked={theme==='dark'}
+    title={theme==='dark'?'Ativar modo claro':'Ativar modo escuro'}
+    onClick={()=>changeTheme(theme==='dark'?'light':'dark')}>
+    <span className="k-sidebar-utility-icon" aria-hidden="true">{theme==='dark'?<Sun size={20}/>:<Moon size={20}/>}</span>
+    <span className="k-sidebar-utility-label">{theme==='dark'?'Modo claro':'Modo escuro'}</span>
+    <span className="k-sidebar-utility-switch" aria-hidden="true"><span/></span>
+  </button>
+  <button type="button" className="k-sidebar-utility k-sidebar-signout"
+    onClick={()=>void signout()} title="Sair da conta" aria-label="Sair da conta">
+    <span className="k-sidebar-utility-icon" aria-hidden="true"><LogOut size={20}/></span>
+    <span className="k-sidebar-utility-label">Sair da conta</span>
+  </button>
+  <button type="button" title="Meu perfil" className="side-user"
+    onClick={()=>navigate('profile')} aria-label="Abrir meu perfil">
+    <ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/>
+    <span><strong>{actualProfile.nickname}</strong><small>{user?'Conta conectada':'Perfil local'}</small></span><b>⋯</b>
+  </button>
+ </div></aside><AnimatedSidebarScrim open={mobileMenu} disabled={disableAnimations} onClose={()=>setMobileMenu(false)}/>
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
  <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.key!=='plans'&&x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>openAssistant()} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  <AnimatedPage page={view} disabled={disableAnimations}>
