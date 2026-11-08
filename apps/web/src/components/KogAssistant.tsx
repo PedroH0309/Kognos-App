@@ -178,7 +178,10 @@ export default function KogAssistant({active,onBack,profile,user,onLogin,context
             <button type="button" onClick={()=>fillPrompt("Dê dicas práticas para estudar melhor este assunto e revisar meus erros.")}><Lightbulb size={17}/> Dicas de estudo</button>
           </div>}
           {!user&&<p className="kog-login-tip"><MessageCircle size={14}/> Entre na sua conta para conversar com o Kog. <button onClick={onLogin} type="button">Entrar</button></p>}
-          {notice?<p className="kog-ai-notice">As mensagens e o contexto de estudo são processados por {providerName} para gerar respostas. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>} <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
+          {notice?<p className="kog-ai-notice">{readiness?.tutorConfigured
+           ?<>Para gerar respostas, mensagens e contexto de estudo são enviados ao provedor {providerName}. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>}</>
+           :<>Sem provedor de IA ativo, os guias disponíveis são preparados localmente, sem enviar sua mensagem a um provedor de IA. {readiness===null?'O status do servidor ainda não foi confirmado.':''}</>}
+           <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
         </div>
   </section>;
 }
