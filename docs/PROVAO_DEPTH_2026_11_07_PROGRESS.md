@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **91 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **273 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **273 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **96 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **288 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **288 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -126,7 +126,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **273 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **268 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -211,3 +211,7 @@ A execução [GitHub Actions #42469341319](https://github.com/PedroH0309/Kognos-
 ## Décima sexta leva — composição, eletrosfera, ecologia e formação estatal
 
 Foram incluídas cinco aulas originais: **fórmulas químicas empíricas e moleculares** e **diagrama de Linus Pauling e configuração eletrônica** (Química), **composição vetorial de forças** (Física), **papéis ecológicos e econômicos de bactérias e fungos** (Biologia) e **formação dos Estados modernos** (História). São 15 capítulos com explicações específicas de pelo menos 750 caracteres, 15 exemplos resolvidos, limites e erros frequentes e 15 questões A–D com gabarito comentado. `provao-depth-batch16.test.ts` verifica identidade oficial única, integração ao resolvedor, exemplos, questões e gabaritos. Total da série: **91/364**, com **273 entradas ainda fora**; o catálogo de 1.512 tópicos multi-exame continua em auditoria. Conteúdo autoral, não oficial, sem homologação docente. CI da nova leva pendente; não mesclar nem publicar sem revisão.
+
+## Décima sétima leva — água, cinemática, reprodução, colonização e deposição ácida
+
+Cinco aulas autorais específicas foram incorporadas ao resolvedor: **tratamento de água** e **óxidos e chuva ácida** (Química); **velocidade e aceleração escalar/vetorial** (Física); **reprodução assexuada e sexuada em animais** (Biologia); e **mercantilismo e colonização** (História). São 15 capítulos com explicações de 750+ caracteres e 15 exemplos resolvidos, além de 15 questões exclusivamente objetivas com quatro alternativas distintas, gabaritos e correções comentadas. O teste `provao-depth-batch17.test.ts` verifica identidade curricular, preservação dos IDs, autoria, profundidade e respostas. Cobertura editorial da série: **96/364**, com **268 entradas restantes**. A auditoria do catálogo multi-exame continua necessária. Conteúdo não oficial, não homologado por docentes; a CI desta leva deve ser verificada antes de qualquer afirmação de aprovação.
