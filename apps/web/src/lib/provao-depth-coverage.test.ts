@@ -78,7 +78,7 @@ test('every deep lesson is assessed exclusively through verified four-option mul
   for(const task of lesson.tasks){
    assert.equal(task.options?.length,4,key+' has a non-objective task');
    assert.equal(new Set(task.options).size,4,key+' repeats an answer option');
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex >= 0 && task.correctIndex < 4,key+' has an invalid key');
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,key+' has an invalid key');
    assert.ok(task.solution.length>=140,key+' has an insufficient commented correction');
    const choice=lessonTaskChoice(lesson,task);
    assert.equal(choice.source,'editorial');
