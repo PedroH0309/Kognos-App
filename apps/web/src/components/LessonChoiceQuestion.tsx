@@ -14,6 +14,11 @@ export default function LessonChoiceQuestion({choice,onAnswer,compact=false}:{
 }){
  const [selected,setSelected]=useState<number|null>(null);
  const [hintVisible,setHintVisible]=useState(false);
+ // Do not display or score placeholder answer sets as educational questions.
+ if(choice.source==='unavailable')return <p className="k-lesson-unavailable" role="status">
+  Questão objetiva específica deste assunto em elaboração. Não apresentamos alternativas
+  reaproveitadas de outras aulas nem atribuímos acerto sem gabarito autoral.
+ </p>;
  const correct=selected===choice.correctIndex;
  function choose(index:number){setSelected(index);onAnswer?.(index===choice.correctIndex);}
  return <div className={'k-lesson-mcq'+(compact?' is-compact':'')}>
