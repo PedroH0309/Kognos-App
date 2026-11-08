@@ -36,9 +36,10 @@ test('light theme updates SVG grid, markers, tooltip and focused point',()=>{
 test('dark reference styling stays in place, and existing theme toggle drives chart',()=>{
  const start=css.indexOf('/* 2026-11-08: reference-matched dark violet area chart');
  const light=css.indexOf('/* Weekly progress: light mode must follow');
+ const darkReference=css.slice(start,light);
  assert.ok(start>=0&&light>start,'Light overrides must come after dark reference rules');
- assert.match(rule('.app-layout .k-weekly-chart'),/background:linear-gradient\(180deg,#17171A 0%,#151519 100%\)/);
- assert.match(rule('.app-layout .k-weekly-dot'),/fill:#17171A/);
+ assert.match(darkReference,/\.app-layout \.k-weekly-chart\s*\{[^}]*background:linear-gradient\(180deg,#17171A 0%,#151519 100%\)/);
+ assert.match(darkReference,/\.app-layout \.k-weekly-dot\s*\{[^}]*fill:#17171A/);
  assert.match(app,/app-layout theme-\$\{theme\}/);
  assert.ok(app.includes("kognos_theme_v1"));
 });
