@@ -141,3 +141,35 @@
 .k-universal-guide .k-universal-chapter{gap:13px}
 .k-universal-guide .k-universal-chapter .k-universal-comparison{margin:3px 0}
 .k-universal-guide .k-universal-visual small{color:var(--flow-muted,#536780);line-height:1.6}
+
+/* One coherent 01–10 teaching journey for every subject and assessment.
+   Intermediate milestones are not confused with content readiness. */
+.k-universal-lesson-nav{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:5px 2px 13px;scrollbar-width:thin;max-width:100%;min-width:0}
+.k-universal-lesson-nav a{scroll-snap-align:start;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:9px 13px;border:1px solid var(--k-ul-line,#dce4f0);border-radius:10px;color:var(--k-ul-ink,#101B33);background:var(--flow-paper,#fff);text-decoration:none;font-size:12px;font-weight:750;white-space:nowrap}
+.k-universal-lesson-nav a span{font-size:10px;font-weight:900;color:#5B4DE3}
+.k-universal-lesson-nav a:hover{border-color:#7f73d9}
+.k-universal-lesson-nav a:focus-visible{outline:3px solid #38CDE5;outline-offset:2px}
+.k-universal-lesson [id^="k-lesson-"]{scroll-margin-top:90px}
+.k-universal-learning-stage,.k-universal-learning-section{display:grid;gap:15px;min-width:0}
+.k-universal-learning-section{background:var(--flow-paper,#fff);border:1px solid var(--k-ul-line,#dce4f0);border-radius:17px;padding:clamp(18px,3vw,27px)}
+.k-universal-learning-stage>h4,.k-universal-learning-section>h4{margin:0;color:var(--k-ul-ink,#101B33);font-size:clamp(17px,2vw,21px)}
+.k-universal-learning-stage>p,.k-universal-learning-section>p{margin:0;color:var(--k-ul-muted,#536780)}
+.k-universal-learning-section .k-universal-applied{display:grid;gap:13px;background:var(--k-ul-soft,#EDF1F7);border:1px solid var(--k-ul-line,#dce4f0);border-radius:13px;padding:17px}
+.k-universal-learning-section .k-universal-applied h5{margin:2px 0 0}
+.k-universal-learning-section .k-universal-applied .k-universal-chapter-head{margin:0}
+.k-universal-learning-section .k-universal-comparison{display:grid;gap:12px}
+.k-universal-learning-section .k-universal-comparison h5{margin:0}
+.k-universal-learning-section .k-universal-quick-check{display:grid;gap:12px}
+.k-universal-learning-section .k-universal-quick-check .k-universal-check-heading p{margin:3px 0 0}
+.k-universal-intro-response{display:grid;gap:8px;font-size:13px;font-weight:750}
+.k-universal-intro-response textarea{min-height:90px;width:100%;resize:vertical;border:1px solid var(--k-ul-line,#dce4f0);border-radius:11px;padding:12px;font:inherit;background:var(--flow-paper,#fff);color:var(--k-ul-ink,#101B33)}
+.k-universal-intro-response textarea:focus-visible{outline:3px solid #38CDE5;outline-offset:2px}
+.k-universal-intro-feedback-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;justify-self:start;padding:10px 14px;border:1px solid #8d83e0;border-radius:11px;min-height:40px;background:var(--flow-paper,#fff);color:#5B4DE3;cursor:pointer;font-size:12px;font-weight:750}
+.k-universal-intro-feedback-button:disabled{opacity:.5;cursor:not-allowed}
+.k-universal-context-question{border-left:3px solid #5B4DE3;background:var(--k-ul-soft,#EDF1F7);padding:14px 16px;border-radius:9px;overflow-wrap:anywhere}
+@media(max-width:700px){
+ .k-universal-lesson-nav{margin-left:-4px;margin-right:-4px}
+ .k-universal-learning-section{padding:16px}
+ .k-universal-learning-section .k-universal-applied{padding:13px}
+}
+@media(prefers-reduced-motion:reduce){.k-universal-lesson-nav{scroll-behavior:auto;scroll-snap-type:none}}
