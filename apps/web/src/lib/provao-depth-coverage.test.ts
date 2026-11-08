@@ -49,7 +49,7 @@ test('batch 26 registered topics are covered by the offline Provão audit',()=>{
   assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
    'Missing specific depth: '+subject+' / '+prefix);
  }
- assert.ok(report.coverage.deep_specific>=156,'Expected at least 156 specific Provão lessons including batch 30');
+ assert.ok(report.coverage.deep_specific>=161,'Expected at least 161 specific Provão lessons including batch 30');
 });
 
 test('batch 28 contributes five distinct deeply authored official Provão topics',()=>{
@@ -81,7 +81,7 @@ test('batch 29 advances five genuinely distinct official Provão topics',()=>{
   assert.ok(!report.pending.some(x=>x.subject===subject&&x.topic===topic),
    'Batch 29 must resolve specifically '+subject+' / '+topic);
  }
- assert.ok(report.coverage.deep_specific>=156);
+ assert.ok(report.coverage.deep_specific>=161);
 });
 
 test('batch 30 contributes five distinct non-introductory Provão topics',()=>{
@@ -97,7 +97,23 @@ test('batch 30 contributes five distinct non-introductory Provão topics',()=>{
   assert.ok(!report.pending.some(entry=>entry.subject===subject&&entry.topic===topic),
    'Batch 30 missing specific depth: '+subject+' / '+topic);
  }
- assert.ok(report.coverage.deep_specific>=156,'Expected at least 156 topics');
+ assert.ok(report.coverage.deep_specific>=161,'Expected at least 161 topics');
+});
+
+test('batch 31 contributes five exact new Provão syllabus lessons',()=>{
+ const report=provaoDepthAudit();
+ const cases=[
+  ['Física','Lei de Faraday-Neumann'],
+  ['Física','Capacitores. Associação de capacitores. Energia potencial elétrica armazenada em um capacitor.…'],
+  ['Biologia','Doenças humanas causadas por fungos e protozoários (amebíase, malária, doença de Chagas e…'],
+  ['História','Da mão de obra escrava à imigração'],
+  ['História','Ásia e África: imperialismo, neocolonialismo e resistência']
+ ] as const;
+ for(const [subject,topic] of cases){
+  assert.ok(!report.pending.some(entry=>entry.subject===subject&&entry.topic===topic),
+   'Batch 31 topic must have a specific deep lesson: '+subject+' / '+topic);
+ }
+ assert.ok(report.coverage.deep_specific>=161);
 });
 
 test('every deep syllabus registration is unique, with actionable duplicate diagnostics',()=>{
@@ -114,7 +130,7 @@ test('full three-grade Provão syllabus has an honest depth status for every uni
  assert.equal(report.total,364,'360 topic entries plus four writing assessment criteria');
  assert.equal(Object.values(report.coverage).reduce((sum,n)=>sum+n,0),report.total);
  assert.ok(report.coverage.deep_specific<=deepProvaoTopicKeys.length,'Coverage must never exceed editorial registrations');
- assert.ok(report.coverage.deep_specific>=156,'At least 156 distinct Provão lessons are required');
+ assert.ok(report.coverage.deep_specific>=161,'At least 161 distinct Provão lessons are required');
  // Registered prefixes can overlap or fail to match the official catalogue; report the gap explicitly.
  console.log('DEPTH_REGISTRATION_GAP '+JSON.stringify({registrations:deepProvaoTopicKeys.length,matched:report.coverage.deep_specific,gap:deepProvaoTopicKeys.length-report.coverage.deep_specific}));
  // Report registrations that cannot win the same exact-first resolver used by the app.
