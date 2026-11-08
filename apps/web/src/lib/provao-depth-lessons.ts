@@ -1,0 +1,44 @@
+/**
+ * Curated deepening for ten specific Provão Paulista syllabus items.
+ * Content is original and academically motivated, not yet certified by a teacher.
+ * Never infer deep lesson coverage from shared words or a broad keyword.
+ */
+import type {CurriculumTopic} from './curriculum-catalog.ts';
+import type {CourseLesson,CourseSection,CourseTask} from './course-content.ts';
+import {findProvaoTopic} from './provao-paulista.ts';
+import {examBlueprints} from './exam-blueprints.ts';
+import {provaoDepthScienceAndHistory} from './provao-depth-science-history.ts';
+import {provaoDepthHumanitiesAndLanguage} from './provao-depth-humanities-language.ts';
+
+export type DeepTopicSpec={
+ subject:string;
+ topicStart:string;
+ objective:string;
+ prerequisites:string[];
+ sections:CourseSection[];
+ tasks:CourseTask[];
+};
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage];
+export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
+
+export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
+ const registered=findProvaoTopic(topic.subject,topic.topic);
+ if(!registered)return null;
+ const spec=all.find(item=>item.subject===topic.subject&&registered.topic.startsWith(item.topicStart));
+ if(!spec)return null;
+ const sourceUrls=[...new Set(topic.exams
+  .map(exam=>examBlueprints[exam]?.sourceUrl)
+  .filter((url):url is string=>Boolean(url?.startsWith('https://'))))];
+ return {
+  kind:'lesson',id:topic.id,subject:topic.subject,topic:topic.topic,exams:topic.exams,
+  objective:spec.objective,prerequisites:spec.prerequisites,
+  sections:spec.sections,tasks:spec.tasks,videos:[],
+  authorship:'Kognos — aula autoral aprofundada e específica; revisão docente pendente; sem homologação',
+  license:'Material preparatório autoral Kognos; não oficial do Provão Paulista',
+  sourceUrls,syllabusScope:registered.description,review:'introductory'
+ };
+}
+export function hasDeepProvaoLesson(topic:CurriculumTopic){
+ const ref=findProvaoTopic(topic.subject,topic.topic);
+ return Boolean(ref&&all.some(s=>s.subject===topic.subject&&ref.topic.startsWith(s.topicStart)));
+}
