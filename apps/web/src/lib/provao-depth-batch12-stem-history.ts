@@ -104,7 +104,7 @@ export const provaoDepthBatch12StemHistory:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Fundamentos: Movimento uniforme e acelerado",
         "explanation": "No movimento retilíneo uniforme (MRU), a velocidade escalar algébrica é constante e a posição obedece s=s₀+vt. No movimento uniformemente variado (MUV), a aceleração é constante: v=v₀+at e s=s₀+v₀t+at²/2. A equação de Torricelli v²=v₀²+2aΔs elimina o tempo, mas só vale com aceleração constante ao longo do trecho. Velocidade negativa indica sentido relativo ao eixo escolhido, não necessariamente redução do módulo. A aceleração contrária à velocidade reduz a rapidez; quando têm mesmo sinal, aumenta. Em queda livre próxima da superfície terrestre e desprezando resistência do ar, usa-se aceleração gravitacional aproximadamente constante. Gráficos posição-tempo têm inclinação relacionada à velocidade; gráficos velocidade-tempo têm inclinação igual à aceleração e área algébrica igual ao deslocamento.",
-        "example": "Um ciclista parte com v₀=2 m/s e acelera a 3 m/s² durante 4 s: v=2+3·4=14 m/s; Δs=2·4+(3·16)/2=32 m. A rapidez final não pode ser calculada por MRU porque a velocidade varia.",
+        "example": "Um ciclista parte com v₀=2 m/s e acelera a 3 m/s² durante 4 s: v=2+3·4=14 m/s; Δs=2·4+(3·16)/2=32 m. A rapidez final não pode ser calculada por MRU porque a velocidade varia. O resultado só descreve o intervalo em que a aceleração permanece constante; fora dele, é necessário reavaliar a função horária.",
         "pitfall": "Usar distância total no lugar de deslocamento ou aplicar Torricelli com aceleração variável sem justificativa invalida o resultado.",
         "steps": [
           "Identifique as grandezas e hipóteses do enunciado.",
