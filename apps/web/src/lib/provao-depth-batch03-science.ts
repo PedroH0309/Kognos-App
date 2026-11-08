@@ -205,7 +205,7 @@ export const provaoDepthBatch03Science:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Transformações particulares e balanços de energia",
         "explanation": "Num processo isocórico de gás ideal, volume constante implica trabalho de expansão pΔV nulo no modelo elementar; assim, na ausência de outras formas de trabalho, ΔU=Q. Em transformação adiabática idealizada, Q=0; se o gás realiza trabalho positivo, sua energia interna diminui, portanto ΔU=−W. A ausência de calor não significa ausência de variação de temperatura.\n\nPara um gás ideal, a energia interna depende da temperatura, não diretamente do volume. Em transformação isotérmica de gás ideal, ΔU=0, de modo que Q=W com a convenção adotada; calor recebido pode converter-se integralmente em trabalho num único processo isotérmico, mas não constitui, sozinho, um ciclo capaz de produzir trabalho continuamente sem outras mudanças. As hipóteses sobre gás ideal e processo precisam ser indicadas.\n\nUm gráfico pressão-volume permite calcular o trabalho do gás como área sob a curva em processos quase estáticos apropriados. Para expansão a pressão constante, W=pΔV. Unidade correta: pascal vezes metro cúbico equivale a joule. Ler um gráfico sem verificar eixos e unidades pode produzir resultado incompatível com a física.",
-        "example": "Um gás expande a pressão constante de 2,0×10⁵ Pa, variando volume de 0,003 para 0,005 m³. ΔV=0,002 m³ e W=pΔV=400 J. Se recebeu Q=700 J, então ΔU=700−400=300 J.",
+        "example": "Um gás expande a pressão constante de 2,0×10⁵ Pa, variando volume de 0,003 para 0,005 m³. ΔV=0,002 m³ e W=pΔV=400 J. Se recebeu Q=700 J, então ΔU=700−400=300 J. A energia interna aumentou, embora parte do calor tenha sido transferida como trabalho.",
         "pitfall": "Não afirme que adiabática significa temperatura constante. Sem calor, ainda pode haver trabalho e variação de energia interna. Também não use fórmulas de gás ideal sem conferir hipóteses.",
         "steps": [
           "Identifique se processo é isocórico, isotérmico ou adiabático.",
@@ -294,7 +294,7 @@ export const provaoDepthBatch03Science:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Lei de Snell e cálculo de ângulos",
         "explanation": "A lei de Snell-Descartes descreve, em condições apropriadas, a relação n₁ senθ₁ = n₂ senθ₂, com θ medidos a partir da normal. A expressão permite calcular ângulo refratado ou índice desconhecido quando as demais grandezas são fornecidas. Se n₂>n₁ para a situação considerada, senθ₂<senθ₁, de modo que o raio refratado aproxima-se da normal, salvo particularidades do fenômeno.\n\nUm exercício pode fornecer sen30°=0,5 e n₁=1,0, n₂=1,5. Nesse caso, senθ₂=(1,0/1,5)×0,5=1/3; θ₂ é aproximadamente 19,5°. Não basta dividir o ângulo de 30° por 1,5: a lei envolve senos dos ângulos, não os ângulos diretamente. A mesma equação se aplica à incidência em sentido inverso sob hipóteses equivalentes.\n\nO índice também se relaciona ao comprimento de onda no meio: como f é mantida, λ=v/f. Se a velocidade cai, λ cai proporcionalmente. Questões com diferentes comprimentos de onda devem considerar dispersão quando explicitada; um índice único pode ser aproximação limitada.",
-        "example": "A luz vai do ar (n=1,0) para um líquido (n=1,5), incidindo a 30° da normal. Aplicando Snell: 1,0×0,5 = 1,5×senθ₂, logo senθ₂=1/3 e θ₂≈19,5°. A direção fica mais próxima da normal.",
+        "example": "A luz vai do ar (n=1,0) para um líquido (n=1,5), incidindo a 30° da normal. Aplicando Snell: 1,0×0,5 = 1,5×senθ₂, logo senθ₂=1/3 e θ₂≈19,5°. A direção fica mais próxima da normal, conforme esperado para um índice maior.",
         "pitfall": "Não substitua senθ por θ em graus. A razão dos índices altera o seno do ângulo, e calculadoras devem estar configuradas no modo angular coerente.",
         "steps": [
           "Identifique índices e ângulos, sempre em relação à normal.",
@@ -340,7 +340,7 @@ export const provaoDepthBatch03Science:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Use n₁senθ₁=n₂senθ₂.",
-        "solution": "A alternativa B está correta: senθ₂=(1×0,5)/1,5=1/3. As demais não satisfazem a equação de Snell nas condições dadas."
+        "solution": "A alternativa B está correta: senθ₂=(1×0,5)/1,5=1/3. As demais não satisfazem a equação de Snell nas condições dadas. O raio passa para um meio de índice maior e seu ângulo com a normal diminui."
       },
       {
         "level": "advanced",
