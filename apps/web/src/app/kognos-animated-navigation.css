@@ -120,154 +120,16 @@
 .k-universal-lesson-nav.k-animated-stage-nav>a:hover{border-color:#877CE8}
 .k-universal-lesson-nav.k-animated-stage-nav>a:focus-visible{outline:3px solid #38CDE5;outline-offset:2px}
 
-@media(max-width:920px) {
- /* Floating translucent capsule, kept above the safe-area inset. */
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav,
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav {
-  position:fixed;
-  inset:auto 0 0;
-  z-index:35;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  height:calc(82px + env(safe-area-inset-bottom));
-  width:100%;
-  padding:7px 12px calc(8px + env(safe-area-inset-bottom));
-  background:transparent;
-  border:0;
-  box-shadow:none;
-  pointer-events:none;
-  overflow:visible;
- }
- .app-layout .k-mobile-nav-pill {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  width:min(100%,430px);
-  min-height:58px;
-  padding:4px;
-  border-radius:999px;
-  border:1px solid var(--line,#DEE5F2);
-  background:color-mix(in srgb,var(--box-bg,#fff) 87%,transparent);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  box-shadow:0 9px 30px #101B332A;
-  pointer-events:auto;
-  isolation:isolate;
-  transition:width .22s ease,background-color .22s ease;
- }
- .app-layout.theme-dark .k-mobile-nav-pill {
-  border-color:#4C5C75;
-  background:rgba(32,38,51,.90);
-  box-shadow:0 11px 32px #060B19A8;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button,
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button {
-  position:relative;
-  isolation:isolate;
-  display:flex;
-  flex:1 1 0;
-  min-width:0;
-  min-height:55px;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:3px;
-  padding:5px 3px;
-  border:0;
-  border-radius:999px;
-  background:transparent;
-  color:var(--sub,#66758C);
-  font-size:10px;
-  font-weight:650;
-  line-height:1.12;
-  cursor:pointer;
-  white-space:nowrap;
-  overflow:visible;
-  transition:color .2s ease;
- }
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button {
-  color:#C0CCE0;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active,
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button[aria-current=page],
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active,
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button[aria-current=page] {
-  background:transparent;
-  color:var(--violet,#5B4DE3);
- }
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active {
-  color:#F7F9FC;
- }
- .app-layout .k-mobile-nav-button .k-mobile-nav-highlight {
-  position:absolute;
-  z-index:-1;
-  inset:2px 0;
-  border-radius:999px;
-  background:var(--panel-2,#EDF1F7);
-  box-shadow:inset 0 0 0 1px var(--line,#E0E6EF);
-  pointer-events:none;
- }
- .app-layout.theme-dark .k-mobile-nav-button .k-mobile-nav-highlight {
-  background:#394760;
-  box-shadow:inset 0 0 0 1px #5A6881;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-icon {
-  position:relative;
-  display:grid;
-  place-items:center;
-  width:24px;
-  height:24px;
-  flex:none;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-label {
-  position:relative;
-  display:block;
-  width:100%;
-  text-align:center;
-  overflow:hidden;
-  text-overflow:ellipsis;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button:focus-visible {
-  outline:2px solid #38CDE5;
-  outline-offset:2px;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-pill {
-  width:min(100%,335px);
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-button {
-  min-height:44px;
-  padding:5px 2px;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-label {
-  display:none;
- }
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-pill {
-  min-height:48px;
- }
- /* Make room for the capsule rather than obscuring the last lesson buttons. */
- .app-layout .app-main{padding-bottom:max(86px,env(safe-area-inset-bottom))}
-}
-@media(max-width:380px){
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav,
- .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav{padding-inline:6px}
- .app-layout .k-mobile-nav-pill{padding:3px}
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button{font-size:9px}
-}
-@media(min-width:921px){
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav{display:none}
-}
 @media(prefers-reduced-motion:reduce){
- .k-animated-lesson-tab,.k-animated-stage-nav>a,
- .app-layout .k-mobile-nav-pill,.app-layout .k-mobile-nav-button {
+ .k-animated-lesson-tab,.k-animated-stage-nav>a{
   transition:none!important;
   animation:none!important;
  }
  .k-animated-lesson-tabs,.k-animated-stage-nav{scroll-behavior:auto!important}
 }
 
-
-/* Navigation reference update: expanded mobile selection and adaptive desktop sidebar. */
+/* Preserve the existing accessible drawer when mobile bottom navigation is removed. */
+/* Adaptive desktop sidebar is retained; the earlier mobile pill has been retired. */
 /* Desktop: preserve the existing routes and persisted collapsed preference,
  * but match the supplied dark navy / white expanded and icon-only rail.
  */
