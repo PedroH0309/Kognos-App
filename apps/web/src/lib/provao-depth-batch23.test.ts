@@ -11,7 +11,7 @@ const cases=[
  ['Física','Representação gráfica, em função do tempo, do espaço, da velocidade escalar e da aceleração',[1,1,3]],
  ['Biologia','Alternativas energéticas e soluções contra as ameaças ao equilíbrio dos ecossistemas',[1,2,3]],
  ['História','O Império Romano: crise e derrocada no Ocidente',[1,2,3]],
- ['Química','A eletrosfera e o diagrama de Linus Pauling',[1,1,1]]
+ ['Química','Soluções aquosas: conceito e classificação',[1,2,0]]
 ] as const;
 test('batch 23: five exact unique syllabus topics with three substantial levels and verified objective keys',()=>{
  assert.equal(provaoDepthBatch23Core.length,5);
