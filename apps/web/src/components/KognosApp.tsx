@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import {AnimatedPage,AnimatedSidebarScrim} from './KognosMotion';
-import MobileBottomNavigation from './MobileBottomNavigation';
+
 
 import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
 import {examForStudent} from '@/lib/exam-syllabus';
@@ -633,6 +633,6 @@ export default function KognosApp(){
   <PracticeSpace key={`${user.id}-simulados`} mode="simulados" active={view==='simulados'}
    userId={user.id} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>
  </div>}
- <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><MobileBottomNavigation view={view} onNavigate={navigate} disableAnimations={disableAnimations}/>
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
