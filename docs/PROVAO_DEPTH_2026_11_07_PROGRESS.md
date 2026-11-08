@@ -315,3 +315,8 @@ A auditoria distinguia 137 registros de prefixos editoriais de 136 tópicos dist
 ## Resolução por identidade exata — 2026-11-08
 
 A CI #42517575472 falhou no teste de índice da questão intermediária de fórmula molecular: a alternativa C₆H₁₂O₆ tem índice 2 na aula do lote 26, mas o resolvedor retornou índice 1 de outra aula com prefixo mais amplo. O resolvedor passou a preferir correspondência exata entre `topicStart` e o tópico oficial antes de recorrer a prefixos; isso evita que uma aula antiga e mais genérica esconda o conteúdo autoral específico. O gabarito do lote 26 e os IDs foram preservados. A execução #42518479672 está em validação; não declarar CI verde sem conclusão de unitários, segurança de dois usuários, design, TypeScript e build. A lacuna entre 137 registros e 136 temas resolvidos ainda precisa ser auditada; não elevar a contagem por mera existência de registros. Sem homologação docente, merge ou deploy.
+
+
+## Compatibilidade entre lotes 16 e 26 — 2026-11-08
+
+A execução #42518506879 revelou uma regressão no teste do lote 16 após o resolvedor priorizar correspondências exatas: a questão de fórmula molecular passou a usar o material específico do lote 26, enquanto a asserção antiga exigia o gabarito do lote 16. O teste foi alterado para validar explicitamente o gabarito do material histórico do lote 16, preservando a seleção da aula mais específica no resolvedor. Essa correção não altera questões ou respostas pedagógicas; exige CI completa para confirmar segurança, testes de dois usuários, design, TypeScript e build. Não contabilizar novas aulas por essa manutenção. PR em rascunho, sem merge, sem deploy; autoria original e não homologada.
