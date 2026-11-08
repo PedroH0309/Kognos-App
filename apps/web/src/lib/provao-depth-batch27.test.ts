@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import type {CourseTask} from './course-content.ts';
+import type {CourseSection,CourseTask} from './course-content.ts';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
 import {starterLesson} from './starter-lessons.ts';
@@ -44,7 +44,7 @@ test('batch 27: five distinct official-syllabus lessons, original depth and veri
   assert.deepEqual(lesson.sections.map(x=>x.level),['basic','intermediate','advanced']);
   assert.deepEqual(lesson.tasks.map(x=>x.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const section=lesson.sections[i],task:CourseTask=lesson.tasks[i];
+   const section:CourseSection=lesson.sections[i],task:CourseTask=lesson.tasks[i];
    assert.equal(section.title,spec.sections[i].title,'Exact authored match required for '+prefix);
    assert.ok(section.explanation.length>=750,prefix+' chapter '+i+' explanatory text');
    assert.ok(section.example.length>=180,prefix+' chapter '+i+' worked example');
