@@ -104,7 +104,7 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
     {detail.questions.length>0&&<section><h3>Questões do catálogo</h3>{detail.questions.map(q=><EditorialQuestion key={`${q.id}-${q.revision}`} question={q}/>)}</section>}
     </>}{readerTab==='evolution'&&<>{!onGenerateAI&&<AICoursePractice key={detail.topic.id} topic={detail.topic}/>}
     {onGenerateAI&&userId&&<>{progressError&&<p role="status">Histórico indisponível no momento: {progressError}</p>}<SkillEvolutionPanel evolution={aiProgress?.skillEvolution?.find(item=>item.lessonId===(detail.topic.legacyLessonId||detail.topic.id))??null} sampleLimited={aiProgress?.sampleLimited??false} onPractice={()=>onGenerateAI(detail.topic.legacyLessonId||detail.topic.id,true)} onTutor={()=>onTutor?.()}/></>}
-    </>}<div className="course-actions">{onTutor&&<button type="button" className="btn outline" onClick={onTutor}>Explicar com o Kog</button>}<a className="btn outline" href="/">Voltar ao aplicativo</a></div>
+    </>}<div className="course-actions">{(readerTab==='materials'||readerTab==='evolution')&&onTutor&&<button type="button" className="btn outline" onClick={onTutor}>Explicar com o Kog</button>}<a className="btn outline" href="/">Voltar ao aplicativo</a></div>
     {readerTab==='materials'&&detail.lesson&&<details><summary>Autoria e referências</summary><p>{detail.lesson.authorship} · {detail.lesson.license}</p><ul>{detail.lesson.sourceUrls.map(u=><li key={u}><a href={u} target="_blank" rel="noreferrer">{u}</a></li>)}</ul></details>}
    </>}</article></div>
  </Container>;
