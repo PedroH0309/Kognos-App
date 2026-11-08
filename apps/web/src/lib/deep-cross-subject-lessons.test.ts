@@ -4,6 +4,7 @@ import {curriculumTopics} from './curriculum-catalog.ts';
 import {parseCourseDocument} from './course-content.ts';
 import {deepCrossSubjectLesson,deepCrossSubjectTopics} from './deep-cross-subject-lessons.ts';
 import {starterCoverage,starterLesson} from './starter-lessons.ts';
+import {deepProvaoLesson} from './provao-depth-lessons.ts';
 
 test('Every subject beyond mathematics receives an individually authored foundation lesson',()=>{
  const all=new Set(deepCrossSubjectTopics.map(item=>item.subject));
@@ -14,7 +15,7 @@ test('Every subject beyond mathematics receives an individually authored foundat
   assert.ok(topic,'Missing real curriculum topic: '+entry.subject+' / '+entry.topic);
   const lesson=deepCrossSubjectLesson(topic);
   assert.ok(lesson);
-  assert.deepEqual(starterLesson(topic),lesson,'The lesson should override generic templates');
+  assert.deepEqual(starterLesson(topic),deepProvaoLesson(topic)??lesson,'The newest exact deep syllabus lesson takes priority, otherwise use the older authored foundation');
   assert.equal(starterCoverage(topic),'thematic');
   assert.ok(parseCourseDocument(lesson),'Malformed authored chapter '+entry.topic);
   assert.equal(lesson.review,'introductory','Human editorial review is not implied');
