@@ -1,7 +1,9 @@
 'use client';
 
 import {useState} from 'react';
-import {ArrowDown,ArrowLeft,ArrowRight,ArrowUp,BookOpen,CheckCircle2,Lightbulb,RefreshCw} from 'lucide-react';
+import {ArrowDown,ArrowLeft,ArrowRight,ArrowUp,BookOpen,CheckCircle2,RefreshCw} from 'lucide-react';
+import LessonChoiceQuestion from './LessonChoiceQuestion';
+import {lessonTaskChoice,introductoryChoice} from '@/lib/lesson-multiple-choice';
 import type {ExplorerMaterial} from '@/lib/study-exploration';
 import TopicVisualStudio from './TopicVisualStudio';
 import {
@@ -28,16 +30,13 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
  const {subject,topic,lesson,onTutor}=input;
  const [stage,setStage]=useState<Stage>('investigate');
  const [reference,setReference]=useState(0);
- const [notes,setNotes]=useState<[string,string,string]>(['','','']);
- const [attempt,setAttempt]=useState('');
- const [showHint,setShowHint]=useState(false);
- const [showAnswer,setShowAnswer]=useState(false);
  const [checkedOrder,setCheckedOrder]=useState(false);
  const steps=lesson?.sections[0]?.steps??[];
  const [order,setOrder]=useState<number[]>(()=>steps.map((_,i)=>i).reverse());
  const method=studyMethodForSubject(subject);
  const cards=referenceCards(input);
  const challenge=explorerChallenge(input);
+ const choice=lesson?.tasks[0]?lessonTaskChoice(lesson,lesson.tasks[0]):input.introduction?introductoryChoice(input.introduction):null;
  const maturity=contentMaturity(input);
  const activeIndex=stages.findIndex(item=>item.id===stage);
  const correctOrder=order.every((item,index)=>item===index);
@@ -56,7 +55,7 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
   <header className="k-study-explorer-heading">
    <span className="overline"><BookOpen size={15} aria-hidden="true"/> {subject.toLocaleUpperCase('pt-BR')} · EXPLORAÇÃO ORIENTADA</span>
    <h3>{method.title}</h3>
-   <p>Explore primeiro o mapa visual do tema. Os roteiros escritos e a tentativa própria ficam disponíveis depois, como aprofundamento opcional.</p>
+   <p>Explore o mapa do tema, organize os conceitos e responda às alternativas disponíveis sem escrever respostas dissertativas.</p>
    <small className="k-study-maturity">{maturityLabels[maturity]}</small>
   </header>
   <TopicVisualStudio {...input}/>
@@ -75,21 +74,15 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
    </div>
    <blockquote className="k-study-reference-text">{cards[reference]??topic}</blockquote>
    <p className="k-study-muted">Esses trechos são provenientes do cadastro curricular ou da aula selecionada; não são uma explicação completa criada pelo explorador.</p>
-   <details className="k-study-notes-details"><summary>Consultar perguntas para aprofundar</summary>
+   <details className="k-study-notes-details"><summary>Consultar eixos de aprofundamento</summary>
     <div className="k-study-question-list">
-     {method.questions.map((question,index)=><div key={index}><span>{index+1}</span><p>{question}</p></div>)}
+     {method.promptLabels.map((label,index)=><div key={index}><span>{index+1}</span><p>{label}</p></div>)}
     </div>
    </details>
   </div>}
   {stage==='organize'&&<div className="k-study-stage-body">
    <h4>Organize e compare</h4>
-   <p className="k-study-muted">No mapa visual você pode alternar o foco e rearranjar os eixos. Se quiser, registre observações sem nota.</p>
-   <details className="k-study-notes-details"><summary>Escrever observações (opcional)</summary><div className="k-study-note-grid">
-    {method.promptLabels.map((label,index)=><label key={label}>{label}
-     <textarea rows={3} value={notes[index]} placeholder={method.questions[index]}
-      onChange={e=>setNotes(current=>current.map((value,i)=>i===index?e.target.value:value) as [string,string,string])}/>
-    </label>)}
-   </div></details>
+   <p className="k-study-muted">No mapa visual você pode alternar o foco e reorganizar os passos do material, sem precisar escrever respostas.</p>
    {steps.length>=2&&<div className="k-study-order-activity">
     <h4>Ordene as etapas do material desenvolvido</h4>
     <p className="k-study-muted">Reorganize os passos reais da primeira seção da aula, na ordem proposta pelo material.</p>
@@ -108,21 +101,10 @@ export default function StudyExplorationPanel(input:ExplorerMaterial & {onTutor?
    </div>}
   </div>}
   {stage==='apply'&&<div className="k-study-stage-body">
-   <h4>Faça uma tentativa própria</h4>
-   <p className="k-study-question">{challenge.prompt}</p>
-   <label className="k-study-attempt">Sua resposta ou hipótese<textarea rows={5} value={attempt}
-    onChange={e=>setAttempt(e.target.value)} placeholder="Desenvolva seu raciocínio antes de consultar pistas ou referências."/></label>
-   {challenge.hint&&<div className="k-study-helper">
-    <button type="button" onClick={()=>setShowHint(v=>!v)} aria-expanded={showHint}><Lightbulb size={16} aria-hidden="true"/>{showHint?'Ocultar pista':'Mostrar pista da aula'}</button>
-    {showHint&&<p>{challenge.hint}</p>}
-   </div>}
-   {challenge.answerReference&&<div className="k-study-helper">
-    <button type="button" onClick={()=>setShowAnswer(v=>!v)} aria-expanded={showAnswer}>
-     {showAnswer?'Ocultar referência':challenge.hasVerifiedSolution?'Conferir resolução do material':'Ver exemplo relacionado (não é gabarito)'}
-    </button>
-    {showAnswer&&<p>{challenge.answerReference}</p>}
-   </div>}
-   {maturity==='outline'&&<p className="k-study-muted">Este tema tem referência cadastrada, mas ainda não possui uma aula completa nem resolução para comparar. A atividade acima é um roteiro de investigação, não uma questão corrigida.</p>}
+   <h4>Questão de múltipla escolha</h4>
+   {choice?<LessonChoiceQuestion choice={choice}/>:
+    <p className="k-study-muted">Este tema tem referência cadastrada, mas ainda não possui questão objetiva publicada. Nenhuma questão dissertativa é solicitada.</p>}
+   {challenge.hasVerifiedSolution&&<p className="k-study-muted">A explicação fornecida após escolher uma alternativa usa a resolução do material autoral da aula.</p>}
    {onTutor&&<button className="k-study-tutor-action" type="button" onClick={onTutor}>Pedir orientação ao Kog <ArrowRight size={16} aria-hidden="true"/></button>}
   </div>}
   <footer className="k-study-explorer-footer">

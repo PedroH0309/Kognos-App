@@ -173,3 +173,24 @@
  .k-universal-learning-section .k-universal-applied{padding:13px}
 }
 @media(prefers-reduced-motion:reduce){.k-universal-lesson-nav{scroll-behavior:auto;scroll-snap-type:none}}
+
+/* Unified objective exercises, from intro to advanced level. No free-response fields. */
+.k-lesson-mcq{display:grid;gap:12px;min-width:0;padding:4px 0 14px}
+.k-lesson-mcq-prompt{margin:0!important;font-size:clamp(14px,1.5vw,16px);font-weight:730;line-height:1.7;color:var(--k-ul-ink,var(--flow-ink,#101B33));overflow-wrap:anywhere}
+.k-lesson-mcq-instruction{margin:0!important;color:var(--k-ul-muted,var(--flow-muted,#536780));font-size:12px!important;line-height:1.6!important}
+.k-lesson-mcq-options{display:grid;gap:9px}
+.k-lesson-mcq-option{display:flex;gap:13px;align-items:flex-start;min-height:52px;text-align:left;border:1px solid var(--flow-line,#dce4f0);border-radius:12px;background:var(--flow-paper,var(--box-bg,#fff));color:var(--flow-ink,var(--txt,#101B33));padding:12px 15px;cursor:pointer;font:inherit;font-size:13px;line-height:1.6;overflow-wrap:anywhere;width:100%}
+.k-lesson-mcq-option:hover{border-color:#8C7FE4;background:color-mix(in srgb,#5B4DE3 5%,var(--flow-paper,#fff))}
+.k-lesson-mcq-option .k-lesson-mcq-letter{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--flow-soft,#EDF1F7);color:#5747d1;font-weight:850;line-height:1}
+.k-lesson-mcq-option.is-correct{border-color:#248a70;background:color-mix(in srgb,#24ad8b 9%,var(--flow-paper,#fff))}
+.k-lesson-mcq-option.is-incorrect{border-color:#ba6159;background:color-mix(in srgb,#d76464 8%,var(--flow-paper,#fff))}
+.k-lesson-mcq-option:focus-visible,.k-lesson-mcq-hint-button:focus-visible{outline:3px solid #38CDE5;outline-offset:2px}
+.k-lesson-mcq-hint-button{display:inline-flex;align-items:center;gap:7px;justify-self:start;border:1px solid #8d83e0;background:var(--flow-paper,#fff);color:#5B4DE3;min-height:40px;padding:9px 14px;border-radius:10px;font-size:12px;font-weight:750;cursor:pointer}
+.k-lesson-mcq-feedback{display:grid;gap:9px;background:var(--flow-soft,#EDF1F7);border:1px solid var(--flow-line,#dce4f0);border-left:3px solid #38CDE5;border-radius:10px;padding:14px}
+.k-lesson-mcq-feedback strong{display:inline-flex;align-items:center;gap:6px}
+.k-lesson-mcq-feedback p{margin:0!important;white-space:pre-line;font-size:13px;line-height:1.75}
+.k-lesson-mcq-feedback small,.k-lesson-mcq-hint{font-size:12px;line-height:1.6;color:var(--k-ul-muted,var(--flow-muted,#536780));margin:0}
+.k-lesson-mcq.is-compact{padding:12px 0 0;border-top:1px solid var(--flow-line,#dce4f0)}
+.k-classroom-task .k-lesson-mcq-option,.k-lesson-exercise .k-lesson-mcq-option{font-size:13px}
+@media(max-width:700px){.k-lesson-mcq-option{padding:11px;gap:9px}.k-lesson-mcq-option .k-lesson-mcq-letter{width:25px;height:25px}}
+@media(prefers-reduced-motion:reduce){.k-lesson-mcq-option{transition:none!important}}

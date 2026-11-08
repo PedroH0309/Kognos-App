@@ -1,7 +1,7 @@
 import type {ExamId} from './exam-blueprints.ts';
 export type CourseLevel='basic'|'intermediate'|'advanced';
 export type CourseSection={level:CourseLevel;title:string;explanation:string;steps:string[];example:string;pitfall:string};
-export type CourseTask={level:CourseLevel;prompt:string;hint:string;solution:string};
+export type CourseTask={level:CourseLevel;prompt:string;hint:string;solution:string;options?:string[];correctIndex?:number};
 export type CourseVideo={title:string;author:string;videoId:string;start:number;end?:number;evidenceUrl:string;verification:'chapter_index'|'manually_checked';checkedOn:string};
 export type CourseLesson={kind:'lesson';id:string;subject:string;topic:string;exams:ExamId[];objective:string;prerequisites:string[];sections:CourseSection[];tasks:CourseTask[];videos:CourseVideo[];authorship:string;license:string;sourceUrls:string[];review:'editor'|'ai_reviewed'|'introductory';supportTopic?:string;syllabusScope?:string};
 export type CourseQuestion={kind:'question';id:string;courseId:string;prompt:string;options:string[];correctIndex:number;explanation:string;authorship:string;license:string;sourceUrls:string[]};
@@ -48,7 +48,13 @@ export function parseCourseDocument(raw:unknown,complete=true):CourseDocument|nu
  const tasks:CourseTask[]=[];
  for(const t of v.tasks){
   if(!t||typeof t!=='object'||!Object.hasOwn(levels,t.level)||!bodyText(t.prompt,15,4000)||!bodyText(t.hint,10,2000)||!bodyText(t.solution,20,8000))return null;
-  tasks.push({level:t.level,prompt:t.prompt,hint:t.hint,solution:t.solution});
+  const hasChoices=t.options!==undefined||t.correctIndex!==undefined;
+  if(hasChoices&&(!Array.isArray(t.options)||t.options.length!==4||
+   !t.options.every((option:unknown)=>isText(option,complete?1:0,1000))||
+   (complete&&new Set(t.options).size!==4)||
+   !Number.isInteger(t.correctIndex)||Number(t.correctIndex)<0||Number(t.correctIndex)>3))return null;
+  tasks.push({level:t.level,prompt:t.prompt,hint:t.hint,solution:t.solution,
+   ...(hasChoices?{options:t.options as string[],correctIndex:Number(t.correctIndex)}:{})});
  }
  if(!Object.keys(levels).every(l=>tasks.some(t=>t.level===l)))return null;
  const videos=v.videos.map(parseVideo);if(videos.some(x=>!x))return null;

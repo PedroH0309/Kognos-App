@@ -37,7 +37,7 @@ test('Every curriculum lesson has its own reading text, practice and explanatory
  assert.match(reading,/lesson\.sections\.map/);
  assert.match(reading,/lesson\.tasks\.filter/);
  assert.match(universal,/section\.explanation/);
- assert.match(reading,/task\.prompt/);
+ assert.match(reading,/lessonTaskChoice\(lesson,task\)/);
  assert.match(reading,/task\.solution/);
  assert.match(universal,/section\.pitfall/);
  assert.match(universal,/introduction\.workedExample/);
@@ -50,7 +50,7 @@ test('Lessons without authored content keep an honest maturity status without AI
  assert.doesNotMatch(room,/Desenvolver aula completa com o Kog|Autorizo desenvolver este assunto com IA/);
  assert.match(reading,/SEM AULA EDITORIAL/);
  assert.match(reading,/Não apresentamos textos gerados automaticamente como se fossem uma aula validada/);
- assert.match(reading,/Estas são orientações gerais de estudo, não exercícios específicos/);
+ assert.match(reading,/ainda não possui questões de alternativas verificadas/);
 });
 test('No new lab or reading component directly scores, persists attempts or sends AI requests',()=>{
  for(const path of ['apps/web/src/components/LaboratoryHub.tsx','apps/web/src/components/TopicLessonSections.tsx']){

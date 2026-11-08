@@ -60,7 +60,24 @@ export default function ContentAdmin(){
      {revision===0&&findCurriculumTopic(draft.id)&&<button type="button" className="btn outline" disabled={busy||batch} onClick={()=>{if(!dirty||window.confirm('Desenvolver uma aula nova com IA? As alterações ainda não salvas serão substituídas.'))void generate(draft.id);}}>Autorizar IA a desenvolver este tema</button>}
      <Text label="Objetivo da aula" value={draft.objective} onChange={value=>replaceDraft({...draft,objective:value})}/><Text label="Pré-requisitos (um por linha)" value={draft.prerequisites.join('\n')} onChange={value=>replaceDraft({...draft,prerequisites:lines(value)})}/>
      {draft.sections.map((s,i)=><details open={i===0} key={s.level}><summary>{levels[s.level]}</summary><label>Título da etapa<input value={s.title} onChange={e=>replaceDraft({...draft,sections:draft.sections.map((v,j)=>j===i?{...v,title:e.target.value}:v)})}/></label>{(['explanation','steps','example','pitfall'] as const).map(field=><Text key={field} label={{explanation:'Explicação didática',steps:'Passo a passo (um por linha)',example:'Exemplo resolvido',pitfall:'Erro comum e como evitar'}[field]} value={field==='steps'?s.steps.join('\n'):s[field]} onChange={value=>replaceDraft({...draft,sections:draft.sections.map((v,j)=>j===i?{...v,[field]:field==='steps'?lines(value):value}:v)})}/>)}</details>)}
-     <h2>Tarefas e resoluções</h2>{draft.tasks.map((t,i)=><details key={i}><summary>{levels[t.level]} · tarefa {i+1}</summary>{(['prompt','hint','solution'] as const).map(field=><Text key={field} label={{prompt:'Enunciado',hint:'Pista gradual',solution:'Resolução comentada'}[field]} value={t[field]} onChange={value=>replaceDraft({...draft,tasks:draft.tasks.map((v,j)=>j===i?{...v,[field]:value}:v)})}/>)}</details>)}
+     <h2>Questões de alternativas e resoluções</h2>
+     <p>Escreva as alternativas A–D e marque exatamente uma correta. Quando os dados antigos não têm alternativas editoriais, a aula apresenta uma atividade de associação à resolução existente.</p>
+     {draft.tasks.map((t,i)=><details key={i}><summary>{levels[t.level]} · questão {i+1}</summary>
+      {(['prompt','hint','solution'] as const).map(field=><Text key={field} label={{prompt:'Enunciado',hint:'Pista gradual',solution:'Resolução comentada'}[field]} value={t[field]} onChange={value=>replaceDraft({...draft,tasks:draft.tasks.map((v,j)=>j===i?{...v,[field]:value}:v)})}/>)}
+      {t.options?<div className="course-task-choices">
+       {t.options.map((option,index)=><label key={index}>Alternativa {String.fromCharCode(65+index)}
+        <input value={option} onChange={e=>replaceDraft({...draft,tasks:draft.tasks.map((v,j)=>j===i?{...v,options:v.options?.map((entry,k)=>k===index?e.target.value:entry)}:v)})}/></label>)}
+       <label>Gabarito da questão
+        <select value={t.correctIndex??0} onChange={e=>replaceDraft({...draft,tasks:draft.tasks.map((v,j)=>j===i?{...v,correctIndex:Number(e.target.value)}:v)})}>
+         {(['A','B','C','D'] as const).map((letter,index)=><option key={letter} value={index}>{letter}</option>)}
+        </select>
+       </label>
+       <button className="btn outline" type="button" onClick={()=>replaceDraft({...draft,tasks:draft.tasks.map((v,j)=>j===i?{level:v.level,prompt:v.prompt,hint:v.hint,solution:v.solution}:v)})}>Retirar alternativas deste rascunho</button>
+      </div>:
+       <button className="btn outline" type="button" onClick={()=>replaceDraft({...draft,tasks:draft.tasks.map((v,j)=>j===i?{...v,options:['','','',''],correctIndex:0}:v)})}>
+        Criar alternativas A–D específicas
+       </button>}
+     </details>)}
      <h2>Videoaulas</h2><p>Use o identificador do YouTube e confira o segundo inicial no vídeo ou no índice. Nunca marque um horário aproximado como verificado.</p>
      {draft.videos.map((v,i)=><VideoEditor key={i} video={v} onChange={next=>replaceDraft({...draft,videos:draft.videos.map((item,j)=>j===i?next:item)})} onRemove={()=>replaceDraft({...draft,videos:draft.videos.filter((_,j)=>j!==i)})}/>)}
      <button className="btn outline" type="button" onClick={()=>replaceDraft({...draft,videos:[...draft.videos,{title:'',author:'',videoId:'',start:0,evidenceUrl:'',verification:'manually_checked',checkedOn:new Date().toISOString().slice(0,10)}]})}>Adicionar videoaula</button>

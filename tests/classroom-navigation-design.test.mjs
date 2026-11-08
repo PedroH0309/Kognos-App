@@ -47,6 +47,6 @@ test('lesson reflection and hints are not recorded as measured mastery',()=>{
  const intro=read('apps/web/src/components/InteractiveIntroLesson.tsx');
  assert.doesNotMatch(studio,/contentRequest\(|\/api\/ai-questions\/submit/);
  assert.doesNotMatch(intro,/contentRequest\(|\/api\/ai-questions\/submit/);
- assert.match(studio,/não é enviado nem corrigido automaticamente/i);
+ assert.match(studio,/não são enviadas nem registradas como nota ou domínio/i);
  assert.match(intro,/não altera seu mapa de domínio/i);
 });
