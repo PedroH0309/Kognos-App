@@ -16,7 +16,6 @@ export const lessonPanes:{id:LessonPane;label:string;description:string}[]=[
  {id:'activities',label:'Atividades',description:'Aplicação e exercícios'},
  {id:'explanations',label:'Explicações',description:'Exemplos e resoluções'}
 ];
-const sectionNumber=(index:number)=>String(index+1).padStart(2,'0');
 function TextBlocks({value}:{value:string}){
  return <div className="k-lesson-text-block">{value.split(/\n\s*\n/).filter(Boolean).map((text,i)=><p key={i}>{text.trim()}</p>)}</div>;
 }
@@ -68,10 +67,10 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction} onTutor={onTutor}/>}
   {view==='activities'&&<>
    {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Questões de alternativas respondidas: {answered} de {exerciseIds.length}. Este treino é local; as respostas não são registradas como nota ou domínio.</p>}
-   {lesson&&lesson.sections.map((section,i)=>{
+   {lesson&&lesson.sections.map(section=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level);
     return <article className="k-lesson-chapter" key={section.level}>
-     <div className="k-lesson-chapter-heading"><span>{sectionNumber(i)}</span><div><small>{levels[section.level]}</small><h4>Atividades de {section.title}</h4></div></div>
+     <div className="k-lesson-chapter-heading"><div><small>{levels[section.level]}</small><h4>Atividades de {section.title}</h4></div></div>
      {tasks.map((task,j)=>{
       const id=idFor(section.level,j);
       return <div className="k-lesson-exercise" key={id}>
@@ -95,11 +94,11 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
     <h4>Como resolver a situação?</h4>
     <p>{situation.answer}</p>
    </article>}
-   {lesson&&lesson.sections.map((section,i)=>{
+   {lesson&&lesson.sections.map(section=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level);
     const open=Boolean(steps[section.level]);
     return <article className="k-lesson-chapter" key={section.level}>
-     <div className="k-lesson-chapter-heading"><span>{sectionNumber(i)}</span><div><small>{levels[section.level]}</small><h4>{section.title}</h4></div></div>
+     <div className="k-lesson-chapter-heading"><div><small>{levels[section.level]}</small><h4>{section.title}</h4></div></div>
      <button type="button" className="k-lesson-expand" aria-expanded={open}
       onClick={()=>setSteps(prev=>({...prev,[section.level]:!open}))}>Passo a passo do exemplo <ChevronDown size={17}/></button>
      {open&&<ol className="k-lesson-steps">{section.steps.map((step,j)=><li key={j}>{step}</li>)}</ol>}
