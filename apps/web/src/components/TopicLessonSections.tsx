@@ -7,6 +7,8 @@ import {studyMethodForSubject} from '@/lib/study-exploration';
 import {everydayContextFor} from '@/lib/everyday-lesson-contexts';
 import {courseId} from '@/lib/curriculum-id';
 import UniversalLessonReader from './UniversalLessonReader';
+import LessonChoiceQuestion from './LessonChoiceQuestion';
+import {lessonTaskChoice,introductoryChoice} from '@/lib/lesson-multiple-choice';
 
 export type LessonPane='content'|'activities'|'explanations';
 export const lessonPanes:{id:LessonPane;label:string;description:string}[]=[
@@ -27,14 +29,14 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
  onRelatedTopic?:(topicId:string)=>void;
  onActivityProgress?:(allAnswered:boolean)=>void;
 }){
- const [drafts,setDrafts]=useState<Record<string,string>>({});
- const [hints,setHints]=useState<Record<string,boolean>>({});
+ const [choiceAnswers,setChoiceAnswers]=useState<Record<string,boolean>>({});
  const [steps,setSteps]=useState<Record<string,boolean>>({});
  const [solutions,setSolutions]=useState<Record<string,boolean>>({});
  const method=studyMethodForSubject(subject);
  const authored=Boolean(lesson||introduction);
  const individuallyAuthored=Boolean(lesson?.authorship.includes('aula autoral'));
  const situation=everydayContextFor(lesson);
+ const introChoice=introduction?introductoryChoice(introduction):null;
 
  const status=lesson?(lesson.supportTopic?'APOIO AUTORAL PARCIAL · OUTROS PONTOS PENDENTES':
   lesson.authorship.includes('módulo introdutório estruturado')?'ROTEIRO INTRODUTÓRIO · AULA COMPLETA PENDENTE':
@@ -42,18 +44,19 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
  const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>t.level===section.level)
-  .map((_,i)=>idFor(section.level,i))):introduction?['intro']:[];
- const answered=exerciseIds.filter(id=>Boolean(drafts[id]?.trim())).length;
- function updateDraft(id:string,value:string){
-  const next={...drafts,[id]:value};setDrafts(next);
-  onActivityProgress?.(exerciseIds.length>0&&exerciseIds.every(key=>Boolean(next[key]?.trim())));
+  .map((_,i)=>idFor(section.level,i))):introChoice?['intro']:[];
+ const answered=exerciseIds.filter(id=>Object.hasOwn(choiceAnswers,id)).length;
+ function updateChoice(id:string,correct:boolean){
+  const next={...choiceAnswers,[id]:correct};setChoiceAnswers(next);
+  // Progress marks attempted alternatives only; answer correctness is not stored as mastery.
+  onActivityProgress?.(exerciseIds.length>0&&exerciseIds.every(key=>Object.hasOwn(next,key)));
  }
  return <section className="k-lesson-reading-room" aria-label={lessonPanes.find(p=>p.id===view)?.label+' de '+topic}>
   <header className="k-lesson-reading-intro">
    <span className="overline">{status}</span>
    <h3>{view==='content'?'Estude o conteúdo':view==='activities'?'Coloque em prática':'Entenda o raciocínio'}</h3>
    <p>{view==='content'?'Siga as etapas de objetivos, contexto, conceitos, exemplos, comparações, prática formativa e consolidação.':
-    view==='activities'?'Resolva os desafios autorais deste assunto. Respostas livres não são corrigidas automaticamente.':
+    view==='activities'?'Selecione uma das quatro alternativas e receba a explicação imediatamente. Não há questões dissertativas.':
     'Confira exemplos, resoluções passo a passo e os erros mais comuns do conteúdo.'}</p>
   </header>
   {!authored&&<div className="k-lesson-unavailable" role="status">
@@ -64,7 +67,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   </div>}
   {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction} onTutor={onTutor}/>}
   {view==='activities'&&<>
-   {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Respostas preenchidas: {answered} de {exerciseIds.length}. A conclusão indica apenas campos preenchidos, não correção.</p>}
+   {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Questões de alternativas respondidas: {answered} de {exerciseIds.length}. Este treino é local; as respostas não são registradas como nota ou domínio.</p>}
    {lesson&&lesson.sections.map((section,i)=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level);
     return <article className="k-lesson-chapter" key={section.level}>
@@ -73,30 +76,18 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
       const id=idFor(section.level,j);
       return <div className="k-lesson-exercise" key={id}>
        <span className="k-lesson-exercise-number"><CheckSquare size={16}/> EXERCÍCIO {j+1}</span>
-       <p className="k-lesson-question">{task.prompt}</p>
-       <label>Sua resolução ou interpretação
-        <textarea rows={4} value={drafts[id]??''} onChange={e=>updateDraft(id,e.target.value)}
-         placeholder="Desenvolva a resposta com suas palavras. Este rascunho fica somente na tela."/>
-       </label>
-       <button type="button" aria-expanded={Boolean(hints[id])} onClick={()=>setHints(prev=>({...prev,[id]:!prev[id]}))}>
-        <Lightbulb size={15}/> {hints[id]?'Ocultar pista':'Mostrar pista'}
-       </button>
-       {hints[id]&&<div className="k-lesson-hint"><strong>Pista editorial</strong><p>{task.hint}</p></div>}
-       <p className="k-lesson-exercise-help">A resolução comentada está na aba Explicações.</p>
+       <LessonChoiceQuestion choice={lessonTaskChoice(lesson,task)} onAnswer={correct=>updateChoice(id,correct)}/>
       </div>;
      })}
     </article>;
    })}
    {!lesson&&introduction&&<article className="k-lesson-chapter">
-    <h4>Verifique a compreensão do conceito</h4><p className="k-lesson-question">{introduction.check}</p>
-    <label className="k-lesson-draft">Seu raciocínio
-     <textarea rows={5} value={drafts['intro']??''} onChange={e=>updateDraft('intro',e.target.value)}
-      placeholder="Escreva sua hipótese ou solução antes de ler o exemplo."/>
-    </label><p className="k-lesson-exercise-help">Compare sua resposta ao exemplo na aba Explicações. Esta tarefa introdutória não gera nota.</p>
+    <h4>Teste de alternativas sobre o conceito</h4>
+    {introChoice?<LessonChoiceQuestion choice={introChoice} onAnswer={correct=>updateChoice('intro',correct)}/>:
+     <p>Este conteúdo ainda não possui uma questão objetiva disponível. Nenhuma questão dissertativa será solicitada.</p>}
    </article>}
-   {!authored&&<div className="k-lesson-study-method"><h4>Como preparar este tema para a prática?</h4>
-    {method.promptLabels.map((label,i)=><p key={label}><strong>{i+1}. {label}.</strong> {method.questions[i]}</p>)}
-    <p>Estas são orientações gerais de estudo, não exercícios específicos ou questões oficiais.</p></div>}
+   {!authored&&<div className="k-lesson-study-method"><h4>Atividades em elaboração</h4>
+    <p>Este assunto ainda não possui questões de alternativas verificadas. Consulte os materiais e os simulados disponíveis.</p></div>}
   </>}
   {view==='explanations'&&<>
    {situation&&<article className="k-lesson-problem-answer">
