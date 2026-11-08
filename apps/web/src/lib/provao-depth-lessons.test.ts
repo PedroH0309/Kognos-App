@@ -6,22 +6,15 @@ import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 
-const expected=[
- ['Biologia','Pirâmides ecológicas'],
- ['Química','Equações químicas e balanceamento'],
- ['Física','Escalas termométricas. As escalas Celsius'],
- ['Matemática','Porcentagem, taxas e índices'],
- ['História','Iluminismo e Liberalismo'],
- ['Geografia','Os espaços supranacionais'],
- ['Português','Concordância nominal e concordância verbal'],
- ['Inglês','Localização de informação específica'],
- ['Filosofia','O contratualismo clássico'],
- ['Sociologia','Pluralismo cultural:']
-] as const;
 
-test('ten subject-specific Provão Paulista lessons are substantive, progressive and verifiable',()=>{
- assert.equal(deepProvaoTopicKeys.length,10);
- for(const [subject,prefix] of expected){
+test('every subject-specific Provão Paulista lesson is substantial, progressive and objectively assessed',()=>{
+ assert.ok(deepProvaoTopicKeys.length>=40,'Content batches missing from the curriculum resolver');
+ const seen=new Set(deepProvaoTopicKeys);
+ assert.equal(seen.size,deepProvaoTopicKeys.length,'Duplicate authored exact topic key');
+ for(const key of deepProvaoTopicKeys){
+  const marker=key.indexOf(' · ');
+  assert.ok(marker>0,'Missing subject separator in '+key);
+  const subject=key.slice(0,marker),prefix=key.slice(marker+3);
   const topic=curriculumTopics.find(t=>t.subject===subject&&t.topic.startsWith(prefix)&&t.exams.includes('saresp'));
   assert.ok(topic,'Missing official syllabus match for '+subject+' / '+prefix);
   const lesson=deepProvaoLesson(topic);
