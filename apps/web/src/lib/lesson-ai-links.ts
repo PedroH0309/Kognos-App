@@ -74,7 +74,7 @@ export function inferLegacyLessonId(institution:ExamId,subject:string,topic:stri
 export function lessonGenerationPreset(lessonId:string,preferred?:ExamId){
  const lesson=findLearningLesson(lessonId);
  if(!lesson)return null;
- const institutions:ExamId[]=preferred?[preferred,'enem','etec','fuvest','vunesp','saresp']:['enem','etec','fuvest','vunesp','saresp'];
+ const institutions:ExamId[]=preferred&&preferred!=='etec'?[preferred,'enem','fuvest','vunesp','saresp']:['enem','fuvest','vunesp','saresp'];
  for(const institution of institutions){const topic=linkedExamTopic(lessonId,institution);if(topic)return {lessonId:lesson.id,institution,subject:lesson.subject,topic};}
  return null;
 }
@@ -97,6 +97,6 @@ export function lessonPracticeGenerationRequest(lessonId:string,run:number){
 
 /** Shared exam scope for the subject dashboard and learning trails. */
 export function learningCatalogForExam(exam:ExamId|null,grade:ProvaoGrade|null=null){
- return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))&&(exam!=='saresp'||isProvaoTopic(lesson.subject,lesson.topic,grade))):[...learningLessons];
+ return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))&&(exam!=='saresp'||isProvaoTopic(lesson.subject,lesson.topic,grade))):learningLessons.filter(lesson=>!lesson.curriculumId||lesson.exams?.some(track=>track!=='etec'));
 }
 
