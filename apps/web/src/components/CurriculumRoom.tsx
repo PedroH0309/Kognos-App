@@ -108,20 +108,37 @@ function EmbeddedCurriculumRoom({userId=null,active=true,focus,preferredExam=nul
    </>}</article></div>
  </Container>;
 }
-function EditorialQuestion({question:q,source='editorial'}:{question:PublicCourseQuestion;source?:'editorial'|'ai'}){
+function EditorialQuestion({question:q,source='editorial',onGraded}:{question:PublicCourseQuestion;source?:'editorial'|'ai';onGraded?:(correct:boolean)=>void}){
  const [answer,setAnswer]=useState<number|null>(null),[result,setResult]=useState<{correct:boolean;correctIndex:number;explanation:string}|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
- async function submit(){if(answer===null||busy)return;setBusy(true);try{setResult(await contentRequest(source==='ai'?'/api/ai-questions/submit':'/api/content/answer',{method:'POST',body:JSON.stringify(source==='ai'?{questionId:q.id,answerIndex:answer,mode:'practice'}:{id:q.id,revision:q.revision,answerIndex:answer})}));setError('');}catch(e){setError(e instanceof Error?e.message:'Falha ao corrigir.');}finally{setBusy(false);}}
+ async function submit(){if(answer===null||busy||result)return;setBusy(true);try{const graded=await contentRequest(source==='ai'?'/api/ai-questions/submit':'/api/content/answer',{method:'POST',body:JSON.stringify(source==='ai'?{questionId:q.id,answerIndex:answer,mode:'practice'}:{id:q.id,revision:q.revision,answerIndex:answer})});setResult(graded);onGraded?.(Boolean(graded.correct));setError('');}catch(e){setError(e instanceof Error?e.message:'Falha ao corrigir.');}finally{setBusy(false);}}
  return <fieldset className="course-task"><legend>{q.prompt}</legend>{q.options.map((o,i)=><label className="course-check" key={i}><input type="radio" name={q.id} checked={answer===i} disabled={Boolean(result)} onChange={()=>setAnswer(i)}/>{o}</label>)}<button type="button" className="btn primary" onClick={submit} disabled={answer===null||busy||Boolean(result)}>Conferir resposta</button>{error&&<p role="alert">{error}</p>}{result&&<div role="status"><strong>{result.correct?'Resposta correta':'Vamos revisar'} · alternativa {String.fromCharCode(65+result.correctIndex)}</strong><p>{result.explanation}</p></div>}</fieldset>;
 }
 
 function AICoursePractice({topic}:{topic:CurriculumTopic}){
  const [questions,setQuestions]=useState<PublicCourseQuestion[]>([]),[busy,setBusy]=useState(false),[error,setError]=useState(''),[difficulty,setDifficulty]=useState('basic');
- async function generate(){setBusy(true);setError('');try{
+ const [position,setPosition]=useState(0),[graded,setGraded]=useState<Record<string,boolean>>({}),[completed,setCompleted]=useState(false);
+ async function generate(){setBusy(true);setError('');setQuestions([]);setPosition(0);setGraded({});setCompleted(false);try{
   const result=await contentRequest('/api/ai-questions/generate',{method:'POST',body:JSON.stringify({institution:topic.exams[0],subject:topic.subject,topic:topic.topic,lessonId:topic.legacyLessonId||topic.id,difficulty,count:3})});
   setQuestions((result.questions||[]).map((q:{id:string;prompt:string;options:string[]})=>({id:q.id,prompt:q.prompt,options:q.options,courseId:topic.id,revision:0,authorship:'IA Kognos',license:'Uso privado',sourceUrls:[]})));
  }catch(e){setError(e instanceof Error?e.message:'Não foi possível gerar questões.');}finally{setBusy(false);}}
  if(!topic.exams.length||!examBlueprints[topic.exams[0]]?.subjects[topic.subject]?.includes(topic.topic))return null;
- return <section className="course-generation"><h3>Praticar este tema com IA</h3><p>Gere três questões inéditas deste assunto. As questões passam por revisão automática e continuam no seu banco pessoal. Somente o tema e o nível são enviados ao provedor.</p><label>Nível<select aria-label="Nível" value={difficulty} onChange={e=>setDifficulty(e.target.value)}><option value="basic">Básico</option><option value="intermediate">Intermediário</option><option value="advanced">Avançado</option></select></label><button type="button" className="btn primary" disabled={busy} onClick={generate}>{busy?'Gerando e revisando…':'Autorizar e gerar 3 questões'}</button>{error&&<p role="alert">{error}</p>}{questions.map(q=><EditorialQuestion key={q.id} source="ai" question={q}/>)}</section>;
+ return <section className="course-generation"><h3>Praticar este tema com IA</h3><p>Gere três questões inéditas deste assunto. As questões passam por revisão automática e continuam no seu banco pessoal. Somente o tema e o nível são enviados ao provedor.</p><label>Nível<select aria-label="Nível" value={difficulty} onChange={e=>setDifficulty(e.target.value)}><option value="basic">Básico</option><option value="intermediate">Intermediário</option><option value="advanced">Avançado</option></select></label><button type="button" className="btn primary" disabled={busy} onClick={generate}>{busy?'Gerando e revisando…':'Autorizar e gerar 3 questões'}</button>{error&&<p role="alert">{error}</p>}{questions.length>0&&<div className="k-course-unified-session" aria-label="Sessão de questões geradas">
+   {completed?<div className="k-course-session-finish" role="status">
+    <strong>Sessão concluída</strong><p>Você acertou {Object.values(graded).filter(Boolean).length} de {questions.length} questões nesta sequência. A correção individual continua disponível no histórico da sessão.</p>
+    <button type="button" className="btn outline" onClick={()=>{setCompleted(false);setPosition(0);}}>Revisar respostas</button>
+   </div>:<>
+    <div className="k-course-session-head"><strong>Questão {position+1} de {questions.length}</strong><span>Uma questão por vez</span></div>
+    <div className="k-ai-unified-session-track" aria-hidden="true"><span style={{width:`${((position+1)/questions.length)*100}%`}}/></div>
+    {questions.map((q,i)=><div key={q.id} hidden={position!==i} className="k-course-session-item">
+     <EditorialQuestion source="ai" question={q} onGraded={correct=>setGraded(old=>({...old,[q.id]:correct}))}/>
+    </div>)}
+    <div className="k-course-session-actions">
+     <button type="button" className="btn outline" disabled={position===0} onClick={()=>setPosition(i=>i-1)}>Anterior</button>
+     <button type="button" className="btn primary" disabled={graded[questions[position].id]===undefined}
+      onClick={()=>position===questions.length-1?setCompleted(true):setPosition(i=>i+1)}>{position===questions.length-1?'Finalizar sessão':'Próxima questão'}</button>
+    </div>
+   </>}
+  </div>}</section>;
 }
 
 

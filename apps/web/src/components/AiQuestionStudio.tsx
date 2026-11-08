@@ -292,14 +292,27 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
   const requested=Number(count);
   setGenerating(true);setApprovedSoFar(0);setGenerationStartedAt(Date.now());setGenerationSeconds(0);setError('');setNotice('');
   try{
+   // Keep only the reviewed rows returned by THIS explicit generation run.
+   // Do not accidentally mix old pending bank questions into a new session.
+   const generated:UserAIQuestion[]=[];
    const result=await generateApprovedBatches(requested,
-    async (remaining,batch,attempt)=>await authenticatedFetch('/api/ai-questions/generate',{
-     method:'POST',body:JSON.stringify({
-      institution,subject,topic,difficulty,count:remaining,variation:(batch-1)*3+attempt-1,
-      ...(verifiedTopic?{sourceTopicId:verifiedTopic.id}:{}),
-      ...(activeLessonLink?{lessonId:activeLessonLink}:{})
-     })
-    }),
+    async (remaining,batch,attempt)=>{
+     const response=await authenticatedFetch('/api/ai-questions/generate',{
+      method:'POST',body:JSON.stringify({
+       institution,subject,topic,difficulty,count:remaining,variation:(batch-1)*3+attempt-1,
+       ...(verifiedTopic?{sourceTopicId:verifiedTopic.id}:{}),
+       ...(activeLessonLink?{lessonId:activeLessonLink}:{})
+      })
+     });
+     if(Array.isArray(response.questions)){
+      for(const q of response.questions){
+       if(typeof q.id==='string'&&q.id.length>0&&typeof q.prompt==='string'&&
+        Array.isArray(q.options)&&q.options.length===4&&q.options.every((o:unknown)=>typeof o==='string')&&
+        !generated.some(existing=>existing.id===q.id))generated.push(q as UserAIQuestion);
+      }
+     }
+     return response;
+    },
     undefined,
     approved=>setApprovedSoFar(approved)
    );
@@ -311,8 +324,13 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
      result.diagnostics.answerDisagreements?`gabaritos divergentes (${result.diagnostics.answerDisagreements})`:null,
      result.diagnostics.duplicates?`questões repetidas (${result.diagnostics.duplicates})`:null
     ].filter(Boolean).join('; '):'';
-    setNotice(`${result.saved} de ${result.requested} questões aprovadas e salvas. ${result.missing?`${result.missing} ficaram pendentes após até ${MAX_ATTEMPTS_PER_BATCH} tentativas por lote. ${reasons?`Diagnóstico das tentativas: ${reasons}. `:''}`:''}As aprovadas já estão no banco para prática e simulados.`);
     await refresh();
+    if(generated.length){
+     start(generated);
+     setNotice(`${generated.length} questão(ões) aprovada(s) nesta geração. Resolva-as em sequência, uma por vez.${result.missing?` ${result.missing} não passaram na revisão automática.`:''}`);
+    }else{
+     setNotice(`${result.saved} de ${result.requested} questões aprovadas e salvas. ${result.missing?`${result.missing} ficaram pendentes após até ${MAX_ATTEMPTS_PER_BATCH} tentativas por lote. ${reasons?`Diagnóstico das tentativas: ${reasons}. `:''}`:''}Abra uma sessão única pelo banco para praticar as questões aprovadas.`);
+    }
    }
    if(result.error)setError(`${result.error}${result.saved?` As ${result.saved} aprovadas continuam salvas.`:''}`);
    else if(result.missing&&!result.saved)setError('Nenhuma questão passou pela revisão. Tente outro tema ou dificuldade; nenhuma questão incorreta foi salva.');
@@ -424,16 +442,24 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
        </div>}
       {hasServerBank&&loading&&<p role="status" className="muted">Carregando questões...</p>}
       {hasServerBank&&bankFetched&&!loading&&!bank.length&&<p className="ai-empty">Nenhuma questão pendente neste filtro. Questões concluídas não podem ser respondidas novamente para ganhar XP; escolha outro assunto ou gere novas questões.</p>}
-      {hasServerBank&&bankFetched&&!!bank.length&&<>
-       <button type="button" className="btn primary" onClick={()=>start(bank.slice(0,Math.min(20,bank.length)))}>{inMock?'Iniciar simulado de IA':'Praticar questões do banco'} ({Math.min(20,bank.length)})</button>
-       <div className="ai-question-list">{bank.map(q=><article key={q.id}><div><span>{q.subject} · {q.topic} · {difficulties[q.difficulty]}</span><h3>{q.prompt}</h3><small>{q.source_kind==='editor_approved_source'?'IA · assunto vinculado a matriz revisada':'IA · assunto editorial'} · resposta verificada automaticamente, sem homologação do item</small></div><button type="button" className="btn outline small" onClick={()=>start([q])}>Resolver</button></article>)}</div>
-      </>}
+      {hasServerBank&&bankFetched&&!!bank.length&&<section className="ai-bank-session-start" aria-label="Sessão única de questões">
+       <div className="ai-bank-session-summary"><span className="ai-bank-session-count">{bank.length}</span>
+        <div><strong>{bank.length===1?'1 questão pronta para prática':`${bank.length} questões prontas para prática`}</strong>
+         <p>Resolva uma questão por vez, com progresso e resultado final, sem cartões separados. A revisão é automática e os itens não são oficiais.</p>
+        </div>
+       </div>
+       <button type="button" className="btn primary" onClick={()=>start(bank.slice(0,Math.min(20,bank.length)))}>{inMock?'Iniciar simulado de IA':'Iniciar sessão de questões'} ({Math.min(20,bank.length)})</button>
+      </section>}
       {hasServerBank&&bankFetched&&hasMore&&<button type="button" className="btn outline ai-load-more" disabled={loadingMore||loading} onClick={()=>void loadMore()}>{loadingMore?'Carregando…':`Carregar mais questões (${questions.length} de ${totalQuestions})`}</button>}
       {hasServerBank&&bankFetched&&!hasMore&&totalQuestions>0&&<p className="ai-end-of-results">Todas as {totalQuestions} questões pendentes deste filtro foram carregadas.</p>}
       <p className="privacy-note">A revisão automática não garante ausência de erros. Questões geradas não são oficiais e não entram no banco de outros alunos sem revisão humana.</p>
     </section>
    </>}
-   {userId&&session.length>0&&<section className="dark-panel ai-session">
+   {userId&&session.length>0&&<section className="dark-panel ai-session" aria-label="Sessão de resolução de questões">
+    {!finished&&<div className="k-ai-unified-session-progress" role="status" aria-live="polite">
+      <strong>Questão {cursor+1} de {session.length}</strong><span>Uma questão por vez</span>
+      <div className="k-ai-unified-session-track" aria-hidden="true"><span style={{width:`${((cursor+1)/session.length)*100}%`}}/></div>
+    </div>}
     {finished?<>
       <span className="overline">{inMock?'SIMULADO CONCLUÍDO':'TREINO CONCLUÍDO'}</span><h2>Seu resultado: {points} de {session.length}</h2><p>Você conquistou {sessionXP} XP nesta sessão. As questões concluídas saíram do banco de pendentes e já contam para suas Conquistas. Esta pontuação não é nota oficial nem estimativa TRI.</p>
       <div className="k-ai-mastery-result" role="status"><strong>Avaliação formativa: {mastery.label}</strong><p>{mastery.accuracy}% de acertos · Básicas: {mastery.basic}/{session.filter(q=>q.difficulty==='basic').length} · Intermediárias: {mastery.intermediate}/{session.filter(q=>q.difficulty==='intermediate').length} · Avançadas: {mastery.advanced}/{session.filter(q=>q.difficulty==='advanced').length}.</p><p>{mastery.nextStep}</p><small>Indicador desta sessão, não nota oficial, estimativa TRI ou comprovação definitiva de domínio.</small></div>
@@ -477,7 +503,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
        <small>O Kog usa sua tentativa corrigida para orientar a explicação, sem considerar um erro isolado prova de falta de domínio.</small>
       </aside>}
       {answers[cursor]&&inMock&&<p className="message neutral" role="status">Resposta registrada · +{answers[cursor].xpEarned} XP. A correção ficará disponível somente no final deste simulado.</p>}
-      <div className="practice-actions"><button type="button" className="btn outline" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Encerrar</button><button type="button" className="btn outline" onClick={onTutor}>{answers[cursor]&&!inMock?'Entender com Kog':'Pedir dica ao Kog'}</button>{!answers[cursor]?<button type="button" className="btn primary" disabled={choice===null||submitting} onClick={()=>void submitAnswer()}>{submitting?'Conferindo…':'Registrar resposta'}</button>:<button type="button" className="btn primary" onClick={next}>{cursor===session.length-1?'Ver resultado':'Próxima questão →'}</button>}</div>
+      <div className="practice-actions k-ai-session-actions"><button type="button" className="btn outline k-ai-session-exit" onClick={()=>{setSession([]);setFinished(false);void refresh();}}>Encerrar</button><button type="button" className="btn outline" onClick={onTutor}>{answers[cursor]&&!inMock?'Entender com Kog':'Pedir dica ao Kog'}</button>{!answers[cursor]?<button type="button" className="btn primary" disabled={choice===null||submitting} onClick={()=>void submitAnswer()}>{submitting?'Conferindo…':'Registrar resposta'}</button>:<button type="button" className="btn primary" onClick={next}>{cursor===session.length-1?'Ver resultado':'Próxima questão →'}</button>}</div>
     </>}
    </section>}
  </div>;

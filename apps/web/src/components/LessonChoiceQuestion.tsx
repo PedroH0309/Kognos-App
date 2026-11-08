@@ -23,8 +23,8 @@ export default function LessonChoiceQuestion({choice,onAnswer,compact=false}:{
    {choice.options.map((option,index)=><button key={index} type="button"
     aria-pressed={selected===index} onClick={()=>choose(index)}
     className={'k-lesson-mcq-option'+(selected===index?(correct?' is-correct':' is-incorrect'):'')}>
-    <span className="k-lesson-mcq-letter">{letters[index]}</span>
-    <span>{option}</span>
+    <span className="k-lesson-mcq-letter" aria-hidden="true">{letters[index]}</span>
+    <span className="k-lesson-mcq-option-text">{option}</span>
    </button>)}
   </div>
   {choice.hint&&! (selected!==null)&&<button className="k-lesson-mcq-hint-button" type="button" aria-expanded={hintVisible} onClick={()=>setHintVisible(v=>!v)}>
