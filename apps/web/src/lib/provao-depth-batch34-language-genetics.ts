@@ -60,7 +60,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "O prefixo negativo in- se une à base feliz; não há combinação de duas palavras autônomas nem mudança de classe sem afixo."
+        "solution": "O prefixo negativo in- se une à base feliz; não há combinação de duas palavras autônomas nem mudança de classe sem afixo. A escolha não é composição porque apenas a base feliz é lexicalmente autônoma; não há troca de classe sem afixo nem redução de uma forma verbal para nome."
       },
       {
         "level": "intermediate",
@@ -73,7 +73,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "Guarda-chuva mantém reconhecíveis as bases; planalto apresenta alteração formal da combinação de plano e alto."
+        "solution": "Guarda-chuva mantém reconhecíveis as bases; planalto apresenta alteração formal da combinação de plano e alto. A primeira mantém as bases reconhecíveis em sua forma, enquanto a segunda apresenta fusão com perda de segmento. A presença de hífen não é o critério exclusivo para classificar processos de formação."
       },
       {
         "level": "advanced",
@@ -86,7 +86,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "A forma verbal é usada como substantivo pelo contexto e pelo artigo, sem acréscimo de afixo derivacional."
+        "solution": "A forma verbal é usada como substantivo pelo contexto e pelo artigo, sem acréscimo de afixo derivacional. Em 'Vamos jantar', a mesma sequência gráfica desempenha a função de verbo; na frase dada, integra um sintagma nominal. Não há simultaneidade obrigatória de prefixo e sufixo."
       }
     ]
   },
@@ -149,7 +149,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "Artigo, substantivo e adjetivo passam ao plural, e o verbo concorda com o novo sujeito: escreveram."
+        "solution": "Artigo, substantivo e adjetivo passam ao plural, e o verbo concorda com o novo sujeito: escreveram. O núcleo plural exige correspondência nos elementos que concordam com ele. 'Aluna' e 'dedicada' no singular, ou 'escreveu' na terceira pessoa do singular, impediriam a concordância pretendida."
       },
       {
         "level": "intermediate",
@@ -162,7 +162,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "O imperfeito do subjuntivo 'estudasse' articula-se ao futuro do pretérito 'aprenderia' numa hipótese."
+        "solution": "O imperfeito do subjuntivo 'estudasse' articula-se ao futuro do pretérito 'aprenderia' numa hipótese. A forma 'estudasse' expressa condição não apresentada como fato consumado, enquanto 'aprenderia' expressa resultado condicionado. As demais alternativas quebram relações temporais ou modais esperadas."
       },
       {
         "level": "advanced",
@@ -175,7 +175,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "O objeto direto 'as propostas' torna-se sujeito paciente, e auxiliar e particípio concordam no plural feminino."
+        "solution": "O objeto direto 'as propostas' torna-se sujeito paciente, e auxiliar e particípio concordam no plural feminino. Na passiva analítica, 'as propostas' deixa de ser objeto direto e passa a sujeito paciente. A construção exige o auxiliar 'ser' no tempo compatível e um particípio que concorde com esse sujeito."
       }
     ]
   },
@@ -238,7 +238,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "Os genótipos RR, Rr e rr produzem fenótipos distinguíveis; o heterozigoto aparece em metade dos descendentes."
+        "solution": "Os genótipos RR, Rr e rr produzem fenótipos distinguíveis; o heterozigoto aparece em metade dos descendentes. A segregação produz RR, Rr, Rr e rr. Se Rr tem fenótipo distinto de ambos os homozigotos, há três classes fenotípicas com frequências 1/4, 1/2 e 1/4, não a relação dominante/recessiva 3:1."
       },
       {
         "level": "intermediate",
@@ -251,7 +251,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "Descontado o 1/4 YY inviável, o grupo Yy representa 1/2 dos zigotos e 2/3 dos sobreviventes."
+        "solution": "Descontado o 1/4 YY inviável, o grupo Yy representa 1/2 dos zigotos e 2/3 dos sobreviventes. A proporção entre os sobreviventes é calculada dividindo a metade de heterozigotos pelos três quartos de zigotos viáveis: (1/2)/(3/4)=2/3. A alternativa 3/4 confunde a fração de viáveis com a fração de amarelos."
       },
       {
         "level": "advanced",
@@ -264,7 +264,7 @@ export const provaoDepthBatch34LanguageGenetics:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Identifique o conceito-chave e teste as alternativas usando a explicação do capítulo.",
-        "solution": "A combinação ii ocorre quando ambos os pais fornecem i: 1/2 × 1/2 = 1/4, ou 25%."
+        "solution": "A combinação ii ocorre quando ambos os pais fornecem i: 1/2 × 1/2 = 1/4, ou 25%. Os genótipos possíveis são IᴬIᴮ, Iᴬi, Iᴮi e ii. Somente ii expressa o fenótipo O, e cada combinação aparece em um dos quatro quadrantes equiprováveis do quadro de Punnett no cruzamento especificado."
       }
     ]
   }
