@@ -325,3 +325,20 @@ A execução #42518506879 revelou uma regressão no teste do lote 16 após o res
 ## Diagnóstico preciso de registros — 2026-11-08
 
 A CI #42518698416 concluiu com sucesso no commit `576d946`, validando a correção de prioridade do resolvedor e a compatibilidade dos lotes 16 e 26, inclusive as etapas da pipeline configurada. A auditoria foi então refinada para separar prefixos sem correspondência (`unresolved`) daqueles que possuem correspondência, mas nunca são escolhidos (`shadowed`), reproduzindo a prioridade exata-antes-de-prefixo do resolvedor. O teste também compara a quantidade de registros vencedores com a cobertura editorial reconhecida. Esta alteração adicional requer nova CI; não confundir o sucesso do commit anterior com validação da alteração mais recente. Sem novas aulas contabilizadas, merge ou deploy. Revisão docente ainda pendente.
+
+
+## Lote 27 — conteúdos específicos efetivamente registrados — 2026-11-08
+
+Foram adicionados **cinco tópicos oficiais novos**, não encontrados no inventário dos lotes anteriores, em arquivos independentes `provao-depth-batch27-*.ts`, vinculados ao resolvedor `provao-depth-lessons.ts`. Todos os capítulos foram redigidos originalmente, cada tema com 3 etapas (fundamentos, aplicação e aprofundamento), exemplos calculados ou historicamente contextualizados, limites de validade, erros frequentes e 3 questões exclusivamente de múltipla escolha (4 alternativas distintas, chave e correção). O conteúdo é **autoral, não oficial e sem homologação docente**.
+
+| Disciplina | Tema oficial | Arquivo |
+| --- | --- | --- |
+| Física | Dioptro plano. Ângulo limite e reflexão total da luz | `provao-depth-batch27-optics.ts` |
+| Física | Propagação de um pulso em meios unidimensionais. Lei de Taylor. Ondas planas e esféricas | `provao-depth-batch27-waves.ts` |
+| Biologia | Procedimentos sistemáticos de investigação (elaboração de hipóteses, experimentação e… | `provao-depth-batch27-investigation.ts` |
+| História | A ideologia do Destino Manifesto | `provao-depth-batch27-destiny.ts` |
+| História | Avanço industrial e capitalismo monopolista | `provao-depth-batch27-monopolies.ts` |
+
+**Cobertura esperada após confirmação dos testes:** 141/364 temas distintos do Provão Paulista, **423 capítulos e 423 questões objetivas**; restam **223 temas**. Existem 142 registros editoriais de prefixo na biblioteca, pois o lote 16 e o lote 26 se sobrepõem no tema de fórmulas químicas; a auditoria não pode contar esse registro encoberto como aula adicional. O catálogo multi-exame de 1.512 assuntos permanece incompleto e deve continuar sendo auditado. `provao-depth-batch27.test.ts` verifica correspondência estrita, originalidade das etapas, exemplos, respostas, autoria e ausência de tarefas abertas. `provao-depth-coverage.test.ts` agora exige pelo menos 141 aulas reconhecidas.
+
+**Atenção:** são contagens editoriais esperadas, não validação da execução atual do GitHub Actions. Não declarar CI aprovada antes de testar unitários, segurança de dois usuários, design, TypeScript e build. Não foram modificados IDs, schema, RLS, login, chaves, Supabase nem APIs pagas. Não realizar merge ou deploy sem revisão autorizada.
