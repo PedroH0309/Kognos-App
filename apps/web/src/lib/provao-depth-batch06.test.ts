@@ -19,7 +19,7 @@ test('batch 06 has exact official identifiers, progressive original theory and o
   assert.ok(topic,target.subject+' missing official Provão curriculum item');
   const lesson=deepProvaoLesson(topic);
   assert.ok(lesson,target.subject+' not loaded into the common lesson resolver');
-  assert.equal(lesson.id,topic.id,'Must preserve every student's original curriculum ID');
+  assert.equal(lesson.id,topic.id,'Must preserve the original curriculum ID for every student');
   assert.deepEqual(starterLesson(topic),lesson,'Every exam path must select the same authored lesson');
   assert.equal(lesson.review,'introductory','No fraudulent teacher approval');
   assert.ok(lesson.authorship.includes('revisão docente pendente'));
