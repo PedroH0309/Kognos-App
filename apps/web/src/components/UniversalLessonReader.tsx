@@ -91,33 +91,80 @@ function QuickCheck({task,level,onResult}:{task:CourseTask;level:string;onResult
  </div>;
 }
 
-function LessonStage({section,index,task,onResult}:{
- section:CourseSection;index:number;task?:CourseTask;onResult:(result:'understood'|'review')=>void;
-}){
+function LessonStage({section,index}:{section:CourseSection;index:number}){
  const stageLabels=['03 · Conceito e fundamentos','04 · Desenvolvimento e aplicação','04 · Aprofundamento e limites'];
  return <article className="k-universal-chapter" id={'k-universal-chapter-'+section.level}>
   <header className="k-universal-chapter-head">
    <span className="k-universal-number">{String(index+1).padStart(2,'0')}</span>
-   <div><small>{stageLabels[index]??'Desenvolvimento progressivo'} · {levels[section.level]}</small><h4>{section.title}</h4></div>
+   <div><small>{stageLabels[index]??'04 · Desenvolvimento progressivo'} · {levels[section.level]}</small><h4>{section.title}</h4></div>
   </header>
   <ReadingBlocks value={section.explanation}/>
-  <div className="k-universal-applied">
-   <h5>06 · Exemplo aplicado e resolvido</h5>
+ </article>;
+}
+
+/** Worked solutions follow the concepts: students can reveal the actual authored steps. */
+function LessonExamples({lesson}:{lesson:CourseLesson}){
+ return <section className="k-universal-learning-section" id="k-lesson-examples">
+  <h4>06 · Exemplos aplicados e resolvidos</h4>
+  <p>Observe como o conceito é utilizado. Revele as etapas para conferir o raciocínio e as condições da resolução.</p>
+  {lesson.sections.map((section,index)=><article className="k-universal-applied" key={section.level}>
+   <div className="k-universal-chapter-head">
+    <span className="k-universal-number">{String(index+1).padStart(2,'0')}</span>
+    <div><small>{levels[section.level]}</small><h5>{section.title}</h5></div>
+   </div>
    <ReadingBlocks value={section.example}/>
    {section.steps.length>0&&<details className="k-universal-steps">
     <summary>Entenda o raciocínio em {section.steps.length} etapas</summary>
     <ol>{section.steps.map((step,i)=><li key={i}><ReadingBlocks value={step}/></li>)}</ol>
    </details>}
-  </div>
-  <div className="k-universal-comparison">
-   <h5>07 · Regras, diferenças e erros frequentes</h5>
+  </article>)}
+ </section>;
+}
+
+function LessonComparisons({lesson}:{lesson:CourseLesson}){
+ return <section className="k-universal-learning-section" id="k-lesson-comparisons">
+  <h4>07 · Comparações, regras e erros frequentes</h4>
+  <p>Compare a ideia fundamental de cada nível com os erros que podem comprometer a interpretação.</p>
+  {lesson.sections.map(section=><article key={section.level} className="k-universal-comparison">
+   <h5>{section.title}</h5>
    <div className="k-universal-two-col">
-    <div><strong>O que considerar</strong><p>{section.title}: observe a explicação e as condições apresentadas acima.</p></div>
-    <div><strong>O que evitar</strong><ReadingBlocks value={section.pitfall}/></div>
+    <div><strong>Conceito que deve orientar a resposta</strong><ReadingBlocks value={lessonReadingBlocks(section.explanation)[0]??section.explanation}/></div>
+    <div><strong>Erro ou limite que exige atenção</strong><ReadingBlocks value={section.pitfall}/></div>
    </div>
-  </div>
-  {task&&<QuickCheck key={section.level} task={task} level={levels[section.level]} onResult={onResult}/>}
- </article>;
+  </article>)}
+ </section>;
+}
+
+function LessonQuickChecks({lesson,onResult}:{lesson:CourseLesson;onResult:(level:string,result:'understood'|'review')=>void}){
+ return <section className="k-universal-learning-section" id="k-lesson-check">
+  <h4>09 · Teste rápido de compreensão</h4>
+  <p>Uma questão por nível para identificar dúvidas antes de seguir. Outras atividades autorais continuam disponíveis na aba Atividades.</p>
+  {lesson.sections.map(section=>{
+   const task=lesson.tasks.find(t=>t.level===section.level);
+   return task?<QuickCheck key={section.level} task={task} level={levels[section.level]}
+    onResult={result=>onResult(section.level,result)}/>:null;
+  })}
+ </section>;
+}
+
+function LessonContentsNav({hasVisual,hasLab,hasCheck}:{hasVisual:boolean;hasLab:boolean;hasCheck:boolean}){
+ const items=[
+  {id:'k-lesson-objectives',number:'01',label:'Objetivos'},
+  {id:'k-lesson-context',number:'02',label:'Contexto'},
+  {id:'k-lesson-concept',number:'03',label:'Conceitos'},
+  {id:'k-lesson-development',number:'04',label:'Desenvolvimento'},
+  ...(hasVisual?[{id:'k-lesson-visual',number:'05',label:'Visualização'}]:[]),
+  {id:'k-lesson-examples',number:'06',label:'Exemplos'},
+  {id:'k-lesson-comparisons',number:'07',label:'Comparações'},
+  ...(hasLab?[{id:'k-lesson-interactivity',number:'08',label:'Interatividade'}]:[]),
+  ...(hasCheck?[{id:'k-lesson-check',number:'09',label:'Teste rápido'}]:[]),
+  {id:'k-lesson-summary',number:'10',label:'Consolidação'}
+ ];
+ return <nav className="k-universal-lesson-nav" aria-label="Etapas pedagógicas da aula">
+  {items.map(item=><a key={item.id} href={'#'+item.id}>
+   <span aria-hidden="true">{item.number}</span>{item.label}
+  </a>)}
+ </nav>;
 }
 
 function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
