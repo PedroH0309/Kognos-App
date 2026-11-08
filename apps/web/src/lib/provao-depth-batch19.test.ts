@@ -25,7 +25,7 @@ test('batch 19: five distinct specific syllabus lessons with original substantia
    assert.ok(s.example.length>=180,spec.topicStart+' short example '+i);
    assert.ok(s.pitfall.length>=50&&s.steps.length>=3);
    assert.equal(q.options?.length,4);assert.equal(new Set(q.options).size,4);
-   assert.ok(Number.isInteger(q.correctIndex)&&q.correctIndex>=0&&q.correctIndex<4);
+   assert.ok(typeof q.correctIndex==='number'&&Number.isInteger(q.correctIndex)&&q.correctIndex>=0&&q.correctIndex<4);
    assert.ok(q.solution.length>=140);
    assert.equal(lessonTaskChoice(lesson,q).source,'editorial');
   }
