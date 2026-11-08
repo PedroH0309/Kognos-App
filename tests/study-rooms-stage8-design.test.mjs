@@ -27,10 +27,12 @@ test('Every curriculum lesson has its own reading text, practice and explanatory
  const trails=read('apps/web/src/components/LearningTrails.tsx');
  const reading=read('apps/web/src/components/TopicLessonSections.tsx');
  const universal=read('apps/web/src/components/UniversalLessonReader.tsx');
+ const tabs=read('apps/web/src/components/LessonAnimatedTabs.tsx');
  for(const word of ['Aula em texto','Atividades','Explicações','Materiais','Evolução'])
-  assert.ok(room.includes(word),word);
- assert.match(room,/readerTab==='activities'/);
- assert.match(room,/readerTab==='explanations'/);
+  assert.ok(tabs.includes(word),word);
+ assert.match(room,/<LessonAnimatedTabs value=\{readerTab\} onChange=\{setReaderTab\}/);
+ assert.match(tabs,/id:'activities'/);
+ assert.match(tabs,/id:'explanations'/);
  assert.match(room,/<TopicLessonSections/);
  assert.match(trails,/lessonPanes\.map/);
  assert.match(trails,/<TopicLessonSections/);
