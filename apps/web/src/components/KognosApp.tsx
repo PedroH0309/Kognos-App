@@ -16,6 +16,7 @@ import {weeklyStudyActivity,type WeeklyStudyPoint} from '@/lib/dashboard-weekly-
 import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls';
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
 import AccountSettings, {ProfileAvatar} from './AccountSettings';
+import ThemeSwitch from './ThemeSwitch';
 
 
 import type {AchievementSummary} from '@/lib/ai-achievements';
@@ -29,6 +30,7 @@ import {reviewItems,reviewCounts} from '@/lib/adaptive-review';
 
 import {statsFromAttempts,type QuestionAttempt} from '@/lib/demo-questions';
 import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sun, Moon, LogOut, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, Zap, type LucideIcon} from 'lucide-react';
+import {LayoutDashboard, BookOpen, LibraryBig, GraduationCap, ClipboardList, CalendarDays, RotateCcw, Bot, BarChart3, UserRound, Settings, Trophy, ListChecks, Search, ArrowRight, ArrowLeft, Check, Plus, Clock3, ShieldCheck, BookOpenText, PanelLeftClose, PanelLeftOpen, Menu, Sparkles, CheckCircle2, Target, Compass, Landmark, Medal, PencilLine, BookOpenCheck, BrainCircuit, Cloud, CircleHelp, CalendarCheck2, Zap, type LucideIcon} from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 import {explainProfileDatabaseError, profileSetupIssue} from '@/lib/profile-setup';
 import {readStoredStudentProfile} from '@/lib/auth-profile-routing';
@@ -122,7 +124,7 @@ function Logo({small=false}:{small?:boolean}) {
   return <div className="logo-cluster"><div className="logo-mark"><Image src="/brand/kognos-mark.webp" width={small?42:56} height={small?42:56} alt="Símbolo Kognos" priority /></div><div className="logo-word"><strong>Kognos<span>.</span></strong>{!small&&<small>APRENDIZAGEM INTELIGENTE</small>}</div></div>;
 }
 
-function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;onAuthenticated:()=>void;standalone?:boolean}){
+function AuthModal({onClose,onAuthenticated,standalone=false,theme,onThemeChange}:{onClose:()=>void;onAuthenticated:()=>void;standalone?:boolean;theme:'dark'|'light';onThemeChange:(value:'dark'|'light')=>void}){
   const [mode,setMode]=useState<'signin'|'signup'|'reset'>('signin');
   const [email,setEmail]=useState('');const [password,setPassword]=useState('');const [showPassword,setShowPassword]=useState(false);
   const [pending,setPending]=useState(false);const [notice,setNotice]=useState('');
@@ -161,6 +163,7 @@ function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;
     <p className="fine-print">Proteja seu acesso: nunca compartilhe senha ou códigos de verificação.</p>
   </section>;
   if(standalone)return <main className="k-auth-gateway k-auth-v2">
+    <div className="k-auth-theme-control"><ThemeSwitch theme={theme} onChange={onThemeChange}/></div>
     <div className="k-auth-shell k-auth-stack">
       <aside className="k-auth-story" aria-label="Conheça o Kognos">
         <div className="k-auth-stage-brand"><Logo small/><span>APRENDIZAGEM INTELIGENTE</span></div>
@@ -541,7 +544,7 @@ export default function KognosApp(){
  }
  function generateForLesson(lessonId:string,generateNew=false){setLessonPracticeRequestId(previous=>generateNew?previous+1:0);setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
  function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
- function changeTheme(v:'dark'|'light'){setTheme(v);window.localStorage.setItem('kognos_theme_v1',v);}
+ function changeTheme(v:'dark'|'light'){setTheme(v);try{window.localStorage.setItem('kognos_theme_v1',v);}catch{/* Storage restrictions must not disable the theme toggle. */}}
  function toggleSidebar(){setSidebarCollapsed(old=>{localStorage.setItem('kognos_sidebar_collapsed_v1',String(!old));return !old;});}
  async function saveAccountChanges(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase indisponível.');const {error}=await sb.from('profiles').update({display_name:normalized.nickname,username:normalized.username||null,biography:normalized.biography,preferences:normalized}).eq('id',user.id);if(error){if(error.code==='23505')throw new Error('Este nome de usuário já está em uso. Escolha outro.');throw error;}}else window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));setProfile(normalized);}
  function changeAvatar(url:string|null,_path:string|null){setAvatarUrl(url);}
@@ -551,7 +554,7 @@ export default function KognosApp(){
  if(loading)return <div className="loading-page"><Logo/><p>Preparando seu espaço de aprendizagem…</p></div>;
  if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
- if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
+ if(!user)return <div className={`theme-${theme}`}><AuthModal standalone theme={theme} onThemeChange={changeTheme} onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
  if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
  return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">
     <div className="k-nav-set k-nav-main">{NAV_PRIMARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
@@ -590,7 +593,7 @@ export default function KognosApp(){
   </button>
  </div></aside><AnimatedSidebarScrim open={mobileMenu} disabled={disableAnimations} onClose={()=>setMobileMenu(false)}/>
  <div className="app-main"><header className="app-topbar"><button className="mobile-menu-btn" onClick={()=>setMobileMenu(!mobileMenu)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}><Menu size={20}/></button><div className="crumbs">Kognos <span>/</span> {NAV.find(x=>x.key===view)?.label}</div>
- <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.key!=='plans'&&x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><button className="icon-top-btn" onClick={()=>changeTheme(theme==='dark'?'light':'dark')} aria-label="Alternar tema">{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><button className="icon-top-btn" onClick={()=>openAssistant()} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
+ <div className="top-right"><div className="global-search"><button className="search-trigger" onClick={()=>setSearchOpen(!searchOpen)} aria-expanded={searchOpen}><Search size={16}/><span>Buscar recursos…</span></button>{searchOpen&&<div className="search-popover"><input autoFocus placeholder="Buscar página ou módulo…" value={search} onChange={e=>setSearch(e.target.value)}/>{NAV.filter(x=>x.key!=='plans'&&x.label.toLowerCase().includes(search.toLowerCase())).map(x=><button key={x.key} onClick={()=>{navigate(x.key);setSearchOpen(false);setSearch('');}}>{x.label} {x.status&&<small>Em breve</small>}</button>)}</div>}</div><ThemeSwitch theme={theme} onChange={changeTheme}/><button className="icon-top-btn" onClick={()=>openAssistant()} aria-label="Abrir Kog tutor"><Sparkles size={18}/></button>{user?<button className="avatar-top-btn" onClick={()=>setView('profile')} aria-label="Abrir perfil"><ProfileAvatar url={avatarUrl} name={actualProfile.nickname}/></button>:<button className="btn outline small" onClick={()=>setAuthOpen(true)}>Entrar / Criar conta</button>}</div></header>
  <AnimatedPage page={view} disabled={disableAnimations}>
  {view==='dashboard'?<Dashboard p={actualProfile} onGo={navigate} onEdit={()=>setEditing(true)} user={user}/>:
  view==='tutor'?null:
@@ -635,4 +638,6 @@ export default function KognosApp(){
  </div>}
  <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div>
  {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
+ <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Calendário':'Perfil'}</button>)}</nav>
+ {authOpen&&<AuthModal theme={theme} onThemeChange={changeTheme} onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
