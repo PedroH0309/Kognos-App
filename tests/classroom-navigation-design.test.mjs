@@ -8,9 +8,11 @@ test('published lessons present separate authored theory, activities and resolve
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
  const reading=read('apps/web/src/components/TopicLessonSections.tsx');
  const legacy=read('apps/web/src/components/InteractiveCourseLesson.tsx');
+ const tabs=read('apps/web/src/components/LessonAnimatedTabs.tsx');
  assert.match(room,/<TopicLessonSections/);
- assert.match(room,/readerTab==='activities'/);
- assert.match(room,/readerTab==='explanations'/);
+ assert.match(room,/<LessonAnimatedTabs value=\{readerTab\} onChange=\{setReaderTab\}/);
+ assert.match(tabs,/id:'activities'/);
+ assert.match(tabs,/id:'explanations'/);
  assert.match(reading,/lesson\.sections\.map/);
  assert.match(reading,/lesson\.tasks\.filter/);
  assert.match(reading,/section\.steps\.map/);
