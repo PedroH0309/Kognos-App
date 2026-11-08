@@ -428,7 +428,7 @@ export const provaoDepthBatch02Science:readonly DeepTopicSpec[]=[
           "0,1875 m/s"
         ],
         "correctIndex": 0,
-        "hint": "Use v=λf.",
+        "hint": "Use a relação v=λf.",
         "solution": "A alternativa A está correta: v=1,5×8=12 m/s. As demais realizam combinações matemáticas que não correspondem à equação fundamental da ondulatória."
       },
       {
