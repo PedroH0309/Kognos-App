@@ -49,7 +49,23 @@ test('batch 26 registered topics are covered by the offline Provão audit',()=>{
   assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
    'Missing specific depth: '+subject+' / '+prefix);
  }
- assert.ok(report.coverage.deep_specific>=141,'Expected at least 141 specific Provão lessons including batch 27');
+ assert.ok(report.coverage.deep_specific>=146,'Expected at least 146 specific Provão lessons including batch 28');
+});
+
+test('batch 28 contributes five distinct deeply authored official Provão topics',()=>{
+ const report=provaoDepthAudit();
+ const cases=[
+  ['Química','Equações termoquímicas'],
+  ['Física','Máquinas térmicas e máquinas frigoríficas. O ciclo de Carnot'],
+  ['Biologia','Conservação biológica (unidades de conservação)'],
+  ['História','Nações e nacionalismos no século XIX'],
+  ['História','A classe operária e a luta por direitos']
+ ] as const;
+ for(const [subject,topic] of cases){
+  assert.ok(!report.pending.some(entry=>entry.subject===subject&&entry.topic===topic),
+   'Batch 28 must not remain introductory: '+subject+' / '+topic);
+ }
+ assert.ok(report.coverage.deep_specific>=146);
 });
 
 test('every deep syllabus registration is unique, with actionable duplicate diagnostics',()=>{
@@ -66,7 +82,7 @@ test('full three-grade Provão syllabus has an honest depth status for every uni
  assert.equal(report.total,364,'360 topic entries plus four writing assessment criteria');
  assert.equal(Object.values(report.coverage).reduce((sum,n)=>sum+n,0),report.total);
  assert.ok(report.coverage.deep_specific<=deepProvaoTopicKeys.length,'Coverage must never exceed editorial registrations');
- assert.ok(report.coverage.deep_specific>=141,'At least 141 distinct Provão lessons are required');
+ assert.ok(report.coverage.deep_specific>=146,'At least 146 distinct Provão lessons are required');
  // Registered prefixes can overlap or fail to match the official catalogue; report the gap explicitly.
  console.log('DEPTH_REGISTRATION_GAP '+JSON.stringify({registrations:deepProvaoTopicKeys.length,matched:report.coverage.deep_specific,gap:deepProvaoTopicKeys.length-report.coverage.deep_specific}));
  // Report registrations that cannot win the same exact-first resolver used by the app.
