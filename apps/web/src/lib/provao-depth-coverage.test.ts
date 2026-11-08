@@ -49,7 +49,7 @@ test('batch 26 registered topics are covered by the offline Provão audit',()=>{
   assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
    'Missing specific depth: '+subject+' / '+prefix);
  }
- assert.ok(report.coverage.deep_specific>=151,'Expected at least 151 specific Provão lessons including batch 29');
+ assert.ok(report.coverage.deep_specific>=156,'Expected at least 156 specific Provão lessons including batch 30');
 });
 
 test('batch 28 contributes five distinct deeply authored official Provão topics',()=>{
@@ -81,7 +81,23 @@ test('batch 29 advances five genuinely distinct official Provão topics',()=>{
   assert.ok(!report.pending.some(x=>x.subject===subject&&x.topic===topic),
    'Batch 29 must resolve specifically '+subject+' / '+topic);
  }
- assert.ok(report.coverage.deep_specific>=151);
+ assert.ok(report.coverage.deep_specific>=156);
+});
+
+test('batch 30 contributes five distinct non-introductory Provão topics',()=>{
+ const report=provaoDepthAudit();
+ const names=[
+  ['Química','Isomeria plana e espacial (geométrica e óptica)'],
+  ['Física','Eclipses. Sombra e penumbra. Câmara escura de orifício'],
+  ['Biologia','Vírus: reconhecimento das características e sua importância em contextos relacionados à saúde e…'],
+  ['Química','As características gerais dos compostos orgânicos'],
+  ['Física','Fenômeno da dispersão luminosa e a refração da luz na atmosfera. 9.Ondulatória']
+ ] as const;
+ for(const [subject,topic] of names){
+  assert.ok(!report.pending.some(entry=>entry.subject===subject&&entry.topic===topic),
+   'Batch 30 missing specific depth: '+subject+' / '+topic);
+ }
+ assert.ok(report.coverage.deep_specific>=156,'Expected at least 156 topics');
 });
 
 test('every deep syllabus registration is unique, with actionable duplicate diagnostics',()=>{
@@ -98,7 +114,7 @@ test('full three-grade Provão syllabus has an honest depth status for every uni
  assert.equal(report.total,364,'360 topic entries plus four writing assessment criteria');
  assert.equal(Object.values(report.coverage).reduce((sum,n)=>sum+n,0),report.total);
  assert.ok(report.coverage.deep_specific<=deepProvaoTopicKeys.length,'Coverage must never exceed editorial registrations');
- assert.ok(report.coverage.deep_specific>=151,'At least 151 distinct Provão lessons are required');
+ assert.ok(report.coverage.deep_specific>=156,'At least 156 distinct Provão lessons are required');
  // Registered prefixes can overlap or fail to match the official catalogue; report the gap explicitly.
  console.log('DEPTH_REGISTRATION_GAP '+JSON.stringify({registrations:deepProvaoTopicKeys.length,matched:report.coverage.deep_specific,gap:deepProvaoTopicKeys.length-report.coverage.deep_specific}));
  // Report registrations that cannot win the same exact-first resolver used by the app.
