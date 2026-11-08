@@ -359,90 +359,90 @@ export const provaoDepthBatch23Core:readonly DeepTopicSpec[]=[
   },
   {
     "subject": "Química",
-    "topicStart": "A eletrosfera e o diagrama de Linus Pauling",
-    "objective": "Explicar níveis, subníveis e distribuição eletrônica pelo diagrama de Linus Pauling, distinguindo capacidade, ordem energética, íons e exceções de configuração.",
+    "topicStart": "Soluções aquosas: conceito e classificação",
+    "objective": "Distinguir soluções aquosas de misturas heterogêneas, classificar estados de saturação por dados de solubilidade e interpretar concentração e condutividade com modelos de partículas e cálculos verificáveis.",
     "prerequisites": [
-      "Número atômico e elétrons",
-      "Estrutura atômica e carga elétrica",
-      "Noção de níveis e subníveis de energia"
+      "Substâncias e misturas homogêneas",
+      "Íons, moléculas e polaridade da água",
+      "Razões, proporções e unidades de volume"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: camadas, subníveis e capacidade eletrônica",
-        "explanation": "A eletrosfera é descrita por estados eletrônicos quantizados, e não por pequenas esferas em trajetórias planetárias. Na notação de configuração, o número principal n indica a camada; a letra s, p, d ou f identifica o subnível, relacionado ao número quântico azimutal. Um orbital comporta no máximo dois elétrons com spins opostos, conforme o princípio de exclusão de Pauli. Como os subníveis s, p, d e f possuem respectivamente 1, 3, 5 e 7 orbitais, suas capacidades máximas são 2, 6, 10 e 14 elétrons. O número atômico Z determina o número de prótons; em um átomo neutro, também determina a quantidade de elétrons. Para preencher uma configuração, conte os elétrons disponíveis, escolha a ordem energética aproximada de ocupação e confira se a soma dos expoentes coincide com Z. O diagrama é um recurso mnemônico útil para átomos no estado fundamental, não uma representação de órbitas físicas.",
-        "example": "Para o oxigênio neutro, Z=8: 1s² acomoda 2 elétrons, 2s² mais 2 e 2p⁴ os 4 restantes. Soma: 2+2+4=8. O subnível p admite até 6 elétrons, portanto 2p⁴ é permitido; 2p⁷ seria impossível.",
-        "pitfall": "Não confunda capacidade máxima de um subnível com sua ocupação efetiva; nem trate o diagrama como órbitas desenhadas no espaço.",
+        "title": "Conceito: soluto, solvente e dissolução",
+        "explanation": "Uma solução aquosa é uma mistura homogênea na escala macroscópica em que a água funciona como solvente, isto é, o meio que dispersa as partículas dos componentes dissolvidos. O soluto pode ser sólido, líquido ou gasoso: açúcar, etanol e oxigênio dissolvido são exemplos com naturezas diferentes. A homogeneidade não torna a solução uma substância pura, pois a composição pode variar entre amostras. Quando o cloreto de sódio se dissolve, o retículo cristalino se desfaz e íons Na⁺ e Cl⁻ são hidratados por moléculas de água; não surgem moléculas individuais de NaCl neutras em proporção 1:1 na solução diluída. Já a sacarose se dispersa principalmente como moléculas neutras, sem liberar quantidade significativa de íons. Em ambos os casos a solução pode ser transparente: transparência isolada não prova pureza. Água e óleo, em condições comuns, formam duas fases porque suas interações não favorecem miscibilidade total. A classificação 'aquosa' descreve o solvente, não a concentração nem o caráter ácido ou básico.",
+        "example": "Adicione 5 g de açúcar a 100 g de água e suponha dissolução completa e ausência de evaporação. O sistema tem uma fase visível e massa total de 105 g. A água é solvente, a sacarose é soluto e a mistura não ganhou uma fórmula química única.",
+        "pitfall": "Uma fase macroscópica não significa uma única espécie química; transparência também não demonstra pureza ou ausência de íons.",
         "steps": [
-          "Determine Z e a carga da espécie para obter a quantidade de elétrons.",
-          "Preencha subníveis sem exceder as capacidades 2, 6, 10 e 14.",
-          "Some os expoentes e confira a quantidade total de elétrons."
+          "Identifique a água como solvente e os demais componentes como possíveis solutos.",
+          "Verifique se há uma ou mais fases nas condições descritas.",
+          "Distinga dissociação iônica, dissolução molecular e separação de fases."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: ordem energética e princípio de Aufbau",
-        "explanation": "O diagrama de Linus Pauling organiza, para muitos átomos neutros, uma sequência aproximada de preenchimento de subníveis: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, entre outros. A ordem não é simplesmente crescente pelo número da camada: 4s é normalmente preenchido antes de 3d em átomos neutros de baixa energia. O princípio de Aufbau orienta a ocupação dos estados de menor energia disponíveis; a regra de Hund acrescenta que, em orbitais degenerados de um mesmo subnível, elétrons ocupam inicialmente orbitais separados com spins paralelos. Essas regras explicam por que o nitrogênio 1s² 2s² 2p³ tem três elétrons desemparelhados em 2p no modelo de orbitais. Para representar íons, primeiro determine quantos elétrons foram ganhos ou perdidos. Em metais de transição, a remoção de elétrons pode ocorrer de 4s antes de 3d, mesmo que 4s tenha sido preenchido primeiro. A ordem mnemônica não substitui análise energética detalhada nem elimina exceções experimentais.",
-        "example": "Para cálcio neutro (Z=20), distribua 1s² 2s² 2p⁶ 3s² 3p⁶ 4s²: 2+2+6+2+6+2=20. Para Ca²⁺, retire os dois elétrons de 4s, resultando em 18 elétrons e configuração equivalente à do argônio.",
-        "pitfall": "Não aplique a ordem de preenchimento como regra automática de remoção em todos os cátions, especialmente metais de transição.",
+        "title": "Aplicação: insaturada, saturada e supersaturada",
+        "explanation": "Solubilidade é a quantidade máxima de soluto que permanece dissolvida em determinada quantidade de solvente em equilíbrio e sob condições especificadas. Se uma substância X apresenta solubilidade de 20 g por 100 g de água a 25 °C, 150 g de água comportam até 30 g dissolvidos no equilíbrio nessa temperatura. Com 15 g dissolvidos, a solução está insaturada; com 30 g, saturada. Ao adicionar 35 g e aguardar equilíbrio, o sistema pode conter 30 g dissolvidos e 5 g de sólido residual. A presença de resíduo torna o sistema global heterogêneo, mas a fase líquida segue uma solução saturada. Uma solução supersaturada é preparada sob condições especiais, por exemplo após dissolução a maior temperatura seguida de resfriamento cuidadoso. Ela é metastável e pode cristalizar com perturbação; não se confunde com excesso de sólido depositado. A solubilidade de muitos sólidos aumenta com a temperatura, mas existem exceções; em gases, frequentemente diminui quando a temperatura aumenta. Não se pode comparar valores sem conhecer pressão, temperatura e unidade de referência.",
+        "example": "Para X com solubilidade de 20 g/100 g de água a 25 °C, o limite em 150 g é 20×150/100=30 g. Acrescentar 35 g pode deixar 5 g sólidos após equilíbrio, enquanto a solução líquida contém 30 g e permanece saturada.",
+        "pitfall": "Não substitua a massa de solvente pela massa da solução em unidades g/100 g de água; sólido remanescente não é prova de supersaturação.",
         "steps": [
-          "Identifique o total de elétrons após considerar a carga.",
-          "Siga a ordem de energia e aplique Pauli e Hund.",
-          "Confira o estado eletrônico e a retirada de elétrons nos íons."
+          "Leia a temperatura e a unidade da solubilidade fornecida.",
+          "Calcule a massa máxima dissolvida proporcional à massa de solvente.",
+          "Compare a massa adicionada com o limite e determine o estado da fase líquida."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: exceções, orbitais e interpretação física",
-        "explanation": "Configurações eletrônicas são modelos do estado quântico de sistemas multieletrônicos. A energia de cada orbital depende de interações elétron-núcleo e elétron-elétron, blindagem e penetração; por isso, a ordem de subníveis pode variar entre elementos e íons. Cromo (Z=24) apresenta configuração fundamental frequentemente escrita [Ar] 3d⁵ 4s¹, em vez da previsão mecânica [Ar] 3d⁴ 4s². Cobre (Z=29) apresenta [Ar] 3d¹⁰ 4s¹, e não [Ar] 3d⁹ 4s². Não é correto explicar essas exceções exclusivamente por uma regra universal de 'subnível semipreenchido ou cheio': o balanço energético completo envolve várias contribuições. Para ferro neutro, a configuração abreviada é [Ar] 3d⁶ 4s²; para Fe²⁺, a representação usual é [Ar] 3d⁶. Um orbital descreve uma distribuição de probabilidade, não uma trajetória determinística. O diagrama fornece uma primeira aproximação escolar; previsões espectroscópicas finas exigem modelos quânticos mais completos.",
-        "example": "No ferro neutro, Z=26: [Ar] representa 18 elétrons; 3d⁶ adiciona 6 e 4s² mais 2, totalizando 26. Para Fe³⁺, retire primeiro os dois elétrons 4s e depois um de 3d: [Ar] 3d⁵, com 23 elétrons.",
-        "pitfall": "Não presuma que o último subnível preenchido é sempre o primeiro a perder elétrons, nem trate exceções como erros experimentais.",
+        "title": "Aprofundamento: concentração, eletrólitos e limites",
+        "explanation": "Diluída e concentrada são classificações relativas à quantidade de soluto, não equivalentes a insaturada e saturada. Uma solução concentrada pode ser insaturada quando há grande capacidade de dissolução, enquanto uma solução diluída pode estar saturada se a substância for pouco solúvel. A concentração molar C=n/V divide a quantidade de matéria, em mol, pelo volume final da solução, em litros. Uma solução de 0,20 mol/L e volume final de 0,500 L contém 0,100 mol de soluto. Para NaCl, com massa molar aproximada de 58,5 g/mol, essa quantidade corresponde a 5,85 g. Na preparação volumétrica, o volume final é aferido depois de dissolver o soluto, não é automaticamente igual ao volume de água inicialmente usado. Sais solúveis como NaCl dão origem a íons móveis e normalmente aumentam a condutividade elétrica, dependente também de temperatura e concentração. Sacarose dissolvida gera poucas espécies carregadas e conduz muito menos nas mesmas condições. Ácidos fracos ionizam parcialmente, por isso condutividade, concentração e grau de ionização não devem ser confundidos com uma única propriedade.",
+        "example": "Para obter 500 mL de NaCl 0,20 mol/L, converta 500 mL em 0,500 L. Calcule n=CV=0,20×0,500=0,100 mol e m=0,100×58,5=5,85 g. Dissolva o sal e complete com água até o volume final de 500 mL.",
+        "pitfall": "Não confunda concentração em mol/L com massa por litro, nem suponha que adicionar soluto a 500 mL de água resulte exatamente em 500 mL de solução.",
         "steps": [
-          "Escreva a configuração do átomo neutro e verifique a contagem.",
-          "Para íons, considere a ordem de retirada e a estabilidade relativa.",
-          "Confronte previsões do diagrama com configurações experimentais conhecidas."
+          "Converta o volume final desejado para litros.",
+          "Calcule n=CV e transforme quantidade de matéria em massa por m=nM.",
+          "Interprete as limitações de volume final, temperatura e dissociação iônica."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual é a capacidade máxima de elétrons de um subnível p?",
+        "prompt": "Qual descrição representa corretamente uma solução aquosa de NaCl completamente dissolvido?",
         "options": [
-          "2 elétrons",
-          "6 elétrons",
-          "10 elétrons",
-          "14 elétrons"
+          "Mistura heterogênea de cristais suspensos",
+          "Mistura homogênea de íons Na⁺ e Cl⁻ hidratados",
+          "Substância pura formada só por H₂O",
+          "Mistura de água e óleo em duas fases"
         ],
         "correctIndex": 1,
-        "hint": "O subnível p contém três orbitais, cada um com até dois elétrons.",
-        "solution": "O subnível p possui três orbitais e, pelo princípio de exclusão de Pauli, cada orbital comporta no máximo dois elétrons. Logo, 3 × 2 = 6 elétrons. Dois é a capacidade de s; dez, de d; e quatorze, de f. Essa capacidade é máxima, não a ocupação obrigatória."
+        "hint": "Considere as partículas após a dissolução do cristal.",
+        "solution": "NaCl se dissocia em íons Na⁺ e Cl⁻ que ficam dispersos e hidratados pela água, formando mistura homogênea. A dissolução completa não deixa cristais suspensos; a solução contém água e íons, não é substância pura."
       },
       {
         "level": "intermediate",
-        "prompt": "Qual configuração corresponde ao cálcio neutro (Z=20) no estado fundamental?",
+        "prompt": "O soluto X dissolve até 20 g por 100 g de água a 25 °C. Após adicionar 35 g a 150 g de água e atingir equilíbrio, qual massa de sólido pode restar?",
         "options": [
-          "[Ar] 3d²",
-          "[Ar] 4s²",
-          "[Ar] 4p²",
-          "[Ar] 3d¹ 4s¹"
+          "0 g",
+          "15 g",
+          "5 g",
+          "35 g"
         ],
-        "correctIndex": 1,
-        "hint": "O argônio reúne 18 elétrons; faltam dois para completar Z=20.",
-        "solution": "[Ar] corresponde a 18 elétrons. Os dois seguintes ocupam 4s no preenchimento usual do cálcio neutro, produzindo [Ar] 4s², total 20. As outras alternativas têm 20 elétrons formalmente em alguns casos, mas não representam a configuração fundamental observada do cálcio."
+        "correctIndex": 2,
+        "hint": "Primeiro calcule a quantidade máxima dissolvida nos 150 g de água.",
+        "solution": "A solubilidade permite 20×150/100=30 g dissolvidos. A massa adicionada foi 35 g; a diferença, 35−30=5 g, pode permanecer como sólido. A fase líquida encontra-se saturada, não supersaturada."
       },
       {
         "level": "advanced",
-        "prompt": "Qual configuração abreviada representa usualmente o íon Fe²⁺, partindo do ferro neutro [Ar] 3d⁶ 4s²?",
+        "prompt": "Qual massa de NaCl (M=58,5 g/mol) prepara 500 mL de solução 0,20 mol/L?",
         "options": [
-          "[Ar] 3d⁴ 4s²",
-          "[Ar] 3d⁶",
-          "[Ar] 3d⁸",
-          "[Ar] 3d⁵ 4s¹"
+          "5,85 g",
+          "2,93 g",
+          "11,7 g",
+          "58,5 g"
         ],
-        "correctIndex": 1,
-        "hint": "Na formação desse cátion, os elétrons 4s são removidos antes dos 3d.",
-        "solution": "O ferro neutro possui 26 elétrons e configuração [Ar] 3d⁶ 4s². Ao formar Fe²⁺, perde dois elétrons, ambos do subnível 4s, ficando com [Ar] 3d⁶ e 24 elétrons. O erro comum é retirar elétrons 3d apenas porque 3d aparece depois na ordem mnemônica."
+        "correctIndex": 0,
+        "hint": "Calcule n=CV com V em litros; depois m=nM.",
+        "solution": "Converta 500 mL para 0,500 L. Então n=0,20×0,500=0,100 mol e m=0,100×58,5=5,85 g. Esse cálculo usa volume final da solução, medido após dissolução, e não necessariamente o volume inicial de água."
       }
     ]
   }
