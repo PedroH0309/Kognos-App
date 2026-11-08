@@ -48,12 +48,12 @@ test('visual components respect discipline matching; no generic simulation is cl
 test('formative check never masquerades as auto grading or mastery; existing graded practice stays intact',()=>{
  const reader=read('apps/web/src/components/UniversalLessonReader.tsx');
  const old=read('apps/web/src/components/TopicLessonSections.tsx');
- assert.match(reader,/Conferir e receber feedback/);
- assert.match(reader,/Preciso revisar/);
- assert.match(reader,/Consegui justificar/);
- assert.match(reader,/não atribui acerto automático/);
- assert.match(reader,/autoavaliação não é nota/i);
- assert.match(old,/exerciseIds\.every\(key=>Boolean\(next\[key\]\?\.trim\(\)\)\)/);
+ assert.match(reader,/LessonChoiceQuestion/);
+ assert.match(reader,/review'\)/);
+ assert.match(reader,/understood'\s*:\s*'review'/);
+ assert.match(reader,/atividade é formativa e não vale nota/);
+ assert.match(reader,/A autoavaliação não é nota/i);
+ assert.match(old,/exerciseIds\.every\(key=>Object\.hasOwn\(next,key\)\)/);
  assert.match(old,/view==='activities'/);
  assert.match(old,/view==='explanations'/);
 });
