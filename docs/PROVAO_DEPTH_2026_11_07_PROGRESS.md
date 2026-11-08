@@ -402,3 +402,24 @@ Cada aula possui **3 capítulos progressivos**, com explicação autoral especí
 **Cobertura editorial prevista após CI:** **156/364** temas do Provão Paulista aprofundados, **208 pendentes**, **468 capítulos** e **468 questões objetivas**. São **157 registros editoriais** para 156 assuntos reconhecidos: o registro histórico de fórmulas químicas do lote 16 continua encoberto pelo tópico exato do lote 26, e a auditoria não o conta duas vezes. No catálogo unificado de ENEM, ETEC, Fuvest, Vunesp e Provão, os 1.512 assuntos continuam parcialmente introdutórios. Os números de cobertura acima dependem da confirmação automatizada da CI mais recente, e não representam homologação docente.
 
 Os novos arquivos foram vinculados ao resolvedor de `apps/web/src/lib/provao-depth-lessons.ts` sem alterar sua preferência por correspondência exata. A auditoria `provao-depth-coverage.test.ts` exige 156 aulas reconhecidas. É obrigatório verificar a CI do novo commit com testes unitários, segurança PostgreSQL de dois usuários, testes de design, TypeScript e build. Não foram modificados `legacy/`, IDs, banco de dados, RLS, Supabase, autenticação, chaves, APIs pagas ou deploy. O conteúdo é **original, não oficial e sem homologação docente**, e o PR #93 deve permanecer em rascunho até revisão autorizada.
+
+
+## Lote 31 — cinco temas novos, sem duplicar o lote 30 (2026-11-08)
+
+Foram consultados `AGENTS.md` em `main` e na branch, a auditoria, o catálogo `curriculum-catalog.ts` / `provao-paulista.ts`, o PR #93 e demais PRs abertos. Houve outra execução que completou o lote 30 (156 tópicos previstos); ela foi preservada. Os **52 módulos importados** pelo resolvedor foram inspecionados, rejeitando repetições com as bibliotecas antigas. Foram escolhidos cinco novos tópicos exatamente correspondentes às etiquetas oficiais, todos ainda não registrados em aulas profundas.
+
+| Disciplina | Tópico exato do Provão | Arquivo |
+| --- | --- | --- |
+| Física | Lei de Faraday-Neumann | `provao-depth-batch31-faraday.ts` |
+| Física | Capacitores. Associação de capacitores. Energia potencial elétrica armazenada em um capacitor.… | `provao-depth-batch31-capacitors.ts` |
+| Biologia | Doenças humanas causadas por fungos e protozoários (amebíase, malária, doença de Chagas e… | `provao-depth-batch31-protozoa-fungi.ts` |
+| História | Da mão de obra escrava à imigração | `provao-depth-batch31-abolition-immigration.ts` |
+| História | Ásia e África: imperialismo, neocolonialismo e resistência | `provao-depth-batch31-imperialism.ts` |
+
+Cada aula foi escrita originalmente para o seu assunto, com três capítulos progressivos (mínimo **750 caracteres de explicação por capítulo**), três exemplos explicados com operações ou interpretação de fontes (mínimo **180 caracteres por exemplo**), requisitos, condições de validade, alertas de equívocos, três questões **somente de múltipla escolha A–D**, gabaritos `correctIndex` e explicações das respostas (mínimo **140 caracteres**). **Não há perguntas dissertativas.** O material é **autoral Kognos, não oficial e sem homologação docente**; não deve ser apresentado como aprovado por especialista.
+
+Integração em `provao-depth-lessons.ts` por correspondência exata antes de prefixos; nova validação em `provao-depth-batch31.test.ts` (identidade dos cinco assuntos oficiais, profundidade, chave e correção objetiva, autoria, IDs estáveis e fallback editorial). A auditoria `provao-depth-coverage.test.ts` passou a exigir pelo menos 161 registros efetivamente reconhecidos e os cinco assuntos do lote.
+
+**Cobertura editorial prevista após validação:** **161/364** temas do Provão Paulista, **203 pendentes**, **483 capítulos e 483 questões objetivas**; **162 registros de prefixo**, um deles histórico e encoberto (`Química · Fórmulas químicas: fórmula mínima`, do lote 16). O catálogo dos cinco exames possui 1.512 entradas e ainda não está todo aprofundado. Esses números não são aprovação automática de CI nem homologação pedagógica.
+
+**Liberação:** exigir conclusão da CI com testes unitários, segurança PostgreSQL de dois usuários, design, TypeScript e build. Nenhuma migração, modificação em RLS, Supabase, auth, dados existentes, `legacy/`, APIs pagas ou chaves. O PR #93 continua em **rascunho**, sem merge e sem deploy público; revisão docente ainda pendente.
