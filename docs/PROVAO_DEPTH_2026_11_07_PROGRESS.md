@@ -364,3 +364,22 @@ Após inspeção do catálogo de `provao-paulista.ts`, dos módulos editoriais e
 **Previsão editorial após passar a CI do lote 28:** 146 de 364 tópicos distintos aprofundados (**40,1%**), 438 capítulos e 438 questões objetivas, **218 tópicos do Provão pendentes**. A biblioteca contém 147 registros editoriais, pois o prefixo antigo de fórmula mínima do lote 16 continua encoberto pela correspondência oficial exata da aula de fórmulas químicas do lote 26; esse registro não é contado duas vezes. Os outros exames compartilham tópicos com o Provão e possuem assuntos próprios; o catálogo unificado de 1.512 entradas não está concluído.
 
 **Integração e validação:** importações dos cinco arquivos em `apps/web/src/lib/provao-depth-lessons.ts`; teste específico em `provao-depth-batch28.test.ts` para identidade oficial, preservação de IDs e fallback, 3 capítulos profundos, exemplos, autoria não oficial e 3 gabaritos A–D por aula; auditoria `provao-depth-coverage.test.ts` elevada para mínimo de 146. A última CI totalmente aprovada **antes** do lote foi [#42519833451](https://github.com/PedroH0309/Kognos-App/actions/runs/42519833451). Ainda é obrigatório validar a nova revisão em GitHub Actions — unitários, segurança PostgreSQL de dois usuários, design, TypeScript e build. Conteúdo não revisado por especialistas. Não houve alterações em Supabase, RLS, schema, IDs, autenticação, quotas ou chaves; PR #93 permanece em rascunho, sem merge ou deploy.
+
+
+## Lote 29 — aprofundamento autoral adicional (2026-11-08)
+
+A inspeção do `AGENTS.md` na branch e em `main`, dos PRs abertos (#93, #94, #95), do currículo unificado e de todos os 42 módulos importados previamente pelo resolvedor impediu duplicação de conteúdo: `Propriedades físicas dos compostos orgânicos` já estava no lote 25 e foi descartado da seleção. Cinco **tópicos oficiais diferentes** receberam aulas novas, cada uma com três capítulos explicativos e progressivos (>=750 caracteres), exemplos resolvidos com passos e condições (>=180 caracteres), equívocos frequentes, três perguntas exclusivamente de quatro alternativas A–D e correção comentada (>=140 caracteres). A autoria é **Kognos original, não oficial, sem homologação docente**. Não há atividades dissertativas.
+
+| Área | Tópico oficial | Arquivo |
+| --- | --- | --- |
+| Química | Ligação, estrutura, propriedades físicas e químicas da água | `provao-depth-batch29-water.ts` |
+| Física | Trabalho realizado pelas forças exercidas por um gás. Energia interna. Transformações cíclicas | `provao-depth-batch29-gas-work.ts` |
+| Biologia | Alimentos e nutrição; segurança alimentar; ação das substâncias psicoativas (drogas) no sistema… | `provao-depth-batch29-nutrition.ts` |
+| História | A ascensão do café e a primeira industrialização | `provao-depth-batch29-coffee.ts` |
+| História | Ideias sociais e projetos revolucionários | `provao-depth-batch29-social-ideas.ts` |
+
+A resolução exata-antes-de-prefixo de `provao-depth-lessons.ts` permanece intacta; as cinco especificações foram importadas e acrescentadas ao registro. Testes em `provao-depth-batch29.test.ts` verificam tópicos exatos do Provão, IDs estáveis, fallback editorial, capítulos, extensão mínima, alternativas únicas, gabaritos, correções e autoria. `provao-depth-coverage.test.ts` exige 151 tópicos profundos e verifica os cinco temas do lote.
+
+**Resultado editorial esperado, sujeito à CI:** Provão Paulista 151 de 364 temas profundos (**41,48%**), **213 ainda pendentes**, 453 capítulos e 453 questões objetivas. A biblioteca soma 152 registros de prefixo porque o prefixo de fórmula mínima do lote 16 permanece encoberto por aula de fórmulas exata do lote 26; não deve ser contado duas vezes. Catálogo unificado: 1.512 entradas; não foi integralmente aprofundado.
+
+A CI do lote 28, [#42520686703](https://github.com/PedroH0309/Kognos-App/actions/runs/42520686703), estava verde antes desta alteração. **Não declarar o lote 29 validado sem nova CI** de unitários, segurança PostgreSQL com dois usuários, testes de design, TypeScript e build. Nenhuma alteração em IDs existentes, Supabase, RLS, schema, auth, dados, chaves ou APIs pagas. PR #93 deve continuar como **rascunho** até revisão autorizada; não fazer merge/deploy. A homologação docente continua pendente.
