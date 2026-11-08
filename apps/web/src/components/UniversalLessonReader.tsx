@@ -219,6 +219,8 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
  onTutor?:()=>void;onLab?:()=>void;
 }){
  const [results,setResults]=useState<Record<string,'understood'|'review'>>({});
+ const [introResponse,setIntroResponse]=useState('');
+ const [introFeedback,setIntroFeedback]=useState(false);
  const situation=everydayContextFor(lesson);
  const method=studyMethodForSubject(subject);
  const practiceCount=lesson?.tasks.length??(introduction?1:0);
@@ -245,19 +247,20 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    </div>
    {lesson?.supportTopic&&<p className="k-universal-scope-note" role="note"><strong>Conteúdo de apoio correspondente a:</strong> {lesson.supportTopic}. Esta aula aprofundada aborda uma parte relacionada do assunto; outros pontos previstos no edital ainda necessitam de material editorial específico.</p>}
    {lesson?.authorship.includes('módulo introdutório estruturado')&&<p className="k-universal-scope-note" role="note"><strong>Desenvolvimento pendente:</strong> este assunto tem apenas conceitos e exercícios introdutórios. Não representa uma aula aprofundada sobre todo o item do edital.</p>}
-   <div className="k-universal-objectives"><strong>01 · Objetivo de aprendizagem</strong>
+   <div className="k-universal-objectives" id="k-lesson-objectives"><strong>01 · Objetivo de aprendizagem</strong>
     <p>{lesson?.objective??introduction?.objective}</p>
     {!!lesson?.prerequisites.length&&<p className="k-universal-prereqs"><strong>Pré-requisitos:</strong> {lesson.prerequisites.join(' · ')}</p>}
    </div>
   </header>
-  <section className="k-universal-context" aria-label="Contextualização">
+  <LessonContentsNav hasVisual={Boolean(lesson)} hasLab={Boolean(lesson&&!isGenericStarter&&hasLab)} hasCheck={Boolean(lesson?.tasks.length||introduction?.check)}/>
+  <section className="k-universal-context" id="k-lesson-context" aria-label="Contextualização">
    <h4>02 · Por que estudar isto?</h4>
    {situation?<><ReadingBlocks value={situation.context}/><p><strong>Desafio inicial:</strong> {situation.question}</p>
     <details><summary>Ver como a situação é resolvida</summary><ReadingBlocks value={situation.answer}/></details>
     <small>Contexto didático autoral; dados podem ser hipotéticos.</small></>:
-    <>{isGenericStarter?<><p>Antes de ler o material, tente responder a esta pergunta:</p><p><strong>{lesson?.tasks[0]?.prompt}</strong></p><small>Questão orientadora. A explicação inicial aparece na seção seguinte.</small></>:<><p>Comece por este exemplo do material e procure identificar o conceito que explica o resultado:</p>
-     <ReadingBlocks value={lesson?.sections[0]?.example??introduction?.workedExample??''}/>
-     <small>Exemplo de referência do material, não um caso cotidiano verificado.</small></>}</>}
+    <><p>Antes da explicação, reflita sobre a questão inicial:</p>
+     <p className="k-universal-context-question"><strong>{lesson?.tasks[0]?.prompt??introduction?.check??'O que você já sabe sobre este tema?'}</strong></p>
+     <small>Questão de abertura. Compare sua hipótese com a explicação e os exemplos das próximas etapas.</small></>}
   </section>
   {lesson?isGenericStarter?<GuidedIntro lesson={lesson} subject={subject}/>:<>
    <section className="k-universal-learning-stage" id="k-lesson-concept">
@@ -295,15 +298,45 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     </div>
     <p>Para fixação e simulado, use as abas <strong>Atividades</strong> e <strong>Evolução</strong> e o espaço de <strong>Simulados</strong>.</p>
    </section>
-  </>:introduction&&<section className="k-universal-intro-only">
-   <h4>03 · Conceito central</h4><ReadingBlocks value={introduction.explanation}/>
-   <h4>04 · Aplicação explicada</h4><ReadingBlocks value={introduction.workedExample}/>
-   <div className="k-universal-comparison"><strong>07 · Erro frequente</strong><ReadingBlocks value={introduction.commonMistake}/></div>
-   <div className="k-universal-quick-check"><h4>09 · Teste de compreensão</h4><p>{introduction.check}</p>
-    <p>Responda na aba Atividades e confira a referência em Explicações. Este assunto ainda exige uma aula aprofundada.</p>
-   </div>
-   <p className="k-universal-caution">Material introdutório: ainda não há progressão completa, simulado próprio ou diagnóstico de domínio.</p>
-  </section>}
+  </>:introduction&&<div className="k-universal-guide k-universal-legacy-intro">
+   <section className="k-universal-chapter" id="k-lesson-concept">
+    <h4>03 · Conceito central</h4><ReadingBlocks value={introduction.explanation}/>
+   </section>
+   <section className="k-universal-chapter" id="k-lesson-development">
+    <h4>04 · Como aprofundar o conhecimento</h4>
+    <p>Utilize estas perguntas para orientar a leitura e verificar os limites do material introdutório.</p>
+    <ol className="k-universal-guide-steps">{method.questions.map((question,index)=><li key={index}>{question}</li>)}</ol>
+    <p className="k-universal-caution">Ainda não existem os três capítulos progressivos completos para este conteúdo.</p>
+   </section>
+   <section className="k-universal-chapter" id="k-lesson-examples">
+    <h4>06 · Aplicação explicada</h4><ReadingBlocks value={introduction.workedExample}/>
+   </section>
+   <section className="k-universal-chapter" id="k-lesson-comparisons">
+    <h4>07 · Comparações e erros frequentes</h4>
+    <div className="k-universal-comparison"><ReadingBlocks value={introduction.commonMistake}/></div>
+   </section>
+   <section className="k-universal-chapter" id="k-lesson-check">
+    <h4>09 · Teste rápido de compreensão</h4><p>{introduction.check}</p>
+    <label className="k-universal-intro-response">Sua explicação
+     <textarea value={introResponse} onChange={event=>setIntroResponse(event.target.value)} rows={3}
+      placeholder="Desenvolva sua resposta antes de reler o exemplo."/>
+    </label>
+    <button className="k-universal-intro-feedback-button" type="button" disabled={!introResponse.trim()}
+     aria-expanded={introFeedback} onClick={()=>setIntroFeedback(value=>!value)}>
+     <Eye size={15} aria-hidden="true"/>{introFeedback?'Ocultar referência':'Conferir referência para revisão'}
+    </button>
+    {introFeedback&&<div className="k-universal-feedback" role="status">
+     <strong>Como conferir seu raciocínio</strong><ReadingBlocks value={introduction.workedExample}/>
+     <p>O exemplo é uma referência, não um gabarito automático para a sua resposta aberta. Confira a coerência com os conceitos estudados.</p>
+    </div>}
+   </section>
+   <section className="k-universal-summary" id="k-lesson-summary">
+    <h4>10 · Consolidação da introdução</h4>
+    <p><strong>Objetivo do estudo:</strong> {introduction.objective}</p>
+    <p><strong>Conceito essencial:</strong> {lessonReadingBlocks(introduction.explanation)[0]}</p>
+    <p className="k-universal-caution">Esta introdução ainda não oferece conteúdo aprofundado de todos os subtemas, avaliação corrigida ou diagnóstico de domínio.</p>
+   </section>
+  </div>}
   <footer className="k-universal-source">
    <strong>Qualidade editorial</strong>
    <p>{lesson?lesson.authorship+' · '+lesson.license:'Introdução editorial breve, sem cobertura integral do assunto.'}</p>
