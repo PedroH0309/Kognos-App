@@ -69,6 +69,20 @@ test('full three-grade Provão syllabus has an honest depth status for every uni
  assert.ok(report.coverage.deep_specific>=136,'At least 136 distinct Provão lessons are required');
  // Registered prefixes can overlap or fail to match the official catalogue; report the gap explicitly.
  console.log('DEPTH_REGISTRATION_GAP '+JSON.stringify({registrations:deepProvaoTopicKeys.length,matched:report.coverage.deep_specific,gap:deepProvaoTopicKeys.length-report.coverage.deep_specific}));
+ // Identify exact shadowed or orphaned editorial registrations rather than guessing from totals.
+ const unresolved=deepProvaoTopicKeys.filter(key=>{
+  const delimiter=key.indexOf(' · ');
+  const subject=key.slice(0,delimiter),prefix=key.slice(delimiter+3);
+  return !provaoTopics.some(entry=>entry.subject===subject&&entry.topic.startsWith(prefix));
+ });
+ const shadowed=deepProvaoTopicKeys.filter(key=>{
+  const delimiter=key.indexOf(' · ');
+  const subject=key.slice(0,delimiter),prefix=key.slice(delimiter+3);
+  return provaoTopics.some(entry=>entry.subject===subject&&entry.topic.startsWith(prefix)&&
+   deepProvaoLesson(allCurricula.get(entry.subject+'\0'+entry.topic)!)?.topic===entry.topic&&
+   deepProvaoTopicKeys.some(other=>other!==key&&other.startsWith(subject+' · ')&&entry.topic.startsWith(other.slice(other.indexOf(' · ')+3))));
+ });
+ console.log('DEPTH_REGISTRATION_DIAGNOSTICS '+JSON.stringify({unresolved,overlapping:shadowed}));
  assert.ok(report.coverage.introductory_only>0,'Do not misrepresent incomplete classes as finished');
  assert.ok(report.pending.every(item=>item.status!=='deep_specific'));
  assert.equal(Object.values(report.bySubject).length,11,'Ten curricular subjects plus Redação rubric');
