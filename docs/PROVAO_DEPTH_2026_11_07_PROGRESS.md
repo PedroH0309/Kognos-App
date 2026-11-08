@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **126 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **378 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **378 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **131 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **393 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **393 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -273,3 +273,15 @@ A solução definitiva substituiu **somente o quinto registro redundante do lote
 ## Lote 24 — 2026-11-08
 
 Cinco aulas específicas de Química acrescentadas à branch, cada uma com três capítulos autorais progressivos, exemplos resolvidos e três questões objetivas com quatro alternativas, índice correto e correção. O total de 126 aulas e 238 itens ainda pendentes corresponde à contagem de registros específicos do Provão; o catálogo completo de ENEM, ETEC, Fuvest e Vunesp continua incompleto. A auditoria automática (`provao-depth-coverage.test.ts`) é a fonte operacional de verdade; não confundir texto no repositório com revisão pedagógica, publicação Supabase ou deploy. A homologação docente permanece pendente.
+
+## Lote 25 — 2026-11-08
+
+Cinco tópicos distintos de Química registrados no currículo oficial do Provão Paulista, antes não aprofundados nesta branch:
+
+1. Estado físico e propriedades dos materiais — partículas, densidade, mudanças de fase, calor latente, pressão e gás ideal.
+2. Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular — porcentagens, análise elementar, fórmula empírica e massa molar.
+3. Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos — leitura de rótulos, incompatibilidades, risco e descarte, sem experimentos perigosos.
+4. Óxidos e a chuva ácida — formação de ácidos atmosféricos, pH, deposição, neutralização e controle de emissões.
+5. Tratamento de água — coagulação, floculação, filtração, desinfecção, eficiência e contaminantes dissolvidos.
+
+Cada tema tem três capítulos com mais de 750 caracteres de explicação, exemplo resolvido com hipóteses e etapas, pré-requisitos, condições de validade e três questões exclusivamente objetivas com quatro alternativas e correção. **Total da série: 131 aulas, 393 capítulos, 393 questões; 233/364 itens do Provão ainda sem aula aprofundada específica.** O catálogo de 1.512 entradas distintas dos cinco exames continua parcialmente introdutório e será auditado separadamente; não confundir os 233 itens do Provão com o total de pendências de todos os exames. Conteúdo original Kognos, não oficial e sem homologação docente. CI do lote 25 precisa de validação no GitHub Actions; não fazer merge ou deploy antes de revisão.
