@@ -5,6 +5,7 @@ import {provaoTopics} from './provao-paulista.ts';
 import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 import {starterLesson} from './starter-lessons.ts';
+import type {CourseTask} from './course-content.ts';
 
 /** Offline-only maturity audit: published Supabase overrides are not inspected here.
  * A starter scaffold is NOT a completed editorial lesson even when it uses a matched seed.
@@ -262,7 +263,7 @@ test('batch 34 adds five new exact nonoverlapping syllabus lessons with detailed
   assert.ok(lesson.authorship.includes('sem homologação docente'));
   for(let n=0;n<3;n++){
    const section=lesson.sections[n];
-   const task=lesson.tasks[n];
+   const task:CourseTask=lesson.tasks[n];
    assert.ok(section.explanation.length>=750);
    assert.ok(section.example.length>=180);
    assert.ok(section.steps.length>=3&&section.pitfall.length>=50);
