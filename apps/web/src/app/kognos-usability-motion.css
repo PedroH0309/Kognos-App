@@ -76,3 +76,38 @@
 .app-layout.less-motion .app-sidebar .side-nav-item,
 .app-layout.less-motion .k-shortcut-card,
 .app-layout.less-motion .k-curriculum-next{transition:none!important;transform:none!important;}
+
+/* Inline loaders must be scoped to the data surface, not the entire viewport. */
+.app-layout .k-curriculum-step,
+.app-layout .course-reader,
+.app-layout .kog-page{
+ position:relative;
+}
+.app-layout .kog-page .k-ui-loading-inline{
+ z-index:15;
+ border-radius:18px;
+}
+.app-layout .kog-offline-actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:9px;
+ margin-top:12px;
+}
+.app-layout .kog-offline-actions button{
+ min-height:38px;
+ padding:8px 12px;
+ border:1px solid var(--line,#414F65);
+ border-radius:9px;
+ background:var(--panel-2,#2B3444);
+ color:var(--txt,#F7F9FC);
+ cursor:pointer;
+ transition:background-color .2s,transform .2s;
+}
+.app-layout .kog-offline-actions button:not(:disabled):hover{
+ background:color-mix(in srgb,var(--violet,#5B4DE3) 19%,var(--panel-2,#2B3444));
+ transform:translateY(-2px);
+}
+.app-layout .kog-offline-actions button:disabled{opacity:.5;cursor:wait;}
+@media(prefers-reduced-motion:reduce){
+ .app-layout .kog-offline-actions button{transition:none!important;transform:none!important;}
+}
