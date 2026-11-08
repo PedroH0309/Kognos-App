@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **59 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **177 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **177 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **61 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **183 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **183 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -27,11 +27,12 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Divisões celulares: compreensão das funções da mitose e da meiose
 - Metabolismo energético: energia para a vida
 
-### Filosofia (4)
+### Filosofia (5)
 - O contratualismo clássico
 - Direitos Humanos
 - A Filosofia e o filosofar
 - As abordagens racionalistas e empiristas do conhecimento
+- Questões éticas contemporâneas
 
 ### Física (7)
 - Escalas termométricas. As escalas Celsius
@@ -42,11 +43,12 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Leis de Newton: Princípio da inércia
 - Calor como forma de energia em trânsito. Capacidade térmica, calor específico e calor latente
 
-### Geografia (4)
+### Geografia (5)
 - Os espaços supranacionais
 - O espaço geográfico e a globalização
 - Intemperismo, erosão
 - A geopolítica da água
+- A cartografia como recurso para a compreensão espacial dos fenômenos geográficos
 
 ### História (8)
 - Iluminismo e Liberalismo
@@ -99,7 +101,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **305 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 305 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **303 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 303 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -140,3 +142,7 @@ Acrescentadas duas aulas autorais específicas: **coordenação, subordinação 
 ## Nona leva — Filosofia e Sociologia
 
 Duas aulas autorais adicionais: **racionalismo, empirismo e problema da indução** (Filosofia) e **preconceitos, estereótipos, discriminação e desigualdade institucional** (Sociologia). Cada uma contém três capítulos com teoria, exemplos concretos, raciocínio passo a passo e três questões A–D com justificativa. Não há aprovação docente presumida. Os testes específicos verificam gabaritos e IDs curriculares.
+
+## Décima leva — Cartografia e ética contemporânea
+
+Aulas específicas novas: **cartografia como linguagem espacial** (escalas, projeções, mapas temáticos e análise crítica de dados territoriais) e **questões éticas contemporâneas** (moral, deveres, consequências, virtudes, privacidade e governança tecnológica). Seis capítulos, seis questões A–D com gabarito e solução, exemplos resolvidos e validação dedicada. Revisão docente permanece pendente.
