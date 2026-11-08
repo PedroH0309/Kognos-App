@@ -25,7 +25,8 @@ test('responsive design covers desktop, mobile, light and dark without removing 
  assert.match(css,/prefers-reduced-motion:reduce/);
  assert.match(app,/useState<'dark'\|'light'>\('light'\)/);
  assert.match(app,/kognos_theme_v1/);
- assert.match(app,/mobile-bottom-nav/);
+ assert.doesNotMatch(app,/<MobileBottomNavigation/);
+ assert.match(app,/mobile-menu-btn/);
  const motion=read('apps/web/src/components/KognosMotion.tsx');
  assert.match(motion,/mobile-sidebar-scrim/);
  assert.match(app,/AnimatedSidebarScrim/);
@@ -61,5 +62,5 @@ test('login and navigation have independent responsive styling',()=>{
  assert.match(finalStyle,/\.app-layout \.app-sidebar/);
  assert.match(finalStyle,/\.k-auth-v2\.k-auth-gateway/);
  assert.match(app,/AuthModal standalone/);
- assert.match(app,/onClick=\{\(\)=>navigate\(v\)\}/);
+ assert.match(app,/onClick=\{\(\)=>setMobileMenu\(!mobileMenu\)\}/);
 });

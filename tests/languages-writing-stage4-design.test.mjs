@@ -32,7 +32,8 @@ test('Language workshops remain topic matched in the independent lab and preserv
  assert.match(hub,/<ScienceLabPanel/);
  assert.match(hub,/<TopicVisualStudio/);
  assert.match(room,/<TopicLessonSections/);
- assert.match(room,/readerTab==='explanations'/);
+ assert.match(room,/<LessonAnimatedTabs value=\{readerTab\}/);
+ assert.match(read('apps/web/src/components/LessonAnimatedTabs.tsx'),/id:'explanations'/);
  assert.match(room,/SkillEvolutionPanel/);
  assert.match(trails,/SkillEvolutionPanel/);
  assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);

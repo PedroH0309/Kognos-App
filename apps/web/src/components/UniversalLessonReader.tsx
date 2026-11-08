@@ -1,6 +1,7 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect,useId,useState} from 'react';
+import {motion,useReducedMotion} from 'motion/react';
 import {ArrowRight,CheckCircle2,Eye,Lightbulb,RotateCcw} from 'lucide-react';
 import type {CourseLesson,CourseSection,CourseTask} from '@/lib/course-content';
 import {levels} from '@/lib/course-content';
@@ -131,6 +132,9 @@ function LessonQuickChecks({lesson,onResult}:{lesson:CourseLesson;onResult:(leve
 }
 
 function LessonContentsNav({hasVisual,hasLab,hasCheck}:{hasVisual:boolean;hasLab:boolean;hasCheck:boolean}){
+ const uid=useId().replace(/:/g,'');
+ const reduce=Boolean(useReducedMotion());
+ const [active,setActive]=useState('k-lesson-objectives');
  const items=[
   {id:'k-lesson-objectives',number:'01',label:'Objetivos'},
   {id:'k-lesson-context',number:'02',label:'Contexto'},
@@ -143,9 +147,31 @@ function LessonContentsNav({hasVisual,hasLab,hasCheck}:{hasVisual:boolean;hasLab
   ...(hasCheck?[{id:'k-lesson-check',number:'09',label:'Teste rápido'}]:[]),
   {id:'k-lesson-summary',number:'10',label:'Consolidação'}
  ];
- return <nav className="k-universal-lesson-nav" aria-label="Etapas pedagógicas da aula">
-  {items.map(item=><a key={item.id} href={'#'+item.id}>
-   <span aria-hidden="true">{item.number}</span>{item.label}
+ useEffect(()=>{
+  const ids=new Set(items.map(item=>item.id));
+  const syncHash=()=>{const hash=decodeURIComponent(window.location.hash.slice(1));if(ids.has(hash))setActive(hash);};
+  syncHash();
+  window.addEventListener('hashchange',syncHash);
+  if(typeof IntersectionObserver==='undefined')return()=>window.removeEventListener('hashchange',syncHash);
+  const observer=new IntersectionObserver(entries=>{
+   const visible=entries.filter(entry=>entry.isIntersecting)
+    .sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);
+   if(visible[0])setActive(visible[0].target.id);
+  },{rootMargin:'-100px 0px -62% 0px',threshold:0});
+  for(const id of ids){const element=document.getElementById(id);if(element)observer.observe(element);}
+  return()=>{observer.disconnect();window.removeEventListener('hashchange',syncHash);};
+ },[hasVisual,hasLab,hasCheck]);
+ return <nav className="k-universal-lesson-nav k-animated-stage-nav" aria-label="Etapas pedagógicas da aula">
+  {items.map(item=><a key={item.id} href={'#'+item.id}
+   aria-current={active===item.id?'location':undefined}
+   className={active===item.id?'is-active':''}
+   onClick={()=>setActive(item.id)}>
+   {active===item.id&&(reduce?
+    <span className="k-animated-stage-highlight" aria-hidden="true"/>:
+    <motion.span layoutId={'kognos-stage-highlight-'+uid}
+     className="k-animated-stage-highlight" aria-hidden="true"
+     transition={{type:'spring',stiffness:480,damping:39,mass:.65}}/>)}
+   <span className="k-animated-stage-label"><b aria-hidden="true">{item.number}</b>{item.label}</span>
   </a>)}
  </nav>;
 }

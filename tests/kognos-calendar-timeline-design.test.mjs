@@ -15,8 +15,11 @@ test('real calendar replaces the coming-soon placeholder and is reachable on mob
  assert.ok(!app.includes("{key:'calendar',icon:'▣',label:'Calendário',status:'Em construção'}"));
  assert.match(app,/view==='calendar'\?<StudyCalendar/);
  assert.match(app,/NAV_SECONDARY:View\[\]=\['calendar'\]/);
- assert.match(app,/\['dashboard','learn','questions','calendar','profile'\]/);
- assert.match(app,/v==='calendar'\?'Calendário'/);
+ assert.match(app,/mobile-menu-btn/);
+ assert.match(app,/NAV_PRIMARY\.map/);
+ assert.match(app,/NAV_PRACTICE\.map/);
+ assert.match(app,/NAV_SECONDARY\.map/);
+ assert.match(app,/NAV_MORE\.map/);
  assert.match(app,/onPlanner=\{openPlannerForDate\}/);
  assert.match(app,/onCalendar=\{\(\)=>navigate\('calendar'\)\}/);
  assert.match(planner,/initialDate\?\:string/);

@@ -22,8 +22,10 @@ test('The Estudos entry renders subject selector before topic list and dedicated
 });
 test('Each lesson has all existing reading/practice/explanation/material/evolution options',()=>{
  const room=read('apps/web/src/components/CurriculumRoom.tsx');
+ const tabComponent=read('apps/web/src/components/LessonAnimatedTabs.tsx');
+ assert.match(room,/<LessonAnimatedTabs value=\{readerTab\}/);
  for(const phrase of ['Aula em texto','Atividades','Explicações','Materiais','Evolução']){
-  assert.ok(room.includes(phrase),'Missing '+phrase);
+  assert.ok(tabComponent.includes(phrase),'Missing '+phrase);
  }
  assert.match(room,/SkillEvolutionPanel/);
  assert.match(room,/onGenerateAI\(detail\.topic\.legacyLessonId\|\|detail\.topic\.id,true\)/);

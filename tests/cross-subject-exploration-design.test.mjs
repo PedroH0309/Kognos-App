@@ -9,8 +9,10 @@ test('Every curriculum topic remains reachable from the independent Laboratory H
  const hub=read('apps/web/src/components/LaboratoryHub.tsx');
  assert.match(room,/onOpenLab\(detail\.topic\)/);
  assert.match(room,/readerTab==='lesson'/);
- assert.match(room,/readerTab==='activities'/);
- assert.match(room,/readerTab==='explanations'/);
+ assert.match(room,/<LessonAnimatedTabs value=\{readerTab\} onChange=\{setReaderTab\}/);
+ const tabs=read('apps/web/src/components/LessonAnimatedTabs.tsx');
+ assert.match(tabs,/id:'activities'/);
+ assert.match(tabs,/id:'explanations'/);
  assert.match(trails,/studySpace==='laboratory'/);
  assert.match(trails,/<LaboratoryHub/);
  assert.match(hub,/curriculumTopics/);
