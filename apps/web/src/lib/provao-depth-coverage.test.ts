@@ -49,7 +49,7 @@ test('batch 26 registered topics are covered by the offline Provão audit',()=>{
   assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
    'Missing specific depth: '+subject+' / '+prefix);
  }
- assert.ok(report.coverage.deep_specific>=146,'Expected at least 146 specific Provão lessons including batch 28');
+ assert.ok(report.coverage.deep_specific>=151,'Expected at least 151 specific Provão lessons including batch 29');
 });
 
 test('batch 28 contributes five distinct deeply authored official Provão topics',()=>{
@@ -68,6 +68,22 @@ test('batch 28 contributes five distinct deeply authored official Provão topics
  assert.ok(report.coverage.deep_specific>=146);
 });
 
+test('batch 29 advances five genuinely distinct official Provão topics',()=>{
+ const report=provaoDepthAudit();
+ const cases=[
+  ['Química','Ligação, estrutura, propriedades físicas e químicas da água'],
+  ['Física','Trabalho realizado pelas forças exercidas por um gás. Energia interna. Transformações cíclicas'],
+  ['Biologia','Alimentos e nutrição; segurança alimentar; ação das substâncias psicoativas (drogas) no sistema…'],
+  ['História','A ascensão do café e a primeira industrialização'],
+  ['História','Ideias sociais e projetos revolucionários']
+ ] as const;
+ for(const [subject,topic] of cases){
+  assert.ok(!report.pending.some(x=>x.subject===subject&&x.topic===topic),
+   'Batch 29 must resolve specifically '+subject+' / '+topic);
+ }
+ assert.ok(report.coverage.deep_specific>=151);
+});
+
 test('every deep syllabus registration is unique, with actionable duplicate diagnostics',()=>{
  const seen=new Set<string>();
  const duplicates:string[]=[];
@@ -82,7 +98,7 @@ test('full three-grade Provão syllabus has an honest depth status for every uni
  assert.equal(report.total,364,'360 topic entries plus four writing assessment criteria');
  assert.equal(Object.values(report.coverage).reduce((sum,n)=>sum+n,0),report.total);
  assert.ok(report.coverage.deep_specific<=deepProvaoTopicKeys.length,'Coverage must never exceed editorial registrations');
- assert.ok(report.coverage.deep_specific>=146,'At least 146 distinct Provão lessons are required');
+ assert.ok(report.coverage.deep_specific>=151,'At least 151 distinct Provão lessons are required');
  // Registered prefixes can overlap or fail to match the official catalogue; report the gap explicitly.
  console.log('DEPTH_REGISTRATION_GAP '+JSON.stringify({registrations:deepProvaoTopicKeys.length,matched:report.coverage.deep_specific,gap:deepProvaoTopicKeys.length-report.coverage.deep_specific}));
  // Report registrations that cannot win the same exact-first resolver used by the app.
