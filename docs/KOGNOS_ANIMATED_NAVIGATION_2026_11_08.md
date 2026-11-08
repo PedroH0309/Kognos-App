@@ -33,3 +33,9 @@ A referência **desktop** mostra o mesmo menu em três estados: barra lateral es
 No rodapé do menu, foram adicionados controles reais de **modo claro/escuro** (com o mesmo estado e armazenamento da interface existente) e **sair da conta** (chama a rotina Supabase existente). No modo compacto, os rótulos ocultam-se, mas os ícones e os nomes acessíveis permanecem. No celular, o menu lateral de gaveta continua acessível e a barra inferior não muda rotas nem contas.
 
 Esses ajustes são estritamente visuais e de navegação: nenhuma migração, alteração de banco, permissão, autenticação ou dado curricular. Testes novos em `tests/animated-navigation-design.test.mjs`. Revisão visual manual nos diferentes tamanhos de tela permanece recomendada após a CI.
+
+## Revisão de escopo — retirar a barra inferior anterior
+
+O usuário descartou explicitamente a barra inferior móvel previamente ilustrada. Portanto, o componente `MobileBottomNavigation.tsx` foi excluído e sua montagem no `KognosApp.tsx` foi retirada. As classes CSS da cápsula móvel foram excluídas do arquivo de personalização. Na versão mobile, os destinos continuam acessíveis pelo **menu superior "Abrir menu"**, que apresenta o mesmo menu lateral do desktop, mantendo atalhos para módulos e calendário. O destaque animado nas cinco abas da aula e nas etapas 01–10 continua inalterado.
+
+O novo modelo completo de dashboard foi solicitado com uma referência visual que não ficou disponível como arquivo inspecionável nesta execução. **Não foi implementado um dashboard supostamente correspondente a uma imagem não verificável**. O PR preserva as funções existentes, sem simular a fidelidade ao novo desenho. Essa solicitação visual ainda depende de referência acessível para implementação fiel.
