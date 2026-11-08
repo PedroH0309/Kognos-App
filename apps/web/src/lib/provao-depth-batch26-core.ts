@@ -445,5 +445,94 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         "solution": "Os ataques a máquinas em episódios ludistas estavam associados a perdas de renda e alterações nas relações de trabalho, não a rejeição indistinta de qualquer tecnologia."
       }
     ]
+  },
+  {
+    "subject": "Química",
+    "topicStart": "Transformações nucleares",
+    "objective": "Distinguir transformações nucleares de processos químicos, aplicar conservação de número de massa e carga em equações nucleares e avaliar meia-vida, usos e limites dos modelos radioativos.",
+    "prerequisites": [
+      "Número atômico e número de massa",
+      "Isótopos e núcleos atômicos",
+      "Potências e decaimento exponencial"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Núcleo, emissões e conservação",
+        "explanation": "Transformações nucleares modificam a composição ou o estado energético do núcleo atômico, diferentemente de reações químicas, que reorganizam elétrons e ligações sem alterar o número de prótons de cada elemento. O número atômico Z conta prótons; o número de massa A conta prótons e nêutrons. Na emissão alfa, um núcleo perde dois prótons e dois nêutrons, produzindo uma partícula ⁴₂He; portanto A diminui quatro unidades e Z diminui duas. No decaimento beta menos, um nêutron transforma-se em próton, elétron e antineutrino: A permanece e Z aumenta uma unidade. A emissão gama libera energia eletromagnética sem mudar A ou Z. Em equações nucleares, a soma dos números de massa e a soma dos números atômicos são conservadas, embora massas de repouso e energia possam converter-se segundo E=mc². A emissão beta não deve ser confundida com elétron de camada atômica arrancado em ionização. A estabilidade depende da estrutura nuclear e não pode ser prevista apenas pela regra do octeto químico. Radiação ionizante exige procedimentos de segurança apropriados; não se deve manipular fontes desconhecidas.",
+        "example": "Considere ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He. Confira A: 238=234+4; confira Z: 92=90+2. A transformação é alfa, porque o núcleo filho perde dois prótons e dois nêutrons; não é uma reação química comum.",
+        "pitfall": "Não confunda emissão beta com retirada de elétron orbital; conserve A e Z em cada equação nuclear.",
+        "steps": [
+          "Identifique Z e A de cada espécie.",
+          "Aplique conservação de número de massa e carga.",
+          "Confira a partícula emitida e a natureza nuclear da transformação."
+        ]
+      },
+      {
+        "level": "intermediate",
+        "title": "Meia-vida e evolução temporal",
+        "explanation": "Meia-vida física T½ é o intervalo em que a quantidade média de núcleos radioativos ainda não decaídos cai à metade. Para uma população macroscópica de núcleos independentes com taxa de decaimento constante, N(t)=N₀(1/2)^(t/T½). Após uma meia-vida resta metade; após duas, um quarto; após três, um oitavo. A massa do radionuclídeo e sua atividade diminuem na mesma proporção nesse modelo, mas a massa total de todos os produtos não desaparece: surgem núcleos filhos e há emissão de energia e partículas. Se uma amostra inicialmente contém 80 mg de radionuclídeo com T½=5 dias, após 15 dias transcorreram três meias-vidas e restam 80/8=10 mg do nuclídeo original. A meia-vida não significa que cada núcleo individual 'vive' exatamente esse período: o decaimento é probabilístico. Temperatura e pressão usuais quase não alteram as constantes de decaimento nuclear; isso contrasta com a velocidade de muitas reações químicas. Se há cadeias de decaimento ou produtos radioativos, a atividade total pode exigir modelo mais complexo.",
+        "example": "Uma amostra contém 80 mg de isótopo com T½=5 dias. Em 15 dias, n=15/5=3 meias-vidas. Quantidade restante=80×(1/2)³=10 mg. A fração que decaiu é 70/80=87,5%, sem supor que a massa total desapareceu.",
+        "pitfall": "Meia-vida é uma propriedade estatística da população nuclear, não prazo fixo para cada átomo decair.",
+        "steps": [
+          "Determine o número de meias-vidas transcorridas.",
+          "Calcule a fração (1/2)^n.",
+          "Interprete corretamente a quantidade remanescente e a parcela transformada."
+        ]
+      },
+      {
+        "level": "advanced",
+        "title": "Fissão, fusão e energia nuclear",
+        "explanation": "Fissão é a divisão de um núcleo pesado em fragmentos mais leves, frequentemente acompanhada de nêutrons e energia. Uma reação em cadeia controlada utiliza parte dos nêutrons liberados para induzir novas fissões, enquanto sistemas de controle e remoção de calor são essenciais para operação segura. Fusão combina núcleos leves e também pode liberar energia, como em reações envolvendo isótopos do hidrogênio, mas requer condições extremas para superar a repulsão elétrica entre núcleos. A energia liberada está associada à diferença de energia de ligação nuclear, expressa pela relação E=Δmc²; isso não significa criação de energia a partir do nada. Uma diferença de massa de 1,0×10⁻⁶ kg corresponderia a cerca de 9,0×10¹⁰ J usando c≈3,0×10⁸ m/s. O cálculo é idealizado e não equivale à energia elétrica entregue por uma usina, pois há perdas e conversões térmicas. Em aplicações médicas, diagnósticas e industriais, benefícios dependem de dose, tipo de radiação, blindagem, tempo de exposição e controle de resíduos. É incorreto afirmar que toda radiação é nuclear ou que toda exposição implica o mesmo risco.",
+        "example": "Para Δm=1,0×10⁻⁶ kg e c=3,0×10⁸ m/s, calcule E=Δmc²=1,0×10⁻⁶×9,0×10¹⁶=9,0×10¹⁰ J. É energia ideal associada à diferença de massa; eficiência e conversão elétrica não estão incluídas.",
+        "pitfall": "Não equipare energia nuclear liberada à energia elétrica útil, nem trate fissão e fusão como processos idênticos.",
+        "steps": [
+          "Identifique o processo nuclear e a diferença de massa.",
+          "Use unidades SI na relação E=Δmc².",
+          "Separe energia liberada de rendimento e segurança do sistema."
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Na emissão alfa de ²³⁸₉₂U, qual núcleo filho é formado?",
+        "options": [
+          "²³⁸₉₀Th",
+          "²³⁴₉₀Th",
+          "²³⁴₉₂U",
+          "²⁴²₉₄Pu"
+        ],
+        "correctIndex": 1,
+        "hint": "A partícula alfa tem A=4 e Z=2.",
+        "solution": "Na emissão alfa, o núcleo perde quatro unidades no número de massa e duas no número atômico: A=238−4=234 e Z=92−2=90, que corresponde a ²³⁴₉₀Th. Conservam-se A e Z na equação completa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma amostra de 80 mg tem meia-vida de 5 dias. Quanto resta após 15 dias?",
+        "options": [
+          "40 mg",
+          "20 mg",
+          "10 mg",
+          "5 mg"
+        ],
+        "correctIndex": 2,
+        "hint": "Conte quantas meias-vidas cabem em 15 dias.",
+        "solution": "Passaram-se 15/5=3 meias-vidas; a quantidade remanescente é 80×(1/2)³=80/8=10 mg. A massa do radionuclídeo original diminui, mas isso não significa desaparecimento da matéria."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Para Δm=10⁻⁶ kg e c=3×10⁸ m/s, qual é E=Δmc²?",
+        "options": [
+          "9×10¹⁰ J",
+          "3×10² J",
+          "9×10⁻¹⁰ J",
+          "3×10¹⁴ J"
+        ],
+        "correctIndex": 0,
+        "hint": "Eleve c ao quadrado antes de multiplicar por Δm.",
+        "solution": "c²=(3×10⁸)²=9×10¹⁶ m²/s². Multiplicando por 10⁻⁶ kg, resulta 9×10¹⁰ J. É a energia ideal de equivalência massa–energia, não a energia elétrica útil de um equipamento."
+      }
+    ]
   }
 ];
