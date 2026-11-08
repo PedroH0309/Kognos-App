@@ -71,7 +71,7 @@ test('Incomplete curricular guides and legacy introductions use the same stage l
  assert.match(guide,/aula completa/);
  assert.match(intro,/Material introdutório:/);
  assert.match(reader,/não é uma avaliação de domínio/);
- assert.match(reader,/não atribui acerto automático/);
+ assert.match(reader,/LessonChoiceQuestion/);
  assert.doesNotMatch(reader,/recordAttempt\(|\/api\/ai-questions\/submit|localStorage\.setItem\(/);
 });
 
