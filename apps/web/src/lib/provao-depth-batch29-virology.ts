@@ -54,11 +54,11 @@ export const provaoDepthBatch29Virology:readonly DeepTopicSpec[]=[
         "prompt": "Uma característica que diferencia vírions de bactérias é que os vírions:",
         "options": [
           "Possuem ribossomos próprios para sintetizar proteínas",
-          "Realizam divisão binária como células",
           "Dependem de células hospedeiras para a síntese de proteínas virais",
+          "Realizam divisão binária como células",
           "Têm obrigatoriamente DNA e RNA juntos no mesmo genoma"
         ],
-        "correctIndex": 2,
+        "correctIndex": 1,
         "hint": "Verifique a estrutura do agente, a etapa de replicação e o denominador de cada proporção.",
         "solution": "Os vírions não possuem ribossomos próprios e dependem do maquinário da célula hospedeira para expressão de proteínas. Seu genoma pode ser DNA ou RNA, dependendo da família viral, mas não precisa conter ambos como genomas independentes."
       },
@@ -66,12 +66,12 @@ export const provaoDepthBatch29Virology:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "prompt": "Sobre um bacteriófago temperado em estado lisogênico, é correto afirmar que:",
         "options": [
-          "Toda bactéria infectada sofre lise instantânea",
           "O material genético viral pode persistir no hospedeiro sem lise imediata",
+          "Toda bactéria infectada sofre lise instantânea",
           "O vírus já é uma bactéria com parede celular",
           "A célula hospedeira perde obrigatoriamente todo seu DNA"
         ],
-        "correctIndex": 1,
+        "correctIndex": 0,
         "hint": "Verifique a estrutura do agente, a etapa de replicação e o denominador de cada proporção.",
         "solution": "No estado lisogênico, o genoma de um fago temperado pode persistir na bactéria, por exemplo como profago integrado, sem ocorrer lise imediata. Isso é diferente do ciclo lítico, que produz partículas e pode romper a célula."
       },
@@ -81,10 +81,10 @@ export const provaoDepthBatch29Virology:readonly DeepTopicSpec[]=[
         "options": [
           "66,7 pontos percentuais",
           "10 pontos percentuais",
-          "30 pontos percentuais",
-          "20 pontos percentuais"
+          "20 pontos percentuais",
+          "30 pontos percentuais"
         ],
-        "correctIndex": 3,
+        "correctIndex": 2,
         "hint": "Verifique a estrutura do agente, a etapa de replicação e o denominador de cada proporção.",
         "solution": "As proporções são 8/80=10% e 24/80=30%; a diferença absoluta é de 20 pontos percentuais. Uma redução relativa de cerca de 66,7% é outra medida, e uma associação observacional não estabelece causalidade sozinha."
       }
