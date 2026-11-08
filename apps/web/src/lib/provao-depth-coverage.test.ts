@@ -35,6 +35,15 @@ export function provaoDepthAudit(){
  }
  return {total:uniq.size,coverage,bySubject:Object.fromEntries(bySubject),pending};
 }
+test('every deep syllabus registration is unique, with actionable duplicate diagnostics',()=>{
+ const seen=new Set<string>();
+ const duplicates:string[]=[];
+ for(const key of deepProvaoTopicKeys){
+  if(seen.has(key))duplicates.push(key);
+  seen.add(key);
+ }
+ assert.deepEqual(duplicates,[],'Duplicate subject/topicStart registrations: '+duplicates.join('; '));
+});
 test('full three-grade Provão syllabus has an honest depth status for every unique topic',()=>{
  const report=provaoDepthAudit();
  assert.equal(report.total,364,'360 topic entries plus four writing assessment criteria');
