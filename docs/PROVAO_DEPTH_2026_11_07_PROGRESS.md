@@ -443,6 +443,20 @@ As cinco aulas constam de `provao-depth-batch32-core.ts` e são registradas pelo
 
 Material original Kognos, **não oficial e sem homologação docente**. Nenhuma alteração foi feita em `legacy/`, IDs, respostas existentes, contas, Supabase, RLS, segredos ou integrações pagas. Não executar merge ou deploy sem revisão autorizada; manter PR em rascunho. A conclusão depende de testes unitários, segurança PostgreSQL com dois usuários, design, TypeScript e build no GitHub Actions.
 
-## Lote 33 — correção após CI (2026-11-08)
+## Errata editorial: lote 33 substituído (2026-11-08)
 
-A execução inicial detectou quatro registros já existentes no catálogo aprofundado: Tratamento de água; Importância ecológica e econômica de bactérias e fungos; Formação dos Estados modernos; Óxidos e chuva ácida. Esses quatro foram removidos do lote 33 para evitar duplicação e preservar os materiais anteriores. Permanece **uma aula nova** de Física: Velocidade e Aceleração: escalar média e instantânea; vetorial média e instantânea, com três capítulos e três questões objetivas A–D. Foram ampliados o exemplo e as correções comentadas dessa aula. O limiar de regressão da auditoria passa a ser 167 aulas profundas, não 171. A CI inicial falhou (19 testes); a revisão dos novos commits aguarda resultado de GitHub Actions. Conteúdo original, não oficial e sem homologação docente.
+A verificação integral das 59 unidades importadas no resolvedor revelou que o módulo de **Velocidade e Aceleração** do lote 33 também sobrepunha um prefixo de conteúdo já registrado no lote 17. O lote 33 foi retirado do resolvedor e seu arquivo removido; **não foi contabilizada nenhuma cobertura inédita do lote 33**. Os quatro primeiros tópicos duplicados já haviam sido retirados após a primeira CI falhar. Os testes de regressão anteriores continuaram existindo. A cobertura anterior correta permanece no patamar de 166 tópicos identificados, sujeito à recontagem pela auditoria.
+
+## Lote 34 — cinco novas aulas específicas, sem colisão de prefixos (2026-11-08)
+
+As 59 unidades importadas até o lote 33 foram inspecionadas para evitar coincidência de tema e sobreposição por prefixo. Os cinco assuntos a seguir não apareciam como registros específicos preexistentes, e foram acrescentados em módulos separados:
+
+- **Português:** Elementos estruturais e processos de formação de palavras.
+- **Português:** Flexão nominal e verbal: tempo, modo, aspecto, voz e correlação de formas.
+- **Biologia:** Ausência de dominância, alelos letais e polialelia.
+- **Física:** Sistemas conservativos e não conservativos.
+- **História:** A Constituição de 1988 e os direitos fundamentais.
+
+Cada tópico possui três capítulos progressivos com explicação própria de no mínimo 750 caracteres, exemplo trabalhado, condições de validade, erros típicos e três questões exclusivamente objetivas A–D com `correctIndex`, alternativas distintas, dicas e soluções comentadas com pelo menos 140 caracteres. São **cinco novas aulas, 15 capítulos e 15 questões**, com identificadores curriculares existentes inalterados. Nenhuma aula já existente foi substituída por semelhança textual. A auditoria passa a exigir **pelo menos 171/364**; logo, há **no máximo 193** entradas pendentes desse nível se a contagem corresponder ao limite exato, sem pressupor aprovação docente.
+
+Esta auditoria contempla conteúdo offline do Provão, e não as publicações remotas do Supabase nem o restante dos catálogos de ENEM, ETEC, Fuvest e Vunesp. Proibido sinalizar homologação docente inexistente. CI (testes, segurança, design, tipagem e build) requer execução e verificação autônomas. Não foi feito merge nem deploy.
