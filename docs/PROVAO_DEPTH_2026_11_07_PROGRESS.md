@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **131 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **393 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **393 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **136 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **408 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **408 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -285,3 +285,18 @@ Cinco tópicos distintos de Química do currículo do Provão Paulista, com chec
 5. **Noção de monômeros e polímeros** — unidades repetitivas, polimerização por adição e condensação, propriedades, massa molar e destino ambiental.
 
 Cada tema tem três capítulos com 750+ caracteres de explicação, exemplo resolvido com hipóteses e etapas, pré-requisitos, condições de validade e três questões exclusivamente objetivas com quatro alternativas e correção. **Total da série: 131 aulas, 393 capítulos, 393 questões; 233/364 itens do Provão ainda sem aula aprofundada específica.** O catálogo unificado dos cinco exames contém 1.512 entradas distintas e ainda exige trabalho adicional. A contagem de 364 itens oficiais do Provão não equivale à união de tópicos editoriais etiquetados como `saresp` no catálogo ampliado. Conteúdo original Kognos, não oficial e sem homologação docente. CI do lote 25 precisa de validação no GitHub Actions; não fazer merge ou deploy antes de revisão.
+
+
+## Lote 26 — 2026-11-08: estequiometria de fórmulas, equilíbrio, ecologia populacional e História
+
+Cinco aulas **originais, não oficiais e sem homologação docente**, sem repetição intencional dos registros anteriores, foram incorporadas em `apps/web/src/lib/provao-depth-batch26-core.ts` e conectadas ao resolvedor editorial existente:
+
+1. **Química — Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular**: conversão de composição percentual em mol, razão empírica, massa molar e análise de combustão com conservação de massa.
+2. **Química — Constantes de equilíbrio e cálculos simples de equilíbrio**: Kc e expoentes estequiométricos, tabela ICE, comparação Q/K e limites do modelo de atividades.
+3. **Biologia — Fatores que regulam o tamanho das populações**: balanço demográfico, modelo logístico, capacidade de suporte e marcação-recaptura com hipóteses de amostragem.
+4. **História — Período macedônico e cultura helenística**: Filipe II e Alexandre, reinos sucessores, circulação cultural e crítica de fontes materiais.
+5. **História — Do artesanato à fábrica: transformações no mundo do trabalho**: manufatura, mecanização, produtividade, urbanização, conflitos e direitos trabalhistas.
+
+Cada tema contém **três capítulos progressivos** (15 no lote), com explicações específicas de pelo menos 750 caracteres, exemplos resolvidos de pelo menos 180 caracteres, condições de validade, pré-requisitos e erros frequentes; cada aula apresenta **três questões objetivas A–D** (15 no lote), com `correctIndex` e correção comentada. Não foram acrescentadas perguntas dissertativas. A verificação automatizada do lote encontra-se em `provao-depth-batch26.test.ts`, além de asserções na auditoria `provao-depth-coverage.test.ts`.
+
+**Cobertura editorial esperada após confirmação da CI: 136/364 tópicos distintos do Provão Paulista, 408 capítulos, 408 questões objetivas e 228 tópicos do Provão ainda pendentes.** O catálogo unificado de ENEM, ETEC, Fuvest e Vunesp contém 1.512 entradas e continua parcialmente introdutório. Estes totais referem-se aos registros da biblioteca e não significam aprovação pedagógica, revisão de especialistas ou conteúdo publicado em Supabase. Nenhum ID, schema, autenticação, política RLS, chave ou API paga foi modificado. PR #93 permanece em rascunho; não mesclar nem publicar antes de revisão. A CI do lote deve ser verificada antes de declarar aprovação.
