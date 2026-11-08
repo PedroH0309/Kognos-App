@@ -4,7 +4,7 @@ export const provaoDepthBatch13Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "Operações envolvendo soluções (diluições e misturas de soluções com ou sem reação química)",
-    "objective": "Diluição e mistura de soluções",
+    "objective": "Calcular diluições e misturas de soluções com e sem reação química, distinguindo conservação de soluto, volume final e proporções estequiométricas.",
     "prerequisites": [
       "Molaridade",
       "Quantidade de matéria",
@@ -93,7 +93,7 @@ export const provaoDepthBatch13Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "Desintegração radioativa: meia-vida, datação e uso de radioisótopos",
-    "objective": "Radioatividade e aplicações",
+    "objective": "Modelar decaimento radioativo, calcular meias-vidas e interpretar datação radiométrica e uso de radioisótopos com suas hipóteses e limites.",
     "prerequisites": [
       "Isótopos",
       "Potências",
@@ -182,7 +182,7 @@ export const provaoDepthBatch13Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Física",
     "topicStart": "Trabalho realizado por forças conservativas e não conservativas",
-    "objective": "Trabalho e conservação de energia",
+    "objective": "Calcular trabalho mecânico e distinguir forças conservativas e dissipativas, aplicando energia potencial e balanços de energia em trajetórias reais.",
     "prerequisites": [
       "Força",
       "Cosseno",
@@ -271,7 +271,7 @@ export const provaoDepthBatch13Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Biologia",
     "topicStart": "Construção e análise de árvores filogenéticas",
-    "objective": "Interpretação de cladogramas",
+    "objective": "Interpretar cladogramas por ancestralidade comum e sinapomorfias, distinguindo homologia, convergência e incerteza de reconstruções filogenéticas.",
     "prerequisites": [
       "Evolução",
       "Ancestralidade",
@@ -360,7 +360,7 @@ export const provaoDepthBatch13Core:readonly DeepTopicSpec[]=[
   {
     "subject": "História",
     "topicStart": "Feudalismo e mundo feudal",
-    "objective": "Relações sociais medievais",
+    "objective": "Explicar a organização do mundo feudal, diferenciando servidão e vassalagem e avaliando mudanças econômicas e sociais na Europa medieval.",
     "prerequisites": [
       "Império Romano",
       "História medieval",
@@ -384,7 +384,7 @@ export const provaoDepthBatch13Core:readonly DeepTopicSpec[]=[
         "title": "Vassalagem",
         "explanation": "Vassalagem podia envolver juramentos de fidelidade, proteção, conselho e concessões de benefícios entre elites, inclusive direitos sobre terras ou rendas. Essa relação não se confunde com prestações de camponeses no senhorio: vassalo e servo são categorias distintas. A autoridade medieval era compartilhada e disputada por reis, nobres, bispos, mosteiros e cidades, com tribunais, impostos e privilégios diferentes. A imagem de uma pirâmide feudal perfeitamente rígida é simplificação didática; vínculos podiam se sobrepor. Instituições religiosas influenciavam educação, propriedade e legitimação, mas não controlavam uniformemente toda a Europa. Cartas e crônicas registram interesses de seus produtores, exigindo comparação de fontes. Monarquias se fortaleceram em alguns lugares por processos longos de conflito e negociação, sem extinguir instantaneamente poderes locais. A diversidade de épocas e regiões impede transformar um modelo escolar em lei histórica universal.",
         "example": "Um nobre jura fidelidade e recebe rendas de terra: identifique compromisso entre elites, diferencie obrigações camponesas e não presuma controle absoluto de toda a região. A fonte escrita expressa um vínculo de elite, não a totalidade das práticas sociais ou dos poderes locais.",
-        "pitfall": "Não trate vassalagem como sinônimo de servidão.",
+        "pitfall": "Não trate vassalagem, vínculo político entre nobres, como sinônimo de servidão camponesa, ligada a obrigações no senhorio.",
         "steps": [
           "Identifique dados, pressupostos e conceitos relevantes.",
           "Aplique o procedimento explicitado no exemplo resolvido.",
