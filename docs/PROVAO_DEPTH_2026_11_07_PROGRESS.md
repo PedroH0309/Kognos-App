@@ -168,3 +168,7 @@ A execução GitHub Actions #42440731240 falhou em três testes por um `hint` cu
 ## Décima segunda leva — Ciências da Natureza e História
 
 Foram incorporadas cinco aulas específicas: **cálculos estequiométricos**, **concentração e solubilidade**, **MRU e MUV**, **primeira e segunda leis de Mendel** e **Era Vargas até o Estado Novo**. Cada aula tem três níveis, três exemplos trabalhados distintos e três questões A–D com correção. Os conteúdos são originais, não oficiais, não homologados e exigem revisão docente. A contagem restante se refere apenas à série específica do Provão; ENEM, ETEC, Fuvest e Vunesp seguem na auditoria transversal.
+
+## Correção de validação — 2026-11-08
+
+A CI do commit `2d704cf` falhou em dois testes unitários relacionados à qualidade editorial: `provao-depth-batch12.test.ts` e `provao-depth-lessons.test.ts` exigiam exemplo resolvido com ao menos 180 caracteres. A causa identificada foi o exemplo do nível básico da aula **Movimentos uniformes e uniformemente variados**, com 174 caracteres. O exemplo foi ampliado com a condição de validade do movimento uniformemente variado, sem mudar o gabarito ou reduzir o rigor dos testes. A aprovação do novo commit depende de uma nova execução completa da CI. Nenhum tema novo foi declarado concluído nesta correção.
