@@ -54,11 +54,11 @@ export const provaoDepthBatch30Dispersion:readonly DeepTopicSpec[]=[
         "prompt": "Num vidro em dispersão normal, a componente violeta geralmente:",
         "options": [
           "Tem velocidade maior e índice menor que a vermelha",
-          "Muda sua frequência ao entrar no vidro",
           "Tem índice maior e velocidade menor que a vermelha",
+          "Muda sua frequência ao entrar no vidro",
           "Não sofre refração em uma interface oblíqua"
         ],
-        "correctIndex": 2,
+        "correctIndex": 1,
         "hint": "Distinga a mudança de velocidade da mudança de frequência e identifique a geometria de raios.",
         "solution": "Em dispersão normal, o índice do vidro é maior para a componente violeta; como v=c/n, sua velocidade de fase é menor. A frequência permanece determinada pela fonte ao cruzar uma interface estacionária."
       },
@@ -67,11 +67,11 @@ export const provaoDepthBatch30Dispersion:readonly DeepTopicSpec[]=[
         "prompt": "No arco-íris primário ideal, qual ordem relativa de cores é correta?",
         "options": [
           "Violeta fora e vermelho dentro",
-          "Vermelho fora e violeta dentro",
           "Todas as cores emergem exatamente no mesmo ângulo",
-          "A ordem depende apenas da cor do solo"
+          "A ordem depende apenas da cor do solo",
+          "Vermelho fora e violeta dentro"
         ],
-        "correctIndex": 1,
+        "correctIndex": 3,
         "hint": "Distinga a mudança de velocidade da mudança de frequência e identifique a geometria de raios.",
         "solution": "No arco primário, a região vermelha ocorre a raio angular aproximado de 42° do ponto antissolar, maior que o do violeta, próximo a 40°. Por isso vermelho aparece externamente e violeta internamente."
       },
@@ -79,12 +79,12 @@ export const provaoDepthBatch30Dispersion:readonly DeepTopicSpec[]=[
         "level": "advanced",
         "prompt": "Um observador vê uma miragem sobre asfalto muito quente. A explicação adequada envolve:",
         "options": [
+          "Gradientes de índice no ar que curvam raios e alteram posições aparentes",
           "Água acumulada obrigatoriamente na estrada",
           "Mudança de frequência luminosa por contato com o chão",
-          "Apenas difração sem alteração de direção",
-          "Gradientes de índice no ar que curvam raios e alteram posições aparentes"
+          "Apenas difração sem alteração de direção"
         ],
-        "correctIndex": 3,
+        "correctIndex": 0,
         "hint": "Distinga a mudança de velocidade da mudança de frequência e identifique a geometria de raios.",
         "solution": "O ar muito quente perto do solo pode ter densidade e índice menores que camadas superiores, fazendo a trajetória luminosa curvar. A miragem não exige água sobre a estrada e não resulta de uma frequência que muda sozinha."
       }
