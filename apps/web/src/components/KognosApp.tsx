@@ -94,7 +94,7 @@ const NAV_ICONS:Record<View,LucideIcon>={
 const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects'];
 const NAV_SECONDARY:View[]=['calendar'];
 const NAV_PRACTICE:View[]=['questions','simulados'];
-const NAV_MORE:View[]=['trails','diagnostic','weekly','sources','performance','reviews','achievements','settings'];
+const NAV_MORE:View[]=['diagnostic','weekly','sources','performance','reviews','achievements','settings'];
 const SHORT_NAV_LABELS:Partial<Record<View,string>>={
  dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
  questions:'Questões',simulados:'Simulados',plans:'Meu plano',
@@ -416,7 +416,7 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
         <button type="button" className="k-section-text-action" onClick={onEdit}><Settings size={15}/> Ajustar preferências</button>
       </div>
       <div className="k-shortcut-grid">
-        <button type="button" className="k-shortcut-card" onClick={()=>onGo('trails')}><span className="k-shortcut-icon k-shortcut-violet"><GraduationCap size={25}/></span><strong>Trilhas</strong><small>Aprenda passo a passo</small><ArrowRight size={17}/></button>
+        <button type="button" className="k-shortcut-card" onClick={()=>onGo('learn')}><span className="k-shortcut-icon k-shortcut-violet"><GraduationCap size={25}/></span><strong>Estudar</strong><small>Acesse as aulas por conteúdo</small><ArrowRight size={17}/></button>
         <button type="button" className="k-shortcut-card" onClick={()=>onGo('questions')}><span className="k-shortcut-icon k-shortcut-cyan"><ListChecks size={25}/></span><strong>Questões</strong><small>Pratique seus conhecimentos</small><ArrowRight size={17}/></button>
         <button type="button" className="k-shortcut-card" onClick={()=>onGo('simulados')}><span className="k-shortcut-icon k-shortcut-blue"><ClipboardList size={25}/></span><strong>Simulados</strong><small>Teste seu aprendizado</small><ArrowRight size={17}/></button>
         <button type="button" className="k-shortcut-card" onClick={()=>onGo('tutor')}><span className="k-shortcut-icon k-shortcut-green"><Bot size={25}/></span><strong>Tutor Kog</strong><small>Tire dúvidas e revise</small><ArrowRight size={17}/></button>
@@ -464,7 +464,7 @@ export default function KognosApp(){
      if(!sameAccount)setRetainedViews([]); // Clear prior account's retained drafts.
      authenticatedUserRef.current=account?.id??null;
      // Restore the last page only when the account actually changes or after a reload.
-     if(account&&!sameAccount)setView(readWorkspaceView(window.sessionStorage,account.id));
+     if(account&&!sameAccount){const saved=readWorkspaceView(window.sessionStorage,account.id);setView(saved==='trails'?'learn':saved);}
      setLoading(true);setProfileError('');setUser(account);setProfile(null);setAvatarUrl(null);
      if(!account){setEditing(false);setView('dashboard');setLoading(false);return;}
      // An existing Auth account and a completed learning profile are different states.
@@ -530,7 +530,7 @@ export default function KognosApp(){
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function openAssistant(){if(view!=='tutor')setTutorReturnView(view);setAssistantInitialized(true);setView('tutor');setMobileMenu(false);}
- function navigate(v:View){ if(v==='tutor'){openAssistant();}else{const returningFromTutor=view==='tutor'&&v===tutorReturnView; if(v!==view&&!returningFromTutor)setStudyContext(null);/* Keep the current lesson and study plan on the return trip from Kog. */if(!returningFromTutor&&(v==='learn'||v==='trails'||v==='subjects'))setLearningFocus(null);if(!returningFromTutor&&v==='plans')setPlannerDate('');if(!returningFromTutor&&v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function navigate(v:View){ if(v==='trails')v='learn'; if(v==='tutor'){openAssistant();}else{const returningFromTutor=view==='tutor'&&v===tutorReturnView; if(v!==view&&!returningFromTutor)setStudyContext(null);/* Keep the current lesson and study plan on the return trip from Kog. */if(!returningFromTutor&&(v==='learn'||v==='trails'||v==='subjects'))setLearningFocus(null);if(!returningFromTutor&&v==='plans')setPlannerDate('');if(!returningFromTutor&&v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){
@@ -542,7 +542,7 @@ export default function KognosApp(){
   setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);
  }
  function generateForLesson(lessonId:string,generateNew=false){setLessonPracticeRequestId(previous=>generateNew?previous+1:0);setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
- function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
+ function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('learn');setMobileMenu(false);} 
  function changeTheme(v:'dark'|'light'){setTheme(v);try{window.localStorage.setItem('kognos_theme_v1',v);}catch{/* Storage restrictions must not disable the theme toggle. */}}
  function toggleSidebar(){setSidebarCollapsed(old=>{localStorage.setItem('kognos_sidebar_collapsed_v1',String(!old));return !old;});}
  async function saveAccountChanges(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase indisponível.');const {error}=await sb.from('profiles').update({display_name:normalized.nickname,username:normalized.username||null,biography:normalized.biography,preferences:normalized}).eq('id',user.id);if(error){if(error.code==='23505')throw new Error('Este nome de usuário já está em uso. Escolha outro.');throw error;}}else window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));setProfile(normalized);}
