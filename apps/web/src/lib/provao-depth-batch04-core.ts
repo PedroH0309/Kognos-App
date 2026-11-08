@@ -251,7 +251,7 @@ export const provaoDepthBatch04Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Some as bases e multiplique pela altura, dividindo por dois.",
-        "solution": "A alternativa A está correta: (10+6)×4/2=32 cm². As demais resultam de operações incompletas com bases ou altura."
+        "solution": "A alternativa A está correta: (10+6)×4/2=32 cm². As demais resultam de operações incompletas com bases ou altura. A fórmula utiliza a soma das duas bases paralelas, multiplicada pela altura perpendicular e dividida por dois."
       },
       {
         "level": "advanced",
