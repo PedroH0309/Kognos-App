@@ -347,3 +347,20 @@ Foram adicionados **cinco tópicos oficiais novos**, não encontrados no invent�
 ## Validação da CI do lote 27 e correção de tipagem — 2026-11-08
 
 A execução [#42519709686](https://github.com/PedroH0309/Kognos-App/actions/runs/42519709686) confirmou **141 registros editoriais efetivamente selecionados** na auditoria do Provão, dos 142 prefixos cadastrados, sendo um prefixo histórico encoberto: `Química · Fórmulas químicas: fórmula mínima` (lote 16), substituído no conteúdo exibido pela versão exata do lote 26. A auditoria diagnosticou `unresolved: []`, `shadowed: [esse registro]` e `selected: 141`. Os testes unitários, segurança PostgreSQL de dois usuários e design passaram; TypeScript falhou com `TS7022` no teste do lote 27, e o build foi pulado. Corrigimos a declaração de `CourseSection` com anotação explícita, preservando aulas, IDs e gabaritos. **Aprovação completa depende da nova CI**; o PR segue em rascunho, sem merge/deploy e sem homologação pedagógica.
+
+
+## Lote 28 — cinco temas específicos novos — 2026-11-08
+
+Após inspeção do catálogo de `provao-paulista.ts`, dos módulos editoriais existentes e da auditoria, foram desenvolvidas e registradas **cinco aulas autorais específicas**, cada uma com três capítulos progressivos (mínimo de 750 caracteres explicativos por capítulo), um exemplo resolvido por capítulo (mínimo de 180 caracteres), condições de validade, erros frequentes, passos de resolução e três questões **exclusivamente objetivas** com quatro alternativas distintas, `correctIndex` e correção explicada. As aulas são originais do Kognos, **não oficiais e sem homologação docente**.
+
+| Área | Tema oficial do Provão Paulista | Implementação |
+|---|---|---|
+| Química | Equações termoquímicas | `provao-depth-batch28-thermochemistry.ts` |
+| Física | Máquinas térmicas e máquinas frigoríficas. O ciclo de Carnot | `provao-depth-batch28-heat-engines.ts` |
+| Biologia | Conservação biológica (unidades de conservação) | `provao-depth-batch28-conservation.ts` |
+| História | Nações e nacionalismos no século XIX | `provao-depth-batch28-nationalism.ts` |
+| História | A classe operária e a luta por direitos | `provao-depth-batch28-labour.ts` |
+
+**Previsão editorial após passar a CI do lote 28:** 146 de 364 tópicos distintos aprofundados (**40,1%**), 438 capítulos e 438 questões objetivas, **218 tópicos do Provão pendentes**. A biblioteca contém 147 registros editoriais, pois o prefixo antigo de fórmula mínima do lote 16 continua encoberto pela correspondência oficial exata da aula de fórmulas químicas do lote 26; esse registro não é contado duas vezes. Os outros exames compartilham tópicos com o Provão e possuem assuntos próprios; o catálogo unificado de 1.512 entradas não está concluído.
+
+**Integração e validação:** importações dos cinco arquivos em `apps/web/src/lib/provao-depth-lessons.ts`; teste específico em `provao-depth-batch28.test.ts` para identidade oficial, preservação de IDs e fallback, 3 capítulos profundos, exemplos, autoria não oficial e 3 gabaritos A–D por aula; auditoria `provao-depth-coverage.test.ts` elevada para mínimo de 146. A última CI totalmente aprovada **antes** do lote foi [#42519833451](https://github.com/PedroH0309/Kognos-App/actions/runs/42519833451). Ainda é obrigatório validar a nova revisão em GitHub Actions — unitários, segurança PostgreSQL de dois usuários, design, TypeScript e build. Conteúdo não revisado por especialistas. Não houve alterações em Supabase, RLS, schema, IDs, autenticação, quotas ou chaves; PR #93 permanece em rascunho, sem merge ou deploy.
