@@ -1,5 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
+import type {CourseTask} from './course-content.ts';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {provaoDepthBatch24Core} from './provao-depth-batch24-core.ts';
 import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
@@ -21,7 +22,7 @@ test('batch 24: five distinct chemistry lessons with original worked examples an
   assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
   assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const s=lesson.sections[i],q=lesson.tasks[i];
+   const s=lesson.sections[i],q:CourseTask=lesson.tasks[i];
    assert.ok(s.explanation.length>=750,spec.topicStart+' short explanation '+i);
    assert.ok(s.example.length>=180,spec.topicStart+' short worked example '+i);
    assert.ok(s.steps.length>=3&&s.pitfall.length>=50);
