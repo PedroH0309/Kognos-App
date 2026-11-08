@@ -55,10 +55,10 @@ export const provaoDepthBatch30Organics:readonly DeepTopicSpec[]=[
         "options": [
           "Duas ligações π sem componente σ",
           "Duas ligações σ e nenhuma π",
-          "Uma ligação σ e uma ligação π",
-          "Uma ligação tripla com três componentes π"
+          "Uma ligação tripla com três componentes π",
+          "Uma ligação σ e uma ligação π"
         ],
-        "correctIndex": 2,
+        "correctIndex": 3,
         "hint": "Identifique ligações e grupos funcionais antes de calcular ou classificar.",
         "solution": "A ligação dupla C=C possui uma componente sigma, que integra o eixo internuclear, e uma componente pi, associada à sobreposição lateral. A tripla tem uma sigma e duas pi; essa distinção fundamenta a estrutura dos alcenos."
       },
@@ -67,11 +67,11 @@ export const provaoDepthBatch30Organics:readonly DeepTopicSpec[]=[
         "prompt": "Qual das substâncias apresenta oxigênio inserido entre carbonos, formando cadeia heterogênea?",
         "options": [
           "CH₃CH₂OH",
-          "CH₃OCH₂CH₃",
           "CH₃CH₂CH₃",
+          "CH₃OCH₂CH₃",
           "CH₃CH=CH₂"
         ],
-        "correctIndex": 1,
+        "correctIndex": 2,
         "hint": "Identifique ligações e grupos funcionais antes de calcular ou classificar.",
         "solution": "Na estrutura CH₃–O–CH₂–CH₃, o átomo de oxigênio se encontra entre dois grupos que contêm carbono e integra a cadeia, caracterizando éter e cadeia heterogênea. Em etanol, a hidroxila é terminal e não interrompe a sequência carbônica."
       },
@@ -79,12 +79,12 @@ export const provaoDepthBatch30Organics:readonly DeepTopicSpec[]=[
         "level": "advanced",
         "prompt": "Na combustão completa balanceada de 1 mol de etanol C₂H₆O, formam-se teoricamente:",
         "options": [
+          "2 mol de CO₂ e 3 mol de H₂O",
           "1 mol de CO₂ e 1 mol de H₂O",
           "2 mol de CO₂ e 2 mol de H₂O",
-          "3 mol de CO₂ e 2 mol de H₂O",
-          "2 mol de CO₂ e 3 mol de H₂O"
+          "3 mol de CO₂ e 2 mol de H₂O"
         ],
-        "correctIndex": 3,
+        "correctIndex": 0,
         "hint": "Identifique ligações e grupos funcionais antes de calcular ou classificar.",
         "solution": "A equação balanceada é C₂H₆O+3O₂→2CO₂+3H₂O. A conservação dos dois carbonos exige dois mols de CO₂ e os seis hidrogênios produzem três mols de H₂O para cada mol de combustível em combustão completa."
       }
