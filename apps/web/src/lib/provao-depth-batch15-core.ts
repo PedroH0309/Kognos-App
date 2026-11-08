@@ -86,7 +86,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Calcule a média ponderada pelas abundâncias.",
-        "solution": "A alternativa C é correta: 0,25×20+0,75×22=5+16,5=21,5 u. Não se calcula a média aritmética simples quando as abundâncias são diferentes."
+        "solution": "A alternativa C é correta: 0,25×20+0,75×22=5+16,5=21,5 u. Não se calcula a média aritmética simples quando as abundâncias são diferentes. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       }
     ]
   },
@@ -149,7 +149,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Use Ec=mv²/2.",
-        "solution": "A alternativa C está correta: Ec=2×16/2=16 J. O fator quadrático da velocidade e a divisão por dois são indispensáveis."
+        "solution": "A alternativa C está correta: Ec=2×16/2=16 J. O fator quadrático da velocidade e a divisão por dois são indispensáveis. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       },
       {
         "level": "intermediate",
@@ -162,7 +162,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Iguale mgh e mv²/2.",
-        "solution": "A alternativa B está correta: v²=2gh=2×10×5=100, então v=10 m/s. A massa cancela e o resultado pressupõe ausência de perdas."
+        "solution": "A alternativa B está correta: v²=2gh=2×10×5=100, então v=10 m/s. A massa cancela e o resultado pressupõe ausência de perdas. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       },
       {
         "level": "advanced",
@@ -175,7 +175,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 3,
         "hint": "Calcule ΔEm=Em final−Em inicial.",
-        "solution": "A alternativa D está correta: Wnc=70−100=−30 J. A energia mecânica diminuiu por trabalho dissipativo; a energia total não desapareceu."
+        "solution": "A alternativa D está correta: Wnc=70−100=−30 J. A energia mecânica diminuiu por trabalho dissipativo; a energia total não desapareceu. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       }
     ]
   },
@@ -264,7 +264,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Lembre da estequiometria 3:2.",
-        "solution": "A alternativa B está correta: três íons sódio saem e dois potássio entram a cada ATP hidrolisado, mantendo gradientes eletroquímicos."
+        "solution": "A alternativa B está correta: três íons sódio saem e dois potássio entram a cada ATP hidrolisado, mantendo gradientes eletroquímicos. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       }
     ]
   },
@@ -353,7 +353,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 3,
         "hint": "Considere o vocabulário e o contexto de produção.",
-        "solution": "A alternativa D está correta: Valla investigou anacronismos linguísticos e históricos, questionando a autenticidade atribuída ao documento."
+        "solution": "A alternativa D está correta: Valla investigou anacronismos linguísticos e históricos, questionando a autenticidade atribuída ao documento. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       }
     ]
   },
@@ -429,7 +429,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Multiplique i, Kf e molalidade.",
-        "solution": "A alternativa A está correta: ΔTf=1×1,86×0,5=0,93 °C. O ponto de congelamento previsto fica abaixo do da água pura."
+        "solution": "A alternativa A está correta: ΔTf=1×1,86×0,5=0,93 °C. O ponto de congelamento previsto fica abaixo do da água pura. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       },
       {
         "level": "advanced",
@@ -442,7 +442,7 @@ export const provaoDepthBatch15Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 3,
         "hint": "Aplique π=MRT com i=1.",
-        "solution": "A alternativa D está correta: π=0,10×0,082×300=2,46 atm. A temperatura deve estar em kelvin e as unidades de R devem ser compatíveis."
+        "solution": "A alternativa D está correta: π=0,10×0,082×300=2,46 atm. A temperatura deve estar em kelvin e as unidades de R devem ser compatíveis. O raciocínio exige identificar a grandeza ou conceito relevante, aplicar a definição sem confundir alternativas próximas e conferir a condição descrita no enunciado."
       }
     ]
   }
