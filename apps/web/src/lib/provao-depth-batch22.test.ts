@@ -1,3 +1,4 @@
+import type {CourseTask} from './course-content.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
@@ -30,7 +31,7 @@ test('batch 22: five unique authored topics, substantial progressive explanation
   assert.deepEqual(lesson.tasks.map(q=>q.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
    const section=lesson.sections[i];
-   const task: (typeof lesson.tasks)[number]=lesson.tasks[i];
+   const task: CourseTask=lesson.tasks[i];
    assert.ok(section.explanation.length>=750,prefix+' explanation '+i);
    assert.ok(section.example.length>=180,prefix+' example '+i);
    assert.ok(section.pitfall.length>=50&&section.steps.length>=3);
