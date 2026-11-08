@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
-import {parseCourseDocument} from './course-content.ts';
+import {parseCourseDocument,type CourseTask} from './course-content.ts';
 import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
@@ -36,12 +36,12 @@ test('ten subject-specific Provão Paulista lessons are substantive, progressive
   for(const level of ['basic','intermediate','advanced'] as const){
    const section=lesson.sections.find(s=>s.level===level);
    assert.ok(section&&section.explanation.length>=750);
-   const tasks=lesson.tasks.filter(t=>t.level===level);
+   const tasks:CourseTask[]=lesson.tasks.filter((item:CourseTask)=>item.level===level);
    assert.ok(tasks.length>=1,subject+' / '+level);
    for(const task of tasks){
     assert.equal(task.options?.length,4,subject+' / '+level+' requires authored distractors');
     assert.equal(new Set(task.options).size,4);
-    assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex!>=0&&task.correctIndex!<4);
+    assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
     assert.ok(task.solution.length>=140);
     const converted=lessonTaskChoice(lesson,task);
     assert.equal(converted.source,'editorial');
