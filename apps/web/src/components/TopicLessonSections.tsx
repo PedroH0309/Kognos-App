@@ -82,7 +82,7 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
     <p>O título do roteiro não é uma aula completa. Enquanto o conteúdo é desenvolvido, você pode consultar o edital, estudar com o Kog ou acessar os simuladores no Kognos Lab. Não apresentamos textos gerados automaticamente como se fossem uma aula validada.</p>
    </div>
   </div>}
-  {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction} onTutor={onTutor}/>}
+  {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction}/>}
   {view==='activities'&&<>
    {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Questões de alternativas respondidas: {answered} de {exerciseIds.length}. Este treino é local; as respostas não são registradas como nota ou domínio.</p>}
    {lesson&&lesson.sections.map((section,i)=>{
