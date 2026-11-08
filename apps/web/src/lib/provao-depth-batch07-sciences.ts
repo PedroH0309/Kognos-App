@@ -266,7 +266,7 @@ export const provaoDepthBatch07Sciences:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 3,
         "hint": "Use média ponderada pelas massas porque a substância é a mesma.",
-        "solution": "A alternativa D está correta: Tf=(0,20×80+0,30×20)/(0,20+0,30)=44 °C. A média simples de 50 °C ignora que a porção fria tem maior massa."
+        "solution": "A alternativa D está correta: Tf=(0,20×80+0,30×20)/(0,20+0,30)=44 °C. A média simples de 50 °C ignora que a porção fria tem maior massa. O balanço energético foi calculado com mesma substância, calor específico igual e ausência de perdas."
       }
     ]
   }
