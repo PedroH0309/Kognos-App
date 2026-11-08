@@ -10,15 +10,15 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **61 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **183 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **183 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **66 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **198 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **198 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
 ### Lista exata das aulas novas
 
-### Biologia (7)
+### Biologia (8)
 - Pirâmides ecológicas
 - Sucessão ecológica
 - Herança de grupos sanguíneos na espécie humana
@@ -26,6 +26,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Evidências da evolução biológica
 - Divisões celulares: compreensão das funções da mitose e da meiose
 - Metabolismo energético: energia para a vida
+- Ciclos biogeoquímicos: água, oxigênio, carbono e nitrogênio
 
 ### Filosofia (5)
 - O contratualismo clássico
@@ -34,12 +35,13 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - As abordagens racionalistas e empiristas do conhecimento
 - Questões éticas contemporâneas
 
-### Física (7)
+### Física (8)
 - Escalas termométricas. As escalas Celsius
 - Comprimento de onda, período e frequência
 - Primeira e segunda Leis da Termodinâmica
 - Fenômeno da refração. Índice de refração absoluto
 - Lei de Coulomb. Campo elétrico
+- Potência elétrica. Efeito joule. Consumo de energia elétrica. O quilowatt-hora
 - Leis de Newton: Princípio da inércia
 - Calor como forma de energia em trânsito. Capacidade térmica, calor específico e calor latente
 
@@ -50,7 +52,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - A geopolítica da água
 - A cartografia como recurso para a compreensão espacial dos fenômenos geográficos
 
-### História (8)
+### História (9)
 - Iluminismo e Liberalismo
 - A Revolução Francesa e a era napoleônica
 - Primeira Guerra Mundial
@@ -59,6 +61,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - A Guerra Fria e os conflitos regionais
 - O Regime Civil-Militar
 - Revolução Industrial
+- Primeira República: política, economia e movimentos sociais
 
 ### Inglês (3)
 - Localização de informação específica
@@ -82,7 +85,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Frase, oração e período
 - Coordenação e subordinação. Conectivos
 
-### Química (9)
+### Química (11)
 - Equações químicas e balanceamento
 - Cinética química
 - Reações de oxirredução e números de oxidação
@@ -92,6 +95,8 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Equilíbrio em sistemas homogêneos e heterogêneos
 - Modelos atômicos de Dalton, Thomson, Rutherford e Bohr
 - Geometria molecular
+- Lei de Lavoisier e Lei de Proust
+- Produto iônico da água e escalas de pH e pOH
 
 ### Sociologia (4)
 - Pluralismo cultural: a persistência do etnocentrismo
@@ -101,7 +106,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **303 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 303 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **298 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 298 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -146,3 +151,7 @@ Duas aulas autorais adicionais: **racionalismo, empirismo e problema da induçã
 ## Décima leva — Cartografia e ética contemporânea
 
 Aulas específicas novas: **cartografia como linguagem espacial** (escalas, projeções, mapas temáticos e análise crítica de dados territoriais) e **questões éticas contemporâneas** (moral, deveres, consequências, virtudes, privacidade e governança tecnológica). Seis capítulos, seis questões A–D com gabarito e solução, exemplos resolvidos e validação dedicada. Revisão docente permanece pendente.
+
+## Décima primeira leva — Ciências da Natureza e História
+
+Cinco temas específicos: **Lei de Lavoisier e Lei de Proust** e **produto iônico da água, pH e pOH** (Química); **potência elétrica, efeito Joule e kWh** (Física); **ciclos da água, carbono, oxigênio e nitrogênio** (Biologia); **Primeira República, economia cafeeira, movimentos sociais e crise de 1930** (História). Quinze capítulos progressivos com explicações de mais de 750 caracteres, exemplos resolvidos, limites dos modelos, erros frequentes e quinze questões A–D originais. Validação transversal e teste dedicado verificam gabaritos, cobertura e preservação de IDs. Revisão docente ainda pendente.
