@@ -60,7 +60,7 @@ export const provaoDepthBatch34PhysicsHistory:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Compare as grandezas ou evidências e utilize a relação discutida no nível.",
-        "solution": "Na descida, W_peso=mg(h_i−h_f)=2·10·3=+60 J. O peso realiza trabalho positivo, aumentando a energia cinética."
+        "solution": "Na descida, W_peso=mg(h_i−h_f)=2·10·3=+60 J. O peso realiza trabalho positivo, aumentando a energia cinética. O sinal segue a direção relativa entre força e deslocamento. Como ambos apontam para baixo durante a descida, o cosseno do ângulo é positivo e o trabalho do peso é +60 joules."
       },
       {
         "level": "intermediate",
@@ -73,7 +73,7 @@ export const provaoDepthBatch34PhysicsHistory:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Compare as grandezas ou evidências e utilize a relação discutida no nível.",
-        "solution": "A força dissipativa realiza trabalho negativo de 24 J e a energia mecânica diminui na mesma quantidade; a energia total permanece conservada."
+        "solution": "A força dissipativa realiza trabalho negativo de 24 J e a energia mecânica diminui na mesma quantidade; a energia total permanece conservada. A equação ΔE_m=W_não conservativo descreve a conversão de energia mecânica em energia interna ou outras modalidades. Um valor negativo não representa destruição de energia, mas transformação fora das parcelas K+U."
       },
       {
         "level": "advanced",
@@ -86,7 +86,7 @@ export const provaoDepthBatch34PhysicsHistory:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Compare as grandezas ou evidências e utilize a relação discutida no nível.",
-        "solution": "No modelo de gravidade uniforme, W_peso=−mgΔh e independe do comprimento do trajeto, característica conservativa."
+        "solution": "No modelo de gravidade uniforme, W_peso=−mgΔh e independe do comprimento do trajeto, característica conservativa. Ambos os trajetos começam e terminam no mesmo nível de potencial gravitacional; por isso, ΔU_g é o mesmo e W_peso=−ΔU_g. A conclusão pressupõe o mesmo campo gravitacional e não considera atrito."
       }
     ]
   },
