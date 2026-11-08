@@ -402,7 +402,6 @@
  }
 }
 @media(prefers-reduced-motion:reduce){
- .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button,
  .app-layout .app-sidebar .side-nav-item,
  .app-layout .app-sidebar .k-sidebar-utility,
  .app-layout .app-sidebar .k-sidebar-utility-switch>span{
