@@ -29,7 +29,7 @@ test('Introductory lessons preserve authored explanations and link to the indepe
  assert.match(reader,/<UniversalLessonReader/);
  assert.match(universal,/introduction\.explanation/);
  assert.match(universal,/introduction\.workedExample/);
- assert.match(universal,/introduction\.check/);
+ assert.match(universal,/introductoryChoice\(introduction\)/);
  assert.match(hub,/<MathLabPanel/);
  assert.match(hub,/<ScienceLabPanel/);
 });
