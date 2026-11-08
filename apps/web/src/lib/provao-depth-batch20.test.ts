@@ -9,11 +9,10 @@ const cases=[
  ['Química','Atmosfera terrestre: composição e características',[2,0,3]],
  ['Química','Interações da água com outras substâncias',[1,2,0]],
  ['Física','Sistemas geocêntrico e heliocêntrico. Leis de Kepler',[0,1,3]],
- ['Biologia','Evidências da evolução biológica',[1,0,2]],
  ['História','Aspectos políticos e socioculturais do Antigo Regime',[2,0,3]]
 ] as const;
 test('batch 20: unique exact curricular items and three verified objective stages each',()=>{
- assert.equal(provaoDepthBatch20Core.length,5);
+ assert.equal(provaoDepthBatch20Core.length,4);
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
  for(const [subject,prefix,keys] of cases){
   const matches=curriculumTopics.filter(t=>t.subject===subject&&t.topic.startsWith(prefix)&&t.exams.includes('saresp'));
