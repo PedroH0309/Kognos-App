@@ -11,6 +11,7 @@ import MathLabPanel from './math/MathLabPanel';
 import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
 import HumanitiesLabPanel from './humanities/HumanitiesLabPanel';
+import EcologyEnergyLab from './science/EcologyEnergyLab';
 import {resolveMathLab} from '@/lib/math-labs';
 import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveLanguageLab} from '@/lib/language-labs';
@@ -21,7 +22,15 @@ import {resolveHumanitiesLab} from '@/lib/humanities-labs';
  * This is layout/pacing, NOT automated pedagogical rewriting or new facts.
  */
 export function lessonReadingBlocks(text:string):string[]{
- return text.split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean).flatMap(paragraph=>{
+ return text.replace(/^(?:Este é um módulo introdutório pré-carregado[^\n]*|Aula específica do Kognos; revisão docente pendente\.|Este é um módulo introdutório pré-carregado, ampliado com[^\n]*)(?:\n\n)?/i,'')
+ .split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean)
+ .filter(paragraph=>![
+  /^Este é um módulo introdutório pré-carregado/i,
+  /^Os exemplos e exercícios a seguir são originais do Kognos/i,
+  /^Ao aplicar estes conceitos ao assunto/i,
+  /^Para aprofundar .+, compare situações/i
+ ].some(pattern=>pattern.test(paragraph)))
+ .flatMap(paragraph=>{
   const sentences=paragraph.split(/(?<=[.!?])\s+(?=[A-ZÁÀÃÂÉÊÍÓÔÕÚÜÇ“"«])/u).map(s=>s.trim()).filter(Boolean);
   if(sentences.length<3)return [paragraph];
   const blocks:string[]=[];
@@ -45,6 +54,7 @@ function ConceptMap({lesson}:{lesson:CourseLesson}){
 }
 
 function TopicLab({subject,topic}:{subject:string;topic:string}){
+ if(subject==='Biologia'&&topic.startsWith('Principais conceitos de Ecologia'))return <EcologyEnergyLab/>;
  const match={subject,topic};
  if(resolveMathLab(match))return <MathLabPanel {...match}/>;
  if(resolveScienceLab(match))return <ScienceLabPanel {...match}/>;
@@ -110,6 +120,53 @@ function LessonStage({section,index,task,onResult}:{
  </article>;
 }
 
+function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
+ const [review,setReview]=useState<'understood'|'review'|null>(null);
+ const method=studyMethodForSubject(subject);
+ const first=lesson.sections[0];
+ const application=lesson.sections[1];
+ const sample=lesson.tasks.find(task=>task.level==='intermediate')??lesson.tasks[0];
+ const concepts=lesson.syllabusScope?.split(/;\s*|\.\s+(?=[A-ZÀ-Ú])/u).map(x=>x.trim()).filter(x=>x.length>=12)??[];
+ return <div className="k-universal-guide">
+  <section className="k-universal-context">
+   <h4>03 · Comece pelo conceito central</h4>
+   <ReadingBlocks value={first.explanation}/>
+   <p className="k-universal-guide-label">Exemplo inicial</p>
+   <ReadingBlocks value={first.example}/>
+  </section>
+  <section className="k-universal-chapter">
+   <h4>04 · Aprenda a investigar o assunto</h4>
+   <ReadingBlocks value={application.explanation}/>
+   <ol className="k-universal-guide-steps">{method.questions.map((question,i)=><li key={i}>{question}</li>)}</ol>
+   <p className="k-universal-caution">Estas perguntas orientam a investigação; não substituem conceitos específicos ainda não publicados.</p>
+  </section>
+  <section className="k-universal-visual">
+   <h4>05 · Tópicos do edital que precisam ser dominados</h4>
+   {concepts.length?<ul className="k-universal-guide-list">{concepts.map((text,i)=><li key={i}>{text}</li>)}</ul>:
+    <p>Este guia se refere ao tema: {lesson.topic}.</p>}
+   <small>Lista de competências previstas; não significa que todos os conteúdos tenham sido ensinados neste roteiro.</small>
+  </section>
+  <section className="k-universal-chapter">
+   <h4>06 · Comparação e limites do exemplo</h4>
+   <p>Use o exemplo acima para examinar em que condições a explicação é válida. Compare o caso à advertência seguinte.</p>
+   <div className="k-universal-comparison">
+    <h5>07 · Atenção ao erro frequente</h5><ReadingBlocks value={first.pitfall}/>
+   </div>
+  </section>
+  {sample&&<section className="k-universal-chapter">
+   <h4>09 · Verifique uma ideia fundamental</h4>
+   <QuickCheck task={sample} level="Roteiro de estudo" onResult={setReview}/>
+  </section>}
+  <section className="k-universal-summary">
+   <h4>10 · Consolidação provisória</h4>
+   <p><strong>Conceito inicial:</strong> {lessonReadingBlocks(first.explanation)[0]??'Consulte os objetivos do conteúdo.'}</p>
+   <p><strong>Ponto de atenção:</strong> {first.pitfall}</p>
+   <p><strong>Próxima ação:</strong> {review==='review'?'Releia a definição e compare a sua resposta à resolução comentada.':'Use as questões corrigidas e procure material específico para os demais pontos do edital.'}</p>
+   <p className="k-universal-caution">Esta é uma introdução. Ainda falta uma aula completa, com recursos e exemplos próprios de todos os subtemas. Nenhuma nota ou domínio foi atribuído.</p>
+  </section>
+ </div>;
+}
+
 export default function UniversalLessonReader({subject,topic,lesson,introduction,onTutor,onLab}:{
  subject:string;topic:string;lesson?:CourseLesson|null;introduction?:LearningLesson|null;
  onTutor?:()=>void;onLab?:()=>void;
@@ -123,9 +180,10 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
  )/750)+practiceCount*3):10;
  const weak=lesson?.sections.filter(section=>results[section.level]==='review')??[];
  const assessed=Object.keys(results).length;
+ const isGenericStarter=Boolean(lesson?.authorship.includes('módulo introdutório estruturado'));
  const hasSpecificContext=Boolean(situation);
  const labs={subject,topic};
- const hasLab=Boolean(resolveMathLab(labs)||resolveScienceLab(labs)||resolveLanguageLab(labs)||resolveHumanitiesLab(labs));
+ const hasLab=Boolean((subject==='Biologia'&&topic.startsWith('Principais conceitos de Ecologia'))||resolveMathLab(labs)||resolveScienceLab(labs)||resolveLanguageLab(labs)||resolveHumanitiesLab(labs));
  if(!lesson&&!introduction)return <div className="k-lesson-unavailable" role="status">
   Este conteúdo está no roteiro, mas ainda não possui material didático específico. Nenhuma aula completa será simulada automaticamente.
  </div>;
@@ -134,10 +192,12 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    <div className="k-universal-eyebrow">{subject} · Unidade de estudo</div>
    <h3>{topic}</h3>
    <div className="k-universal-metadata">
-    <span>{lesson?.review==='editor'?'Aula editorial':lesson?.review==='ai_reviewed'?'Revisão automática, sem homologação':lesson?'Material introdutório · revisão docente pendente':'Introdução · não é aula completa'}</span>
+    <span>{lesson?.review==='editor'?'Aula editorial':lesson?.review==='ai_reviewed'?'Revisão automática, sem homologação':lesson?.supportTopic?'Apoio temático parcial · revisão docente pendente':lesson?.authorship.includes('módulo introdutório estruturado')?'Roteiro introdutório · aula completa pendente':lesson?'Aula autoral · revisão docente pendente':'Introdução · não é aula completa'}</span>
     <span>Leitura e prática: ~{estimatedMinutes} min (estimativa)</span>
     <span>{lesson?lesson.sections.length+' etapas progressivas':'1 introdução'}</span>
    </div>
+   {lesson?.supportTopic&&<p className="k-universal-scope-note" role="note"><strong>Conteúdo de apoio correspondente a:</strong> {lesson.supportTopic}. Esta aula aprofundada aborda uma parte relacionada do assunto; outros pontos previstos no edital ainda necessitam de material editorial específico.</p>}
+   {lesson?.authorship.includes('módulo introdutório estruturado')&&<p className="k-universal-scope-note" role="note"><strong>Desenvolvimento pendente:</strong> este assunto tem apenas conceitos e exercícios introdutórios. Não representa uma aula aprofundada sobre todo o item do edital.</p>}
    <div className="k-universal-objectives"><strong>01 · Objetivo de aprendizagem</strong>
     <p>{lesson?.objective??introduction?.objective}</p>
     {!!lesson?.prerequisites.length&&<p className="k-universal-prereqs"><strong>Pré-requisitos:</strong> {lesson.prerequisites.join(' · ')}</p>}
@@ -148,11 +208,11 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    {situation?<><ReadingBlocks value={situation.context}/><p><strong>Desafio inicial:</strong> {situation.question}</p>
     <details><summary>Ver como a situação é resolvida</summary><ReadingBlocks value={situation.answer}/></details>
     <small>Contexto didático autoral; dados podem ser hipotéticos.</small></>:
-    <><p>Comece por este exemplo do material e procure identificar o conceito que explica o resultado:</p>
+    <>{isGenericStarter?<><p>Antes de ler o material, tente responder a esta pergunta:</p><p><strong>{lesson?.tasks[0]?.prompt}</strong></p><small>Questão orientadora. A explicação inicial aparece na seção seguinte.</small></>:<><p>Comece por este exemplo do material e procure identificar o conceito que explica o resultado:</p>
      <ReadingBlocks value={lesson?.sections[0]?.example??introduction?.workedExample??''}/>
-     <small>Exemplo de referência do material, não um caso cotidiano verificado.</small></>}
+     <small>Exemplo de referência do material, não um caso cotidiano verificado.</small></>}</>}
   </section>
-  {lesson?<>
+  {lesson?isGenericStarter?<GuidedIntro lesson={lesson} subject={subject}/>:<>
    <section className="k-universal-visual" aria-label="Mapa do percurso">
     <h4>05 · Visualize a sequência de aprendizagem</h4>
     <p>Do conceito inicial à análise de condições e limites, explore como os capítulos se conectam.</p>

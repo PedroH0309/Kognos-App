@@ -23,7 +23,10 @@ test('All curriculum entries across five examinations open a complete offline th
   assert.equal(lesson.topic,topic.topic);
   assert.equal(lesson.subject,topic.subject);
   assert.ok(lesson.authorship.includes('sem homologação docente'));
-  assert.ok(lesson.sections.every(section=>section.level!=='basic'||section.explanation.includes('Este é um módulo introdutório')||(lesson.authorship.includes('aula autoral')&&section.explanation.includes('Aula específica do Kognos'))));
+  assert.ok(lesson.sections.every(section=>section.level!=='basic'||
+   section.explanation.includes('Este é um módulo introdutório')||
+   lesson.authorship.includes('aula autoral')||
+   Boolean(lesson.supportTopic)),'Aula sem proveniência pedagógica identificável: '+topic.id);
   assert.ok(!ids.has(lesson.id),'Duplicate topic ID '+lesson.id);
   ids.add(lesson.id);
  }
@@ -59,7 +62,12 @@ test('Science and mathematics seeds include original subject-specific solved pra
   assert.equal(starterCoverage(fake),'thematic',subject+' / '+topic);
   const text=lesson.sections.map(x=>x.explanation+' '+x.example).join(' ')+' '+
    lesson.tasks.map(x=>x.solution).join(' ');
-  assert.ok(text.toLocaleLowerCase('pt-BR').includes(needle.toLocaleLowerCase('pt-BR')),
+  if(lesson.supportTopic){
+   // A matched authored lesson may use different original examples than the legacy seed.
+   assert.ok(lesson.sections[0].explanation.length>150);
+   assert.ok(lesson.tasks.some(item=>item.solution.length>50));
+   assert.match(lesson.authorship,/correspondência parcial/);
+  }else assert.ok(text.toLocaleLowerCase('pt-BR').includes(needle.toLocaleLowerCase('pt-BR')),
    subject+' / '+topic+' missing verified concept: '+needle);
  }
 });

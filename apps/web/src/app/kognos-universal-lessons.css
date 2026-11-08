@@ -115,3 +115,29 @@
  .k-curriculum-review-pages span{order:-1;width:100%;text-align:center}
  .k-curriculum-review-pages button{flex:1}
 }
+
+/* Editorial scope and exploratory energy-transfer lab */
+.k-universal-hero .k-universal-scope-note{border-left:3px solid #38CDE5;color:#E3EDF8;background:#ffffff14;padding:11px 14px;border-radius:8px;font-size:12px;line-height:1.65;margin:10px 0}
+.k-ecology-energy-lab{display:grid;gap:17px;margin-top:14px;padding:17px;border-radius:14px;background:var(--flow-paper,#fff);border:1px solid var(--flow-line,#dce4f0)}
+.k-ecology-energy-lab-toolbar label{display:grid;gap:7px;font-size:13px;color:var(--flow-ink,#101B33);font-weight:700}
+.k-ecology-energy-lab-toolbar input{width:100%;accent-color:#5B4DE3;cursor:pointer}
+.k-ecology-energy-lab-toolbar p{margin:5px 0;color:var(--flow-muted,#536780);font-size:12px}
+.k-ecology-trophic-levels{display:grid;gap:12px}
+.k-ecology-trophic-row{display:grid;grid-template-columns:minmax(120px,1.4fr) minmax(80px,2fr) minmax(65px,.7fr);gap:11px;align-items:center}
+.k-ecology-trophic-row>span{font-size:12px;line-height:1.35;font-weight:690;color:var(--flow-ink,#101B33)}
+.k-ecology-trophic-track{background:var(--flow-soft,#EDF1F7);height:15px;border-radius:20px;overflow:hidden}
+.k-ecology-trophic-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#5B4DE3,#38CDE5);transition:width .22s ease}
+.k-ecology-trophic-row output{text-align:right;color:var(--flow-ink,#101B33);font-size:12px;font-variant-numeric:tabular-nums;font-weight:750}
+.k-ecology-energy-lab .k-ecology-energy-lab-note{font-size:12px;color:var(--flow-muted,#536780);line-height:1.7;margin:0}
+@media(max-width:560px){.k-ecology-trophic-row{grid-template-columns:1fr 1fr;gap:6px}.k-ecology-trophic-row .k-ecology-trophic-track{grid-column:1 / -1;grid-row:2}.k-ecology-trophic-row output{grid-column:2;grid-row:1}}
+@media(prefers-reduced-motion:reduce){.k-ecology-trophic-fill{transition:none}}
+
+/* Incomplete topics use a transparent guided study route, not three fictitious full lessons. */
+.k-universal-guide{display:grid;gap:17px}
+.k-universal-guide-label{font-size:11px;color:#5B4DE3;letter-spacing:.08em;text-transform:uppercase;font-weight:820;margin:15px 0 7px!important}
+.k-universal-guide-steps,.k-universal-guide-list{padding-left:24px;display:grid;gap:9px;margin:10px 0}
+.k-universal-guide-steps li,.k-universal-guide-list li{line-height:1.7;font-size:14px;overflow-wrap:anywhere}
+.k-universal-guide-steps li::marker,.k-universal-guide-list li::marker{color:#5B4DE3;font-weight:820}
+.k-universal-guide .k-universal-chapter{gap:13px}
+.k-universal-guide .k-universal-chapter .k-universal-comparison{margin:3px 0}
+.k-universal-guide .k-universal-visual small{color:var(--flow-muted,#536780);line-height:1.6}
