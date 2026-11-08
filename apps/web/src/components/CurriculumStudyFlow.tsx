@@ -9,6 +9,7 @@ import {contentRequest} from '@/lib/content-client';
 import {groupLearningBlocks} from '@/lib/curriculum-learning-blocks';
 import type {CourseLesson} from '@/lib/course-content';
 import {canFinishLesson,curriculumSubjects,curriculumSubjectTopics,nextCurriculumTopic,scopedCurriculum,type CurriculumStep,type CurriculumListTopic} from '@/lib/curriculum-navigation';
+import KognosLoadingOverlay from './KognosLoadingOverlay';
 
 type Props={
  preferredExam?:ExamId|null;
@@ -139,7 +140,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
      </button>;
     })}
    </div>
-   {loading&&<p role="status">Carregando matérias…</p>}
+   {loading&&<KognosLoadingOverlay inline label="Carregando matérias"/>}
    {!loading&&!subjects.length&&!loadError&&<p className="k-curriculum-empty">Nenhuma disciplina encontrada para estes filtros.</p>}
    <p className="k-curriculum-disclaimer">O catálogo lista temas curriculares. Alguns ainda não possuem aula escrita completa.</p>
   </section>}
@@ -180,7 +181,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
     <p>Folha de revisão com objetivos e trechos reais de cada aula. Reveja os assuntos, resolva as atividades e avance aos simulados corrigidos do Kognos.</p>
    </header>
    <p className="k-curriculum-block-count">{reviewBlock.topics.length} conteúdos · páginas de {reviewPerPage} aulas</p>
-   {reviewLoading&&<p role="status">Preparando os conceitos já registrados neste bloco…</p>}
+   {reviewLoading&&<KognosLoadingOverlay inline label="Preparando conceitos da revisão"/>}
    {!reviewLoading&&<div className="k-curriculum-review-list">
     {reviewNotes.map(note=><article key={note.id} className="k-curriculum-review-card">
      <h2>{note.topic}</h2><p><strong>Objetivo:</strong> {note.objective}</p>
