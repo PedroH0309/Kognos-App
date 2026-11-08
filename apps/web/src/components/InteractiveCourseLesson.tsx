@@ -1,7 +1,9 @@
 'use client';
 
 import {useState} from 'react';
-import {ArrowLeft,ArrowRight,BookOpenText,CheckCircle2,Eye,Lightbulb,PenLine} from 'lucide-react';
+import {ArrowLeft,ArrowRight,BookOpenText,CheckCircle2,Eye,Lightbulb} from 'lucide-react';
+import LessonChoiceQuestion from './LessonChoiceQuestion';
+import {lessonTaskChoice} from '@/lib/lesson-multiple-choice';
 import {levels,type CourseLesson,type CourseLevel} from '@/lib/course-content';
 
 type Stage='concept'|'example'|'exercise';
@@ -22,9 +24,6 @@ export default function InteractiveCourseLesson({lesson,onTutor}:{
  const [level,setLevel]=useState<CourseLevel>('basic');
  const [stage,setStage]=useState<Stage>('concept');
  const [stepsShown,setStepsShown]=useState<Record<string,number>>({});
- const [drafts,setDrafts]=useState<Record<string,string>>({});
- const [hint,setHint]=useState<Record<string,boolean>>({});
- const [solution,setSolution]=useState<Record<string,boolean>>({});
  const section=lesson.sections.find(item=>item.level===level)??lesson.sections[0];
  const tasks=lesson.tasks.filter(item=>item.level===section.level);
  const shown=stepsShown[section.level]??0;
@@ -85,30 +84,15 @@ export default function InteractiveCourseLesson({lesson,onTutor}:{
     <div className="k-classroom-pitfall"><strong>Atenção ao erro comum:</strong><p>{section.pitfall}</p></div>
    </>}
    {stage==='exercise'&&<>
-    <span className="k-classroom-eyebrow">ATIVIDADE DA AULA · {levels[section.level]}</span>
-    <h4>Agora é sua vez</h4>
-    {tasks.map((task,i)=>{
-     const id=section.level+'-'+i;
-     return <div className="k-classroom-task" key={id}>
-      <p className="k-classroom-prompt">{task.prompt}</p>
-      <label htmlFor={'k-course-draft-'+id}>Seu raciocínio</label>
-      <textarea id={'k-course-draft-'+id} value={drafts[id]??''} onChange={e=>setDrafts(v=>({...v,[id]:e.target.value}))}
-       placeholder="Resolva aqui com suas palavras. Este rascunho não é enviado nem corrigido automaticamente." rows={4}/>
-      <div className="k-classroom-task-buttons">
-       <button type="button" aria-expanded={Boolean(hint[id])} onClick={()=>setHint(v=>({...v,[id]:!v[id]}))}>
-        <Lightbulb size={16} aria-hidden="true"/> {hint[id]?'Ocultar pista':'Mostrar pista'}
-       </button>
-       <button type="button" aria-expanded={Boolean(solution[id])} onClick={()=>setSolution(v=>({...v,[id]:!v[id]}))}>
-        <Eye size={16} aria-hidden="true"/> {solution[id]?'Ocultar resolução':'Conferir resolução'}
-       </button>
-      </div>
-      {hint[id]&&<div className="k-classroom-hint"><strong>Pista</strong><p>{task.hint}</p></div>}
-      {solution[id]&&<div className="k-classroom-solution"><strong>Resolução comentada</strong><p>{task.solution}</p></div>}
-     </div>;
-    })}
-    <p className="k-classroom-privacy"><PenLine size={14} aria-hidden="true"/> Rascunho e pistas ficam apenas nesta tela. Para registrar acertos e evolução, use “Praticar mais 10 questões” no painel Evolução da habilidade.</p>
+    <span className="k-classroom-eyebrow">ATIVIDADES DE MÚLTIPLA ESCOLHA · {levels[section.level]}</span>
+    <h4>Escolha uma alternativa</h4>
+    {tasks.map((task,i)=><div className="k-classroom-task" key={section.level+'-'+i}>
+     <LessonChoiceQuestion choice={lessonTaskChoice(lesson,task)}/>
+    </div>)}
+    <p className="k-classroom-privacy">As respostas são verificadas apenas nesta tela e não são enviadas nem registradas como nota ou domínio. Para medir evolução, use as questões corrigidas na área Evolução.</p>
     {onTutor&&<button type="button" className="k-classroom-tutor" onClick={onTutor}>Pedir uma explicação ao Kog <ArrowRight size={16} aria-hidden="true"/></button>}
    </>}
+
   </div>
   <footer className="k-classroom-navigation">
    <button type="button" disabled={atBeginning} onClick={previous}><ArrowLeft size={15} aria-hidden="true"/> Voltar</button>
