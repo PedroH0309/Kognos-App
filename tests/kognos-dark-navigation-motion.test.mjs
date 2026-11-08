@@ -43,10 +43,10 @@ test('Motion for React provides page, drawer and mobile selection animations',()
  assert.match(animations,/AnimatePresence initial=\{false\}/);
  assert.match(animations,/layoutId="kognos-mobile-active-tab"/);
  assert.match(app,/import \{AnimatedPage,AnimatedSidebarScrim\}/);
- assert.match(app,/import MobileBottomNavigation from '\.\/MobileBottomNavigation'/);
+ assert.doesNotMatch(app,/<MobileBottomNavigation/);
  assert.match(app,/<AnimatedPage page=\{view\} disabled=\{disableAnimations\}>/);
  assert.match(app,/<AnimatedSidebarScrim open=\{mobileMenu\} disabled=\{disableAnimations\}/);
- assert.match(app,/<MobileBottomNavigation view=\{view\} onNavigate=\{navigate\} disableAnimations=\{disableAnimations\}/);
+ assert.match(app,/className="mobile-menu-btn"/);
 });
 
 test('motion can be disabled both by system and Kognos focus adaptation',()=>{
@@ -60,7 +60,7 @@ test('motion can be disabled both by system and Kognos focus adaptation',()=>{
 });
 
 test('no data or AI logic is changed by navigation animation',()=>{
- for(const snippet of ['getCloudAttempts','getSupabase','<MobileBottomNavigation view={view} onNavigate={navigate}','<KogAssistant','<AuthModal standalone','kognos_theme_v1'])
+ for(const snippet of ['getCloudAttempts','getSupabase','<AnimatedSidebarScrim open={mobileMenu}','<KogAssistant','<AuthModal standalone','kognos_theme_v1'])
   assert.ok(app.includes(snippet),snippet);
  assert.ok(!animations.includes('fetch('));
  assert.ok(!theme.includes('background:#5B4DE3'));
