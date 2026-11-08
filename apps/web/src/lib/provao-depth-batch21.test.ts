@@ -1,3 +1,4 @@
+import type {CourseTask} from './course-content.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
@@ -28,7 +29,7 @@ test('batch 21: five unique exact Provão topics with original deep lessons and 
   assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
   assert.deepEqual(lesson.tasks.map(q=>q.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const s=lesson.sections[i];const q: (typeof lesson.tasks)[number]=lesson.tasks[i];
+   const s=lesson.sections[i];const q: CourseTask=lesson.tasks[i];
    assert.ok(s.explanation.length>=750,prefix+' chapter '+i);
    assert.ok(s.example.length>=180,prefix+' worked example '+i);
    assert.ok(s.pitfall.length>=50&&s.steps.length>=3);
