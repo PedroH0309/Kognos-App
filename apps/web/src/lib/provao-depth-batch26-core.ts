@@ -60,7 +60,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "Em 100 g, os mols são 40/12≈3,33, 6,7/1≈6,7 e 53,3/16≈3,33. Dividindo por 3,33, a razão é 1:2:1, isto é, CH₂O."
+        "solution": "Em 100 g, os mols são 40/12≈3,33, 6,7/1≈6,7 e 53,3/16≈3,33. Dividindo por 3,33, a razão é 1:2:1, isto é, CH₂O. A determinação empírica exige conversão de massa em mol, nunca razão direta de porcentagens."
       },
       {
         "level": "intermediate",
@@ -73,7 +73,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "CH₂O possui 30 g/mol; 180/30=6. Multiplicando todos os índices por seis, obtemos C₆H₁₂O₆, cuja massa molar é 180 g/mol."
+        "solution": "CH₂O possui 30 g/mol; 180/30=6. Multiplicando todos os índices por seis, obtemos C₆H₁₂O₆, cuja massa molar é 180 g/mol. Fórmula molecular não revela a estrutura: isômeros podem compartilhar a mesma composição."
       },
       {
         "level": "advanced",
@@ -86,7 +86,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "Cada molécula de água formada contém dois átomos de H; portanto n(H)=2n(H₂O), desde que a água recolhida venha exclusivamente da combustão."
+        "solution": "Cada molécula de água formada contém dois átomos de H; portanto n(H)=2n(H₂O), desde que a água recolhida venha exclusivamente da combustão. A inferência depende de combustão completa e ausência de outras fontes de água."
       }
     ]
   },
@@ -104,7 +104,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Expressões da constante de equilíbrio",
         "explanation": "Para aA+bB ⇌ cC+dD, uma expressão escolar aproximada é Kc=[C]^c[D]^d/([A]^a[B]^b), usando concentrações de equilíbrio e os coeficientes estequiométricos como expoentes. Na termodinâmica rigorosa, constantes são escritas com atividades adimensionais; usar concentrações é aproximação útil para soluções ideais. Sólidos puros e líquidos puros não entram explicitamente porque suas atividades são tomadas como unidade. Em H₂(g)+I₂(g)⇌2HI(g), com concentrações de equilíbrio 0,20 M, 0,20 M e 0,80 M, respectivamente, Kc=0,80²/(0,20×0,20)=16. Um K grande favorece produtos na composição de equilíbrio, mas não garante reação rápida nem irreversibilidade. Inverter a reação produz constante recíproca; multiplicar todos os coeficientes por dois eleva K ao quadrado. Equilíbrio dinâmico significa velocidades direta e inversa iguais, não concentrações iguais. O valor de K é específico da temperatura e da reação escrita.",
-        "example": "Para H₂+I₂⇌2HI, use Kc=[HI]²/([H₂][I₂]). Substitua 0,80²/(0,20×0,20)=0,64/0,04=16. Confira o expoente 2 do produto e a origem dos dados: todos são valores no equilíbrio.",
+        "example": "Para H₂+I₂⇌2HI, use Kc=[HI]²/([H₂][I₂]). Substitua 0,80²/(0,20×0,20)=0,64/0,04=16. Confira o expoente 2 do produto e a origem dos dados: todos são valores no equilíbrio. O valor é uma razão de equilíbrio e só é comparável para a mesma reação escrita e temperatura.",
         "pitfall": "Evite confundir proporção observada com identidade química sem conferir a hipótese.",
         "steps": [
           "Identifique os dados, conceitos e pressupostos relevantes.",
@@ -116,7 +116,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Tabela ICE e conservação",
         "explanation": "Quando as concentrações de equilíbrio são desconhecidas, monte tabela inicial, variação e equilíbrio, chamada ICE. A mudança de cada espécie deve respeitar a estequiometria. Para A⇌B, com [A]₀=1,0 M e [B]₀=0, escreva [A]eq=1−x e [B]eq=x. Se Kc=4, a relação x/(1−x)=4 fornece x=0,8 M, logo [A]eq=0,2 M e [B]eq=0,8 M. Uma raiz que gere concentração negativa deve ser rejeitada, pois não representa estado físico possível. Se a equação fosse 2A⇌B, a variação de A seria −2x, e não −x. A temperatura deve ser mantida fixa ao utilizar o K informado. Adicionar reagente altera inicialmente o quociente reacional e a posição de equilíbrio, mas não o valor de K à mesma temperatura. Nem toda equação algébrica exige aproximação: se uma aproximação for usada, verifique depois sua consistência com o valor de x encontrado.",
-        "example": "Para A⇌B, inicie A=1,0 M, B=0. Escreva A=1−x, B=x e imponha K=4: x/(1−x)=4. Logo x=4−4x, 5x=4, x=0,8 M. Verifique 0,8/0,2=4 e concentrações não negativas.",
+        "example": "Para A⇌B, inicie A=1,0 M, B=0. Escreva A=1−x, B=x e imponha K=4: x/(1−x)=4. Logo x=4−4x, 5x=4, x=0,8 M. Verifique 0,8/0,2=4 e concentrações não negativas. A confirmação substitui x na expressão original e verifica a conservação das espécies.",
         "pitfall": "Confira unidades, condições e variáveis antes de aplicar um modelo.",
         "steps": [
           "Identifique os dados, conceitos e pressupostos relevantes.",
@@ -128,7 +128,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         "level": "advanced",
         "title": "Quociente Q e perturbações",
         "explanation": "O quociente reacional Q usa a mesma expressão de K, mas as concentrações de um instante qualquer. Se Q<K, a evolução espontânea favorece produtos; se Q>K, favorece reagentes, até alcançar equilíbrio nas condições consideradas. Para N₂O₄(g)⇌2NO₂(g), Q=[NO₂]²/[N₂O₄]. Com [NO₂]=0,10 M e [N₂O₄]=0,20 M, Q=0,01/0,20=0,05. Se K=0,20, a reação tende a produzir mais NO₂. Um catalisador acelera a aproximação ao equilíbrio em ambos os sentidos, mas não altera K. Temperatura, diferentemente de catalisador ou adição de reagentes, pode mudar K: aquecer costuma favorecer o sentido endotérmico, dependendo do sinal da entalpia. Pressão pode alterar a composição de equilíbrio gasoso, especialmente quando há mudança no número de mols de gás, mas não modifica K se a temperatura for mantida. A previsão do sentido não informa quanto tempo a transformação levará: isso depende da cinética.",
-        "example": "Em N₂O₄⇌2NO₂, calcule Q=0,10²/0,20=0,05. Compare com K=0,20: Q<K. Conclua que há tendência de formação de NO₂ até Q alcançar K; não conclua que a transformação é instantânea.",
+        "example": "Em N₂O₄⇌2NO₂, calcule Q=0,10²/0,20=0,05. Compare com K=0,20: Q<K. Conclua que há tendência de formação de NO₂ até Q alcançar K; não conclua que a transformação é instantânea. A previsão de sentido não mede a velocidade; o equilíbrio final requer evolução das concentrações.",
         "pitfall": "Uma fonte ou medida isolada não garante generalização; examine suas limitações.",
         "steps": [
           "Identifique os dados, conceitos e pressupostos relevantes.",
@@ -149,7 +149,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "O coeficiente 2 de HI torna-se expoente 2, e reagentes ocupam o denominador: Kc=[HI]²/([H₂][I₂])."
+        "solution": "O coeficiente 2 de HI torna-se expoente 2, e reagentes ocupam o denominador: Kc=[HI]²/([H₂][I₂]). A expressão é válida para a reação como escrita, usando concentrações de equilíbrio e a aproximação escolar de atividades."
       },
       {
         "level": "intermediate",
@@ -162,7 +162,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "Defina x=[B]eq e [A]eq=1−x. Então x/(1−x)=4, logo 5x=4 e x=0,8 M, respeitando o balanço."
+        "solution": "Defina x=[B]eq e [A]eq=1−x. Então x/(1−x)=4, logo 5x=4 e x=0,8 M, respeitando o balanço. As concentrações devem permanecer não negativas e o valor de K refere-se à mesma temperatura."
       },
       {
         "level": "advanced",
@@ -175,7 +175,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 3,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "Q<K significa que o quociente precisa aumentar para atingir K; o sentido direto é favorecido, sem mudança em K à mesma temperatura."
+        "solution": "Q<K significa que o quociente precisa aumentar para atingir K; o sentido direto é favorecido, sem mudança em K à mesma temperatura. Não se pode concluir a rapidez da reação apenas comparando Q e K."
       }
     ]
   },
@@ -238,7 +238,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "N_final=100+20−5+4−9=110; o balanço inclui as quatro entradas e saídas no período."
+        "solution": "N_final=100+20−5+4−9=110; o balanço inclui as quatro entradas e saídas no período. O resultado é relativo ao intervalo medido, sem permitir extrapolação ilimitada."
       },
       {
         "level": "intermediate",
@@ -251,7 +251,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "Como dN/dt=rN(1−N/K), para N=K o fator entre parênteses é zero; isso não significa ausência de mortes e nascimentos."
+        "solution": "Como dN/dt=rN(1−N/K), para N=K o fator entre parênteses é zero; isso não significa ausência de mortes e nascimentos. O modelo admite taxas contínuas e capacidade de suporte definida nas condições analisadas."
       },
       {
         "level": "advanced",
@@ -264,7 +264,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "Pelo estimador simples N≈MC/R=40×50/10=200, supondo marcações persistentes, mistura e população aproximadamente fechada."
+        "solution": "Pelo estimador simples N≈MC/R=40×50/10=200, supondo marcações persistentes, mistura e população aproximadamente fechada. Sem as hipóteses de população fechada e captura semelhante, a estimativa pode ficar enviesada."
       }
     ]
   },
@@ -429,7 +429,7 @@ export const provaoDepthBatch26Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Compare cada alternativa com o mecanismo e os dados apresentados.",
-        "solution": "São 50×8=400 trabalhador-horas; 1.200/400=3 peças por trabalhador-hora, sob hipótese de peças comparáveis."
+        "solution": "São 50×8=400 trabalhador-horas; 1.200/400=3 peças por trabalhador-hora, sob hipótese de peças comparáveis. A interpretação deve considerar a cronologia, a escala e as condições de validade da fonte histórica."
       },
       {
         "level": "advanced",
