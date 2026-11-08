@@ -279,8 +279,8 @@ Cinco aulas específicas de Química acrescentadas à branch, cada uma com três
 Cinco tópicos distintos de Química do currículo do Provão Paulista, com checagem de unicidade por assunto e prefixo oficial:
 
 1. **Propriedade de substâncias moleculares, iônicas e metálicas** — estruturas, condução, solubilidade, pontos de fusão e exceções.
-2. **Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular** — porcentagens, análise elementar, fórmula empírica e massa molar.
-3. **Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos** — leitura de rótulos, incompatibilidades, risco e descarte, sem experimentos perigosos.
+2. **Propriedades físicas dos compostos orgânicos** — forças intermoleculares, polaridade, solubilidade, volatilidade e isomeria.
+3. **Principais radicais funcionais e funções orgânicas** — reconhecimento estrutural de álcool, fenol, aldeído, cetona, ácido, éster, amina e amida, incluindo multifuncionalidade.
 4. **Solubilidade e temperatura de ebulição** — saturação, curvas de solubilidade, pressão de vapor, altitude e elevação ebuliométrica.
 5. **Noção de monômeros e polímeros** — unidades repetitivas, polimerização por adição e condensação, propriedades, massa molar e destino ambiental.
 
