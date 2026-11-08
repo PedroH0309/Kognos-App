@@ -234,3 +234,34 @@ test('all five exam catalogues report depth by exam without counting shared less
  assert.equal(counts.get('saresp')?.deep,provaoDepthAudit().coverage.deep_specific);
  console.log('EXAM_DEPTH_BY_INSTITUTION '+JSON.stringify(Object.fromEntries(counts)));
 });
+
+test('batch 33 contributes five distinct specific Provão topics with objective assessments',()=>{
+ const report=provaoDepthAudit();
+ const cases=[
+  ['Química','Tratamento de água'],
+  ['Física','Velocidade e Aceleração: escalar média e instantânea; vetorial média e instantânea'],
+  ['Biologia','Importância ecológica e econômica de bactérias e fungos'],
+  ['História','Formação dos Estados modernos'],
+  ['Química','Óxidos e a chuva ácida']
+ ] as const;
+ for(const [subject,name] of cases){
+  const topic=curriculumTopics.find(t=>t.subject===subject&&t.topic===name);
+  assert.ok(topic,'Missing exact curriculum topic '+subject+' / '+name);
+  const lesson=deepProvaoLesson(topic);
+  assert.ok(lesson,'Missing deep lesson '+subject+' / '+name);
+  assert.equal(lesson.sections.length,3);
+  assert.equal(lesson.tasks.length,3);
+  for(const section of lesson.sections){
+   assert.ok(section.explanation.length>=750,'Insufficient chapter depth: '+name);
+   assert.ok(section.example.length>80,'Missing worked example: '+name);
+  }
+  for(const task of lesson.tasks){
+   assert.equal(task.options?.length,4);
+   assert.equal(new Set(task.options).size,4);
+   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
+   assert.ok(task.solution.length>=50);
+  }
+  assert.ok(!report.pending.some(t=>t.subject===subject&&t.topic===name));
+ }
+ assert.ok(report.coverage.deep_specific>=171);
+});
