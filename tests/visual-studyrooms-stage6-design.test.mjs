@@ -12,7 +12,8 @@ test('Every curriculum topic has a visual investigation map in the independent L
  assert.match(room,/<TopicLessonSections/);
  assert.match(hub,/<TopicVisualStudio/);
  assert.match(explorer,/<TopicVisualStudio \{\.\.\.input\}\/>/);
- assert.match(explorer,/Escrever observações \(opcional\)/);
+ assert.match(explorer,/LessonChoiceQuestion/);
+ assert.doesNotMatch(explorer,/<textarea\\b/);
  assert.match(studio,/k-visual-concept-map/);
  assert.match(studio,/k-visual-lenses/);
  assert.match(studio,/k-visual-flow-card/);
