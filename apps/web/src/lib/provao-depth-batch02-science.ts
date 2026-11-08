@@ -327,7 +327,7 @@ export const provaoDepthBatch02Science:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "A soma dos valores na molécula neutra deve ser zero.",
-        "solution": "A opção B está correta: 2(+1)+S+4(−2)=0, então S=+6. As demais escolhas não satisfazem a soma formal de cargas para essa molécula."
+        "solution": "A opção B está correta: 2(+1)+S+4(−2)=0, então S=+6. As demais escolhas não satisfazem a soma formal de cargas para essa molécula; o estado de oxidação é um valor contábil."
       },
       {
         "level": "intermediate",
@@ -340,7 +340,7 @@ export const provaoDepthBatch02Science:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Agente redutor perde elétrons e se oxida.",
-        "solution": "A opção C está correta: Mg vai de nox zero a +2, fornecendo elétrons que permitem reduzir H⁺ a H₂. H⁺ é o agente oxidante, e não o redutor."
+        "solution": "A opção C está correta: Mg vai de nox zero a +2, fornecendo elétrons que permitem reduzir H⁺ a H₂. H⁺ é o agente oxidante, e não o redutor, pois recebe elétrons."
       },
       {
         "level": "advanced",
@@ -416,7 +416,7 @@ export const provaoDepthBatch02Science:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Frequência é o inverso do período.",
-        "solution": "A alternativa C está correta: f=1/0,25=4 Hz. A confunde frequência com período e as outras opções não realizam a inversão corretamente."
+        "solution": "A alternativa C está correta: f=1/0,25=4 Hz. A confunde frequência com período e as outras opções não realizam a inversão corretamente; um hertz representa uma oscilação por segundo."
       },
       {
         "level": "intermediate",
