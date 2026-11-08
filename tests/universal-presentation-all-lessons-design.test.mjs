@@ -76,7 +76,7 @@ test('Incomplete curricular guides and legacy introductions use the same stage l
 });
 
 test('All subjects remain available with valid lesson records, without data migrations or invented mastery',()=>{
- const subjects=new Set<string>();
+ const subjects=new Set();
  let authored=0,guided=0;
  for(const topic of curriculumTopics){
   const lesson=starterLesson(topic);
