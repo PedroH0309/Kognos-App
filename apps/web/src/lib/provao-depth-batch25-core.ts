@@ -92,179 +92,179 @@ export const provaoDepthBatch25Core:readonly DeepTopicSpec[]=[
   },
   {
     "subject": "Química",
-    "topicStart": "Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular",
-    "objective": "Compreender e aplicar criticamente fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular, interpretando evidências, construindo representações, resolvendo situações quantitativas ou qualitativas e explicitando hipóteses e limites de cada modelo.",
+    "topicStart": "Propriedades físicas dos compostos orgânicos",
+    "objective": "Identificar e comparar propriedades físicas dos compostos orgânicos mediante estruturas, propriedades, exemplos resolvidos e interpretação crítica de condições experimentais, reconhecendo exceções e evitando generalizações indevidas.",
     "prerequisites": [
-      "Massa molar e mol",
-      "Proporções entre números inteiros",
-      "Símbolos e índices químicos"
+      "Polaridade de ligações e moléculas",
+      "Forças intermoleculares",
+      "Cadeias carbônicas e grupos funcionais"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: três representações de composição",
-        "explanation": "A fórmula molecular registra o número efetivo de átomos de cada elemento em uma molécula, como C₆H₁₂O₆ para a glicose. A fórmula mínima, ou empírica, registra a menor proporção inteira entre os elementos: CH₂O para a mesma substância. A fórmula centesimal expressa a participação percentual em massa de cada elemento e não informa diretamente a conectividade dos átomos. Uma substância pode compartilhar fórmula mínima com outras moléculas de massas molares diferentes. Para obter porcentagens em massa, multiplique a quantidade de átomos pela massa atômica de cada elemento, some para encontrar a massa molar e divida a contribuição de cada elemento pelo total. A proporção em massa não coincide necessariamente com a proporção em número de átomos: oxigênio contribui mais massa por átomo que hidrogênio. Fórmulas moleculares são apropriadas para entidades moleculares discretas; compostos iônicos são representados por fórmulas unitárias que expressam razões de íons, não moléculas isoladas. Resultados dependem de massas atômicas aproximadas e de arredondamentos, que devem ser informados.",
-        "example": "Para H₂O, considere H=1 e O=16 g/mol. Passo 1: calcule M=2×1+16=18 g/mol; passo 2: %H=(2/18)×100≈11,1%; passo 3: %O=(16/18)×100≈88,9%. A soma é aproximadamente 100%. A verificação final confronta o resultado com as unidades e com a hipótese de composição integral da amostra.",
-        "pitfall": "Não confundir propriedades observáveis com explicações microscópicas e condições de medida.",
+        "title": "Conceitos: estrutura e propriedades orgânicas",
+        "explanation": "Compostos orgânicos apresentam propriedades físicas que dependem de massa molar, forma molecular, polaridade e forças intermoleculares. Hidrocarbonetos como hexano são predominantemente apolares e interagem principalmente por forças de dispersão; álcoois de cadeia curta, como etanol, possuem grupo hidroxila e podem estabelecer ligações de hidrogênio com água. A presença de oxigênio não garante, sozinha, solubilidade ilimitada: a parte hidrocarbonada apolar também influencia o balanço de interações. Em séries homólogas de alcanos não ramificados, o aumento do comprimento da cadeia costuma elevar a temperatura de ebulição devido à maior polarizabilidade e superfície de contato. Ramificações podem reduzir a área efetiva de contato e alterar o ponto de ebulição de isômeros. Solubilidade em água e em solventes orgânicos depende das interações entre soluto e solvente, não de uma regra absoluta de que 'orgânico não dissolve em água'. A volatilidade está ligada à tendência de passar à fase vapor sob condições dadas e não equivale diretamente a inflamabilidade. Para comparar materiais, declare pressão, temperatura e identidade dos isômeros.",
+        "example": "Compare etanol e hexano em água. O etanol apresenta grupo –OH e forma ligações de hidrogênio; o hexano é apolar e tem solubilidade muito baixa. Identifique primeiro os grupos, depois as interações e por fim a previsão.",
+        "pitfall": "Não inferir uma função ou propriedade apenas da fórmula molecular.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a estrutura e os dados disponíveis.",
+          "Aplique o conceito e justifique cada inferência.",
+          "Confira condições, alternativas e possíveis exceções."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: composição percentual para fórmula mínima",
-        "explanation": "Uma análise elementar fornece massas relativas ou percentuais. Para inferir fórmula mínima, suponha uma amostra de 100 g: cada porcentagem vira numericamente uma massa em gramas. Divida cada massa pela massa molar atômica correspondente para obter quantidades de matéria. Em seguida, divida todos os valores pelo menor número de mols; se surgir uma fração simples, multiplique toda a proporção pelo mesmo inteiro para obter índices inteiros. É incorreto arredondar arbitrariamente 1,5 para 2 sem avaliar a razão real e a precisão da medida. Impurezas, elementos não detectados e percentuais arredondados podem tornar a inferência ambígua. A fórmula mínima determina somente uma razão; não distingue isômeros e não permite, sozinha, identificar uma substância. Também não se deve trocar índices de uma fórmula por coeficientes de reação: índices fazem parte da identidade representada, enquanto coeficientes indicam quantidades relativas de entidades. A validade do procedimento exige que a composição percentual inclua todos os elementos considerados e que as massas estejam em base comparável.",
-        "example": "Uma amostra contém 40,0% C, 6,7% H e 53,3% O. Em 100 g: n(C)=40/12≈3,33; n(H)=6,7/1≈6,7; n(O)=53,3/16≈3,33. Divida pelo menor: 1:2:1. A fórmula mínima aproximada é CH₂O. A verificação final confronta o resultado com as unidades e com a hipótese de composição integral da amostra.",
-        "pitfall": "Não substituir análise de unidades e hipóteses por fórmulas memorizadas.",
+        "title": "Aplicação: pontos de ebulição e isomeria",
+        "explanation": "Isômeros possuem a mesma fórmula molecular, mas diferentes conectividades ou arranjos espaciais e podem exibir propriedades físicas distintas. O pentano normal, o isopentano e o neopentano compartilham C₅H₁₂, porém diferem em ramificação; o neopentano, mais compacto, apresenta ponto de ebulição menor que o pentano normal em condições comparáveis. A explicação envolve superfície de contato e interações de dispersão, não alteração da massa molar, que é igual para os três. Já entre álcoois e éteres de mesma fórmula molecular, ligações de hidrogênio entre moléculas de álcool podem elevar significativamente a temperatura de ebulição. A capacidade de formar ligações de hidrogênio como doador exige hidrogênio ligado a N, O ou F em contextos apropriados; possuir oxigênio na fórmula não torna automaticamente a molécula doadora. A densidade dos compostos orgânicos varia e não deve ser inferida apenas de serem líquidos. Ao interpretar tabelas, verifique se os valores são medidos na mesma pressão e se a amostra é pura.",
+        "example": "Para C₂H₆O, compare etanol CH₃CH₂OH e dimetil éter CH₃OCH₃. Primeiro reconheça a mesma massa molar; depois note que etanol doa ligações de hidrogênio; conclua que seu ponto de ebulição é maior, sob pressão igual.",
+        "pitfall": "Não confundir grupo estrutural com comportamento absoluto em qualquer condição.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a estrutura e os dados disponíveis.",
+          "Aplique o conceito e justifique cada inferência.",
+          "Confira condições, alternativas e possíveis exceções."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: fórmula molecular e massa molar",
-        "explanation": "A fórmula molecular é um múltiplo inteiro da fórmula mínima quando se trata de moléculas discretas. Calcule primeiro a massa da unidade empírica; depois divida a massa molar molecular medida pela massa da fórmula mínima. O quociente deve ser aproximadamente um inteiro positivo, respeitando a incerteza experimental. Para CH₂O, a massa empírica é 12+2+16=30 g/mol. Se a massa molar da molécula for 180 g/mol, o fator é 180/30=6 e a fórmula molecular é C₆H₁₂O₆. Se o quociente não for próximo de inteiro, reavalie dados, pureza, unidade e hipóteses. Mesmo uma fórmula molecular correta não revela a estrutura tridimensional ou os grupos funcionais: glicose e frutose compartilham C₆H₁₂O₆ e apresentam propriedades diferentes. Em compostos iônicos, falar de massa de uma molécula de NaCl induz erro; utiliza-se massa molar da unidade de fórmula. A representação química precisa corresponder ao tipo de espécie, ao objetivo analítico e à escala da observação.",
-        "example": "Dada fórmula mínima CH₂O e massa molar 60 g/mol: massa mínima=30 g/mol; fator=60/30=2; multiplique todos os índices por 2 e obtenha C₂H₄O₂. A fórmula não determina se a substância é ácido acético ou outro isômero.",
-        "pitfall": "Não extrapolar resultados idealizados sem examinar condições e limitações.",
+        "title": "Aprofundamento: partição, volatilidade e segurança",
+        "explanation": "O coeficiente de partição entre duas fases imiscíveis descreve a distribuição de um soluto em equilíbrio e depende de temperatura, ionização e identidade dos solventes. Compostos orgânicos com grupos ionizáveis podem mudar drasticamente de solubilidade quando o pH altera a forma carregada; por isso uma classificação binária entre polar e apolar é insuficiente para ácidos carboxílicos e aminas. A volatilidade influencia exposição por inalação, mas toxicidade depende da substância, dose e via de contato; nunca se deve cheirar diretamente solventes para identificá-los. Em separações, destilação explora diferenças de volatilidade, extração líquido-líquido explora partição e cromatografia depende de interações com fases móvel e estacionária. Esses métodos não são intercambiáveis em qualquer mistura. Ao escolher um solvente industrial, considere solubilização, segurança, inflamabilidade, impacto ambiental e recuperação. Um líquido com ponto de ebulição menor não é necessariamente menos perigoso, nem uma molécula mais polar será sempre mais solúvel em qualquer solvente.",
+        "example": "Considere ácido benzoico em água: em meio básico, a forma benzoato carregada tende a dissolver-se melhor na fase aquosa que a forma neutra. Identifique a ionização, compare as interações e ressalve que o equilíbrio depende do pH e do solvente.",
+        "pitfall": "Não extrapolar tendência química sem considerar solvente, estrutura e ambiente.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a estrutura e os dados disponíveis.",
+          "Aplique o conceito e justifique cada inferência.",
+          "Confira condições, alternativas e possíveis exceções."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual é a fórmula mínima de C₆H₁₂O₆?",
+        "prompt": "Por que etanol mistura-se bem com água, ao contrário do hexano?",
         "options": [
-          "C₆H₁₂O₆",
-          "CH₂O",
-          "C₂H₆O",
-          "CHO₂"
+          "Porque etanol é um metal",
+          "Porque o grupo –OH do etanol permite ligações de hidrogênio com água",
+          "Porque hexano possui carga iônica permanente",
+          "Porque etanol não contém carbono"
         ],
         "correctIndex": 1,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Divida os índices 6,12,6 pelo máximo divisor comum 6: a razão mínima é C:H:O=1:2:1, portanto CH₂O. A fórmula mínima não indica quantos grupos CH₂O compõem cada molécula."
+        "hint": "Observe a conectividade e as propriedades discutidas no capítulo.",
+        "solution": "O grupo hidroxila do etanol estabelece ligações de hidrogênio com água; hexano é predominantemente apolar e tem baixa afinidade pelo solvente polar. Massa e temperatura também influenciam, mas não substituem esse mecanismo."
       },
       {
         "level": "intermediate",
-        "prompt": "Uma substância tem 40% C, 6,7% H e 53,3% O. Qual fórmula mínima aproximada?",
+        "prompt": "Por que pentano e neopentano podem ter pontos de ebulição diferentes?",
         "options": [
-          "CO₂",
-          "C₂H₂O",
-          "CH₂O",
-          "CH₄O"
+          "Porque possuem números distintos de átomos de carbono",
+          "Porque o neopentano é iônico",
+          "Porque a ramificação modifica contato molecular e dispersão",
+          "Porque a fórmula molecular do neopentano contém oxigênio"
         ],
         "correctIndex": 2,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Em 100 g, n(C)=40/12≈3,33; n(H)=6,7/1≈6,7; n(O)=53,3/16≈3,33. Dividindo por 3,33, resulta aproximadamente 1:2:1, ou CH₂O. A soma das porcentagens é aproximadamente 100%, e os arredondamentos não alteram a razão inteira inferida."
+        "hint": "Observe a conectividade e as propriedades discutidas no capítulo.",
+        "solution": "Ambos são C₅H₁₂, mas suas formas diferem. A maior ramificação do neopentano reduz o contato intermolecular efetivo, influenciando forças de dispersão e temperatura de ebulição."
       },
       {
         "level": "advanced",
-        "prompt": "Uma molécula tem fórmula mínima CH₂O (30 g/mol) e massa molar 180 g/mol. Qual é a fórmula molecular?",
+        "prompt": "Qual mudança tende a aumentar a solubilidade aquosa de um ácido carboxílico fraco?",
         "options": [
-          "CH₂O",
-          "C₂H₄O₂",
-          "C₃H₆O₃",
-          "C₆H₁₂O₆"
+          "Reduzir necessariamente a pressão atmosférica",
+          "Remover toda a água",
+          "Aumentar sempre a cadeia apolar",
+          "Formar sua espécie carboxilato carregada em meio básico"
         ],
         "correctIndex": 3,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "O fator entre massa molar molecular e massa da fórmula mínima é 180/30=6. Multiplique todos os índices de CH₂O por 6: C₆H₁₂O₆. Isso não identifica um isômero específico."
+        "hint": "Observe a conectividade e as propriedades discutidas no capítulo.",
+        "solution": "A desprotonação em meio básico forma carboxilato, espécie carregada que interage fortemente com água. A conclusão depende de pH e estrutura molecular, e não significa solubilidade infinita."
       }
     ]
   },
   {
     "subject": "Química",
-    "topicStart": "Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos",
-    "objective": "Compreender e aplicar criticamente segurança na aquisição, armazenagem e utilização de produtos químicos domésticos, interpretando evidências, construindo representações, resolvendo situações quantitativas ou qualitativas e explicitando hipóteses e limites de cada modelo.",
+    "topicStart": "Principais radicais funcionais e funções orgânicas",
+    "objective": "Identificar e comparar principais radicais funcionais e funções orgânicas mediante estruturas, propriedades, exemplos resolvidos e interpretação crítica de condições experimentais, reconhecendo exceções e evitando generalizações indevidas.",
     "prerequisites": [
-      "Leitura de rótulos e pictogramas",
-      "Misturas e reações químicas",
-      "Concentração e exposição"
+      "Representação de fórmulas estruturais",
+      "Ligações covalentes e valência do carbono",
+      "Polaridade e grupos funcionais"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: perigo, exposição e rótulos",
-        "explanation": "Perigo é a capacidade intrínseca de um produto provocar dano; risco depende também de dose, via de exposição, duração e condições de uso. Um desinfetante pode ser eficaz quando utilizado conforme o rótulo, mas inadequado se aplicado em ambiente sem ventilação ou em concentração diferente da indicada. Rótulos e fichas de dados de segurança identificam ingredientes relevantes, advertências, incompatibilidades, primeiros socorros e descarte. Pictogramas de corrosivo, inflamável ou irritante comunicam categorias de perigo, não uma previsão de que todo contato causará o mesmo efeito. Produtos de limpeza não devem ser transferidos para garrafas de bebida nem armazenados sem identificação. Crianças e animais não devem ter acesso a recipientes; guardar em embalagem original, fechada e longe de alimentos reduz confusão e contaminação. O fato de um produto ser vendido livremente ou ter origem natural não garante inocuidade. O uso responsável envolve seguir a diluição expressamente indicada pelo fabricante e nunca improvisar combinações de substâncias. O foco é prevenção e reconhecimento de sinais de exposição, não experimentação doméstica de reações.",
-        "example": "Uma embalagem indica 'usar 10 mL por litro de água'. Para preparar 2 L segundo essa instrução, multiplique 10×2=20 mL do produto, usando recipiente adequado. A conta só se aplica a esse rótulo específico; não é recomendação universal de diluição.",
-        "pitfall": "Não confundir propriedades observáveis com explicações microscópicas e condições de medida.",
+        "title": "Conceitos: grupos funcionais e nomenclatura",
+        "explanation": "Função orgânica é uma classe de compostos identificada por grupos estruturais característicos que influenciam reatividade e propriedades. Álcoois possuem grupo hidroxila ligado a carbono saturado; fenóis têm –OH ligado diretamente a anel aromático, distinção que altera acidez e reatividade. Aldeídos apresentam carbonila terminal –CHO, enquanto cetonas possuem carbonila entre carbonos. Ácidos carboxílicos contêm –COOH e ésteres contêm –COO– entre fragmentos carbônicos; é incorreto classificar todo composto com oxigênio como álcool. Aminas derivam formalmente de amônia por substituição de hidrogênios por grupos orgânicos; amidas possuem nitrogênio ligado ao carbono de uma carbonila. Éteres exibem ligação C–O–C. A nomenclatura sistemática identifica cadeia principal, posição de insaturações e grupos prioritários, mas reconhecer a função exige observar conectividade, não apenas contar elementos. Uma mesma molécula pode ter múltiplas funções, como aminoácidos com amina e ácido carboxílico. Fórmulas moleculares isoladas não determinam qual função está presente, pois isômeros podem diferir funcionalmente.",
+        "example": "Na estrutura CH₃CH₂OH, identifique –OH ligado a carbono saturado: álcool. Em CH₃COOH, identifique –C(=O)OH: ácido carboxílico. Em CH₃OCH₃, oxigênio liga dois carbonos: éter. Não classifique apenas pela presença de O.",
+        "pitfall": "Não inferir uma função ou propriedade apenas da fórmula molecular.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a estrutura e os dados disponíveis.",
+          "Aplique o conceito e justifique cada inferência.",
+          "Confira condições, alternativas e possíveis exceções."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: incompatibilidades e ventilação",
-        "explanation": "Hipoclorito de sódio presente em algumas águas sanitárias pode reagir perigosamente com produtos ácidos, liberando gases tóxicos; misturas com amônia também podem produzir vapores nocivos. Portanto, nunca combine água sanitária com limpadores de vaso sanitário, desincrustantes, amoníaco ou outros produtos. Mesmo dois produtos vendidos como 'limpeza' podem ter composições incompatíveis. Fragrância agradável não é indicador de ausência de substâncias irritantes. Ventilação, proteção de pele quando indicada, manutenção da embalagem original e respeito ao tempo de contato descrito no rótulo são medidas distintas e complementares. Para escolher um produto, identifique finalidade, superfície, instruções e advertências; uma concentração maior não significa automaticamente maior eficácia e pode danificar superfícies. Se ocorrer exposição a vapores, afaste-se da fonte e procure orientação de serviços de emergência ou centro de intoxicações; não tente neutralizar misturas adicionando outros reagentes. O princípio químico é que reatividade depende da identidade das espécies e do meio, não apenas da marca comercial ou da cor do líquido.",
-        "example": "Ao comparar dois frascos, um de água sanitária e outro de limpador ácido, identifique as classes de substâncias pelo rótulo; reconheça a incompatibilidade; mantenha usos separados sem mistura. Não execute reação para testar o aviso: o procedimento seguro é evitar a exposição.",
-        "pitfall": "Não substituir análise de unidades e hipóteses por fórmulas memorizadas.",
+        "title": "Aplicação: comparar reatividade e propriedades",
+        "explanation": "Ácidos carboxílicos podem doar próton em água e formar carboxilatos, enquanto álcoois comuns são muito menos ácidos nas mesmas condições. Aminas frequentemente atuam como bases por causa do par de elétrons não ligante do nitrogênio; amidas são menos básicas devido à deslocalização eletrônica associada à carbonila. Aldeídos podem sofrer oxidação a ácidos carboxílicos em condições apropriadas, enquanto cetonas comuns resistem a oxidação branda, distinção usada em testes químicos controlados. Ésteres podem sofrer hidrólise, produzindo ácido e álcool ou espécies correspondentes dependendo do meio. A presença de carbonila não basta para afirmar que toda molécula reage da mesma forma: aldeídos, cetonas, ácidos, ésteres e amidas diferem em substituintes e mecanismo. Propriedades físicas também mudam: álcoois e ácidos podem formar ligações de hidrogênio, enquanto éteres atuam como aceptores mas não doadores típicos. Ao resolver exercícios, primeiro localize o grupo, depois verifique sua posição e só então aplique tendência de reatividade.",
+        "example": "Compare CH₃CHO e CH₃COCH₃. O primeiro possui carbonila terminal com H ligado ao carbono carbonílico: aldeído. O segundo possui carbonila entre carbonos: cetona. Identifique a estrutura antes de inferir comportamento químico.",
+        "pitfall": "Não confundir grupo estrutural com comportamento absoluto em qualquer condição.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a estrutura e os dados disponíveis.",
+          "Aplique o conceito e justifique cada inferência.",
+          "Confira condições, alternativas e possíveis exceções."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: descarte, dose e avaliação de risco",
-        "explanation": "A avaliação de risco doméstico combina perigo do produto, concentração, quantidade utilizada, frequência, ventilação e vulnerabilidade das pessoas expostas. Uma mesma substância pode apresentar efeitos diferentes por ingestão, contato com pele ou inalação, de modo que recomendações de primeiros socorros devem seguir o rótulo e orientações oficiais, sem tratamentos improvisados. Resíduos de tintas, solventes, pilhas, medicamentos e certos pesticidas não devem ser despejados indiscriminadamente na rede de esgoto: o destino adequado depende da categoria e da coleta disponível no município. Embalagens contaminadas não devem ser reutilizadas para armazenar água ou alimentos. Diluir um resíduo não elimina sua massa nem torna automaticamente permitido seu descarte; apenas altera sua concentração. Em análise quantitativa, concentração C=m/V descreve massa de soluto por volume, mas não substitui avaliação toxicológica ou limite regulatório. A comunicação científica deve separar perigo, probabilidade de exposição e medidas de controle; expressões como '100% seguro' ignoram contextos e podem estimular uso inadequado.",
-        "example": "Uma solução contém 5 g de substância em 500 mL: C=5/0,5=10 g/L. Se apenas se adiciona água até 1 L, C=5/1=5 g/L, mas a massa total de substância continua 5 g. Diluição não é neutralização nem autorização de descarte.",
-        "pitfall": "Não extrapolar resultados idealizados sem examinar condições e limitações.",
+        "title": "Aprofundamento: moléculas multifuncionais e isomeria",
+        "explanation": "Moléculas multifuncionais exigem identificar todos os grupos presentes e reconhecer que um pode modificar o comportamento de outro. Ácido lático, CH₃CH(OH)COOH, contém simultaneamente hidroxila alcoólica e ácido carboxílico; sua fórmula não deve ser reduzida à classificação única de álcool. Um aminoácido simples pode existir predominantemente como zwitteríon em certa faixa de pH, com amônio positivo e carboxilato negativo na mesma molécula, o que altera solubilidade e comportamento ácido-base. Isomeria de função ocorre quando compostos compartilham fórmula molecular mas possuem grupos funcionais distintos, como etanol e dimetil éter (C₂H₆O). A prioridade de sufixos na nomenclatura não significa que outros grupos desapareçam da estrutura. Em síntese orgânica, prever produtos exige considerar reagentes, condições e mecanismos; reconhecer uma função é necessário, mas não suficiente para prever rendimento e seletividade. Uma classificação confiável registra conectividade, protonação, estereoquímica quando relevante e condições experimentais.",
+        "example": "Para CH₃CH(OH)COOH, marque o carbono que carrega –OH e o grupo terminal –COOH. Identifique álcool e ácido carboxílico; conte três carbonos. A dupla função explica por que um único rótulo é insuficiente para descrever a molécula.",
+        "pitfall": "Não extrapolar tendência química sem considerar solvente, estrutura e ambiente.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a estrutura e os dados disponíveis.",
+          "Aplique o conceito e justifique cada inferência.",
+          "Confira condições, alternativas e possíveis exceções."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual conduta reduz o risco de ingestão acidental de produto de limpeza?",
+        "prompt": "Qual função apresenta o grupo –COOH?",
         "options": [
-          "Transferi-lo para garrafa de refrigerante",
-          "Armazená-lo na embalagem original identificada e fora do alcance de crianças",
-          "Retirar o rótulo após a compra",
-          "Misturá-lo com outro produto para reduzir o cheiro"
+          "Éter",
+          "Ácido carboxílico",
+          "Cetona",
+          "Amina"
         ],
         "correctIndex": 1,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "A embalagem original e o rótulo preservam identificação, advertências e instruções; manter fora do alcance de crianças reduz exposição acidental. Transferência, perda do rótulo e misturas aumentam o risco."
+        "hint": "Observe a conectividade e as propriedades discutidas no capítulo.",
+        "solution": "O grupo –C(=O)OH define um ácido carboxílico. Éteres têm C–O–C, cetonas carbonila entre carbonos e aminas contêm nitrogênio com ligações características."
       },
       {
         "level": "intermediate",
-        "prompt": "Por que não se deve misturar água sanitária e limpadores ácidos?",
+        "prompt": "Qual estrutura representa uma cetona?",
         "options": [
-          "Porque toda mistura neutraliza os dois produtos",
-          "Porque sempre se forma apenas água",
-          "Porque podem ser liberados gases tóxicos",
-          "Porque o hipoclorito vira açúcar"
+          "CH₃CH₂OH",
+          "CH₃CHO",
+          "CH₃COCH₃",
+          "CH₃COOH"
         ],
         "correctIndex": 2,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Produtos com hipoclorito podem reagir com ácidos e liberar gases perigosos. Não se deve tentar confirmar isso experimentalmente; a conduta correta é manter os produtos separados e seguir os rótulos."
+        "hint": "Observe a conectividade e as propriedades discutidas no capítulo.",
+        "solution": "CH₃COCH₃ apresenta carbonila ligada a dois carbonos, característica de cetona. As outras estruturas representam álcool, aldeído e ácido carboxílico, respectivamente."
       },
       {
         "level": "advanced",
-        "prompt": "Uma solução contém 5 g de soluto em 0,5 L. Ao diluir para 1 L, sem perder soluto, o que ocorre?",
+        "prompt": "Quais funções aparecem em CH₃CH(OH)COOH?",
         "options": [
-          "A concentração cai de 10 para 5 g/L e a massa permanece 5 g",
-          "A massa cai de 5 para 2,5 g",
-          "A concentração permanece 10 g/L",
-          "O soluto é necessariamente neutralizado"
+          "Apenas éter",
+          "Cetona e éster",
+          "Apenas amina",
+          "Álcool e ácido carboxílico"
         ],
-        "correctIndex": 0,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Inicialmente C=5/0,5=10 g/L. Após adicionar solvente até 1 L, C=5/1=5 g/L, enquanto a massa de soluto permanece 5 g. Diluição não é reação de neutralização."
+        "correctIndex": 3,
+        "hint": "Observe a conectividade e as propriedades discutidas no capítulo.",
+        "solution": "A hidroxila –OH ligada a carbono saturado caracteriza álcool; o grupo –COOH caracteriza ácido carboxílico. A molécula é multifuncional, e os dois grupos devem ser identificados."
       }
     ]
   },
