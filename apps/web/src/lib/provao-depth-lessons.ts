@@ -18,6 +18,8 @@ import {provaoDepthBatch04Core} from './provao-depth-batch04-core.ts';
 import {provaoDepthBatch05Stem} from './provao-depth-batch05-stem.ts';
 import {provaoDepthBatch06MechanicsMath} from './provao-depth-batch06-mechanics-math.ts';
 import {provaoDepthBatch06ScienceHistory} from './provao-depth-batch06-science-history.ts';
+import {provaoDepthBatch07Sciences} from './provao-depth-batch07-sciences.ts';
+import {provaoDepthBatch07MathHistory} from './provao-depth-batch07-math-history.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -27,7 +29,7 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory];
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
