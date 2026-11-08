@@ -320,3 +320,8 @@ A CI #42517575472 falhou no teste de índice da questão intermediária de fórm
 ## Compatibilidade entre lotes 16 e 26 — 2026-11-08
 
 A execução #42518506879 revelou uma regressão no teste do lote 16 após o resolvedor priorizar correspondências exatas: a questão de fórmula molecular passou a usar o material específico do lote 26, enquanto a asserção antiga exigia o gabarito do lote 16. O teste foi alterado para validar explicitamente o gabarito do material histórico do lote 16, preservando a seleção da aula mais específica no resolvedor. Essa correção não altera questões ou respostas pedagógicas; exige CI completa para confirmar segurança, testes de dois usuários, design, TypeScript e build. Não contabilizar novas aulas por essa manutenção. PR em rascunho, sem merge, sem deploy; autoria original e não homologada.
+
+
+## Diagnóstico preciso de registros — 2026-11-08
+
+A CI #42518698416 concluiu com sucesso no commit `576d946`, validando a correção de prioridade do resolvedor e a compatibilidade dos lotes 16 e 26, inclusive as etapas da pipeline configurada. A auditoria foi então refinada para separar prefixos sem correspondência (`unresolved`) daqueles que possuem correspondência, mas nunca são escolhidos (`shadowed`), reproduzindo a prioridade exata-antes-de-prefixo do resolvedor. O teste também compara a quantidade de registros vencedores com a cobertura editorial reconhecida. Esta alteração adicional requer nova CI; não confundir o sucesso do commit anterior com validação da alteração mais recente. Sem novas aulas contabilizadas, merge ou deploy. Revisão docente ainda pendente.
