@@ -29,7 +29,7 @@ test('batch 20: unique exact curricular items and three verified objective stage
   assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
    const section=lesson.sections[i];
-   const task=lesson.tasks[i];
+   const task: (typeof lesson.tasks)[number]=lesson.tasks[i];
    assert.ok(section.explanation.length>=750,prefix+' chapter '+i);
    assert.ok(section.example.length>=180,prefix+' worked example '+i);
    assert.ok(section.pitfall.length>=50&&section.steps.length>=3);
