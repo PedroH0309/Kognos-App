@@ -260,23 +260,29 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
      <small>Exemplo de referência do material, não um caso cotidiano verificado.</small></>}</>}
   </section>
   {lesson?isGenericStarter?<GuidedIntro lesson={lesson} subject={subject}/>:<>
-   <section className="k-universal-visual" aria-label="Mapa do percurso">
+   <section className="k-universal-learning-stage" id="k-lesson-concept">
+    <LessonStage section={lesson.sections[0]} index={0}/>
+   </section>
+   <section className="k-universal-learning-stage" id="k-lesson-development">
+    <h4>04 · Desenvolvimento progressivo</h4>
+    <p>Aprofunde o conteúdo na ordem apresentada, retomando os fundamentos antes de cada aplicação.</p>
+    {lesson.sections.slice(1).map((section,index)=><LessonStage key={section.level} section={section} index={index+1}/>)}
+   </section>
+   <section className="k-universal-visual" id="k-lesson-visual" aria-label="Mapa do percurso">
     <h4>05 · Visualize a sequência de aprendizagem</h4>
-    <p>Do conceito inicial à análise de condições e limites, explore como os capítulos se conectam.</p>
+    <p>Conecte os conceitos estudados antes de examinar os exemplos e as condições de aplicação.</p>
     <ConceptMap lesson={lesson}/>
    </section>
-   {lesson.sections.map((section,index)=>{
-    const task=lesson.tasks.find(t=>t.level===section.level);
-    return <LessonStage key={section.level} index={index} section={section} task={task}
-     onResult={result=>setResults(values=>({...values,[section.level]:result}))}/>;
-   })}
-   {hasLab&&<section className="k-universal-lab" aria-label={'Simulação interativa de '+topic}>
+   <LessonExamples lesson={lesson}/>
+   <LessonComparisons lesson={lesson}/>
+   {hasLab&&<section className="k-universal-lab" id="k-lesson-interactivity" aria-label={'Simulação interativa de '+topic}>
     <h4>08 · Explore visualmente e teste hipóteses</h4>
     <p>O laboratório corresponde a um recorte deste tema. Manipule elementos e compare o resultado com a teoria estudada; não é uma avaliação de domínio.</p>
     <TopicLab subject={subject} topic={topic}/>
     {onLab&&<button type="button" onClick={onLab}>Abrir mais recursos no Laboratório <ArrowRight size={15}/></button>}
    </section>}
-   <section className="k-universal-summary" aria-label="Consolidação da aula">
+   <LessonQuickChecks lesson={lesson} onResult={(level,result)=>setResults(values=>({...values,[level]:result}))}/>
+   <section className="k-universal-summary" id="k-lesson-summary" aria-label="Consolidação da aula">
     <h4>10 · Consolidação e folha de revisão</h4>
     <p>Antes de avançar, recupere com suas palavras os conceitos essenciais de cada etapa:</p>
     <ol>{lesson.sections.map(section=><li key={section.level}><strong>{section.title}.</strong> {lessonReadingBlocks(section.explanation)[0]}</li>)}</ol>
