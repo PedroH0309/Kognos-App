@@ -73,7 +73,7 @@ export const provaoDepthBatch02MathHumanities:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Converta para x−1=2³ e verifique o domínio.",
-        "solution": "A opção C é correta: 2³=8, portanto x−1=8 e x=9; o domínio exige x>1. A, B e D não satisfazem a equação original ou violam restrições."
+        "solution": "A opção C é correta: 2³=8, portanto x−1=8 e x=9; o domínio exige x>1. A, B e D não satisfazem a equação original ou violam restrições. Substituindo x=9: log₂(8)=3, o que verifica a solução."
       },
       {
         "level": "advanced",
