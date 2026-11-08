@@ -235,26 +235,44 @@ test('all five exam catalogues report depth by exam without counting shared less
  console.log('EXAM_DEPTH_BY_INSTITUTION '+JSON.stringify(Object.fromEntries(counts)));
 });
 
-test('batch 33 adds one nonduplicated velocity and acceleration lesson',()=>{
+test('batch 34 adds five new exact nonoverlapping syllabus lessons with detailed multiple choice',()=>{
  const report=provaoDepthAudit();
- const subject='Física';
- const name='Velocidade e Aceleração: escalar média e instantânea; vetorial média e instantânea';
- const topic=curriculumTopics.find(t=>t.subject===subject&&t.topic===name);
- assert.ok(topic);
- const lesson=deepProvaoLesson(topic);
- assert.ok(lesson);
- assert.equal(lesson.sections.length,3);
- assert.equal(lesson.tasks.length,3);
- for(const section of lesson.sections){
-  assert.ok(section.explanation.length>=750);
-  assert.ok(section.example.length>80);
+ const cases=[
+  ['Português','Elementos estruturais e processos de formação de palavras'],
+  ['Português','Flexão nominal e flexão verbal (expressão de tempo, modo, aspecto e voz; correlação de tempos e…'],
+  ['Biologia','Ausência de dominância, alelos letais e alelos múltiplos (polialelia)'],
+  ['Física','Sistemas conservativos e não conservativos'],
+  ['História','A Constituição de 1988: a promoção e proteção de direitos']
+ ] as const;
+ assert.equal(new Set(cases.map(([subject,name])=>subject+'\\0'+name)).size,5);
+ const registrations=new Set(deepProvaoTopicKeys);
+ assert.equal(registrations.size,deepProvaoTopicKeys.length,'Deep registrations must be unique');
+ for(const [subject,name] of cases){
+  const matching=curriculumTopics.filter(t=>t.subject===subject&&t.topic===name&&t.exams.includes('saresp'));
+  assert.equal(matching.length,1,'Missing or ambiguous official topic: '+subject+'/'+name);
+  const topic=matching[0];
+  const lesson=deepProvaoLesson(topic);
+  assert.ok(lesson,'Missing original lesson '+subject+'/'+name);
+  assert.equal(lesson.id,topic.id,'Curricular ID must remain stable');
+  assert.deepEqual(starterLesson(topic),lesson,'Central course reader must resolve deep lesson');
+  assert.ok(lesson.objective.length>=75);
+  assert.ok(lesson.prerequisites.length>=3);
+  assert.deepEqual(lesson.sections.map(section=>section.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(task=>task.level),['basic','intermediate','advanced']);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  for(let n=0;n<3;n++){
+   const section=lesson.sections[n];
+   const task=lesson.tasks[n];
+   assert.ok(section.explanation.length>=750);
+   assert.ok(section.example.length>=180);
+   assert.ok(section.steps.length>=3&&section.pitfall.length>=50);
+   assert.equal(task.options?.length,4);
+   assert.equal(new Set(task.options).size,4);
+   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
+   assert.ok(task.solution.length>=140);
+   assert.equal(lessonTaskChoice(lesson,task).source,'editorial');
+  }
+  assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic===name));
  }
- for(const task of lesson.tasks){
-  assert.equal(task.options?.length,4);
-  assert.equal(new Set(task.options).size,4);
-  assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
-  assert.ok(task.solution.length>=50);
- }
- assert.ok(!report.pending.some(t=>t.subject===subject&&t.topic===name));
- assert.ok(report.coverage.deep_specific>=167);
+ assert.ok(report.coverage.deep_specific>=171,'Batch 34 must increase true Provão coverage by five, not shadow prior lessons');
 });
