@@ -36,12 +36,12 @@ export function provaoDepthAudit(){
 }
 test('full three-grade Provão syllabus has an honest depth status for every unique topic',()=>{
  const report=provaoDepthAudit();
- assert.equal(report.total,360);
+ assert.equal(report.total,364,'360 topic entries plus four writing assessment criteria');
  assert.equal(Object.values(report.coverage).reduce((sum,n)=>sum+n,0),report.total);
  assert.equal(report.coverage.deep_specific,deepProvaoTopicKeys.length);
  assert.ok(report.coverage.introductory_only>0,'Do not misrepresent incomplete classes as finished');
  assert.ok(report.pending.every(item=>item.status!=='deep_specific'));
- assert.equal(Object.values(report.bySubject).length,10);
+ assert.equal(Object.values(report.bySubject).length,11,'Ten curricular subjects plus Redação rubric');
  console.log('PROVAO_DEPTH_AUDIT '+JSON.stringify({total:report.total,coverage:report.coverage,bySubject:report.bySubject,
   pendingExamples:report.pending.filter(x=>x.status==='introductory_only').slice(0,15)}));
 });
