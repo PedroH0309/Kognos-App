@@ -27,7 +27,7 @@ export const provaoDepthBatch14Core:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Semirreações e energia livre",
         "explanation": "Para montar a reação global, escreva a oxidação no ânodo e a redução no cátodo, depois multiplique as equações para cancelar elétrons. O balanceamento deve conservar átomos e cargas. Na pilha Zn/Cu, Zn(s)→Zn²⁺+2e⁻ e Cu²⁺+2e⁻→Cu(s), portanto Zn+Cu²⁺→Zn²⁺+Cu. Se uma semirreação libera três elétrons e a outra consome dois, ajuste para seis elétrons sem multiplicar E°. A relação ΔG°=−nFE° liga força eletromotriz à variação de energia livre padrão: E° positivo implica ΔG° negativo para o sentido escrito. Se inverter a reação global, E° muda de sinal. Isso não autoriza prever velocidade de reação, pois barreiras cinéticas e passivação podem retardar processos favoráveis. A quantidade n representa elétrons transferidos na reação global corretamente balanceada, não o número de espécies presentes.",
-        "example": "Dados Al³⁺/Al=−1,66 V e Cu²⁺/Cu=+0,34 V: primeiro, escreva 2Al→2Al³⁺+6e⁻; segundo, 3Cu²⁺+6e⁻→3Cu; terceiro, calcule E°=0,34−(−1,66)=2,00 V, sem triplicar os potenciais.",
+        "example": "Dados Al³⁺/Al=−1,66 V e Cu²⁺/Cu=+0,34 V: primeiro, escreva 2Al→2Al³⁺+6e⁻; segundo, 3Cu²⁺+6e⁻→3Cu; terceiro, calcule E°=0,34−(−1,66)=2,00 V, sem triplicar os potenciais. O valor positivo confirma o sentido espontâneo padrão da reação.",
         "pitfall": "Não extrapole uma relação válida em condições específicas para qualquer situação; compare os mecanismos antes de aplicar a regra.",
         "steps": [
           "Identifique a estrutura e os dados relevantes do problema.",
@@ -116,7 +116,7 @@ export const provaoDepthBatch14Core:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Série e paralelo",
         "explanation": "Resistores em série compartilham a mesma corrente, e suas quedas de tensão somam a tensão total. A resistência equivalente é Req=R1+R2+... . Resistores em paralelo estão ligados aos mesmos dois nós, compartilham a mesma diferença de potencial e dividem a corrente total. Vale 1/Req=1/R1+1/R2+...; para dois resistores, Req=R1R2/(R1+R2). A resistência equivalente paralela de resistores positivos é inferior à menor resistência individual. Em circuitos mistos, a proximidade no desenho não determina série ou paralelo: é preciso identificar nós e ramificações. A lei dos nós resulta da conservação de carga, e a soma algébrica de tensões em malhas decorre da conservação de energia. Esses modelos são adequados a circuitos concentrados e componentes ideais no nível escolar, não substituindo análise de elementos não lineares.",
-        "example": "Resistores 6 Ω e 3 Ω em paralelo sob 12 V: primeiro, Req=6×3/(6+3)=2 Ω; segundo, I_total=12/2=6 A; terceiro, correntes de ramo são 2 A e 4 A, cuja soma confere os 6 A.",
+        "example": "Resistores 6 Ω e 3 Ω em paralelo sob 12 V: primeiro, Req=6×3/(6+3)=2 Ω; segundo, I_total=12/2=6 A; terceiro, correntes de ramo são 2 A e 4 A, cuja soma confere os 6 A. O teste de conservação de corrente confirma a associação.",
         "pitfall": "Não extrapole uma relação válida em condições específicas para qualquer situação; compare os mecanismos antes de aplicar a regra.",
         "steps": [
           "Identifique a estrutura e os dados relevantes do problema.",
