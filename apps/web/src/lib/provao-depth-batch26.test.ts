@@ -8,15 +8,16 @@ import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 
 const cases=[
- ['Química','Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular',[0,2,1]],
+ ['Química','Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular',[0,1,1]],
  ['Química','Constantes de equilíbrio e cálculos simples de equilíbrio',[1,2,3]],
  ['Biologia','Fatores que regulam o tamanho das populações',[1,2,2]],
  ['História','Período macedônico e cultura helenística',[1,2,3]],
- ['História','Do artesanato à fábrica: transformações no mundo do trabalho',[1,0,2]]
+ ['História','Do artesanato à fábrica: transformações no mundo do trabalho',[1,0,2]],
+ ['Química','Transformações nucleares',[1,2,0]]
 ] as const;
 
-test('batch 26: five unique syllabus lessons, specific worked examples and correct objective keys',()=>{
- assert.equal(provaoDepthBatch26Core.length,5);
+test('batch 26: six unique syllabus lessons, specific worked examples and correct objective keys',()=>{
+ assert.equal(provaoDepthBatch26Core.length,6);
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length,'Duplicate deep syllabus registrations');
  for(const [subject,prefix,keys] of cases){
   const matches=curriculumTopics.filter(t=>t.subject===subject&&t.topic.startsWith(prefix)&&t.exams.includes('saresp'));
