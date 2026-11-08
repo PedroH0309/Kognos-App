@@ -12,6 +12,8 @@ import ScienceLabPanel from './science/ScienceLabPanel';
 import LanguageLabPanel from './languages/LanguageLabPanel';
 import HumanitiesLabPanel from './humanities/HumanitiesLabPanel';
 import EcologyEnergyLab from './science/EcologyEnergyLab';
+import LessonChoiceQuestion from './LessonChoiceQuestion';
+import {lessonTaskChoice,introductoryChoice} from '@/lib/lesson-multiple-choice';
 import {resolveMathLab} from '@/lib/math-labs';
 import {resolveScienceLab} from '@/lib/science-labs';
 import {resolveLanguageLab} from '@/lib/language-labs';
@@ -63,31 +65,12 @@ function TopicLab({subject,topic}:{subject:string;topic:string}){
  return null;
 }
 
-function QuickCheck({task,level,onResult}:{task:CourseTask;level:string;onResult:(result:'understood'|'review')=>void}){
- const [response,setResponse]=useState('');
- const [showHint,setShowHint]=useState(false);
- const [showSolution,setShowSolution]=useState(false);
- const [selfResult,setSelfResult]=useState<'understood'|'review'|null>(null);
- function choose(result:'understood'|'review'){setSelfResult(result);onResult(result);}
+function QuickCheck({lesson,task,level,onResult}:{lesson:CourseLesson;task:CourseTask;level:string;onResult:(result:'understood'|'review')=>void}){
  return <div className="k-universal-quick-check">
-  <div className="k-universal-check-heading"><span>09 · Teste rápido · {level}</span><p>Responda antes de revelar a resolução. Esta checagem é formativa e não vale nota.</p></div>
-  <p className="k-universal-prompt">{task.prompt}</p>
-  <label>Seu raciocínio
-   <textarea value={response} onChange={event=>setResponse(event.target.value)} rows={3} placeholder="Explique por que sua resposta faz sentido."/>
-  </label>
-  <div className="k-universal-inline-actions">
-   <button type="button" onClick={()=>setShowHint(v=>!v)} aria-expanded={showHint}><Lightbulb size={15}/>{showHint?'Ocultar dica':'Ver dica'}</button>
-   <button type="button" disabled={!response.trim()} onClick={()=>setShowSolution(v=>!v)} aria-expanded={showSolution}><Eye size={15}/>{showSolution?'Ocultar resolução':'Conferir e receber feedback'}</button>
+  <div className="k-universal-check-heading"><span>09 · Teste rápido · {level}</span>
+   <p>Escolha uma das alternativas e confira a explicação imediatamente. A atividade é formativa e não vale nota.</p>
   </div>
-  {showHint&&<div className="k-universal-hint"><strong>Pista</strong><ReadingBlocks value={task.hint}/></div>}
-  {showSolution&&<div className="k-universal-feedback" role="status">
-   <strong>Resolução comentada</strong><ReadingBlocks value={task.solution}/>
-   <p>Compare cada etapa da sua resposta com a justificativa. O Kognos não atribui acerto automático a respostas livres.</p>
-   <div role="group" aria-label="Autoavaliação do teste rápido" className="k-universal-inline-actions">
-    <button type="button" aria-pressed={selfResult==='understood'} onClick={()=>choose('understood')}><CheckCircle2 size={15}/>Consegui justificar</button>
-    <button type="button" aria-pressed={selfResult==='review'} onClick={()=>choose('review')}><RotateCcw size={15}/>Preciso revisar</button>
-   </div>
-  </div>}
+  <LessonChoiceQuestion choice={lessonTaskChoice(lesson,task)} onAnswer={correct=>onResult(correct?'understood':'review')}/>
  </div>;
 }
 
@@ -141,7 +124,7 @@ function LessonQuickChecks({lesson,onResult}:{lesson:CourseLesson;onResult:(leve
   <p>Uma questão por nível para identificar dúvidas antes de seguir. Outras atividades autorais continuam disponíveis na aba Atividades.</p>
   {lesson.sections.map(section=>{
    const task=lesson.tasks.find(t=>t.level===section.level);
-   return task?<QuickCheck key={section.level} task={task} level={levels[section.level]}
+   return task?<QuickCheck key={section.level} lesson={lesson} task={task} level={levels[section.level]}
     onResult={result=>onResult(section.level,result)}/>:null;
   })}
  </section>;
@@ -184,7 +167,7 @@ function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
   <section className="k-universal-chapter" id="k-lesson-development">
    <h4>04 · Aprenda a investigar o assunto</h4>
    <ReadingBlocks value={application.explanation}/>
-   <ol className="k-universal-guide-steps">{method.questions.map((question,i)=><li key={i}>{question}</li>)}</ol>
+   <p>Observe os dados disponíveis, os conceitos apresentados e as condições necessárias antes de escolher uma conclusão.</p>
    <p className="k-universal-caution">Estas perguntas orientam a investigação; não substituem conceitos específicos ainda não publicados.</p>
   </section>
   <section className="k-universal-visual" id="k-lesson-visual">
@@ -202,7 +185,7 @@ function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
   </section>
   {sample&&<section className="k-universal-chapter" id="k-lesson-check">
    <h4>09 · Verifique uma ideia fundamental</h4>
-   <QuickCheck task={sample} level="Roteiro de estudo" onResult={setReview}/>
+   <QuickCheck lesson={lesson} task={sample} level="Roteiro de estudo" onResult={setReview}/>
   </section>}
   <section className="k-universal-summary" id="k-lesson-summary">
    <h4>10 · Consolidação provisória</h4>
@@ -219,8 +202,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
  onTutor?:()=>void;onLab?:()=>void;
 }){
  const [results,setResults]=useState<Record<string,'understood'|'review'>>({});
- const [introResponse,setIntroResponse]=useState('');
- const [introFeedback,setIntroFeedback]=useState(false);
+ const introChoice=introduction?introductoryChoice(introduction):null;
  const situation=everydayContextFor(lesson);
  const method=studyMethodForSubject(subject);
  const practiceCount=lesson?.tasks.length??(introduction?1:0);
@@ -255,12 +237,14 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
   <LessonContentsNav hasVisual={Boolean(lesson)} hasLab={Boolean(lesson&&!isGenericStarter&&hasLab)} hasCheck={Boolean(lesson?.tasks.length||introduction?.check)}/>
   <section className="k-universal-context" id="k-lesson-context" aria-label="Contextualização">
    <h4>02 · Por que estudar isto?</h4>
-   {situation?<><ReadingBlocks value={situation.context}/><p><strong>Desafio inicial:</strong> {situation.question}</p>
-    <details><summary>Ver como a situação é resolvida</summary><ReadingBlocks value={situation.answer}/></details>
+   {situation?<><ReadingBlocks value={situation.context}/>
+    <p>Analise a situação e os conceitos envolvidos antes de escolher uma alternativa.</p>
+    <details><summary>Ver a explicação contextual</summary><ReadingBlocks value={situation.answer}/></details>
     <small>Contexto didático autoral; dados podem ser hipotéticos.</small></>:
-    <><p>Antes da explicação, reflita sobre a questão inicial:</p>
-     <p className="k-universal-context-question"><strong>{lesson?.tasks[0]?.prompt??introduction?.check??'O que você já sabe sobre este tema?'}</strong></p>
-     <small>Questão de abertura. Compare sua hipótese com a explicação e os exemplos das próximas etapas.</small></>}
+    <p>Antes de aprofundar o tema, escolha a alternativa que corresponde à explicação de referência.</p>}
+   {lesson&&lesson.tasks.length>0&&<LessonChoiceQuestion
+    choice={lessonTaskChoice(lesson,lesson.tasks[0])} compact/>}
+   {!lesson&&introChoice&&<LessonChoiceQuestion choice={introChoice} compact/>}
   </section>
   {lesson?isGenericStarter?<GuidedIntro lesson={lesson} subject={subject}/>:<>
    <section className="k-universal-learning-stage" id="k-lesson-concept">
@@ -289,7 +273,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     <h4>10 · Consolidação e folha de revisão</h4>
     <p>Antes de avançar, recupere com suas palavras os conceitos essenciais de cada etapa:</p>
     <ol>{lesson.sections.map(section=><li key={section.level}><strong>{section.title}.</strong> {lessonReadingBlocks(section.explanation)[0]}</li>)}</ol>
-    <p><strong>Como investigar este assunto:</strong> {method.title.toLocaleLowerCase('pt-BR')}. {method.questions[0]}</p>
+    <p><strong>Como investigar este assunto:</strong> {method.title.toLocaleLowerCase('pt-BR')}.</p>
     <div className="k-universal-diagnostic">
      <strong>Diagnóstico formativo · {assessed} de {lesson.sections.length} checagens autoavaliadas</strong>
      {weak.length?<p>Priorize a revisão de: {weak.map(s=>s.title).join('; ')}. Retorne aos exemplos e refaça as atividades.</p>:
@@ -305,7 +289,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
    <section className="k-universal-chapter" id="k-lesson-development">
     <h4>04 · Como aprofundar o conhecimento</h4>
     <p>Utilize estas perguntas para orientar a leitura e verificar os limites do material introdutório.</p>
-    <ol className="k-universal-guide-steps">{method.questions.map((question,index)=><li key={index}>{question}</li>)}</ol>
+    <p>Compare definições, evidências e limites das explicações antes de prosseguir para os exemplos.</p>
     <p className="k-universal-caution">Ainda não existem os três capítulos progressivos completos para este conteúdo.</p>
    </section>
    <section className="k-universal-chapter" id="k-lesson-examples">
@@ -316,19 +300,9 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     <div className="k-universal-comparison"><ReadingBlocks value={introduction.commonMistake}/></div>
    </section>
    <section className="k-universal-chapter" id="k-lesson-check">
-    <h4>09 · Teste rápido de compreensão</h4><p>{introduction.check}</p>
-    <label className="k-universal-intro-response">Sua explicação
-     <textarea value={introResponse} onChange={event=>setIntroResponse(event.target.value)} rows={3}
-      placeholder="Desenvolva sua resposta antes de reler o exemplo."/>
-    </label>
-    <button className="k-universal-intro-feedback-button" type="button" disabled={!introResponse.trim()}
-     aria-expanded={introFeedback} onClick={()=>setIntroFeedback(value=>!value)}>
-     <Eye size={15} aria-hidden="true"/>{introFeedback?'Ocultar referência':'Conferir referência para revisão'}
-    </button>
-    {introFeedback&&<div className="k-universal-feedback" role="status">
-     <strong>Como conferir seu raciocínio</strong><ReadingBlocks value={introduction.workedExample}/>
-     <p>O exemplo é uma referência, não um gabarito automático para a sua resposta aberta. Confira a coerência com os conceitos estudados.</p>
-    </div>}
+    <h4>09 · Teste rápido de múltipla escolha</h4>
+    {introChoice?<LessonChoiceQuestion choice={introChoice}/>:
+     <p>Este conteúdo ainda não possui uma questão objetiva validada. Nenhuma resposta dissertativa é solicitada.</p>}
    </section>
    <section className="k-universal-summary" id="k-lesson-summary">
     <h4>10 · Consolidação da introdução</h4>
