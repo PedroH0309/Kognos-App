@@ -36,9 +36,9 @@ function arrange(correct:string,distractors:string[],seed:string):{options:[stri
  return {options:result as [string,string,string,string],correctIndex};
 }
 export function lessonTaskChoice(lesson:CourseLesson,task:CourseTask):LessonChoice{
- if(task.options&&task.options.length===4&&Number.isInteger(task.correctIndex)&&task.correctIndex!>=0&&task.correctIndex!<4&&new Set(task.options).size===4)
+ if(task.options&&task.options.length===4&&typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4&&new Set(task.options).size===4)
   return {prompt:task.prompt,instruction:'Selecione a alternativa correta.',options:task.options as [string,string,string,string],
-   correctIndex:task.correctIndex!,explanation:task.solution,hint:task.hint,source:'editorial'};
+   correctIndex:task.correctIndex,explanation:task.solution,hint:task.hint,source:'editorial'};
  const correct=excerpt(task.solution);
  const alternatives=[
   ...lesson.tasks.filter(other=>other!==task).map(other=>other.solution),
