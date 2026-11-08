@@ -655,3 +655,86 @@ button {touch-action:manipulation;}
 .app-layout .k-skill-stage-inline{color:var(--sub);font-weight:650}
 .app-layout .k-skill-stage-inline.is-consistent,.app-layout .k-skill-stage-inline.is-retention-observed{color:#329A86}
 @media(max-width:600px){.app-layout .k-skill-map-grid{grid-template-columns:minmax(0,1fr)}.app-layout .k-skill-map-actions{flex-direction:column}.app-layout .k-skill-map-actions .btn{width:100%;flex:auto}}
+
+
+/* 2026-11-08: reference-matched dark violet area chart on the weekly dashboard.
+ * Only replaces the visual chart; real practice totals and interactions remain intact. */
+.app-layout .k-weekly-chart {
+ --chart-line-primary:#635BFF;
+ min-width:0;
+ padding:18px 18px 16px;
+ border:1px solid #303039;
+ border-radius:17px;
+ background:linear-gradient(180deg,#17171A 0%,#151519 100%);
+ color:#F5F5FC;
+}
+.app-layout .k-weekly-plot{position:relative;isolation:isolate;overflow:visible}
+.app-layout .k-weekly-svg{
+ display:block;
+ width:100%;
+ height:clamp(235px,31vw,370px);
+ overflow:visible;
+}
+.app-layout .k-weekly-gridline{
+ stroke:rgba(154,155,185,.13);
+ stroke-width:1;
+ stroke-dasharray:2 6;
+ vector-effect:non-scaling-stroke;
+}
+.app-layout .k-weekly-area{pointer-events:none}
+.app-layout .k-weekly-line{
+ fill:none;
+ stroke:var(--chart-line-primary);
+ stroke-width:2;
+ stroke-linejoin:round;
+ stroke-linecap:round;
+ vector-effect:non-scaling-stroke;
+ pointer-events:none;
+}
+.app-layout .k-weekly-dot{
+ fill:#17171A;
+ stroke:var(--chart-line-primary);
+ stroke-width:2;
+ vector-effect:non-scaling-stroke;
+}
+.app-layout .k-weekly-dot.is-active{
+ stroke:#A49EFF;
+ stroke-width:2.6;
+}
+.app-layout .k-weekly-dot-core{fill:#635BFF;stroke:none;pointer-events:none}
+.app-layout .k-weekly-axis{
+ display:flex;
+ justify-content:space-between;
+ padding:0 2.85%;
+ margin:0 0 18px;
+ color:#C7CCEE;
+ font-size:11px;
+ font-weight:500;
+}
+.app-layout .k-weekly-caption{
+ color:#F4F4FB;
+ padding-top:12px;
+ border-top:1px solid rgba(154,155,185,.13);
+ font-size:12px;
+}
+.app-layout .k-weekly-caption small{color:#A5AAC6}
+.app-layout .k-weekly-interaction-hint{color:#A5AAC6;font-size:10px;margin:10px 0 0}
+.app-layout .k-weekly-tooltip{
+ background:#27272E;
+ border-color:#484856;
+ color:#F5F5FC;
+ box-shadow:0 12px 34px rgba(0,0,0,.4);
+}
+.app-layout .k-weekly-tooltip>span{color:#C4C6D9}
+.app-layout .k-weekly-hit-area:hover .k-weekly-hit-ring,
+.app-layout .k-weekly-hit-area.is-selected .k-weekly-hit-ring,
+.app-layout .k-weekly-hit-area:focus-visible .k-weekly-hit-ring{
+ border-color:#978EFF;
+ background:rgba(99,91,255,.16);
+}
+@media(max-width:620px){
+ .app-layout .k-weekly-chart{padding:12px 11px 13px;border-radius:14px}
+ .app-layout .k-weekly-svg{height:245px}
+ .app-layout .k-weekly-axis{font-size:10px}
+ .app-layout .k-weekly-caption{align-items:flex-start}
+}
