@@ -49,7 +49,23 @@ test('batch 26 registered topics are covered by the offline Provão audit',()=>{
   assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
    'Missing specific depth: '+subject+' / '+prefix);
  }
- assert.ok(report.coverage.deep_specific>=161,'Expected at least 161 specific Provão lessons including batch 30');
+ assert.ok(report.coverage.deep_specific>=166,'Expected at least 166 specific Provão lessons including batch 32');
+});
+
+test('batch 32 specific topics are registered and recognized across the Provão audit',()=>{
+ const report=provaoDepthAudit();
+ const newTopics=[
+  ['Química','Macromoléculas naturais e sintéticas'],
+  ['Física','Geradores elétricos. Força eletromotriz e resistência interna. Equação e curva característica…'],
+  ['Física','Receptores elétricos. Força contraeletromotriz e resistência interna. Equação e curva…'],
+  ['Biologia','Teorias da origem da vida na Terra e hipóteses sobre a evolução do metabolismo energético'],
+  ['História','A Declaração Universal dos Direitos Humanos de 1948: seus princípios e trajetória histórica']
+ ] as const;
+ for(const [subject,topic] of newTopics){
+  assert.ok(!report.pending.some(entry=>entry.subject===subject&&entry.topic===topic),
+   'Newly authored topic must not remain introductory: '+subject+' / '+topic);
+ }
+ assert.ok(report.coverage.deep_specific>=166,'Batch 32 must expand verified coverage');
 });
 
 test('batch 28 contributes five distinct deeply authored official Provão topics',()=>{
