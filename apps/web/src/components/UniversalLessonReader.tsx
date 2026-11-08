@@ -105,7 +105,7 @@ function LessonStage({section,index}:{section:CourseSection;index:number}){
 /** Worked solutions follow the concepts: students can reveal the actual authored steps. */
 function LessonExamples({lesson}:{lesson:CourseLesson}){
  return <section className="k-universal-learning-section" id="k-lesson-examples">
-  <h4>06 · Exemplos aplicados e resolvidos</h4>
+  <h4>06 · Exemplo aplicado e resolvido</h4>
   <p>Observe como o conceito é utilizado. Revele as etapas para conferir o raciocínio e as condições da resolução.</p>
   {lesson.sections.map((section,index)=><article className="k-universal-applied" key={section.level}>
    <div className="k-universal-chapter-head">
@@ -123,7 +123,7 @@ function LessonExamples({lesson}:{lesson:CourseLesson}){
 
 function LessonComparisons({lesson}:{lesson:CourseLesson}){
  return <section className="k-universal-learning-section" id="k-lesson-comparisons">
-  <h4>07 · Comparações, regras e erros frequentes</h4>
+  <h4>07 · Regras, diferenças e erros frequentes</h4>
   <p>Compare a ideia fundamental de cada nível com os erros que podem comprometer a interpretação.</p>
   {lesson.sections.map(section=><article key={section.level} className="k-universal-comparison">
    <h5>{section.title}</h5>
@@ -334,7 +334,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     <h4>10 · Consolidação da introdução</h4>
     <p><strong>Objetivo do estudo:</strong> {introduction.objective}</p>
     <p><strong>Conceito essencial:</strong> {lessonReadingBlocks(introduction.explanation)[0]}</p>
-    <p className="k-universal-caution">Esta introdução ainda não oferece conteúdo aprofundado de todos os subtemas, avaliação corrigida ou diagnóstico de domínio.</p>
+    <p className="k-universal-caution">Material introdutório: ainda não oferece conteúdo aprofundado de todos os subtemas, avaliação corrigida ou diagnóstico de domínio.</p>
    </section>
   </div>}
   <footer className="k-universal-source">
