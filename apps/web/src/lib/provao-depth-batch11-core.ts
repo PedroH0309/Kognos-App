@@ -59,7 +59,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Some as massas.",
-        "solution": "A alternativa C é correta: 8+12=20 g, pela conservação de massa. A reação reorganiza os átomos e não elimina matéria do sistema fechado."
+        "solution": "A alternativa C é correta: 8+12=20 g, pela conservação de massa. A reação reorganiza os átomos e não elimina matéria do sistema fechado. As alternativas A, B e D não representam a soma das massas fornecidas."
       },
       {
         "level": "intermediate",
@@ -72,7 +72,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Multiplique 3 por 8.",
-        "solution": "A alternativa A é correta: 3×8=24 g de oxigênio para reagir com 3 g de hidrogênio, formando 27 g de água se ambos forem consumidos."
+        "solution": "A alternativa A é correta: 3×8=24 g de oxigênio para reagir com 3 g de hidrogênio, formando 27 g de água se ambos forem consumidos. A razão deve ser aplicada às massas dos elementos, não à contagem de moléculas."
       },
       {
         "level": "advanced",
@@ -85,7 +85,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Use a razão 1:8.",
-        "solution": "A alternativa C é correta: 2 g de hidrogênio consomem 16 g de oxigênio; dos 20 g iniciais, sobram 4 g e formam-se 18 g de água."
+        "solution": "A alternativa C é correta: 2 g de hidrogênio consomem 16 g de oxigênio; dos 20 g iniciais, sobram 4 g e formam-se 18 g de água. As demais alternativas ignoram a quantidade de oxigênio efetivamente consumida."
       }
     ]
   },
@@ -102,7 +102,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Potência elétrica",
         "explanation": "Potência expressa a taxa de transferência de energia: P=E/Δt. Para um aparelho elétrico em regime simples, P=UI, com U em volts e I em ampères, resultando em watts. Um watt corresponde a um joule por segundo. Essa relação descreve a potência instantânea quando tensão e corrente são medidas no mesmo instante; em situações com variação temporal, a energia total depende da integral da potência ao longo do tempo. Um aparelho de maior potência não necessariamente consome mais energia no mês: é preciso considerar quantas horas opera. Equipamentos com termostato alternam períodos ligados e desligados, e a potência indicada na etiqueta pode ser nominal ou máxima. Corrente não é energia, e tensão não é potência. Converta unidades antes de calcular: 1 kW=1000 W, 1 h=3600 s e 1 kWh=3,6 milhões de joules. Essa distinção permite interpretar corretamente contas de luz e comparar dispositivos.",
-        "example": "Um aparelho recebe 120 V e corrente de 2 A: P=120×2=240 W. Em 10 segundos transfere E=240×10=2400 J. Em uma hora de funcionamento contínuo, consome 0,24 kWh, pois 240 W=0,24 kW.",
+        "example": "Um aparelho recebe 120 V e corrente de 2 A: P=120×2=240 W. Em 10 segundos transfere E=240×10=2400 J. Em uma hora de funcionamento contínuo, consome 0,24 kWh, pois 240 W=0,24 kW. A conta pressupõe tensão e corrente constantes durante o intervalo.",
         "pitfall": "Não confunda potência em watts com energia em joules ou quilowatt-hora.",
         "steps": [
           "Identifique dados, unidades e hipóteses relevantes para potência elétrica.",
@@ -114,7 +114,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Efeito Joule",
         "explanation": "O efeito Joule descreve o aquecimento associado à corrente elétrica em materiais resistivos. Para resistor ôhmico de resistência aproximadamente constante, U=RI e P=UI levam a P=RI² e P=U²/R. A interpretação depende da variável mantida fixa: com corrente fixa, aumentar R aumenta P; com tensão fixa, aumentar R reduz P. Aparentes contradições decorrem de ignorar essa condição. Fios de transmissão dissipam potência aproximadamente I²R, razão pela qual a transmissão em alta tensão pode reduzir perdas para uma mesma potência transportada. A resistência de materiais reais varia com temperatura, e componentes eletrônicos nem sempre obedecem linearmente à lei de Ohm. A energia elétrica pode transformar-se em calor, luz ou movimento; a fração útil depende do aparelho. Ao resolver questões, escolha uma fórmula compatível com as grandezas dadas e confira a unidade do resultado.",
-        "example": "Resistor de 10 Ω com corrente de 2 A dissipa P=10×2²=40 W. A tensão é U=RI=20 V e P=UI=40 W confirma. Mantendo 20 V, se a resistência dobrar para 20 Ω, P=20²/20=20 W.",
+        "example": "Resistor de 10 Ω com corrente de 2 A dissipa P=10×2²=40 W. A tensão é U=RI=20 V e P=UI=40 W confirma. Mantendo 20 V, se a resistência dobrar para 20 Ω, P=20²/20=20 W. O resultado de 20 W é metade do anterior porque a tensão ficou fixa.",
         "pitfall": "Não diga que maior resistência sempre produz maior aquecimento sem especificar a tensão ou corrente.",
         "steps": [
           "Identifique dados, unidades e hipóteses relevantes para efeito joule.",
@@ -147,7 +147,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Use P=UI.",
-        "solution": "A alternativa C está correta: P=12×3=36 W. A multiplicação de tensão em volts pela corrente em ampères fornece potência em watts."
+        "solution": "A alternativa C está correta: P=12×3=36 W. A multiplicação de tensão em volts pela corrente em ampères fornece potência em watts. As demais opções não resultam da multiplicação das grandezas fornecidas."
       },
       {
         "level": "intermediate",
@@ -173,7 +173,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Multiplique kW por horas.",
-        "solution": "A alternativa A está correta: 2×3=6 kWh. A unidade kWh representa energia, enquanto kW isolado representa potência."
+        "solution": "A alternativa A está correta: 2×3=6 kWh. A unidade kWh representa energia, enquanto kW isolado representa potência. As alternativas restantes não satisfazem a relação energia=potência×tempo."
       }
     ]
   },
@@ -378,7 +378,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "title": "Escala logarítmica",
         "explanation": "O pH é definido rigorosamente em termos da atividade do íon hidrogênio, mas no modelo escolar diluído aproxima-se pH≈−log₁₀[H₃O⁺]. Analogamente, pOH≈−log₁₀[OH⁻]. A 25 °C, pH+pOH≈14, desde que as aproximações de atividade e Kw sejam apropriadas. Uma diferença de uma unidade de pH representa fator dez na atividade hidrogeniônica, não variação linear. Assim, pH 3 indica aproximadamente cem vezes mais atividade de H⁺ que pH 5, em condições comparáveis. A faixa 0–14 é comum no ensino introdutório, mas não é limite absoluto para todas as soluções. O cálculo exige logaritmo decimal e atenção à notação científica: −log(10⁻⁴)=4. Se a concentração não for potência exata de dez, use propriedades de logaritmos ou calculadora. Valores de pH não são quantidades de matéria e não devem ser somados para calcular misturas.",
-        "example": "Com [H₃O⁺]=10⁻³ mol/L, pH≈3. A 25 °C, pOH≈11 e [OH⁻]≈10⁻¹¹ mol/L. Comparando pH 3 e pH 5, a razão de concentrações aproximadas é 10⁻³/10⁻⁵=100.",
+        "example": "Com [H₃O⁺]=10⁻³ mol/L, pH≈3. A 25 °C, pOH≈11 e [OH⁻]≈10⁻¹¹ mol/L. Comparando pH 3 e pH 5, a razão de concentrações aproximadas é 10⁻³/10⁻⁵=100. A comparação usa a aproximação de atividades por concentrações em soluções diluídas.",
         "pitfall": "Não trate diferenças de pH como diferenças lineares de concentração.",
         "steps": [
           "Identifique dados, unidades e hipóteses relevantes para escala logarítmica.",
@@ -411,7 +411,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Use −log₁₀.",
-        "solution": "A alternativa A está correta: pH≈−log₁₀(10⁻⁴)=4. O valor 10 seria pOH aproximado sob condições padrão de 25 °C."
+        "solution": "A alternativa A está correta: pH≈−log₁₀(10⁻⁴)=4. O valor 10 seria pOH aproximado sob condições padrão de 25 °C. Os demais valores confundem pH, pOH e concentração."
       },
       {
         "level": "intermediate",
@@ -424,7 +424,7 @@ export const provaoDepthBatch11Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Use pH+pOH≈14.",
-        "solution": "A alternativa C está correta: pOH≈14−5=9. A relação depende da temperatura, pois Kw não é constante em todas as temperaturas."
+        "solution": "A alternativa C está correta: pOH≈14−5=9. A relação depende da temperatura, pois Kw não é constante em todas as temperaturas. Não se deve assumir que pH e pOH sejam iguais em toda solução."
       },
       {
         "level": "advanced",
