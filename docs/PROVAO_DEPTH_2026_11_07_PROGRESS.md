@@ -10,15 +10,16 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **71 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **213 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **213 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **76 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **228 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **228 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
 ### Lista exata das aulas novas
 
-### Biologia (9)
+### Biologia (10)
+- Construção e análise de árvores filogenéticas
 - Pirâmides ecológicas
 - Sucessão ecológica
 - Herança de grupos sanguíneos na espécie humana
@@ -36,7 +37,8 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - As abordagens racionalistas e empiristas do conhecimento
 - Questões éticas contemporâneas
 
-### Física (9)
+### Física (10)
+- Trabalho realizado por forças conservativas e não conservativas
 - Escalas termométricas. As escalas Celsius
 - Comprimento de onda, período e frequência
 - Primeira e segunda Leis da Termodinâmica
@@ -54,7 +56,8 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - A geopolítica da água
 - A cartografia como recurso para a compreensão espacial dos fenômenos geográficos
 
-### História (10)
+### História (11)
+- Feudalismo e mundo feudal
 - Iluminismo e Liberalismo
 - A Revolução Francesa e a era napoleônica
 - Primeira Guerra Mundial
@@ -88,7 +91,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Frase, oração e período
 - Coordenação e subordinação. Conectivos
 
-### Química (13)
+### Química (15)
+- Operações envolvendo soluções (diluições e misturas de soluções com ou sem reação química)
+- Desintegração radioativa: meia-vida, datação e uso de radioisótopos
 - Equações químicas e balanceamento
 - Cinética química
 - Reações de oxirredução e números de oxidação
@@ -111,7 +116,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **293 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 293 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **288 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 293 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -172,3 +177,7 @@ Foram incorporadas cinco aulas específicas: **cálculos estequiométricos**, **
 ## Correção de validação — 2026-11-08
 
 A CI do commit `2d704cf` falhou em dois testes unitários relacionados à qualidade editorial: `provao-depth-batch12.test.ts` e `provao-depth-lessons.test.ts` exigiam exemplo resolvido com ao menos 180 caracteres. A causa identificada foi o exemplo do nível básico da aula **Movimentos uniformes e uniformemente variados**, com 174 caracteres. O exemplo foi ampliado com a condição de validade do movimento uniformemente variado, sem mudar o gabarito ou reduzir o rigor dos testes. A aprovação do novo commit depende de uma nova execução completa da CI. Nenhum tema novo foi declarado concluído nesta correção.
+
+## Lote 13 — Química, Física, Biologia e História
+
+Foram acrescentadas cinco aulas específicas, com três capítulos por tema e três questões de quatro alternativas por aula: diluição e misturas com/sem reação; decaimento radioativo, datação e radioisótopos; trabalho de forças conservativas e não conservativas; cladogramas e sinapomorfias; feudalismo, vassalagem e transformações medievais. Os quinze capítulos apresentam explicação autoral longa, exemplo calculado ou analisado, hipóteses de validade e erros frequentes. A validação de respostas e gabaritos é coberta por `provao-depth-batch13.test.ts`; revisão docente ainda pendente. Cobertura offline: 76 de 364 entradas do Provão nesta série, 288 fora; catálogo multi-exame maior continua pendente. A CI deve ser consultada no commit mais recente antes de qualquer alegação de aprovação.
