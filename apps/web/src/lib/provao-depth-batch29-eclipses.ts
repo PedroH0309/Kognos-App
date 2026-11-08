@@ -53,12 +53,12 @@ export const provaoDepthBatch29Eclipses:readonly DeepTopicSpec[]=[
         "level": "basic",
         "prompt": "Atrás de um corpo opaco iluminado por fonte extensa, a penumbra é a região em que:",
         "options": [
+          "Apenas parte da fonte luminosa está visível",
           "Toda a fonte está oculta",
           "Não há qualquer raio luminoso",
-          "Apenas parte da fonte luminosa está visível",
           "A fonte desaparece permanentemente"
         ],
-        "correctIndex": 2,
+        "correctIndex": 0,
         "hint": "Identifique a geometria da luz e as condições de alinhamento.",
         "solution": "Na penumbra, o obstáculo impede a chegada de raios emitidos por apenas uma parte da fonte extensa. A umbra corresponde à ocultação completa. O diagnóstico depende dos raios tangentes à fonte e ao obstáculo."
       },
@@ -67,11 +67,11 @@ export const provaoDepthBatch29Eclipses:readonly DeepTopicSpec[]=[
         "prompt": "Qual alinhamento pode produzir um eclipse lunar?",
         "options": [
           "Sol—Lua—Terra durante Lua nova",
-          "Sol—Terra—Lua durante Lua cheia",
           "Terra—Sol—Lua durante quarto crescente",
-          "Lua—Sol—Terra durante quarto minguante"
+          "Lua—Sol—Terra durante quarto minguante",
+          "Sol—Terra—Lua durante Lua cheia"
         ],
-        "correctIndex": 1,
+        "correctIndex": 3,
         "hint": "Identifique a geometria da luz e as condições de alinhamento.",
         "solution": "No eclipse lunar, a Terra fica entre Sol e Lua e sua sombra intercepta a Lua. Isso exige fase cheia e alinhamento próximo aos nós orbitais. A fase cheia isolada não garante um eclipse mensal."
       },
@@ -80,11 +80,11 @@ export const provaoDepthBatch29Eclipses:readonly DeepTopicSpec[]=[
         "prompt": "Uma árvore de 1,80 m fica a 3,0 m de uma câmara; a tela está a 0,15 m do orifício. A imagem mede:",
         "options": [
           "36 cm e é direita",
+          "9,0 cm e é invertida",
           "90 cm e é direita",
-          "3,0 cm e é invertida",
-          "9,0 cm e é invertida"
+          "3,0 cm e é invertida"
         ],
-        "correctIndex": 3,
+        "correctIndex": 1,
         "hint": "Identifique a geometria da luz e as condições de alinhamento.",
         "solution": "Pela semelhança, o módulo da altura é 1,80×0,15/3,0=0,090 m, ou 9 cm. A imagem formada por câmara escura de orifício é invertida devido ao cruzamento dos raios no pequeno orifício."
       }
