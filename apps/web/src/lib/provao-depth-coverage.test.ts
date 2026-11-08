@@ -35,6 +35,22 @@ export function provaoDepthAudit(){
  }
  return {total:uniq.size,coverage,bySubject:Object.fromEntries(bySubject),pending};
 }
+test('batch 26 registered topics are covered by the offline Provão audit',()=>{
+ const report=provaoDepthAudit();
+ const cases=[
+  ['Química','Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular'],
+  ['Química','Constantes de equilíbrio e cálculos simples de equilíbrio'],
+  ['Biologia','Fatores que regulam o tamanho das populações'],
+  ['História','Período macedônico e cultura helenística'],
+  ['História','Do artesanato à fábrica: transformações no mundo do trabalho']
+ ] as const;
+ for(const [subject,prefix] of cases){
+  assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
+   'Missing specific depth: '+subject+' / '+prefix);
+ }
+ assert.ok(report.coverage.deep_specific>=136,'Expected at least 136 specific Provão lessons');
+});
+
 test('every deep syllabus registration is unique, with actionable duplicate diagnostics',()=>{
  const seen=new Set<string>();
  const duplicates:string[]=[];
