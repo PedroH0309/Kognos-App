@@ -162,7 +162,7 @@ export const provaoDepthBatch25Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Em 100 g, n(C)=40/12≈3,33; n(H)=6,7/1≈6,7; n(O)=53,3/16≈3,33. Dividindo por 3,33, resulta aproximadamente 1:2:1, ou CH₂O."
+        "solution": "Em 100 g, n(C)=40/12≈3,33; n(H)=6,7/1≈6,7; n(O)=53,3/16≈3,33. Dividindo por 3,33, resulta aproximadamente 1:2:1, ou CH₂O. A soma das porcentagens é aproximadamente 100%, e os arredondamentos não alteram a razão inteira inferida."
       },
       {
         "level": "advanced",
