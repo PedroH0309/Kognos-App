@@ -55,6 +55,11 @@ import {provaoDepthBatch29GasWork} from './provao-depth-batch29-gas-work.ts';
 import {provaoDepthBatch29Nutrition} from './provao-depth-batch29-nutrition.ts';
 import {provaoDepthBatch29Coffee} from './provao-depth-batch29-coffee.ts';
 import {provaoDepthBatch29SocialIdeas} from './provao-depth-batch29-social-ideas.ts';
+import {provaoDepthBatch29Isomerism} from './provao-depth-batch29-isomerism.ts';
+import {provaoDepthBatch29Eclipses} from './provao-depth-batch29-eclipses.ts';
+import {provaoDepthBatch29Virology} from './provao-depth-batch29-virology.ts';
+import {provaoDepthBatch30Organics} from './provao-depth-batch30-organics.ts';
+import {provaoDepthBatch30Dispersion} from './provao-depth-batch30-dispersion.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -64,7 +69,7 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core,...provaoDepthBatch23Core,...provaoDepthBatch24Core,...provaoDepthBatch25Core,...provaoDepthBatch26Core,...provaoDepthBatch27Optics,...provaoDepthBatch27Waves,...provaoDepthBatch27Investigation,...provaoDepthBatch27Destiny,...provaoDepthBatch27Monopolies,...provaoDepthBatch28Thermochemistry,...provaoDepthBatch28HeatEngines,...provaoDepthBatch28Conservation,...provaoDepthBatch28Nationalism,...provaoDepthBatch28Labour,...provaoDepthBatch29Water,...provaoDepthBatch29GasWork,...provaoDepthBatch29Nutrition,...provaoDepthBatch29Coffee,...provaoDepthBatch29SocialIdeas];
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core,...provaoDepthBatch23Core,...provaoDepthBatch24Core,...provaoDepthBatch25Core,...provaoDepthBatch26Core,...provaoDepthBatch27Optics,...provaoDepthBatch27Waves,...provaoDepthBatch27Investigation,...provaoDepthBatch27Destiny,...provaoDepthBatch27Monopolies,...provaoDepthBatch28Thermochemistry,...provaoDepthBatch28HeatEngines,...provaoDepthBatch28Conservation,...provaoDepthBatch28Nationalism,...provaoDepthBatch28Labour,...provaoDepthBatch29Water,...provaoDepthBatch29GasWork,...provaoDepthBatch29Nutrition,...provaoDepthBatch29Coffee,...provaoDepthBatch29SocialIdeas,...provaoDepthBatch29Isomerism,...provaoDepthBatch29Eclipses,...provaoDepthBatch29Virology,...provaoDepthBatch30Organics,...provaoDepthBatch30Dispersion];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
