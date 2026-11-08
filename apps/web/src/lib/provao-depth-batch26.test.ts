@@ -8,7 +8,7 @@ import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 
 const cases=[
- ['Química','Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular',[0,1,1]],
+ ['Química','Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular',[0,2,1]],
  ['Química','Constantes de equilíbrio e cálculos simples de equilíbrio',[1,2,3]],
  ['Biologia','Fatores que regulam o tamanho das populações',[1,2,2]],
  ['História','Período macedônico e cultura helenística',[1,2,3]],
