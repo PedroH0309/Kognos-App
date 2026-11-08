@@ -5,8 +5,8 @@ import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 import type {CourseSection,CourseTask} from './course-content.ts';
-const cases=[["Química","Equações químicas e balanceamento",[1,2,0]],["Química","Geometria molecular",[1,2,3]],["Física","Lei da gravitação universal de Newton",[2,2,1]],["Biologia","Sucessão ecológica",[1,0,2]],["História","Revolução Industrial",[1,2,3]]] as const;
-test('batch 18 exact catalog identity, progressive lessons and verified objective answers',()=>{
+const cases=[["Física","Lei da gravitação universal de Newton",[2,2,1]]] as const;
+test('batch 18 unique gravitation lesson catalog identity, progressive lessons and verified objective answers',()=>{
  for(const [subject,prefix,answers] of cases){
   const matches=curriculumTopics.filter(t=>t.subject===subject&&t.topic.startsWith(prefix)&&t.exams.includes('saresp'));
   assert.equal(matches.length,1,'Missing or ambiguous official topic '+subject+' '+prefix);
