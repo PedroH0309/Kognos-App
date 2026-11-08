@@ -277,3 +277,46 @@ test('batch 34 adds five new exact nonoverlapping syllabus lessons with detailed
  }
  assert.ok(report.coverage.deep_specific>=171,'Batch 34 must increase true Provão coverage by five, not shadow prior lessons');
 });
+
+test('batch 35: five real new Provão topics have deep chapters and original answer keys',()=>{
+ const report=provaoDepthAudit();
+ const cases=[
+  ['Física','Energia térmica, temperatura e termômetros. Lei zero da termodinâmica'],
+  ['Química','Evidências macroscópicas da ocorrência de transformações químicas: alteração de cor,…'],
+  ['Biologia','Conceitos básicos de Genética; influência do ambiente sobre o genótipo e o fenótipo;…'],
+  ['História','Narrativas de origem dos povos indígenas'],
+  ['Química','Misturas: tipos e métodos de separação 2.Transformações químicas: evidências, representações e…']
+ ] as const;
+ assert.equal(new Set(cases.map(([subject,topic])=>subject+'\\0'+topic)).size,5);
+ for(const [subject,name] of cases){
+  const match=curriculumTopics.filter(topic=>topic.subject===subject&&topic.topic===name&&topic.exams.includes('saresp'));
+  assert.equal(match.length,1,'Official topic must resolve exactly: '+subject+' / '+name);
+  const item=match[0],lesson=deepProvaoLesson(item);
+  assert.ok(lesson,'Missing deep lesson: '+subject+' / '+name);
+  assert.equal(lesson.id,item.id);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  assert.deepEqual(lesson.sections.map(section=>section.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(task=>task.level),['basic','intermediate','advanced']);
+  assert.equal(lesson.prerequisites.length>=3,true);
+  const prompts=new Set<string>();
+  for(let index=0;index<3;index++){
+   const section=lesson.sections[index],task=lesson.tasks[index];
+   assert.ok(section.explanation.length>=750);
+   assert.ok(section.example.length>=180);
+   assert.ok(section.pitfall.length>=50);
+   assert.ok(section.steps.length>=3);
+   assert.ok(!prompts.has(task.prompt),'Question prompts repeat within one lesson');
+   prompts.add(task.prompt);
+   const choice=lessonTaskChoice(lesson,task);
+   assert.equal(choice.source,'editorial','No fallback distractors');
+   assert.equal(choice.options.length,4);
+   assert.equal(new Set(choice.options).size,4);
+   assert.ok(choice.correctIndex>=0&&choice.correctIndex<4);
+   assert.ok(choice.explanation.length>=140,'Corrections must explain the concept and operation');
+   assert.doesNotMatch(choice.instruction,/resolução de referência/);
+  }
+  assert.ok(!report.pending.some(p=>p.subject===subject&&p.topic===name));
+ }
+ assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length,'No duplicate topic registrations');
+ assert.ok(report.coverage.deep_specific>=176,'Five genuinely new topics must increase 171 to at least 176');
+});
