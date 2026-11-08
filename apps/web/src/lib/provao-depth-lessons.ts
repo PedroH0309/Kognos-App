@@ -1,5 +1,5 @@
 /**
- * Curated deepening for ten specific Provão Paulista syllabus items.
+ * Curated and growing authorial depth library for specific Provão Paulista syllabus items.
  * Content is original and academically motivated, not yet certified by a teacher.
  * Never infer deep lesson coverage from shared words or a broad keyword.
  */
@@ -15,6 +15,7 @@ import {provaoDepthBatch02LanguagesSociety} from './provao-depth-batch02-languag
 import {provaoDepthBatch03Science} from './provao-depth-batch03-science.ts';
 import {provaoDepthBatch03HistoryGeography} from './provao-depth-batch03-history-geography.ts';
 import {provaoDepthBatch04Core} from './provao-depth-batch04-core.ts';
+import {provaoDepthBatch05Stem} from './provao-depth-batch05-stem.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -24,7 +25,7 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core];
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
