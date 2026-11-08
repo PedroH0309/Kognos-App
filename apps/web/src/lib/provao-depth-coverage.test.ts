@@ -42,7 +42,8 @@ test('batch 26 registered topics are covered by the offline Provão audit',()=>{
   ['Química','Constantes de equilíbrio e cálculos simples de equilíbrio'],
   ['Biologia','Fatores que regulam o tamanho das populações'],
   ['História','Período macedônico e cultura helenística'],
-  ['História','Do artesanato à fábrica: transformações no mundo do trabalho']
+  ['História','Do artesanato à fábrica: transformações no mundo do trabalho'],
+  ['Química','Transformações nucleares']
  ] as const;
  for(const [subject,prefix] of cases){
   assert.ok(!report.pending.some(item=>item.subject===subject&&item.topic.startsWith(prefix)),
