@@ -1,0 +1,78 @@
+/* Kognos usability: loading, calendar card, tactile interactions.
+   Respect both theme palettes and user reduced-motion preference. */
+.app-layout .k-ui-loading-layer,
+.k-ui-loading-layer {
+ position:fixed;inset:0;z-index:90;display:grid;place-items:center;
+ background:color-mix(in srgb,var(--page-bg,#101B33) 44%,transparent);
+ -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
+ pointer-events:auto;
+}
+.app-layout .k-ui-loading-layer.k-ui-loading-inline,
+.k-ui-loading-layer.k-ui-loading-inline {
+ position:absolute;inset:0;z-index:9;border-radius:inherit;
+ background:color-mix(in srgb,var(--box-bg,#202633) 55%,transparent);
+}
+.k-ui-loading-spinner {
+ display:block;width:48px;height:48px;border-radius:50%;
+ border:4px solid color-mix(in srgb,var(--violet,#5B4DE3) 21%,var(--line,#DEE5F1));
+ border-top-color:var(--violet,#5B4DE3);
+ box-shadow:0 0 0 7px color-mix(in srgb,var(--violet,#5B4DE3) 7%,transparent);
+ animation:k-ui-spin .85s linear infinite;
+}
+@keyframes k-ui-spin {to{transform:rotate(360deg)}}
+.k-ui-loading-sr {position:absolute;width:1px;height:1px;margin:-1px;padding:0;clip:rect(0,0,0,0);overflow:hidden;white-space:nowrap;}
+/* The reading sentinel has no visual footprint; an IntersectionObserver
+   observes it only while the actual text pane is in view. */
+.k-lesson-reading-end{height:2px;width:100%;pointer-events:none;}
+.k-curriculum-check input:checked+span{color:var(--txt,#F7F9FC);font-weight:750;}
+/* Do not show 0/0 as a completion statistic when no activity is planned. */
+.app-layout .k-cal-summary-body{display:grid;grid-template-columns:minmax(100px,120px) minmax(0,1fr);align-items:center;gap:14px;}
+.app-layout .k-cal-ring{width:min(120px,100%);height:auto;aspect-ratio:1/1;min-width:0;flex:none;margin:auto;}
+.app-layout .k-cal-ring strong{color:var(--kc-text);font-size:clamp(18px,2vw,22px);}
+.app-layout .k-cal-metrics{min-width:0;}
+.app-layout .k-cal-metrics>div{min-width:0;font-size:12px;line-height:1.5;padding:11px 0;gap:10px;color:var(--kc-text);}
+.app-layout .k-cal-metrics>div span{min-width:0;overflow-wrap:anywhere;}
+.app-layout.theme-dark .k-cal-metrics svg{color:#B7AEFF;}
+.app-layout.theme-dark .k-cal-ring{
+ background:conic-gradient(#A69BFF var(--k-cal-progress),#3B4860 0);
+}
+.app-layout .k-cal-widget{transition:border-color .25s,box-shadow .25s,transform .25s;}
+.app-layout .k-cal-widget:hover{border-color:color-mix(in srgb,var(--violet,#5B4DE3) 35%,var(--line,#DEE5F1));box-shadow:0 14px 35px #101B3314;}
+/* Tactile affordance: navigation and actions react without distracting loops. */
+.app-layout .app-sidebar .side-nav-item,
+.app-layout .k-shortcut-card,
+.app-layout .k-curriculum-next,
+.app-layout .k-lesson-expand,
+.app-layout .kog-page-actions button,
+.app-layout .k-next-item,
+.app-layout .k-cal-upcoming-item{
+ transition:background-color .23s ease,border-color .23s ease,
+   color .23s ease,box-shadow .23s ease,transform .22s cubic-bezier(.2,.8,.2,1);
+}
+.app-layout .k-shortcut-card:hover,
+.app-layout .k-next-item:hover,
+.app-layout .k-cal-upcoming-item:hover{transform:translateY(-3px);}
+.app-layout .k-curriculum-next:not(:disabled):hover,
+.app-layout .kog-page-actions button:hover{transform:translateY(-2px);}
+.app-layout .app-sidebar .side-nav-item:hover{transform:translateX(3px);}
+.app-layout .app-sidebar .side-nav-item.active{transition-duration:.3s;}
+.app-layout .k-curriculum-next:not(:disabled):active,
+.app-layout .k-shortcut-card:active,
+.app-layout .kog-page-actions button:active{transform:scale(.98);}
+@media(max-width:480px){
+ .app-layout .k-cal-summary-body{grid-template-columns:minmax(88px,110px) minmax(0,1fr);gap:10px;}
+ .app-layout .k-cal-widget{padding:13px;}
+ .app-layout .k-cal-metrics>div{font-size:11px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .app-layout .k-ui-loading-spinner{animation:none!important;border-top-color:var(--violet,#5B4DE3)}
+ .app-layout .app-sidebar .side-nav-item,
+ .app-layout .k-shortcut-card,.app-layout .k-curriculum-next,
+ .app-layout .k-lesson-expand,.app-layout .kog-page-actions button,
+ .app-layout .k-next-item,.app-layout .k-cal-upcoming-item,
+ .app-layout .k-cal-widget{transition:none!important;transform:none!important;}
+}
+.app-layout.less-motion .k-ui-loading-spinner{animation:none!important}
+.app-layout.less-motion .app-sidebar .side-nav-item,
+.app-layout.less-motion .k-shortcut-card,
+.app-layout.less-motion .k-curriculum-next{transition:none!important;transform:none!important;}
