@@ -55,7 +55,9 @@ export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicSta
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
  const registered=findProvaoTopic(topic.subject,topic.topic);
  if(!registered)return null;
- const spec=all.find(item=>item.subject===topic.subject&&registered.topic.startsWith(item.topicStart));
+ // Prefer an exact official syllabus label over older, broader prefix matches.
+ const spec=all.find(item=>item.subject===topic.subject&&registered.topic===item.topicStart)
+  ??all.find(item=>item.subject===topic.subject&&registered.topic.startsWith(item.topicStart));
  if(!spec)return null;
  const sourceUrls=[...new Set(topic.exams
   .map(exam=>examBlueprints[exam]?.sourceUrl)
