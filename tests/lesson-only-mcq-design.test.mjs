@@ -8,7 +8,8 @@ test('Every public lesson and legacy classroom renders only alternatives A–D, 
   'apps/web/src/components/TopicLessonSections.tsx',
   'apps/web/src/components/UniversalLessonReader.tsx',
   'apps/web/src/components/InteractiveCourseLesson.tsx',
-  'apps/web/src/components/InteractiveIntroLesson.tsx'
+  'apps/web/src/components/InteractiveIntroLesson.tsx',
+  'apps/web/src/components/StudyExplorationPanel.tsx'
  ]){
   const source=read(path);
   assert.doesNotMatch(source,/<textarea\b/,path);
