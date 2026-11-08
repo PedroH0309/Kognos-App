@@ -10,30 +10,32 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **40 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **120 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **120 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **45 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **135 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **135 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
 ### Lista exata das aulas novas
 
-### Biologia (4)
+### Biologia (5)
 - Pirâmides ecológicas
 - Sucessão ecológica
 - Herança de grupos sanguíneos na espécie humana
 - Código genético e síntese proteica
+- Evidências da evolução biológica
 
 ### Filosofia (3)
 - O contratualismo clássico
 - Direitos Humanos
 - A Filosofia e o filosofar
 
-### Física (4)
+### Física (5)
 - Escalas termométricas. As escalas Celsius
 - Comprimento de onda, período e frequência
 - Primeira e segunda Leis da Termodinâmica
 - Fenômeno da refração. Índice de refração absoluto
+- Lei de Coulomb. Campo elétrico
 
 ### Geografia (4)
 - Os espaços supranacionais
@@ -53,11 +55,12 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Localização de informação específica
 - Compreensão da relação entre conteúdos de diferentes textos
 
-### Matemática (4)
+### Matemática (5)
 - Porcentagem, taxas e índices
 - Função exponencial e função logarítmica
 - Arranjos, permutações e combinações simples
 - Áreas de polígonos
+- Poliedros e corpos redondos - cálculo de áreas, volume e capacidade
 
 ### Português (5)
 - Concordância nominal e concordância verbal
@@ -66,12 +69,14 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Classes de palavras: substantivo, artigo
 - Frase, oração e período
 
-### Química (5)
+### Química (7)
 - Equações químicas e balanceamento
 - Cinética química
 - Reações de oxirredução e números de oxidação
 - Conceito de entalpia e Lei de Hess
 - Reações nucleares: fissão e fusão nucleares
+- Principais características e propriedades de ácidos, bases, sais e óxidos
+- Equilíbrio em sistemas homogêneos e heterogêneos
 
 ### Sociologia (3)
 - Pluralismo cultural: a persistência do etnocentrismo
@@ -80,7 +85,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **324 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 324 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **319 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 319 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -97,3 +102,7 @@ Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os 
 ## Continuação
 
 A auditoria automática deve direcionar novas etapas, especialmente temas da Química, Física, Biologia e História que ainda usam roteiros genéricos. O trabalho só se encerra quando o catálogo inteiro tiver conteúdo específico validado, não quando o número de capítulos preenchidos atingir a contagem curricular. 
+
+## Quinta leva — continuidade automática
+
+Adicionados cinco módulos originais com três níveis e questões de alternativas A–D: ácidos/bases/sais/óxidos, equilíbrio químico homogêneo/heterogêneo, Lei de Coulomb e campo elétrico, evidências da evolução, volumes e áreas de sólidos. CI e revisão editorial são requisitos separados; não indicar homologação humana inexistente. A auditoria por categoria e os testes de múltipla escolha devem permanecer válidos em cada novo commit.
