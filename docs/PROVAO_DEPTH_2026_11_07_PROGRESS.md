@@ -423,3 +423,22 @@ Integração em `provao-depth-lessons.ts` por correspondência exata antes de pr
 **Cobertura editorial prevista após validação:** **161/364** temas do Provão Paulista, **203 pendentes**, **483 capítulos e 483 questões objetivas**; **162 registros de prefixo**, um deles histórico e encoberto (`Química · Fórmulas químicas: fórmula mínima`, do lote 16). O catálogo dos cinco exames possui 1.512 entradas e ainda não está todo aprofundado. Esses números não são aprovação automática de CI nem homologação pedagógica.
 
 **Liberação:** exigir conclusão da CI com testes unitários, segurança PostgreSQL de dois usuários, design, TypeScript e build. Nenhuma migração, modificação em RLS, Supabase, auth, dados existentes, `legacy/`, APIs pagas ou chaves. O PR #93 continua em **rascunho**, sem merge e sem deploy público; revisão docente ainda pendente.
+
+
+## Lote 32 — cinco aulas originais de Química, Física, Biologia e História (2026-11-08)
+
+O PR #93 foi consultado ainda em rascunho. AGENTS.md, `curriculum-catalog.ts`, `provao-paulista.ts`, a auditoria `provao-depth-coverage.test.ts` e o progresso anterior (lote 31) foram verificados antes da autoria. A CI do commit inicial deste ciclo (#745) estava aprovada. Os novos tópicos foram escolhidos por corresponderem **exatamente** a entradas do Provão Paulista e por não constarem das relações de aulas previamente aprofundadas documentadas; a nova auditoria exige sua cobertura específica.
+
+| Disciplina | Entrada específica do Provão | Conteúdo abordado |
+|---|---|---|
+| Química | Macromoléculas naturais e sintéticas | Estrutura dos polímeros; unidades repetitivas; adição versus condensação; grau de polimerização; recuperação e impactos |
+| Física | Geradores elétricos. Força eletromotriz e resistência interna. Equação e curva característica… | U=ε−rI, corrente em circuito real, perdas, gráfico U×I e potência máxima |
+| Física | Receptores elétricos. Força contraeletromotriz e resistência interna. Equação e curva… | Motores, U=ε'+rI, potência convertida, rendimento e malha gerador–receptor |
+| Biologia | Teorias da origem da vida na Terra e hipóteses sobre a evolução do metabolismo energético | Pasteur e biogênese, síntese prebiótica, ribozimas, mundo de RNA e hipóteses metabólicas |
+| História | A Declaração Universal dos Direitos Humanos de 1948: seus princípios e trajetória histórica | Pós-guerra, elaboração coletiva, artigos 1º, 2º, 3º, 19 e 26, pactos de 1966 e Constituição de 1988 |
+
+As cinco aulas constam de `provao-depth-batch32-core.ts` e são registradas pelo resolvedor `provao-depth-lessons.ts` com prioridade para título oficial exato. Todas contêm **três capítulos progressivos** com explicações autorais de 750+ caracteres e pré-requisitos próprios, **três exemplos resolvidos** com operações ou análise histórica (180+ caracteres cada), condições de validade e erros típicos, além de **três questões estritamente objetivas** com quatro alternativas A–D, gabaritos `correctIndex` verificados por teste e correções comentadas de 140+ caracteres. Não há perguntas dissertativas. `provao-depth-batch32.test.ts` valida conteúdo, gabaritos, IDs estáveis, autoria e fallback editorial; `provao-depth-coverage.test.ts` passa a verificar as cinco novas entradas e o mínimo acumulado.
+
+**Cobertura prevista para validação automatizada:** **166/364 tópicos oficiais do Provão Paulista**, **198 pendentes**, **498 capítulos** e **498 questões objetivas**. O registro histórico encoberto no lote 16 permanece sem contagem adicional. O catálogo unificado dos cinco exames conserva entradas não aprofundadas; não há conclusão de ENEM, ETEC, Fuvest e Vunesp. Esta previsão não equivale a CI aprovada ou homologação pedagógica.
+
+Material original Kognos, **não oficial e sem homologação docente**. Nenhuma alteração foi feita em `legacy/`, IDs, respostas existentes, contas, Supabase, RLS, segredos ou integrações pagas. Não executar merge ou deploy sem revisão autorizada; manter PR em rascunho. A conclusão depende de testes unitários, segurança PostgreSQL com dois usuários, design, TypeScript e build no GitHub Actions.
