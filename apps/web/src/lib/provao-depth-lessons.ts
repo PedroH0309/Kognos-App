@@ -10,6 +10,7 @@ import {examBlueprints} from './exam-blueprints.ts';
 import {provaoDepthScienceAndHistory} from './provao-depth-science-history.ts';
 import {provaoDepthHumanitiesAndLanguage} from './provao-depth-humanities-language.ts';
 import {provaoDepthBatch02Science} from './provao-depth-batch02-science.ts';
+import {provaoDepthBatch02MathHumanities} from './provao-depth-batch02-math-humanities.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -19,7 +20,7 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science];
+const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
