@@ -106,3 +106,7 @@ A auditoria automática deve direcionar novas etapas, especialmente temas da Qu�
 ## Quinta leva — continuidade automática
 
 Adicionados cinco módulos originais com três níveis e questões de alternativas A–D: ácidos/bases/sais/óxidos, equilíbrio químico homogêneo/heterogêneo, Lei de Coulomb e campo elétrico, evidências da evolução, volumes e áreas de sólidos. CI e revisão editorial são requisitos separados; não indicar homologação humana inexistente. A auditoria por categoria e os testes de múltipla escolha devem permanecer válidos em cada novo commit.
+
+## Verificação transversal de avaliação objetiva
+
+O teste `provao-depth-coverage.test.ts` passou a percorrer as aulas aprofundadas pelo catálogo completo e a rejeitar questões sem quatro alternativas distintas, sem gabarito indexado válido ou sem correção comentada suficiente. Também verifica a presença de avaliação em cada um dos três níveis e a integração com o conversor editorial. Essa garantia vale para o material embarcado e não constitui auditoria das aulas externas publicadas no Supabase. O commit de teste aguarda sua própria execução de CI antes de ser considerado aprovado.
