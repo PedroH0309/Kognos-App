@@ -40,6 +40,7 @@ test('the text pane confirms reading at its actual end, never bypassing activity
 
 test('the Kog explanation button appears once for each visible lesson tab',()=>{
  assert.match(sections,/onTutor&&<button type="button" onClick=\{onTutor\}>Explicar com o Kog/);
+ assert.doesNotMatch(sections,/<UniversalLessonReader[^\n]*onTutor=\{onTutor\}/);
  assert.match(room,/\(readerTab==='materials'\|\|readerTab==='evolution'\)&&onTutor&&<button/);
  assert.doesNotMatch(room,/\{onTutor&&<button type="button" className="btn outline" onClick=\{onTutor\}>Explicar com o Kog/);
 });
