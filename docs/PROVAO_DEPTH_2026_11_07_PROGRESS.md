@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **86 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **258 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **258 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **91 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **273 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **273 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -126,7 +126,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **278 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **273 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 278 conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -207,3 +207,7 @@ Foram adicionados cinco temas oficiais não repetidos: **número atômico, massa
 ## Verificação da 15ª leva — 2026-11-08
 
 A execução [GitHub Actions #42469341319](https://github.com/PedroH0309/Kognos-App/actions/runs/42469341319), associada ao commit `6b1a95d27af07a87ceaa73e213e9223c8f49dc52`, terminou com `conclusion: success`. O job `tests` confirmou individualmente: Unit tests, Content security (PostgreSQL / two users), Design tests, Type checking e Production build. Essa aprovação é exclusiva do commit indicado, não constitui revisão pedagógica docente e não autoriza merge ou deploy. Nenhuma aula nova é contabilizada nesta atualização de rastreabilidade; a cobertura permanece 86/364, com 278 entradas fora desta série.
+
+## Décima sexta leva — composição, eletrosfera, ecologia e formação estatal
+
+Foram incluídas cinco aulas originais: **fórmulas químicas empíricas e moleculares** e **diagrama de Linus Pauling e configuração eletrônica** (Química), **composição vetorial de forças** (Física), **papéis ecológicos e econômicos de bactérias e fungos** (Biologia) e **formação dos Estados modernos** (História). São 15 capítulos com explicações específicas de pelo menos 750 caracteres, 15 exemplos resolvidos, limites e erros frequentes e 15 questões A–D com gabarito comentado. `provao-depth-batch16.test.ts` verifica identidade oficial única, integração ao resolvedor, exemplos, questões e gabaritos. Total da série: **91/364**, com **273 entradas ainda fora**; o catálogo de 1.512 tópicos multi-exame continua em auditoria. Conteúdo autoral, não oficial, sem homologação docente. CI da nova leva pendente; não mesclar nem publicar sem revisão.
