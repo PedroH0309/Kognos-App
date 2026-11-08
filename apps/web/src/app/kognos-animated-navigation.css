@@ -265,3 +265,393 @@
  }
  .k-animated-lesson-tabs,.k-animated-stage-nav{scroll-behavior:auto!important}
 }
+
+
+/* Navigation reference update: expanded mobile selection and adaptive desktop sidebar. */
+/* Mobile: the reference uses a dark full-width dock and a single expanding
+ * blue selected item. Keep the existing five real Kognos destinations.
+ * This surface stays dark in both application themes, as in the image.
+ */
+@media(max-width:920px){
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav{
+  align-items:center;
+  justify-content:center;
+  height:calc(79px + env(safe-area-inset-bottom));
+  padding:7px 10px calc(7px + env(safe-area-inset-bottom));
+  background:#1D1F24;
+  border:0;
+  border-radius:28px 28px 0 0;
+  box-shadow:0 -7px 25px rgba(7,10,18,.18);
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-pill,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-pill {
+  width:min(100%,510px);
+  min-height:62px;
+  padding:3px;
+  gap:2px;
+  border:0;
+  border-radius:24px;
+  background:transparent;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  box-shadow:none;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button {
+  flex:1 1 0;
+  flex-direction:row;
+  gap:0;
+  min-width:0;
+  min-height:54px;
+  padding:8px 2px;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:#858B94;
+  font-size:13px;
+  font-weight:620;
+  transition:flex-grow .32s cubic-bezier(.2,.82,.2,1),color .22s ease;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active,
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button[aria-current=page],
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button[aria-current=page] {
+  flex-grow:2.15;
+  gap:6px;
+  color:#59A9FF;
+  background:transparent;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button .k-mobile-nav-highlight,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button .k-mobile-nav-highlight{
+  inset:0;
+  border-radius:999px;
+  background:#2D4D75;
+  border:0;
+  box-shadow:none;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-icon{
+  width:24px;
+  height:25px;
+  flex:0 0 24px;
+  color:inherit;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-label,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-label{
+  display:none;
+  flex:0 1 auto;
+  min-width:0;
+  max-width:0;
+  width:auto;
+  font-size:13px;
+  font-weight:670;
+  line-height:1.2;
+  color:inherit;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active .k-mobile-nav-label,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button.active .k-mobile-nav-label{
+  display:block;
+  max-width:96px;
+ }
+ /* On downward scrolling keep the icons and active location visible in a
+  * compact dock; upward scrolling restores the selected label. */
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-pill,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-pill {
+  width:min(100%,430px);
+  min-height:51px;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-button,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-button{
+  min-height:46px;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-button .k-mobile-nav-label,
+ .app-layout.theme-dark .mobile-bottom-nav.k-animated-mobile-nav[data-minimized=true] .k-mobile-nav-button .k-mobile-nav-label{
+  display:none;
+ }
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button:focus-visible{
+  outline:2px solid #73C0FC;
+  outline-offset:2px;
+ }
+}
+/* Desktop: preserve the existing routes and persisted collapsed preference,
+ * but match the supplied dark navy / white expanded and icon-only rail.
+ */
+@media(min-width:921px){
+ .app-layout{
+  transition:grid-template-columns .25s cubic-bezier(.2,.82,.2,1);
+ }
+ .app-layout .app-sidebar,
+ .app-layout.theme-light .app-sidebar {
+  background:#FFFFFF;
+  color:#53697D;
+  border-right:1px solid #E2E7ED;
+  padding:18px 13px 14px;
+  box-shadow:0 4px 25px rgba(21,45,66,.06);
+ }
+ .app-layout.theme-dark .app-sidebar,
+ .app-layout.theme-dark.sidebar-collapsed .app-sidebar{
+  background:#052033;
+  color:#E2EDF5;
+  border-right:1px solid #12394F;
+  box-shadow:0 5px 25px rgba(0,16,27,.28);
+ }
+ .app-layout .app-sidebar .side-logo{
+  min-height:65px;
+  padding:0 6px 18px;
+ }
+ .app-layout .app-sidebar .side-nav{
+  gap:5px;
+  padding:0 3px 11px;
+  scrollbar-width:thin;
+ }
+ .app-layout .app-sidebar .k-nav-set{gap:5px}
+ .app-layout .app-sidebar .side-nav-item{
+  min-height:45px;
+  border-radius:6px;
+  padding:10px 12px;
+  gap:13px;
+  color:#5E7388;
+  background:transparent;
+  border:1px solid transparent;
+  font-size:12px;
+  font-weight:590;
+  letter-spacing:0;
+  box-shadow:none;
+  transition:background-color .22s ease,color .22s ease,transform .18s ease;
+ }
+ .app-layout .app-sidebar .side-nav-item .k-side-icon,
+ .app-layout .app-sidebar .side-nav-item .k-side-icon svg {
+  color:#62798E;
+ }
+ .app-layout .app-sidebar .side-nav-item:hover{
+  background:#F0F6FA;
+  border-color:transparent;
+  color:#1474BE;
+  transform:none;
+ }
+ .app-layout .app-sidebar .side-nav-item.active{
+  background:#E5F3FC;
+  color:#177FCF;
+  border-color:transparent;
+  box-shadow:none;
+  font-weight:730;
+ }
+ .app-layout .app-sidebar .side-nav-item.active::before{display:none}
+ .app-layout .app-sidebar .side-nav-item.active .k-side-icon{
+  color:#1789DF;
+ }
+ .app-layout.theme-dark .app-sidebar .side-nav-item{
+  background:transparent;
+  border-color:transparent;
+  color:#E3ECF6;
+ }
+ .app-layout.theme-dark .app-sidebar .side-nav-item .k-side-icon{
+  color:#E4EEF6;
+ }
+ .app-layout.theme-dark .app-sidebar .side-nav-item:hover{
+  background:#15374B;
+  color:#FFFFFF;
+ }
+ .app-layout.theme-dark .app-sidebar .side-nav-item.active{
+  background:#647F92;
+  border-color:transparent;
+  color:#FFFFFF;
+  box-shadow:none;
+ }
+ .app-layout.theme-dark .app-sidebar .side-nav-item.active .k-side-icon{
+  color:#FFFFFF;
+ }
+ .app-layout .app-sidebar .k-nav-more-toggle{
+  min-height:43px;
+  border-radius:6px;
+  color:#5E7388;
+ }
+ .app-layout .app-sidebar .k-nav-more-toggle:hover,
+ .app-layout .app-sidebar .k-nav-more-toggle.selected{
+  background:#E5F3FC;
+  color:#177FCF;
+ }
+ .app-layout.theme-dark .app-sidebar .k-nav-more-toggle{
+  color:#D8E6F0;
+ }
+ .app-layout.theme-dark .app-sidebar .k-nav-more-toggle:hover,
+ .app-layout.theme-dark .app-sidebar .k-nav-more-toggle.selected{
+  background:#15374B;
+  color:#FFFFFF;
+ }
+ .app-layout .app-sidebar .k-nav-expanded{
+  margin-left:11px;
+  padding-left:7px;
+  border-left-color:#D5E4EF;
+ }
+ .app-layout.theme-dark .app-sidebar .k-nav-expanded{border-left-color:#36556B}
+ .app-layout .app-sidebar .k-nav-separator{
+  margin:10px 3px;
+ }
+ .app-layout .app-sidebar .sidebar-bottom{
+  display:grid;
+  gap:5px;
+  padding:12px 4px 0;
+  margin-top:5px;
+  border-top:1px solid #E5EBF0;
+ }
+ .app-layout.theme-dark .app-sidebar .sidebar-bottom{border-top-color:#224559}
+ .app-layout .app-sidebar .k-sidebar-utility{
+  display:flex;
+  width:100%;
+  min-height:42px;
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  padding:7px 10px;
+  border:0;
+  border-radius:6px;
+  background:transparent;
+  color:#5E7388;
+  font-size:11px;
+  font-weight:650;
+  text-align:left;
+  cursor:pointer;
+ }
+ .app-layout .app-sidebar .k-sidebar-utility:hover{
+  background:#E5F3FC;
+  color:#177FCF;
+ }
+ .app-layout.theme-dark .app-sidebar .k-sidebar-utility{
+  color:#E2EDF5;
+ }
+ .app-layout.theme-dark .app-sidebar .k-sidebar-utility:hover{
+  background:#15374B;
+  color:#FFFFFF;
+ }
+ .app-layout .app-sidebar .k-sidebar-utility-icon{
+  display:grid;
+  place-items:center;
+  min-width:23px;
+  width:23px;
+  height:25px;
+  color:inherit;
+ }
+ .app-layout .app-sidebar .k-sidebar-utility-label{flex:1;white-space:nowrap}
+ .app-layout .app-sidebar .k-sidebar-utility-switch{
+  display:flex;
+  width:27px;
+  height:15px;
+  padding:2px;
+  align-items:center;
+  border-radius:999px;
+  background:#9EAEBA;
+ }
+ .app-layout .app-sidebar .k-sidebar-utility-switch>span{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:white;
+  box-shadow:0 1px 2px rgba(0,0,0,.12);
+  transition:transform .2s ease;
+ }
+ .app-layout.theme-dark .app-sidebar .k-sidebar-utility-switch{
+  background:#349AE4;
+ }
+ .app-layout.theme-dark .app-sidebar .k-sidebar-utility-switch>span{
+  transform:translateX(12px);
+ }
+ .app-layout .app-sidebar .k-sidebar-signout{
+  background:#EAF1F6;
+  color:#486274;
+  font-weight:720;
+ }
+ .app-layout.theme-dark .app-sidebar .k-sidebar-signout{
+  background:#587388;
+  color:#FFFFFF;
+ }
+ .app-layout .app-sidebar .side-user{
+  margin-top:4px;
+ }
+ .app-layout.sidebar-collapsed{grid-template-columns:74px minmax(0,1fr)}
+ .app-layout.sidebar-collapsed .app-sidebar{
+  padding-inline:8px;
+ }
+ .app-layout.sidebar-collapsed .side-logo{
+  display:grid;
+  justify-items:center;
+  gap:5px;
+  padding:0 0 15px;
+ }
+ .app-layout.sidebar-collapsed .sidebar-collapse-btn{
+  margin-top:5px;
+ }
+ .app-layout.sidebar-collapsed .side-nav{
+  padding-inline:0;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .k-nav-expanded{
+  margin:0;
+  padding:0;
+  border:0;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .side-nav-item,
+ .app-layout.sidebar-collapsed .app-sidebar .k-nav-more-toggle{
+  justify-content:center;
+  width:100%;
+  min-height:45px;
+  padding:9px 0;
+  gap:0;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .side-nav-item .k-side-label,
+ .app-layout.sidebar-collapsed .app-sidebar .k-nav-more-toggle .k-side-label,
+ .app-layout.sidebar-collapsed .app-sidebar .k-nav-more-toggle .k-side-chevron{
+  display:none;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .sidebar-bottom{
+  padding-inline:0;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .k-sidebar-utility {
+  justify-content:center;
+  min-height:43px;
+  padding:8px 0;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .k-sidebar-utility-label,
+ .app-layout.sidebar-collapsed .app-sidebar .k-sidebar-utility-switch{
+  display:none;
+ }
+ .app-layout.sidebar-collapsed .app-sidebar .side-user{
+  justify-content:center;
+ }
+ .app-layout .app-sidebar button:focus-visible{
+  outline:2px solid #38CDE5;
+  outline-offset:2px;
+ }
+}
+@media(max-width:920px){
+ /* Keep the slide-out drawer readable even when the desktop rail is collapsed. */
+ .app-layout .app-sidebar .k-sidebar-utility{
+  display:flex;
+  align-items:center;
+  min-height:44px;
+  padding:9px 11px;
+  gap:12px;
+  background:transparent;
+  color:inherit;
+  border-radius:9px;
+ }
+ .app-layout .app-sidebar .k-sidebar-utility-label{flex:1}
+ .app-layout .app-sidebar .k-sidebar-utility-icon{display:grid;place-items:center}
+ .app-layout .app-sidebar .k-sidebar-utility-switch{
+  display:none;
+ }
+ .app-layout .app-sidebar .sidebar-bottom{
+  display:grid;
+  gap:5px;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .app-layout .mobile-bottom-nav.k-animated-mobile-nav .k-mobile-nav-button,
+ .app-layout .app-sidebar .side-nav-item,
+ .app-layout .app-sidebar .k-sidebar-utility,
+ .app-layout .app-sidebar .k-sidebar-utility-switch>span{
+  transition:none!important;
+ }
+}
