@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
+import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 import {starterLesson} from './starter-lessons.ts';
 
 /** Offline-only maturity audit: published Supabase overrides are not inspected here.
@@ -59,4 +60,30 @@ test('all five examination paths use the same authored or introductory content c
  }
  assert.deepEqual([...exams].sort(),['enem','etec','fuvest','saresp','vunesp']);
  console.log('ALL_EXAMS_DEPTH_AUDIT '+JSON.stringify({total:curriculumTopics.length,coverage:statuses,exams:[...exams].sort()}));
+});
+
+test('every deep lesson is assessed exclusively through verified four-option multiple choice',()=>{
+ const checked=new Set<string>();
+ for(const topic of curriculumTopics){
+  const lesson=deepProvaoLesson(topic);
+  if(!lesson)continue;
+  const key=topic.subject+'\\0'+topic.topic;
+  if(checked.has(key))continue;
+  checked.add(key);
+  assert.equal(lesson.sections.length,3,key+' must include three progressive stages');
+  assert.ok(lesson.tasks.length>=3,key+' must have assessment at all stages');
+  for(const level of ['basic','intermediate','advanced'] as const){
+   assert.ok(lesson.tasks.some(task=>task.level===level),key+' missing '+level);
+  }
+  for(const task of lesson.tasks){
+   assert.equal(task.options?.length,4,key+' has a non-objective task');
+   assert.equal(new Set(task.options).size,4,key+' repeats an answer option');
+   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex >= 0 && task.correctIndex < 4,key+' has an invalid key');
+   assert.ok(task.solution.length>=140,key+' has an insufficient commented correction');
+   const choice=lessonTaskChoice(lesson,task);
+   assert.equal(choice.source,'editorial');
+   assert.equal(choice.correctIndex,task.correctIndex);
+  }
+ }
+ assert.equal(checked.size,deepProvaoTopicKeys.length,'Every authored topic must be included in the full-catalog assessment audit');
 });
