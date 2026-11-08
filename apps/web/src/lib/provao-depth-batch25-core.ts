@@ -3,90 +3,90 @@ import type {DeepTopicSpec} from './provao-depth-lessons.ts';
 export const provaoDepthBatch25Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
-    "topicStart": "Estado físico e propriedades dos materiais",
-    "objective": "Compreender e aplicar criticamente estado físico e propriedades dos materiais, interpretando evidências, construindo representações, resolvendo situações quantitativas ou qualitativas e explicitando hipóteses e limites de cada modelo.",
+    "topicStart": "Propriedade de substâncias moleculares, iônicas e metálicas",
+    "objective": "Investigar propriedade de substâncias moleculares, iônicas e metálicas com modelos físicos e químicos consistentes, identificando propriedades, realizando inferências e cálculos, confrontando alternativas e explicitando condições de validade e limitações experimentais.",
     "prerequisites": [
-      "Modelo particulado da matéria",
-      "Temperatura e energia cinética",
-      "Massa, volume e densidade"
+      "Ligações iônica, covalente e metálica",
+      "Rede cristalina e moléculas",
+      "Condutividade e solubilidade"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: estados e propriedades",
-        "explanation": "Sólidos, líquidos e gases diferem principalmente pela mobilidade e organização de suas partículas, não pela existência de partículas diferentes em cada estado. Em um sólido cristalino, as unidades ocupam posições médias relativamente fixas e vibram; num líquido, permanecem próximas, mas se rearranjam; num gás, encontram-se muito mais afastadas e se deslocam pelo recipiente. Uma mesma substância, como água pura, pode aparecer nos três estados. Densidade é a razão entre massa e volume, ρ=m/V; ela não equivale ao peso nem determina isoladamente o estado físico. Temperatura caracteriza o estado térmico e se relaciona à agitação microscópica, enquanto calor é energia transferida devido a diferença de temperatura. Fusão e ebulição dependem da pressão e da composição: água pura ferve aproximadamente a 100 °C sob pressão de 1 atm, não em qualquer altitude. Substâncias puras frequentemente exibem patamares de temperatura durante mudanças de fase a pressão constante; misturas podem apresentar intervalos. O modelo particulado explica expansão e compressibilidade sem sugerir que as moléculas cresçam quando aquecidas.",
-        "example": "Um bloco de 270 g ocupa 100 cm³. Primeiro identifique massa e volume; em seguida calcule ρ=270/100=2,70 g/cm³; por fim converta, se necessário, para 2700 kg/m³. A razão descreve a amostra na temperatura medida, não sua composição química por si só.",
-        "pitfall": "Não confundir propriedades observáveis com explicações microscópicas e condições de medida.",
+        "title": "Conceitos: estrutura e propriedades",
+        "explanation": "Substâncias iônicas são constituídas por cátions e ânions organizados em redes cristalinas, e não por moléculas individuais de sal. A atração eletrostática em todas as direções ajuda a explicar pontos de fusão frequentemente elevados e fragilidade de cristais: ao deslocar planos da rede, íons de mesma carga podem ficar próximos e gerar repulsão. Substâncias moleculares apresentam entidades discretas e propriedades que dependem tanto das ligações internas quanto das forças entre moléculas. Água e dióxido de carbono são moleculares, mas diferem em polaridade e comportamento físico; não se deve inferir o ponto de ebulição apenas pela massa molar. Metais exibem rede de átomos ou cátions com elétrons deslocalizados, modelo que explica condução elétrica no sólido e maleabilidade. Essas são tendências, não definições por uma única propriedade. Diamante e grafite são redes covalentes, não moléculas pequenas; suas propriedades mostram por que classificação simplista entre iônico, molecular e metálico tem exceções. A condutividade depende de portadores móveis e condições de medida, não apenas da presença de elétrons.",
+        "example": "Compare NaCl sólido e fundido. No cristal sólido, os íons estão presos em posições médias e não conduzem bem; no fundido, os íons se movem e transportam carga. A ligação continua iônica em ambos os estados.",
+        "pitfall": "Confundir mecanismo microscópico com aparência macroscópica ou classificação isolada.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: aquecimento e curvas de fase",
-        "explanation": "Uma curva de aquecimento relaciona energia fornecida, temperatura e mudanças de fase. Antes da fusão, aquecer um sólido aumenta sua temperatura conforme Q=m c ΔT, se o calor específico puder ser tratado como constante. Durante a fusão de uma substância pura sob pressão constante, a energia Q=m L_f é usada para vencer parte das interações responsáveis pela estrutura sólida; a temperatura fica aproximadamente constante enquanto coexistem fases. Após a fusão, o líquido volta a aquecer. Na vaporização, Q=m L_v corresponde à mudança de fase e não deve ser somado como se fosse aumento de temperatura. A quantidade de energia depende da massa, do calor específico e do calor latente, grandezas distintas. A pressão altera os pontos de transição e a presença de impurezas pode modificar a forma da curva. A evaporação ocorre na superfície mesmo abaixo da ebulição; ebulição envolve formação de bolhas de vapor no interior do líquido. Em problemas reais, perdas de energia para o ambiente precisam ser consideradas, e não se pode inferir que toda energia elétrica se converteu em calor da amostra.",
-        "example": "Para fundir 50 g de gelo já a 0 °C, use L_f≈334 J/g. Passo 1: identifique que não há aquecimento prévio; passo 2: calcule Q=50×334=16 700 J; passo 3: observe que a temperatura permanece próxima de 0 °C durante a fusão ideal a 1 atm.",
-        "pitfall": "Não substituir análise de unidades e hipóteses por fórmulas memorizadas.",
+        "title": "Aplicação: condutividade e dissolução",
+        "explanation": "A água destilada possui condutividade baixa em comparação com uma solução aquosa de cloreto de sódio, porque a dissolução de NaCl disponibiliza íons móveis. Açúcar pode dissolver-se em água sem produzir quantidades comparáveis de íons, já que moléculas de sacarose permanecem predominantemente intactas; dissolver não é sinônimo de ionizar. Um fio de cobre sólido conduz porque elétrons se deslocam pela estrutura metálica, mecanismo distinto do transporte iônico em solução. A condutividade depende da concentração de espécies móveis, temperatura e geometria da amostra; por isso não é correto classificar todas as soluções como bons condutores. Sais insolúveis não geram automaticamente soluções concentradas. Compostos covalentes podem formar íons ao reagir com água, como ácidos fortes em condições adequadas, e a ligação covalente não impede toda condutividade. A comparação deve separar o tipo de ligação, a estrutura da substância e o estado físico em que a propriedade foi medida. Testes elétricos reais exigem equipamentos seguros e não devem envolver rede elétrica doméstica.",
+        "example": "Em três amostras, compare NaCl sólido, NaCl dissolvido e sacarose dissolvida. Identifique os portadores de carga: íons fixos, íons móveis e moléculas neutras. Preveja que a solução salina conduza mais que a açucarada sob condições semelhantes.",
+        "pitfall": "Ignorar concentração, carga, unidade ou estado físico ao aplicar uma regra.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: pressão, gases e anomalias",
-        "explanation": "No modelo ideal, um gás obedece PV=nRT, desde que sua densidade seja baixa e interações intermoleculares sejam desprezíveis na aproximação. Se a quantidade de gás e a temperatura absoluta permanecerem constantes, duplicar a pressão reduz o volume à metade. Essa relação não vale literalmente para líquidos, cujos volumes variam muito menos sob compressão. A densidade de um material também pode mudar com temperatura e pressão; por isso tabelas devem informar condições de medida. A água apresenta uma particularidade importante: o gelo comum é menos denso que a água líquida próxima de 4 °C, porque a rede cristalina forma estrutura mais aberta. Não se deve extrapolar a regra de que sólidos sempre afundam em seus líquidos. Diagramas de fase permitem localizar regiões de estabilidade de sólido, líquido e vapor e pontos em que coexistem fases; o ponto triplo não é sinônimo de ponto de ebulição. O ponto crítico encerra a fronteira líquido-vapor, mas não torna todos os fluidos iguais. A validade de PV=nRT e de modelos de fase deve ser explicitada antes de usar números experimentais.",
-        "example": "Uma seringa contém 60 mL de ar a 1 atm e temperatura constante. Comprima lentamente até 2 atm: P1V1=P2V2; V2=(1×60)/2=30 mL. A conclusão supõe gás aproximadamente ideal, ausência de vazamentos e temperatura constante.",
-        "pitfall": "Não extrapolar resultados idealizados sem examinar condições e limitações.",
+        "title": "Aprofundamento: estrutura e ponto de fusão",
+        "explanation": "O ponto de fusão depende da energia necessária para alterar a organização do material. Em sólidos iônicos, a rede eletrostática costuma exigir energia elevada; em sólidos moleculares, a fusão frequentemente envolve vencer interações intermoleculares, sem romper todas as ligações covalentes internas. Metais variam amplamente em ponto de fusão, e não há regra universal de que qualquer metal derreta acima de qualquer sal. Materiais de rede covalente, como diamante, apresentam estruturas muito extensas e não podem ser explicados como conjuntos de moléculas pequenas mantidas apenas por forças fracas. Para uma escolha tecnológica, considere resistência, ductilidade, corrosão, condutividade e temperatura de trabalho. Uma cerâmica iônica pode resistir a altas temperaturas e ainda ser frágil sob impacto; cobre pode conduzir e deformar sem quebrar facilmente. A classificação química orienta hipóteses, mas resultados experimentais e composição real definem a adequação. Impurezas, defeitos cristalinos e ligas alteram propriedades, portanto não extrapole de uma substância pura para qualquer produto comercial.",
+        "example": "Para escolher um material de fio, compare cobre metálico, sal sólido e vidro molecular ou de rede. Passo 1: identifique portadores de carga; passo 2: avalie ductilidade; passo 3: selecione cobre para o núcleo condutor, considerando isolamento externo.",
+        "pitfall": "Generalizar o modelo simplificado sem considerar exceções e condições reais.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual propriedade corresponde à razão entre massa e volume?",
+        "prompt": "Qual afirmação explica por que NaCl sólido conduz pouco?",
         "options": [
-          "Calor específico",
-          "Densidade",
-          "Temperatura",
-          "Ponto de fusão"
+          "Não existem íons no sólido",
+          "Os íons estão pouco móveis na rede cristalina",
+          "Todo sólido é molecular",
+          "Os elétrons de valência desaparecem"
         ],
         "correctIndex": 1,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Densidade é ρ=m/V. Calor específico relaciona energia, massa e variação de temperatura; temperatura caracteriza o estado térmico; ponto de fusão descreve uma transição sob condições definidas."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "O NaCl sólido contém íons, mas estes não possuem mobilidade translacional suficiente para transportar corrente de forma eficiente. Fundido ou dissolvido, íons móveis permitem condução."
       },
       {
         "level": "intermediate",
-        "prompt": "Quanto calor ideal é necessário para fundir 50 g de gelo a 0 °C se Lf=334 J/g?",
+        "prompt": "Qual amostra tende a conduzir melhor, em condições semelhantes?",
         "options": [
-          "334 J",
-          "6 680 J",
-          "16 700 J",
-          "33 400 J"
+          "Solução aquosa de sacarose",
+          "NaCl sólido",
+          "Solução aquosa de NaCl",
+          "Água destilada"
         ],
         "correctIndex": 2,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "A mudança de fase requer Q=mLf=50 g×334 J/g=16 700 J. Não se usa Q=mcΔT porque o gelo já está na temperatura de fusão e a etapa ideal não eleva sua temperatura."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "NaCl dissolvido fornece Na⁺ e Cl⁻ móveis; sacarose permanece majoritariamente molecular e água destilada tem poucos íons. A condutividade depende também da concentração e da temperatura."
       },
       {
         "level": "advanced",
-        "prompt": "A temperatura constante, um gás ideal passa de 1 atm e 60 mL para 2 atm. Qual o novo volume?",
+        "prompt": "Por que cobre é usado como núcleo de fios elétricos?",
         "options": [
-          "15 mL",
-          "30 mL",
-          "60 mL",
-          "120 mL"
+          "Porque é um sal iônico fundido",
+          "Porque não contém elétrons",
+          "Porque é sempre isolante",
+          "Porque conduz no estado sólido e pode ser conformado em fios"
         ],
-        "correctIndex": 1,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Pela lei de Boyle, P1V1=P2V2; V2=1×60/2=30 mL. Essa conclusão depende de temperatura e quantidade de gás constantes e da adequação do modelo ideal."
+        "correctIndex": 3,
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "A estrutura metálica do cobre permite mobilidade de elétrons e ductilidade, viabilizando fios. Resistência à corrosão, custo e isolamento também importam no projeto, mas não substituem essas propriedades."
       }
     ]
   },
@@ -270,179 +270,179 @@ export const provaoDepthBatch25Core:readonly DeepTopicSpec[]=[
   },
   {
     "subject": "Química",
-    "topicStart": "Óxidos e a chuva ácida",
-    "objective": "Compreender e aplicar criticamente óxidos e a chuva ácida, interpretando evidências, construindo representações, resolvendo situações quantitativas ou qualitativas e explicitando hipóteses e limites de cada modelo.",
+    "topicStart": "Interações do tipo íon-dipolo",
+    "objective": "Investigar interações do tipo íon-dipolo com modelos físicos e químicos consistentes, identificando propriedades, realizando inferências e cálculos, confrontando alternativas e explicitando condições de validade e limitações experimentais.",
     "prerequisites": [
-      "Óxidos e reações com água",
-      "Escala de pH",
-      "Combustão e emissões atmosféricas"
+      "Íons e cargas elétricas",
+      "Polaridade molecular",
+      "Dissolução e hidratação"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: formação e química da deposição ácida",
-        "explanation": "Chuva naturalmente apresenta alguma acidez porque dióxido de carbono dissolvido forma pequenas quantidades de ácido carbônico; isso não significa automaticamente poluição. A deposição ácida intensificada está associada sobretudo a emissões de dióxido de enxofre (SO₂) e óxidos de nitrogênio (NOₓ), provenientes de processos industriais, geração de energia e combustão em veículos. Na atmosfera, essas espécies podem sofrer oxidação e reagir com água, formando ácidos como sulfúrico e nítrico. Uma representação simplificada é SO₃ + H₂O → H₂SO₄, mas ela não descreve todas as etapas atmosféricas. A expressão 'chuva ácida' abrange deposição úmida e deve ser distinguida de deposição seca de gases e partículas. Nem todo óxido reage do mesmo modo: CO não é classificado como óxido ácido típico nas condições usuais. É inadequado atribuir a chuva ácida apenas ao CO₂ ou confundi-la com o aquecimento global, embora processos de combustão possam contribuir para ambos por mecanismos distintos. A química exige identificar reagentes, produtos, fontes de emissão e escalas de transporte atmosférico.",
-        "example": "Na reação simplificada SO₃ + H₂O → H₂SO₄, conte S=1, H=2 e O=4 em ambos os lados. Identifique o óxido ácido, a água e o ácido produzido; a equação balanceada é um modelo de etapa, não a descrição completa da atmosfera.",
-        "pitfall": "Não confundir propriedades observáveis com explicações microscópicas e condições de medida.",
+        "title": "Conceitos: atração entre íon e molécula polar",
+        "explanation": "Interações íon-dipolo ocorrem entre uma espécie eletricamente carregada, como Na⁺ ou Cl⁻, e uma molécula com momento de dipolo permanente, como H₂O. A molécula de água possui geometria angular e distribuição desigual de carga: a região próxima ao oxigênio apresenta carga parcial negativa, enquanto as regiões próximas aos hidrogênios são parcialmente positivas. Por isso, moléculas de água tendem a orientar o oxigênio em direção a cátions e os hidrogênios em direção a ânions. Trata-se de interação eletrostática entre partículas, não de formação obrigatória de uma nova ligação covalente com cada íon. A intensidade depende da carga, tamanho do íon, polaridade do solvente e distância entre espécies. Não se deve confundir íon-dipolo com dipolo-dipolo, que envolve duas moléculas polares neutras, nem com ligação iônica em um cristal. A hidratação de íons contribui para a estabilização de espécies dissolvidas e ajuda a explicar por que muitos sais podem se dispersar em água. Contudo, a presença dessa interação não garante solubilidade ilimitada.",
+        "example": "Ao dissolver NaCl em água, represente Na⁺ cercado por moléculas orientadas com O voltado ao cátion e Cl⁻ cercado por moléculas com H voltado ao ânion. Verifique os sinais das cargas parciais antes de desenhar a orientação.",
+        "pitfall": "Confundir mecanismo microscópico com aparência macroscópica ou classificação isolada.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: impactos e interpretação de pH",
-        "explanation": "A escala de pH é logarítmica: pH=−log₁₀ a(H⁺), com aproximação escolar [H⁺] para soluções diluídas. Reduzir o pH de 5 para 4 corresponde aproximadamente a multiplicar por dez a atividade de íons hidrogênio, não a um aumento de apenas 20% na acidez. A deposição ácida pode acidificar lagos e solos, mobilizar certos metais e afetar organismos aquáticos e vegetação. Rochas carbonáticas e argamassas podem reagir com ácidos, favorecendo desgaste de monumentos. A magnitude do impacto depende da capacidade de tamponamento do solo e da água, da frequência de deposição e das características do ecossistema; não é igual em todas as regiões. Em interpretação de dados, distinga medição de pH da atribuição causal: uma única amostra ácida não identifica qual fonte emitiu os poluentes. Comparações precisam considerar local, época, método de coleta e possíveis interferências. Uma solução de pH menor não implica, isoladamente, maior volume de chuva ou maior massa total de ácido depositada.",
-        "example": "Duas amostras apresentam pH 5 e pH 4. Passo 1: calcule diferença de uma unidade; passo 2: use a escala logarítmica 10¹; passo 3: conclua que a segunda tem atividade de H⁺ aproximadamente dez vezes maior, sob a aproximação de solução diluída.",
-        "pitfall": "Não substituir análise de unidades e hipóteses por fórmulas memorizadas.",
+        "title": "Aplicação: dissolução e balanço energético",
+        "explanation": "Dissolver um sólido iônico envolve competir com as interações da rede cristalina e formar novas interações entre íons e solvente. A separação dos íons exige energia, enquanto sua solvatação pode liberar energia; o balanço influencia a entalpia de dissolução. Mesmo que a dissolução absorva calor, ela pode ser espontânea se a variação de energia livre favorecer o processo, porque entropia também importa. Não se pode prever solubilidade apenas dizendo que a água é polar: algumas redes cristalinas são muito estáveis e pouco solúveis, como ocorre com certos sais. Em solução, íons hidratados participam da condução elétrica; moléculas neutras de açúcar, embora interajam com água, não se comportam como eletrólitos fortes. A expressão 'semelhante dissolve semelhante' é uma heurística, não uma lei que substitua análise de rede, solvatação, temperatura e equilíbrio. Em problemas quantitativos, a concentração molar mede mols por litro de solução, não por litro de solvente puro. Identifique sempre qual espécie está sendo contada e se a dissolução foi completa.",
+        "example": "Dissolva 0,20 mol de NaCl e complete para 0,50 L de solução, admitindo dissociação completa. Calcule c(NaCl)=0,20/0,50=0,40 mol/L; então c(Na⁺)=c(Cl⁻)=0,40 mol/L, desconsiderando outras fontes de íons.",
+        "pitfall": "Ignorar concentração, carga, unidade ou estado físico ao aplicar uma regra.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: controle de emissões e limites",
-        "explanation": "Reduzir chuva ácida exige atuar sobre precursores, não apenas tratar consequências após a precipitação. Dessulfurização de gases de combustão pode capturar SO₂; combustíveis com menor teor de enxofre diminuem uma fonte importante. Sistemas catalíticos e controle da combustão podem reduzir emissões de NOₓ, mas desempenho depende do processo e da manutenção. O uso de calcário para neutralizar corpos d'água acidificados pode elevar o pH localmente, sem eliminar as fontes atmosféricas de poluentes. Uma neutralização idealizada é CaCO₃ + 2H⁺ → Ca²⁺ + CO₂ + H₂O; essa equação ajuda a calcular capacidade estequiométrica, mas não incorpora toda a química de solos e lagos. Avaliar políticas públicas requer medir emissões, deposição e resposta ecológica ao longo do tempo. A concentração de poluente no ar não é idêntica à massa depositada em uma bacia hidrográfica. Modelos atmosféricos precisam de meteorologia e transporte, pois emissões podem produzir efeitos distantes de suas fontes. Soluções técnicas devem explicitar custo, eficiência e condições de operação.",
-        "example": "Considere 0,10 mol de H⁺ em um modelo de neutralização com CaCO₃. A proporção é 2 mol H⁺ para 1 mol CaCO₃; logo são necessários 0,050 mol de carbonato. Com M≈100 g/mol, massa ideal≈5,0 g, desconsiderando impurezas e reações paralelas.",
-        "pitfall": "Não extrapolar resultados idealizados sem examinar condições e limitações.",
+        "title": "Aprofundamento: carga, raio e seletividade",
+        "explanation": "A força de interação íon-dipolo depende do campo elétrico do íon e da orientação da molécula polar. Íons pequenos e altamente carregados costumam apresentar hidratação intensa, mas o comportamento real depende também da estrutura do solvente e da energia de desidratação necessária para outras reações. Íons hidratados têm tamanho efetivo diferente do raio cristalográfico; por isso mobilidade em solução não segue necessariamente a mesma ordem dos raios iônicos isolados. A água pode estabilizar íons e alterar equilíbrios químicos, incluindo dissociação de ácidos e precipitação de sais. Uma solução saturada está em equilíbrio dinâmico entre dissolução e recristalização, não significa que as partículas deixaram de se mover. Em separações químicas, selecionar solventes ou agentes complexantes modifica a estabilidade relativa de espécies, mas não transforma qualquer sal em solúvel. Ao interpretar experimentos, distinga energia de rede, energia de solvatação e efeitos entrópicos. O modelo íon-dipolo explica uma contribuição essencial, não todas as forças presentes numa solução concentrada.",
+        "example": "Uma solução contém 0,10 mol de CaCl₂ em 1,0 L, supondo dissociação completa. Há 0,10 mol/L de Ca²⁺ e 0,20 mol/L de Cl⁻; a hidratação orienta o oxigênio da água ao redor do cátion e os hidrogênios ao redor dos ânions.",
+        "pitfall": "Generalizar o modelo simplificado sem considerar exceções e condições reais.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Quais emissões estão mais diretamente associadas à intensificação da deposição ácida?",
+        "prompt": "Como a água tende a orientar-se ao redor de Na⁺?",
         "options": [
-          "SO₂ e NOₓ",
-          "Apenas O₂ e N₂",
-          "Somente vapor de água",
-          "Apenas argônio"
+          "Com o oxigênio parcialmente negativo voltado ao cátion",
+          "Com os hidrogênios parcialmente positivos voltados ao cátion",
+          "Sem orientação preferencial possível",
+          "Com átomos de sódio covalentemente ligados à água"
         ],
         "correctIndex": 0,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "SO₂ e óxidos de nitrogênio podem ser transformados na atmosfera em espécies ácidas. O₂, N₂, vapor de água e argônio não explicam isoladamente a deposição ácida antropogênica."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "Na água, a região do oxigênio é parcialmente negativa e é atraída pelo Na⁺. A orientação favorece hidratação por interação íon-dipolo, sem exigir nova ligação covalente com cada molécula."
       },
       {
         "level": "intermediate",
-        "prompt": "Uma amostra de chuva tem pH 4 e outra pH 5. Aproximadamente qual a razão de atividade de H⁺?",
+        "prompt": "Dissolver 0,20 mol de NaCl em 0,50 L de solução dá qual concentração formal?",
         "options": [
-          "A amostra pH 5 tem dez vezes mais",
-          "As atividades são iguais",
-          "A amostra pH 4 tem dez vezes mais",
-          "A amostra pH 4 tem duas vezes mais"
+          "0,10 mol/L",
+          "0,20 mol/L",
+          "0,40 mol/L",
+          "2,50 mol/L"
         ],
         "correctIndex": 2,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Como pH é logarítmico, uma unidade de diferença corresponde a fator dez na atividade de H⁺. Portanto a amostra pH 4 é aproximadamente dez vezes mais ácida nesse critério."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "Concentração molar é n/V: 0,20 mol/0,50 L=0,40 mol/L. A conta pressupõe volume final de solução de 0,50 L, e não apenas volume inicial de água."
       },
       {
         "level": "advanced",
-        "prompt": "Na reação CaCO₃ + 2H⁺ → Ca²⁺ + CO₂ + H₂O, quantos mols de CaCO₃ neutralizam idealmente 0,10 mol de H⁺?",
+        "prompt": "Em 1 L de solução com 0,10 mol de CaCl₂ totalmente dissociado, qual é [Cl⁻]?",
         "options": [
-          "0,20 mol",
-          "0,10 mol",
-          "0,005 mol",
-          "0,050 mol"
+          "0,05 mol/L",
+          "0,10 mol/L",
+          "0,15 mol/L",
+          "0,20 mol/L"
         ],
         "correctIndex": 3,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "A estequiometria exige 1 mol de CaCO₃ para cada 2 mol de H⁺. Divida 0,10 por 2: 0,050 mol. O valor é teórico e não representa automaticamente a dose adequada em ambiente natural."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "Cada unidade de fórmula CaCl₂ fornece dois íons Cl⁻. Logo 0,10 mol de sal gera 0,20 mol de Cl⁻ em 1 L, resultando 0,20 mol/L no modelo de dissociação completa."
       }
     ]
   },
   {
     "subject": "Química",
-    "topicStart": "Tratamento de água",
-    "objective": "Compreender e aplicar criticamente tratamento de água, interpretando evidências, construindo representações, resolvendo situações quantitativas ou qualitativas e explicitando hipóteses e limites de cada modelo.",
+    "topicStart": "A eletrosfera e o diagrama de Linus Pauling",
+    "objective": "Investigar a eletrosfera e o diagrama de linus pauling com modelos físicos e químicos consistentes, identificando propriedades, realizando inferências e cálculos, confrontando alternativas e explicitando condições de validade e limitações experimentais.",
     "prerequisites": [
-      "Misturas e partículas em suspensão",
-      "Microrganismos e saúde pública",
-      "Separação física e reações químicas"
+      "Número atômico e elétrons",
+      "Subníveis s, p, d e f",
+      "Princípio da exclusão de Pauli"
     ],
     "sections": [
       {
         "level": "basic",
-        "title": "Conceitos: etapas de potabilização",
-        "explanation": "Água visualmente transparente não é necessariamente potável: pode conter microrganismos, contaminantes dissolvidos e substâncias sem cor ou odor perceptíveis. Em estações convencionais, coagulação desestabiliza partículas coloidais, floculação favorece agregados maiores e decantação permite sedimentação dos flocos. A filtração retém parte das partículas remanescentes. Desinfecção busca inativar microrganismos patogênicos, frequentemente com compostos clorados, enquanto o controle de pH e outras etapas dependem da qualidade da água bruta e dos padrões sanitários. Nem toda estação usa exatamente a mesma sequência: mananciais, tecnologias e requisitos locais determinam adaptações. Filtrar não equivale a desinfetar; ferver não remove necessariamente sais ou contaminantes químicos dissolvidos. A potabilidade requer análises laboratoriais e atendimento a normas, não simples aparência. A água distribuída ainda depende da integridade da rede e do armazenamento doméstico. É essencial distinguir tratamento de água para consumo de tratamento de esgoto, que têm objetivos, cargas de contaminantes e processos diferentes.",
-        "example": "Considere água turva com partículas finas. Passo 1: coagulação facilita a união das partículas; passo 2: floculação forma agregados; passo 3: decantação e filtração removem sólidos. A desinfecção continua necessária para controle microbiológico.",
-        "pitfall": "Não confundir propriedades observáveis com explicações microscópicas e condições de medida.",
+        "title": "Conceitos: distribuição em subníveis",
+        "explanation": "A eletrosfera é descrita por estados eletrônicos quantizados, e não por elétrons girando em órbitas planetárias clássicas. Em uma abordagem escolar, níveis principais n e subníveis s, p, d e f organizam a distribuição eletrônica. Um subnível s comporta até 2 elétrons, p até 6, d até 10 e f até 14, porque cada orbital admite no máximo dois elétrons com spins opostos. O diagrama de Linus Pauling é um recurso mnemônico para a ordem aproximada de preenchimento de subníveis em átomos neutros no estado fundamental. A sequência começa 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p. O princípio de Aufbau orienta o preenchimento de estados de menor energia, mas a energia relativa dos subníveis depende do átomo e de sua configuração. O princípio de Pauli e a regra de Hund complementam a distribuição: orbitais degenerados recebem elétrons desemparelhados antes de emparelhar. O diagrama não determina sozinho geometria orbital, ligações químicas ou comportamento de qualquer íon.",
+        "example": "Para oxigênio neutro (Z=8), distribua 8 elétrons: 1s² recebe 2; 2s² recebe 2; restam 4 para 2p⁴. A soma dos expoentes 2+2+4=8 confere com Z. No 2p, aplique Hund antes de emparelhar.",
+        "pitfall": "Confundir mecanismo microscópico com aparência macroscópica ou classificação isolada.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       },
       {
         "level": "intermediate",
-        "title": "Aplicação: concentração e eficiência de remoção",
-        "explanation": "Eficiência percentual de remoção compara concentração inicial e final de um parâmetro: η=(C_i−C_f)/C_i×100%, desde que ambas as concentrações estejam na mesma unidade e representem amostras comparáveis. Uma redução de turbidez não comprova remoção de todos os microrganismos ou contaminantes dissolvidos. A desinfecção depende de dose, tempo de contato, temperatura, pH e qualidade da água; mais reagente nem sempre produz melhor resultado, podendo gerar efeitos indesejáveis. A presença de matéria orgânica pode consumir desinfetante, por isso indicadores operacionais precisam ser monitorados. Em avaliações escolares, evite inferir potabilidade a partir de um único parâmetro: uma amostra com baixa turbidez pode ainda ter contaminação microbiológica. Coleta, transporte e preservação de amostras afetam a confiabilidade das medições. Na distribuição, pressão e integridade da rede também influenciam risco de recontaminação. A comparação entre métodos exige especificar qual contaminante se deseja remover e quais limites regulatórios se aplicam.",
-        "example": "Uma etapa reduz turbidez de 40 para 4 unidades. Passo 1: diferença=40−4=36; passo 2: razão=36/40=0,9; passo 3: eficiência de remoção da turbidez=90%. Não conclua que 90% de todos os poluentes foram removidos.",
-        "pitfall": "Não substituir análise de unidades e hipóteses por fórmulas memorizadas.",
+        "title": "Aplicação: átomos, íons e elétrons de valência",
+        "explanation": "Em um átomo neutro, número de elétrons é igual ao número atômico Z. Para formar um cátion, removem-se elétrons; para formar um ânion, adicionam-se. Sódio neutro (Z=11) tem configuração 1s² 2s² 2p⁶ 3s¹; o cátion Na⁺ perde o elétron 3s, ficando com 10 elétrons. Cloro neutro (Z=17) termina em 3s² 3p⁵ e Cl⁻ ganha um elétron, terminando em 3p⁶. A contagem de elétrons não deve ser confundida com o número de prótons, que permanece constante numa ionização comum. Em elementos representativos, a camada mais externa auxilia na previsão de valência, mas a reatividade não se reduz mecanicamente à busca de octeto. Íons de metais de transição exigem cuidado: após preencher 4s antes de 3d em átomos neutros, elétrons 4s são geralmente removidos primeiro na formação de cátions. Exceções à ordem simples de preenchimento também existem em alguns átomos neutros, como cromo e cobre. Declare sempre se a espécie é neutra ou ionizada.",
+        "example": "Para Na⁺, comece com Z=11 e 11 elétrons no átomo neutro. Remova um elétron para a carga +1, restando 10; distribua 1s² 2s² 2p⁶. Não altere Z, pois ionização não transforma sódio em neônio.",
+        "pitfall": "Ignorar concentração, carga, unidade ou estado físico ao aplicar uma regra.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       },
       {
         "level": "advanced",
-        "title": "Aprofundamento: contaminantes dissolvidos e barreiras múltiplas",
-        "explanation": "A lógica de múltiplas barreiras combina proteção do manancial, processos de tratamento, desinfecção e monitoramento da distribuição. Carvão ativado pode adsorver determinados compostos orgânicos e reduzir gosto e odor, mas não remove universalmente todos os sais. Membranas de osmose reversa podem reter diversos íons dissolvidos, porém demandam pressão, energia e manejo do concentrado; sua aplicação não substitui automaticamente todas as etapas sanitárias. A remoção de nitrato, arsênio ou outros contaminantes depende da espécie química e do processo selecionado. O controle de subprodutos de desinfecção exige equilibrar segurança microbiológica e qualidade química, conforme regulamentação. Proteger nascentes e reduzir lançamento de esgoto pode diminuir carga de contaminantes antes da estação, mas não dispensa verificação da água tratada. O tratamento de água é um sistema de engenharia sujeito a variação sazonal, falhas operacionais e critérios de qualidade definidos por normas; não existe método doméstico único que garanta segurança para qualquer fonte. A escolha tecnológica deve considerar vazão, composição, manutenção e destinação de resíduos gerados.",
-        "example": "Uma água contém 20 mg/L de soluto dissolvido em 100 L: massa=20×100=2000 mg=2 g. Uma etapa que remova 75% deixa 0,5 g, equivalentes a 5 mg/L no mesmo volume. A conta só vale para esse soluto, com volume final aproximadamente constante.",
-        "pitfall": "Não extrapolar resultados idealizados sem examinar condições e limitações.",
+        "title": "Aprofundamento: Hund, Pauli e exceções",
+        "explanation": "Orbitais de um mesmo subnível p possuem três orientações espaciais no modelo atômico, cada uma admitindo até dois elétrons. Pela regra de Hund, elétrons ocupam inicialmente orbitais degenerados separados com spins paralelos antes de emparelhar; assim, em 2p³ do nitrogênio, há três elétrons desemparelhados. Em 2p⁴ do oxigênio, um orbital passa a conter par, restando dois elétrons desemparelhados. A exclusão de Pauli impede que dois elétrons do mesmo átomo compartilhem os quatro números quânticos. Configurações como Cr [Ar] 3d⁵ 4s¹ e Cu [Ar] 3d¹⁰ 4s¹ mostram limitações do preenchimento mecânico, relacionadas a diferenças pequenas de energia e estabilização eletrônica. A ordem energética muda em íons e em ambientes de ligação, portanto o diagrama escolar não é uma tabela universal de energias. Magnetismo, espectros e propriedades químicas exigem modelos adicionais. Ao resolver exercícios, confirme soma dos elétrons, carga, capacidade de subníveis e existência de exceções conhecidas antes de aceitar uma distribuição.",
+        "example": "Para N neutro (Z=7), obtenha 1s² 2s² 2p³. Distribua os três elétrons p em três orbitais separados, conforme Hund; conte três desemparelhados. Para O (Z=8), 2p⁴ exige um par e dois desemparelhados.",
+        "pitfall": "Generalizar o modelo simplificado sem considerar exceções e condições reais.",
         "steps": [
-          "Identifique o sistema, as espécies e as condições declaradas.",
-          "Aplique a definição ou o modelo e registre cada cálculo ou inferência.",
-          "Verifique unidades, coerência, alternativas e limites da conclusão."
+          "Identifique a espécie, os dados e o estado físico ou carga.",
+          "Aplique a regra, modelo ou cálculo e justifique os passos.",
+          "Confira conservação, unidades, alternativas e limites do resultado."
         ]
       }
     ],
     "tasks": [
       {
         "level": "basic",
-        "prompt": "Qual etapa do tratamento convencional favorece a formação de agregados maiores de partículas?",
+        "prompt": "Qual a configuração fundamental aproximada do oxigênio neutro (Z=8)?",
         "options": [
-          "Evaporação",
-          "Floculação",
-          "Destilação fracionada",
-          "Eletrólise"
+          "1s² 2s² 2p⁴",
+          "1s² 2s⁶",
+          "1s² 2p⁶",
+          "1s² 2s² 3s⁴"
         ],
-        "correctIndex": 1,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "Na floculação, partículas desestabilizadas na coagulação se agrupam em flocos maiores, facilitando decantação. A etapa não substitui desinfecção nem assegura ausência de contaminantes dissolvidos."
+        "correctIndex": 0,
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "O oxigênio neutro possui 8 elétrons. Preencha 1s², 2s² e 2p⁴, somando 2+2+4=8; as outras opções excedem capacidades ou ignoram a ordem escolar de preenchimento."
       },
       {
         "level": "intermediate",
-        "prompt": "A turbidez cai de 40 para 4 unidades. Qual a eficiência de remoção desse parâmetro?",
+        "prompt": "Quantos elétrons há em Na⁺ se Z=11?",
         "options": [
-          "10%",
-          "36%",
-          "90%",
-          "99%"
+          "12",
+          "11",
+          "10",
+          "9"
         ],
         "correctIndex": 2,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "A eficiência é (40−4)/40×100%=90%. Esse percentual vale apenas para turbidez medida; não comprova remoção de 90% de microrganismos, sais ou outros contaminantes."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "Um átomo neutro de Na tem 11 elétrons; a carga +1 significa perda de um elétron, restando 10. O número de prótons continua 11, pois a ionização não altera o elemento."
       },
       {
         "level": "advanced",
-        "prompt": "Qual afirmação descreve corretamente o tratamento de água?",
+        "prompt": "Quantos elétrons desemparelhados há no nitrogênio neutro (Z=7) no estado fundamental?",
         "options": [
-          "Filtração comum elimina necessariamente todos os íons dissolvidos",
-          "Água transparente é sempre potável",
-          "Ferver água remove obrigatoriamente metais dissolvidos",
-          "Potabilidade depende de múltiplas barreiras e monitoramento de parâmetros"
+          "0",
+          "1",
+          "2",
+          "3"
         ],
         "correctIndex": 3,
-        "hint": "Releia o modelo da etapa, identifique suas condições e descarte alternativas incompatíveis com os dados.",
-        "solution": "O tratamento e a distribuição seguros dependem de proteção do manancial, operações adequadas, desinfecção e verificação sanitária. Aparência, filtração isolada e fervura não garantem remoção de todos os contaminantes químicos."
+        "hint": "Identifique as espécies e o mecanismo, depois compare cada alternativa com o modelo e os dados.",
+        "solution": "A configuração 1s² 2s² 2p³ tem três elétrons no subnível p. Pela regra de Hund, ocupam separadamente os três orbitais p, produzindo três elétrons desemparelhados."
       }
     ]
   }
