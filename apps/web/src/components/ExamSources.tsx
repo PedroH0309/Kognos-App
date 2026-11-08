@@ -42,9 +42,19 @@ export default function ExamSources({userId,onLogin,onQuestionBank}:{userId:stri
   if(!userId){setApproved([]);setReviewTopics([]);setReviewSources([]);setEditor(false);setLoaded(false);setLoading(false);setError('');return;}
   setLoading(true);setError('');
   try{
-   const data=await fetchAuthorized();setApproved(Array.isArray(data.topics)?data.topics:[]);setEditor(data.editor===true);setLoaded(true);
-   setReviewTopics(Array.isArray(data.reviewTopics)?data.reviewTopics:[]);
-   setReviewSources(Array.isArray(data.reviewSources)?data.reviewSources:[]);
+   const data=await fetchAuthorized();
+   // Retain ETEC archive in the database; exclude it from the public workspace.
+   const visibleSources:ReviewSource[]=(Array.isArray(data.reviewSources)?data.reviewSources:[]).filter(
+    (source:ReviewSource)=>source.institution!=='etec'
+   );
+   setApproved((Array.isArray(data.topics)?data.topics:[]).filter(
+    (topic:ApprovedSyllabusTopic)=>topic.institution!=='etec'
+   ));
+   setReviewSources(visibleSources);
+   setReviewTopics((Array.isArray(data.reviewTopics)?data.reviewTopics:[]).filter(
+    (topic:ReviewTopic)=>visibleSources.some(source=>source.id===topic.source_id)
+   ));
+   setEditor(data.editor===true);setLoaded(true);
   }catch(e){setApproved([]);setReviewTopics([]);setReviewSources([]);setEditor(false);setLoaded(false);setError(e instanceof Error?e.message:'Falha ao carregar matrizes.');}
   finally{setLoading(false);}
  },[fetchAuthorized,userId]);
