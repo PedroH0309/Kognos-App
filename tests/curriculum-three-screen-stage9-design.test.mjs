@@ -39,9 +39,9 @@ test('The next lesson button unlocks only after reading confirmation and nonempt
  assert.match(flow,/Prosseguir para a próxima aula/);
  assert.match(flow,/Pular tema sem aula/);
  assert.match(flow,/Concluí a leitura de toda a aula/);
- assert.match(reader,/exerciseIds\.every\(key=>Boolean\(next\[key\]\?\.trim\(\)\)\)/);
+ assert.match(reader,/exerciseIds\.every\(key=>Object\.hasOwn\(next,key\)\)/);
  assert.match(reader,/onActivityProgress\?\./);
- assert.match(reader,/não correção/);
+ assert.match(reader,/não são registradas como nota ou domínio/);
  assert.doesNotMatch(reader,/recordAttempt\(|\/api\/ai-questions\/submit/);
 });
 test('Curriculum navigation is responsive and no nested oversized lesson frame remains',()=>{
