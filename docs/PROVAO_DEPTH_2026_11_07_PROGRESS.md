@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **57 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **171 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **171 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **59 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **177 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **177 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -27,10 +27,11 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Divisões celulares: compreensão das funções da mitose e da meiose
 - Metabolismo energético: energia para a vida
 
-### Filosofia (3)
+### Filosofia (4)
 - O contratualismo clássico
 - Direitos Humanos
 - A Filosofia e o filosofar
+- As abordagens racionalistas e empiristas do conhecimento
 
 ### Física (7)
 - Escalas termométricas. As escalas Celsius
@@ -90,14 +91,15 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Modelos atômicos de Dalton, Thomson, Rutherford e Bohr
 - Geometria molecular
 
-### Sociologia (3)
+### Sociologia (4)
 - Pluralismo cultural: a persistência do etnocentrismo
 - Movimentos sociais e novas formas de participação política
 - A representação e os partidos políticos
+- Preconceitos, estereótipos e outras formas de discriminação social
 
 ## Cobertura ainda pendente
 
-Após este lote, **307 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 307 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **305 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 305 conteúdos ausentes**, e tampouco significam que os 324 tenham sido auditados como completos. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -134,3 +136,7 @@ Mais cinco aulas específicas: geometria molecular e polaridade (Química), meta
 ## Oitava leva — leitura crítica e sintaxe em contexto
 
 Acrescentadas duas aulas autorais específicas: **coordenação, subordinação e conectivos** (Português) e **distinção entre fatos, opiniões, inferências e evidências em inglês** (Inglês). Cada uma possui três níveis, exemplos de interpretação e reescrita, erros de leitura frequentes e três questões A–D comentadas. Identificadores curriculares preservados e homologação docente ainda pendente.
+
+## Nona leva — Filosofia e Sociologia
+
+Duas aulas autorais adicionais: **racionalismo, empirismo e problema da indução** (Filosofia) e **preconceitos, estereótipos, discriminação e desigualdade institucional** (Sociologia). Cada uma contém três capítulos com teoria, exemplos concretos, raciocínio passo a passo e três questões A–D com justificativa. Não há aprovação docente presumida. Os testes específicos verificam gabaritos e IDs curriculares.
