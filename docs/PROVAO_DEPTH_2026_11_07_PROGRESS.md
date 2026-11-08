@@ -1,0 +1,444 @@
+# Kognos — Plano editorial de aprofundamento e cobertura
+
+**Data de referência:** 2026-11-07 • **Branch:** `feat/subject-specific-depth-20261107` • **PR:** #93
+
+## Diagnóstico
+
+A interface universal de 10 etapas já é compartilhada pelas disciplinas, mas **apresentação não equivale a profundidade**. Uma parte do conteúdo ainda é roteirização introdutória de `starter-lessons.ts`, montada a partir de padrões gerais; outra parte utiliza material autoral específico ou aula correlata **parcial**. Um texto-fonte curto não pode ser apresentado como se fosse ensino completo apenas por ser dividido visualmente.
+
+Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 entradas temáticas distintas**, sendo **360 temas em 10 disciplinas** das três séries mais **4 critérios de Redação** registrados separadamente. Existem outras entradas no catálogo de ENEM, ETEC, Fuvest e Vunesp; a conclusão do Provão não encerraria automaticamente todo o Kognos.
+
+## Conteúdo efetivamente aprofundado nesta branch
+
+- **136 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **408 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **408 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
+- **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
+
+### Lista exata das aulas novas
+
+### Biologia (12)
+- Construção e análise de árvores filogenéticas
+- Organização celular dos seres vivos
+- Envoltórios celulares; membrana plasmática
+- Pirâmides ecológicas
+- Sucessão ecológica
+- Herança de grupos sanguíneos na espécie humana
+- Código genético e síntese proteica
+- Evidências da evolução biológica
+- Divisões celulares: compreensão das funções da mitose e da meiose
+- Metabolismo energético: energia para a vida
+- Ciclos biogeoquímicos: água, oxigênio, carbono e nitrogênio
+- A 1ª e 2ª Lei de Gregor Mendel
+
+### Filosofia (5)
+- O contratualismo clássico
+- Direitos Humanos
+- A Filosofia e o filosofar
+- As abordagens racionalistas e empiristas do conhecimento
+- Questões éticas contemporâneas
+
+### Física (12)
+- Trabalho realizado por forças conservativas e não conservativas
+- Energia mecânica: energia cinética, potencial gravitacional e potencial elástica
+- Resistores. Primeira Lei de Ohm
+- Escalas termométricas. As escalas Celsius
+- Comprimento de onda, período e frequência
+- Primeira e segunda Leis da Termodinâmica
+- Fenômeno da refração. Índice de refração absoluto
+- Lei de Coulomb. Campo elétrico
+- Potência elétrica. Efeito joule. Consumo de energia elétrica. O quilowatt-hora
+- Movimentos uniformes e uniformemente variados. Suas funções horárias
+- Leis de Newton: Princípio da inércia
+- Calor como forma de energia em trânsito. Capacidade térmica, calor específico e calor latente
+
+### Geografia (5)
+- Os espaços supranacionais
+- O espaço geográfico e a globalização
+- Intemperismo, erosão
+- A geopolítica da água
+- A cartografia como recurso para a compreensão espacial dos fenômenos geográficos
+
+### História (13)
+- Feudalismo e mundo feudal
+- Renascimento Cultural
+- Expansão marítima e constituição do espaço atlântico
+- Iluminismo e Liberalismo
+- A Revolução Francesa e a era napoleônica
+- Primeira Guerra Mundial
+- Revolução Russa
+- Segunda Guerra Mundial
+- A Guerra Fria e os conflitos regionais
+- O Regime Civil-Militar
+- Revolução Industrial
+- Primeira República: política, economia e movimentos sociais
+- Getúlio Vargas: do governo provisório ao Estado Novo
+
+### Inglês (3)
+- Localização de informação específica
+- Compreensão da relação entre conteúdos de diferentes textos
+- Compreensão crítica de textos: discriminação entre fato e opinião
+
+### Matemática (7)
+- Porcentagem, taxas e índices
+- Função exponencial e função logarítmica
+- Arranjos, permutações e combinações simples
+- Áreas de polígonos
+- Poliedros e corpos redondos - cálculo de áreas, volume e capacidade
+- Função quadrática: Conceitos e resolução de problemas
+- Probabilidade da união e da intersecção de dois ou mais eventos
+
+### Português (6)
+- Concordância nominal e concordância verbal
+- Figuras de Linguagem
+- Regência nominal e regência verbal
+- Classes de palavras: substantivo, artigo
+- Frase, oração e período
+- Coordenação e subordinação. Conectivos
+
+### Química (24)
+- Operações envolvendo soluções (diluições e misturas de soluções com ou sem reação química)
+- Potenciais-padrão de redução
+- Número atômico e de massa. Semelhanças entre átomos
+- Propriedades coligativas: conceitos e aspectos qualitativos
+- As principais interações intermoleculares
+- Desintegração radioativa: meia-vida, datação e uso de radioisótopos
+- Equações químicas e balanceamento
+- Cinética química
+- Reações de oxirredução e números de oxidação
+- Conceito de entalpia e Lei de Hess
+- Reações nucleares: fissão e fusão nucleares
+- Principais características e propriedades de ácidos, bases, sais e óxidos
+- Equilíbrio em sistemas homogêneos e heterogêneos
+- Modelos atômicos de Dalton, Thomson, Rutherford e Bohr
+- Geometria molecular
+- Lei de Lavoisier e Lei de Proust
+- Produto iônico da água e escalas de pH e pOH
+- Cálculos estequiométricos: massa, volume, quantidade de matéria (mol), massa molar
+- Solubilidade e concentrações (porcentagem, ppm, g/L, mol/L, mol/kg, conversões de unidades)
+- Origem, ocorrência e uso dos materiais
+- Ocorrência e Importância da água para a vida
+- Representação de substâncias e de transformações químicas
+- Elementos químicos e Classificação Periódica: história, organização, representação e…
+- Características gerais das ligações químicas: ligação covalente, ligação iônica e ligação metálica
+
+### Sociologia (4)
+- Pluralismo cultural: a persistência do etnocentrismo
+- Movimentos sociais e novas formas de participação política
+- A representação e os partidos políticos
+- Preconceitos, estereótipos e outras formas de discriminação social
+
+## Cobertura ainda pendente
+
+Após este lote, **238 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a conteúdos ausentes**, e tampouco significam que os 86 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+
+Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
+
+## Critérios de aceitação para novos lotes
+
+1. Texto ORIGINAL, correto e específico do assunto; não repetir a descrição do edital como teoria nem encher espaço com orientações vagas.
+2. Pelo menos três etapas: fundamentos, desenvolvimento/aplicação e aprofundamento com condicionantes, exceções e justificativas.
+3. Cada seção deve trazer exemplo resolvido adequado à disciplina, etapas demonstráveis e erro frequente fundamentado; visualização interativa somente quando agregar valor.
+4. Somente questões com **quatro alternativas distintas**, gabarito formal e explicação da correta; distratores relevantes à habilidade avaliada.
+5. Vincular a aula ao **identificador curricular existente** sem mudar histórico, edição, autenticação ou status de arquivamento de publicações.
+6. Executar `npm test`, `npm run test:content-db`, `npm run test:design`, `npm run typecheck` e `npm run build`.
+7. Revisão visual e de conteúdo antes de publicar; selo de revisão docente somente quando realmente houver validação humana.
+
+## Continuação
+
+A auditoria automática deve direcionar novas etapas, especialmente temas da Química, Física, Biologia e História que ainda usam roteiros genéricos. O trabalho só se encerra quando o catálogo inteiro tiver conteúdo específico validado, não quando o número de capítulos preenchidos atingir a contagem curricular. 
+
+## Quinta leva — continuidade automática
+
+Adicionados cinco módulos originais com três níveis e questões de alternativas A–D: ácidos/bases/sais/óxidos, equilíbrio químico homogêneo/heterogêneo, Lei de Coulomb e campo elétrico, evidências da evolução, volumes e áreas de sólidos. CI e revisão editorial são requisitos separados; não indicar homologação humana inexistente. A auditoria por categoria e os testes de múltipla escolha devem permanecer válidos em cada novo commit.
+
+## Verificação transversal de avaliação objetiva
+
+O teste `provao-depth-coverage.test.ts` passou a percorrer as aulas aprofundadas pelo catálogo completo e a rejeitar questões sem quatro alternativas distintas, sem gabarito indexado válido ou sem correção comentada suficiente. Também verifica a presença de avaliação em cada um dos três níveis e a integração com o conversor editorial. Essa garantia vale para o material embarcado e não constitui auditoria das aulas externas publicadas no Supabase. O commit de teste aguarda sua própria execução de CI antes de ser considerado aprovado.
+
+## Sexta leva — aprofundamento específico de bases curriculares
+
+Acrescentadas cinco aulas autorais do edital: **Leis de Newton**, **funções quadráticas**, **modelos atômicos**, **mitose e meiose**, **Regime Civil-Militar brasileiro**. Foram elaborados 15 capítulos com casos resolvidos, erros conceituais e 15 questões A–D com gabarito verificado em teste dedicado `provao-depth-batch06.test.ts`. O PR permanece em rascunho e o conteúdo editorial publicado no Supabase mantém precedência. Status de homologação docente não foi alterado.
+
+## Sétima leva — prática disciplinar com problemas próprios
+
+Mais cinco aulas específicas: geometria molecular e polaridade (Química), metabolismo energético e comparação de rotas celulares (Biologia), calor sensível/latente e calorimetria (Física), união e interseção de eventos e probabilidade condicional (Matemática), Revolução Industrial e conflitos sociais (História). Todas têm fundamentos, aplicação progressiva, caso numérico ou contextual completo por nível e quinze questões objetivas A–D. Os testes dedicados validam seus identificadores e gabaritos, sem substituir revisão pedagógica humana.
+
+## Oitava leva — leitura crítica e sintaxe em contexto
+
+Acrescentadas duas aulas autorais específicas: **coordenação, subordinação e conectivos** (Português) e **distinção entre fatos, opiniões, inferências e evidências em inglês** (Inglês). Cada uma possui três níveis, exemplos de interpretação e reescrita, erros de leitura frequentes e três questões A–D comentadas. Identificadores curriculares preservados e homologação docente ainda pendente.
+
+## Nona leva — Filosofia e Sociologia
+
+Duas aulas autorais adicionais: **racionalismo, empirismo e problema da indução** (Filosofia) e **preconceitos, estereótipos, discriminação e desigualdade institucional** (Sociologia). Cada uma contém três capítulos com teoria, exemplos concretos, raciocínio passo a passo e três questões A–D com justificativa. Não há aprovação docente presumida. Os testes específicos verificam gabaritos e IDs curriculares.
+
+## Décima leva — Cartografia e ética contemporânea
+
+Aulas específicas novas: **cartografia como linguagem espacial** (escalas, projeções, mapas temáticos e análise crítica de dados territoriais) e **questões éticas contemporâneas** (moral, deveres, consequências, virtudes, privacidade e governança tecnológica). Seis capítulos, seis questões A–D com gabarito e solução, exemplos resolvidos e validação dedicada. Revisão docente permanece pendente.
+
+## Décima primeira leva — Ciências da Natureza e História
+
+Cinco temas específicos: **Lei de Lavoisier e Lei de Proust** e **produto iônico da água, pH e pOH** (Química); **potência elétrica, efeito Joule e kWh** (Física); **ciclos da água, carbono, oxigênio e nitrogênio** (Biologia); **Primeira República, economia cafeeira, movimentos sociais e crise de 1930** (História). Quinze capítulos progressivos com explicações de mais de 750 caracteres, exemplos resolvidos, limites dos modelos, erros frequentes e quinze questões A–D originais. Validação transversal e teste dedicado verificam gabaritos, cobertura e preservação de IDs. Revisão docente ainda pendente.
+
+## Verificação de regressão — 2026-11-08
+
+A execução GitHub Actions #42440731240 falhou em três testes por um `hint` curto na questão básica de potência elétrica (`Use P=UI.`), abaixo do limite de dez caracteres do validador editorial. O texto da dica foi substituído por uma orientação completa, preservando o gabarito. A execução #42444887367 passou dos testes unitários e segurança/design, mas falhou no TypeScript estrito (`TS7022`) na declaração conjunta de `s` e `q` em `provao-depth-batch11.test.ts`. As variáveis foram tipadas explicitamente como `CourseSection` e `CourseTask` em commit posterior. **Não considerar a branch validada até que um novo workflow complete todas as etapas com sucesso.** Nenhum novo tema foi contabilizado nessa correção; a cobertura permanece em 66/364 no Provão.
+
+## Décima segunda leva — Ciências da Natureza e História
+
+Foram incorporadas cinco aulas específicas: **cálculos estequiométricos**, **concentração e solubilidade**, **MRU e MUV**, **primeira e segunda leis de Mendel** e **Era Vargas até o Estado Novo**. Cada aula tem três níveis, três exemplos trabalhados distintos e três questões A–D com correção. Os conteúdos são originais, não oficiais, não homologados e exigem revisão docente. A contagem restante se refere apenas à série específica do Provão; ENEM, ETEC, Fuvest e Vunesp seguem na auditoria transversal.
+
+## Correção de validação — 2026-11-08
+
+A CI do commit `2d704cf` falhou em dois testes unitários relacionados à qualidade editorial: `provao-depth-batch12.test.ts` e `provao-depth-lessons.test.ts` exigiam exemplo resolvido com ao menos 180 caracteres. A causa identificada foi o exemplo do nível básico da aula **Movimentos uniformes e uniformemente variados**, com 174 caracteres. O exemplo foi ampliado com a condição de validade do movimento uniformemente variado, sem mudar o gabarito ou reduzir o rigor dos testes. A aprovação do novo commit depende de uma nova execução completa da CI. Nenhum tema novo foi declarado concluído nesta correção.
+
+## Lote 13 — Química, Física, Biologia e História
+
+Foram acrescentadas cinco aulas específicas, com três capítulos por tema e três questões de quatro alternativas por aula: diluição e misturas com/sem reação; decaimento radioativo, datação e radioisótopos; trabalho de forças conservativas e não conservativas; cladogramas e sinapomorfias; feudalismo, vassalagem e transformações medievais. Os quinze capítulos apresentam explicação autoral longa, exemplo calculado ou analisado, hipóteses de validade e erros frequentes. A validação de respostas e gabaritos é coberta por `provao-depth-batch13.test.ts`; revisão docente ainda pendente. Cobertura offline: 76 de 364 entradas do Provão nesta série, 288 fora; catálogo multi-exame maior continua pendente. A CI deve ser consultada no commit mais recente antes de qualquer alegação de aprovação.
+
+## Revisão da décima terceira leva — correção de regressões da CI
+
+O GitHub Actions #42457518704 falhou nos testes unitários antes de executar segurança, design, TypeScript e build. A inspeção dos logs apontou dois defeitos de qualidade em `provao-depth-batch13-core.ts`: objetivos didáticos curtos demais para o contrato de conteúdo (`objective.length >= 75`) e ressalva de vassalagem/servidão inferior a 50 caracteres. Foram substituídos os cinco objetivos por objetivos mensuráveis e específicos de cada assunto, e esclarecida a diferença histórica entre vassalagem e servidão. Os critérios de teste não foram enfraquecidos; gabaritos, IDs e dados dos usuários não foram alterados. Nova CI precisa concluir antes de declarar a branch validada. Esta execução priorizou reparar o bloqueio de qualidade anterior e não acrescentou cinco novos temas; a contagem permanece 76/364.
+
+## Décima quarta leva — Química, Física, Biologia e História
+
+Cinco tópicos adicionais do programa oficial: **potenciais-padrão de redução**, **interações intermoleculares**, **resistores e leis de Ohm**, **organização celular dos seres vivos** e **expansão marítima e espaço atlântico**. Cada tópico recebeu três capítulos de conteúdo específico com exemplos calculados ou interpretados passo a passo e três avaliações A–D comentadas, sem dissertativas. Os testes `provao-depth-batch14.test.ts` verificam correspondência de ID, três níveis, densidade de explicações e gabaritos. O conteúdo permanece autoral, não oficial e sem homologação docente. O catálogo ENEM/ETEC/Fuvest/Vunesp continua sujeito à auditoria transversal de maturidade.
+
+## Lote 15 — estrutura atômica, energia, membranas, Renascimento e coligativas
+
+Foram adicionados cinco temas oficiais não repetidos: **número atômico, massa e semelhanças entre átomos** (Química); **energia mecânica e conservação** (Física); **membrana plasmática e transporte** (Biologia); **Renascimento Cultural** (História); **propriedades coligativas** (Química). Cada tema possui três capítulos específicos com teoria, exemplo resolvido e erros comuns e três questões A–D com gabarito e solução. O teste dedicado `provao-depth-batch15.test.ts` verifica 15 gabaritos, níveis, IDs e integridade editorial. Material autoral não oficial, sem homologação docente. A CI deve ser consultada antes de declarar aprovação. Nenhum dado de estudantes, esquema SQL ou publicação editorial foi alterado.
+
+## Verificação da 15ª leva — 2026-11-08
+
+A execução [GitHub Actions #42469341319](https://github.com/PedroH0309/Kognos-App/actions/runs/42469341319), associada ao commit `6b1a95d27af07a87ceaa73e213e9223c8f49dc52`, terminou com `conclusion: success`. O job `tests` confirmou individualmente: Unit tests, Content security (PostgreSQL / two users), Design tests, Type checking e Production build. Essa aprovação é exclusiva do commit indicado, não constitui revisão pedagógica docente e não autoriza merge ou deploy. Nenhuma aula nova é contabilizada nesta atualização de rastreabilidade; a cobertura permanece 86/364, com 278 entradas fora desta série.
+
+## Décima sexta leva — composição, eletrosfera, ecologia e formação estatal
+
+Foram incluídas cinco aulas originais: **fórmulas químicas empíricas e moleculares** e **diagrama de Linus Pauling e configuração eletrônica** (Química), **composição vetorial de forças** (Física), **papéis ecológicos e econômicos de bactérias e fungos** (Biologia) e **formação dos Estados modernos** (História). São 15 capítulos com explicações específicas de pelo menos 750 caracteres, 15 exemplos resolvidos, limites e erros frequentes e 15 questões A–D com gabarito comentado. `provao-depth-batch16.test.ts` verifica identidade oficial única, integração ao resolvedor, exemplos, questões e gabaritos. Total da série: **91/364**, com **273 entradas ainda fora**; o catálogo de 1.512 tópicos multi-exame continua em auditoria. Conteúdo autoral, não oficial, sem homologação docente. CI da nova leva pendente; não mesclar nem publicar sem revisão.
+
+## Décima sétima leva — água, cinemática, reprodução, colonização e deposição ácida
+
+Cinco aulas autorais específicas foram incorporadas ao resolvedor: **tratamento de água** e **óxidos e chuva ácida** (Química); **velocidade e aceleração escalar/vetorial** (Física); **reprodução assexuada e sexuada em animais** (Biologia); e **mercantilismo e colonização** (História). São 15 capítulos com explicações de 750+ caracteres e 15 exemplos resolvidos, além de 15 questões exclusivamente objetivas com quatro alternativas distintas, gabaritos e correções comentadas. O teste `provao-depth-batch17.test.ts` verifica identidade curricular, preservação dos IDs, autoria, profundidade e respostas. Cobertura editorial da série: **96/364**, com **268 entradas restantes**. A auditoria do catálogo multi-exame continua necessária. Conteúdo não oficial, não homologado por docentes; a CI desta leva deve ser verificada antes de qualquer afirmação de aprovação.
+
+## Décima oitava leva — balanceamento, geometria, gravitação, sucessão e industrialização
+
+Foram registradas cinco aulas originais: **equações químicas e balanceamento**, **geometria molecular** (Química), **gravitação universal e campo gravitacional** (Física), **sucessão ecológica** (Biologia) e **Revolução Industrial** (História). São 15 capítulos específicos com pelo menos 750 caracteres por explicação, 15 exemplos resolvidos e 15 questões A–D com respostas e comentários, condições de validade e erros frequentes. O teste `provao-depth-batch18.test.ts` verifica correspondência única com o catálogo, IDs preservados, estrutura, exemplos, alternativas e gabaritos. Cobertura editorial acumulada declarada: **101/364**, com **263 entradas ainda não cobertas por esta série**; não implica cobertura integral de ENEM, ETEC, Fuvest ou Vunesp. A 17ª leva passou na [CI #42473055078](https://github.com/PedroH0309/Kognos-App/actions/runs/42473055078). A 18ª leva requer validação independente no GitHub Actions. Conteúdo autoral não oficial, sem homologação docente; não mesclar ou publicar antes de revisão.
+
+## Correção de auditoria da 18ª leva e 19ª leva
+
+A execução [CI #42473589965](https://github.com/PedroH0309/Kognos-App/actions/runs/42473589965) falhou nos testes unitários: quatro temas da 18ª leva já estavam cadastrados em módulos anteriores (**balanceamento**, **geometria molecular**, **sucessão ecológica** e **Revolução Industrial**). A contagem anunciada de 101 era incorreta; havia apenas **97 entradas únicas**. Removemos os quatro registros duplicados de `provao-depth-batch18-core.ts`, preservando apenas **gravitação universal**, e ajustamos seu teste. As aulas anteriores desses quatro temas permanecem preservadas. 
+
+A 19ª leva acrescenta cinco aulas autorais específicas: **eletronegatividade e polaridade molecular**; **interações íon–dipolo** (Química); **força peso, normal, tração e atrito** (Física); **fisiologia comparada dos animais** (Biologia); **ocupação do litoral e do interior colonial** (História). São 15 capítulos com explicações de pelo menos 750 caracteres, exemplos resolvidos, limites, erros comuns e 15 questões objetivas A–D com gabaritos comentados. A contagem prevista após deduplicação é **102/364** entradas únicas, **306 capítulos** e **306 questões**, com **262 entradas ainda fora desta série**, sujeita à confirmação pela auditoria automatizada. `provao-depth-batch19.test.ts` acrescenta verificação de unicidade de todas as chaves, identidade de cada tema e contrato pedagógico. A CI da nova revisão está pendente; não alegar aprovação, homologação docente, merge ou deploy.
+
+## Vigésima leva — 2026-11-08
+
+Corrigida regressão de TypeScript da 19ª leva: a CI #42478737602 apresentou TS7022 em `provao-depth-batch19.test.ts`, linha 22, apesar de testes unitários, segurança de dois usuários e design aprovados; o `const` compartilhado foi separado em declarações distintas. A nova CI deve confirmar a correção, incluindo build, antes de ser declarada verde.
+
+Adicionadas cinco aulas originais específicas, não oficiais e sem homologação docente: **Atmosfera terrestre: composição e características** e **Interações da água com outras substâncias** (Química); **Sistemas geocêntrico e heliocêntrico. Leis de Kepler** (Física); **Evidências da evolução biológica** (Biologia); e **Aspectos políticos e socioculturais do Antigo Regime** (História). Cada aula possui três capítulos progressivos de 750+ caracteres, exemplos específicos com passos, limites e três questões A–D com gabarito e correção comentada. Novo teste `provao-depth-batch20.test.ts` exige registro único, identidade do tópico, preservação de IDs, capítulos e alternativas. **Cobertura editorial prevista após CI: 107/364 aulas, 321 capítulos e 321 questões; 257 entradas do Provão ainda não aprofundadas nesta série.** A auditoria de ENEM, ETEC, Fuvest e Vunesp segue incompleta; revisão docente pendente. Sem merge ou deploy.
+
+## Vigésima primeira leva — correção de duplicação e cinco novos temas
+
+A CI da 20ª leva (GitHub Actions #42482622995) falhou em testes unitários porque o cadastro continha **107 registros mas apenas 106 tópicos distintos**. A aula `Biologia · Evidências da evolução biológica` já existia no lote 05. Removemos somente o registro redundante do lote 20, mantendo a aula original e ajustando seu teste de lote para quatro novos temas. Não se contabiliza a duplicata como cobertura adicional.
+
+O lote 21 inclui **cinco novos temas específicos**: `Química · Estado físico e propriedades dos materiais`, `Física · Referencial inercial. Movimentos retilíneos. Situações de equilíbrio`, `Biologia · Método científico`, `História · Diversidade religiosa: paganismo, judaísmo, cristianismo e islamismo` e `Química · Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos de produtos…`. Cada um possui três capítulos progressivos com explicações próprias de mais de 750 caracteres, três exemplos resolvidos, erros e condições de validade, e três questões objetivas A–D com gabaritos comentados. Testes de integração e unicidade: `provao-depth-batch21.test.ts` e auditoria geral existente.
+
+Cobertura editorial prevista após o lote 21: **111 tópicos distintos de 364**, **333 capítulos**, **333 questões objetivas**, **253 tópicos ainda sem esta cobertura**. Estes valores devem ser confirmados por CI; não representam homologação pedagógica nem abrangem integralmente ENEM, ETEC, Fuvest e Vunesp. Nenhuma alteração de dados, IDs, autenticação, Supabase ou serviços pagos. PR em rascunho, sem merge ou deploy.
+
+## Vigésima segunda leva — correções de TypeScript e cinco temas
+
+A CI #42485690594 do lote 21 concluiu **testes unitários, segurança de dois usuários e design com sucesso**, mas falhou em TypeScript com TS7022 nos arquivos de teste dos lotes 19, 20 e 21. Os três testes receberam tipagem explícita `(typeof lesson.tasks)[number]` para as variáveis indexadas, sem alterar conteúdo pedagógico ou dados persistidos.
+
+Aulas autorais específicas do lote 22: **Química — Gases do efeito estufa** (absorção infravermelha, ppm e balanço radiativo); **Física — O modelo do gás ideal** (pV=nRT, transformações e compressibilidade); **Biologia — Poluição ambiental e os impactos da intervenção humana** (DBO, eutrofização, biomagnificação e monitoramento); **História — O escravismo na Grécia e em Roma** (cidadania, economia e comparação crítica de fontes); **Química — Energia de ativação** (perfis, Arrhenius e catalisadores). Cada uma contém três capítulos progressivos de pelo menos 750 caracteres, exemplos trabalhados, condições e limitações, e três questões objetivas A–D com correção comentada. Testes específicos em `provao-depth-batch22.test.ts` e auditoria geral em `provao-depth-coverage.test.ts`.
+
+Cobertura editorial prevista: **116/364 tópicos do Provão**, **348 capítulos**, **348 questões**, **248 tópicos ainda pendentes**. Os totais dependem da confirmação da CI. O catálogo de ENEM, ETEC, Fuvest e Vunesp permanece parcialmente introdutório. Autoria Kognos original, não oficial, sem homologação docente; revisão especializada pendente. Sem alterações de schema, Supabase, autenticação, IDs ou chaves. PR #93 continua em rascunho, sem merge ou deploy.
+
+## Vigésima terceira leva — cinco temas e correção de tipagem
+
+A CI da 22ª leva (#42487528480) concluiu testes unitários, segurança com PostgreSQL e dois usuários e design com sucesso, mas falhou no TypeScript com quatro erros `TS2502` em `provao-depth-batch19.test.ts` a `provao-depth-batch22.test.ts`. Substituímos os tipos autorreferentes `(typeof lesson.tasks)[number]` por importação explícita de `CourseTask` nesses quatro testes. O build anterior foi pulado devido à falha; a nova CI precisa confirmar o resultado.
+
+Cinco novos temas autorais específicos foram cadastrados: Química — **Indicadores, condutibilidade elétrica, reação com metais e neutralização**; Física — **Representação gráfica de posição, velocidade e aceleração**; Biologia — **Alternativas energéticas e equilíbrio dos ecossistemas**; História — **Crise e derrocada do Império Romano do Ocidente**; Química — **Soluções aquosas: conceito e classificação**. Cada tema inclui três capítulos progressivos de 750+ caracteres, três exemplos resolvidos com condições e erros frequentes, e três questões A–D com gabaritos comentados, todos originais e não oficiais, sem homologação docente. Testes: `provao-depth-batch23.test.ts`, além da auditoria global.
+
+Cobertura editorial prevista: **121/364 temas distintos**, **363 capítulos**, **363 questões objetivas**, **243 entradas do Provão ainda pendentes**. Não se confunde essa contagem com conclusão de todo o catálogo multi-exame. PR #93 segue em rascunho, sem merge nem deploy. Validação integral de CI pendente para o commit final desta leva.
+
+
+## Correção de cobertura e integridade — 2026-11-08
+
+A execução #628 falhou em oito testes unitários porque o registro editorial apresentava 121 entradas, mas somente 120 temas únicos. **Química — Modelos atômicos de Dalton, Thomson, Rutherford e Bohr** já estava coberta pelo lote 06, portanto a repetição no lote 23 não representava cobertura nova. Uma tentativa intermediária de substituição por **A eletrosfera e o diagrama de Linus Pauling** também não resolveu a duplicação: esse assunto já constava do lote 16.
+
+A solução definitiva substituiu **somente o quinto registro redundante do lote 23** por **Química — Soluções aquosas: conceito e classificação**, identificado como item distinto do programa oficial e ausente dos lotes anteriores. A nova aula original inclui três capítulos de 750+ caracteres sobre dissolução e partículas em solução, saturação e solubilidade, concentração molar e eletrólitos, com três exemplos resolvidos e três questões objetivas A–D com soluções comentadas. O teste `provao-depth-batch23.test.ts` verifica a identidade oficial, os três níveis, a profundidade e os gabaritos; `provao-depth-coverage.test.ts` agora identifica explicitamente chaves duplicadas em caso de regressão.
+
+**Cobertura prevista para validação na CI:** 121/364 temas distintos, 363 capítulos, 363 questões objetivas e 243 itens do Provão restantes. A validação completa só será declarada quando GitHub Actions passar em testes unitários, segurança com dois usuários, design, TypeScript e build. ENEM, ETEC, Fuvest e Vunesp ainda não têm aprofundamento integral. Material autoral Kognos, não oficial, sem homologação docente. PR #93 permanece em rascunho, sem merge e sem deploy público.
+
+## Lote 24 — 2026-11-08
+
+Cinco aulas específicas de Química acrescentadas à branch, cada uma com três capítulos autorais progressivos, exemplos resolvidos e três questões objetivas com quatro alternativas, índice correto e correção. O total de 126 aulas e 238 itens ainda pendentes corresponde à contagem de registros específicos do Provão; o catálogo completo de ENEM, ETEC, Fuvest e Vunesp continua incompleto. A auditoria automática (`provao-depth-coverage.test.ts`) é a fonte operacional de verdade; não confundir texto no repositório com revisão pedagógica, publicação Supabase ou deploy. A homologação docente permanece pendente.
+
+## Lote 25 — 2026-11-08
+
+Cinco tópicos distintos de Química do currículo do Provão Paulista, com checagem de unicidade por assunto e prefixo oficial:
+
+1. **Propriedade de substâncias moleculares, iônicas e metálicas** — estruturas, condução, solubilidade, pontos de fusão e exceções.
+2. **Propriedades físicas dos compostos orgânicos** — forças intermoleculares, polaridade, solubilidade, volatilidade e isomeria.
+3. **Principais radicais funcionais e funções orgânicas** — reconhecimento estrutural de álcool, fenol, aldeído, cetona, ácido, éster, amina e amida, incluindo multifuncionalidade.
+4. **Solubilidade e temperatura de ebulição** — saturação, curvas de solubilidade, pressão de vapor, altitude e elevação ebuliométrica.
+5. **Noção de monômeros e polímeros** — unidades repetitivas, polimerização por adição e condensação, propriedades, massa molar e destino ambiental.
+
+Cada tema tem três capítulos com 750+ caracteres de explicação, exemplo resolvido com hipóteses e etapas, pré-requisitos, condições de validade e três questões exclusivamente objetivas com quatro alternativas e correção. **Total da série: 131 aulas, 393 capítulos, 393 questões; 233/364 itens do Provão ainda sem aula aprofundada específica.** O catálogo unificado dos cinco exames contém 1.512 entradas distintas e ainda exige trabalho adicional. A contagem de 364 itens oficiais do Provão não equivale à união de tópicos editoriais etiquetados como `saresp` no catálogo ampliado. Conteúdo original Kognos, não oficial e sem homologação docente. CI do lote 25 precisa de validação no GitHub Actions; não fazer merge ou deploy antes de revisão.
+
+
+## Lote 26 — 2026-11-08: estequiometria de fórmulas, equilíbrio, ecologia populacional e História
+
+Seis registros de aulas **originais, não oficiais e sem homologação docente**, com cinco novos tópicos de cobertura profunda efetiva após auditoria, foram incorporadas em `apps/web/src/lib/provao-depth-batch26-core.ts` e conectadas ao resolvedor editorial existente:
+
+1. **Química — Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular**: conversão de composição percentual em mol, razão empírica, massa molar e análise de combustão com conservação de massa.
+2. **Química — Constantes de equilíbrio e cálculos simples de equilíbrio**: Kc e expoentes estequiométricos, tabela ICE, comparação Q/K e limites do modelo de atividades.
+3. **Biologia — Fatores que regulam o tamanho das populações**: balanço demográfico, modelo logístico, capacidade de suporte e marcação-recaptura com hipóteses de amostragem.
+4. **História — Período macedônico e cultura helenística**: Filipe II e Alexandre, reinos sucessores, circulação cultural e crítica de fontes materiais.
+5. **História — Do artesanato à fábrica: transformações no mundo do trabalho**: manufatura, mecanização, produtividade, urbanização, conflitos e direitos trabalhistas.
+6. **Química — Transformações nucleares**: conservação de A e Z, emissões alfa/beta/gama, meia-vida e equivalência massa–energia em fissão/fusão.
+
+Cada tema contém **três capítulos progressivos** (18 no lote), com explicações específicas de pelo menos 750 caracteres, exemplos resolvidos de pelo menos 180 caracteres, condições de validade, pré-requisitos e erros frequentes; cada aula apresenta **três questões objetivas A–D** (18 no lote), com `correctIndex` e correção comentada. Não foram acrescentadas perguntas dissertativas. A verificação automatizada do lote encontra-se em `provao-depth-batch26.test.ts`, além de asserções na auditoria `provao-depth-coverage.test.ts`.
+
+**Cobertura editorial esperada após confirmação da CI: 136/364 tópicos distintos do Provão Paulista, 408 capítulos, 408 questões objetivas e 228 tópicos do Provão ainda pendentes.** O catálogo unificado de ENEM, ETEC, Fuvest e Vunesp contém 1.512 entradas e continua parcialmente introdutório. Estes totais referem-se aos registros da biblioteca e não significam aprovação pedagógica, revisão de especialistas ou conteúdo publicado em Supabase. Nenhum ID, schema, autenticação, política RLS, chave ou API paga foi modificado. PR #93 permanece em rascunho; não mesclar nem publicar antes de revisão. A CI do lote deve ser verificada antes de declarar aprovação.
+
+**Correção de auditoria do lote 26:** a primeira CI #663 apontou cinco falhas: uma divergência entre índice esperado e `correctIndex` correto no teste da fórmula molecular (o conteúdo da questão estava correto), além de quatro asserções de cobertura que indicaram **135** tópicos profundos, e não 136. O sexto registro específico sobre transformações nucleares foi acrescentado para atingir cinco tópicos novos líquidos, com três capítulos e três questões próprias; testes e auditoria foram atualizados. A nova CI deve confirmar os resultados antes de declarar verde.
+
+
+## Auditoria corretiva do lote 26 — 2026-11-08
+
+A CI #667 identificou um erro na expectativa do teste da fórmula molecular: para CH₂O com massa molar de 180 g/mol, a alternativa correta é C₆H₁₂O₆ (índice 2, base zero). O gabarito da aula estava correto e foi preservado; somente a expectativa do teste foi corrigida.
+
+A auditoria distinguia 137 registros de prefixos editoriais de 136 tópicos distintos efetivamente resolvidos. Corrigimos as asserções para medir cobertura pelo conjunto de aulas correspondentes ao catálogo e registrar explicitamente `DEPTH_REGISTRATION_GAP`, sem afirmar que um registro não correspondido equivale a uma aula concluída. **Cobertura comprovada pela auditoria anterior: 136/364, pendentes 228**. A diferença de um registro ainda exige identificação e revisão editorial; o catálogo multi-exame de 1.512 tópicos permanece incompleto. Testes e build da nova revisão devem ser confirmados na CI antes de declarar aprovação. Sem merge ou deploy; material autoral não oficial e sem homologação docente.
+
+
+## Resolução por identidade exata — 2026-11-08
+
+A CI #42517575472 falhou no teste de índice da questão intermediária de fórmula molecular: a alternativa C₆H₁₂O₆ tem índice 2 na aula do lote 26, mas o resolvedor retornou índice 1 de outra aula com prefixo mais amplo. O resolvedor passou a preferir correspondência exata entre `topicStart` e o tópico oficial antes de recorrer a prefixos; isso evita que uma aula antiga e mais genérica esconda o conteúdo autoral específico. O gabarito do lote 26 e os IDs foram preservados. A execução #42518479672 está em validação; não declarar CI verde sem conclusão de unitários, segurança de dois usuários, design, TypeScript e build. A lacuna entre 137 registros e 136 temas resolvidos ainda precisa ser auditada; não elevar a contagem por mera existência de registros. Sem homologação docente, merge ou deploy.
+
+
+## Compatibilidade entre lotes 16 e 26 — 2026-11-08
+
+A execução #42518506879 revelou uma regressão no teste do lote 16 após o resolvedor priorizar correspondências exatas: a questão de fórmula molecular passou a usar o material específico do lote 26, enquanto a asserção antiga exigia o gabarito do lote 16. O teste foi alterado para validar explicitamente o gabarito do material histórico do lote 16, preservando a seleção da aula mais específica no resolvedor. Essa correção não altera questões ou respostas pedagógicas; exige CI completa para confirmar segurança, testes de dois usuários, design, TypeScript e build. Não contabilizar novas aulas por essa manutenção. PR em rascunho, sem merge, sem deploy; autoria original e não homologada.
+
+
+## Diagnóstico preciso de registros — 2026-11-08
+
+A CI #42518698416 concluiu com sucesso no commit `576d946`, validando a correção de prioridade do resolvedor e a compatibilidade dos lotes 16 e 26, inclusive as etapas da pipeline configurada. A auditoria foi então refinada para separar prefixos sem correspondência (`unresolved`) daqueles que possuem correspondência, mas nunca são escolhidos (`shadowed`), reproduzindo a prioridade exata-antes-de-prefixo do resolvedor. O teste também compara a quantidade de registros vencedores com a cobertura editorial reconhecida. Esta alteração adicional requer nova CI; não confundir o sucesso do commit anterior com validação da alteração mais recente. Sem novas aulas contabilizadas, merge ou deploy. Revisão docente ainda pendente.
+
+
+## Lote 27 — conteúdos específicos efetivamente registrados — 2026-11-08
+
+Foram adicionados **cinco tópicos oficiais novos**, não encontrados no inventário dos lotes anteriores, em arquivos independentes `provao-depth-batch27-*.ts`, vinculados ao resolvedor `provao-depth-lessons.ts`. Todos os capítulos foram redigidos originalmente, cada tema com 3 etapas (fundamentos, aplicação e aprofundamento), exemplos calculados ou historicamente contextualizados, limites de validade, erros frequentes e 3 questões exclusivamente de múltipla escolha (4 alternativas distintas, chave e correção). O conteúdo é **autoral, não oficial e sem homologação docente**.
+
+| Disciplina | Tema oficial | Arquivo |
+| --- | --- | --- |
+| Física | Dioptro plano. Ângulo limite e reflexão total da luz | `provao-depth-batch27-optics.ts` |
+| Física | Propagação de um pulso em meios unidimensionais. Lei de Taylor. Ondas planas e esféricas | `provao-depth-batch27-waves.ts` |
+| Biologia | Procedimentos sistemáticos de investigação (elaboração de hipóteses, experimentação e… | `provao-depth-batch27-investigation.ts` |
+| História | A ideologia do Destino Manifesto | `provao-depth-batch27-destiny.ts` |
+| História | Avanço industrial e capitalismo monopolista | `provao-depth-batch27-monopolies.ts` |
+
+**Cobertura esperada após confirmação dos testes:** 141/364 temas distintos do Provão Paulista, **423 capítulos e 423 questões objetivas**; restam **223 temas**. Existem 142 registros editoriais de prefixo na biblioteca, pois o lote 16 e o lote 26 se sobrepõem no tema de fórmulas químicas; a auditoria não pode contar esse registro encoberto como aula adicional. O catálogo multi-exame de 1.512 assuntos permanece incompleto e deve continuar sendo auditado. `provao-depth-batch27.test.ts` verifica correspondência estrita, originalidade das etapas, exemplos, respostas, autoria e ausência de tarefas abertas. `provao-depth-coverage.test.ts` agora exige pelo menos 141 aulas reconhecidas.
+
+**Atenção:** são contagens editoriais esperadas, não validação da execução atual do GitHub Actions. Não declarar CI aprovada antes de testar unitários, segurança de dois usuários, design, TypeScript e build. Não foram modificados IDs, schema, RLS, login, chaves, Supabase nem APIs pagas. Não realizar merge ou deploy sem revisão autorizada.
+
+
+## Validação da CI do lote 27 e correção de tipagem — 2026-11-08
+
+A execução [#42519709686](https://github.com/PedroH0309/Kognos-App/actions/runs/42519709686) confirmou **141 registros editoriais efetivamente selecionados** na auditoria do Provão, dos 142 prefixos cadastrados, sendo um prefixo histórico encoberto: `Química · Fórmulas químicas: fórmula mínima` (lote 16), substituído no conteúdo exibido pela versão exata do lote 26. A auditoria diagnosticou `unresolved: []`, `shadowed: [esse registro]` e `selected: 141`. Os testes unitários, segurança PostgreSQL de dois usuários e design passaram; TypeScript falhou com `TS7022` no teste do lote 27, e o build foi pulado. Corrigimos a declaração de `CourseSection` com anotação explícita, preservando aulas, IDs e gabaritos. **Aprovação completa depende da nova CI**; o PR segue em rascunho, sem merge/deploy e sem homologação pedagógica.
+
+
+## Lote 28 — cinco temas específicos novos — 2026-11-08
+
+Após inspeção do catálogo de `provao-paulista.ts`, dos módulos editoriais existentes e da auditoria, foram desenvolvidas e registradas **cinco aulas autorais específicas**, cada uma com três capítulos progressivos (mínimo de 750 caracteres explicativos por capítulo), um exemplo resolvido por capítulo (mínimo de 180 caracteres), condições de validade, erros frequentes, passos de resolução e três questões **exclusivamente objetivas** com quatro alternativas distintas, `correctIndex` e correção explicada. As aulas são originais do Kognos, **não oficiais e sem homologação docente**.
+
+| Área | Tema oficial do Provão Paulista | Implementação |
+|---|---|---|
+| Química | Equações termoquímicas | `provao-depth-batch28-thermochemistry.ts` |
+| Física | Máquinas térmicas e máquinas frigoríficas. O ciclo de Carnot | `provao-depth-batch28-heat-engines.ts` |
+| Biologia | Conservação biológica (unidades de conservação) | `provao-depth-batch28-conservation.ts` |
+| História | Nações e nacionalismos no século XIX | `provao-depth-batch28-nationalism.ts` |
+| História | A classe operária e a luta por direitos | `provao-depth-batch28-labour.ts` |
+
+**Previsão editorial após passar a CI do lote 28:** 146 de 364 tópicos distintos aprofundados (**40,1%**), 438 capítulos e 438 questões objetivas, **218 tópicos do Provão pendentes**. A biblioteca contém 147 registros editoriais, pois o prefixo antigo de fórmula mínima do lote 16 continua encoberto pela correspondência oficial exata da aula de fórmulas químicas do lote 26; esse registro não é contado duas vezes. Os outros exames compartilham tópicos com o Provão e possuem assuntos próprios; o catálogo unificado de 1.512 entradas não está concluído.
+
+**Integração e validação:** importações dos cinco arquivos em `apps/web/src/lib/provao-depth-lessons.ts`; teste específico em `provao-depth-batch28.test.ts` para identidade oficial, preservação de IDs e fallback, 3 capítulos profundos, exemplos, autoria não oficial e 3 gabaritos A–D por aula; auditoria `provao-depth-coverage.test.ts` elevada para mínimo de 146. A última CI totalmente aprovada **antes** do lote foi [#42519833451](https://github.com/PedroH0309/Kognos-App/actions/runs/42519833451). Ainda é obrigatório validar a nova revisão em GitHub Actions — unitários, segurança PostgreSQL de dois usuários, design, TypeScript e build. Conteúdo não revisado por especialistas. Não houve alterações em Supabase, RLS, schema, IDs, autenticação, quotas ou chaves; PR #93 permanece em rascunho, sem merge ou deploy.
+
+
+## Lote 29 — aprofundamento autoral adicional (2026-11-08)
+
+A inspeção do `AGENTS.md` na branch e em `main`, dos PRs abertos (#93, #94, #95), do currículo unificado e de todos os 42 módulos importados previamente pelo resolvedor impediu duplicação de conteúdo: `Propriedades físicas dos compostos orgânicos` já estava no lote 25 e foi descartado da seleção. Cinco **tópicos oficiais diferentes** receberam aulas novas, cada uma com três capítulos explicativos e progressivos (>=750 caracteres), exemplos resolvidos com passos e condições (>=180 caracteres), equívocos frequentes, três perguntas exclusivamente de quatro alternativas A–D e correção comentada (>=140 caracteres). A autoria é **Kognos original, não oficial, sem homologação docente**. Não há atividades dissertativas.
+
+| Área | Tópico oficial | Arquivo |
+| --- | --- | --- |
+| Química | Ligação, estrutura, propriedades físicas e químicas da água | `provao-depth-batch29-water.ts` |
+| Física | Trabalho realizado pelas forças exercidas por um gás. Energia interna. Transformações cíclicas | `provao-depth-batch29-gas-work.ts` |
+| Biologia | Alimentos e nutrição; segurança alimentar; ação das substâncias psicoativas (drogas) no sistema… | `provao-depth-batch29-nutrition.ts` |
+| História | A ascensão do café e a primeira industrialização | `provao-depth-batch29-coffee.ts` |
+| História | Ideias sociais e projetos revolucionários | `provao-depth-batch29-social-ideas.ts` |
+
+A resolução exata-antes-de-prefixo de `provao-depth-lessons.ts` permanece intacta; as cinco especificações foram importadas e acrescentadas ao registro. Testes em `provao-depth-batch29.test.ts` verificam tópicos exatos do Provão, IDs estáveis, fallback editorial, capítulos, extensão mínima, alternativas únicas, gabaritos, correções e autoria. `provao-depth-coverage.test.ts` exige 151 tópicos profundos e verifica os cinco temas do lote.
+
+**Resultado editorial esperado, sujeito à CI:** Provão Paulista 151 de 364 temas profundos (**41,48%**), **213 ainda pendentes**, 453 capítulos e 453 questões objetivas. A biblioteca soma 152 registros de prefixo porque o prefixo de fórmula mínima do lote 16 permanece encoberto por aula de fórmulas exata do lote 26; não deve ser contado duas vezes. Catálogo unificado: 1.512 entradas; não foi integralmente aprofundado.
+
+A CI do lote 28, [#42520686703](https://github.com/PedroH0309/Kognos-App/actions/runs/42520686703), estava verde antes desta alteração. **Não declarar o lote 29 validado sem nova CI** de unitários, segurança PostgreSQL com dois usuários, testes de design, TypeScript e build. Nenhuma alteração em IDs existentes, Supabase, RLS, schema, auth, dados, chaves ou APIs pagas. PR #93 deve continuar como **rascunho** até revisão autorizada; não fazer merge/deploy. A homologação docente continua pendente.
+
+
+## Lote 30 — cinco aulas adicionais autorais, sem sobreposição do lote 29 — 2026-11-08
+
+Após leitura de `AGENTS.md`, auditoria e catálogo do Provão, foi identificado que outra execução já havia acrescentado os cinco conteúdos e o resolvedor do **lote 29** (água, trabalho de um gás, nutrição, economia cafeeira e ideias sociais). Essa implementação foi preservada. Para avançar sem duplicá-la, foram produzidas **cinco outras aulas**, todas correspondentes a temas do catálogo oficial e ausentes da biblioteca resolvida, com seus próprios arquivos editoriais e um teste específico `provao-depth-batch30.test.ts`. Os arquivos com prefixo 29 abaixo foram criados como trabalho complementar antes de se identificar a execução concorrente e são agrupados **logicamente no lote 30**, sem renomear os arquivos ou interferir nas alterações de terceiros.
+
+| Disciplina | Tema específico do catálogo | Arquivo |
+|---|---|---|
+| Química | Isomeria plana e espacial (geométrica e óptica) | `provao-depth-batch29-isomerism.ts` |
+| Física | Eclipses. Sombra e penumbra. Câmara escura de orifício | `provao-depth-batch29-eclipses.ts` |
+| Biologia | Vírus: reconhecimento das características e sua importância em contextos relacionados à saúde e… | `provao-depth-batch29-virology.ts` |
+| Química | As características gerais dos compostos orgânicos | `provao-depth-batch30-organics.ts` |
+| Física | Fenômeno da dispersão luminosa e a refração da luz na atmosfera. 9.Ondulatória | `provao-depth-batch30-dispersion.ts` |
+
+Cada aula possui **3 capítulos progressivos**, com explicação autoral específica de pelo menos **750 caracteres por capítulo**, exemplos resolvidos com 180+ caracteres, condições de validade, alertas sobre erros conceituais e passos reais de análise. Cada aula possui **3 questões objetivas**, cada uma com quatro alternativas distintas A–D, `correctIndex` correspondente à alternativa certa e explicação comentada com 140+ caracteres. As posições dos gabaritos das novas aulas foram distribuídas sem alterar a alternativa correta ou o fundamento da resolução. Não foram introduzidas questões dissertativas. O teste do lote verifica correspondência exata ao tópico do Provão, IDs existentes, fallback editorial, extensão dos capítulos, exemplos e gabaritos, variedade de opções e marcação de autoria.
+
+**Cobertura editorial prevista após CI:** **156/364** temas do Provão Paulista aprofundados, **208 pendentes**, **468 capítulos** e **468 questões objetivas**. São **157 registros editoriais** para 156 assuntos reconhecidos: o registro histórico de fórmulas químicas do lote 16 continua encoberto pelo tópico exato do lote 26, e a auditoria não o conta duas vezes. No catálogo unificado de ENEM, ETEC, Fuvest, Vunesp e Provão, os 1.512 assuntos continuam parcialmente introdutórios. Os números de cobertura acima dependem da confirmação automatizada da CI mais recente, e não representam homologação docente.
+
+Os novos arquivos foram vinculados ao resolvedor de `apps/web/src/lib/provao-depth-lessons.ts` sem alterar sua preferência por correspondência exata. A auditoria `provao-depth-coverage.test.ts` exige 156 aulas reconhecidas. É obrigatório verificar a CI do novo commit com testes unitários, segurança PostgreSQL de dois usuários, testes de design, TypeScript e build. Não foram modificados `legacy/`, IDs, banco de dados, RLS, Supabase, autenticação, chaves, APIs pagas ou deploy. O conteúdo é **original, não oficial e sem homologação docente**, e o PR #93 deve permanecer em rascunho até revisão autorizada.
+
+
+## Lote 31 — cinco temas novos, sem duplicar o lote 30 (2026-11-08)
+
+Foram consultados `AGENTS.md` em `main` e na branch, a auditoria, o catálogo `curriculum-catalog.ts` / `provao-paulista.ts`, o PR #93 e demais PRs abertos. Houve outra execução que completou o lote 30 (156 tópicos previstos); ela foi preservada. Os **52 módulos importados** pelo resolvedor foram inspecionados, rejeitando repetições com as bibliotecas antigas. Foram escolhidos cinco novos tópicos exatamente correspondentes às etiquetas oficiais, todos ainda não registrados em aulas profundas.
+
+| Disciplina | Tópico exato do Provão | Arquivo |
+| --- | --- | --- |
+| Física | Lei de Faraday-Neumann | `provao-depth-batch31-faraday.ts` |
+| Física | Capacitores. Associação de capacitores. Energia potencial elétrica armazenada em um capacitor.… | `provao-depth-batch31-capacitors.ts` |
+| Biologia | Doenças humanas causadas por fungos e protozoários (amebíase, malária, doença de Chagas e… | `provao-depth-batch31-protozoa-fungi.ts` |
+| História | Da mão de obra escrava à imigração | `provao-depth-batch31-abolition-immigration.ts` |
+| História | Ásia e África: imperialismo, neocolonialismo e resistência | `provao-depth-batch31-imperialism.ts` |
+
+Cada aula foi escrita originalmente para o seu assunto, com três capítulos progressivos (mínimo **750 caracteres de explicação por capítulo**), três exemplos explicados com operações ou interpretação de fontes (mínimo **180 caracteres por exemplo**), requisitos, condições de validade, alertas de equívocos, três questões **somente de múltipla escolha A–D**, gabaritos `correctIndex` e explicações das respostas (mínimo **140 caracteres**). **Não há perguntas dissertativas.** O material é **autoral Kognos, não oficial e sem homologação docente**; não deve ser apresentado como aprovado por especialista.
+
+Integração em `provao-depth-lessons.ts` por correspondência exata antes de prefixos; nova validação em `provao-depth-batch31.test.ts` (identidade dos cinco assuntos oficiais, profundidade, chave e correção objetiva, autoria, IDs estáveis e fallback editorial). A auditoria `provao-depth-coverage.test.ts` passou a exigir pelo menos 161 registros efetivamente reconhecidos e os cinco assuntos do lote.
+
+**Cobertura editorial prevista após validação:** **161/364** temas do Provão Paulista, **203 pendentes**, **483 capítulos e 483 questões objetivas**; **162 registros de prefixo**, um deles histórico e encoberto (`Química · Fórmulas químicas: fórmula mínima`, do lote 16). O catálogo dos cinco exames possui 1.512 entradas e ainda não está todo aprofundado. Esses números não são aprovação automática de CI nem homologação pedagógica.
+
+**Liberação:** exigir conclusão da CI com testes unitários, segurança PostgreSQL de dois usuários, design, TypeScript e build. Nenhuma migração, modificação em RLS, Supabase, auth, dados existentes, `legacy/`, APIs pagas ou chaves. O PR #93 continua em **rascunho**, sem merge e sem deploy público; revisão docente ainda pendente.
+
+
+## Lote 32 — cinco aulas originais de Química, Física, Biologia e História (2026-11-08)
+
+O PR #93 foi consultado ainda em rascunho. AGENTS.md, `curriculum-catalog.ts`, `provao-paulista.ts`, a auditoria `provao-depth-coverage.test.ts` e o progresso anterior (lote 31) foram verificados antes da autoria. A CI do commit inicial deste ciclo (#745) estava aprovada. Os novos tópicos foram escolhidos por corresponderem **exatamente** a entradas do Provão Paulista e por não constarem das relações de aulas previamente aprofundadas documentadas; a nova auditoria exige sua cobertura específica.
+
+| Disciplina | Entrada específica do Provão | Conteúdo abordado |
+|---|---|---|
+| Química | Macromoléculas naturais e sintéticas | Estrutura dos polímeros; unidades repetitivas; adição versus condensação; grau de polimerização; recuperação e impactos |
+| Física | Geradores elétricos. Força eletromotriz e resistência interna. Equação e curva característica… | U=ε−rI, corrente em circuito real, perdas, gráfico U×I e potência máxima |
+| Física | Receptores elétricos. Força contraeletromotriz e resistência interna. Equação e curva… | Motores, U=ε'+rI, potência convertida, rendimento e malha gerador–receptor |
+| Biologia | Teorias da origem da vida na Terra e hipóteses sobre a evolução do metabolismo energético | Pasteur e biogênese, síntese prebiótica, ribozimas, mundo de RNA e hipóteses metabólicas |
+| História | A Declaração Universal dos Direitos Humanos de 1948: seus princípios e trajetória histórica | Pós-guerra, elaboração coletiva, artigos 1º, 2º, 3º, 19 e 26, pactos de 1966 e Constituição de 1988 |
+
+As cinco aulas constam de `provao-depth-batch32-core.ts` e são registradas pelo resolvedor `provao-depth-lessons.ts` com prioridade para título oficial exato. Todas contêm **três capítulos progressivos** com explicações autorais de 750+ caracteres e pré-requisitos próprios, **três exemplos resolvidos** com operações ou análise histórica (180+ caracteres cada), condições de validade e erros típicos, além de **três questões estritamente objetivas** com quatro alternativas A–D, gabaritos `correctIndex` verificados por teste e correções comentadas de 140+ caracteres. Não há perguntas dissertativas. `provao-depth-batch32.test.ts` valida conteúdo, gabaritos, IDs estáveis, autoria e fallback editorial; `provao-depth-coverage.test.ts` passa a verificar as cinco novas entradas e o mínimo acumulado.
+
+**Cobertura prevista para validação automatizada:** **166/364 tópicos oficiais do Provão Paulista**, **198 pendentes**, **498 capítulos** e **498 questões objetivas**. O registro histórico encoberto no lote 16 permanece sem contagem adicional. O catálogo unificado dos cinco exames conserva entradas não aprofundadas; não há conclusão de ENEM, ETEC, Fuvest e Vunesp. Esta previsão não equivale a CI aprovada ou homologação pedagógica.
+
+Material original Kognos, **não oficial e sem homologação docente**. Nenhuma alteração foi feita em `legacy/`, IDs, respostas existentes, contas, Supabase, RLS, segredos ou integrações pagas. Não executar merge ou deploy sem revisão autorizada; manter PR em rascunho. A conclusão depende de testes unitários, segurança PostgreSQL com dois usuários, design, TypeScript e build no GitHub Actions.
