@@ -40,8 +40,6 @@ export default function LessonChoiceQuestion({choice,onAnswer,compact=false}:{
    <strong>{correct?<><CheckCircle2 size={16} aria-hidden="true"/> Alternativa correta</>:<><RotateCcw size={16} aria-hidden="true"/> Revise esta questão</>}</strong>
    {!correct&&<p>Resposta de referência: <strong>{letters[choice.correctIndex]}</strong>. A alternativa escolhida não corresponde à resolução desta atividade.</p>}
    <p>{choice.explanation}</p>
-   {choice.source==='resolution_matching'&&<small>Associação entre enunciado e resolução original. As demais alternativas usam outras resoluções do material; isto não substitui uma questão autoral revisada com distratores específicos.</small>}
-   {choice.source==='example_matching'&&<small>Reconhecimento do exemplo original. Esta atividade introdutória não comprova domínio do assunto.</small>}
    <small>Feedback formativo imediato. Esta resposta não é registrada como nota nem no mapa de domínio.</small>
   </div>}
  </div>;
