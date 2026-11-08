@@ -64,7 +64,7 @@ test('Bridges expose partial coverage explicitly and never impersonate complete 
  assert.match(scopes,/outros pontos previstos no edital/);
 });
 test('All unexpanded lessons are identified as study guides rather than fictional complete courses',()=>{
- const topic=find('Geografia','Os espaços supranacionais');
+ const topic=find('Geografia','Os países e as regiões geográficas');
  const lesson=starterLesson(topic);
  assert.match(lesson.authorship,/módulo introdutório estruturado/);
  assert.equal(lesson.syllabusScope,'Os espaços supranacionais.');
