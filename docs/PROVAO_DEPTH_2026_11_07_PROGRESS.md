@@ -281,7 +281,7 @@ Cinco tópicos distintos de Química do currículo do Provão Paulista, com chec
 1. **Propriedade de substâncias moleculares, iônicas e metálicas** — estruturas, condução, solubilidade, pontos de fusão e exceções.
 2. **Fórmulas químicas: fórmula mínima, fórmula centesimal, fórmula molecular** — porcentagens, análise elementar, fórmula empírica e massa molar.
 3. **Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos** — leitura de rótulos, incompatibilidades, risco e descarte, sem experimentos perigosos.
-4. **Interações do tipo íon-dipolo** — hidratação, dissolução, energia de solvatação, concentração e mobilidade iônica.
-5. **A eletrosfera e o diagrama de Linus Pauling** — orbitais, subníveis, distribuição eletrônica, íons, Hund, Pauli e exceções.
+4. **Solubilidade e temperatura de ebulição** — saturação, curvas de solubilidade, pressão de vapor, altitude e elevação ebuliométrica.
+5. **Noção de monômeros e polímeros** — unidades repetitivas, polimerização por adição e condensação, propriedades, massa molar e destino ambiental.
 
 Cada tema tem três capítulos com 750+ caracteres de explicação, exemplo resolvido com hipóteses e etapas, pré-requisitos, condições de validade e três questões exclusivamente objetivas com quatro alternativas e correção. **Total da série: 131 aulas, 393 capítulos, 393 questões; 233/364 itens do Provão ainda sem aula aprofundada específica.** O catálogo unificado dos cinco exames contém 1.512 entradas distintas e ainda exige trabalho adicional. A contagem de 364 itens oficiais do Provão não equivale à união de tópicos editoriais etiquetados como `saresp` no catálogo ampliado. Conteúdo original Kognos, não oficial e sem homologação docente. CI do lote 25 precisa de validação no GitHub Actions; não fazer merge ou deploy antes de revisão.
