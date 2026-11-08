@@ -383,3 +383,22 @@ A resolução exata-antes-de-prefixo de `provao-depth-lessons.ts` permanece inta
 **Resultado editorial esperado, sujeito à CI:** Provão Paulista 151 de 364 temas profundos (**41,48%**), **213 ainda pendentes**, 453 capítulos e 453 questões objetivas. A biblioteca soma 152 registros de prefixo porque o prefixo de fórmula mínima do lote 16 permanece encoberto por aula de fórmulas exata do lote 26; não deve ser contado duas vezes. Catálogo unificado: 1.512 entradas; não foi integralmente aprofundado.
 
 A CI do lote 28, [#42520686703](https://github.com/PedroH0309/Kognos-App/actions/runs/42520686703), estava verde antes desta alteração. **Não declarar o lote 29 validado sem nova CI** de unitários, segurança PostgreSQL com dois usuários, testes de design, TypeScript e build. Nenhuma alteração em IDs existentes, Supabase, RLS, schema, auth, dados, chaves ou APIs pagas. PR #93 deve continuar como **rascunho** até revisão autorizada; não fazer merge/deploy. A homologação docente continua pendente.
+
+
+## Lote 30 — cinco aulas adicionais autorais, sem sobreposição do lote 29 — 2026-11-08
+
+Após leitura de `AGENTS.md`, auditoria e catálogo do Provão, foi identificado que outra execução já havia acrescentado os cinco conteúdos e o resolvedor do **lote 29** (água, trabalho de um gás, nutrição, economia cafeeira e ideias sociais). Essa implementação foi preservada. Para avançar sem duplicá-la, foram produzidas **cinco outras aulas**, todas correspondentes a temas do catálogo oficial e ausentes da biblioteca resolvida, com seus próprios arquivos editoriais e um teste específico `provao-depth-batch30.test.ts`. Os arquivos com prefixo 29 abaixo foram criados como trabalho complementar antes de se identificar a execução concorrente e são agrupados **logicamente no lote 30**, sem renomear os arquivos ou interferir nas alterações de terceiros.
+
+| Disciplina | Tema específico do catálogo | Arquivo |
+|---|---|---|
+| Química | Isomeria plana e espacial (geométrica e óptica) | `provao-depth-batch29-isomerism.ts` |
+| Física | Eclipses. Sombra e penumbra. Câmara escura de orifício | `provao-depth-batch29-eclipses.ts` |
+| Biologia | Vírus: reconhecimento das características e sua importância em contextos relacionados à saúde e… | `provao-depth-batch29-virology.ts` |
+| Química | As características gerais dos compostos orgânicos | `provao-depth-batch30-organics.ts` |
+| Física | Fenômeno da dispersão luminosa e a refração da luz na atmosfera. 9.Ondulatória | `provao-depth-batch30-dispersion.ts` |
+
+Cada aula possui **3 capítulos progressivos**, com explicação autoral específica de pelo menos **750 caracteres por capítulo**, exemplos resolvidos com 180+ caracteres, condições de validade, alertas sobre erros conceituais e passos reais de análise. Cada aula possui **3 questões objetivas**, cada uma com quatro alternativas distintas A–D, `correctIndex` correspondente à alternativa certa e explicação comentada com 140+ caracteres. As posições dos gabaritos das novas aulas foram distribuídas sem alterar a alternativa correta ou o fundamento da resolução. Não foram introduzidas questões dissertativas. O teste do lote verifica correspondência exata ao tópico do Provão, IDs existentes, fallback editorial, extensão dos capítulos, exemplos e gabaritos, variedade de opções e marcação de autoria.
+
+**Cobertura editorial prevista após CI:** **156/364** temas do Provão Paulista aprofundados, **208 pendentes**, **468 capítulos** e **468 questões objetivas**. São **157 registros editoriais** para 156 assuntos reconhecidos: o registro histórico de fórmulas químicas do lote 16 continua encoberto pelo tópico exato do lote 26, e a auditoria não o conta duas vezes. No catálogo unificado de ENEM, ETEC, Fuvest, Vunesp e Provão, os 1.512 assuntos continuam parcialmente introdutórios. Os números de cobertura acima dependem da confirmação automatizada da CI mais recente, e não representam homologação docente.
+
+Os novos arquivos foram vinculados ao resolvedor de `apps/web/src/lib/provao-depth-lessons.ts` sem alterar sua preferência por correspondência exata. A auditoria `provao-depth-coverage.test.ts` exige 156 aulas reconhecidas. É obrigatório verificar a CI do novo commit com testes unitários, segurança PostgreSQL de dois usuários, testes de design, TypeScript e build. Não foram modificados `legacy/`, IDs, banco de dados, RLS, Supabase, autenticação, chaves, APIs pagas ou deploy. O conteúdo é **original, não oficial e sem homologação docente**, e o PR #93 deve permanecer em rascunho até revisão autorizada.
