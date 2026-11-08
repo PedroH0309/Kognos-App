@@ -190,9 +190,9 @@ export function expandExamSubjects(exam:ExamId,original:Record<string,readonly s
  return result;
 }
 export function examForStudent(profile:Pick<StudentProfile,'goal'|'targetName'|'examFocus'>):ExamId|null{
- if(profile.examFocus)return profile.examFocus;
+ if(profile.examFocus)return profile.examFocus==='etec'?null:profile.examFocus;
  if(profile.goal==='enem')return 'enem';
- if(profile.goal==='etec')return 'etec';
+ // Existing technical-course profiles remain saved, but ETEC is no longer a public exam track.
  const target=profile.targetName.toLowerCase();
  if(/fuvest|usp/.test(target))return 'fuvest';
  if(/unesp|vunesp/.test(target))return 'vunesp';
@@ -201,7 +201,7 @@ export function examForStudent(profile:Pick<StudentProfile,'goal'|'targetName'|'
 }
 export function activeSyllabi(profile:Pick<StudentProfile,'goal'|'targetName'|'examFocus'|'syllabusExams'>):ExamId[]{
  const primary=examForStudent(profile);
- return [...new Set([...(profile.syllabusExams||[]),...(primary?[primary]:[])])];
+ return [...new Set([...(profile.syllabusExams||[]),...(primary?[primary]:[])])].filter(exam=>exam!=='etec');
 }
 export function mergedSyllabus(exams:readonly ExamId[]):Record<string,readonly string[]>{
  const output:Record<string,string[]>={};
