@@ -33,7 +33,7 @@ export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{
   kind:'lesson',id:topic.id,subject:topic.subject,topic:topic.topic,exams:topic.exams,
   objective:spec.objective,prerequisites:spec.prerequisites,
   sections:spec.sections,tasks:spec.tasks,videos:[],
-  authorship:'Kognos — aula autoral aprofundada e específica; revisão docente pendente; sem homologação',
+  authorship:'Kognos — aula autoral aprofundada e específica; revisão docente pendente; sem homologação docente',
   license:'Material preparatório autoral Kognos; não oficial do Provão Paulista',
   sourceUrls,syllabusScope:registered.description,review:'introductory'
  };
