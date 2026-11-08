@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **102 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **306 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **306 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **111 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **333 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **333 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -231,3 +231,11 @@ A 19ª leva acrescenta cinco aulas autorais específicas: **eletronegatividade e
 Corrigida regressão de TypeScript da 19ª leva: a CI #42478737602 apresentou TS7022 em `provao-depth-batch19.test.ts`, linha 22, apesar de testes unitários, segurança de dois usuários e design aprovados; o `const` compartilhado foi separado em declarações distintas. A nova CI deve confirmar a correção, incluindo build, antes de ser declarada verde.
 
 Adicionadas cinco aulas originais específicas, não oficiais e sem homologação docente: **Atmosfera terrestre: composição e características** e **Interações da água com outras substâncias** (Química); **Sistemas geocêntrico e heliocêntrico. Leis de Kepler** (Física); **Evidências da evolução biológica** (Biologia); e **Aspectos políticos e socioculturais do Antigo Regime** (História). Cada aula possui três capítulos progressivos de 750+ caracteres, exemplos específicos com passos, limites e três questões A–D com gabarito e correção comentada. Novo teste `provao-depth-batch20.test.ts` exige registro único, identidade do tópico, preservação de IDs, capítulos e alternativas. **Cobertura editorial prevista após CI: 107/364 aulas, 321 capítulos e 321 questões; 257 entradas do Provão ainda não aprofundadas nesta série.** A auditoria de ENEM, ETEC, Fuvest e Vunesp segue incompleta; revisão docente pendente. Sem merge ou deploy.
+
+## Vigésima primeira leva — correção de duplicação e cinco novos temas
+
+A CI da 20ª leva (GitHub Actions #42482622995) falhou em testes unitários porque o cadastro continha **107 registros mas apenas 106 tópicos distintos**. A aula `Biologia · Evidências da evolução biológica` já existia no lote 05. Removemos somente o registro redundante do lote 20, mantendo a aula original e ajustando seu teste de lote para quatro novos temas. Não se contabiliza a duplicata como cobertura adicional.
+
+O lote 21 inclui **cinco novos temas específicos**: `Química · Estado físico e propriedades dos materiais`, `Física · Referencial inercial. Movimentos retilíneos. Situações de equilíbrio`, `Biologia · Método científico`, `História · Diversidade religiosa: paganismo, judaísmo, cristianismo e islamismo` e `Química · Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos de produtos…`. Cada um possui três capítulos progressivos com explicações próprias de mais de 750 caracteres, três exemplos resolvidos, erros e condições de validade, e três questões objetivas A–D com gabaritos comentados. Testes de integração e unicidade: `provao-depth-batch21.test.ts` e auditoria geral existente.
+
+Cobertura editorial prevista após o lote 21: **111 tópicos distintos de 364**, **333 capítulos**, **333 questões objetivas**, **253 tópicos ainda sem esta cobertura**. Estes valores devem ser confirmados por CI; não representam homologação pedagógica nem abrangem integralmente ENEM, ETEC, Fuvest e Vunesp. Nenhuma alteração de dados, IDs, autenticação, Supabase ou serviços pagos. PR em rascunho, sem merge ou deploy.
