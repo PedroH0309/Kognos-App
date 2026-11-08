@@ -10,9 +10,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **116 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **348 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **348 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **121 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **363 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **363 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
@@ -247,3 +247,11 @@ A CI #42485690594 do lote 21 concluiu **testes unitários, segurança de dois us
 Aulas autorais específicas do lote 22: **Química — Gases do efeito estufa** (absorção infravermelha, ppm e balanço radiativo); **Física — O modelo do gás ideal** (pV=nRT, transformações e compressibilidade); **Biologia — Poluição ambiental e os impactos da intervenção humana** (DBO, eutrofização, biomagnificação e monitoramento); **História — O escravismo na Grécia e em Roma** (cidadania, economia e comparação crítica de fontes); **Química — Energia de ativação** (perfis, Arrhenius e catalisadores). Cada uma contém três capítulos progressivos de pelo menos 750 caracteres, exemplos trabalhados, condições e limitações, e três questões objetivas A–D com correção comentada. Testes específicos em `provao-depth-batch22.test.ts` e auditoria geral em `provao-depth-coverage.test.ts`.
 
 Cobertura editorial prevista: **116/364 tópicos do Provão**, **348 capítulos**, **348 questões**, **248 tópicos ainda pendentes**. Os totais dependem da confirmação da CI. O catálogo de ENEM, ETEC, Fuvest e Vunesp permanece parcialmente introdutório. Autoria Kognos original, não oficial, sem homologação docente; revisão especializada pendente. Sem alterações de schema, Supabase, autenticação, IDs ou chaves. PR #93 continua em rascunho, sem merge ou deploy.
+
+## Vigésima terceira leva — cinco temas e correção de tipagem
+
+A CI da 22ª leva (#42487528480) concluiu testes unitários, segurança com PostgreSQL e dois usuários e design com sucesso, mas falhou no TypeScript com quatro erros `TS2502` em `provao-depth-batch19.test.ts` a `provao-depth-batch22.test.ts`. Substituímos os tipos autorreferentes `(typeof lesson.tasks)[number]` por importação explícita de `CourseTask` nesses quatro testes. O build anterior foi pulado devido à falha; a nova CI precisa confirmar o resultado.
+
+Cinco novos temas autorais específicos foram cadastrados: Química — **Indicadores, condutibilidade elétrica, reação com metais e neutralização**; Física — **Representação gráfica de posição, velocidade e aceleração**; Biologia — **Alternativas energéticas e equilíbrio dos ecossistemas**; História — **Crise e derrocada do Império Romano do Ocidente**; Química — **Modelos atômicos de Dalton, Thomson, Rutherford e Bohr**. Cada tema inclui três capítulos progressivos de 750+ caracteres, três exemplos resolvidos com condições e erros frequentes, e três questões A–D com gabaritos comentados, todos originais e não oficiais, sem homologação docente. Testes: `provao-depth-batch23.test.ts`, além da auditoria global.
+
+Cobertura editorial prevista: **121/364 temas distintos**, **363 capítulos**, **363 questões objetivas**, **243 entradas do Provão ainda pendentes**. Não se confunde essa contagem com conclusão de todo o catálogo multi-exame. PR #93 segue em rascunho, sem merge nem deploy. Validação integral de CI pendente para o commit final desta leva.
