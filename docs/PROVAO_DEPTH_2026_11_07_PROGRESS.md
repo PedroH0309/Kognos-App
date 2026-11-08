@@ -203,3 +203,7 @@ Cinco tópicos adicionais do programa oficial: **potenciais-padrão de redução
 ## Lote 15 — estrutura atômica, energia, membranas, Renascimento e coligativas
 
 Foram adicionados cinco temas oficiais não repetidos: **número atômico, massa e semelhanças entre átomos** (Química); **energia mecânica e conservação** (Física); **membrana plasmática e transporte** (Biologia); **Renascimento Cultural** (História); **propriedades coligativas** (Química). Cada tema possui três capítulos específicos com teoria, exemplo resolvido e erros comuns e três questões A–D com gabarito e solução. O teste dedicado `provao-depth-batch15.test.ts` verifica 15 gabaritos, níveis, IDs e integridade editorial. Material autoral não oficial, sem homologação docente. A CI deve ser consultada antes de declarar aprovação. Nenhum dado de estudantes, esquema SQL ou publicação editorial foi alterado.
+
+## Verificação da 15ª leva — 2026-11-08
+
+A execução [GitHub Actions #42469341319](https://github.com/PedroH0309/Kognos-App/actions/runs/42469341319), associada ao commit `6b1a95d27af07a87ceaa73e213e9223c8f49dc52`, terminou com `conclusion: success`. O job `tests` confirmou individualmente: Unit tests, Content security (PostgreSQL / two users), Design tests, Type checking e Production build. Essa aprovação é exclusiva do commit indicado, não constitui revisão pedagógica docente e não autoriza merge ou deploy. Nenhuma aula nova é contabilizada nesta atualização de rastreabilidade; a cobertura permanece 86/364, com 278 entradas fora desta série.
