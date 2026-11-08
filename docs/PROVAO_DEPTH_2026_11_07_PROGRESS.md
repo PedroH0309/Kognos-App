@@ -10,16 +10,17 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Conteúdo efetivamente aprofundado nesta branch
 
-- **76 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
-- **228 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
-- **228 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
+- **81 aulas autorais específicas e aprofundadas**, uma por tema identificado por prefixo oficial estrito, sem pareamento difuso.
+- **243 capítulos** progressivos (fundamentos, aplicação e aprofundamento).
+- **243 questões objetivas originais**, A–D com `correctIndex`, dica e solução comentada específica, sem respostas dissertativas.
 - Explicações por nível com conteúdos disciplinares, exemplos resolvidos, condições de validade e erros frequentes.
 - **Nenhuma homologação docente presumida**. A etiqueta editorial continua identificando conteúdo autoral não homologado.
 
 ### Lista exata das aulas novas
 
-### Biologia (10)
+### Biologia (11)
 - Construção e análise de árvores filogenéticas
+- Organização celular dos seres vivos
 - Pirâmides ecológicas
 - Sucessão ecológica
 - Herança de grupos sanguíneos na espécie humana
@@ -37,8 +38,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - As abordagens racionalistas e empiristas do conhecimento
 - Questões éticas contemporâneas
 
-### Física (10)
+### Física (11)
 - Trabalho realizado por forças conservativas e não conservativas
+- Resistores. Primeira Lei de Ohm
 - Escalas termométricas. As escalas Celsius
 - Comprimento de onda, período e frequência
 - Primeira e segunda Leis da Termodinâmica
@@ -56,8 +58,9 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - A geopolítica da água
 - A cartografia como recurso para a compreensão espacial dos fenômenos geográficos
 
-### História (11)
+### História (12)
 - Feudalismo e mundo feudal
+- Expansão marítima e constituição do espaço atlântico
 - Iluminismo e Liberalismo
 - A Revolução Francesa e a era napoleônica
 - Primeira Guerra Mundial
@@ -91,8 +94,10 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 - Frase, oração e período
 - Coordenação e subordinação. Conectivos
 
-### Química (15)
+### Química (17)
 - Operações envolvendo soluções (diluições e misturas de soluções com ou sem reação química)
+- Potenciais-padrão de redução
+- As principais interações intermoleculares
 - Desintegração radioativa: meia-vida, datação e uso de radioisótopos
 - Equações químicas e balanceamento
 - Cinética química
@@ -116,7 +121,7 @@ Os tópicos oficiais incluídos no cadastro do Provão Paulista totalizam **364 
 
 ## Cobertura ainda pendente
 
-Após este lote, **288 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 288 conteúdos ausentes**, e tampouco significam que os 76 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
+Após este lote, **283 itens do Provão permanecem fora desta série de aulas aprofundadas**. Alguns deles já têm aula autoral de outra etapa ou apoio parcial; outros têm apenas roteiro introdutório. Esses grupos **não são equivalentes a 288 conteúdos ausentes**, e tampouco significam que os 76 temas aprofundados tenham sido homologados por docentes. O teste `provao-depth-coverage.test.ts` calcula em cada commit os grupos `deep_specific`, `specific_unverified`, `partial_support` e `introductory_only` e registra totais nos logs.
 
 Aulas **publicadas pelo painel editorial do Supabase** têm prioridade sobre os materiais embarcados no código. Esta auditoria cobre apenas o catálogo offline; é necessário revisar publicações do banco separadamente. Mudanças neste PR não alteram dados de estudantes, IDs curriculares ou registros de questões e progresso.
 
@@ -185,3 +190,7 @@ Foram acrescentadas cinco aulas específicas, com três capítulos por tema e tr
 ## Revisão da décima terceira leva — correção de regressões da CI
 
 O GitHub Actions #42457518704 falhou nos testes unitários antes de executar segurança, design, TypeScript e build. A inspeção dos logs apontou dois defeitos de qualidade em `provao-depth-batch13-core.ts`: objetivos didáticos curtos demais para o contrato de conteúdo (`objective.length >= 75`) e ressalva de vassalagem/servidão inferior a 50 caracteres. Foram substituídos os cinco objetivos por objetivos mensuráveis e específicos de cada assunto, e esclarecida a diferença histórica entre vassalagem e servidão. Os critérios de teste não foram enfraquecidos; gabaritos, IDs e dados dos usuários não foram alterados. Nova CI precisa concluir antes de declarar a branch validada. Esta execução priorizou reparar o bloqueio de qualidade anterior e não acrescentou cinco novos temas; a contagem permanece 76/364.
+
+## Décima quarta leva — Química, Física, Biologia e História
+
+Cinco tópicos adicionais do programa oficial: **potenciais-padrão de redução**, **interações intermoleculares**, **resistores e leis de Ohm**, **organização celular dos seres vivos** e **expansão marítima e espaço atlântico**. Cada tópico recebeu três capítulos de conteúdo específico com exemplos calculados ou interpretados passo a passo e três avaliações A–D comentadas, sem dissertativas. Os testes `provao-depth-batch14.test.ts` verificam correspondência de ID, três níveis, densidade de explicações e gabaritos. O conteúdo permanece autoral, não oficial e sem homologação docente. O catálogo ENEM/ETEC/Fuvest/Vunesp continua sujeito à auditoria transversal de maturidade.
