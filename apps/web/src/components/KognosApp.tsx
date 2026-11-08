@@ -122,7 +122,7 @@ function Logo({small=false}:{small?:boolean}) {
   return <div className="logo-cluster"><div className="logo-mark"><Image src="/brand/kognos-mark.webp" width={small?42:56} height={small?42:56} alt="Símbolo Kognos" priority /></div><div className="logo-word"><strong>Kognos<span>.</span></strong>{!small&&<small>APRENDIZAGEM INTELIGENTE</small>}</div></div>;
 }
 
-function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;onAuthenticated:()=>void;standalone?:boolean}){
+function AuthModal({onClose,onAuthenticated,standalone=false,theme,onThemeChange}:{onClose:()=>void;onAuthenticated:()=>void;standalone?:boolean;theme:'dark'|'light';onThemeChange:(value:'dark'|'light')=>void}){
   const [mode,setMode]=useState<'signin'|'signup'|'reset'>('signin');
   const [email,setEmail]=useState('');const [password,setPassword]=useState('');const [showPassword,setShowPassword]=useState(false);
   const [pending,setPending]=useState(false);const [notice,setNotice]=useState('');
@@ -161,6 +161,7 @@ function AuthModal({onClose,onAuthenticated,standalone=false}:{onClose:()=>void;
     <p className="fine-print">Proteja seu acesso: nunca compartilhe senha ou códigos de verificação.</p>
   </section>;
   if(standalone)return <main className="k-auth-gateway k-auth-v2">
+    <div className="k-auth-theme-control"><ThemeSwitch theme={theme} onChange={onThemeChange}/></div>
     <div className="k-auth-shell k-auth-stack">
       <aside className="k-auth-story" aria-label="Conheça o Kognos">
         <div className="k-auth-stage-brand"><Logo small/><span>APRENDIZAGEM INTELIGENTE</span></div>
@@ -551,7 +552,7 @@ export default function KognosApp(){
  if(loading)return <div className="loading-page"><Logo/><p>Preparando seu espaço de aprendizagem…</p></div>;
  if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
- if(!user)return <div className={`theme-${theme}`}><AuthModal standalone onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
+ if(!user)return <div className={`theme-${theme}`}><AuthModal standalone theme={theme} onThemeChange={changeTheme} onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
  if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
  return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">
     <div className="k-nav-set k-nav-main">{NAV_PRIMARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
@@ -615,5 +616,5 @@ export default function KognosApp(){
    userId={user.id} profile={actualProfile} onTutor={()=>openAssistant()} onLogin={()=>setAuthOpen(true)} onContextChange={setStudyContext} onOpenLesson={openFocusedLesson} onGenerateLesson={id=>generateForLesson(id,true)}/>
  </div>}
  <footer className="app-footer">© Kognos · Conhecimento que evolui com você. <span>Versão 1.9 · Projeto em desenvolvimento</span></footer></div><nav className="mobile-bottom-nav" aria-label="Navegação rápida">{(['dashboard','learn','questions','calendar','profile'] as View[]).map(v=><button type="button" key={v} className={view===v?'active':''} onClick={()=>navigate(v)} aria-current={view===v?'page':undefined}>{view===v&&<MobileTabIndicator disabled={disableAnimations}/>}<span><NavIcon view={v}/></span>{v==='dashboard'?'Início':v==='learn'?'Estudar':v==='questions'?'Questões':v==='calendar'?'Calendário':'Perfil'}</button>)}</nav>
- {authOpen&&<AuthModal onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
+ {authOpen&&<AuthModal theme={theme} onThemeChange={changeTheme} onClose={()=>setAuthOpen(false)} onAuthenticated={()=>{if(!['sources','questions','simulados'].includes(view))setView('dashboard');}}/>}</div>;
 }
