@@ -19,7 +19,7 @@ test('batch 19: five distinct specific syllabus lessons with original substantia
   assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
   assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const s=lesson.sections[i],q=lesson.tasks[i];
+   const s=lesson.sections[i];const q=lesson.tasks[i];
    assert.ok(s.explanation.length>=750,spec.topicStart+' short explanation '+i);
    assert.ok(s.example.length>=180,spec.topicStart+' short example '+i);
    assert.ok(s.pitfall.length>=50&&s.steps.length>=3);
