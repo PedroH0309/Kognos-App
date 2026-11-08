@@ -163,7 +163,7 @@ export const provaoDepthBatch06MechanicsMath:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 3,
         "hint": "Complete o quadrado ou aplique Δ=16.",
-        "solution": "A alternativa D está correta: (x−1)(x−5)=0, logo x=1 e x=5. Pelo discriminante Δ=16, x=(6±4)/2 confirma as duas raízes."
+        "solution": "A alternativa D está correta: (x−1)(x−5)=0, logo x=1 e x=5. Pelo discriminante Δ=16, x=(6±4)/2 confirma as duas raízes. Ao substituir x=1: 1−6+5=0; com x=5: 25−30+5=0. As outras opções não satisfazem simultaneamente a equação."
       },
       {
         "level": "advanced",
