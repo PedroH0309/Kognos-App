@@ -67,7 +67,7 @@ test('All unexpanded lessons are identified as study guides rather than fictiona
  const topic=find('Geografia','Os países e as regiões geográficas');
  const lesson=starterLesson(topic);
  assert.match(lesson.authorship,/módulo introdutório estruturado/);
- assert.equal(lesson.syllabusScope,'Os espaços supranacionais.');
+ assert.equal(lesson.syllabusScope,'Os países e as regiões geográficas.');
  const reader=read('apps/web/src/components/UniversalLessonReader.tsx');
  assert.match(reader,/isGenericStarter\?<GuidedIntro/);
  assert.match(reader,/Aula completa pendente|aula completa pendente/);
