@@ -30,13 +30,19 @@ test('Multiple-choice question has exactly four buttons, instant feedback, hints
  assert.match(component,/onAnswer\?\./);
  assert.doesNotMatch(component,/fetch\(|contentRequest\(|supabase|recordAttempt\(|localStorage/);
 });
-test('Intro exercises reuse authored question bank and generic lesson tasks reuse authored solutions, not invented answer keys',()=>{
+test('Introductory and curricular questions require their own editorial answer keys, never borrowed solutions',()=>{
  const source=read('apps/web/src/lib/lesson-multiple-choice.ts');
+ const component=read('apps/web/src/components/LessonChoiceQuestion.tsx');
+ const activities=read('apps/web/src/components/TopicLessonSections.tsx');
  assert.match(source,/questionForLesson\(lesson\)/);
- assert.match(source,/lesson\.tasks\.filter/);
- assert.match(source,/task\.solution/);
- assert.match(source,/source:'resolution_matching'/);
+ assert.match(source,/validOptions\(task\.options,task\.correctIndex\)/);
+ assert.match(source,/source:'editorial'/);
  assert.match(source,/source:'demo'/);
+ assert.match(source,/source:'unavailable'/);
+ assert.match(component,/choice\.source==='unavailable'/);
+ assert.match(activities,/lessonTaskChoice\(lesson,t\)\.source==='editorial'/);
+ assert.doesNotMatch(source,/source:'resolution_matching'/);
+ assert.doesNotMatch(source,/source:'example_matching'/);
 });
 test('Activities advance after every A-D question has been answered, not after text drafts',()=>{
  const source=read('apps/web/src/components/TopicLessonSections.tsx');
