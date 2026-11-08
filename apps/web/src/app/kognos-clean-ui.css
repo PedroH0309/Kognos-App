@@ -738,3 +738,67 @@ button {touch-action:manipulation;}
  .app-layout .k-weekly-axis{font-size:10px}
  .app-layout .k-weekly-caption{align-items:flex-start}
 }
+
+
+/* Weekly progress: light mode must follow the application theme, not inherit the dark card. */
+/* .app-layout owns the persisted theme class, so the card follows the existing
+   toggle immediately, without extra React state or changes to real user data. */
+.app-layout.theme-light .k-weekly-chart{
+ --chart-line-primary:#594CEB;
+ background:linear-gradient(180deg,#FFFFFF 0%,#F8FAFF 100%);
+ border-color:#DCE4F0;
+ color:#17233B;
+}
+.app-layout.theme-light .k-weekly-gridline{
+ stroke:rgba(77,94,131,.20);
+}
+.app-layout.theme-light .k-weekly-dot{
+ fill:#FFFFFF;
+ stroke:#594CEB;
+}
+.app-layout.theme-light .k-weekly-dot.is-active{
+ stroke:#4338CA;
+}
+.app-layout.theme-light .k-weekly-dot-core{
+ fill:#594CEB;
+}
+.app-layout.theme-light .k-weekly-axis{
+ color:#53647E;
+}
+.app-layout.theme-light .k-weekly-caption{
+ color:#17233B;
+ border-top-color:#DDE5F0;
+}
+.app-layout.theme-light .k-weekly-caption small{
+ color:#52627D;
+}
+.app-layout.theme-light .k-weekly-interaction-hint{
+ color:#53647E;
+}
+.app-layout.theme-light .k-weekly-tooltip{
+ background:#FFFFFF;
+ border-color:#DCE4F0;
+ color:#17233B;
+ box-shadow:0 12px 28px rgba(35,52,94,.16);
+}
+.app-layout.theme-light .k-weekly-tooltip>span{
+ color:#52627D;
+}
+.app-layout.theme-light .k-weekly-hit-area:hover .k-weekly-hit-ring,
+.app-layout.theme-light .k-weekly-hit-area.is-selected .k-weekly-hit-ring,
+.app-layout.theme-light .k-weekly-hit-area:focus-visible .k-weekly-hit-ring{
+ border-color:#594CEB;
+ background:rgba(89,76,235,.13);
+}
+/* Softer violet wash over white; the dark theme keeps the reference gradient. */
+.app-layout.theme-light .k-weekly-svg linearGradient stop:first-child{
+ stop-opacity:.20;
+}
+.app-layout.theme-light .k-weekly-svg linearGradient stop:last-child{
+ stop-opacity:.018;
+}
+/* Maintain readable keyboard focus on both themes. */
+.app-layout.theme-light .k-weekly-hit-area:focus-visible{
+ outline:2px solid #4338CA;
+ outline-offset:3px;
+}
