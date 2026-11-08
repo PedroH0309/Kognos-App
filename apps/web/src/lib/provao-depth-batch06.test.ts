@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
+import type {CourseSection,CourseTask} from './course-content.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
@@ -26,7 +27,7 @@ test('batch 06 has exact official identifiers, progressive original theory and o
   assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
   assert.deepEqual(lesson.tasks.map(q=>q.level),['basic','intermediate','advanced']);
   for(let i=0;i<3;i++){
-   const section=lesson.sections[i],q=lesson.tasks[i];
+   const section:CourseSection=lesson.sections[i],q:CourseTask=lesson.tasks[i];
    assert.ok(section.explanation.length>=750&&section.example.length>=180&&section.pitfall.length>=50&&section.steps.length>=3,target.subject+' '+i+' lacks didactic depth');
    assert.equal(q.options?.length,4,target.subject+' must remain only multiple choice');
    assert.equal(new Set(q.options).size,4);
