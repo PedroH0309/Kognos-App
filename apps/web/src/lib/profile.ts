@@ -34,7 +34,7 @@ export const initialProfile: StudentProfile = {
 };
 
 export const goalLabels: Record<Goal,string> = {
-  enem:'ENEM',vestibular:'Vestibulares',etec:'ETEC / Técnico',school:'Provas escolares',contest:'Concursos',olympiad:'Olimpíadas científicas',personal:'Aprendizado pessoal'
+  enem:'ENEM',vestibular:'Vestibulares',etec:'Curso técnico',school:'Provas escolares',contest:'Concursos',olympiad:'Olimpíadas científicas',personal:'Aprendizado pessoal'
 };
 export const styleLabels: Record<TeachingStyle,string> = {
   examples:'Exemplos do cotidiano',step_by_step:'Passo a passo',brief:'Explicações diretas',
