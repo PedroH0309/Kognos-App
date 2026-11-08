@@ -1,7 +1,9 @@
 'use client';
 
 import {useState} from 'react';
-import {ArrowRight,Lightbulb,BookOpenText,PenLine} from 'lucide-react';
+import {ArrowRight,BookOpenText} from 'lucide-react';
+import LessonChoiceQuestion from './LessonChoiceQuestion';
+import {introductoryChoice} from '@/lib/lesson-multiple-choice';
 import type {LearningLesson} from '@/lib/learning-catalog';
 
 type Stage='concept'|'example'|'reflection';
@@ -16,8 +18,7 @@ export default function InteractiveIntroLesson({lesson,onTutor}:{
  lesson:LearningLesson;onTutor?:()=>void;
 }){
  const [stage,setStage]=useState<Stage>('concept');
- const [draft,setDraft]=useState('');
- const [showTip,setShowTip]=useState(false);
+ const choice=introductoryChoice(lesson);
  const index=tabs.findIndex(item=>item.id===stage);
  return <section className="k-course-classroom k-intro-classroom" aria-label={'Estudo guiado de '+lesson.topic}>
   <div className="k-classroom-heading">
@@ -31,10 +32,11 @@ export default function InteractiveIntroLesson({lesson,onTutor}:{
   <div className="k-classroom-stage" key={stage}>
    {stage==='concept'&&<><span className="k-classroom-eyebrow">FUNDAMENTO</span><h4>Entenda o conceito</h4><p className="k-classroom-readable">{lesson.explanation}</p></>}
    {stage==='example'&&<><span className="k-classroom-eyebrow">EXEMPLO RESOLVIDO</span><h4>Como isso funciona na prática?</h4><p className="k-classroom-readable">{lesson.workedExample}</p><div className="k-classroom-pitfall"><strong>Erro frequente</strong><p>{lesson.commonMistake}</p></div></>}
-   {stage==='reflection'&&<><span className="k-classroom-eyebrow">CHECAGEM DE COMPREENSÃO</span><h4>Explique com suas palavras</h4><p className="k-classroom-prompt">{lesson.check}</p><label htmlFor="k-intro-reflection">Seu raciocínio</label><textarea id="k-intro-reflection" value={draft} onChange={e=>setDraft(e.target.value)} rows={4} placeholder="Escreva a sua explicação..."/>
-    <button className="k-classroom-reveal" type="button" onClick={()=>setShowTip(v=>!v)} aria-expanded={showTip}><Lightbulb size={16} aria-hidden="true"/>{showTip?'Ocultar orientação':'Como revisar minha resposta?'}</button>
-    {showTip&&<div className="k-classroom-hint"><strong>Orientação</strong><p>Compare sua explicação com o conceito e o exemplo das etapas anteriores. Verifique se usou o raciocínio correto, não apenas o resultado.</p></div>}
-    <p className="k-classroom-privacy"><PenLine size={14} aria-hidden="true"/> Este rascunho não é corrigido automaticamente e não altera seu mapa de domínio. A prática oficial do Kognos continua em Evolução da habilidade.</p>
+   {stage==='reflection'&&<>
+    <span className="k-classroom-eyebrow">CHECAGEM DE MÚLTIPLA ESCOLHA</span><h4>Escolha uma alternativa</h4>
+    {choice?<LessonChoiceQuestion choice={choice}/>:
+     <p>Este conteúdo ainda não possui questão objetiva cadastrada; nenhuma questão dissertativa é solicitada.</p>}
+    <p className="k-classroom-privacy">Esta questão de alternativas não altera seu mapa de domínio. A prática corrigida continua na área Evolução.</p>
     {onTutor&&<button type="button" className="k-classroom-tutor" onClick={onTutor}>Pedir orientação ao Kog <ArrowRight size={16} aria-hidden="true"/></button>}
    </>}
   </div>
