@@ -492,3 +492,17 @@ Cinco novos assuntos oficiais foram escolhidos depois da consulta aos PRs aberto
 São **15 capítulos** novos com explicações originais ≥750 caracteres cada, **15 exemplos específicos resolvidos** com análise e passos, e **15 MCQs originais A–D**, cada uma com `correctIndex`, gabarito comentado ≥140 caracteres, alternativas distintas e sem perguntas dissertativas. O novo teste de lote confirma correspondência temática, IDs preservados, autoria, profundidade, níveis e ausência de falas genéricas ou alternativas emprestadas. Todo conteúdo é **original, não oficial e sem homologação docente**. Não foram modificados `legacy/`, Auth, RLS, dados, bancos Supabase ou chaves de API.
 
 A auditoria deve apresentar ao menos **181 entradas `deep_specific` em 364 temas do Provão**, com no máximo **183 ainda não aprofundados** se a contagem for exata; não declarar contagem validada antes da execução de CI. Os assuntos do ENEM, ETEC, Fuvest e Vunesp continuam com lacunas próprias. Não fazer merge/deploy sem revisão autorizada. A revisão especializada por docentes permanece pendente mesmo após testes automatizados.
+
+## Lote 37 — cinco conteúdos autorais aprofundados (2026-11-08)
+
+Foram adicionados ao resolvedor estrito cinco tópicos, com 3 capítulos progressivos, exemplos resolvidos por capítulo, hipóteses de validade, erros frequentes e 3 questões objetivas A–D originais por tema, sempre com índice correto e correção comentada:
+
+- **Química:** propriedades de substâncias moleculares, iônicas e metálicas — redes, mobilidade de cargas, ligações intermoleculares, condução e exceções.
+- **Física:** escalas Celsius, Fahrenheit e Kelvin — calibração, conversão de temperatura absoluta e de intervalos, aplicações em gases ideais.
+- **Biologia:** ausência de dominância, alelos letais e polialelia — proporções 1:2:1, condicionamento à sobrevivência, cruzamentos ABO.
+- **História:** feudalismo e mundo feudal — senhorio, corveia, vassalagem, diversidade regional e debate historiográfico.
+- **Geografia:** cartografia como recurso para compreensão espacial — escala, coordenadas, projeções e distorções.
+
+Arquivos: `apps/web/src/lib/provao-depth-batch37-core.ts`, `provao-depth-lessons.ts` e teste de regressão `provao-depth-coverage.test.ts`. **Meta de auditoria: 186/364** temas específicos aprofundados; **178** restantes se a CI confirmar o incremento de cinco. Não confundir o catálogo do Provão com a cobertura dos demais exames. A inclusão de ETEC no catálogo interno deve respeitar a decisão do PR #103 de ocultar sua seleção pública, sem remover dados existentes. Não há alterações em dados, Auth, Supabase, RLS, integrações ou segredos.
+
+Aulas originais Kognos, **não oficiais e sem homologação docente**. Manter PR em rascunho, sem merge/deploy e sem alegar revisão especializada concluída.
