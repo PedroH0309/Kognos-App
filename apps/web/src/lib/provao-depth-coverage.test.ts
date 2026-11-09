@@ -398,10 +398,9 @@ test('batch 37 retains its sole nonduplicated thermometric lesson',()=>{
  assert.ok(audit.coverage.deep_specific>=181,'Keep verified coverage without double-counting duplicates');
 });
 
-test('batch 38: five distinct original topics with editorial four-choice assessments',()=>{
+test('batch 38: four nonduplicated original topics with editorial four-choice assessments',()=>{
  const cases=[
   ['Química','Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos de produtos…'],
-  ['Biologia','Conservação biológica (unidades de conservação)'],
   ['Português','Norma ortográfica. Relação entre escrita e oralidade'],
   ['Matemática','Gráfico de funções expressas por uma sentença'],
   ['Matemática','Sistema Internacional de Medidas: principais unidades e conversões']
@@ -431,5 +430,5 @@ test('batch 38: five distinct original topics with editorial four-choice assessm
   assert.ok(!audit.pending.some(t=>t.subject===subject&&t.topic===name));
  }
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
- assert.ok(audit.coverage.deep_specific>=186,'Expected 181 previously verified + five unique lessons');
+ assert.ok(audit.coverage.deep_specific >=185,'Expected 181 previously verified + four unique lessons');
 });
