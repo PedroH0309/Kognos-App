@@ -432,3 +432,33 @@ test('batch 38: four nonduplicated original topics with editorial four-choice as
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
  assert.ok(audit.coverage.deep_specific >=185,'Expected 181 previously verified + four unique lessons');
 });
+
+test('batch 39 five history themes are exact, deep and objective without duplicated registration',()=>{
+ const audit=provaoDepthAudit();
+ const names=["O escravismo na Grécia e em Roma","Vida e produção cultural no Medievo europeu e africano","Diversidade religiosa: paganismo, judaísmo, cristianismo e islamismo","Expansão do comércio e da urbanização","O Império Romano: crise e derrocada no Ocidente"];
+ for(const name of names){
+  const matches=curriculumTopics.filter(t=>t.subject==='História'&&t.topic===name&&t.exams.includes('saresp'));
+  assert.equal(matches.length,1,'Expected exact Provão theme: '+name);
+  const topic=matches[0],lesson=deepProvaoLesson(topic);
+  assert.ok(lesson,'No authored lesson for '+name);
+  assert.equal(lesson.id,topic.id);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
+  const prompts=new Set<string>();
+  for(let i=0;i<3;i++){
+   const section=lesson.sections[i],task=lesson.tasks[i],choice=lessonTaskChoice(lesson,task);
+   assert.ok(section.explanation.length>=750&&section.example.length>=180);
+   assert.ok(section.pitfall.length>=50&&section.steps.length>=3);
+   assert.ok(!prompts.has(task.prompt));prompts.add(task.prompt);
+   assert.equal(choice.source,'editorial');
+   assert.equal(choice.options.length,4);
+   assert.equal(new Set(choice.options.map(v=>v.trim().toLowerCase())).size,4);
+   assert.ok(choice.correctIndex>=0&&choice.correctIndex<4);
+   assert.ok(choice.explanation.length>=100);
+  }
+  assert.ok(!audit.pending.some(t=>t.subject==='História'&&t.topic===name));
+ }
+ assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
+ assert.ok(audit.coverage.deep_specific>=189,'Expected five genuinely new topics beyond last 184');
+});
