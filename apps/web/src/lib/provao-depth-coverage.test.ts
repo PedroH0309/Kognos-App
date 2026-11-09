@@ -433,9 +433,9 @@ test('batch 38: four nonduplicated original topics with editorial four-choice as
  assert.ok(audit.coverage.deep_specific >=185,'Expected 181 previously verified + four unique lessons');
 });
 
-test('batch 39 five history themes are exact, deep and objective without duplicated registration',()=>{
+test('batch 39 retains two nonduplicated history themes, deep and objective without duplicated registration',()=>{
  const audit=provaoDepthAudit();
- const names=["O escravismo na Grécia e em Roma","Vida e produção cultural no Medievo europeu e africano","Diversidade religiosa: paganismo, judaísmo, cristianismo e islamismo","Expansão do comércio e da urbanização","O Império Romano: crise e derrocada no Ocidente"];
+ const names=["Vida e produção cultural no Medievo europeu e africano","Expansão do comércio e da urbanização"];
  for(const name of names){
   const matches=curriculumTopics.filter(t=>t.subject==='História'&&t.topic===name&&t.exams.includes('saresp'));
   assert.equal(matches.length,1,'Expected exact Provão theme: '+name);
@@ -460,5 +460,32 @@ test('batch 39 five history themes are exact, deep and objective without duplica
   assert.ok(!audit.pending.some(t=>t.subject==='História'&&t.topic===name));
  }
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
- assert.ok(audit.coverage.deep_specific>=189,'Expected five genuinely new topics beyond last 184');
+ assert.ok(audit.coverage.deep_specific>=191,'Expected five new batch40 topics beyond 186 verified');
+});
+
+test('batch 40 registers five unique and objectively assessed history topics',()=>{
+ const names=["A Belle Époque: novos padrões sociais e culturais","A ideologia do Destino Manifesto","A contracultura e as lutas por direitos civis nos anos 1950-1970","O colapso da União Soviética e a “nova ordem mundial”","Estabilização financeira e política de privatizações"];
+ const audit=provaoDepthAudit();
+ for(const name of names){
+  const topics=curriculumTopics.filter(t=>t.subject==='História'&&t.topic===name&&t.exams.includes('saresp'));
+  assert.equal(topics.length,1,'Expected unique syllabus topic '+name);
+  const lesson=deepProvaoLesson(topics[0]);assert.ok(lesson,'Missing deep lesson '+name);
+  assert.equal(lesson.id,topics[0].id);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
+  const prompts=new Set<string>();
+  for(let i=0;i<3;i++){
+   const section=lesson.sections[i],task=lesson.tasks[i],choice=lessonTaskChoice(lesson,task);
+   assert.ok(section.explanation.length>=750&&section.example.length>=180&&section.steps.length>=3&&section.pitfall.length>=50);
+   assert.ok(!prompts.has(task.prompt));prompts.add(task.prompt);
+   assert.equal(choice.source,'editorial');assert.equal(choice.options.length,4);
+   assert.equal(new Set(choice.options.map(x=>x.trim().toLowerCase())).size,4);
+   assert.ok(choice.correctIndex>=0&&choice.correctIndex<4);
+   assert.ok(choice.explanation.length>=140);
+  }
+  assert.ok(!audit.pending.some(t=>t.subject==='História'&&t.topic===name));
+ }
+ assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
+ assert.ok(audit.coverage.deep_specific>=191);
 });
