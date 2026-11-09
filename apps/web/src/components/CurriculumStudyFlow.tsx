@@ -42,7 +42,11 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  const load=useCallback(async()=>{
   try{
    const response=await contentRequest('/api/content');
-   setTopics(response.topics);
+   // ETEC-only curriculum remains in the historical server catalogue but is
+   // completely omitted from student-facing discovery.
+   setTopics((response.topics as CurriculumListTopic[]).filter(topic=>
+    topic.exams.some(exam=>exam!=='etec')
+   ));
    setLoadError('');
   }catch(error){
    setLoadError(error instanceof Error?error.message:'Não foi possível carregar as disciplinas.');
