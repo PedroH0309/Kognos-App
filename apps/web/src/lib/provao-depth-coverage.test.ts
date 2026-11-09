@@ -397,3 +397,39 @@ test('batch 37 retains its sole nonduplicated thermometric lesson',()=>{
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
  assert.ok(audit.coverage.deep_specific>=181,'Keep verified coverage without double-counting duplicates');
 });
+
+test('batch 38: five distinct original topics with editorial four-choice assessments',()=>{
+ const cases=[
+  ['Química','Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos de produtos…'],
+  ['Biologia','Conservação biológica (unidades de conservação)'],
+  ['Português','Norma ortográfica. Relação entre escrita e oralidade'],
+  ['Matemática','Gráfico de funções expressas por uma sentença'],
+  ['Matemática','Sistema Internacional de Medidas: principais unidades e conversões']
+ ] as const;
+ const audit=provaoDepthAudit();
+ for(const [subject,name] of cases){
+  const topics=curriculumTopics.filter(t=>t.subject===subject&&t.topic===name&&t.exams.includes('saresp'));
+  assert.equal(topics.length,1,'Expected one Provão topic '+subject+' / '+name);
+  const lesson=deepProvaoLesson(topics[0]);assert.ok(lesson);
+  assert.equal(lesson.id,topics[0].id);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
+  const prompts=new Set<string>();
+  for(let i=0;i<3;i++){
+   const section=lesson.sections[i],task=lesson.tasks[i];
+   assert.ok(section.explanation.length>=750&&section.example.length>=180);
+   assert.ok(section.steps.length>=3&&section.pitfall.length>=50);
+   assert.ok(!prompts.has(task.prompt));prompts.add(task.prompt);
+   const choice=lessonTaskChoice(lesson,task);
+   assert.equal(choice.source,'editorial');
+   assert.equal(choice.options.length,4);
+   assert.equal(new Set(choice.options.map(o=>o.trim().toLowerCase())).size,4);
+   assert.ok(choice.correctIndex>=0&&choice.correctIndex<4);
+   assert.ok(choice.explanation.length>=100);
+  }
+  assert.ok(!audit.pending.some(t=>t.subject===subject&&t.topic===name));
+ }
+ assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
+ assert.ok(audit.coverage.deep_specific>=186,'Expected 181 previously verified + five unique lessons');
+});
