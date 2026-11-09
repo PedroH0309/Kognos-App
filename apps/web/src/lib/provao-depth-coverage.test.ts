@@ -460,10 +460,10 @@ test('batch 39 retains two nonduplicated history themes, deep and objective with
   assert.ok(!audit.pending.some(t=>t.subject==='História'&&t.topic===name));
  }
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
- assert.ok(audit.coverage.deep_specific>=191,'Expected five new batch40 topics beyond 186 verified');
+ assert.ok(audit.coverage.deep_specific>=190,'Expected four nonduplicated batch40 topics beyond 186 verified');
 });
 
-test('batch 40 registers five unique and objectively assessed history topics',()=>{
+test('batch 40 covers four new history topics and preserves the existing Destino Manifesto lesson',()=>{
  const names=["A Belle Époque: novos padrões sociais e culturais","A ideologia do Destino Manifesto","A contracultura e as lutas por direitos civis nos anos 1950-1970","O colapso da União Soviética e a “nova ordem mundial”","Estabilização financeira e política de privatizações"];
  const audit=provaoDepthAudit();
  for(const name of names){
@@ -487,5 +487,5 @@ test('batch 40 registers five unique and objectively assessed history topics',()
   assert.ok(!audit.pending.some(t=>t.subject==='História'&&t.topic===name));
  }
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
- assert.ok(audit.coverage.deep_specific>=191);
+ assert.ok(audit.coverage.deep_specific>=190);
 });
