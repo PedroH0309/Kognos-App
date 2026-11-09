@@ -28,7 +28,7 @@ test('editorial pending inventory exposes exact Provão targets without duplicat
  }
  const orphan=registered.filter(spec=>!Array.from(unique.values()).some(t=>t.subject===spec.subject&&t.topic.startsWith(spec.prefix))).map(x=>x.key);
  // Aggregate the actionable backlog without treating registered prefixes as teacher-reviewed lessons.
- const bySubject=Object.fromEntries([...new Set(unique.values().map(x=>x.subject))].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(subject=>{
+ const bySubject=Object.fromEntries([...new Set([...unique.values()].map(x=>x.subject))].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(subject=>{
   const rows=[...unique.values()].filter(x=>x.subject===subject);
   const uncovered=rows.filter(x=>!registered.some(s=>s.subject===subject&&x.topic.startsWith(s.prefix)));
   return [subject,{total:rows.length,registered:rows.length-uncovered.length,pending:uncovered.length}];
