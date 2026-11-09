@@ -6,8 +6,9 @@ import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 import {provaoDepthAudit} from './provao-depth-coverage.test.ts';
 
-test('batch 43 contains five unique official subjects/topics with deep editorial chapters',()=>{
- assert.equal(provaoDepthBatch43Core.length,5);
+test('batch 43 retains only its genuinely new Doppler topic without duplicated registrations',()=>{
+ assert.equal(provaoDepthBatch43Core.length,1);
+ assert.equal(provaoDepthBatch43Core[0].topicStart,'Nível sonoro. Decibel. Efeito Doppler');
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length,'No duplicated registration');
  const report=provaoDepthAudit();
  for(const spec of provaoDepthBatch43Core){
@@ -39,5 +40,5 @@ test('batch 43 contains five unique official subjects/topics with deep editorial
   }
   assert.ok(!report.pending.some(p=>p.subject===spec.subject&&p.topic===spec.topicStart),'Not deep in audit: '+spec.topicStart);
  }
- assert.ok(report.coverage.deep_specific>=200,'Expected at least 200 unique Provão topics after batch 43');
+ assert.ok(report.coverage.deep_specific>=196,'Expected at least 196 unique Provão topics after deduplication');
 });
