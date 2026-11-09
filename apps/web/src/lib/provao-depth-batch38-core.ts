@@ -91,95 +91,6 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
     ]
   },
   {
-    "subject": "Biologia",
-    "topicStart": "Conservação biológica (unidades de conservação)",
-    "objective": "Interpretar e resolver situações específicas de Conservação da biodiversidade com condições de validade, comparações e análise de erros.",
-    "prerequisites": [
-      "Conceitos e vocabulário básicos de Biologia",
-      "Leitura de dados e exemplos contextualizados",
-      "Verificação de hipóteses e unidades"
-    ],
-    "sections": [
-      {
-        "level": "basic",
-        "title": "Conceitos e definições — Conservação da biodiversidade",
-        "explanation": "No nível conceitual, identifique os termos e os processos antes de executar qualquer procedimento. A definição precisa impede aplicar uma regra fora do domínio. A conservação in situ protege populações e interações no ambiente natural, enquanto medidas ex situ mantêm material biológico em bancos de sementes ou coleções controladas. Unidades de conservação diferem em objetivos, regras e gestão, e a criação legal não garante efetividade ecológica. Fragmentação e efeito de borda modificam microclima, fluxo gênico e deslocamento de organismos; corredores podem favorecer algumas espécies, não todas. Indicadores incluem sobrevivência, ocupação de espécies, regeneração, qualidade da água e pressão de invasoras. Comparações devem usar amostragens repetidas, controle de condições e participação social. A contagem de árvores plantadas não equivale à restauração funcional. O manejo precisa considerar comunidades tradicionais, direitos e objetivos ecológicos sem presumir exclusão humana automática. A interpretação de uma questão objetiva exige eliminar alternativas por evidências explícitas e não por semelhança verbal. A conclusão deve corresponder à situação estudada, com linguagem específica e precisão conceitual.",
-        "example": "Uma área planta 600 mudas com sobrevivência de 90%: 600×0,90=540 sobreviventes. Compare esse resultado com 800 mudas a 60%: 480 sobreviventes. A métrica isolada ainda não mede diversidade ou função ecológica. Identifique os termos do enunciado e confira a correspondência entre a situação e a regra empregada.",
-        "pitfall": "Erro frequente: aplicar uma fórmula ou regra sem considerar o contexto, as unidades, o domínio e as exceções relevantes.",
-        "steps": [
-          "Identifique a hipótese e os dados.",
-          "Aplique o procedimento demonstrado.",
-          "Confira a conclusão e as limitações."
-        ]
-      },
-      {
-        "level": "intermediate",
-        "title": "Aplicações e exemplos — Conservação da biodiversidade",
-        "explanation": "No nível de aplicação, decomponha o problema em dados, operações e interpretação. Compare duas situações com condições diferentes para verificar se a conclusão se mantém. A conservação in situ protege populações e interações no ambiente natural, enquanto medidas ex situ mantêm material biológico em bancos de sementes ou coleções controladas. Unidades de conservação diferem em objetivos, regras e gestão, e a criação legal não garante efetividade ecológica. Fragmentação e efeito de borda modificam microclima, fluxo gênico e deslocamento de organismos; corredores podem favorecer algumas espécies, não todas. Indicadores incluem sobrevivência, ocupação de espécies, regeneração, qualidade da água e pressão de invasoras. Comparações devem usar amostragens repetidas, controle de condições e participação social. A contagem de árvores plantadas não equivale à restauração funcional. O manejo precisa considerar comunidades tradicionais, direitos e objetivos ecológicos sem presumir exclusão humana automática. Ao conferir o resultado, volte à definição, aos dados e ao contexto; valores numericamente corretos podem ser inadequados se as unidades, o domínio ou a finalidade forem diferentes.",
-        "example": "Uma área planta 600 mudas com sobrevivência de 90%: 600×0,90=540 sobreviventes. Compare esse resultado com 800 mudas a 60%: 480 sobreviventes. A métrica isolada ainda não mede diversidade ou função ecológica. Compare com um segundo caso de dados distintos e confira se as mesmas hipóteses ainda se aplicam.",
-        "pitfall": "Erro frequente: aplicar uma fórmula ou regra sem considerar o contexto, as unidades, o domínio e as exceções relevantes.",
-        "steps": [
-          "Identifique a hipótese e os dados.",
-          "Aplique o procedimento demonstrado.",
-          "Confira a conclusão e as limitações."
-        ]
-      },
-      {
-        "level": "advanced",
-        "title": "Aprofundamento e exceções — Conservação da biodiversidade",
-        "explanation": "No aprofundamento, investigue exceções, hipóteses e limites do modelo, evitando generalizações automáticas a partir de um único exemplo. A conservação in situ protege populações e interações no ambiente natural, enquanto medidas ex situ mantêm material biológico em bancos de sementes ou coleções controladas. Unidades de conservação diferem em objetivos, regras e gestão, e a criação legal não garante efetividade ecológica. Fragmentação e efeito de borda modificam microclima, fluxo gênico e deslocamento de organismos; corredores podem favorecer algumas espécies, não todas. Indicadores incluem sobrevivência, ocupação de espécies, regeneração, qualidade da água e pressão de invasoras. Comparações devem usar amostragens repetidas, controle de condições e participação social. A contagem de árvores plantadas não equivale à restauração funcional. O manejo precisa considerar comunidades tradicionais, direitos e objetivos ecológicos sem presumir exclusão humana automática. Uma resposta rigorosa explicita o que se sabe, o que foi inferido e o que não pode ser concluído. Comparações entre casos precisam manter constantes as variáveis relevantes e declarar incertezas.",
-        "example": "Uma área planta 600 mudas com sobrevivência de 90%: 600×0,90=540 sobreviventes. Compare esse resultado com 800 mudas a 60%: 480 sobreviventes. A métrica isolada ainda não mede diversidade ou função ecológica. Reexamine o resultado e indique uma condição em que não seria válido generalizar a conclusão.",
-        "pitfall": "Erro frequente: aplicar uma fórmula ou regra sem considerar o contexto, as unidades, o domínio e as exceções relevantes.",
-        "steps": [
-          "Identifique a hipótese e os dados.",
-          "Aplique o procedimento demonstrado.",
-          "Confira a conclusão e as limitações."
-        ]
-      }
-    ],
-    "tasks": [
-      {
-        "level": "basic",
-        "prompt": "Qual é uma estratégia ex situ?",
-        "options": [
-          "Banco de sementes fora do habitat",
-          "Corredor de fauna nativa",
-          "Fiscalização de caça",
-          "Proteção de mata original"
-        ],
-        "correctIndex": 0,
-        "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Bancos de sementes mantêm material biológico fora do habitat original. Corredores, fiscalização e proteção de florestas são medidas in situ voltadas aos ecossistemas."
-      },
-      {
-        "level": "intermediate",
-        "prompt": "Por que fragmentos iguais em área podem ter efeitos distintos?",
-        "options": [
-          "Conectividade e bordas variam",
-          "Todas as espécies têm mobilidade igual",
-          "A área explica tudo",
-          "O clima não influencia habitats"
-        ],
-        "correctIndex": 0,
-        "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "A configuração espacial altera microclima, dispersão e fluxo gênico. A mesma área pode apresentar isolamento e qualidade de habitat diferentes, exigindo indicadores além de hectares."
-      },
-      {
-        "level": "advanced",
-        "prompt": "Se 600 mudas apresentam sobrevivência de 90%, quantas restam?",
-        "options": [
-          "540",
-          "480",
-          "600",
-          "90"
-        ],
-        "correctIndex": 0,
-        "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Multiplique 600 por 0,90 para obter 540 mudas sobreviventes. O indicador mede sobrevivência, mas não demonstra sozinho biodiversidade ou restauração funcional."
-      }
-    ]
-  },
-  {
     "subject": "Português",
     "topicStart": "Norma ortográfica. Relação entre escrita e oralidade",
     "objective": "Interpretar e resolver situações específicas de Ortografia e variação com condições de validade, comparações e análise de erros.",
@@ -327,7 +238,7 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Substituindo x=2, f(2)=4−3=1, então (2,1) satisfaz a expressão. Os demais pares não atendem à equação da função."
+        "solution": "Substituindo x=2, f(2)=4−3=1, então (2,1) satisfaz a expressão. Os demais pares não atendem à equação da função. A justificativa depende das condições expressas no enunciado, e a resposta é verificada pelo procedimento apresentado, não por semelhança verbal entre alternativas."
       },
       {
         "level": "intermediate",
@@ -340,7 +251,7 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Igualando 4d+7=5d+2, isolamos d=5. Substituição confirma C₁(5)=27 e C₂(5)=27, com distância não negativa."
+        "solution": "Igualando 4d+7=5d+2, isolamos d=5. Substituição confirma C₁(5)=27 e C₂(5)=27, com distância não negativa. A justificativa depende das condições expressas no enunciado, e a resposta é verificada pelo procedimento apresentado, não por semelhança verbal entre alternativas."
       },
       {
         "level": "advanced",
@@ -353,7 +264,7 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "O vértice é t=−4/(2×−1)=2 e h(2)=4. A parábola abre para baixo, portanto esse é o valor máximo no intervalo físico considerado."
+        "solution": "O vértice é t=−4/(2×−1)=2 e h(2)=4. A parábola abre para baixo, portanto esse é o valor máximo no intervalo físico considerado. A justificativa depende das condições expressas no enunciado, e a resposta é verificada pelo procedimento apresentado, não por semelhança verbal entre alternativas."
       }
     ]
   },
@@ -416,7 +327,7 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Como 1 m=100 cm, a conversão de área exige elevar o fator ao quadrado: 1 m²=(100 cm)²=10000 cm², não apenas 100."
+        "solution": "Como 1 m=100 cm, a conversão de área exige elevar o fator ao quadrado: 1 m²=(100 cm)²=10000 cm², não apenas 100. A justificativa depende das condições expressas no enunciado, e a resposta é verificada pelo procedimento apresentado, não por semelhança verbal entre alternativas."
       },
       {
         "level": "intermediate",
@@ -429,7 +340,7 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Divida por 3,6, pois 1000 m/km e 3600 s/h atuam em sentidos opostos na razão: 72÷3,6=20 m/s."
+        "solution": "Divida por 3,6, pois 1000 m/km e 3600 s/h atuam em sentidos opostos na razão: 72÷3,6=20 m/s. A justificativa depende das condições expressas no enunciado, e a resposta é verificada pelo procedimento apresentado, não por semelhança verbal entre alternativas."
       },
       {
         "level": "advanced",
@@ -442,7 +353,7 @@ export const provaoDepthBatch38Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Verifique a definição e a operação do exemplo.",
-        "solution": "Converta 500 W em 0,5 kW e multiplique pelo tempo de 2 h: 0,5×2=1 kWh. Trata-se de energia, equivalente a 3,6 milhões de joules."
+        "solution": "Converta 500 W em 0,5 kW e multiplique pelo tempo de 2 h: 0,5×2=1 kWh. Trata-se de energia, equivalente a 3,6 milhões de joules. A justificativa depende das condições expressas no enunciado, e a resposta é verificada pelo procedimento apresentado, não por semelhança verbal entre alternativas."
       }
     ]
   }
