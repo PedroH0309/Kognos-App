@@ -361,3 +361,43 @@ test('batch 36 adds five genuinely specific, objectively assessed Provão lesson
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length,'Deep registrations cannot be duplicated');
  assert.ok(report.coverage.deep_specific>=181,'Five new lessons must increase deep coverage from 176 to 181');
 });
+
+test('batch 37 strictly registers five substantive lessons and independent multiple-choice assessments',()=>{
+ const audit=provaoDepthAudit();
+ const cases=[
+  ['Química','Propriedade de substâncias moleculares, iônicas e metálicas'],
+  ['Física','Escalas termométricas. As escalas Celsius, Fahrenheit e Kelvin. Relação matemática entre elas'],
+  ['Biologia','Ausência de dominância, alelos letais e alelos múltiplos (polialelia)'],
+  ['História','Feudalismo e mundo feudal'],
+  ['Geografia','A cartografia como recurso para a compreensão espacial dos fenômenos geográficos']
+ ] as const;
+ for(const [subject,name] of cases){
+  const matches=curriculumTopics.filter(topic=>topic.subject===subject&&topic.topic===name&&topic.exams.includes('saresp'));
+  assert.equal(matches.length,1,'Official syllabus mismatch: '+subject+' / '+name);
+  const lesson=deepProvaoLesson(matches[0]);
+  assert.ok(lesson,'Missing deep specific lesson: '+name);
+  assert.equal(lesson.id,matches[0].id);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  assert.ok(lesson.prerequisites.length>=3);
+  assert.deepEqual(lesson.sections.map(section=>section.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(task=>task.level),['basic','intermediate','advanced']);
+  const prompts=new Set<string>();
+  for(let i=0;i<3;i++){
+   const section=lesson.sections[i],task=lesson.tasks[i];
+   assert.ok(section.explanation.length>=750,'Insufficient specific teaching: '+name);
+   assert.ok(section.example.length>=180,'Worked example too short: '+name);
+   assert.ok(section.pitfall.length>=50&&section.steps.length>=3);
+   assert.ok(!prompts.has(task.prompt));prompts.add(task.prompt);
+   const choice=lessonTaskChoice(lesson,task);
+   assert.equal(choice.source,'editorial');
+   assert.equal(choice.options.length,4);
+   assert.equal(new Set(choice.options.map(s=>s.trim().toLowerCase())).size,4);
+   assert.ok(choice.correctIndex>=0&&choice.correctIndex<4);
+   assert.ok(choice.explanation.length>=140);
+   assert.doesNotMatch(choice.instruction,/resolução de referência/);
+  }
+  assert.ok(!audit.pending.some(topic=>topic.subject===subject&&topic.topic===name));
+ }
+ assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
+ assert.ok(audit.coverage.deep_specific>=186,'Expected 181 + five new topics');
+});
