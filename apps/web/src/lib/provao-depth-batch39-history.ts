@@ -1,6 +1,6 @@
 import type {DeepTopicSpec} from './provao-depth-lessons.ts';
 /** Original Kognos curriculum: non-official; pedagogical review pending. */
-export const provaoDepthBatch39History:readonly DeepTopicSpec[]=[[
+export const provaoDepthBatch39History:readonly DeepTopicSpec[]=[
   {
     "subject": "História",
     "topicStart": "Vida e produção cultural no Medievo europeu e africano",
