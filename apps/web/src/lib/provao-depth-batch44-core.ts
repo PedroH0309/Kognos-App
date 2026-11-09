@@ -162,7 +162,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Releia a definição e confronte as condições de validade antes de decidir.",
-        "solution": "A molalidade é 1/2=0,5 mol/kg. Aplicando ΔTb=Kbmi, obtemos 0,512×0,5×1=0,256 °C para solução ideal diluída."
+        "solution": "A molalidade é 1/2=0,5 mol/kg. Aplicando ΔTb=Kbmi, obtemos 0,512×0,5×1=0,256 °C para solução ideal diluída. Não use molaridade em lugar de molalidade na equação. A conclusão depende das condições descritas no enunciado, sem extrapolação para sistemas diferentes."
       },
       {
         "level": "advanced",
@@ -327,7 +327,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 1,
         "hint": "Releia a definição e confronte as condições de validade antes de decidir.",
-        "solution": "A massa da solução é 110 g. A fração mássica é 10/110=0,0909, correspondente a aproximadamente 9,09%, e não 10%."
+        "solution": "A massa da solução é 110 g. A fração mássica é 10/110=0,0909, correspondente a aproximadamente 9,09%, e não 10%. Não use massa do solvente como denominador da porcentagem em massa da solução. A conclusão depende das condições descritas no enunciado, sem extrapolação para sistemas diferentes."
       },
       {
         "level": "intermediate",
@@ -340,7 +340,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 2,
         "hint": "Releia a definição e confronte as condições de validade antes de decidir.",
-        "solution": "Sem perda de soluto, C1V1=C2V2. Portanto C2=2,0×100/500=0,40 mol/L; o volume usado é o volume final."
+        "solution": "Sem perda de soluto, C1V1=C2V2. Portanto C2=2,0×100/500=0,40 mol/L; o volume usado é o volume final. Não some volumes sem considerar o volume final medido. A conclusão depende das condições descritas no enunciado, sem extrapolação para sistemas diferentes."
       },
       {
         "level": "advanced",
@@ -353,7 +353,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Releia a definição e confronte as condições de validade antes de decidir.",
-        "solution": "O NaCl dissocia-se em Na⁺ e Cl⁻ móveis, produzindo portadores de carga. A glicose e a sacarose dissolvem-se como moléculas neutras."
+        "solution": "O NaCl dissocia-se em Na⁺ e Cl⁻ móveis, produzindo portadores de carga. A glicose e a sacarose dissolvem-se como moléculas neutras. Não confunda eletrólito forte com solução necessariamente concentrada. A conclusão depende das condições descritas no enunciado, sem extrapolação para sistemas diferentes."
       }
     ]
   },
@@ -416,7 +416,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Releia a definição e confronte as condições de validade antes de decidir.",
-        "solution": "Oito elétrons são distribuídos em 1s², 2s² e 2p⁴, respeitando capacidades dos subníveis e somando 2+2+4=8."
+        "solution": "Oito elétrons são distribuídos em 1s², 2s² e 2p⁴, respeitando capacidades dos subníveis e somando 2+2+4=8. Não coloque oito elétrons no subnível 2p: sua capacidade máxima é seis. A conclusão depende das condições descritas no enunciado, sem extrapolação para sistemas diferentes."
       },
       {
         "level": "intermediate",
