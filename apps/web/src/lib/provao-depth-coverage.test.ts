@@ -489,3 +489,40 @@ test('batch 40 covers four new history topics and preserves the existing Destino
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
  assert.ok(audit.coverage.deep_specific>=190);
 });
+
+test('batch 41 registers five new exact syllabus topics with substantial original objective lessons',()=>{
+ const names=[
+ ['Biologia','Níveis de organização da vida; classificação e nomenclatura binomial de Lineu; categorias…'],
+ ['Biologia','Fisiologia humana básica: Compreensão dos principais sistemas do corpo humano e sua relação com…'],
+ ['Biologia','Ideias evolucionistas de J. B. Lamarck, C. Darwin, A. R. Wallace; ideias fixistas; Teoria…'],
+ ['Biologia','Evolução humana (Hominídeos)'],
+ ['História','A democracia ateniense e a cidadania em Roma']
+ ] as const;
+ const audit=provaoDepthAudit();
+ assert.equal(new Set(names.map(([subject,topic])=>subject+'\\0'+topic)).size,5);
+ for(const [subject,name] of names){
+  const matches=curriculumTopics.filter(t=>t.subject===subject&&t.topic===name&&t.exams.includes('saresp'));
+  assert.equal(matches.length,1,'Missing exact official topic: '+subject+' / '+name);
+  const lesson=deepProvaoLesson(matches[0]);assert.ok(lesson,'Missing deep lesson '+name);
+  assert.equal(lesson.id,matches[0].id);
+  assert.ok(lesson.authorship.includes('sem homologação docente'));
+  assert.ok(lesson.objective.length>=75&&lesson.prerequisites.length>=3);
+  assert.deepEqual(lesson.sections.map(s=>s.level),['basic','intermediate','advanced']);
+  assert.deepEqual(lesson.tasks.map(t=>t.level),['basic','intermediate','advanced']);
+  const prompts=new Set<string>();
+  for(let i=0;i<3;i++){
+   const section=lesson.sections[i],task=lesson.tasks[i];
+   assert.ok(section.explanation.length>=750&&section.example.length>=180&&section.pitfall.length>=50&&section.steps.length>=3);
+   assert.ok(!prompts.has(task.prompt));prompts.add(task.prompt);
+   const choice=lessonTaskChoice(lesson,task);
+   assert.equal(choice.source,'editorial');
+   assert.equal(choice.options.length,4);
+   assert.equal(new Set(choice.options.map(v=>v.trim().toLowerCase())).size,4);
+   assert.ok(choice.correctIndex>=0&&choice.correctIndex<4);
+   assert.ok(choice.explanation.length>=140);
+  }
+  assert.ok(!audit.pending.some(t=>t.subject===subject&&t.topic===name));
+ }
+ assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
+ assert.ok(audit.coverage.deep_specific>=195,'Batch 41 should raise depth coverage from 190 to at least 195');
+});
