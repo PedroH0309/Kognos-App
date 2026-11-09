@@ -1,21 +1,28 @@
-# Kognos — retirar repertório ETEC e indicador “100%” — 2026-11-08
+# Kognos — remoção completa da ETEC das opções e conteúdos públicos
 
-## Escopo solicitado
-Remover o repertório específico do Vestibulinho ETEC **do site do estudante**, sem destruir históricos, respostas, IDs ou dados existentes. Retirar o percentual de cobertura de prática que pode aparecer como **100%**, embora seja apenas uma métrica de temas com tentativas registradas, não de aprendizagem concluída.
+## Solicitação correta
 
-## Implementação
-- Lista pública de exames centralizada em `publicExamIds`: ENEM, Fuvest, Provão Paulista e UNESP/Vunesp. O legado `ExamId = 'etec'` continua interpretável para registros antigos.
-- Retirado o exame ETEC das opções visíveis de cadastro, Estudos, Disciplinas, Trilhas legadas, banco/geração de questões, Matrizes e painel editorial. A opção genérica de objetivo técnico tem nome **Curso técnico** e deixa de implicar um exame ETEC.
-- O catálogo curricular público percorre somente os exames ativos; tópicos que existiam exclusivamente no roteiro ETEC deixam de ser listados pela API de conteúdo. Conteúdos compartilhados com outros exames continuam com os mesmos IDs.
-- `activeSyllabi()` e `examForStudent()` ignoram o foco ETEC salvo ao decidir o currículo visível. Os valores originais do perfil continuam disponíveis, sem migração destrutiva.
-- A biblioteca antiga ainda pode interpretar registros históricos ETEC, mas o catálogo geral omite tópicos gerados apenas para o exame desativado e as novas sugestões de geração não priorizam ETEC.
-- Fontes editoriais antigas associadas à ETEC permanecem no banco; são filtradas somente na interface de revisão.
-- No painel **Disciplinas** e no resumo das trilhas antigas, substituído o selo de porcentagem de cobertura por **N de M temas praticados**. Assim o usuário não interpreta “100%” como domínio de todo o conteúdo. Barras de progresso permanecem baseadas em dados reais; percentuais de acerto de questões e outros indicadores legítimos permanecem inalterados.
+A expressão **“100%”** significa retirar inteiramente o **repertório ETEC** do site. Ela **não** se refere à porcentagem de progresso dos alunos. Percentuais e indicadores de cobertura permanecem exatamente como antes.
 
-## Proteções
-Nenhuma exclusão ou atualização automática de respostas e perfis; nenhum ajuste de RLS, migrations, Auth, gabaritos ou chaves de IA. Conteúdo original do Kognos, não oficial e sem homologação docente. A opção ETEC fica somente como formato histórico interno para compatibilidade.
+## O que deixa de ser exibido
+
+- ETEC/Vestibulinho nas opções de prova do cadastro, dos filtros de Estudos, Disciplinas, laboratório/Trilhas legadas, questões, fontes e painel editorial.
+- Tópicos curriculares **exclusivos** da ETEC nas listas de conteúdo dos estudantes; temas compartilhados com ENEM, Fuvest, Provão Paulista e Vunesp continuam.
+- Fontes históricas ETEC nas listas de revisão; os registros continuam no banco.
+- Associações à ETEC nas referências de aulas visíveis.
+- Roteiro ETEC anteriormente salvo em perfis não volta automaticamente aos filtros, sem mudar o histórico do usuário.
+
+## O que foi preservado
+
+- O catálogo interno, com IDs e documentos ETEC antigos, para não quebrar progresso, provas, chaves de questões, testes e respostas salvas.
+- As rotas históricas de leitura, referências oficiais, checagens de questões e validações de segurança.
+- **Porcentagens de progresso e “100%” em todos os painéis**, pois sua remoção foi fruto de um mal-entendido.
+- Todos os assuntos dos demais exames, os gabaritos e os dados dos estudantes.
+
+Não há apagamento destrutivo do Supabase. Os filtros públicos utilizam a lista centralizada `publicExamIds`. A interface de Estudos filtra somente tópicos exclusivos ETEC depois de receber o catálogo existente. A interface do acervo de provas não publica fontes ETEC.
 
 ## Validação
+
 Testes de unidade: `apps/web/src/lib/public-exam-visibility.test.ts`.
-Testes estruturais: `tests/hide-etec-and-coverage-design.test.mjs`.
-A CI do PR em rascunho deve passar por unitários, PostgreSQL de dois usuários, design, TypeScript e build antes de qualquer merge ou deploy. Revisão visual permanece recomendada.
+Testes de interface: `tests/hide-etec-and-coverage-design.test.mjs`.
+Exigir a conclusão de unitários, segurança com dois usuários, design, TypeScript e build no GitHub Actions. PR em rascunho, sem merge/deploy sem revisão.
