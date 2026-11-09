@@ -66,14 +66,14 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
         "level": "intermediate",
         "prompt": "Qual nome segue a nomenclatura binomial?",
         "options": [
-          "homo Sapiens",
+          "sapiens",
           "Homo sapiens",
-          "HOMO SAPIENS",
-          "sapiens Homo"
+          "Homo",
+          "Homo sapiens sapiens"
         ],
         "correctIndex": 1,
         "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
-        "solution": "A nomenclatura binomial exige gênero iniciado por maiúscula e epíteto específico em minúscula, preferencialmente em itálico. O conjunto Homo sapiens identifica a espécie."
+        "solution": "O nome binomial de uma espécie combina o gênero Homo, com inicial maiúscula, e o epíteto específico sapiens, em minúscula: Homo sapiens. A opção com três termos acrescenta um epíteto subespecífico, portanto não é um binômio. Gênero ou epíteto isolados não identificam corretamente a espécie. Na apresentação tipográfica, os dois termos são normalmente grafados em itálico."
       },
       {
         "level": "advanced",
