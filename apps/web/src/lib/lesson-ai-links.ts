@@ -74,7 +74,7 @@ export function inferLegacyLessonId(institution:ExamId,subject:string,topic:stri
 export function lessonGenerationPreset(lessonId:string,preferred?:ExamId){
  const lesson=findLearningLesson(lessonId);
  if(!lesson)return null;
- const institutions:ExamId[]=preferred&&preferred!=='etec'?[preferred,'enem','fuvest','vunesp','saresp']:['enem','fuvest','vunesp','saresp'];
+ const institutions:ExamId[]=preferred?[preferred,'enem','etec','fuvest','vunesp','saresp']:['enem','etec','fuvest','vunesp','saresp'];
  for(const institution of institutions){const topic=linkedExamTopic(lessonId,institution);if(topic)return {lessonId:lesson.id,institution,subject:lesson.subject,topic};}
  return null;
 }
