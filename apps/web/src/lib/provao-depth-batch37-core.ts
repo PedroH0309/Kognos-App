@@ -359,7 +359,7 @@ export const provaoDepthBatch37Core:readonly DeepTopicSpec[]=[
   },
   {
     "subject": "Geografia",
-    "topicStart": "Cartografia",
+    "topicStart": "A cartografia como recurso para a compreensão espacial dos fenômenos geográficos",
     "objective": "Interpretar escalas cartográficas, projeções, coordenadas e distorções, distinguindo cálculos métricos de escolhas políticas na representação espacial.",
     "prerequisites": [
       "Razão e proporção",
