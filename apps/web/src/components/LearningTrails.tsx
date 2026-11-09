@@ -199,7 +199,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     </div>
    </div>
    <div className="learning-journey-summary-progress">
-    <div className="learning-journey-progress-label"><span>Temas praticados</span><strong>{historyReady?`${connected.practiced} de ${connected.total}`:'—'}</strong></div>
+    <div className="learning-journey-progress-label"><span>Prática registrada</span><strong>{historyReady?`${progress}%`:'—'}</strong></div>
     <div className="learning-progress-track" role="progressbar" aria-label="Tópicos com questões respondidas" aria-valuemin={0} aria-valuemax={connected.total} aria-valuenow={historyReady?connected.practiced:0}><span style={{width:`${historyReady?progress:0}%`}}/></div>
     <small>{historyReady&&connected.review>0?`${connected.review} tópico(s) indicados para revisão`: 'Evolução por tentativas, não por domínio comprovado'}</small>
    </div>
