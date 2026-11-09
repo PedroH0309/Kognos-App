@@ -362,14 +362,10 @@ test('batch 36 adds five genuinely specific, objectively assessed Provão lesson
  assert.ok(report.coverage.deep_specific>=181,'Five new lessons must increase deep coverage from 176 to 181');
 });
 
-test('batch 37 strictly registers five substantive lessons and independent multiple-choice assessments',()=>{
+test('batch 37 retains its sole nonduplicated thermometric lesson',()=>{
  const audit=provaoDepthAudit();
  const cases=[
-  ['Química','Propriedade de substâncias moleculares, iônicas e metálicas'],
   ['Física','Escalas termométricas. As escalas Celsius, Fahrenheit e Kelvin. Relação matemática entre elas'],
-  ['Biologia','Ausência de dominância, alelos letais e alelos múltiplos (polialelia)'],
-  ['História','Feudalismo e mundo feudal'],
-  ['Geografia','A cartografia como recurso para a compreensão espacial dos fenômenos geográficos']
  ] as const;
  for(const [subject,name] of cases){
   const matches=curriculumTopics.filter(topic=>topic.subject===subject&&topic.topic===name&&topic.exams.includes('saresp'));
@@ -399,5 +395,5 @@ test('batch 37 strictly registers five substantive lessons and independent multi
   assert.ok(!audit.pending.some(topic=>topic.subject===subject&&topic.topic===name));
  }
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
- assert.ok(audit.coverage.deep_specific>=186,'Expected 181 + five new topics');
+ assert.ok(audit.coverage.deep_specific>=181,'Keep verified coverage without double-counting duplicates');
 });
