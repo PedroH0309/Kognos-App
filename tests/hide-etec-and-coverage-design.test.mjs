@@ -14,7 +14,7 @@ const paths=[
  'apps/web/src/components/ContentAdmin.tsx'
 ];
 
-test('public exam selectors show only the active exam catalogue, not ETEC',()=>{
+test('ETEC is absent from every public exam dropdown without deleting old blueprints',()=>{
  const blueprint=read('apps/web/src/lib/exam-blueprints.ts');
  assert.match(blueprint,/publicExamIds:readonly ExamId\[\]=\['enem','fuvest','saresp','vunesp'\]/);
  for(const path of paths){
@@ -23,7 +23,8 @@ test('public exam selectors show only the active exam catalogue, not ETEC',()=>{
   assert.doesNotMatch(source,/Object\.entries\(examBlueprints\)/,path);
  }
 });
-test('a legacy ETEC profile does not reappear in active catalogue or the account summary',()=>{
+
+test('legacy ETEC profiles do not reactivate the hidden exam on the website',()=>{
  const app=read(paths[0]);
  const syllabus=read('apps/web/src/lib/exam-syllabus.ts');
  assert.match(syllabus,/profile\.examFocus==='etec'\?null:profile\.examFocus/);
@@ -31,26 +32,26 @@ test('a legacy ETEC profile does not reappear in active catalogue or the account
  assert.match(app,/p\.examFocus!=='etec'/);
  assert.match(app,/\.filter\(e=>e!=='etec'\)\.map\(e=>examBlueprints\[e\]\.label\)/);
 });
-test('catalogue endpoint no longer enumerates ETEC-only course topics',()=>{
+
+test('student study discovery hides ETEC-only material without altering internal catalogue',()=>{
  const cat=read('apps/web/src/lib/curriculum-catalog.ts');
- assert.match(cat,/for\(const exam of publicExamIds\)/);
- assert.doesNotMatch(cat,/for\(const exam of Object\.keys\(examBlueprints\)/);
+ const flow=read('apps/web/src/components/CurriculumStudyFlow.tsx');
+ assert.match(cat,/for\(const exam of Object\.keys\(examBlueprints\)/);
+ assert.match(flow,/setTopics\(\(response\.topics as CurriculumListTopic\[\]\)\.filter\(topic=>/);
+ assert.match(flow,/topic\.exams\.some\(exam=>exam!=='etec'\)/);
  assert.match(read('apps/web/src/app/api/content/route.ts'),/curriculumTopics/);
 });
-test('the misleading 100% label for practice coverage is replaced by actual topic counts',()=>{
+
+test('100-percent progress indicators remain unchanged, as explicitly requested',()=>{
  const subjects=read('apps/web/src/components/SubjectDashboard.tsx');
  const trails=read('apps/web/src/components/LearningTrails.tsx');
- assert.match(subjects,/>Temas praticados<\/strong>/);
- assert.match(subjects,/\$\{snapshot\.practiced\}\/\$\{snapshot\.total\}/);
- assert.doesNotMatch(subjects,/\$\{snapshot\.coverage\}%/);
- assert.match(trails,/>Temas praticados<\/span>/);
- assert.match(trails,/\$\{connected\.practiced\} de \$\{connected\.total\}/);
- assert.doesNotMatch(trails,/\$\{progress\}%/);
- // Progress bars still indicate the proportion of actual recorded attempts.
- assert.match(subjects,/width:\x60\$\{ready\?snapshot\.coverage:0\}%\x60/);
- assert.match(trails,/aria-label="Tópicos com questões respondidas"/);
+ assert.match(subjects,/>Cobertura de prática<\/strong>/);
+ assert.match(subjects,/\$\{snapshot\.coverage\}%/);
+ assert.match(trails,/>Prática registrada<\/span>/);
+ assert.match(trails,/\$\{progress\}%/);
 });
-test('ETEC historic references remain intact without exposing them in the source workspace',()=>{
+
+test('ETEC historic source records remain in the database but not in public listings',()=>{
  const source=read('apps/web/src/components/ExamSources.tsx');
  assert.match(source,/source\.institution!=='etec'/);
  assert.match(source,/topic\.institution!=='etec'/);
