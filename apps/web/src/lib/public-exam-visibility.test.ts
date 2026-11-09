@@ -14,9 +14,9 @@ test('ETEC is no longer a public study track, while historic blueprint still exi
  assert.deepEqual(publicExamEntries().map(([id])=>id),publicExamIds);
  assert.ok(!publicExamEntries().some(([id,b])=>id==='etec'||b.label.includes('ETEC')));
 });
-test('new public curriculum omits ETEC-only topics without changing stable IDs elsewhere',()=>{
+test('historical curriculum retains stable ETEC IDs but all other exam content remains reachable',()=>{
  assert.ok(curriculumTopics.length>0);
- assert.ok(curriculumTopics.every(topic=>!topic.exams.includes('etec')));
+ assert.ok(curriculumTopics.some(topic=>topic.exams.includes('etec')));
  for(const [id,blueprint] of publicExamEntries()){
   for(const [subject,topics] of Object.entries(blueprint.subjects)){
    for(const topic of topics)assert.ok(
