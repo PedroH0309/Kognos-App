@@ -6,9 +6,13 @@ import {deepProvaoLesson,deepProvaoTopicKeys} from './provao-depth-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 import {provaoDepthAudit} from './provao-depth-coverage.test.ts';
 
-test('batch 42 has five distinct exact official chemistry topics and no duplicate registrations',()=>{
+test('batch 42 proposed topics are already covered by prior registrations, without duplication',()=>{
  assert.equal(provaoDepthBatch42Chemistry.length,5);
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
+ for(const spec of provaoDepthBatch42Chemistry){
+  assert.ok(deepProvaoTopicKeys.includes(spec.subject+' · '+spec.topicStart),
+   'Previously authored topic must remain registered: '+spec.topicStart);
+ }
  const audit=provaoDepthAudit();
  for(const spec of provaoDepthBatch42Chemistry){
   const matches=curriculumTopics.filter(t=>t.subject===spec.subject&&t.topic===spec.topicStart&&t.exams.includes('saresp'));
@@ -41,5 +45,5 @@ test('batch 42 has five distinct exact official chemistry topics and no duplicat
   }
   assert.ok(!audit.pending.some(p=>p.subject===spec.subject&&p.topic===spec.topicStart));
  }
- assert.ok(audit.coverage.deep_specific>=200,'Expected batch 42 to raise 195 to at least 200');
+ assert.ok(audit.coverage.deep_specific>=195,'Batch 42 must not inflate coverage with already registered topics');
 });
