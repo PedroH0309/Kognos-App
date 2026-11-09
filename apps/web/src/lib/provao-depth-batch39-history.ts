@@ -353,7 +353,7 @@ export const provaoDepthBatch39History:readonly DeepTopicSpec[]=[
         ],
         "correctIndex": 0,
         "hint": "Considere a cronologia e as evidências antes de escolher.",
-        "solution": "No início, 10000/100000=10%; depois, 15000/200000=7,5%. A população urbana absoluta cresceu, mas sua participação relativa diminuiu."
+        "solution": "No início, 10000/100000=10%; depois, 15000/200000=7,5%. A população urbana absoluta cresceu, mas sua participação relativa diminuiu. A comparação exige usar a mesma base de cálculo para ambas as datas e não confundir quantidade absoluta com proporção da população."
       }
     ]
   },
