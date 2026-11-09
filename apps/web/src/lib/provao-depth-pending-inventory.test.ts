@@ -27,12 +27,22 @@ test('editorial pending inventory exposes exact Provão targets without duplicat
   }
  }
  const orphan=registered.filter(spec=>!Array.from(unique.values()).some(t=>t.subject===spec.subject&&t.topic.startsWith(spec.prefix))).map(x=>x.key);
+ // Aggregate the actionable backlog without treating registered prefixes as teacher-reviewed lessons.
+ const bySubject=Object.fromEntries([...new Set(unique.values().map(x=>x.subject))].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(subject=>{
+  const rows=[...unique.values()].filter(x=>x.subject===subject);
+  const uncovered=rows.filter(x=>!registered.some(s=>s.subject===subject&&x.topic.startsWith(s.prefix)));
+  return [subject,{total:rows.length,registered:rows.length-uncovered.length,pending:uncovered.length}];
+ }));
  const priority=['Química','Física','Biologia','História'];
  pending.sort((a,b)=>{
   const ai=priority.indexOf(a.subject),bi=priority.indexOf(b.subject);
   return (ai<0?99:ai)-(bi<0?99:bi)||a.subject.localeCompare(b.subject,'pt-BR')||a.grade-b.grade||a.topic.localeCompare(b.topic,'pt-BR');
  });
- console.log('PROVAO_PENDING_EXACT_INVENTORY '+JSON.stringify({total:unique.size,registered:registered.length,matched:matched.size,pending,overlaps,orphan}));
+ console.log('PROVAO_PENDING_EXACT_INVENTORY '+JSON.stringify({total:unique.size,registered:registered.length,matched:matched.size,pending,bySubject,overlaps,orphan}));
+ assert.equal(Object.values(bySubject).reduce((sum,row)=>sum+row.pending,0),pending.length,
+  'Subject pending counts must reconcile with the exact inventory');
+ assert.equal(Object.values(bySubject).reduce((sum,row)=>sum+row.total,0),unique.size,
+  'Subject totals must reconcile with the syllabus');
  assert.equal(unique.size,364,'The Provão syllabus includes 360 topics and four writing criteria');
  assert.equal(pending.length+Array.from(unique.values()).filter(t=>registered.some(s=>s.subject===t.subject&&t.topic.startsWith(s.prefix))).length,unique.size);
 });
