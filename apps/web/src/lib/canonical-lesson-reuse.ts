@@ -38,17 +38,13 @@ export function verifiedCanonicalLessonLinks():CanonicalLessonLink[]{
 }
 
 
-// Explicitly reviewed equivalent scope: epistemological contrast between
-// rationalist and empiricist accounts of knowledge. Do not generalize this
-// to all philosophy-of-science or history-of-philosophy syllabus headings.
-export const reviewedSemanticAliases = [
-  {
-    subject:'Filosofia',
-    targetTitle:'Racionalismo e empirismo',
-    sourceTitle:'As abordagens racionalistas e empiristas do conhecimento',
-    rationale:'Both cover the epistemological opposition of reason and experience, including claims, evidence and limits; this alias does not cover unrelated Kantian or scientific-method units.'
-  }
-] as const;
+/** No non-exact semantic alias is approved until BOTH real catalog entries,
+ * their deep source and equivalent curricular scope have been verified.
+ * The earlier rationalism/empiricism alias referenced a nonexistent target.
+ */
+export const reviewedSemanticAliases: readonly {
+  subject:string;targetTitle:string;sourceTitle:string;rationale:string;
+}[] = [];
 
 export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
   if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
