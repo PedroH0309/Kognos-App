@@ -66,6 +66,21 @@ import {provaoDepthBatch31ProtozoaFungi} from './provao-depth-batch31-protozoa-f
 import {provaoDepthBatch31AbolitionImmigration} from './provao-depth-batch31-abolition-immigration.ts';
 import {provaoDepthBatch31Imperialism} from './provao-depth-batch31-imperialism.ts';
 import {provaoDepthBatch32Core} from './provao-depth-batch32-core.ts';
+import {provaoDepthBatch34LanguageGenetics} from './provao-depth-batch34-language-genetics.ts';
+import {provaoDepthBatch34PhysicsHistory} from './provao-depth-batch34-physics-history.ts';
+import {provaoDepthBatch35Sciences} from './provao-depth-batch35-sciences.ts';
+import {provaoDepthBatch35HistoryMixtures} from './provao-depth-batch35-history-mixtures.ts';
+import {provaoDepthBatch36Science} from './provao-depth-batch36-science.ts';
+import {provaoDepthBatch36History} from './provao-depth-batch36-history.ts';
+import {provaoDepthBatch37Core} from './provao-depth-batch37-core.ts';
+import {provaoDepthBatch38Core} from './provao-depth-batch38-core.ts';
+import {provaoDepthBatch39History} from './provao-depth-batch39-history.ts';
+import {provaoDepthBatch40History} from './provao-depth-batch40-history.ts';
+import {provaoDepthBatch41Core} from './provao-depth-batch41-core.ts';
+
+import {provaoDepthBatch43Core} from './provao-depth-batch43-core.ts';
+import {provaoDepthBatch44Core} from './provao-depth-batch44-core.ts';
+import {provaoDepthBatch45Physics} from './provao-depth-batch45-physics.ts';
 
 export type DeepTopicSpec={
  subject:string;
@@ -75,7 +90,13 @@ export type DeepTopicSpec={
  sections:CourseSection[];
  tasks:CourseTask[];
 };
-const all:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core,...provaoDepthBatch23Core,...provaoDepthBatch24Core,...provaoDepthBatch25Core,...provaoDepthBatch26Core,...provaoDepthBatch27Optics,...provaoDepthBatch27Waves,...provaoDepthBatch27Investigation,...provaoDepthBatch27Destiny,...provaoDepthBatch27Monopolies,...provaoDepthBatch28Thermochemistry,...provaoDepthBatch28HeatEngines,...provaoDepthBatch28Conservation,...provaoDepthBatch28Nationalism,...provaoDepthBatch28Labour,...provaoDepthBatch29Water,...provaoDepthBatch29GasWork,...provaoDepthBatch29Nutrition,...provaoDepthBatch29Coffee,...provaoDepthBatch29SocialIdeas,...provaoDepthBatch29Isomerism,...provaoDepthBatch29Eclipses,...provaoDepthBatch29Virology,...provaoDepthBatch30Organics,...provaoDepthBatch30Dispersion,...provaoDepthBatch31Faraday,...provaoDepthBatch31Capacitors,...provaoDepthBatch31ProtozoaFungi,...provaoDepthBatch31AbolitionImmigration,...provaoDepthBatch31Imperialism,...provaoDepthBatch32Core];
+const raw:readonly DeepTopicSpec[]=[...provaoDepthScienceAndHistory,...provaoDepthHumanitiesAndLanguage,...provaoDepthBatch02Science,...provaoDepthBatch02MathHumanities,...provaoDepthBatch02LanguagesSociety,...provaoDepthBatch03Science,...provaoDepthBatch03HistoryGeography,...provaoDepthBatch04Core,...provaoDepthBatch05Stem,...provaoDepthBatch06MechanicsMath,...provaoDepthBatch06ScienceHistory,...provaoDepthBatch07Sciences,...provaoDepthBatch07MathHistory,...provaoDepthBatch08Languages,...provaoDepthBatch09Humanities,...provaoDepthBatch10GeoEthics,...provaoDepthBatch11Core,...provaoDepthBatch12StemHistory,...provaoDepthBatch13Core,...provaoDepthBatch14Core,...provaoDepthBatch15Core,...provaoDepthBatch16Core,...provaoDepthBatch17Core,...provaoDepthBatch18Core,...provaoDepthBatch19Core,...provaoDepthBatch20Core,...provaoDepthBatch21Core,...provaoDepthBatch22Core,...provaoDepthBatch23Core,...provaoDepthBatch24Core,...provaoDepthBatch25Core,...provaoDepthBatch26Core,...provaoDepthBatch27Optics,...provaoDepthBatch27Waves,...provaoDepthBatch27Investigation,...provaoDepthBatch27Destiny,...provaoDepthBatch27Monopolies,...provaoDepthBatch28Thermochemistry,...provaoDepthBatch28HeatEngines,...provaoDepthBatch28Conservation,...provaoDepthBatch28Nationalism,...provaoDepthBatch28Labour,...provaoDepthBatch29Water,...provaoDepthBatch29GasWork,...provaoDepthBatch29Nutrition,...provaoDepthBatch29Coffee,...provaoDepthBatch29SocialIdeas,...provaoDepthBatch29Isomerism,...provaoDepthBatch29Eclipses,...provaoDepthBatch29Virology,...provaoDepthBatch30Organics,...provaoDepthBatch30Dispersion,...provaoDepthBatch31Faraday,...provaoDepthBatch31Capacitors,...provaoDepthBatch31ProtozoaFungi,...provaoDepthBatch31AbolitionImmigration,...provaoDepthBatch31Imperialism,...provaoDepthBatch32Core,...provaoDepthBatch34LanguageGenetics,...provaoDepthBatch34PhysicsHistory,...provaoDepthBatch35Sciences,...provaoDepthBatch35HistoryMixtures,...provaoDepthBatch36Science,...provaoDepthBatch36History,...provaoDepthBatch37Core,...provaoDepthBatch38Core,...provaoDepthBatch39History,...provaoDepthBatch40History,...provaoDepthBatch41Core,...provaoDepthBatch43Core,...provaoDepthBatch44Core,...provaoDepthBatch45Physics];
+// A later authored revision of the same official topic supersedes its earlier edition.
+// Keep only one registration per exact subject/topic label; the newest lesson wins.
+// This preserves the updated batch 44 reasoning without double-counting coverage.
+const latestByTopic=new Map<string,DeepTopicSpec>();
+for(const spec of raw)latestByTopic.set(spec.subject+'\\0'+spec.topicStart,spec);
+const all:readonly DeepTopicSpec[]=[...latestByTopic.values()];
 export const deepProvaoTopicKeys=all.map(spec=>spec.subject+' · '+spec.topicStart);
 
 export function deepProvaoLesson(topic:CurriculumTopic):CourseLesson|null{

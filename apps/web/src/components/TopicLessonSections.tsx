@@ -43,7 +43,8 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   lesson.review==='introductory'?(individuallyAuthored?'AULA AUTORAL · REVISÃO DOCENTE PENDENTE':'MATERIAL DE ESTUDO · REVISÃO DOCENTE PENDENTE'):
   'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
- const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>t.level===section.level)
+ const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>
+  t.level===section.level&&lessonTaskChoice(lesson,t).source==='editorial')
   .map((_,i)=>idFor(section.level,i))):introChoice?['intro']:[];
  const answered=exerciseIds.filter(id=>Object.hasOwn(choiceAnswers,id)).length;
  function updateChoice(id:string,correct:boolean){
@@ -67,9 +68,10 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   </div>}
   {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction} onTutor={onTutor}/>}
   {view==='activities'&&<>
+   {exerciseIds.length===0&&<p className="k-lesson-unavailable" role="status">Ainda não há questões objetivas específicas e verificadas para esta aula. Os enunciados abertos e distratores de outras disciplinas não são exibidos como alternativas.</p>}
    {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Questões de alternativas respondidas: {answered} de {exerciseIds.length}. Este treino é local; as respostas não são registradas como nota ou domínio.</p>}
    {lesson&&lesson.sections.map((section,i)=>{
-    const tasks=lesson.tasks.filter(task=>task.level===section.level);
+    const tasks=lesson.tasks.filter(task=>task.level===section.level&&lessonTaskChoice(lesson,task).source==='editorial');
     return <article className="k-lesson-chapter" key={section.level}>
      <div className="k-lesson-chapter-heading"><span>{sectionNumber(i)}</span><div><small>{levels[section.level]}</small><h4>Atividades de {section.title}</h4></div></div>
      {tasks.map((task,j)=>{
