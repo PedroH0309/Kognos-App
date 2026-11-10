@@ -30,7 +30,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
         "example": "Compare Panthera leo e Panthera tigris: o primeiro termo identifica o mesmo gênero, e o segundo distingue espécies. Escreva os dois nomes com gênero maiúsculo e epíteto minúsculo. A semelhança do gênero não implica cruzamento fértil entre as espécies.",
         "pitfall": "Não trate o epíteto específico isolado como nome científico completo nem confunda gênero com espécie.",
         "steps": [
-                  "Divida Panthera leo em gênero Panthera e epíteto leo.",
+                  "Separe Panthera leo em gênero Panthera, com inicial maiúscula, e epíteto específico leo, em minúscula.",
                   "Compare Panthera tigris: gênero igual, epíteto diferente, logo espécies distintas.",
                   "Aplique inicial maiúscula apenas ao gênero e itálico ao binômio completo."
         ]
@@ -42,7 +42,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
         "example": "Na árvore ((A,B),C), identifique primeiro o nó que reúne A e B; depois localize o nó que liga esse par a C. A e B têm ancestral comum mais recente entre si. Girar o ramo de A e B não modifica o parentesco.",
         "pitfall": "Não interprete a ponta mais à direita como organismo mais evoluído nem confunda analogia com homologia.",
         "steps": [
-                  "Localize o nó interno que une A e B em ((A,B),C).",
+                  "Localize o nó interno que reúne A e B na árvore ((A,B),C), distinguindo-o do nó ancestral de C.",
                   "Compare esse nó com o nó mais antigo que reúne A, B e C.",
                   "Conclua que A e B compartilham ancestral mais recente, mesmo após girar ramos."
         ]
@@ -120,7 +120,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
         "pitfall": "Não confunda entrada de ar nos pulmões com a difusão através da parede alveolar.",
         "steps": [
                   "Anote PO₂ alveolar de 100 mmHg e PO₂ do sangue de 40 mmHg.",
-                  "Calcule gradiente inicial 100−40=60 mmHg.",
+                  "Subtraia a pressão parcial sanguínea da alveolar: 100−40=60 mmHg, indicando gradiente inicial favorável ao sangue.",
                   "Conclua difusão de O₂ do alvéolo para o sangue enquanto o gradiente persistir."
         ]
       },
@@ -220,7 +220,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
         "example": "Em 100 bactérias, cinco são resistentes antes do tratamento. Após exposição, sobrevivem quatro resistentes e uma suscetível: 4/5=80% dos sobreviventes são resistentes, contra 5% inicialmente. A frequência mudou por seleção no exemplo, não por necessidade dirigida.",
         "pitfall": "Não confunda toda alteração de frequências gênicas com seleção; deriva e migração também alteram populações.",
         "steps": [
-                  "Calcule a frequência resistente inicial: 5/100=5%.",
+                  "Divida os cinco indivíduos resistentes pelos 100 indivíduos amostrados: 5/100=0,05, ou 5% inicialmente.",
                   "Calcule a frequência resistente entre sobreviventes: 4/(4+1)=80%.",
                   "Compare 5% e 80% sem atribuir mutação dirigida ao tratamento."
         ]
