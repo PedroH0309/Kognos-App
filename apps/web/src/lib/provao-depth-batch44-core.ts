@@ -25,7 +25,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         "explanation": "O processo de dissolução de um sólido iônico envolve custos e ganhos energéticos. Separar íons do retículo cristalino demanda energia; a solvatação libera energia quando novas interações se estabelecem. A entalpia de solução pode ser positiva ou negativa, e sua direção espontânea depende também da entropia, conforme ΔG=ΔH−TΔS. Uma substância pode dissolver mesmo com ΔH positivo se o termo entrópico compensar o custo, nas condições estudadas. Íons pequenos e muito carregados frequentemente apresentam forte hidratação, mas também podem integrar retículos muito estáveis. Comparar somente a carga é insuficiente para prever solubilidade. A água, por ser polar e ter elevada permissividade relativa, reduz a atração eletrostática efetiva entre cargas separadas em comparação ao vácuo. Em solventes apolares, a solvatação de íons isolados costuma ser desfavorável.",
         "example": "Se um processo apresenta ΔH=+5 kJ/mol e TΔS=+8 kJ/mol, calcule ΔG=5−8=−3 kJ/mol; a dissolução é termodinamicamente favorecida nesse estado.",
         "pitfall": "Não confunda sinal de ΔH com sinal de ΔG.",
-        "steps": ["Registre ΔH=+5 kJ/mol e TΔS=+8 kJ/mol com a mesma base molar.","Substitua em ΔG=ΔH−TΔS: 5−8=−3 kJ/mol.","Interprete ΔG negativo como favorecimento termodinâmico, não velocidade de dissolução."]
+        "steps": ["Registre ΔH=+5 kJ/mol e TΔS=+8 kJ/mol com a mesma base molar.","Substitua os termos com sinais explícitos na equação ΔG=ΔH−TΔS: (+5)−(+8)=−3 kJ/mol.","Interprete ΔG negativo como favorecimento termodinâmico, não velocidade de dissolução."]
       },
       {
         "level": "advanced",
