@@ -18,7 +18,7 @@ test('sidebar no longer uses AI-violet or a purple promotional card',()=>{
  assert.ok(!layer.match(/\.app-layout \.app-sidebar \.side-nav-item\.active[^}]*#5B4DE3/i));
 });
 
-test('all seventeen Kognos destinations remain reachable in compact navigation',()=>{
+test('all current Kognos destinations remain reachable in compact navigation except retired Trails',()=>{
  const slices=['NAV_PRIMARY:View[]','NAV_PRACTICE:View[]','NAV_SECONDARY:View[]','NAV_MORE:View[]'];
  const groups=slices.map(label=>{
   const begin=app.indexOf('const '+label);
@@ -28,10 +28,12 @@ test('all seventeen Kognos destinations remain reachable in compact navigation',
  });
  const items=groups.flatMap(v=>[...v.matchAll(/'([a-z]+)'/g)].map(m=>m[1]));
  const expected=['dashboard','tutor','learn','subjects','questions','simulados',
-  'reviews','achievements','settings','trails','diagnostic',
+  'reviews','achievements','settings','diagnostic',
   'sources','calendar','performance','weekly'];
  assert.deepEqual(items.sort(),expected.sort());
  assert.equal(new Set(items).size,expected.length);
+ assert.doesNotMatch(groups.join(' '),/'trails'/);
+ assert.match(app,/saved==='trails'\?'learn':saved/);
  // Profile remains reachable from the dedicated avatar controls.
  assert.match(app,/onClick=\{\(\)=>setView\('profile'\)\}/);
  assert.match(app,/SideNavigationItem key=\{key\}/);

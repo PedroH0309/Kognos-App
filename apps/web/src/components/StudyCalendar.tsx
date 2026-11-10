@@ -250,7 +250,7 @@ export default function StudyCalendar({userId,onPlanner,onTutor,onContextChange}
      <div className="k-cal-widget-head"><span className="k-cal-widget-icon"><Target size={20}/></span><h2 id="k-cal-summary-title">Resumo do dia</h2></div>
      <div className="k-cal-summary-body">
       <div className="k-cal-ring" style={{'--k-cal-progress':`${rate}%`} as CSSProperties}>
-       <div><strong>{selectedData.completed}/{selectedData.all.length}</strong><small>concluídas</small></div>
+       <div><strong>{selectedData.all.length?`${selectedData.completed}/${selectedData.all.length}`:'0'}</strong><small>{selectedData.all.length?'concluídas':'sem atividades'}</small></div>
       </div>
       <div className="k-cal-metrics">
        <div><CalendarDays size={17}/><span>{selectedData.all.length} atividades</span></div>

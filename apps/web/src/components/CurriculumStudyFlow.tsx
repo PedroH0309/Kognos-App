@@ -9,11 +9,12 @@ import {contentRequest} from '@/lib/content-client';
 import {groupLearningBlocks} from '@/lib/curriculum-learning-blocks';
 import type {CourseLesson} from '@/lib/course-content';
 import {canFinishLesson,curriculumSubjects,curriculumSubjectTopics,nextCurriculumTopic,scopedCurriculum,type CurriculumStep,type CurriculumListTopic} from '@/lib/curriculum-navigation';
+import KognosLoadingOverlay from './KognosLoadingOverlay';
 
 type Props={
  preferredExam?:ExamId|null;
  focus?:{lessonId:string;subject:string}|null;
- renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void,onRelatedTopic:(topicId:string)=>void)=>ReactNode;
+ renderLesson:(topic:CurriculumTopic,onActivityProgress:(answered:boolean)=>void,onRelatedTopic:(topicId:string)=>void,onReadingEnd:()=>void)=>ReactNode;
  onOpenSimulados?:()=>void;
 };
 const statuses:Record<string,string>={published:'Aula desenvolvida',starter:'Aula-base pré-carregada · revisão pendente',guided:'Guia inicial pré-carregado · aprofundamento pendente',introduction:'Introdução disponível',outline:'Tema mapeado, sem aula',draft:'Em revisão'};
@@ -143,7 +144,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
      </button>;
     })}
    </div>
-   {loading&&<p role="status">Carregando matérias…</p>}
+   {loading&&<KognosLoadingOverlay inline label="Carregando matérias"/>}
    {!loading&&!subjects.length&&!loadError&&<p className="k-curriculum-empty">Nenhuma disciplina encontrada para estes filtros.</p>}
    <p className="k-curriculum-disclaimer">O catálogo lista temas curriculares. Alguns ainda não possuem aula escrita completa.</p>
   </section>}
@@ -184,7 +185,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
     <p>Folha de revisão com objetivos e trechos reais de cada aula. Reveja os assuntos, resolva as atividades e avance aos simulados corrigidos do Kognos.</p>
    </header>
    <p className="k-curriculum-block-count">{reviewBlock.topics.length} conteúdos · páginas de {reviewPerPage} aulas</p>
-   {reviewLoading&&<p role="status">Preparando os conceitos já registrados neste bloco…</p>}
+   {reviewLoading&&<KognosLoadingOverlay inline label="Preparando conceitos da revisão"/>}
    {!reviewLoading&&<div className="k-curriculum-review-list">
     {reviewNotes.map(note=><article key={note.id} className="k-curriculum-review-card">
      <h2>{note.topic}</h2><p><strong>Objetivo:</strong> {note.objective}</p>
@@ -216,7 +217,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
     <span className="k-curriculum-maturity">{statuses[current.status]??'Em revisão'}</span>
    </header>
     <article className="k-curriculum-dedicated-reader" key={current.id}>
-     {renderLesson(current,setActivitiesAnswered,openRelatedTopic)}
+     {renderLesson(current,setActivitiesAnswered,openRelatedTopic,()=>setReadingConfirmed(true))}
     </article>
     <footer className="k-curriculum-lesson-progress">
      <div className="k-curriculum-progress-head"><BookOpenCheck size={21}/><div>
@@ -227,7 +228,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
      {hasLesson&&<div className="k-curriculum-progress-items">
       <label className="k-curriculum-check"><input type="checkbox" checked={readingConfirmed}
        onChange={e=>setReadingConfirmed(e.target.checked)}/>
-       <span>Concluí a leitura de toda a aula</span></label>
+       <span>{readingConfirmed?'Leitura da aula concluída':'Concluí a leitura de toda a aula'}</span></label>
       <span className={activitiesAnswered?'is-done':''}>{activitiesAnswered?<CheckCircle2 size={18}/>:<PenLine size={18}/>}
        {activitiesAnswered?'Atividades preenchidas':'Responda às atividades da aba Atividades'}</span>
      </div>}
@@ -238,7 +239,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
       </button>:<button type="button" className="k-curriculum-next" onClick={()=>chooseSubject(subject)}>
        Fim dos temas · Voltar aos conteúdos <ArrowRight size={18}/></button>}
      </div>
-     {hasLesson&&!ready&&<p className="k-curriculum-progress-help">Para avançar, confirme a leitura e preencha todas as respostas dos exercícios da aba Atividades. Isso não constitui correção ou aprovação automática.</p>}
+     {hasLesson&&!ready&&<p className="k-curriculum-progress-help">A leitura é identificada automaticamente ao chegar ao final da aba Aula em texto. Depois, responda às atividades para avançar. Se necessário, você pode marcar a caixa manualmente. Isso não constitui correção ou aprovação automática.</p>}
      {next&&<p className="k-curriculum-next-label">Próximo assunto: {next.topic}</p>}
     </footer>
    </>:<div className="k-curriculum-empty"><h2>Assunto indisponível neste filtro.</h2>
