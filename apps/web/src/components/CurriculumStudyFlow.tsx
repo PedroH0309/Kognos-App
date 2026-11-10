@@ -3,7 +3,7 @@ import {useCallback,useEffect,useRef,useState,type ReactNode} from 'react';
 import {ArrowLeft,ArrowRight,BookOpenText,BookOpenCheck,Calculator,FlaskConical,Dna,Globe2,Languages,Landmark,Scale,PenLine,Atom,Users,ChevronRight,CheckCircle2,Search} from 'lucide-react';
 import {topicForLegacyLesson,type CurriculumTopic} from '@/lib/curriculum-catalog';
 import type {ExamId} from '@/lib/exam-blueprints';
-import {examBlueprints} from '@/lib/exam-blueprints';
+import {examBlueprints,publicExamEntries} from '@/lib/exam-blueprints';
 import type {ProvaoGrade} from '@/lib/provao-paulista';
 import {contentRequest} from '@/lib/content-client';
 import {groupLearningBlocks} from '@/lib/curriculum-learning-blocks';
@@ -42,7 +42,11 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
  const load=useCallback(async()=>{
   try{
    const response=await contentRequest('/api/content');
-   setTopics(response.topics);
+   // ETEC-only curriculum remains in the historical server catalogue but is
+   // completely omitted from student-facing discovery.
+   setTopics((response.topics as CurriculumListTopic[]).filter(topic=>
+    topic.exams.some(exam=>exam!=='etec')
+   ));
    setLoadError('');
   }catch(error){
    setLoadError(error instanceof Error?error.message:'Não foi possível carregar as disciplinas.');
@@ -120,7 +124,7 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
     <label>Preparação<select aria-label="Preparação" value={exam}
      onChange={e=>{setExam(e.target.value as ExamId|'all');setGrade(null);}}>
      <option value="all">Todos os currículos</option>
-     {Object.entries(examBlueprints).map(([id,item])=><option value={id} key={id}>{id==='vunesp'?'UNESP / VUNESP':item.label}</option>)}
+     {publicExamEntries().map(([id,item])=><option value={id} key={id}>{id==='vunesp'?'UNESP / VUNESP':item.label}</option>)}
     </select></label>
     {exam==='saresp'&&<label>Série do Provão Paulista<select value={grade??'all'}
      onChange={e=>setGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}>

@@ -4,13 +4,13 @@ import {useCallback,useEffect,useMemo,useState} from 'react';
 import {BookOpenText,ExternalLink,ShieldCheck,RefreshCw,CheckCircle2,AlertTriangle,FileSearch,Sparkles,LogIn,LockKeyhole,Clock3,FolderOpen,ArrowRight,Search,Info,UploadCloud,LoaderCircle} from 'lucide-react';
 import {KognosSelect} from './KognosFields';
 import {getSupabase} from '@/lib/supabase';
-import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
+import {examBlueprints,publicExamEntries,type ExamId} from '@/lib/exam-blueprints';
 import type {ApprovedSyllabusTopic,ImportMethod} from '@/lib/syllabus-sources';
 import {getSourceWorkspaceState,sourceWorkspaceMetrics} from '@/lib/source-workspace';
 
 type ReviewTopic={id:string;source_id:string;subject:string;topic:string;evidence_excerpt:string;review_status:string};
 type ReviewSource={id:string;institution:ExamId;edition:string;source_title:string;source_url:string;source_method:ImportMethod;review_status:string;created_at:string};
-const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,b])=>({value,label:b.label}));
+const examOptions=publicExamEntries().map(([value,b])=>({value,label:b.label}));
 const methodOptions:{value:ImportMethod;label:string}[]=[{value:'official_html',label:'Ler página HTML oficial'},{value:'manual_transcript',label:'Colar texto de PDF ou documento'}];
 
 export default function ExamSources({userId,onLogin,onQuestionBank}:{userId:string|null;onLogin:()=>void;onQuestionBank:()=>void}){
@@ -42,9 +42,19 @@ export default function ExamSources({userId,onLogin,onQuestionBank}:{userId:stri
   if(!userId){setApproved([]);setReviewTopics([]);setReviewSources([]);setEditor(false);setLoaded(false);setLoading(false);setError('');return;}
   setLoading(true);setError('');
   try{
-   const data=await fetchAuthorized();setApproved(Array.isArray(data.topics)?data.topics:[]);setEditor(data.editor===true);setLoaded(true);
-   setReviewTopics(Array.isArray(data.reviewTopics)?data.reviewTopics:[]);
-   setReviewSources(Array.isArray(data.reviewSources)?data.reviewSources:[]);
+   const data=await fetchAuthorized();
+   // Retain ETEC archive in the database; exclude it from the public workspace.
+   const visibleSources:ReviewSource[]=(Array.isArray(data.reviewSources)?data.reviewSources:[]).filter(
+    (source:ReviewSource)=>source.institution!=='etec'
+   );
+   setApproved((Array.isArray(data.topics)?data.topics:[]).filter(
+    (topic:ApprovedSyllabusTopic)=>topic.institution!=='etec'
+   ));
+   setReviewSources(visibleSources);
+   setReviewTopics((Array.isArray(data.reviewTopics)?data.reviewTopics:[]).filter(
+    (topic:ReviewTopic)=>visibleSources.some(source=>source.id===topic.source_id)
+   ));
+   setEditor(data.editor===true);setLoaded(true);
   }catch(e){setApproved([]);setReviewTopics([]);setReviewSources([]);setEditor(false);setLoaded(false);setError(e instanceof Error?e.message:'Falha ao carregar matrizes.');}
   finally{setLoading(false);}
  },[fetchAuthorized,userId]);
