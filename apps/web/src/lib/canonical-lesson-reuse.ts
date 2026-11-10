@@ -37,12 +37,36 @@ export function verifiedCanonicalLessonLinks():CanonicalLessonLink[]{
   return links;
 }
 
+
+// Explicitly reviewed equivalent scope: epistemological contrast between
+// rationalist and empiricist accounts of knowledge. Do not generalize this
+// to all philosophy-of-science or history-of-philosophy syllabus headings.
+export const reviewedSemanticAliases = [
+  {
+    subject:'Filosofia',
+    targetTitle:'Racionalismo e empirismo',
+    sourceTitle:'As abordagens racionalistas e empiristas do conhecimento',
+    rationale:'Both cover the epistemological opposition of reason and experience, including claims, evidence and limits; this alias does not cover unrelated Kantian or scientific-method units.'
+  }
+] as const;
+
+export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
+  if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
+  const alias=reviewedSemanticAliases.find(item=>item.subject===topic.subject&&item.targetTitle===topic.topic);
+  if(!alias)return null;
+  const source=curriculumTopics.find(item=>item.subject===alias.subject&&item.topic===alias.sourceTitle);
+  if(!source)return null;
+  const lesson=deepProvaoLesson(source);
+  if(!lesson)return null;
+  return {canonicalId:source.id,examTopicId:topic.id,lesson,scope:alias.rationale};
+}
+
 /** Preserve the historical curriculum topic ID and lesson content object.
  * Non-exact aliases are deliberately not guessed here.
  */
 export function canonicalLessonForExam(exam:ExamId,topic:CurriculumTopic){
   if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
-  return deepProvaoLesson(topic);
+  return deepProvaoLesson(topic)??reviewedCanonicalAliasForExam(exam,topic)?.lesson??null;
 }
 
 export function canonicalReuseAudit(){
@@ -60,6 +84,6 @@ export function canonicalReuseAudit(){
     verifiedExamLessonLinks:links.reduce((sum,link)=>sum+link.exams.length,0),
     avoidedDeepLessonCopies:links.reduce((sum,link)=>sum+link.exams.length-1,0),
     /** No differently titled semantic aliases have yet been certified. */
-    reviewedNonExactAliases:0
+    reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))).length
   };
 }
