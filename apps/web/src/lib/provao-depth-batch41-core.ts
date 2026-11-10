@@ -59,7 +59,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Um órgão"
         ],
         "correctIndex": 2,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Separe os componentes vivos da comunidade e os fatores abióticos antes de classificar o conjunto.",
         "solution": "Ecossistema inclui comunidade biológica e componentes físicos e químicos em interação. Uma população abrange indivíduos de uma mesma espécie e não inclui água e luz como integrantes vivos."
       },
       {
@@ -72,7 +72,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Homo sapiens sapiens"
         ],
         "correctIndex": 1,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Verifique a inicial maiúscula do gênero, o epíteto minúsculo e a presença dos dois termos.",
         "solution": "O nome binomial de uma espécie combina o gênero Homo, com inicial maiúscula, e o epíteto específico sapiens, em minúscula: Homo sapiens. A opção com três termos acrescenta um epíteto subespecífico, portanto não é um binômio. Gênero ou epíteto isolados não identificam corretamente a espécie. Na apresentação tipográfica, os dois termos são normalmente grafados em itálico."
       },
       {
@@ -85,7 +85,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "A e B"
         ],
         "correctIndex": 3,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Compare os nós ancestrais compartilhados; a posição gráfica das pontas não define parentesco.",
         "solution": "A e B compartilham nó ancestral mais recente entre si do que com C. A ordem gráfica das pontas pode ser girada sem mudar o parentesco representado."
       }
     ]
@@ -148,7 +148,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Veia pulmonar"
         ],
         "correctIndex": 1,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Reconstrua o trajeto do sangue do ventrículo direito até os pulmões, distinguindo artéria e veia.",
         "solution": "A artéria pulmonar conduz sangue do ventrículo direito aos pulmões. A definição de artéria depende do fluxo para fora do coração, independentemente da oxigenação."
       },
       {
@@ -161,7 +161,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Contração arterial"
         ],
         "correctIndex": 2,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Identifique a direção do gradiente de pressão parcial entre alvéolo e capilar.",
         "solution": "O O₂ difunde-se conforme diferença de pressão parcial entre alvéolo e sangue. A ventilação mantém condições para troca, mas não bombeia diretamente O₂ pela membrana."
       },
       {
@@ -174,7 +174,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Ventilação"
         ],
         "correctIndex": 0,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Diferencie a retirada inicial de substâncias do plasma da devolução seletiva ao sangue.",
         "solution": "A reabsorção tubular transfere água e solutos do fluido tubular para o sangue. Filtração forma o filtrado e excreção corresponde ao material eliminado."
       }
     ]
@@ -237,7 +237,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Deriva genética universal"
         ],
         "correctIndex": 1,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Distinga a transmissão de características adquiridas da seleção de variantes hereditárias preexistentes.",
         "solution": "Lamarck propôs transformação e atribuiu importância ao uso, desuso e transmissão de caracteres adquiridos. A herança genética moderna não sustenta esse mecanismo como explicação geral."
       },
       {
@@ -250,7 +250,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Busca de perfeição"
         ],
         "correctIndex": 2,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Procure variação herdável associada a diferenças de sobrevivência e reprodução.",
         "solution": "A seleção depende de diferenças herdáveis que afetam reprodução em determinado ambiente. Não envolve vontade individual, intenção evolutiva nem garantia de progresso."
       },
       {
@@ -263,7 +263,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Convergência"
         ],
         "correctIndex": 0,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Observe o efeito do acaso nas frequências alélicas, especialmente em grupos pequenos.",
         "solution": "Deriva genética é alteração estocástica de frequências alélicas, mais evidente em populações pequenas. Não requer que a variante favorecida seja adaptativamente superior."
       }
     ]
@@ -326,7 +326,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "São a mesma espécie"
         ],
         "correctIndex": 2,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Identifique o ancestral comum e evite representar uma espécie atual como ancestral direto de outra.",
         "solution": "Humanos e chimpanzés vivos pertencem a linhagens distintas, ligadas por ancestrais comuns. A evolução é ramificada e não uma fila de espécies atuais."
       },
       {
@@ -339,7 +339,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Agricultura no local"
         ],
         "correctIndex": 0,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Separe a idade e o contexto arqueológico do artefato de uma atribuição taxonômica sem evidências.",
         "solution": "Atribuir ferramentas a uma espécie exige estratigrafia, datação e associação arqueológica suficiente. Proximidade simples não identifica o fabricante com segurança."
       },
       {
@@ -352,7 +352,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Mistura histórica entre linhagens"
         ],
         "correctIndex": 3,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Considere que fragmentos de DNA herdados podem revelar cruzamentos entre linhagens humanas antigas.",
         "solution": "A presença de segmentos compartilhados sustenta episódios de cruzamento entre linhagens humanas. Proporções variam e não estabelecem graus de evolução."
       }
     ]
@@ -415,7 +415,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Todos os nascidos na Ática"
         ],
         "correctIndex": 1,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Compare a participação de cidadãos homens adultos com as restrições impostas a mulheres, escravizados e estrangeiros.",
         "solution": "A cidadania política ateniense era restrita a cidadãos masculinos com requisitos específicos. Mulheres, escravizados e metecos não exerciam os mesmos direitos políticos, embora integrassem a sociedade."
       },
       {
@@ -428,7 +428,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Consulado vitalício"
         ],
         "correctIndex": 2,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Relacione o poder de veto à magistratura que representava interesses da plebe romana.",
         "solution": "Tribunos da plebe podiam vetar certas decisões e defender interesses plebeus. A instituição pertence à história republicana romana, não à organização ateniense."
       },
       {
@@ -441,7 +441,7 @@ export const provaoDepthBatch41Core:readonly DeepTopicSpec[]=[
           "Século V a.C."
         ],
         "correctIndex": 0,
-        "hint": "Consulte o mecanismo e o exemplo resolvido desta etapa.",
+        "hint": "Localize o édito de 212 d.C. no Império Romano e distinga-o das instituições republicanas.",
         "solution": "O edito de Caracala foi promulgado no Império e ampliou cidadania a grande parte dos habitantes livres. Não corresponde a sufrágio universal nem a igualdade social."
       }
     ]
