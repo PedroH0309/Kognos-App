@@ -674,3 +674,12 @@ Substituídas **15 dicas genéricas** nas cinco aulas existentes de Física do l
 A implementação `canonical-lesson-reuse.ts` passou a registrar uma associação editorial explícita de **Filosofia / Racionalismo e empirismo** à aula canônica **As abordagens racionalistas e empiristas do conhecimento**. O escopo aprovado limita-se ao contraste epistemológico entre razão e experiência; não certifica conteúdos adicionais de Kant, metodologia científica ou história integral da filosofia. O vínculo só é ativado para provas que efetivamente listam o título de destino e se a aula canônica aprofundada existir. IDs históricos e dados persistidos permanecem intocados. A correção do conteúdo-fonte é compartilhada por referência, sem cópia de capítulos ou questões.
 
 Teste de regressão adicionado para identidade dos capítulos/questões, preservação dos IDs distintos e rejeição de disciplina não relacionada. O número de vínculos efetivamente habilitados depende da execução da auditoria no commit atual; **não contabilizar como duplicações persistidas removidas**, pois nenhuma cópia foi excluída. CI e homologação docente pendentes; não mesclar nem publicar automaticamente.
+
+## 2026-11-10 — correções da CI e integridade dos aliases
+
+- Job 130128631025: 470/472 testes aprovados; dois erros observados (alias epistemológico sem ambos os títulos no catálogo e etapas curtas no lote 41).
+- Alias não exato de Filosofia **desativado**, pois o título-alvo não existe no catálogo atual. Não contar esse vínculo como reutilização semântica verificada. Nenhum ID, aula ou histórico foi removido.
+- Quatro passos resolvidos do lote 41 ampliados com procedimento concreto, sem reduzir o limite editorial de 55 caracteres.
+- Teste do alias agora rejeita associação não comprovada, em vez de exigir um título inexistente.
+- Reutilização exata existente preservada; nenhum novo grupo semântico aprovado nem duplicação persistida removida nesta correção.
+- CI posterior a estes commits: pendente de confirmação. Material original, não oficial, sem homologação docente; sem merge ou deploy.
