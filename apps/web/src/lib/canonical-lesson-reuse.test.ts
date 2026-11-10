@@ -47,3 +47,18 @@ test('unverified differently named epistemology topics never receive fabricated 
  const unrelated=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Citologia');
  if(unrelated)assert.equal(reviewedCanonicalAliasForExam('enem',unrelated),null);
 });
+
+test('audit distinguishes reference reuse from actual persisted duplicate removal',()=>{
+ const audit=canonicalReuseAudit();
+ assert.equal(audit.actualPersistedDuplicatesRemoved,0);
+ assert.equal(audit.potentialCopiesAvoidedByReference,audit.avoidedDeepLessonCopies);
+ assert.equal(audit.deepCurriculumTopics+audit.missingDeepCurriculumTopics,curriculumTopics.length);
+ assert.equal(audit.approvedPartialAssociations,0);
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const entries=Object.entries(examBlueprints[exam].subjects)
+   .flatMap(([subject,titles])=>titles.map(title=>subject+'\\0'+title));
+  assert.equal(audit.uniqueExactTitlesByExam[exam],new Set(entries).size);
+  assert.equal(audit.verifiedLinksByExam[exam],verifiedCanonicalLessonLinks().filter(link=>link.exams.includes(exam)).length);
+  assert.ok(audit.verifiedLinksByExam[exam]<=audit.examEntries[exam]);
+ }
+});
