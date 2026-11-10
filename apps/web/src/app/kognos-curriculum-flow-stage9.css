@@ -51,11 +51,37 @@
  width:auto;min-height:44px;padding:9px 13px;border:1px solid var(--flow-line);
  background:var(--flow-paper);color:var(--violet,#5B4DE3);
  border-radius:10px;font-size:12px;font-weight:740;cursor:pointer;}
-.k-curriculum-topic-search{display:flex;align-items:center;gap:10px;max-width:620px;
+/* Explicit wrapper avoids generic form-label styles forcing an extra row.
+ * The icon and input share one stable horizontal track at every breakpoint. */
+.k-curriculum-flow .k-curriculum-topic-search{
+ display:grid;grid-template-columns:20px minmax(0,1fr);align-items:center;
+ column-gap:11px;width:min(100%,620px);max-width:100%;height:52px;min-width:0;
  border:1px solid var(--flow-line);border-radius:11px;background:var(--flow-paper);
- color:var(--flow-muted);padding:0 14px;margin:3px 0 15px;}
-.k-curriculum-topic-search input{height:50px;padding:12px 0;border:0;outline:0;
- background:transparent;color:var(--flow-ink);font-size:14px;min-width:0;width:100%;}
+ color:var(--flow-muted);padding:0 14px;margin:3px 0 15px;
+ box-sizing:border-box;transition:border-color .15s,box-shadow .15s;
+}
+.k-curriculum-flow .k-curriculum-search-icon{
+ width:18px;height:18px;display:block;justify-self:center;
+ color:var(--flow-muted);pointer-events:none;
+}
+.k-curriculum-flow .k-curriculum-topic-search input[type="search"]{
+ display:block;width:100%;height:100%;min-width:0;min-height:0;
+ margin:0;padding:0;border:0;border-radius:0;outline:0;box-shadow:none;
+ background:transparent;color:var(--flow-ink);font:inherit;font-size:14px;
+ line-height:1.4;box-sizing:border-box;
+}
+.k-curriculum-flow .k-curriculum-topic-search input[type="search"]::placeholder{
+ color:var(--flow-muted);opacity:1;
+}
+.k-curriculum-flow .k-curriculum-topic-search:focus-within{
+ border-color:var(--violet,#5B4DE3);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--violet,#5B4DE3) 15%,transparent);
+}
+@media(max-width:480px){
+ .k-curriculum-flow .k-curriculum-topic-search{
+  height:48px;padding:0 12px;column-gap:9px;
+ }
+}
 .k-curriculum-topic-count{color:var(--flow-muted);font-size:12px;line-height:1.6;margin:10px 0 14px;}
 .k-curriculum-topic-list{display:grid;gap:9px;max-width:870px;}
 .k-curriculum-topic-row{display:flex;align-items:center;gap:14px;text-align:left;

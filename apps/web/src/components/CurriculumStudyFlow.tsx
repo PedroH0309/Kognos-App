@@ -154,10 +154,11 @@ export default function CurriculumStudyFlow({preferredExam=null,focus=null,rende
    <header className="k-curriculum-flow-head"><span className="overline">ESTUDOS · 2 DE 3 · {subject.toLocaleUpperCase('pt-BR')}</span>
     <h1>Conteúdos de {subject}</h1><p>Escolha o assunto que você deseja estudar. Cada aula abre separadamente, sem a grade de outros conteúdos.</p>
    </header>
-   <label className="k-curriculum-topic-search"><Search size={18}/>
-    <span className="sr-only">Buscar assunto</span>
-    <input type="search" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Pesquisar um tema…"/>
-   </label>
+   <div className="k-curriculum-topic-search" role="search">
+    <Search className="k-curriculum-search-icon" size={18} aria-hidden="true"/>
+    <input type="search" aria-label="Buscar assunto" value={search}
+     onChange={e=>setSearch(e.target.value)} placeholder="Pesquisar um tema…" autoComplete="off"/>
+   </div>
    <p className="k-curriculum-topic-count">{visibleTopics.length} de {subjectTopics.length} conteúdos</p>
    <div className="k-curriculum-topic-list">
     {visibleBlocks.map(block=><section className="k-curriculum-learning-block" key={block.id}>
