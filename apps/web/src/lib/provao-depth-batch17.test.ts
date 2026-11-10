@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {provaoDepthBatch17Core} from './provao-depth-batch17-core.ts';
 import {starterLesson} from './starter-lessons.ts';
 import {lessonTaskChoice} from './lesson-multiple-choice.ts';
 import type {CourseSection,CourseTask} from './course-content.ts';
@@ -17,6 +18,8 @@ test('batch 17 exact five topics, pedagogical depth, objective keys and unchange
   const matches=curriculumTopics.filter(t=>t.subject===subject&&t.topic.startsWith(prefix)&&t.exams.includes('saresp'));
   assert.equal(matches.length,1,'Missing or ambiguous topic '+subject+' / '+prefix);
   const topic=matches[0];const lesson=deepProvaoLesson(topic);
+  const historical=provaoDepthBatch17Core.find(spec=>spec.subject===subject&&spec.topicStart===prefix);
+  assert.ok(historical,'Missing historical batch 17 source '+prefix);
   assert.ok(lesson,'Missing lesson '+prefix);
   assert.equal(lesson.id,topic.id);
   assert.deepEqual(starterLesson(topic),lesson);
@@ -33,7 +36,9 @@ test('batch 17 exact five topics, pedagogical depth, objective keys and unchange
    assert.ok(section.pitfall.length>=50&&section.steps.length>=3);
    assert.equal(task.options?.length,4);
    assert.equal(new Set(task.options).size,4);
-   assert.equal(task.correctIndex,keys[i]);
+   assert.equal(historical.tasks[i].correctIndex,keys[i], 'Original batch 17 key '+prefix+'/'+i);
+   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
+    'Current editorial answer index invalid '+prefix+'/'+i);
    assert.ok(task.solution.length>=140);
    assert.equal(lessonTaskChoice(lesson,task).source,'editorial');
   }
