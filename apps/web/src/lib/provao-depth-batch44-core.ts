@@ -4,7 +4,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "Interações do tipo íon-dipolo",
-    "objective": "Explicar a hidratação de íons e a dependência da energia de solvatação da carga e do raio.",
+    "objective": "Explicar a hidratação de íons e a dependência da energia de solvatação da carga e do raio. Ao analisar um sal em água, distinguir orientação do dipolo, energia de retículo, hidratação e espontaneidade por ΔG, sem confundir dissolução com neutralização de cargas.",
     "prerequisites": [
       "Polaridade molecular",
       "Cargas elétricas",
@@ -15,24 +15,24 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Orientação de dipolos",
         "explanation": "Uma interação íon–dipolo ocorre entre a carga de um cátion ou ânion e a distribuição assimétrica de cargas parciais de uma molécula polar. A água tem geometria angular: o oxigênio possui carga parcial negativa e os hidrogênios, positiva. Ao redor de Na⁺, a extremidade do oxigênio tende a apontar para o íon; em torno de Cl⁻, orientam-se preferencialmente hidrogênios. Não se forma, por isso, uma nova ligação covalente entre o íon e cada molécula de água. A intensidade da atração depende da carga do íon, do tamanho efetivo e da orientação e distância dos dipolos. O movimento térmico mantém a camada de hidratação dinâmica. A dissolução exige considerar simultaneamente ruptura da rede cristalina, separação de moléculas do solvente e formação de novas interações. Portanto, observar atração íon–dipolo não basta para afirmar que qualquer sal se dissolve ilimitadamente.",
-        "example": "Em NaCl(s) colocado em água, identifique Na⁺ e Cl⁻; marque o polo Oδ⁻ voltado a Na⁺ e Hδ⁺ voltado a Cl⁻; conclua que ambas as espécies podem ser hidratadas.",
-        "pitfall": "A água não transforma automaticamente Na⁺ em átomo neutro.",
+        "example": "Em NaCl(s) colocado em água, identifique Na⁺ e Cl⁻; marque o polo Oδ⁻ voltado a Na⁺ e Hδ⁺ voltado a Cl⁻; conclua que ambas as espécies podem ser hidratadas. Na representação, escreva NaCl(s) → Na⁺(aq) + Cl⁻(aq); indique oxigênios voltados para Na⁺ e hidrogênios para Cl⁻. A soma das cargas continua zero: os íons permanecem carregados e hidratados.",
+        "pitfall": "A água não transforma automaticamente Na⁺ em átomo neutro. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Na representação, escreva NaCl(s) → Na⁺(aq) + Cl⁻(aq); indique oxigênios voltados para Na⁺ e hidrogênios para Cl⁻. A soma das cargas continua zero: os íons permanecem carregados e hidratados.",
         "steps": ["Determine o sinal do íon e os polos δ⁻ e δ⁺ da molécula angular de água.","Oriente Oδ⁻ para Na⁺ e Hδ⁺ para Cl⁻ e identifique as interações íon–dipolo.","Distinga hidratação dinâmica de neutralização elétrica e de ligação covalente."]
       },
       {
         "level": "intermediate",
         "title": "Competição energética",
         "explanation": "O processo de dissolução de um sólido iônico envolve custos e ganhos energéticos. Separar íons do retículo cristalino demanda energia; a solvatação libera energia quando novas interações se estabelecem. A entalpia de solução pode ser positiva ou negativa, e sua direção espontânea depende também da entropia, conforme ΔG=ΔH−TΔS. Uma substância pode dissolver mesmo com ΔH positivo se o termo entrópico compensar o custo, nas condições estudadas. Íons pequenos e muito carregados frequentemente apresentam forte hidratação, mas também podem integrar retículos muito estáveis. Comparar somente a carga é insuficiente para prever solubilidade. A água, por ser polar e ter elevada permissividade relativa, reduz a atração eletrostática efetiva entre cargas separadas em comparação ao vácuo. Em solventes apolares, a solvatação de íons isolados costuma ser desfavorável.",
-        "example": "Se um processo apresenta ΔH=+5 kJ/mol e TΔS=+8 kJ/mol, calcule ΔG=5−8=−3 kJ/mol; a dissolução é termodinamicamente favorecida nesse estado.",
-        "pitfall": "Não confunda sinal de ΔH com sinal de ΔG.",
+        "example": "Se um processo apresenta ΔH=+5 kJ/mol e TΔS=+8 kJ/mol, calcule ΔG=5−8=−3 kJ/mol; a dissolução é termodinamicamente favorecida nesse estado. Confira as unidades: ΔH e TΔS estão ambos em kJ por mol. O cálculo (+5) − (+8) = −3 kJ/mol não fornece uma constante cinética nem informa se a dissolução será rápida.",
+        "pitfall": "Não confunda sinal de ΔH com sinal de ΔG. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Confira as unidades: ΔH e TΔS estão ambos em kJ por mol. O cálculo (+5) − (+8) = −3 kJ/mol não fornece uma constante cinética nem informa se a dissolução será rápida.",
         "steps": ["Registre ΔH=+5 kJ/mol e TΔS=+8 kJ/mol com a mesma base molar.","Substitua os termos com sinais explícitos na equação ΔG=ΔH−TΔS: (+5)−(+8)=−3 kJ/mol.","Interprete ΔG negativo como favorecimento termodinâmico, não velocidade de dissolução."]
       },
       {
         "level": "advanced",
         "title": "Seletividade da solvatação",
         "explanation": "A interação íon–dipolo ajuda a interpretar mobilidade iônica, condução elétrica e seletividade de solvatação. Soluções aquosas de eletrólitos fortes contêm íons móveis e podem conduzir corrente, diferentemente de um cristal iônico rígido, no qual os íons não migram livremente. Contudo, concentração, temperatura e mobilidade afetam a condutividade: o número de portadores não é o único fator. A energia de hidratação de íons com alta densidade de carga pode ser muito intensa; por isso, o raio do íon hidratado não coincide necessariamente com seu raio cristalográfico. Em membranas biológicas, canais iônicos podem exigir remoção parcial da água de hidratação e compensá-la com interações no canal. O balanço energético explica por que seletividade não depende apenas do diâmetro geométrico. Ao discutir um sal pouco solúvel, é necessário considerar o produto de solubilidade e as atividades em soluções não ideais.",
-        "example": "Compare NaCl sólido e NaCl aquoso: no sólido, cargas estão presas à rede; em solução, íons hidratados migram em campo elétrico, justificando condução.",
-        "pitfall": "Não iguale raio hidratado ao raio do íon isolado.",
+        "example": "Compare NaCl sólido e NaCl aquoso: no sólido, cargas estão presas à rede; em solução, íons hidratados migram em campo elétrico, justificando condução. Ao aplicar uma diferença de potencial, compare a rede sólida com íons fixos e a solução com Na⁺ e Cl⁻ móveis. A água não cria elétrons livres metálicos; a corrente é transportada por íons.",
+        "pitfall": "Não iguale raio hidratado ao raio do íon isolado. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Ao aplicar uma diferença de potencial, compare a rede sólida com íons fixos e a solução com Na⁺ e Cl⁻ móveis. A água não cria elétrons livres metálicos; a corrente é transportada por íons.",
         "steps": ["Compare a mobilidade dos íons na rede de NaCl(s) e na solução aquosa.","Relacione a condução da solução ao deslocamento de Na⁺(aq) e Cl⁻(aq).","Considere a hidratação, a concentração e a mobilidade antes de prever condutividade."]
       }
     ],
@@ -81,7 +81,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "Solubilidade e temperatura de ebulição",
-    "objective": "Distinguir equilíbrio de solubilidade e ebulição e analisar efeitos de temperatura e pressão.",
+    "objective": "Distinguir equilíbrio de solubilidade e ebulição e analisar efeitos de temperatura e pressão. Interpretar curvas de solubilidade, identificar sólido residual em equilíbrio, calcular elevação ebuliométrica em molalidade e reconhecer a dependência da solubilidade gasosa da pressão parcial.",
     "prerequisites": [
       "Mudanças de estado",
       "Pressão de vapor",
@@ -92,24 +92,24 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Duas grandezas diferentes",
         "explanation": "Solubilidade descreve a quantidade máxima de soluto que pode permanecer dissolvida em determinada quantidade de solvente, sob condições especificadas e em equilíbrio com uma fase não dissolvida. Já a temperatura de ebulição é aquela em que a pressão de vapor do líquido iguala a pressão externa. São propriedades diferentes: uma se refere ao equilíbrio entre soluto dissolvido e não dissolvido; a outra, ao equilíbrio entre líquido e vapor. A solubilidade de muitos sólidos aumenta com a temperatura, mas existem exceções; não é correto transformar essa tendência em lei universal. Para gases em água, o aquecimento frequentemente reduz a solubilidade, embora a pressão parcial do gás também seja determinante. Uma solução saturada pode conter sólido residual e ainda estar em equilíbrio dinâmico. A curva de solubilidade deve ser lida com suas unidades, geralmente gramas de soluto por 100 g de água.",
-        "example": "Se a curva informa 40 g de sal por 100 g de água a 30 °C, em 200 g de água o limite é 80 g; 90 g adicionados deixam 10 g sem dissolver no equilíbrio.",
-        "pitfall": "Não confunda 40 g/100 g de água com 40% em massa da solução.",
+        "example": "Se a curva informa 40 g de sal por 100 g de água a 30 °C, em 200 g de água o limite é 80 g; 90 g adicionados deixam 10 g sem dissolver no equilíbrio. Use proporção direta: 40 g/100 g de água × 200 g de água = 80 g de soluto dissolvido. Dos 90 g adicionados, 10 g permanecem sólidos; não são 10 g evaporados.",
+        "pitfall": "Não confunda 40 g/100 g de água com 40% em massa da solução. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Use proporção direta: 40 g/100 g de água × 200 g de água = 80 g de soluto dissolvido. Dos 90 g adicionados, 10 g permanecem sólidos; não são 10 g evaporados.",
         "steps": ["Identifique a substância dissolvida e a grandeza solicitada no problema de solubilidade.","Separe massa máxima dissolvida em uma temperatura da temperatura de ebulição da solução.","Confira se a mistura está saturada e se a pressão foi mantida constante."]
       },
       {
         "level": "intermediate",
         "title": "Elevação ebuliométrica",
         "explanation": "Um soluto não volátil diminui a pressão de vapor do solvente em solução ideal diluída. Para que a pressão de vapor alcance a pressão externa, é necessária temperatura mais alta; esse efeito é a elevação ebuliométrica. Em modelo diluído, ΔTb=Kb·m·i, onde m é molalidade, Kb é constante do solvente e i é fator de van ’t Hoff. O fator i aproxima o número efetivo de partículas em solução, podendo divergir da contagem estequiométrica devido a associações e não idealidade. A fórmula não deve ser aplicada sem verificar volatilidade do soluto, concentração e comportamento da solução. A adição de sal não garante aumento ilimitado da temperatura de ebulição, pois a solubilidade e a composição impõem limites. Em altitude elevada, a menor pressão externa reduz a temperatura de ebulição, mesmo para água pura.",
-        "example": "Para 1 mol de glicose não eletrolítica em 2 kg de água, m=0,5 mol/kg; com Kb=0,512 °C·kg/mol e i=1, ΔTb=0,256 °C.",
-        "pitfall": "Não use molaridade em lugar de molalidade na equação.",
+        "example": "Para 1 mol de glicose não eletrolítica em 2 kg de água, m=0,5 mol/kg; com Kb=0,512 °C·kg/mol e i=1, ΔTb=0,256 °C. Calcule primeiro m = 1 mol / 2 kg = 0,50 mol/kg. Depois ΔTb = 0,512 × 0,50 × 1 = 0,256 °C. A 1 atm, a previsão idealizada é 100,256 °C para água.",
+        "pitfall": "Não use molaridade em lugar de molalidade na equação. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Calcule primeiro m = 1 mol / 2 kg = 0,50 mol/kg. Depois ΔTb = 0,512 × 0,50 × 1 = 0,256 °C. A 1 atm, a previsão idealizada é 100,256 °C para água.",
         "steps": ["Determine a molalidade do soluto e a constante ebuliométrica do solvente.","Calcule ΔTb=Kb·m·i, justificando o fator de van 't Hoff adotado.","Some ΔTb à temperatura de ebulição do solvente puro na mesma pressão."]
       },
       {
         "level": "advanced",
         "title": "Gases e pressão",
         "explanation": "A solubilidade de gases merece análise separada da dos sólidos. Em soluções diluídas e sem reação química relevante, a lei de Henry relaciona a concentração do gás dissolvido à sua pressão parcial sobre o líquido, com constante definida segundo convenção e temperatura. Abrir uma garrafa de bebida carbonatada reduz a pressão parcial de CO₂ sobre o líquido; a solução torna-se supersaturada em relação às novas condições e o gás pode escapar em bolhas. Aquecer também tende a favorecer a saída de muitos gases dissolvidos. Em ecossistemas aquáticos, menor concentração de oxigênio dissolvido pode prejudicar organismos, mas a disponibilidade real depende também de circulação, fotossíntese e consumo biológico. Não confunda ponto de ebulição com a temperatura em que bolhas de gás dissolvido aparecem: a liberação de CO₂ pode ocorrer muito abaixo da ebulição da água.",
-        "example": "Uma bebida fechada retém CO₂ sob pressão. Ao abrir, diminui a pressão parcial; parte do CO₂ sai da solução, mesmo a 20 °C, sem a água ferver.",
-        "pitfall": "Bolhas de CO₂ não demonstram que a água atingiu sua temperatura de ebulição.",
+        "example": "Uma bebida fechada retém CO₂ sob pressão. Ao abrir, diminui a pressão parcial; parte do CO₂ sai da solução, mesmo a 20 °C, sem a água ferver. Compare a garrafa fechada com a aberta à mesma temperatura: ao reduzir a pressão parcial de CO₂ no espaço gasoso, a concentração de equilíbrio cai. O excesso escapa até novo equilíbrio.",
+        "pitfall": "Bolhas de CO₂ não demonstram que a água atingiu sua temperatura de ebulição. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Compare a garrafa fechada com a aberta à mesma temperatura: ao reduzir a pressão parcial de CO₂ no espaço gasoso, a concentração de equilíbrio cai. O excesso escapa até novo equilíbrio.",
         "steps": ["Identifique gás, solvente, temperatura e pressão parcial antes de usar Henry.","Aplique a proporcionalidade de Henry apenas no regime diluído e na temperatura fixa.","Explique por que aquecer ou reduzir a pressão pode favorecer liberação do gás."]
       }
     ],
@@ -158,7 +158,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "Interações da água com outras substâncias",
-    "objective": "Explicar solvatação, miscibilidade e limites da regra semelhante dissolve semelhante.",
+    "objective": "Explicar solvatação, miscibilidade e limites da regra semelhante dissolve semelhante. Comparar interações entre água, etanol, óleo e surfactantes, distinguir solução homogênea de emulsão e justificar efeitos de cadeia apolar e ligações de hidrogênio.",
     "prerequisites": [
       "Polaridade",
       "Ligações de hidrogênio",
@@ -169,24 +169,24 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Água como solvente",
         "explanation": "A molécula de água apresenta geometria angular e dipolo permanente, permitindo interações dipolo–dipolo, ligações de hidrogênio e hidratação de íons. Isso favorece dissolução de várias substâncias polares e iônicas, mas não torna a água solvente universal. O etanol mistura-se com água em todas as proporções usuais porque seu grupo hidroxila pode formar ligações de hidrogênio com a água, embora possua parte apolar. Já hidrocarbonetos como óleo mineral possuem interações predominantemente dispersivas e pouca afinidade com água; a mistura tende a separar-se em fases. A frase 'semelhante dissolve semelhante' é uma heurística, não uma lei quantitativa: temperatura, composição, entropia e forças entre todas as espécies importam. Dissolver não significa necessariamente reagir; sacarose se dispersa molecularmente sem precisar formar novos produtos químicos.",
-        "example": "Compare três amostras: NaCl em água libera íons hidratados; etanol forma mistura homogênea molecular; óleo tende a produzir duas fases. Classifique os processos antes de discutir energia.",
-        "pitfall": "Não atribua toda solubilidade à presença de ligações covalentes com água.",
+        "example": "Compare três amostras: NaCl em água libera íons hidratados; etanol forma mistura homogênea molecular; óleo tende a produzir duas fases. Classifique os processos antes de discutir energia. Classifique NaCl(aq) como dispersão iônica e etanol(aq) como molecular; água e óleo apresentam duas fases após repouso. A distinção é observacional e não implica reação química entre os componentes.",
+        "pitfall": "Não atribua toda solubilidade à presença de ligações covalentes com água. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Classifique NaCl(aq) como dispersão iônica e etanol(aq) como molecular; água e óleo apresentam duas fases após repouso. A distinção é observacional e não implica reação química entre os componentes.",
         "steps": ["Reconheça grupos polares, apolares e possibilidades de ligação de hidrogênio.","Compare interações soluto–água com interações que precisam ser rompidas.","Conclua sobre tendência de dissolução sem afirmar miscibilidade universal."]
       },
       {
         "level": "intermediate",
         "title": "Miscibilidade e emulsão",
         "explanation": "Dois líquidos são miscíveis quando podem formar uma única fase nas proporções consideradas. Água e etanol são miscíveis, mas água e óleo tipicamente apresentam baixa miscibilidade. Agitação pode fragmentar óleo em gotículas e formar dispersão temporária, sem converter a mistura em solução molecular verdadeira. Surfactantes possuem região hidrofílica e região hidrofóbica; adsorvem-se na interface e podem estabilizar emulsões, reduzindo a tendência à coalescência. Uma emulsão continua sendo um sistema disperso e pode apresentar instabilidade ao longo do tempo. A tensão superficial da água resulta de forças coesivas e influencia molhamento, formação de gotas e capilaridade. Detergentes alteram fenômenos interfaciais, mas não fazem o óleo transformar-se quimicamente em água. Em laboratório, a identificação de uma ou duas fases após repouso é evidência útil, porém não mede por si só a composição molecular de cada fase.",
-        "example": "Misture água e óleo: duas fases aparecem após repouso. Agite com detergente: gotículas menores persistem por mais tempo; identifique uma emulsão estabilizada, não uma reação de neutralização.",
-        "pitfall": "Espuma e turbidez não provam dissolução molecular completa.",
+        "example": "Misture água e óleo: duas fases aparecem após repouso. Agite com detergente: gotículas menores persistem por mais tempo; identifique uma emulsão estabilizada, não uma reação de neutralização. Após agitar água e óleo sem detergente, observe a separação; com detergente, gotas menores podem permanecer dispersas. O número de fases e a persistência da turbidez ajudam a distinguir emulsão de solução.",
+        "pitfall": "Espuma e turbidez não provam dissolução molecular completa. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Após agitar água e óleo sem detergente, observe a separação; com detergente, gotas menores podem permanecer dispersas. O número de fases e a persistência da turbidez ajudam a distinguir emulsão de solução.",
         "steps": ["Identifique se os líquidos são miscíveis e se há fase dispersa e contínua.","Diferencie mistura homogênea de emulsão estabilizada por surfactante.","Avalie se a separação de fases decorre do balanço das interações moleculares."]
       },
       {
         "level": "advanced",
         "title": "Competição de interações",
         "explanation": "A solubilidade depende de um balanço de interações soluto–soluto, solvente–solvente e soluto–solvente, além da entropia de mistura. A presença de grupos capazes de fazer ligações de hidrogênio pode elevar a afinidade pela água, mas o aumento da cadeia carbônica frequentemente reduz a miscibilidade de moléculas orgânicas. Assim, álcoois de cadeia curta são mais miscíveis que homólogos de cadeia longa, em condições comparáveis. Em moléculas anfifílicas, a auto-organização em micelas pode aprisionar compostos hidrofóbicos, aumentando sua dispersão aparente sem alterar sua polaridade intrínseca. Em sistemas biológicos, bicamadas lipídicas organizam caudas apolares voltadas para o interior e cabeças polares em contato com a água. A organização não é simplesmente 'repulsão' entre água e óleo; emerge do balanço de energia livre e das interações no conjunto. Não extrapole solubilidade sem especificar temperatura e concentração.",
-        "example": "Compare etanol e 1-octanol: ambos possuem –OH, mas o segundo tem cadeia apolar maior. Preveja menor miscibilidade em água para 1-octanol, justificando o balanço estrutural.",
-        "pitfall": "Ter um grupo –OH não garante miscibilidade total.",
+        "example": "Compare etanol e 1-octanol: ambos possuem –OH, mas o segundo tem cadeia apolar maior. Preveja menor miscibilidade em água para 1-octanol, justificando o balanço estrutural. Ambos os álcoois contêm –OH, mas a cadeia C8 do 1-octanol amplia a região apolar comparada à C2 do etanol. Logo, a tendência relativa de miscibilidade em água diminui.",
+        "pitfall": "Ter um grupo –OH não garante miscibilidade total. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Ambos os álcoois contêm –OH, mas a cadeia C8 do 1-octanol amplia a região apolar comparada à C2 do etanol. Logo, a tendência relativa de miscibilidade em água diminui.",
         "steps": ["Liste interações água–água, soluto–soluto e água–soluto.","Analise o custo de romper interações e o ganho ao formar novas atrações.","Considere entropia e temperatura antes de concluir espontaneidade da mistura."]
       }
     ],
@@ -235,7 +235,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "Soluções aquosas: conceito e classificação",
-    "objective": "Classificar soluções aquosas por composição, saturação e condução sem confundir concentração e solubilidade.",
+    "objective": "Classificar soluções aquosas por composição, saturação e condução sem confundir concentração e solubilidade. Calcular fração mássica e diluição com conservação de soluto, diferenciar saturação de concentração e explicar a condutividade de eletrólitos em condições comparáveis.",
     "prerequisites": [
       "Misturas homogêneas",
       "Quantidade de matéria",
@@ -246,24 +246,24 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Conceito e constituintes",
         "explanation": "Solução aquosa é uma mistura homogênea em escala molecular ou iônica cujo solvente é a água. Soluto é o componente dissolvido, mas a classificação não depende apenas de ser sólido: gases como CO₂ e líquidos como etanol também podem atuar como solutos. Uma solução pode conter mais de um soluto, e 'homogênea' significa que não se observam fases distintas nas condições consideradas, não que todas as moléculas sejam idênticas. Dissolução pode envolver dispersão molecular, como glicose, ou formação de íons móveis, como NaCl. Soluções aquosas de compostos covalentes também podem conduzir corrente se houver ionização, como ocorre com muitos ácidos. A aparência transparente não prova ausência de soluto: soluções concentradas podem ser incolores. Concentração descreve quantidade por volume ou massa; não é sinônimo de saturação, que depende do limite de solubilidade.",
-        "example": "Dissolva 10 g de glicose em 100 g de água: a massa final é 110 g, desprezando perdas; a fração mássica da glicose é 10/110≈0,0909, ou 9,09%.",
-        "pitfall": "Não use massa do solvente como denominador da porcentagem em massa da solução.",
+        "example": "Dissolva 10 g de glicose em 100 g de água: a massa final é 110 g, desprezando perdas; a fração mássica da glicose é 10/110≈0,0909, ou 9,09%. Somando 10 g de glicose e 100 g de água, obtenha 110 g de solução. Divida 10/110 = 0,0909 e multiplique por 100 para 9,09% em massa, sem usar apenas a massa do solvente.",
+        "pitfall": "Não use massa do solvente como denominador da porcentagem em massa da solução. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Somando 10 g de glicose e 100 g de água, obtenha 110 g de solução. Divida 10/110 = 0,0909 e multiplique por 100 para 9,09% em massa, sem usar apenas a massa do solvente.",
         "steps": ["Classifique solvente, soluto e fase homogênea de cada amostra aquosa.","Calcule a concentração com a definição e as unidades fornecidas.","Diferencie concentração de solubilidade e de quantidade total de solução."]
       },
       {
         "level": "intermediate",
         "title": "Saturação e diluição",
         "explanation": "Uma solução insaturada contém menos soluto dissolvido que o limite de equilíbrio nas condições dadas. A saturada atinge esse limite; a supersaturada contém mais soluto dissolvido do que o equilíbrio permitiria e é metaestável, podendo cristalizar quando perturbada. Essas categorias só fazem sentido com temperatura, pressão e composição especificadas. Ao diluir uma solução por adição de água sem perda de soluto, a quantidade de matéria do soluto permanece constante: C1V1=C2V2 quando as concentrações são molares e os volumes referem-se aos estados inicial e final. A equação não se aplica diretamente a misturas com reação, precipitação ou variação da quantidade de soluto. A diluição reduz concentração, mas não transforma automaticamente uma solução saturada em supersaturada; normalmente a afasta da saturação, salvo outras mudanças de condições.",
-        "example": "Para 100 mL de NaCl 2,0 mol/L diluídos até 500 mL, calcule C2=2,0×100/500=0,40 mol/L; os mols de NaCl permanecem 0,20.",
-        "pitfall": "Não some volumes sem considerar o volume final medido.",
+        "example": "Para 100 mL de NaCl 2,0 mol/L diluídos até 500 mL, calcule C2=2,0×100/500=0,40 mol/L; os mols de NaCl permanecem 0,20. Conserve os mols: n = 2,0 mol/L × 0,100 L = 0,20 mol. No volume final de 0,500 L, C = 0,20/0,500 = 0,40 mol/L; a água adicionada não altera n.",
+        "pitfall": "Não some volumes sem considerar o volume final medido. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Conserve os mols: n = 2,0 mol/L × 0,100 L = 0,20 mol. No volume final de 0,500 L, C = 0,20/0,500 = 0,40 mol/L; a água adicionada não altera n.",
         "steps": ["Compare a massa de soluto presente com o limite de solubilidade na temperatura dada.","Na diluição sem reação ou precipitação, aplique C1V1=C2V2.","Verifique conservação do soluto e não confunda solução saturada com concentrada."]
       },
       {
         "level": "advanced",
         "title": "Eletrólitos e interpretação",
         "explanation": "Eletrólitos geram portadores de carga em solução aquosa. NaCl é eletrólito forte porque os íons do sólido se separam na dissolução; ácido acético é eletrólito fraco porque apenas parte das moléculas ioniza em equilíbrio, nas condições usuais. Glicose dissolve-se molecularmente e não produz concentração significativa de íons por si só. A condutividade elétrica depende da concentração de íons, suas cargas e mobilidades, além da temperatura. Portanto, a comparação entre soluções exige controle de concentração e geometria de medida. Uma solução concentrada de eletrólito fraco não pode ser automaticamente classificada como melhor condutora que uma diluída de eletrólito forte. Ácidos e bases podem alterar o pH e produzir íons, mas pH isolado não determina condutividade. Em soluções reais, interações entre íons fazem atividades diferirem de concentrações, especialmente em meios concentrados.",
-        "example": "Compare soluções 0,1 mol/L de glicose e NaCl: a primeira mantém moléculas neutras; a segunda contém Na⁺ e Cl⁻ móveis e deve conduzir muito melhor, sob condições equivalentes.",
-        "pitfall": "Não confunda eletrólito forte com solução necessariamente concentrada.",
+        "example": "Compare soluções 0,1 mol/L de glicose e NaCl: a primeira mantém moléculas neutras; a segunda contém Na⁺ e Cl⁻ móveis e deve conduzir muito melhor, sob condições equivalentes. Em NaCl(aq) 0,1 mol/L há portadores Na⁺ e Cl⁻, enquanto glicose 0,1 mol/L permanece molecular. Compare à mesma temperatura e geometria de célula antes de inferir condutividade.",
+        "pitfall": "Não confunda eletrólito forte com solução necessariamente concentrada. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Em NaCl(aq) 0,1 mol/L há portadores Na⁺ e Cl⁻, enquanto glicose 0,1 mol/L permanece molecular. Compare à mesma temperatura e geometria de célula antes de inferir condutividade.",
         "steps": ["Verifique se o soluto forma íons móveis ao dissolver em água.","Diferencie dissociação de sal e ionização de moléculas, sem presumir grau idêntico.","Relacione condutividade ao número e à mobilidade dos íons, não apenas à massa dissolvida."]
       }
     ],
@@ -312,7 +312,7 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
   {
     "subject": "Química",
     "topicStart": "A eletrosfera e o diagrama de Linus Pauling",
-    "objective": "Construir configurações eletrônicas de átomos e íons e distinguir ordem energética de ocupação.",
+    "objective": "Construir configurações eletrônicas de átomos e íons e distinguir ordem energética de ocupação. Distribuir elétrons em subníveis com capacidades e regra de Hund, verificar a soma de elétrons e tratar exceções e formação de cátions de metais de transição.",
     "prerequisites": [
       "Número atômico",
       "Subníveis s p d f",
@@ -323,24 +323,24 @@ export const provaoDepthBatch44Core:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Subníveis e capacidade",
         "explanation": "O modelo de distribuição eletrônica escolar organiza elétrons em níveis e subníveis caracterizados por números quânticos. Um orbital comporta no máximo dois elétrons de spins opostos, conforme o princípio de exclusão de Pauli. O subnível s contém um orbital e comporta dois elétrons; p contém três e comporta seis; d contém cinco e comporta dez; f contém sete e comporta catorze. O diagrama de Linus Pauling apresenta uma ordem aproximada de preenchimento energético, como 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p. Essa sequência é útil para muitos átomos neutros no estado fundamental, mas não deve ser confundida com a ordem numérica simples das camadas. O número atômico Z fornece a quantidade de elétrons apenas para o átomo neutro. A distribuição eletrônica descreve um modelo quântico de ocupação e não trajetórias planetárias fixas ao redor do núcleo.",
-        "example": "Para oxigênio neutro, Z=8: preencha 1s² (2), 2s² (mais 2), 2p⁴ (mais 4). Confira a soma 2+2+4=8 elétrons.",
-        "pitfall": "Não coloque oito elétrons no subnível 2p: sua capacidade máxima é seis.",
+        "example": "Para oxigênio neutro, Z=8: preencha 1s² (2), 2s² (mais 2), 2p⁴ (mais 4). Confira a soma 2+2+4=8 elétrons. Para O neutro, Z=8, preencha 1s², 2s² e 2p⁴. Some 2+2+4=8; o subnível 2p ainda não atingiu sua capacidade de seis elétrons.",
+        "pitfall": "Não coloque oito elétrons no subnível 2p: sua capacidade máxima é seis. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Para O neutro, Z=8, preencha 1s², 2s² e 2p⁴. Some 2+2+4=8; o subnível 2p ainda não atingiu sua capacidade de seis elétrons.",
         "steps": ["Identifique número atômico e quantidade de elétrons do átomo neutro.","Preencha subníveis respeitando capacidades s², p⁶, d¹⁰ e f¹⁴.","Confira a soma dos expoentes e o princípio de exclusão de Pauli."]
       },
       {
         "level": "intermediate",
         "title": "Hund e exceções",
         "explanation": "Em orbitais de mesma energia dentro de um subnível, a regra de Hund orienta a ocupação inicial com elétrons desemparelhados de spins paralelos antes do pareamento, no estado fundamental idealizado. No nitrogênio, 2p³ corresponde a um elétron em cada um dos três orbitais p. A regra de Aufbau, frequentemente ilustrada pelas diagonais de Pauling, fornece uma aproximação energética, mas átomos como cromo e cobre apresentam configurações fundamentais que diferem da previsão mecânica mais simples: Cr é [Ar]3d⁵4s¹ e Cu é [Ar]3d¹⁰4s¹. Essas exceções envolvem diferenças energéticas pequenas e interações eletrônicas; não são justificadas apenas por 'querer estabilidade' sem contexto. A configuração permite prever elétrons de valência e propriedades periódicas de modo aproximado, porém não determina sozinha toda reatividade. Para cátions de metais de transição, a retirada costuma ocorrer primeiro do subnível ns, mesmo que ns tenha sido preenchido antes de (n−1)d.",
-        "example": "Para N, Z=7, obtenha 1s²2s²2p³. Distribua os três elétrons 2p em orbitais distintos antes de emparelhar; há três desemparelhados.",
-        "pitfall": "Não trate a diagonal como regra infalível para todos os elementos.",
+        "example": "Para N, Z=7, obtenha 1s²2s²2p³. Distribua os três elétrons 2p em orbitais distintos antes de emparelhar; há três desemparelhados. Para N, Z=7, complete 1s²2s² e distribua os três elétrons 2p em orbitais separados, cada um com spin paralelo. Só depois de ocupá-los individualmente começaria o pareamento.",
+        "pitfall": "Não trate a diagonal como regra infalível para todos os elementos. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Para N, Z=7, complete 1s²2s² e distribua os três elétrons 2p em orbitais separados, cada um com spin paralelo. Só depois de ocupá-los individualmente começaria o pareamento.",
         "steps": ["Distribua elétrons em orbitais degenerados isoladamente antes de emparelhar.","Aplique a regra de Hund e confira spins e número de elétrons.","Diferencie regra de preenchimento simplificada de exceções energéticas reais."]
       },
       {
         "level": "advanced",
         "title": "Átomos e íons",
         "explanation": "Para determinar a configuração de um íon, conte elétrons usando Z e carga. Um cátion de carga +2 possui dois elétrons a menos que o átomo neutro; um ânion −1 possui um a mais. No ferro neutro, Z=26, a configuração usual é [Ar]3d⁶4s². Para Fe²⁺, retiram-se primeiro os dois elétrons 4s, resultando em [Ar]3d⁶. Para Fe³⁺, retira-se mais um do 3d, obtendo [Ar]3d⁵. Isso evidencia que ordem de preenchimento e ordem de remoção não são inversões automáticas simples. Em espécies isoeletrônicas, como Na⁺ e Ne, a quantidade de elétrons é igual, mas a carga nuclear é diferente, influenciando o tamanho e a atração eletrônica. Configurações de átomos isolados no estado fundamental não descrevem integralmente moléculas, sólidos ou estados excitados. A identificação de elétrons de valência requer atenção ao grupo químico e aos subníveis envolvidos.",
-        "example": "Fe neutro tem 26 elétrons e [Ar]3d⁶4s²; Fe²⁺ tem 24. Remova 4s² e obtenha [Ar]3d⁶, preservando o núcleo [Ar].",
-        "pitfall": "Não remova 3d antes de 4s ao formar Fe²⁺.",
+        "example": "Fe neutro tem 26 elétrons e [Ar]3d⁶4s²; Fe²⁺ tem 24. Remova 4s² e obtenha [Ar]3d⁶, preservando o núcleo [Ar]. Para Fe²⁺, parta de Fe neutro [Ar]4s²3d⁶ e remova primeiro os dois elétrons 4s, obtendo [Ar]3d⁶. Não remova elétrons 3d antes dos 4s na formação desse cátion.",
+        "pitfall": "Não remova 3d antes de 4s ao formar Fe²⁺. Para evitar esse erro, confronte o resultado com o procedimento resolvido: Para Fe²⁺, parta de Fe neutro [Ar]4s²3d⁶ e remova primeiro os dois elétrons 4s, obtendo [Ar]3d⁶. Não remova elétrons 3d antes dos 4s na formação desse cátion.",
         "steps": ["Determine a carga do íon e ajuste o total de elétrons em relação ao átomo neutro.","Escreva a configuração eletrônica e remova ou acrescente elétrons no subnível adequado.","Para cátions de metais de transição, examine a remoção de ns antes de (n−1)d."]
       }
     ],
