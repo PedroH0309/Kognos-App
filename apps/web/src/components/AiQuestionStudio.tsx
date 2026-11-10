@@ -3,7 +3,7 @@
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {BrainCircuit,BookOpenText,ShieldCheck,RefreshCw,Clock3,CheckCircle2,AlertTriangle,Sparkles} from 'lucide-react';
 import {KognosSelect} from './KognosFields';
-import {examBlueprints,studySubjectsForExam,difficulties,type ExamId,type Difficulty} from '@/lib/exam-blueprints';
+import {examBlueprints,publicExamEntries,studySubjectsForExam,difficulties,type ExamId,type Difficulty} from '@/lib/exam-blueprints';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import {getSupabase} from '@/lib/supabase';
 import type {ApprovedSyllabusTopic} from '@/lib/syllabus-sources';
@@ -26,7 +26,7 @@ import {recoverableLessonGenerationError,nextLessonReviewBatchSize,lessonGenerat
 export type UserAIQuestion={id:string;lesson_id?:string|null;institution:ExamId;source_title:string;source_url:string;edition:string;subject:string;topic:string;difficulty:Difficulty;prompt:string;options:string[];created_at:string;source_kind?:'editor_approved_source'|'editorial';review_status:'auto_reviewed'};
 type Grading={correct:boolean;correctIndex:number;explanation:string;xpEarned:number};
 type Mode='questions'|'simulados';
-const examOptions=(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}));
+const examOptions=publicExamEntries().map(([value,item])=>({value,label:item.label}));
 const difficultyOptions=(Object.entries(difficulties) as [Difficulty,string][]).map(([value,label])=>({value,label}));
 const amountOptions=[1,3,5,10].map(value=>({value:String(value),label:`${value} ${value===1?'questão':'questões'}`}));
 
@@ -36,7 +36,7 @@ export default function AiQuestionStudio({mode,userId,profile,onTutor,onLogin,on
  const hasServerBank=readiness.status?.supabaseServerConfigured===true;
  const canGenerate=readiness.status?.questionGenerationConfigured===true;
  const [linkedLessonId,setLinkedLessonId]=useState<string|null>(preset?.lessonId??null);
- const [institution,setInstitution]=useState<ExamId>(preset?.institution??'enem');
+ const [institution,setInstitution]=useState<ExamId>(preset?.institution&&preset.institution!=='etec'?preset.institution:'enem');
  const [subject,setSubject]=useState(preset?.subject??'Matemática');
  const [topic,setTopic]=useState(preset?.topic??'Porcentagem e razão');
  const [difficulty,setDifficulty]=useState<Difficulty>('intermediate');

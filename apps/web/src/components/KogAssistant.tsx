@@ -12,6 +12,7 @@ import { subjectForView, quickPromptForView, type KogContext } from '@/lib/kog-c
 import {contextualKogPrompts,previewKogStudyContext,findDemoQuestion,type KogStudyContext} from '@/lib/kog-study-context';
 import {localStudyGuide} from '@/lib/offline-study-guide';
 import {normalizeTutorAnswer} from '@/lib/tutor';
+import KognosLoadingOverlay from './KognosLoadingOverlay';
 import {tutorScopeReply,enforcePedagogicalTutorAnswer} from '@/lib/tutor-scope';
 import type {AIReadiness} from '@/lib/ai-readiness';
 
@@ -118,8 +119,21 @@ export default function KogAssistant({active,onBack,profile,user,onLogin,context
     }catch(err){if(currentUserRef.current===user.id)setError(err instanceof Error?err.message:'Falha ao conectar com o tutor.');}
     finally{inFlightRef.current=false;setPending(false);}
   }
+  async function retryTutorConnection(){
+    setCheckingReadiness(true);
+    try{
+      const response=await fetch('/api/ai-status',{cache:'no-store'});
+      if(!response.ok)throw new Error('Falha ao verificar a configuração');
+      const next=await response.json() as AIReadiness;
+      if(typeof next.tutorConfigured!=='boolean')throw new Error('Resposta inválida');
+      setReadiness(next);
+      if(next.tutorConfigured)setError('');
+    }catch{setError('Não foi possível verificar o servidor de IA. Tente novamente.');}
+    finally{setCheckingReadiness(false);}
+  }
   function fillPrompt(value:string){setDraft(value.slice(0,3000));textRef.current?.focus();}
   return <section className={`kog-page ${messages.length===0?'kog-page-empty':''}`} aria-label="Conversa com o tutor Kog">
+    {(pending||checkingReadiness)&&<KognosLoadingOverlay inline label={pending?'Kog preparando explicação':'Verificando tutor Kog'}/>}
     <header className="kog-page-header">
       <div className="kog-page-identity">
         <span className="kog-page-brand"><Image src="/brand/kog-mascot.svg" alt="" width={38} height={38}/></span>
@@ -143,8 +157,12 @@ export default function KogAssistant({active,onBack,profile,user,onLogin,context
             <div className="kog-message-text">{message.role==='assistant'?normalizeTutorAnswer(enforcePedagogicalTutorAnswer(message.content)):message.content}</div>
           </div>)}
           {pending&&<div className="kog-message-row assistant"><span className="kog-mini-avatar"><Image src="/brand/kog-mascot.svg" alt="" width={26} height={26}/></span><div className="kog-message-text kog-thinking"><span/><span/><span/><small>Preparando uma explicação…</small></div></div>}
-          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div><strong>Biblioteca local · sem IA</strong><p>{!readiness.tutorProvider?'A chave de API do tutor não foi encontrada no servidor.':'A configuração do Supabase no servidor está incompleta.'} Posso mostrar guias preparados de Pitágoras e das miniaulas. Para conversas livres, configure as variáveis do servidor em <code>apps/web/.env.local</code> e reinicie o aplicativo.</p><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Ver guia: Teorema de Pitágoras</button></div></div>}
-          {checkingReadiness&&<p className="kog-readiness-check" role="status">Verificando configuração do tutor…</p>}
+          {readiness&&!readiness.tutorConfigured&&<div className="kog-offline-banner" role="status"><BookOpenText size={18}/><div>
+            <strong>Tutor de IA indisponível · biblioteca local ativa</strong>
+            <p>{!readiness.tutorProvider?'Nenhuma credencial válida do tutor está configurada no servidor.':'A integração do Supabase do servidor está incompleta.'} Para ativar conversas livres, o responsável pelo projeto deve configurar <code>GEMINI_API_KEY</code> ou <code>GROQ_API_KEY</code> nas variáveis de ambiente da hospedagem, sem publicar a chave no GitHub. Os guias locais existentes continuam acessíveis e não usam IA.</p>
+            <div className="kog-offline-actions"><button type="button" onClick={()=>fillPrompt('Me explique teorema de Pitágoras')}>Usar guia local</button><button type="button" onClick={()=>void retryTutorConnection()} disabled={checkingReadiness}>Verificar novamente</button></div>
+           </div></div>}
+          
           {error&&<div className="kog-chat-error" role="alert">{error}<button type="button" onClick={()=>setError('')} aria-label="Dispensar erro"><X size={14}/></button></div>}
         </div>
         <div className="kog-drawer-bottom">
@@ -160,7 +178,10 @@ export default function KogAssistant({active,onBack,profile,user,onLogin,context
             <button type="button" onClick={()=>fillPrompt("Dê dicas práticas para estudar melhor este assunto e revisar meus erros.")}><Lightbulb size={17}/> Dicas de estudo</button>
           </div>}
           {!user&&<p className="kog-login-tip"><MessageCircle size={14}/> Entre na sua conta para conversar com o Kog. <button onClick={onLogin} type="button">Entrar</button></p>}
-          {notice?<p className="kog-ai-notice">As mensagens e o contexto de estudo são processados por {providerName} para gerar respostas. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>} <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
+          {notice?<p className="kog-ai-notice">{readiness?.tutorConfigured
+           ?<>Para gerar respostas, mensagens e contexto de estudo são enviados ao provedor {providerName}. Não compartilhe dados sensíveis. {privacyUrl&&<a href={privacyUrl} target="_blank" rel="noopener noreferrer">Privacidade</a>}</>
+           :<>Sem provedor de IA ativo, os guias disponíveis são preparados localmente, sem enviar sua mensagem a um provedor de IA. {readiness===null?'O status do servidor ainda não foi confirmado.':''}</>}
+           <button type="button" aria-label="Ocultar aviso" title="Ocultar aviso" onClick={()=>setNotice(false)}><Check size={12}/></button></p>:<button type="button" className="kog-notice-toggle" onClick={()=>setNotice(true)}>Como meus dados são processados?</button>}
         </div>
   </section>;
 }

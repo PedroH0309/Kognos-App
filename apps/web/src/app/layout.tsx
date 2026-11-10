@@ -29,6 +29,7 @@ import "./kognos-theme-switch.css";
 import "./kognos-animated-navigation.css";
 import "./kognos-practice-polish.css";
 import "./kognos-lesson-dark-contrast.css";
+import "./kognos-usability-motion.css";
 
 export const metadata: Metadata = {
   title: "Kognos | Estude além dos limites",

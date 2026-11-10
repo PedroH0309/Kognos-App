@@ -12,7 +12,7 @@ import {adjacentLesson,trailSnapshot} from '@/lib/learning-roadmap';
 import {connectedCatalogProgress,connectedSubjectProgress,connectedLessonEvidence} from '@/lib/connected-learning';
 import {useAIStudyProgress} from '@/lib/use-ai-study-progress';
 import {linkedExamTopic} from '@/lib/lesson-ai-links';
-import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
+import {examBlueprints,publicExamEntries,type ExamId} from '@/lib/exam-blueprints';
 import {officialSyllabusSources} from '@/lib/exam-syllabus';
 import CurriculumRoom from './CurriculumRoom';
 import {curriculumTopics} from '@/lib/curriculum-catalog';
@@ -175,7 +175,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
    <div className="course-filters k-lab-exam-filters">
     <label>Currículo<select value={exam||'all'} onChange={e=>{setExam(e.target.value==='all'?null:e.target.value as ExamId);setLabTarget(null);}}>
      <option value="all">Todos os currículos</option>
-     {Object.entries(examBlueprints).map(([id,b])=><option key={id} value={id}>{b.label}</option>)}</select></label>
+     {publicExamEntries().map(([id,b])=><option key={id} value={id}>{b.label}</option>)}</select></label>
     {exam==='saresp'&&<label>Série<select value={provaoGrade??'all'}
      onChange={e=>{setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade);setLabTarget(null);}}>
      <option value="all">Todas as séries</option><option value="1">1ª série</option><option value="2">2ª série</option><option value="3">3ª série</option>
@@ -187,7 +187,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
     const matched=catalog.find(l=>l.curriculumId===topic.id||(l.subject===topic.subject&&l.topic===topic.topic));
     if(matched){chooseLesson(matched);setStudySpace('lessons');}
    }}/></>:<>
-  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{Object.entries(examBlueprints).map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
+  <div className="course-filters"><label>Prova<select value={exam||'all'} onChange={e=>setExam(e.target.value==='all'?null:e.target.value as ExamId)}><option value="all">Todas as provas</option>{publicExamEntries().map(([id,b])=><option value={id} key={id}>{b.label}</option>)}</select></label>{exam==='saresp'&&<label>Série do Provão Paulista<select value={provaoGrade??'all'} onChange={e=>setProvaoGrade(e.target.value==='all'?null:Number(e.target.value) as ProvaoGrade)}><option value="all">Todas as séries do ensino médio</option><option value="1">1ª série — Seriado I</option><option value="2">2ª série — Seriado II</option><option value="3">3ª série — Seriado III</option></select></label>}<p>{catalog.length} temas disponíveis para estudo e prática com IA.</p></div>
   {error&&<div className="message warning" role="alert">{error}</div>}
   {aiError&&userId&&<StudySyncNotice error={aiError} onRetry={()=>void refreshAI()}/>}
   {isTrail&&<section className="learning-journey-summary" aria-label="Seu progresso nos roteiros">
@@ -280,7 +280,7 @@ export default function LearningTrails({mode,userId,onContextChange,onTutor,onPr
      {legacyPane==='materials'&&<section className="k-lesson-reference-room" aria-label="Referências do assunto">
       <h3>Materiais e referências</h3>
       <p>Conteúdo autoral do Kognos associado editorialmente aos programas de estudo; não equivale a uma aula oficial do exame.</p>
-      <ul>{(Object.keys(examBlueprints) as ExamId[]).filter(id=>linkedExamTopic(lesson.id,id))
+      <ul>{publicExamEntries().map(([id])=>id).filter(id=>linkedExamTopic(lesson.id,id))
        .map(id=><li key={id}><a href={officialSyllabusSources[id].url} target="_blank" rel="noopener noreferrer">
          {id==='vunesp'?'UNESP / VUNESP':examBlueprints[id].label} · {linkedExamTopic(lesson.id,id)}</a></li>)}</ul>
      </section>}

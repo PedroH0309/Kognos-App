@@ -2,6 +2,14 @@ import {provaoSubjects} from './provao-paulista.ts';
 import {expandExamSubjects} from './exam-syllabus.ts';
 /** Versioned *orientation* maps, not machine-ingested official syllabi. */
 export type ExamId = 'enem'|'etec'|'fuvest'|'saresp'|'vunesp';
+/** Public Kognos exam tracks. ETEC remains parseable for historical data,
+ * but it is no longer offered as a live curriculum on the website. */
+export const publicExamIds:readonly ExamId[]=['enem','fuvest','saresp','vunesp'];
+export function isPublicExam(exam:ExamId):boolean{return publicExamIds.includes(exam);}
+export function publicExamEntries():readonly (readonly [ExamId,(typeof examBlueprints)[ExamId]])[]{
+ return publicExamIds.map(exam=>[exam,examBlueprints[exam]] as const);
+}
+
 export type Difficulty = 'basic'|'intermediate'|'advanced';
 export const difficulties: Record<Difficulty,string> = {basic:'Básica',intermediate:'Intermediária',advanced:'Avançada'};
 export const examBlueprints: Record<ExamId,{

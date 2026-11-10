@@ -7,11 +7,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import {AnimatedPage,AnimatedSidebarScrim} from './KognosMotion';
 
 
-import {examBlueprints,type ExamId} from '@/lib/exam-blueprints';
+import {examBlueprints,publicExamEntries,type ExamId} from '@/lib/exam-blueprints';
 import {examForStudent} from '@/lib/exam-syllabus';
 import type {KogStudyContext} from '@/lib/kog-study-context';
 import KogMascot3D from './KogMascot3D';
 import WeeklyProgressChart from './WeeklyProgressChart';
+import KognosLoadingOverlay from './KognosLoadingOverlay';
 import {weeklyStudyActivity,type WeeklyStudyPoint} from '@/lib/dashboard-weekly-activity';
 import { KognosSelect, KognosDateField, KognosRange } from './OnboardingControls';
 import { weeklyStudyHours } from '@/lib/onboarding-helpers';
@@ -43,11 +44,8 @@ import { adaptationLabels, dayLabels, defaultForDyslexia, defaultForTDAH, goalLa
 /** Avoid downloading every study workspace before the login/dashboard is visible.
  * Next.js preloads each route's code when that workspace is first selected.
  */
-function WorkspaceLoading(){return <main className="app-content k-workspace-loading" role="status" aria-live="polite">
- <span className="k-workspace-loading-pulse" aria-hidden="true"/>
- <p>Preparando esta área de estudos…</p>
-</main>;}
-const KogAssistant=dynamic(()=>import('./KogAssistant'),{loading:()=> <div role="status" className="k-kog-chunk-loading">Abrindo o tutor Kog…</div>});
+function WorkspaceLoading(){return <main className="app-content k-workspace-loading"><KognosLoadingOverlay label="Preparando área de estudos"/></main>;}
+const KogAssistant=dynamic(()=>import('./KogAssistant'),{loading:()=> <KognosLoadingOverlay label="Abrindo o tutor Kog"/>});
 const ExamSources=dynamic(()=>import('./ExamSources'),{loading:()=> <WorkspaceLoading/>});
 const PracticeSpace=dynamic(()=>import('./PracticeSpace'),{loading:()=> <WorkspaceLoading/>});
 const AchievementSpace=dynamic(()=>import('./AchievementSpace'),{loading:()=> <WorkspaceLoading/>});
@@ -94,7 +92,7 @@ const NAV_ICONS:Record<View,LucideIcon>={
 const NAV_PRIMARY:View[]=['dashboard','tutor','learn','subjects'];
 const NAV_SECONDARY:View[]=['calendar'];
 const NAV_PRACTICE:View[]=['questions','simulados'];
-const NAV_MORE:View[]=['trails','diagnostic','weekly','sources','performance','reviews','achievements','settings'];
+const NAV_MORE:View[]=['diagnostic','weekly','sources','performance','reviews','achievements','settings'];
 const SHORT_NAV_LABELS:Partial<Record<View,string>>={
  dashboard:'Início',tutor:'Tutor Kog',learn:'Estudar',subjects:'Disciplinas',
  questions:'Questões',simulados:'Simulados',plans:'Meu plano',
@@ -263,7 +261,7 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
           <div className="k-onboard-section">
             <label className="k-form-field"><span className="k-field-title">Como prefere ser chamado? <span className="k-required">*</span></span><input className="k-text-input" value={p.nickname} maxLength={60} onChange={e=>update({nickname:e.target.value})} placeholder="Seu nome ou apelido" autoComplete="nickname" autoFocus/><small className="k-field-hint">Este nome será usado no seu painel e pelo Kog.</small></label>
             <div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Para que você quer estudar?</span><span className="k-group-hint">Selecione uma ou mais opções</span></div><div className="goal-grid">{(Object.entries(goalLabels) as [Goal,string][]).map(([key,label])=><button key={key} type="button" aria-pressed={p.goals.includes(key)} className={`goal-card ${p.goals.includes(key)?'selected':''}`} onClick={()=>toggleGoal(key)}><span className="goal-icon"><GoalIcon goal={key}/></span><strong>{label}</strong><span aria-hidden="true" className="select-ring">{p.goals.includes(key)?<Check size={12} strokeWidth={3}/>:null}</span></button>)}</div></div>
-            <div className="k-field-group"><KognosSelect label="Prova principal (matriz de conteúdos)" value={p.examFocus||examForStudent(p)||'enem'} options={(Object.entries(examBlueprints) as [ExamId,(typeof examBlueprints)[ExamId]][]).map(([value,item])=>({value,label:item.label}))} onChange={chooseExam}/><small className="k-field-hint">As matérias são vinculadas à instituição selecionada. Editais, séries e modalidades específicas devem ser conferidos nas fontes oficiais.</small>
+            <div className="k-field-group"><KognosSelect label="Prova principal (matriz de conteúdos)" value={(p.examFocus&&p.examFocus!=='etec'?p.examFocus:examForStudent(p))||'enem'} options={publicExamEntries().map(([value,item])=>({value,label:item.label}))} onChange={chooseExam}/><small className="k-field-hint">As matérias são vinculadas à instituição selecionada. Editais, séries e modalidades específicas devem ser conferidos nas fontes oficiais.</small>
               {proposedExam&&<div className="k-exam-change-choice" role="group" aria-label="Como atualizar os conteúdos de estudo"><p>Você está mudando sua prova. Deseja substituir os temas antigos ou manter os antigos e acrescentar os da nova prova?</p><button type="button" className="btn primary small" onClick={()=>confirmExam(false)}>Usar somente a nova prova</button><button type="button" className="btn outline small" onClick={()=>confirmExam(true)}>Manter e acrescentar temas</button><button type="button" className="text-button" onClick={()=>setProposedExam(null)}>Cancelar</button></div>}
             </div>
             <div className="two-cols k-onboard-row"><KognosSelect label="Etapa escolar" value={p.stage} onChange={value=>update({stage:value})} options={stageOptions}/><KognosSelect label="Nível atual" value={p.level} onChange={value=>update({level:value})} options={levelOptions}/></div>
@@ -288,7 +286,7 @@ function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFin
         </>}
         {step===4&&<>
           <p className="overline">05 / SUA JORNADA ESTÁ PRONTA</p><h1 id="onboard-heading">Tudo pronto para <em>evoluir.</em></h1><p className="intro-copy">Este é seu ponto de partida. Você pode editar suas escolhas a qualquer momento no seu perfil.</p>
-          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>MATRIZ DE ESTUDOS</small><strong>{(p.syllabusExams.length?p.syllabusExams:[examForStudent(p)].filter(Boolean) as ExamId[]).map(e=>examBlueprints[e].label).join(' · ')||'A definir'}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil ficará vinculado à sua conta. Da próxima vez, você poderá continuar diretamente pelo painel.</span></div>
+          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>MATRIZ DE ESTUDOS</small><strong>{(p.syllabusExams.length?p.syllabusExams:[examForStudent(p)].filter(Boolean) as ExamId[]).filter(e=>e!=='etec').map(e=>examBlueprints[e].label).join(' · ')||'A definir'}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil ficará vinculado à sua conta. Da próxima vez, você poderá continuar diretamente pelo painel.</span></div>
         </>}
         {error&&<div className="message warning" role="alert">{error}</div>}
         {profileSetupIssue(error)&&<section className="onboard-db-help" aria-label="Configuração do Supabase necessária"><strong>Como liberar o cadastro</strong><p>No Supabase, abra <b>SQL Editor</b> e verifique se a migração <code>0001_core_schema.sql</code> criou <code>public.profiles</code>. Execute também <code>0003_account_and_avatars.sql</code> para os campos adicionais, respeitando a ordem das migrações. Confira se o projeto do seu <code>.env.local</code> é o mesmo do SQL Editor.</p><small>Depois recarregue a página e tente salvar. Suas escolhas continuam aqui até você sair.</small></section>}
@@ -416,7 +414,7 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
         <button type="button" className="k-section-text-action" onClick={onEdit}><Settings size={15}/> Ajustar preferências</button>
       </div>
       <div className="k-shortcut-grid">
-        <button type="button" className="k-shortcut-card" onClick={()=>onGo('trails')}><span className="k-shortcut-icon k-shortcut-violet"><GraduationCap size={25}/></span><strong>Trilhas</strong><small>Aprenda passo a passo</small><ArrowRight size={17}/></button>
+        <button type="button" className="k-shortcut-card" onClick={()=>onGo('learn')}><span className="k-shortcut-icon k-shortcut-violet"><GraduationCap size={25}/></span><strong>Estudar</strong><small>Acesse as aulas por conteúdo</small><ArrowRight size={17}/></button>
         <button type="button" className="k-shortcut-card" onClick={()=>onGo('questions')}><span className="k-shortcut-icon k-shortcut-cyan"><ListChecks size={25}/></span><strong>Questões</strong><small>Pratique seus conhecimentos</small><ArrowRight size={17}/></button>
         <button type="button" className="k-shortcut-card" onClick={()=>onGo('simulados')}><span className="k-shortcut-icon k-shortcut-blue"><ClipboardList size={25}/></span><strong>Simulados</strong><small>Teste seu aprendizado</small><ArrowRight size={17}/></button>
         <button type="button" className="k-shortcut-card" onClick={()=>onGo('tutor')}><span className="k-shortcut-icon k-shortcut-green"><Bot size={25}/></span><strong>Tutor Kog</strong><small>Tire dúvidas e revise</small><ArrowRight size={17}/></button>
@@ -464,7 +462,7 @@ export default function KognosApp(){
      if(!sameAccount)setRetainedViews([]); // Clear prior account's retained drafts.
      authenticatedUserRef.current=account?.id??null;
      // Restore the last page only when the account actually changes or after a reload.
-     if(account&&!sameAccount)setView(readWorkspaceView(window.sessionStorage,account.id));
+     if(account&&!sameAccount){const saved=readWorkspaceView(window.sessionStorage,account.id);setView(saved==='trails'?'learn':saved);}
      setLoading(true);setProfileError('');setUser(account);setProfile(null);setAvatarUrl(null);
      if(!account){setEditing(false);setView('dashboard');setLoading(false);return;}
      // An existing Auth account and a completed learning profile are different states.
@@ -530,7 +528,7 @@ export default function KognosApp(){
  }
  function retryProfile(){setProfileError('');setReloadRequest(x=>x+1);}
  function openAssistant(){if(view!=='tutor')setTutorReturnView(view);setAssistantInitialized(true);setView('tutor');setMobileMenu(false);}
- function navigate(v:View){ if(v==='tutor'){openAssistant();}else{const returningFromTutor=view==='tutor'&&v===tutorReturnView; if(v!==view&&!returningFromTutor)setStudyContext(null);/* Keep the current lesson and study plan on the return trip from Kog. */if(!returningFromTutor&&(v==='learn'||v==='trails'||v==='subjects'))setLearningFocus(null);if(!returningFromTutor&&v==='plans')setPlannerDate('');if(!returningFromTutor&&v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
+ function navigate(v:View){ if(v==='trails')v='learn'; if(v==='tutor'){openAssistant();}else{const returningFromTutor=view==='tutor'&&v===tutorReturnView; if(v!==view&&!returningFromTutor)setStudyContext(null);/* Keep the current lesson and study plan on the return trip from Kog. */if(!returningFromTutor&&(v==='learn'||v==='subjects'))setLearningFocus(null);if(!returningFromTutor&&v==='plans')setPlannerDate('');if(!returningFromTutor&&v==='diagnostic')setDiagnosticCycle('baseline');setView(v);}setMobileMenu(false); }
  function openPlannerForDate(date:string){setPlannerDate(date);setStudyContext(null);setView('plans');setMobileMenu(false);}
  function openWeeklyReview(){setDiagnosticCycle('weekly');setStudyContext(null);setView('weekly');setMobileMenu(false);}
  function practiceFromLesson(focus:{subject:string;topic:string;questionId:string}){
@@ -542,7 +540,7 @@ export default function KognosApp(){
   setPracticeFocus(focus);setStudyContext(null);setView('questions');setMobileMenu(false);
  }
  function generateForLesson(lessonId:string,generateNew=false){setLessonPracticeRequestId(previous=>generateNew?previous+1:0);setAiFocusLessonId(lessonId);setPracticeFocus(null);setStudyContext(null);setView('questions');setMobileMenu(false);}
- function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('trails');setMobileMenu(false);} 
+ function openFocusedLesson(focus:{subject:string;lessonId:string}){setLearningFocus(focus);setStudyContext(null);setView('learn');setMobileMenu(false);} 
  function changeTheme(v:'dark'|'light'){setTheme(v);try{window.localStorage.setItem('kognos_theme_v1',v);}catch{/* Storage restrictions must not disable the theme toggle. */}}
  function toggleSidebar(){setSidebarCollapsed(old=>{localStorage.setItem('kognos_sidebar_collapsed_v1',String(!old));return !old;});}
  async function saveAccountChanges(p:StudentProfile){const normalized=normalizeProfile(p);if(user){const sb=getSupabase();if(!sb)throw new Error('Supabase indisponível.');const {error}=await sb.from('profiles').update({display_name:normalized.nickname,username:normalized.username||null,biography:normalized.biography,preferences:normalized}).eq('id',user.id);if(error){if(error.code==='23505')throw new Error('Este nome de usuário já está em uso. Escolha outro.');throw error;}}else window.localStorage.setItem(STORAGE_KEY,JSON.stringify(normalized));setProfile(normalized);}
@@ -550,7 +548,7 @@ export default function KognosApp(){
  const actualProfile=profile??initialProfile;
  const accessibility=[actualProfile.adaptations.includes('larger_text')?'larger-text':'',actualProfile.adaptations.includes('high_contrast')?'strong-contrast':'',actualProfile.adaptations.includes('reduced_distractions')?'less-motion':''].join(' ');
  const disableAnimations=actualProfile.adaptations.includes('reduced_distractions');
- if(loading)return <div className="loading-page"><Logo/><p>Preparando seu espaço de aprendizagem…</p></div>;
+ if(loading)return <div className="loading-page"><Logo/><KognosLoadingOverlay label="Preparando seu espaço de aprendizagem"/></div>;
  if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
  if(!user)return <div className={`theme-${theme}`}><AuthModal standalone theme={theme} onThemeChange={changeTheme} onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;

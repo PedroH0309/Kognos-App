@@ -14,6 +14,11 @@ export default function LessonChoiceQuestion({choice,onAnswer,compact=false}:{
 }){
  const [selected,setSelected]=useState<number|null>(null);
  const [hintVisible,setHintVisible]=useState(false);
+ // Do not display or score placeholder answer sets as educational questions.
+ if(choice.source==='unavailable')return <p className="k-lesson-unavailable" role="status">
+  Questão objetiva específica deste assunto em elaboração. Não apresentamos alternativas
+  reaproveitadas de outras aulas nem atribuímos acerto sem gabarito autoral.
+ </p>;
  const correct=selected===choice.correctIndex;
  function choose(index:number){setSelected(index);onAnswer?.(index===choice.correctIndex);}
  return <div className={'k-lesson-mcq'+(compact?' is-compact':'')}>
@@ -35,8 +40,6 @@ export default function LessonChoiceQuestion({choice,onAnswer,compact=false}:{
    <strong>{correct?<><CheckCircle2 size={16} aria-hidden="true"/> Alternativa correta</>:<><RotateCcw size={16} aria-hidden="true"/> Revise esta questão</>}</strong>
    {!correct&&<p>Resposta de referência: <strong>{letters[choice.correctIndex]}</strong>. A alternativa escolhida não corresponde à resolução desta atividade.</p>}
    <p>{choice.explanation}</p>
-   {choice.source==='resolution_matching'&&<small>Associação entre enunciado e resolução original. As demais alternativas usam outras resoluções do material; isto não substitui uma questão autoral revisada com distratores específicos.</small>}
-   {choice.source==='example_matching'&&<small>Reconhecimento do exemplo original. Esta atividade introdutória não comprova domínio do assunto.</small>}
    <small>Feedback formativo imediato. Esta resposta não é registrada como nota nem no mapa de domínio.</small>
   </div>}
  </div>;

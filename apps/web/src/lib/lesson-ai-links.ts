@@ -97,6 +97,6 @@ export function lessonPracticeGenerationRequest(lessonId:string,run:number){
 
 /** Shared exam scope for the subject dashboard and learning trails. */
 export function learningCatalogForExam(exam:ExamId|null,grade:ProvaoGrade|null=null){
- return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))&&(exam!=='saresp'||isProvaoTopic(lesson.subject,lesson.topic,grade))):[...learningLessons];
+ return exam?learningLessons.filter(lesson=>Boolean(linkedExamTopic(lesson.id,exam))&&(exam!=='saresp'||isProvaoTopic(lesson.subject,lesson.topic,grade))):learningLessons.filter(lesson=>!lesson.curriculumId||lesson.exams?.some(track=>track!=='etec'));
 }
 

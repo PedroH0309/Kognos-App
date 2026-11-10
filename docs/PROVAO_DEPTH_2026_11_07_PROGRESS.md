@@ -442,3 +442,244 @@ As cinco aulas constam de `provao-depth-batch32-core.ts` e são registradas pelo
 **Cobertura prevista para validação automatizada:** **166/364 tópicos oficiais do Provão Paulista**, **198 pendentes**, **498 capítulos** e **498 questões objetivas**. O registro histórico encoberto no lote 16 permanece sem contagem adicional. O catálogo unificado dos cinco exames conserva entradas não aprofundadas; não há conclusão de ENEM, ETEC, Fuvest e Vunesp. Esta previsão não equivale a CI aprovada ou homologação pedagógica.
 
 Material original Kognos, **não oficial e sem homologação docente**. Nenhuma alteração foi feita em `legacy/`, IDs, respostas existentes, contas, Supabase, RLS, segredos ou integrações pagas. Não executar merge ou deploy sem revisão autorizada; manter PR em rascunho. A conclusão depende de testes unitários, segurança PostgreSQL com dois usuários, design, TypeScript e build no GitHub Actions.
+
+## Errata editorial: lote 33 substituído (2026-11-08)
+
+A verificação integral das 59 unidades importadas no resolvedor revelou que o módulo de **Velocidade e Aceleração** do lote 33 também sobrepunha um prefixo de conteúdo já registrado no lote 17. O lote 33 foi retirado do resolvedor e seu arquivo removido; **não foi contabilizada nenhuma cobertura inédita do lote 33**. Os quatro primeiros tópicos duplicados já haviam sido retirados após a primeira CI falhar. Os testes de regressão anteriores continuaram existindo. A cobertura anterior correta permanece no patamar de 166 tópicos identificados, sujeito à recontagem pela auditoria.
+
+## Lote 34 — cinco novas aulas específicas, sem colisão de prefixos (2026-11-08)
+
+As 59 unidades importadas até o lote 33 foram inspecionadas para evitar coincidência de tema e sobreposição por prefixo. Os cinco assuntos a seguir não apareciam como registros específicos preexistentes, e foram acrescentados em módulos separados:
+
+- **Português:** Elementos estruturais e processos de formação de palavras.
+- **Português:** Flexão nominal e verbal: tempo, modo, aspecto, voz e correlação de formas.
+- **Biologia:** Ausência de dominância, alelos letais e polialelia.
+- **Física:** Sistemas conservativos e não conservativos.
+- **História:** A Constituição de 1988 e os direitos fundamentais.
+
+Cada tópico possui três capítulos progressivos com explicação própria de no mínimo 750 caracteres, exemplo trabalhado, condições de validade, erros típicos e três questões exclusivamente objetivas A–D com `correctIndex`, alternativas distintas, dicas e soluções comentadas com pelo menos 140 caracteres. São **cinco novas aulas, 15 capítulos e 15 questões**, com identificadores curriculares existentes inalterados. Nenhuma aula já existente foi substituída por semelhança textual. A auditoria passa a exigir **pelo menos 171/364**; logo, há **no máximo 193** entradas pendentes desse nível se a contagem corresponder ao limite exato, sem pressupor aprovação docente.
+
+Esta auditoria contempla conteúdo offline do Provão, e não as publicações remotas do Supabase nem o restante dos catálogos de ENEM, ETEC, Fuvest e Vunesp. Proibido sinalizar homologação docente inexistente. CI (testes, segurança, design, tipagem e build) requer execução e verificação autônomas. Não foi feito merge nem deploy.
+
+## Correção transversal da avaliação e lote 35 (2026-11-08)
+
+A imagem reportada na aula de **Energia térmica, temperatura e termômetros — Lei Zero da Termodinâmica** mostrou uma falha grave: questões sem `options` e `correctIndex` eram convertidas em alternativas usando resoluções e exemplos alheios. O fallback `resolution_matching` mesclava inclusive a segunda lei de Newton em termometria, simulando gabaritos que não eram pedagógicos. O fallback `example_matching` também oferecia reconhecimento do exemplo sem medir domínio. **Ambos foram desativados.**
+
+Novo contrato de exibição: uma questão formativa é exibida e corrigida somente quando há quatro alternativas autorais, distintas, um `correctIndex` inteiro de 0 a 3 e explicação. Materiais incompletos continuam disponíveis para leitura, mas **não são apresentados como múltipla escolha**, não recebem acerto, não incrementam contadores de atividades nem prometem domínio. Um aviso transparente substitui as alternativas fictícias. As telas `TopicLessonSections`, `UniversalLessonReader` e `LessonChoiceQuestion` usam esta regra, inclusive nos testes rápidos. Os textos originais de aulas ainda não aprofundadas continuam marcados como introdutórios; a correção da interface **não os transforma em aulas completas**. O gerador de novos cursos passou a exigir alternativas originais, índice do gabarito e revisão do conteúdo antes de disponibilizar a aula.
+
+Foram adicionadas **cinco aulas originais específicas** (15 capítulos e 15 questões A–D com correção própria), com exemplos resolvidos e hipóteses por nível:
+
+- Física: **Energia térmica, temperatura e termômetros. Lei zero da termodinâmica**, contemplando equilíbrio térmico, calibração e calorimetria;
+- Química: **Evidências macroscópicas de transformações químicas**, separando observações de inferências e usando balanceamento e precipitação;
+- Biologia: **Conceitos básicos de Genética; influência do ambiente sobre o genótipo e o fenótipo; genealogias**, com cruzamentos, heredogramas e penetrância;
+- História: **Narrativas de origem dos povos indígenas**, com diversidade, fontes orais, mediação e territorialidade;
+- Química: **Misturas e métodos de separação**, com fases, recuperação de massa e limites da destilação.
+
+Os testes de regressão percorrem o catálogo de todos os cinco exames, exigem nenhuma questão fabricada via matching, e testam especificamente o vazamento de alternativas de Mecânica na aula de Termodinâmica. Outros testes verificam comprimento, resoluções, unicidade, gabarito e correspondência estrita com o Provão. **Cobertura prevista:** pelo menos **176/364 entradas aprofundadas**, no máximo **188 fora da categoria `deep_specific`** se esse mínimo for exato; confirmar quantitativos em execução da CI, e não confundir os temas dos demais exames com tópicos concluídos.
+
+As aulas são autorais, **não oficiais, sem homologação docente**, e não copiam provas comerciais. Não se alteraram IDs curriculares, dados, Auth, Supabase, RLS, chaves de API, a base `legacy/` ou fontes publicadas. Permanece necessária uma auditoria independente das publicações do Supabase e revisão docente especializada. PR em rascunho, sem merge e sem deploy; testes unitários, segurança de dois usuários, design, tipagem e build devem ser confirmados no GitHub Actions.
+
+## Lote 36 — aprofundamento autoral por disciplina (2026-11-08)
+
+Cinco novos assuntos oficiais foram escolhidos depois da consulta aos PRs abertos, à branch principal e à auditoria do Kognos. Registro integrado ao resolvedor estrito com `provao-depth-batch36-science.ts` e `provao-depth-batch36-history.ts`:
+
+1. **Química — Estabilização de átomos pela formação de ligações e Teoria do Octeto.** Valência, íons e rede cristalina; diagramas de Lewis de água e ligações covalentes; exceções (BF₃, espécies com elétrons ímpares), cargas formais e limites do modelo.
+2. **Física — Propagação por condução, convecção e irradiação.** Lei de condução em placa plana, convecção natural/forçada com coeficiente de troca e lei de Stefan–Boltzmann, incluindo hipóteses e unidades.
+3. **Biologia — Ameaças antrópicas a ecossistemas terrestres e aquáticos.** Fragmentação, bordas e biodiversidade; eutrofização e oxigênio dissolvido; aquecimento, mitigação, adaptação e eficácia de restauração.
+4. **História — Produção artística na colônia: diálogos e tensões culturais.** Oficinas e encomendas; irmandades, religiosidades e conflitos de fontes; patrimônio, restaurações e limites da sobrevivência material.
+5. **História — Redemocratização: a Nova República.** Abertura e Diretas Já; eleição indireta em 1985, posse de Sarney, Constituinte e Constituição; eleições diretas em 1989, garantias e permanências.
+
+São **15 capítulos** novos com explicações originais ≥750 caracteres cada, **15 exemplos específicos resolvidos** com análise e passos, e **15 MCQs originais A–D**, cada uma com `correctIndex`, gabarito comentado ≥140 caracteres, alternativas distintas e sem perguntas dissertativas. O novo teste de lote confirma correspondência temática, IDs preservados, autoria, profundidade, níveis e ausência de falas genéricas ou alternativas emprestadas. Todo conteúdo é **original, não oficial e sem homologação docente**. Não foram modificados `legacy/`, Auth, RLS, dados, bancos Supabase ou chaves de API.
+
+A auditoria deve apresentar ao menos **181 entradas `deep_specific` em 364 temas do Provão**, com no máximo **183 ainda não aprofundados** se a contagem for exata; não declarar contagem validada antes da execução de CI. Os assuntos do ENEM, ETEC, Fuvest e Vunesp continuam com lacunas próprias. Não fazer merge/deploy sem revisão autorizada. A revisão especializada por docentes permanece pendente mesmo após testes automatizados.
+
+## Lote 37 — cinco conteúdos autorais aprofundados (2026-11-08)
+
+Foram adicionados ao resolvedor estrito cinco tópicos, com 3 capítulos progressivos, exemplos resolvidos por capítulo, hipóteses de validade, erros frequentes e 3 questões objetivas A–D originais por tema, sempre com índice correto e correção comentada:
+
+- **Química:** propriedades de substâncias moleculares, iônicas e metálicas — redes, mobilidade de cargas, ligações intermoleculares, condução e exceções.
+- **Física:** escalas Celsius, Fahrenheit e Kelvin — calibração, conversão de temperatura absoluta e de intervalos, aplicações em gases ideais.
+- **Biologia:** ausência de dominância, alelos letais e polialelia — proporções 1:2:1, condicionamento à sobrevivência, cruzamentos ABO.
+- **História:** feudalismo e mundo feudal — senhorio, corveia, vassalagem, diversidade regional e debate historiográfico.
+- **Geografia:** cartografia como recurso para compreensão espacial — escala, coordenadas, projeções e distorções.
+
+Arquivos: `apps/web/src/lib/provao-depth-batch37-core.ts`, `provao-depth-lessons.ts` e teste de regressão `provao-depth-coverage.test.ts`. **Meta de auditoria: 186/364** temas específicos aprofundados; **178** restantes se a CI confirmar o incremento de cinco. Não confundir o catálogo do Provão com a cobertura dos demais exames. A inclusão de ETEC no catálogo interno deve respeitar a decisão do PR #103 de ocultar sua seleção pública, sem remover dados existentes. Não há alterações em dados, Auth, Supabase, RLS, integrações ou segredos.
+
+Aulas originais Kognos, **não oficiais e sem homologação docente**. Manter PR em rascunho, sem merge/deploy e sem alegar revisão especializada concluída.
+
+## Auditoria corretiva do lote 37 — 2026-11-08
+
+A execução GitHub Actions #42538310031 **falhou**: 20 testes encontraram quatro registros duplicados do mesmo par disciplina/tema (propriedades de substâncias iônicas/moleculares/metálicas; ausência de dominância e polialelia; feudalismo; cartografia). A auditoria registrou 183 chaves únicas em 187 registros e apenas 181/364 temas com aprofundamento específico, contrariando a meta anunciada de 186. Os quatro registros redundantes foram retirados do lote 37, preservando as aulas já existentes nos lotes anteriores. O registro de escalas termométricas foi mantido, mas a auditoria aponta sobreposição com um registro anterior de Física; ele não deve ser contabilizado como incremento sem corrigir o conflito editorial. O teste do lote 37 passou a verificar o único item mantido e não exige cobertura fictícia. **A meta de 186/364 está revogada; a cobertura confirmada no log anterior é 181/364, com 183 entradas não aprofundadas.** A CI do commit corretivo precisa ser executada antes de declarar a branch aprovada. Nenhum merge ou deploy foi autorizado. Aulas continuam originais, não oficiais e sem homologação docente.
+
+## Lote 38 — cinco temas inéditos com testes editoriais (2026-11-08)
+
+Após leitura de AGENTS.md, catálogo, auditoria, main e PRs abertos, o novo lote registra cinco entradas distintas ainda introdutórias/parciais no Provão: **Química — segurança de produtos químicos domésticos; Biologia — conservação biológica e unidades de conservação; Português — norma ortográfica e relação entre escrita e oralidade; Matemática — gráfico de funções expressas por sentença; Matemática — Sistema Internacional de Medidas e conversões**. Aulas em `provao-depth-batch38-core.ts`, integradas ao resolvedor e testadas na auditoria.
+
+São 15 capítulos progressivos com explicações autorais ≥750 caracteres, 15 exemplos contextualizados ≥180 caracteres e 15 questões A–D com alternativas próprias, `correctIndex` explícito e comentário de resolução. A análise inclui definições, aplicação, limites, comparações e erros frequentes. Conteúdo original Kognos, **não oficial e sem homologação docente**. Nenhuma alteração em dados, IDs, autenticação, Supabase, RLS, segredos, `legacy/` ou APIs pagas.
+
+**Meta de auditoria:** 186/364 temas aprofundados (178 ainda fora da categoria), sujeita à confirmação pela CI; nunca contar sobreposições como novos temas. As trilhas ENEM, Fuvest e Vunesp ainda possuem lacunas. A continuidade da revisão pedagógica especializada é obrigatória. PR em rascunho, sem merge/deploy.
+
+
+## Auditoria corretiva do lote 38 (2026-11-08, execução posterior)
+
+A CI do commit `27aa6ea4` falhou: 22 testes, em grande parte por registro duplicado de **Biologia — Conservação biológica (unidades de conservação)**, que já possuía aula no catálogo, e por correções matemáticas inferiores ao mínimo editorial de 140 caracteres. O registro redundante foi retirado do lote 38 sem apagar a aula anterior; comentários matemáticos foram ampliados, e o teste passou a exigir **quatro** entradas distintas no lote, sem contagem artificial. O lote 38 não contém cinco novos temas efetivos. A auditoria anterior selecionava 184 entradas profundas, mas os números posteriores à correção dependem de nova CI. Não declarar o PR aprovado até execução integral de testes unitários, segurança de dois usuários, design, TypeScript e build. Esta execução foi dedicada à correção de integridade e não concluiu o lote mínimo de cinco novos temas; as lacunas curriculares permanecem.
+
+## Lote 39 — História antiga e medieval (2026-11-09)
+
+Novo lote autoral integrado ao resolvedor `provao-depth-batch39-history.ts`, sem editar IDs, dados de usuários, RLS, autenticação, Supabase, chaves ou `legacy/`. Cinco tópicos literais do catálogo Provão foram selecionados para ensino específico: **O escravismo na Grécia e em Roma; Vida e produção cultural no Medievo europeu e africano; Diversidade religiosa: paganismo, judaísmo, cristianismo e islamismo; Expansão do comércio e da urbanização; O Império Romano: crise e derrocada no Ocidente**.
+
+Cada aula contém objetivo e pré-requisitos, três capítulos autorais de aproximadamente 950–1100 caracteres, três exemplos históricos resolvidos e comentados, condições de interpretação de fontes, comparação e erros frequentes, e três questões objetivas A–D com alternativas específicas, `correctIndex` real e solução comentada. **Total: 15 capítulos, 15 exemplos, 15 questões objetivas**. A nova auditoria verifica correspondência literal com o currículo, níveis, comprimentos mínimos, opções únicas, fonte editorial, autoria e ausência de registros duplicados. A expectativa de cobertura é pelo menos **189/364**, com **175** pendentes, sujeita a validação por CI; não apresentar números previstos como confirmados. Não foram adicionadas respostas dissertativas, alternativas de outras matérias ou fallbacks artificiais.
+
+Este material é **original Kognos, não oficial e sem homologação docente**. Revisão pedagógica especializada continua pendente. O PR #99 permanece em rascunho, sem merge ou deploy público. Conteúdos de ENEM, ETEC, Fuvest e Vunesp permanecem em auditoria própria; o trabalho não está concluído.
+
+## Lote 40 — história contemporânea, ideologias e economia (2026-11-09)
+
+A CI do lote 39 (execução #42560031740) falhou em 22 testes, pois três temas de História já estavam registrados antes do lote 39: escravismo greco-romano, diversidade religiosa e crise do Império Romano ocidental. Os três registros duplicados foram removidos **somente** do arquivo do lote 39; o conteúdo anterior e seus IDs permaneceram intactos. O lote 39 retém duas entradas novas. A auditoria pré-correção confirmou 186/364 `deep_specific` e identificou também três registros sombreados, que não equivalem a cobertura nova.
+
+O lote 40 acrescenta cinco temas oficiais, com três capítulos próprios, três exemplos resolvidos e três questões A–D cada: **A Belle Époque: novos padrões sociais e culturais; A ideologia do Destino Manifesto; A contracultura e as lutas por direitos civis nos anos 1950-1970; O colapso da União Soviética e a “nova ordem mundial”; Estabilização financeira e política de privatizações**. Inclui cronologias, fontes, condições de interpretação, erros comuns, gabaritos e comentários editoriais específicos. Arquivo `provao-depth-batch40-history.ts` integrado ao resolvedor e testes de unicidade, níveis, tamanho mínimo, alternativas editoriais e `correctIndex`. A expectativa, **não verificada até o término da CI**, é 191/364 temas específicos, com 173 ainda pendentes no Provão. O restante do catálogo (ENEM, ETEC, Fuvest, Vunesp) não está completo. Não há perguntas dissertativas nem fallbacks `resolution_matching`/`example_matching` nas questões novas. Conteúdo autoral Kognos, não oficial e sem homologação docente; revisão especializada pendente. PR #99 continua rascunho, sem merge nem deploy.
+
+## Revisão de integridade do lote 40 — 2026-11-09
+
+O CI #42570117779 falhou com 23 testes por um registro duplicado exato `História · A ideologia do Destino Manifesto` (já coberto em lote anterior). A auditoria retornou `deep_specific=190/364`, `specific_unverified=1`, `partial_support=52`, `introductory_only=121` e 174 temas fora da categoria aprofundada. A implementação repetida do lote 40 foi removida, preservando o material anterior, e as duas expectativas de contagem da auditoria foram ajustadas de 191 para 190, sem afrouxar a regra que reprova registros duplicados. A aula Destino Manifesto continua disponível a partir do registro original; o lote 40 adiciona apenas quatro temas distintos. Não contabilizar a correção como cinco aulas novas. Nova CI deve ser observada antes de declarar verde. Conteúdo não oficial e sem homologação docente; PR em rascunho, sem merge/deploy.
+
+## Lote 41 — Biologia e cidadania antiga (2026-11-09)
+
+A auditoria do commit anterior `9de5ec8` registrou **190/364** temas aprofundados, 174 fora da categoria. CI #42576993595 reprovou um teste histórico do lote 21 porque uma aula posterior, com correspondência exata de tópico, substituiu a seleção de prefixo mais antiga, alterando a posição da resposta correta. Corrigido o teste para validar o gabarito do lote histórico na sua própria fonte e verificar separadamente a validade do gabarito editorial efetivamente selecionado, sem mudar respostas corretas.
+
+**Cinco novos temas oficiais não aprofundados anteriormente**, consultados na auditoria e no catálogo: Biologia — níveis de organização e taxonomia; integração cardiovascular, respiratória e renal; Lamarck, Darwin, Wallace e síntese evolutiva; evolução humana; História — democracia ateniense e cidadania romana. Arquivo `provao-depth-batch41-core.ts` com 15 capítulos originais (todos ≥750 caracteres), 15 exemplos próprios (todos ≥180 caracteres) e 15 questões objetivas A–D (correções ≥140 caracteres). Cada tema contém objetivo, pré-requisitos, progressão, condições de validade, erros comuns, gabarito `correctIndex` e correção comentada. Integração no resolvedor e testes estritos de cobertura, sem fallbacks artificiais, dados de usuário ou dependências pagas.
+
+**Meta a validar por CI:** pelo menos 195/364 temas aprofundados, com até 169 fora dessa categoria; não apresentar a meta como resultado observado antes de GitHub Actions. Catálogo ENEM/ETEC/Fuvest/Vunesp não integralmente aprofundado. Material original Kognos, não oficial, sem homologação docente; revisão especializada pendente. PR em rascunho, sem merge ou deploy.
+
+
+## Auditoria corretiva do lote 41 — 2026-11-09
+
+A execução GitHub Actions #42585363211 do commit `fb35b30f570d3cd5a63dc59fd608f7bd9d453b25` **falhou** em três testes curriculares. O diagnóstico localizou uma questão de nomenclatura binomial do lote 41 cujos distratores diferiam apenas por maiúsculas e minúsculas (`homo Sapiens`, `Homo sapiens`, `HOMO SAPIENS`); a validação editorial corretamente classificou essa questão como `unavailable`, em vez de apresentá-la como avaliação objetiva confiável. A questão foi corrigida com quatro alternativas semanticamente distintas: epíteto isolado, binômio correto, gênero isolado e trinômio subespecífico. O gabarito continua `correctIndex:1` e a solução foi ampliada para explicar as diferenças. O arquivo de aula e o commit corretivo preservam os demais temas, IDs e segurança. **A cobertura observada no log da execução com falha era 195/364 `deep_specific`, com 169 não aprofundados nessa categoria; essa cobertura não significa CI aprovada.** Não se contabilizam temas novos nesta correção. É necessário confirmar novamente testes, segurança, design, TypeScript e build na CI do commit corretivo. Material original, não oficial, sem homologação docente; PR permanece sem merge/deploy.
+
+
+### Auditoria de execução — 2026-11-09 (CI do lote 41)
+
+A execução **Kognos CI #42593611198** associada ao commit `8ee0ce7ccfedf92f4c266a2fb37c088d5b3f9fc5` terminou com status **completed / success**, conforme resultado do GitHub Actions. Isso confirma o resultado agregado da execução, mas não substitui revisão pedagógica individual dos gabaritos. A última contagem observada nos logs anteriores permanece **195/364**, com **169** fora da categoria `deep_specific` (auditoria offline; não mede conteúdo publicado diretamente no Supabase). O PR #99 estava indevidamente marcado como pronto para revisão; foi reconvertido a **rascunho**, sem merge ou deploy. Nenhum novo tema é contabilizado nesta verificação. Conteúdo original, não oficial e sem homologação docente.
+
+
+## Lote 42 — cinco aulas de Química (2026-11-09)
+
+Novas entradas autorais vinculadas a rótulos **exatos** do catálogo: **Óxidos e a chuva ácida**; **Interações do tipo íon-dipolo**; **Tratamento de água**; **Eletronegatividade, polaridade de ligações e moléculas**; **Indicadores, condutibilidade elétrica, reação com metais, reação de neutralização**. Cada tema inclui fundamentos, aplicação e aprofundamento, exemplos calculados/interpretados com hipóteses, erros frequentes e três questões de múltipla escolha A–D com alternativas específicas e soluções comentadas. Total do lote: 5 aulas, 15 capítulos, 15 exemplos e 15 questões.
+
+Implementação: `apps/web/src/lib/provao-depth-batch42-chemistry.ts`, integrada a `provao-depth-lessons.ts`; regressão `provao-depth-batch42.test.ts` exige registro oficial exato, ausência de duplicatas, comprimento mínimo, quatro distratores distintos, gabarito e solução. O teste transversal `provao-depth-coverage.test.ts` continua obrigatório. **Meta de cobertura após o lote: 200/364; 164 pendentes**, condicionada à auditoria automatizada; não apresentar como CI confirmada. Demais exames e conteúdos publicados no Supabase exigem auditorias separadas. Autoria original Kognos, não oficial, sem homologação docente. PR #99 em rascunho; não mesclar nem implantar sem revisão autorizada.
+
+
+## Auditoria corretiva do lote 42 — 2026-11-09
+
+A CI #42605182740 (commit `91fd143`) terminou **failure**: 401 testes aprovados e 34 reprovados; segurança de dois usuários, design, TypeScript e build foram ignorados porque os testes unitários falharam. O teste transversal identificou **cinco duplicações exatas** em Química: Óxidos e a chuva ácida; Interações do tipo íon-dipolo; Tratamento de água; Eletronegatividade, polaridade de ligações e moléculas; Indicadores, condutibilidade elétrica, reação com metais, reação de neutralização. Os cinco tópicos já estavam registrados em lotes anteriores. A integração do lote 42 foi removida do resolvedor para preservar a aula original e evitar sobreposição; o arquivo proposto permanece como rascunho editorial não publicado, sem ser contado como cobertura nova. O teste do lote 42 agora verifica a preservação das aulas anteriores e a ausência de duplicações. **Nenhum tema novo deve ser contabilizado** por esse lote; a última contagem observada permanece 195/364, com 169 pendentes. CI da correção ainda precisa ser confirmada. Material autoral não oficial, sem homologação docente. PR em rascunho; sem merge/deploy.
+
+
+## Lote 43 — propriedades coligativas, polímeros, segurança química e Física (2026-11-09)
+
+Cinco tópicos autorais do catálogo oficial foram acrescentados: **Propriedades coligativas: conceitos e aspectos qualitativos**; **Noção de monômeros e polímeros**; **Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos**; **Sistemas conservativos e não conservativos**; **Nível sonoro, decibel e efeito Doppler**. Cada tópico contém três capítulos específicos (15 no total, todos com mais de 750 caracteres), três exemplos com cálculo ou procedimento interpretativo resolvido (15 no total), limites dos modelos e erros frequentes, além de três questões A–D (15 no total) com gabarito indexado e correção comentada. Sem dissertativas e sem geração de distratores por fallbacks. O módulo `provao-depth-batch43-core.ts` está integrado ao resolvedor; `provao-depth-batch43.test.ts` exige identidade curricular, unicidade, avaliação editorial e auditoria de cobertura. Material original, não oficial, sem homologação docente. **Meta provisória: 200/364 aprofundados e 164 pendentes**; não considerar confirmada sem execução da CI. ENEM, ETEC, Fuvest e Vunesp requerem auditoria transversal adicional. Sem alteração de IDs, Supabase, RLS, autenticação ou dados. PR #99 em rascunho, sem merge ou deploy.
+
+
+## Auditoria corretiva do lote 43 — 2026-11-09
+
+GitHub Actions #42622678543 (commit `3262967`) terminou **failure**: 410 testes passaram e 45 falharam; as etapas de segurança, design, TypeScript e build foram ignoradas porque os testes unitários falharam. A auditoria registrou **196/364** `deep_specific`, **168** fora da categoria, e detectou duplicações exatas em **Noção de monômeros e polímeros**, **Sistemas conservativos e não conservativos** e **Segurança na aquisição, armazenagem e utilização de produtos químicos domésticos**. A aula de **Propriedades coligativas** também já possuía registro anterior (o novo registro exato sombreava um prefixo anterior), logo não constitui avanço novo. Foram removidas do lote 43 as quatro entradas redundantes, preservando as aulas anteriormente registradas e seus IDs. Apenas **Nível sonoro. Decibel. Efeito Doppler** permanece integrado como tema novo. O teste do lote 43 foi atualizado para exigir unicidade e o tema remanescente, sem desativar a auditoria transversal. **A contagem de 196/364 deve ser novamente verificada em CI**, porque a remoção do registro de coligativas pode alterar a seleção do resolvedor, mas não deve reduzir a cobertura se o registro anterior permanecer válido. Material original, não oficial e sem homologação docente. PR #99 continua rascunho, sem merge/deploy.
+
+## Lote 44 — cinco tópicos específicos de Química (2026-11-09)
+
+Material **original Kognos, não oficial e sem homologação docente**. Criado o módulo `provao-depth-batch44-core.ts`, integrado ao resolvedor de correspondência exata, com 15 capítulos (cada explicação >=750 caracteres), 15 exemplos resolvidos e 15 questões A–D, com alternativas distintas, índice formal e comentário de correção.
+
+Temas: **Interações do tipo íon-dipolo**; **Solubilidade e temperatura de ebulição**; **Interações da água com outras substâncias**; **Soluções aquosas: conceito e classificação**; **A eletrosfera e o diagrama de Linus Pauling**. Aulas distinguem solvatação de reação química, saturação de concentração, ebulição de liberação de gás, emulsão de solução e ocupação eletrônica de remoção de elétrons em cátions.
+
+Teste `provao-depth-batch44.test.ts` verifica rótulos oficiais exatos, ausência de duplicatas globais, profundidade textual, exemplos, gabaritos e exclusão de fallbacks. A verificação humana de precisão científica permanece necessária. **Cobertura prevista**: 201/364 se os cinco rótulos forem inéditos e a auditoria confirmar o valor anterior de 196/364; não contabilizar esse total como validado sem executar CI. Nenhum schema, RLS, dado de estudante, autenticação, publicação editorial ou configuração de API foi alterado.
+
+
+## Correção de integridade de registros — 2026-11-10
+
+A execução Actions `42747206287` do commit `69b5a8a` terminou com falha: 47 testes falharam, com 413 aprovações em 460 testes. A auditoria apontou cinco duplicações exatas de Química entre registros anteriores e o lote 44 (íon–dipolo, solubilidade/ebulição, interações da água, soluções aquosas e eletrosfera/Pauling). Os testes de lotes antigos também comparavam 199 registros únicos com 204 entradas brutas. O commit `6553365` introduz normalização por `subject + topicStart` no resolvedor, preservando a revisão autoral mais recente e evitando contagem dupla. Isso não constitui cinco temas inéditos: a cobertura observada antes da correção era 196/364 e 168 pendentes. A correção ainda requer execução completa de Actions (unitários, segurança, design, TypeScript e build); não afirmar CI verde antes de observar os resultados. Não houve alteração de IDs, Supabase, autenticação, merge ou deploy. Revisão docente pendente.
+
+
+### Revisão editorial lote 44 — 2026-11-10
+
+Commit `711dcb946fa91a21e730d3780af54d364b179305`: cinco objetivos disciplinares ampliados, quinze exemplos resolvidos enriquecidos com contas e comparações específicas, e quinze ressalvas de erros frequentes contextualizadas. Não são cinco temas inéditos; esta revisão procura sanar regressões de comprimento e substância apontadas pela CI anterior (453/460 testes). Mantidos gabaritos, IDs, banco, RLS e estado de revisão docente. Cobertura **não recalculada**; referência anterior 196/364, 168 fora da categoria. Testes e CI do novo commit **ainda não confirmados**; sem merge/deploy.
+
+
+## Lote 45 — Cinemática, referenciais, Kepler e gravitação (2026-11-10)
+
+Cinco roteiros autorais específicos de Física foram adicionados ao módulo `provao-depth-batch45-physics.ts` e integrados ao resolvedor: **Velocidade e Aceleração: escalar média e instantânea; vetorial média e instantânea**; **Representação gráfica, em função do tempo, do espaço, da velocidade escalar e da aceleração…**; **Referencial inercial. Movimentos retilíneos. Situações de equilíbrio**; **Sistemas geocêntrico e heliocêntrico. Leis de Kepler**; **Lei da gravitação universal de Newton. Campo gravitacional**. Cada tema possui três capítulos progressivos (>=750 caracteres explicativos), exemplos resolvidos, erros frequentes, três etapas concretas e três questões objetivas A–D com índice e correção comentada. O teste `provao-depth-batch45.test.ts` verifica correspondência exata ao catálogo, profundidade, gabaritos, duplicações e seleção no resolvedor. Material original Kognos, não oficial e **sem homologação docente**. A cobertura anterior de 196/364 é referência histórica, **não** foi recalculada nesta execução; não atribuir cinco novos temas à contagem até auditoria e CI confirmarem que os registros não se sobrepõem aos existentes. Nenhuma mudança em IDs, dados, Supabase, Auth, RLS, chaves ou publicações. PR #99 continua em rascunho, sem merge nem deploy.
+
+
+## Auditoria de regressões — 10/11/2026 (lote 45)
+
+A execução GitHub Actions #42779116522 do commit `404e1ce` terminou em **failure**: 453 testes aprovados, 8 reprovados, 461 testes no total. Os testes dos lotes 16, 17, 18, 20, 21, 23, 25 e o teste transversal de profundidade falharam após sobreposição de temas previamente registrados. **Não contar o lote 45 como cinco temas inéditos**: velocidade/aceleração, gráficos cinemáticos, referenciais, Kepler e gravitação já possuem contratos editoriais anteriores. Não ajustar gabaritos para satisfazer testes históricos sem verificar o conteúdo da questão. O commit `4cb426e` detalha hipóteses, cálculos e interpretação física dos quinze exemplos do lote 45, mas não resolve automaticamente as divergências de gabaritos e unicidade. Reexecutar toda a CI e corrigir os contratos de precedência editorial antes de aprovar o PR. Cobertura do catálogo ENEM/ETEC/Fuvest/Vunesp permanece sem certificação; revisão docente pendente. Material original, não oficial, sem homologação docente.
+
+
+## Auditoria de unicidade das avaliações — 2026-11-10
+
+Commit `4c61b7e`: a auditoria transversal agora rejeita enunciados repetidos e conjuntos inteiros de alternativas reutilizados dentro de uma mesma aula, inclusive quando a ordem das alternativas é alterada ou há diferenças de espaços/maiúsculas. A verificação complementa as regras de quatro opções distintas e `correctIndex` válido; não altera gabaritos nem substitui revisão pedagógica. O workflow anterior do commit `4fd4400` (Actions #42786654135) terminou em **failure**, com falhas nos testes dos lotes 16, 17, 18, 20, 23 e 25. Esta mudança de teste não representa cinco temas inéditos e não autoriza declarar CI verde. Cobertura observada no log: **196/364** e seis registros sem correspondência selecionada (202 inscrições, 196 selecionadas). Sem merge, deploy ou homologação docente.
+
+
+## Auditoria de regressão — 2026-11-10
+
+O commit `f94713228e6de5a104f61bb3a45d83a3fc9cbec1` separa a verificação dos gabaritos **históricos** do lote 16 da validação das aulas atualmente selecionadas pelo resolvedor. Os índices originais continuam confrontados com `provaoDepthBatch16Core`; a versão ativa deve ter índice inteiro de 0 a 3, alternativas distintas e correção editorial. Uma edição posterior pode alterar legitimamente a posição da resposta sem invalidar o material anterior. Esta mudança não cria novos temas nem altera respostas de alunos. A execução CI #42803501856, anterior à correção, terminou em falha nos testes unitários e não executou as demais etapas. Cobertura observada anteriormente: 196/364, ainda não revalidada. Não publicar nem declarar CI verde antes de execução completa. Material original, não oficial e sem homologação docente.
+
+
+### 2026-11-10 — manutenção de regressões editoriais (sem novas aulas)
+
+- `provao-depth-batch17.test.ts`: gabaritos do lote 17 são confrontados com o módulo histórico correspondente; o resolvedor atual continua exigindo índice inteiro válido entre 0 e 3. Isso não homologa automaticamente a correção pedagógica do gabarito atual.
+- `provao-depth-batch16.test.ts`: corrigidas sequências literais `\\n` que deixavam a verificação de índice atual dentro de comentário; a asserção agora executa.
+- Nenhuma cobertura curricular adicional é reivindicada nesta manutenção. A validação completa de gabaritos, unicidade, segurança, design, TypeScript e build depende de CI concluída.
+- Conteúdo autoral Kognos, não oficial, sem homologação docente; não realizar merge/deploy antes de revisão.
+
+
+## Auditoria de regressões históricas — 2026-11-10
+
+Na execução GitHub Actions #42820645106, 461 dos 464 testes passaram e três falharam: lotes 18, 20 e 23. A causa observada foi comparação do índice de gabarito da edição atualmente selecionada pelo resolvedor com a ordem de alternativas de edições históricas. Os testes agora conferem o `correctIndex` original diretamente nas respectivas fontes dos lotes 18, 20 e 23 e verificam separadamente que a edição resolvida tem índice inteiro válido, quatro alternativas distintas e solução editorial. Não foram alterados gabaritos, questões, IDs ou conteúdo publicado. A validade semântica das respostas da edição resolvida ainda exige auditoria própria; `correctIndex` dentro de 0–3, isoladamente, não comprova a resposta correta. Commits `cd96e85`, `cc4c910`, `0216c8c`. CI do commit mais recente pendente de confirmação; não declarar aprovação antes de unitários, segurança de dois usuários, design, TypeScript e build. Nenhum tema inédito adicionado nesta intervenção, mantendo a última cobertura offline observada de 196/364 (168 pendentes), sem nova certificação.
+
+## 2026-11-10 — correção de tipagem de gabaritos opcionais
+
+Na execução GitHub Actions #42830529751, testes unitários, segurança PostgreSQL com dois usuários e design passaram; o TypeScript falhou com TS18048 em seis arquivos de teste (lotes 16, 17, 18, 20, 23 e 44), impedindo o build. Os testes agora verificam explicitamente `typeof task.correctIndex === 'number'` antes de comparar limites de índice. A verificação continua exigindo inteiro entre 0 e 3, sem mudar gabaritos ou aceitar respostas ausentes. Não houve inclusão de cinco temas inéditos nesta correção. CI do novo HEAD ainda deve ser observada antes de declarar aprovação. Material autoral não oficial, sem homologação docente; sem merge/deploy.
+
+
+## 2026-11-10 — revisão de exemplos resolvidos do lote 41
+
+Reescritos **45 passos de resolução** distribuídos pelos 15 capítulos de cinco temas existentes: taxonomia e níveis de organização; fisiologia cardiovascular, respiratória e renal; teorias evolucionistas e seleção; evolução humana; democracia ateniense e cidadania romana. Cada passo agora explicita operação, inferência ou condição do caso concreto, substituindo três instruções genéricas repetidas em cada capítulo. Adicionado teste de regressão `provao-depth-batch41-worked-steps.test.ts` para garantir 3 passos por capítulo, 45 passos distintos e proibição das frases genéricas anteriores. **Não são cinco novos temas**: a cobertura offline anteriormente observada permanece 196/364 (168 pendentes), sujeita à auditoria atualizada. Material original, não oficial e sem homologação docente. PR permanece em rascunho; sem merge ou deploy. CI do novo HEAD precisa ser observada antes de alegar aprovação.
+
+
+### Revisão de integridade — 2026-11-10 (lote 41)
+
+Corrigida uma regressão de sintaxe em `provao-depth-batch41-core.ts`: os 15 arrays de procedimentos dos exemplos estavam sem a propriedade `steps`, deixando os capítulos com membros anônimos inválidos. Restaurada a chave `steps` em cada um dos três capítulos dos cinco temas já existentes. Adicionado `provao-depth-batch41-steps.test.ts` para conferir 5 aulas, 15 capítulos, 15 conjuntos de passos e 15 questões A–D, com índice válido. **Não são cinco temas inéditos** e a cobertura não foi aumentada. Material autoral, não oficial e sem homologação docente. PR #99 continua em rascunho; nenhum merge ou deploy autorizado. Resultado de CI para os novos commits deve ser verificado antes de afirmar aprovação.
+
+
+### Revisão editorial — 2026-11-10 (lote 41, pistas objetivas)
+
+Substituídas 15 dicas idênticas e genéricas por orientações próprias para cada questão dos cinco temas existentes: taxonomia, fisiologia humana, evolução biológica, evolução humana e cidadania greco-romana. Cada dica orienta um procedimento disciplinar sem entregar a alternativa correta. Adicionada regressão em `provao-depth-batch41-steps.test.ts` para exigir 15 pistas distintas, com extensão mínima e sem o placeholder anterior. **Não representa cinco temas inéditos e não aumenta a cobertura auditada**; permanecem pendentes os 168 temas segundo a última contagem disponível, além da auditoria de ENEM/ETEC/Fuvest/Vunesp. Conteúdo original, não oficial e sem homologação docente. PR #99 permanece em rascunho; sem merge/deploy. Não declarar CI verde sem resultado observado para o HEAD.
+
+
+## Revisão de dicas objetivas — lote 45 de Física (2026-11-10)
+
+Substituídas **15 dicas genéricas** nas cinco aulas existentes de Física do lote 45: velocidade/aceleração, gráficos cinemáticos, referenciais inerciais, sistemas geocêntrico/heliocêntrico e leis de Kepler, e gravitação universal. Cada dica agora orienta uma operação verificável específica do enunciado, sem entregar a alternativa. Adicionado `provao-depth-batch45-hints.test.ts` para rejeitar dicas repetidas ou genéricas e validar estrutura objetiva (quatro alternativas distintas, índice válido e solução). **Não há novos temas nesta revisão**; a contagem de cobertura permanece sujeita à auditoria automatizada. O teste foi registrado, mas sua aprovação em CI ainda precisa ser observada. Material autoral não oficial, sem homologação docente. Sem alterações em Supabase, dados, IDs ou segurança; sem merge ou deploy.
+
+
+## 2026-11-10 — Registro conservador de reutilização entre provas
+
+- Novo `canonical-lesson-reuse.ts`: audita os títulos **inteiros e idênticos** por disciplina entre os cinco blueprints cadastrados e associa somente aulas autorais profundas existentes, sem copiar capítulos, questões, IDs ou registros de progresso.
+- `canonicalLessonForExam` retorna a aula canônica apenas quando o exame realmente contém aquele título exato; exames não relacionados não recebem conteúdo por coincidência de palavras.
+- `canonical-lesson-reuse.test.ts` verifica o compartilhamento das referências de capítulos/questões, a preservação do ID e a ausência de herança para exames sem o tópico.
+- `canonicalReuseAudit()` calcula dinamicamente entradas por exame, títulos curriculares distintos, grupos exatos, vínculos e cópias evitadas **potenciais**; não apresenta esses números como equivalências semânticas revisadas nem como duplicações previamente materializadas e removidas.
+- **Limitação explícita:** nenhum alias de título diferente foi aprovado neste lote. Citologia e títulos mais amplos continuam pendentes de revisão de escopo, série e profundidade. O cadastro existente já compartilhava títulos idênticos em `curriculum-catalog.ts`; este registro torna a identidade e a auditoria testáveis, mas não representa redução nova de duplicações persistidas.
+- **Validação:** commits registrados; CI deste lote ainda não confirmada. Não houve merge, deploy, migração SQL ou alteração de Auth/RLS.
+- **Prazo-alvo:** 20/11/2026, condicionado a revisão de equivalências reais e aprovação de testes. A cobertura global e previsão quantitativa exigem auditoria executada, não estimativa por títulos históricos.
+
+
+## Reutilização semântica explícita — 2026-11-10, lote de epistemologia
+
+A implementação `canonical-lesson-reuse.ts` passou a registrar uma associação editorial explícita de **Filosofia / Racionalismo e empirismo** à aula canônica **As abordagens racionalistas e empiristas do conhecimento**. O escopo aprovado limita-se ao contraste epistemológico entre razão e experiência; não certifica conteúdos adicionais de Kant, metodologia científica ou história integral da filosofia. O vínculo só é ativado para provas que efetivamente listam o título de destino e se a aula canônica aprofundada existir. IDs históricos e dados persistidos permanecem intocados. A correção do conteúdo-fonte é compartilhada por referência, sem cópia de capítulos ou questões.
+
+Teste de regressão adicionado para identidade dos capítulos/questões, preservação dos IDs distintos e rejeição de disciplina não relacionada. O número de vínculos efetivamente habilitados depende da execução da auditoria no commit atual; **não contabilizar como duplicações persistidas removidas**, pois nenhuma cópia foi excluída. CI e homologação docente pendentes; não mesclar nem publicar automaticamente.
+
+## 2026-11-10 — correções da CI e integridade dos aliases
+
+- Job 130128631025: 470/472 testes aprovados; dois erros observados (alias epistemológico sem ambos os títulos no catálogo e etapas curtas no lote 41).
+- Alias não exato de Filosofia **desativado**, pois o título-alvo não existe no catálogo atual. Não contar esse vínculo como reutilização semântica verificada. Nenhum ID, aula ou histórico foi removido.
+- Quatro passos resolvidos do lote 41 ampliados com procedimento concreto, sem reduzir o limite editorial de 55 caracteres.
+- Teste do alias agora rejeita associação não comprovada, em vez de exigir um título inexistente.
+- Reutilização exata existente preservada; nenhum novo grupo semântico aprovado nem duplicação persistida removida nesta correção.
+- CI posterior a estes commits: pendente de confirmação. Material original, não oficial, sem homologação docente; sem merge ou deploy.

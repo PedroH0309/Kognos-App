@@ -22,6 +22,14 @@ export function localStudyGuide(message:string,context:LocalStudyContext=null):O
   const topic=normalize(l.topic);
   return topic.length>=6 && new RegExp(`\\b${topic.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`).test(value);
  });
- if(topics.length!==1)return null;
- return fromLesson(topics[0]);
+ if(topics.length===1)return fromLesson(topics[0]);
+ if(topics.length>1)return null;
+ // A question may refer to one distinctive term (e.g., "fotossíntese"),
+ // not the entire official topic title. Only return an authored guide when
+ // exactly one catalog item matches the term; never guess among ties.
+ const words=new Set(value.split(' ').filter(word=>word.length>=6));
+ const matches=introductoryLessons.filter(lesson=>
+  normalize(lesson.topic).split(' ').some(word=>word.length>=6&&words.has(word))
+ );
+ return matches.length===1?fromLesson(matches[0]):null;
 }

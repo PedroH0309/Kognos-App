@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {BookOpenText,CheckSquare,Lightbulb,ChevronDown,ArrowRight} from 'lucide-react';
 import {levels,type CourseLesson} from '@/lib/course-content';
 import type {LearningLesson} from '@/lib/learning-catalog';
@@ -22,13 +22,30 @@ function TextBlocks({value}:{value:string}){
 /** Reading-first layout for individually selected curricular lessons.
  * Does not fabricate missing educational content or auto-grade free text.
  */
-export default function TopicLessonSections({view,subject,topic,lesson,introduction,onTutor,onActivityProgress,onRelatedTopic}:{
+export default function TopicLessonSections({view,subject,topic,lesson,introduction,onTutor,onActivityProgress,onRelatedTopic,onReadingEnd}:{
  view:LessonPane;subject:string;topic:string;
  lesson?:CourseLesson|null;introduction?:LearningLesson|null;onTutor?:()=>void;
  onRelatedTopic?:(topicId:string)=>void;
  onActivityProgress?:(allAnswered:boolean)=>void;
+ onReadingEnd?:()=>void;
 }){
  const [choiceAnswers,setChoiceAnswers]=useState<Record<string,boolean>>({});
+ const readingEndRef=useRef<HTMLDivElement|null>(null);
+ const readingNotifiedRef=useRef(false);
+ useEffect(()=>{
+  if(view!=='content'||!onReadingEnd)return;
+  const target=readingEndRef.current;
+  if(!target)return;
+  if(typeof IntersectionObserver==='undefined')return;
+  const observer=new IntersectionObserver(entries=>{
+   if(entries.some(entry=>entry.isIntersecting&&entry.intersectionRatio>=0.65)&&!readingNotifiedRef.current){
+    readingNotifiedRef.current=true;
+    onReadingEnd();
+   }
+  },{threshold:[0.65]});
+  observer.observe(target);
+  return()=>observer.disconnect();
+ },[view,onReadingEnd]);
  const [steps,setSteps]=useState<Record<string,boolean>>({});
  const [solutions,setSolutions]=useState<Record<string,boolean>>({});
  const method=studyMethodForSubject(subject);
@@ -42,7 +59,8 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   lesson.review==='introductory'?(individuallyAuthored?'AULA AUTORAL · REVISÃO DOCENTE PENDENTE':'MATERIAL DE ESTUDO · REVISÃO DOCENTE PENDENTE'):
   'AULA DESENVOLVIDA'):introduction?'INTRODUÇÃO AUTORAL':'TEMA DO ROTEIRO · SEM AULA EDITORIAL';
  const idFor=(a:string,b:number)=>a+'-'+b;
- const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>t.level===section.level)
+ const exerciseIds=lesson?lesson.sections.flatMap(section=>lesson.tasks.filter(t=>
+  t.level===section.level&&lessonTaskChoice(lesson,t).source==='editorial')
   .map((_,i)=>idFor(section.level,i))):introChoice?['intro']:[];
  const answered=exerciseIds.filter(id=>Object.hasOwn(choiceAnswers,id)).length;
  function updateChoice(id:string,correct:boolean){
@@ -64,11 +82,14 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
     <p>O título do roteiro não é uma aula completa. Enquanto o conteúdo é desenvolvido, você pode consultar o edital, estudar com o Kog ou acessar os simuladores no Kognos Lab. Não apresentamos textos gerados automaticamente como se fossem uma aula validada.</p>
    </div>
   </div>}
-  {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction} onTutor={onTutor}/>}
+  {view==='content'&&<UniversalLessonReader subject={subject} topic={topic} lesson={lesson} introduction={introduction}/>}
   {view==='activities'&&<>
+   {exerciseIds.length===0&&<p className="k-lesson-unavailable" role="status">Ainda não há questões objetivas específicas e verificadas para esta aula. Os enunciados abertos e distratores de outras disciplinas não são exibidos como alternativas.</p>}
    {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Questões de alternativas respondidas: {answered} de {exerciseIds.length}. Este treino é local; as respostas não são registradas como nota ou domínio.</p>}
    {lesson&&lesson.sections.map(section=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level);
+   {lesson&&lesson.sections.map((section,i)=>{
+    const tasks=lesson.tasks.filter(task=>task.level===section.level&&lessonTaskChoice(lesson,task).source==='editorial');
     return <article className="k-lesson-chapter" key={section.level}>
      <div className="k-lesson-chapter-heading"><div><small>{levels[section.level]}</small><h4>Atividades de {section.title}</h4></div></div>
      {tasks.map((task,j)=>{
@@ -124,5 +145,6 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
    <span><Lightbulb size={16}/> Atividades desta página são treino local; o histórico de domínio é calculado na Evolução da habilidade.</span>
    {onTutor&&<button type="button" onClick={onTutor}>Explicar com o Kog <ArrowRight size={16}/></button>}
   </footer>
+  {view==='content'&&<div ref={readingEndRef} className="k-lesson-reading-end" aria-hidden="true"/>}
  </section>;
 }

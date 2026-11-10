@@ -9,8 +9,9 @@ test('Kog checks server readiness and offers transparent local authored learning
  const tutor=read('apps/web/src/app/api/tutor/route.ts');
  assert.match(assistant,/\/api\/ai-status/);
  assert.match(assistant,/localStudyGuide\(prompt,studyContext\)/);
- assert.match(assistant,/Biblioteca local · sem IA/);
- assert.match(assistant,/Teorema de Pitágoras/);
+ assert.match(assistant,/biblioteca local ativa/);
+ assert.match(assistant,/retryTutorConnection/);
+ assert.match(assistant,/teorema de Pitágoras/i);
  assert.match(route,/publicAIReadiness\(process\.env\)/);
  assert.doesNotMatch(route,/NextResponse\.json\(process\.env/);
  assert.match(tutor,/AI_NOT_CONFIGURED/);

@@ -124,10 +124,11 @@ function LessonQuickChecks({lesson,onResult}:{lesson:CourseLesson;onResult:(leve
   <h4>Teste rápido de compreensão</h4>
   <p>Uma questão por nível para identificar dúvidas antes de seguir. Outras atividades autorais continuam disponíveis na aba Atividades.</p>
   {lesson.sections.map(section=>{
-   const task=lesson.tasks.find(t=>t.level===section.level);
+   const task=lesson.tasks.find(t=>t.level===section.level&&lessonTaskChoice(lesson,t).source==='editorial');
    return task?<QuickCheck key={section.level} lesson={lesson} task={task} level={levels[section.level]}
     onResult={result=>onResult(section.level,result)}/>:null;
   })}
+  {!lesson.tasks.some(task=>lessonTaskChoice(lesson,task).source==='editorial')&&<p role="status">Este assunto ainda não possui uma questão objetiva com quatro alternativas e gabarito específicos. Nenhuma questão artificial será exibida.</p>}
  </section>;
 }
 
@@ -181,7 +182,7 @@ function GuidedIntro({lesson,subject}:{lesson:CourseLesson;subject:string}){
  const method=studyMethodForSubject(subject);
  const first=lesson.sections[0];
  const application=lesson.sections[1];
- const sample=lesson.tasks.find(task=>task.level==='intermediate')??lesson.tasks[0];
+ const sample=lesson.tasks.find(task=>task.level==='intermediate'&&lessonTaskChoice(lesson,task).source==='editorial')??lesson.tasks.find(task=>lessonTaskChoice(lesson,task).source==='editorial');
  const concepts=lesson.syllabusScope?.split(/;\s*|\.\s+(?=[A-ZÀ-Ú])/u).map(x=>x.trim()).filter(x=>x.length>=12)??[];
  return <div className="k-universal-guide">
   <section className="k-universal-context" id="k-lesson-concept">
@@ -231,7 +232,7 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
  const introChoice=introduction?introductoryChoice(introduction):null;
  const situation=everydayContextFor(lesson);
  const method=studyMethodForSubject(subject);
- const practiceCount=lesson?.tasks.length??(introduction?1:0);
+ const practiceCount=lesson?lesson.tasks.filter(task=>lessonTaskChoice(lesson,task).source==='editorial').length:(introChoice?1:0);
  const estimatedMinutes=lesson?Math.max(10,Math.ceil((
   lesson.sections.reduce((total,section)=>total+section.explanation.length+section.example.length+section.steps.join(' ').length,0)
  )/750)+practiceCount*3):10;
@@ -260,16 +261,16 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     {!!lesson?.prerequisites.length&&<p className="k-universal-prereqs"><strong>Pré-requisitos:</strong> {lesson.prerequisites.join(' · ')}</p>}
    </div>
   </header>
-  <LessonContentsNav hasVisual={Boolean(lesson)} hasLab={Boolean(lesson&&!isGenericStarter&&hasLab)} hasCheck={Boolean(lesson?.tasks.length||introduction?.check)}/>
+  <LessonContentsNav hasVisual={Boolean(lesson)} hasLab={Boolean(lesson&&!isGenericStarter&&hasLab)} hasCheck={Boolean(practiceCount)}/>
   <section className="k-universal-context" id="k-lesson-context" aria-label="Contextualização">
    <h4>Por que estudar isto?</h4>
    {situation?<><ReadingBlocks value={situation.context}/>
     <p>Analise a situação e os conceitos envolvidos antes de escolher uma alternativa.</p>
     <details><summary>Ver a explicação contextual</summary><ReadingBlocks value={situation.answer}/></details>
     <small>Contexto didático autoral; dados podem ser hipotéticos.</small></>:
-    <p>Antes de aprofundar o tema, escolha a alternativa que corresponde à explicação de referência.</p>}
-   {lesson&&lesson.tasks.length>0&&<LessonChoiceQuestion
-    choice={lessonTaskChoice(lesson,lesson.tasks[0])} compact/>}
+    <p>Leia os fundamentos antes de responder às questões objetivas específicas, quando disponíveis.</p>}
+   {lesson&&lesson.tasks.some(task=>lessonTaskChoice(lesson,task).source==='editorial')&&<LessonChoiceQuestion
+    choice={lessonTaskChoice(lesson,lesson.tasks.find(task=>lessonTaskChoice(lesson,task).source==='editorial')!)} compact/>}
    {!lesson&&introChoice&&<LessonChoiceQuestion choice={introChoice} compact/>}
   </section>
   {lesson?isGenericStarter?<GuidedIntro lesson={lesson} subject={subject}/>:<>
@@ -301,9 +302,9 @@ export default function UniversalLessonReader({subject,topic,lesson,introduction
     <ol>{lesson.sections.map(section=><li key={section.level}><strong>{section.title}.</strong> {lessonReadingBlocks(section.explanation)[0]}</li>)}</ol>
     <p><strong>Como investigar este assunto:</strong> {method.title.toLocaleLowerCase('pt-BR')}.</p>
     <div className="k-universal-diagnostic">
-     <strong>Diagnóstico formativo · {assessed} de {lesson.sections.length} checagens autoavaliadas</strong>
+     <strong>Diagnóstico formativo · {assessed} de {practiceCount} checagens objetivas disponíveis</strong>
      {weak.length?<p>Priorize a revisão de: {weak.map(s=>s.title).join('; ')}. Retorne aos exemplos e refaça as atividades.</p>:
-      <p>{assessed===lesson.sections.length?'Você relatou compreensão das etapas; confirme com questões corrigidas na prática do Kognos.':'Complete as checagens rápidas acima para identificar quais etapas precisam de revisão.'}</p>}
+      <p>{practiceCount===0?'Ainda não há questões objetivas específicas publicadas para este assunto.':'Complete as checagens rápidas acima para identificar quais etapas precisam de revisão.'}</p>}
      <p className="k-universal-caution">A autoavaliação não é nota, acerto registrado ou comprovação de domínio.</p>
     </div>
     <p>Para fixação e simulado, use as abas <strong>Atividades</strong> e <strong>Evolução</strong> e o espaço de <strong>Simulados</strong>.</p>

@@ -39,7 +39,7 @@ test('new dashboard routes to real existing modules and never invents study data
  assert.match(app,/k-dashboard/);
  assert.match(app,/WeeklyProgressChart points=\{weekly\}/);
  assert.match(app,/setWeekly\(weeklyStudyActivity\(safeAttempts\)\)/);
- for(const page of ['learn','questions','simulados','trails','plans','reviews','achievements','tutor']){
+ for(const page of ['learn','questions','simulados','plans','reviews','achievements','tutor']){
   assert.ok(app.includes(`onGo('${page}')`),`dashboard missing action: ${page}`);
  }
  assert.match(app,/getCloudAttempts/);
