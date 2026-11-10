@@ -619,3 +619,11 @@ Commit `4c61b7e`: a auditoria transversal agora rejeita enunciados repetidos e c
 ## Auditoria de regressão — 2026-11-10
 
 O commit `f94713228e6de5a104f61bb3a45d83a3fc9cbec1` separa a verificação dos gabaritos **históricos** do lote 16 da validação das aulas atualmente selecionadas pelo resolvedor. Os índices originais continuam confrontados com `provaoDepthBatch16Core`; a versão ativa deve ter índice inteiro de 0 a 3, alternativas distintas e correção editorial. Uma edição posterior pode alterar legitimamente a posição da resposta sem invalidar o material anterior. Esta mudança não cria novos temas nem altera respostas de alunos. A execução CI #42803501856, anterior à correção, terminou em falha nos testes unitários e não executou as demais etapas. Cobertura observada anteriormente: 196/364, ainda não revalidada. Não publicar nem declarar CI verde antes de execução completa. Material original, não oficial e sem homologação docente.
+
+
+### 2026-11-10 — manutenção de regressões editoriais (sem novas aulas)
+
+- `provao-depth-batch17.test.ts`: gabaritos do lote 17 são confrontados com o módulo histórico correspondente; o resolvedor atual continua exigindo índice inteiro válido entre 0 e 3. Isso não homologa automaticamente a correção pedagógica do gabarito atual.
+- `provao-depth-batch16.test.ts`: corrigidas sequências literais `\\n` que deixavam a verificação de índice atual dentro de comentário; a asserção agora executa.
+- Nenhuma cobertura curricular adicional é reivindicada nesta manutenção. A validação completa de gabaritos, unicidade, segurança, design, TypeScript e build depende de CI concluída.
+- Conteúdo autoral Kognos, não oficial, sem homologação docente; não realizar merge/deploy antes de revisão.
