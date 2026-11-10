@@ -24,7 +24,7 @@ test('batch 44: five exact distinct official syllabus registrations',()=>{
    assert.ok(section.pitfall.length>=35);
    assert.equal(task.options?.length,4);
    assert.equal(new Set(task.options).size,4);
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
    assert.ok(task.solution.length>=140);
    assert.ok(task.prompt.length>=35);
    assert.ok(!/resolution_matching|example_matching/i.test(JSON.stringify(task)));
