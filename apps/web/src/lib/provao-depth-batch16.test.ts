@@ -44,7 +44,7 @@ test('batch 16 validates five exact curricular topics, depth and verified A-D an
    // A newer exact-match edition can supersede this historical batch.
    // Verify the original key against its original task, and validate the
    // currently selected edition independently instead of pinning its index.
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
     'Resolved lesson must have a valid objective answer key '+prefix+' / '+i);
    assert.ok(task.solution.length>=140);
    assert.equal(lessonTaskChoice(lesson,task).source,'editorial');
