@@ -667,3 +667,10 @@ Substituídas **15 dicas genéricas** nas cinco aulas existentes de Física do l
 - **Limitação explícita:** nenhum alias de título diferente foi aprovado neste lote. Citologia e títulos mais amplos continuam pendentes de revisão de escopo, série e profundidade. O cadastro existente já compartilhava títulos idênticos em `curriculum-catalog.ts`; este registro torna a identidade e a auditoria testáveis, mas não representa redução nova de duplicações persistidas.
 - **Validação:** commits registrados; CI deste lote ainda não confirmada. Não houve merge, deploy, migração SQL ou alteração de Auth/RLS.
 - **Prazo-alvo:** 20/11/2026, condicionado a revisão de equivalências reais e aprovação de testes. A cobertura global e previsão quantitativa exigem auditoria executada, não estimativa por títulos históricos.
+
+
+## Reutilização semântica explícita — 2026-11-10, lote de epistemologia
+
+A implementação `canonical-lesson-reuse.ts` passou a registrar uma associação editorial explícita de **Filosofia / Racionalismo e empirismo** à aula canônica **As abordagens racionalistas e empiristas do conhecimento**. O escopo aprovado limita-se ao contraste epistemológico entre razão e experiência; não certifica conteúdos adicionais de Kant, metodologia científica ou história integral da filosofia. O vínculo só é ativado para provas que efetivamente listam o título de destino e se a aula canônica aprofundada existir. IDs históricos e dados persistidos permanecem intocados. A correção do conteúdo-fonte é compartilhada por referência, sem cópia de capítulos ou questões.
+
+Teste de regressão adicionado para identidade dos capítulos/questões, preservação dos IDs distintos e rejeição de disciplina não relacionada. O número de vínculos efetivamente habilitados depende da execução da auditoria no commit atual; **não contabilizar como duplicações persistidas removidas**, pois nenhuma cópia foi excluída. CI e homologação docente pendentes; não mesclar nem publicar automaticamente.
