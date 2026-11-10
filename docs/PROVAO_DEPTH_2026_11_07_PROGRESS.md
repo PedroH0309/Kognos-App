@@ -627,3 +627,8 @@ O commit `f94713228e6de5a104f61bb3a45d83a3fc9cbec1` separa a verificação dos g
 - `provao-depth-batch16.test.ts`: corrigidas sequências literais `\\n` que deixavam a verificação de índice atual dentro de comentário; a asserção agora executa.
 - Nenhuma cobertura curricular adicional é reivindicada nesta manutenção. A validação completa de gabaritos, unicidade, segurança, design, TypeScript e build depende de CI concluída.
 - Conteúdo autoral Kognos, não oficial, sem homologação docente; não realizar merge/deploy antes de revisão.
+
+
+## Auditoria de regressões históricas — 2026-11-10
+
+Na execução GitHub Actions #42820645106, 461 dos 464 testes passaram e três falharam: lotes 18, 20 e 23. A causa observada foi comparação do índice de gabarito da edição atualmente selecionada pelo resolvedor com a ordem de alternativas de edições históricas. Os testes agora conferem o `correctIndex` original diretamente nas respectivas fontes dos lotes 18, 20 e 23 e verificam separadamente que a edição resolvida tem índice inteiro válido, quatro alternativas distintas e solução editorial. Não foram alterados gabaritos, questões, IDs ou conteúdo publicado. A validade semântica das respostas da edição resolvida ainda exige auditoria própria; `correctIndex` dentro de 0–3, isoladamente, não comprova a resposta correta. Commits `cd96e85`, `cc4c910`, `0216c8c`. CI do commit mais recente pendente de confirmação; não declarar aprovação antes de unitários, segurança de dois usuários, design, TypeScript e build. Nenhum tema inédito adicionado nesta intervenção, mantendo a última cobertura offline observada de 196/364 (168 pendentes), sem nova certificação.
