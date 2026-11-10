@@ -646,3 +646,8 @@ Reescritos **45 passos de resolução** distribuídos pelos 15 capítulos de cin
 ### Revisão de integridade — 2026-11-10 (lote 41)
 
 Corrigida uma regressão de sintaxe em `provao-depth-batch41-core.ts`: os 15 arrays de procedimentos dos exemplos estavam sem a propriedade `steps`, deixando os capítulos com membros anônimos inválidos. Restaurada a chave `steps` em cada um dos três capítulos dos cinco temas já existentes. Adicionado `provao-depth-batch41-steps.test.ts` para conferir 5 aulas, 15 capítulos, 15 conjuntos de passos e 15 questões A–D, com índice válido. **Não são cinco temas inéditos** e a cobertura não foi aumentada. Material autoral, não oficial e sem homologação docente. PR #99 continua em rascunho; nenhum merge ou deploy autorizado. Resultado de CI para os novos commits deve ser verificado antes de afirmar aprovação.
+
+
+### Revisão editorial — 2026-11-10 (lote 41, pistas objetivas)
+
+Substituídas 15 dicas idênticas e genéricas por orientações próprias para cada questão dos cinco temas existentes: taxonomia, fisiologia humana, evolução biológica, evolução humana e cidadania greco-romana. Cada dica orienta um procedimento disciplinar sem entregar a alternativa correta. Adicionada regressão em `provao-depth-batch41-steps.test.ts` para exigir 15 pistas distintas, com extensão mínima e sem o placeholder anterior. **Não representa cinco temas inéditos e não aumenta a cobertura auditada**; permanecem pendentes os 168 temas segundo a última contagem disponível, além da auditoria de ENEM/ETEC/Fuvest/Vunesp. Conteúdo original, não oficial e sem homologação docente. PR #99 permanece em rascunho; sem merge/deploy. Não declarar CI verde sem resultado observado para o HEAD.
