@@ -86,8 +86,6 @@ export default function TopicLessonSections({view,subject,topic,lesson,introduct
   {view==='activities'&&<>
    {exerciseIds.length===0&&<p className="k-lesson-unavailable" role="status">Ainda não há questões objetivas específicas e verificadas para esta aula. Os enunciados abertos e distratores de outras disciplinas não são exibidos como alternativas.</p>}
    {exerciseIds.length>0&&<p className="k-lesson-answer-count" role="status">Questões de alternativas respondidas: {answered} de {exerciseIds.length}. Este treino é local; as respostas não são registradas como nota ou domínio.</p>}
-   {lesson&&lesson.sections.map(section=>{
-    const tasks=lesson.tasks.filter(task=>task.level===section.level);
    {lesson&&lesson.sections.map((section,i)=>{
     const tasks=lesson.tasks.filter(task=>task.level===section.level&&lessonTaskChoice(lesson,task).source==='editorial');
     return <article className="k-lesson-chapter" key={section.level}>
