@@ -59,7 +59,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "0 m/s"
         ],
         "correctIndex": 1,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Adote leste como sentido positivo: a velocidade média usa deslocamento algébrico (ida menos volta), não a distância total.",
         "solution": "O deslocamento é +60−20=+40 m. Dividindo pelos 20 s, a velocidade média é +2 m/s, para leste. Os 80 m percorridos servem para rapidez média, não para velocidade vetorial média. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -72,7 +72,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "−4 m/s"
         ],
         "correctIndex": 2,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Derive a função posição em relação ao tempo antes de substituir t=2 s; o sinal da derivada informa o sentido.",
         "solution": "A derivada da posição fornece v(t)=3−2t. Substituindo t=2 s, v=3−4=−1 m/s. O sinal negativo indica deslocamento instantâneo no sentido oposto ao eixo positivo. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -85,7 +85,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "+7 m/s²"
         ],
         "correctIndex": 0,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Calcule Δv=vf−vi com sinais e divida pelo intervalo; aceleração negativa não é uma unidade de velocidade.",
         "solution": "Pela definição de aceleração média, Δv/Δt=(8−20)/4=−12/4=−3 m/s². Como o veículo ainda se desloca no sentido positivo, a aceleração negativa corresponde a uma redução de rapidez. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       }
     ]
@@ -148,7 +148,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "5 m/s"
         ],
         "correctIndex": 2,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "A inclinação da secante de x(t) é Δx/Δt; subtraia primeiro as posições e depois os instantes.",
         "solution": "A inclinação é a variação da posição dividida pelo tempo: (17−5)/(4−0)=12/4=3 m/s. O valor corresponde à velocidade média no intervalo, e não à posição inicial. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -161,7 +161,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "+4 m"
         ],
         "correctIndex": 1,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Em gráfico velocidade-tempo, some as áreas algébricas de cada retângulo; a região abaixo do eixo subtrai deslocamento.",
         "solution": "A área algébrica do primeiro retângulo é +12 m; a do segundo é −4 m. A soma resulta +8 m. A distância total é 16 m, mas não é a grandeza pedida. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -174,7 +174,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "11 m/s"
         ],
         "correctIndex": 2,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "A variação de velocidade é a área algébrica sob a(t); some as duas etapas à velocidade inicial.",
         "solution": "A variação da velocidade é a área algébrica: (+2×3)+(−1×4)=+2 m/s. Somando à velocidade inicial de 5 m/s, a final é 7 m/s. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       }
     ]
@@ -237,7 +237,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "40 m/s"
         ],
         "correctIndex": 2,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "A mala está em repouso em relação ao trem, mas o referencial pedido é o solo; compare velocidades relativas.",
         "solution": "A mala tem velocidade relativa ao trem nula. Somando a velocidade do trem em relação ao solo, 20 m/s, obtemos 20 m/s para a mala. Repouso é sempre relativo a um referencial. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -250,7 +250,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "−12 m/s²"
         ],
         "correctIndex": 0,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Em referencial inercial, use a força resultante horizontal na segunda lei de Newton, e não cada força isolada.",
         "solution": "As forças horizontais se cancelam: ΣF=12−12=0 N. Pela segunda lei, a=ΣF/m=0 para massa positiva. A caixa pode estar em repouso ou mover-se com velocidade constante. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -263,7 +263,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "−1,5 N"
         ],
         "correctIndex": 1,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "No referencial acelerado do ônibus, a força fictícia aponta no sentido oposto à aceleração do veículo e tem módulo ma.",
         "solution": "Em um referencial acelerado em translação, F_fict=−m a_ref. Para 3 kg e +2 m/s², o resultado é −6 N, sentido oposto à aceleração do ônibus. Não é uma interação física extra. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       }
     ]
@@ -326,7 +326,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "Marte passar a orbitar a Terra"
         ],
         "correctIndex": 1,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Compare as velocidades orbitais da Terra e de Marte: a ultrapassagem muda a direção aparente vista da Terra.",
         "solution": "Quando a Terra ultrapassa Marte, a direção da linha de visada muda e a posição aparente de Marte pode recuar diante do fundo estelar. Marte continua orbitando no mesmo sentido; o efeito é geométrico. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -339,7 +339,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "2"
         ],
         "correctIndex": 2,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Para uma elipse, o foco está a c=ae do centro; a distância mínima ao foco é a−c=a(1−e).",
         "solution": "A distância mínima ao foco é a(1−e). Substituindo a=10 e e=0,2, obtemos 10×0,8=8 unidades. O valor 12 corresponde ao afélio, a distância máxima. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -352,7 +352,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "8 vezes maior"
         ],
         "correctIndex": 3,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Use a terceira lei de Kepler somente para órbitas em torno da mesma massa central: T² proporcional a a³.",
         "solution": "Pela terceira lei de Kepler, (T2/T1)²=(a2/a1)³=4³=64. Portanto T2/T1=√64=8, sob a hipótese de mesma massa central e órbitas keplerianas. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       }
     ]
@@ -415,7 +415,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "1,00×10⁻⁹ N"
         ],
         "correctIndex": 0,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Aplique F=Gm₁m₂/r² usando metros e quilogramas; elevar a distância ao quadrado é indispensável.",
         "solution": "Pela lei universal, F=Gm1m2/r²=6,67×10⁻¹¹×(2×3)/4≈1,00×10⁻¹⁰ N. A força é atrativa e cada corpo recebe uma força de mesmo módulo e sentido oposto. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -428,7 +428,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "g/4"
         ],
         "correctIndex": 3,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Na superfície, g=GM/R²; mantendo a massa, dobrar o raio altera o denominador por um fator quatro.",
         "solution": "Na superfície, g=GM/R². Mantendo M e substituindo R por 2R, obtemos g'=GM/(4R²)=g/4. O resultado supõe distribuição esférica e a mesma massa total. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       },
       {
@@ -441,7 +441,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
           "Infinito por superposição"
         ],
         "correctIndex": 1,
-        "hint": "Identifique a grandeza solicitada, as hipóteses e as unidades antes de escolher a alternativa.",
+        "hint": "Campo gravitacional é vetor: no ponto médio, compare módulos e sentidos das atrações exercidas pelas duas massas.",
         "solution": "Cada massa gera no ponto médio um campo de módulo GM/a², mas as direções são opostas. A soma vetorial é nula exatamente no ponto médio, embora cada campo individual não seja zero. Verifique a condição do enunciado e descarte as alternativas que confundem as grandezas físicas."
       }
     ]
