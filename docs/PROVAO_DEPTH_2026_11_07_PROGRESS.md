@@ -683,3 +683,12 @@ Teste de regressão adicionado para identidade dos capítulos/questões, preserv
 - Teste do alias agora rejeita associação não comprovada, em vez de exigir um título inexistente.
 - Reutilização exata existente preservada; nenhum novo grupo semântico aprovado nem duplicação persistida removida nesta correção.
 - CI posterior a estes commits: pendente de confirmação. Material original, não oficial, sem homologação docente; sem merge ou deploy.
+
+
+## Auditoria de reutilização canônica por exame — 2026-11-10
+
+A função `canonicalCoverageByExam()` em `canonical-lesson-reuse.ts` contabiliza, para **cada exame efetivamente cadastrado** no blueprint, as entradas, aulas profundas disponíveis, ausências, IDs canônicos únicos e IDs dos temas ainda pendentes. `canonicalReuseAudit()` expõe esses dados em `coverageByExam` e o total de IDs canônicos profundos distintos em `allUniqueDeepCanonicalIds`. As contagens são **calculadas em execução**, não estimadas nesta documentação. O teste de regressão exige `total = deep + missing`, valida cada vínculo no resolvedor e confere a unicidade dos IDs canônicos.
+
+O compartilhamento comprovado continua restrito a **mesma disciplina e título exato**. Nenhuma nova equivalência semântica de títulos diferentes foi aprovada neste lote; nenhuma cópia persistida foi eliminada. Não equiparar `potentialCopiesAvoidedByReference` a remoção real de registros. Os campos `missingTopicIds` permitem priorizar verificação editorial individual e distinguir tópicos amplos de aulas parciais. A orientação dos blueprints não substitui os editais oficiais nem homologação docente.
+
+**Validação:** os commits adicionam auditoria e teste, mas a aprovação dos jobs de CI deve ser observada no GitHub Actions antes de declarar build verde. Não houve migração, mudança de RLS/Auth, merge ou deploy.
