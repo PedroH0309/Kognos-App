@@ -35,20 +35,14 @@ test('broad or unrelated syllabus labels never inherit a partial deep lesson',()
  if(candidate)assert.equal(canonicalLessonForExam('etec',candidate),null);
 });
 
-test('reviewed epistemology alias shares authored lesson but preserves historical exam topic identity',()=>{
+test('unverified differently named epistemology topics never receive fabricated aliases',()=>{
  const target=curriculumTopics.find(t=>t.subject==='Filosofia'&&t.topic==='Racionalismo e empirismo');
  const source=curriculumTopics.find(t=>t.subject==='Filosofia'&&t.topic==='As abordagens racionalistas e empiristas do conhecimento');
- assert.ok(target&&source,'Both exact syllabus labels must exist before enabling this alias');
- const exams=(Object.keys(examBlueprints) as ExamId[]).filter(e=>examBlueprints[e].subjects.Filosofia?.includes(target.topic));
- assert.ok(exams.length>0);
- for(const exam of exams){
-  const alias=reviewedCanonicalAliasForExam(exam,target);
-  assert.ok(alias,'Explicitly reviewed alias must resolve a real deep source');
-  assert.equal(alias.canonicalId,source.id);
-  assert.equal(alias.examTopicId,target.id);
-  assert.notEqual(alias.canonicalId,alias.examTopicId);
-  assert.strictEqual(canonicalLessonForExam(exam,target)?.sections,alias.lesson.sections);
-  assert.strictEqual(canonicalLessonForExam(exam,target)?.tasks,alias.lesson.tasks);
+ assert.ok(!target || !source, 'Reassess scope and enable a reviewed alias only after both titles exist');
+ if(target){
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+  }
  }
  const unrelated=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Citologia');
  if(unrelated)assert.equal(reviewedCanonicalAliasForExam('enem',unrelated),null);
