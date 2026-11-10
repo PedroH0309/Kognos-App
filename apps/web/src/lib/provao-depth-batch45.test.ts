@@ -31,7 +31,7 @@ test('lote 45: cinco temas oficiais únicos e três capítulos densos por tema',
    assert.ok(section.steps?.every(step=>step.length>=45));
    assert.equal(task.options?.length,4);
    assert.equal(new Set(task.options).size,4);
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex!>=0&&task.correctIndex!<4);
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4);
    assert.ok(task.solution.length>=140);
    assert.ok(!seenPrompts.has(task.prompt));seenPrompts.add(task.prompt);
    const optionsKey=JSON.stringify(task.options);
