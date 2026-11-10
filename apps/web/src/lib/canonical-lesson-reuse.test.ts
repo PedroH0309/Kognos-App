@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -61,4 +61,26 @@ test('audit distinguishes reference reuse from actual persisted duplicate remova
   assert.equal(audit.verifiedLinksByExam[exam],verifiedCanonicalLessonLinks().filter(link=>link.exams.includes(exam)).length);
   assert.ok(audit.verifiedLinksByExam[exam]<=audit.examEntries[exam]);
  }
+});
+
+test('per-exam deep coverage reconciles every registered topic without fuzzy matches',()=>{
+ const coverage=canonicalCoverageByExam();
+ const audit=canonicalReuseAudit();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const expected=curriculumTopics.filter(topic=>examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
+  const item=coverage[exam];
+  assert.equal(item.total,expected.length);
+  assert.equal(item.total,item.deep+item.missing);
+  assert.equal(item.missingTopicIds.length,item.missing);
+  assert.equal(item.canonicalIds.length,new Set(item.canonicalIds).size);
+  assert.equal(audit.coverageByExam[exam].deep,item.deep);
+  for(const topic of expected){
+   const lesson=canonicalLessonForExam(exam,topic);
+   assert.equal(item.missingTopicIds.includes(topic.id),!lesson,
+    'Misclassified '+exam+' / '+topic.subject+' / '+topic.topic);
+   if(lesson)assert.ok(item.canonicalIds.includes(lesson.id));
+  }
+ }
+ assert.equal(audit.allUniqueDeepCanonicalIds,
+  new Set(curriculumTopics.map(topic=>Object.values(coverage).flatMap(item=>item.canonicalIds).includes(topic.id)?topic.id:null).filter(Boolean)).size);
 });
