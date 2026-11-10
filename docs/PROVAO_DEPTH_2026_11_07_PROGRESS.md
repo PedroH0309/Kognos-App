@@ -636,3 +636,8 @@ Na execução GitHub Actions #42820645106, 461 dos 464 testes passaram e três f
 ## 2026-11-10 — correção de tipagem de gabaritos opcionais
 
 Na execução GitHub Actions #42830529751, testes unitários, segurança PostgreSQL com dois usuários e design passaram; o TypeScript falhou com TS18048 em seis arquivos de teste (lotes 16, 17, 18, 20, 23 e 44), impedindo o build. Os testes agora verificam explicitamente `typeof task.correctIndex === 'number'` antes de comparar limites de índice. A verificação continua exigindo inteiro entre 0 e 3, sem mudar gabaritos ou aceitar respostas ausentes. Não houve inclusão de cinco temas inéditos nesta correção. CI do novo HEAD ainda deve ser observada antes de declarar aprovação. Material autoral não oficial, sem homologação docente; sem merge/deploy.
+
+
+## 2026-11-10 — revisão de exemplos resolvidos do lote 41
+
+Reescritos **45 passos de resolução** distribuídos pelos 15 capítulos de cinco temas existentes: taxonomia e níveis de organização; fisiologia cardiovascular, respiratória e renal; teorias evolucionistas e seleção; evolução humana; democracia ateniense e cidadania romana. Cada passo agora explicita operação, inferência ou condição do caso concreto, substituindo três instruções genéricas repetidas em cada capítulo. Adicionado teste de regressão `provao-depth-batch41-worked-steps.test.ts` para garantir 3 passos por capítulo, 45 passos distintos e proibição das frases genéricas anteriores. **Não são cinco novos temas**: a cobertura offline anteriormente observada permanece 196/364 (168 pendentes), sujeita à auditoria atualizada. Material original, não oficial e sem homologação docente. PR permanece em rascunho; sem merge ou deploy. CI do novo HEAD precisa ser observada antes de alegar aprovação.
