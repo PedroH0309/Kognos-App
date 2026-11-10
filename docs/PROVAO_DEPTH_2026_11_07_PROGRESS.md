@@ -656,3 +656,14 @@ Substituídas 15 dicas idênticas e genéricas por orientações próprias para 
 ## Revisão de dicas objetivas — lote 45 de Física (2026-11-10)
 
 Substituídas **15 dicas genéricas** nas cinco aulas existentes de Física do lote 45: velocidade/aceleração, gráficos cinemáticos, referenciais inerciais, sistemas geocêntrico/heliocêntrico e leis de Kepler, e gravitação universal. Cada dica agora orienta uma operação verificável específica do enunciado, sem entregar a alternativa. Adicionado `provao-depth-batch45-hints.test.ts` para rejeitar dicas repetidas ou genéricas e validar estrutura objetiva (quatro alternativas distintas, índice válido e solução). **Não há novos temas nesta revisão**; a contagem de cobertura permanece sujeita à auditoria automatizada. O teste foi registrado, mas sua aprovação em CI ainda precisa ser observada. Material autoral não oficial, sem homologação docente. Sem alterações em Supabase, dados, IDs ou segurança; sem merge ou deploy.
+
+
+## 2026-11-10 — Registro conservador de reutilização entre provas
+
+- Novo `canonical-lesson-reuse.ts`: audita os títulos **inteiros e idênticos** por disciplina entre os cinco blueprints cadastrados e associa somente aulas autorais profundas existentes, sem copiar capítulos, questões, IDs ou registros de progresso.
+- `canonicalLessonForExam` retorna a aula canônica apenas quando o exame realmente contém aquele título exato; exames não relacionados não recebem conteúdo por coincidência de palavras.
+- `canonical-lesson-reuse.test.ts` verifica o compartilhamento das referências de capítulos/questões, a preservação do ID e a ausência de herança para exames sem o tópico.
+- `canonicalReuseAudit()` calcula dinamicamente entradas por exame, títulos curriculares distintos, grupos exatos, vínculos e cópias evitadas **potenciais**; não apresenta esses números como equivalências semânticas revisadas nem como duplicações previamente materializadas e removidas.
+- **Limitação explícita:** nenhum alias de título diferente foi aprovado neste lote. Citologia e títulos mais amplos continuam pendentes de revisão de escopo, série e profundidade. O cadastro existente já compartilhava títulos idênticos em `curriculum-catalog.ts`; este registro torna a identidade e a auditoria testáveis, mas não representa redução nova de duplicações persistidas.
+- **Validação:** commits registrados; CI deste lote ainda não confirmada. Não houve merge, deploy, migração SQL ou alteração de Auth/RLS.
+- **Prazo-alvo:** 20/11/2026, condicionado a revisão de equivalências reais e aprovação de testes. A cobertura global e previsão quantitativa exigem auditoria executada, não estimativa por títulos históricos.
