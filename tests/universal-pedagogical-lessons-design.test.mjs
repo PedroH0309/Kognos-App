@@ -17,13 +17,13 @@ test('every curriculum lesson uses one centralized pedagogical reader rather tha
 
 test('universal model has objectives, context, concept development, visualization, examples, comparison, interaction, checks and consolidation',()=>{
  const s=read('apps/web/src/components/UniversalLessonReader.tsx');
- for(const phrase of ['01 · Objetivo de aprendizagem','02 · Por que estudar isto?',
-  '03 · Conceito e fundamentos','04 · Desenvolvimento e aplicação',
-  '05 · Visualize a sequência de aprendizagem',
-  '06 · Exemplo aplicado e resolvido',
-  '07 · Regras, diferenças e erros frequentes',
-  '08 · Explore visualmente e teste hipóteses',
-  '09 · Teste rápido','10 · Consolidação e folha de revisão']){
+ for(const phrase of ['Objetivo de aprendizagem','Por que estudar isto?',
+  'Conceito e fundamentos','Desenvolvimento e aplicação',
+  'Visualize a sequência de aprendizagem',
+  'Exemplo aplicado e resolvido',
+  'Regras, diferenças e erros frequentes',
+  'Explore visualmente e teste hipóteses',
+  'Teste rápido','Consolidação e folha de revisão']){
   assert.ok(s.includes(phrase),phrase);
  }
  assert.match(s,/lessonReadingBlocks\(section\.explanation\)/);

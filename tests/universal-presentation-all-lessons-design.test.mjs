@@ -48,8 +48,9 @@ test('Every authored lesson moves through concepts, development, visualisation, 
 
 test('Study navigation explicitly links available content stages and omits irrelevant simulations',()=>{
  const reader=read('apps/web/src/components/UniversalLessonReader.tsx');
- for(const number of ['01','02','03','04','05','06','07','08','09','10'])
-  assert.ok(reader.includes("number:'"+number+"'"),number);
+ for(const label of ['Objetivos','Contexto','Conceitos','Desenvolvimento','Visualização','Exemplos','Comparações','Interatividade','Teste rápido','Consolidação'])
+  assert.ok(reader.includes("label:'"+label+"'"),label);
+ assert.doesNotMatch(reader,/number:'(?:0[1-9]|10)'/);
  assert.match(reader,/LessonContentsNav hasVisual=\{Boolean\(lesson\)\}/);
  assert.match(reader,/hasLab=\{Boolean\(lesson&&!isGenericStarter&&hasLab\)\}/);
  assert.match(reader,/id="k-lesson-objectives"/);

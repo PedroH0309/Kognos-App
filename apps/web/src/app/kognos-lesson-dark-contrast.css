@@ -1,0 +1,127 @@
+/* Curriculum reading contrast, dark mode.
+ * CourseLibrary historically defined light-only tokens; this sheet reinforces
+ * semantic colors on the exact surfaces exposed by the user screenshots.
+ * Scoped to the Kognos app so the standalone course editor remains unaffected.
+ */
+.app-layout.theme-dark .course-room{
+ --course-border:var(--line,#414F65);
+ --course-surface:var(--box-bg,#202633);
+ --course-ink:var(--txt,#F7F9FC);
+ --course-muted:var(--sub,#BECDE0);
+ color:var(--course-ink);
+}
+.app-layout.theme-dark .course-room .course-reader{
+ color:var(--course-ink);
+ background:var(--course-surface);
+ border-color:var(--course-border);
+}
+.app-layout.theme-dark .course-room .course-reader>h2,
+.app-layout.theme-dark .course-room .course-reader>h3,
+.app-layout.theme-dark .course-room .course-reader .course-videos h3,
+.app-layout.theme-dark .course-room .course-reference>summary{
+ color:var(--course-ink);
+}
+.app-layout.theme-dark .course-room .course-reader .course-reference,
+.app-layout.theme-dark .course-room .course-reader>details:not(.k-universal-steps){
+ color:var(--course-ink);
+ border-color:var(--course-border);
+ background:var(--course-surface);
+}
+.app-layout.theme-dark .course-room .course-reader .course-reference>summary::marker,
+.app-layout.theme-dark .course-room .course-reader>details>summary::marker{
+ color:#B8AEFF;
+}
+.app-layout.theme-dark .course-room .course-reader .course-reference p,
+.app-layout.theme-dark .course-room .course-reader .course-reference li,
+.app-layout.theme-dark .course-room .course-reader .course-reference small,
+.app-layout.theme-dark .course-room .course-reader>details:not(.k-universal-steps) p,
+.app-layout.theme-dark .course-room .course-reader>details:not(.k-universal-steps) li,
+.app-layout.theme-dark .course-room .course-reader .course-videos>p,
+.app-layout.theme-dark .course-room .course-reader .course-video-card small,
+.app-layout.theme-dark .course-room .course-reader .course-video-card span{
+ color:var(--course-muted);
+}
+.app-layout.theme-dark .course-room .course-reader .course-reference a,
+.app-layout.theme-dark .course-room .course-reader>details a:not(.btn),
+.app-layout.theme-dark .course-room .course-reader .course-videos a:not(.btn){
+ color:#8FD9FF;
+ text-underline-offset:3px;
+}
+.app-layout.theme-dark .course-room .course-reader .course-reference a:hover,
+.app-layout.theme-dark .course-room .course-reader>details a:not(.btn):hover{
+ color:#C5EFFF;
+}
+.app-layout.theme-dark .course-room .course-reader .course-video-card,
+.app-layout.theme-dark .course-room .course-reader .course-task,
+.app-layout.theme-dark .course-room .course-reader .course-generation{
+ background:var(--panel-2,#2B3444);
+ border-color:var(--course-border);
+ color:var(--course-ink);
+}
+.app-layout.theme-dark .course-room .course-reader .course-notice{
+ background:var(--panel-2,#2B3444);
+ color:var(--course-ink);
+}
+/* Reader chapters also render inside subject workspaces, which are not
+ * always nested under .k-curriculum-flow. Give them theme-aware fallback tokens. */
+.app-layout.theme-dark .k-universal-lesson{
+ --k-ul-ink:var(--txt,#F7F9FC);
+ --k-ul-muted:var(--sub,#BECDE0);
+ --k-ul-line:var(--line,#414F65);
+ --k-ul-soft:var(--panel-2,#2B3444);
+ --flow-paper:var(--box-bg,#202633);
+ color:var(--k-ul-ink);
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-chapter-head small,
+.app-layout.theme-dark .k-universal-lesson .k-universal-guide-label,
+.app-layout.theme-dark .k-universal-lesson .k-universal-applied h5,
+.app-layout.theme-dark .k-universal-lesson .k-universal-quick-check span{
+ color:#C5BBFF;
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-context,
+.app-layout.theme-dark .k-universal-lesson .k-universal-chapter,
+.app-layout.theme-dark .k-universal-lesson .k-universal-visual,
+.app-layout.theme-dark .k-universal-lesson .k-universal-summary,
+.app-layout.theme-dark .k-universal-lesson .k-universal-lab{
+ background:var(--box-bg,#202633);
+ border-color:var(--line,#414F65);
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-context{
+ border-left-color:#A59BFF;
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-comparison,
+.app-layout.theme-dark .k-universal-lesson details{
+ background:var(--panel-2,#2B3444);
+ color:var(--txt,#F7F9FC);
+ border-color:var(--line,#414F65);
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-two-col>div{
+ background:var(--box-bg,#202633);
+ border-color:var(--line,#414F65);
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-prose,
+.app-layout.theme-dark .k-universal-lesson .k-universal-prose p,
+.app-layout.theme-dark .k-universal-lesson .k-universal-two-col p,
+.app-layout.theme-dark .k-universal-lesson .k-universal-two-col strong{
+ color:var(--txt,#F7F9FC);
+}
+.app-layout.theme-dark .k-universal-lesson .k-universal-caution,
+.app-layout.theme-dark .k-universal-lesson .k-universal-source p{
+ color:var(--sub,#BECDE0);
+}
+/* Avoid dark ink leaking into selectable tabs and content status metadata. */
+.app-layout.theme-dark .course-reader .k-animated-lesson-tab:not([aria-pressed=true]){
+ color:var(--sub,#BECDE0);
+}
+.app-layout.theme-dark .course-reader .k-animated-lesson-tab[aria-pressed=true]{
+ color:#C5BBFF;
+}
+.app-layout.theme-dark .course-reader .k-animated-lesson-tab .k-animated-lesson-highlight{
+ background:var(--box-bg,#202633);
+ border-color:var(--line,#414F65);
+}
+.app-layout.theme-dark .k-universal-lesson :is(a,button,summary):focus-visible,
+.app-layout.theme-dark .course-reader :is(a,button,summary):focus-visible{
+ outline:2px solid #7EDDF4;
+ outline-offset:3px;
+}
