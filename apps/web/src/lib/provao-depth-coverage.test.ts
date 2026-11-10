@@ -526,3 +526,29 @@ test('batch 41 registers five new exact syllabus topics with substantial origina
  assert.equal(new Set(deepProvaoTopicKeys).size,deepProvaoTopicKeys.length);
  assert.ok(audit.coverage.deep_specific>=195,'Batch 41 should raise depth coverage from 190 to at least 195');
 });
+
+test('deep objective questions reject reused stems and entire answer sets within one lesson',()=>{
+ const seenLessons=new Set<string>();
+ for(const topic of curriculumTopics){
+  const lesson=deepProvaoLesson(topic);
+  if(!lesson)continue;
+  const key=topic.subject+' / '+topic.topic;
+  if(seenLessons.has(key))continue;
+  seenLessons.add(key);
+  const stems=new Set<string>();
+  const optionSets=new Set<string>();
+  for(const task of lesson.tasks){
+   const normalize=(value:string)=>value.trim().replace(/\\s+/g,' ').toLocaleLowerCase('pt-BR');
+   const stem=normalize(task.prompt);
+   assert.ok(stem.length>=15,key+' has an underspecified question stem');
+   assert.ok(!stems.has(stem),key+' repeats an objective question stem');
+   stems.add(stem);
+   assert.equal(task.options?.length,4,key+' must provide exactly four options');
+   const choices=task.options!.map(normalize);
+   assert.equal(new Set(choices).size,4,key+' repeats normalized options');
+   const signature=[...choices].sort().join('\\u0000');
+   assert.ok(!optionSets.has(signature),key+' recycles an entire answer set');
+   optionSets.add(signature);
+  }
+ }
+});
