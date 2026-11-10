@@ -40,7 +40,7 @@ test('batch 23: five exact unique syllabus topics with three substantial levels 
    assert.equal(historical.tasks[i].correctIndex,keys[i],'Historical batch 23 answer key '+prefix+'/'+i);
    // The resolver may select a newer exact-match lesson. Check its own key
    // independently rather than imposing an earlier edition's option order.
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
     'Resolved answer index must be valid '+prefix+'/'+i);
    assert.ok(task.solution.length>=140);
    assert.equal(lessonTaskChoice(lesson,task).source,'editorial');
