@@ -65,8 +65,33 @@ export function canonicalLessonForExam(exam:ExamId,topic:CurriculumTopic){
   return deepProvaoLesson(topic)??reviewedCanonicalAliasForExam(exam,topic)?.lesson??null;
 }
 
+/** Exact per-exam coverage is measured against the actual registered blueprint.
+ * One canonical topic may be counted in several exams, but is authored once.
+ * No fuzzy/partial association is promoted to a completed deep lesson.
+ */
+export function canonicalCoverageByExam(){
+  return Object.fromEntries((Object.keys(examBlueprints) as ExamId[]).map(exam=>{
+    const topics=curriculumTopics.filter(topic=>
+      examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)
+    );
+    const deep=topics.filter(topic=>Boolean(canonicalLessonForExam(exam,topic)));
+    const missing=topics.filter(topic=>!canonicalLessonForExam(exam,topic));
+    return [exam,{
+      total:topics.length,
+      deep:deep.length,
+      missing:missing.length,
+      canonicalIds:[...new Set(deep.map(topic=>canonicalLessonForExam(exam,topic)!.id))],
+      missingTopicIds:missing.map(topic=>topic.id)
+    }];
+  })) as Record<ExamId,{
+    total:number;deep:number;missing:number;
+    canonicalIds:string[];missingTopicIds:string[];
+  }>;
+}
+
 export function canonicalReuseAudit(){
   const links=verifiedCanonicalLessonLinks();
+  const coverageByExam=canonicalCoverageByExam();
   const examEntries=Object.fromEntries(
     (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
       exam,Object.values(examBlueprints[exam].subjects).reduce((sum,topics)=>sum+topics.length,0)
@@ -74,6 +99,8 @@ export function canonicalReuseAudit(){
   );
   return {
     examEntries,
+    coverageByExam,
+    allUniqueDeepCanonicalIds:[...new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter((id):id is string=>Boolean(id)))].length,
     distinctCurriculumTitles:curriculumTopics.length,
     verifiedExactScopeGroups:links.length,
     canonicalDeepLessons:links.length,
