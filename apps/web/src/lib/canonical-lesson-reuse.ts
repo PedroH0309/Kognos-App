@@ -79,6 +79,27 @@ export function canonicalReuseAudit(){
     canonicalDeepLessons:links.length,
     verifiedExamLessonLinks:links.reduce((sum,link)=>sum+link.exams.length,0),
     avoidedDeepLessonCopies:links.reduce((sum,link)=>sum+link.exams.length-1,0),
+    /** Counts represent shared references, not deleted or migrated database rows. */
+    actualPersistedDuplicatesRemoved:0,
+    potentialCopiesAvoidedByReference:links.reduce((sum,link)=>sum+link.exams.length-1,0),
+    uniqueExactTitlesByExam:Object.fromEntries(
+      (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+        exam,new Set(Object.entries(examBlueprints[exam].subjects)
+          .flatMap(([subject,titles])=>titles.map(title=>subject+'\\0'+title))).size
+      ])
+    ),
+    verifiedLinksByExam:Object.fromEntries(
+      (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+        exam,links.filter(link=>link.exams.includes(exam)).length
+      ])
+    ),
+    /** Counts only confirmed deep-lesson references; no introductory outlines. */
+    deepCurriculumTopics:curriculumTopics.filter(topic=>Boolean(deepProvaoLesson(topic))).length,
+    missingDeepCurriculumTopics:curriculumTopics.filter(topic=>!deepProvaoLesson(topic)).length,
+    /** Unreviewed semantic overlaps must not be reported as full coverage. */
+    approvedPartialAssociations:0,
+    /** No automated fuzzy matching is accepted as pedagogical equivalence. */
+    unresolvedSemanticCandidates:0,
     /** No differently titled semantic aliases have yet been certified. */
     reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))).length
   };
