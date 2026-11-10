@@ -18,8 +18,8 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "example": "Uma pessoa anda 60 m para leste e retorna 20 m para oeste em 20 s: distância=80 m, deslocamento=+40 m, rapidez média=4 m/s e velocidade média=+2 m/s para leste.",
         "pitfall": "Confundir distância com deslocamento ou omitir o sinal do eixo.",
         "steps": [
-          "Calcule a distância somando 60+20=80 m.",
-          "Calcule deslocamento algébrico 60−20=+40 m.",
+          "Calcule a distância somando 60+20=80 m. Verifique que a distância total e o deslocamento podem ter valores diferentes.",
+          "Calcule deslocamento algébrico 60−20=+40 m. Verifique que a distância total e o deslocamento podem ter valores diferentes.",
           "Divida cada grandeza por 20 s e compare 4 m/s com +2 m/s."
         ]
       },
@@ -42,8 +42,8 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "example": "Um veículo passa de +20 m/s a +8 m/s em 4 s: a=(8−20)/4=−3 m/s². Como v é positiva e a negativa, o módulo diminui.",
         "pitfall": "Aceleração negativa não significa necessariamente diminuir a rapidez: depende do sinal da velocidade.",
         "steps": [
-          "Registre vi=+20 m/s, vf=+8 m/s e Δt=4 s.",
-          "Calcule Δv=−12 m/s e a=−12/4=−3 m/s².",
+          "Registre vi=+20 m/s, vf=+8 m/s e Δt=4 s. Use m/s² e compare o sinal de aceleração com o da velocidade.",
+          "Calcule Δv=−12 m/s e a=−12/4=−3 m/s². Use m/s² e compare o sinal de aceleração com o da velocidade.",
           "Compare os sinais de v e a para concluir que há desaceleração nesse eixo."
         ]
       }
@@ -107,7 +107,7 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "example": "Entre (t=0,x=5 m) e (t=4 s,x=17 m), a inclinação é (17−5)/4=3 m/s; a posição inicial de 5 m não entra no numerador da velocidade.",
         "pitfall": "Ler a altura do gráfico como velocidade, quando a altura representa posição.",
         "steps": [
-          "Leia as coordenadas (0 s,5 m) e (4 s,17 m).",
+          "Leia as coordenadas (0 s,5 m) e (4 s,17 m). Leia o valor da grandeza no eixo vertical antes de calcular a inclinação.",
           "Calcule Δx=12 m e Δt=4 s; a inclinação é 3 m/s.",
           "Interprete a inclinação positiva como movimento no sentido positivo."
         ]
@@ -119,8 +119,8 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "example": "Um móvel tem v=+4 m/s de 0 a 3 s e v=−2 m/s de 3 a 5 s: deslocamento=4×3−2×2=+8 m; distância=12+4=16 m.",
         "pitfall": "Somar áreas negativas como positivas ao calcular deslocamento.",
         "steps": [
-          "Separe os intervalos: 0–3 s e 3–5 s.",
-          "Calcule as áreas algébricas +12 m e −4 m.",
+          "Separe os intervalos: 0–3 s e 3–5 s. A área abaixo do eixo deve ser contabilizada com sinal negativo.",
+          "Calcule as áreas algébricas +12 m e −4 m. A área abaixo do eixo deve ser contabilizada com sinal negativo.",
           "Some para deslocamento +8 m e some módulos para distância 16 m."
         ]
       },
@@ -128,11 +128,11 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "level": "advanced",
         "title": "Área no gráfico aceleração-tempo",
         "explanation": "A área algébrica sob o gráfico aceleração versus tempo corresponde à variação da velocidade, não ao deslocamento. Se a aceleração é constante em um intervalo, Δv=aΔt; para encontrar a velocidade final é necessário conhecer a inicial. Um gráfico a(t) horizontal em zero significa velocidade constante, mas não necessariamente velocidade nula. Quando a aceleração muda de sinal, a velocidade pode continuar positiva, desde que a redução ainda não a leve a zero. O deslocamento exigiria integrar a velocidade, de modo que não se pode inferir a posição final apenas da área de a(t). A interpretação de gráficos com saltos requer distinguir valores pontuais, limites laterais e intervalos finitos. Em situações reais, mudanças abruptas são idealizações e devem ser usadas somente na escala temporal proposta.",
-        "example": "Se a=+2 m/s² por 3 s e depois a=−1 m/s² por 4 s, Δv=+6−4=+2 m/s. Para v0=5 m/s, vf=7 m/s.",
+        "example": "Se a=+2 m/s² por 3 s e depois a=−1 m/s² por 4 s, Δv=+6−4=+2 m/s. Para v0=5 m/s, vf=7 m/s. A integração da aceleração fornece variação de velocidade, não posição.",
         "pitfall": "Confundir a área sob a(t) com distância percorrida.",
         "steps": [
-          "Calcule Δv1=2×3=+6 m/s.",
-          "Calcule Δv2=−1×4=−4 m/s.",
+          "Calcule Δv1=2×3=+6 m/s. A integração da aceleração fornece variação de velocidade, não posição.",
+          "Calcule Δv2=−1×4=−4 m/s. A integração da aceleração fornece variação de velocidade, não posição.",
           "Some Δv=+2 m/s e acrescente v0=5 m/s para vf=7 m/s."
         ]
       }
@@ -208,8 +208,8 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "example": "Uma caixa recebe força de 12 N à direita e atrito de 12 N à esquerda. A resultante horizontal é zero; se já se movia, continua com velocidade constante no modelo.",
         "pitfall": "Afirmar que força resultante zero implica necessariamente velocidade zero.",
         "steps": [
-          "Liste as forças horizontais e seus sentidos.",
-          "Some algebricamente +12−12=0 N.",
+          "Liste as forças horizontais e seus sentidos. O cancelamento de forças não determina a velocidade inicial.",
+          "Some algebricamente +12−12=0 N. O cancelamento de forças não determina a velocidade inicial.",
           "Use a=ΣF/m=0 para concluir velocidade constante, não repouso obrigatório."
         ]
       },
@@ -306,12 +306,12 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "level": "advanced",
         "title": "Terceira lei e comparação orbital",
         "explanation": "A terceira lei de Kepler, para corpos orbitando a mesma massa central com massas desprezíveis, estabelece T² proporcional a a³. Assim, (T2/T1)²=(a2/a1)³; o semieixo maior, não a distância instantânea ao Sol, entra na relação. Se uma órbita tem semieixo maior quatro vezes maior que outra, o período é oito vezes maior, pois 4³=64 e a raiz quadrada é 8. No sistema solar, a aproximação funciona bem para planetas, mas correções aparecem quando massas dos corpos são relevantes ou perturbações de outros planetas não podem ser ignoradas. A forma newtoniana de dois corpos é T²=4π²a³/[G(M+m)], esclarecendo a dependência da massa total. Não se deve comparar diretamente períodos de satélites que orbitam corpos centrais diferentes sem ajustar as massas.",
-        "example": "Duas órbitas ao redor da mesma estrela têm a2=4a1. Então T2/T1=(4)^(3/2)=8: se T1=1 ano, T2=8 anos.",
+        "example": "Duas órbitas ao redor da mesma estrela têm a2=4a1. Então T2/T1=(4)^(3/2)=8: se T1=1 ano, T2=8 anos. A relação entre períodos vale para órbitas ao redor da mesma massa central.",
         "pitfall": "Usar o raio de periélio no lugar do semieixo maior ou aplicar a razão a estrelas diferentes.",
         "steps": [
           "Escreva T2²/T1²=a2³/a1³ para a mesma massa central.",
           "Substitua a2/a1=4 e calcule a razão quadrática 64.",
-          "Extraia a raiz positiva e obtenha T2/T1=8."
+          "Extraia a raiz positiva e obtenha T2/T1=8. A relação entre períodos vale para órbitas ao redor da mesma massa central."
         ]
       }
     ],
@@ -371,11 +371,11 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "level": "basic",
         "title": "Força entre massas",
         "explanation": "A gravitação universal de Newton afirma que duas massas puntiformes exercem forças atrativas de módulos iguais F=Gm1m2/r², orientadas ao longo da linha que une seus centros. Para corpos esfericamente simétricos e sem sobreposição, pode-se tratar a atração externa como se a massa estivesse concentrada no centro. A distância r é entre centros, não a altura acima da superfície isoladamente. Se r dobra, a força cai para um quarto, mantendo massas constantes. As forças entre os corpos constituem um par ação-reação: têm módulos iguais e sentidos opostos, mas atuam em corpos diferentes e portanto não se anulam no diagrama de um único corpo. A constante G tem unidades N·m²/kg² e é universal no modelo. A aproximação newtoniana é adequada a muitos problemas escolares, mas requer correções relativísticas em campos intensos ou medições de alta precisão.",
-        "example": "Duas massas de 2 kg e 3 kg estão separadas por 2 m. Com G=6,67×10⁻¹¹, F=G×6/4≈1,00×10⁻¹⁰ N.",
+        "example": "Duas massas de 2 kg e 3 kg estão separadas por 2 m. Com G=6,67×10⁻¹¹, F=G×6/4≈1,00×10⁻¹⁰ N. A força gravitacional é atrativa e usa a distância entre centros.",
         "pitfall": "Medir r entre superfícies quando a fórmula requer distância entre centros.",
         "steps": [
-          "Multiplique as massas: 2×3=6 kg².",
-          "Eleve a distância ao quadrado: 2²=4 m².",
+          "Multiplique as massas: 2×3=6 kg². A força gravitacional é atrativa e usa a distância entre centros.",
+          "Eleve a distância ao quadrado: 2²=4 m². A força gravitacional é atrativa e usa a distância entre centros.",
           "Calcule G×6/4≈1,00×10⁻¹⁰ N e indique atração mútua."
         ]
       },
@@ -386,9 +386,9 @@ export const provaoDepthBatch45Physics:readonly DeepTopicSpec[]=[
         "example": "Se um planeta tem massa igual à da Terra e raio duas vezes maior, o campo na superfície é g'=GM/(2R)²=g/4≈2,45 m/s².",
         "pitfall": "Confundir massa com peso ou supor g constante em qualquer altitude.",
         "steps": [
-          "Escreva g=GM/r² e identifique r=2R.",
-          "Compare g'/g=R²/(2R)²=1/4.",
-          "Use g terrestre 9,8 para obter g'=2,45 m/s²."
+          "Escreva g=GM/r² e identifique r=2R. O raio do planeta entra ao quadrado na expressão do campo.",
+          "Compare g'/g=R²/(2R)²=1/4. O raio do planeta entra ao quadrado na expressão do campo.",
+          "Use g terrestre 9,8 para obter g'=2,45 m/s². O raio do planeta entra ao quadrado na expressão do campo."
         ]
       },
       {
