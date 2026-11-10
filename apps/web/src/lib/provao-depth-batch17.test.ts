@@ -37,7 +37,7 @@ test('batch 17 exact five topics, pedagogical depth, objective keys and unchange
    assert.equal(task.options?.length,4);
    assert.equal(new Set(task.options).size,4);
    assert.equal(historical.tasks[i].correctIndex,keys[i], 'Original batch 17 key '+prefix+'/'+i);
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
+   assert.ok(typeof task.correctIndex==='number'&&Number.isInteger(task.correctIndex)&&task.correctIndex>=0&&task.correctIndex<4,
     'Current editorial answer index invalid '+prefix+'/'+i);
    assert.ok(task.solution.length>=140);
    assert.equal(lessonTaskChoice(lesson,task).source,'editorial');
