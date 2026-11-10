@@ -594,3 +594,8 @@ Teste `provao-depth-batch44.test.ts` verifica rótulos oficiais exatos, ausênci
 ## Correção de integridade de registros — 2026-11-10
 
 A execução Actions `42747206287` do commit `69b5a8a` terminou com falha: 47 testes falharam, com 413 aprovações em 460 testes. A auditoria apontou cinco duplicações exatas de Química entre registros anteriores e o lote 44 (íon–dipolo, solubilidade/ebulição, interações da água, soluções aquosas e eletrosfera/Pauling). Os testes de lotes antigos também comparavam 199 registros únicos com 204 entradas brutas. O commit `6553365` introduz normalização por `subject + topicStart` no resolvedor, preservando a revisão autoral mais recente e evitando contagem dupla. Isso não constitui cinco temas inéditos: a cobertura observada antes da correção era 196/364 e 168 pendentes. A correção ainda requer execução completa de Actions (unitários, segurança, design, TypeScript e build); não afirmar CI verde antes de observar os resultados. Não houve alteração de IDs, Supabase, autenticação, merge ou deploy. Revisão docente pendente.
+
+
+### Revisão editorial lote 44 — 2026-11-10
+
+Commit `711dcb946fa91a21e730d3780af54d364b179305`: cinco objetivos disciplinares ampliados, quinze exemplos resolvidos enriquecidos com contas e comparações específicas, e quinze ressalvas de erros frequentes contextualizadas. Não são cinco temas inéditos; esta revisão procura sanar regressões de comprimento e substância apontadas pela CI anterior (453/460 testes). Mantidos gabaritos, IDs, banco, RLS e estado de revisão docente. Cobertura **não recalculada**; referência anterior 196/364, 168 fora da categoria. Testes e CI do novo commit **ainda não confirmados**; sem merge/deploy.
