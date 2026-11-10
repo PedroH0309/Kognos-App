@@ -23,3 +23,18 @@ test('batch 41 has five specific lessons with three valid worked examples each',
   }
  }
 });
+
+/** Each of the five revised lessons must guide reasoning with distinct, disciplinary hints. */
+test('batch 41 offers fifteen non-generic, non-repeated objective hints',()=>{
+ const seen=new Set<string>();
+ for(const lesson of provaoDepthBatch41Core){
+  for(const task of lesson.tasks){
+   const hint=(task.hint??'').trim();
+   assert.ok(hint.length>=65,lesson.topicStart+' has a vague hint');
+   assert.ok(!/consulte o mecanismo|exemplo resolvido desta etapa/i.test(hint),lesson.topicStart+' retains a placeholder hint');
+   assert.ok(!seen.has(hint.toLocaleLowerCase('pt-BR')),lesson.topicStart+' repeats a hint');
+   seen.add(hint.toLocaleLowerCase('pt-BR'));
+  }
+ }
+ assert.equal(seen.size,15);
+});
