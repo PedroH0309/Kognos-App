@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -483,5 +483,35 @@ test('cross-exam authoring backlog deduplicates historical topics and excludes c
    partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)))];
   assert.deepEqual(item.advisorySourceIds,expected);
   assert.equal(item.hasPartialReference,expected.length>0);
+ }
+});
+
+test('official Provão authored partial sources remain advisory and exam-isolated',()=>{
+ const refs=provaoSourcedPartialReferences();
+ const byExam=provaoPartialReferencesByExam();
+ assert.deepEqual(canonicalReuseAudit().provaoPartialReferencesByExam,byExam);
+ for(const ref of refs){
+  const target=curriculumTopics.find(t=>t.id===ref.targetTopicId);
+  assert.ok(target);
+  assert.notEqual(ref.canonicalId,ref.targetTopicId);
+  assert.equal(ref.lesson.id,ref.canonicalId);
+  assert.equal(ref.fullyCovered,false);
+  assert.ok(ref.sourceCode&&ref.sourceGrade>=1&&ref.sourceGrade<=3);
+  assert.ok(ref.coveredScope.length>0&&ref.missingScope.length>0);
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   const actual=byExam[exam].filter(item=>item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
+   const registered=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   assert.equal(actual.length,registered?1:0);
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+   for(const item of actual)assert.equal(item.fullyCovered,false);
+  }
+ }
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  for(const ref of byExam[exam]){
+   const target=curriculumTopics.find(t=>t.id===ref.examTopicId);
+   assert.ok(target);
+   assert.ok(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   assert.ok(refs.some(item=>item.targetTopicId===ref.examTopicId&&item.canonicalId===ref.canonicalId));
+  }
  }
 });
