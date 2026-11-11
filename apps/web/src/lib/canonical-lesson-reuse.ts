@@ -46,6 +46,30 @@ export const reviewedSemanticAliases: readonly {
   subject:string;targetTitle:string;sourceTitle:string;rationale:string;
 }[] = [];
 
+/** Explicitly reviewed *partial* overlap, never a full-coverage alias.
+ * Citologia includes membrane transport, organelles, cell division and other
+ * objectives; cellular organization alone cannot satisfy that syllabus.
+ * These references are advisory only and never enter canonicalLessonForExam.
+ */
+export const reviewedPartialAssociations = [{
+  subject:'Biologia',
+  targetTitle:'Citologia',
+  sourceTitle:'Organização celular dos seres vivos',
+  coveredScope:'Organização celular, distinção procarionte/eucarionte e níveis de organização.',
+  missingScope:'Membranas e transportes, organelas, metabolismo e divisão celular exigem aulas próprias.'
+}] as const;
+
+export function verifiedPartialAssociations(){
+  return reviewedPartialAssociations.flatMap(entry=>{
+    const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
+    const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
+    if(!target||!source||target.id===source.id)return [];
+    const lesson=deepProvaoLesson(source);
+    if(!lesson)return [];
+    return [{...entry,targetTopicId:target.id,canonicalId:source.id,lesson}];
+  });
+}
+
 export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
   if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
   const alias=reviewedSemanticAliases.find(item=>item.subject===topic.subject&&item.targetTitle===topic.topic);
@@ -124,9 +148,9 @@ export function canonicalReuseAudit(){
     deepCurriculumTopics:curriculumTopics.filter(topic=>Boolean(deepProvaoLesson(topic))).length,
     missingDeepCurriculumTopics:curriculumTopics.filter(topic=>!deepProvaoLesson(topic)).length,
     /** Unreviewed semantic overlaps must not be reported as full coverage. */
-    approvedPartialAssociations:0,
+    approvedPartialAssociations:verifiedPartialAssociations().length,
     /** No automated fuzzy matching is accepted as pedagogical equivalence. */
-    unresolvedSemanticCandidates:0,
+    unresolvedSemanticCandidates:reviewedPartialAssociations.length-verifiedPartialAssociations().length,
     /** No differently titled semantic aliases have yet been certified. */
     reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))).length
   };
