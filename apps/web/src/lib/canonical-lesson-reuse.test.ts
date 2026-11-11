@@ -350,3 +350,27 @@ test('audit never confuses repeated exam references with distinct historical top
  assert.ok(audit.crossTopicReferencesReused<=audit.totalDeepExamTopicReferences);
  assert.equal(audit.actualPersistedDuplicatesRemoved,0);
 });
+
+test('single-snapshot audit reconciles canonical references and partial backlog',()=>{
+ const audit=canonicalReuseAudit();
+ const mappings=canonicalExamTopicMappings();
+ const partials=partialCoverageByExam();
+ const uniqueHistoricalIds=new Map<string,Set<string>>();
+ for(const mapping of mappings){
+  const ids=uniqueHistoricalIds.get(mapping.canonicalId)??new Set<string>();
+  ids.add(mapping.examTopicId);
+  uniqueHistoricalIds.set(mapping.canonicalId,ids);
+ }
+ assert.equal(audit.crossTopicCanonicalGroups,
+  [...uniqueHistoricalIds.values()].filter(ids=>ids.size>1).length);
+ assert.equal(audit.crossTopicReferencesReused,
+  [...uniqueHistoricalIds.values()].reduce((sum,ids)=>sum+Math.max(0,ids.size-1),0));
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  assert.equal(audit.canonicalMappingsByExam[exam],
+   mappings.filter(mapping=>mapping.exam===exam).length);
+  assert.deepEqual(audit.partialCoverageByExam[exam],partials[exam]);
+  const missing=new Set(audit.coverageByExam[exam].missingTopicIds);
+  assert.deepEqual(audit.partialMissingTopicIdsByExam[exam],
+   [...new Set(partials[exam].filter(ref=>missing.has(ref.examTopicId)).map(ref=>ref.examTopicId))]);
+ }
+});
