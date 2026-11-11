@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -452,5 +452,36 @@ test('unresolved partial candidates expose blockers without granting exam covera
      ref.examTopicId===target.id&&ref.canonicalId===candidate.sourceTopicId));
    }
   }
+ }
+});
+
+test('cross-exam authoring backlog deduplicates historical topics and excludes completed lessons',()=>{
+ const backlog=canonicalAuthoringBacklog();
+ const coverage=canonicalCoverageByExam();
+ const partials=partialCoverageByExam();
+ assert.deepEqual(canonicalReuseAudit().authoringBacklog,backlog);
+ assert.equal(new Set(backlog.map(item=>item.topicId)).size,backlog.length);
+ assert.equal(backlog.reduce((sum,item)=>sum+item.examCount,0),
+  Object.values(coverage).reduce((sum,item)=>sum+item.missing,0));
+ for(let i=1;i<backlog.length;i++){
+  assert.ok(backlog[i-1].examCount>=backlog[i].examCount);
+ }
+ for(const item of backlog){
+  const topic=curriculumTopics.find(t=>t.id===item.topicId);
+  assert.ok(topic);
+  assert.equal(item.subject,topic.subject);
+  assert.equal(item.title,topic.topic);
+  assert.equal(item.examCount,item.missingExams.length);
+  assert.ok(item.examCount>0);
+  assert.equal(new Set(item.missingExams).size,item.missingExams.length);
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   const missing=coverage[exam].missingTopicIds.includes(topic.id);
+   assert.equal(item.missingExams.includes(exam),missing);
+   if(missing)assert.equal(canonicalLessonForExam(exam,topic),null);
+  }
+  const expected=[...new Set(item.missingExams.flatMap(exam=>
+   partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)))];
+  assert.deepEqual(item.advisorySourceIds,expected);
+  assert.equal(item.hasPartialReference,expected.length>0);
  }
 });
