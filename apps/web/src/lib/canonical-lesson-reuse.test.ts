@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -253,6 +253,31 @@ test('partial backlog IDs are registered, missing and isolated per exam',()=>{
    assert.ok(topic);
    assert.ok(examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
    assert.equal(canonicalLessonForExam(exam,topic),null);
+  }
+ }
+});
+
+test('complete canonical mapping preserves historical exam IDs and shares one authored object',()=>{
+ const mappings=canonicalExamTopicMappings();
+ const coverage=canonicalCoverageByExam();
+ assert.equal(mappings.length,Object.values(coverage).reduce((sum,item)=>sum+item.deep,0));
+ assert.equal(new Set(mappings.map(m=>m.exam+'\\0'+m.examTopicId)).size,mappings.length);
+ for(const mapping of mappings){
+  const topic=curriculumTopics.find(t=>t.id===mapping.examTopicId);
+  assert.ok(topic);
+  assert.equal(mapping.subject,topic.subject);
+  assert.equal(mapping.topicTitle,topic.topic);
+  assert.ok(examBlueprints[mapping.exam].subjects[topic.subject]?.includes(topic.topic));
+  const resolved=canonicalLessonForExam(mapping.exam,topic);
+  assert.ok(resolved);
+  assert.equal(resolved.id,mapping.canonicalId);
+  assert.strictEqual(resolved.sections,mapping.lesson.sections);
+  assert.strictEqual(resolved.tasks,mapping.lesson.tasks);
+  assert.equal(mapping.mappingKind,mapping.canonicalId===topic.id?'exact':'reviewed-semantic');
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)){
+    assert.equal(mappings.some(m=>m.exam===exam&&m.examTopicId===topic.id),false);
+   }
   }
  }
 });
