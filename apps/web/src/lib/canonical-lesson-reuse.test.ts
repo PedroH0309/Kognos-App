@@ -214,7 +214,7 @@ test('two different broad cell-biology titles share only a verified partial sour
   assert.ok(target);
   assert.ok(partial.missingScope.includes(partial.targetTitle==='Célula e saúde'?'Saúde':'Membranas'));
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
-   const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
+   const refs: ReturnType<typeof partialCoverageByExam>[ExamId] = partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
    assert.equal(refs.length,examBlueprints[exam].subjects[target.subject]?.includes(target.topic)?1:0);
    for(const ref of refs){
     assert.equal(ref.canonicalId,partial.canonicalId);
@@ -319,8 +319,8 @@ test('ETEC cell-and-health candidate is advisory even without a registered canon
    'Unverified candidate must be counted as unresolved, not as full coverage');
  }
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
-  const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
-  const registered=Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
+  const refs: ReturnType<typeof partialCoverageByExam>[ExamId] = partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
+  const registered: boolean = Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
   assert.equal(refs.length,partial&&registered?1:0,
    'Never project an unresolved or unrelated ETEC candidate to '+exam);
   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
