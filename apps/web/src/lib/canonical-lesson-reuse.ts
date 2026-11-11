@@ -96,14 +96,18 @@ export function partialCoverageByExam(){
 }
 
 export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
-  if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
-  const alias=reviewedSemanticAliases.find(item=>item.subject===topic.subject&&item.targetTitle===topic.topic);
+  // An alias must never bypass the same historical-ID and registered-scope
+  // checks as canonicalLessonForExam, including when called directly.
+  const registered=curriculumTopics.find(item=>item.id===topic.id);
+  if(!registered||registered.subject!==topic.subject||registered.topic!==topic.topic)return null;
+  if(!examBlueprints[exam]?.subjects[registered.subject]?.includes(registered.topic))return null;
+  const alias=reviewedSemanticAliases.find(item=>item.subject===registered.subject&&item.targetTitle===registered.topic);
   if(!alias)return null;
   const source=curriculumTopics.find(item=>item.subject===alias.subject&&item.topic===alias.sourceTitle);
-  if(!source)return null;
+  if(!source||source.id===registered.id)return null;
   const lesson=deepProvaoLesson(source);
   if(!lesson)return null;
-  return {canonicalId:source.id,examTopicId:topic.id,lesson,scope:alias.rationale};
+  return {canonicalId:source.id,examTopicId:registered.id,lesson,scope:alias.rationale};
 }
 
 /** Preserve the historical curriculum topic ID and lesson content object.
