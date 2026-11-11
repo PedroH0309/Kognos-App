@@ -174,3 +174,12 @@ test('reviewed alias entry point rejects forged identity even before an alias is
   assert.equal(reviewedCanonicalAliasForExam(exam,{...topic,topic:topic.topic+' - ampliado'}),null);
  }
 });
+
+
+test('audit distinguishes literal titles from subject-qualified historical topic identities',()=>{
+ const audit=canonicalReuseAudit();
+ assert.equal(audit.distinctCurriculumTitles,new Set(curriculumTopics.map(topic=>topic.topic)).size);
+ assert.equal(audit.distinctSubjectTitlePairs,new Set(curriculumTopics.map(topic=>topic.subject+'\\0'+topic.topic)).size);
+ assert.equal(audit.distinctSubjectTitlePairs,curriculumTopics.length);
+ assert.ok(audit.distinctCurriculumTitles<=audit.distinctSubjectTitlePairs);
+});
