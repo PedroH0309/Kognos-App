@@ -128,6 +128,26 @@ export function canonicalLessonForExam(exam:ExamId,topic:CurriculumTopic){
   return deepProvaoLesson(registered)??reviewedCanonicalAliasForExam(exam,registered)?.lesson??null;
 }
 
+/** Stable, explicit mappings for EVERY verified deep exam-topic membership.
+ * Unlike shared-group reports, this also includes single-exam lessons and
+ * future reviewed non-exact aliases. A mapping never rewrites a historical ID.
+ */
+export function canonicalExamTopicMappings(){
+  return (Object.keys(examBlueprints) as ExamId[]).flatMap(exam=>
+    curriculumTopics.flatMap(topic=>{
+      if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return [];
+      const lesson=canonicalLessonForExam(exam,topic);
+      if(!lesson)return [];
+      return [{
+        exam,examTopicId:topic.id,canonicalId:lesson.id,
+        subject:topic.subject,topicTitle:topic.topic,
+        mappingKind:(lesson.id===topic.id?'exact':'reviewed-semantic') as 'exact'|'reviewed-semantic',
+        lesson
+      }];
+    })
+  );
+}
+
 /** Exact per-exam coverage is measured against the actual registered blueprint.
  * One canonical topic may be counted in several exams, but is authored once.
  * No fuzzy/partial association is promoted to a completed deep lesson.
