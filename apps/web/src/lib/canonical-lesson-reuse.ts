@@ -189,6 +189,10 @@ export function canonicalCoverageByExam(){
 export function canonicalReuseAudit(){
   const links=verifiedCanonicalLessonLinks();
   const coverageByExam=canonicalCoverageByExam();
+  // Resolve each exam-topic reference once per audit; repeated resolution is
+  // expensive and could make independently computed counters diverge.
+  const mappings=canonicalExamTopicMappings();
+  const partials=partialCoverageByExam();
   const examEntries=Object.fromEntries(
     (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
       exam,Object.values(examBlueprints[exam].subjects).reduce((sum,topics)=>sum+topics.length,0)
@@ -199,13 +203,13 @@ export function canonicalReuseAudit(){
     /** Independently reconciled from the actual runtime exam-topic mappings. */
     canonicalMappingsByExam:Object.fromEntries(
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-        exam,canonicalExamTopicMappings().filter(mapping=>mapping.exam===exam).length
+        exam,mappings.filter(mapping=>mapping.exam===exam).length
       ])
     ) as Record<ExamId,number>,
     /** Reviewed, differently titled full aliases only; partial overlaps excluded. */
     semanticMappingsByExam:Object.fromEntries(
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-        exam,canonicalExamTopicMappings().filter(mapping=>
+        exam,mappings.filter(mapping=>
           mapping.exam===exam&&mapping.mappingKind==='reviewed-semantic').length
       ])
     ) as Record<ExamId,number>,
@@ -214,7 +218,7 @@ export function canonicalReuseAudit(){
      * Exact-title reuse shares one historical ID and is NOT semantic deduplication. */
     crossTopicCanonicalGroups:(()=>{
       const groups=new Map<string,Set<string>>();
-      for(const mapping of canonicalExamTopicMappings()){
+      for(const mapping of mappings){
         const ids=groups.get(mapping.canonicalId)??new Set<string>();
         ids.add(mapping.examTopicId);
         groups.set(mapping.canonicalId,ids);
@@ -224,19 +228,19 @@ export function canonicalReuseAudit(){
     /** Extra historical topic identities sharing a canonical lesson, not database rows removed. */
     crossTopicReferencesReused:(()=>{
       const groups=new Map<string,Set<string>>();
-      for(const mapping of canonicalExamTopicMappings()){
+      for(const mapping of mappings){
         const ids=groups.get(mapping.canonicalId)??new Set<string>();
         ids.add(mapping.examTopicId);
         groups.set(mapping.canonicalId,ids);
       }
       return [...groups.values()].reduce((sum,ids)=>sum+Math.max(0,ids.size-1),0);
     })(),
-    partialCoverageByExam:partialCoverageByExam(),
+    partialCoverageByExam:partials,
     /** Partial references are advisory; distinguish still-missing targets from
      * targets independently covered by their own complete deep lesson. */
     partialOnlyMissingByExam:Object.fromEntries(
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-        exam,partialCoverageByExam()[exam].filter(ref=>
+        exam,partials[exam].filter(ref=>
           coverageByExam[exam].missingTopicIds.includes(ref.examTopicId)).length
       ])
     ) as Record<ExamId,number>,
@@ -244,7 +248,7 @@ export function canonicalReuseAudit(){
      * Do not count these references as deep coverage or as approved full aliases. */
     partialMissingTopicIdsByExam:Object.fromEntries(
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-        exam,[...new Set(partialCoverageByExam()[exam]
+        exam,[...new Set(partials[exam]
           .filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
           .map(ref=>ref.examTopicId))]
       ])
