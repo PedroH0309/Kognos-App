@@ -60,6 +60,12 @@ export const reviewedPartialAssociations = [{
   sourceTitle:'Organização celular dos seres vivos',
   coveredScope:'Organização celular, distinção procarionte/eucarionte e níveis de organização.',
   missingScope:'Membranas e transportes, organelas, metabolismo e divisão celular exigem aulas próprias.'
+},{
+  subject:'Biologia',
+  targetTitle:'Células, organelas e membranas',
+  sourceTitle:'Organização celular dos seres vivos',
+  coveredScope:'Organização celular e distinção entre células procariontes e eucariontes.',
+  missingScope:'Membranas e transportes, estrutura e funções das organelas exigem aprofundamento específico.'
 }] as const;
 
 export function verifiedPartialAssociations(){
