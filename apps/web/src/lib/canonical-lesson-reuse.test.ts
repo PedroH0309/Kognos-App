@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -53,12 +53,54 @@ test('audit distinguishes reference reuse from actual persisted duplicate remova
  assert.equal(audit.actualPersistedDuplicatesRemoved,0);
  assert.equal(audit.potentialCopiesAvoidedByReference,audit.avoidedDeepLessonCopies);
  assert.equal(audit.deepCurriculumTopics+audit.missingDeepCurriculumTopics,curriculumTopics.length);
- assert.equal(audit.approvedPartialAssociations,0);
+ assert.equal(audit.approvedPartialAssociations,verifiedPartialAssociations().length);
+ assert.equal(audit.unresolvedSemanticCandidates,reviewedPartialAssociations.length-verifiedPartialAssociations().length);
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
   const entries=Object.entries(examBlueprints[exam].subjects)
    .flatMap(([subject,titles])=>titles.map(title=>subject+'\\0'+title));
   assert.equal(audit.uniqueExactTitlesByExam[exam],new Set(entries).size);
   assert.equal(audit.verifiedLinksByExam[exam],verifiedCanonicalLessonLinks().filter(link=>link.exams.includes(exam)).length);
   assert.ok(audit.verifiedLinksByExam[exam]<=audit.examEntries[exam]);
+ }
+});
+
+test('per-exam deep coverage reconciles every registered topic without fuzzy matches',()=>{
+ const coverage=canonicalCoverageByExam();
+ const audit=canonicalReuseAudit();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const expected=curriculumTopics.filter(topic=>examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
+  const item=coverage[exam];
+  assert.equal(item.total,expected.length);
+  assert.equal(item.total,item.deep+item.missing);
+  assert.equal(item.missingTopicIds.length,item.missing);
+  assert.equal(item.canonicalIds.length,new Set(item.canonicalIds).size);
+  assert.equal(audit.coverageByExam[exam].deep,item.deep);
+  for(const topic of expected){
+   const lesson=canonicalLessonForExam(exam,topic);
+   assert.equal(item.missingTopicIds.includes(topic.id),!lesson,
+    'Misclassified '+exam+' / '+topic.subject+' / '+topic.topic);
+   if(lesson)assert.ok(item.canonicalIds.includes(lesson.id));
+  }
+ }
+ assert.equal(audit.allUniqueDeepCanonicalIds,
+  new Set(curriculumTopics.map(topic=>Object.values(coverage).flatMap(item=>item.canonicalIds).includes(topic.id)?topic.id:null).filter(Boolean)).size);
+});
+
+test('cell biology partial reuse never masquerades as full Citologia coverage',()=>{
+ const partials=verifiedPartialAssociations();
+ for(const association of partials){
+  assert.equal(association.subject,'Biologia');
+  assert.notEqual(association.targetTopicId,association.canonicalId);
+  assert.ok(association.missingScope.includes('Membranas'));
+  const target=curriculumTopics.find(t=>t.id===association.targetTopicId);
+  const source=curriculumTopics.find(t=>t.id===association.canonicalId);
+  assert.ok(target&&source);
+  assert.equal(source.subject,target.subject);
+  assert.strictEqual(association.lesson.sections,
+   verifiedPartialAssociations().find(item=>item.canonicalId===association.canonicalId)?.lesson.sections);
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null,
+    'Partial overlap must never be promoted to full alias for '+exam);
+  }
  }
 });
