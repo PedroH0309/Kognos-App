@@ -205,14 +205,14 @@ test('audit counts all authored deep lessons separately from shared cross-exam g
 test('two different broad cell-biology titles share only a verified partial source',()=>{
  const reviewed=reviewedPartialAssociations.filter(item=>item.sourceTitle==='Organização celular dos seres vivos');
  assert.deepEqual(reviewed.map(item=>item.targetTitle).sort(),[
-  'Citologia','Células, organelas e membranas'
+  'Citologia','Célula e saúde','Células, organelas e membranas'
  ].sort());
- assert.equal(new Set(reviewed.map(item=>item.targetTitle)).size,2);
+ assert.equal(new Set(reviewed.map(item=>item.targetTitle)).size,3);
  for(const partial of verifiedPartialAssociations().filter(item=>
   item.sourceTitle==='Organização celular dos seres vivos')){
   const target=curriculumTopics.find(topic=>topic.id===partial.targetTopicId);
   assert.ok(target);
-  assert.ok(partial.missingScope.includes('Membranas'));
+  assert.ok(partial.missingScope.includes(partial.targetTitle==='Célula e saúde'?'Saúde':'Membranas'));
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
    const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
    assert.equal(refs.length,examBlueprints[exam].subjects[target.subject]?.includes(target.topic)?1:0);
@@ -294,4 +294,23 @@ test('semantic alias registry requires explicit exam approval and immutable hist
   }
  }
  assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
+});
+
+test('ETEC cell-and-health partial link is advisory and isolated from other exams',()=>{
+ const target=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Célula e saúde');
+ const source=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Organização celular dos seres vivos');
+ assert.ok(target&&source);
+ const partial=verifiedPartialAssociations().find(p=>p.targetTopicId===target.id);
+ assert.ok(partial);
+ assert.equal(partial.canonicalId,source.id);
+ assert.match(partial.missingScope,/Saúde/);
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
+  assert.equal(refs.length,examBlueprints[exam].subjects.Biologia?.includes(target.topic)?1:0);
+  assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+  for(const ref of refs){
+   assert.equal(ref.fullyCovered,false);
+   assert.equal(ref.canonicalId,source.id);
+  }
+ }
 });
