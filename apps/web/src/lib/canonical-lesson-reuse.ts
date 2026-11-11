@@ -196,6 +196,19 @@ export function canonicalReuseAudit(){
   );
   return {
     examEntries,
+    /** Independently reconciled from the actual runtime exam-topic mappings. */
+    canonicalMappingsByExam:Object.fromEntries(
+      (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+        exam,canonicalExamTopicMappings().filter(mapping=>mapping.exam===exam).length
+      ])
+    ) as Record<ExamId,number>,
+    /** Reviewed, differently titled full aliases only; partial overlaps excluded. */
+    semanticMappingsByExam:Object.fromEntries(
+      (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+        exam,canonicalExamTopicMappings().filter(mapping=>
+          mapping.exam===exam&&mapping.mappingKind==='reviewed-semantic').length
+      ])
+    ) as Record<ExamId,number>,
     coverageByExam,
     partialCoverageByExam:partialCoverageByExam(),
     /** Partial references are advisory; distinguish still-missing targets from
