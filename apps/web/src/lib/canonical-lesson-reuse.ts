@@ -13,6 +13,8 @@ export type CanonicalLessonLink={
   title:string;
   exams:readonly ExamId[];
   topicIds:readonly string[];
+  /** Stable exam-specific references; a shared canonical ID is not an exam-topic ID. */
+  examTopicRefs:readonly {exam:ExamId;topicId:string}[];
   /** Multiple exam-topic references point to one authored lesson, not cloned lessons. */
   lesson:NonNullable<ReturnType<typeof deepProvaoLesson>>;
 };
@@ -31,7 +33,8 @@ export function verifiedCanonicalLessonLinks():CanonicalLessonLink[]{
     if(!lesson)continue;
     links.push({
       canonicalId:topic.id,subject:topic.subject,title:topic.topic,
-      exams,topicIds:exams.map(()=>topic.id),lesson
+      exams,topicIds:[topic.id],
+      examTopicRefs:exams.map(exam=>({exam,topicId:topic.id})),lesson
     });
   }
   return links;
@@ -128,7 +131,9 @@ export function canonicalReuseAudit(){
     distinctCurriculumTitles:curriculumTopics.length,
     verifiedExactScopeGroups:links.length,
     canonicalDeepLessons:links.length,
-    verifiedExamLessonLinks:links.reduce((sum,link)=>sum+link.exams.length,0),
+    verifiedExamLessonLinks:links.reduce((sum,link)=>sum+link.examTopicRefs.length,0),
+    /** One canonical lesson can be referenced by several exam-specific identities. */
+    uniqueExamTopicReferences:new Set(links.flatMap(link=>link.examTopicRefs.map(ref=>ref.exam+'\\0'+ref.topicId))).size,
     avoidedDeepLessonCopies:links.reduce((sum,link)=>sum+link.exams.length-1,0),
     /** Counts represent shared references, not deleted or migrated database rows. */
     actualPersistedDuplicatesRemoved:0,
