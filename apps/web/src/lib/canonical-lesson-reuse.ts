@@ -6,6 +6,8 @@
 import {curriculumTopics, type CurriculumTopic} from './curriculum-catalog.ts';
 import {examBlueprints, type ExamId} from './exam-blueprints.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {provaoTopics} from './provao-paulista.ts';
+import {courseId} from './curriculum-id.ts';
 
 export type CanonicalLessonLink={
   canonicalId:string;
@@ -79,6 +81,55 @@ export const reviewedPartialAssociations = [{
   coveredScope:'Organização celular e diferenças entre células procariontes e eucariontes.',
   missingScope:'Saúde, prevenção de doenças, relações entre células e funcionamento do organismo exigem conteúdos próprios.'
 }] as const;
+
+/** Reuse an authored Provão source as an advisory reference even when its
+ * official leaf is not included in the exam-blueprint-derived curriculum.
+ * This never creates an exam membership, full alias or persisted topic.
+ * The canonical source ID is content-derived from its actual official title.
+ */
+export function provaoSourcedPartialReferences(){
+  return reviewedPartialAssociations.flatMap(entry=>{
+    const target=curriculumTopics.find(topic=>
+      topic.subject===entry.subject&&topic.topic===entry.targetTitle);
+    if(!target)return [];
+    const source=provaoTopics.find(topic=>
+      topic.subject===entry.subject&&topic.topic===entry.sourceTitle);
+    if(!source)return [];
+    const canonicalId=courseId(source.subject,source.topic);
+    if(canonicalId===target.id)return [];
+    const registeredSource=curriculumTopics.find(topic=>topic.id===canonicalId);
+    const sourceTopic:CurriculumTopic=registeredSource??{
+      id:canonicalId,subject:source.subject,topic:source.topic,exams:['saresp']
+    };
+    const lesson=deepProvaoLesson(sourceTopic);
+    if(!lesson||lesson.id!==canonicalId)return [];
+    return [{
+      ...entry,targetTopicId:target.id,canonicalId,
+      sourceGrade:source.grade,sourceCode:source.code,lesson,
+      fullyCovered:false as const
+    }];
+  });
+}
+
+/** Exam-scoped advisory projections. A Provão source is not automatically a
+ * registered lesson for the target exam, and does not affect deep coverage.
+ */
+export function provaoPartialReferencesByExam(){
+  const references=provaoSourcedPartialReferences();
+  return Object.fromEntries((Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+    exam,references.filter(ref=>{
+      const target=curriculumTopics.find(topic=>topic.id===ref.targetTopicId);
+      return Boolean(target&&examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+    }).map(ref=>({
+      exam,examTopicId:ref.targetTopicId,canonicalId:ref.canonicalId,
+      coveredScope:ref.coveredScope,missingScope:ref.missingScope,
+      sourceGrade:ref.sourceGrade,sourceCode:ref.sourceCode,fullyCovered:false as const
+    }))
+  ])) as Record<ExamId,{
+    exam:ExamId;examTopicId:string;canonicalId:string;coveredScope:string;
+    missingScope:string;sourceGrade:number;sourceCode:string;fullyCovered:false
+  }[]>;
+}
 
 export function verifiedPartialAssociations(){
   return reviewedPartialAssociations.flatMap(entry=>{
@@ -288,6 +339,8 @@ export function canonicalReuseAudit(){
     coverageByExam,
     /** Prioritized unique missing historical topics, never duplicated per exam. */
     authoringBacklog:canonicalAuthoringBacklog(),
+    /** Provão-authored advisory references, not full exam coverage. */
+    provaoPartialReferencesByExam:provaoPartialReferencesByExam(),
     /** Canonical IDs referenced by distinct historical topic IDs across exams.
      * Exact-title reuse shares one historical ID and is NOT semantic deduplication. */
     crossTopicCanonicalGroups:(()=>{
