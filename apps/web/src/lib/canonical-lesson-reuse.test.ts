@@ -164,3 +164,13 @@ test('partial cross-exam references preserve target IDs and never grant deep cov
   }
  }
 });
+
+test('reviewed alias entry point rejects forged identity even before an alias is approved',()=>{
+ const topic=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Citologia')??curriculumTopics[0];
+ assert.ok(topic);
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  assert.equal(reviewedCanonicalAliasForExam(exam,{...topic,id:topic.id+'-forged'}),null);
+  assert.equal(reviewedCanonicalAliasForExam(exam,{...topic,subject:'Disciplina inexistente'}),null);
+  assert.equal(reviewedCanonicalAliasForExam(exam,{...topic,topic:topic.topic+' - ampliado'}),null);
+ }
+});
