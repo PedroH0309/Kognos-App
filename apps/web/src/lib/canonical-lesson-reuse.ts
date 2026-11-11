@@ -70,6 +70,14 @@ export const reviewedPartialAssociations = [{
   sourceTitle:'Organização celular dos seres vivos',
   coveredScope:'Organização celular e distinção entre células procariontes e eucariontes.',
   missingScope:'Membranas e transportes, estrutura e funções das organelas exigem aprofundamento específico.'
+},{
+  // ETEC historical track: cellular organization overlaps, but the health
+  // component of this broad title is not taught by the canonical source.
+  subject:'Biologia',
+  targetTitle:'Célula e saúde',
+  sourceTitle:'Organização celular dos seres vivos',
+  coveredScope:'Organização celular e diferenças entre células procariontes e eucariontes.',
+  missingScope:'Saúde, prevenção de doenças, relações entre células e funcionamento do organismo exigem conteúdos próprios.'
 }] as const;
 
 export function verifiedPartialAssociations(){
