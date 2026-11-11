@@ -224,3 +224,16 @@ test('two different broad cell-biology titles share only a verified partial sour
   }
  }
 });
+
+test('partial-only counts exclude targets with independently complete deep lessons',()=>{
+ const audit=canonicalReuseAudit();
+ const partials=partialCoverageByExam();
+ const coverage=canonicalCoverageByExam();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const missing=new Set(coverage[exam].missingTopicIds);
+  const expected=partials[exam].filter(ref=>missing.has(ref.examTopicId)).length;
+  assert.equal(audit.partialOnlyMissingByExam[exam],expected);
+  assert.ok(expected<=partials[exam].length);
+  assert.equal(coverage[exam].total,coverage[exam].deep+coverage[exam].missing);
+ }
+});
