@@ -237,3 +237,22 @@ test('partial-only counts exclude targets with independently complete deep lesso
   assert.equal(coverage[exam].total,coverage[exam].deep+coverage[exam].missing);
  }
 });
+
+test('partial backlog IDs are registered, missing and isolated per exam',()=>{
+ const audit=canonicalReuseAudit();
+ const partials=partialCoverageByExam();
+ const coverage=canonicalCoverageByExam();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const ids=audit.partialMissingTopicIdsByExam[exam];
+  assert.equal(new Set(ids).size,ids.length);
+  const expected=[...new Set(partials[exam].filter(ref=>
+   coverage[exam].missingTopicIds.includes(ref.examTopicId)).map(ref=>ref.examTopicId))];
+  assert.deepEqual(ids,expected);
+  for(const id of ids){
+   const topic=curriculumTopics.find(item=>item.id===id);
+   assert.ok(topic);
+   assert.ok(examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
+   assert.equal(canonicalLessonForExam(exam,topic),null);
+  }
+ }
+});
