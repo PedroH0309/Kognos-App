@@ -232,6 +232,32 @@ export function canonicalCoverageByExam(){
   }>;
 }
 
+/** Deterministic authoring backlog. Repeated exam memberships are grouped by
+ * historical topic ID, so one new deep lesson is prioritized once, not once
+ * per exam. Advisory partial links never count as completed coverage.
+ */
+export function canonicalAuthoringBacklog(){
+  const coverage=canonicalCoverageByExam();
+  const partials=partialCoverageByExam();
+  return curriculumTopics.flatMap(topic=>{
+    const exams=(Object.keys(examBlueprints) as ExamId[]).filter(exam=>
+      examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
+    const missingExams=exams.filter(exam=>coverage[exam].missingTopicIds.includes(topic.id));
+    if(!missingExams.length)return [];
+    const advisorySources=[...new Set(missingExams.flatMap(exam=>
+      partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)))];
+    return [{
+      topicId:topic.id,subject:topic.subject,title:topic.topic,
+      missingExams,examCount:missingExams.length,
+      advisorySourceIds:advisorySources,
+      hasPartialReference:advisorySources.length>0
+    }];
+  }).sort((a,b)=>b.examCount-a.examCount||
+    Number(b.hasPartialReference)-Number(a.hasPartialReference)||
+    a.subject.localeCompare(b.subject)||a.title.localeCompare(b.title)||
+    a.topicId.localeCompare(b.topicId));
+}
+
 export function canonicalReuseAudit(){
   const links=verifiedCanonicalLessonLinks();
   const coverageByExam=canonicalCoverageByExam();
@@ -260,6 +286,8 @@ export function canonicalReuseAudit(){
       ])
     ) as Record<ExamId,number>,
     coverageByExam,
+    /** Prioritized unique missing historical topics, never duplicated per exam. */
+    authoringBacklog:canonicalAuthoringBacklog(),
     /** Canonical IDs referenced by distinct historical topic IDs across exams.
      * Exact-title reuse shares one historical ID and is NOT semantic deduplication. */
     crossTopicCanonicalGroups:(()=>{
