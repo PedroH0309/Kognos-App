@@ -281,3 +281,17 @@ test('complete canonical mapping preserves historical exam IDs and shares one au
   }
  }
 });
+
+
+test('semantic alias registry requires explicit exam approval and immutable historical IDs',()=>{
+ // Empty until a full curricular scope review; never infer from similar labels.
+ const candidates=curriculumTopics.filter(t=>t.subject==='Biologia'&&
+  ['Citologia','Células, organelas e membranas'].includes(t.topic));
+ for(const topic of candidates){
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   assert.equal(reviewedCanonicalAliasForExam(exam,topic),null);
+   assert.equal(reviewedCanonicalAliasForExam(exam,{...topic,id:topic.id+'-renamed'}),null);
+  }
+ }
+ assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
+});
