@@ -123,3 +123,19 @@ test('canonical identity is unique while exam-topic references remain stable and
  }
  assert.equal(canonicalReuseAudit().uniqueExamTopicReferences,allRefs.length);
 });
+
+
+test('cross-exam reuse rejects forged historical IDs and altered syllabus scope',()=>{
+ const link=verifiedCanonicalLessonLinks()[0];
+ assert.ok(link,'Need a real shared lesson for the isolation regression');
+ const topic=curriculumTopics.find(item=>item.id===link.canonicalId);
+ assert.ok(topic);
+ const exam=link.exams[0];
+ assert.ok(canonicalLessonForExam(exam,topic));
+ assert.equal(canonicalLessonForExam(exam,{...topic,id:topic.id+'-forged'}),null);
+ assert.equal(canonicalLessonForExam(exam,{...topic,topic:topic.topic+' (escopo ampliado)'}),null);
+ assert.equal(canonicalLessonForExam(exam,{...topic,subject:'Disciplina não cadastrada'}),null);
+ for(const unrelated of Object.keys(examBlueprints) as ExamId[]){
+  if(!link.exams.includes(unrelated))assert.equal(canonicalLessonForExam(unrelated,topic),null);
+ }
+});
