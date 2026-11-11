@@ -73,6 +73,28 @@ export function verifiedPartialAssociations(){
   });
 }
 
+/** Advisory cross-exam partial links: never count toward deep coverage.
+ * Each reference is anchored to a real registered exam-topic membership.
+ * The canonical source is a single authored lesson; the broader target
+ * retains its historical ID and remains missing until fully covered.
+ */
+export function partialCoverageByExam(){
+  return Object.fromEntries((Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+    exam,verifiedPartialAssociations().flatMap(partial=>{
+      const target=curriculumTopics.find(topic=>topic.id===partial.targetTopicId);
+      if(!target||!examBlueprints[exam].subjects[target.subject]?.includes(target.topic))return [];
+      return [{
+        exam,examTopicId:target.id,canonicalId:partial.canonicalId,
+        coveredScope:partial.coveredScope,missingScope:partial.missingScope,
+        fullyCovered:false as const
+      }];
+    })
+  ])) as Record<ExamId,{
+    exam:ExamId;examTopicId:string;canonicalId:string;
+    coveredScope:string;missingScope:string;fullyCovered:false
+  }[]>;
+}
+
 export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
   if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
   const alias=reviewedSemanticAliases.find(item=>item.subject===topic.subject&&item.targetTitle===topic.topic);
@@ -131,6 +153,7 @@ export function canonicalReuseAudit(){
   return {
     examEntries,
     coverageByExam,
+    partialCoverageByExam:partialCoverageByExam(),
     allUniqueDeepCanonicalIds:[...new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter((id):id is string=>Boolean(id)))].length,
     distinctCurriculumTitles:curriculumTopics.length,
     verifiedExactScopeGroups:links.length,
