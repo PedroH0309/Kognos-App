@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -390,5 +390,27 @@ test('partial projection is deterministic across repeated audits and never leaks
    assert.equal(ref.fullyCovered,false);
    assert.ok(expected.some(item=>item.targetTopicId===ref.examTopicId&&item.canonicalId===ref.canonicalId));
   }
+ }
+});
+
+
+test('semantic review queue is exam-scoped and never grants complete coverage',()=>{
+ const queue=semanticReviewQueue();
+ const partials=partialCoverageByExam();
+ assert.equal(queue.length,Object.values(partials).reduce((n,refs)=>n+refs.length,0));
+ assert.equal(new Set(queue.map(item=>item.exam+'\\0'+item.targetTopicId)).size,queue.length);
+ for(const item of queue){
+  assert.equal(item.eligibleForFullAlias,false);
+  assert.ok(item.coveredScope&&item.missingScope);
+  const target=curriculumTopics.find(topic=>topic.id===item.targetTopicId);
+  const source=curriculumTopics.find(topic=>topic.id===item.sourceCanonicalId);
+  assert.ok(target&&source);
+  assert.equal(target.subject,item.subject);
+  assert.equal(source.subject,item.subject);
+  assert.equal(target.topic,item.targetTitle);
+  assert.equal(source.topic,item.sourceTitle);
+  assert.ok(examBlueprints[item.exam].subjects[target.subject]?.includes(target.topic));
+  assert.ok(partials[item.exam].some(ref=>ref.examTopicId===target.id&&ref.canonicalId===source.id));
+  assert.equal(reviewedCanonicalAliasForExam(item.exam,target),null);
  }
 });
