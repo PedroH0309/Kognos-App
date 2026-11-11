@@ -314,3 +314,23 @@ test('ETEC cell-and-health partial link is advisory and isolated from other exam
   }
  }
 });
+
+test('audit canonical mappings reconcile by exam and never promote partial links',()=>{
+ const audit=canonicalReuseAudit();
+ const mappings=canonicalExamTopicMappings();
+ const partials=partialCoverageByExam();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const examMappings=mappings.filter(mapping=>mapping.exam===exam);
+  assert.equal(audit.canonicalMappingsByExam[exam],examMappings.length);
+  assert.equal(audit.canonicalMappingsByExam[exam],audit.coverageByExam[exam].deep);
+  assert.equal(audit.semanticMappingsByExam[exam],
+   examMappings.filter(mapping=>mapping.mappingKind==='reviewed-semantic').length);
+  assert.ok(audit.semanticMappingsByExam[exam]<=audit.canonicalMappingsByExam[exam]);
+  for(const partial of partials[exam]){
+   if(audit.coverageByExam[exam].missingTopicIds.includes(partial.examTopicId)){
+    assert.ok(!examMappings.some(mapping=>mapping.examTopicId===partial.examTopicId),
+     'Partial-only topic was promoted to full coverage: '+exam+'/'+partial.examTopicId);
+   }
+  }
+ }
+});
