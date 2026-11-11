@@ -104,3 +104,22 @@ test('cell biology partial reuse never masquerades as full Citologia coverage',(
   }
  }
 });
+
+test('canonical identity is unique while exam-topic references remain stable and isolated',()=>{
+ const links=verifiedCanonicalLessonLinks();
+ const allRefs=links.flatMap(link=>link.examTopicRefs.map(ref=>ref.exam+'\\0'+ref.topicId));
+ assert.equal(new Set(allRefs).size,allRefs.length,'Duplicate exam-topic association');
+ for(const link of links){
+  assert.deepEqual(link.topicIds,[link.canonicalId]);
+  assert.equal(link.examTopicRefs.length,link.exams.length);
+  for(const ref of link.examTopicRefs){
+   assert.ok(link.exams.includes(ref.exam));
+   assert.equal(ref.topicId,link.canonicalId);
+   const topic=curriculumTopics.find(item=>item.id===ref.topicId);
+   assert.ok(topic);
+   assert.ok(examBlueprints[ref.exam].subjects[topic.subject]?.includes(topic.topic));
+   assert.strictEqual(canonicalLessonForExam(ref.exam,topic)?.sections,link.lesson.sections);
+  }
+ }
+ assert.equal(canonicalReuseAudit().uniqueExamTopicReferences,allRefs.length);
+});
