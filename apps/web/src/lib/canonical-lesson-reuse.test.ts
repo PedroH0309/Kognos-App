@@ -200,3 +200,27 @@ test('audit counts all authored deep lessons separately from shared cross-exam g
  assert.equal(audit.crossExamReferenceReuse,audit.avoidedDeepLessonCopies);
  assert.equal(audit.actualPersistedDuplicatesRemoved,0);
 });
+
+
+test('two different broad cell-biology titles share only a verified partial source',()=>{
+ const reviewed=reviewedPartialAssociations.filter(item=>item.sourceTitle==='Organização celular dos seres vivos');
+ assert.deepEqual(reviewed.map(item=>item.targetTitle).sort(),[
+  'Citologia','Células, organelas e membranas'
+ ].sort());
+ assert.equal(new Set(reviewed.map(item=>item.targetTitle)).size,2);
+ for(const partial of verifiedPartialAssociations().filter(item=>
+  item.sourceTitle==='Organização celular dos seres vivos')){
+  const target=curriculumTopics.find(topic=>topic.id===partial.targetTopicId);
+  assert.ok(target);
+  assert.ok(partial.missingScope.includes('Membranas'));
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
+   assert.equal(refs.length,examBlueprints[exam].subjects[target.subject]?.includes(target.topic)?1:0);
+   for(const ref of refs){
+    assert.equal(ref.canonicalId,partial.canonicalId);
+    assert.equal(ref.fullyCovered,false);
+   }
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+  }
+ }
+});
