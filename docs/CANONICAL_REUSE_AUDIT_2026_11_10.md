@@ -56,3 +56,10 @@ O contrato de `reviewedSemanticAliases` passa a exigir `targetTopicId`, `sourceT
 ## Reconciliação de vínculos por prova — 11/11/2026
 
 A auditoria agora expõe `canonicalMappingsByExam` (total de mapeamentos profundos efetivos por prova) e `semanticMappingsByExam` (somente aliases integrais de títulos diferentes e explicitamente revisados). Ambos são derivados de `canonicalExamTopicMappings()`, não de contagens históricas ou associações parciais. Um teste garante que o total por prova corresponde a `coverageByExam[exam].deep` e que tópicos exclusivamente parciais não são promovidos a cobertura integral. **Este lote não aprova nenhum alias novo, não adiciona aulas e não elimina registros persistidos.** Os valores efetivos requerem execução da auditoria; não foram presumidos nesta documentação. Conteúdo autoral Kognos, não oficial e sem homologação docente.
+
+
+### Lote 2026-11-11 — fontes oficiais do Provão para vínculos parciais
+
+O registro `provaoSourcedPartialReferences()` consulta os tópicos efetivamente cadastrados em `provao-paulista.ts` e só projeta uma referência consultiva se a fonte possuir aula autoral profunda recuperável por `deepProvaoLesson`. O identificador canônico é calculado a partir de disciplina e título oficial, sem alterar IDs históricos do exame de destino. `provaoPartialReferencesByExam()` restringe cada referência aos exames que realmente possuem o tópico de destino no blueprint. A origem do Provão não implica automaticamente inscrição em outra prova.
+
+A auditoria `provaoPartialReferencesByExam` não soma essas referências à cobertura profunda e preserva `fullyCovered: false`. As lacunas de Citologia, organelas, membranas e saúde continuam abertas. Teste específico confere identidade, isolamento entre exames e ausência de promoção para alias integral. Totais de vínculos só devem ser publicados após execução observada da auditoria; duplicações persistidas eliminadas: **zero**. Material autoral não oficial e sem homologação docente.
