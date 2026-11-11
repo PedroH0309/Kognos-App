@@ -51,3 +51,8 @@ A função `canonicalExamTopicMappings()` enumera **todos** os vínculos profund
 
 ### 11/11/2026 — proteção de futuras equivalências não exatas
 O contrato de `reviewedSemanticAliases` passa a exigir `targetTopicId`, `sourceTopicId` e uma lista explícita `exams`, além de disciplina, títulos e justificativa. A resolução valida identidade histórica completa e pertença do destino ao exame aprovado, impedindo herança automática por novas provas ou mudança de títulos. A auditoria de aliases considera apenas registros com IDs reais e ao menos um exame autorizado. Teste negativo preserva a ausência de equivalência integral para os dois tópicos amplos de Biologia. **Nenhum alias integral novo, nenhuma aula nova, nenhuma cópia persistida removida; cobertura inalterada.** Não há homologação docente; executar CI antes de considerar validado. Sem alterações de banco, Auth, RLS ou rotas.
+
+
+## Reconciliação de vínculos por prova — 11/11/2026
+
+A auditoria agora expõe `canonicalMappingsByExam` (total de mapeamentos profundos efetivos por prova) e `semanticMappingsByExam` (somente aliases integrais de títulos diferentes e explicitamente revisados). Ambos são derivados de `canonicalExamTopicMappings()`, não de contagens históricas ou associações parciais. Um teste garante que o total por prova corresponde a `coverageByExam[exam].deep` e que tópicos exclusivamente parciais não são promovidos a cobertura integral. **Este lote não aprova nenhum alias novo, não adiciona aulas e não elimina registros persistidos.** Os valores efetivos requerem execução da auditoria; não foram presumidos nesta documentação. Conteúdo autoral Kognos, não oficial e sem homologação docente.
