@@ -159,7 +159,10 @@ export function canonicalReuseAudit(){
     coverageByExam,
     partialCoverageByExam:partialCoverageByExam(),
     allUniqueDeepCanonicalIds:[...new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter((id):id is string=>Boolean(id)))].length,
-    distinctCurriculumTitles:curriculumTopics.length,
+    /** Distinct literal titles, independent of discipline; do not confuse with topic IDs. */
+    distinctCurriculumTitles:new Set(curriculumTopics.map(topic=>topic.topic)).size,
+    /** Distinct subject + title pairs are the historical curriculum identities. */
+    distinctSubjectTitlePairs:new Set(curriculumTopics.map(topic=>topic.subject+'\u0000'+topic.topic)).size,
     verifiedExactScopeGroups:links.length,
     canonicalDeepLessons:links.length,
     verifiedExamLessonLinks:links.reduce((sum,link)=>sum+link.examTopicRefs.length,0),
