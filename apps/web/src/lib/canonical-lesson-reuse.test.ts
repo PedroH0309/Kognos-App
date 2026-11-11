@@ -374,3 +374,21 @@ test('single-snapshot audit reconciles canonical references and partial backlog'
    [...new Set(partials[exam].filter(ref=>missing.has(ref.examTopicId)).map(ref=>ref.examTopicId))]);
  }
 });
+
+test('partial projection is deterministic across repeated audits and never leaks into unregistered exams',()=>{
+ const first=partialCoverageByExam();
+ const second=partialCoverageByExam();
+ assert.deepEqual(first,second);
+ const reviewed=verifiedPartialAssociations();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const expected=reviewed.filter(partial=>{
+   const target=curriculumTopics.find(topic=>topic.id===partial.targetTopicId);
+   return Boolean(target&&examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+  });
+  assert.equal(first[exam].length,expected.length);
+  for(const ref of first[exam]){
+   assert.equal(ref.fullyCovered,false);
+   assert.ok(expected.some(item=>item.targetTopicId===ref.examTopicId&&item.canonicalId===ref.canonicalId));
+  }
+ }
+});
