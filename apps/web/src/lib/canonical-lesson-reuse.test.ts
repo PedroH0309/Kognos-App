@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -428,5 +428,29 @@ test('semantic review queue is exam-scoped and never grants complete coverage',(
   assert.ok(examBlueprints[item.exam].subjects[target.subject]?.includes(target.topic));
   assert.ok(partials[item.exam].some(ref=>ref.examTopicId===target.id&&ref.canonicalId===source.id));
   assert.equal(reviewedCanonicalAliasForExam(item.exam,target),null);
+ }
+});
+
+test('unresolved partial candidates expose blockers without granting exam coverage',()=>{
+ const unresolved=unresolvedPartialCandidates();
+ const audit=canonicalReuseAudit();
+ assert.equal(audit.unresolvedSemanticCandidates,unresolved.length);
+ assert.deepEqual(audit.unresolvedPartialCandidateDetails,unresolved);
+ assert.equal(new Set(unresolved.map(item=>item.subject+'\\0'+item.targetTitle+'\\0'+item.sourceTitle)).size,unresolved.length);
+ for(const candidate of unresolved){
+  assert.ok(candidate.blockers.length>0);
+  assert.equal(candidate.eligibleForFullAlias,false);
+  assert.ok(candidate.missingScope.length>0);
+  const target=curriculumTopics.find(t=>t.id===candidate.targetTopicId);
+  const source=curriculumTopics.find(t=>t.id===candidate.sourceTopicId);
+  if(candidate.blockers.includes('target-not-registered'))assert.equal(target,undefined);
+  if(candidate.blockers.includes('source-not-registered'))assert.equal(source,undefined);
+  if(target){
+   for(const exam of Object.keys(examBlueprints) as ExamId[]){
+    assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+    assert.ok(!partialCoverageByExam()[exam].some(ref=>
+     ref.examTopicId===target.id&&ref.canonicalId===candidate.sourceTopicId));
+   }
+  }
  }
 });
