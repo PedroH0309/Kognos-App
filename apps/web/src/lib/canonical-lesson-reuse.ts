@@ -47,6 +47,10 @@ export function verifiedCanonicalLessonLinks():CanonicalLessonLink[]{
  */
 export const reviewedSemanticAliases: readonly {
   subject:string;targetTitle:string;sourceTitle:string;rationale:string;
+  /** Explicit historical IDs prevent accidental remapping when titles change. */
+  targetTopicId:string;sourceTopicId:string;
+  /** Approval is exam-scoped: a new exam never inherits an alias implicitly. */
+  exams:readonly ExamId[];
 }[] = [];
 
 /** Explicitly reviewed *partial* overlap, never a full-coverage alias.
@@ -107,10 +111,12 @@ export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic)
   const registered=curriculumTopics.find(item=>item.id===topic.id);
   if(!registered||registered.subject!==topic.subject||registered.topic!==topic.topic)return null;
   if(!examBlueprints[exam]?.subjects[registered.subject]?.includes(registered.topic))return null;
-  const alias=reviewedSemanticAliases.find(item=>item.subject===registered.subject&&item.targetTitle===registered.topic);
+  const alias=reviewedSemanticAliases.find(item=>
+    item.subject===registered.subject&&item.targetTitle===registered.topic&&
+    item.targetTopicId===registered.id&&item.exams.includes(exam));
   if(!alias)return null;
-  const source=curriculumTopics.find(item=>item.subject===alias.subject&&item.topic===alias.sourceTitle);
-  if(!source||source.id===registered.id)return null;
+  const source=curriculumTopics.find(item=>item.id===alias.sourceTopicId);
+  if(!source||source.id===registered.id||source.subject!==alias.subject||source.topic!==alias.sourceTitle)return null;
   const lesson=deepProvaoLesson(source);
   if(!lesson)return null;
   return {canonicalId:source.id,examTopicId:registered.id,lesson,scope:alias.rationale};
@@ -241,6 +247,6 @@ export function canonicalReuseAudit(){
     /** No automated fuzzy matching is accepted as pedagogical equivalence. */
     unresolvedSemanticCandidates:reviewedPartialAssociations.length-verifiedPartialAssociations().length,
     /** No differently titled semantic aliases have yet been certified. */
-    reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))).length
+    reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.id===alias.targetTopicId&&t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.id===alias.sourceTopicId&&t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))&&alias.exams.some(exam=>examBlueprints[exam]?.subjects[alias.subject]?.includes(alias.targetTitle))).length
   };
 }
