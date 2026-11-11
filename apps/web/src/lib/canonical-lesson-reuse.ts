@@ -210,6 +210,27 @@ export function canonicalReuseAudit(){
       ])
     ) as Record<ExamId,number>,
     coverageByExam,
+    /** Canonical IDs referenced by distinct historical topic IDs across exams.
+     * Exact-title reuse shares one historical ID and is NOT semantic deduplication. */
+    crossTopicCanonicalGroups:(()=>{
+      const groups=new Map<string,Set<string>>();
+      for(const mapping of canonicalExamTopicMappings()){
+        const ids=groups.get(mapping.canonicalId)??new Set<string>();
+        ids.add(mapping.examTopicId);
+        groups.set(mapping.canonicalId,ids);
+      }
+      return [...groups.values()].filter(ids=>ids.size>1).length;
+    })(),
+    /** Extra historical topic identities sharing a canonical lesson, not database rows removed. */
+    crossTopicReferencesReused:(()=>{
+      const groups=new Map<string,Set<string>>();
+      for(const mapping of canonicalExamTopicMappings()){
+        const ids=groups.get(mapping.canonicalId)??new Set<string>();
+        ids.add(mapping.examTopicId);
+        groups.set(mapping.canonicalId,ids);
+      }
+      return [...groups.values()].reduce((sum,ids)=>sum+Math.max(0,ids.size-1),0);
+    })(),
     partialCoverageByExam:partialCoverageByExam(),
     /** Partial references are advisory; distinguish still-missing targets from
      * targets independently covered by their own complete deep lesson. */
