@@ -12,11 +12,17 @@ A auditoria `canonicalReuseAudit()` agora distingue:
 - referências compartilhadas que evitariam cópias futuras, **não** registros duplicados já apagados;
 - exclusões reais de duplicações persistidas nesta mudança: **zero**;
 - aliases semânticos de nomes diferentes aprovados: **nenhum**;
-- associações parciais aprovadas: **nenhuma**.
+- associações parciais: **uma candidata editorial** (`Citologia` ↔ `Organização celular dos seres vivos`), habilitada somente quando os dois títulos e a aula-fonte existem. Não é equivalência integral nem homologação docente.
 
-As quantidades variáveis são calculadas a partir dos catálogos no código, e não inferidas de totais históricos. `unresolvedSemanticCandidates=0` significa **não inventariados**, não ausência de ambiguidades.
+As quantidades variáveis são calculadas a partir dos catálogos no código, e não inferidas de totais históricos. `unresolvedSemanticCandidates=0` significa apenas que as candidatas cadastradas estão resolvidas quanto à existência de fonte e destino, **não** que todo o catálogo foi revisado nem que não há ambiguidades.
 
 ## Limitações e próximos lotes
 Não há equivalência semântica validada para títulos diferentes; comparar escopo, série, objetivos, profundidade e fontes antes de aprovar cada alias. Títulos amplos como Citologia não herdam automaticamente uma aula parcial. Separar complementos específicos de prova quando necessários. Não contabilizar o compartilhamento de referências como remoção de dados persistidos.
 
 Os testes verificam identidade de capítulos e questões entre provas compatíveis, isolamento de exames não relacionados e consistência das métricas. CI deve validar unitários, segurança de dois usuários, design, TypeScript e build. Sem merge nem deploy antes da revisão.
+
+## Lote de 11/11 — referências parciais por exame
+
+A função `partialCoverageByExam()` expõe exclusivamente relações parciais verificáveis por associação de **exame + ID histórico do tópico de destino + ID canônico da fonte**, com escopos coberto e pendente explícitos e `fullyCovered: false`. Exames que não possuem o tópico de destino não recebem a referência. A auditoria publica o mesmo resultado em `partialCoverageByExam`; não altera `canonicalLessonForExam()` nem promove aulas parciais a cobertura profunda.
+
+Teste adicionado: pertença ao exame, unicidade por exame/tópico, disciplina consistente, referência à fonte cadastrada e impossibilidade de conversão em alias integral. **Novos aliases integrais: 0; novas aulas: 0; registros persistidos removidos: 0.** A quantidade de referências habilitadas e a cobertura antes/depois requerem execução dos testes/auditoria. Material autoral não oficial, sem homologação docente. Sem alteração de schema, RLS, Auth ou progresso.
