@@ -334,3 +334,19 @@ test('audit canonical mappings reconcile by exam and never promote partial links
   }
  }
 });
+
+test('audit never confuses repeated exam references with distinct historical topic reuse',()=>{
+ const audit=canonicalReuseAudit();
+ const byCanonical=new Map<string,Set<string>>();
+ for(const mapping of canonicalExamTopicMappings()){
+  const ids=byCanonical.get(mapping.canonicalId)??new Set<string>();
+  ids.add(mapping.examTopicId);
+  byCanonical.set(mapping.canonicalId,ids);
+ }
+ const groups=[...byCanonical.values()];
+ assert.equal(audit.crossTopicCanonicalGroups,groups.filter(ids=>ids.size>1).length);
+ assert.equal(audit.crossTopicReferencesReused,
+  groups.reduce((sum,ids)=>sum+Math.max(0,ids.size-1),0));
+ assert.ok(audit.crossTopicReferencesReused<=audit.totalDeepExamTopicReferences);
+ assert.equal(audit.actualPersistedDuplicatesRemoved,0);
+});
