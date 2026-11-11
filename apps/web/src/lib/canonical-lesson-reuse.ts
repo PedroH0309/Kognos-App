@@ -172,6 +172,15 @@ export function canonicalReuseAudit(){
           coverageByExam[exam].missingTopicIds.includes(ref.examTopicId)).length
       ])
     ) as Record<ExamId,number>,
+    /** Actionable backlog: partial associations whose target is still missing a full lesson.
+     * Do not count these references as deep coverage or as approved full aliases. */
+    partialMissingTopicIdsByExam:Object.fromEntries(
+      (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
+        exam,[...new Set(partialCoverageByExam()[exam]
+          .filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
+          .map(ref=>ref.examTopicId))]
+      ])
+    ) as Record<ExamId,string[]>,
     allUniqueDeepCanonicalIds:[...new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter((id):id is string=>Boolean(id)))].length,
     /** Distinct literal titles, independent of discipline; do not confuse with topic IDs. */
     distinctCurriculumTitles:new Set(curriculumTopics.map(topic=>topic.topic)).size,
