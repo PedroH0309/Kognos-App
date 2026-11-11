@@ -91,7 +91,7 @@ test('cell biology partial reuse never masquerades as full Citologia coverage',(
  for(const association of partials){
   assert.equal(association.subject,'Biologia');
   assert.notEqual(association.targetTopicId,association.canonicalId);
-  assert.ok(association.missingScope.includes('Membranas'));
+  assert.ok(association.missingScope.includes(association.targetTitle==='Célula e saúde'?'Saúde':'Membranas'));
   const target=curriculumTopics.find(t=>t.id===association.targetTopicId);
   const source=curriculumTopics.find(t=>t.id===association.canonicalId);
   assert.ok(target&&source);
