@@ -97,8 +97,11 @@ export function verifiedPartialAssociations(){
  * retains its historical ID and remains missing until fully covered.
  */
 export function partialCoverageByExam(){
+  // Resolve authored sources once, then project only onto registered exam topics.
+  // This keeps all exam snapshots consistent without treating partial links as deep coverage.
+  const verified=verifiedPartialAssociations();
   return Object.fromEntries((Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-    exam,verifiedPartialAssociations().flatMap(partial=>{
+    exam,verified.flatMap(partial=>{
       const target=curriculumTopics.find(topic=>topic.id===partial.targetTopicId);
       if(!target||!examBlueprints[exam].subjects[target.subject]?.includes(target.topic))return [];
       return [{
