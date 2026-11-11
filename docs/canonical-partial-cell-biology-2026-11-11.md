@@ -1,0 +1,15 @@
+# Auditoria incremental — relações celulares parciais (11/11/2026)
+
+Material autoral Kognos, não oficial, sem homologação docente. Revisão pedagógica pendente.
+
+## Escopo verificado no código
+
+O registro `reviewedPartialAssociations` associa a aula aprofundada **Organização celular dos seres vivos** a dois tópicos editoriais mais amplos de Biologia: **Citologia** e **Células, organelas e membranas**. Somente a organização celular e a distinção procarionte/eucarionte são declaradas reutilizáveis. A primeira associação já existia; a segunda é nova. O resolvedor só habilita cada associação quando os títulos históricos e a aula-fonte estão presentes no catálogo. A contagem efetivamente habilitada depende de executar a auditoria.
+
+Ambos os alvos exigem conteúdo adicional sobre membranas, transportes e organelas; Citologia também exige metabolismo e divisão celular. Portanto **nenhuma das duas associações é um alias integral**, nenhuma deve incrementar `canonicalCoverageByExam().deep`, e não há eliminação de registros persistidos.
+
+## Validação e limites
+
+O teste `canonical-lesson-reuse.test.ts` verifica que as associações mantêm o ID histórico do alvo, compartilham o mesmo ID canônico de origem, são restritas aos exames que realmente listam o alvo e nunca são promovidas por `reviewedCanonicalAliasForExam`. Nenhuma equivalência entre títulos diferentes foi aprovada como cobertura integral. Não houve alteração de Auth, RLS, banco, rotas, progresso ou gabaritos.
+
+**Nesta alteração:** 1 nova associação parcial declarada; 0 aliases integrais; 0 aulas novas; 0 duplicações persistidas eliminadas. Não há novos totais de cobertura sem auditoria executada, nem CI verde até a execução completa dos testes.
