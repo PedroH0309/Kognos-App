@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -137,5 +137,30 @@ test('cross-exam reuse rejects forged historical IDs and altered syllabus scope'
  assert.equal(canonicalLessonForExam(exam,{...topic,subject:'Disciplina não cadastrada'}),null);
  for(const unrelated of Object.keys(examBlueprints) as ExamId[]){
   if(!link.exams.includes(unrelated))assert.equal(canonicalLessonForExam(unrelated,topic),null);
+ }
+});
+
+test('partial cross-exam references preserve target IDs and never grant deep coverage',()=>{
+ const byExam=partialCoverageByExam();
+ const audit=canonicalReuseAudit();
+ assert.deepEqual(audit.partialCoverageByExam,byExam);
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const seen=new Set<string>();
+  for(const ref of byExam[exam]){
+   assert.equal(ref.exam,exam);
+   assert.equal(ref.fullyCovered,false);
+   assert.ok(ref.coveredScope.length>0&&ref.missingScope.length>0);
+   assert.ok(!seen.has(ref.examTopicId),'Duplicate partial target within exam');
+   seen.add(ref.examTopicId);
+   const target=curriculumTopics.find(t=>t.id===ref.examTopicId);
+   const source=curriculumTopics.find(t=>t.id===ref.canonicalId);
+   assert.ok(target&&source);
+   assert.equal(target.subject,source.subject);
+   assert.ok(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   assert.ok(verifiedPartialAssociations().some(p=>
+    p.targetTopicId===target.id&&p.canonicalId===source.id));
+   // Partial content must not be returned through the reviewed full-alias path.
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+  }
  }
 });
