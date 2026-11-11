@@ -164,7 +164,14 @@ export function canonicalReuseAudit(){
     /** Distinct subject + title pairs are the historical curriculum identities. */
     distinctSubjectTitlePairs:new Set(curriculumTopics.map(topic=>topic.subject+'\u0000'+topic.topic)).size,
     verifiedExactScopeGroups:links.length,
-    canonicalDeepLessons:links.length,
+    /** All distinct deep lessons in the curriculum, including single-exam lessons. */
+    canonicalDeepLessons:new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter(Boolean)).size,
+    /** Exact-title shared groups are a subset, not the full authored catalog. */
+    crossExamSharedCanonicalLessons:links.length,
+    /** Total deep exam-topic references, including single-exam topics. */
+    totalDeepExamTopicReferences:Object.values(coverageByExam).reduce((sum,coverage)=>sum+coverage.deep,0),
+    /** Full shared-reference savings are hypothetical; no persisted records were deleted. */
+    crossExamReferenceReuse:links.reduce((sum,link)=>sum+link.exams.length-1,0),
     verifiedExamLessonLinks:links.reduce((sum,link)=>sum+link.examTopicRefs.length,0),
     /** One canonical lesson can be referenced by several exam-specific identities. */
     uniqueExamTopicReferences:new Set(links.flatMap(link=>link.examTopicRefs.map(ref=>ref.exam+'\\0'+ref.topicId))).size,
