@@ -27,7 +27,7 @@ test('cross-exam audit counts links without claiming semantic matches',()=>{
  const audit=canonicalReuseAudit();
  assert.equal(audit.verifiedExactScopeGroups,verifiedCanonicalLessonLinks().length);
  assert.ok(audit.verifiedExamLessonLinks>=audit.verifiedExactScopeGroups*2);
- assert.equal(audit.avoidedDeepLessonCopies,audit.verifiedExamLessonLinks-audit.canonicalDeepLessons);
+ assert.equal(audit.avoidedDeepLessonCopies,audit.verifiedExamLessonLinks-audit.crossExamSharedCanonicalLessons);
  assert.ok(audit.reviewedNonExactAliases>=0);
 });
 test('broad or unrelated syllabus labels never inherit a partial deep lesson',()=>{
@@ -182,4 +182,21 @@ test('audit distinguishes literal titles from subject-qualified historical topic
  assert.equal(audit.distinctSubjectTitlePairs,new Set(curriculumTopics.map(topic=>topic.subject+'\\0'+topic.topic)).size);
  assert.equal(audit.distinctSubjectTitlePairs,curriculumTopics.length);
  assert.ok(audit.distinctCurriculumTitles<=audit.distinctSubjectTitlePairs);
+});
+
+test('audit counts all authored deep lessons separately from shared cross-exam groups',()=>{
+ const audit=canonicalReuseAudit();
+ const coverage=canonicalCoverageByExam();
+ const uniqueDeep=new Set(curriculumTopics.flatMap(topic=>{
+  const exams=(Object.keys(examBlueprints) as ExamId[]).filter(exam=>
+   examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
+  return exams.flatMap(exam=>canonicalLessonForExam(exam,topic)?.id?[canonicalLessonForExam(exam,topic)!.id]:[]);
+ }));
+ assert.equal(audit.canonicalDeepLessons,uniqueDeep.size);
+ assert.equal(audit.crossExamSharedCanonicalLessons,verifiedCanonicalLessonLinks().length);
+ assert.ok(audit.canonicalDeepLessons>=audit.crossExamSharedCanonicalLessons);
+ assert.equal(audit.totalDeepExamTopicReferences,
+  Object.values(coverage).reduce((sum,exam)=>sum+exam.deep,0));
+ assert.equal(audit.crossExamReferenceReuse,audit.avoidedDeepLessonCopies);
+ assert.equal(audit.actualPersistedDuplicatesRemoved,0);
 });
