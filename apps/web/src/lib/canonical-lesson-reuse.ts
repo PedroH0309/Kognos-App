@@ -88,8 +88,12 @@ export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic)
  * Non-exact aliases are deliberately not guessed here.
  */
 export function canonicalLessonForExam(exam:ExamId,topic:CurriculumTopic){
-  if(!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic))return null;
-  return deepProvaoLesson(topic)??reviewedCanonicalAliasForExam(exam,topic)?.lesson??null;
+  // Never accept a fabricated or stale exam-topic identity solely because its
+  // title resembles a registered topic. Historical IDs remain authoritative.
+  const registered=curriculumTopics.find(item=>item.id===topic.id);
+  if(!registered||registered.subject!==topic.subject||registered.topic!==topic.topic)return null;
+  if(!examBlueprints[exam]?.subjects[registered.subject]?.includes(registered.topic))return null;
+  return deepProvaoLesson(registered)??reviewedCanonicalAliasForExam(exam,registered)?.lesson??null;
 }
 
 /** Exact per-exam coverage is measured against the actual registered blueprint.
