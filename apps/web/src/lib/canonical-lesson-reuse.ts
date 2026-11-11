@@ -91,6 +91,29 @@ export function verifiedPartialAssociations(){
   });
 }
 
+/** Unresolved editorial candidates, with explicit blockers instead of silent omissions.
+ * These are not canonical mappings and never grant coverage to any exam.
+ */
+export function unresolvedPartialCandidates(){
+ return reviewedPartialAssociations.flatMap(entry=>{
+  const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
+  const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
+  const sourceLesson=source?deepProvaoLesson(source):null;
+  if(target&&source&&target.id!==source.id&&sourceLesson)return [];
+  return [{
+   subject:entry.subject,targetTitle:entry.targetTitle,sourceTitle:entry.sourceTitle,
+   targetTopicId:target?.id??null,sourceTopicId:source?.id??null,
+   blockers:[
+    ...(!target?['target-not-registered' as const]:[]),
+    ...(!source?['source-not-registered' as const]:[]),
+    ...(source&&!sourceLesson?['source-not-deep' as const]:[]),
+    ...(target&&source&&target.id===source.id?['same-topic-id' as const]:[])
+   ],
+   missingScope:entry.missingScope,eligibleForFullAlias:false as const
+  }];
+ });
+}
+
 /** Advisory cross-exam partial links: never count toward deep coverage.
  * Each reference is anchored to a real registered exam-topic membership.
  * The canonical source is a single authored lesson; the broader target
@@ -314,7 +337,8 @@ export function canonicalReuseAudit(){
     /** Unreviewed semantic overlaps must not be reported as full coverage. */
     approvedPartialAssociations:verifiedPartialAssociations().length,
     /** No automated fuzzy matching is accepted as pedagogical equivalence. */
-    unresolvedSemanticCandidates:reviewedPartialAssociations.length-verifiedPartialAssociations().length,
+    unresolvedSemanticCandidates:unresolvedPartialCandidates().length,
+    unresolvedPartialCandidateDetails:unresolvedPartialCandidates(),
     /** No differently titled semantic aliases have yet been certified. */
     reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.id===alias.targetTopicId&&t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.id===alias.sourceTopicId&&t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))&&alias.exams.some(exam=>examBlueprints[exam]?.subjects[alias.subject]?.includes(alias.targetTitle))).length
   };
