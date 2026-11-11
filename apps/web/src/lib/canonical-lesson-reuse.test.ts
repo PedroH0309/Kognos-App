@@ -296,21 +296,37 @@ test('semantic alias registry requires explicit exam approval and immutable hist
  assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
 });
 
-test('ETEC cell-and-health partial link is advisory and isolated from other exams',()=>{
- const target=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Célula e saúde');
- const source=curriculumTopics.find(t=>t.subject==='Biologia'&&t.topic==='Organização celular dos seres vivos');
- assert.ok(target&&source);
- const partial=verifiedPartialAssociations().find(p=>p.targetTopicId===target.id);
- assert.ok(partial);
- assert.equal(partial.canonicalId,source.id);
- assert.match(partial.missingScope,/Saúde/);
+test('ETEC cell-and-health candidate is advisory even without a registered canonical source',()=>{
+ const candidate=reviewedPartialAssociations.find(item=>
+  item.subject==='Biologia'&&item.targetTitle==='Célula e saúde'&&
+  item.sourceTitle==='Organização celular dos seres vivos');
+ assert.ok(candidate,'The explicitly reviewed partial candidate must stay documented');
+ assert.ok(examBlueprints.etec.subjects.Biologia?.includes(candidate.targetTitle),
+  'The ETEC study blueprint should retain its historical cell-and-health title');
+ const target=curriculumTopics.find(t=>t.subject===candidate.subject&&t.topic===candidate.targetTitle);
+ assert.ok(target,'The ETEC target must resolve to a real registered curriculum topic');
+ // A ProVão depth title does not automatically become an exam-blueprint topic.
+ // An unregistered (or not deeply authored) source cannot produce a verified link.
+ const source=curriculumTopics.find(t=>t.subject===candidate.subject&&t.topic===candidate.sourceTitle);
+ const partial=verifiedPartialAssociations().find(p=>p.targetTopicId===target.id&&
+  p.sourceTitle===candidate.sourceTitle);
+ if(partial){
+  assert.ok(source,'A verified partial link must have a registered source topic');
+  assert.equal(partial.canonicalId,source.id);
+  assert.match(partial.missingScope,/Saúde/);
+ }else{
+  assert.ok(canonicalReuseAudit().unresolvedSemanticCandidates>=1,
+   'Unverified candidate must be counted as unresolved, not as full coverage');
+ }
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
   const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
-  assert.equal(refs.length,examBlueprints[exam].subjects.Biologia?.includes(target.topic)?1:0);
+  const registered=Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
+  assert.equal(refs.length,partial&&registered?1:0,
+   'Never project an unresolved or unrelated ETEC candidate to '+exam);
   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
   for(const ref of refs){
    assert.equal(ref.fullyCovered,false);
-   assert.equal(ref.canonicalId,source.id);
+   assert.equal(ref.canonicalId,partial?.canonicalId);
   }
  }
 });
