@@ -116,6 +116,26 @@ export function partialCoverageByExam(){
   }[]>;
 }
 
+/** Actionable review queue derived from real registered exam-topic memberships.
+ * Partial overlaps are NOT eligible for automatic full aliases. Reviewers must
+ * close every missing objective before adding a reviewedSemanticAliases entry.
+ */
+export function semanticReviewQueue(){
+  const partials=partialCoverageByExam();
+  return (Object.keys(examBlueprints) as ExamId[]).flatMap(exam=>
+    partials[exam].map(ref=>{
+      const target=curriculumTopics.find(topic=>topic.id===ref.examTopicId)!;
+      const source=curriculumTopics.find(topic=>topic.id===ref.canonicalId)!;
+      return {
+        exam,targetTopicId:target.id,targetTitle:target.topic,
+        sourceCanonicalId:source.id,sourceTitle:source.topic,
+        subject:target.subject,coveredScope:ref.coveredScope,
+        missingScope:ref.missingScope,eligibleForFullAlias:false as const
+      };
+    })
+  );
+}
+
 export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
   // An alias must never bypass the same historical-ID and registered-scope
   // checks as canonicalLessonForExam, including when called directly.
