@@ -5,7 +5,7 @@ import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam,officialProvaoGradeCoverage} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -666,4 +666,23 @@ test('partial-only missing audit reconciles official Provão sources without dou
    assert.ok(expected.has(ref.examTopicId+'\\0'+ref.canonicalId));
   }
  }
+});
+
+
+test('official Provão grade coverage reconciles exact deep leaves without inflating full aliases',()=>{
+ const grades=officialProvaoGradeCoverage();
+ assert.deepEqual(grades.map(item=>item.grade),[1,2,3]);
+ for(const report of grades){
+  const rows=provaoTopics.filter(row=>row.grade===report.grade);
+  assert.equal(report.totalEntries,rows.length);
+  assert.equal(report.deepEntries+report.missingEntries,rows.length);
+  const resolved=rows.filter(row=>Boolean(deepProvaoLesson({
+   id:courseId(row.subject,row.topic),subject:row.subject,topic:row.topic,exams:['saresp']
+  })));
+  assert.equal(report.deepEntries,resolved.length);
+  assert.deepEqual(new Set(report.uniqueCanonicalDeepIds),new Set(resolved.map(row=>courseId(row.subject,row.topic))));
+  assert.equal(report.missingOfficialCodes.length,report.missingEntries);
+ }
+ // Grade counts are an independent official-leaf inventory, not new cross-exam aliases.
+ assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
 });
