@@ -551,7 +551,7 @@ export function canonicalReuseAudit(){
     /** No automated fuzzy matching is accepted as pedagogical equivalence. */
     unresolvedSemanticCandidates:unresolvedPartialCandidates().length,
     unresolvedPartialCandidateDetails:unresolvedPartialCandidates(),
-    /** No differently titled semantic aliases have yet been certified. */
+    /** Explicit editorial cross-title aliases only; count registered approved rows, not per-exam links. */
     reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.id===alias.targetTopicId&&t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.id===alias.sourceTopicId&&t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))&&alias.exams.some(exam=>examBlueprints[exam]?.subjects[alias.subject]?.includes(alias.targetTitle))).length
   };
 }
