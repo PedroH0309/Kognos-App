@@ -724,3 +724,22 @@ O job de testes no commit `55151eb8` executou 509 testes: 504 aprovações e cin
 - A auditoria obtém uma única fotografia das referências oficiais por chamada para evitar contagens e objetos redundantes; as invariantes de isolamento e os IDs históricos continuam preservados.
 
 **Impacto curricular:** nenhum novo alias integral, nenhuma nova aula, nenhum registro persistido eliminado. Este lote corrige consistência da auditoria e reutilização de referências já aprovadas como **parciais**. A alteração não mexe em rotas, progresso, Auth, RLS, schema, CI secrets ou conteúdo homologado. Os testes, TypeScript, segurança de dois usuários e build precisam de CI verde observada no commit final; não assumir aprovação antes disso. A meta de 20/11/2026 continua condicionada às lacunas e à revisão pedagógica.
+
+
+## 2026-11-12 — lote 46, cinco aulas aprofundadas de Português reutilizadas nas três séries
+
+**Fonte de escopo:** Provão Paulista Seriado 2026, Edital SEDUC 10/2026, Anexo VII, páginas 35 (1ª série), 39 (2ª série) e 44 (3ª série). Os cinco objetivos são folhas oficiais com a **mesma descrição e código** nas três séries; a aprendizagem é autoral do Kognos, **não oficial** e sem homologação docente.
+
+Aulas novas, em cinco arquivos `provao-depth-batch46-*.ts`:
+
+1. **Distinção entre variedades linguísticas** (código 1.2): variedades regionais e sociais, registro situacional, adequação e preconceito linguístico; sem tratar variantes como incapacidade.
+2. **Níveis de significação do texto** (4.1): explícito/implícito, inferências justificáveis, denotação/conotação, pressupostos e subentendidos.
+3. **Estratégias de articulação do texto** (4.2): coesão referencial, lexical e sequencial; conectivos, coerência global e progressão argumentativa.
+4. **Modos de organização do texto** (4.3): descrição, narração e dissertação; distinção entre exposição, argumentação e sequências híbridas.
+5. **Citação de discursos** (4.4): discurso direto, indireto e indireto livre; mudanças de dêiticos, narrador e mistura de vozes.
+
+Cada especificação nova inclui **3 capítulos progressivos com explicações de mais de 750 caracteres cada**, 3 exemplos contextualizados com resolução, pré-requisitos, erros frequentes, passos concretos e **3 questões objetivas distintas A–D**, com `correctIndex`, dica e comentário. Total do lote: **5 aulas canônicas, 15 capítulos, 15 questões originais**. A identidade da aula é `courseId('Português', título oficial)`; cada uma é aproveitada nas **3 séries** mediante o mesmo ID e arrays de capítulos/questões, sem cópia do conteúdo nem alteração de IDs históricos. A visibilidade em cada exame continua condicionada ao pertencimento explícito ao catálogo, e não a similaridade nominal.
+
+**Medição estática sobre a base anterior deste lote** (`main` no commit `a08ba0ac`): o inventário oficial tinha **743 entradas de série e 364 títulos distintos por disciplina**; **403 entradas** e **195 títulos únicos** resolviam aula aprofundada, restando **340 entradas** e **169 títulos únicos** sem profundidade. Os cinco novos títulos aparecem três vezes cada (uma por série), portanto o efeito esperado **após carregar o registro** é passar para **418/743 entradas com aula, 200/364 títulos únicos com aula e 164 títulos únicos pendentes**. Os 15 vínculos por série não são 15 aulas autorais nem 15 equivalências de títulos diferentes. Isso não altera os demais títulos editoriais do Kognos nem elimina cópias persistidas (0).
+
+**Testes adicionados:** `provao-depth-batch46-language.test.ts` valida profundidade mínima, títulos oficiais por série, gabaritos, alternativas únicas, identidade canônica de seções e questões, e ausência de herança em exames não relacionados. Sem migração SQL, alteração de RLS/Auth, automação nova, merge ou deploy. Revisão pedagógica e testes de integração/TypeScript/build/CI ainda exigem aprovação observada; não atribuir sucesso antes da execução.
