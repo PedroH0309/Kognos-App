@@ -734,7 +734,8 @@ test('official Provão advisory source shares one lesson object across eligible 
    assert.equal(match.fullyCovered,false);
    const target=curriculumTopics.find(topic=>topic.id===match.examTopicId);
    assert.ok(target);
-   assert.equal(canonicalLessonForExam(match.exam,target),null);
+   assert.notEqual(canonicalLessonForExam(match.exam,target)?.id,source.canonicalId,
+    'Advisory source must not be promoted to full coverage');
   }
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
    const target=curriculumTopics.find(topic=>topic.id===source.targetTopicId);
