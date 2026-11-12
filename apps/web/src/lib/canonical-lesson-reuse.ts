@@ -195,19 +195,37 @@ export function partialCoverageByExam(){
  * close every missing objective before adding a reviewedSemanticAliases entry.
  */
 export function semanticReviewQueue(){
+  // Include both blueprint-registered and official Provão-authored deep sources.
+  // A source outside the blueprint remains advisory; no full alias is created.
   const partials=partialCoverageByExam();
-  return (Object.keys(examBlueprints) as ExamId[]).flatMap(exam=>
-    partials[exam].map(ref=>{
-      const target=curriculumTopics.find(topic=>topic.id===ref.examTopicId)!;
-      const source=curriculumTopics.find(topic=>topic.id===ref.canonicalId)!;
-      return {
+  const provaoPartials=provaoPartialReferencesByExam();
+  return (Object.keys(examBlueprints) as ExamId[]).flatMap(exam=>{
+    const seen=new Set<string>();
+    const references=[
+      ...partials[exam].map(ref=>({...ref,sourceOrigin:'blueprint' as const})),
+      ...provaoPartials[exam].map(ref=>({...ref,sourceOrigin:'provao' as const}))
+    ];
+    return references.flatMap(ref=>{
+      const key=ref.examTopicId+'\\0'+ref.canonicalId;
+      if(seen.has(key))return [];
+      seen.add(key);
+      const target=curriculumTopics.find(topic=>topic.id===ref.examTopicId);
+      if(!target)return [];
+      const registeredSource=curriculumTopics.find(topic=>topic.id===ref.canonicalId);
+      const officialSource=provaoTopics.find(topic=>
+        courseId(topic.subject,topic.topic)===ref.canonicalId);
+      const sourceTitle=registeredSource?.topic??officialSource?.topic;
+      const sourceSubject=registeredSource?.subject??officialSource?.subject;
+      if(!sourceTitle||sourceSubject!==target.subject)return [];
+      return [{
         exam,targetTopicId:target.id,targetTitle:target.topic,
-        sourceCanonicalId:source.id,sourceTitle:source.topic,
-        subject:target.subject,coveredScope:ref.coveredScope,
-        missingScope:ref.missingScope,eligibleForFullAlias:false as const
-      };
-    })
-  );
+        sourceCanonicalId:ref.canonicalId,sourceTitle,
+        sourceOrigin:ref.sourceOrigin,subject:target.subject,
+        coveredScope:ref.coveredScope,missingScope:ref.missingScope,
+        eligibleForFullAlias:false as const
+      }];
+    });
+  });
 }
 
 export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic){
