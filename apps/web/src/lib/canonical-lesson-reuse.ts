@@ -411,8 +411,11 @@ export function canonicalReuseAudit(){
      * targets independently covered by their own complete deep lesson. */
     partialOnlyMissingByExam:Object.fromEntries(
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-        exam,partials[exam].filter(ref=>
-          coverageByExam[exam].missingTopicIds.includes(ref.examTopicId)).length
+        exam,new Set([
+          ...partials[exam],
+          ...provaoPartialReferencesByExam()[exam]
+        ].filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
+         .map(ref=>ref.examTopicId+'\\0'+ref.canonicalId)).size
       ])
     ) as Record<ExamId,number>,
     /** Actionable backlog: partial associations whose target is still missing a full lesson.
