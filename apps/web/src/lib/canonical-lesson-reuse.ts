@@ -448,9 +448,11 @@ export function canonicalReuseAudit(){
      * Do not count these references as deep coverage or as approved full aliases. */
     partialMissingTopicIdsByExam:Object.fromEntries(
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
-        exam,[...new Set(partials[exam]
-          .filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
-          .map(ref=>ref.examTopicId))]
+        exam,[...new Set([
+          ...partials[exam],
+          ...provaoPartialReferencesByExam()[exam]
+        ].filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
+         .map(ref=>ref.examTopicId))]
       ])
     ) as Record<ExamId,string[]>,
     allUniqueDeepCanonicalIds:[...new Set([
