@@ -88,6 +88,20 @@ export const reviewedPartialAssociations = [{
   missingScope:'Saúde, prevenção de doenças, relações entre células e funcionamento do organismo exigem conteúdos próprios.'
 }] as const;
 
+/** One immutable-in-practice authored source across repeated advisory snapshots.
+ * Cache only successful, ID-checked resolutions; never cache missing lessons.
+ * This maps static authored content, not tenant-owned or persisted user state.
+ */
+const sharedOfficialProvaoLessons=new Map<string,NonNullable<ReturnType<typeof deepProvaoLesson>>>();
+function sharedOfficialProvaoLesson(source:CurriculumTopic){
+ const cached=sharedOfficialProvaoLessons.get(source.id);
+ if(cached)return cached;
+ const lesson=deepProvaoLesson(source);
+ if(!lesson||lesson.id!==source.id)return null;
+ sharedOfficialProvaoLessons.set(source.id,lesson);
+ return lesson;
+}
+
 /** Reuse an authored Provão source as an advisory reference even when its
  * official leaf is not included in the exam-blueprint-derived curriculum.
  * This never creates an exam membership, full alias or persisted topic.
@@ -107,8 +121,8 @@ export function provaoSourcedPartialReferences(){
     const sourceTopic:CurriculumTopic=registeredSource??{
       id:canonicalId,subject:source.subject,topic:source.topic,exams:['saresp']
     };
-    const lesson=deepProvaoLesson(sourceTopic);
-    if(!lesson||lesson.id!==canonicalId)return [];
+    const lesson=sharedOfficialProvaoLesson(sourceTopic);
+    if(!lesson)return [];
     return [{
       ...entry,targetTopicId:target.id,canonicalId,
       sourceGrade:source.grade,sourceCode:source.code,lesson,
@@ -373,7 +387,7 @@ export function officialProvaoCanonicalGradeMappings(){
     const source:CurriculumTopic=registered??{
       id:canonicalId,subject:row.subject,topic:row.topic,exams:['saresp']
     };
-    const lesson=deepProvaoLesson(source);
+    const lesson=sharedOfficialProvaoLesson(source);
     if(!lesson||lesson.id!==canonicalId)return [];
     return [{
       grade:row.grade,officialCode:row.code,subject:row.subject,
@@ -407,6 +421,7 @@ export function canonicalReuseAudit(){
   // expensive and could make independently computed counters diverge.
   const mappings=canonicalExamTopicMappings();
   const partials=partialCoverageByExam();
+  const officialPartials=provaoPartialReferencesByExam();
   const examEntries=Object.fromEntries(
     (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
       exam,Object.values(examBlueprints[exam].subjects).reduce((sum,topics)=>sum+topics.length,0)
@@ -431,7 +446,7 @@ export function canonicalReuseAudit(){
     /** Prioritized unique missing historical topics, never duplicated per exam. */
     authoringBacklog:canonicalAuthoringBacklog(),
     /** Provão-authored advisory references, not full exam coverage. */
-    provaoPartialReferencesByExam:provaoPartialReferencesByExam(),
+    provaoPartialReferencesByExam:officialPartials,
     /** Canonical IDs referenced by distinct historical topic IDs across exams.
      * Exact-title reuse shares one historical ID and is NOT semantic deduplication. */
     crossTopicCanonicalGroups:(()=>{
@@ -460,7 +475,7 @@ export function canonicalReuseAudit(){
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
         exam,new Set([
           ...partials[exam],
-          ...provaoPartialReferencesByExam()[exam]
+          ...officialPartials[exam]
         ].filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
          .map(ref=>ref.examTopicId+'\\0'+ref.canonicalId)).size
       ])
@@ -471,7 +486,7 @@ export function canonicalReuseAudit(){
       (Object.keys(examBlueprints) as ExamId[]).map(exam=>[
         exam,[...new Set([
           ...partials[exam],
-          ...provaoPartialReferencesByExam()[exam]
+          ...officialPartials[exam]
         ].filter(ref=>coverageByExam[exam].missingTopicIds.includes(ref.examTopicId))
          .map(ref=>ref.examTopicId))]
       ])
