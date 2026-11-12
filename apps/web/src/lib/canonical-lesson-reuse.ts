@@ -353,6 +353,29 @@ export function canonicalAuthoringBacklog(){
     a.topicId.localeCompare(b.topicId));
 }
 
+/** Grade-scoped official Provão inventory, independent of the broad editorial
+ * SARESP blueprint. A leaf is counted only when its exact official syllabus
+ * identity resolves to an authored deep lesson. Repeated grade memberships
+ * share one canonical lesson ID without changing historical progress keys.
+ */
+export function officialProvaoGradeCoverage(){
+  return ([1,2,3] as const).map(grade=>{
+    const entries=provaoTopics.filter(row=>row.grade===grade);
+    const mapped=entries.map(row=>{
+      const canonicalId=courseId(row.subject,row.topic);
+      const topic:CurriculumTopic={id:canonicalId,subject:row.subject,topic:row.topic,exams:['saresp']};
+      return {row,canonicalId,deep:Boolean(deepProvaoLesson(topic))};
+    });
+    const deep=mapped.filter(item=>item.deep);
+    return {
+      grade,totalEntries:entries.length,deepEntries:deep.length,
+      missingEntries:entries.length-deep.length,
+      uniqueCanonicalDeepIds:[...new Set(deep.map(item=>item.canonicalId))],
+      missingOfficialCodes:mapped.filter(item=>!item.deep).map(item=>item.row.subject+':'+item.row.code)
+    };
+  });
+}
+
 export function canonicalReuseAudit(){
   const links=verifiedCanonicalLessonLinks();
   const coverageByExam=canonicalCoverageByExam();
