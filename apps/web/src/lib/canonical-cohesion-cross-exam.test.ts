@@ -36,7 +36,7 @@ test('reviewed cohesion equivalence shares one authored object across three dist
   assert.ok(lesson,'Canonical lesson must resolve');
   assert.strictEqual(lesson.sections,deep.sections);
   assert.strictEqual(lesson.tasks,deep.tasks);
-  const entry=mapping.find(row=>row.exam===exam&&row.examTopicId===targetId);
+  const entry: (typeof mapping)[number] | undefined=mapping.find(row=>row.exam===exam&&row.examTopicId===targetId);
   assert.ok(entry);
   assert.equal(entry.canonicalId,sourceId);
   assert.equal(entry.mappingKind,'reviewed-semantic');
