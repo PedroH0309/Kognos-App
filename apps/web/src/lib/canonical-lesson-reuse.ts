@@ -361,6 +361,27 @@ export function canonicalAuthoringBacklog(){
  * identity resolves to an authored deep lesson. Repeated grade memberships
  * share one canonical lesson ID without changing historical progress keys.
  */
+/** Runtime-grade mappings for official Provão leaves. These do not claim that
+ * editorial SARESP blueprint membership covers an official grade. A repeated
+ * leaf across grades resolves to the same authored lesson object, while its
+ * grade/code provenance remains explicit and stable.
+ */
+export function officialProvaoCanonicalGradeMappings(){
+  return provaoTopics.flatMap(row=>{
+    const canonicalId=courseId(row.subject,row.topic);
+    const registered=curriculumTopics.find(topic=>topic.id===canonicalId);
+    const source:CurriculumTopic=registered??{
+      id:canonicalId,subject:row.subject,topic:row.topic,exams:['saresp']
+    };
+    const lesson=deepProvaoLesson(source);
+    if(!lesson||lesson.id!==canonicalId)return [];
+    return [{
+      grade:row.grade,officialCode:row.code,subject:row.subject,
+      officialTitle:row.topic,canonicalId,lesson
+    }];
+  });
+}
+
 export function officialProvaoGradeCoverage(){
   return ([1,2,3] as const).map(grade=>{
     const entries=provaoTopics.filter(row=>row.grade===grade);
