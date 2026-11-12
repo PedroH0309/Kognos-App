@@ -31,7 +31,7 @@ export function verifiedCanonicalLessonLinks():CanonicalLessonLink[]{
       exam=>examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)
     );
     if(exams.length<2)continue;
-    const lesson=deepProvaoLesson(topic);
+    const lesson=sharedOfficialProvaoLesson(topic);
     if(!lesson)continue;
     links.push({
       canonicalId:topic.id,subject:topic.subject,title:topic.topic,
