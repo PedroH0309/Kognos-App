@@ -69,6 +69,20 @@ export const reviewedSemanticAliases: readonly {
  * These references are advisory only and never enter canonicalLessonForExam.
  */
 export const reviewedPartialAssociations = [{
+  subject:'Português',
+  targetTitle:'Semântica e figuras de linguagem',
+  sourceTitle:'Níveis de significação do texto',
+  officialSourceTitle:'Níveis de significação do texto: significação explícita e significação implícita; denotação e…',
+  coveredScope:'Sentidos explícitos e implícitos, denotação e conotação em textos.',
+  missingScope:'Figuras de linguagem e demais relações semânticas exigem complemento específico; não há cobertura integral.'
+},{
+  subject:'Português',
+  targetTitle:'Gêneros textuais e tipos de discurso',
+  sourceTitle:'Modos de organização do texto',
+  officialSourceTitle:'Modos de organização do texto: descrição, narração e dissertação',
+  coveredScope:'Descrição, narração e dissertação como modos de organização textual.',
+  missingScope:'Características dos gêneros e tipos de discurso, inclusive suas situações de uso, exigem complementos próprios.'
+},
   subject:'Biologia',
   targetTitle:'Citologia',
   sourceTitle:'Organização celular dos seres vivos',
