@@ -555,3 +555,25 @@ test('official Provão authored partial sources remain advisory and exam-isolate
   }
  }
 });
+
+test('official Provão deep sources resolve partial blocker audit without granting full aliases',()=>{
+ const official=provaoSourcedPartialReferences();
+ const unresolved=unresolvedPartialCandidates();
+ const audit=canonicalReuseAudit();
+ assert.equal(audit.unresolvedSemanticCandidates,unresolved.length);
+ for(const ref of official){
+  assert.ok(!unresolved.some(item=>item.subject===ref.subject&&
+   item.targetTitle===ref.targetTitle&&item.sourceTitle===ref.sourceTitle),
+   'An authored official Provão partial source must not remain marked unavailable');
+  const target=curriculumTopics.find(topic=>topic.id===ref.targetTopicId);
+  assert.ok(target);
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   const registered=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   const projected=provaoPartialReferencesByExam()[exam].filter(item=>
+    item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
+   assert.equal(projected.length,registered?1:0);
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+   for(const item of projected)assert.equal(item.fullyCovered,false);
+  }
+ }
+});
