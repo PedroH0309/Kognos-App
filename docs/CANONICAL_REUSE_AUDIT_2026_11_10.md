@@ -97,3 +97,8 @@ Esta é uma correção de integridade da auditoria, **não** uma homologação d
 ### 2026-11-12 — reconciliação das referências parciais
 
 `partialOnlyMissingByExam` passa a considerar a união deduplicada de `partialCoverageByExam()` e `provaoPartialReferencesByExam()`, identificada por `(examTopicId, canonicalId)` em cada prova. Anteriormente, a métrica ignorava fontes autorais presentes apenas nas folhas oficiais do Provão Paulista. A alteração não transforma referência consultiva em cobertura integral, não cria alias integral e não altera progresso, banco, rotas ou RLS. Teste de reconciliação adicionado em `canonical-lesson-reuse.test.ts`. Totais novos e CI ainda exigem execução verificável; duplicações persistidas removidas: **0**.
+
+
+### 2026-11-12 — backlog de tópicos parciais reconciliado com o Provão oficial
+
+`partialMissingTopicIdsByExam` agora inclui, além das referências editoriais, as fontes aprofundadas exclusivas de `provaoPartialReferencesByExam()`. A deduplicação é por ID histórico do tópico de destino dentro de cada exame; apenas destinos sem aula integral entram na fila. Teste de regressão confere a união das fontes, o isolamento por exame e `fullyCovered: false` para referências oficiais. A fila de autoria fica consistente com a métrica `partialOnlyMissingByExam`, mas nenhuma referência parcial passa a equivalência integral. Não houve novas aulas, aliases integrais, remoção de duplicatas persistidas, alteração de banco ou deploy. Totais antes/depois e aprovação de CI dependem de execução verificável; revisão docente pendente.
