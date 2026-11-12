@@ -150,7 +150,13 @@ export function unresolvedPartialCandidates(){
   const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
   const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
   const sourceLesson=source?deepProvaoLesson(source):null;
-  if(target&&source&&target.id!==source.id&&sourceLesson)return [];
+  // Official Provão leaves can have an authored deep lesson without being
+  // registered in the broad blueprint-derived curriculum. Such a source is
+  // resolved as an advisory reference, not an approved full semantic alias.
+  const provaoSource=provaoSourcedPartialReferences().some(ref=>
+    ref.subject===entry.subject&&ref.targetTitle===entry.targetTitle&&
+    ref.sourceTitle===entry.sourceTitle&&ref.targetTopicId===target?.id);
+  if(target&&((source&&target.id!==source.id&&sourceLesson)||provaoSource))return [];
   return [{
    subject:entry.subject,targetTitle:entry.targetTitle,sourceTitle:entry.sourceTitle,
    targetTopicId:target?.id??null,sourceTopicId:source?.id??null,
