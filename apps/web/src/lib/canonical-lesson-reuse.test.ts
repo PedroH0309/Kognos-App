@@ -343,11 +343,11 @@ test('ETEC cell-and-health candidate is advisory even without a registered canon
  }
  const projections=provaoPartialReferencesByExam();
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
-  const registered=Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
-  const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
+  const registered:boolean=Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
+  const refs:ReturnType<typeof partialCoverageByExam>[ExamId]=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
   assert.equal(refs.length,partial&&registered?1:0,
    'Blueprint partial must only appear for registered exams: '+exam);
-  const officialRefs=projections[exam].filter(ref=>
+  const officialRefs:ReturnType<typeof provaoPartialReferencesByExam>[ExamId]=projections[exam].filter(ref=>
    ref.examTopicId===target.id&&ref.canonicalId===advisory?.canonicalId);
   assert.equal(officialRefs.length,advisory&&registered?1:0,
    'Official advisory must only appear for registered exams: '+exam);
@@ -651,7 +651,7 @@ test('cell-organization advisory sources resolve the exact official Provão leaf
   assert.ok(target);
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
    assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
-   const examRefs=provaoPartialReferencesByExam()[exam].filter(item=>item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
+   const examRefs:ReturnType<typeof provaoPartialReferencesByExam>[ExamId]=provaoPartialReferencesByExam()[exam].filter(item=>item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
    assert.equal(examRefs.length,examBlueprints[exam].subjects[target.subject]?.includes(target.topic)?1:0);
   }
  }
