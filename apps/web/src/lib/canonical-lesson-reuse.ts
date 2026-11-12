@@ -405,12 +405,17 @@ export function officialProvaoCanonicalGradeMappings(){
 }
 
 export function officialProvaoGradeCoverage(){
+  // Reconcile with the exact same canonical mappings used by the grade reader.
+  // This prevents coverage and displayed lessons from drifting apart.
+  const mappings=officialProvaoCanonicalGradeMappings();
+  const mappedKeys=new Set(mappings.map(row=>
+    JSON.stringify([row.grade,row.subject,row.officialCode,row.officialTitle])));
   return ([1,2,3] as const).map(grade=>{
     const entries=provaoTopics.filter(row=>row.grade===grade);
     const mapped=entries.map(row=>{
       const canonicalId=courseId(row.subject,row.topic);
-      const topic:CurriculumTopic={id:canonicalId,subject:row.subject,topic:row.topic,exams:['saresp']};
-      return {row,canonicalId,deep:Boolean(deepProvaoLesson(topic))};
+      return {row,canonicalId,deep:mappedKeys.has(
+        JSON.stringify([row.grade,row.subject,row.code,row.topic]))};
     });
     const deep=mapped.filter(item=>item.deep);
     return {
