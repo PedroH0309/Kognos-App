@@ -324,7 +324,7 @@ test('semantic alias registry requires explicit exam approval and immutable hist
   const sourceLesson=deepProvaoLesson(source);
   assert.ok(sourceLesson,'Approved source must be deeply authored');
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
-   const approved=alias.exams.includes(exam)&&Boolean(
+   const approved: boolean=alias.exams.includes(exam)&&Boolean(
     examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
    const resolved=reviewedCanonicalAliasForExam(exam,target);
    assert.equal(Boolean(resolved),approved,
@@ -334,7 +334,7 @@ test('semantic alias registry requires explicit exam approval and immutable hist
     assert.equal(resolved.canonicalId,source.id);
     assert.strictEqual(resolved.lesson.sections,sourceLesson.sections);
     assert.strictEqual(resolved.lesson.tasks,sourceLesson.tasks);
-    const mapping=canonicalExamTopicMappings().find(item=>item.exam===exam&&item.examTopicId===target.id);
+    const mapping: ReturnType<typeof canonicalExamTopicMappings>[number] | undefined=canonicalExamTopicMappings().find(item=>item.exam===exam&&item.examTopicId===target.id);
     assert.equal(mapping?.mappingKind,'reviewed-semantic');
    }
   }
