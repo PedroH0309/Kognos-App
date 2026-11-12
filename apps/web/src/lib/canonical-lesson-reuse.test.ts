@@ -410,23 +410,36 @@ test('partial projection is deterministic across repeated audits and never leaks
 });
 
 
-test('semantic review queue is exam-scoped and never grants complete coverage',()=>{
+test('semantic review queue reconciles both source catalogs without granting full coverage',()=>{
  const queue=semanticReviewQueue();
  const partials=partialCoverageByExam();
- assert.equal(queue.length,Object.values(partials).reduce((n,refs)=>n+refs.length,0));
- assert.equal(new Set(queue.map(item=>item.exam+'\\0'+item.targetTopicId)).size,queue.length);
+ const provao=provaoPartialReferencesByExam();
+ const expected=new Set<string>();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  for(const ref of [...partials[exam],...provao[exam]]){
+   expected.add(exam+'\\0'+ref.examTopicId+'\\0'+ref.canonicalId);
+  }
+ }
+ assert.equal(queue.length,expected.size);
+ assert.equal(new Set(queue.map(item=>item.exam+'\\0'+item.targetTopicId+'\\0'+item.sourceCanonicalId)).size,queue.length);
  for(const item of queue){
   assert.equal(item.eligibleForFullAlias,false);
   assert.ok(item.coveredScope&&item.missingScope);
   const target=curriculumTopics.find(topic=>topic.id===item.targetTopicId);
-  const source=curriculumTopics.find(topic=>topic.id===item.sourceCanonicalId);
-  assert.ok(target&&source);
+  assert.ok(target);
   assert.equal(target.subject,item.subject);
-  assert.equal(source.subject,item.subject);
   assert.equal(target.topic,item.targetTitle);
-  assert.equal(source.topic,item.sourceTitle);
   assert.ok(examBlueprints[item.exam].subjects[target.subject]?.includes(target.topic));
-  assert.ok(partials[item.exam].some(ref=>ref.examTopicId===target.id&&ref.canonicalId===source.id));
+  const source=curriculumTopics.find(topic=>topic.id===item.sourceCanonicalId);
+  if(item.sourceOrigin==='blueprint'){
+   assert.ok(source);
+   assert.equal(source.subject,item.subject);
+   assert.equal(source.topic,item.sourceTitle);
+   assert.ok(partials[item.exam].some(ref=>ref.examTopicId===target.id&&ref.canonicalId===source.id));
+  }else{
+   assert.ok(provao[item.exam].some(ref=>
+    ref.examTopicId===target.id&&ref.canonicalId===item.sourceCanonicalId));
+  }
   assert.equal(reviewedCanonicalAliasForExam(item.exam,target),null);
  }
 });
