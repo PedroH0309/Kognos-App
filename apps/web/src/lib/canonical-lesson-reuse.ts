@@ -113,7 +113,7 @@ export function provaoSourcedPartialReferences(){
       topic.subject===entry.subject&&topic.topic===entry.targetTitle);
     if(!target)return [];
     const source=provaoTopics.find(topic=>
-      topic.subject===entry.subject&&topic.topic===(('officialSourceTitle' in entry)?entry.officialSourceTitle:entry.sourceTitle));
+      topic.subject===entry.subject&&topic.topic===entry.officialSourceTitle);
     if(!source)return [];
     const canonicalId=courseId(source.subject,source.topic);
     if(canonicalId===target.id)return [];
@@ -179,7 +179,7 @@ export function unresolvedPartialCandidates(){
  return reviewedPartialAssociations.flatMap(entry=>{
   const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
   const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
-  const official=officialSources.get(entry.subject+'\\0'+(('officialSourceTitle' in entry)?entry.officialSourceTitle:entry.sourceTitle));
+  const official=officialSources.get(entry.subject+'\\0'+entry.officialSourceTitle);
   const officialId=official?courseId(official.subject,official.topic):null;
   const sourceId=source?.id??officialId;
   const sourceTopic:CurriculumTopic|undefined=source??(official&&officialId?{
