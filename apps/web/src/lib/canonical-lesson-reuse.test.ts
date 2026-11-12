@@ -649,3 +649,21 @@ test('audit includes unique deep lessons from official Provão leaves outside ed
  }
  assert.equal(allUniqueDeepCanonicalIds,canonicalIds.size);
 });
+
+test('partial-only missing audit reconciles official Provão sources without double counting',()=>{
+ const audit=canonicalReuseAudit();
+ const official=provaoPartialReferencesByExam();
+ const blueprint=partialCoverageByExam();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  const missing=new Set(audit.coverageByExam[exam].missingTopicIds);
+  const expected=new Set([...official[exam],...blueprint[exam]]
+   .filter(ref=>missing.has(ref.examTopicId))
+   .map(ref=>ref.examTopicId+'\\0'+ref.canonicalId));
+  assert.equal(audit.partialOnlyMissingByExam[exam],expected.size);
+  for(const ref of official[exam]){
+   assert.equal(ref.fullyCovered,false);
+   if(!missing.has(ref.examTopicId))continue;
+   assert.ok(expected.has(ref.examTopicId+'\\0'+ref.canonicalId));
+  }
+ }
+});
