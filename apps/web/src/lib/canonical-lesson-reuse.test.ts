@@ -686,3 +686,36 @@ test('official Provão grade coverage reconciles exact deep leaves without infla
  // Grade counts are an independent official-leaf inventory, not new cross-exam aliases.
  assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
 });
+
+test('every mapped exact cross-exam reference resolves the identical authored lesson and excludes unrelated exams',()=>{
+ const mappings=canonicalExamTopicMappings();
+ const byId=new Map<string,typeof mappings>();
+ for(const mapping of mappings){
+  const group=byId.get(mapping.canonicalId)??[];
+  group.push(mapping);
+  byId.set(mapping.canonicalId,group);
+ }
+ for(const [canonicalId,group] of byId){
+  if(group.length<2)continue;
+  const source=group[0].lesson;
+  for(const mapping of group){
+   const historical=curriculumTopics.find(topic=>topic.id===mapping.examTopicId);
+   assert.ok(historical);
+   const resolved=canonicalLessonForExam(mapping.exam,historical);
+   assert.ok(resolved);
+   assert.equal(resolved.id,canonicalId);
+   assert.strictEqual(resolved.sections,source.sections);
+   assert.strictEqual(resolved.tasks,source.tasks);
+   assert.equal(mapping.mappingKind,'exact');
+  }
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   for(const mapping of group){
+    if(group.some(item=>item.exam===exam&&item.examTopicId===mapping.examTopicId))continue;
+    const topic=curriculumTopics.find(item=>item.id===mapping.examTopicId);
+    assert.ok(topic);
+    assert.equal(canonicalLessonForExam(exam,topic),null,
+     'Unrelated exam inherited canonical lesson '+canonicalId);
+   }
+  }
+ }
+});
