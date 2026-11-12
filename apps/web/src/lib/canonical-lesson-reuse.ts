@@ -424,7 +424,19 @@ export function canonicalReuseAudit(){
           .map(ref=>ref.examTopicId))]
       ])
     ) as Record<ExamId,string[]>,
-    allUniqueDeepCanonicalIds:[...new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter((id):id is string=>Boolean(id)))].length,
+    allUniqueDeepCanonicalIds:[...new Set([
+      ...curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id),
+      // Official Provão leaves can have authored depth without being listed
+      // in the editorial multi-exam blueprint. Count the authored lesson once.
+      ...provaoTopics.map(topic=>{
+        const id=courseId(topic.subject,topic.topic);
+        const registered=curriculumTopics.find(item=>item.id===id);
+        const source:CurriculumTopic=registered??{
+          id,subject:topic.subject,topic:topic.topic,exams:['saresp']
+        };
+        return deepProvaoLesson(source)?.id;
+      })
+    ].filter((id):id is string=>Boolean(id)))].length,
     /** Distinct literal titles, independent of discipline; do not confuse with topic IDs. */
     distinctCurriculumTitles:new Set(curriculumTopics.map(topic=>topic.topic)).size,
     /** Distinct subject + title pairs are the historical curriculum identities. */
