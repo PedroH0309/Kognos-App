@@ -719,3 +719,28 @@ test('every mapped exact cross-exam reference resolves the identical authored le
   }
  }
 });
+
+test('official Provão advisory source shares one lesson object across eligible exam projections',()=>{
+ const sources=provaoSourcedPartialReferences();
+ const projected=provaoPartialReferencesByExam();
+ for(const source of sources){
+  const matches=(Object.keys(examBlueprints) as ExamId[])
+   .flatMap(exam=>projected[exam].filter(ref=>
+    ref.examTopicId===source.targetTopicId&&ref.canonicalId===source.canonicalId));
+  for(const match of matches){
+   assert.strictEqual(match.lesson,source.lesson);
+   assert.strictEqual(match.lesson.sections,source.lesson.sections);
+   assert.strictEqual(match.lesson.tasks,source.lesson.tasks);
+   assert.equal(match.fullyCovered,false);
+   const target=curriculumTopics.find(topic=>topic.id===match.examTopicId);
+   assert.ok(target);
+   assert.equal(canonicalLessonForExam(match.exam,target),null);
+  }
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   const target=curriculumTopics.find(topic=>topic.id===source.targetTopicId);
+   assert.ok(target);
+   if(examBlueprints[exam].subjects[target.subject]?.includes(target.topic))continue;
+   assert.equal(projected[exam].some(ref=>ref.examTopicId===target.id&&ref.canonicalId===source.canonicalId),false);
+  }
+ }
+});
