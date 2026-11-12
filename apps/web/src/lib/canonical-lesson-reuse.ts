@@ -290,13 +290,18 @@ export function canonicalCoverageByExam(){
 export function canonicalAuthoringBacklog(){
   const coverage=canonicalCoverageByExam();
   const partials=partialCoverageByExam();
+  const provaoPartials=provaoPartialReferencesByExam();
   return curriculumTopics.flatMap(topic=>{
     const exams=(Object.keys(examBlueprints) as ExamId[]).filter(exam=>
       examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
     const missingExams=exams.filter(exam=>coverage[exam].missingTopicIds.includes(topic.id));
     if(!missingExams.length)return [];
-    const advisorySources=[...new Set(missingExams.flatMap(exam=>
-      partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)))];
+    // Include authored official Provão sources even when their leaf titles are
+    // absent from the broad exam-blueprint catalog. Both kinds stay advisory.
+    const advisorySources=[...new Set(missingExams.flatMap(exam=>[
+      ...partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId),
+      ...provaoPartials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)
+    ]))];
     return [{
       topicId:topic.id,subject:topic.subject,title:topic.topic,
       missingExams,examCount:missingExams.length,
