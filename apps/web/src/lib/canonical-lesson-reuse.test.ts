@@ -569,8 +569,8 @@ test('official Provão deep sources resolve partial blocker audit without granti
   const target=curriculumTopics.find(topic=>topic.id===ref.targetTopicId);
   assert.ok(target);
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
-   const registered=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
-   const projected=provaoPartialReferencesByExam()[exam].filter(item=>
+   const registered: boolean=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   const projected: ReturnType<typeof provaoPartialReferencesByExam>[ExamId]=provaoPartialReferencesByExam()[exam].filter(item=>
     item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
    assert.equal(projected.length,registered?1:0);
    assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
