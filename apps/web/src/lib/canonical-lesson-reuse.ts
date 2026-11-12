@@ -148,9 +148,9 @@ export function verifiedPartialAssociations(){
 export function unresolvedPartialCandidates(){
  // Build the official source lookup once. A Provão source may be authored
  // without being present in the broad exam-blueprint-derived catalog.
- const officialSources=new Map(provaoTopics.map(topic=>[
+ const officialSources=new Map<string,(typeof provaoTopics)[number]>(provaoTopics.map(topic=>[
   topic.subject+'\\0'+topic.topic,topic
- ]));
+ ] as const));
  const resolvedOfficial=new Set(provaoSourcedPartialReferences().map(ref=>
   ref.subject+'\\0'+ref.targetTitle+'\\0'+ref.sourceTitle));
  return reviewedPartialAssociations.flatMap(entry=>{
