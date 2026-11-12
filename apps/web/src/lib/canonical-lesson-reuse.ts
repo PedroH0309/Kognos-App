@@ -286,7 +286,7 @@ export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic)
   if(!alias)return null;
   const source=curriculumTopics.find(item=>item.id===alias.sourceTopicId);
   if(!source||source.id===registered.id||source.subject!==alias.subject||source.topic!==alias.sourceTitle)return null;
-  const lesson=deepProvaoLesson(source);
+  const lesson=sharedOfficialProvaoLesson(source);
   if(!lesson)return null;
   return {canonicalId:source.id,examTopicId:registered.id,lesson,scope:alias.rationale};
 }
@@ -300,7 +300,7 @@ export function canonicalLessonForExam(exam:ExamId,topic:CurriculumTopic){
   const registered=curriculumTopics.find(item=>item.id===topic.id);
   if(!registered||registered.subject!==topic.subject||registered.topic!==topic.topic)return null;
   if(!examBlueprints[exam]?.subjects[registered.subject]?.includes(registered.topic))return null;
-  return deepProvaoLesson(registered)??reviewedCanonicalAliasForExam(exam,registered)?.lesson??null;
+  return sharedOfficialProvaoLesson(registered)??reviewedCanonicalAliasForExam(exam,registered)?.lesson??null;
 }
 
 /** Stable, explicit mappings for EVERY verified deep exam-topic membership.
