@@ -48,7 +48,8 @@ test('batch 46 provides five distinct official Provão Portuguese lessons with t
    assert.ok(task.options);
    assert.equal(task.options.length,4,'Every exercise must have A–D choices');
    assert.equal(new Set(task.options).size,4,'No duplicate alternatives');
-   assert.ok(Number.isInteger(task.correctIndex)&&task.correctIndex!>=0&&task.correctIndex!<4);
+   const correct=task.correctIndex;
+   assert.ok(correct!==undefined&&Number.isInteger(correct)&&correct>=0&&correct<4);
    assert.ok(task.hint.length>=50);
    assert.ok(task.solution.length>=100);
    assert.ok(!seenPrompts.has(task.prompt),'Each prompt must be authorial and distinct');
