@@ -53,8 +53,16 @@ export const reviewedSemanticAliases: readonly {
   targetTopicId:string;sourceTopicId:string;
   /** Approval is exam-scoped: a new exam never inherits an alias implicitly. */
   exams:readonly ExamId[];
-}[] = [];
-
+}[] = [{
+  subject:'Português',
+  targetTitle:'Coesão, coerência e progressão temática',
+  sourceTitle:'Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e…',
+  targetTopicId:courseId('Português','Coesão, coerência e progressão temática'),
+  sourceTopicId:courseId('Português','Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e…'),
+  exams:['enem','fuvest','vunesp'],
+  rationale:'Escopo integral revisado: a aula oficial 4.2 do Provão abrange coesão referencial, lexical, sequencial, coerência global e progressão temática. As três partes didáticas aprofundadas tratam desses objetivos, com exemplos e itens específicos. Este alias não estende automaticamente o conteúdo a temas como argumentação geral, interpretação ou gêneros textuais.'
+}];
+ 
 /** Explicitly reviewed *partial* overlap, never a full-coverage alias.
  * Citologia includes membrane transport, organelles, cell division and other
  * objectives; cellular organization alone cannot satisfy that syllabus.
