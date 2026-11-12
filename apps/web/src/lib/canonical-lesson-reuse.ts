@@ -129,11 +129,14 @@ export function provaoPartialReferencesByExam(){
     }).map(ref=>({
       exam,examTopicId:ref.targetTopicId,canonicalId:ref.canonicalId,
       coveredScope:ref.coveredScope,missingScope:ref.missingScope,
-      sourceGrade:ref.sourceGrade,sourceCode:ref.sourceCode,fullyCovered:false as const
+      sourceGrade:ref.sourceGrade,sourceCode:ref.sourceCode,
+      /** Shared authored object; advisory only, never a full-coverage alias. */
+      lesson:ref.lesson,fullyCovered:false as const
     }))
   ])) as Record<ExamId,{
     exam:ExamId;examTopicId:string;canonicalId:string;coveredScope:string;
-    missingScope:string;sourceGrade:number;sourceCode:string;fullyCovered:false
+    missingScope:string;sourceGrade:number;sourceCode:string;
+    lesson:NonNullable<ReturnType<typeof deepProvaoLesson>>;fullyCovered:false
   }[]>;
 }
 
