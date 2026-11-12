@@ -64,12 +64,16 @@ export const reviewedPartialAssociations = [{
   subject:'Biologia',
   targetTitle:'Citologia',
   sourceTitle:'Organização celular dos seres vivos',
+  /** Exact Provão syllabus leaf; short editorial sourceTitle is not a registered topic. */
+  officialSourceTitle:'Organização celular dos seres vivos (célula procariota e células eucariotas vegetal e animal)',
   coveredScope:'Organização celular, distinção procarionte/eucarionte e níveis de organização.',
   missingScope:'Membranas e transportes, organelas, metabolismo e divisão celular exigem aulas próprias.'
 },{
   subject:'Biologia',
   targetTitle:'Células, organelas e membranas',
   sourceTitle:'Organização celular dos seres vivos',
+  /** Exact Provão syllabus leaf; short editorial sourceTitle is not a registered topic. */
+  officialSourceTitle:'Organização celular dos seres vivos (célula procariota e células eucariotas vegetal e animal)',
   coveredScope:'Organização celular e distinção entre células procariontes e eucariontes.',
   missingScope:'Membranas e transportes, estrutura e funções das organelas exigem aprofundamento específico.'
 },{
@@ -78,6 +82,8 @@ export const reviewedPartialAssociations = [{
   subject:'Biologia',
   targetTitle:'Célula e saúde',
   sourceTitle:'Organização celular dos seres vivos',
+  /** Exact Provão syllabus leaf; short editorial sourceTitle is not a registered topic. */
+  officialSourceTitle:'Organização celular dos seres vivos (célula procariota e células eucariotas vegetal e animal)',
   coveredScope:'Organização celular e diferenças entre células procariontes e eucariontes.',
   missingScope:'Saúde, prevenção de doenças, relações entre células e funcionamento do organismo exigem conteúdos próprios.'
 }] as const;
@@ -93,7 +99,7 @@ export function provaoSourcedPartialReferences(){
       topic.subject===entry.subject&&topic.topic===entry.targetTitle);
     if(!target)return [];
     const source=provaoTopics.find(topic=>
-      topic.subject===entry.subject&&topic.topic===entry.sourceTitle);
+      topic.subject===entry.subject&&topic.topic===(('officialSourceTitle' in entry)?entry.officialSourceTitle:entry.sourceTitle));
     if(!source)return [];
     const canonicalId=courseId(source.subject,source.topic);
     if(canonicalId===target.id)return [];
@@ -156,7 +162,7 @@ export function unresolvedPartialCandidates(){
  return reviewedPartialAssociations.flatMap(entry=>{
   const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
   const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
-  const official=officialSources.get(entry.subject+'\\0'+entry.sourceTitle);
+  const official=officialSources.get(entry.subject+'\\0'+(('officialSourceTitle' in entry)?entry.officialSourceTitle:entry.sourceTitle));
   const officialId=official?courseId(official.subject,official.topic):null;
   const sourceId=source?.id??officialId;
   const sourceTopic:CurriculumTopic|undefined=source??(official&&officialId?{
