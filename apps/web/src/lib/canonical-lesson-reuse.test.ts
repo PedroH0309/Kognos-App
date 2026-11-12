@@ -526,8 +526,8 @@ test('official Provão authored partial sources remain advisory and exam-isolate
   assert.ok(ref.sourceCode&&ref.sourceGrade>=1&&ref.sourceGrade<=3);
   assert.ok(ref.coveredScope.length>0&&ref.missingScope.length>0);
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
-   const actual=byExam[exam].filter(item=>item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
-   const registered=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   const actual: ReturnType<typeof provaoPartialReferencesByExam>[ExamId]=byExam[exam].filter(item=>item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
+   const registered: boolean=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
    assert.equal(actual.length,registered?1:0);
    assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
    for(const item of actual)assert.equal(item.fullyCovered,false);
