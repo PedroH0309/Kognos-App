@@ -1,6 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {curriculumTopics} from './curriculum-catalog.ts';
+import {curriculumTopics,type CurriculumTopic} from './curriculum-catalog.ts';
+import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam} from './canonical-lesson-reuse.ts';
@@ -628,4 +630,22 @@ test('cell-organization advisory sources resolve the exact official Provão leaf
    assert.equal(examRefs.length,examBlueprints[exam].subjects[target.subject]?.includes(target.topic)?1:0);
   }
  }
+});
+
+
+test('audit includes unique deep lessons from official Provão leaves outside editorial catalog',()=>{
+ const {allUniqueDeepCanonicalIds}=canonicalReuseAudit();
+ const canonicalIds=new Set<string>();
+ for(const topic of curriculumTopics){
+  const lesson=deepProvaoLesson(topic);
+  if(lesson)canonicalIds.add(lesson.id);
+ }
+ for(const topic of provaoTopics){
+  const id=courseId(topic.subject,topic.topic);
+  const registered=curriculumTopics.find(item=>item.id===id);
+  const source:CurriculumTopic=registered??{id,subject:topic.subject,topic:topic.topic,exams:['saresp']};
+  const lesson=deepProvaoLesson(source);
+  if(lesson)canonicalIds.add(lesson.id);
+ }
+ assert.equal(allUniqueDeepCanonicalIds,canonicalIds.size);
 });
