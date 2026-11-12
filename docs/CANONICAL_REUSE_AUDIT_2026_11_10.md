@@ -78,3 +78,10 @@ A função `semanticReviewQueue()` passa a reconciliar duas origens de associaç
 A origem é indicada por `sourceOrigin` (`blueprint` ou `provao`). A fila **não** cria alias integral, não altera matrícula em exames, IDs, progresso ou persistência. O campo `eligibleForFullAlias` permanece falso. Uma referência só é exibida quando a fonte e o destino foram identificados e a relação está vinculada a um exame efetivamente cadastrado.
 
 Validação: teste de regressão da fila reconciliada com as duas projeções de origem e isolamento por exame. Os números de vínculos habilitados, cobertura e testes devem ser extraídos de execução verificável da CI; este lote não afirma aumento de cobertura integral, novos aliases completos ou remoção de registros persistidos.
+
+
+### 2026-11-11 — reconciliação de fontes profundas do Provão
+
+A auditoria de candidatos parciais agora reconhece fontes autorais aprofundadas que constam nas folhas oficiais do Provão Paulista, mesmo quando o título-fonte não aparece no catálogo editorial derivado dos blueprints. A resolução exige destino registrado, fonte oficial identificável e aula profunda existente; a referência permanece **consultiva**, sem promover cobertura integral ou criar alias entre provas. O teste `official Provão deep sources resolve partial blocker audit without granting full aliases` verifica o diagnóstico, a projeção somente para exames com destino registrado e o isolamento do alias integral.
+
+Commits deste lote: `c99f4da` (reconciliação) e `cfe5890` (regressão). Os totais antes/depois de candidatos desbloqueados dependem da execução da auditoria; não são inferidos da quantidade de títulos históricos. Novos aliases integrais: **0**; aulas novas: **0**; duplicações persistidas removidas: **0**. Nenhuma alteração em banco, RLS, Auth ou IDs históricos. CI do commit final pendente de confirmação.
