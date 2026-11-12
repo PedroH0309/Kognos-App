@@ -459,6 +459,7 @@ test('cross-exam authoring backlog deduplicates historical topics and excludes c
  const backlog=canonicalAuthoringBacklog();
  const coverage=canonicalCoverageByExam();
  const partials=partialCoverageByExam();
+ const provaoPartials=provaoPartialReferencesByExam();
  assert.deepEqual(canonicalReuseAudit().authoringBacklog,backlog);
  assert.equal(new Set(backlog.map(item=>item.topicId)).size,backlog.length);
  assert.equal(backlog.reduce((sum,item)=>sum+item.examCount,0),
@@ -479,10 +480,36 @@ test('cross-exam authoring backlog deduplicates historical topics and excludes c
    assert.equal(item.missingExams.includes(exam),missing);
    if(missing)assert.equal(canonicalLessonForExam(exam,topic),null);
   }
-  const expected=[...new Set(item.missingExams.flatMap(exam=>
-   partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)))];
+  const expected=[...new Set(item.missingExams.flatMap(exam=>[
+   ...partials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId),
+   ...provaoPartials[exam].filter(ref=>ref.examTopicId===topic.id).map(ref=>ref.canonicalId)
+  ]))];
   assert.deepEqual(item.advisorySourceIds,expected);
   assert.equal(item.hasPartialReference,expected.length>0);
+ }
+});
+
+test('authoring backlog includes only verified Provão sources for still-missing exam topics',()=>{
+ const backlog=canonicalAuthoringBacklog();
+ const byExam=provaoPartialReferencesByExam();
+ const coverage=canonicalCoverageByExam();
+ for(const exam of Object.keys(examBlueprints) as ExamId[]){
+  for(const ref of byExam[exam]){
+   const item=backlog.find(entry=>entry.topicId===ref.examTopicId);
+   const missing=coverage[exam].missingTopicIds.includes(ref.examTopicId);
+   if(missing){
+    assert.ok(item,'Missing target must remain in authoring backlog');
+    assert.ok(item.missingExams.includes(exam));
+    assert.ok(item.advisorySourceIds.includes(ref.canonicalId));
+    assert.equal(item.hasPartialReference,true);
+   }else{
+    assert.ok(!item?.missingExams.includes(exam),'Completed exam must not be in backlog');
+   }
+   const target=curriculumTopics.find(topic=>topic.id===ref.examTopicId);
+   assert.ok(target);
+   assert.equal(ref.fullyCovered,false);
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+  }
  }
 });
 
