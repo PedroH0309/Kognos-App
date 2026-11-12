@@ -248,9 +248,20 @@ test('partial backlog IDs are registered, missing and isolated per exam',()=>{
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
   const ids=audit.partialMissingTopicIdsByExam[exam];
   assert.equal(new Set(ids).size,ids.length);
-  const expected=[...new Set(partials[exam].filter(ref=>
-   coverage[exam].missingTopicIds.includes(ref.examTopicId)).map(ref=>ref.examTopicId))];
+  const expected=[...new Set([
+   ...partials[exam],...provaoPartialReferencesByExam()[exam]
+  ].filter(ref=>coverage[exam].missingTopicIds.includes(ref.examTopicId))
+   .map(ref=>ref.examTopicId))];
   assert.deepEqual(ids,expected);
+  // Every advisory source is still partial; a source from the official Provão
+  // catalog must not silently create a full exam mapping.
+  for(const ref of provaoPartialReferencesByExam()[exam]){
+   if(!coverage[exam].missingTopicIds.includes(ref.examTopicId))continue;
+   assert.ok(ids.includes(ref.examTopicId));
+   assert.equal(ref.fullyCovered,false);
+   assert.equal(canonicalExamTopicMappings().some(mapping=>
+    mapping.exam===exam&&mapping.examTopicId===ref.examTopicId),false);
+  }
   for(const id of ids){
    const topic=curriculumTopics.find(item=>item.id===id);
    assert.ok(topic);
