@@ -604,3 +604,28 @@ test('unresolved official Provão candidates distinguish missing registration fr
  }
  assert.equal(canonicalReuseAudit().unresolvedSemanticCandidates,unresolved.length);
 });
+
+test('cell-organization advisory sources resolve the exact official Provão leaf',()=>{
+ const officialTitle='Organização celular dos seres vivos (célula procariota e células eucariotas vegetal e animal)';
+ const reviewed=reviewedPartialAssociations.filter(item=>item.sourceTitle==='Organização celular dos seres vivos');
+ assert.equal(reviewed.length,3);
+ for(const entry of reviewed){
+  assert.equal(('officialSourceTitle' in entry)?entry.officialSourceTitle:null,officialTitle);
+ }
+ assert.ok(provaoTopics.some(topic=>topic.subject==='Biologia'&&topic.topic===officialTitle));
+ const refs=provaoSourcedPartialReferences().filter(item=>
+  item.sourceTitle==='Organização celular dos seres vivos');
+ assert.ok(refs.length>0,'At least one cell-organization advisory reference must resolve');
+ for(const ref of refs){
+  assert.equal(ref.fullyCovered,false);
+  assert.ok(ref.missingScope.length>0);
+  assert.equal(ref.lesson.id,ref.canonicalId);
+  const target=curriculumTopics.find(topic=>topic.id===ref.targetTopicId);
+  assert.ok(target);
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
+   const examRefs=provaoPartialReferencesByExam()[exam].filter(item=>item.examTopicId===target.id&&item.canonicalId===ref.canonicalId);
+   assert.equal(examRefs.length,examBlueprints[exam].subjects[target.subject]?.includes(target.topic)?1:0);
+  }
+ }
+});
