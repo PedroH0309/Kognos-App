@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
+import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam} from './canonical-lesson-reuse.ts';
 
@@ -576,4 +577,30 @@ test('official Provão deep sources resolve partial blocker audit without granti
    for(const item of projected)assert.equal(item.fullyCovered,false);
   }
  }
+});
+
+test('unresolved official Provão candidates distinguish missing registration from missing authored depth',()=>{
+ const unresolved=unresolvedPartialCandidates();
+ for(const item of unresolved){
+  const official=provaoTopics.find(topic=>
+   topic.subject===item.subject&&topic.topic===item.sourceTitle);
+  const registered=curriculumTopics.find(topic=>
+   topic.subject===item.subject&&topic.topic===item.sourceTitle);
+  if(official&&!registered){
+   assert.ok(item.sourceTopicId,
+    'Official source must retain its derived canonical identity');
+   assert.ok(!item.blockers.includes('source-not-registered'),
+    'Official Provão source must not be misclassified as absent');
+   assert.ok(item.blockers.includes('source-not-deep')||
+    item.blockers.includes('target-not-registered')||
+    item.blockers.includes('same-topic-id'),
+    'Unresolved official source requires a genuine remaining blocker');
+  }
+  if(!official&&!registered){
+   assert.equal(item.sourceTopicId,null);
+   assert.ok(item.blockers.includes('source-not-registered'));
+  }
+  assert.equal(item.eligibleForFullAlias,false);
+ }
+ assert.equal(canonicalReuseAudit().unresolvedSemanticCandidates,unresolved.length);
 });
