@@ -146,25 +146,34 @@ export function verifiedPartialAssociations(){
  * These are not canonical mappings and never grant coverage to any exam.
  */
 export function unresolvedPartialCandidates(){
+ // Build the official source lookup once. A Provão source may be authored
+ // without being present in the broad exam-blueprint-derived catalog.
+ const officialSources=new Map(provaoTopics.map(topic=>[
+  topic.subject+'\\0'+topic.topic,topic
+ ]));
+ const resolvedOfficial=new Set(provaoSourcedPartialReferences().map(ref=>
+  ref.subject+'\\0'+ref.targetTitle+'\\0'+ref.sourceTitle));
  return reviewedPartialAssociations.flatMap(entry=>{
   const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
   const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
-  const sourceLesson=source?deepProvaoLesson(source):null;
-  // Official Provão leaves can have an authored deep lesson without being
-  // registered in the broad blueprint-derived curriculum. Such a source is
-  // resolved as an advisory reference, not an approved full semantic alias.
-  const provaoSource=provaoSourcedPartialReferences().some(ref=>
-    ref.subject===entry.subject&&ref.targetTitle===entry.targetTitle&&
-    ref.sourceTitle===entry.sourceTitle&&ref.targetTopicId===target?.id);
-  if(target&&((source&&target.id!==source.id&&sourceLesson)||provaoSource))return [];
+  const official=officialSources.get(entry.subject+'\\0'+entry.sourceTitle);
+  const officialId=official?courseId(official.subject,official.topic):null;
+  const sourceId=source?.id??officialId;
+  const sourceTopic:CurriculumTopic|undefined=source??(official&&officialId?{
+   id:officialId,subject:official.subject,topic:official.topic,exams:['saresp']
+  }:undefined);
+  const sourceLesson=sourceTopic?deepProvaoLesson(sourceTopic):null;
+  const key=entry.subject+'\\0'+entry.targetTitle+'\\0'+entry.sourceTitle;
+  if(target&&sourceId&&target.id!==sourceId&&
+   (sourceLesson||resolvedOfficial.has(key)))return [];
   return [{
    subject:entry.subject,targetTitle:entry.targetTitle,sourceTitle:entry.sourceTitle,
-   targetTopicId:target?.id??null,sourceTopicId:source?.id??null,
+   targetTopicId:target?.id??null,sourceTopicId:sourceId??null,
    blockers:[
     ...(!target?['target-not-registered' as const]:[]),
-    ...(!source?['source-not-registered' as const]:[]),
-    ...(source&&!sourceLesson?['source-not-deep' as const]:[]),
-    ...(target&&source&&target.id===source.id?['same-topic-id' as const]:[])
+    ...(!sourceTopic?['source-not-registered' as const]:[]),
+    ...(sourceTopic&&!sourceLesson?['source-not-deep' as const]:[]),
+    ...(target&&sourceId&&target.id===sourceId?['same-topic-id' as const]:[])
    ],
    missingScope:entry.missingScope,eligibleForFullAlias:false as const
   }];
