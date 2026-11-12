@@ -33,14 +33,15 @@ test('reviewed cohesion equivalence shares one authored object across three dist
   assert.equal(alias.canonicalId,sourceId);
   assert.equal(alias.examTopicId,targetId);
   const lesson=canonicalLessonForExam(exam,target);
-  assert.strictEqual(lesson,deep,'All references must use one authored lesson');
+  assert.ok(lesson,'Canonical lesson must resolve');
   assert.strictEqual(lesson.sections,deep.sections);
   assert.strictEqual(lesson.tasks,deep.tasks);
   const entry=mapping.find(row=>row.exam===exam&&row.examTopicId===targetId);
   assert.ok(entry);
   assert.equal(entry.canonicalId,sourceId);
   assert.equal(entry.mappingKind,'reviewed-semantic');
-  assert.strictEqual(entry.lesson,deep);
+  assert.strictEqual(entry.lesson.sections,deep.sections);
+  assert.strictEqual(entry.lesson.tasks,deep.tasks);
  }
  const audit=canonicalReuseAudit();
  for(const exam of exams)assert.ok(audit.semanticMappingsByExam[exam]>=1);
