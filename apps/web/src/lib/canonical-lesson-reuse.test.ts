@@ -57,7 +57,8 @@ test('audit distinguishes reference reuse from actual persisted duplicate remova
  assert.equal(audit.potentialCopiesAvoidedByReference,audit.avoidedDeepLessonCopies);
  assert.equal(audit.deepCurriculumTopics+audit.missingDeepCurriculumTopics,curriculumTopics.length);
  assert.equal(audit.approvedPartialAssociations,verifiedPartialAssociations().length);
- assert.equal(audit.unresolvedSemanticCandidates,reviewedPartialAssociations.length-verifiedPartialAssociations().length);
+ assert.equal(audit.unresolvedSemanticCandidates,unresolvedPartialCandidates().length);
+ assert.ok(audit.unresolvedSemanticCandidates<=reviewedPartialAssociations.length);
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
   const entries=Object.entries(examBlueprints[exam].subjects)
    .flatMap(([subject,titles])=>titles.map(title=>subject+'\\0'+title));
@@ -231,12 +232,15 @@ test('two different broad cell-biology titles share only a verified partial sour
 test('partial-only counts exclude targets with independently complete deep lessons',()=>{
  const audit=canonicalReuseAudit();
  const partials=partialCoverageByExam();
+ const officialPartials=provaoPartialReferencesByExam();
  const coverage=canonicalCoverageByExam();
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
   const missing=new Set(coverage[exam].missingTopicIds);
-  const expected=partials[exam].filter(ref=>missing.has(ref.examTopicId)).length;
+  const combined=[...partials[exam],...officialPartials[exam]];
+  const expected=new Set(combined.filter(ref=>missing.has(ref.examTopicId))
+   .map(ref=>ref.examTopicId+'\\0'+ref.canonicalId)).size;
   assert.equal(audit.partialOnlyMissingByExam[exam],expected);
-  assert.ok(expected<=partials[exam].length);
+  assert.ok(expected<=combined.length);
   assert.equal(coverage[exam].total,coverage[exam].deep+coverage[exam].missing);
  }
 });
@@ -315,33 +319,40 @@ test('ETEC cell-and-health candidate is advisory even without a registered canon
   item.subject==='Biologia'&&item.targetTitle==='Célula e saúde'&&
   item.sourceTitle==='Organização celular dos seres vivos');
  assert.ok(candidate,'The explicitly reviewed partial candidate must stay documented');
- assert.ok(examBlueprints.etec.subjects.Biologia?.includes(candidate.targetTitle),
-  'The ETEC study blueprint should retain its historical cell-and-health title');
+ assert.ok(examBlueprints.etec.subjects.Biologia?.includes(candidate.targetTitle));
  const target=curriculumTopics.find(t=>t.subject===candidate.subject&&t.topic===candidate.targetTitle);
- assert.ok(target,'The ETEC target must resolve to a real registered curriculum topic');
- // A ProVão depth title does not automatically become an exam-blueprint topic.
- // An unregistered (or not deeply authored) source cannot produce a verified link.
+ assert.ok(target,'The ETEC target must resolve to a registered topic');
  const source=curriculumTopics.find(t=>t.subject===candidate.subject&&t.topic===candidate.sourceTitle);
  const partial=verifiedPartialAssociations().find(p=>p.targetTopicId===target.id&&
   p.sourceTitle===candidate.sourceTitle);
  if(partial){
-  assert.ok(source,'A verified partial link must have a registered source topic');
+  assert.ok(source,'A verified blueprint partial must have a registered source');
   assert.equal(partial.canonicalId,source.id);
   assert.match(partial.missingScope,/Saúde/);
- }else{
-  assert.ok(canonicalReuseAudit().unresolvedSemanticCandidates>=1,
-   'Unverified candidate must be counted as unresolved, not as full coverage');
  }
+ const advisory=provaoSourcedPartialReferences().find(ref=>
+  ref.targetTopicId===target.id&&ref.sourceTitle===candidate.sourceTitle);
+ const unresolved=unresolvedPartialCandidates().find(ref=>
+  ref.targetTopicId===target.id&&ref.sourceTitle===candidate.sourceTitle);
+ if(advisory){
+  assert.equal(advisory.fullyCovered,false);
+  assert.match(advisory.missingScope,/Saúde/);
+  assert.equal(unresolved,undefined,'Authored official partial source is resolved as advisory');
+ }else if(!partial){
+  assert.ok(unresolved,'A source missing both registered and official references stays unresolved');
+ }
+ const projections=provaoPartialReferencesByExam();
  for(const exam of Object.keys(examBlueprints) as ExamId[]){
-  const refs: ReturnType<typeof partialCoverageByExam>[ExamId] = partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
-  const registered: boolean = Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
+  const registered=Boolean(examBlueprints[exam].subjects.Biologia?.includes(target.topic));
+  const refs=partialCoverageByExam()[exam].filter(ref=>ref.examTopicId===target.id);
   assert.equal(refs.length,partial&&registered?1:0,
-   'Never project an unresolved or unrelated ETEC candidate to '+exam);
+   'Blueprint partial must only appear for registered exams: '+exam);
+  const officialRefs=projections[exam].filter(ref=>
+   ref.examTopicId===target.id&&ref.canonicalId===advisory?.canonicalId);
+  assert.equal(officialRefs.length,advisory&&registered?1:0,
+   'Official advisory must only appear for registered exams: '+exam);
+  for(const ref of [...refs,...officialRefs])assert.equal(ref.fullyCovered,false);
   assert.equal(reviewedCanonicalAliasForExam(exam,target),null);
-  for(const ref of refs){
-   assert.equal(ref.fullyCovered,false);
-   assert.equal(ref.canonicalId,partial?.canonicalId);
-  }
  }
 });
 
@@ -385,6 +396,7 @@ test('single-snapshot audit reconciles canonical references and partial backlog'
  const audit=canonicalReuseAudit();
  const mappings=canonicalExamTopicMappings();
  const partials=partialCoverageByExam();
+ const officialPartials=provaoPartialReferencesByExam();
  const uniqueHistoricalIds=new Map<string,Set<string>>();
  for(const mapping of mappings){
   const ids=uniqueHistoricalIds.get(mapping.canonicalId)??new Set<string>();
@@ -399,9 +411,11 @@ test('single-snapshot audit reconciles canonical references and partial backlog'
   assert.equal(audit.canonicalMappingsByExam[exam],
    mappings.filter(mapping=>mapping.exam===exam).length);
   assert.deepEqual(audit.partialCoverageByExam[exam],partials[exam]);
+  assert.deepEqual(audit.provaoPartialReferencesByExam[exam],officialPartials[exam]);
   const missing=new Set(audit.coverageByExam[exam].missingTopicIds);
+  const combined=[...partials[exam],...officialPartials[exam]];
   assert.deepEqual(audit.partialMissingTopicIdsByExam[exam],
-   [...new Set(partials[exam].filter(ref=>missing.has(ref.examTopicId)).map(ref=>ref.examTopicId))]);
+   [...new Set(combined.filter(ref=>missing.has(ref.examTopicId)).map(ref=>ref.examTopicId))]);
  }
 });
 
