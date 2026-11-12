@@ -5,7 +5,7 @@ import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam,officialProvaoGradeCoverage} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam,officialProvaoGradeCoverage,officialProvaoCanonicalGradeMappings} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -754,5 +754,37 @@ test('official Provão advisory source shares one lesson object across eligible 
    if(examBlueprints[exam].subjects[target.subject]?.includes(target.topic))continue;
    assert.equal(projected[exam].some(ref=>ref.examTopicId===target.id&&ref.canonicalId===source.canonicalId),false);
   }
+ }
+});
+
+test('official Provão grade mappings preserve provenance and shared canonical identity',()=>{
+ const mappings=officialProvaoCanonicalGradeMappings();
+ const officialKeys=new Set(provaoTopics.map(row=>
+  [row.grade,row.subject,row.code,row.topic].join('\\0')));
+ assert.ok(mappings.length>0,'Expected authored official Provão deep lessons');
+ for(const mapping of mappings){
+  assert.ok(officialKeys.has([mapping.grade,mapping.subject,mapping.officialCode,mapping.officialTitle].join('\\0')));
+  assert.equal(mapping.canonicalId,courseId(mapping.subject,mapping.officialTitle));
+  assert.equal(mapping.lesson.id,mapping.canonicalId);
+ }
+ const byCanonical=new Map<string,typeof mappings>();
+ for(const mapping of mappings){
+  const group=byCanonical.get(mapping.canonicalId)??[];
+  group.push(mapping);
+  byCanonical.set(mapping.canonicalId,group);
+ }
+ for(const group of byCanonical.values()){
+  for(const mapping of group){
+   assert.strictEqual(mapping.lesson.sections,group[0].lesson.sections);
+   assert.strictEqual(mapping.lesson.tasks,group[0].lesson.tasks);
+  }
+ }
+ const coverage=officialProvaoGradeCoverage();
+ for(const grade of coverage){
+  assert.equal(mappings.filter(item=>item.grade===grade.grade).length,grade.deepEntries);
+  assert.deepEqual(
+   new Set(mappings.filter(item=>item.grade===grade.grade).map(item=>item.canonicalId)),
+   new Set(grade.uniqueCanonicalDeepIds)
+  );
  }
 });
