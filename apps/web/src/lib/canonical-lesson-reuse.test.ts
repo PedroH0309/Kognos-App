@@ -802,3 +802,34 @@ test('official Provão grade mappings preserve provenance and shared canonical i
   );
  }
 });
+
+
+test('official Provão grade projections share canonical lesson objects without fabricating grade membership',()=>{
+ const mappings=officialProvaoCanonicalGradeMappings();
+ const byIdentity=new Map<string,typeof mappings>();
+ for(const mapping of mappings){
+  const key=mapping.subject+'\\0'+mapping.officialTitle;
+  const group=byIdentity.get(key)??[];
+  group.push(mapping);
+  byIdentity.set(key,group);
+  assert.equal(mapping.lesson.id,mapping.canonicalId);
+  assert.ok(provaoTopics.some(row=>row.grade===mapping.grade&&row.code===mapping.officialCode&&
+   row.subject===mapping.subject&&row.topic===mapping.officialTitle));
+ }
+ for(const group of byIdentity.values()){
+  for(const mapping of group){
+   assert.strictEqual(mapping.lesson.sections,group[0].lesson.sections);
+   assert.strictEqual(mapping.lesson.tasks,group[0].lesson.tasks);
+  }
+  const actualGrades=new Set(provaoTopics.filter(row=>row.subject===group[0].subject&&
+   row.topic===group[0].officialTitle).map(row=>row.grade));
+  assert.deepEqual(new Set(group.map(mapping=>mapping.grade)),actualGrades,
+   'Never infer an official grade from a shared lesson title');
+ }
+ for(const grade of [1,2,3] as const){
+  const summary=officialProvaoGradeCoverage().find(item=>item.grade===grade);
+  assert.ok(summary);
+  assert.equal(summary.deepEntries,mappings.filter(item=>item.grade===grade).length);
+  assert.equal(summary.totalEntries,summary.deepEntries+summary.missingEntries);
+ }
+});
