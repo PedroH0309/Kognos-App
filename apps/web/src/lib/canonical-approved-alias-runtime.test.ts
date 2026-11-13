@@ -19,7 +19,7 @@ test('approved cross-title aliases reuse the same authored object and preserve h
       const lesson = canonicalLessonForExam(exam, target);
       assert.ok(lesson, `approved alias must resolve: ${exam} / ${target.topic}`);
       assert.equal(lesson.id, source.id, 'canonical ID belongs to authored source');
-      const row = mappings.find(m => m.exam === exam && m.examTopicId === target.id);
+      const row: (typeof mappings)[number] | undefined = mappings.find(m => m.exam === exam && m.examTopicId === target.id);
       assert.ok(row);
       assert.equal(row.mappingKind, 'reviewed-semantic');
       assert.strictEqual(row.lesson, lesson, 'same object, not a clone');
@@ -27,7 +27,7 @@ test('approved cross-title aliases reuse the same authored object and preserve h
     }
     for (const exam of Object.keys(examBlueprints) as ExamId[]) {
       if (alias.exams.includes(exam)) continue;
-      const row = mappings.find(m => m.exam === exam && m.examTopicId === target.id);
+      const row: (typeof mappings)[number] | undefined = mappings.find(m => m.exam === exam && m.examTopicId === target.id);
       assert.notEqual(row?.mappingKind, 'reviewed-semantic',
         'non-approved exams must not inherit semantic alias');
     }
