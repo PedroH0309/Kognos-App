@@ -70,6 +70,27 @@ export const reviewedSemanticAliases: readonly {
  */
 export const reviewedPartialAssociations = [{
   subject:'Português',
+  targetTitle:'Variação linguística e norma-padrão',
+  sourceTitle:'Distinção entre variedades linguísticas',
+  officialSourceTitle:'Distinção entre variedades linguísticas: categorias sociais e contextos de comunicação;…',
+  coveredScope:'Variedades linguísticas em contextos sociais e registros de formalidade e informalidade.',
+  missingScope:'Prescrição da norma-padrão, adequação normativa e demais convenções de uso exigem complemento; não há cobertura integral.'
+},{
+  subject:'Português',
+  targetTitle:'Morfologia e classes de palavras',
+  sourceTitle:'Classes de palavras',
+  officialSourceTitle:'Classes de palavras: substantivo, artigo, adjetivo, numeral, pronome, verbo, advérbio,…',
+  coveredScope:'Identificação e função das classes de palavras listadas no item 2.1 do Provão.',
+  missingScope:'Estrutura e formação de palavras, flexões e demais processos morfológicos exigem complemento específico.'
+},{
+  subject:'Português',
+  targetTitle:'Concordância, regência e crase',
+  sourceTitle:'Concordância nominal e concordância verbal',
+  officialSourceTitle:'Concordância nominal e concordância verbal',
+  coveredScope:'Regras e emprego de concordância nominal e verbal.',
+  missingScope:'Regência nominal e verbal e emprego da crase não são cobertos integralmente pela aula de concordância.'
+},{
+  subject:'Português',
   targetTitle:'Semântica e figuras de linguagem',
   sourceTitle:'Níveis de significação do texto',
   officialSourceTitle:'Níveis de significação do texto: significação explícita e significação implícita; denotação e…',
