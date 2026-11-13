@@ -724,3 +724,57 @@ O job de testes no commit `55151eb8` executou 509 testes: 504 aprovações e cin
 - A auditoria obtém uma única fotografia das referências oficiais por chamada para evitar contagens e objetos redundantes; as invariantes de isolamento e os IDs históricos continuam preservados.
 
 **Impacto curricular:** nenhum novo alias integral, nenhuma nova aula, nenhum registro persistido eliminado. Este lote corrige consistência da auditoria e reutilização de referências já aprovadas como **parciais**. A alteração não mexe em rotas, progresso, Auth, RLS, schema, CI secrets ou conteúdo homologado. Os testes, TypeScript, segurança de dois usuários e build precisam de CI verde observada no commit final; não assumir aprovação antes disso. A meta de 20/11/2026 continua condicionada às lacunas e à revisão pedagógica.
+
+
+## 2026-11-12 — lote 46, cinco aulas aprofundadas de Português reutilizadas nas três séries
+
+**Fonte de escopo:** Provão Paulista Seriado 2026, Edital SEDUC 10/2026, Anexo VII, páginas 35 (1ª série), 39 (2ª série) e 44 (3ª série). Os cinco objetivos são folhas oficiais com a **mesma descrição e código** nas três séries; a aprendizagem é autoral do Kognos, **não oficial** e sem homologação docente.
+
+Aulas novas, em cinco arquivos `provao-depth-batch46-*.ts`:
+
+1. **Distinção entre variedades linguísticas** (código 1.2): variedades regionais e sociais, registro situacional, adequação e preconceito linguístico; sem tratar variantes como incapacidade.
+2. **Níveis de significação do texto** (4.1): explícito/implícito, inferências justificáveis, denotação/conotação, pressupostos e subentendidos.
+3. **Estratégias de articulação do texto** (4.2): coesão referencial, lexical e sequencial; conectivos, coerência global e progressão argumentativa.
+4. **Modos de organização do texto** (4.3): descrição, narração e dissertação; distinção entre exposição, argumentação e sequências híbridas.
+5. **Citação de discursos** (4.4): discurso direto, indireto e indireto livre; mudanças de dêiticos, narrador e mistura de vozes.
+
+Cada especificação nova inclui **3 capítulos progressivos com explicações de mais de 750 caracteres cada**, 3 exemplos contextualizados com resolução, pré-requisitos, erros frequentes, passos concretos e **3 questões objetivas distintas A–D**, com `correctIndex`, dica e comentário. Total do lote: **5 aulas canônicas, 15 capítulos, 15 questões originais**. A identidade da aula é `courseId('Português', título oficial)`; cada uma é aproveitada nas **3 séries** mediante o mesmo ID e arrays de capítulos/questões, sem cópia do conteúdo nem alteração de IDs históricos. A visibilidade em cada exame continua condicionada ao pertencimento explícito ao catálogo, e não a similaridade nominal.
+
+**Medição estática sobre a base anterior deste lote** (`main` no commit `a08ba0ac`): o inventário oficial tinha **743 entradas de série e 364 títulos distintos por disciplina**; **403 entradas** e **195 títulos únicos** resolviam aula aprofundada, restando **340 entradas** e **169 títulos únicos** sem profundidade. Os cinco novos títulos aparecem três vezes cada (uma por série), portanto o efeito esperado **após carregar o registro** é passar para **418/743 entradas com aula, 200/364 títulos únicos com aula e 164 títulos únicos pendentes**. Os 15 vínculos por série não são 15 aulas autorais nem 15 equivalências de títulos diferentes. Isso não altera os demais títulos editoriais do Kognos nem elimina cópias persistidas (0).
+
+**Testes adicionados:** `provao-depth-batch46-language.test.ts` valida profundidade mínima, títulos oficiais por série, gabaritos, alternativas únicas, identidade canônica de seções e questões, e ausência de herança em exames não relacionados. Sem migração SQL, alteração de RLS/Auth, automação nova, merge ou deploy. Revisão pedagógica e testes de integração/TypeScript/build/CI ainda exigem aprovação observada; não atribuir sucesso antes da execução.
+
+
+## 2026-11-12 — lote 47A, primeira equivalência semântica integral entre exames
+
+**Prioridade:** reutilizar aula já aprofundada antes de criar novos textos. Fonte canônica: Português, Provão Paulista, item oficial 4.2, “Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e articulação de enunciados de qualquer extensão) e coerência”, nas três séries. O conteúdo do lote 46 ensina retomadas referenciais, coesão lexical e sequencial, relações lógicas, coerência global e progressão temática. Destino editorial de ensino médio: “Coesão, coerência e progressão temática”, já cadastrado em ENEM, FUVEST e VUNESP. **Equivalência integral de objetivos revisada dentro do escopo declarado desses roteiros editoriais**, não homologação por cada banca.
+
+O registro `reviewedSemanticAliases` liga o ID histórico `courseId('Português','Coesão, coerência e progressão temática')` ao ID canônico oficial `courseId('Português','Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e…')` somente em `enem`, `fuvest`, `vunesp`. O mesmo array de capítulos e tarefas é compartilhado por referência; nenhum texto foi copiado e nenhum progresso, ID de rota, registro do banco ou RLS foi alterado. `canonicalLessonForExam` continua recusando identidade falsificada e exames sem associação. A aula do Provão permanece com seu ID próprio; o destino editorial conserva seu ID para progresso. Não se amplia essa equivalência a “Argumentação e coesão”, “Interpretação de textos”, “Variação linguística” ou qualquer título mais abrangente.
+
+**Mudança verificável de modelo:** um novo grupo de equivalência entre dois IDs históricos (1 fonte e 1 destino), com **3 vínculos exame→aula** aprovados e **1 identidade histórica adicional reutilizando o conteúdo**. O potencial de evitar 1 cópia autoral para esse destino não significa exclusão de arquivo ou duplicação persistida: **0 duplicações de banco eliminadas**. O incremento esperado no relatório `canonicalReuseAudit()` é +1 em `crossTopicCanonicalGroups`, +1 em `crossTopicReferencesReused`, +1 em `reviewedNonExactAliases` e +1 em `semanticMappingsByExam` para cada uma das três provas, desde que as entradas de blueprint continuem cadastradas. Cobertura global anterior/nova deve ser medida pelo audit em CI, não estimada por títulos históricos.
+
+**Regressão:** `canonical-cohesion-cross-exam.test.ts` comprova escopo do item 4.2, source/target IDs distintos, conteúdo compartilhado, vínculos por exame, rejeição de ETEC e SARESP para esse alias, rejeição de IDs falsos e isolamento de outro tópico de leitura. As verificações CI e revisão pedagógica são condições para integração; nenhum merge/deploy.
+
+
+## 2026-11-12 — lote 47: cinco aulas autorais de leitura e literatura, compartilhadas por série
+
+**Origem do recorte:** Anexo VII do Edital SEDUC 10/2026, folhas de Português para a 1ª/2ª/3ª séries do Provão Paulista (páginas 35/39–40/44). Os rótulos abaixo são os títulos oficiais cadastrados no repositório; a didática é **original do Kognos, não oficial, sem homologação docente**.
+
+- **Contexto histórico-cultural do texto**, item 4.5, todas as séries: marcas de época, gênero, destinatário, comparação cultural e limites de inferência; distingue o contexto da narrativa do momento de autoria.
+- **Intertextualidade e interdiscursividade**, item 4.6, todas as séries: citação, paráfrase, paródia, referência implícita e apropriação de vozes sociais; não trata tema semelhante como prova de intertextualidade.
+- **Interação entre texto verbal e não verbal**, item 4.7, todas as séries: cartaz, imagem, legenda, gráfico, escala e ironia multimodal; identifica limites de fotografias e recortes.
+- **Barroco**, item 5.1.1, todas as séries: contexto histórico, tensões entre ideias e imagens, cultismo e conceptismo, sátira e leitura crítica de fontes; não atribui versos fictícios a autores históricos.
+- **Análise literária de poema e conto**, itens 5.2.1 e 6.2, ambos cadastrados nas três séries sob **o mesmo título e mesma descrição**: voz lírica, versos, ritmo, narrador, focalização, conflito, comparação de recursos estilísticos. Os seis códigos/séries resolvem uma única aula, **sem duplicar textos ou questões**.
+
+Cada nova aula possui três capítulos progressivos de mais de 750 caracteres explicativos cada, três exemplos concretos trabalhados, pré-requisitos, erros frequentes, três perguntas objetivas A–D distintas com `correctIndex` e soluções comentadas. **Total autoral do lote:** 5 aulas, 15 capítulos e 15 questões. **Referências oficiais adicionais:** 18 entradas de série/código — doze referentes a quatro temas (4 × 3) e seis entradas do quinto tema (2 códigos × 3 séries). O vínculo canônico usa os mesmos IDs históricos derivados de disciplina e título; não reinterpreta um tópico amplo como integralmente coberto por aula parcial e não faz alias de título diferente.
+
+**Auditoria projetada para a branch do PR #108:** base incorporada do lote 46, 200 temas únicos aprofundados entre 364 e 418 entradas aprofundadas entre 743; após o lote 47, a expectativa é **205/364 temas únicos** e **436/743 entradas** aprofundadas, restando **159 temas únicos** e **307 entradas por série/código**. No catálogo editorial total de 1.512 títulos, a estimativa de pendências integrais cai de 1.312 para **1.307** pela adição de cinco títulos únicos, sem confundir 18 referências com aulas. Todos esses totais exigem confirmação de execução do inventário e CI no commit final; os números são reconciliação estática, não homologação docente.
+
+O teste `provao-depth-batch47-language.test.ts` verifica os cinco títulos contra o catálogo oficial, os códigos duplicados 5.2.1/6.2, os 3 capítulos por aula, o tamanho, três perguntas diferentes, quatro alternativas únicas, gabarito válido, reuso de seções/questões e bloqueio de exames sem o título. **Nenhuma alteração de banco, RLS/Auth, progresso, chaves, dados de usuário, schema, PR #107 ou deploy.** O PR #108 permanece draft; testes, segurança de dois usuários, design, TypeScript e build devem ser observados no GitHub Actions antes de considerar a CI aprovada.
+
+
+### 2026-11-12 — CI intermediária: respeito ao primeiro alias semântico integral
+
+A execução intermediária [#43264992104](https://github.com/PedroH0309/Kognos-App/actions/runs/43264992104) falhou em três testes preexistentes que exigiam **zero** aliases não exatos. A branch já contém uma associação editorial explícita de `Português / Coesão, coerência e progressão temática` (ENEM, FUVEST, VUNESP) à aula oficial `Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e…`. As estruturas e o escopo declarados no registro abrangem coesão referencial, lexical, sequencial, coerência global e progressão temática; a associação é limitada a esses objetivos e **ainda exige revisão docente**, não é certificado de equivalência de editais oficiais.
+
+Os testes foram corrigidos para conferir o registro explícito, títulos e IDs históricos válidos, escopo de exame autorizado, identidade de capítulos e questões, ausência de herança para provas sem aprovação e classificação `reviewed-semantic` somente para IDs diferentes. A contagem de grupos semânticos aprovados no registro é **1** e as projeções previstas são **3 vínculos de exame**; não são 3 aulas, não equivalem a exclusão de cópias do banco. A contagem do Provão por série não é alterada pelo alias. A CI precisa ser observada novamente para confirmar essas correções e o lote 47 completo; não declarar a branch verde antes dos resultados.

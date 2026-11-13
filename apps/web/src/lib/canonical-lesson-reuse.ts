@@ -31,7 +31,7 @@ export function verifiedCanonicalLessonLinks():CanonicalLessonLink[]{
       exam=>examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)
     );
     if(exams.length<2)continue;
-    const lesson=deepProvaoLesson(topic);
+    const lesson=sharedOfficialProvaoLesson(topic);
     if(!lesson)continue;
     links.push({
       canonicalId:topic.id,subject:topic.subject,title:topic.topic,
@@ -53,14 +53,57 @@ export const reviewedSemanticAliases: readonly {
   targetTopicId:string;sourceTopicId:string;
   /** Approval is exam-scoped: a new exam never inherits an alias implicitly. */
   exams:readonly ExamId[];
-}[] = [];
-
+}[] = [{
+  subject:'Português',
+  targetTitle:'Coesão, coerência e progressão temática',
+  sourceTitle:'Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e…',
+  targetTopicId:courseId('Português','Coesão, coerência e progressão temática'),
+  sourceTopicId:courseId('Português','Estratégias de articulação do texto: mecanismos de coesão (coesão lexical, referencial e…'),
+  exams:['enem','fuvest','vunesp'],
+  rationale:'Escopo integral revisado: a aula oficial 4.2 do Provão abrange coesão referencial, lexical, sequencial, coerência global e progressão temática. As três partes didáticas aprofundadas tratam desses objetivos, com exemplos e itens específicos. Este alias não estende automaticamente o conteúdo a temas como argumentação geral, interpretação ou gêneros textuais.'
+}];
+ 
 /** Explicitly reviewed *partial* overlap, never a full-coverage alias.
  * Citologia includes membrane transport, organelles, cell division and other
  * objectives; cellular organization alone cannot satisfy that syllabus.
  * These references are advisory only and never enter canonicalLessonForExam.
  */
 export const reviewedPartialAssociations = [{
+  subject:'Português',
+  targetTitle:'Variação linguística e norma-padrão',
+  sourceTitle:'Distinção entre variedades linguísticas',
+  officialSourceTitle:'Distinção entre variedades linguísticas: categorias sociais e contextos de comunicação;…',
+  coveredScope:'Variedades linguísticas em contextos sociais e registros de formalidade e informalidade.',
+  missingScope:'Prescrição da norma-padrão, adequação normativa e demais convenções de uso exigem complemento; não há cobertura integral.'
+},{
+  subject:'Português',
+  targetTitle:'Morfologia e classes de palavras',
+  sourceTitle:'Classes de palavras',
+  officialSourceTitle:'Classes de palavras: substantivo, artigo, adjetivo, numeral, pronome, verbo, advérbio,…',
+  coveredScope:'Identificação e função das classes de palavras listadas no item 2.1 do Provão.',
+  missingScope:'Estrutura e formação de palavras, flexões e demais processos morfológicos exigem complemento específico.'
+},{
+  subject:'Português',
+  targetTitle:'Concordância, regência e crase',
+  sourceTitle:'Concordância nominal e concordância verbal',
+  officialSourceTitle:'Concordância nominal e concordância verbal',
+  coveredScope:'Regras e emprego de concordância nominal e verbal.',
+  missingScope:'Regência nominal e verbal e emprego da crase não são cobertos integralmente pela aula de concordância.'
+},{
+  subject:'Português',
+  targetTitle:'Semântica e figuras de linguagem',
+  sourceTitle:'Níveis de significação do texto',
+  officialSourceTitle:'Níveis de significação do texto: significação explícita e significação implícita; denotação e…',
+  coveredScope:'Sentidos explícitos e implícitos, denotação e conotação em textos.',
+  missingScope:'Figuras de linguagem e demais relações semânticas exigem complemento específico; não há cobertura integral.'
+},{
+  subject:'Português',
+  targetTitle:'Gêneros textuais e tipos de discurso',
+  sourceTitle:'Modos de organização do texto',
+  officialSourceTitle:'Modos de organização do texto: descrição, narração e dissertação',
+  coveredScope:'Descrição, narração e dissertação como modos de organização textual.',
+  missingScope:'Características dos gêneros e tipos de discurso, inclusive suas situações de uso, exigem complementos próprios.'
+},{
   subject:'Biologia',
   targetTitle:'Citologia',
   sourceTitle:'Organização celular dos seres vivos',
@@ -278,7 +321,7 @@ export function reviewedCanonicalAliasForExam(exam:ExamId,topic:CurriculumTopic)
   if(!alias)return null;
   const source=curriculumTopics.find(item=>item.id===alias.sourceTopicId);
   if(!source||source.id===registered.id||source.subject!==alias.subject||source.topic!==alias.sourceTitle)return null;
-  const lesson=deepProvaoLesson(source);
+  const lesson=sharedOfficialProvaoLesson(source);
   if(!lesson)return null;
   return {canonicalId:source.id,examTopicId:registered.id,lesson,scope:alias.rationale};
 }
@@ -292,7 +335,7 @@ export function canonicalLessonForExam(exam:ExamId,topic:CurriculumTopic){
   const registered=curriculumTopics.find(item=>item.id===topic.id);
   if(!registered||registered.subject!==topic.subject||registered.topic!==topic.topic)return null;
   if(!examBlueprints[exam]?.subjects[registered.subject]?.includes(registered.topic))return null;
-  return deepProvaoLesson(registered)??reviewedCanonicalAliasForExam(exam,registered)?.lesson??null;
+  return sharedOfficialProvaoLesson(registered)??reviewedCanonicalAliasForExam(exam,registered)?.lesson??null;
 }
 
 /** Stable, explicit mappings for EVERY verified deep exam-topic membership.
@@ -397,12 +440,17 @@ export function officialProvaoCanonicalGradeMappings(){
 }
 
 export function officialProvaoGradeCoverage(){
+  // Reconcile with the exact same canonical mappings used by the grade reader.
+  // This prevents coverage and displayed lessons from drifting apart.
+  const mappings=officialProvaoCanonicalGradeMappings();
+  const mappedKeys=new Set(mappings.map(row=>
+    JSON.stringify([row.grade,row.subject,row.officialCode,row.officialTitle])));
   return ([1,2,3] as const).map(grade=>{
     const entries=provaoTopics.filter(row=>row.grade===grade);
     const mapped=entries.map(row=>{
       const canonicalId=courseId(row.subject,row.topic);
-      const topic:CurriculumTopic={id:canonicalId,subject:row.subject,topic:row.topic,exams:['saresp']};
-      return {row,canonicalId,deep:Boolean(deepProvaoLesson(topic))};
+      return {row,canonicalId,deep:mappedKeys.has(
+        JSON.stringify([row.grade,row.subject,row.code,row.topic]))};
     });
     const deep=mapped.filter(item=>item.deep);
     return {
@@ -510,7 +558,7 @@ export function canonicalReuseAudit(){
     distinctSubjectTitlePairs:new Set(curriculumTopics.map(topic=>topic.subject+'\u0000'+topic.topic)).size,
     verifiedExactScopeGroups:links.length,
     /** All distinct deep lessons in the curriculum, including single-exam lessons. */
-    canonicalDeepLessons:new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter(Boolean)).size,
+    canonicalDeepLessons:new Set([...canonicalExamTopicMappings().map(row=>row.canonicalId),...officialProvaoCanonicalGradeMappings().map(row=>row.canonicalId)]).size,
     /** Exact-title shared groups are a subset, not the full authored catalog. */
     crossExamSharedCanonicalLessons:links.length,
     /** Total deep exam-topic references, including single-exam topics. */
@@ -543,7 +591,54 @@ export function canonicalReuseAudit(){
     /** No automated fuzzy matching is accepted as pedagogical equivalence. */
     unresolvedSemanticCandidates:unresolvedPartialCandidates().length,
     unresolvedPartialCandidateDetails:unresolvedPartialCandidates(),
-    /** No differently titled semantic aliases have yet been certified. */
+    /** Explicit editorial cross-title aliases only; count registered approved rows, not per-exam links. */
     reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.id===alias.targetTopicId&&t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.id===alias.sourceTopicId&&t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))&&alias.exams.some(exam=>examBlueprints[exam]?.subjects[alias.subject]?.includes(alias.targetTitle))).length
+  };
+}
+
+
+/** Measured registry inventory, never a claim of pedagogical equivalence.
+ * Distinct titles are exact subject/title pairs; grade-specific Provão leaves
+ * and editorial exam memberships are deliberately reported separately.
+ */
+export function canonicalRegistryAudit(){
+  const mappings=canonicalExamTopicMappings();
+  const coverage=canonicalCoverageByExam();
+  const partial=provaoPartialReferencesByExam();
+  const blueprintPartial=partialCoverageByExam();
+  const uniqueCanonicalIds=new Set(mappings.map(row=>row.canonicalId));
+  // Official grade-specific Provão lessons can exist outside the editorial blueprints.
+  const officialCanonicalIds=new Set(officialProvaoCanonicalGradeMappings().map(row=>row.canonicalId));
+  const allAuthoredCanonicalIds=new Set([...uniqueCanonicalIds,...officialCanonicalIds]);
+  const distinctTitles=new Set(curriculumTopics.map(row=>JSON.stringify([row.subject,row.topic])));
+  const exams=(Object.keys(examBlueprints) as ExamId[]).map(exam=>({
+    exam,
+    entries:coverage[exam].total,
+    deep:coverage[exam].deep,
+    missing:coverage[exam].missing,
+    links:mappings.filter(row=>row.exam===exam).length,
+    // A single exam/topic/source advisory may be registered through both
+    // the blueprint and official Provão paths; count it only once.
+    partialAdvisories:new Set([...partial[exam],...blueprintPartial[exam]]
+      .map(row=>JSON.stringify([row.examTopicId,row.canonicalId]))).size,
+    partialMissingTopics:new Set([...partial[exam],...blueprintPartial[exam]]
+      .filter(row=>coverage[exam].missingTopicIds.includes(row.examTopicId))
+      .map(row=>row.examTopicId)).size
+  }));
+  return {
+    catalogEntries:curriculumTopics.length,
+    distinctExactSubjectTitles:distinctTitles.size,
+    canonicalUniqueLessons:allAuthoredCanonicalIds.size,
+    officialProvaoCanonicalLessons:officialCanonicalIds.size,
+    officialOnlyCanonicalLessons:[...officialCanonicalIds].filter(id=>!uniqueCanonicalIds.has(id)).length,
+    examToLessonLinks:mappings.length,
+    verifiedCrossExamGroups:verifiedCanonicalLessonLinks().length,
+    reviewedSemanticAliases:reviewedSemanticAliases.length,
+    partialAdvisories:exams.reduce((sum,row)=>sum+row.partialAdvisories,0),
+    partialMissingTopics:exams.reduce((sum,row)=>sum+row.partialMissingTopics,0),
+    // This counts repeated references, not deleted database rows or source files.
+    referenceReuse:mappings.length-uniqueCanonicalIds.size,
+    persistentDuplicatesDeleted:0,
+    exams
   };
 }

@@ -5,7 +5,7 @@ import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
-import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam,officialProvaoGradeCoverage,officialProvaoCanonicalGradeMappings} from './canonical-lesson-reuse.ts';
+import {canonicalLessonForExam,canonicalReuseAudit,canonicalCoverageByExam,verifiedCanonicalLessonLinks,reviewedCanonicalAliasForExam,verifiedPartialAssociations,reviewedPartialAssociations,reviewedSemanticAliases,partialCoverageByExam,canonicalExamTopicMappings,semanticReviewQueue,unresolvedPartialCandidates,canonicalAuthoringBacklog,provaoSourcedPartialReferences,provaoPartialReferencesByExam,officialProvaoGradeCoverage,officialProvaoCanonicalGradeMappings} from './canonical-lesson-reuse.ts';
 
 test('cross-exam links reuse the same canonical authored lesson data',()=>{
  const links=verifiedCanonicalLessonLinks();
@@ -91,7 +91,7 @@ test('per-exam deep coverage reconciles every registered topic without fuzzy mat
 });
 
 test('cell biology partial reuse never masquerades as full Citologia coverage',()=>{
- const partials=verifiedPartialAssociations();
+ const partials=verifiedPartialAssociations().filter(item=>item.subject==='Biologia');
  for(const association of partials){
   assert.equal(association.subject,'Biologia');
   assert.notEqual(association.targetTopicId,association.canonicalId);
@@ -311,7 +311,34 @@ test('semantic alias registry requires explicit exam approval and immutable hist
    assert.equal(reviewedCanonicalAliasForExam(exam,{...topic,id:topic.id+'-renamed'}),null);
   }
  }
- assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
+ // Each explicitly approved differently titled alias must have valid source,
+ // historical target and exam-scoped membership. This does not infer scope.
+ assert.equal(canonicalReuseAudit().reviewedNonExactAliases,reviewedSemanticAliases.length);
+ for(const alias of reviewedSemanticAliases){
+  const target=curriculumTopics.find(topic=>topic.id===alias.targetTopicId);
+  const source=curriculumTopics.find(topic=>topic.id===alias.sourceTopicId);
+  assert.ok(target&&source,'Approved aliases must name real historical topics');
+  assert.equal(target.topic,alias.targetTitle);
+  assert.equal(source.topic,alias.sourceTitle);
+  assert.equal(target.subject,source.subject);
+  const sourceLesson=deepProvaoLesson(source);
+  assert.ok(sourceLesson,'Approved source must be deeply authored');
+  for(const exam of Object.keys(examBlueprints) as ExamId[]){
+   const approved: boolean=alias.exams.includes(exam)&&Boolean(
+    examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+   const resolved=reviewedCanonicalAliasForExam(exam,target);
+   assert.equal(Boolean(resolved),approved,
+    'Unapproved exam inherited reviewed alias '+exam);
+   if(resolved){
+    assert.equal(resolved.examTopicId,target.id);
+    assert.equal(resolved.canonicalId,source.id);
+    assert.strictEqual(resolved.lesson.sections,sourceLesson.sections);
+    assert.strictEqual(resolved.lesson.tasks,sourceLesson.tasks);
+    const mapping: ReturnType<typeof canonicalExamTopicMappings>[number] | undefined=canonicalExamTopicMappings().find(item=>item.exam===exam&&item.examTopicId===target.id);
+    assert.equal(mapping?.mappingKind,'reviewed-semantic');
+   }
+  }
+ }
 });
 
 test('ETEC cell-and-health candidate is advisory even without a registered canonical source',()=>{
@@ -708,11 +735,11 @@ test('official Provão grade coverage reconciles exact deep leaves without infla
   assert.deepEqual(new Set(report.uniqueCanonicalDeepIds),new Set(resolved.map(row=>courseId(row.subject,row.topic))));
   assert.equal(report.missingOfficialCodes.length,report.missingEntries);
  }
- // Grade counts are an independent official-leaf inventory, not new cross-exam aliases.
- assert.equal(canonicalReuseAudit().reviewedNonExactAliases,0);
+ // Grade-specific official coverage is independent from explicit cross-exam semantic aliases.
+ assert.equal(canonicalReuseAudit().reviewedNonExactAliases,reviewedSemanticAliases.length);
 });
 
-test('every mapped exact cross-exam reference resolves the identical authored lesson and excludes unrelated exams',()=>{
+test('every mapped cross-exam reference resolves an exact or approved semantic source without exam leakage',()=>{
  const mappings=canonicalExamTopicMappings();
  const byId=new Map<string,typeof mappings>();
  for(const mapping of mappings){
@@ -731,7 +758,15 @@ test('every mapped exact cross-exam reference resolves the identical authored le
    assert.equal(resolved.id,canonicalId);
    assert.strictEqual(resolved.sections,source.sections);
    assert.strictEqual(resolved.tasks,source.tasks);
-   assert.equal(mapping.mappingKind,'exact');
+   const kind=mapping.canonicalId===mapping.examTopicId?'exact':'reviewed-semantic';
+   assert.equal(mapping.mappingKind,kind);
+   if(kind==='reviewed-semantic'){
+    assert.ok(reviewedSemanticAliases.some(alias=>
+     alias.targetTopicId===mapping.examTopicId&&
+     alias.sourceTopicId===mapping.canonicalId&&
+     alias.exams.includes(mapping.exam)),
+     'Every non-exact mapping requires explicit exam-scoped approval');
+   }
   }
   for(const exam of Object.keys(examBlueprints) as ExamId[]){
    for(const mapping of group){
