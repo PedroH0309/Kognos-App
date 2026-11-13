@@ -266,7 +266,8 @@ export function unresolvedPartialCandidates(){
   const sourceTopic:CurriculumTopic|undefined=source??(official&&officialId?{
    id:officialId,subject:official.subject,topic:official.topic,exams:['saresp']
   }:undefined);
-  const sourceLesson=sourceTopic?deepProvaoLesson(sourceTopic):null;
+  // Both authored libraries are valid partial sources; never promote to full coverage.
+  const sourceLesson=sourceTopic?sharedOfficialProvaoLesson(sourceTopic):null;
   const key=entry.subject+'\\0'+entry.targetTitle+'\\0'+entry.sourceTitle;
   if(target&&sourceId&&target.id!==sourceId&&
    (sourceLesson||resolvedOfficial.has(key)))return [];
