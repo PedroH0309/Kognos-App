@@ -151,3 +151,33 @@ test('ENEM audit never counts duplicated mappings or an unrelated exam as full c
     mappings.some(other => other.exam !== 'enem' && other.canonicalId === row.canonicalId)
   ).length);
 });
+
+
+test('ENEM priority audit never double-counts a topic or promotes advisory-only coverage', () => {
+  const audit = enemCanonicalPriorityAudit();
+  const registered = curriculumTopics.filter(topic => topic.exams.includes('enem'));
+  const registeredIds = new Set(registered.map(topic => topic.id));
+  const fullIds = audit.fullCanonicalMappings.map(row => row.examTopicId);
+  const missingIds = audit.priorityQueue.map(row => row.topicId);
+
+  assert.equal(registeredIds.size, registered.length, 'duplicate registered ENEM topic ID');
+  assert.equal(new Set(fullIds).size, fullIds.length, 'multiple full mappings for one ENEM topic');
+  assert.equal(new Set(missingIds).size, missingIds.length, 'duplicate backlog entry');
+  assert.equal(fullIds.length + missingIds.length, registered.length);
+  assert.deepEqual(new Set([...fullIds, ...missingIds]), registeredIds);
+  for (const id of fullIds) {
+    assert.ok(!missingIds.includes(id), 'fully mapped topic must not remain missing: ' + id);
+  }
+  for (const row of audit.priorityQueue) {
+    for (const source of row.advisorySources) {
+      assert.equal(source.fullyCovered, false);
+      assert.ok(source.coveredScope.trim());
+      assert.ok(source.missingScope.trim());
+    }
+  }
+  assert.equal(audit.subjects.reduce((total, subject) => total + subject.partialOnly, 0),
+    audit.partialOnlyTopics, 'partial-only total must reconcile by subject');
+  assert.equal(audit.fullCanonicalMappings.length, audit.deep);
+  assert.equal(audit.uniqueDeepCanonicalLessons,
+    new Set(audit.fullCanonicalMappings.map(row => row.canonicalId)).size);
+});
