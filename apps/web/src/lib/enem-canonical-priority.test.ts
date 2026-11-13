@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {provaoTopics} from './provao-paulista.ts';
+import {examBlueprints} from './exam-blueprints.ts';
 import {
   canonicalExamTopicMappings,
   canonicalLessonForExam,
@@ -135,7 +136,7 @@ test('ENEM audit never counts duplicated mappings or an unrelated exam as full c
     const topic = topicById.get(row.examTopicId)!;
     assert.strictEqual(canonicalLessonForExam('enem', topic), row.lesson);
     for (const exam of ['fuvest', 'vunesp', 'etec', 'saresp'] as const) {
-      if (!topic.exams.includes(exam)) {
+      if (!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)) {
         assert.equal(canonicalLessonForExam(exam, topic), null,
           'unregistered exam must not inherit ENEM canonical coverage');
       }
