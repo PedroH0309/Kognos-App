@@ -83,3 +83,10 @@ Cada aula contém pré-requisitos, objetivo específico, 3 exemplos resolvidos, 
 5. Alvo desejado 20/11/2026 (Brasília), condicionado a testes, comparação efetiva de cobertura e revisão pedagógica.
 
 **Restrições:** PR draft para revisão; não fazer merge/deploy sem autorização. Nenhuma API paga, segredo, migração ou exclusão de registros neste lote.
+
+
+## Auditoria por disciplina e evidência de mapeamento (lote incremental de 13/11)
+
+A auditoria `enemCanonicalPriorityAudit()` agora retorna, para cada disciplina, `distinctExactTitles`, `uniqueDeepCanonicalLessons` e `approvedSemanticLinks`, além de `registeredExamTopicIds` e `fullCanonicalMappings` para rastrear cada vínculo integral até seu ID de tópico e seu ID canônico. Os campos são calculados em tempo de execução, sem totais fixos e sem transformar referências parciais em cobertura. O teste `ENEM audit exposes reproducible per-subject exact-title and canonical counts` reconcilia essas projeções diretamente com `curriculumTopics` e `canonicalExamTopicMappings()`.
+
+**Escopo deste incremento:** instrumentação de auditoria e regressão; zero novas aulas, zero novos aliases integrais, zero alterações em dados persistidos. Não afirmar aumento de cobertura ou CI verde antes de observar a execução no commit correspondente. Os 896 tópicos e 14 vínculos profundos são apenas a medição anterior e precisam ser recalculados para a branch atual.
