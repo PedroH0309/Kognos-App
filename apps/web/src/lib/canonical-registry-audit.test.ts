@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints, type ExamId} from './exam-blueprints.ts';
-import {canonicalRegistryAudit, canonicalExamTopicMappings, canonicalCoverageByExam, officialProvaoCanonicalGradeMappings} from './canonical-lesson-reuse.ts';
+import {canonicalRegistryAudit, canonicalExamTopicMappings, canonicalCoverageByExam, officialProvaoCanonicalGradeMappings, verifiedPartialAssociations, reviewedPartialAssociations, canonicalLessonForExam} from './canonical-lesson-reuse.ts';
 
 test('audit reconciles every exam membership without inventing coverage',()=>{
   const audit=canonicalRegistryAudit();
@@ -53,4 +53,24 @@ test('official Provão grade mappings preserve canonical lesson identity and gra
     new Set([...canonicalExamTopicMappings().map(row=>row.canonicalId),
       ...official.map(row=>row.canonicalId)]).size);
   assert.equal(audit.persistentDuplicatesDeleted,0);
+});
+
+test('advisory sources from any authored library remain partial and cannot grant exam coverage',()=>{
+  const refs=verifiedPartialAssociations();
+  for(const ref of refs){
+    assert.equal(ref.lesson.id,ref.canonicalId);
+    assert.notEqual(ref.targetTopicId,ref.canonicalId);
+    assert.ok(ref.coveredScope.length>0);
+    assert.ok(ref.missingScope.length>0);
+    const target=curriculumTopics.find(topic=>topic.id===ref.targetTopicId);
+    assert.ok(target);
+    // A partial reference is never an authorization for a full lesson.
+    // Any independently verified full lesson must resolve through its own canonical mapping.
+    for(const exam of Object.keys(examBlueprints) as ExamId[]){
+      if(!target.exams.includes(exam))continue;
+      const resolved=canonicalLessonForExam(exam,target);
+      if(resolved)assert.notEqual(resolved.id,ref.canonicalId);
+    }
+  }
+  assert.ok(refs.length<=reviewedPartialAssociations.length);
 });
