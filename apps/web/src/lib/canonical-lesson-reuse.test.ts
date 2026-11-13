@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics,type CurriculumTopic} from './curriculum-catalog.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {deepEnemLesson} from './enem-depth-batch01.ts';
 import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
@@ -636,8 +637,13 @@ test('official Provão deep sources resolve partial blocker audit without granti
 test('unresolved official Provão candidates distinguish missing registration from missing authored depth',()=>{
  const unresolved=unresolvedPartialCandidates();
  for(const item of unresolved){
+  const candidate=reviewedPartialAssociations.find(entry=>
+   entry.subject===item.subject&&entry.targetTitle===item.targetTitle&&
+   entry.sourceTitle===item.sourceTitle);
+  // The user-facing source label can be shorter than its exact official leaf.
   const official=provaoTopics.find(topic=>
-   topic.subject===item.subject&&topic.topic===item.sourceTitle);
+   topic.subject===item.subject&&
+   topic.topic===(candidate?.officialSourceTitle??item.sourceTitle));
   const registered=curriculumTopics.find(topic=>
    topic.subject===item.subject&&topic.topic===item.sourceTitle);
   if(official&&!registered){
@@ -689,7 +695,7 @@ test('audit includes unique deep lessons from official Provão leaves outside ed
  const {allUniqueDeepCanonicalIds}=canonicalReuseAudit();
  const canonicalIds=new Set<string>();
  for(const topic of curriculumTopics){
-  const lesson=deepProvaoLesson(topic);
+  const lesson=deepProvaoLesson(topic)??deepEnemLesson(topic);
   if(lesson)canonicalIds.add(lesson.id);
  }
  for(const topic of provaoTopics){

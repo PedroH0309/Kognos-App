@@ -1,0 +1,92 @@
+# ENEM — prioridade de reutilização e lacunas curriculares (2026-11-13)
+
+## Escopo e fontes
+
+Este lote prioriza **o ENEM** no Kognos e preserva os demais exames.
+A matriz de referência do Inep é a fonte institucional a consultar:
+https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem
+
+Os títulos de `exam-blueprints.ts` e `exam-syllabus.ts` são uma **orientação editorial do Kognos**; não constituem, por si só, uma transcrição da matriz de competências e habilidades do Inep. Não rotular esses itens como habilidades oficiais. Os conteúdos são autorais e não homologados por docentes. O Provão Paulista tem outro edital, série e escopo; compartilhar conceitos não significa equivalência plena das provas.
+
+## Lote de comparação temática
+
+As cinco relações abaixo são **parciais**, verificadas pelo que aparece expressamente nos títulos/descrições curriculares, e não por similaridade textual automática. O ID de fonte identifica uma única aula autoral quando `deepProvaoLesson` comprova que ela existe; sem fonte profunda resolvida, o item segue como candidato bloqueado. Nenhum deles vira alias integral nem aumenta `canonicalCoverageByExam().enem.deep`.
+
+| Tema editorial ENEM | Fonte do Provão Paulista | Conteúdo aproveitável | Lacuna que impede cobertura integral |
+| --- | --- | --- | --- |
+| Matemática — Porcentagem e razão | Porcentagem, taxas e índices | Cálculos e interpretação de taxas | Razões, proporcionalidade e modelagem |
+| Matemática — Probabilidade e estatística | Eventos equiprováveis ou não; probabilidade simples | Espaço amostral e evento simples | Estatística, amostragem e probabilidade composta/condicional |
+| Biologia — Ecologia e impactos ambientais | Principais conceitos de Ecologia | Níveis ecológicos, cadeias e fluxo energético | Impactos antrópicos, poluição e conservação |
+| Português — Intertextualidade e argumentação | Intertextualidade e interdiscursividade | Relações entre textos/discursos | Construção e avaliação de argumentos |
+| Geografia — Urbanização e globalização | A questão urbana no mundo e no Brasil | Industrialização e metropolização | Globalização, redes mundiais e geopolítica |
+
+Esta lista não é uma equivalência oficial de editais, nem promete que toda fonte tem aula aprofundada já escrita; só a resolução em tempo de execução confirma o reaproveitamento disponível.
+
+## Auditoria reproduzível
+
+A função `enemCanonicalPriorityAudit()` em `apps/web/src/lib/enem-canonical-priority.ts` calcula **a partir do catálogo e dos resolvedores reais**:
+
+- entradas editoriais ENEM e títulos literais distintos, por disciplina;
+- entradas com aula aprofundada integral, lacunas reais e IDs canônicos únicos;
+- mapeamentos integrais semanticamente revisados, links integrais já compartilhados com outros exames, referências parciais resolvidas;
+- tópicos ainda sem cobertura integral mas com fontes parciais; candidatos sem fonte profunda;
+- fila de autoria ordenada por reaproveitamento já existente e relevância em mais de um exame.
+
+A função **não produz números fixos**: executar `node --test src/lib/enem-canonical-priority.test.ts` no workspace web para reconciliar os invariantes com os dados presentes no checkout. O CI é autoridade para sucesso de compilação/build, não a mera publicação da branch.
+
+**Base de comparação:** versão `main` imediatamente anterior à branch de 13/11/2026. Este lote registra cinco avaliações parciais (declaradas), zero novos aliases integrais, zero aulas profundas inéditas e zero linhas persistidas apagadas. A quantidade de referências profundas efetivamente resolvidas só deve ser informada depois de medição. Valores antigos do Provão (ex.: 206/364) não são métricas ENEM.
+
+## Primeira medição do ENEM (logs do CI em 13/11/2026)
+
+A nova auditoria foi executada e reconciliada com sucesso no teste `ENEM priority audit reconciles the entire registered catalog` do [run 43418016914](https://github.com/PedroH0309/Kognos-App/actions/runs/43418016914). **O workflow desse run não ficou totalmente verde:** houve uma falha em teste legado sobre título abreviado de fonte oficial, corrigida em commit posterior, ainda sujeito à nova CI.
+
+| Medida do catálogo editorial ENEM | Valor observado |
+| --- | ---: |
+| Entradas ENEM cadastradas | 896 |
+| Títulos literais distintos | 896 |
+| Vínculos integrais profundos resolvidos | 9 |
+| Tópicos sem cobertura integral profunda | 887 |
+| IDs canônicos profundos únicos | 9 |
+| Aliases integrais semanticamente revisados | 1 |
+| Vínculos integrais que compartilham fonte com outro exame | 9 |
+| Referências parciais consultivas resolvidas | 9 |
+| Tópicos incompletos com referência parcial | 9 |
+| Candidatos parciais ainda sem resolução | 3 |
+| Duplicações persistidas efetivamente apagadas | 0 |
+
+Os 896 itens são **títulos editoriais cadastrados no Kognos**, não o número de competências do Inep, questões do ENEM ou uma certificação de cobertura do edital. A taxa editorial de vínculos profundos é `9 / 896` e não deve ser aplicada às competências oficiais. Nenhuma das cinco avaliações parciais novas foi promovida a alias integral.
+
+## Lote autoral ENEM 01 — cinco aulas profundas
+
+Implementado em `apps/web/src/lib/enem-depth-batch01.ts`, sem copiar os textos das fontes parciais do Provão. Cada título é um tópico **literalmente cadastrado** no roteiro editorial do ENEM; é resolvido por ID canônico e compartilhado nas demais provas que possuam exatamente o mesmo título e disciplina, sem multiplicar objetos ou reescrever histórico.
+
+| Disciplina | Aula autoral | Extensão dos capítulos |
+| --- | --- | --- |
+| Matemática | Análise combinatória | 1.158, 1.117 e 1.096 caracteres |
+| Matemática | Leitura e construção de gráficos | 1.253, 1.208 e 1.200 caracteres |
+| Português | Funções da linguagem | 1.227, 1.237 e 1.355 caracteres |
+| Biologia | Imunologia e vacinas | 1.303, 1.371 e 1.386 caracteres |
+| Geografia | Orientação, coordenadas e cartografia | 1.243, 1.214 e 1.366 caracteres |
+
+Cada aula contém pré-requisitos, objetivo específico, 3 exemplos resolvidos, 3 alertas de erros frequentes e 3 questões A–D diferentes com `correctIndex`, dicas e soluções comentadas. O teste `enem-depth-batch01.test.ts` verifica profundidade, unicidade das alternativas, elegibilidade por exame, identidade de instância, histórico e schema do documento.
+
+**Contabilidade:** 5 aulas autorais novas; 5 novos IDs canônicos profundos, se e somente se o CI provar que os cinco tópicos realmente não tinham outra aula profunda na branch-base. A mudança na cobertura ENEM deve ser lida do teste `ENEM_DEEP_BATCH01_AUDIT` após execução. A contagem de material histórico apagado permanece 0, e nenhum alias semântico amplo foi fabricado.
+
+**Status editorial:** material autoral preliminar, não oficial, sem homologação docente; uma aula sobre imunologia descreve mecanismos, não recomendações médicas individuais. Não associar nomes de exames a certificados de equivalência do Inep. CI de conteúdo, TypeScript, segurança, design e build obrigatórios antes de qualquer merge.
+
+## Próximos lotes
+
+1. Medir `enemCanonicalPriorityAudit()` e priorizar a fila por Matemática, Ciências da Natureza, Linguagens, Humanas e Redação, sem supor que a contagem editorial equivale às 180 questões do exame.
+2. Cruzar todos os conteúdos e objetivos das aulas profundas já escritas no Provão, ENEM, FUVEST e VUNESP; promover a alias integral somente quando objetivos, profundidade e escopo coincidirem e houver testes de identidade/isolamento.
+3. Completar as lacunas ENEM com autoria original: três capítulos progressivos substanciais, pré-requisitos, três exemplos resolvidos, erros comuns e no mínimo três itens objetivos A–D variados, gabarito indexado, dicas e soluções específicas.
+4. Depois do lote ENEM, continuar as demais provas, sem duplicar autoria nem alterar histórico, banco, Auth/RLS ou rotas.
+5. Alvo desejado 20/11/2026 (Brasília), condicionado a testes, comparação efetiva de cobertura e revisão pedagógica.
+
+**Restrições:** PR draft para revisão; não fazer merge/deploy sem autorização. Nenhuma API paga, segredo, migração ou exclusão de registros neste lote.
+
+
+## Auditoria por disciplina e evidência de mapeamento (lote incremental de 13/11)
+
+A auditoria `enemCanonicalPriorityAudit()` agora retorna, para cada disciplina, `distinctExactTitles`, `uniqueDeepCanonicalLessons` e `approvedSemanticLinks`, além de `registeredExamTopicIds` e `fullCanonicalMappings` para rastrear cada vínculo integral até seu ID de tópico e seu ID canônico. Os campos são calculados em tempo de execução, sem totais fixos e sem transformar referências parciais em cobertura. O teste `ENEM audit exposes reproducible per-subject exact-title and canonical counts` reconcilia essas projeções diretamente com `curriculumTopics` e `canonicalExamTopicMappings()`.
+
+**Escopo deste incremento:** instrumentação de auditoria e regressão; zero novas aulas, zero novos aliases integrais, zero alterações em dados persistidos. Não afirmar aumento de cobertura ou CI verde antes de observar a execução no commit correspondente. Os 896 tópicos e 14 vínculos profundos são apenas a medição anterior e precisam ser recalculados para a branch atual.
