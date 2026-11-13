@@ -595,3 +595,37 @@ export function canonicalReuseAudit(){
     reviewedNonExactAliases:reviewedSemanticAliases.filter(alias=>curriculumTopics.some(t=>t.id===alias.targetTopicId&&t.subject===alias.subject&&t.topic===alias.targetTitle)&&curriculumTopics.some(t=>t.id===alias.sourceTopicId&&t.subject===alias.subject&&t.topic===alias.sourceTitle&&deepProvaoLesson(t))&&alias.exams.some(exam=>examBlueprints[exam]?.subjects[alias.subject]?.includes(alias.targetTitle))).length
   };
 }
+
+
+/** Measured registry inventory, never a claim of pedagogical equivalence.
+ * Distinct titles are exact subject/title pairs; grade-specific Provão leaves
+ * and editorial exam memberships are deliberately reported separately.
+ */
+export function canonicalRegistryAudit(){
+  const mappings=canonicalExamTopicMappings();
+  const coverage=canonicalCoverageByExam();
+  const partial=provaoPartialReferencesByExam();
+  const uniqueCanonicalIds=new Set(mappings.map(row=>row.canonicalId));
+  const distinctTitles=new Set(curriculumTopics.map(row=>JSON.stringify([row.subject,row.topic])));
+  const exams=(Object.keys(examBlueprints) as ExamId[]).map(exam=>({
+    exam,
+    entries:coverage[exam].total,
+    deep:coverage[exam].deep,
+    missing:coverage[exam].missing,
+    links:mappings.filter(row=>row.exam===exam).length,
+    partialAdvisories:partial[exam].length
+  }));
+  return {
+    catalogEntries:curriculumTopics.length,
+    distinctExactSubjectTitles:distinctTitles.size,
+    canonicalUniqueLessons:uniqueCanonicalIds.size,
+    examToLessonLinks:mappings.length,
+    verifiedCrossExamGroups:verifiedCanonicalLessonLinks().length,
+    reviewedSemanticAliases:reviewedSemanticAliases.length,
+    partialAdvisories:exams.reduce((sum,row)=>sum+row.partialAdvisories,0),
+    // This counts repeated references, not deleted database rows or source files.
+    referenceReuse:mappings.length-uniqueCanonicalIds.size,
+    persistentDuplicatesDeleted:0,
+    exams
+  };
+}
