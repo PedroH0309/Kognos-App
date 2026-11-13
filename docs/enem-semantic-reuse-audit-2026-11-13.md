@@ -56,6 +56,24 @@ A nova auditoria foi executada e reconciliada com sucesso no teste `ENEM priorit
 
 Os 896 itens são **títulos editoriais cadastrados no Kognos**, não o número de competências do Inep, questões do ENEM ou uma certificação de cobertura do edital. A taxa editorial de vínculos profundos é `9 / 896` e não deve ser aplicada às competências oficiais. Nenhuma das cinco avaliações parciais novas foi promovida a alias integral.
 
+## Lote autoral ENEM 01 — cinco aulas profundas
+
+Implementado em `apps/web/src/lib/enem-depth-batch01.ts`, sem copiar os textos das fontes parciais do Provão. Cada título é um tópico **literalmente cadastrado** no roteiro editorial do ENEM; é resolvido por ID canônico e compartilhado nas demais provas que possuam exatamente o mesmo título e disciplina, sem multiplicar objetos ou reescrever histórico.
+
+| Disciplina | Aula autoral | Extensão dos capítulos |
+| --- | --- | --- |
+| Matemática | Análise combinatória | 1.158, 1.117 e 1.096 caracteres |
+| Matemática | Leitura e construção de gráficos | 1.253, 1.208 e 1.200 caracteres |
+| Português | Funções da linguagem | 1.227, 1.237 e 1.355 caracteres |
+| Biologia | Imunologia e vacinas | 1.303, 1.371 e 1.386 caracteres |
+| Geografia | Orientação, coordenadas e cartografia | 1.243, 1.214 e 1.366 caracteres |
+
+Cada aula contém pré-requisitos, objetivo específico, 3 exemplos resolvidos, 3 alertas de erros frequentes e 3 questões A–D diferentes com `correctIndex`, dicas e soluções comentadas. O teste `enem-depth-batch01.test.ts` verifica profundidade, unicidade das alternativas, elegibilidade por exame, identidade de instância, histórico e schema do documento.
+
+**Contabilidade:** 5 aulas autorais novas; 5 novos IDs canônicos profundos, se e somente se o CI provar que os cinco tópicos realmente não tinham outra aula profunda na branch-base. A mudança na cobertura ENEM deve ser lida do teste `ENEM_DEEP_BATCH01_AUDIT` após execução. A contagem de material histórico apagado permanece 0, e nenhum alias semântico amplo foi fabricado.
+
+**Status editorial:** material autoral preliminar, não oficial, sem homologação docente; uma aula sobre imunologia descreve mecanismos, não recomendações médicas individuais. Não associar nomes de exames a certificados de equivalência do Inep. CI de conteúdo, TypeScript, segurança, design e build obrigatórios antes de qualquer merge.
+
 ## Próximos lotes
 
 1. Medir `enemCanonicalPriorityAudit()` e priorizar a fila por Matemática, Ciências da Natureza, Linguagens, Humanas e Redação, sem supor que a contagem editorial equivale às 180 questões do exame.
