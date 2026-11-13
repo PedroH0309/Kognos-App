@@ -14,6 +14,19 @@ test('ENEM priority audit reconciles the entire registered catalog without infla
   const audit = enemCanonicalPriorityAudit();
   const topics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
   const mapped = canonicalExamTopicMappings().filter(row => row.exam === 'enem');
+  console.log('ENEM_CANONICAL_AUDIT ' + JSON.stringify({
+    total: audit.topics,
+    distinctTitles: audit.distinctExactTitles,
+    deep: audit.deep,
+    missing: audit.missing,
+    uniqueCanonical: audit.uniqueDeepCanonicalLessons,
+    approvedSemanticLinks: audit.approvedSemanticLinks,
+    sharedFullLinks: audit.fullLinksSharedWithOtherExams,
+    partialAdvisoryLinks: audit.partialAdvisoryLinks,
+    partialOnlyTopics: audit.partialOnlyTopics,
+    unresolvedPartialCandidates: audit.unresolvedPartialCandidates,
+    subjects: audit.subjects
+  }));
   assert.equal(audit.topics, topics.length);
   assert.equal(audit.deep, mapped.length);
   assert.equal(audit.missing, topics.length - mapped.length);
