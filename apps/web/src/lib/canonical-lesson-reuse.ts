@@ -607,6 +607,9 @@ export function canonicalRegistryAudit(){
   const partial=provaoPartialReferencesByExam();
   const blueprintPartial=partialCoverageByExam();
   const uniqueCanonicalIds=new Set(mappings.map(row=>row.canonicalId));
+  // Official grade-specific Provão lessons can exist outside the editorial blueprints.
+  const officialCanonicalIds=new Set(officialProvaoCanonicalGradeMappings().map(row=>row.canonicalId));
+  const allAuthoredCanonicalIds=new Set([...uniqueCanonicalIds,...officialCanonicalIds]);
   const distinctTitles=new Set(curriculumTopics.map(row=>JSON.stringify([row.subject,row.topic])));
   const exams=(Object.keys(examBlueprints) as ExamId[]).map(exam=>({
     exam,
@@ -625,7 +628,9 @@ export function canonicalRegistryAudit(){
   return {
     catalogEntries:curriculumTopics.length,
     distinctExactSubjectTitles:distinctTitles.size,
-    canonicalUniqueLessons:uniqueCanonicalIds.size,
+    canonicalUniqueLessons:allAuthoredCanonicalIds.size,
+    officialProvaoCanonicalLessons:officialCanonicalIds.size,
+    officialOnlyCanonicalLessons:[...officialCanonicalIds].filter(id=>!uniqueCanonicalIds.has(id)).length,
     examToLessonLinks:mappings.length,
     verifiedCrossExamGroups:verifiedCanonicalLessonLinks().length,
     reviewedSemanticAliases:reviewedSemanticAliases.length,
