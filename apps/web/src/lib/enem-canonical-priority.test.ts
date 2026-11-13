@@ -25,7 +25,8 @@ test('ENEM priority audit reconciles the entire registered catalog without infla
     partialAdvisoryLinks: audit.partialAdvisoryLinks,
     partialOnlyTopics: audit.partialOnlyTopics,
     unresolvedPartialCandidates: audit.unresolvedPartialCandidates,
-    subjects: audit.subjects
+    subjects: audit.subjects,
+    fullCanonicalMappings: audit.fullCanonicalMappings
   }));
   assert.equal(audit.topics, topics.length);
   assert.equal(audit.deep, mapped.length);
@@ -90,5 +91,30 @@ test('five new ENEM-first cross-title assessments retain official source scope a
       assert.equal(ref.lesson.id, ref.canonicalId);
       assert.notEqual(ref.targetTopicId, ref.canonicalId);
     }
+  }
+});
+
+test('ENEM audit exposes reproducible per-subject exact-title and canonical counts', () => {
+  const audit = enemCanonicalPriorityAudit();
+  const topics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
+  const mapped = canonicalExamTopicMappings().filter(row => row.exam === 'enem');
+  assert.deepEqual(new Set(audit.registeredExamTopicIds), new Set(topics.map(topic => topic.id)));
+  assert.equal(audit.fullCanonicalMappings.length, mapped.length);
+  for (const row of audit.fullCanonicalMappings) {
+    const original = mapped.find(item => item.examTopicId === row.examTopicId);
+    assert.ok(original);
+    assert.equal(row.canonicalId, original.canonicalId);
+    assert.equal(row.mappingKind, original.mappingKind);
+  }
+  for (const subject of audit.subjects) {
+    const scoped = topics.filter(topic => topic.subject === subject.subject);
+    const scopedMappings = mapped.filter(row =>
+      scoped.some(topic => topic.id === row.examTopicId));
+    assert.equal(subject.distinctExactTitles, new Set(scoped.map(topic => topic.topic)).size);
+    assert.equal(subject.uniqueDeepCanonicalLessons,
+      new Set(scopedMappings.map(row => row.canonicalId)).size);
+    assert.equal(subject.approvedSemanticLinks,
+      scopedMappings.filter(row => row.mappingKind === 'reviewed-semantic').length);
+    assert.equal(subject.total, subject.deep + subject.missing);
   }
 });
