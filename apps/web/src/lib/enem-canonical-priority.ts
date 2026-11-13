@@ -54,6 +54,9 @@ export function enemCanonicalPriorityAudit() {
     return {
       subject,
       total: subjectTopics.length,
+      distinctExactTitles: new Set(subjectTopics.map(topic => topic.topic)).size,
+      uniqueDeepCanonicalLessons: new Set(subjectTopics.filter(topic => fullByTopic.has(topic.id)).map(topic => fullByTopic.get(topic.id)!.canonicalId)).size,
+      approvedSemanticLinks: subjectTopics.filter(topic => fullByTopic.get(topic.id)?.mappingKind === 'reviewed-semantic').length,
       deep,
       missing: subjectTopics.length - deep,
       partialOnly: subjectTopics.filter(topic =>
@@ -72,6 +75,12 @@ export function enemCanonicalPriorityAudit() {
     topics: topics.length,
     distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
     subjects,
+    /** Explicitly catalogued editorial memberships, never inferred official skills. */
+    registeredExamTopicIds: topics.map(topic => topic.id),
+    /** One canonical ID may serve multiple exams; these are verified full links only. */
+    fullCanonicalMappings: fullMappings.map(row => ({
+      examTopicId: row.examTopicId, canonicalId: row.canonicalId, mappingKind: row.mappingKind
+    })),
     deep: fullMappings.length,
     missing: missing.length,
     uniqueDeepCanonicalLessons: deepCanonicalIds.length,
