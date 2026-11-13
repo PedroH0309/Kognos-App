@@ -23,8 +23,8 @@ test('only registered exam memberships receive advisory references to existing d
     const target=curriculumTopics.find(row=>row.id===ref.targetTopicId);
     assert.ok(target);
     for(const exam of Object.keys(examBlueprints) as ExamId[]){
-      const isMember=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
-      const matches=byExam[exam].filter(row=>row.examTopicId===target.id&&row.canonicalId===ref.canonicalId);
+      const isMember:boolean=Boolean(examBlueprints[exam].subjects[target.subject]?.includes(target.topic));
+      const matches:(typeof byExam)[ExamId]=byExam[exam].filter(row=>row.examTopicId===target.id&&row.canonicalId===ref.canonicalId);
       assert.equal(matches.length,isMember?1:0);
       if(matches.length){
         assert.strictEqual(matches[0].lesson,ref.lesson);
