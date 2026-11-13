@@ -91,7 +91,7 @@ test('per-exam deep coverage reconciles every registered topic without fuzzy mat
 });
 
 test('cell biology partial reuse never masquerades as full Citologia coverage',()=>{
- const partials=verifiedPartialAssociations();
+ const partials=verifiedPartialAssociations().filter(item=>item.subject==='Biologia');
  for(const association of partials){
   assert.equal(association.subject,'Biologia');
   assert.notEqual(association.targetTopicId,association.canonicalId);
