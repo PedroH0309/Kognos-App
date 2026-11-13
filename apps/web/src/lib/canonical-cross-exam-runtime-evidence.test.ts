@@ -21,7 +21,7 @@ test('every exact-scope shared group resolves the identical canonical lesson acr
       assert.ok(examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic));
       const runtime=canonicalLessonForExam(exam,topic);
       assert.strictEqual(runtime,group.lesson);
-      const mapping=mappings.find(row=>row.exam===exam&&row.examTopicId===topic.id);
+      const mapping: (typeof mappings)[number] | undefined = mappings.find(row=>row.exam===exam&&row.examTopicId===topic.id);
       assert.ok(mapping);
       assert.strictEqual(mapping.lesson,group.lesson);
       assert.equal(mapping.mappingKind,'exact');
