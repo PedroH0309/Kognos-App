@@ -118,3 +118,35 @@ test('ENEM audit exposes reproducible per-subject exact-title and canonical coun
     assert.equal(subject.total, subject.deep + subject.missing);
   }
 });
+
+
+test('ENEM audit never counts duplicated mappings or an unrelated exam as full coverage', () => {
+  const audit = enemCanonicalPriorityAudit();
+  const topics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
+  const topicById = new Map(topics.map(topic => [topic.id, topic] as const));
+  const mappings = canonicalExamTopicMappings();
+  const full = mappings.filter(row => row.exam === 'enem');
+  const seen = new Set<string>();
+  for (const row of full) {
+    assert.ok(topicById.has(row.examTopicId), 'ENEM mapping must have an ENEM catalog membership');
+    assert.ok(!seen.has(row.examTopicId), 'one ENEM topic must not have competing full canonical mappings');
+    seen.add(row.examTopicId);
+    assert.equal(row.canonicalId, row.lesson.id);
+    const topic = topicById.get(row.examTopicId)!;
+    assert.strictEqual(canonicalLessonForExam('enem', topic), row.lesson);
+    for (const exam of ['fuvest', 'vunesp', 'etec', 'saresp'] as const) {
+      if (!topic.exams.includes(exam)) {
+        assert.equal(canonicalLessonForExam(exam, topic), null,
+          'unregistered exam must not inherit ENEM canonical coverage');
+      }
+    }
+  }
+  assert.equal(audit.deep, seen.size);
+  assert.equal(audit.topics, audit.deep + audit.missing);
+  assert.equal(audit.priorityQueue.length, audit.missing);
+  assert.equal(audit.partialOnlyTopics,
+    audit.priorityQueue.filter(row => row.advisorySources.length > 0).length);
+  assert.equal(audit.fullLinksSharedWithOtherExams, full.filter(row =>
+    mappings.some(other => other.exam !== 'enem' && other.canonicalId === row.canonicalId)
+  ).length);
+});
