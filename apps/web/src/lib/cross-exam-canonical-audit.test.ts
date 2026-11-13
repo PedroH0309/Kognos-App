@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
-import {examBlueprints, type ExamId} from './exam-blueprints.ts';
+import {examBlueprints} from './exam-blueprints.ts';
 import {canonicalExamTopicMappings, canonicalLessonForExam} from './canonical-lesson-reuse.ts';
 import {crossExamCanonicalAudit} from './cross-exam-canonical-audit.ts';
 import {enemCanonicalPriorityAudit} from './enem-canonical-priority.ts';
