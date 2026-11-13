@@ -558,7 +558,7 @@ export function canonicalReuseAudit(){
     distinctSubjectTitlePairs:new Set(curriculumTopics.map(topic=>topic.subject+'\u0000'+topic.topic)).size,
     verifiedExactScopeGroups:links.length,
     /** All distinct deep lessons in the curriculum, including single-exam lessons. */
-    canonicalDeepLessons:new Set(curriculumTopics.map(topic=>deepProvaoLesson(topic)?.id).filter(Boolean)).size,
+    canonicalDeepLessons:new Set([...canonicalExamTopicMappings().map(row=>row.canonicalId),...officialProvaoCanonicalGradeMappings().map(row=>row.canonicalId)]).size,
     /** Exact-title shared groups are a subset, not the full authored catalog. */
     crossExamSharedCanonicalLessons:links.length,
     /** Total deep exam-topic references, including single-exam topics. */
