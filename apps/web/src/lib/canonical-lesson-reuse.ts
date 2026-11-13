@@ -605,6 +605,7 @@ export function canonicalRegistryAudit(){
   const mappings=canonicalExamTopicMappings();
   const coverage=canonicalCoverageByExam();
   const partial=provaoPartialReferencesByExam();
+  const blueprintPartial=partialCoverageByExam();
   const uniqueCanonicalIds=new Set(mappings.map(row=>row.canonicalId));
   const distinctTitles=new Set(curriculumTopics.map(row=>JSON.stringify([row.subject,row.topic])));
   const exams=(Object.keys(examBlueprints) as ExamId[]).map(exam=>({
@@ -613,7 +614,13 @@ export function canonicalRegistryAudit(){
     deep:coverage[exam].deep,
     missing:coverage[exam].missing,
     links:mappings.filter(row=>row.exam===exam).length,
-    partialAdvisories:partial[exam].length
+    // A single exam/topic/source advisory may be registered through both
+    // the blueprint and official Provão paths; count it only once.
+    partialAdvisories:new Set([...partial[exam],...blueprintPartial[exam]]
+      .map(row=>JSON.stringify([row.examTopicId,row.canonicalId]))).size,
+    partialMissingTopics:new Set([...partial[exam],...blueprintPartial[exam]]
+      .filter(row=>coverage[exam].missingTopicIds.includes(row.examTopicId))
+      .map(row=>row.examTopicId)).size
   }));
   return {
     catalogEntries:curriculumTopics.length,
@@ -623,6 +630,7 @@ export function canonicalRegistryAudit(){
     verifiedCrossExamGroups:verifiedCanonicalLessonLinks().length,
     reviewedSemanticAliases:reviewedSemanticAliases.length,
     partialAdvisories:exams.reduce((sum,row)=>sum+row.partialAdvisories,0),
+    partialMissingTopics:exams.reduce((sum,row)=>sum+row.partialMissingTopics,0),
     // This counts repeated references, not deleted database rows or source files.
     referenceReuse:mappings.length-uniqueCanonicalIds.size,
     persistentDuplicatesDeleted:0,
