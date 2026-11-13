@@ -103,7 +103,7 @@ export const reviewedPartialAssociations = [{
   officialSourceTitle:'Modos de organização do texto: descrição, narração e dissertação',
   coveredScope:'Descrição, narração e dissertação como modos de organização textual.',
   missingScope:'Características dos gêneros e tipos de discurso, inclusive suas situações de uso, exigem complementos próprios.'
-},
+},{
   subject:'Biologia',
   targetTitle:'Citologia',
   sourceTitle:'Organização celular dos seres vivos',
