@@ -74,7 +74,7 @@ export const authoredEnemDeepBatch01: readonly EnemDeepTopicSpec[] = [
         "level": "intermediate",
         "prompt": "De um grupo de 8 estudantes, quantas comissões de 2 pessoas podem ser escolhidas sem cargos?",
         "options": [
-          "16",
+          "21",
           "28",
           "56",
           "64"
@@ -239,10 +239,10 @@ export const authoredEnemDeepBatch01: readonly EnemDeepTopicSpec[] = [
         "level": "basic",
         "prompt": "Na frase “Por favor, desligue a luz ao sair da sala”, qual função predomina?",
         "options": [
-          "Referencial",
-          "Metalinguística",
-          "Conativa",
-          "Poética"
+          "Comunicação objetiva de dados sobre a iluminação",
+          "Explicação de uma palavra do vocabulário",
+          "Orientação direta ao comportamento de quem lê",
+          "Exploração de rimas e repetições estéticas"
         ],
         "correctIndex": 2,
         "hint": "Observe a forma verbal usada para dirigir um pedido ao leitor.",
@@ -252,10 +252,10 @@ export const authoredEnemDeepBatch01: readonly EnemDeepTopicSpec[] = [
         "level": "intermediate",
         "prompt": "Ao afirmar “O verbo pode variar em tempo, modo e pessoa”, um livro de gramática enfatiza qual função?",
         "options": [
-          "Fática",
-          "Metalinguística",
-          "Emotiva",
-          "Conativa"
+          "Checagem do canal entre os interlocutores",
+          "Explicação das categorias do próprio código linguístico",
+          "Expressão da tristeza do enunciador",
+          "Pedido imediato para o leitor tomar uma atitude"
         ],
         "correctIndex": 1,
         "hint": "O texto fala da própria linguagem e de suas categorias.",
@@ -265,10 +265,10 @@ export const authoredEnemDeepBatch01: readonly EnemDeepTopicSpec[] = [
         "level": "advanced",
         "prompt": "Um slogan repete sons e palavras de forma ritmada para ser lembrado. Que função ganha relevo por esse recurso?",
         "options": [
-          "Poética",
-          "Fática",
-          "Referencial",
-          "Emotiva"
+          "Valorização do ritmo e da repetição na composição verbal",
+          "Manutenção do contato por cumprimentos breves",
+          "Apresentação de resultados quantitativos de uma pesquisa",
+          "Confissão em primeira pessoa de uma emoção"
         ],
         "correctIndex": 0,
         "hint": "Considere qual aspecto da mensagem se torna objeto de atenção: seu conteúdo, canal ou construção.",
