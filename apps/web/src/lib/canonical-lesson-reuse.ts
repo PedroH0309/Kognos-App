@@ -69,6 +69,43 @@ export const reviewedSemanticAliases: readonly {
  * These references are advisory only and never enter canonicalLessonForExam.
  */
 export const reviewedPartialAssociations = [{
+  // ENEM editorial topic is broader than the Provão official leaf. No full alias.
+  subject:'Matemática',
+  targetTitle:'Porcentagem e razão',
+  sourceTitle:'Porcentagem, taxas e índices',
+  officialSourceTitle:'Porcentagem, taxas e índices',
+  coveredScope:'Cálculo e interpretação de porcentagens, taxas e índices em situações quantitativas.',
+  missingScope:'Razões e proporcionalidade em sua amplitude, com aplicações e modelos distintos, requerem complementos próprios.'
+},{
+  subject:'Matemática',
+  targetTitle:'Probabilidade e estatística',
+  sourceTitle:'Eventos e probabilidade simples',
+  officialSourceTitle:'Eventos equiprováveis ou não, conjunto universo. Conceituação de probabilidade. Cálculo de…',
+  coveredScope:'Universo, eventos equiprováveis ou não e cálculo da probabilidade de evento simples.',
+  missingScope:'Medidas estatísticas, interpretação de distribuições, amostragem e probabilidade condicional não estão integralmente cobertas.'
+},{
+  subject:'Biologia',
+  targetTitle:'Ecologia e impactos ambientais',
+  sourceTitle:'Conceitos básicos de Ecologia',
+  officialSourceTitle:'Principais conceitos de Ecologia (população, comunidade, ecossistema, biosfera, hábitat e nicho…',
+  coveredScope:'Níveis ecológicos, cadeias e teias alimentares, fluxo energético e produtividade dos ecossistemas.',
+  missingScope:'Impactos antrópicos, poluição, conservação, ciclos biogeoquímicos e interpretação de políticas ambientais exigem estudo adicional.'
+},{
+  subject:'Português',
+  targetTitle:'Intertextualidade e argumentação',
+  sourceTitle:'Intertextualidade e interdiscursividade',
+  officialSourceTitle:'Intertextualidade e interdiscursividade',
+  coveredScope:'Relações explícitas e implícitas entre textos, discursos e referências socioculturais.',
+  missingScope:'Estratégias argumentativas, estrutura da tese, evidências e avaliação de argumentos demandam complemento.'
+},{
+  subject:'Geografia',
+  targetTitle:'Urbanização e globalização',
+  sourceTitle:'Questão urbana no Brasil e no mundo',
+  officialSourceTitle:'A questão urbana mundo e no Brasil (processos de industrialização, de urbanização/metropolização)',
+  coveredScope:'Processos de industrialização, urbanização, metropolização e organização das redes urbanas.',
+  missingScope:'Globalização, divisão internacional do trabalho, redes mundiais, fluxos e geopolítica requerem cobertura específica.'
+},{
+
   subject:'Português',
   targetTitle:'Variação linguística e norma-padrão',
   sourceTitle:'Distinção entre variedades linguísticas',
