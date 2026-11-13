@@ -28,7 +28,7 @@ test('approved semantic aliases resolve to one authored lesson in every authoriz
       assert.equal(reviewed.canonicalId, source.id);
       assert.equal(reviewed.examTopicId, target.id);
       assert.strictEqual(reviewed.lesson, resolved, 'No lesson clone for an alias');
-      const mapping = mappings.find(row => row.exam === exam && row.examTopicId === target.id);
+      const mapping: (typeof mappings)[number] | undefined = mappings.find(row => row.exam === exam && row.examTopicId === target.id);
       assert.ok(mapping);
       assert.equal(mapping.mappingKind, 'reviewed-semantic');
       assert.strictEqual(mapping.lesson, resolved);
