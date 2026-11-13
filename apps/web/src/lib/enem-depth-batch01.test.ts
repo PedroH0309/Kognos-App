@@ -39,8 +39,8 @@ test('batch 01 has five distinct authored ENEM topics, 3 long chapters and 3 non
   for(const task of lesson.tasks){
    assert.ok(task.options&&task.options.length===4,'A-D alternatives required');
    assert.equal(new Set(task.options).size,4);
-   assert.equal(typeof task.correctIndex,'number');
-   assert.ok(task.correctIndex>=0&&task.correctIndex<=3);
+   const correctIndex=task.correctIndex;
+   assert.ok(typeof correctIndex==='number'&&correctIndex>=0&&correctIndex<=3);
    assert.ok(!allPrompts.has(task.prompt));
    allPrompts.add(task.prompt);
    assert.ok(task.solution.length>=60&&task.hint.length>=30,'specific explanations');
@@ -64,7 +64,7 @@ test('all matching exam topics share the same object; non-member exams and forge
    const other=canonicalLessonForExam(exam,topic);
    if(registered){
     assert.strictEqual(other,lesson,'same lesson object across matching exams');
-    const mapping=mappings.find(row=>row.exam===exam&&row.examTopicId===topic.id);
+    const mapping:(typeof mappings)[number]|undefined=mappings.find(row=>row.exam===exam&&row.examTopicId===topic.id);
     assert.ok(mapping);
     assert.equal(mapping.canonicalId,topic.id);
     assert.equal(mapping.mappingKind,'exact');
