@@ -36,6 +36,26 @@ A função **não produz números fixos**: executar `node --test src/lib/enem-ca
 
 **Base de comparação:** versão `main` imediatamente anterior à branch de 13/11/2026. Este lote registra cinco avaliações parciais (declaradas), zero novos aliases integrais, zero aulas profundas inéditas e zero linhas persistidas apagadas. A quantidade de referências profundas efetivamente resolvidas só deve ser informada depois de medição. Valores antigos do Provão (ex.: 206/364) não são métricas ENEM.
 
+## Primeira medição do ENEM (logs do CI em 13/11/2026)
+
+A nova auditoria foi executada e reconciliada com sucesso no teste `ENEM priority audit reconciles the entire registered catalog` do [run 43418016914](https://github.com/PedroH0309/Kognos-App/actions/runs/43418016914). **O workflow desse run não ficou totalmente verde:** houve uma falha em teste legado sobre título abreviado de fonte oficial, corrigida em commit posterior, ainda sujeito à nova CI.
+
+| Medida do catálogo editorial ENEM | Valor observado |
+| --- | ---: |
+| Entradas ENEM cadastradas | 896 |
+| Títulos literais distintos | 896 |
+| Vínculos integrais profundos resolvidos | 9 |
+| Tópicos sem cobertura integral profunda | 887 |
+| IDs canônicos profundos únicos | 9 |
+| Aliases integrais semanticamente revisados | 1 |
+| Vínculos integrais que compartilham fonte com outro exame | 9 |
+| Referências parciais consultivas resolvidas | 9 |
+| Tópicos incompletos com referência parcial | 9 |
+| Candidatos parciais ainda sem resolução | 3 |
+| Duplicações persistidas efetivamente apagadas | 0 |
+
+Os 896 itens são **títulos editoriais cadastrados no Kognos**, não o número de competências do Inep, questões do ENEM ou uma certificação de cobertura do edital. A taxa editorial de vínculos profundos é `9 / 896` e não deve ser aplicada às competências oficiais. Nenhuma das cinco avaliações parciais novas foi promovida a alias integral.
+
 ## Próximos lotes
 
 1. Medir `enemCanonicalPriorityAudit()` e priorizar a fila por Matemática, Ciências da Natureza, Linguagens, Humanas e Redação, sem supor que a contagem editorial equivale às 180 questões do exame.
