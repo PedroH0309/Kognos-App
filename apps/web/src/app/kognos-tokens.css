@@ -233,9 +233,6 @@
   --error: var(--state-error);
   --text-primary: var(--text-champagne);
   --border: var(--border-hairline);
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
   --shadow-soft: var(--shadow-md);
   --field-bg: var(--surface-input);
   --box-bg: var(--surface-raised);
@@ -330,9 +327,6 @@ html.light,
   --error: var(--state-error);
   --text-primary: var(--text-champagne);
   --border: var(--border-hairline);
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
   --shadow-soft: var(--shadow-md);
   --field-bg: var(--surface-input);
   --box-bg: var(--surface-raised);
