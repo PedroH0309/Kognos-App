@@ -468,6 +468,12 @@ test('partial projection is deterministic across repeated audits and never leaks
 
 test('semantic review queue reconciles both source catalogs without granting full coverage',()=>{
  const queue=semanticReviewQueue();
+ // ENEM advisory gaps must be reviewed before those of any other exam.
+ const firstOtherExam=queue.findIndex(item=>item.exam!=='enem');
+ if(firstOtherExam>=0){
+  assert.ok(queue.slice(firstOtherExam).every(item=>item.exam!=='enem'),
+   'ENEM partial review candidates must precede all other exams');
+ }
  const partials=partialCoverageByExam();
  const provao=provaoPartialReferencesByExam();
  const expected=new Set<string>();
