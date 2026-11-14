@@ -20,7 +20,11 @@ function authoredTopic(lesson:LearningLesson,exam:ExamId|null):CurriculumTopic|n
  }
  if(!topic||topic.subject!==lesson.subject||topic.topic!==lesson.topic)return null;
  const exams=exam?[exam]:topic.exams;
- return exams.some(member=>canonicalLessonForExam(member,topic)!==null)?topic:null;
+ for(const member of exams){
+  const lesson=canonicalLessonForExam(member,topic);
+  if(lesson)return registeredById.get(lesson.id)??null;
+ }
+ return null;
 }
 
 /** Curriculum metadata, introductory guides and deep authored lessons are distinct.

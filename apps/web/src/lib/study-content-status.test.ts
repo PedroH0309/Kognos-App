@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {studyContentStatus,studyContentInventory} from './study-content-status.ts';
 import {learningCatalogForExam} from './lesson-ai-links.ts';
 import {learningLessons} from './learning-catalog.ts';
+import {canonicalLessonForExam} from './canonical-lesson-reuse.ts';
 
 test('uma aula canônica profunda é distinguida de metadados e introduções',()=>{
  const catalog=learningCatalogForExam('enem');
@@ -42,5 +43,7 @@ test('introduções antigas não escondem aulas aprofundadas que já existem',()
  for(const id of ['bio-vaccines','hist-industry','pt-cohesion']){
   assert.equal(inventory.byId.get(id),'authored',id+': abrir a fonte aprofundada mantendo o ID histórico');
   assert.ok(inventory.authoredTopicById.get(id));
+  const target=inventory.authoredTopicById.get(id)!;
+  assert.equal(canonicalLessonForExam('enem',target)?.id,target.id,'abrir o ID da fonte real, inclusive nos aliases revisados');
  }
 });
