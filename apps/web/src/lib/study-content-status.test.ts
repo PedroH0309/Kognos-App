@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import {studyContentStatus,studyContentInventory} from './study-content-status.ts';
 import {learningCatalogForExam} from './lesson-ai-links.ts';
 import {learningLessons} from './learning-catalog.ts';
-import {canonicalLessonForExam} from './canonical-lesson-reuse.ts';
+import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {deepEnemLesson} from './enem-depth-batch01.ts';
 
 test('uma aula canônica profunda é distinguida de metadados e introduções',()=>{
  const catalog=learningCatalogForExam('enem');
@@ -44,6 +45,6 @@ test('introduções antigas não escondem aulas aprofundadas que já existem',()
   assert.equal(inventory.byId.get(id),'authored',id+': abrir a fonte aprofundada mantendo o ID histórico');
   assert.ok(inventory.authoredTopicById.get(id));
   const target=inventory.authoredTopicById.get(id)!;
-  assert.equal(canonicalLessonForExam('enem',target)?.id,target.id,'abrir o ID da fonte real, inclusive nos aliases revisados');
+  assert.equal((deepProvaoLesson(target)??deepEnemLesson(target))?.id,target.id,'abrir o ID da fonte real, inclusive nos aliases revisados');
  }
 });
