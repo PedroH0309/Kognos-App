@@ -1,0 +1,523 @@
+/* KOGNOS DESIGN TOKENS — v1.0
+   Single authoritative token layer. All values in OKLCH for perceptual uniformity.
+   Brand: Deep Navy (knowledge), Neural Violet (intelligence), Synapse Cyan (progress),
+          Learning Patina (growth). Dark-first, light-mode supported.
+*/
+
+:root {
+  /* ============================================================
+     BRAND ANCHORS — The soul of Kognos
+     ============================================================ */
+  --kognos-navy: oklch(22% 0.03 260);           /* Deep knowledge navy — primary brand */
+  --kognos-violet: oklch(55% 0.22 270);         /* Neural violet — primary accent, intelligence */
+  --kognos-violet-strong: oklch(48% 0.25 270);  /* Active CTA, focus rings */
+  --kognos-violet-soft: oklch(65% 0.15 270);    /* Hover lifts, pale fills */
+  --kognos-cyan: oklch(70% 0.18 195);           /* Synapse cyan — progress, success, energy */
+  --kognos-cyan-strong: oklch(62% 0.22 195);    /* Active progress, links */
+  --kognos-cyan-soft: oklch(78% 0.12 195);      /* Hover lifts on cyan */
+  --kognos-patina: oklch(58% 0.14 160);         /* Learning patina — growth, improvement, "improved" state */
+  --kognos-patina-soft: oklch(68% 0.10 160);    /* Hover lifts on patina */
+  --kognos-gold: oklch(75% 0.18 85);            /* Achievement gold — rewards, mastery */
+
+  /* ============================================================
+     SURFACE LAYERS — Dark lacquer system (default theme)
+     ============================================================ */
+  --surface-abyss: oklch(8% 0.015 260);         /* Page ground — deepest, warm black */
+  --surface-deep: oklch(11% 0.015 260);         /* Deepest inset, modals, drawers */
+  --surface-raised: oklch(15% 0.015 260);       /* Panels, cards, sidebar */
+  --surface-elevated: oklch(19% 0.015 260);     /* Hover states, active cards */
+  --surface-input: oklch(12% 0.012 260);        /* Input fields, textareas, selects */
+  --surface-subtle: oklch(23% 0.012 260);       /* Inactive chips, disabled, dividers */
+
+  /* ============================================================
+     TEXT HIERARCHY — Neutral, no hue (warmth comes from surfaces)
+     ============================================================ */
+  --text-champagne: oklch(94% 0 0);             /* Headlines, <strong>, primary labels */
+  --text-body: oklch(88% 0 0);                  /* Body copy, readable on dark */
+  --text-muted: oklch(68% 0 0);                 /* Captions, metadata, secondary labels */
+  --text-faint: oklch(55% 0 0);                 /* Subdued, placeholder-adjacent */
+  --text-disabled: oklch(45% 0 0);              /* Disabled text, lowest priority */
+
+  /* ============================================================
+     SEMANTIC STATES
+     ============================================================ */
+  --state-success: oklch(52% 0.18 145);         /* Green — success, correct, complete */
+  --state-success-bg: oklch(52% 0.18 145 / 0.12);
+  --state-success-border: oklch(52% 0.18 145 / 0.35);
+
+  --state-warning: oklch(62% 0.20 75);          /* Amber — warning, attention, due */
+  --state-warning-bg: oklch(62% 0.20 75 / 0.12);
+  --state-warning-border: oklch(62% 0.20 75 / 0.35);
+
+  --state-error: oklch(58% 0.22 25);            /* Red — error, incorrect, destructive */
+  --state-error-bg: oklch(58% 0.22 25 / 0.12);
+  --state-error-border: oklch(58% 0.22 25 / 0.35);
+
+  --state-info: oklch(62% 0.18 240);            /* Blue — info, neutral actions */
+  --state-info-bg: oklch(62% 0.18 240 / 0.12);
+  --state-info-border: oklch(62% 0.18 240 / 0.35);
+
+  /* ============================================================
+     BORDERS & HAIRLINES
+     ============================================================ */
+  --border-hairline: oklch(35% 0.01 260 / 0.35);    /* Default border — subtle, neutral */
+  --border-strong: oklch(45% 0.02 260 / 0.55);      /* Active/focus border — visible */
+  --border-brand: oklch(55% 0.22 270 / 0.6);        /* Violet brand border — focus, active */
+  --border-brand-soft: oklch(55% 0.22 270 / 0.25);  /* Hover brand border */
+
+  /* ============================================================
+     RADIUS SCALE — Geometric, not pill-heavy
+     ============================================================ */
+  --radius-none: 0;
+  --radius-xs: 4px;       /* Badges, chips, inline code */
+  --radius-sm: 6px;       /* Buttons, inputs, small cards */
+  --radius-md: 10px;      /* Standard cards, panels, modals */
+  --radius-lg: 14px;      /* Large panels, hero sections */
+  --radius-xl: 18px;      /* Major containers, drawers */
+  --radius-2xl: 24px;     /* Full-screen modals, onboarding */
+  --radius-pill: 999px;   /* Pills, badges, avatar rings */
+
+  /* ============================================================
+     SPACING SCALE — 4px base, harmonious rhythm
+     ============================================================ */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ============================================================
+     TYPOGRAPHY — Two-face system (Display + UI)
+     Display: Space Grotesk (technical, geometric, distinctive)
+     UI/Body: Inter (readable, neutral, performant)
+     Mono: JetBrains Mono (code, data, labels)
+     ============================================================ */
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-ui: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+
+  /* Type scale (at 16px root = 1rem) */
+  --text-xs: 0.6875rem;    /* 11px — micro labels, badges */
+  --text-sm: 0.8125rem;    /* 13px — secondary UI, captions */
+  --text-base: 0.9375rem;  /* 15px — body, default */
+  --text-md: 1rem;         /* 16px — body large, comfortable reading */
+  --text-lg: 1.125rem;     /* 18px — lead paragraph, card titles */
+  --text-xl: 1.375rem;     /* 22px — subsection heads */
+  --text-2xl: 1.75rem;     /* 28px — section heads */
+  --text-3xl: 2.25rem;     /* 36px — large section heads */
+  --text-4xl: 3rem;        /* 48px — display, hero */
+  --text-5xl: 4rem;        /* 64px — large display */
+  --text-6xl: 5.5rem;      /* 88px — hero display, wide */
+
+  /* Fluid display roles (clamp) */
+  --text-display: clamp(2.5rem, 5vw, 4.5rem);     /* Hero h1 */
+  --text-headline: clamp(1.75rem, 3.5vw, 3rem);   /* Section h2 */
+  --text-title: clamp(1.125rem, 2vw, 1.5rem);     /* Card/panel h3 */
+
+  /* Font weights */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line heights */
+  --leading-tight: 1.1;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+  --leading-loose: 2.0;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.1em;
+  --tracking-widest: 0.15em;   /* Wordmark, eyebrow */
+
+  /* ============================================================
+     SHADOWS & DEPTH — Material contrast over blur
+     ============================================================ */
+  --shadow-xs: 0 1px 2px oklch(0% 0 0 / 0.3);
+  --shadow-sm: 0 2px 8px oklch(0% 0 0 / 0.35);
+  --shadow-md: 0 8px 24px oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.45);
+  --shadow-xl: 0 24px 72px oklch(0% 0 0 / 0.5);
+
+  /* Brand shadows — for CTAs, brand-bearing elements */
+  --shadow-violet: 0 8px 32px oklch(55% 0.22 270 / 0.25);
+  --shadow-violet-lg: 0 16px 48px oklch(55% 0.22 270 / 0.3);
+  --shadow-cyan: 0 8px 32px oklch(70% 0.18 195 / 0.2);
+  --shadow-patina: 0 4px 16px oklch(58% 0.14 160 / 0.25);
+
+  /* ============================================================
+     MOTION — Purposeful, respectful of reduced-motion
+     ============================================================ */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);      /* Default: material standard */
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);      /* Entrance, important transitions */
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);      /* Exit, dismissals */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);   /* Playful, bounce (onboarding, achievements) */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Celebration, rewards */
+
+  --duration-instant: 50ms;
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 450ms;
+
+  /* ============================================================
+     Z-INDEX LAYERS
+     ============================================================ */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+  --z-drawer: 700;
+  --z-assistant: 800;    /* Kog drawer */
+
+  /* ============================================================
+     SCROLLBARS
+     ============================================================ */
+  --scrollbar-track: var(--surface-abyss);
+  --scrollbar-thumb: var(--surface-subtle);
+  --scrollbar-thumb-hover: var(--surface-elevated);
+
+  /* ============================================================
+     FOCUS RING — Consistent, accessible
+     ============================================================ */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+  --focus-ring-color: var(--kognos-cyan);   /* Cyan for visibility on dark */
+  --focus-ring-color-brand: var(--kognos-violet); /* For brand elements */
+
+  /* ============================================================
+     LEGACY ALIASES — For gradual migration (DEPRECATED)
+     Map old token names to new system. Remove after migration.
+     ============================================================ */
+  /* Dark theme (current defaults) */
+  --bg: var(--surface-abyss);
+  --bg-2: var(--surface-deep);
+  --sidebar: var(--surface-raised);
+  --panel: var(--surface-raised);
+  --panel-2: var(--surface-elevated);
+  --line: var(--border-hairline);
+  --txt: var(--text-body);
+  --sub: var(--text-muted);
+  --dim: var(--text-faint);
+  --violet: var(--kognos-violet);
+  --violet-b: var(--kognos-violet-strong);
+  --cyan: var(--kognos-cyan);
+  --mint: var(--state-success);
+  --primary-900: var(--kognos-navy);
+  --primary-700: oklch(30% 0.04 260);
+  --accent-600: var(--kognos-violet-strong);
+  --accent-400: var(--kognos-cyan);
+  --background-dark: var(--surface-abyss);
+  --background-light: oklch(96% 0 0);
+  --surface-light: oklch(92% 0 0);
+  --surface-dark: var(--surface-raised);
+  --success: var(--state-success);
+  --warning: var(--state-warning);
+  --error: var(--state-error);
+  --text-primary: var(--text-champagne);
+  --border: var(--border-hairline);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --shadow-soft: var(--shadow-md);
+  --field-bg: var(--surface-input);
+  --box-bg: var(--surface-raised);
+  --page-bg: var(--surface-abyss);
+}
+
+/* ============================================================
+   LIGHT MODE — Warm paper, not sterile white
+   Gold carries brand on paper; patina carries state.
+   ============================================================ */
+:root.light,
+html.light,
+.theme-light,
+.app-layout.theme-light {
+  color-scheme: light;
+
+  /* Surfaces — warm paper tones */
+  --surface-abyss: oklch(97% 0.01 85);        /* Page ground — warm paper */
+  --surface-deep: oklch(94% 0.012 85);        /* Deep inset */
+  --surface-raised: oklch(100% 0 0);          /* Cards, panels — pure white */
+  --surface-elevated: oklch(98% 0.008 85);    /* Hover, active */
+  --surface-input: oklch(96% 0.01 85);        /* Inputs */
+  --surface-subtle: oklch(90% 0.012 85);      /* Inactive, dividers */
+
+  /* Text — dark ink, warm */
+  --text-champagne: oklch(18% 0.02 85);       /* Headlines */
+  --text-body: oklch(25% 0.018 85);           /* Body */
+  --text-muted: oklch(45% 0.015 85);          /* Muted */
+  --text-faint: oklch(55% 0.012 85);          /* Faint */
+  --text-disabled: oklch(65% 0.01 85);        /* Disabled */
+
+  /* Brand on paper — Gold for large accents, Patina for small/interactive */
+  --kognos-violet: oklch(48% 0.22 270);       /* Darker for contrast on paper */
+  --kognos-violet-strong: oklch(42% 0.25 270);
+  --kognos-cyan: oklch(55% 0.20 195);
+  --kognos-cyan-strong: oklch(48% 0.22 195);
+  --kognos-patina: oklch(49% 0.14 160);       /* Patina carries interactive state on light */
+  --kognos-gold: oklch(65% 0.18 85);          /* Gold for brand marks, large accents */
+
+  /* Borders — subtle on paper */
+  --border-hairline: oklch(35% 0.02 85 / 0.25);
+  --border-strong: oklch(35% 0.02 85 / 0.45);
+  --border-brand: var(--kognos-gold);         /* Gold border = brand on paper */
+  --border-brand-soft: oklch(65% 0.18 85 / 0.3);
+
+  /* State colors adjusted for light */
+  --state-success: oklch(45% 0.15 145);
+  --state-warning: oklch(55% 0.18 75);
+  --state-error: oklch(52% 0.20 25);
+  --state-info: oklch(45% 0.20 240);
+
+  /* Shadows — softer on light */
+  --shadow-xs: 0 1px 2px oklch(0% 0 0 / 0.08);
+  --shadow-sm: 0 2px 8px oklch(0% 0 0 / 0.1);
+  --shadow-md: 0 8px 24px oklch(0% 0 0 / 0.12);
+  --shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.15);
+  --shadow-xl: 0 24px 72px oklch(0% 0 0 / 0.18);
+
+  /* Focus ring — darker for light mode */
+  --focus-ring-color: var(--kognos-cyan-strong);
+  --focus-ring-color-brand: var(--kognos-violet-strong);
+
+  /* Scrollbars */
+  --scrollbar-track: var(--surface-abyss);
+  --scrollbar-thumb: var(--surface-subtle);
+  --scrollbar-thumb-hover: var(--surface-elevated);
+
+  /* Legacy aliases for light mode */
+  --bg: var(--surface-abyss);
+  --bg-2: var(--surface-deep);
+  --sidebar: var(--kognos-navy);           /* Sidebar stays dark in light mode */
+  --panel: var(--surface-raised);
+  --panel-2: var(--surface-elevated);
+  --line: var(--border-hairline);
+  --txt: var(--text-body);
+  --sub: var(--text-muted);
+  --dim: var(--text-faint);
+  --violet: var(--kognos-violet);
+  --violet-b: var(--kognos-violet-strong);
+  --cyan: var(--kognos-cyan);
+  --mint: var(--state-success);
+  --primary-900: var(--kognos-navy);
+  --primary-700: oklch(30% 0.04 260);
+  --accent-600: var(--kognos-violet-strong);
+  --accent-400: var(--kognos-cyan);
+  --background-dark: var(--kognos-navy);
+  --background-light: var(--surface-abyss);
+  --surface-light: var(--surface-raised);
+  --surface-dark: var(--surface-deep);
+  --success: var(--state-success);
+  --warning: var(--state-warning);
+  --error: var(--state-error);
+  --text-primary: var(--text-champagne);
+  --border: var(--border-hairline);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --shadow-soft: var(--shadow-md);
+  --field-bg: var(--surface-input);
+  --box-bg: var(--surface-raised);
+  --page-bg: var(--surface-abyss);
+}
+
+/* ============================================================
+   ACCESSIBILITY OVERRIDES — Applied via root classes
+   ============================================================ */
+
+/* High contrast mode */
+.high-contrast,
+.strong-contrast {
+  --border-hairline: oklch(0% 0 0 / 0.9);
+  --border-strong: oklch(0% 0 0);
+  --text-muted: var(--text-body);
+  --text-faint: var(--text-muted);
+  --kognos-violet: oklch(50% 0.25 270);
+  --kognos-cyan: oklch(55% 0.22 195);
+  --kognos-patina: oklch(50% 0.18 160);
+  --focus-ring-width: 3px;
+}
+
+/* Larger text mode */
+.larger-text {
+  --text-base: 1rem;        /* 16px */
+  --text-md: 1.125rem;      /* 18px */
+  --text-lg: 1.25rem;       /* 20px */
+  --text-xl: 1.5rem;        /* 24px */
+  --text-2xl: 2rem;         /* 32px */
+}
+
+/* Reduced motion mode */
+.less-motion,
+.reduced-motion {
+  --duration-instant: 0ms;
+  --duration-fast: 0ms;
+  --duration-normal: 0ms;
+  --duration-slow: 0ms;
+  --duration-slower: 0ms;
+  --ease-standard: linear;
+  --ease-emphasized: linear;
+  --ease-decelerate: linear;
+}
+
+/* ============================================================
+   BASE RESET — Applied globally
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html:has(.theme-light),
+:root.light {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 99px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
+  border-radius: 99px;
+  min-height: 40px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--page-bg);
+  min-width: 320px;
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Brand focus for violet elements */
+:focus-visible:has(+ .brand-focus),
+.btn-primary:focus-visible,
+.k-side-nav-item:focus-visible {
+  outline-color: var(--focus-ring-color-brand);
+}
+
+/* Selection */
+::selection {
+  background: oklch(55% 0.22 270 / 0.35);
+  color: var(--text-champagne);
+}
+
+::-moz-selection {
+  background: oklch(55% 0.22 270 / 0.35);
+  color: var(--text-champagne);
+}
+
+/* Tap highlight */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth transitions by default */
+button, input, textarea, select, a,
+.card, .panel, .badge, .chip,
+[class*="transition"] {
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .less-motion,
+  .reduced-motion,
+  [class*="transition"] {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES — For direct token access in HTML
+   ============================================================ */
+.k-text-champagne { color: var(--text-champagne); }
+.k-text-body { color: var(--text-body); }
+.k-text-muted { color: var(--text-muted); }
+.k-text-faint { color: var(--text-faint); }
+
+.k-bg-abyss { background: var(--surface-abyss); }
+.k-bg-deep { background: var(--surface-deep); }
+.k-bg-raised { background: var(--surface-raised); }
+.k-bg-elevated { background: var(--surface-elevated); }
+.k-bg-input { background: var(--surface-input); }
+
+.k-border-hairline { border-color: var(--border-hairline); }
+.k-border-strong { border-color: var(--border-strong); }
+.k-border-brand { border-color: var(--border-brand); }
+
+.k-radius-sm { border-radius: var(--radius-sm); }
+.k-radius-md { border-radius: var(--radius-md); }
+.k-radius-lg { border-radius: var(--radius-lg); }
+.k-radius-xl { border-radius: var(--radius-xl); }
+.k-radius-pill { border-radius: var(--radius-pill); }
+
+.k-space-1 { gap: var(--space-1); }
+.k-space-2 { gap: var(--space-2); }
+.k-space-3 { gap: var(--space-3); }
+.k-space-4 { gap: var(--space-4); }
+.k-space-6 { gap: var(--space-6); }
+.k-space-8 { gap: var(--space-8); }
+
+/* ============================================================
+   END OF TOKENS
+   ============================================================ */

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "./kognos-tokens.css";
+import "./kognos-kit.css";
 import "./globals.css";
 import "./course-library.css";
 import "./design-system.css";

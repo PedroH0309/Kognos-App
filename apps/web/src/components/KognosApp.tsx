@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import {AnimatedPage,AnimatedSidebarScrim} from './KognosMotion';
+import Logo from './Logo';
+import OnboardingV2 from './OnboardingV2';
 
 
 import {examBlueprints,publicExamEntries,type ExamId} from '@/lib/exam-blueprints';
@@ -60,31 +62,47 @@ const StudyCalendar=dynamic(()=>import('./StudyCalendar'),{loading:()=> <Workspa
 
 const STORAGE_KEY='kognos_guest_profile_v1';
 type View = 'dashboard'|'tutor'|'profile'|'settings'|'learn'|'trails'|'subjects'|'calendar'|'achievements'|'questions'|'simulados'|'sources'|'diagnostic'|'weekly'|'plans'|'reviews'|'performance';
-const NAV: {key:View; icon:string;label:string;status?:string}[] = [
-  {key:'dashboard',icon:'◫',label:'Visão geral'},
-  {key:'learn',icon:'▤',label:'Aprender'},
-  {key:'trails',icon:'◇',label:'Trilhas de aprendizagem'},
-  {key:'subjects',icon:'▧',label:'Minhas disciplinas'},
-  {key:'questions',icon:'▦',label:'Banco de questões'},
-  {key:'simulados',icon:'◉',label:'Simulados'},
-  {key:'sources',icon:'▤',label:'Matrizes e editais'},
-  {key:'diagnostic',icon:'◈',label:'Diagnóstico inicial'},
-  {key:'weekly',icon:'◈',label:'Simulado semanal (20–90)'},
-  {key:'plans',icon:'◷',label:'Meu planejamento'},
-  {key:'reviews',icon:'↻',label:'Revisões inteligentes'},
-  {key:'calendar',icon:'▣',label:'Calendário'},
-  {key:'tutor',icon:'✧',label:'Kog · Tutor IA'},
-  {key:'performance',icon:'▥',label:'Desempenho'},
-  {key:'achievements',icon:'★',label:'Conquistas'},
-  {key:'profile',icon:'◎',label:'Meu perfil'},
-  {key:'settings',icon:'⚙',label:'Configurações'},
+
+// Navigation items with proper Lucide icons - replaces emoji icons
+const NAV: {key:View; label:string;help?:string;status?:string}[] = [
+  {key:'dashboard',label:'Visão geral',help:'Seu painel principal com progresso, próximas atividades e acesso rápido'},
+  {key:'learn',label:'Aprender',help:'Acesse as aulas organizadas por conteúdo e trilha de aprendizagem'},
+  {key:'trails',label:'Trilhas de aprendizagem',help:'Currículo sequenciado com pré-requisitos e progressão guiada'},
+  {key:'subjects',label:'Minhas disciplinas',help:'Visão por disciplina com cobertura de prática e próximos tópicos'},
+  {key:'questions',label:'Banco de questões',help:'Pratique com questões demonstrativas e geradas por IA'},
+  {key:'simulados',label:'Simulados',help:'Teste seu aprendizado com simulados completos cronometrados'},
+  {key:'sources',label:'Matrizes e editais',help:'Consulte as matrizes oficiais de ENEM, ETEC e vestibulares'},
+  {key:'diagnostic',label:'Diagnóstico inicial',help:'Avaliação exploratória para identificar pontos de partida'},
+  {key:'weekly',label:'Simulado semanal',help:'Simulado semanal adaptativo (20–90 questões)'},
+  {key:'plans',label:'Meu planejamento',help:'Planejador semanal com sessões personalizadas e metas'},
+  {key:'reviews',label:'Revisões inteligentes',help:'Revisão espaçada baseada em desempenho (1/3/7/14 dias)'},
+  {key:'calendar',label:'Calendário',help:'Visualize suas sessões de estudo agendadas e progresso'},
+  {key:'tutor',label:'Kog · Tutor IA',help:'Tutor inteligente para dúvidas, explicações e planos de estudo'},
+  {key:'performance',label:'Desempenho',help:'Estatísticas detalhadas de acertos, tempo e evolução'},
+  {key:'achievements',label:'Conquistas',help:'Selos e marcos desbloqueados pelo seu progresso'},
+  {key:'profile',label:'Meu perfil',help:'Gerencie suas preferências, metas e configurações de acessibilidade'},
+  {key:'settings',label:'Configurações',help:'Ajuste tema, conta, notificações e dados'},
 ];
 
+// Icon mapping - single source of truth
 const NAV_ICONS:Record<View,LucideIcon>={
- dashboard:LayoutDashboard,learn:BookOpen,trails:GraduationCap,subjects:LibraryBig,
- questions:ListChecks,simulados:ClipboardList,sources:BookOpenText,diagnostic:Target,weekly:ClipboardList,plans:CalendarDays,reviews:RotateCcw,
- calendar:CalendarDays,tutor:Bot,performance:BarChart3,achievements:Trophy,
- profile:UserRound,settings:Settings,
+  dashboard:LayoutDashboard,
+  learn:BookOpen,
+  trails:GraduationCap,
+  subjects:LibraryBig,
+  questions:ListChecks,
+  simulados:ClipboardList,
+  sources:BookOpenText,
+  diagnostic:Target,
+  weekly:ClipboardList,
+  plans:CalendarDays,
+  reviews:RotateCcw,
+  calendar:CalendarDays,
+  tutor:Bot,
+  performance:BarChart3,
+  achievements:Trophy,
+  profile:UserRound,
+  settings:Settings,
 };
 /** All existing routes remain reachable, but the sidebar uses the compact
  * hierarchy of the requested E-Study reference instead of long AI-colored groups.
@@ -102,12 +120,15 @@ const SHORT_NAV_LABELS:Partial<Record<View,string>>={
 };
 function SideNavigationItem({view,active,onSelect}:{view:View;active:boolean;onSelect:(view:View)=>void}){
  const item=NAV.find(entry=>entry.key===view)!;
- return <button type="button" onClick={()=>onSelect(view)} className={`side-nav-item ${active?'active':''}`}
-   title={item.label} aria-label={item.label} aria-current={active?'page':undefined}>
-   <span className="k-side-icon"><NavIcon view={view}/></span>
-   <span className="k-side-label">{SHORT_NAV_LABELS[view]||item.label}</span>
-   {item.status&&<small title={item.status}>◌</small>}
- </button>;
+ return <div className="ks-tooltip">
+   <button type="button" onClick={()=>onSelect(view)} className={`side-nav-item ${active?'active':''}`}
+     title={item.label} aria-label={item.label} aria-current={active?'page':undefined}>
+     <span className="k-side-icon"><NavIcon view={view}/></span>
+     <span className="k-side-label">{SHORT_NAV_LABELS[view]||item.label}</span>
+     {item.status&&<small title={item.status} className="k-side-badge">•</small>}
+   </button>
+   {item.help && <span className="ks-tooltip-content" role="tooltip">{item.help}</span>}
+ </div>;
 }
 function NavIcon({view}:{view:View}){const Icon=NAV_ICONS[view];return <Icon size={19} strokeWidth={1.8} aria-hidden="true"/>;}
 const GOAL_ICONS: Record<Goal, LucideIcon> = { enem:Target, vestibular:GraduationCap, etec:BookOpenCheck, school:PencilLine, contest:Landmark, olympiad:Medal, personal:Compass };
@@ -116,10 +137,6 @@ function StatCard({icon:Icon,label,value,note}:{icon:LucideIcon;label:string;val
 
 const choices = <T extends string,>(items:Record<T,string>,selection:T[],toggle:(v:T)=>void) =>
   Object.entries(items).map(([value,label])=><button key={value} type="button" className={`choice-pill ${selection.includes(value as T)?'selected':''}`} onClick={()=>toggle(value as T)} aria-pressed={selection.includes(value as T)}><span className="choice-check" aria-hidden="true">{selection.includes(value as T)?<Check size={15}/>:<Plus size={15}/>}</span>{label as string}</button>);
-
-function Logo({small=false}:{small?:boolean}) {
-  return <div className="logo-cluster"><div className="logo-mark"><Image src="/brand/kognos-mark.webp" width={small?42:56} height={small?42:56} alt="Símbolo Kognos" priority /></div><div className="logo-word"><strong>Kognos<span>.</span></strong>{!small&&<small>APRENDIZAGEM INTELIGENTE</small>}</div></div>;
-}
 
 function AuthModal({onClose,onAuthenticated,standalone=false,theme,onThemeChange}:{onClose:()=>void;onAuthenticated:()=>void;standalone?:boolean;theme:'dark'|'light';onThemeChange:(value:'dark'|'light')=>void}){
   const [mode,setMode]=useState<'signin'|'signup'|'reset'>('signin');
@@ -182,120 +199,6 @@ function AuthModal({onClose,onAuthenticated,standalone=false,theme,onThemeChange
     <p className="k-auth-footer">Kognos · Conhecimento que evolui com você</p>
   </main>;
   return <div className="modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}>{card}</div>;
-}
-
-function Onboarding({start,onFinish,onSignout,email}:{start:StudentProfile;onFinish:(p:StudentProfile)=>Promise<void>;onSignout:()=>void;email:string}){
-  const [step,setStep]=useState(0);
-  const [p,setP]=useState<StudentProfile>({...start});
-  const [declared,setDeclared]=useState<'none'|'tdah'|'dislexia'|'both'|'skip'>('skip');
-  const [saving,setSaving]=useState(false);
-  const [error,setError]=useState('');
-  const [dateError,setDateError]=useState(false);
-  const [proposedExam,setProposedExam]=useState<ExamId|null>(null);
-  const update=(v:Partial<StudentProfile>)=>{setP(old=>({...old,...v}));setError('');};
-  const toggleStyle=(s:TeachingStyle)=>update({styles:p.styles.includes(s)?p.styles.filter(v=>v!==s):[...p.styles,s]});
-  const toggleAdaptation=(s:Adaptation)=>update({adaptations:p.adaptations.includes(s)?p.adaptations.filter(v=>v!==s):[...p.adaptations,s]});
-  function chooseExam(exam:ExamId){
-    const previous=examForStudent(p);
-    if(previous&&previous!==exam&&Boolean(start.completedAt)){setProposedExam(exam);return;}
-    setProposedExam(null);update({examFocus:exam,syllabusExams:[exam]});
-  }
-  function confirmExam(keepPrior:boolean){
-    if(!proposedExam)return;
-    const old=examForStudent(p);
-    update({examFocus:proposedExam,syllabusExams:keepPrior?[...new Set([...(p.syllabusExams||[]),...(old?[old]:[]),proposedExam])]:[proposedExam]});
-    setProposedExam(null);
-  }
-  const toggleGoal=(goal:Goal)=>{const selected=p.goals.includes(goal)?p.goals.filter(g=>g!==goal):[...p.goals,goal];if(selected.length)update({goal:selected[0],goals:selected});};
-  function declaration(v:typeof declared){
-    setDeclared(v);
-    if(v==='none')update({adaptations:[]});
-    if(v==='tdah'||v==='dislexia'||v==='both'){
-      const adaptations=v==='tdah'?defaultForTDAH:v==='dislexia'?defaultForDyslexia:[...defaultForTDAH,...defaultForDyslexia];
-      update({adaptations:Array.from(new Set([...p.adaptations,...adaptations]))});
-    }
-  }
-  const stepNames=['Seu objetivo','Sua rotina','Como aprender','Acessibilidade','Resumo'];
-  function validate(){
-    if(step===0&&!p.nickname.trim())return 'Preencha o apelido para continuar.';
-    if(step===0&&!p.goals.length)return 'Selecione ao menos um objetivo.';
-    if(step===0&&proposedExam)return 'Escolha como deseja atualizar seus temas antes de continuar.';
-    if(step===0&&dateError)return 'Corrija a data da prova ou deixe o campo vazio.';
-    if(step===1&&p.weeklyDays.length===0)return 'Selecione pelo menos um dia disponível.';
-    if(step===2&&p.styles.length===0)return 'Selecione pelo menos uma forma de aprender.';
-    return '';
-  }
-  async function proceed(){
-    const message=validate();if(message){setError(message);return;}
-    setError('');
-    if(step<4){setStep(step+1);window.scrollTo({top:0,behavior:'smooth'});return;}
-    setSaving(true);
-    try{await onFinish({...p,nickname:p.nickname.trim(),completedAt:new Date().toISOString()});}
-    catch(e){setError(e instanceof Error?e.message:'Não foi possível salvar suas preferências.');}
-    finally{setSaving(false);}
-  }
-  const stageOptions=[
-    {value:'fundamental_2',label:'Ensino fundamental II',description:'6º ao 9º ano'},
-    {value:'medio',label:'Ensino médio',description:'1ª à 3ª série'},
-    {value:'tecnico',label:'Ensino técnico',description:'Cursos técnicos e profissionalizantes'},
-    {value:'superior',label:'Ensino superior',description:'Graduação e áreas especializadas'},
-    {value:'adulto',label:'Adulto / outros estudos',description:'Aprendizagem continuada'},
-    {value:'other',label:'Outro',description:'Personalizar minha jornada'}
-  ] as const;
-  const levelOptions=[
-    {value:'beginner',label:'Estou começando',description:'Quero construir uma base sólida'},
-    {value:'intermediate',label:'Intermediário',description:'Já conheço alguns assuntos'},
-    {value:'advanced',label:'Avançado',description:'Quero aprofundar e praticar'}
-  ] as const;
-  return <main className="onboard-layout onboard-v061">
-    <header className="onboard-header"><div className="onboard-header-inner"><Logo/><div className="onboard-utilities"><span className="subtle-tag">UMA JORNADA FEITA PARA VOCÊ</span><span className="onboard-account-email" title={email}>{email}</span><button type="button" onClick={onSignout} className="btn outline small">Sair</button></div></div></header>
-    <div className="onboard-columns">
-      <section className="onboard-content" aria-labelledby="onboard-heading">
-        <div className="wizard-head"><div><span className="wizard-eyebrow">PERSONALIZAÇÃO DE ESTUDO</span><p>Etapa <strong>{String(step+1).padStart(2,'0')}</strong> de 05 · {stepNames[step]}</p></div><span className="wizard-fraction">{Math.round((step+1)*20)}%</span></div>
-        <div className="wizard-bars" role="progressbar" aria-valuemin={0} aria-valuemax={5} aria-valuenow={step+1} aria-label={`Etapa ${step+1} de cinco`}>
-          {stepNames.map((name,i)=><div className={i<=step?'filled':''} key={name}/>)}</div>
-        {step===0&&<>
-          <p className="overline">01 / PRIMEIRO, SUA META</p>
-          <h1 id="onboard-heading">Seu futuro começa com <em>uma escolha.</em></h1>
-          <p className="intro-copy">Conte o que quer conquistar. O Kognos organiza uma jornada que faz sentido para você.</p>
-          <div className="k-onboard-section">
-            <label className="k-form-field"><span className="k-field-title">Como prefere ser chamado? <span className="k-required">*</span></span><input className="k-text-input" value={p.nickname} maxLength={60} onChange={e=>update({nickname:e.target.value})} placeholder="Seu nome ou apelido" autoComplete="nickname" autoFocus/><small className="k-field-hint">Este nome será usado no seu painel e pelo Kog.</small></label>
-            <div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Para que você quer estudar?</span><span className="k-group-hint">Selecione uma ou mais opções</span></div><div className="goal-grid">{(Object.entries(goalLabels) as [Goal,string][]).map(([key,label])=><button key={key} type="button" aria-pressed={p.goals.includes(key)} className={`goal-card ${p.goals.includes(key)?'selected':''}`} onClick={()=>toggleGoal(key)}><span className="goal-icon"><GoalIcon goal={key}/></span><strong>{label}</strong><span aria-hidden="true" className="select-ring">{p.goals.includes(key)?<Check size={12} strokeWidth={3}/>:null}</span></button>)}</div></div>
-            <div className="k-field-group"><KognosSelect label="Prova principal (matriz de conteúdos)" value={(p.examFocus&&p.examFocus!=='etec'?p.examFocus:examForStudent(p))||'enem'} options={publicExamEntries().map(([value,item])=>({value,label:item.label}))} onChange={chooseExam}/><small className="k-field-hint">As matérias são vinculadas à instituição selecionada. Editais, séries e modalidades específicas devem ser conferidos nas fontes oficiais.</small>
-              {proposedExam&&<div className="k-exam-change-choice" role="group" aria-label="Como atualizar os conteúdos de estudo"><p>Você está mudando sua prova. Deseja substituir os temas antigos ou manter os antigos e acrescentar os da nova prova?</p><button type="button" className="btn primary small" onClick={()=>confirmExam(false)}>Usar somente a nova prova</button><button type="button" className="btn outline small" onClick={()=>confirmExam(true)}>Manter e acrescentar temas</button><button type="button" className="text-button" onClick={()=>setProposedExam(null)}>Cancelar</button></div>}
-            </div>
-            <div className="two-cols k-onboard-row"><KognosSelect label="Etapa escolar" value={p.stage} onChange={value=>update({stage:value})} options={stageOptions}/><KognosSelect label="Nível atual" value={p.level} onChange={value=>update({level:value})} options={levelOptions}/></div>
-            <div className="two-cols k-onboard-row"><label className="k-form-field"><span className="k-field-title">Meta específica <span className="k-optional">opcional</span></span><input className="k-text-input" value={p.targetName} maxLength={120} onChange={e=>update({targetName:e.target.value})} placeholder="Ex.: UNESP 2027"/><small className="k-field-hint">Qual prova ou instituição?</small></label><KognosDateField label="Data da prova (opcional)" value={p.targetDate} onChange={value=>update({targetDate:value})} onInvalidChange={setDateError} hint="Você pode definir isso depois."/></div>
-          </div>
-        </>}
-        {step===1&&<>
-          <p className="overline">02 / SUA ROTINA</p><h1 id="onboard-heading">Um plano que cabe na <em>sua vida.</em></h1><p className="intro-copy">A melhor rotina é a que você consegue manter. Escolha uma disponibilidade realista — ela poderá mudar.</p>
-          <div className="k-onboard-section"><div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Quais dias você pode estudar?</span><span className="k-group-hint">{p.weeklyDays.length} de 7 dias</span></div><div className="days-row">{['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map((name,i)=><button type="button" key={name} className={`day ${p.weeklyDays.includes(i)?'active':''}`} aria-pressed={p.weeklyDays.includes(i)} aria-label={`${['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'][i]} ${p.weeklyDays.includes(i)?'selecionado':'não selecionado'}`} onClick={()=>update({weeklyDays:p.weeklyDays.includes(i)?p.weeklyDays.filter(x=>x!==i):[...p.weeklyDays,i].sort()})}>{name}</button>)}</div></div>
-            <KognosRange label="Tempo total de estudo por dia" value={p.dailyMinutes} onChange={value=>update({dailyMinutes:value})}/>
-            <div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Tamanho ideal de cada sessão</span><span className="k-group-hint">Pausas entre os blocos</span></div><div className="card-selector">{[15,25,40,60].map(m=><button type="button" aria-pressed={p.sessionMinutes===m} key={m} className={`choice-time ${p.sessionMinutes===m?'selected':''}`} onClick={()=>update({sessionMinutes:m})}><strong>{m} min</strong><small>{m===15?'Foco rápido':m===25?'Equilibrado':m===40?'Aprofundar':'Imersão'}</small><span aria-hidden="true" className="k-selection-dot"/></button>)}</div></div>
-            <div className="k-tip"><Clock3 size={18}/><span>Seu plano inicial terá cerca de <strong>{weeklyStudyHours(p.dailyMinutes,p.weeklyDays.length)} horas por semana</strong>, distribuídas em sessões personalizadas.</span></div>
-          </div>
-        </>}
-        {step===2&&<>
-          <p className="overline">03 / SEU JEITO DE APRENDER</p><h1 id="onboard-heading">Aprender é algo <em>pessoal.</em></h1><p className="intro-copy">Escolha o que funciona melhor para você. O Kog usará essas preferências para adaptar as explicações.</p>
-          <div className="k-onboard-section"><div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Como você prefere estudar?</span><span className="k-group-hint">Pode marcar vários</span></div><div className="choice-grid k-style-choices">{choices(styleLabels,p.styles,toggleStyle)}</div></div><div className="k-field-group"><div className="k-group-head"><span className="k-field-title">Tom das explicações</span><span className="k-group-hint">O jeito do professor falar</span></div><div className="card-selector tone-choices">{([['balanced','Equilibrado','Professoral, sem rigidez'],['formal','Mais professoral','Técnico e detalhista'],['motivating','Mais motivador','Direto e estimulante']] as const).map(([k,title,sub])=><button type="button" key={k} aria-pressed={p.tone===k} className={`choice-time ${p.tone===k?'selected':''}`} onClick={()=>update({tone:k})}><strong>{title}</strong><small>{sub}</small><span aria-hidden="true" className="k-selection-dot"/></button>)}</div></div><div className="k-tip"><BookOpenText size={18}/><span>Suas escolhas podem mudar quando você descobrir outras formas de estudar.</span></div></div>
-        </>}
-        {step===3&&<>
-          <p className="overline">04 / CONFORTO E ACESSIBILIDADE</p><h1 id="onboard-heading">O Kognos se adapta <em>a você.</em></h1><p className="intro-copy">Personalize a leitura e a concentração. Todas as opções são voluntárias e podem ser alteradas depois.</p>
-          <div className="k-onboard-section"><div className="k-field-group"><span className="k-field-title">Gostaria de recursos relacionados a atenção ou leitura?</span><div className="choice-grid condition-grid">{([['tdah','TDAH / concentração'],['dislexia','Dislexia / leitura'],['both','Ambas as adaptações'],['none','Não preciso de ajustes'],['skip','Prefiro não responder']] as const).map(([v,label])=><button type="button" key={v} className={`choice-pill ${declared===v?'selected':''}`} onClick={()=>declaration(v)} aria-pressed={declared===v}><span className="choice-check">{declared===v?<Check size={15}/>:<Plus size={13}/>}</span>{label}</button>)}</div><p className="privacy-note"><ShieldCheck size={16}/> Não registramos diagnóstico ou condição médica. Apenas suas preferências de interface são salvas.</p></div><div className="k-field-group"><span className="k-field-title">Recursos que você deseja ativar</span><div className="choice-grid">{choices(adaptationLabels,p.adaptations,toggleAdaptation)}</div></div></div>
-        </>}
-        {step===4&&<>
-          <p className="overline">05 / SUA JORNADA ESTÁ PRONTA</p><h1 id="onboard-heading">Tudo pronto para <em>evoluir.</em></h1><p className="intro-copy">Este é seu ponto de partida. Você pode editar suas escolhas a qualquer momento no seu perfil.</p>
-          <div className="summary-card"><div><small>COMO VAMOS CHAMAR VOCÊ</small><strong>{p.nickname||'Estudante'}</strong></div><div><small>OBJETIVO PRINCIPAL</small><strong>{p.goals.map(g=>goalLabels[g]).join(' · ')}{p.targetName?` · ${p.targetName}`:''}</strong></div><div><small>MATRIZ DE ESTUDOS</small><strong>{(p.syllabusExams.length?p.syllabusExams:[examForStudent(p)].filter(Boolean) as ExamId[]).filter(e=>e!=='etec').map(e=>examBlueprints[e].label).join(' · ')||'A definir'}</strong></div><div><small>SEU RITMO</small><strong>{p.dailyMinutes} minutos por dia · {p.weeklyDays.length} dias na semana · sessões de {p.sessionMinutes} min</strong></div><div><small>COMO VOCÊ APRENDE</small><strong>{p.styles.map(s=>styleLabels[s]).join(' · ')}</strong></div><div><small>RECURSOS DE ACESSIBILIDADE</small><strong>{p.adaptations.length?`${p.adaptations.length} adaptações selecionadas`:'Configuração padrão'}</strong></div></div><div className="k-tip"><CheckCircle2 size={19}/><span>Seu perfil ficará vinculado à sua conta. Da próxima vez, você poderá continuar diretamente pelo painel.</span></div>
-        </>}
-        {error&&<div className="message warning" role="alert">{error}</div>}
-        {profileSetupIssue(error)&&<section className="onboard-db-help" aria-label="Configuração do Supabase necessária"><strong>Como liberar o cadastro</strong><p>No Supabase, abra <b>SQL Editor</b> e verifique se a migração <code>0001_core_schema.sql</code> criou <code>public.profiles</code>. Execute também <code>0003_account_and_avatars.sql</code> para os campos adicionais, respeitando a ordem das migrações. Confira se o projeto do seu <code>.env.local</code> é o mesmo do SQL Editor.</p><small>Depois recarregue a página e tente salvar. Suas escolhas continuam aqui até você sair.</small></section>}
-        <div className="wizard-actions"><div>{step>0&&<button type="button" className="btn outline" onClick={()=>{setStep(step-1);setError('');window.scrollTo({top:0,behavior:'smooth'});}}><ArrowLeft size={17}/> Voltar</button>}</div><button type="button" className="btn primary" disabled={saving} onClick={proceed}>{saving?'Salvando…':step===4?'Começar a aprender':'Continuar'}{!saving&&<ArrowRight size={18}/>}</button></div>
-        <p className="k-wizard-footnote">Seu ritmo, seus objetivos. <span>Você tem controle sobre suas preferências.</span></p>
-      </section>
-      <aside className="onboard-visual" aria-hidden="true"><div className="k-visual-top"><span className="k-visual-brand"><Sparkles size={16}/> APRENDIZAGEM INTELIGENTE</span><span>01 / KOGNOS</span></div><div className="hero-image"><Image src="/brand/kognos-hero.webp" alt="" fill sizes="(max-width: 920px) 100vw, 38vw" priority/></div><div className="visual-message"><span className="k-visual-rule"/><strong>Conhecimento que evolui com você.</strong><p>Um espaço de estudo no seu ritmo, com inteligência e clareza em cada passo.</p></div><div className="visual-footer"><span>KOGNOS / APRENDIZAGEM INTELIGENTE</span><span>v1.7</span></div></aside>
-    </div>
-  </main>;
 }
 function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;onEdit:()=>void;user:User|null}){
   const first=p.nickname.split(' ')[0]||'estudante';
@@ -552,7 +455,7 @@ export default function KognosApp(){
  if(!cloud)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card"><h1>Configure o login do Kognos</h1><p>Para acessar a plataforma é necessário configurar as variáveis públicas do Supabase no arquivo <code>apps/web/.env.local</code>.</p><p>Depois de salvar o arquivo, reinicie o servidor. Não coloque senhas nem chaves privadas no GitHub.</p></section></main>;
  if(profileError)return <main className={`k-auth-unconfigured theme-${theme}`}><Logo/><section className="k-auth-unconfigured-card" role="alert"><h1>Não foi possível carregar seu perfil</h1><p>{profileError}</p><p>Se você já possui conta, não precisa fazer a personalização novamente. Corrija a configuração e tente carregar o perfil.</p><div className="k-auth-error-actions"><button type="button" className="btn primary" onClick={retryProfile}>Tentar novamente</button>{user&&<button type="button" className="btn outline" onClick={()=>void signout()}>Sair da conta</button>}</div></section></main>;
  if(!user)return <div className={`theme-${theme}`}><AuthModal standalone theme={theme} onThemeChange={changeTheme} onClose={()=>{}} onAuthenticated={()=>setAuthOpen(false)}/></div>;
- if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><Onboarding key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
+ if(!profile||editing)return <div className={`${accessibility} theme-${theme}`}><OnboardingV2 key={`${user.id}-${editing?'edit':'new'}`} start={actualProfile} onFinish={saveProfile} onSignout={()=>void signout()} email={user.email||'Conta conectada'}/></div>;
  return <div className={`app-layout theme-${theme} ${sidebarCollapsed?'sidebar-collapsed':''} ${accessibility}`}><aside className={`app-sidebar ${mobileMenu?'mobile-open':''}`}><div className="side-logo"><Logo/><button type="button" className="sidebar-collapse-btn" onClick={toggleSidebar} aria-label={sidebarCollapsed?'Expandir barra lateral':'Recolher barra lateral'} title={sidebarCollapsed?'Expandir menu':'Recolher menu'}>{sidebarCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}</button></div><nav className="side-nav" aria-label="Navegação principal">
     <div className="k-nav-set k-nav-main">{NAV_PRIMARY.map(key=><SideNavigationItem key={key} view={key} active={view===key} onSelect={navigate}/>)}</div>
     <button type="button" className={`k-nav-more-toggle ${NAV_PRACTICE.includes(view)?'selected':''}`}
