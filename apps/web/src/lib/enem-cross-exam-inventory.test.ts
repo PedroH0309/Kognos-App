@@ -195,6 +195,24 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
     historicalIds.add(row.examTopicId);
     sharedCanonical.set(row.canonicalId, historicalIds);
   }
+  // Cross-exam reuse must preserve object identity, not merely matching IDs.
+  // An exam absent from the registered topic memberships must not inherit it.
+  const canonicalObjects = new Map<string, (typeof mappings)[number]['lesson']>();
+  for (const row of mappings) {
+    const existing = canonicalObjects.get(row.canonicalId);
+    if (existing) {
+      assert.strictEqual(row.lesson, existing,
+        'Canonical lesson cloned across exams: ' + row.canonicalId);
+    } else {
+      canonicalObjects.set(row.canonicalId, row.lesson);
+    }
+    const topic = curriculumTopics.find(item => item.id === row.examTopicId);
+    assert.ok(topic);
+    for (const unrelatedExam of exams.filter(exam => !topic.exams.includes(exam))) {
+      assert.equal(canonicalLessonForExam(unrelatedExam, topic), null,
+        'Unrelated exam inherited canonical lesson: ' + unrelatedExam + '/' + topic.id);
+    }
+  }
   const crossTitleGroups = [...sharedCanonical.values()].filter(ids => ids.size > 1);
   const crossTitleReferencesReused = crossTitleGroups.reduce((sum, ids) => sum + ids.size - 1, 0);
   assert.equal(registry.persistentDuplicatesDeleted, 0,
