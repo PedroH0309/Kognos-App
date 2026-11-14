@@ -10,7 +10,7 @@ test('AI generator is gated by real server readiness, with one compact setup not
  assert.match(src,/const canGenerate=readiness\.status\?\.questionGenerationConfigured===true/);
  assert.match(src,/disabled=\{generating\|\|loading\|\|!canGenerate\}/);
  assert.match(src,/<IntegrationSetupNotice readiness=\{readiness\}/);
- assert.match(hook,/fetch\('\/api\/ai-status',\{cache:'no-store'\}\)/);
+ assert.match(hook,/fetch\('\/api\/ai-status',\{cache:'no-store',signal\}\)/);
  assert.match(notice,/Como configurar no VS Code/);
  assert.match(notice,/Verificar novamente/);
  assert.doesNotMatch(notice,/process\.env/);
