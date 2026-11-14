@@ -4,7 +4,37 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 3
+## Estado atual — checkpoint 4
+
+O lote 04 começou com quatro aulas integradas e conferidas: Matemática — Funções
+e gráficos; Português — Gêneros e linguagens; Redação — Estrutura
+dissertativo-argumentativa; Inglês — Estratégias de leitura e inferência. Somados
+ao lote 03, são 20 textos autorais novos nesta etapa, com revisão humana pendente.
+
+Restam 1.275 lacunas entre 1.512 identidades. No recorte editorial ENEM, são 38
+temas aprofundados e 858 lacunas. A lista de estudo ENEM tem 38 aulas aprofundadas,
+60 guias introdutórios e 809 temas em desenvolvimento. Não há equivalência entre
+essas contagens e habilidades oficiais concluídas.
+
+Foram corrigidos domínio e imagem de funções, distinção de função afim constante,
+condições de perpendicularidade e generalizações de gráficos. Os testes recalculam
+imagem, inclinação e intervalo de lucro. Em linguagens, os textos separam gênero,
+sequência e suporte; em redação, eliminam regras universais de parágrafos e notas
+automáticas; em inglês, retiram tempo de prova inventado e inferências sem apoio.
+Exemplos e exercícios são autorais, com referências verificadas nos materiais.
+
+O validador agora também detecta palavras corrompidas por mistura acidental de
+alfabetos latino, hangul e han, sem proibir referências isoladas em outras línguas.
+O teste negativo reproduz dois defeitos encontrados em rascunhos. Os limites de
+conteúdo e as exigências de revisão não foram reduzidos.
+
+Verificação: 607 testes da aplicação e seis do motor, lint dos arquivos alterados
+e build de produção aprovados. Chromium comparou a API das 20 aulas aos textos,
+abriu as quatro novas por `/cursos`, respondeu às 12 questões e mostrou as
+explicações, sem exceções ou rolagem horizontal em 320/375/768/1440 px. A CI do
+checkpoint anterior passou; o novo commit ainda deve passar pela CI.
+
+## Histórico — checkpoint 3
 
 O lote 03 tem 16 aulas integradas: uma primeira aula nas 16 disciplinas da fila.
 Restam 1.279 lacunas entre 1.512 identidades curriculares. No recorte editorial

@@ -9,5 +9,6 @@
       592 testes da aplicação, build e leitor público real aprovados.
 - [x] Ampliar o lote 03 para 16 aulas e verificar 605 testes, build e leitor real.
 - [x] Corrigir a abertura direta de alias sem ressuscitar conteúdo retirado.
+- [x] Iniciar lote 04 com quatro aulas: 607 testes, build e leitor real aprovados.
 - [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
 - [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.

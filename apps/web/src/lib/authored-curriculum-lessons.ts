@@ -1,10 +1,13 @@
-import {authoredCurriculumBatch03,authoredCurriculumReviewRecords} from './authored-curriculum-batch03.ts';
+import {authoredCurriculumBatch03,authoredCurriculumReviewRecords as batch03Reviews} from './authored-curriculum-batch03.ts';
+import {authoredCurriculumBatch04,authoredCurriculumBatch04ReviewRecords} from './authored-curriculum-batch04.ts';
+import type {AuthoredLessonSpec} from './authored-lesson-quality.ts';
 import type {CurriculumTopic} from './curriculum-catalog.ts';
 import type {CourseLesson} from './course-content.ts';
 import {courseId} from './curriculum-id.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 
-export const authoredCurriculumSpecs=authoredCurriculumBatch03;
+export const authoredCurriculumSpecs:readonly AuthoredLessonSpec[]=[...authoredCurriculumBatch03,...authoredCurriculumBatch04];
+export const authoredCurriculumReviewRecords=[...batch03Reviews,...authoredCurriculumBatch04ReviewRecords] as const;
 const specs=new Map(authoredCurriculumSpecs.map(spec=>[JSON.stringify([spec.subject,spec.topic]),spec]));
 const references=new Map(authoredCurriculumReviewRecords.map(record=>[JSON.stringify([record.subject,record.topic]),record.verifiedSourceUrls]));
 

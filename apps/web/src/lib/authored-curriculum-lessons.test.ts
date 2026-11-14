@@ -1,8 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {authoredCurriculumSpecs,deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
-import {authoredCurriculumReviewRecords} from './authored-curriculum-batch03.ts';
+import {authoredCurriculumSpecs,authoredCurriculumReviewRecords,deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {authoredLessonQualityIssues} from './authored-lesson-quality.ts';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
@@ -157,4 +156,21 @@ test('separação de misturas conserva massa e inclui solvente adicionado no fil
  assert.ok(task.options[task.correctIndex].startsWith(`${filtrate} g,`));
  assert.match(task.prompt,/suficientes para dissolver todo o sal/);
  assert.match(task.prompt,/ausência de reações e de perdas/);
+});
+
+test('funções e gráficos conferem imagens, inclinação perpendicular e intervalo de lucro',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Funções e gráficos');
+ assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const f=(x:number)=>4*x-7;
+ assert.equal(choice(0),`f(2) = ${f(2)} e intercepto y em (0; ${String(f(0)).replace('-','−')})`);
+ const slope=(-3-3)/(4-1),fraction=choice(1).split('/').map(Number),perpendicular=fraction.length===2?fraction[0]/fraction[1]:fraction[0];
+ assert.equal(slope*perpendicular,-1);
+ const a=-1,b=10,c=-16,delta=b*b-4*a*c;
+ const roots=[(-b-Math.sqrt(delta))/(2*a),(-b+Math.sqrt(delta))/(2*a)].sort((left,right)=>left-right);
+ assert.equal(choice(2),`${roots[0]} < x < ${roots[1]}`);
+ const profit=(x:number)=>a*x*x+b*x+c;
+ assert.equal(profit(roots[0]),0);assert.equal(profit(roots[1]),0);
+ assert.ok(profit((roots[0]+roots[1])/2)>0);
+ assert.ok(profit(0)<0&&profit(10)<0);
 });
