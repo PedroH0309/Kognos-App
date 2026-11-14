@@ -33,7 +33,7 @@ test('inventário usado pelo navegador não importa o texto de todas as aulas',(
  const base=dirname(fileURLToPath(import.meta.url)),seen=new Set<string>();
  function visit(path:string){
   if(seen.has(path))return;seen.add(path);
-  assert.doesNotMatch(path,/canonical-lesson-reuse|enem-depth-|provao-depth-|starter-lessons|authored-lessons-stage/,'texto completo no grafo cliente');
+  assert.doesNotMatch(path,/canonical-lesson-reuse|enem-depth-|provao-depth-|starter-lessons|authored-lessons-stage|authored-curriculum-(?:batch|lessons)/,'texto completo no grafo cliente');
   const source=ts.createSourceFile(path,readFileSync(path,'utf8'),ts.ScriptTarget.Latest,true);
   for(const statement of source.statements){
    if(!ts.isImportDeclaration(statement)||!ts.isStringLiteral(statement.moduleSpecifier)||statement.importClause?.isTypeOnly)continue;

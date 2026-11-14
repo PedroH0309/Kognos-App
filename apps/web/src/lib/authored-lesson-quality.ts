@@ -1,4 +1,6 @@
 /** Structural checks are necessary, never proof of pedagogical correctness. */
+import type {CourseSection,CourseTask} from './course-content.ts';
+export type AuthoredLessonSpec={subject:string;topic:string;objective:string;prerequisites:string[];sections:CourseSection[];tasks:CourseTask[]};
 export const authoredLessonMetrics={explanation:900,steps:3,example:80,pitfall:30,hint:40,solution:130} as const;
 const levels=['basic','intermediate','advanced'];
 const record=(value:unknown):Record<string,unknown>|null=>value!==null&&typeof value==='object'&&!Array.isArray(value)?value as Record<string,unknown>:null;

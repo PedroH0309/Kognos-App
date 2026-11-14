@@ -15,6 +15,7 @@ import {provaoDetailedLesson,hasProvaoDetailedLesson} from './provao-detailed-le
 import {deepProvaoLesson,hasDeepProvaoLesson} from './provao-depth-lessons.ts';
 import {supportingProvaoLesson,hasSupportingProvaoLesson} from './provao-topic-bridges.ts';
 import {deepEnemLesson} from './enem-depth-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 
 /** Offline curriculum-wide teaching modules.
  * IMPORTANT: auto-assembled introductory content is not a teacher-reviewed
@@ -107,6 +108,7 @@ const broadStudyMethods:Record<string,{concept:string;method:string;example:stri
 function shorten(value:string,max:number){return value.length<=max?value:value.slice(0,max-1).trimEnd()+'…';}
 export function starterCoverage(topic:CurriculumTopic):StarterCoverage{
  if(deepEnemLesson(topic))return 'thematic';
+ if(deepAuthoredCurriculumLesson(topic))return 'thematic';
  if(hasDeepProvaoLesson(topic))return 'thematic';
  if(hasProvaoDetailedLesson(topic)||hasSupportingProvaoLesson(topic))return 'thematic';
  if(topic.subject==='Matemática'&&deepMathTopicNames.includes(topic.topic))return 'thematic';
@@ -131,6 +133,8 @@ export function starterLesson(topic:CurriculumTopic):CourseLesson{
  if(deepened)return deepened;
  const enem=deepEnemLesson(topic);
  if(enem)return enem;
+ const authored=deepAuthoredCurriculumLesson(topic);
+ if(authored)return authored;
  const specific=provaoDetailedLesson(topic);
  if(specific)return specific;
  const developed=deepMathLesson(topic);

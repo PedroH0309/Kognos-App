@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {curriculumTopics,type CurriculumTopic} from './curriculum-catalog.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
 import {deepEnemLesson} from './enem-depth-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
@@ -695,7 +696,7 @@ test('audit includes unique deep lessons from official Provão leaves outside ed
  const {allUniqueDeepCanonicalIds}=canonicalReuseAudit();
  const canonicalIds=new Set<string>();
  for(const topic of curriculumTopics){
-  const lesson=deepProvaoLesson(topic)??deepEnemLesson(topic);
+  const lesson=deepProvaoLesson(topic)??deepEnemLesson(topic)??deepAuthoredCurriculumLesson(topic);
   if(lesson)canonicalIds.add(lesson.id);
  }
  for(const topic of provaoTopics){
