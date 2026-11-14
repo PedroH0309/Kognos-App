@@ -101,3 +101,9 @@ npm run build
 ```
 
 Localize a linha `KOGNOS_CROSS_EXAM_AUDIT` no log do teste. Não reutilize estes números para commits posteriores sem rodar novamente a auditoria.
+
+## Atualização posterior — ordenação operacional ENEM primeiro
+
+A branch do PR #114 agora ordena o backlog `canonicalAuthoringBacklog()` com todas as **lacunas integrais do ENEM primeiro**, antes das lacunas exclusivas de outras provas. Dentro de cada faixa, continua priorizando tópicos reutilizáveis por mais exames e depois aqueles com fontes parciais verificadas. A alteração não cria equivalência, não transforma referência parcial em cobertura integral, não modifica os IDs históricos e não altera o currículo registrado.
+
+O teste `canonical-lesson-reuse.test.ts` agora exige que o bloco inicial do backlog corresponda exatamente aos tópicos ENEM ainda sem cobertura integral e mantém a prioridade por número de exames dentro de cada faixa. O total do bloco é calculado dinamicamente a partir de `canonicalCoverageByExam().enem.missing`, não fixado em 882. Os números acima permanecem uma **fotografia da CI anterior** até nova execução; esta alteração não adicionou aulas, aliases ou exclusões persistidas. Commits: `98c9598` (ordenação) e `a8fcab8` (regressão).
