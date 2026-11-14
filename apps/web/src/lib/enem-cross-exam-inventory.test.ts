@@ -134,7 +134,8 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
   assert.equal(audit.priorityQueue.filter(row => row.advisorySources.length > 0).length,
     audit.partialOnlyTopics, 'Partial-only ENEM topic count diverges from the queue');
   for (const subject of audit.subjects) {
-    const inventory = enem.bySubject.find(row => row.subject === subject.subject);
+    const inventory: (typeof byExam)[number]['bySubject'][number] | undefined =
+      enem.bySubject.find(row => row.subject === subject.subject);
     assert.ok(inventory, 'Missing ENEM subject audit: ' + subject.subject);
     assert.equal(inventory.entries, subject.total);
     assert.equal(inventory.deep, subject.deep);
