@@ -24,9 +24,14 @@ test('ENEM authored batch 01 has five distinct deep lessons with valid objective
     assert.ok(spec.tasks.length >= 3);
     assert.equal(new Set(spec.tasks.map(t => t.prompt.trim())).size, spec.tasks.length);
     for (const task of spec.tasks) {
-      assert.equal(task.options.length, 4);
-      assert.equal(new Set(task.options.map(o => o.trim().toLowerCase())).size, 4);
-      assert.ok(Number.isInteger(task.correctIndex) && task.correctIndex >= 0 && task.correctIndex < 4);
+      const {options, correctIndex} = task;
+      assert.ok(Array.isArray(options), 'Objective item is missing alternatives: ' + spec.topic);
+      assert.equal(options.length, 4);
+      assert.equal(new Set(options.map(o => o.trim().toLowerCase())).size, 4);
+      assert.ok(
+        typeof correctIndex === 'number' && Number.isInteger(correctIndex) && correctIndex >= 0 && correctIndex < options.length,
+        'Objective item has an invalid answer index: ' + spec.topic,
+      );
       assert.ok(task.hint.trim().length > 20);
       assert.ok(task.solution.trim().length > 35);
     }
