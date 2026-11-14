@@ -120,12 +120,15 @@ const SHORT_NAV_LABELS:Partial<Record<View,string>>={
 };
 function SideNavigationItem({view,active,onSelect}:{view:View;active:boolean;onSelect:(view:View)=>void}){
  const item=NAV.find(entry=>entry.key===view)!;
- return <button type="button" onClick={()=>onSelect(view)} className={`side-nav-item ${active?'active':''}`}
-     aria-label={item.label} aria-current={active?'page':undefined}>
+ return <div className="ks-tooltip">
+   <button type="button" onClick={()=>onSelect(view)} className={`side-nav-item ${active?'active':''}`}
+     title={item.label} aria-label={item.label} aria-current={active?'page':undefined}>
      <span className="k-side-icon"><NavIcon view={view}/></span>
      <span className="k-side-label">{SHORT_NAV_LABELS[view]||item.label}</span>
      {item.status&&<small title={item.status} className="k-side-badge">•</small>}
-   </button>;
+   </button>
+   {item.help && <span className="ks-tooltip-content" role="tooltip">{item.help}</span>}
+ </div>;
 }
 function NavIcon({view}:{view:View}){const Icon=NAV_ICONS[view];return <Icon size={19} strokeWidth={1.8} aria-hidden="true"/>;}
 const GOAL_ICONS: Record<Goal, LucideIcon> = { enem:Target, vestibular:GraduationCap, etec:BookOpenCheck, school:PencilLine, contest:Landmark, olympiad:Medal, personal:Compass };
