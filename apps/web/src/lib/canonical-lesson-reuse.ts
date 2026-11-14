@@ -240,7 +240,9 @@ export function verifiedPartialAssociations(){
     const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
     const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
     if(!target||!source||target.id===source.id)return [];
-    const lesson=deepProvaoLesson(source);
+    // Partial references may originate from any authored deep library, including ENEM.
+    // Keep them advisory: resolving a source never promotes the target to full coverage.
+    const lesson=sharedOfficialProvaoLesson(source);
     if(!lesson)return [];
     return [{...entry,targetTopicId:target.id,canonicalId:source.id,lesson}];
   });
@@ -266,7 +268,7 @@ export function unresolvedPartialCandidates(){
   const sourceTopic:CurriculumTopic|undefined=source??(official&&officialId?{
    id:officialId,subject:official.subject,topic:official.topic,exams:['saresp']
   }:undefined);
-  const sourceLesson=sourceTopic?deepProvaoLesson(sourceTopic):null;
+  const sourceLesson=sourceTopic?sharedOfficialProvaoLesson(sourceTopic):null;
   const key=entry.subject+'\\0'+entry.targetTitle+'\\0'+entry.sourceTitle;
   if(target&&sourceId&&target.id!==sourceId&&
    (sourceLesson||resolvedOfficial.has(key)))return [];

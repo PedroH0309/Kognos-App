@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {provaoTopics} from './provao-paulista.ts';
+import {examBlueprints} from './exam-blueprints.ts';
 import {
   canonicalExamTopicMappings,
   canonicalLessonForExam,
@@ -117,4 +118,66 @@ test('ENEM audit exposes reproducible per-subject exact-title and canonical coun
       scopedMappings.filter(row => row.mappingKind === 'reviewed-semantic').length);
     assert.equal(subject.total, subject.deep + subject.missing);
   }
+});
+
+
+test('ENEM audit never counts duplicated mappings or an unrelated exam as full coverage', () => {
+  const audit = enemCanonicalPriorityAudit();
+  const topics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
+  const topicById = new Map(topics.map(topic => [topic.id, topic] as const));
+  const mappings = canonicalExamTopicMappings();
+  const full = mappings.filter(row => row.exam === 'enem');
+  const seen = new Set<string>();
+  for (const row of full) {
+    assert.ok(topicById.has(row.examTopicId), 'ENEM mapping must have an ENEM catalog membership');
+    assert.ok(!seen.has(row.examTopicId), 'one ENEM topic must not have competing full canonical mappings');
+    seen.add(row.examTopicId);
+    assert.equal(row.canonicalId, row.lesson.id);
+    const topic = topicById.get(row.examTopicId)!;
+    assert.strictEqual(canonicalLessonForExam('enem', topic), row.lesson);
+    for (const exam of ['fuvest', 'vunesp', 'etec', 'saresp'] as const) {
+      if (!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)) {
+        assert.equal(canonicalLessonForExam(exam, topic), null,
+          'unregistered exam must not inherit ENEM canonical coverage');
+      }
+    }
+  }
+  assert.equal(audit.deep, seen.size);
+  assert.equal(audit.topics, audit.deep + audit.missing);
+  assert.equal(audit.priorityQueue.length, audit.missing);
+  assert.equal(audit.partialOnlyTopics,
+    audit.priorityQueue.filter(row => row.advisorySources.length > 0).length);
+  assert.equal(audit.fullLinksSharedWithOtherExams, full.filter(row =>
+    mappings.some(other => other.exam !== 'enem' && other.canonicalId === row.canonicalId)
+  ).length);
+});
+
+
+test('ENEM priority audit never double-counts a topic or promotes advisory-only coverage', () => {
+  const audit = enemCanonicalPriorityAudit();
+  const registered = curriculumTopics.filter(topic => topic.exams.includes('enem'));
+  const registeredIds = new Set(registered.map(topic => topic.id));
+  const fullIds = audit.fullCanonicalMappings.map(row => row.examTopicId);
+  const missingIds = audit.priorityQueue.map(row => row.topicId);
+
+  assert.equal(registeredIds.size, registered.length, 'duplicate registered ENEM topic ID');
+  assert.equal(new Set(fullIds).size, fullIds.length, 'multiple full mappings for one ENEM topic');
+  assert.equal(new Set(missingIds).size, missingIds.length, 'duplicate backlog entry');
+  assert.equal(fullIds.length + missingIds.length, registered.length);
+  assert.deepEqual(new Set([...fullIds, ...missingIds]), registeredIds);
+  for (const id of fullIds) {
+    assert.ok(!missingIds.includes(id), 'fully mapped topic must not remain missing: ' + id);
+  }
+  for (const row of audit.priorityQueue) {
+    for (const source of row.advisorySources) {
+      assert.equal(source.fullyCovered, false);
+      assert.ok(source.coveredScope.trim());
+      assert.ok(source.missingScope.trim());
+    }
+  }
+  assert.equal(audit.subjects.reduce((total, subject) => total + subject.partialOnly, 0),
+    audit.partialOnlyTopics, 'partial-only total must reconcile by subject');
+  assert.equal(audit.fullCanonicalMappings.length, audit.deep);
+  assert.equal(audit.uniqueDeepCanonicalLessons,
+    new Set(audit.fullCanonicalMappings.map(row => row.canonicalId)).size);
 });
