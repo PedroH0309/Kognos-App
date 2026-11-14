@@ -287,8 +287,8 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
         <StatCard icon={CheckCircle2} label="TAREFAS CONCLUÍDAS" value={activity.completed} note="Do seu planejamento"/>
       </div>
     </section>
-    {activityError&&<div className="message warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}
-    {earnedError&&<div className="message warning" role="alert">Conquistas indisponíveis: {earnedError}</div>}
+    {activityError&&<div className="ks-toast ks-toast-warning" role="alert">Falha ao carregar dados da nuvem: {activityError}. Verifique a migração 0004.</div>}
+    {earnedError&&<div className="ks-toast ks-toast-warning" role="alert">Conquistas indisponíveis: {earnedError}</div>}
 
     <div className="k-dashboard-detail-grid">
       <section className="k-surface-panel k-weekly-panel" aria-labelledby="k-weekly-heading">
