@@ -1,4 +1,198 @@
-# Kognos — Intelligent Learning Platform
+# Kognos
+
+**An AI-assisted learning platform for structured study, original lessons, exam preparation, and evidence-based practice.**
+
+Kognos combines curriculum-based study paths, authored educational content, objective practice questions, a contextual tutor called **Kog**, and student-owned learning records. It targets Brazilian secondary education and examination tracks, with **ENEM-first editorial prioritization**. Topic labels in the editorial catalog are not, by themselves, verified official exam competencies.
+
+[![License: Proprietary](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
+![Version](https://img.shields.io/badge/version-1.9.0-6f42c1)
+![Status](https://img.shields.io/badge/status-active%20development-orange)
+![Stack](https://img.shields.io/badge/Next.js-16-black)
+![Language](https://img.shields.io/badge/language-TypeScript-blue)
+
+> **Repository status:** The software is proprietary and not licensed for unrestricted redistribution. The curriculum is under active expansion; authored lessons and AI-generated practice are **not official exam materials** and have **not been certified by teachers or exam boards**. See [LICENSE](LICENSE) and [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Project status
+
+The web application uses Next.js, React, TypeScript, Supabase/PostgreSQL, and a server-side NVIDIA integration for supported AI flows. The original interface uses Deep Navy, Intelligence Violet, and Progress Cyan. The interface language is Brazilian Portuguese.
+
+| Capability | Status |
+|---|---|
+| Responsive web interface, student onboarding and learning navigation | Implemented |
+| Supabase sign-in, accounts and protected per-user data | Implemented when configured |
+| Original starter lessons and demonstration question bank | Implemented; limited scope |
+| Curriculum tracks for ENEM, FUVEST, Provão Paulista and VUNESP | Registered as editorial orientations; not official equivalence certificates |
+| Historical ETEC curriculum references | Retained for compatibility; not a public active track |
+| Authored deep lessons and canonical cross-exam references | Implemented in part; continuing editorial development |
+| Semantic associations with explicit full/partial coverage | Implemented in part; coverage is audited, not assumed |
+| AI question generation and personal question bank | Implemented conditionally; requires Supabase Auth, server configuration and quota |
+| Contextual Kog tutor and study planner | Implemented conditionally; service availability is not guaranteed |
+| Official source ingestion and editorial review workflow | Restricted editor functionality; human approval required |
+| Fully reviewed ENEM and vestibular curricula | In progress; **not complete** |
+| Official exam grading, certified mastery prediction, full essay correction | Not claimed or not implemented as complete products |
+
+This table describes the codebase, not an assertion that external services or production deployment are currently functioning.
+
+## Features
+
+- **Exam-oriented study paths:** Browse registered subjects and topics without equating editorial titles with official exam skill codes.
+- **Original lessons:** Progressive explanations, worked examples and objective A–D exercises in the authored deep library; content still requires pedagogical review.
+- **Canonical lesson reuse:** A single authored lesson can serve more than one exam where scope and objectives are sufficiently aligned; historical topic IDs and navigation remain distinct.
+- **Partial-coverage evidence:** Broader topics can link to useful supporting lessons while explicitly recording missing scope instead of claiming completion.
+- **Practice and mock exams:** Demonstration exercises and, when configured, private AI-generated questions subject to server-side validation.
+- **Kog learning assistant:** Contextual educational guidance through an authenticated server route, with a labeled fallback when full AI assistance is unavailable.
+- **Study planning:** Scheduling and review suggestions based on recorded attempts rather than invented proficiency.
+- **Protected student records:** Owner-scoped access to account data and graded AI practice, with answer keys protected by server-side controls.
+- **Source review:** Restricted editor workflows for proposed exam references, provenance and approval.
+
+## Curriculum model and current limitations
+
+**ENEM first:** compare each registered ENEM topic with deep lessons from every exam before authoring a duplicate. An alias may be considered **full** only after verifying scope, learning objectives, expected depth and source evidence. A **partial** link is advisory and must list missing objectives. Matching keywords or titles alone do not certify equivalence.
+
+The catalog and deep-lesson coverage change with every accepted development batch. For reproducible counts, use the source-defined audits and their tests, not historic README statistics:
+
+- `apps/web/src/lib/curriculum-catalog.ts`
+- `apps/web/src/lib/exam-blueprints.ts`
+- `apps/web/src/lib/exam-syllabus.ts`
+- `apps/web/src/lib/provao-paulista.ts`
+- `apps/web/src/lib/canonical-lesson-reuse.ts`
+- `apps/web/src/lib/enem-canonical-priority.ts`
+
+The corresponding audit documentation, when present, explains measured coverage and unresolved semantic associations. An editorial ENEM topic count is **not** the number of official Inep competencies or skills.
+
+## Technology stack
+
+| Layer | Implementation |
+|---|---|
+| Web app | Next.js 16, React 19, TypeScript |
+| UI | CSS, Lucide icons, Motion, Three.js for Kog visual elements |
+| Authentication and storage | Supabase Auth and PostgreSQL |
+| Education logic | `packages/education-engine/` and `apps/web/src/lib/` |
+| AI services | NVIDIA NIM through protected server routes, when configured |
+| Local development | Node.js and npm workspaces |
+| Testing | Node.js test runner, TypeScript, design tests and PostgreSQL security tests |
+| CI | GitHub Actions |
+| Source catalog | Versioned editorial references; institutional evidence reviewed separately |
+
+## Requirements
+
+- **Node.js 22 LTS** recommended (Next.js 16 requires Node.js 20.9 or later).
+- npm and Git.
+- Browser with current JavaScript support.
+- A Supabase project for authenticated cloud features, with the repository's migrations applied in order.
+- Server-side NVIDIA credentials only if AI features are needed.
+
+The user interface can be developed locally, but authenticated services and AI features cannot be considered operational until configured and tested.
+
+## Run locally
+
+1. Clone the repository and install dependencies:
+
+   ```bash
+   git clone https://github.com/PedroH0309/Kognos-App.git
+   cd Kognos-App
+   npm install
+   ```
+
+2. For features requiring Supabase or NVIDIA, copy `apps/web/.env.example` to `apps/web/.env.local` and configure the appropriate values **locally**. Never commit this file.
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000).
+
+See [existing development notes](#development-history-and-detailed-setup) for migration ordering, editor configuration and integration details. Do not apply schema changes to production without review.
+
+## Run tests
+
+From the repository root:
+
+```bash
+npm test
+npm run test:content-db
+npm run test:design
+npm run typecheck
+npm run lint
+npm run build
+```
+
+Run these checks against the exact commit being reviewed. GitHub Actions is the authoritative record for a CI run; a successful earlier commit does not certify subsequent changes. Content security tests are designed to exercise PostgreSQL ownership and two-user isolation.
+
+## Study workflow
+
+1. Sign in when cloud features are configured.
+2. Select an exam, subject and registered topic.
+3. Study the related lesson and its prerequisites.
+4. Complete objective exercises or authorized AI practice.
+5. Review feedback and revisit weak topics based on actual attempt history.
+6. Continue along the study path while preserving your own progress.
+
+An exam may show the same underlying canonical lesson as another exam, but its curriculum reference and user-specific study state remain distinct.
+
+## Security boundaries
+
+- API keys and service secrets belong only in server-side environment variables; never in frontend bundles, logs or commits.
+- Supabase Auth, Row Level Security and server authorization protect private student records.
+- Answer keys for authenticated AI practice are not exposed while the student is answering.
+- Restricted editorial changes require server-confirmed editor permissions.
+- External AI processing requires the configured authentication, quota and user-facing disclosure.
+- Demo progress is not a certified prediction of ENEM performance, and accessibility preferences are not medical diagnoses.
+- Schema changes require versioned migrations, RLS review and isolation tests for at least two users.
+
+See [SECURITY.md](SECURITY.md) to report security vulnerabilities.
+
+## Known limitations
+
+- The curriculum is **incomplete**; an existing title does not imply a complete, reviewed lesson.
+- Semantic overlap is not necessarily full equivalence. Partial references do not count as full coverage.
+- AI generation depends on external provider availability, configuration and quotas.
+- Generated questions are original machine-produced items, not official, human-certified examination questions.
+- Demonstration content and user progress do not establish mastered competencies.
+- Official exam source ingestion requires restricted editorial review and does not automatically validate every linked source.
+- Production readiness still requires privacy, accessibility, mobile and service-level validation.
+
+## Project structure
+
+```text
+.
+├── .github/
+│   └── workflows/            # CI verification
+├── apps/
+│   └── web/
+│       ├── public/           # Static assets and brand resources
+│       └── src/
+│           ├── app/          # Next.js routes and API handlers
+│           ├── components/   # Interface and Kog assistant
+│           └── lib/          # Curriculum, canonical lessons and services
+├── packages/
+│   └── education-engine/     # Education logic and tests
+├── supabase/
+│   └── migrations/           # Versioned database changes and RLS
+├── tests/                    # Design and security regression tests
+├── docs/                     # Technical and editorial documentation
+├── legacy/                   # Preserved FOCO base
+├── AGENTS.md
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
+```
+
+## Contributing
+
+Review [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. The source remains proprietary; a public GitHub repository is not equivalent to an open-source license.
+
+## License
+
+**Proprietary — all rights reserved.** See [LICENSE](LICENSE).
+
+---
+
+## Development history and detailed setup
+
+The sections below preserve the earlier release notes and detailed setup instructions. Historical feature claims refer to the versions in which they were written; the project status above is the current high-level summary.
 
 > **Proprietary software — All rights reserved.** This repository is not licensed for unrestricted use or redistribution. See [LICENSE](LICENSE) and [CONTRIBUTING.md](CONTRIBUTING.md) for permission and contributor guidance.
 
