@@ -54,7 +54,7 @@ test('loading uses a skeleton indicator without visible "Carregando" banners', (
   assert.match(overlay, /ks-skeleton ks-skeleton-text ks-w-48 ks-h-5/);
   assert.match(overlay, /ks-sr-only/);
   assert.match(css, /@media\(prefers-reduced-motion:reduce\)/);
-  assert.match(app, /<KognosLoadingOverlay label="Preparando área de estudos"/);
+  assert.match(app, /<KognosLoadingOverlay label="Preparando Ã¡rea de estudos"/);
   assert.match(kog, /<KognosLoadingOverlay inline label=\{pending\?/);
   assert.match(room, /<KognosLoadingOverlay inline label="Carregando o assunto"/);
   assert.match(flow, /<KognosLoadingOverlay inline label="Carregando matérias"/);
