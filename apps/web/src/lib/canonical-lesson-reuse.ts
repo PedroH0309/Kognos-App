@@ -450,7 +450,10 @@ export function canonicalAuthoringBacklog(){
       advisorySourceIds:advisorySources,
       hasPartialReference:advisorySources.length>0
     }];
-  }).sort((a,b)=>b.examCount-a.examCount||
+  // ENEM-first is a scheduling rule, not a claim of official competency coverage.
+  // Preserve cross-exam reuse priority *within* each ENEM/non-ENEM group.
+  }).sort((a,b)=>Number(b.missingExams.includes('enem'))-Number(a.missingExams.includes('enem'))||
+    b.examCount-a.examCount||
     Number(b.hasPartialReference)-Number(a.hasPartialReference)||
     a.subject.localeCompare(b.subject)||a.title.localeCompare(b.title)||
     a.topicId.localeCompare(b.topicId));
