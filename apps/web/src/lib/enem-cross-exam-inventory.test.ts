@@ -6,9 +6,13 @@ import {
   canonicalExamTopicMappings,
   canonicalLessonForExam,
   canonicalCoverageByExam,
-  semanticReviewQueue
+  semanticReviewQueue,
+  canonicalRegistryAudit,
+  officialProvaoCanonicalGradeMappings,
+  officialProvaoGradeCoverage
 } from './canonical-lesson-reuse.ts';
 import {enemCanonicalPriorityAudit} from './enem-canonical-priority.ts';
+import {provaoTopics} from './provao-paulista.ts';
 
 /**
  * Reproducible, current-source inventory. This is Kognos editorial coverage,
@@ -19,6 +23,9 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
   const coverage = canonicalCoverageByExam();
   const mappings = canonicalExamTopicMappings();
   const advisories = semanticReviewQueue();
+  const registry = canonicalRegistryAudit();
+  const officialGrades = officialProvaoGradeCoverage();
+  const gradeMappings = officialProvaoCanonicalGradeMappings();
   const ids = new Set(curriculumTopics.map(topic => topic.id));
   const exams = Object.keys(examBlueprints) as ExamId[];
 
@@ -68,10 +75,36 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
   assert.equal(audit.partialAdvisoryLinks, enem.advisoryLinks);
   assert.equal(audit.partialOnlyTopics, enem.partialOnlyTopics);
 
+  assert.equal(registry.examToLessonLinks, mappings.length);
+  assert.equal(registry.persistentDuplicatesDeleted, 0);
+  assert.equal(officialGrades.length, 3);
+  for (const grade of officialGrades) {
+    const leaves = provaoTopics.filter(row => row.grade === grade.grade);
+    const deepLeaves = gradeMappings.filter(row => row.grade === grade.grade);
+    assert.equal(grade.totalEntries, leaves.length, 'Provão grade inventory mismatch');
+    assert.equal(grade.deepEntries, deepLeaves.length, 'Provão deep leaf mismatch');
+    assert.equal(grade.missingEntries, leaves.length - deepLeaves.length);
+    for (const row of deepLeaves) {
+      assert.ok(leaves.some(leaf => leaf.subject === row.subject && leaf.code === row.officialCode && leaf.topic === row.officialTitle), 'Unregistered Provão grade leaf');
+      assert.strictEqual(row.lesson.id, row.canonicalId);
+    }
+  }
+  // A repeated official leaf shares authored content, not an invented extra lesson.
+  const gradeSources = new Map<string, (typeof gradeMappings)[number]['lesson']>();
+  for (const row of gradeMappings) {
+    const prior = gradeSources.get(row.canonicalId);
+    if (prior) assert.strictEqual(row.lesson, prior, 'Grade-specific duplicate lesson object');
+    gradeSources.set(row.canonicalId, row.lesson);
+  }
+
   console.log('KOGNOS_CROSS_EXAM_AUDIT ' + JSON.stringify({
     source: 'runtime editorial catalog and canonical registry',
     officialInepSkillCoverageClaimed: false,
-    persistedDuplicatesDeleted: 0,
+    persistedDuplicatesDeleted: registry.persistentDuplicatesDeleted,
+    historicalCatalogEntries: registry.catalogEntries,
+    distinctExactSubjectTitles: registry.distinctExactSubjectTitles,
+    uniqueCanonicalLessonsAcrossCatalogAndOfficialGrades: registry.canonicalUniqueLessons,
+    officialProvaoByGrade: officialGrades.map(row => ({grade: row.grade, entries: row.totalEntries, deep: row.deepEntries, missing: row.missingEntries, uniqueDeepCanonicalLessons: row.uniqueCanonicalDeepIds.length})),
     enem: {
       ...enem,
       bySubject: audit.subjects,
