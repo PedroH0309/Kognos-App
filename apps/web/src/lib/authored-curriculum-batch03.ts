@@ -809,6 +809,645 @@ export const authoredCurriculumBatch03:readonly AuthoredLessonSpec[] = [
         "correctIndex": 0
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Brasil colonial",
+    "objective": "Analisar a formação da América portuguesa relacionando ocupação, instituições, atividades econômicas, escravização, resistências e mudanças políticas; distinguir transformações da corte em 1808, elevação a reino em 1815 e independência em 1822 sem supor ruptura social completa.",
+    "prerequisites": [
+      "Noções de expansão marítima europeia e relações atlânticas",
+      "Distinguir sequência cronológica de explicação por causa única",
+      "Reconhecer que povos e grupos sociais têm interesses e experiências diversos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Povos, ocupação portuguesa e administração",
+        "explanation": "A história dos territórios hoje brasileiros não começou com a chegada portuguesa: muitos povos indígenas já os habitavam, com línguas, formas de organização e relações próprias. A chegada da frota de Cabral em 1500 integra a expansão portuguesa e abriu novas relações de contato, exploração, alianças e conflitos, não uma ocupação de terra vazia. Nas primeiras décadas, a exploração do pau-brasil e feitorias envolveram relações com populações indígenas, além de disputas entre europeus. A ocupação colonial agrícola e administrativa foi intensificada a partir dos anos 1530. As capitanias hereditárias, organizadas em 1534, delegavam a donatários direitos e obrigações de ocupação e administração, dentro da soberania da Coroa. Resultados variaram conforme recursos, redes comerciais, condições locais e resistências; Pernambuco e São Vicente são destaques conhecidos, sem que isso autorize uma história idêntica para todas as regiões. O Governo-Geral, instalado em 1549 com Tomé de Sousa e sede em Salvador, buscou coordenar defesa, justiça, fazenda e outras funções. Sua criação não extinguiu imediatamente todas as capitanias. A presença de missionários e o projeto de catequese também participaram da colonização, com mudanças culturais, disputas pelo controle de populações e resistências indígenas. Ao analisar instituições, diferencie a atribuição formal de poderes da capacidade concreta de exercê-los num território extenso e disputado.",
+        "steps": [
+          "Reconheça a presença e a diversidade dos povos indígenas antes e durante a ocupação portuguesa.",
+          "Relacione expansão, exploração e ocupação sem explicar toda a colonização por uma única causa.",
+          "Compare poderes delegados aos donatários e funções do Governo-Geral, observando coexistências e limites."
+        ],
+        "example": "Análise institucional autoral: a concessão de poderes a um donatário não criava um reino independente. A Coroa mantinha soberania, enquanto encargos de ocupação e administração eram delegados. Um centro de Governo-Geral podia coordenar funções e coexistir com capitanias; centralizar certas decisões não significava abolir instantaneamente toda autoridade local.",
+        "pitfall": "Tratar 1500 como início da história de todos os povos do território, considerar a terra desabitada ou afirmar que Governo-Geral e capitanias nunca coexistiram."
+      },
+      {
+        "level": "intermediate",
+        "title": "Economias, trabalho compulsório e resistências",
+        "explanation": "A produção de açúcar ganhou importância em regiões da América portuguesa, articulando grandes propriedades, engenhos, capital, redes mercantis e trabalho compulsório. A exportação era relevante, mas não resume toda a economia colonial: abastecimento, pecuária, circulação interna, ofícios e pequenas produções também existiam. Evite um esquema em que uma atividade desaparece completamente quando outra se expande. A escravização de indígenas e de africanos assumiu formas e pesos distintos no tempo e no espaço. O tráfico atlântico deslocou violentamente pessoas de origens diversas e integrou a exploração colonial a circuitos mais amplos. A condição jurídica e as hierarquias sociais sustentavam relações de poder, mas pessoas escravizadas não foram agentes passivos: fugas, negociações, preservação de vínculos, conflitos e formação de quilombos compõem essas experiências. Palmares reuniu comunidades e formas de organização que resistiram à repressão, mantendo também relações com o entorno. Os povos indígenas igualmente fizeram alianças, resistiram e negociaram em circunstâncias específicas, sem constituírem um bloco homogêneo. Entradas, bandeiras, missões e expansão da pecuária participaram da ocupação do interior, muitas vezes acompanhadas de violência e captura de pessoas. Disputas com franceses e holandeses e a concorrência de outras áreas produtoras alteraram circuitos comerciais; não se deve concluir que a produção açucareira simplesmente terminou após esses conflitos.",
+        "steps": [
+          "Relacione terra, capital, trabalho e circulação, distinguindo exportação de atividades de abastecimento interno.",
+          "Analise coerção e hierarquias junto às ações e resistências de pessoas escravizadas e povos indígenas.",
+          "Compare regiões e períodos, evitando um ciclo único que substitua automaticamente toda a diversidade econômica."
+        ],
+        "example": "Palmares oferece um caso para analisar resistência como organização social, não apenas fuga individual. A rede de mocambos envolveu moradia, produção, defesa e relações externas, diante de sucessivas ações repressivas. Esse caso não autoriza tratar todos os quilombos como idênticos nem fixar uma população exata sem considerar divergências das fontes.",
+        "pitfall": "Reduzir toda a colônia a uma única atividade, apresentar a escravidão como trabalho voluntário ou apagar a agência histórica de africanos, seus descendentes e povos indígenas."
+      },
+      {
+        "level": "advanced",
+        "title": "Mineração, reformas e transformações da ordem colonial",
+        "explanation": "A expansão da mineração no final do século XVII e no XVIII intensificou deslocamentos, núcleos urbanos, circulação de mercadorias e interesses fiscais da Coroa, em diferentes regiões e momentos. O crescimento desses circuitos não eliminou a agricultura nem a escravidão. Cobranças, controle do ouro e conflitos revelavam disputas entre autoridades, comerciantes, proprietários e outros grupos, que não tinham interesses únicos. No reinado de D. José I, as políticas associadas a Pombal buscaram reforçar o poder régio e reorganizar administração e comércio, incluindo companhias monopolistas e a expulsão dos jesuítas em 1759. A formação territorial também envolveu acordos e conflitos: o Tratado de Madri de 1750, associado à negociação de Alexandre de Gusmão, não deve ser apresentado simplesmente como criação pessoal de Pombal nem como solução definitiva de todas as fronteiras. Movimentos de contestação tiveram composições e projetos diversos; a Conjuração Mineira de 1789 e a Baiana de 1798 não foram um movimento único com programa social consensual. No início do XIX, a transferência da corte e a abertura dos portos em 1808 alteraram o lugar da América na monarquia. A elevação do Brasil a reino ocorreu em 1815, pela Carta de Lei de 16 de dezembro, e não automaticamente em 1808. A independência de 1822 constituiu outra mudança política; não aboliu a escravidão nem suprimiu de imediato hierarquias e desigualdades. Distinguir marcos jurídicos, processos econômicos e permanências sociais é essencial para evitar uma narrativa linear e inevitável.",
+        "steps": [
+          "Relacione mineração, circulação e fiscalidade sem supor o desaparecimento das outras atividades.",
+          "Situe reformas, tratados e contestações em seus contextos e diferencie os grupos e projetos envolvidos.",
+          "Separe 1808, 1815 e 1822 e avalie tanto mudanças políticas quanto permanências sociais."
+        ],
+        "example": "Análise autoral de política colonial: a expulsão dos jesuítas em 1759 retirou de uma ordem religiosa funções e bens no contexto de reforço da autoridade régia. Interpretá-la apenas como abandono da religião seria inadequado: a medida envolvia disputas de poder, administração e educação. O caso mostra por que uma decisão precisa ser relacionada a seu contexto, não explicada por um rótulo isolado.",
+        "pitfall": "Confundir chegada da corte, elevação a reino e independência, atribuir um tratado a um único governante sem contexto ou concluir que uma ruptura política aboliu automaticamente as relações sociais anteriores."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Ao comparar capitanias hereditárias e Governo-Geral na América portuguesa, qual interpretação distingue adequadamente delegação de poderes e coordenação régia?",
+        "hint": "Considere que a soberania da Coroa não foi substituída pela dos donatários e que a instalação do Governo-Geral não extinguiu instantaneamente todas as capitanias.",
+        "solution": "B reconhece poderes delegados a donatários dentro da soberania portuguesa e a posterior coordenação de funções pelo Governo-Geral, com coexistências. A inventa reinos independentes. C atribui ao Governo-Geral a extinção imediata de todas as capitanias. D elimina interesses de ocupação, defesa e exploração para reduzir o sistema a uma finalidade única. A comparação exige distinguir desenho institucional e funcionamento histórico.",
+        "options": [
+          "As capitanias eram reinos soberanos sem vínculos com a monarquia portuguesa.",
+          "A Coroa delegou encargos aos donatários e depois coordenou funções por um Governo-Geral que coexistiu com capitanias.",
+          "A instalação do Governo-Geral aboliu imediatamente todas as capitanias e seus poderes locais.",
+          "As capitanias foram criadas exclusivamente para ensino religioso, sem objetivos de ocupação ou exploração."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Considere esta interpretação autoral para análise: “Como o açúcar era exportado, não existiam circuitos econômicos internos; como havia escravidão, os escravizados não atuavam historicamente.” Qual crítica identifica os dois problemas?",
+        "hint": "Exportação não exclui abastecimento interno; coerção não equivale à ausência de ações, negociações e resistências das pessoas submetidas a ela.",
+        "solution": "C reconhece que redes exportadoras coexistiam com abastecimento e circulação interna e que a escravização não anulava a agência dos sujeitos. A confirma indevidamente as duas generalizações. B corrige o primeiro ponto, mas mantém o apagamento das resistências. D elimina a importância da exportação e transforma a coerção em trabalho livre. Uma crítica adequada precisa enfrentar ambas as inferências sem negar as estruturas de exploração.",
+        "options": [
+          "A interpretação é completa porque exportação e escravidão impedem qualquer outra relação econômica ou ação social.",
+          "Só havia produção interna, mas pessoas escravizadas realmente não tinham capacidade de agir.",
+          "Atividades de abastecimento coexistiam com exportação, e pessoas escravizadas atuavam por diferentes formas de resistência e negociação.",
+          "Não havia exportação relevante nem coerção, pois todo trabalho colonial era livre e assalariado."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "A Carta de Lei de 16 de dezembro de 1815 elevou o Estado do Brasil à categoria de reino e o uniu aos reinos de Portugal e dos Algarves. Qual interpretação situa esse marco sem confundi-lo com outros processos?",
+        "hint": "Separe a transferência da corte em 1808, o ato jurídico de 1815 e a independência de 1822; uma mudança de estatuto não equivale automaticamente a transformação de todas as relações sociais.",
+        "solution": "A situa a elevação de 1815 como mudança de estatuto dentro da monarquia e a distingue da chegada da corte e da independência. B desloca o ato para 1808 e acrescenta abolição inexistente. C transforma a elevação em proclamação de república. D elimina as diferenças cronológicas e jurídicas entre os três marcos. A fonte de 1815 trata de união política monárquica, não comprova por si uma ruptura geral da estrutura social.",
+        "options": [
+          "A elevação de 1815 mudou o estatuto na monarquia, depois da chegada da corte e antes da independência, sem abolir por si a escravidão.",
+          "A categoria de reino foi criada automaticamente em 1808 e aboliu imediatamente a escravidão.",
+          "A carta de 1815 proclamou uma república independente de Portugal.",
+          "Chegada da corte, elevação a reino e independência são nomes equivalentes para um único ato jurídico de 1808."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Cartografia",
+    "objective": "Relacionar coordenadas, orientação, escala e propriedades das projeções; interpretar legendas e escolhas de mapas temáticos sem deduzir informações que os dados não oferecem.",
+    "prerequisites": [
+      "Razões, proporções e conversão de unidades de comprimento",
+      "Leitura de tabelas e porcentagens",
+      "Distinção entre medidas de comprimento e de área"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Elementos fundamentais do mapa e escalas",
+        "explanation": "Mapas selecionam e representam aspectos de um espaço com símbolos e convenções. O título informa o tema e o recorte; a legenda explica símbolos, cores e unidades; fonte e data ajudam a avaliar a origem e a atualidade dos dados. A orientação deve ser lida na indicação disponível: o norte não precisa estar no alto da página. Latitude é a distância angular em relação ao equador, de 0 a 90 graus para norte ou sul. Longitude é a distância angular em relação ao meridiano de referência de Greenwich, de 0 a 180 graus para leste ou oeste. A indicação hipotética 15 graus sul, 45 graus oeste situa um ponto nos hemisférios sul e ocidental; inverter latitude e longitude muda sua localização. Coordenadas angulares não são distâncias em quilômetros. Escala numérica relaciona comprimentos expressos na mesma unidade: em 1:50.000, 1 cm corresponde a 50.000 cm, ou 500 m. Multiplique a medida no mapa pelo denominador e depois converta unidades. Entre 1:25.000 e 1:250.000, a primeira é maior e permite representar mais detalhes, comparadas condições semelhantes. Uma escala gráfica é uma barra de referência: se imagem e barra forem redimensionadas juntas e proporcionalmente, a relação gráfica permanece utilizável. O número impresso da escala numérica não se atualiza sozinho ao ampliar a imagem. Escala linear também não é uma razão de áreas: dobrar comprimentos numa ampliação quadruplica áreas no papel.",
+        "steps": [
+          "Leia título, legenda, fonte, data e orientação antes de interpretar posições.",
+          "Identifique latitude e longitude com seus hemisférios, sem trocar graus por quilômetros.",
+          "Escreva as duas distâncias na mesma unidade, aplique a proporção e confira a conversão final.",
+          "Verifique se a imagem foi ampliada e se a escala gráfica acompanhou a mesma transformação."
+        ],
+        "example": "Exemplo autoral: numa planta 1:20.000, um trajeto retilíneo mede 3 cm. A distância correspondente é 60.000 cm, ou 600 m. Se a imagem for ampliada ao dobro, o trajeto terá 6 cm e a escala numérica efetiva passará a 1:10.000; a distância no terreno continuará sendo 600 m.",
+        "pitfall": "Multiplicar distâncias expressas em unidades diferentes, supor que o norte está sempre acima ou usar a escala numérica original depois de ampliar a imagem."
+      },
+      {
+        "level": "intermediate",
+        "title": "Projeções cartográficas: propriedades, distorções e escolha adequada",
+        "explanation": "Projetar a superfície curva da Terra num plano introduz distorções. A escolha de projeção depende da finalidade e da região: não existe um mapa plano mundial que preserve simultaneamente todas as áreas, formas e distâncias. Duas classificações precisam ser separadas. Cilíndrica, cônica e plana descrevem famílias relacionadas à construção geométrica; conforme, equivalente e equidistante descrevem propriedades preservadas. Uma projeção cilíndrica não é obrigatoriamente conforme: Mercator é um exemplo conforme, enquanto Gall-Peters é cilíndrica equivalente. Conformidade preserva ângulos locais, mas não garante áreas corretas nem uma escala de distância uniforme no mapa inteiro. Equivalência mantém proporções entre áreas, com deformações de formas. Equidistância conserva distâncias em determinadas linhas ou a partir de certos pontos, conforme a projeção; não significa que qualquer par de pontos possa ser medido sem erro. No Mercator mundial usual, regiões de altas latitudes aparecem muito ampliadas em área. Isso não permite comparar extensões territoriais medindo apenas o tamanho aparente das manchas. Para comparar proporções de área de biomas num mapa mundial, uma projeção equivalente atende à prioridade escolhida, mas ainda exige legenda e dados adequados. A família geométrica, a orientação da projeção e sua propriedade métrica devem ser verificadas na documentação; nenhuma delas pode ser inferida de uma regra absoluta sobre todos os mapas de uma mesma família.",
+        "steps": [
+          "Identifique a finalidade: comparar áreas, estudar ângulos locais ou medir distâncias em condições específicas.",
+          "Separe família geométrica e propriedade métrica, consultando o nome e a descrição da projeção.",
+          "Relacione a propriedade preservada às deformações restantes, sem assumir perfeição em todo o mapa."
+        ],
+        "example": "Comparação autoral: num mapa mundial de Mercator, uma ilha próxima ao polo pode ocupar uma mancha visual desproporcional à sua área real. Isso não prova que seus dados territoriais estejam errados: a representação amplia áreas nessa região. Uma projeção equivalente muda essa comparação de tamanho, mas não conserva todas as formas locais.",
+        "pitfall": "Afirmar que toda projeção cilíndrica conserva ângulos ou que uma projeção conforme permite medir qualquer distância global sem corrigir a escala."
+      },
+      {
+        "level": "advanced",
+        "title": "Leitura e interpretação de mapas temáticos: coropletas, isarítmicos, de símbolos proporcionais e de fluxos",
+        "explanation": "Mapas temáticos combinam dados e escolhas de representação. Coropletas aplicam cores a unidades territoriais; taxas ou densidades podem permitir comparações que números absolutos não permitem. Um município com mais habitantes tende a ter mais ocorrências de um evento, mas isso não prova maior taxa por habitante. Símbolos proporcionais podem representar totais: se a área de um círculo codifica o valor, dobrar o raio quadruplica essa área e não apenas a duplica. Mapas de fluxos representam movimentos; espessura, direção e unidade precisam ser lidas na legenda. Isolinhas conectam posições de igual valor: curvas de nível indicam altitude; isotermas, temperatura; isóbaras, pressão. Para comparar declividade por curvas de nível, observe a equidistância vertical e a escala horizontal: linhas mais próximas podem indicar maior declive quando essas condições são comparáveis. Classes de cores também alteram a impressão do mapa. Intervalos iguais mantêm amplitudes iguais; quantis procuram grupos com frequências semelhantes. Empates ou quantidades não divisíveis podem impedir frequências exatamente iguais. Mesmo com grupos iguais, os intervalos numéricos não precisam ter a mesma amplitude. Uma classe mais escura só indica maior valor se a legenda estabelecer essa ordem. Dados agregados por município não revelam automaticamente a situação de cada morador, nem uma associação espacial prova uma relação causal. Antes de explicar um padrão, confira período, unidades, classificação, limites territoriais e possíveis informações ausentes.",
+        "steps": [
+          "Identifique se a variável é total, taxa ou densidade e confira unidade, período e legenda.",
+          "Observe como cores, áreas de símbolos, linhas ou espessuras representam valores.",
+          "Separe frequência das classes e amplitude dos intervalos, considerando empates e arredondamentos.",
+          "Formule apenas conclusões sustentadas pelos dados, distinguindo agregados, indivíduos e causalidade."
+        ],
+        "example": "Exemplo fictício: a cidade A registra 60 ocorrências em 30.000 habitantes, e B registra 40 em 10.000. A tem o maior total, mas as taxas são 2 e 4 por mil habitantes, respectivamente. Um mapa de totais e outro de taxas responderiam a perguntas diferentes; a legenda precisa dizer qual variável está representada.",
+        "pitfall": "Ler um total como taxa, tratar quantis como intervalos iguais ou transformar a característica média de um território em descrição de cada pessoa que vive nele."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um mapa topográfico tem escala numérica 1:50.000. No mapa, a distância entre dois pontos mede 8,5 cm. Qual é a distância real entre esses pontos em quilômetros?",
+        "hint": "Multiplique a distância no mapa pelo denominador da escala e converta centímetros para quilômetros dividindo por 100.000.",
+        "solution": "A distância é 8,5 × 50.000 = 425.000 cm. Como 1 km corresponde a 100.000 cm, o resultado é 4,25 km, alternativa A. B, C e D diferem desse valor por fatores de dez, um décimo e cem, respectivamente. A etapa de conversão deve manter a unidade explícita; 425.000 cm também equivalem a 4.250 m, não a 425 km.",
+        "options": [
+          "4,25 km",
+          "42,5 km",
+          "0,425 km",
+          "425 km"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um atlas quer comparar visualmente as proporções entre áreas de vegetação de diferentes continentes, priorizando essa propriedade no mapa mundial. Qual escolha atende a essa finalidade e descreve corretamente seu limite?",
+        "hint": "A propriedade procurada é a conservação das proporções entre áreas; ela não implica a preservação simultânea de todas as formas e distâncias.",
+        "solution": "B relaciona projeção equivalente à preservação das proporções entre áreas, sem prometer conservar toda forma ou distância. A atribui à conformidade uma garantia de áreas que ela não oferece. C confunde equidistância em condições específicas com a preservação de todas as distâncias. D trata uma família geométrica como garantia de ausência de distorções. A prioridade do atlas justifica a propriedade equivalente, com legenda e dados adequados.",
+        "options": [
+          "Usar projeção conforme porque ela conserva necessariamente todas as áreas mundiais.",
+          "Usar projeção equivalente para manter proporções de áreas, aceitando deformações de formas e outras medidas.",
+          "Usar qualquer projeção equidistante porque nela todos os pares de pontos têm distâncias corretas.",
+          "Usar qualquer projeção cilíndrica porque sua geometria elimina todas as distorções."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num exemplo fictício, 100 municípios têm taxas distintas de um indicador. Um mapa os ordena pela taxa e os divide em cinco grupos de 20, sem empates. A legenda usa o tom mais escuro para o grupo com maiores taxas, sem informar limites numéricos. Qual conclusão decorre desses dados?",
+        "hint": "O enunciado garante a quantidade em cada grupo, mas não informa limites de taxa, amplitude dos intervalos nem a população de cada município.",
+        "solution": "C é garantida: o grupo mais escuro reúne 20 dos 100 municípios, isto é, 20% deles. A confunde quantidade de municípios com parcela da população. B exige limites numéricos não fornecidos para concluir taxas acima de 50%. D confunde frequência igual das classes com amplitude igual dos intervalos. Mesmo com taxas todas distintas, diferenças entre valores podem variar muito; dividir grupos por contagem não determina a amplitude de cada faixa.",
+        "options": [
+          "A classe mais escura reúne exatamente 20% da população total desses municípios.",
+          "Todos os municípios da classe mais escura têm taxas maiores que 50%.",
+          "A classe mais escura reúne exatamente 20% dos municípios, sem garantir uma parcela igual da população.",
+          "As cinco classes têm obrigatoriamente intervalos numéricos de mesma amplitude."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Introdução à filosofia e argumentação",
+    "objective": "Reconhecer problemas filosóficos e distinguir opinião, premissa e conclusão; avaliar validade dedutiva, apoio indutivo e falácias por reconstrução e contraexemplos.",
+    "prerequisites": [
+      "Leitura de afirmações e justificativas em textos curtos",
+      "Distinção entre descrição de fatos e recomendação de ações",
+      "Compreensão de expressões como todo, algum, se e portanto"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Problemas filosóficos, razões e conclusões",
+        "explanation": "Filosofar envolve formular problemas, examinar conceitos e justificar posições, tornando também as próprias justificativas objeto de crítica. Perguntar quais critérios tornam uma decisão justa difere de apenas declarar que se gostou dela: é preciso explicitar o sentido de justiça e as razões empregadas. Ética investiga problemas da ação e dos valores; epistemologia, do conhecimento e de sua justificação; lógica, das relações de inferência. Essas áreas se relacionam, sem eliminar divergências entre tradições e autores. A palavra filosofia tem origem grega, mas essa origem do nome não autoriza negar a diversidade histórica de formas de reflexão em outras sociedades. Na história grega, investigações sobre natureza e vida política não significaram desaparecimento instantâneo de narrativas míticas ou crenças religiosas. Um argumento é uma ou mais premissas oferecidas como apoio a uma conclusão; pode ser bom ou ruim. Premissas são as razões apresentadas, e conclusão é aquilo que se quer sustentar. Expressões como pois e portanto são pistas, não regras mecânicas: uma conclusão pode aparecer no começo, e um texto pode omitir parte da justificativa. Uma opinião também pode ser defendida por argumentos; a diferença relevante é entre simplesmente afirmá-la e oferecer razões para avaliá-la. Antes de concordar ou discordar, reescreva o raciocínio em linguagem clara, preservando o que o texto realmente diz.",
+        "steps": [
+          "Identifique a pergunta ou problema e esclareça os conceitos centrais.",
+          "Localize a afirmação que se pretende defender, independentemente da posição dela no texto.",
+          "Liste as razões oferecidas e distinga informações explícitas de premissas reconstruídas.",
+          "Verifique se as razões tratam da conclusão ou apenas acompanham sua apresentação."
+        ],
+        "example": "Texto autoral: a biblioteca deveria ampliar o horário noturno, pois parte dos estudantes trabalha durante o dia. A conclusão é a recomendação de ampliar o horário, e a premissa explícita trata da disponibilidade dos estudantes. A defesa ainda depende de razões sobre acesso, custos e viabilidade; reconhecer uma premissa não prova que a proposta esteja integralmente justificada.",
+        "pitfall": "Procurar a conclusão sempre na última frase ou supor que identificar uma justificativa já comprova que ela é suficiente."
+      },
+      {
+        "level": "intermediate",
+        "title": "Dedução, indução e critérios de avaliação",
+        "explanation": "Um argumento dedutivo válido não admite premissas verdadeiras e conclusão falsa ao mesmo tempo. A validade diz respeito à relação entre premissas e conclusão; não garante, sozinha, que as premissas sejam verdadeiras no mundo. Solidez exige validade e premissas verdadeiras. Considere a forma: todos os A são B; este indivíduo é A; logo, este indivíduo é B. Assumidas as premissas, a conclusão decorre delas, mesmo que a primeira afirmação geral seja falsa fora da hipótese. Para mostrar invalidade, procure uma situação possível em que as premissas sejam verdadeiras e a conclusão falsa. Na forma se P então Q; P; logo Q, chamada modus ponens, a inferência é válida. Já se P então Q; Q; logo P afirma o consequente indevidamente: Q pode ocorrer por outra condição. Na indução, as razões oferecem apoio ampliável e revisável, sem necessidade lógica da conclusão. Uma observação de poucos casos pode sugerir uma hipótese, mas a amplitude da conclusão precisa ser proporcional à evidência. Quantidade, diversidade, método de seleção e relação com a população investigada importam; aumentar uma amostra enviesada não elimina automaticamente seu viés. Dedução e indução não devem ser julgadas por um único teste: uma exige consequência necessária das premissas; a outra exige avaliar a qualidade do apoio que elas oferecem, sem prometer certeza absoluta.",
+        "steps": [
+          "Pergunte se a conclusão é apresentada como necessária ou como apoiada por evidências revisáveis.",
+          "Na dedução, teste a possibilidade conjunta de premissas verdadeiras e conclusão falsa.",
+          "Na indução, confronte alcance da conclusão, método de seleção e qualidade das evidências.",
+          "Separe a crítica à inferência da investigação sobre a verdade das premissas."
+        ],
+        "example": "Exemplo lógico autoral: se um objeto é um quadrado, tem quatro lados. Um objeto tem quatro lados. Logo, é quadrado. A conclusão não é necessária: um retângulo não quadrado satisfaz as duas premissas e torna a conclusão falsa. Esse contraexemplo mostra a invalidade da afirmação do consequente, sem negar que quadrados tenham quatro lados.",
+        "pitfall": "Declarar inválido um argumento apenas porque uma premissa é falsa ou considerar uma amostra numerosa automaticamente representativa."
+      },
+      {
+        "level": "advanced",
+        "title": "Falácias e reconstrução crítica",
+        "explanation": "Falácias são defeitos de raciocínio que podem parecer convincentes; identificar um rótulo sem explicar o defeito não substitui a análise. No ataque pessoal irrelevante, a discussão sobre uma ideia é desviada para uma característica de quem a defende. Características pessoais podem importar para avaliar credibilidade em certos contextos, mas não refutam automaticamente o conteúdo de uma afirmação. No homem de palha, uma posição é distorcida para facilitar sua rejeição; no falso dilema, possibilidades relevantes são excluídas sem justificativa. A petição de princípio usa como apoio aquilo que precisava justificar, e a generalização apressada estende a conclusão além do que a evidência sustenta. Uma reconstrução caridosa procura entender a melhor interpretação razoavelmente sustentada pelo texto, sem inventar dados ou mudar a tese. Distinga premissas factuais, que exigem evidências sobre acontecimentos, de premissas normativas, que envolvem critérios e valores sobre o que deve ser feito. Recomendações práticas frequentemente combinam ambos os tipos: uma previsão de efeito não determina sozinha qual escolha deve ser adotada. Examine objeções, custos, alternativas e valores envolvidos. Por fim, um argumento falacioso não prova a falsidade da conclusão: ela pode ter outra defesa adequada. Da mesma forma, uma conclusão desejável não corrige uma inferência ruim. A crítica deve indicar exatamente qual passagem exige revisão e qual informação ou razão adicional seria necessária.",
+        "steps": [
+          "Reconstrua a posição sem distorcê-la nem acrescentar evidências inexistentes.",
+          "Explique a relação defeituosa entre a razão apresentada e a conclusão, antes de nomear uma falácia.",
+          "Separe premissas factuais e normativas e pergunte que justificativa cada uma exige.",
+          "Considere objeções e alternativas e diferencie falha de um argumento da falsidade de sua conclusão."
+        ],
+        "example": "Diálogo fictício: uma pessoa propõe reduzir parte do desperdício de água; outra responde que eliminar todo o uso de água impediria a vida. A resposta combate uma tese mais extrema que não foi defendida, um homem de palha. A proposta original ainda pode ter limites, mas precisa ser avaliada pelo que recomenda e pelas razões que oferece.",
+        "pitfall": "Usar nomes de falácias como insultos, inventar razões para melhorar um texto ou concluir que uma tese é falsa só porque uma defesa dela falhou."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Considere o argumento hipotético: \"Todos os estudantes de filosofia leem Platão. Maria é estudante de filosofia. Logo, Maria lê Platão.\" Qual das alternativas descreve corretamente a estrutura e o status deste argumento?",
+        "hint": "Identifique a forma lógica silogística e verifique se a conclusão decorre necessariamente das premissas assumidas como verdadeiras.",
+        "solution": "A é correta: assumindo que todos os estudantes de filosofia leem Platão e que Maria pertence a esse grupo, a conclusão decorre das premissas. Isso estabelece validade dedutiva, não a verdade factual da primeira premissa nem solidez automática. B troca necessidade por probabilidade; C confunde a estrutura com afirmação do consequente; D toma possível falsidade de uma premissa como prova de invalidade. O exercício avalia a relação de consequência, não uma pesquisa sobre hábitos reais de leitura.",
+        "options": [
+          "O argumento é dedutivamente válido: a conclusão decorre necessariamente das premissas.",
+          "O argumento é indutivamente forte, mas não garante a conclusão com certeza.",
+          "O argumento comete a falácia de afirmar o consequente.",
+          "O argumento é inválido porque a primeira premissa pode ser falsa."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "No debate hipotético a seguir, identifique a falácia cometida: \"Crítico: 'A proposta de redução da jornada de trabalho para 40 horas semanais prejudicará a economia.' Defensor: 'Você só diz isso porque é dono de fábrica e quer explorar trabalhadores.'\"",
+        "hint": "Analise se a resposta do defensor ataca o argumento do crítico ou a pessoa do crítico, e se isso invalida a premissa sobre impacto econômico.",
+        "solution": "A identifica o ataque pessoal usado como resposta: a motivação atribuída ao crítico não demonstra que a previsão sobre a economia seja falsa. Um possível conflito de interesse pode motivar exame de evidências, mas não substitui esse exame. B não é a melhor descrição porque a posição econômica não foi reformulada numa tese mais extrema; C não se aplica porque não há enumeração de apenas duas opções; D não se aplica porque não se cita um especialista como garantia da conclusão.",
+        "options": [
+          "Falácia ad hominem: ataca a pessoa do crítico em vez de refutar seu argumento.",
+          "Falácia do homem de palha: distorce a posição do crítico para refutá-la mais facilmente.",
+          "Falso dilema: apresenta apenas duas alternativas extremas.",
+          "Apelo à autoridade ilegítima: cita especialista sem competência no tema."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num cenário fictício, um editorial usa entrevistas feitas somente com 500 eleitores de uma capital para concluir que a maioria de toda a população do país apoia uma proposta. O texto não apresenta método que conecte esse grupo à diversidade nacional. Qual crítica identifica melhor o problema da inferência?",
+        "hint": "Considere a diferença entre amostra (500 eleitores da capital) e população-alvo (população do país), e o critério de representatividade amostral.",
+        "solution": "A aponta a extrapolação: o grupo restrito a uma capital não fornece, nos termos apresentados, base para concluir sobre toda a população nacional. O problema não se resume a contar 500 entrevistas; aumentar esse grupo com o mesmo recorte não assegura representatividade. B supõe duas opções extremas ausentes do texto; C supõe que a conclusão já está entre as premissas; D supõe uma sequência causal catastrófica que não aparece. A crítica enfraquece a justificativa, sem provar que o apoio nacional seja minoritário.",
+        "options": [
+          "Generalização apressada com viés de seleção: amostra restrita à capital não representa o país.",
+          "Falso dilema: apresenta apenas duas opções de posicionamento sobre o projeto.",
+          "Petição de princípio: assume na premissa que a maioria apoia o projeto.",
+          "Falácia da escorregadeira: prevê consequências catastróficas sem evidência causal."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Surgimento da sociologia e métodos",
+    "objective": "Relacionar a formação da sociologia às mudanças históricas dos séculos XVIII e XIX, comparar perspectivas clássicas e escolher métodos de pesquisa segundo pergunta, evidências, limites e cuidados éticos.",
+    "prerequisites": [
+      "Noções de industrialização, urbanização e transformações políticas",
+      "Distinguir uma pergunta, uma hipótese e uma conclusão em exemplos cotidianos",
+      "Compreensão de grupos, instituições e relações sociais"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Mudanças históricas e investigação da sociedade",
+        "explanation": "A sociologia se constituiu como disciplina no contexto das transformações dos séculos XVIII e XIX, com destaque para industrialização, urbanização, mudanças nas relações de trabalho e revoluções políticas europeias. Fábricas, crescimento das cidades, desigualdades e disputas sobre autoridade e direitos colocaram novos problemas para investigadores. Isso não significa que antes não existisse reflexão sobre a vida coletiva nem que sociedades agrárias fossem imóveis e sem conflitos. Também não houve um único acontecimento que produzisse automaticamente toda a disciplina. Auguste Comte associou o projeto de uma ciência da sociedade ao positivismo, procurando regularidades e valorizando observação e sistematização. Seu projeto é importante historicamente, mas não representa todos os métodos sociológicos posteriores nem uma verdade que dispense crítica. A institucionalização da sociologia envolveu diferentes autores, pesquisas e disputas teóricas. O olhar sociológico relaciona experiências individuais a condições e relações mais amplas, evitando tratar padrões coletivos apenas como soma de escolhas isoladas. Investigar diferenças de acesso à escola, por exemplo, exige formular perguntas sobre renda, território, regras institucionais e trajetórias, em vez de presumir uma causa única. Senso comum pode oferecer perguntas iniciais, mas uma conclusão sociológica requer conceitos definidos, método explicitado, evidências examinadas e abertura à revisão. Uma teoria orienta perguntas e interpretações; não autoriza selecionar somente informações que a confirmem.",
+        "steps": [
+          "Situe industrialização, urbanização e mudanças políticas, sem reduzir a origem da disciplina a um evento isolado.",
+          "Distinga a reflexão social anterior da constituição da sociologia como disciplina especializada.",
+          "Transforme uma impressão cotidiana em pergunta investigável com conceitos e evidências.",
+          "Relacione experiências individuais a instituições e condições sociais, evitando explicações únicas."
+        ],
+        "example": "Situação fictícia: moradores atribuem atrasos de estudantes apenas à falta de interesse. Uma investigação pergunta como horários escolares, transporte, trabalho e responsabilidades de cuidado se relacionam aos atrasos. A mudança não estabelece de antemão a resposta; transforma um julgamento em hipóteses que precisam ser confrontadas com dados.",
+        "pitfall": "Tratar o surgimento da sociologia como invenção súbita de toda reflexão social ou apresentar explicações individuais como suficientes para qualquer padrão coletivo."
+      },
+      {
+        "level": "intermediate",
+        "title": "Perspectivas clássicas: Durkheim, Marx e Weber",
+        "explanation": "Durkheim, Marx e Weber oferecem perspectivas distintas para investigar a sociedade; compará-los não exige escolher uma única lente para todos os problemas. Durkheim propôs estudar fatos sociais, modos coletivos de agir, pensar e sentir exteriores ao indivíduo e dotados de poder de coerção. Normas e instituições podem orientar condutas e produzir sanções, mesmo sem escolha consciente de cada pessoa. Na solidariedade mecânica, os vínculos se apoiam em semelhanças e crenças comuns. Na solidariedade orgânica, a divisão do trabalho torna funções diferenciadas interdependentes. São dois conceitos distintos, não duas partes de uma mesma definição. Marx investigou relações de produção, propriedade, classes e conflitos históricos. Na análise do capitalismo, a exploração se relaciona à apropriação do trabalho excedente; sua perspectiva não se reduz à ideia de que toda ação individual seja mecanicamente determinada pela renda. Weber destacou a compreensão dos sentidos da ação social, isto é, da conduta orientada em relação a outros. Seus tipos ideais são construções analíticas que acentuam características para comparação, não modelos moralmente perfeitos nem retratos completos da realidade. A dominação racional-legal se vincula à crença na legitimidade de regras e competências formalmente estabelecidas; não equivale simplesmente a qualquer uso de tecnologia. Um mesmo fenômeno pode suscitar perguntas sobre normas e integração, relações de classe ou sentidos e legitimidade. Essas correspondências ajudam a orientar a análise, mas não limitam a obra de cada autor a uma palavra-chave ou dispensam a leitura do caso concreto.",
+        "steps": [
+          "Identifique a pergunta efetivamente feita pelo caso: normas, relações de produção, sentidos da ação ou legitimidade.",
+          "Relacione conceitos a seu significado, em vez de associar mecanicamente uma palavra a um autor.",
+          "Compare o que cada perspectiva permite investigar e reconheça que o mesmo fenômeno admite perguntas diversas."
+        ],
+        "example": "Comparação autoral: para estudar uma empresa, uma pergunta pode examinar as regras coletivas e as sanções aos funcionários; outra, a propriedade dos meios de produção e a apropriação dos resultados do trabalho; outra, os sentidos atribuídos ao trabalho e a legitimidade das decisões. As perguntas mobilizam aspectos distintos da organização e não devem ser confundidas com respostas prontas.",
+        "pitfall": "Considerar tipo ideal um exemplo moral perfeito, chamar toda regra de racional-legal ou reduzir Marx a uma determinação automática de qualquer ação pela renda."
+      },
+      {
+        "level": "advanced",
+        "title": "Desenho de pesquisa, limites e ética",
+        "explanation": "Uma pesquisa começa por uma pergunta, define conceitos e escolhe fontes e procedimentos adequados. Abordagens quantitativas organizam dados numéricos para comparar frequências, distribuições e associações. Podem usar questionários, registros ou outras fontes, sem exigir sempre amostras probabilísticas; quando se pretende inferir para uma população, a seleção e as limitações da amostra tornam-se decisivas. Abordagens qualitativas podem examinar experiências e processos por entrevistas, observação e análise de documentos. Não são meras opiniões sem rigor: exigem critérios de seleção, registro, interpretação e confronto de evidências. Métodos podem ser combinados, desde que a integração responda à pergunta. Definir um indicador é tornar observável um aspecto do conceito; uma medida pode ser confiável e ainda assim não representar adequadamente o conceito desejado. Confiabilidade diz respeito à consistência da medida, enquanto validade envolve sua adequação ao conceito e à inferência pretendida. Uma correlação estatística ou uma boa previsão não comprova, por si, causalidade. Dados secundários precisam ser examinados quanto a origem, questionário ou instrumento utilizado, critérios de seleção e contexto. O pesquisador deve proteger participantes, esclarecer a finalidade e as condições da participação, preservar confidencialidade e não distorcer resultados para sustentar suas preferências. Limites e evidências contrárias também precisam ser relatados. Em exemplos didáticos, dados inventados devem ser identificados como fictícios; não podem receber o nome de um instituto ou estudo real para parecerem comprovados.",
+        "steps": [
+          "Formule a pergunta e defina o que será observado, em quais grupos e períodos.",
+          "Escolha procedimentos coerentes com a pergunta e explicite seleção, registro e análise.",
+          "Avalie consistência, validade, limites de generalização e possíveis explicações alternativas.",
+          "Proteja participantes e relate método, limitações e resultados sem inventar evidências."
+        ],
+        "example": "Desenho fictício: uma equipe quer contar pessoas distintas que usam uma praça por dia, mas seu instrumento registra toda entrada, inclusive retornos da mesma pessoa. Ele pode registrar entradas de modo consistente e ainda assim não medir o indicador desejado de pessoas distintas. Entrevistas voluntárias podem explorar experiências de uso, mas não representam automaticamente todos os usuários nem corrigem sozinhas a contagem.",
+        "pitfall": "Confundir confiabilidade com validade, associação com causalidade ou grande quantidade de respostas com garantia de representatividade."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual interpretação relaciona adequadamente o surgimento da sociologia como disciplina às transformações dos séculos XVIII e XIX?",
+        "hint": "Considere a relação entre mudanças sociais, formulação de problemas e investigação sistemática, sem negar a existência de reflexão social anterior.",
+        "solution": "B relaciona industrialização, urbanização e mudanças políticas à formação de problemas e projetos de investigação social. A elimina indevidamente reflexões anteriores. C ignora as transformações históricas e reduz o processo à decisão isolada de um autor. D apresenta sociedades anteriores como imóveis e sem conflitos. Reconhecer um contexto de constituição da disciplina não significa supor uma origem automática ou uma causa única.",
+        "options": [
+          "Antes do século XIX, nenhuma sociedade formulou reflexão sobre a vida coletiva.",
+          "Industrialização, urbanização e mudanças políticas contribuíram para problemas e projetos de investigação sistemática da sociedade.",
+          "A disciplina surgiu exclusivamente de uma decisão individual, sem relação com transformações sociais.",
+          "Sociedades anteriores à industrialização não tinham mudanças, disputas ou relações de poder."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma pesquisa examina por que funcionários reconhecem como legítimas decisões tomadas segundo regras impessoais e competências formalmente definidas. Qual conceito clássico corresponde mais diretamente a essa pergunta?",
+        "hint": "A questão trata da legitimidade de uma autoridade apoiada em regras e competências, não apenas da existência de obrigações ou de diferenças de renda.",
+        "solution": "C identifica a dominação racional-legal em Weber: a legitimidade se apoia em regras e competências reconhecidas. A descreve a crença no caráter sagrado de costumes; B remete a qualidades extraordinárias atribuídas a uma pessoa; D desloca a pergunta para a apropriação do trabalho excedente. Esses conceitos podem ajudar a investigar outros aspectos de uma instituição, mas não correspondem diretamente à base de legitimidade descrita.",
+        "options": [
+          "Dominação tradicional, fundada na legitimidade dos costumes herdados.",
+          "Dominação carismática, apoiada em qualidades extraordinárias atribuídas a uma pessoa.",
+          "Dominação racional-legal, apoiada na legitimidade de regras e competências estabelecidas.",
+          "Exploração do trabalho excedente, na análise marxiana das relações de produção."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num estudo fictício, um questionário sobre transporte é aplicado apenas a voluntários de uma universidade da capital. As respostas são registradas com consistência, mas o relatório conclui sobre todos os moradores do país sem justificar essa extrapolação. Qual avaliação é adequada?",
+        "hint": "Consistência do registro, validade dos indicadores e alcance populacional são questões distintas; o recorte de participantes precisa ser relacionado à conclusão.",
+        "solution": "D identifica o problema: a seleção descrita não justifica uma conclusão sobre toda a população nacional. A consistência do registro não corrige o alcance limitado da amostra. A confunde confiabilidade com representatividade; B transforma quantificação em garantia causal; C declara impossível uma investigação qualitativa, que poderia responder a outras perguntas sobre experiências. A crítica limita a inferência, sem invalidar automaticamente todo dado obtido no grupo.",
+        "options": [
+          "Um registro consistente garante que a amostra represente todos os moradores do país.",
+          "Respostas numéricas demonstram por si que a universidade causa os padrões nacionais de transporte.",
+          "Entrevistas qualitativas nunca poderiam contribuir para compreender experiências de transporte.",
+          "A consistência do registro não basta para justificar a generalização desse grupo restrito à população nacional."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Linguagens artísticas e leitura de imagens",
+    "objective": "Distinguir recursos das linguagens artísticas e suas integrações; descrever composição visual, construir interpretações apoiadas em elementos observáveis e avaliar contexto, circulação e limites da leitura de imagens.",
+    "prerequisites": [
+      "Leitura de descrições e comparação de interpretações",
+      "Noções de autoria, público e contexto cultural",
+      "Distinção entre observar, interpretar e avaliar"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Linguagens artísticas e recursos de expressão",
+        "explanation": "Linguagens artísticas organizam materiais, ações e convenções para produzir experiências e sentidos. Artes visuais, música, dança e teatro possuem recursos próprios e podem se relacionar sem perder suas diferenças. Nas artes visuais, linhas, formas, cores, texturas e organização do espaço participam da composição. Pintura, desenho, fotografia, escultura e produção digital usam suportes e procedimentos distintos; uma reprodução na tela não oferece necessariamente a textura ou a escala da obra original. Na música, altura distingue sons mais graves ou agudos, duração se relaciona ao tempo de cada som, intensidade a sua força sonora e timbre a características que ajudam a diferenciar fontes. Ritmo organiza durações e acentos, e silêncio também pode integrar a composição. Na dança, corpo, espaço, tempo e relações entre participantes permitem construir gestos, trajetórias, pausas e sequências; ela não depende obrigatoriamente de música. No teatro, ação, presença, espaço cênico, voz e relações com o público podem construir situações, com ou sem texto dramático previamente escrito. Essas descrições são pontos de partida, não fronteiras rígidas. Uma apresentação pode combinar movimento, som e projeção; observar sua integração exige explicar o que cada recurso faz, em vez de chamar tudo indistintamente de imagem. Práticas comunitárias, populares e de diferentes tradições ampliam o repertório e não devem ser hierarquizadas apenas por proximidade de museus ou salas de concerto.",
+        "steps": [
+          "Identifique materiais, ações e suportes, evitando classificar somente pelo local de apresentação.",
+          "Reconheça recursos visuais, sonoros, corporais e cênicos e explique suas funções.",
+          "Observe relações entre linguagens sem apagar suas especificidades.",
+          "Considere diferenças entre experiência presencial, registro e reprodução de uma obra."
+        ],
+        "example": "Criação fictícia: num palco, um grupo alterna movimentos lentos e pausas enquanto outra pessoa produz sons curtos, e linhas luminosas são projetadas no chão. A análise pode relacionar duração sonora, tempo dos gestos e organização visual do espaço. A presença de projeção não transforma automaticamente toda a experiência numa pintura.",
+        "pitfall": "Reduzir arte à pintura, confundir som agudo com som intenso ou supor que toda dança precisa de música e todo teatro de texto previamente escrito."
+      },
+      {
+        "level": "intermediate",
+        "title": "Descrição formal e interpretação fundamentada",
+        "explanation": "Ler uma imagem começa por observar relações e distinguir descrição de interpretação. Descrever é registrar elementos como cores, direção de linhas, distribuição de formas, enquadramento, planos e texturas visíveis. Interpretar é propor sentidos relacionando essas escolhas a temas, referências e contextos. Não são etapas completamente isoladas, mas explicitar a diferença ajuda a verificar a leitura. Valor tonal indica claro e escuro; saturação se relaciona à intensidade cromática. Contraste pode destacar uma região, e repetição pode organizar um ritmo visual. Composição simétrica distribui elementos em correspondência em torno de um eixo; assimetria também pode construir equilíbrio por relações de tamanho, cor e posição. Sobreposição e variação de tamanho podem sugerir profundidade em certas composições, mas não são obrigações de toda imagem. Um enquadramento seleciona o que aparece e deixa algo fora; um ângulo pode contribuir para efeitos de sentido sem possuir uma interpretação universal. Evite regras como vermelho sempre significa violência ou diagonal sempre comprova perigo. Os efeitos dependem das relações da obra e dos repertórios culturais. Uma interpretação plausível deve apontar evidências e reconhecer alternativas compatíveis, sem inventar intenção do autor, data, acontecimento ou identidade de pessoas. Identificar o tema de uma cena também não garante que todos os detalhes correspondam literalmente a um fato real.",
+        "steps": [
+          "Descreva elementos e relações identificáveis antes de apresentar uma explicação de sentido.",
+          "Relacione destaque, repetição, enquadramento e espaço às evidências da composição.",
+          "Construa uma interpretação e indique quais observações a sustentam.",
+          "Examine leituras alternativas e retire afirmações que dependam de dados não fornecidos."
+        ],
+        "example": "Composição autoral descrita em palavras: há um pequeno quadrado amarelo no centro de um campo de formas cinzentas repetidas. Cor e posição podem fazê-lo sobressair. É possível discutir destaque e diferença, mas a descrição não permite afirmar que ele represente uma pessoa histórica ou que o autor quisesse denunciar um acontecimento específico.",
+        "pitfall": "Transformar uma associação pessoal de cor em regra universal ou apresentar uma interpretação sobre intenção, autoria ou evento como se fosse uma observação direta."
+      },
+      {
+        "level": "advanced",
+        "title": "Contexto, circulação e leitura crítica de imagens",
+        "explanation": "Uma imagem circula em contextos que influenciam sua leitura: exposição, notícia, publicidade, livro didático ou rede social oferecem enquadramentos de uso e públicos diferentes. Legenda, sequência e recorte podem alterar a relação entre imagem e mensagem, mesmo quando parte do registro visual é mantida. Investigue autoria identificada, data, procedência, finalidade e transformações, distinguindo informações confirmadas de hipóteses. A mesma fotografia pode documentar uma situação, integrar uma campanha ou ser reutilizada fora de seu contexto; isso exige examinar o uso concreto, não presumir que toda imagem seja uma fraude. Edição e montagem são procedimentos que podem participar legitimamente de criação artística, mas não devem ser confundidos com prova documental sem informação sobre a produção. Uma leitura crítica também observa representações, ausências e possíveis estereótipos, relacionando forma e contexto em vez de atribuir automaticamente preconceito ou emancipação a um único recurso. O público participa da construção de sentidos por seus repertórios, sem que qualquer leitura se torne igualmente sustentada. Comparar versões é uma forma de examinar evidências: o que foi incluído, retirado ou acrescentado? Como a legenda muda o foco? Quais conclusões deixam de ser possíveis após o corte? Ao produzir ou reutilizar materiais, registre autoria, origem e condições de uso; acesso público não equivale por si a permissão para qualquer reprodução. Nos exemplos desta aula, todas as composições são fictícias e descritas no próprio texto, sem atribuição a artistas ou obras existentes.",
+        "steps": [
+          "Verifique procedência, autoria, data e finalidade quando essas informações estiverem disponíveis.",
+          "Compare enquadramento, recorte e legenda e identifique o que cada versão permite observar.",
+          "Relacione possíveis sentidos às evidências e ao contexto, separando hipótese de informação confirmada.",
+          "Respeite autoria e condições de uso e não apresente montagem como prova documental sem contexto."
+        ],
+        "example": "Cenário fictício: uma fotografia mostra pessoas lado a lado numa praça e uma faixa que identifica uma apresentação de teatro. Um recorte exclui a faixa, e uma nova legenda a chama de fila por um serviço. O recorte não prova essa segunda descrição; a verificação deve recuperar contexto e procedência, sem deduzir a finalidade da reunião apenas da posição dos corpos.",
+        "pitfall": "Supor que uma legenda seja prova de contexto, que uma foto revele tudo o que estava fora do enquadramento ou que acesso à imagem elimine a necessidade de verificar autoria e uso."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Numa proposta artística fictícia, uma pessoa produz uma nota aguda com pouca intensidade e outra produz uma nota grave com muita intensidade. Qual distinção descreve corretamente os recursos sonoros mencionados?",
+        "hint": "Altura e intensidade são propriedades distintas: grave/agudo não equivale automaticamente a fraco/forte.",
+        "solution": "B separa altura, relativa a grave e agudo, de intensidade, relacionada a fraco e forte. A transforma as duas propriedades numa única escala. C confunde altura com duração. D confunde intensidade com timbre, que envolve características da qualidade sonora e ajuda a distinguir fontes. O exemplo permite que uma nota aguda seja fraca e uma grave seja forte, sem contradição entre as propriedades.",
+        "options": [
+          "Toda nota aguda é necessariamente mais forte que qualquer nota grave.",
+          "Grave e agudo se referem à altura; fraco e forte se referem à intensidade.",
+          "Grave e agudo indicam apenas se o som dura mais ou menos tempo.",
+          "Fraco e forte identificam exclusivamente o timbre do instrumento."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Considere esta composição fictícia descrita integralmente em palavras: um círculo vermelho grande aparece à esquerda, enquanto cinco círculos azuis pequenos se repetem à direita, sobre fundo branco. Qual leitura distingue observação e interpretação sem inventar contexto?",
+        "hint": "A descrição fornece cores, tamanhos, posição e repetição. Uma interpretação deve se apoiar nesses elementos sem atribuir evento ou intenção não informados.",
+        "solution": "C identifica dados observáveis e formula uma possibilidade interpretativa limitada. A inventa contexto histórico; B converte uma associação de cor em significado universal; D nega a presença de composição porque não há objeto reconhecível. A relação entre forma, tamanho e repetição permite discutir contrastes, mas não comprova por si autoria, data ou intenção específica. Outros sentidos compatíveis podem ser examinados com evidências adicionais.",
+        "options": [
+          "A imagem comprova um protesto ocorrido numa cidade e data específicas, mesmo sem outras informações.",
+          "O vermelho significa obrigatoriamente violência em qualquer cultura e composição.",
+          "Há contraste de cores e tamanhos e repetição de formas, que podem sustentar uma leitura de oposição entre grupos visuais.",
+          "Como não há figura humana ou paisagem, nenhum elemento formal pode ser analisado."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num caso fictício, o registro completo de uma ação artística mostra uma pessoa segurando um objeto e uma placa que diz que se trata de uma encenação. Uma publicação corta a placa e afirma que o objeto documenta um acontecimento real. Qual procedimento de leitura é mais fundamentado?",
+        "hint": "Compare versões, recupere contexto e procedência e examine a relação entre a evidência visual e a afirmação acrescentada pela nova legenda.",
+        "solution": "D propõe verificar o registro e o contexto, sem tratar a legenda nova como comprovação. A transfere certeza à legenda; B supõe que todo corte elimina qualquer possibilidade de análise; C inventa a intenção da pessoa retratada. A existência da versão completa com indicação de encenação é relevante para avaliar o uso documental posterior, mas a leitura não deve acrescentar identidades, datas ou motivos que o enunciado não fornece.",
+        "options": [
+          "Aceitar a legenda nova como prova suficiente, porque ela acompanha uma imagem.",
+          "Concluir que qualquer imagem recortada é impossível de analisar ou contextualizar.",
+          "Afirmar a intenção pessoal da pessoa retratada sem nenhuma informação adicional.",
+          "Comparar o recorte ao registro completo e verificar procedência e contexto antes de aceitar a afirmação documental."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Corpo, movimento e saúde",
+    "objective": "Distinguir atividade física, exercício e comportamento sedentário; relacionar práticas corporais, diversidade e condições de acesso à saúde, avaliando criticamente padrões estéticos e propostas de participação.",
+    "prerequisites": [
+      "Leitura de situações do cotidiano e comparação de alternativas",
+      "Noções de cultura, convivência e diversidade",
+      "Distinção entre informação geral e avaliação individual de saúde"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Movimento cotidiano, exercício e comportamento sedentário",
+        "explanation": "Atividade física envolve movimento corporal produzido pelos músculos esqueléticos com gasto de energia. Não se limita à academia: pode ocorrer em deslocamentos, tarefas, brincadeiras e lazer. Exercício físico é uma modalidade planejada, estruturada e repetitiva de atividade física voltada a manter ou desenvolver capacidades físicas. Nem toda atividade física é exercício; caminhar para resolver uma tarefa e realizar uma sessão planejada de treinamento podem ter objetivos diferentes. Comportamento sedentário se refere a situações de baixo gasto energético enquanto se está acordado, como permanecer sentado ou reclinado por longos períodos. Não é simplesmente sinônimo de não praticar esporte: alguém pode fazer exercício e ainda passar muito tempo em comportamento sedentário. Sono não entra nessa definição, que exige estar acordado. Ao estudar essas categorias, descreva a situação, não rotule uma pessoa inteira por um único hábito. As práticas corporais incluem jogos, esportes, danças, lutas, ginásticas e outras experiências com sentidos culturais e sociais. O esporte organizado não é a única forma legítima de movimentar-se. Conhecer essas diferenças ajuda a interpretar campanhas e rotinas sem transformar qualquer movimento em treino obrigatório nem reduzir lazer a desempenho competitivo. Informações gerais sobre atividade física não permitem prescrever a mesma prática ou intensidade para todas as pessoas, cujas condições, experiências e necessidades variam.",
+        "steps": [
+          "Identifique movimentos cotidianos e sua finalidade, incluindo deslocamento, tarefas e lazer.",
+          "Verifique se há planejamento e estrutura de exercício ou outra forma de atividade física.",
+          "Separe períodos de baixo gasto enquanto acordado de sono e de participação em práticas corporais.",
+          "Interprete a rotina em conjunto, sem inferir condição de saúde por um único comportamento."
+        ],
+        "example": "Cenário fictício: uma estudante dança em uma atividade comunitária, desloca-se a pé em parte do dia e permanece sentada durante várias horas de estudo. Dança e deslocamento são atividades físicas; o tempo sentado acordada pode ser comportamento sedentário. A existência das primeiras não faz desaparecer automaticamente o último.",
+        "pitfall": "Chamar de sedentária toda pessoa que não pratica esporte ou supor que fazer exercício elimina qualquer tempo sedentário do restante do dia."
+      },
+      {
+        "level": "intermediate",
+        "title": "Capacidades físicas, diversidade e participação",
+        "explanation": "Práticas corporais mobilizam capacidades como força, resistência, flexibilidade, equilíbrio e coordenação de maneiras diferentes. Força envolve produzir tensão para agir contra resistências; resistência permite sustentar esforços; flexibilidade se relaciona à amplitude de movimento nas articulações; equilíbrio e coordenação ajudam a controlar posturas e ações. Elas não formam uma escala única de valor das pessoas. Um jogo pode exigir decisões, cooperação e leitura do espaço além de capacidades físicas. Aprender uma dança também envolve memória, ritmo, expressão e relação com outros participantes. Comparar todos por um mesmo resultado ou aparência pode ocultar aprendizagem e criar exclusões. Participação inclusiva exige observar regras, espaço, materiais, tempos, formas de comunicação e barreiras concretas. Alterar altura de um alvo, percurso, tamanho de uma bola ou organização de grupos pode preservar um desafio e ampliar as possibilidades de participação. Adaptação não deve significar retirar sistematicamente alguém da experiência ou obrigá-lo a revelar informações íntimas para ser ouvido. As condições de prática também importam: materiais adequados, orientação, pausas, acesso à água e respeito a limites compõem uma organização responsável. A análise escolar aqui avalia a coerência de propostas e possibilidades de participação; não transforma um resultado de aula em diagnóstico, promessa de saúde ou programa individual de treinamento.",
+        "steps": [
+          "Identifique quais capacidades e conhecimentos a prática mobiliza, sem reduzi-la a uma medida única.",
+          "Observe barreiras de espaço, regra, material, comunicação ou organização dos grupos.",
+          "Compare adaptações que mantenham o objetivo e permitam participação significativa.",
+          "Avalie cooperação, aprendizagem e autonomia junto ao desempenho, preservando privacidade e respeito."
+        ],
+        "example": "Proposta fictícia: numa atividade de arremesso, a turma pode escolher entre alvos com alturas e distâncias diferentes e comparar estratégias de precisão. O objetivo comum permanece, enquanto os desafios variam. Colocar quem encontra dificuldades apenas para observar não equivale a oferecer a mesma oportunidade de aprender e experimentar.",
+        "pitfall": "Confundir inclusão com afastar alguém da prática ou medir o valor de todos por uma única marca, aparência corporal ou desempenho esportivo."
+      },
+      {
+        "level": "advanced",
+        "title": "Saúde, acesso e crítica aos padrões corporais",
+        "explanation": "Saúde e possibilidades de movimento se relacionam a condições de vida, vínculos sociais, ambiente e acesso a serviços e oportunidades. Uma recomendação de caminhar no bairro, por exemplo, depende também de segurança, calçadas, iluminação, tempo disponível e acessibilidade. Explicar tudo por vontade individual ignora essas condições; reconhecer barreiras não elimina a autonomia, mas permite pensar mudanças pessoais e coletivas de modo mais justo. Imagens publicitárias e redes sociais frequentemente associam um padrão corporal a sucesso, disciplina ou felicidade. Aparência, porém, não permite determinar isoladamente a saúde de uma pessoa. Uma foto pode envolver seleção, iluminação, pose e edição, e não constitui prova de resultado para todos. Também é inadequado tratar atividade física como garantia de ausência de doença ou como substituição automática de cuidados de saúde. Campanhas escolares podem ampliar acesso, valorizar diferentes práticas e combater constrangimentos sem promover comparação pública de medidas individuais. Ao avaliar uma proposta, pergunte quem consegue participar, quais barreiras permanecem e quais resultados podem de fato ser observados. Um aumento de inscrições, isoladamente, não comprova que todos participaram de forma contínua ou que uma condição clínica mudou. Indicadores de acesso, diversidade de experiências e satisfação com a participação respondem a perguntas diferentes e precisam ser lidos com seus limites. A crítica fundamentada combina informação, respeito aos corpos e avaliação das condições concretas.",
+        "steps": [
+          "Relacione oportunidades de movimento a condições individuais, sociais e ambientais.",
+          "Examine promessas publicitárias distinguindo aparência, evidência e garantia de resultado.",
+          "Avalie uma proposta por suas barreiras de acesso, diversidade e formas de acompanhamento.",
+          "Evite inferir diagnósticos ou efeitos clínicos a partir de fotografias, marcas esportivas ou simples contagens de presença."
+        ],
+        "example": "Campanha fictícia: um bairro oferece encontros de jogos e dança, mas o local tem escadas como único acesso e atividades sempre no mesmo horário. Divulgar mais o evento não resolve essas barreiras. Rever acesso físico, horários e opções pode ampliar a participação; qualquer alegação de melhora de saúde exigiria avaliação própria, não apenas fotos do encontro.",
+        "pitfall": "Inferir saúde pela aparência, prometer que uma prática elimina qualquer doença ou culpar indivíduos sem examinar condições reais de acesso."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num cenário fictício, uma pessoa realiza uma sessão planejada e repetitiva de exercício pela manhã e depois passa grande parte do dia acordada, sentada em atividades de baixo gasto energético. Qual interpretação diferencia corretamente as categorias?",
+        "hint": "A sessão de exercício e o comportamento no restante do dia podem coexistir; uma categoria não elimina automaticamente a outra.",
+        "solution": "B distingue as situações: exercício é uma atividade física planejada, e longos períodos acordados e sentados com baixo gasto podem constituir comportamento sedentário. A exclui indevidamente a coexistência; C confunde exercício com sono; D restringe atividade física à competição esportiva. A descrição da rotina não basta para determinar a saúde individual nem para prescrever uma quantidade específica de treino.",
+        "options": [
+          "A sessão de exercício torna impossível qualquer comportamento sedentário no mesmo dia.",
+          "Há exercício pela manhã e pode haver comportamento sedentário em outros períodos acordados.",
+          "Todo exercício é uma forma de sono porque envolve recuperação corporal.",
+          "Só existe atividade física quando há competição esportiva oficial."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma turma trabalha precisão de arremessos. Parte dos estudantes encontra barreiras nos materiais e na distância única do alvo. Qual mudança é mais coerente com aprendizagem e participação inclusiva?",
+        "hint": "Procure uma alternativa que preserve o objetivo da prática e ofereça diferentes condições de desafio, com diálogo sobre as barreiras.",
+        "solution": "C mantém a aprendizagem da precisão e amplia possibilidades com materiais e distâncias ajustáveis. A transforma uma dificuldade de acesso em exclusão permanente. B exige exposição íntima como condição para rever a proposta. D substitui o objetivo pedagógico por um padrão estético sem relação necessária com o arremesso. Inclusão exige participação significativa e acompanhamento da aprendizagem, não apenas presença no local.",
+        "options": [
+          "Retirar permanentemente da atividade quem não alcança o alvo padronizado.",
+          "Exigir divulgação pública de informações de saúde antes de ouvir qualquer dificuldade.",
+          "Oferecer materiais e distâncias variados, mantendo o objetivo e dialogando sobre as barreiras.",
+          "Avaliar a aprendizagem exclusivamente pela semelhança do corpo com um modelo publicitário."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma campanha fictícia atribui a baixa participação em atividades corporais apenas à falta de disciplina. Moradores relatam ausência de acesso sem escadas, pouca iluminação e horários incompatíveis com o trabalho. Qual análise considera os dados sem fazer diagnóstico individual?",
+        "hint": "Relacione os relatos às condições de participação e distinga uma barreira observada de uma afirmação sobre a saúde ou o caráter de todos os moradores.",
+        "solution": "D incorpora barreiras de acessibilidade, ambiente e tempo à avaliação da proposta, sem negar escolhas individuais nem inferir diagnósticos. A ignora os relatos e mantém uma causa única. B usa aparência como prova de saúde; C transforma inscrição em evidência suficiente de efeito clínico. Os dados sustentam revisar as condições de acesso, mas não comprovam por si resultados médicos nem características pessoais de todos os moradores.",
+        "options": [
+          "Os relatos são irrelevantes porque toda participação depende exclusivamente de disciplina pessoal.",
+          "Fotografias dos moradores bastam para estabelecer quem é saudável e quem deve participar.",
+          "Qualquer aumento de inscrições provará imediatamente que doenças foram eliminadas.",
+          "As barreiras relatadas devem orientar revisão de acesso, segurança e horários, sem inferir saúde ou caráter pela participação."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Matéria, substâncias e misturas",
+    "objective": "Classificar materiais por composição e fases, distinguir transformações físicas e químicas e justificar métodos de separação, incluindo sequências com conservação de massa em modelos escolares.",
+    "prerequisites": [
+      "Leitura de medidas de massa e volume",
+      "Noções de estados sólido, líquido e gasoso",
+      "Operações de adição, subtração e porcentagem"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Composição, estados e fases dos materiais",
+        "explanation": "Matéria tem massa e ocupa espaço; gases também são matéria, embora muitos não sejam visíveis. Num modelo escolar, sólidos apresentam forma e volume próprios, líquidos têm volume aproximadamente definido e assumem a forma do recipiente, e gases ocupam o volume disponível. Estado físico e composição são critérios distintos: mudar de estado não cria automaticamente outra substância. Uma substância simples reúne átomos de um elemento químico, como O₂; uma composta envolve mais de um elemento em proporção definida, como H₂O. Misturas reúnem componentes e podem apresentar proporções variadas. Uma solução de açúcar em água é uma mistura, mesmo quando o açúcar não é visível. Fase é uma porção do sistema com características uniformes; uma mistura homogênea tem uma fase, enquanto uma heterogênea tem duas ou mais. O número de fases não é necessariamente o número de componentes: gelo e água líquida, sem outras substâncias, formam duas fases de uma mesma substância. Já água e sal inteiramente dissolvido formam uma fase com dois componentes. A aparência uniforme não basta, sozinha, para distinguir solução e substância pura. Classificar exige combinar informações de composição e condições de observação. Na fusão e na vaporização da água, conserva-se sua identidade química; numa reação que produz novas substâncias, essa identidade muda. Uma bolha pode resultar de ebulição ou de reação, por exemplo: um sinal isolado não resolve toda classificação.",
+        "steps": [
+          "Identifique quais substâncias compõem o sistema e quais estados físicos estão presentes.",
+          "Conte fases uniformes sem confundir esse número com o de componentes químicos.",
+          "Diferencie mudança de estado ou separação de um processo que forma novas substâncias.",
+          "Use as condições e os dados fornecidos; aparência uniforme não prova pureza."
+        ],
+        "example": "Sistema didático: há somente H₂O num recipiente, parte como gelo e parte como líquido. Existem duas fases e um componente químico. Depois de o gelo fundir completamente, há uma fase, sem que a fusão transforme H₂O em outra substância. O exemplo mostra por que heterogeneidade e mistura não são sinônimos.",
+        "pitfall": "Concluir que duas fases sempre significam duas substâncias ou que todo material transparente e uniforme é puro."
+      },
+      {
+        "level": "intermediate",
+        "title": "Escolher uma separação pela propriedade relevante",
+        "explanation": "Separar componentes de uma mistura explora diferenças de propriedades. Um ímã pode retirar partículas de ferro de uma mistura sólida quando os demais materiais não respondem da mesma forma. A filtração retém um sólido insolúvel cujas partículas são maiores que os poros adequados do filtro, mas não remove normalmente o sal dissolvido na água. A sedimentação permite que partículas se depositem; a decantação separa fases após essa organização, como duas camadas líquidas imiscíveis de densidades diferentes. Centrifugação pode acelerar a separação de fases em sistemas apropriados. Para recuperar um soluto não volátil de uma solução, a retirada do solvente por evaporação pode deixar o sólido, porém o solvente se dispersa se não for recolhido. A destilação simples inclui vaporização e condensação para recolher o componente mais volátil, como água de uma solução salina num modelo ideal. Isso não significa recuperar qualquer líquido puro de qualquer mistura: composição, volatilidade e comportamento do sistema importam. A destilação fracionada melhora a separação de certos líquidos miscíveis por etapas sucessivas, mas também tem limites. Não existe uma diferença universal de temperaturas de ebulição que, sozinha, resolva todos os casos. Escolher o método exige perguntar o que se quer recuperar e em quais condições. Um filtro, por exemplo, pode fornecer um sólido retido e um líquido que ainda contém componentes dissolvidos. Os exemplos são modelos para análise, não instruções para manipular materiais desconhecidos ou aquecer misturas em casa.",
+        "steps": [
+          "Liste componentes, fases e propriedades como solubilidade, magnetismo e volatilidade.",
+          "Defina o produto desejado: sólido retido, líquido recuperado ou ambos.",
+          "Escolha uma etapa que explore uma diferença real entre os componentes.",
+          "Verifique o que permanece misturado após a etapa e reconheça perdas e limites do modelo."
+        ],
+        "example": "Exemplo autoral: para obter água de uma solução aquosa de açúcar num modelo de separação, um filtro de papel não basta, pois o açúcar está dissolvido. A destilação com condensação permite recolher água; simplesmente deixar o solvente evaporar não recolhe esse líquido. A escolha depende do objetivo, não apenas do nome da mistura.",
+        "pitfall": "Usar filtração para retirar soluto dissolvido ou afirmar que evaporação sem coleta e destilação recuperam o mesmo produto líquido."
+      },
+      {
+        "level": "advanced",
+        "title": "Sequências de separação e balanço de massa",
+        "explanation": "Uma mistura com vários componentes pode exigir etapas encadeadas. Planeje a sequência acompanhando o destino de cada material, em vez de decorar uma lista de técnicas. Para um modelo com ferro, areia e sal, a separação magnética pode retirar o ferro. Se a quantidade de água adicionada for suficiente para dissolver todo o sal e a areia permanecer insolúvel, a dissolução seletiva permite passar à filtração. O filtro retém a areia, enquanto água e sal dissolvido passam juntos. Retirar o solvente permite recuperar o sal; se também for necessário recolher a água, a etapa deve incluir sua condensação. Toda previsão depende das condições explicitadas, como ausência de reação, solubilidade suficiente e perdas desprezíveis. Num balanço de massa ideal, a soma das massas dos materiais recuperados corresponde à massa inicial, acrescentando qualquer material que tenha sido adicionado ao sistema. Se água foi introduzida para dissolver o sal, ela precisa aparecer no controle das etapas. Evaporação não faz matéria deixar de existir: em sistema aberto, vapor pode sair da fronteira considerada. Diferenças entre massa teórica e recolhida podem indicar perdas, retenção em equipamentos ou outras limitações; não autorizam inventar uma conversão química. Também é preciso distinguir concentração de quantidade: remover parte da água pode elevar a proporção de sal na solução sem criar sal. Essas verificações tornam a sequência coerente e ajudam a identificar qual etapa foi insuficiente.",
+        "steps": [
+          "Desenhe mentalmente a sequência e acompanhe cada componente depois de cada operação.",
+          "Declare condições de dissolução, ausência de reação e perdas desprezíveis quando o modelo as exigir.",
+          "Faça o balanço incluindo a água ou outro material adicionado e qualquer fluxo que saia do sistema.",
+          "Diferencie massa de soluto, massa de solução e proporção entre elas ao comparar resultados."
+        ],
+        "example": "Balanço fictício: um sistema começa com 12 g de um sólido não volátil dissolvidos em 88 g de água. A retirada de 20 g de água, sem perda de sólido, deixa 80 g de solução e os mesmos 12 g de soluto. A fração em massa passa de 12% para 15%, pois 12/80 = 0,15; a concentração aumenta sem produzir novo soluto.",
+        "pitfall": "Somar apenas os materiais iniciais depois de adicionar solvente ou interpretar aumento de concentração como aumento da massa de soluto."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um sistema contém apenas água líquida e sal inteiramente dissolvido, sem sólido no fundo, nas condições descritas. Qual classificação distingue corretamente fases e componentes?",
+        "hint": "Uma fase uniforme pode conter mais de uma substância; dissolver o sal não o transforma em água nem o faz deixar de integrar o sistema.",
+        "solution": "B identifica uma mistura homogênea com uma fase e dois componentes. O sal dissolvido continua presente, embora não se veja separado da água. A confunde uniformidade com substância pura. C troca componentes por fases, apesar de o enunciado excluir sal sólido não dissolvido. D transforma dissolução em formação de uma nova substância composta, o que não é descrito. Estado e aspecto devem ser analisados junto à composição.",
+        "options": [
+          "Substância pura, pois todo sistema uniforme tem apenas um componente.",
+          "Mistura homogênea: uma fase e dois componentes, água e sal.",
+          "Mistura heterogênea: duas fases, uma para cada substância, mesmo com todo o sal dissolvido.",
+          "Nova substância composta, produzida obrigatoriamente por uma reação entre água e sal."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Num modelo escolar, uma mistura contém somente água e areia insolúvel, com partículas adequadas para retenção no filtro disponível. Pretende-se retirar a areia e recolher a água que passa pelo filtro. Qual procedimento corresponde a esse objetivo?",
+        "hint": "Observe que o sólido é insolúvel e retido pelos poros nas condições fornecidas; não é necessário vaporizar o líquido para realizar essa etapa.",
+        "solution": "C corresponde à filtração: o sólido fica retido e o líquido atravessa o filtro. A tenta explorar magnetismo não atribuído à areia. B não aproveita a diferença relevante de tamanho de partículas para retirar o sólido. D propõe apenas evaporação sem recolhimento, perdendo o produto líquido desejado. A adequação depende das condições explícitas: se o componente estivesse dissolvido, essa mesma filtração não o separaria.",
+        "options": [
+          "Aplicar separação magnética, pois todo sólido insolúvel é atraído por ímã.",
+          "Misturar continuamente para que a areia se transforme em água.",
+          "Filtrar, retendo a areia e recolhendo o líquido que atravessa o filtro.",
+          "Evaporar toda a água sem condensação, pois isso recolhe o líquido desejado."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Misturam-se 10 g de ferro, 20 g de areia e 30 g de sal. Um ímã retira todo o ferro. Adicionam-se 100 g de água, suficientes para dissolver todo o sal, e filtra-se, retendo toda a areia. Admita ausência de reações e de perdas. Qual composição e massa total terá o filtrado líquido antes de retirar água?",
+        "hint": "Acompanhe o destino de cada componente: ferro foi retirado, areia ficou retida, e sal dissolvido atravessa o filtro com a água adicionada.",
+        "solution": "D é correta: o filtrado contém 100 g de água e 30 g de sal, totalizando 130 g. A exclui indevidamente o sal dissolvido. B inclui areia que o enunciado diz ter sido retida. C inclui todos os sólidos, ignorando a separação magnética e a filtração. O balanço completo é 10 g de ferro + 20 g de areia + 130 g de filtrado = 160 g, igual aos 60 g iniciais mais os 100 g de água adicionada.",
+        "options": [
+          "100 g, contendo apenas água, porque o filtro retém todo soluto dissolvido.",
+          "150 g, contendo água, sal e os 20 g de areia já retidos.",
+          "160 g, contendo água e os três sólidos iniciais, sem efeito das separações.",
+          "130 g, contendo os 100 g de água adicionada e os 30 g de sal dissolvido."
+        ],
+        "correctIndex": 3
+      }
+    ]
   }
 ];
 
@@ -1054,6 +1693,209 @@ export const authoredCurriculumReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "Tese: encontros de estudo acessíveis a usuários de transporte escolar. Objeção: parte não pode permanecer após saída do ônibus. A opção A reconhece a restrição real e condiciona a proposta a 'horários compatíveis com o transporte ou alternativas para quem não puder permanecer' — responde ao fundamento da objeção (horário do transporte) e preserva a finalidade de ampliar acesso. A opção B ignora a limitação material ('intenção já resolve'). A opção C ataca os estudantes ('desinteressados') sem argumento, falácia ad hominem. A opção D torna a exclusão condição de acessibilidade, contradizendo a tese. Só A enfrenta a objeção fielmente sem contradizer a finalidade."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Brasil colonial",
+    "contentSha256": "b5eac65d809496faa395d827b57e68570217a12c9aba009eebb6ff9b2c57f193",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/institucional/historia-receita/nossa-historia",
+      "https://www.historia.uff.br/impressoesrebeldes/revolta/palmares/",
+      "https://www.gov.br/funag/pt-br/chdd/historia-diplomatica/personalidades-historicas/quem-foi-alexandre-de-gusmao",
+      "https://www2.camara.leg.br/legin/fed/carlei/anterioresa1824/cartadelei-39554-16-dezembro-1815-569929-publicacaooriginal-93095-pe.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B é a única que reconhece a delegação de encargos a donatários dentro da soberania da Coroa e a posterior coordenação pelo Governo-Geral coexistindo com capitanias. A inventa reinos soberanos inexistentes; C afirma extinção imediata de todas as capitanias, o que é falso historicamente; D reduz o sistema a finalidade exclusivamente religiosa, eliminando ocupação, defesa e exploração."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A opção C identifica corretamente os dois erros da interpretação criticada: (1) exportação de açúcar não exclui circuitos internos de abastecimento, pecuária e circulação; (2) escravização não anula agência histórica — houve fugas, negociações, quilombos, preservação de vínculos. A confirma as generalizações erradas; B corrige só o primeiro ponto mantendo apagamento das resistências; D nega ambas estruturas transformando coerção em trabalho livre."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opção A situa a elevação de 1815 como mudança de estatuto na monarquia, posterior a 1808 e anterior a 1822, sem abolir escravidão. B desloca o ato para 1808 e inventa abolição imediata inexistente; C transforma a carta monárquica em proclamação republicana; D equipara três marcos jurídico-cronológicos distintos (chegada da corte, elevação a reino, independência) como se fossem um único ato de 1808."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Cartografia",
+    "contentSha256": "1a0825e0c332d08384f6c602bd1c86b0aa0f975f3f016f2c11df5ad13ac3e934",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.usgs.gov/faqs/how-are-different-map-projections-used",
+      "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/2381-np-dicionario-cartografico/16496-dicionario-cartografico.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "Cálculo independente: 8,5 cm × 50.000 = 425.000 cm; 425.000 ÷ 100.000 = 4,25 km. Alternativas B (42,5), C (0,425), D (425) correspondem a erros de fator 10, 0,1 e 100 na conversão cm→km. Gabarito e explicação dos distratores conferem."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Finalidade declarada: comparar proporções de área de vegetação entre continentes em mapa mundial. Propriedade métrica necessária = equivalência (preserva proporções de área). Opção B descreve exatamente isso e seu limite (deformações de formas e outras medidas). A atribui à conformidade garantia de áreas que ela não dá; C generaliza equidistância para 'todos os pares de pontos'; D trata família cilíndrica como isenta de distorções. Resolução independente confirma índice 1."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Enunciado: 100 municípios, taxas distintas, 5 quantis de 20 cada, legenda com tom mais escuro para maior taxa, sem limites numéricos. C é única garantida: classe mais escura = 20 dos 100 municípios = 20% dos municípios; população e amplitude de intervalos não são determinadas. A confunde contagem de municípios com população; B exige limite numérico (50%) não informado; D confunde frequência igual (quantis) com amplitude igual (intervalos iguais). Resolução independente confirma índice 2."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Introdução à filosofia e argumentação",
+    "contentSha256": "dc25c4d09731b45e00bf0608cb93c6a9af952a647acb09d2c1eb165d3e2749e3",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-philosophy/pages/1-1-what-is-philosophy",
+      "https://openstax.org/books/introduction-philosophy/pages/5-3-arguments",
+      "https://openstax.org/books/introduction-philosophy/pages/5-4-types-of-inferences",
+      "https://openstax.org/books/introduction-philosophy/pages/5-5-informal-fallacies"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "O silogismo 'Todos os estudantes de filosofia leem Platão; Maria é estudante de filosofia; logo Maria lê Platão' tem forma Barbara (Todo A é B; x é A; logo x é B). Assumidas as premissas, a conclusão decorre necessariamente — é dedutivamente válido. A opção B confunde dedução com indução; C descreve afirmação do consequente (se P então Q; Q; logo P), forma distinta; D confunde falsidade possível de premissa com invalidade, quando validade depende apenas da forma."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "O defensor responde atacando a pessoa do crítico ('dono de fábrica', 'quer explorar') em vez de contestar a previsão econômica. Isso é ad hominem: a motivação alegada não refuta o conteúdo do argumento. B não se aplica pois a posição não foi distorcida em tese mais extrema; C não há enumeração de duas alternativas; D não há citação de especialista como garantia."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A inferência extrapola de 500 eleitores de uma capital para a população nacional inteira sem método que garanta representatividade. É generalização apressada com viés de seleção (amostra restrita geographicamente). Aumentar o número mantendo o mesmo recorte não corrige o viés. B pressupõe falso dilema inexistente; C pressupõe petição de princípio (conclusão nas premissas) não presente; D invoca escorregadeira causal não encontrada no texto."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Surgimento da sociologia e métodos",
+    "contentSha256": "c9ab1e51dd4ced29a45ef05997732474e83c48373aadd7f88429554a31ee3fbe",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/1-2-the-history-of-sociology",
+      "https://openstax.org/books/introduction-sociology-3e/pages/4-2-theoretical-perspectives-on-society",
+      "https://openstax.org/books/introduction-sociology-3e/pages/2-2-research-methods",
+      "https://openstax.org/books/introduction-sociology-3e/pages/2-3-ethical-concerns"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B é a única que reflete o texto: industrialização, urbanização e mudanças políticas contribuíram para problemas e projetos de investigação sistemática, sem negar reflexões anteriores nem reduzir a um evento/autor. A nega reflexão prévia (texto diz 'não significa que antes não existisse reflexão'). C atribui a decisão isolada (texto diz 'não houve um único acontecimento'). D apresenta sociedades anteriores como imóveis (texto diz 'não que sociedades agrárias fossem imóveis e sem conflitos')."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A opção C corresponde à dominação racional-legal weberiana: 'a dominação racional-legal se vincula à crença na legitimidade de regras e competências formalmente estabelecidas'. A descreve dominação tradicional (costumes herdados). B descreve dominação carismática (qualidades extraordinárias). D remete a Marx (exploração do trabalho excedente), não à legitimidade de regras formais. O enunciado foca em 'regras impessoais e competências formalmente definidas', marca da racional-legal."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção D identifica corretamente o problema: consistência do registro (confiabilidade) não justifica generalizar de voluntários de uma universidade da capital para toda a população nacional (validez externa/representatividade). A confunde confiabilidade com representatividade. B comete dois erros: quantidade não garante causalidade nem representatividade. C é falsa: o texto afirma que abordagens qualitativas 'podem examinar experiências e processos' e 'não são meras opiniões sem rigor'. A crítica limita a inferência sem invalidar automaticamente os dados do grupo."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Linguagens artísticas e leitura de imagens",
+    "contentSha256": "8547868092e6fde9109c327dc27d475b0fa4ed6d4857f7f5767d3b69cf0e5c31",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.getty.edu/education/teachers/building_lessons/formal_analysis.html",
+      "https://www.getty.edu/education/teachers/building_lessons/formal_analysis2.html",
+      "https://agenciagov.ebc.com.br/noticias/202608/mec-homologa-diretrizes-para-ensino-de-arte-na-educacao-basica-1"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B é a única que separa corretamente altura (grave/agudo) de intensidade (fraco/forte). A funde as duas propriedades numa escala única; C confunde altura com duração; D confunde intensidade com timbre. O enunciado permite nota aguda fraca e grave forte sem contradição, validando B como resposta única correta."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A opção C identifica dados observáveis (contraste de cor/tamanho, repetição) e formula hipótese interpretativa limitada (oposição entre grupos visuais). A inventa contexto histórico e data não informados; B elege associação de cor a regra universal; D nega análise formal por ausência de figura reconhecível. C distingue observação de interpretação sem extrapolar."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção D propõe comparar o recorte ao registro completo, verificar procedência e contexto antes de aceitar a afirmação documental. A transfere certeza à nova legenda; B assume que todo corte inviabiliza análise; C inventa intenção da pessoa retratada. D é o único procedimento fundamentado em evidências e contexto, sem acrescentar dados não fornecidos."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Corpo, movimento e saúde",
+    "contentSha256": "780fd37c689476394c4708b8dc07570b168bca6ecebd15f667ab69130cb72549",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://bvsms.saude.gov.br/ministerio-da-saude-disponibiliza-guia-de-atividade-fisica-para-a-populacao-brasileira/",
+      "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+      "https://www.unesco.org/en/sport-and-anti-doping/international-charter-sport"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Opção B é a única que admite coexistência: exercício planejado pela manhã não exclui comportamento sedentário (períodos acordado, sentado, baixo gasto) no restante do dia. A nega coexistência; C confunde exercício com sono; D restringe atividade física a competição oficial. Gabarito e explicação de distractores estão corretos."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Opção C preserva o objetivo pedagógico (precisão no arremesso) e amplia participação com materiais/distâncias variados e diálogo sobre barreiras. A exclui permanentemente; B viola privacidade exigindo exposição de saúde; D substitui critério pedagógico por padrão estético publicitário. Resolução independente confirma índice 2."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Opção D incorpora barreiras relatadas (escadas, iluminação, horários) à revisão da proposta sem inferir saúde ou caráter dos moradores. A ignora relatos atribuindo tudo a disciplina; B usa foto como prova de saúde; C iguala inscrição a eliminação de doenças. Análise estrutural sem diagnóstico individual está correta no índice 3."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Matéria, substâncias e misturas",
+    "contentSha256": "89acd7a389837d1617b632a429f9eb851eb182b45a202a01cfdaf2df97cedadb",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Sistema com água líquida e sal inteiramente dissolvido, sem sólido no fundo: mistura homogênea (uma fase uniforme) com dois componentes (água e sal). Opção B correta. A confunde uniformidade com pureza. C afirma duas fases inexistentes. D inventa reação química não descrita."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Mistura água + areia insolúvel com partículas retidas no filtro; objetivo: retirar areia e recolher água. Filtração (C) retém sólido e deixa líquido passar. A: magnetismo não atribuído à areia. B: misturar não transforma areia em água. D: evaporação sem condensação perde vapor, não recolhe líquido."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Inicial: 10g Fe + 20g areia + 30g sal = 60g. Ímã remove Fe. Adicionam 100g água (dissolve todo sal). Filtração retém toda areia. Filtrado = água adicionada (100g) + sal dissolvido (30g) = 130g. Balanço total: 10g Fe + 20g areia + 130g filtrado = 160g = 60g inicial + 100g água. Opção D correta. A: filtro não retém soluto dissolvido. B: inclui areia já retida. C: ignora separações realizadas."
       }
     ]
   }

@@ -124,3 +124,37 @@ test('citologia distingue fluxo osmótico de soluto e conserva cromossomos na mi
  assert.equal(daughterChromosomes,chromosomes);
  assert.doesNotMatch(spec.sections.map(section=>section.explanation).join(' '),/polimerase δ.*exonuclease 5/);
 });
+
+test('cartografia calcula escala e distingue frequência municipal de população',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Cartografia');
+ assert.ok(spec);
+ const basic=spec.tasks[0];assert.ok(basic.options&&typeof basic.correctIndex==='number');
+ const denominator=Number(basic.prompt.match(/1:([\d.]+)/)?.[1].replaceAll('.',''));
+ const centimeters=Number(basic.prompt.match(/([\d,]+) cm/)?.[1].replace(',','.'));
+ assert.ok(Number.isFinite(denominator)&&Number.isFinite(centimeters));
+ const kilometers=centimeters*denominator/100000;
+ assert.equal(basic.options[basic.correctIndex],kilometers.toLocaleString('pt-BR')+' km');
+ const advanced=spec.tasks[2];assert.ok(advanced.options&&typeof advanced.correctIndex==='number');
+ const count=Number(advanced.prompt.match(/(\d+) municípios/)?.[1]);
+ const perGroup=Number(advanced.prompt.match(/grupos de (\d+)/)?.[1]);
+ assert.ok(Number.isFinite(count)&&Number.isFinite(perGroup));
+ assert.match(advanced.options[advanced.correctIndex],new RegExp(`${100*perGroup/count}% dos municípios`));
+ // Equal counts do not imply equal population shares or equal value intervals.
+ const populations=[1000,2000,3000,4000,5000],values=[1,2,3,10,80];
+ assert.notEqual(100*populations.at(-1)!/populations.reduce((a,b)=>a+b,0),100/populations.length);
+ assert.notEqual(values[1]-values[0],values[4]-values[3]);
+});
+
+test('separação de misturas conserva massa e inclui solvente adicionado no filtrado',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Matéria, substâncias e misturas');
+ assert.ok(spec);
+ const task=spec.tasks[2];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const mass=(name:string)=>Number(task.prompt.match(new RegExp(`(\\d+) g de ${name}`))?.[1]);
+ const iron=mass('ferro'),sand=mass('areia'),salt=mass('sal'),water=mass('água');
+ assert.ok([iron,sand,salt,water].every(value=>Number.isFinite(value)&&value>0));
+ const initial=iron+sand+salt+water,filtrate=initial-iron-sand;
+ assert.equal(filtrate,salt+water);
+ assert.ok(task.options[task.correctIndex].startsWith(`${filtrate} g,`));
+ assert.match(task.prompt,/suficientes para dissolver todo o sal/);
+ assert.match(task.prompt,/ausência de reações e de perdas/);
+});
