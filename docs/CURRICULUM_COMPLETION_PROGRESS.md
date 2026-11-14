@@ -4,7 +4,55 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 2
+## Estado atual — checkpoint 3
+
+O lote 03 tem 16 aulas integradas: uma primeira aula nas 16 disciplinas da fila.
+Restam 1.279 lacunas entre 1.512 identidades curriculares. No recorte editorial
+ENEM, são 34 temas aprofundados e 862 lacunas; a lista de estudo ENEM reúne 34
+aulas aprofundadas, 61 guias introdutórios e 812 temas em desenvolvimento.
+Essas unidades são diferentes e não representam habilidades oficiais concluídas.
+
+Além das nove aulas do checkpoint anterior, entraram:
+
+- História — Brasil colonial: ocupação, povos indígenas, instituições, economias,
+  escravização, resistências e distinção entre 1808, 1815 e 1822. Referências
+  incluem Receita Federal, pesquisa da UFF, FUNAG e a Carta de Lei de 1815.
+- Geografia — Cartografia: coordenadas, orientação, escalas, projeções e leitura
+  de mapas temáticos. Corrigidas regras falsas sobre conformidade e distâncias,
+  conversão de unidades e conclusões sobre quantis; testes recalculam os dados.
+- Filosofia — Introdução à filosofia e argumentação: problemas, premissas,
+  dedução, indução e crítica de falácias; retirados estudos e citações inventados.
+- Sociologia — Surgimento da sociologia e métodos: contexto, perspectivas
+  clássicas, confiabilidade, validade, causalidade e ética. O exemplo de entradas
+  e pessoas distintas mostra por que uma medida consistente pode ser inadequada.
+- Arte — Linguagens artísticas e leitura de imagens: recursos visuais, sonoros,
+  corporais e cênicos; interpretação com evidências e contexto de circulação.
+  As composições são autorais e descritas integralmente, sem figuras ausentes.
+- Educação Física — Corpo, movimento e saúde: atividade física, exercício,
+  comportamento sedentário, capacidades, participação e acesso. O texto é
+  dirigido ao estudante, sem prescrição clínica ou aconselhamento jurídico.
+- Ciências — Matéria, substâncias e misturas: fases, componentes, transformações,
+  separação e balanço de massa. Retiradas regras falsas de destilação e conteúdo
+  termodinâmico fora do objetivo; o teste confere a massa do filtrado.
+
+Todas mantêm autoria assistida, fontes nos materiais, hashes da versão conferida
+e revisão pedagógica humana pendente. Rascunhos recusados não são cobertura.
+
+Também foi corrigida a abertura direta de um alias curricular já aprovado:
+`/cursos` agora entrega a mesma fonte aprofundada do inventário. Publicação própria
+do alvo tem prioridade; publicação atualizada da fonte fornece sua revisão;
+retirada, arquivamento, publicação inválida e falha de consulta impedem fallback.
+O ID solicitado continua nos metadados do tópico e as questões pertencem à fonte
+entregue. Oito testes de resolução cobrem esses caminhos sem alterar schema.
+
+Verificação: 605 testes da aplicação, seis do motor e 244 verificações de design
+aprovados; lint dos arquivos alterados e build de produção aprovados. Chromium
+conferiu a API das 16 aulas, abriu as sete novas pela navegação pública, respondeu
+às 21 questões e mostrou explicações. O alias foi aberto diretamente, com suas
+três questões e a mesma fonte canônica. Sem exceções ou rolagem horizontal em
+320/375/768/1440 px. Não houve merge, deploy ou publicação no banco.
+
+## Histórico — checkpoint 2
 
 O lote 03 tem nove aulas integradas e conferidas. Restam 1.286 lacunas entre as
 1.512 identidades do catálogo; no recorte editorial ENEM, são 28 temas aprofundados
@@ -103,3 +151,15 @@ geração automática ao estudante abrir uma aula.
 O trabalho segue na fila de disciplinas. O plano e o checklist estão em
 `tasks/plan.md` e `tasks/todo.md`; o encerramento exige zerar as lacunas e repetir
 as verificações finais, sem converter revisão por IA em aprovação humana.
+
+## Revisão da resolução de conteúdo
+
+A revisão independente pelo Claude Code confirmou prioridade editorial e bloqueio
+em erros de consulta, mas sugeriu remover todo fallback quando não existe linha
+no banco. Essa sugestão não foi aplicada: ausência de override é diferente de
+retirada, e o produto já oferece módulos offline explicitamente identificados
+como introdutórios. Exigir publicação para cada ID eliminaria esse comportamento.
+O teste de ausência preserva o contrato; testes separados cobrem retirada,
+arquivamento, publicação inválida e falhas de leitura em ambos os IDs. Também há
+cobertura para publicações válidas externas ao catálogo, sem criar vínculo
+curricular. Nenhuma revisão automática substitui a conferência do contrato.

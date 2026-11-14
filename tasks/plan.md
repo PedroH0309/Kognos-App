@@ -52,3 +52,10 @@ Testes nativos do projeto para contrato, rejeição de conteúdo insuficiente,
 índice/runtime equivalentes, integridade canônica e isolamento entre provas.
 Verificação independente dos cálculos e fatos dos lotes, seguida de API/leitor
 real, TypeScript, build e CI. Não diminuir limites nem remover testes para aprovar.
+
+## Correção verificada do leitor avulso
+
+A abertura direta por ID do alias semântico aprovado em `/cursos` agora usa a
+fonte canônica com prioridade de publicação e respeito à retirada de ambos os
+IDs. Oito testes de resolução e navegação pública verificaram a correção, inclusive
+falhas de leitura e publicações inválidas. Nenhuma fonte arquivada é ressuscitada.

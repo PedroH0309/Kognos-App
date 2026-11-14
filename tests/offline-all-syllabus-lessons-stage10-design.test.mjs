@@ -5,11 +5,13 @@ const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 
 test('Offline starter lessons appear for all curricular topics without a separate generation request',()=>{
  const route=read('apps/web/src/app/api/content/route.ts');
- assert.match(route,/import \{starterCoverage,starterLesson\}/);
- assert.match(route,/const lesson=published\?\.kind==='lesson'\?published:topic\?starterLesson\(topic\):null/);
+ assert.match(route,/import \{starterCoverage\}/);
+ assert.match(route,/resolveContentLesson\(id,/);
+ assert.match(read('apps/web/src/lib/content-lesson-resolution.ts'),/lesson:canonical\?\?starterLesson\(topic\)/);
  assert.match(route,/if\(!db\)return contentJson\(\{topics:curriculumTopics\.map/);
  assert.match(route,/starterStatus\(t\)/);
- assert.match(route,/if\(row&&\(row\.archived\|\|!row\.published\)\)/);
+ assert.match(route,/resolved\.status==='withdrawn'/);
+ assert.match(read('apps/web/src/lib/content-lesson-resolution.ts'),/if\(row\.archived\|\|!row\.published\)/);
  assert.match(route,/status:r\?r\.archived\?'archived':r\.published_revision\?'published':'draft':starterStatus\(t\)/);
  assert.doesNotMatch(route,/await fetch\(/);
 });
