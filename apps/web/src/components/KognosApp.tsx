@@ -259,25 +259,25 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
       </div>
     </header>
 
-    <section className="k-continue-card" aria-labelledby="k-continue-title">
+    <article className="ks-card ks-card-primary k-continue-card" aria-labelledby="k-continue-title">
       <div className="k-continue-copy">
         <span className="k-hero-eyebrow"><span className="k-pulse-dot"/> CONTINUAR APRENDENDO</span>
         <h2 id="k-continue-title">Pronto para seu <span>próximo avanço?</span></h2>
         <p>Estude no seu ritmo, retome uma trilha e transforme cada conceito em uma conquista.</p>
-        <div className="k-hero-chips">
-          <span><Target size={14}/> Foco: {goalLabels[p.goal]}</span>
-          <span><Clock3 size={14}/> Plano: {p.dailyMinutes} min/dia</span>
+        <div className="ks-flex ks-gap-2 ks-flex-wrap">
+          <span className="ks-badge ks-badge-primary"><Target size={14}/> Foco: {goalLabels[p.goal]}</span>
+          <span className="ks-badge ks-badge-primary"><Clock3 size={14}/> Plano: {p.dailyMinutes} min/dia</span>
         </div>
-        <button type="button" className="btn primary k-hero-button" onClick={()=>onGo('learn')}>Continuar estudando <ArrowRight size={17}/></button>
+        <button type="button" className="ks-button ks-button-primary" onClick={()=>onGo('learn')}>Continuar estudando <ArrowRight size={17}/></button>
       </div>
       <div className="k-continue-art" aria-hidden="true">
         <span className="k-art-ring k-art-ring-one"/><span className="k-art-ring k-art-ring-two"/>
         <div className="k-art-center"><BrainCircuit size={44} strokeWidth={1.45}/></div>
         <div className="k-art-note"><span><BookOpenText size={17}/></span><div><strong>Aprenda</strong><small>no seu ritmo</small></div></div>
-        <div className="k-art-badge"><CheckCircle2 size={16}/><span>Seu progresso importa</span></div>
+        <span className="ks-badge ks-badge-success"><CheckCircle2 size={16}/><span>Seu progresso importa</span></span>
         <span className="k-art-dot k-art-dot-one"/><span className="k-art-dot k-art-dot-two"/><span className="k-art-dot k-art-dot-three"/>
       </div>
-    </section>
+    </article>
 
     <section className="k-stat-section" aria-label="Seu desempenho registrado">
       <div className="ks-bento ks-gap-4">
