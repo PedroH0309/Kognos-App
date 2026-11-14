@@ -242,6 +242,8 @@ export function verifiedPartialAssociations(){
     if(!target||!source||target.id===source.id)return [];
     // Partial advisory only: resolve the same authored source across both libraries.
     // This does not grant full exam coverage or create a semantic alias.
+    // Partial references may originate from any authored deep library, including ENEM.
+    // Keep them advisory: resolving a source never promotes the target to full coverage.
     const lesson=sharedOfficialProvaoLesson(source);
     if(!lesson)return [];
     return [{...entry,targetTopicId:target.id,canonicalId:source.id,lesson}];
