@@ -34,6 +34,10 @@ test('registro de conferência identifica o texto final sem alegar homologação
   assert.equal(record.humanPedagogicalReview,'pending');
   assert.equal(record.questionChecks.length,3);
   assert.ok(record.questionChecks.every(check=>check.reasoning.length>=80));
+  assert.ok(record.questionChecks.every((check,index)=>check.index===index&&check.correctIndex===spec.tasks[index].correctIndex));
+  const topic=curriculumTopics.find(t=>t.subject===spec.subject&&t.topic===spec.topic)!;
+  const lesson=deepAuthoredCurriculumLesson(topic)!;
+  assert.ok(record.verifiedSourceUrls.every(url=>lesson.sourceUrls.includes(url)));
  }
 });
 
@@ -76,4 +80,47 @@ test('textos de interpretação são hipóteses autorais, sem atribuir dados a i
  assert.ok(spec);
  for(const task of spec.tasks)assert.match(task.prompt,/autoral hipotétic[ao]/);
  assert.doesNotMatch(JSON.stringify(spec),/Sinase|segundo especialistas|Machado de Assis/);
+});
+
+test('gabaritos de movimento e forças respeitam atrito, massas ligadas e projeção da normal',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Movimento e forças');
+ assert.ok(spec);
+ const format=(value:number,places:number)=>value.toLocaleString('pt-BR',{minimumFractionDigits:places,maximumFractionDigits:places});
+ const expected=[format((18-.25*3*9.8)/3,2)+' m/s²',format((6*9.8-.2*4*9.8)/(4+6),2)+' m/s²',format(Math.sqrt(9.8*80*.2679),1)+' m/s'];
+ spec.tasks.forEach((task,index)=>{assert.ok(task.options&&typeof task.correctIndex==='number');assert.equal(task.options[task.correctIndex],expected[index]);});
+ assert.match(spec.tasks[0].prompt,/já desliza/);
+ assert.match(spec.tasks[1].prompt,/polia fixa ideal/);
+ assert.match(spec.tasks[2].prompt,/Não há atrito/);
+});
+
+test('estrutura atômica conserva prótons/elétrons e calcula energia e comprimento de onda',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Estrutura atômica');
+ assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ assert.equal(17+18,35);assert.equal(choice(0),'³⁵₁₇Cl');
+ assert.equal(26-3,18+5);assert.equal(choice(1),'[Ar]3d⁵');
+ const energy=13.6*3**2*(1/2**2-1/4**2);
+ assert.equal(energy,22.95);
+ const wavelength=1240/energy;
+ assert.equal(choice(2),wavelength.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+' nm');
+ assert.match(spec.tasks[2].prompt,/um elétron/);
+});
+
+test('citologia distingue fluxo osmótico de soluto e conserva cromossomos na mitose',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Citologia');
+ assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const concentrations=[...task.prompt.matchAll(/(\d+) g\/L/g)].map(match=>Number(match[1]));
+ assert.equal(concentrations.length,2);
+ const [outside,inside]=concentrations;
+ const expectedFlow=inside>outside?'Entrada líquida de água':'Saída líquida de água';
+ assert.ok(task.options[task.correctIndex].startsWith(expectedFlow));
+ const division=spec.tasks[2];assert.ok(division.options&&typeof division.correctIndex==='number');
+ const chromosomes=Number(division.prompt.match(/2n = (\d+)/)?.[1]);
+ assert.ok(Number.isFinite(chromosomes)&&chromosomes>0);
+ const chromatids=2*chromosomes,daughterChromosomes=chromatids/2;
+ const words:Record<number,string>={6:'seis',12:'doze'};
+ assert.equal(division.options[division.correctIndex],`Metáfase com ${words[chromosomes]} cromossomos e ${words[chromatids]} cromátides; cada filha com ${words[daughterChromosomes]} cromossomos não duplicados`);
+ assert.equal(daughterChromosomes,chromosomes);
+ assert.doesNotMatch(spec.sections.map(section=>section.explanation).join(' '),/polimerase δ.*exonuclease 5/);
 });

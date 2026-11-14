@@ -4,6 +4,43 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
+## Estado atual — checkpoint 2
+
+O lote 03 tem nove aulas integradas e conferidas. Restam 1.286 lacunas entre as
+1.512 identidades do catálogo; no recorte editorial ENEM, são 28 temas aprofundados
+e 868 lacunas. A lista de estudo ENEM reúne 28 aulas aprofundadas, 65 guias e 814
+temas em desenvolvimento. A fila de autoria e revisão continua em execução.
+
+Além das três aulas do primeiro checkpoint, entraram:
+
+- Inglês — Leitura e interpretação de textos: contexto, referentes, quantificadores,
+  modalidade, argumentação e ironia com exemplos autorais diferentes dos exercícios.
+- Física — Movimento e forças: cinemática, leis de Newton, atrito, fios/polias,
+  resultante radial e condições para trabalho. Retiradas generalizações incorretas
+  sobre tração, normal e polias; cálculos e hipóteses conferidos em testes nativos.
+- Química — Estrutura atômica: partículas, notação, configurações, tendências e
+  transições de um elétron. Corrigidos afinidade eletrônica, distratores e unidades;
+  exemplos resolvidos usam dados diferentes dos exercícios.
+- Espanhol — Leitura e interpretação em espanhol: leitura global, coesão e crítica;
+  acepções consultadas no DLE/RAE para evitar falsas equivalências ou proibições
+  absolutas de sentido. Textos de apoio são autorais e identificados.
+- Biologia — Citologia: organização procariótica/eucariótica, funções celulares,
+  osmose, expressão gênica, ciclo e contagem cromossômica. Substituído o desvio dos
+  rascunhos para sinalização farmacológica por conteúdo adequado ao escopo escolar.
+- Redação — Projeto de texto e tese: recorte, razões, evidências, progressão,
+  objeções e revisão. Sem dados inventados atribuídos a instituições nem regras
+  universais de número de linhas, posição da tese ou formato de parágrafo.
+
+Os materiais exibem as referências verificadas de OpenStax e DLE/RAE quando
+pertinentes; os textos são redação autoral, não transcrições desses livros.
+Revisão docente permanece pendente em todas as aulas.
+
+Validação: 595 testes da aplicação e seis do motor, lint dos arquivos alterados e
+build de produção aprovados. As nove respostas reais da API conferem com os textos
+integrados. A navegação pública `/cursos`, as 27 respostas e as explicações foram
+conferidas em Chromium; sem exceções ou rolagem horizontal em 320/375/768/1440 px.
+Os links de referência expandidos também foram verificados em 320/375/768 px.
+
 ## Inventário e checkpoint 1
 
 | Medida | Início desta continuação | Após o lote 03 inicial |

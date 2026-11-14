@@ -1,4 +1,4 @@
-import {authoredCurriculumBatch03} from './authored-curriculum-batch03.ts';
+import {authoredCurriculumBatch03,authoredCurriculumReviewRecords} from './authored-curriculum-batch03.ts';
 import type {CurriculumTopic} from './curriculum-catalog.ts';
 import type {CourseLesson} from './course-content.ts';
 import {courseId} from './curriculum-id.ts';
@@ -6,6 +6,7 @@ import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 
 export const authoredCurriculumSpecs=authoredCurriculumBatch03;
 const specs=new Map(authoredCurriculumSpecs.map(spec=>[JSON.stringify([spec.subject,spec.topic]),spec]));
+const references=new Map(authoredCurriculumReviewRecords.map(record=>[JSON.stringify([record.subject,record.topic]),record.verifiedSourceUrls]));
 
 /** Literal scope only. This is preparatory content, with human review pending. */
 export function deepAuthoredCurriculumLesson(topic:CurriculumTopic):CourseLesson|null{
@@ -18,7 +19,10 @@ export function deepAuthoredCurriculumLesson(topic:CurriculumTopic):CourseLesson
   objective:spec.objective,prerequisites:[...spec.prerequisites],sections:spec.sections,tasks:spec.tasks,videos:[],
   authorship:'Kognos — aula autoral de conteúdo original com assistência de IA; revisão pedagógica humana pendente; sem homologação docente',
   license:'Material preparatório autoral do Kognos; não oficial das provas nem homologado pelas instituições organizadoras',
-  sourceUrls:[...new Set(exams.map(exam=>examBlueprints[exam].sourceUrl).filter(url=>url.startsWith('https://')))],
+  sourceUrls:[...new Set([
+   ...exams.map(exam=>examBlueprints[exam].sourceUrl),
+   ...(references.get(JSON.stringify([spec.subject,spec.topic]))??[])
+  ].filter(url=>url.startsWith('https://')))],
   review:'introductory',syllabusScope:'Escopo editorial Kognos: '+spec.topic+'. Referências institucionais orientam o roteiro; textos e questões são autorais, sem certificação de equivalência oficial.'
  };
 }
