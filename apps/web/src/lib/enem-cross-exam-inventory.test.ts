@@ -38,7 +38,7 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
       assert.equal(row.lesson.id, row.canonicalId);
     }
     for (const ref of references) {
-      assert.equal(ref.fullyCovered, false);
+      assert.equal(ref.eligibleForFullAlias, false);
       assert.ok(ref.missingScope.trim().length > 20, exam + ': missing scope must be documented');
       assert.ok(topics.some(topic => topic.id === ref.targetTopicId), exam + ': advisory outside exam');
     }
