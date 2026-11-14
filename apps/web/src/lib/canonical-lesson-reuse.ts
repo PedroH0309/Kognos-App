@@ -323,7 +323,11 @@ export function semanticReviewQueue(){
   // A source outside the blueprint remains advisory; no full alias is created.
   const partials=partialCoverageByExam();
   const provaoPartials=provaoPartialReferencesByExam();
-  return (Object.keys(examBlueprints) as ExamId[]).flatMap(exam=>{
+  // Review ENEM partial gaps first, regardless of blueprint declaration order.
+  // This changes queue order only: no advisory source becomes full coverage.
+  const reviewExams=(Object.keys(examBlueprints) as ExamId[]).sort((a,b)=>
+    Number(b==='enem')-Number(a==='enem'));
+  return reviewExams.flatMap(exam=>{
     const seen=new Set<string>();
     const references=[
       ...partials[exam].map(ref=>({...ref,sourceOrigin:'blueprint' as const})),
