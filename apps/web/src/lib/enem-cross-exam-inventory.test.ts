@@ -49,8 +49,39 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
       assert.ok(ref.missingScope.trim().length > 20, exam + ': missing scope must be documented');
       assert.ok(topics.some(topic => topic.id === ref.targetTopicId), exam + ': advisory outside exam');
     }
+    const bySubject = [...new Set(topics.map(topic => topic.subject))].sort().map(subject => {
+      const subjectTopics = topics.filter(topic => topic.subject === subject);
+      const subjectRows = rows.filter(row => subjectTopics.some(topic => topic.id === row.examTopicId));
+      const subjectReferences = references.filter(ref =>
+        subjectTopics.some(topic => topic.id === ref.targetTopicId)
+      );
+      const fullyCoveredIds = new Set(subjectRows.map(row => row.examTopicId));
+      const partialOnlyIds = new Set(subjectReferences
+        .filter(ref => !fullyCoveredIds.has(ref.targetTopicId))
+        .map(ref => ref.targetTopicId));
+      return {
+        subject,
+        entries: subjectTopics.length,
+        distinctExactTitles: new Set(subjectTopics.map(topic => topic.topic)).size,
+        deep: subjectRows.length,
+        uniqueDeepCanonicalLessons: new Set(subjectRows.map(row => row.canonicalId)).size,
+        reviewedSemanticLinks: subjectRows.filter(row => row.mappingKind === 'reviewed-semantic').length,
+        advisoryLinks: subjectReferences.length,
+        partialOnlyTopics: partialOnlyIds.size,
+        missing: subjectTopics.length - subjectRows.length
+      };
+    });
+    assert.equal(bySubject.reduce((sum, row) => sum + row.entries, 0), topics.length,
+      exam + ': subject entry inventory mismatch');
+    assert.equal(bySubject.reduce((sum, row) => sum + row.deep, 0), rows.length,
+      exam + ': subject deep inventory mismatch');
+    assert.equal(bySubject.reduce((sum, row) => sum + row.advisoryLinks, 0), references.length,
+      exam + ': subject advisory inventory mismatch');
+    assert.equal(bySubject.reduce((sum, row) => sum + row.missing, 0), topics.length - rows.length,
+      exam + ': subject missing inventory mismatch');
     return {
       exam,
+      bySubject,
       entries: topics.length,
       distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
       deep: rows.length,
@@ -74,6 +105,16 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
   assert.equal(audit.approvedSemanticLinks, enem.reviewedSemanticLinks);
   assert.equal(audit.partialAdvisoryLinks, enem.advisoryLinks);
   assert.equal(audit.partialOnlyTopics, enem.partialOnlyTopics);
+  for (const subject of audit.subjects) {
+    const inventory = enem.bySubject.find(row => row.subject === subject.subject);
+    assert.ok(inventory, 'Missing ENEM subject audit: ' + subject.subject);
+    assert.equal(inventory.entries, subject.total);
+    assert.equal(inventory.deep, subject.deep);
+    assert.equal(inventory.missing, subject.missing);
+    assert.equal(inventory.uniqueDeepCanonicalLessons, subject.uniqueDeepCanonicalLessons);
+    assert.equal(inventory.reviewedSemanticLinks, subject.approvedSemanticLinks);
+    assert.equal(inventory.partialOnlyTopics, subject.partialOnly);
+  }
 
   assert.equal(registry.examToLessonLinks, mappings.length);
   assert.equal(registry.persistentDuplicatesDeleted, 0);
