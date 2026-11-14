@@ -1,0 +1,26 @@
+.page{min-height:100dvh;display:grid;place-items:center;padding:24px;box-sizing:border-box;background:#F7F9FC;color:#101B33;font-family:Arial,Helvetica,sans-serif}
+.card{width:min(100%,520px);padding:clamp(24px,5vw,44px);box-sizing:border-box;border:1px solid #DCE4EF;border-radius:18px;background:#FFF;box-shadow:0 12px 36px #101B330A}
+.brand{display:flex;align-items:center;gap:10px;color:#273A61;font-size:20px;font-weight:750}
+.title{margin:28px 0 14px;color:#101B33;font-size:clamp(24px,4vw,32px);font-weight:750;line-height:1.2;letter-spacing:-.03em;overflow-wrap:anywhere}
+.title:focus{outline:none}
+.description{margin:0;color:#526176;font-size:16px;line-height:1.7}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.actions form{display:flex;margin:0}
+.retry,.home{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 16px;box-sizing:border-box;border:1px solid #273A61;border-radius:9px;font:inherit;font-size:14px;font-weight:650;text-decoration:none;cursor:pointer}
+.retry{background:#273A61;color:#FFF}
+.retry:hover{background:#101B33}
+.home{background:#FFF;color:#273A61}
+.home:hover{background:#EDF1F7}
+.retry:focus-visible,.home:focus-visible{outline:3px solid #087E96;outline-offset:3px}
+@media(prefers-color-scheme:dark){
+ .page{background:#171D28;color:#F7F9FC}
+ .card{background:#202633;border-color:#43516A}
+ .brand,.title{color:#F7F9FC}
+ .description{color:#C1CBDB}
+ .retry{background:#D3DEEF;color:#101B33;border-color:#D3DEEF}
+ .retry:hover{background:#FFF}
+ .home{background:#202633;color:#F7F9FC;border-color:#8395B1}
+ .home:hover{background:#2B3444}
+ .retry:focus-visible,.home:focus-visible{outline-color:#6CE1F3}
+}
+@media(max-width:380px){.actions{flex-direction:column}.retry,.home{width:100%}}
