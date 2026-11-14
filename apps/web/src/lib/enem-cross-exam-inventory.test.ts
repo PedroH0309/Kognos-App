@@ -89,6 +89,47 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
       assert.strictEqual(row.lesson.id, row.canonicalId);
     }
   }
+  // Independent grade/subject matrix: a broad SARESP editorial membership is
+  // not an official Provão leaf, and a grade without the leaf never inherits it.
+  const gradeSubjectInventory = ([1, 2, 3] as const).flatMap(grade =>
+    [...new Set(provaoTopics.filter(row => row.grade === grade).map(row => row.subject))]
+      .sort().map(subject => {
+        const leaves = provaoTopics.filter(row => row.grade === grade && row.subject === subject);
+        const deepLeaves = gradeMappings.filter(row => row.grade === grade && row.subject === subject);
+        const leafKeys = new Set(leaves.map(row => JSON.stringify([row.code, row.topic])));
+        assert.equal(leafKeys.size, leaves.length, 'Duplicate official leaf identity in grade/subject');
+        for (const row of deepLeaves) {
+          assert.ok(leafKeys.has(JSON.stringify([row.officialCode, row.officialTitle])),
+            'Deep lesson inherited by an unrelated grade/subject');
+        }
+        assert.equal(new Set(deepLeaves.map(row => JSON.stringify([row.officialCode, row.officialTitle]))).size,
+          deepLeaves.length, 'Duplicate grade-specific canonical mapping');
+        return {
+          grade, subject, entries: leaves.length,
+          distinctExactTitles: new Set(leaves.map(row => row.topic)).size,
+          deep: deepLeaves.length,
+          uniqueCanonicalDeepLessons: new Set(deepLeaves.map(row => row.canonicalId)).size,
+          missing: leaves.length - deepLeaves.length
+        };
+      })
+  );
+  for (const grade of officialGrades) {
+    const scoped = gradeSubjectInventory.filter(row => row.grade === grade.grade);
+    assert.equal(scoped.reduce((sum, row) => sum + row.entries, 0), grade.totalEntries);
+    assert.equal(scoped.reduce((sum, row) => sum + row.deep, 0), grade.deepEntries);
+    assert.equal(scoped.reduce((sum, row) => sum + row.missing, 0), grade.missingEntries);
+  }
+  const sharedCanonical = new Map<string, Set<string>>();
+  for (const row of mappings) {
+    const historicalIds = sharedCanonical.get(row.canonicalId) ?? new Set<string>();
+    historicalIds.add(row.examTopicId);
+    sharedCanonical.set(row.canonicalId, historicalIds);
+  }
+  const crossTitleGroups = [...sharedCanonical.values()].filter(ids => ids.size > 1);
+  const crossTitleReferencesReused = crossTitleGroups.reduce((sum, ids) => sum + ids.size - 1, 0);
+  assert.equal(registry.persistentDuplicatesDeleted, 0,
+    'Shared references must never be presented as removed persisted rows');
+
   // A repeated official leaf shares authored content, not an invented extra lesson.
   const gradeSources = new Map<string, (typeof gradeMappings)[number]['lesson']>();
   for (const row of gradeMappings) {
@@ -105,6 +146,9 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
     distinctExactSubjectTitles: registry.distinctExactSubjectTitles,
     uniqueCanonicalLessonsAcrossCatalogAndOfficialGrades: registry.canonicalUniqueLessons,
     officialProvaoByGrade: officialGrades.map(row => ({grade: row.grade, entries: row.totalEntries, deep: row.deepEntries, missing: row.missingEntries, uniqueDeepCanonicalLessons: row.uniqueCanonicalDeepIds.length})),
+    officialProvaoByGradeAndSubject: gradeSubjectInventory,
+    crossTitleCanonicalGroups: crossTitleGroups.length,
+    crossTitleReferencesReused,
     enem: {
       ...enem,
       bySubject: audit.subjects,
