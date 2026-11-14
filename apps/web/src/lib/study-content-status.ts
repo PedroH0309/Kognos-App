@@ -1,5 +1,5 @@
 import {curriculumTopics,type CurriculumTopic} from './curriculum-catalog.ts';
-import {canonicalLessonForExam} from './canonical-lesson-reuse.ts';
+import {indexedCanonicalTopicId} from './canonical-lesson-index.ts';
 import type {ExamId} from './exam-blueprints.ts';
 import {learningLessons,type LearningLesson} from './learning-catalog.ts';
 
@@ -21,8 +21,8 @@ function authoredTopic(lesson:LearningLesson,exam:ExamId|null):CurriculumTopic|n
  if(!topic||topic.subject!==lesson.subject||topic.topic!==lesson.topic)return null;
  const exams=exam?[exam]:topic.exams;
  for(const member of exams){
-  const lesson=canonicalLessonForExam(member,topic);
-  if(lesson)return registeredById.get(lesson.id)??null;
+  const sourceId=indexedCanonicalTopicId(member,topic);
+  if(sourceId)return registeredById.get(sourceId)??null;
  }
  return null;
 }
