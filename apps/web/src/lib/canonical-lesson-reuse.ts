@@ -240,7 +240,9 @@ export function verifiedPartialAssociations(){
     const target=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.targetTitle);
     const source=curriculumTopics.find(t=>t.subject===entry.subject&&t.topic===entry.sourceTitle);
     if(!target||!source||target.id===source.id)return [];
-    const lesson=deepProvaoLesson(source);
+    // Partial advisory only: resolve the same authored source across both libraries.
+    // This does not grant full exam coverage or create a semantic alias.
+    const lesson=sharedOfficialProvaoLesson(source);
     if(!lesson)return [];
     return [{...entry,targetTopicId:target.id,canonicalId:source.id,lesson}];
   });
