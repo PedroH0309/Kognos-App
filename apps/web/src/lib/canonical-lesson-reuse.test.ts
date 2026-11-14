@@ -533,8 +533,15 @@ test('cross-exam authoring backlog deduplicates historical topics and excludes c
  assert.equal(new Set(backlog.map(item=>item.topicId)).size,backlog.length);
  assert.equal(backlog.reduce((sum,item)=>sum+item.examCount,0),
   Object.values(coverage).reduce((sum,item)=>sum+item.missing,0));
- for(let i=1;i<backlog.length;i++){
-  assert.ok(backlog[i-1].examCount>=backlog[i].examCount);
+ // Every missing ENEM topic must be ahead of non-ENEM-only work, while
+ // preserving multi-exam authoring reuse as the next priority within a tier.
+ const enemCount=backlog.filter(item=>item.missingExams.includes('enem')).length;
+ assert.equal(enemCount,coverage.enem.missing);
+ for(let i=0;i<backlog.length;i++){
+  assert.equal(backlog[i].missingExams.includes('enem'),i<enemCount);
+  if(i>0&&backlog[i-1].missingExams.includes('enem')===backlog[i].missingExams.includes('enem')){
+   assert.ok(backlog[i-1].examCount>=backlog[i].examCount);
+  }
  }
  for(const item of backlog){
   const topic=curriculumTopics.find(t=>t.id===item.topicId);
