@@ -89,7 +89,7 @@ Documentação consultada: [limpeza de efeitos no React](https://react.dev/learn
 | Verificação | Resultado local |
 | --- | --- |
 | Motor educacional | 6 testes aprovados |
-| Aplicação e regras | 571 testes aprovados |
+| Aplicação e regras | 575 testes aprovados |
 | Design e contrato CSS | 244 testes aprovados |
 | Segurança do conteúdo / dois usuários | 8 testes aprovados |
 | TypeScript e build | Aprovados |
@@ -105,9 +105,13 @@ O ensaio em navegador utilizou respostas controladas; não certifica o funcionam
 de contas reais, das configurações do Supabase hospedado ou do provedor NVIDIA.
 Os testes de banco executaram o ambiente local de teste, não o banco de produção.
 
-O Claude Code CLI respondeu que não havia login ativo. Uma segunda tentativa de
+Na primeira tentativa, o Claude Code CLI respondeu que não havia login ativo. Uma segunda tentativa de
 revisão somente leitura pelo inicializador `fcc-claude` excedeu o tempo limite;
 o processo de revisão foi encerrado e nenhuma aprovação por ele foi reivindicada.
+Na iteração seguinte, a conexão local já instalada foi configurada no processo
+isolado do CLI, sem alterar credenciais do usuário. O Claude Code respondeu à
+verificação e passou a produzir rascunhos de aulas em outro branch; isso não
+constitui aprovação deste código nem revisão pedagógica humana.
 O Strix consta como skill,
 mas o executável não foi encontrado entre as ferramentas instaladas acessíveis;
 não foi executado um pentest Strix nem foi reivindicada aprovação por ele.
@@ -116,3 +120,24 @@ Continuam pendentes: correção dos demais erros de lint, revisão das migraçõ
 restantes com dados reais, validação autenticada em homologação, pentest configurado
 e revisão pedagógica/cobertura curricular. Este lote não declara o app ou o currículo
 100% concluídos para produção.
+
+## Catálogo e acesso às aulas
+
+A tela de estudo agora distingue aula aprofundada, guia introdutório e tema em
+desenvolvimento. Os totais são calculados pelo resolvedor canônico usado pelo app,
+sem considerar a presença de um título no catálogo como aula concluída. Um filtro
+acessível permite exibir apenas as aulas que já possuem conteúdo. No catálogo
+ENEM desta revisão: 14 aulas aprofundadas, 70 guias e 823 temas em desenvolvimento;
+esses números descrevem o catálogo editorial do app, não a matriz oficial do Inep.
+
+Três entradas históricas (`bio-vaccines`, `hist-industry` e `pt-cohesion`) abriam
+resumos apesar de terem uma aula canônica aprofundada. O acesso agora resolve os
+identificadores antigos com disciplina e título registrados, preservando o
+histórico e recusando metadados forjados. Quatro testes cobrem classificação,
+integridade dos totais e essas entradas.
+
+O Chromium verificou o componente real em 320, 375, 768 e 1440 px, nos temas claro
+e escuro: sem rolagem horizontal, filtro por teclado, mudança de disciplina,
+busca vazia com orientação e ausência de exceções do navegador. A rota temporária
+de ensaio foi removida. Os cinco erros e 19 avisos de lint já existentes em
+`LearningTrails.tsx` permanecem; os novos arquivos não adicionam ocorrências.
