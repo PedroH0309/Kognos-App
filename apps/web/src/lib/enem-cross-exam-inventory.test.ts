@@ -105,6 +105,34 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
   assert.equal(audit.approvedSemanticLinks, enem.reviewedSemanticLinks);
   assert.equal(audit.partialAdvisoryLinks, enem.advisoryLinks);
   assert.equal(audit.partialOnlyTopics, enem.partialOnlyTopics);
+  // ENEM-first lossless partition: each registered historical topic must be
+  // either fully mapped or still present in the actionable missing queue.
+  // Advisory sources are not coverage and must never remove a missing topic.
+  const enemTopics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
+  const fullIds = new Set(audit.fullCanonicalMappings.map(row => row.examTopicId));
+  const pendingIds = new Set(audit.priorityQueue.map(row => row.topicId));
+  assert.equal(fullIds.size, audit.deep, 'ENEM full coverage contains repeated historical IDs');
+  assert.equal(pendingIds.size, audit.missing, 'ENEM queue contains repeated missing IDs');
+  assert.equal(fullIds.size + pendingIds.size, enemTopics.length,
+    'ENEM topic inventory is not fully partitioned');
+  for (const topic of enemTopics) {
+    assert.equal(Number(fullIds.has(topic.id)) + Number(pendingIds.has(topic.id)), 1,
+      'ENEM topic must appear in exactly one coverage partition: ' + topic.id);
+  }
+  for (const pending of audit.priorityQueue) {
+    assert.ok(enemTopics.some(topic => topic.id === pending.topicId),
+      'ENEM queue contains unregistered topic: ' + pending.topicId);
+    for (const advisory of pending.advisorySources) {
+      assert.equal(advisory.fullyCovered, false,
+        'Partial advisory must not be promoted to full coverage');
+      assert.ok(advisory.coveredScope.trim().length > 0);
+      assert.ok(advisory.missingScope.trim().length > 20);
+      assert.ok(!fullIds.has(pending.topicId),
+        'Partial advisory must remain in the missing queue');
+    }
+  }
+  assert.equal(audit.priorityQueue.filter(row => row.advisorySources.length > 0).length,
+    audit.partialOnlyTopics, 'Partial-only ENEM topic count diverges from the queue');
   for (const subject of audit.subjects) {
     const inventory = enem.bySubject.find(row => row.subject === subject.subject);
     assert.ok(inventory, 'Missing ENEM subject audit: ' + subject.subject);
