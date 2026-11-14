@@ -465,7 +465,7 @@ export function deepEnemLesson(topic:CurriculumTopic):CourseLesson|null {
   kind:'lesson',id:topic.id,subject:topic.subject,topic:topic.topic,
   exams:[...topic.exams],objective:spec.objective,prerequisites:[...spec.prerequisites],
   sections:spec.sections,tasks:spec.tasks,videos:[],
-  authorship:'Kognos — conteúdo original autoral; revisão pedagógica humana pendente',
+  authorship:'Kognos — aula autoral de conteúdo original; revisão pedagógica humana pendente; sem homologação docente',
   license:'Material preparatório autoral do Kognos; não oficial do ENEM nem homologado pelo Inep',
   sourceUrls:[...new Set(topic.exams.map(exam=>examBlueprints[exam].sourceUrl).filter(url=>url.startsWith('https://')))],
   review:'introductory',syllabusScope:'Orientação editorial Kognos sobre '+spec.topic+'; conferir competências e habilidades na matriz Inep.'

@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics,type CurriculumTopic} from './curriculum-catalog.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
-import {deepEnemLesson} from './enem-depth-batch01.ts';
+import {deepEnemLesson} from './enem-depth-lessons.ts';
 import {courseId} from './curriculum-id.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';

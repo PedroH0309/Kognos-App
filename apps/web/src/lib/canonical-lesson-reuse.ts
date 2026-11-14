@@ -6,7 +6,7 @@
 import {curriculumTopics, type CurriculumTopic} from './curriculum-catalog.ts';
 import {examBlueprints, type ExamId} from './exam-blueprints.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
-import {deepEnemLesson} from './enem-depth-batch01.ts';
+import {deepEnemLesson} from './enem-depth-lessons.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {courseId} from './curriculum-id.ts';
 
