@@ -133,7 +133,7 @@ function SideNavigationItem({view,active,onSelect}:{view:View;active:boolean;onS
 function NavIcon({view}:{view:View}){const Icon=NAV_ICONS[view];return <Icon size={19} strokeWidth={1.8} aria-hidden="true"/>;}
 const GOAL_ICONS: Record<Goal, LucideIcon> = { enem:Target, vestibular:GraduationCap, etec:BookOpenCheck, school:PencilLine, contest:Landmark, olympiad:Medal, personal:Compass };
 function GoalIcon({goal}:{goal:Goal}){const Icon=GOAL_ICONS[goal];return <Icon size={23} strokeWidth={1.7} aria-hidden="true"/>;}
-function StatCard({icon:Icon,label,value,note}:{icon:LucideIcon;label:string;value:string|number;note:string}) {return <div className="stat-card kognos-stat"><span className="stat-icon"><Icon size={19} strokeWidth={1.9} aria-hidden="true"/></span><span className="stat-label">{label}</span><strong>{value}</strong><small>{note}</small></div>;}
+function StatCard({icon:Icon,label,value,note}:{icon:LucideIcon;label:string;value:string|number;note:string}) {return <div className="ks-bento-tile ks-bento-tile--span-3"><div className="ks-flex ks-flex-col ks-gap-1"><span className="ks-badge ks-badge-neutral ks-badge-sm"><Icon size={16} strokeWidth={2} aria-hidden="true"/></span><strong className="ks-text-xl ks-font-semibold">{value}</strong><small className="ks-text-sm ks-text-muted">{label}</small><small className="ks-text-xs ks-text-muted">{note}</small></div></div>;}
 
 const choices = <T extends string,>(items:Record<T,string>,selection:T[],toggle:(v:T)=>void) =>
   Object.entries(items).map(([value,label])=><button key={value} type="button" className={`choice-pill ${selection.includes(value as T)?'selected':''}`} onClick={()=>toggle(value as T)} aria-pressed={selection.includes(value as T)}><span className="choice-check" aria-hidden="true">{selection.includes(value as T)?<Check size={15}/>:<Plus size={15}/>}</span>{label as string}</button>);
@@ -280,7 +280,7 @@ function Dashboard({p,onGo,onEdit,user}:{p:StudentProfile;onGo:(v:View)=>void;on
     </section>
 
     <section className="k-stat-section" aria-label="Seu desempenho registrado">
-      <div className="stat-grid">
+      <div className="ks-bento ks-gap-4">
         <StatCard icon={BookOpenCheck} label="QUESTÕES CONCLUÍDAS" value={earned?.answered??activity.answered} note={earned?'Histórico da sua conta':'Atividades demonstrativas'}/>
         <StatCard icon={Target} label="TAXA DE ACERTOS" value={(earned?.accuracy??activity.accuracy)===null?'—':`${earned?.accuracy??activity.accuracy}%`} note="Respostas registradas"/>
         <StatCard icon={Zap} label="PONTUAÇÃO XP" value={earned?.xp??'—'} note={earned?`Nível ${earned.level} · ${earned.unlocked} conquistas`:'Consulte Conquistas'}/>
