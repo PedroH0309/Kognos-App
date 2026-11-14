@@ -57,3 +57,31 @@ test('approved alias sources do not rewrite persisted historical topic identitie
     assert.ok(!alias.exams.some(exam => !examBlueprints[exam].subjects[target.subject]?.includes(target.topic)));
   }
 });
+
+
+test('broad ENEM topics with only partial evidence never inherit a full canonical lesson', async () => {
+  const {reviewedPartialAssociations} = await import('./canonical-lesson-reuse.ts');
+  const broadCases = [
+    ['Matemática', 'Porcentagem e razão'],
+    ['Matemática', 'Probabilidade e estatística'],
+    ['Biologia', 'Ecologia e impactos ambientais'],
+    ['Biologia', 'Citologia'],
+    ['Português', 'Intertextualidade e argumentação'],
+  ] as const;
+  for (const [subject, title] of broadCases) {
+    const partial = reviewedPartialAssociations.find(row =>
+      row.subject === subject && row.targetTitle === title);
+    assert.ok(partial, 'Partial evidence must remain explicit for ' + title);
+    assert.ok(partial.coveredScope.trim().length > 20);
+    assert.ok(partial.missingScope.trim().length > 20);
+    const topic = curriculumTopics.find(row => row.subject === subject && row.topic === title);
+    assert.ok(topic, 'Historical editorial topic must exist: ' + title);
+    // A separate, independently verified deep lesson may legitimately cover the
+    // broad topic later; only forbid promotion through a reviewed partial source.
+    for (const mapping of canonicalExamTopicMappings().filter(row =>
+      row.exam === 'enem' && row.examTopicId === topic.id)) {
+      assert.notEqual(mapping.canonicalId, partial.sourceTitle,
+        'A partial source title is not evidence of full-scope equivalence');
+    }
+  }
+});
