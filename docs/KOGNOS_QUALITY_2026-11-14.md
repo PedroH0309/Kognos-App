@@ -89,7 +89,7 @@ Documentação consultada: [limpeza de efeitos no React](https://react.dev/learn
 | Verificação | Resultado local |
 | --- | --- |
 | Motor educacional | 6 testes aprovados |
-| Aplicação e regras | 575 testes aprovados |
+| Aplicação e regras | 579 testes aprovados |
 | Design e contrato CSS | 244 testes aprovados |
 | Segurança do conteúdo / dois usuários | 8 testes aprovados |
 | TypeScript e build | Aprovados |
@@ -127,7 +127,7 @@ A tela de estudo agora distingue aula aprofundada, guia introdutório e tema em
 desenvolvimento. Os totais são calculados pelo resolvedor canônico usado pelo app,
 sem considerar a presença de um título no catálogo como aula concluída. Um filtro
 acessível permite exibir apenas as aulas que já possuem conteúdo. No catálogo
-ENEM desta revisão: 14 aulas aprofundadas, 70 guias e 823 temas em desenvolvimento;
+ENEM após integrar o lote 02: 19 aulas aprofundadas, 70 guias e 818 temas em desenvolvimento;
 esses números descrevem o catálogo editorial do app, não a matriz oficial do Inep.
 
 Três entradas históricas (`bio-vaccines`, `hist-industry` e `pt-cohesion`) abriam
@@ -141,3 +141,25 @@ e escuro: sem rolagem horizontal, filtro por teclado, mudança de disciplina,
 busca vazia com orientação e ausência de exceções do navegador. A rota temporária
 de ensaio foi removida. Os cinco erros e 19 avisos de lint já existentes em
 `LearningTrails.tsx` permanecem; os novos arquivos não adicionam ocorrências.
+
+## Aulas originais e entrega real
+
+O mesmo PR inclui cinco novas aulas de Matemática assistidas pelo Claude Code,
+com 15 capítulos e 15 questões autorais comentadas. A revisão de consistência
+matemática corrigiu erros dos rascunhos antes da integração. Revisão pedagógica
+humana e homologação permanecem pendentes. O caminho offline de `/api/content`
+passou a entregar as aulas ENEM autorais dos dois lotes antes do roteiro genérico;
+publicações e retiradas no banco mantêm prioridade.
+
+No inventário editorial ENEM, são 19 temas aprofundados de 896, com 877 lacunas
+restantes. Esse inventário tem unidade diferente dos 907 itens da lista de estudo,
+que inclui guias históricos. Os novos testes verificam os gabaritos por cálculos
+independentes, o contrato de entrega, os IDs estáveis e as referências restritas a
+cada prova. O navegador abriu as cinco respostas reais da API e respondeu as
+15 questões no leitor existente. Detalhes de autoria, fontes e limites estão em
+`docs/ENEM_FOUNDATIONS_BATCH02_2026-11-14.md`.
+
+No build final de produção, as 19 entradas identificadas como aprofundadas no
+catálogo ENEM foram consultadas pela API real: capítulos e exercícios conferem
+com suas fontes canônicas, inclusive o destino dos identificadores históricos e
+do alias já revisado. Não foi usada uma publicação no banco para esse ensaio.
