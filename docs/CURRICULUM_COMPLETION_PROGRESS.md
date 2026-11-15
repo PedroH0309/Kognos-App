@@ -4,7 +4,39 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 16
+## Estado atual — checkpoint 17
+
+Lote 08 ampliado para nove aulas; são 89 novas nesta etapa. As cinco últimas:
+Inglês — Modais e condicionais; Espanhol — Inferência e vocabulário em espanhol;
+Física — Leis de Newton e dinâmica; Química — Estrutura atômica e modelos;
+Biologia — Metabolismo e respiração celular. Revisão docente humana pendente.
+
+Restam 1.206 lacunas entre 1.512 identidades. ENEM editorial: 103 aprofundadas
+e 793 lacunas. Lista de estudo: 103 aprofundadas, 43 guias e 761 planejadas.
+Contagens editoriais não certificam habilidades oficiais.
+
+- Inglês: corrigidos proibição universal de will após if, backshift obrigatório
+  de must, condicional misto declarado inexistente e leituras de modais perfeitos.
+- Espanhol: retiradas metafonia inventada e atribuição de -miento a desarrollo;
+  microtextos completos distinguem acepção, modalidade e extrapolação.
+- Física: atrito estático não é sempre máximo; normal é perpendicular; vínculos
+  dependem da montagem. Teste independente calcula resultante, tração de 28,8 N
+  e curva; nova crítica exigida após a primeira aceitar 28 N incorretamente.
+- Química: orbital não é trajetória, ordem 4s/3d não é universal e massa não é
+  número de massa. Teste confere partículas, números quânticos e emissão de
+  1,89 eV com comprimento de onda de cerca de 656 nm nos valores fornecidos.
+- Biologia: fermentação não é respiração anaeróbia; lançadeiras não transportam
+  NADH inteiro; complexo II não bombeia prótons. Balanços de ATP têm premissas,
+  rompimento de ligação não libera energia isoladamente e eficiência não mistura
+  valores padrão e celulares. Teste recalcula ATP bruto/líquido e equivalentes.
+
+Verificação: 642 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 89 aulas e abriu as cinco novas:
+15 questões, explicações e referências expandidas em 320/375/768/1440 px,
+sem exceções ou rolagem horizontal. CI do checkpoint 16 aprovada (43730807041).
+Sem banco, schema/RLS, merge ou deploy. Seguem as sete disciplinas restantes.
+
+## Histórico — checkpoint 16
 
 Lote 08 iniciado com Matemática — Razões, escalas e proporcionalidade;
 Português — Variação linguística e norma-padrão; Literatura — Realismo e

@@ -1,6 +1,43 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 16
+## Estado atual em 15/11/2026 — checkpoint 17
+
+Continuar até completar as aulas; não encerrar neste checkpoint. PR 117 draft.
+Sem banco, schema/RLS, merge ou deploy; revisão docente humana pendente.
+
+- Lotes 03–07 completos; lote 08 nove aulas: 89 novas. 642 testes da aplicação
+  + seis do motor, lint, build e leitor aprovados. API das 89 comparada; cinco
+  novas com 15 respostas e referências expandidas em quatro larguras. Preview
+  3316 contém 89. CI do checkpoint 16: 43730807041 success, head 3902ac8.
+- Restam 1.206 lacunas; ENEM 103/793; estudo 103/43/761.
+- Integrador 08 deve receber TODOS os nove IDs existentes ao reescrever lote:
+  ec7605b5 dbf21a8e 84476138 547b99f1 10a4bfef 1b39a7ec c16348f7 0ef210b6
+  bdb5db0b (cada um com prefixo course-). Não remover subconjunto sem querer.
+- Física: tração final 28,8 N, texto corrigido e nova crítica independente
+  conferindo ambas as equações. Script base ainda tem 28 N, NÃO reaplicar;
+  kognos-fix-newton-tension.py e resposta privada foram necessários.
+- Espanhol/Biologia: redações da crítica corrigidas pelo principal, originais
+  preservados e _principalCorrections explícito; sem atribuir correção ao Claude.
+- Próximos [89..95]: História course-7f0fb858; Geografia course-9a137405;
+  Filosofia course-dce3680a; Sociologia course-a907a354; Arte course-561bf0c8;
+  Educação Física course-213b533d; Ciências course-a90fa732.
+- História: draft2 e crítica lidos, versão principal corrigida já escrita;
+  crítica final solicitada, ainda não integrada. Retirados contratos/cartulários
+  fictícios com nomes reais, estatuto servil inferido de encargos e lucro
+  calculado com produção inventada e hl=quarters. LER crítica antes de integrar.
+- Geografia: draft2/crítica lidos, ainda SEM principal. Falsos diagnósticos de
+  Latossolo por clima/basalto, B textural atribuído a Latossolos, voçoroca
+  irreversível, LS linear/exponencial, medidas inventadas e tolerância universal.
+  SiBCS 6ª edição 2025 localizado via handle doc/1176834; PDF direto retorna404
+  nesta ferramenta. Horizontes diagnósticos no portal Embrapa. USDA/NRCS e IBGE
+  primários localizados. Não misturar RUSLE simples e software RUSLE2.
+- Fila v3b um worker próprio, log Temp/kognos-curriculum-collaboration-v3b-
+  20261115.log; não matar Claude do usuário/proxy. Helpers v2 ainda necessários.
+- JSON principal final prevalece sobre scripts base. Crítica final verifica
+  texto e contexto; aceite não dispensa leitura. Restore de next-env só na RAIZ.
+  Fetch antes de push, preservar concorrência e deixar AGENTS gerado fora.
+
+## Histórico — checkpoint 16
 
 Continuar até completar as aulas; não encerrar neste checkpoint. PR 117 draft.
 Sem banco, schema/RLS, merge ou deploy; revisão docente humana pendente.

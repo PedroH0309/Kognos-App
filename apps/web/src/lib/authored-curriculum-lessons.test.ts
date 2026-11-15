@@ -649,6 +649,50 @@ test('misturas fecham balanço sem diagnosticar causa de déficit nem perder sol
  assert.equal(residue-solute+distillate,total-solute);
 });
 
+test('respiração distingue ATP bruto e líquido e soma equivalentes sob rendimento declarado',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Metabolismo e respiração celular');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,count=Number(first.match(/glicólise de (\d+) moléculas/)?.[1]);assert.ok(count>0);
+ assert.equal(choice(0),`${count*(4-2)} ATP líquidos, ${count*2} NADH e ${count*2} piruvatos.`);
+ const second=spec.tasks[1].prompt,nadh=Number(second.match(/(\d+) NADH equivalentes/)?.[1]),fadh=Number(second.match(/(\d+) FADH2/)?.[1]),substrate=Number(second.match(/(\d+) ATP equivalentes por fosforilação/)?.[1]),pN=Number(second.match(/rendimento de ([\d,]+) ATP por NADH/)?.[1].replace(',','.')),pF=Number(second.match(/e ([\d,]+) ATP por FADH2/)?.[1].replace(',','.'));
+ assert.ok(nadh>0&&fadh>0&&substrate>0&&pN>0&&pF>0);
+ assert.equal(choice(1),`${nadh*pN+fadh*pF+substrate} ATP equivalentes no modelo.`);
+ assert.notEqual(nadh*pN+fadh*pF+substrate,nadh*3+fadh*2+substrate);
+});
+
+test('estrutura atômica conserva partículas, valida números quânticos e calcula fóton emitido',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Estrutura atômica e modelos');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,z=Number(first.match(/Z = (\d+)/)?.[1]),a=Number(first.match(/A = (\d+)/)?.[1]),charge=Number(first.match(/carga (\d+)\+/)?.[1]);
+ assert.ok(a>=z&&z>charge&&charge>0);assert.equal(choice(0),`${z} prótons, ${a-z} nêutrons e ${z-charge} elétrons.`);
+ const allowed=spec.tasks[1].options!.map(option=>{
+  const numbers=option.replaceAll('−','-').match(/-?\d+(?:,\d+)?/g)!.map(value=>Number(value.replace(',','.')));assert.equal(numbers.length,4);
+  const [n,l,ml,ms]=numbers;return Number.isInteger(n)&&n>=1&&Number.isInteger(l)&&l>=0&&l<n&&Number.isInteger(ml)&&Math.abs(ml)<=l&&Math.abs(ms)===0.5;
+ });
+ assert.equal(allowed.filter(Boolean).length,1);assert.equal(allowed[spec.tasks[1].correctIndex!],true);
+ const third=spec.tasks[2].prompt.replaceAll('−','-'),initial=Number(third.match(/E3 = ([-\d,]+) eV/)?.[1].replace(',','.')),final=Number(third.match(/E2 = ([-\d,]+) eV/)?.[1].replace(',','.')),hc=Number(third.match(/hc = (\d+) eV/)?.[1]);
+ assert.ok(initial>final&&hc>0);const photon=initial-final;assert.ok(photon>0);
+ assert.equal(choice(2),`Emissão de ${photon.toFixed(2).replace('.',',')} eV; comprimento de onda aproximadamente ${Math.round(hc/photon)} nm.`);
+});
+
+test('dinâmica recalcula resultante, sistema com atrito e limite de curva horizontal',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Leis de Newton e dinâmica');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,mass=Number(first.match(/massa (\d+) kg/)?.[1]),forces=first.match(/(\d+) N para a direita e (\d+) N para a esquerda/);assert.ok(forces&&mass>0);
+ assert.equal(choice(0),`${(Number(forces[1])-Number(forces[2]))/mass} m/s² para a direita.`);
+ const second=spec.tasks[1].prompt,table=Number(second.match(/A de (\d+) kg/)?.[1]),hanging=Number(second.match(/B de (\d+) kg/)?.[1]),mu=Number(second.match(/μc = ([\d,]+)/)?.[1].replace(',','.')),g=Number(second.match(/g = (\d+) m\/s²/)?.[1]);
+ assert.ok(table>0&&hanging>0&&mu>0&&g>0);assert.match(second,/já desliza/);
+ const friction=mu*table*g,acceleration=(hanging*g-friction)/(table+hanging),tension=table*acceleration+friction;
+ assert.ok(acceleration>0&&tension<hanging*g);
+ assert.equal(choice(1),`${acceleration.toLocaleString('pt-BR')} m/s² e ${tension.toLocaleString('pt-BR')} N.`);
+ assert.ok(Math.abs(hanging*g-tension-hanging*acceleration)<1e-9);
+ const third=spec.tasks[2].prompt,car=Number(third.match(/de (\d+) kg/)?.[1]),radius=Number(third.match(/raio (\d+) m/)?.[1]),speed=Number(third.match(/de (\d+) m\/s/)?.[1]),coefficient=Number(third.match(/μe = ([\d,]+)/)?.[1].replace(',','.')),gravity=Number(third.match(/g = (\d+) m\/s²/)?.[1]);
+ assert.ok(car>0&&radius>0&&speed>0&&coefficient>0&&gravity>0);
+ const radial=car*speed*speed/radius,maximum=coefficient*car*gravity;
+ assert.ok(radial<maximum&&speed<Math.sqrt(coefficient*gravity*radius));
+ assert.equal(choice(2),`Sim: atrito necessário ${radial} N e máximo ${maximum} N.`);
+});
+
 test('cinemática recalcula percursos, impacto com desnível e transformação entre eixos paralelos',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Cinemática escalar e vetorial');assert.ok(spec);
  const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};

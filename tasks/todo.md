@@ -22,5 +22,6 @@
 - [x] Ampliar lote 07 para nove aulas: 635 testes, build e leitor real aprovados.
 - [x] Completar lote 07 com 16 aulas: 638 testes, build e leitor real aprovados.
 - [x] Iniciar lote 08 com quatro aulas: 639 testes, build e leitor real aprovados.
+- [x] Ampliar lote 08 para nove aulas: 642 testes, build e leitor real aprovados.
 - [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
 - [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.
