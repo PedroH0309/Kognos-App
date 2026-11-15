@@ -1,6 +1,42 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 37
+## Estado atual em 15/11/2026 — checkpoint 38
+
+CONTINUAR;parar50%SESSÃO. Sósemanal33%/10080min,secondary:null. Não substituir
+semanal por sessão nem prometer detectar50%session. Sem pergunta pendente.
+
+184novas/8lote14.675app+6motor/build/lint/184API+4leitor12MCQ4largurasPASS.
+Lacunas1111;ENEM192/704;estudo192/25/690;índice401. Logscheckpoint38-*.log.
+Preview3316sessão47099build184;fixtures184;captura batch14-eight inspecionada.
+CI37 43775274710 SUCCESS head4ebe5a4;PR118OPEN. Publicar38/atualizarPR28novas,
+acompanharCIexata. PR117MERGEDexternamente156; não atualizar117.
+
+Module14ALL8:381ba959,4cf23331,f6b546f4,08e33489,7db9b0b2,34239b0b,ef8cd5f9,
+0bb27332. Integrador14REESCREVE exigir todosIDsnaspróximasintegrações.
+Evidência editorial principal-editorial-evidence-checkpoint38.json. Inglês
+eventuallyadvérbio/desfechonãoeventualmente;Spanishacentosparadigmas/trechos;
+FísicaYvsX corrigidos explicitamente nospareceres comoriginaisintegros.
+Não rerodar finish38/autores/refinements jáexecutados. Texto/hashinalterado.
+SpanishrespostaRAE nova crítica válida apósrejeiçãoinventadacoméiais→coméis;
+fonteDLEcomer216-225eDPDtemer199-254/haber2285-2296 lidas. Não adotarcríticafalsa.
+DoistestescríticosGREENconversões/intervalos/afim e mol/limitante/pureza/rendimento.
+
+Worker192PID18472Tempbatch14log,único. Próximos Bio c795d057,Hist5458bd83,
+Geoe7c98d39,Philo51cdb3e3,Soc8a621b3c,Art1820d8ab,PE91b651d3,Sci3b97fbde.
+ÚltimoBioautor2apósJSONerro; nenhumprincipalBio/Hist/Geo/Philo14 ainda.
+BiofontesBODYlidasOpenStaxBiology2e18.1 25-55/65-107/115-120;19.1 25-54;
+19.2 25-35 somente, completar drift/fluxoantesusar. Não adotar18.1fixaçãonecessária
+depescoçotartaruga,vestigialsemfunçãouniversal,embriõeshumanoscomguelras,
+ausênciadeoutrosmamíferosAustrália,nemseleçãosóemmilhõesanos.19.1HWsemacasalamento
+aleatório incompleto. Sem estatísticasreaiscopiadas/vacinasatuais/tratamento.
+Planejar frequênciasalélicas:modelodiploide100indiv40AA40Aa20aa→pA.60qa.40,
+semexigirHWpara contagem. Seleçãovariaçãopreexistentehereditária/sucessoreprodutivo,
+derivaamostragemaleatórianãoprovarseleçãodefreqsomente. Ainda nenhumtesteBioRED.
+
+Helpersprivadossalvos/AGENTSgeradonãocommit/originalrootsujapreservada.
+Fetchantespush/noforce/nãomergedePR/nãodeploy. Não parar no checkpoint.
+
+## Histórico — checkpoint 37
 
 CONTINUAR;parar50%SESSÃO. Sósemanal31%/10080min,secondary:null. Não usar semanal
 como sessão; sem indicador da sessão não prometer parada exata. Sem pergunta.

@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 37
+## Estado atual — checkpoint 38
+
+Oito aulas do lote14: 184 novas nesta etapa. Integradas Cognatos e falsos
+cognatos em inglês; Tempos do passado em espanhol; Termologia e escalas
+termométricas; Mol, massas e estequiometria. Revisão docente pendente.
+
+Restam 1.111 lacunas de 1.512 identidades editoriais. ENEM: 192 aprofundadas e
+704 lacunas. Estudo: 192 aprofundadas, 25 guias e 690 planejadas; índice401.
+A nova estequiometria aprofunda uma identidade antes atendida por guia.
+
+- Inglês: aproximações úteis e falsos amigos, origem e sentido, polissemia;
+  frases originais, sem ensinar aparência como etimologia ou regras absolutas.
+- Espanhol: quatro pretéritos do indicativo, forma e aspecto, variação e
+  anterioridade. Crítica falsa à forma comíais confrontada com o texto e RAE,
+  seguida de nova revisão independente; sem trocar pelo presente coméis.
+- Física: calor, temperatura e energia interna, equilíbrio, conversões de
+  valores e intervalos, escala afim; sem confundir os modelos dos exemplos.
+- Química: entidades, mol e massa, limitante e excesso, pureza e rendimento;
+  cálculos autorais, sem roteiro de laboratório ou volume molar universal.
+
+Fontes primárias consultadas em trechos delimitados; autoria Codex e crítica
+independente Claude Code/NVIDIA NIM, lida integralmente. Rascunhos brutos
+aprovados automaticamente continham erros e não foram incorporados. Imprecisões
+dos pareceres finais de Inglês, Espanhol e Física corrigidas pelo principal,
+com originais integrais privados preservados e texto didático inalterado.
+
+675 testes app + 6 motor, build e lint alterado aprovados. Dois testes críticos
+observados RED antes e GREEN depois da integração. API de184 aulas comparada
+integralmente; quatro novas no Chromium com12 respostas, explicações e
+referências expandidas em320/375/768/1440px, sem exceções ou rolagem horizontal.
+Captura inspecionada; logs checkpoint38-*.log privados.
+
+CI37 success43775274710, head4ebe5a4. PR118 reúne28 aulas após as156 do PR117
+integrado externamente; publicar38 e acompanhar CI do head exato. Sem merge,
+deploy, schema ou dependências novas. Continuar Biologia, História, Geografia
+e Filosofia do lote14. Não há declaração de conclusão do catálogo.
+
+## Histórico — checkpoint 37
 
 Quatro aulas do lote14: 180 novas nesta etapa. Integradas Funções exponencial
 e logarítmica; Vozes verbais e colocação pronominal; Literatura indígena e

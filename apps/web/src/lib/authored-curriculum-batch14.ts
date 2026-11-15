@@ -367,6 +367,374 @@ export const authoredCurriculumBatch14:readonly AuthoredLessonSpec[] = [
         "solution": "D, índice 3: a revisão incorpora a limitação reconhecida e permite sustentar uma proposta de articulação, sem prometer solução única ou acesso garantido. A apaga uma condição já admitida; B muda a superfície e conserva a contradição; C salta para proibição total que não decorre dos dados. Considerar objeções pode qualificar a posição; não obriga nem a ignorá-las nem a abandonar qualquer possibilidade digital."
       }
     ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Cognatos e falsos cognatos em inglês",
+    "objective": "Usar semelhanças entre inglês e português como hipóteses de leitura e distinguir correspondências de sentido, falsos amigos e diferenças de contexto sem confundir aparência com origem etimológica.",
+    "prerequisites": [
+      "Leitura de frases simples em inglês",
+      "Identificação de substantivos, verbos e adjetivos",
+      "Uso de contexto e dicionário"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Semelhança útil não é tradução automática",
+        "explanation": "Ao ler em inglês, uma forma familiar pode ajudar a construir uma hipótese de sentido. Memory e memória, por exemplo, aproximam-se tanto na forma quanto em usos ligados à lembrança; a história de memory remete ao latim memoria por mediação francesa. Em sentido linguístico, cognatos têm relação de origem; palavras não se tornam cognatas apenas porque suas letras se parecem. No ensino de leitura, é comum chamar de cognatos transparentes os pares cuja forma e sentido ajudam o leitor a reconhecer uma correspondência. Essa estratégia precisa ser confirmada na frase. Uma relação histórica não garante que todos os usos atuais de duas palavras coincidam, e uma grafia semelhante não demonstra sozinha a relação histórica. Mesmo um par útil pode variar em pronúncia, combinação com outras palavras e sentidos disponíveis. O inglês não é descendente do português nem uma língua românica apenas por compartilhar vocabulário de origem latina: empréstimos e trajetórias históricas explicam parte dessas aproximações. Durante a leitura, identifique o assunto, a função da palavra e os termos ao redor antes de escolher uma tradução. Em um enunciado autoral como This device has more memory than the old one, memory se refere a capacidade de armazenamento do dispositivo, não a uma lembrança pessoal. O par continua útil, mas o sentido é selecionado pelo contexto. Não é necessário conhecer toda etimologia para entender cada frase; se a questão é de compreensão, a prioridade é verificar a interpretação no texto e consultar uma fonte lexical quando necessário.",
+        "steps": [
+          "Reconheça a palavra familiar como hipótese, sem decidir apenas pela grafia.",
+          "Observe assunto, função gramatical e relações com as demais palavras.",
+          "Escolha o sentido que se ajusta ao trecho inteiro.",
+          "Separe confirmação de sentido de afirmações sobre origem histórica."
+        ],
+        "example": "Frase original do Kognos: The device needs extra memory to store the files. A relação com store the files seleciona memória como armazenamento do dispositivo. Não se traduz como recordação de um acontecimento apenas porque memory também pode aparecer nesse sentido em outros textos. A frase é didática, sem copiar um manual ou anunciar especificação de produto real.",
+        "pitfall": "Usar aparência como prova de origem comum, tratar toda correspondência como identidade de usos ou escolher o primeiro significado sem ler a frase."
+      },
+      {
+        "level": "intermediate",
+        "title": "Falsos amigos e pistas de sentido",
+        "explanation": "Falsos amigos são palavras de línguas diferentes cuja semelhança de forma ou som pode induzir uma equivalência inadequada. Em materiais escolares brasileiros, a expressão falsos cognatos costuma ser usada com esse sentido prático. Convém separar a questão semântica da histórica: dois falsos amigos podem ter origem relacionada, e não é necessário provar origens diferentes para reconhecer o risco de tradução. Actual frequentemente indica real ou efetivo, especialmente em contraste com estimativa ou aparência; não se traduz automaticamente por atual. Eventually pode indicar um desfecho em momento posterior, e não a frequência ocasional associada a eventualmente em muitos contextos portugueses. Pretend, no sentido de simular, corresponde a fingir ou fazer de conta, e não simplesmente a pretender realizar algo. Library, em contextos de consulta e empréstimo, é biblioteca, não livraria; também pode designar coleções, inclusive em usos técnicos. Essas correspondências são orientações de leitura, não uma lista de traduções únicas para qualquer ocorrência. Em uma frase autoral como The children pretended the carpet was an island, o contexto de brincadeira sustenta fizeram de conta que o tapete era uma ilha. Não há um plano de transformar fisicamente o tapete. Em vez de decorar proibições absolutas, use contrastes, ações e relações temporais para conferir o sentido. Um dicionário pode apresentar várias acepções; escolha a compatível com a frase, sem transportar automaticamente para o texto todas as definições do verbete.",
+        "steps": [
+          "Localize o par que pode produzir uma equivalência enganosa.",
+          "Procure contrastes, ações e relações temporais que ajudem a selecionar sentido.",
+          "Teste uma paráfrase no lugar da tradução presumida.",
+          "Consulte a acepção contextual e evite transformar exemplos em proibições universais."
+        ],
+        "example": "Texto original do Kognos: The children pretended the bench was a boat, but nobody planned to move it to the river. Pretended descreve faz de conta; planned nomeia um plano, negado no caso. A diferença aparece nas ações e no contraste, sem exigir que o leitor invente uma intenção de transportar o banco.",
+        "pitfall": "Traduzir actual por atual em contraste com estimativa, eventually por ocasionalmente em uma sequência com desfecho ou pretend por planejar quando há simulação."
+      },
+      {
+        "level": "advanced",
+        "title": "Correspondências parciais, polissemia e verificação",
+        "explanation": "As relações de sentido entre línguas podem ser parciais: uma equivalência funciona em determinado uso e falha em outro. Uma regra com nunca pode ser tão enganosa quanto traduzir só pela aparência. Sensible costuma significar sensato ou razoável em avaliações de decisões, mas o inglês também registra sentidos relacionados a percepção e consciência. Por isso, não se deve ensinar que jamais pode se aproximar de sensível sem examinar a acepção. Actual também tem usos que não cabem em uma oposição escolar rígida entre real e temporal; o contraste concreto da frase deve orientar a leitura. Polissemia é a existência de vários sentidos relacionados de uma palavra; isso não faz cada sentido um cognato técnico novo. Comparar usos diferentes de uma única palavra inglesa, sem indicar um par em português, não demonstra uma relação de cognatos entre línguas. Um procedimento útil é formular duas hipóteses, testá-las nas pistas do trecho e rejeitar a que contradiz informações expressas. Em Choosing a smaller bag was a sensible decision because the shelf was narrow, o adjetivo avalia a decisão como sensata diante da largura disponível. Não descreve a capacidade da bolsa de sentir. A tradução também depende de gênero e registro: nem sempre reproduzir a mesma classe de palavra produz uma frase natural em português. Ao justificar uma questão de leitura, cite a pista pertinente e explique a relação, em vez de afirmar que toda palavra parecida é verdadeira ou falsa. A investigação etimológica responde a outra pergunta e requer fontes próprias quando for de fato necessária.",
+        "steps": [
+          "Reconheça quando a palavra apresenta mais de uma acepção.",
+          "Teste hipóteses de sentido contra as pistas e o gênero do texto.",
+          "Diferencie polissemia dentro de uma língua de relação histórica entre palavras de línguas distintas.",
+          "Justifique a leitura contextual sem criar regras com sempre ou nunca não sustentadas."
+        ],
+        "example": "Frase original do Kognos: Choosing a quieter room was a sensible decision because the recording needed less noise. Sensible avalia uma escolha adequada à finalidade; a justificativa sobre ruído sustenta sensata. Isso não elimina os demais sentidos dicionarizados da palavra nem transforma a frase em prova de que toda decisão de usar sala silenciosa funciona para qualquer atividade.",
+        "pitfall": "Chamar qualquer polissemia de cognato técnico, afirmar que falsos amigos precisam ter origens diferentes ou substituir uma tradução automática por outra regra absoluta."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Frase original do Kognos: Her excellent memory helped her recall the instructions. Qual leitura de memory é sustentada pelo contexto?",
+        "hint": "A expressão recall the instructions relaciona a palavra à lembrança de instruções, sem exigir inferência sobre dispositivo eletrônico.",
+        "options": [
+          "Um estabelecimento de venda de livros, demonstrado apenas pela aparência da palavra.",
+          "Memória como capacidade de lembrar, compatível com recordar as instruções.",
+          "Uma promessa de que a pessoa nunca esqueceu nem esquecerá qualquer informação.",
+          "O nome de uma peça eletrônica obrigatoriamente instalada no corpo da personagem."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: recall the instructions seleciona o sentido de capacidade de lembrar. A inventa um estabelecimento; C transforma uma qualidade mencionada em garantia universal; D impõe leitura técnica que o contexto não exige. Memory e memória ajudam a formular a hipótese, mas é a relação com recordar instruções que a sustenta nesta frase. O enunciado não apresenta avaliação clínica da pessoa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Texto original do Kognos, com números hipotéticos: The estimated cost was 40; the actual cost was 55. Como interpretar actual nesse contraste?",
+        "hint": "A comparação opõe estimativa e valor efetivo; não informa uma oposição entre antigo e atual.",
+        "options": [
+          "Atual, porque o texto compara obrigatoriamente dois períodos históricos diferentes.",
+          "Possível, pois o segundo valor ainda é apresentado como simples hipótese futura.",
+          "Ocasional, porque actual indica a frequência com que houve custos.",
+          "Real ou efetivo, em contraste com o valor estimado de 40."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: estimated e actual contrastam previsão e valor efetivo. A introduz períodos que o trecho não fornece; B transforma o segundo custo em hipótese futura; C atribui frequência a um adjetivo que qualifica cost nesse contexto. A leitura é contextual e não afirma que todo uso de actual, em qualquer frase, tenha uma única tradução possível."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Frase original do Kognos: After three failed attempts, the team eventually repaired the clock. Qual interpretação preserva o sentido de eventually e os limites da informação?",
+        "hint": "Considere a sequência de tentativas e o desfecho expresso por repaired. Não troque resultado posterior por frequência ocasional.",
+        "options": [
+          "Depois das tentativas frustradas, a equipe acabou consertando o relógio; não se informa a duração exata do processo.",
+          "A equipe apenas consertava relógios ocasionalmente, sem que se informe resultado para este relógio.",
+          "A palavra garante que todas as futuras tentativas da equipe darão certo imediatamente.",
+          "O texto afirma que nenhuma tentativa ocorreu antes de o relógio ser consertado."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: eventually apresenta o desfecho posterior às três tentativas frustradas; repaired afirma o conserto desse relógio. O tempo exato não é fornecido. B troca sequência e resultado por frequência e omite o conserto; C inventa sucesso futuro imediato; D contradiz after three failed attempts. O leitor pode justificar a interpretação pelas pistas sem afirmar que eventually exige sempre uma demora longa ou três tentativas."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Tempos do passado em espanhol",
+    "objective": "Reconhecer formas e valores de pretéritos do indicativo em espanhol e interpretar aspecto, relação com o presente e anterioridade sem impor marcadores temporais como regras universais.",
+    "prerequisites": [
+      "Pronomes e pessoas verbais",
+      "Infinitivo e particípio",
+      "Leitura de frases simples em espanhol"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Perfecto simple e imperfecto: forma e perspectiva",
+        "explanation": "Este recorte estuda quatro tempos do indicativo úteis à leitura de acontecimentos passados: pretérito perfecto simple, também chamado indefinido; imperfecto; perfecto compuesto; e pluscuamperfecto. Não é uma lista de todas as formas e usos verbais do espanhol. No perfecto simple, a situação é apresentada de modo perfectivo, como um todo delimitado. Isso não exige ação curta: estudió durante cinco años apresenta um período longo como um todo. Para verbos regulares em -ar, o paradigma de hablar é hablé, hablaste, habló, hablamos, hablasteis, hablaron; para -er, comí, comiste, comió, comimos, comisteis, comieron; para -ir, viví, viviste, vivió, vivimos, vivisteis, vivieron. A ordem corresponde a yo, tú, él/ella/usted, nosotros/nosotras, vosotros/vosotras e ellos/ellas/ustedes. Acentos distinguem formas como hablo e habló. O imperfecto focaliza uma situação passada sem apresentar seus limites no próprio tempo verbal: pode servir a descrição, hábito ou ação em desenvolvimento. No paradigma regular, hablar forma hablaba, hablabas, hablaba, hablábamos, hablabais, hablaban; comer forma comía, comías, comía, comíamos, comíais, comían, e vivir segue as mesmas terminações de comer. Não concluir o evento na forma verbal não prova que ele jamais tenha terminado no mundo. Em um relato autoral como El pasillo estaba oscuro cuando llegó la directora, estaba fornece uma condição de fundo e llegó apresenta um acontecimento. Esse é um uso narrativo frequente, não um papel obrigatório de cada tempo em todo texto.",
+        "steps": [
+          "Identifique pessoa, verbo e tempo solicitado, sem confiar só no marcador temporal.",
+          "Reconheça terminações e acentuação de formas regulares.",
+          "Diferencie apresentação perfectiva de perspectiva imperfectiva.",
+          "Interprete a contribuição de cada forma no relato, sem inventar duração ou desfecho."
+        ],
+        "example": "Relato original do Kognos: Durante dos años, Nora trabajó en el archivo. Cada mañana revisaba fichas y atendía consultas. Trabajó apresenta o período de dois anos como um todo; revisaba e atendía descrevem hábitos nesse quadro. O uso perfectivo não torna o trabalho instantâneo, nem o imperfecto prova que as ações continuem acontecendo hoje.",
+        "pitfall": "Usar terminações de -er para todo verbo em -ar, eliminar acentos ou reduzir perfecto simple a ação curta e imperfecto a ação que nunca terminou."
+      },
+      {
+        "level": "intermediate",
+        "title": "Perfecto compuesto e variação de uso",
+        "explanation": "O pretérito perfecto compuesto se forma com o presente do auxiliar haber e um particípio: he, has, ha, hemos, habéis, han, seguidos de formas como hablado, comido ou vivido. O auxiliar carrega pessoa e número; o particípio, nesse tempo composto, não concorda com o gênero ou o plural do sujeito. Assim, ellas han escrito, e não han escritas. Participios irregulares incluem abierto, escrito, hecho e visto; não se substituem por palavras portuguesas como aberto ou feito. Os usos do perfecto compuesto relacionam o passado a um intervalo que chega ao presente ou a uma experiência e a seus efeitos, com variação importante entre áreas hispanofalantes. Em parte do espanhol europeu, hoy he enviado el mensaje é frequente para uma ação no dia atual. Hoy envié el mensaje também é normal em muitas variedades americanas. Por isso, hoy, este año, ya ou nunca não funcionam como senhas que obriguem uma única forma em todos os países e contextos. O contraste com o perfecto simple depende de como se organiza o intervalo e das convenções da variedade, além da intenção discursiva. Tampouco toda ligação possível com o presente exige uma forma composta. Ao ler, reconheça a estrutura e analise o valor no contexto, em vez de corrigir automaticamente uma variedade por outra. Se um exercício pede uma forma específica, essa instrução precisa estar explícita; se pede interpretação de um texto existente, use as formas que ele realmente apresenta e não invente uma regra para substituí-las.",
+        "steps": [
+          "Identifique haber no presente e o particípio da construção.",
+          "Confira concordância do auxiliar e invariabilidade do particípio com haber.",
+          "Analise a relação temporal no texto e a variedade quando informada.",
+          "Evite impor escolha universal apenas pela presença de hoy, ya ou outro marcador."
+        ],
+        "example": "Exemplos originais do Kognos: Hoy he preparado las notas e Hoy preparé las notas podem ocorrer em variedades diferentes. O marcador hoy, isoladamente, não permite declarar a segunda frase incorreta. Em Hemos abierto el sobre, aberto é a tradução portuguesa de abierto, não a forma espanhola que deve entrar no tempo composto.",
+        "pitfall": "Escrever haver ou feito dentro da estrutura espanhola, flexionar o particípio com haber ou exigir perfecto compuesto sempre que aparecer hoy."
+      },
+      {
+        "level": "advanced",
+        "title": "Pluscuamperfecto e ordenação do relato",
+        "explanation": "O pretérito pluscuamperfecto de indicativo situa uma situação concluída antes de outro ponto de referência no passado, que pode estar expresso ou ser recuperado do contexto. Sua formação usa haber no imperfecto: había, habías, había, habíamos, habíais, habían, seguido de particípio. Habíamos terminado significa tínhamos terminado, sem que seja necessário traduzir cada forma por um único tempo português em todo contexto. Em uma frase autoral como Cuando empezó la reunión, Clara ya había enviado el informe, o envio é anterior ao início da reunião. A ordem em que se mencionam os fatos não se confunde com a ordem em que ocorreram: a oração sobre o início pode aparecer primeiro, embora o envio seja anterior. O tempo não indica sozinho quanto tempo separou os eventos nem que o primeiro causou o segundo. O contexto também pode estabelecer sequências com outras construções; o pluscuamperfecto não é uma peça obrigatória em toda frase que contém dois acontecimentos passados. Também se deve distinguir había enviado, indicativo, de hubiera enviado, pluscuamperfecto de subjuntivo: compartilhar um particípio não torna as formas o mesmo tempo. Não é necessário estudar toda oração condicional para reconhecer essa diferença. Na leitura de uma narrativa, marque pontos de referência e relações como anterioridade, simultaneidade e sucessão. O imperfecto pode mostrar uma situação em curso quando surge um evento perfectivo, sem provar que a primeira foi definitivamente interrompida. A forma verbal oferece uma perspectiva temporal, e não um relato completo de tudo que aconteceu antes e depois.",
+        "steps": [
+          "Identifique a forma de haber e diferencie indicativo de subjuntivo.",
+          "Localize o ponto passado usado como referência.",
+          "Ordene os fatos pelos tempos e pelas relações explícitas, não só pela ordem das orações.",
+          "Separe anterioridade de duração, causa e obrigatoriedade de construção."
+        ],
+        "example": "Relato original do Kognos: Al revisar la carpeta, descubrimos que el equipo ya había corregido el índice. Había corregido situa a correção antes da descoberta na revisão. A frase não informa a duração da correção, não diz que toda a pasta estava sem erros e não permite trocar anterioridade por prova automática de causa.",
+        "pitfall": "Confundir había com hubiera, concluir que o fato mencionado primeiro ocorreu primeiro ou tratar anterioridade como garantia de causa e duração."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "No paradigma do espanhol, qual forma corresponde à primeira pessoa do singular do pretérito perfecto simple do verbo regular estudiar?",
+        "hint": "Use o padrão regular de -ar e confira a acentuação. A pergunta pede uma forma verbal específica, não qualquer frase possível no passado.",
+        "options": [
+          "estudié",
+          "estudió",
+          "estudiaba",
+          "estudiemos"
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: estudiar segue o padrão de hablar, com a terminação -é em yo estudié. B, estudió, é terceira pessoa do singular do mesmo tempo; C, estudiaba, é imperfecto, podendo corresponder a primeira ou terceira pessoa singular; D, estudiemos, é presente do subjuntivo ou forma de exortação em contexto próprio. A seleção depende de pessoa e tempo pedidos, sem impor um marcador temporal universal."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Relato original do Kognos: Cuando sonó el timbre, Inés leía una revista. Qual interpretação de sonó e leía respeita o texto?",
+        "hint": "Diferencie o acontecimento apresentado como um todo da leitura vista em desenvolvimento naquele momento. Não invente o destino da revista depois.",
+        "options": [
+          "Os dois verbos estão no futuro e provam que o sinal ainda não tocou.",
+          "Leía prova que Inés jamais terminou a leitura em qualquer momento posterior.",
+          "Sonó apresenta um acontecimento, e leía situa a leitura em curso naquele quadro, sem informar por si só se foi concluída depois.",
+          "A forma sonó obriga que todo o relato dure exatamente um segundo."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: sonó está no perfecto simple e apresenta o toque do sinal; leía está no imperfecto e focaliza a leitura em desenvolvimento nesse momento. A erra os tempos; B transforma ausência de delimitação na forma verbal em nunca terminar; D inventa duração exata. A frase não afirma que Inés abandonou definitivamente a revista nem relata o desfecho da leitura."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Frase original do Kognos: Cuando abrió la tienda, el equipo ya había organizado los materiales. Qual relação temporal está expressa?",
+        "hint": "Localize o ponto passado abriu a loja e a situação apresentada por había organizado, sem confundir ordem das orações e ordem dos fatos.",
+        "options": [
+          "A organização só poderia ocorrer depois da abertura, porque sua oração aparece por último.",
+          "A organização dos materiais é anterior ao ponto passado da abertura; a frase não fornece a duração exata entre os fatos.",
+          "Os materiais foram organizados apenas no futuro em relação ao momento em que o narrador fala.",
+          "Había organizado é pluscuamperfecto de subjuntivo e prova que nenhum material foi organizado."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: ya había organizado é pluscuamperfecto de indicativo e coloca a organização antes da abertura mencionada. A usa ordem textual como ordem cronológica e inverte a relação; C transforma uma anterioridade passada em futuro; D confunde había com uma forma de subjuntivo e inventa negação. A frase não diz quanto tempo antes ocorreu a organização nem que ela causou a abertura."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Termologia e escalas termométricas",
+    "objective": "Distinguir temperatura, calor e energia interna, interpretar equilíbrio térmico e converter valores e intervalos de temperatura entre escalas, incluindo uma escala linear definida por referências.",
+    "prerequisites": [
+      "Razões e equações de primeiro grau",
+      "Leitura de unidades",
+      "Diferença entre grandeza e valor numérico"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Temperatura, calor e equilíbrio",
+        "explanation": "Termologia estuda fenômenos térmicos, e a termometria trata da medida de temperatura. Temperatura caracteriza o estado térmico; calor é energia em transferência por diferença de temperatura. Um corpo tem energia interna, mas não armazena uma quantidade de calor como se fosse uma substância. Temperatura também não mede sozinha a energia total de qualquer corpo: quantidade de material, composição e estado físico importam. Dois sistemas podem ter a mesma temperatura e energias internas diferentes. Na transferência espontânea por contato térmico, a energia flui do sistema de maior para o de menor temperatura, nas condições usuais consideradas, até o equilíbrio quando o conjunto pode alcançá-lo sem interferências externas que mantenham a diferença. Estar à mesma temperatura não exige mesma massa nem mesmo material. A lei zero expressa que, se dois sistemas estão em equilíbrio térmico com um terceiro, estão em equilíbrio térmico entre si. Esse princípio permite comparar temperaturas por um sistema termométrico. O termômetro usa uma propriedade que responde de modo conhecido à temperatura, como resistência elétrica; a leitura e a interação com o sistema precisam respeitar o método de medida. Sensação tátil não é medida suficiente: materiais à mesma temperatura podem trocar energia com a pele de modos distintos. A descrição é conceitual e não um convite para testar superfícies quentes ou frias. O kelvin, símbolo K, é a unidade SI de temperatura termodinâmica e não usa símbolo de grau. Zero kelvin corresponde a −273,15 °C; isso não deve ser descrito como calor armazenado igual a zero nem como anulação de toda energia e de todo movimento possível em qualquer sistema físico.",
+        "steps": [
+          "Identifique se o problema trata de temperatura, energia interna ou transferência por calor.",
+          "Compare temperaturas e condições de interação sem confundir massa com estado térmico.",
+          "Use a lei zero para analisar equilíbrio por referência a um terceiro sistema.",
+          "Registre a unidade de temperatura corretamente e diferencie medida de sensação."
+        ],
+        "example": "Caso autoral: dois blocos de massas diferentes estão, separadamente, em equilíbrio térmico com um mesmo sistema de referência estável. Pela lei zero, suas temperaturas são iguais. Isso não permite concluir que suas energias internas sejam iguais, nem que um deles contenha mais calor: faltam dados de material e estado, e calor nomeia transferência.",
+        "pitfall": "Tratar calor como conteúdo armazenado, deduzir energia interna apenas da temperatura ou considerar a sensação de contato uma medida universal e suficiente."
+      },
+      {
+        "level": "intermediate",
+        "title": "Converter temperatura e converter intervalo",
+        "explanation": "Celsius, Fahrenheit e kelvin podem expressar a mesma temperatura com números diferentes. Denotando por C, F e K os valores numéricos nessas unidades, usam-se F=(9/5)C+32 e K=C+273,15. As inversas são C=(5/9)(F−32) e C=K−273,15. A notação apenas simplifica os valores numéricos: não afirma que o símbolo da unidade K seja uma variável em uma equação dimensional. A diferença de origem das escalas exige o termo constante. Por exemplo, 10 °C correspondem a 50 °F e 283,15 K. A temperatura de 0 °C não é ausência de temperatura: corresponde a 273,15 K. Já um intervalo ou variação é a diferença entre dois valores, ΔT=Tfinal−Tinicial. Ao subtrair as conversões, as constantes desaparecem: a variação em kelvin tem o mesmo valor numérico da variação em graus Celsius, e a variação em graus Fahrenheit é 9/5 da variação em graus Celsius. Assim, um aumento de 12 °C equivale a um aumento de 12 K e 21,6 °F, sem somar 273,15 ou 32 ao intervalo. O sinal também importa: resfriar pode produzir variação negativa sem que a temperatura final seja negativa em kelvin. Não confunda comparar números de escalas distintas com comparar estados térmicos: 20 °C não são menores que 15 °F apenas porque 20 e 15 parecem próximos; converta para uma unidade comum. Em problemas didáticos, use 273,15 quando não houver aproximação explicitamente autorizada, e informe a unidade de cada resultado.",
+        "steps": [
+          "Identifique se o dado é uma temperatura ou uma variação.",
+          "Para temperatura, aplique a conversão com a origem correta de cada escala.",
+          "Para variação, elimine o deslocamento constante e mantenha o fator de escala.",
+          "Confira sinal, unidade e eventual aproximação autorizada."
+        ],
+        "example": "Cálculo autoral: uma amostra fictícia passa de 8 °C a 20 °C. As temperaturas em kelvin são 281,15 K e 293,15 K, mas a variação é 12 K. Em Fahrenheit, passa de 46,4 °F a 68 °F; a diferença é 21,6 °F. Converter o valor inicial e o final confirma a regra de intervalos sem aplicar um deslocamento duas vezes.",
+        "pitfall": "Somar 273,15 a uma variação, esquecer o 32 ao converter uma temperatura Fahrenheit ou comparar números de escalas diferentes sem compatibilizá-las."
+      },
+      {
+        "level": "advanced",
+        "title": "Escala linear e coerência das referências",
+        "explanation": "Uma escala termométrica didática pode ser relacionada a outra por uma função afim quando a linearidade é uma hipótese explícita do problema. Se X₁ corresponde a C₁ e X₂ corresponde a C₂, com referências distintas, a relação é (X−X₁)/(X₂−X₁)=(C−C₁)/(C₂−C₁). A igualdade compara posições relativas entre os dois pontos fornecidos. Ela não exige que o zero de uma escala coincida com o da outra. A regra de três direta X/C só é válida em uma relação proporcional sem deslocamento de origem; em geral, é preciso encontrar coeficiente e termo constante. Para uma escala autoral Y que marca −20 °Y em 0 °C e 180 °Y em 100 °C, obtém-se Y=2C−20; em 30 °C, a leitura é 40 °Y. Não se trata de um termômetro real nem de uma definição oficial de unidade, mas de um modelo algébrico. Para conferir, substitua os dois pares de referência e depois o resultado encontrado. Dois pontos permitem determinar a função afim assumida; não demonstram que qualquer instrumento físico tenha resposta linear em todo intervalo. A extrapolação além das referências depende da validade do modelo. Também é necessário separar referências históricas de uma escala de sua definição metrológica atual: o kelvin é definido no SI pela fixação do valor da constante de Boltzmann, e não hoje por uma receita de congelar água. Quando se usa água como referência física, pressão e pureza influenciam mudanças de estado. Por isso, os valores fornecidos em um exercício não autorizam prometer a mesma leitura de ebulição em qualquer lugar nem prescrever calibração doméstica com substâncias ou equipamentos desconhecidos.",
+        "steps": [
+          "Anote os pares correspondentes e confirme a hipótese de linearidade.",
+          "Use diferenças em relação às origens ou determine a função afim.",
+          "Resolva a leitura pedida sem impor zeros coincidentes.",
+          "Confira referências e resultado e explicite os limites de interpolação ou extrapolação."
+        ],
+        "example": "Modelo autoral: Y=2C−20 satisfaz Y=−20 quando C=0 e Y=180 quando C=100. Para Y=70, resolvemos 70=2C−20, obtendo C=45 °C. A conferência 2·45−20=70 valida o cálculo; uma regra direta que ignore −20 falharia nas referências. O exemplo usa escala e valores distintos dos propostos na atividade.",
+        "pitfall": "Aplicar proporcionalidade direta quando há deslocamento de origem, afirmar que dois pontos provam linearidade física universal ou confundir referência didática com definição atual do SI."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma temperatura hipotética de 27 °C deve ser expressa em kelvin e em graus Fahrenheit. Sem arredondar 273,15 para 273, qual par é correto?",
+        "hint": "Use os valores numéricos K=C+273,15 e F=(9/5)C+32. O dado é temperatura, não intervalo.",
+        "options": [
+          "27 K e 80,6 °F.",
+          "300,15 K e 27 °F.",
+          "300,15 K e 80,6 °F.",
+          "−246,15 K e 48,6 °F."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: 27+273,15=300,15 K; (9/5)·27+32=48,6+32=80,6 °F. A mantém incorretamente 27 em kelvin; B mantém 27 em Fahrenheit; D subtrai o deslocamento kelvin e omite 32 no resultado Fahrenheit. K não leva símbolo de grau, e os dois valores corretos representam a mesma temperatura, sem alterar o estado físico da situação hipotética."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um modelo autoral, a temperatura aumenta em 45 °F. Qual é esse aumento em graus Celsius e em kelvin, respectivamente?",
+        "hint": "Um aumento é um intervalo. Use ΔC=(5/9)ΔF e ΔK=ΔC, sem deslocamentos de origem.",
+        "options": [
+          "25 °C e 25 K.",
+          "25 °C e 298,15 K.",
+          "7,22 °C e 280,37 K.",
+          "81 °C e 81 K."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a variação Celsius é 45·5/9=25 °C, e o mesmo intervalo vale 25 K. B soma indevidamente 273,15 a uma variação; C trata 45 °F como temperatura absoluta na escala Fahrenheit, usando (45−32)·5/9; D aplica o fator 9/5 no sentido inverso. Nenhuma dessas informações permite calcular a temperatura final sem conhecer o valor inicial."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma escala didática X é linear: marca 30 °X quando a temperatura é 0 °C e 180 °X quando é 100 °C. Qual temperatura Celsius corresponde à leitura de 90 °X?",
+        "hint": "Compare as diferenças em relação aos pontos de referência. Os zeros das escalas não coincidem.",
+        "options": [
+          "50 °C.",
+          "60 °C.",
+          "90 °C.",
+          "40 °C."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: (90−30)/(180−30)=(C−0)/(100−0). Assim, 60/150=C/100 e C=40 °C. Equivalentemente, X=1,5C+30, e 1,5·40+30=90. A decorre da razão direta 90·100/180, que ignora a origem; B usa a diferença 60 como se os intervalos tivessem mesma unidade; C mantém a leitura sem conversão. As duas referências conferem o modelo assumido, sem provar resposta física universal de instrumentos."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Mol, massas e estequiometria",
+    "objective": "Relacionar massa, quantidade de matéria e entidades e usar equações balanceadas para calcular proporções, reagente limitante, excesso, pureza e rendimento em modelos didáticos.",
+    "prerequisites": [
+      "Fórmulas químicas e balanceamento",
+      "Razões e porcentagens",
+      "Unidades de massa e notação científica"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Da fórmula à massa molar e às entidades",
+        "explanation": "Quantidade de matéria é uma grandeza cuja unidade SI é o mol. Um mol corresponde exatamente a 6,02214076×10²³ entidades elementares especificadas, valor numérico da constante de Avogadro, cuja unidade é mol⁻¹. É necessário dizer quais entidades se contam: átomos, moléculas, íons ou unidades de fórmula, conforme o sistema. Um mol de moléculas de água não é um mol de átomos no total: cada molécula H₂O reúne três átomos, portanto um mol de moléculas contém três mols de átomos, sendo dois de hidrogênio e um de oxigênio. Em sólidos iônicos como NaCl, usar unidade de fórmula evita tratar todo cristal como conjunto de moléculas isoladas de NaCl. Massa molar M relaciona massa m e quantidade n pela expressão n=m/M, com unidades compatíveis, como g e g/mol. Para calculá-la a partir da fórmula, multiplique a contribuição de cada elemento por seu índice e some. Usando os valores didáticos H=1, C=12 e O=16 em g/mol, H₂O tem M=18 g/mol e C₂H₆O tem M=46 g/mol. Esses números são aproximações fornecidas para o exercício, não todos valores exatos da natureza. Para contar entidades, use N=n·Nₐ e especifique o que está sendo contado. Mesmo número de mols não implica mesma massa para substâncias diferentes. A massa de uma entidade em unidade de massa atômica também não é a massa de um mol em gramas, embora os números se relacionem na aproximação usual. O cálculo precisa preservar a distinção entre grandeza, unidade e objeto da contagem.",
+        "steps": [
+          "Leia a fórmula e identifique as entidades e seus índices.",
+          "Calcule a massa molar com os valores de referência fornecidos.",
+          "Converta massa em mol por n=m/M, com unidades compatíveis.",
+          "Se necessário, converta mol em entidades e diferencie moléculas de átomos totais."
+        ],
+        "example": "Exemplo autoral: usando M(H₂O)=18 g/mol, 9 g de água correspondem a 9/18=0,5 mol de moléculas. Como cada molécula tem três átomos, há 1,5 mol de átomos no total, distribuídos em 1 mol de H e 0,5 mol de O. As contagens são relacionadas, mas não representam a mesma entidade.",
+        "pitfall": "Usar mol como sinônimo de massa, esquecer índices na massa molar ou contar moléculas e átomos totais como se fossem a mesma entidade."
+      },
+      {
+        "level": "intermediate",
+        "title": "Proporções da reação e reagente limitante",
+        "explanation": "Os coeficientes de uma equação química balanceada estabelecem proporções entre quantidades de matéria, não diretamente entre massas em gramas. Na equação autoral de cálculo C₂H₄+3O₂→2CO₂+2H₂O, 1 mol de C₂H₄ consome 3 mol de O₂ e permite obter 2 mol de CO₂ e 2 mol de H₂O, no modelo de reação completa descrito. A proporção em massa exige converter cada quantidade por sua própria massa molar. Se mais de um reagente tem quantidade disponível informada, não se pode presumir excesso de todos. Compare n de cada reagente dividido por seu coeficiente; o menor quociente determina o avanço máximo da reação considerada. A quantidade de produto é esse avanço multiplicado pelo coeficiente do produto. O excesso se calcula subtraindo da quantidade inicial a quantidade efetivamente consumida, e não subtraindo massas de substâncias diferentes sem uma relação estequiométrica. Se os quocientes são iguais, os reagentes estão na proporção estequiométrica e não há excesso no modelo ideal. Depois, confira que as quantidades remanescentes não sejam negativas e que átomos de cada elemento sejam conservados no conjunto. Esse tratamento supõe a reação e as condições informadas: reações concorrentes, equilíbrio e rendimento real exigem análise adicional. Para gases, não adote um volume molar fixo em qualquer temperatura e pressão; relações de volume precisam de condições e modelo compatíveis. As fórmulas aqui servem à interpretação quantitativa no papel, sem instruções de executar reações.",
+        "steps": [
+          "Confira o balanceamento e converta dados para mol quando necessário.",
+          "Use os coeficientes como proporções entre quantidades de matéria.",
+          "Compare n/coeficiente para todos os reagentes disponíveis.",
+          "Calcule produto e excesso e verifique conservação e não negatividade."
+        ],
+        "example": "Modelo autoral: pela equação C₂H₄+3O₂→2CO₂+2H₂O, há inicialmente 2 mol de C₂H₄ e 9 mol de O₂. Os quocientes são 2/1=2 e 9/3=3, então C₂H₄ limita o processo. Formam-se teoricamente 4 mol de CO₂ e 4 mol de H₂O, consumindo 6 mol de O₂ e deixando 3 mol desse reagente. O exemplo é um cálculo hipotético, não um procedimento de combustão.",
+        "pitfall": "Aplicar coeficientes diretamente a gramas de substâncias distintas, escolher o limitante apenas pela menor massa ou usar todo reagente em excesso para calcular produto."
+      },
+      {
+        "level": "advanced",
+        "title": "Pureza e rendimento são etapas diferentes",
+        "explanation": "Pureza em massa indica a fração da amostra correspondente à substância de interesse. Se a fração é p, a massa disponível dessa substância é mtotal·p; 80% corresponde a p=0,80, não a 80 na multiplicação. Para aplicar essa correção, o problema deve informar como as impurezas se comportam. Não se presume que sejam sempre inertes em qualquer processo real. Nos modelos em que não participam da reação nem alteram o produto pedido, a massa pura é convertida em mol e entra na relação balanceada. A quantidade teórica de produto é o máximo calculado pela reação especificada e pelo reagente limitante, sem perdas ou processos paralelos. Rendimento percentual compara quantidade efetivamente obtida e teórica da mesma espécie: rendimento=(obtido/teórico)·100%. Se o rendimento é r como fração, a quantidade obtida é r vezes a teórica. Numerador e denominador precisam representar a mesma grandeza com unidades compatíveis. Pureza não se confunde com rendimento: uma altera a quantidade inicial da substância útil; o outro relaciona produto obtido e produto previsto. A sequência de cálculo ajuda a não aplicar uma correção duas vezes nem comparar produto com massa total de reagente como se fossem a mesma base. Um resultado aparente acima de 100% pede investigar umidade, impureza do produto, medidas ou hipóteses; não prova criação de matéria. A análise matemática não substitui controle experimental e não fornece roteiro de preparação, aquecimento ou coleta de gases.",
+        "steps": [
+          "Identifique a base da pureza e as hipóteses sobre impurezas.",
+          "Calcule massa pura, mols e produto teórico pelo limitante.",
+          "Aplique o rendimento à quantidade teórica do produto, com unidades iguais.",
+          "Confira a base de cada porcentagem e se a resposta respeita o modelo."
+        ],
+        "example": "Cálculo autoral, sem instrução experimental: em 2Mg+O₂→2MgO, uma amostra hipotética de 120 g contém 75% de Mg e impurezas inertes no modelo; O₂ está em excesso. Usando M(Mg)=24 e M(MgO)=40 g/mol, os 90 g de Mg correspondem a 3,75 mol e a 150 g teóricos de MgO. Se o produto puro obtido fosse 120 g, o rendimento seria 120/150·100%=80%, distinto da pureza inicial de 75%.",
+        "pitfall": "Comparar produto com massa total da amostra sem estequiometria, trocar a base de pureza pela de rendimento ou corrigir duas vezes uma mesma quantidade."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Dados autorais: 22 g de CO₂, com massa molar de 44 g/mol. Qual par indica a quantidade de CO₂ e a quantidade total de átomos nessa amostra?",
+        "hint": "Primeiro calcule n=m/M. Cada molécula CO₂ contém um átomo de carbono e dois de oxigênio.",
+        "options": [
+          "0,5 mol de CO₂ e 0,5 mol de átomos no total.",
+          "0,5 mol de CO₂ e 1,5 mol de átomos no total.",
+          "2 mol de CO₂ e 6 mol de átomos no total.",
+          "22 mol de CO₂ e 44 mol de átomos no total."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: 22/44=0,5 mol de CO₂. Cada molécula reúne três átomos, logo há 0,5·3=1,5 mol de átomos no total, sendo 0,5 mol de C e 1 mol de O. A confunde contagem de moléculas e átomos; C usa a razão inversa M/m; D toma massa em gramas como mol e não respeita o total de três átomos por molécula. Não é necessário usar um valor arredondado de Avogadro para responder em mol."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo autoral: 2Al + 3Cl₂ → 2AlCl₃. Há 4 mol de Al e 3 mol de Cl₂ disponíveis. Considerando apenas essa reação completa até esgotar o limitante, qual par informa produto teórico e excesso remanescente?",
+        "hint": "Compare 4/2 e 3/3 antes de multiplicar pelo coeficiente do produto. Depois subtraia o consumo do reagente que sobra.",
+        "options": [
+          "4 mol de AlCl₃, sem Al em excesso.",
+          "3 mol de AlCl₃, com 1 mol de Cl₂ em excesso.",
+          "2 mol de AlCl₃, com 2 mol de Cl₂ em excesso.",
+          "2 mol de AlCl₃, com 2 mol de Al em excesso."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: os quocientes são 4/2=2 para Al e 3/3=1 para Cl₂, que é limitante. O avanço máximo 1 produz 2 mol de AlCl₃, consumindo 2 mol de Al e 3 mol de Cl₂; restam 2 mol de Al. A exigiria 6 mol de Cl₂; B excede o produto permitido pelo cloro disponível; C atribui excesso ao reagente inteiramente consumido. Conferir Al e Cl nos produtos e no remanescente conserva os átomos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Modelo autoral: uma amostra de 250 g contém 80% em massa de CaCO₃ e impurezas inertes. Para CaCO₃ → CaO + CO₂, considere M(CaCO₃)=100 g/mol, M(CO₂)=44 g/mol e rendimento de 75% sobre o CO₂ teórico. Qual massa de CO₂ é obtida?",
+        "hint": "Calcule a massa pura antes da relação molar 1:1 e aplique o rendimento ao produto teórico, sem mudar a base das porcentagens.",
+        "options": [
+          "66 g.",
+          "88 g.",
+          "110 g.",
+          "165 g."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a massa pura é 250·0,80=200 g, que corresponde a 2 mol de CaCO₃. A relação 1:1 fornece 2 mol de CO₂, ou 88 g teóricos. Aplicando 75%, obtêm-se 88·0,75=66 g. B ignora o rendimento; C usa toda a amostra como pura e fornece 110 g teóricos; D supera até os 110 g teóricos da amostra indevidamente tratada como pura. O caso é quantitativo e não prescreve como realizar a reação."
+      }
+    ]
   }
 ];
 
@@ -492,6 +860,132 @@ export const authoredCurriculumBatch14ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "Conferência do agente principal: D, índice 3: a revisão incorpora a limitação reconhecida e permite sustentar uma proposta de articulação, sem prometer solução única ou acesso garantido. A apaga uma condição já admitida; B muda a superfície e conserva a contradição; C salta para proibição total que não decorre dos dados. Considerar objeções pode qualificar a posição; não obriga nem a ignorá-las nem a abandonar qualquer possibilidade digital."
+      }
+    ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Cognatos e falsos cognatos em inglês",
+    "contentSha256": "4782be4c5b8fa30d2d858192aeda5f01417f60accdad014c3a7e261330993572",
+    "draftMethod": "Autoria e análise lexical Codex com British Council e Merriam-Webster consultados; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.teachingenglish.org.uk/professional-development/teachers/teaching-knowledge-database/d-h/false-friends?page=1",
+      "https://www.merriam-webster.com/dictionary/cognate",
+      "https://www.merriam-webster.com/dictionary/memory",
+      "https://www.merriam-webster.com/dictionary/actual",
+      "https://www.merriam-webster.com/dictionary/eventually",
+      "https://www.merriam-webster.com/dictionary/pretend",
+      "https://www.merriam-webster.com/dictionary/library",
+      "https://www.merriam-webster.com/dictionary/sensible"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "No nível basic, a frase 'Her excellent memory helped her recall the instructions' sustenta 'memory' como capacidade de lembrar (opção 1) pela relação direta com 'recall the instructions'. A dica explícita confirma que não há inferência sobre dispositivo eletrônico. As outras opções (0, 2, 3) representam interpretações erradas baseadas apenas na aparência da palavra ou significados técnicos desconexos do contexto. O gabarito index 1 está correto e coerente com o objetivo da lição sobre cognatos e falsos amigos."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "No nível intermediate, a frase 'The estimated cost was 40; the actual cost was 55' contrasta previsão e valor efetivo. A opção 3 ('Real ou efetivo, em contraste com o valor estimado de 40') está correta pois 'actual' aqui significa o custo real ocorrido, não 'atual' no sentido temporal. A dica confirma: 'A comparação opõe estimativa e valor efetivo; não informa uma oposição entre antigo e atual'. As outras options (0, 1, 2) interpretam erradamente 'actual' como referência a períodos históricos, hipótese futura ou frequência, todas inconsistentes com a estrutura da frase."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Conferência do agente principal: A, índice 0: eventually apresenta o desfecho posterior às três tentativas frustradas; repaired afirma o conserto desse relógio. O tempo exato não é fornecido. B troca sequência e resultado por frequência e omite o conserto; C inventa sucesso futuro imediato; D contradiz after three failed attempts. O leitor pode justificar a interpretação pelas pistas sem afirmar que eventually exige sempre uma demora longa ou três tentativas."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Tempos do passado em espanhol",
+    "contentSha256": "28a2a3fbee533c2977f7e62313bf4a218cc7fb82f57499002b996b44a5630193",
+    "draftMethod": "Autoria e conferência morfológica e temporal Codex com RAE-ASALE consultada; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.rae.es/gtg/pret%C3%A9rito-perfecto-simple",
+      "https://www.rae.es/gtg/pret%C3%A9rito-imperfecto-de-indicativo",
+      "https://www.rae.es/gtg/pret%C3%A9rito-perfecto-compuesto-de-indicativo",
+      "https://www.rae.es/gtg/pret%C3%A9rito-pluscuamperfecto-de-indicativo",
+      "https://dle.rae.es/comer",
+      "https://www.rae.es/dpd/ayuda/modelos-de-conjugacion-verbal"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "Conferência do agente principal: A, índice 0: estudiar segue o padrão de hablar, com a terminação -é em yo estudié. B, estudió, é terceira pessoa do singular do mesmo tempo; C, estudiaba, é imperfecto, podendo corresponder a primeira ou terceira pessoa singular; D, estudiemos, é presente do subjuntivo ou forma de exortação em contexto próprio. A seleção depende de pessoa e tempo pedidos, sem impor um marcador temporal universal."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Conferência do agente principal: C, índice 2: sonó está no perfecto simple e apresenta o toque do sinal; leía está no imperfecto e focaliza a leitura em desenvolvimento nesse momento. A erra os tempos; B transforma ausência de delimitação na forma verbal em nunca terminar; D inventa duração exata. A frase não afirma que Inés abandonou definitivamente a revista nem relata o desfecho da leitura."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "Conferência do agente principal: B, índice 1: ya había organizado é pluscuamperfecto de indicativo e coloca a organização antes da abertura mencionada. A usa ordem textual como ordem cronológica e inverte a relação; C transforma uma anterioridade passada em futuro; D confunde había com uma forma de subjuntivo e inventa negação. A frase não diz quanto tempo antes ocorreu a organização nem que ela causou a abertura."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Termologia e escalas termométricas",
+    "contentSha256": "bcdcab06d86fb054e249e9763b0529d36f054ccbdd67319d35fab2912bb18c04",
+    "draftMethod": "Autoria e recálculo Codex com OpenStax e NIST consultados; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/college-physics-2e/pages/13-1-temperature",
+      "https://openstax.org/books/college-physics-2e/pages/14-1-heat",
+      "https://www.nist.gov/pml/owm/si-units-temperature",
+      "https://www.nist.gov/pml/special-publication-330/sp-330-section-2"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Conversão de 27 °C para kelvin: K = 27 + 273,15 = 300,15 K. Conversão para Fahrenheit: F = (9/5)·27 + 32 = 48,6 + 32 = 80,6 °F. A alternativa 0 mantém 27 K, incorreta pois não converte. A alternativa 1 mantém 27 °F, incorreta pois não converte nem aplica fator. A alternativa 3 resulta em −246,15 K (27 − 273,15) e 48,6 °F (9/5·27 sem +32), ambas erradas. A alternativa 2 oferece o par correto 300,15 K e 80,6 °F, confirmando os cálculos e o fato de K não usar símbolo de grau. O gabarito correto é o índice 2."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "O enunciado descreve um aumento (variação) de 45 °F, não uma temperatura absoluta. A variação em Celsius é ΔC = (5/9)·ΔF = (5/9)·45 = 25 °C. A variação em Kelvin é ΔK = ΔC = 25 K, pois escalas de intervalo têm o mesmo tamanho de grau. A alternativa B comete o erro de somar 273,15 a uma variação, transformando intervalo em temperatura. A alternativa C trata 45 °F como temperatura absoluta, usando (45−32)·5/9 ≈ 7,22 °C. A alternativa D inverte o fator, multiplicando por 9/5 ao invés de 5/9. O gabarito correto é o índice 0, que apresenta 25 °C e 25 K."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A escala didática X é affine: marca 30 °X em C=0 e 180 °X em C=100, dando a função X = 1,5·C + 30. Para leitura X=90, resolvemos 90 = 1,5·C + 30, obtendo C = (90−30)/1,5 = 60/1,5 = 40 °C. A alternativa A decorre da razão direta 90·100/180 = 50, ignorando o deslocamento de origem 30. A alternativa B usa a diferença 60 como se os intervalos tivessem mesma unidade sem considerar a origem. A alternativa C mantém a leitura 90 sem conversão para Celsius. O gabarito correto é o índice 3, correspondendo a 40 °C."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Mol, massas e estequiometria",
+    "contentSha256": "38b2e83f174782b8d6f34e78c162c78303c009c603646349f55f3a8b78f98f23",
+    "draftMethod": "Autoria e recálculo Codex com OpenStax e NIST consultados; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept",
+      "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+      "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+      "https://www.nist.gov/pml/special-publication-330/sp-330-section-2"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Task 1 básico: cálculo n=m/M=22/44=0,5 mol CO₂; cada molécula CO₂ tem 3 átomos (1 C + 2 O) → 1,5 mol átomos no total; alternativa 1 apresenta 0,5 mol CO₂ e 1,5 mol átomos, correta; alternativa 0 erra ao afirmar 0,5 mol átomos totais (deveria ser 1,5); alternativa 2 usa razão inversa M/m (2 mol em vez de 0,5); alternativa 3 trata massa em gramas como mol direto (22 mol, incorreto). Resolução independente confirma o índice 1."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Task 2 intermediário: equação 2Al+3Cl₂→2AlCl₃; quocientes de avanço: Al=4/2=2, Cl₂=3/3=1; Cl₂ é o limitante (menor quociente); avanço máximo=1 produz 2 mol AlCl₃; Al consumido=2 mol; Al remanescente=4-2=2 mol; alternativa 3 indica 2 mol AlCl₃ com 2 mol Al em excesso, correta; alternativa 1 atribui excesso a Cl₂ (errado, pois é o limitante); alternativa 2 também atribui excesso a Cl₂; alternativa 0 ignora o limitante e diz 4 mol AlCl₃. Recálculo independente confirma o índice 3."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Task 3 avançado: amostra 250g com 80% em massa de CaCO₃ e impurezas inertes → massa pura=250×0,80=200g; n(CaCO₃)=200/100=2 mol; relação molar 1:1 CaCO₃→CO₂ → 2 mol CO₂ teórico; massa teórica=2×44=88g; aplicar rendimento 75%: 88×0,75=66g; alternativa 0 indica 66g, correta; alternativa 1 (88g) ignora o rendimento sobre o teórico; alternativa 2 (110g) usa massa total da amostra (250g) como se fosse pura CaCO₃; alternativa 3 (165g) excede mesmo o teórico sem justificativa. Recálculo independente confirma o índice 0."
       }
     ]
   }

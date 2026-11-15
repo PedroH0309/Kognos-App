@@ -43,5 +43,6 @@
 - [x] Integrar doze do lote 13: 172 novas aulas, 671 testes, build e leitor real aprovados.
 - [x] Completar lote 13: 176 novas aulas, 672 testes, build e leitor real aprovados.
 - [x] Integrar quatro do lote14: 180 novas aulas, 673 testes, build e leitor real aprovados.
+- [x] Integrar oito do lote14: 184 novas aulas, 675 testes, build e leitor real aprovados.
 - [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
 - [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.

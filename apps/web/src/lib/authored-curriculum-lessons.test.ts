@@ -1058,3 +1058,19 @@ test('exponencial e logaritmo preservam domínio, imagem e sentido de inequaçã
  const c=spec.tasks[2];assert.match(c.prompt,/\(1\/3\)\^\(2x−1\) ≥ 27/);assert.ok(c.options);assert.equal(c.options[c.correctIndex!],'x ≤ −1.');
  for(const x of [-4,-2,-1,-0.5,0,1,4])assert.equal((1/3)**(2*x-1)>=27-1e-10,x<=-1);
 });
+
+test('termologia diferencia conversão de temperatura e de intervalo e interpola escala linear',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Física'&&s.topic==='Termologia e escalas termométricas');assert.ok(spec);
+ const first=spec.tasks[0];assert.match(first.prompt,/27 °C/);assert.ok(first.options);assert.equal(first.options[first.correctIndex!],'300,15 K e 80,6 °F.');assert.equal(27+273.15,300.15);assert.equal(27*9/5+32,80.6);
+ const second=spec.tasks[1];assert.match(second.prompt,/45 °F/);assert.ok(second.options);assert.equal(second.options[second.correctIndex!],'25 °C e 25 K.');assert.equal(45*5/9,25);
+ const third=spec.tasks[2];assert.match(third.prompt,/30 °X.*0 °C.*180 °X.*100 °C.*90 °X/);assert.ok(third.options);assert.equal(third.options[third.correctIndex!],'40 °C.');
+ const toC=(x:number)=>(x-30)*100/(180-30);assert.equal(toC(30),0);assert.equal(toC(180),100);assert.equal(toC(90),40);assert.notEqual(90*100/180,40);
+});
+
+test('mol e estequiometria conferem entidades, limitante, excesso, pureza e rendimento',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Química'&&s.topic==='Mol, massas e estequiometria');assert.ok(spec);
+ const a=spec.tasks[0];assert.match(a.prompt,/22 g de CO₂/);assert.ok(a.options);assert.equal(a.options[a.correctIndex!],'0,5 mol de CO₂ e 1,5 mol de átomos no total.');assert.equal(22/44,.5);assert.equal(22/44*3,1.5);
+ const b=spec.tasks[1];assert.match(b.prompt,/4 mol de Al.*3 mol de Cl₂/);assert.ok(b.options);assert.equal(b.options[b.correctIndex!],'2 mol de AlCl₃, com 2 mol de Al em excesso.');
+ const extent=Math.min(4/2,3/3),product=extent*2,alLeft=4-extent*2,clLeft=3-extent*3;assert.deepEqual([product,alLeft,clLeft],[2,2,0]);assert.equal(4,product+alLeft);assert.equal(3*2,product*3+clLeft*2);
+ const c=spec.tasks[2];assert.match(c.prompt,/250 g.*80%.*75%/);assert.ok(c.options);const target=250*.8/100*44*.75;assert.equal(target,66);const accepted=c.options.map((s,i)=>Number(s.replace(' g.',''))===target?i:-1).filter(i=>i>=0);assert.deepEqual(accepted,[c.correctIndex]);
+});
