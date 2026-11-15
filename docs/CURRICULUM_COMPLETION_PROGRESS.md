@@ -4,7 +4,46 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 18
+## Estado atual — checkpoint 19
+
+Lote 09 iniciado com quatro aulas: Matemática — Porcentagem e juros;
+Português — Semântica e figuras de linguagem; Literatura — Parnasianismo
+e Simbolismo; Redação — Proposta de intervenção e direitos humanos (ENEM).
+São 100 novas nesta etapa, com homologação docente humana pendente.
+
+Restam 1.195 lacunas entre 1.512 identidades. ENEM editorial: 113 aprofundadas
+e 783 lacunas. Lista de estudo: 113 aprofundadas, 39 guias e 755 planejadas.
+As contagens não certificam cobertura de habilidades oficiais.
+
+- Matemática: base percentual explícita, juros simples/compostos com hipóteses,
+  conversão temporal e variação real. Teste recalcula 195,50; 2.123,04; 0,95%.
+- Português: corrigidas denotação fixa e falsa implicatura de negação/porque;
+  metáfora, metonímia e ironia contextualizadas sem atribuir emoções sem pista.
+- Literatura: removidas atribuições sem fonte, autores trocados e oposição
+  absoluta entre forma e emoção; microtextos atuais não simulam fonte histórica.
+- Redação: escopo exclusivo do título ENEM, sem estender regras a outras provas;
+  constatação/ação e zero na Competência V distinguidos da anulação total.
+  Página institucional INEP2026 e destino de download conferidos; download
+  oficial indisponível na consulta. Texto oficial consultado em cópia identificada
+  como cartilha2026, hospedada externamente, com essa limitação registrada
+  privadamente. Não copiadas redações de participantes ou questões de concorrentes.
+
+Verificação: 647 testes da aplicação e seis do motor, lint alterado e build
+aprovados. API das 100 comparada; quatro novas abertas no Chromium com 12
+respostas, explicações e referências expandidas em 320/375/768/1440 px,
+sem exceções ou rolagem horizontal. O teste histórico mantém todas as oito
+fontes matemáticas originais e verifica separadamente a prioridade atual.
+O estado de Porcentagem e juros passa a aprofundado; guia de outro escopo
+permanece introdutório. Índice com 317 identidades, sem textos no cliente.
+
+Críticas automáticas equivocadas não foram aceitas sem conferência: Português
+alegou repetição inexistente; Literatura alegou erro de grafia ausente. Respostas
+documentadas e novas sessões exigidas. Pareceres originais preservados quando
+o principal corrigiu linguagem ou cálculo na justificativa de um distrator.
+CI18 aprovada (43737738798, head e57ffa6). Sem schema/banco, merge ou deploy.
+Inglês09 corrigido e criticado privadamente, ainda não integrado; fila continua.
+
+## Histórico — checkpoint 18
 
 Lote 08 completo com 16 aulas; são 96 novas nesta etapa. Últimas sete:
 História — Feudalismo e mundo medieval; Geografia — Relevo, solos e recursos

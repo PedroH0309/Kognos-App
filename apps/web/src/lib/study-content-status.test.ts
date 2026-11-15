@@ -9,10 +9,12 @@ import {deepEnemLesson} from './enem-depth-batch01.ts';
 test('uma aula canônica profunda é distinguida de metadados e introduções',()=>{
  const catalog=learningCatalogForExam('enem');
  const authored=catalog.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Análise combinatória');
- const planned=catalog.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Porcentagem e juros');
+ const percentages=catalog.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Porcentagem e juros');
+ const planned=catalog.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Polinômios e equações polinomiais');
  const intro=learningLessons.find(lesson=>lesson.id==='math-percentages');
- assert.ok(authored&&planned&&intro);
+ assert.ok(authored&&percentages&&planned&&intro);
  assert.equal(studyContentStatus(authored,'enem'),'authored');
+ assert.equal(studyContentStatus(percentages,'enem'),'authored');
  assert.equal(studyContentStatus(planned,'enem'),'planned');
  assert.equal(studyContentStatus(intro,'enem'),'introductory');
  for(const title of ['Ângulos e retas paralelas','Áreas de figuras planas','Circunferência e círculo','Expressões algébricas','Razão e proporção']){

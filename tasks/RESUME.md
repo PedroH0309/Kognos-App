@@ -1,6 +1,42 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 18
+## Estado atual em 15/11/2026 — checkpoint 19
+
+CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não encerrar neste checkpoint.
+Worktree C:/Users/pedro/.codex/worktrees/kognos-quality-20261114; branch
+codex/quality-reliability-20261114; PR117 draft. Raiz original tem trabalho usuário.
+
+- Lotes03–08 completos; 09 quatro aulas: total100 novas. 647 testes + seis
+  do motor, build, lint alterado e leitor100 aprovados. 12 novas respostas e
+  referências em quatro larguras. Preview3316 contém100; fixtures100; índice317.
+- Lacunas1195; ENEM113/783; estudo113/39/755. Sem homologação docente, banco,
+  schema/RLS, merge ou deploy. CI18 43737738798 success head e57ffa6.
+- Integrador09 reescreve módulo: passar TODOS os IDs existentes:
+  course-908579c0 course-d975676a course-7774e4cc course-7e1c2be2.
+  As três funções de fallback já usam agregador atualizado com lote09.
+- Matemática: crítico afirmou inversão de divisão = −0,95%; principal corrigiu
+  para inversão de sinal (inversa seria −0,94%), original preservado. Cálculos
+  testados. Português e Literatura precisaram nova crítica por alegações falsas.
+- Redação: rascunho1 rejeitado por omitir sufixo(ENEM), mas lido e corrigido
+  pelo principal. Cartilha2026 oficial PDF não respondeu; cópia INEP identificada
+  em noticiasconcursos consultada sem material concorrente. Limite registrado
+  em principal-review antes da integração; não alegar hash idêntico ao oficial.
+- Inglês09 course-1e013a84: principal completo em arquivo privado; crítica
+  accept lida, índices2/3/0, estrutura passa. Ainda NÃO integrar antes de fechar
+  este checkpoint. Fonte BC páginas abertas; Cambridge403 direto, índice oficial
+  consultado. Nova autoriaworker não substitui principal. Texto privado prevalece.
+- Próximos09 course-3a987540 Espanhol, e243247f Física, e296f2d6 Química,
+  19628dfd Biologia, beb74772 História, e0d9a321 Geografia, 9bfe0da1 Filosofia,
+  bb4de815 Sociologia, 09d10671 Arte, f341096e EdFísica, d79458d8 Ciências.
+- Worker v4 um processo raiz inicial19984, limite112, Lightning por CLI somente.
+  Log Temp/kognos-curriculum-collaboration-v4-20261115.log; erros no arquivo
+  errors. Não matar Claude do usuário/proxy. v2 importado por críticos.
+- Helpers Temp copiados para private/curriculum-run/resume-helpers. Não
+  reaplicar scripts base08 (Newton28N errado e Geoexemplo exige refinamento).
+- Restore next-env somente da RAIZ ativa. Não commitar AGENTS gerado. Fetch
+  antes de push, ler concorrência e sem force. Atualizar PR/CI após commit19.
+
+## Histórico — checkpoint 18
 
 CONTINUAR até completar as aulas, sem encerrar neste checkpoint. PR draft 117.
 Worktree C:/Users/pedro/.codex/worktrees/kognos-quality-20261114; branch

@@ -743,3 +743,28 @@ test('cinemática recalcula percursos, impacto com desnível e transformação e
  assert.match(third,/eixos paralelos e sem rotação/);
  assert.equal(choice(2),`(${Number(acceleration[1])} i + ${Number(acceleration[2])} j) m/s²`);
 });
+
+test('porcentagem e juros mantêm bases sucessivas, capitalização e poder de compra',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Porcentagem e juros');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const currency=(text:string)=>Number(text.replace(/[R$\s.]/g,'').replace(',','.'));
+ const first=spec.tasks[0].prompt,price=Number(first.match(/preço inicial de R\$ (\d+)/)?.[1]),discount=Number(first.match(/desconto de (\d+)%/)?.[1])/100,increase=Number(first.match(/acréscimo de (\d+)%/)?.[1])/100;
+ assert.ok(price>0&&discount>0&&increase>0);assert.equal(currency(choice(0)),Math.round(price*(1-discount)*(1+increase)*100)/100);
+ const second=spec.tasks[1].prompt,capital=Number(second.match(/capital de R\$ ([\d.]+)/)?.[1].replaceAll('.','')),rate=Number(second.match(/taxa de ([\d,]+)% ao mês/)?.[1].replace(',','.'))/100,periods=Number(second.match(/por (\d+) meses/)?.[1]);
+ assert.ok(capital>0&&rate>0&&periods>1);const amount=capital*Math.pow(1+rate,periods);
+ assert.equal(currency(choice(1)),Math.round(amount*100)/100);assert.notEqual(currency(choice(1)),Math.round(capital*(1+rate*periods)*100)/100);
+ const third=spec.tasks[2].prompt,nominal=Number(third.match(/nominal de (\d+)%/)?.[1])/100,inflation=Number(third.match(/inflação de (\d+)%/)?.[1])/100;
+ assert.ok(nominal>inflation&&inflation>0);assert.equal(choice(2),`${(((1+nominal)/(1+inflation)-1)*100).toFixed(2).replace('.',',')}%`);
+ assert.notEqual(choice(2),`${((nominal-inflation)*100).toFixed(2).replace('.',',')}%`);
+});
+
+
+test('intervenção ENEM mantém escopo, articulação e zero na competência sem prometer nota final',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Redação'&&lesson.topic==='Proposta de intervenção e direitos humanos (ENEM)');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ assert.match(choice(0),/não constitui.*ação/);
+ assert.match(choice(1),/canal presencial/);
+ assert.match(choice(2),/zero na Competência V/);
+ assert.match(choice(2),/não.*automaticamente.*redação inteira/);
+ assert.match(spec.sections.map(section=>section.explanation).join(' '),/não.*garant.*200/);
+});

@@ -51,7 +51,8 @@ test('Mathematics problems include original computations, explicit verification 
  const text=deepMathTopicNames.flatMap(name=>{
   const topic=curriculumTopics.find(t=>t.subject==='Matemática'&&t.topic===name);
   assert.ok(topic);
-  const l=starterLesson(topic);
+  const l=deepMathLesson(topic);
+  assert.ok(l,'Original mathematics lesson remains available: '+name);
   return [...l.sections.flatMap(s=>[s.explanation,s.example,s.pitfall]),...l.tasks.map(t=>t.solution)];
  }).join(' ');
  for(const needle of ['MDC','MMC','proporcionalidade','juros simples','juros compostos','√','inequação','sistema','notação científica']){
