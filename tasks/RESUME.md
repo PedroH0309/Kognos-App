@@ -1,6 +1,46 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 28
+## Estado atual em 15/11/2026 — checkpoint 29
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex; ferramenta só mostra semanal
+(último11%), secondary:null. Não substituir semanal por sessão ou garantir parada
+inobservável. Consultar periodicamente. Usuário informado.
+
+148 novas; lote12 primeiro4. 662 app + 6 motor, build/lint e 148API + 4leitor,
+12MCQ, 4larguras aprovados. Lacunas1147; ENEM158/738; estudo158/29/720;índice365.
+Preview3316 sessão61926. Logsprivate/checkpoint29-*.log. Humana pendente.
+CI28success43760316925head9da560c. Publicar29/PR e acompanhar CI exata.
+
+Integrador12 REESCREVE módulo: passar ALLatuais+novas. Quatroatuais:
+f81404ed,7a81e1ec,237cf014,d0f6d214. Agregador já ligado; índice atualizado.
+Math crítica integral aceita, metadado distratorD diferença de cubos corrigido
+explicitamente (prepare-batch12.py guarda original; NÃO rerodar base e apagar
+ajuste). Teste novoRED→GREEN; não reduzir expectativas/domínio. Sintaxe, Lit e
+Redação críticas completas lidas/aceitas. Fontes/casos privados; revisão docente
+não realizada. Helpers privados respaldados. Não reaplicar autores-base cegamente.
+
+PróximaInglês9e223a4b: raw1 está em revisão do worker e NÃO foi aprovado pelo
+principal. Lido parcialmente; vende estratégia ótima universal cinco textos,
+scanning exclusivo vs mapeamento e previsão de velocidade indevida. Preparar
+texto próprio com trechos ingleses completos e objetivos diferentes.
+Fontes English JÁ LIDAS: RMIT LearningLab skimming-and-scanning body85-111/135-146;
+BritishCouncil TeachingEnglish theories-reading-part-2 body83-118; LearnEnglish
+Teens how-read-text body4-22; OpenLearn id88998 section_unit3.2 body242-247 e
+_unit3.2.3 body242-247. OpenLearn2.1/2.2 abertos mas corpo não lido ainda.
+URLsBC glossário /s/scanning e /s/skimming indisponíveis. Não alegar leitura.
+Não copiar textos/exercícios BBC/BritishCouncil/RMIT; não universalizar ordem,
+velocidade ou certeza por palavra-chave; confirmar contexto/negação/exceções.
+
+Restantes do lote12: Espanholb17518b1,Física4c7c5bec,Químicad5903a1a,
+Bio0536eebb,Hist1198af3f,Geof66d7527,Filo69cf6de6,Socc6064524,Artea18970e3,
+PEe942ed50,Ciências4c61183d. Títulos/disciplinas literais em queue.json.
+Worker160PID5840, logTemp kognos-curriculum-collaboration-v4-batch12-20261115.log.
+Não duplicar worker. Só ampliar176 após verificar término160.
+
+AGENTS gerado fora decommit; raizoriginalsuja preservada;fetchantespush,nunca
+force. Sem schema,banco,merge/deploy. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 28
 
 CONTINUAR. Usuário pediu parar a 50% do limite da SESSÃO Codex. Ferramenta só
 mostra semanal (último 7%), secondary:null; sessão indisponível. Não substituir

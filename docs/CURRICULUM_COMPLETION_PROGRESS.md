@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 28
+## Estado atual — checkpoint 29
+
+Lote 12 com quatro aulas: Produtos notáveis e fatoração; Sintaxe da oração e do
+período; Literatura brasileira contemporânea; Leitura da proposta e recorte
+temático. São 148 novas nesta etapa; autoria Codex, crítica independente Claude
+Code/NVIDIA NIM. Homologação pedagógica humana pendente.
+
+Restam 1.147 lacunas de 1.512 identidades editoriais. ENEM: 158 aprofundadas,
+738 lacunas. Estudo: 158 aprofundadas, 29 guias, 720 planejadas. Índice: 365.
+
+- Matemática: distributiva, quadrados e cubos, fator comum e agrupamento,
+  coeficientes e domínio racional. Teste RED→GREEN expande por convolução,
+  confere agrupamento bivariado e preserva exclusões ±5 após cancelamento.
+- Português: termos e funções, sujeito paciente, locução, haver impessoal,
+  coordenação/subordinação e períodos mistos, relativas, reduzidas e pontuação.
+  Rascunhos com erros factuais e múltiplas respostas foram rejeitados.
+- Literatura: recorte contemporâneo plural, prosa e poesia, narrador/autor,
+  circulação, memória e representação. Datas, títulos e escrevivência conferidos;
+  fragmentos próprios, sem imitação de estilo ou citações inventadas.
+- Redação: assunto/tema/tarefa, gênero e interlocução, apoios, recorte e revisão
+  do projeto. Contrastes Enem/Fuvest explicitamente datados de 2026. PDF Inep
+  inacessível não declarado lido; apresentação oficial verificada sustenta o
+  contraste. Nenhuma redação de participante ou coletânea foi reproduzida.
+
+Críticas finais integrais lidas, hashes atuais. Correção explícita de metadado
+matemático sobre distrator de cubos preserva o parecer original. Não atribuir
+verificação de URLs por navegação ao Claude sem ferramentas.
+
+662 testes app + 6 motor, build e lint alterado aprovados. API das 148 aulas
+comparada integralmente; quatro novas no Chromium, 12 respostas, explicações e
+referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI 28 aprovada 43760316925, head 9da560c.
+
+Continuar próximas quatro: Skimming e scanning; Possessivos e demonstrativos em
+espanhol; Estática, torque e equilíbrio; Funções inorgânicas. Catálogo em execução;
+sem banco, schema, merge ou deploy. Revisão docente continua pendente.
+
+## Histórico — checkpoint 28
 
 Lote 11 completo com 16 aulas; 144 novas nesta etapa. Integradas Mídias,
 ideologia e consumo; Fotografia, cinema e audiovisual; Lutas e artes marciais;

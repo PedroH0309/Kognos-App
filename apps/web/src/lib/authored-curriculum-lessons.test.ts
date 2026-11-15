@@ -944,3 +944,19 @@ test('lógica distingue modus ponens e afirmação do consequente por todas as v
  assert.ok(rows.every(r=>!(r.conditional&&r.P)||r.Q),'modus ponens não admite premissas verdadeiras e conclusão falsa');
  assert.ok(rows.every(r=>!(r.conditional&&!r.Q)||!r.P),'modus tollens também preserva verdade sob premissas verdadeiras');
 });
+
+
+test('produtos notáveis verificam coeficientes, agrupamento e exclusões antes de cancelar',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Matemática'&&s.topic==='Produtos notáveis e fatoração');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const square=spec.tasks[0].prompt.match(/\((\d+)x - (\d+)\)\^2/);assert.ok(square);const a=Number(square[1]),b=Number(square[2]);
+ const multiply=(left:number[],right:number[])=>{const out=Array(left.length+right.length-1).fill(0) as number[];left.forEach((v,i)=>right.forEach((w,j)=>out[i+j]+=v*w));return out;};
+ assert.deepEqual(multiply([-b,a],[-b,a]),[b*b,-2*a*b,a*a]);assert.equal(choice(0),`${a*a}x^2 - ${2*a*b}x + ${b*b}.`);
+ assert.match(spec.tasks[1].prompt,/6x\^2 \+ 15x \+ 4xy \+ 10y/);assert.equal(choice(1),'(3x + 2y)(2x + 5).');
+ const terms=[[3,1,0],[2,0,1]].flatMap(([c,x,y])=>[[2,1,0],[5,0,0]].map(([d,u,v])=>[c*d,x+u,y+v]));
+ assert.deepEqual(terms,[[6,2,0],[15,1,0],[4,1,1],[10,0,1]]);
+ const fraction=spec.tasks[2].prompt.match(/\(x\^3 - (\d+)\)\/\(x\^2 - (\d+)\)/);assert.ok(fraction);const k=Math.sqrt(Number(fraction[2]));assert.equal(k**3,Number(fraction[1]));
+ assert.deepEqual(multiply([-k,1],[k*k,k,1]),[-(k**3),0,0,1]);assert.deepEqual(multiply([-k,1],[k,1]),[-k*k,0,1]);
+ assert.equal(choice(2),`(x^2 + ${k}x + ${k*k})/(x + ${k}), com x ≠ ${k} e x ≠ -${k}.`);
+ assert.equal(k*k-Number(fraction[2]),0);assert.equal(k+k,10,'forma reduzida definida em 5 não reabre domínio original');
+});
