@@ -1,6 +1,40 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 26
+## Estado atual em 15/11/2026 — checkpoint 27
+
+CONTINUAR. Parar a50% do limite da SESSÃO Codex, conforme usuário. Ferramenta
+sómostra semanal6%,secondary:null; sessão indisponível. Usuário informado;
+não substituir pelo semanal, nem prometer garantia. Consultar periodicamente.
+
+140novas;661app+6motor/build/lint/140API+4leitor12MCQ4larguras aprovados.
+Lacunas1155,ENEM151/745,estudo151/30/726,índice357. Humana pendente.
+Preview3316sessão55115;logsprivate/checkpoint27-{tests,build,browser,lint}.log.
+CI26success43756847259head4186c14. Publicar27/PR/CI exata e seguir últimas4.
+
+Integrador11REESCREVE módulo: passar ALL12atuais+novas:
+7e340768,431382bb,2798df57,2448edd7,2f868211,8d0566cf,343d1de0,dc101543,
+95699596,79189d89,ef936557,46e6e772. Críticas integrais finais lidas/hashes atuais.
+Biologia metadados críticos corrigidos explicitamente,original integral preservado;
+Lógica metadado porisso corrigido. Não reaplicar autores-base cegamente em aceitos.
+Dois testesnovosRED→GREEN: transcrição/traduçãoevaloraçõeslógicas.
+
+PróximaSoc23767c57 Mídias/ideologia/consumo: sófontesatéagora,semprincipal.
+Lidos OpenStaxSoc3e8.2/8.4 (publicidade,gatekeeping,interacionismo);SEPideology
+intro e naturalização;SEPadornocultura4.2;UNESCOMIL10unit4e11unit1.
+UNESCO10unit1retornou503/timeout,não alegarleitura. Evitar númeroslegislação/
+estereótipos/compatibilidadeWindows e alegações atuais do livro. Teoria deve
+ser atribuída,sem afirmação de público uniforme/passivo ou todaideologiamentira.
+Restantes Arte3dcee8cf;PE0ba1e0d3;Ciências6b13584f. Worker144PID7856,filaúnica
+bounded,logTempkognos-curriculum-collaboration-v4-batch11-20261115.log;último
+conhecido em Filosofia1. Ao terminar144,widen160 somente após verificarfim.
+
+FontesgeoMMAindividuaislogin/IBGEeduca403/EmbrapaBioma403/ICMBioPantanal403
+não usadoscomo lidos; dados antigos IBGESíntese nãoadotados. Fontes verificadas
+em cada private/principal-review/sources; revisãohumana semprependente.
+AGENTSgerado fora decommit;raizoriginalsuja preservada;fetchantespush,nuncaforce.
+Sem schema/banco/merge/deploy. Helpers privados respaldados. Não finalizar aqui.
+
+## Histórico — checkpoint 26
 
 CONTINUAR. Parada pedida pelo usuário:50% do limite da SESSÃO Codex. Ferramenta
 expõe só semanal3% e secondary:null,sem indicador da sessão. Usuário avisado;

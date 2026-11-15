@@ -924,3 +924,23 @@ test('gravitação verifica raio intercentros, órbita circular e energia elípt
  const m=Number(third[1]),central=Number(third[2])*10**Number(third[3]),rp=Number(third[4])*10**Number(third[5]),ra=Number(third[6])*10**Number(third[7]),a=(rp+ra)/2,energy=-central*m/(2*a);
  const vp=Math.sqrt(central*(2/rp-1/a)),va=Math.sqrt(central*(2/ra-1/a));assert.ok(Math.abs(vp/va-ra/rp)<1e-12);assert.equal(energy,-5e7);assert.equal(choice(2),'E = -5 × 10^7 J; v_periastro/v_apoastro = 3.');
 });
+
+test('síntese proteica preserva orientação das fitas e não conta stop como aminoácido',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='DNA, RNA e síntese proteica');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const coding=spec.tasks[0].prompt.match(/codificante 5′-([ATGC ]+)-3′/);assert.ok(coding);const rna=coding[1].replaceAll('T','U');assert.equal(choice(0),`5′-${rna}-3′.`);
+ const template=spec.tasks[1].prompt.match(/molde 3′-([ATGC ]+)-5′/);assert.ok(template);const complement:Record<string,string>={A:'U',T:'A',G:'C',C:'G',' ':' '};const transcript=[...template[1]].map(base=>complement[base]).join('');assert.equal(transcript,'AUG GGC UAA');
+ const code:Record<string,string>={AUG:'Met',GGC:'Gly',UAA:'stop'};const codons=transcript.split(' '),stop=codons.findIndex(c=>code[c]==='stop');assert.equal(stop,2);assert.equal(choice(1),'5′-AUG GGC UAA-3′; Met–Gly, dois aminoácidos antes da parada.');
+ assert.match(spec.tasks[2].prompt,/UAC por UAU/);const original=['AUG','UAC','GAA','UGA'],mutated=['AUG','UAU','GAA','UGA'],amino:Record<string,string>={AUG:'Met',UAC:'Tyr',UAU:'Tyr',GAA:'Glu',UGA:'stop'};
+ assert.notDeepEqual(original,mutated);assert.deepEqual(original.map(c=>amino[c]),mutated.map(c=>amino[c]));assert.match(choice(2),/mesma sequência.*aminoácidos.*RNA.*alterada/);
+});
+
+test('lógica distingue modus ponens e afirmação do consequente por todas as valorações',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Filosofia'&&lesson.topic==='Lógica, falácias e linguagem');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');assert.match(task.prompt,/P → Q; Q; logo P/);
+ const rows=[false,true].flatMap(P=>[false,true].map(Q=>({P,Q,conditional:!P||Q})));
+ const counter=rows.filter(r=>r.conditional&&r.Q&&!r.P);assert.deepEqual(counter,[{P:false,Q:true,conditional:true}]);
+ assert.match(task.options[task.correctIndex],/P falsa e Q verdadeira.*premissas verdadeiras.*conclusão falsa/);
+ assert.ok(rows.every(r=>!(r.conditional&&r.P)||r.Q),'modus ponens não admite premissas verdadeiras e conclusão falsa');
+ assert.ok(rows.every(r=>!(r.conditional&&!r.Q)||!r.P),'modus tollens também preserva verdade sob premissas verdadeiras');
+});

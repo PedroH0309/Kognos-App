@@ -735,6 +735,374 @@ export const authoredCurriculumBatch11:readonly AuthoredLessonSpec[] = [
         "solution": "B, índice 1: a orientação do lado parcialmente negativo do oxigênio favorece a atração ao cátion. A troca a orientação favorável por cargas do mesmo sinal; C ignora retículo e demais fatores; D confunde reorganização entre partículas com rompimento obrigatório de ligações covalentes da água. O modelo explica uma interação local, sem dados de solubilidade para um sal específico."
       }
     ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "DNA, RNA e síntese proteica",
+    "objective": "Distinguir estruturas e funções de DNA e RNA, transcrever sequências orientadas e interpretar tradução, processamento e alterações de códons com o código fornecido e limites explícitos.",
+    "prerequisites": [
+      "Células procarióticas e eucarióticas",
+      "Nucleotídeos e aminoácidos",
+      "Complementaridade de bases"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Moléculas, bases e funções",
+        "explanation": "DNA e RNA são ácidos nucleicos constituídos por nucleotídeos, com açúcar, fosfato e base nitrogenada. No DNA, o açúcar é desoxirribose e as bases usuais são A, T, C e G; no RNA, ribose e A, U, C e G. O DNA celular normalmente tem duas fitas antiparalelas: uma orientada 5′ para 3′ acompanha outra orientada 3′ para 5′, com complementaridade A–T e C–G. As ligações que conectam nucleotídeos ao longo de uma fita não são as mesmas interações que unem bases complementares entre fitas. RNA costuma ser fita simples, mas pode dobrar-se e formar regiões pareadas; não o descreva como incapaz de estrutura tridimensional. O DNA contém informação utilizada na produção de RNAs, e nem todo gene corresponde a uma proteína: há genes cujo produto funcional é RNA. O RNA mensageiro apresenta a sequência lida na tradução; o transportador participa do reconhecimento de códons e entrega aminoácidos; o ribossômico integra a estrutura e a atividade catalítica do ribossomo. Há ainda RNAs de regulação e de processamento. DNA não é uma proteína e não entrega diretamente aminoácidos ao ribossomo. Em eucariotos, além do DNA nuclear, mitocôndrias e, quando presentes, cloroplastos possuem DNA; portanto todo DNA fica no núcleo é uma generalização inadequada. Compare estrutura e função sem supor que uma sequência curta identifique um organismo ou determine sozinha um traço complexo.",
+        "steps": [
+          "Identifique açúcar e bases sem trocar T e U.",
+          "Observe orientação e complementaridade das fitas.",
+          "Diferencie as funções dos principais tipos de RNA.",
+          "Separe informação genética e produto funcional."
+        ],
+        "example": "Exemplo autoral de orientação: a fita de DNA 5′-ACGT-3′ tem complementar antiparalela 3′-TGCA-5′. Se for necessário escrever a complementar começando por sua extremidade 5′, ela deve ser lida no sentido inverso. Inverter a ordem de apresentação e complementar as bases são operações diferentes.",
+        "pitfall": "Chamar DNA de proteína, negar dobramento ao RNA ou supor que qualquer gene necessariamente seja traduzido em proteína."
+      },
+      {
+        "level": "intermediate",
+        "title": "Transcrição e processamento de RNA",
+        "explanation": "Na transcrição, a RNA polimerase utiliza uma fita de DNA como molde. O molde é lido no sentido 3′→5′, e o RNA é sintetizado 5′→3′. Para as bases usuais, A no molde corresponde a U no RNA; T a A; C a G; G a C. A fita codificante, apresentada no mesmo sentido 5′→3′ do transcrito, coincide com ele na região considerada, com T no DNA e U no RNA. Assim, trocar T por U diretamente no molde seria erro: essa troca direta serve à fita codificante, respeitada a orientação. Diferentes genes podem usar fitas diferentes como molde; não atribua para sempre a uma das fitas de um cromossomo esse papel. Replicação copia DNA para DNA; transcrição produz RNA a partir de DNA; tradução interpreta uma sequência de RNA em aminoácidos. Na expressão de genes nucleares de eucariotos, muitos pré-mRNAs recebem cap 5′, cauda poli-A e splicing. No splicing, íntrons são removidos do transcrito e éxons retidos são unidos, sem recortar automaticamente o DNA. Éxons podem incluir regiões não traduzidas, portanto éxon não significa apenas trecho que vira aminoácidos. Processamentos podem começar durante a transcrição, e splicing alternativo pode gerar transcritos distintos de um mesmo gene. Em bactérias, a ausência de envoltório nuclear permite acoplamento de transcrição e tradução; não transfira a separação núcleo/citoplasma para toda célula. O produto RNA também pode exercer função sem tradução.",
+        "steps": [
+          "Leia qual fita foi fornecida e marque suas extremidades.",
+          "Obtenha RNA complementar e antiparalelo ao molde.",
+          "Diferencie transcrição, replicação e tradução.",
+          "Aplique processamento ao RNA no contexto celular indicado."
+        ],
+        "example": "Modelo autoral diferente das tarefas: se a fita codificante de um trecho é 5′-ATG CAA TGA-3′, o RNA correspondente é 5′-AUG CAA UGA-3′. Essa troca direta usa a codificante. Se o enunciado fornecesse a molde, seria necessário complementar e conferir o sentido em vez de fazer a mesma substituição.",
+        "pitfall": "Complementar a fita codificante como se fosse molde ou afirmar que splicing corta éxons do DNA e que todo nucleotídeo retido será traduzido."
+      },
+      {
+        "level": "advanced",
+        "title": "Tradução, códons e efeitos de alterações",
+        "explanation": "Na tradução, o ribossomo lê o mRNA em sentido 5′→3′, em trincas chamadas códons, dentro de um quadro de leitura estabelecido na iniciação. O tRNA tem anticódon que pareia de forma antiparalela ao códon e recebe seu aminoácido por ação de enzimas de carregamento; o aminoácido não é criado pelo próprio anticódon. O ribossomo reúne os aminoácidos em cadeia, com participação catalítica de RNA. No código padrão, há 64 códons: 61 especificam aminoácidos e três, UAA, UAG e UGA, sinalizam parada. Parada não é um aminoácido adicional; fatores de liberação participam da terminação. AUG codifica metionina e frequentemente inicia tradução no contexto apropriado; nem todo AUG interno inaugura outra proteína. Em bactérias, a iniciação tem particularidades, como metionina formilada no tRNA iniciador. O código é degenerado: diferentes códons podem especificar o mesmo aminoácido, e isso não significa que um mesmo códon padrão signifique qualquer aminoácido. Há exceções ao código padrão em certos sistemas; use a tabela e as hipóteses do exercício. Substituir uma base pode manter o aminoácido, trocá-lo ou criar parada, dependendo da posição e da sequência. Inserções ou deleções na região traduzida que não sejam múltiplas de três podem deslocar o quadro a jusante; não conclua um efeito funcional específico sem informação. Transcrição reversa de RNA em DNA existe e não equivale a copiar informação de proteína para RNA. Os exercícios abaixo usam trechos fictícios sem processamento ou recodificação, para isolar as operações indicadas.",
+        "steps": [
+          "Fixe início e quadro de leitura fornecidos.",
+          "Leia cada códon na tabela do exercício.",
+          "Conte apenas aminoácidos antes da primeira parada no quadro.",
+          "Compare a sequência e evite presumir efeito funcional sem evidência."
+        ],
+        "example": "Contagem autoral abstrata: um trecho de leitura fornecido contém cinco códons que especificam aminoácidos e, em seguida, um códon de parada no mesmo quadro. O produto inicial tem cinco resíduos, não seis; nessa cadeia linear há quatro ligações peptídicas. Não foi dado o comprimento de UTRs, que não deve ser incluído na conta.",
+        "pitfall": "Contar stop como aminoácido, reiniciar em todo AUG ou afirmar que qualquer substituição altera obrigatoriamente a sequência e a função da proteína."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Trecho fictício autoral de DNA, sem íntrons ou edição: fita codificante 5′-ATG GCT TAA-3′. Qual RNA corresponde a essa região, escrito no sentido 5′→3′?",
+        "hint": "O enunciado identifica a fita codificante, não a molde. Preserve a ordem no sentido indicado e troque T por U.",
+        "options": [
+          "5′-UAC CGA AUU-3′.",
+          "5′-ATG GCT TAA-3′.",
+          "5′-AUG GCU UAA-3′.",
+          "5′-AAU UCG GUA-3′."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: a sequência da codificante no mesmo sentido do transcrito coincide com a do RNA, com T substituído por U: AUG GCU UAA. A complementa indevidamente a codificante; B mantém timina no lugar de uracila; D inverte a ordem do RNA correto. Não se pede aqui identificar uma espécie nem supor que todo trecho transcrito seja região traduzida de um gene real."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo autoral sem íntrons, edição ou recodificação: fita molde 3′-TAC CCG ATT-5′. Escreva o RNA 5′→3′ e traduza a partir do AUG inicial até a parada. Use exclusivamente a tabela fornecida: AUG=Met; GGC=Gly; UAA=stop.",
+        "hint": "Complemente o molde com RNA antiparalelo; depois separe as trincas no quadro inicial. O códon de parada não adiciona aminoácido.",
+        "options": [
+          "5′-AUG GGC UAA-3′; Met–Gly, dois aminoácidos antes da parada.",
+          "5′-UAC CCG AUU-3′; Met–Gly, dois aminoácidos antes da parada.",
+          "5′-AUG GGC UAA-3′; Met–Gly–stop, três aminoácidos.",
+          "5′-AAU CGG GUA-3′; Gly–Met, dois aminoácidos antes da parada."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: o molde 3′-TAC CCG ATT-5′ gera RNA 5′-AUG GGC UAA-3′. Pela tabela fornecida e pelo início fixado, AUG especifica Met, GGC especifica Gly e UAA termina; são dois aminoácidos. B troca apenas T por U no molde; C conta stop como aminoácido; D inverte indevidamente o sentido da sequência correta e não aplica a tabela no quadro indicado. A cadeia fictícia não representa uma proteína funcional real."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Sequência fictícia autoral lida desde o AUG: 5′-AUG UAC GAA UGA-3′. Uma substituição troca UAC por UAU. Não há edição ou recodificação. Tabela fornecida: AUG=Met; UAC=UAU=Tyr; GAA=Glu; UGA=stop. Qual conclusão compara corretamente os produtos iniciais?",
+        "hint": "Compare códons antes e depois da substituição e diferencie sequência de RNA, sequência de aminoácidos e efeito funcional não fornecido.",
+        "options": [
+          "A troca adiciona obrigatoriamente um aminoácido, porque qualquer base nova alonga a cadeia.",
+          "UAU torna-se um códon de parada, mesmo que a tabela o associe a Tyr.",
+          "A sequência do RNA fica idêntica, pois dois códons podem especificar Tyr.",
+          "Os dois produtos têm a mesma sequência inicial de aminoácidos Met–Tyr–Glu, embora a sequência do RNA seja alterada."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: UAC e UAU especificam Tyr na tabela; a cadeia inicial continua Met–Tyr–Glu e UGA indica parada. O RNA mudou em uma base. A confunde substituição e inserção; B contraria a tabela; C confunde redundância do código com identidade de nucleotídeos. A igualdade dessa sequência não demonstra, por si, igualdade de toda regulação ou de todo efeito funcional em um organismo."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Iluminismo e revoluções modernas",
+    "objective": "Relacionar projetos iluministas e revoluções modernas sem causalidade única, comparando limitação do poder, soberania, independência e participação efetiva em contextos históricos distintos.",
+    "prerequisites": [
+      "Absolutismo e sociedade de ordens",
+      "Colonização e escravidão atlântica",
+      "Distinção entre fonte, interpretação e contexto"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Razão crítica e projetos políticos diversos",
+        "explanation": "Iluminismo designa um conjunto diverso de debates, especialmente do século XVIII, com antecedentes no século XVII e circulação em vários espaços. A valorização da investigação, da razão e da crítica à autoridade herdada não produziu um programa político único. Nem todo pensador foi ateu, nem todos defenderam o mesmo governo ou a mesma extensão de participação. Locke, importante referência anterior, relacionou legitimidade ao consentimento e à proteção de direitos, entre eles vida, liberdade e propriedade; isso permite discutir limites do governo, sem converter sua teoria em defesa de qualquer Estado posterior. Montesquieu examinou formas de governo e o perigo de concentração: distinguir funções legislativas, executivas e judiciais e estabelecer limites ajuda a conter o arbítrio. Não significa que cada instituição possa agir sem regras ou que os poderes não mantenham relações. Rousseau discutiu soberania do corpo de cidadãos e vontade geral ligada ao interesse comum, que não é simplesmente a soma de conveniências privadas. Há tensões e interpretações distintas dessa formulação; não a use como autorização automática a qualquer decisão de um governante que diga representar o povo. Redes de leitura e debate difundiram e transformaram ideias, com condições de acesso desiguais. Para estudar um argumento, identifique problema, conceito e projeto de cada autor, evitando reunir todos sob uma frase inventada ou interpretar o Iluminismo como consenso pronto sobre a democracia atual.",
+        "steps": [
+          "Situe autor, obra ou argumento no tempo.",
+          "Identifique a autoridade ou o privilégio criticado.",
+          "Diferencie consentimento, limites institucionais e vontade geral.",
+          "Compare projetos sem inventar unanimidade entre pensadores."
+        ],
+        "example": "Comparação autoral, sem citação literal: um argumento pergunta por que o governo é legítimo e quando pode ser resistido; outro examina como a distribuição institucional limita o abuso. As perguntas podem dialogar, mas não são idênticas. A primeira se aproxima do problema do consentimento em Locke; a segunda, da limitação institucional em Montesquieu.",
+        "pitfall": "Atribuir a todos os iluministas um mesmo projeto, confundir crítica à intolerância com ateísmo obrigatório ou transformar conceitos em frases supostamente citadas."
+      },
+      {
+        "level": "intermediate",
+        "title": "Revoluções e mudanças de poder em contextos distintos",
+        "explanation": "Revoluções modernas devem ser explicadas por conflitos e condições próprias, não como execução inevitável de um livro. Na Inglaterra do século XVII, disputas entre Coroa e Parlamento culminaram em mudanças como a Revolução de 1688–1689. O Bill of Rights de 1689 consolidou limites e liberdades parlamentares; isso não aboliu a monarquia nem instituiu participação política igual de toda a população. Sua cronologia precede a atuação de vários pensadores franceses do século XVIII, de modo que não pode ser apresentada como simples consequência de obras posteriores. Nas Treze Colônias britânicas, a Declaração de Independência adotada em 4 de julho de 1776 justificou ruptura política por direitos e consentimento dos governados. A independência não correspondeu a abolição geral imediata da escravidão. Na França, crise financeira, privilégios da sociedade de ordens, conflitos de representação e mobilizações se articularam em 1789. A convocação dos Estados Gerais e a formação da Assembleia Nacional mostram disputa sobre quem podia falar pela nação. A Declaração de 26 de agosto de 1789 proclamou direitos e soberania nacional, mas o processo revolucionário passou por fases e disputas, sem instituições e eleitorado constantes. Comparar os casos exige diferenciar limitação da Coroa, independência colonial e transformação da ordem social e política; ideias circulam, mas não anulam conflitos materiais, guerra ou escolhas dos participantes.",
+        "steps": [
+          "Organize a cronologia sem inverter causa e consequência.",
+          "Identifique conflitos e agentes de cada processo.",
+          "Diferencie independência, mudança de regime e limitação de poder.",
+          "Relacione ideias e condições sem causa única ou resultado inevitável."
+        ],
+        "example": "Sequência autoral de leitura histórica: um estudante encontra um registro parlamentar inglês de 1689 e uma formulação francesa do século XVIII. A presença de temas semelhantes permite comparar argumentos, mas a data impede afirmar que o documento anterior foi produzido por influência direta daquela formulação posterior. Relação intelectual não dispensa cronologia.",
+        "pitfall": "Chamar todas as revoluções de acontecimentos idênticos, supor que independência significa abolição ou explicar uma mudança anterior como consequência de um texto posterior."
+      },
+      {
+        "level": "advanced",
+        "title": "Direitos proclamados, exclusões e revolução haitiana",
+        "explanation": "Uma declaração de igualdade é fonte de um projeto político e de disputas de legitimidade; não comprova que toda pessoa tenha passado a votar, exercer cargo ou viver sem coerção. Na experiência francesa, o sufrágio de 1791 foi censitário e indireto, com requisitos de participação; não é rigoroso resumi-lo como voto de todos nem como acesso exclusivo de uma pequena elite sem examinar as condições. Em1792 houve ampliação do sufrágio masculino para a eleição da Convenção, enquanto o Diretório restabeleceu restrições censitárias em 1795. Essa trajetória não foi ampliação contínua e universal; mulheres permaneceram sem o mesmo direito eleitoral nacional. A ação política feminina não desaparece por isso: participação em mobilizações e acesso ao voto são dimensões diferentes. Em Saint-Domingue, colônia francesa no Caribe, a revolta de pessoas escravizadas iniciada em 1791 abriu um processo de guerra, alianças e mudanças que conduziu à independência do Haiti em 1804. Não foi simples presente da metrópole ou cópia passiva da França: a luta contra a escravidão e o poder colonial tornou central a agência dos revoltosos. Entre lideranças e etapas distintas, Toussaint Louverture e Jean-Jacques Dessalines não devem ser tratados como a mesma pessoa ou como protagonistas de todos os momentos. A reação de dirigentes escravistas dos Estados Unidos à revolução haitiana evidencia tensões entre linguagem da liberdade e interesses sociais. Analise quem é incluído, quem reivindica e que instituições efetivam ou restringem direitos, sem concluir que exclusões tornam todas as transformações inexistentes.",
+        "steps": [
+          "Separe texto normativo, prática e disputa social.",
+          "Examine requisitos eleitorais em cada etapa.",
+          "Reconheça sujeitos escravizados e colonizados como agentes.",
+          "Compare transformações e continuidades sem progresso automático."
+        ],
+        "example": "Método autoral: ao estudar uma mobilização de mulheres, uma pesquisa encontra presença em protestos e ausência de direito eleitoral equivalente. Não há contradição entre os dois dados: ser agente político é mais amplo que ter voto reconhecido. A conclusão deve conservar as duas informações, em vez de apagar a ação ou inventar igualdade eleitoral.",
+        "pitfall": "Converter direito proclamado em acesso universal imediato, apresentar conquistas como dádiva ou reduzir a revolução haitiana a uma repetição sem sujeitos próprios."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Problema hipotético autoral: uma autoridade acumula fazer leis, executá-las e julgar sua própria conduta, sem controle. Uma crítica propõe distribuir funções e estabelecer limites institucionais para conter o arbítrio. Com qual problema político essa crítica mais diretamente dialoga?",
+        "hint": "Identifique o mecanismo institucional proposto, sem confundi-lo com herança de poder ou concentração em nome de uma vontade pessoal.",
+        "options": [
+          "Legitimação de todo poder hereditário como necessariamente ilimitado.",
+          "Eliminação de qualquer regra comum e de toda função de julgamento.",
+          "Garantia de que uma pessoa jamais poderá abusar só por afirmar falar pelo povo.",
+          "Limitação da concentração do poder, associada à reflexão de Montesquieu."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: o mecanismo de distribuir funções e limitar concentração se relaciona ao problema enfrentado por Montesquieu. A justifica o que a crítica contesta; B confunde controle do poder e ausência de regras; C transforma declaração pessoal de representação em garantia de não abuso. O enunciado é uma síntese própria de treino, não uma citação do autor nem a descrição de um regime histórico específico."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Síntese autoral de três marcos históricos: Bill of Rights inglês, 1689; Declaração de Independência das Treze Colônias, 1776; Declaração francesa de direitos, 1789. Qual comparação preserva cronologia e diferenças entre os processos?",
+        "hint": "Diferencie limite à Coroa, ruptura colonial e transformação da ordem francesa; um texto posterior não pode ser causa direta de um documento anterior.",
+        "options": [
+          "Os três documentos aboliram imediatamente toda forma de escravidão e criaram eleitorados universais idênticos.",
+          "Os marcos são distintos e podem ser comparados em torno de poder e direitos; o inglês precede os outros dois e não é efeito direto das declarações posteriores.",
+          "A declaração francesa de 1789 produziu diretamente o documento inglês de 1689, cem anos antes.",
+          "A independência das colônias em 1776 restaurou o poder ilimitado da Coroa britânica sobre elas."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: reconhece temas em circulação e diferenças institucionais sem inverter o tempo. A atribui consequências universais inexistentes aos três casos; C faz o posterior causar diretamente o anterior; D inverte o sentido da ruptura independentista. Comparar permite analisar relações, mas não transforma processos distintos em cópias com o mesmo eleitorado e os mesmos resultados sociais."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Comparação autoral: declarações modernas formularam direitos, mas a escravidão e exclusões políticas persistiram em vários contextos; em Saint-Domingue, uma revolta iniciada em 1791 integrou o processo que levou ao Haiti independente em 1804. Qual interpretação é sustentada?",
+        "hint": "Considere a diferença entre proclamação e efetivação e o papel dos próprios sujeitos que enfrentavam escravidão e domínio colonial.",
+        "options": [
+          "Direitos foram objeto de disputa; a revolução haitiana evidencia ação de pessoas escravizadas contra limites da ordem colonial, sem garantir realização automática de igualdade em todo lugar.",
+          "A linguagem de liberdade demonstra que a escravidão já não existia no início da revolta haitiana.",
+          "A independência do Haiti foi um presente sem conflito, concedido por unanimidade pelos senhores coloniais.",
+          "A existência de exclusões prova que nenhuma alteração de poder ocorreu em qualquer revolução moderna."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: articula limites da efetivação e agência dos revoltosos, sem negar transformações nem prometer igualdade automática. B troca ideal por realidade já concluída; C apaga conflito e sujeitos históricos; D transforma permanências em ausência de qualquer mudança. O Haiti não é tratado como simples cópia da França, e suas etapas não são atribuídas indistintamente a uma única liderança."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Vegetação e biomas do Brasil",
+    "objective": "Distinguir bioma, formação vegetal e cobertura atual, reconhecer a diversidade dos seis biomas continentais brasileiros e interpretar mudanças de paisagem com escala, sazonalidade e origem dos dados explícitas.",
+    "prerequisites": [
+      "Clima, relevo e disponibilidade de água",
+      "Leitura de legenda e escala de mapas",
+      "Vegetação nativa e uso da terra"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Bioma, formação vegetal e cobertura da terra",
+        "explanation": "Na classificação continental brasileira adotada nesta aula, os seis biomas são Amazônia, Cerrado, Caatinga, Mata Atlântica, Pampa e Pantanal. O país também possui ecossistemas costeiros e marinhos, que não devem ser apagados por essa lista. Bioma é uma unidade ampla que integra vida e condições ambientais em escala regional; não se reduz a uma única espécie ou a uma fotografia. Formação vegetal descreve características da vegetação, como predomínio de árvores, arbustos ou herbáceas. Um mesmo bioma pode conter formações florestais, savânicas e campestres em combinações diferentes. Cobertura da terra informa o que ocupa uma área no momento observado; uso da terra envolve atividades humanas relacionadas a ela. Uma lavoura num território de determinado bioma não constitui automaticamente um novo bioma. Mapas de limites regionais e mapas de remanescentes atuais respondem a perguntas diferentes. Verifique legenda, data, escala e método antes de comparar. Vegetação aberta pode ser nativa: campo não é necessariamente floresta destruída, e aumentar o número de árvores não equivale sempre a restaurar o ambiente original. Clima, solo, relevo, disponibilidade de água e história ambiental ajudam a explicar a distribuição das formações. Há transições e diversidade interna; limites cartográficos são representações em uma escala, não muros que tornem toda paisagem idêntica de um lado e completamente diferente do outro.",
+        "steps": [
+          "Leia qual unidade o mapa representa.",
+          "Diferencie bioma e formação vegetal.",
+          "Separe limites regionais e cobertura atual datada.",
+          "Reconheça campos nativos sem pressupor degradação."
+        ],
+        "example": "Situação cartográfica autoral: um mapa regional delimita o Cerrado, e outro, do mesmo local e data indicada, mostra mata de galeria, campo nativo e lavoura. O primeiro classifica uma unidade ampla; o segundo discrimina coberturas. A diversidade da legenda não exige transformar cada mancha num bioma diferente.",
+        "pitfall": "Confundir campo nativo com área desmatada ou interpretar mudança de cobertura como substituição imediata da identidade do bioma."
+      },
+      {
+        "level": "intermediate",
+        "title": "Diversidade dos seis biomas continentais",
+        "explanation": "A Amazônia brasileira concentra extensas florestas tropicais, mas possui ambientes distintos: a presença e o regime de inundação ajudam a diferenciar paisagens florestais, e não se deve supor que toda área fique permanentemente alagada. A Mata Atlântica apresenta grande diversidade de formações e ambientes associados, incluindo florestas, restingas, manguezais e campos de altitude; não é apenas uma faixa de floresta idêntica ao longo de toda a costa. No Cerrado, no Brasil Central e em áreas de outras regiões, coexistem formações campestres, savânicas e florestais. Campo limpo e mata de galeria ilustram diferenças internas de estrutura e disponibilidade de água; cerrado sentido restrito não é sinônimo de toda a variedade do bioma. Na Caatinga, predominantemente associada ao Semiárido, muitas plantas perdem folhas durante a estação seca e retomam atividade com as chuvas; há árvores, arbustos, herbáceas e espécies suculentas, e a paisagem não é um deserto sem biodiversidade. O Pampa, na porção brasileira localizada no Rio Grande do Sul, tem destaque para campos nativos e também outras formações; não confunda toda pastagem plantada com campo nativo. O Pantanal, em Mato Grosso e Mato Grosso do Sul no recorte brasileiro, apresenta mosaico de vegetação e forte influência do pulso de inundação. Nem toda sua área permanece coberta de água ao mesmo tempo. Associe localização e processos sem reduzir cada bioma a uma única imagem ou característica absoluta.",
+        "steps": [
+          "Relacione localização geral e dinâmica ambiental.",
+          "Reconheça formações diferentes no mesmo bioma.",
+          "Diferencie campos nativos e pastagens plantadas.",
+          "Examine o regime de água e sua variação no tempo."
+        ],
+        "example": "Comparação autoral: dois registros de uma mesma área de Caatinga, feitos em épocas seca e chuvosa, mostram diferenças de folhas e coloração. Antes de afirmar desaparecimento e retorno de um bioma inteiro, considere a fenologia e confira se houve conversão de uso. A sazonalidade oferece uma hipótese a ser verificada, não prova automática de ausência de impacto.",
+        "pitfall": "Afirmar que Caatinga não tem vida, que Amazônia e Pantanal ficam integralmente alagados ou que cada bioma só admite uma formação vegetal."
+      },
+      {
+        "level": "advanced",
+        "title": "Monitoramento e conservação de paisagens",
+        "explanation": "Mudanças de cobertura precisam ser interpretadas com método. Uma diferença visual entre imagens pode decorrer de conversão real, de sazonalidade, da inundação, de nuvens ou de critérios de classificação; examine séries comparáveis e validação, em vez de chamar qualquer mancha clara de desmatamento. Sensoriamento remoto permite acompanhar formações florestais e não florestais e pode ser combinado com observações de campo. Quando se apresenta percentual de perda ou remanescente, informe recorte, data, classe e base de comparação: área total do bioma, cobertura original estimada e área já ocupada não são denominadores intercambiáveis. Mais vegetação arbórea em imagem não basta para comprovar recuperação da biodiversidade: uma plantação homogênea pode substituir um campo nativo. Nos campos do Pampa, conservar a vegetação nativa e suas funções exige reconhecer seu valor próprio, sem tratar todo ambiente aberto como falha a corrigir com árvores. Na Mata Atlântica, áreas remanescentes fragmentadas pedem análise da qualidade e das relações entre habitats, além de mera soma de área. No Pantanal, alterações no regime hídrico e no uso da paisagem precisam ser examinadas junto da sazonalidade. Conservação não se resume a escolher o bioma com maior número de árvores; é preciso identificar os processos e as formações que se pretende manter e recuperar. As decisões também envolvem populações e usos do território, sem pressupor que toda presença humana cause o mesmo efeito ou que uma solução única sirva a todos os lugares.",
+        "steps": [
+          "Compare datas, sensores, classes e condições sazonais.",
+          "Informe denominador e recorte de qualquer indicador.",
+          "Verifique se a cobertura corresponde ao habitat nativo.",
+          "Relacione conservação e dinâmica local sem solução universal."
+        ],
+        "example": "Caso autoral: um relatório conta cobertura arbórea maior após implantar árvores em um campo nativo e conclui que a biodiversidade necessariamente aumentou. A conclusão excede o indicador: ele mede árvores, não composição de espécies ou conservação do campo. É necessário examinar o ambiente de referência e os dados ecológicos antes de avaliar o resultado.",
+        "pitfall": "Tratar plantação de árvores como recuperação universal ou comparar percentuais de recortes e datas diferentes como se medissem a mesma coisa."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Modelo autoral de leitura da paisagem: uma área de campo limpo do Cerrado foi identificada como vegetação nativa, com predomínio herbáceo. Qual conclusão respeita a distinção entre bioma e formação vegetal?",
+        "hint": "Um bioma pode reunir mais de uma formação; a presença de vegetação aberta não obriga supor que antes havia floresta no local.",
+        "options": [
+          "A ausência de árvores prova que a área nunca pertenceu a nenhum bioma.",
+          "Campo limpo é uma formação que pode integrar o Cerrado; o dado de vegetação nativa não autoriza chamá-la automaticamente de floresta destruída.",
+          "Todo campo limpo é um sétimo bioma continental separado na classificação estudada.",
+          "Vegetação herbácea só pode existir em pastagem plantada por pessoas."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: campo limpo é formação campestre que pode integrar o bioma Cerrado; o enunciado identifica sua condição nativa. A confunde bioma e presença de árvores; C troca formação por unidade continental; D nega campos naturais. Reconhecer vegetação nativa não elimina a necessidade de monitoramento, mas impede supor uma floresta original apenas pela aparência aberta."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Quadro de revisão inteiramente autoral. Qual associação preserva características gerais dos biomas sem impor homogeneidade a todas as suas áreas?",
+        "hint": "Use localização e processos: campos no Sul, resposta sazonal à água e pulsos de inundação, evitando palavras como todo e permanente.",
+        "options": [
+          "Pampa: somente floresta tropical densa; Caatinga: deserto sem plantas; Pantanal: água permanente em toda a extensão.",
+          "Cerrado: apenas floresta sem formações campestres; Mata Atlântica: cobertura homogênea sem ambientes associados.",
+          "Amazônia: toda a vegetação permanentemente submersa; Pampa: qualquer lavoura de todo o país.",
+          "Pampa: destaque de campos nativos no recorte brasileiro do RS; Caatinga: muitas plantas com resposta à estação seca; Pantanal: mosaico sob influência do pulso de inundação."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: as três associações são gerais e admitem diversidade interna. A inventa exclusividade florestal e ausência de vida, além de inundação integral permanente; B apaga formações e ambientes; C generaliza submersão e confunde lavoura com bioma. Reconhecimento por processos deve ser combinado com localização e dados; uma característica isolada numa fotografia não substitui a análise."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cenário cartográfico autoral: um mapa M delimita os biomas numa escala regional. Um mapa N mostra, com legenda própria, a cobertura da terra em 2025. N registra lavouras e remanescentes dentro do limite de um bioma de M. Qual interpretação é adequada?",
+        "hint": "Os mapas respondem a perguntas distintas; uma classe de uso ou cobertura não equivale automaticamente a outro limite regional de bioma.",
+        "options": [
+          "M e N necessariamente se contradizem, porque um bioma não pode conter área convertida em lavoura.",
+          "As lavouras de N viraram automaticamente um novo bioma continental, sem depender do critério de M.",
+          "M representa uma delimitação regional e N a cobertura datada; a conversão pode ser estudada dentro dos limites de M, conferindo escalas e métodos.",
+          "N prova que toda a biodiversidade permaneceu idêntica, mesmo sem dados de espécies ou habitat."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: os produtos podem ser complementares. É possível mapear cobertura atual e mudanças dentro de uma unidade regional, respeitando legenda, escala e método. A exige homogeneidade inexistente; B confunde conversão e novo bioma; D infere conservação de biodiversidade sem indicador apropriado. Os mapas M e N são hipotéticos, sem imagem ausente necessária para resolver o exercício."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Lógica, falácias e linguagem",
+    "objective": "Reconstruir premissas e conclusão, distinguir verdade, validade e solidez e avaliar inferências formais e falácias em linguagem contextualizada, sem usar rótulos como substituto de análise.",
+    "prerequisites": [
+      "Enunciado e argumento",
+      "Diferença entre evidência e opinião",
+      "Leitura de negação e conectivos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Proposições, premissas e conclusão",
+        "explanation": "Um argumento apresenta razões para sustentar uma conclusão. As razões são premissas; a conclusão é a afirmação que se pretende justificar. Não é necessário haver briga ou muitas pessoas para existir argumento. Um conjunto de frases sobre o mesmo tema pode apenas descrever uma situação, sem relação de apoio. Na análise introdutória clássica, trabalhamos com enunciados declarativos aos quais se atribui verdade ou falsidade no contexto. Perguntas e ordens, tomadas como tais, não são proposições declarativas nesse uso. Ainda que não saibamos se um enunciado é verdadeiro, ele pode ser avaliado como afirmação; desconhecimento não o transforma em pergunta. Expressões como portanto e porque podem ajudar a localizar funções, mas não garantem que a inferência esteja correta. Uma mesma proposição pode ser conclusão de uma etapa e premissa de outra. Reescreva o argumento sem mudar o que ele afirma e indique quando precisar de uma premissa implícita: acrescentar por conta própria uma razão controversa pode transformar o argumento em outro. A linguagem natural também exige atenção a termos vagos, ambiguidades e quantificadores. Todos não significa alguns, e uma palavra repetida pode mudar de sentido. Avaliar o apoio entre enunciados é uma tarefa diferente de descobrir se cada informação realmente ocorreu, embora ambas importem para uma boa argumentação.",
+        "steps": [
+          "Localize o que o texto pretende sustentar.",
+          "Liste as razões oferecidas como premissas.",
+          "Diferencie afirmação, pergunta e ordem.",
+          "Explicite ambiguidades e pressupostos sem alterar o argumento."
+        ],
+        "example": "Argumento autoral: “O arquivo deve ser preservado, pois reúne os únicos registros disponíveis dessa pesquisa”. A recomendação de preservação é a conclusão; a singularidade dos registros é a razão oferecida. Para avaliar se essa razão basta, é preciso examinar também critérios de preservação e a verdade da informação, sem supor que a palavra pois já prove o resultado.",
+        "pitfall": "Confundir argumento com discussão hostil ou aceitar uma conclusão só porque o texto contém portanto."
+      },
+      {
+        "level": "intermediate",
+        "title": "Validade, solidez e contramodelos",
+        "explanation": "Na dedução clássica aqui estudada, um argumento é válido quando não há caso em que todas as premissas sejam verdadeiras e a conclusão falsa. Validade não afirma que suas premissas são de fato verdadeiras. Um argumento sólido é válido e tem premissas verdadeiras. Uma conclusão verdadeira pode resultar de um raciocínio inválido; encontrar sua verdade isoladamente não prova a validade. Use P e Q para representar proposições. Na interpretação material, P→Q só é falsa com P verdadeira e Q falsa; esse conectivo não expressa sozinho uma causa física nem toda nuance do se cotidiano. Modus ponens tem forma P→Q; P; logo Q. Modus tollens tem forma P→Q; não Q; logo não P. As duas formas preservam verdade sob premissas verdadeiras. Já concluir P apenas de P→Q e Q é afirmar o consequente: P falsa e Q verdadeira torna as duas premissas verdadeiras, mas a conclusão falsa. Negar o antecedente, concluindo não Q de P→Q e não P, também não é regra válida. Uma tabela com as quatro combinações de P e Q pode testar esses casos. Um contramodelo basta para refutar validade; exemplos favoráveis isolados não a garantem. Esse critério é de consequência dedutiva: uma inferência indutiva procura apoio ampliativo, sem a mesma garantia lógica, e deve ser examinada segundo força da evidência e condições.",
+        "steps": [
+          "Separe validade da verdade factual das premissas.",
+          "Fixe a interpretação dos conectivos usados.",
+          "Procure premissas verdadeiras com conclusão falsa.",
+          "Diferencie forma dedutiva e apoio indutivo."
+        ],
+        "example": "Modelo autoral: todos os objetos da caixa K são de bronze; toda peça de bronze conduz eletricidade; portanto todos os objetos da caixa K conduzem eletricidade. A passagem é dedutivamente válida na leitura universal dada. Sem inspecionar a caixa, porém, não se estabeleceu a verdade da primeira premissa nem a solidez do argumento.",
+        "pitfall": "Concluir validade a partir de uma conclusão verdadeira ou confundir um condicional com sua recíproca."
+      },
+      {
+        "level": "advanced",
+        "title": "Falácias e precisão na linguagem",
+        "explanation": "Falácia é uma deficiência de raciocínio a ser demonstrada, não um nome que vence a discussão. Em uma falácia formal, uma estrutura inválida pode ser identificada independentemente do tema. Na análise informal, examine relevância, suficiência, pressupostos e contexto das razões. Um ataque a traço pessoal sem relação com a tese não refuta o argumento: é o uso falacioso do ad hominem. Isso não torna toda avaliação de credibilidade irrelevante; conflito de interesse, competência e acesso aos dados podem importar para testemunhos, sem substituir exame da evidência. Espantalho atribui ao oponente uma posição distorcida e mais fácil de atacar. Falso dilema apresenta alternativas como se esgotassem possibilidades quando não as esgotam. Generalização apressada excede o que os casos sustentam. Post hoc transforma sucessão temporal em prova suficiente de causalidade; a ordem dos acontecimentos pode ser informação relevante, mas não basta sozinha. Petição de princípio toma como apoio aquilo que precisava justificar, produzindo circularidade. Equívoco pode explorar sentidos diferentes do mesmo termo, como legal significando permitido por lei em uma premissa e agradável em outra. Não é a mera ambiguidade de uma palavra que configura a falha: é seu uso para sustentar a passagem sem conservar o sentido pertinente. Referir uma autoridade competente pode integrar um argumento, mas fama ou cargo fora do tema não garantem verdade. Ao criticar, indique a razão que falta ou a passagem indevida e considere se a conclusão poderia ser sustentada por outra evidência. Uma falácia no argumento não prova automaticamente que sua conclusão é falsa.",
+        "steps": [
+          "Reconstrua a posição antes de criticá-la.",
+          "Mostre a deficiência concreta entre razão e conclusão.",
+          "Confira sentidos dos termos e alternativas omitidas.",
+          "Diferencie rejeição de uma inferência e prova de falsidade da tese."
+        ],
+        "example": "Exemplo autoral de circularidade: “Este procedimento é o mais confiável porque nenhum outro merece tanta confiança; e sei disso porque ele é o mais confiável”. A repetição não acrescenta critério ou evidência independente. Identificar o círculo não demonstra que o procedimento seja ruim: mostra que essa justificativa não estabeleceu sua superioridade.",
+        "pitfall": "Chamar toda discordância de falácia, proibir qualquer testemunho especializado ou tomar falha de argumento como prova automática da tese contrária."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Texto autoral: “A entrada lateral foi interditada; por isso, a equipe deve orientar visitantes para a entrada principal”. Qual análise identifica corretamente conclusão e razão oferecida, sem julgar ainda se a recomendação é suficiente?",
+        "hint": "Separe a informação usada como apoio da recomendação introduzida por por isso.",
+        "options": [
+          "A razão é orientar visitantes; a conclusão é que a entrada lateral jamais existiu.",
+          "O texto não contém argumento porque não há insultos entre interlocutores.",
+          "A conclusão é orientar visitantes para a entrada principal; a interdição lateral é a razão oferecida.",
+          "A presença de por isso garante, por si, que toda a informação é verdadeira e que não falta nenhuma condição."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: a interdição é apresentada como apoio à recomendação de orientar para outra entrada. A inverte funções e inventa inexistência; B confunde argumento e briga; D transforma marcador linguístico em garantia de verdade e suficiência. A questão identifica funções sem verificar acesso, segurança ou outras condições do caso fictício."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Na lógica proposicional clássica, com → material, analise a forma P → Q; Q; logo P. Qual caso é um contramodelo que demonstra sua invalidade?",
+        "hint": "É preciso que as duas premissas sejam verdadeiras ao mesmo tempo que a conclusão seja falsa. Não basta tornar uma premissa falsa.",
+        "options": [
+          "P verdadeira e Q falsa: assim a primeira premissa é falsa, o que por si refuta validade.",
+          "P falsa e Q verdadeira: premissas verdadeiras e conclusão falsa.",
+          "P verdadeira e Q verdadeira: conclusão verdadeira é prova de invalidade.",
+          "P falsa e Q falsa: a segunda premissa falsa prova que nenhuma forma pode ser válida."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: com P falsa e Q verdadeira, P→Q é verdadeira na interpretação material, Q é verdadeira e a conclusão P é falsa. Isso basta como contramodelo da afirmação do consequente. A torna o condicional falso; C tem conclusão verdadeira; D torna Q falsa. Esses três casos não satisfazem o critério solicitado. A forma válida modus ponens requer P como segunda premissa e conclui Q, não a inversão apresentada."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Discussão fictícia autoral: Lia apresenta dados e método para avaliar os horários de uma biblioteca. Rui responde apenas: “O relatório deve ser rejeitado porque não gosto da roupa de Lia”. Qual avaliação examina a relação entre razão e conclusão?",
+        "hint": "Observe se a característica citada é relevante para dados e método; não conclua automaticamente a verdade da proposta de Lia.",
+        "options": [
+          "A preferência sobre roupa refuta necessariamente todos os dados apresentados.",
+          "A rejeição de Rui prova que Lia está certa em tudo, sem necessidade de conferir método.",
+          "Nenhuma crítica sobre fonte, método ou credibilidade poderia ser relevante em qualquer debate.",
+          "O traço pessoal citado não refuta dados e método; o ataque é irrelevante nesse argumento, e o relatório ainda precisa ser avaliado por evidências."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a preferência de Rui sobre roupa não sustenta a rejeição do relatório, caracterizando ataque pessoal irrelevante no contexto. A aceita a falsa relação; B transforma falácia numa prova automática da tese contrária; C proíbe avaliações que podem ser pertinentes. O diagnóstico atinge essa justificativa de Rui, sem conferir por si a verdade dos dados ou a qualidade do relatório."
+      }
+    ]
   }
 ];
 
@@ -1002,6 +1370,141 @@ export const authoredCurriculumBatch11ReviewRecords = [
         "index": 2,
         "correctIndex": 1,
         "reasoning": "No modelo de hidratação de Na+ por água, o lado parcialmente negativo (pares de elétrons no oxigênio) tende a se orientar para o cátion, formando interação íon–dipolo, mas a solubilidade depende do balanço entre a energia de rede do sal e a energia de hidratação. A alternativa 0 inverte a direção da atração esperada (os hidrogênios parcialmente positivos seriam repelidos pelo cátion, não atraídos). A alternativa 2 afirma incorretamente que a atração prova solubilidade ilimitada para qualquer sal. A alternativa 3 confunde hidratação com quebra obrigatória de ligações O–H da água. A resolução independente confirma o índice 1 como correto."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "DNA, RNA e síntese proteica",
+    "contentSha256": "e79a4e9e7beaa35cf751b13dd13cbd672caeb7922bb8d721284be450bbd7c1fe",
+    "draftMethod": "Autoria e conferência Codex com NHGRI e referências acadêmicas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.genome.gov/genetics-glossary/Deoxyribonucleic-Acid-DNA",
+      "https://www.genome.gov/genetics-glossary/Ribonucleic-Acid-RNA",
+      "https://www.genome.gov/genetics-glossary/Translation",
+      "https://www.genome.gov/genetics-glossary/Genetic-Code",
+      "https://openstax.org/books/biology-2e/pages/15-1-the-genetic-code",
+      "https://openstax.org/books/biology-2e/pages/15-2-prokaryotic-transcription",
+      "https://openstax.org/books/biology-2e/pages/15-3-eukaryotic-transcription",
+      "https://openstax.org/books/biology-2e/pages/15-4-rna-processing-in-eukaryotes",
+      "https://openstax.org/books/biology-2e/pages/15-5-ribosomes-and-protein-synthesis"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "C, índice2: a fita codificante5′-ATG GCT TAA-3′ corresponde ao RNA5′-AUG GCU UAA-3′ no mesmo sentido. A complementa indevidamente a codificante; B mantém timina; D inverte o RNA correto. Trata-se de gabarito de atividade autoral Kognos, sem caráter oficial das provas. Orientação e identidade da fita, não mera troca indiscriminada de bases, determinam a operação."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A, índice0: o molde3′-TAC CCG ATT-5′ é lido3′→5′ e dá RNA5′-AUG GGC UAA-3′. Por trinca, TAC→AUG, CCG→GGC e ATT→UAA; não há timina no RNA. A tabela fornecida traduz Met–Gly antes da parada. B apenas troca T por U no molde; C conta stop como aminoácido; D inverte a sequência e não aplica a tabela no quadro fixado."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "D, índice3: a substituição muda a terceira base do códon UAC, produzindo UAU; ambos especificam tirosina(Tyr) na tabela. A cadeia inicial mantém Met–Tyr–Glu e o RNA muda. A confunde substituição e inserção; B contraria a tabela; C confunde identidade de aminoácidos e de nucleotídeos. Não é possível concluir igualdade de toda regulação ou efeito funcional apenas dessa sequência."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Iluminismo e revoluções modernas",
+    "contentSha256": "88b31cac1c3574b242f74cdc2b830d2781e37df0f7da711966b66d7fa8f5639d",
+    "draftMethod": "Autoria e conferência Codex em arquivos e instituições históricas e acadêmicas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://plato.stanford.edu/entries/locke-political/",
+      "https://plato.stanford.edu/entries/montesquieu/",
+      "https://plato.stanford.edu/entries/rousseau/",
+      "https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/revolution/overview/billofrights/",
+      "https://www.archives.gov/milestone-documents/declaration-of-independence",
+      "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000697056",
+      "https://history.state.gov/milestones/1784-1800/haitian-rev",
+      "https://www.elections.interieur.gouv.fr/comprendre-elections/pourquoi-je-vote/limportance-du-droit-de-vote",
+      "https://www.chateauversailles.fr/decouvrir/histoire/les-grandes-dates/serment-jeu-paume"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "A critica sobre distribuicao de funcoes e limites instituicionais corresponde diretamente à teoria montesquieuiana da separacao de poderes, enquanto as outras opcoes representam concepcoes opostas: poder hereditario ilimitado (opcao 0), eliminacao de regras e funcoes de julgamento (opcao 1), e garantia contra abuso de retorica popular (opcao 2) — nenhuma corresponde ao problema de distribuicao institucional posto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "A opcao correta reconhece a diferenca entre os tres marcos em torno de poder e direitos com respeto cronologico adequado (ingles precedendo os outros dois), enquanto as outras opcoes contem erros fatuais: a opcao 0 afirma abolicao imediata da escravidou e eleitorados universais identicos (fatoide), a opcao 2 inverte a causalidade cronologica (declaracao francesa produzindo documento ingles anterior), e a opcao 3 afirma que independencia restaurou poder absolutista da Coroa (contradiz o conceito de independencia)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opcao correta articula a disputa sobre direitos com a acao dos proprios sujeitos escravizados, evitando tanto a garantia automatica de igualdade quanto a negociacao de transformacoes historicas; as outras opcoes contem imprecisoes: a opcao 1 afirma que a linguagem de liberdade demonstra que a escravidencia nao existia no inicio da revolta haitiana (fato historicamente inveridico), a opcao 2 descreve independenca como presente sem conflito concedido por senhores coloniais (ignorando a violencia da revolucion), e a opcao 3 generaliza que exclusoes provam que nenhuma alteracao de poder ocorreu em nenhuma revolucion (absolutismo infundado)."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Vegetação e biomas do Brasil",
+    "contentSha256": "7da208bbebd713e6a720881ea9fc6e34c1ae19d5b3e598675006252dbd964ea6",
+    "draftMethod": "Autoria e conferência Codex com instituições ambientais e científicas brasileiras; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/Sintese_Descricao_Biomas.pdf",
+      "https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas",
+      "https://www.gov.br/insa/pt-br/semiarido-brasileiro",
+      "https://www.webambiente.cnptia.embrapa.br/webambiente/wiki/doku.php?id=webambiente:ff_cerrado_campo_limpo",
+      "https://www.gov.br/icmbio/pt-br/assuntos/unidade-de-conservacao/unidades-de-biomas/mata-atlantica/mata-atlantica",
+      "https://www.gov.br/inpe/pt-br/area-conhecimento/unidade-sul/sensoriamento-remoto",
+      "https://sema.rs.gov.br/camposdosul"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A alternativa correta reconhece que campo limpo é formação nativa do Cerrado, distinguindo bioma (unidade regional ampla) de formação vegetal (predomínio herbáceo/arbustivo); as outras inverterm a relação bioma/árvore, criam sétimo bioma continental inexistente na classificação brasileira ou negam a existência de campos nativos não desmatados."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A alternativa correta preserva características gerais dos biomas sem impor homogeneidade a todas as áreas, detalhando destaque de campos nativos no Pampa (RS), resposta da Caatinga à estação seca e mosaico do Pantanal sob pulso de inundação; as outras opções incorretamente generalizam exclusividade florestal, ausência de vida ou inundação permanente integral que contradizem a diversidade biomeânica."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "A alternativa correta interpreta mapas M e N como produtos complementares - delimitação regional e cobertura datada - permitindo estudar conversão dentro dos limites de M considerando escala e método; as outras estabelecem contraditória automática entre bioma e lavoura, conversão instantânea a novo bioma continental sem critério, ou prova de conservação de biodiversidade sem dados de espécies ou habitat."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Lógica, falácias e linguagem",
+    "contentSha256": "a8c0d769e949888c0cec46ad7a080b1a7c9acaea5b4684a3cc26c4c241310226",
+    "draftMethod": "Autoria e conferência Codex em referências acadêmicas de lógica; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-philosophy/pages/5-3-arguments",
+      "https://openstax.org/books/introduction-philosophy/pages/5-4-types-of-inferences",
+      "https://openstax.org/books/introduction-philosophy/pages/5-5-informal-fallacies",
+      "https://iep.utm.edu/val-snd/",
+      "https://plato.stanford.edu/entries/fallacies/",
+      "https://plato.stanford.edu/entries/logic-propositional/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "O texto 'A entrada lateral foi interditada; por isso, a equipe deve orientar visitantes para a entrada principal' usa 'por isso' como marcador de conclusão; a conclusão é orientar visitantes para a entrada principal, e a razão oferecida é a interdição lateral. A opção 2 corresponde corretamente a essa atribuição, enquanto a opção 0 inverte funções e inventa não-existência, a opção 1 erradamente afirma ausência de argumento por falta de insultos, e a opção 3 trata 'por isso' como garantia de verdade absoluta, o que é um erro lógico."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Na forma P → Q; Q; logo P, um contramodelo que demonstra invalidade requer que ambas as premissas (P→Q e Q) sejam verdadeiras simultaneamente enquanto a conclusão P seja falsa. Isso ocorre quando P é falsa e Q é verdadeira, caso em que P→Q é verdadeira na interpretação material (falso → verdadeiro é verdadeiro), Q é verdadeiro e P é falso. A opção 1 descreve exatamente esse cenário; a opção 0 torna o condicional falso, a opção 2 tem conclusão verdadeira, e a opção 3 torna a premissa Q falsa."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "No exemplo de Lia e Rui, a rejeição baseada apenas na preferência de Rui por roupa alheia não refuta os dados e método apresentados por Lia; trata-se de ataque pessoal irrelevante (ad hominem). A opção 3 examina corretamente essa relação, afirmando que o traço pessoal citado não invalida os argumentos e o relatório ainda necessita avaliação por evidências. As outras opções incorretamente afirmam que a preferência refuta todos os dados (0), prova que Lia está certa em tudo (1), ou proíbem qualquer crítica relevante (2)."
       }
     ]
   }

@@ -4,7 +4,42 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 26
+## Estado atual — checkpoint 27
+
+Lote11 com12 aulas;140novas nesta etapa. Acrescentadas DNA, RNA e síntese
+proteica; Iluminismo e revoluções modernas; Vegetação e biomas do Brasil;
+Lógica, falácias e linguagem. Autoria principal Codex, crítica independente
+Claude Code/NVIDIA NIM, homologação pedagógica humana pendente.
+
+Restam1155lacunas/1512identidades;ENEM151 aprofundadas/745lacunas;
+estudo151aprofundadas/30guias/726planejadas;índice357. Os quatro guias históricos
+correspondentes estão preservados; novo conteúdo assume prioridade.
+
+- DNA/RNA: fitas e orientações, funções de RNAs, transcrição e processamento,
+  éxons com possíveisUTRs, tradução e código padrão. TesteRED→GREEN transcreve
+  as duas fitas, conta Met–Gly sem stop e confere UAC→UAU com mesma tirosina.
+  Revisão refeita após ajuste de espaçamento. Metadados da crítica sobre
+  pareamentoRNA, distratores e caráter autoral corrigidos explicitamente pelo
+  principal, com original integral preservado e hashes mantidos.
+- História: projetos distintos de Locke/Montesquieu/Rousseau, cronologia inglesa,
+  norte-americana e francesa; participação e direitos não realizados por simples
+  declaração; agência de pessoas escravizadas na revolução haitiana1791–1804.
+- Geografia: seisbiomas, diversidade de formações, campos nativos, sazonalidade,
+  mapa de limite distinto de cobertura. Sem estatísticas antigas copiadas como
+  atuais ou fontes bloqueadas apresentadas como integralmente lidas.
+- Lógica: verdade/validade/solidez, inferências e falácias contextualizadas;
+  testeRED→GREEN enumera quatro valorações e distingue afirmação do consequente
+  de modusponens/tollens. Metadado da crítica corrigiu porisso como marcador de
+  conclusão, mantendo original integral e sem alterar conteúdo/hashes.
+
+661testesapp+6motor,build/lint alterado aprovados.140API comparadas integralmente;
+4novas no Chromium,12respostas,explicações e referências expandidas em
+320/375/768/1440px,sem exceções/rolagem horizontal;captura inspecionada.
+CI26success43756847259head4186c14. Sem schema/banco/merge/deploy. Próximas quatro:
+Mídias/ideologia/consumo;Fotografia/cinema/audiovisual;Lutas/artesmarciais;
+Ecologia/biomas/sustentabilidade. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 26
 
 Lote11 com oito aulas;136novas nesta etapa. Acrescentadas Inglês — Uso de língua
 inglesa em contextos socioculturais; Espanhol — Pronomes pessoais e tratamento;
