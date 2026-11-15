@@ -323,6 +323,38 @@ test('eletricidade cotidiana separa série, fator de potência e rendimento sem 
  assert.notEqual(inputA,inputA/efficiencyA);
 });
 
+test('ciências aplica força resultante ao sistema e conserva energia na subida ideal',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Força, movimento e energia');assert.ok(spec);
+ const contact=spec.tasks[1];assert.ok(contact.options&&typeof contact.correctIndex==='number');
+ const masses=[...contact.prompt.matchAll(/[AB] \((\d+) kg\)/g)].map(match=>Number(match[1]));assert.equal(masses.length,2);
+ const applied=Number(contact.prompt.match(/de (\d+) N/)?.[1]);assert.ok(applied>0);
+ const acceleration=applied/(masses[0]+masses[1]),force=masses[1]*acceleration;
+ assert.equal(contact.options[contact.correctIndex],`${force} N.`);
+ assert.equal(applied-force,masses[0]*acceleration);
+ const energy=spec.tasks[2];assert.ok(energy.options&&typeof energy.correctIndex==='number');
+ const speed=Number(energy.prompt.match(/de (\d+) m\/s/)?.[1]),gravity=Number(energy.prompt.match(/g = (\d+) m\/s²/)?.[1]),mass=Number(energy.prompt.match(/de (\d+) kg/)?.[1]);assert.ok(speed>0&&gravity>0&&mass>0);
+ const height=speed**2/(2*gravity),kinetic=mass*speed**2/2;
+ assert.equal(kinetic,mass*gravity*height);
+ assert.equal(energy.options[energy.correctIndex],`${String(height).replace('.',',')} m.`);
+ assert.notEqual(height,speed/gravity);
+ assert.notEqual(height,speed**2/gravity);
+});
+
+test('escalas convertem comprimentos e áreas e reajustam o denominador na ampliação',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Escalas e representações espaciais');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const scale=(text:string)=>Number(text.match(/1:(\d[\d.]*)/)?.[1].replaceAll('.',''));
+ const first=spec.tasks[0].prompt,denominator=scale(first),cm=Number(first.match(/de (\d+) cm/)?.[1]);assert.ok(denominator>0&&cm>0);
+ assert.equal(choice(0),`${cm*denominator/100000} km.`);
+ const second=spec.tasks[1].prompt,area=Number(second.match(/de (\d+) cm²/)?.[1]);assert.ok(area>0);
+ assert.notEqual(area*scale(second)/100000,area*(scale(second)/100000)**2);
+ const enlargement=second.match(/ampliação uniforme para (\d+)%/);assert.ok(enlargement);
+ const factor=Number(enlargement[1])/100,newDenominator=scale(second)/factor;
+ assert.equal(choice(1),`${area*(scale(second)/100000)**2} km² e 1:${newDenominator.toLocaleString('pt-BR')}.`);
+ assert.ok(spec.tasks[1].solution.includes(`1:${newDenominator.toLocaleString('pt-BR')}`));
+ assert.equal(area*factor**2*(newDenominator/100000)**2,area*(scale(second)/100000)**2);
+});
+
 test('bioquímica calcula cinética no modelo declarado e soma energia apenas com acoplamento',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Bioquímica celular e biomoléculas');assert.ok(spec);
  const kinetic=spec.tasks[1];assert.ok(kinetic.options&&typeof kinetic.correctIndex==='number');

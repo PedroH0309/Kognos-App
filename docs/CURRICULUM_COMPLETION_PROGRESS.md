@@ -4,7 +4,52 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 11
+## Estado atual — checkpoint 12
+
+O lote 06 está completo com 16 aulas, uma por disciplina. São 64 aulas novas nesta
+etapa. As sete últimas são História — Tempo histórico, fontes e historiografia;
+Geografia — Escalas e representações espaciais; Filosofia — Racionalismo e
+empirismo; Sociologia — Socialização, instituições e família; Arte — Artes visuais,
+música, dança e teatro; Educação Física — Práticas corporais e sociedade;
+Ciências — Força, movimento e energia. Revisão docente humana continua pendente.
+
+Restam 1.231 lacunas entre 1.512 identidades. ENEM editorial: 79 temas aprofundados
+e 817 lacunas. Lista de estudo ENEM: 79 aprofundadas, 48 guias e 780 planejadas;
+duas novas fontes substituem guias históricos desse inventário. Contagens
+editoriais não certificam habilidades oficiais e não são intercambiáveis.
+
+- História: retirados documentos fictícios atribuídos a pessoas e projetos reais,
+  classificação de fontes somente pela data e associação rígida entre escola
+  historiográfica e tipo de documento. Fontes são interrogadas segundo perguntas.
+- Geografia: corrigidas condições de escala e ampliação, origens falsas de erros
+  aritméticos e estatísticas incompatíveis. MAUP não exige queda monotônica da
+  correlação; dados agregados não demonstram relações individuais. Teste recalcula
+  distância, área e denominador após ampliação e confirma área real inalterada.
+- Filosofia: retiradas caricaturas de racionalismo/empirismo, classificações
+  anacrônicas e atribuições falsas a Quine e Kant. O núcleo ensina origem e
+  justificação, dúvida/cogito, reflexão em Locke e problema da indução em Hume.
+- Sociologia: retirados determinismo irreversível da infância, exclusividade
+  formal da socialização e classificação censitária inventada. Expectativas
+  incompatíveis são situadas explicitamente; família, domicílio e direito diferem.
+- Arte: corrigidas participações históricas inventadas, categorias interartes
+  exclusivas e coautoria presumida. As quatro linguagens têm descrições e
+  exercícios autossuficientes, sem exigir imagens ou sons que não são fornecidos.
+- Educação Física: retiradas pesquisas e estatísticas fabricadas, causalidade por
+  disparidade isolada e parecer jurídico errado. Avaliação de eventos exige
+  evidência e plano de uso, sem resposta opinativa de aprovação ou rejeição geral.
+- Ciências: corrigidos limiar de atrito, trabalho do atrito sempre negativo e
+  justificativas de alternativas. Referencial, forças e energia têm hipóteses;
+  teste recalcula contato, resultante em cada bloco e altura do lançamento ideal.
+
+Verificação: 631 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 64 aulas e abriu as sete novas, respondeu
+às 21 questões e verificou explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal. CI do checkpoint 11
+aprovada (run 43717481529). Sem banco, merge, deploy ou alteração de schema/RLS.
+O trabalho continua no lote 07, começando por operações, divisibilidade e
+conjuntos numéricos, com os mesmos critérios e correção principal.
+
+## Histórico — checkpoint 11
 
 O lote 06 contém nove aulas. Foram acrescentadas Inglês — Gêneros e textos
 multimodais; Espanhol — Diversidade cultural hispano-americana; Física — Grandezas,

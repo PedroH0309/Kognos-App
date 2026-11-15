@@ -830,6 +830,650 @@ export const authoredCurriculumBatch06:readonly AuthoredLessonSpec[] = [
         "correctIndex": 0
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Tempo histórico, fontes e historiografia",
+    "objective": "Distinguir cronologia, temporalidades e periodização, interrogar fontes em função de uma pergunta e comparar interpretações historiográficas com critérios de evidência, contexto e revisão.",
+    "prerequisites": [
+      "Noções de passado e presente",
+      "Leitura de descrições e comparação de argumentos",
+      "Distinção entre afirmação, indício e conclusão"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Cronologia, ritmos de mudança e recortes históricos",
+        "explanation": "Cronologia ajuda a ordenar acontecimentos e localizar relações de anterioridade, simultaneidade e posterioridade. Uma linha do tempo é útil, mas não explica por si por que algo aconteceu: vir depois não significa resultar necessariamente do fato anterior. Tempo histórico envolve ritmos de mudança e permanência em sociedades e dimensões diferentes. Uma decisão administrativa pode ocorrer em um dia; sua aplicação, conflitos e mudanças nas práticas podem se estender por anos, enquanto certas desigualdades persistem. Não se trata de dispensar datas, e sim de articular datas e processos. Ao discutir duração social, Fernand Braudel destacou a importância de relacionar acontecimentos, conjunturas e estruturas de longa duração. Essa perspectiva não impõe uma tabela universal de quantos anos cada categoria deve conter, nem transforma toda estrutura em algo imóvel. Periodização é a construção de recortes e marcos a partir de critérios e problemas de pesquisa. Um marco político pode ser pertinente para uma questão e insuficiente para outra; mudanças econômicas, culturais ou ambientais não precisam coincidir com ele. A divisão europeia em Idades não deve ser aplicada como sequência natural e uniforme a todas as sociedades. Também é necessário explicitar o calendário e a convenção usados quando se comparam datas. Em vez de assumir progresso inevitável, pergunte o que mudou, o que permaneceu, para quem e em qual escala. Uma transformação pode ampliar oportunidades de um grupo e produzir perdas para outro.",
+        "steps": [
+          "Ordene os fatos sem confundir sequência e explicação causal.",
+          "Identifique permanências e mudanças na dimensão que está sendo estudada.",
+          "Declare o critério do marco e o alcance do recorte adotado.",
+          "Compare ritmos e grupos sem impor uma sequência universal de progresso."
+        ],
+        "example": "Situação hipotética: uma norma municipal muda em certo ano, mas registros dos anos seguintes mostram que a prática anterior continuou em parte dos bairros. A data da norma é um marco relevante, porém não demonstra transformação imediata e homogênea. Investigar a aplicação permite relacionar acontecimento e processo.",
+        "pitfall": "Afirmar que uma data altera automaticamente todas as práticas ou que um recorte europeu descreve o percurso obrigatório de qualquer sociedade."
+      },
+      {
+        "level": "intermediate",
+        "title": "Vestígios, perguntas e crítica das fontes",
+        "explanation": "Uma fonte pode ser texto, objeto, imagem, mapa, registro sonoro, testemunho oral ou vestígio digital. Ela se torna evidência quando é interrogada e relacionada a uma pergunta com justificativa. Primária e secundária não são simplesmente sinônimos de antiga e recente: uma pesquisa posterior pode ser interpretação secundária de um evento e, ao mesmo tempo, fonte primária para estudar a produção intelectual da época em que foi escrita. Um depoimento recolhido décadas depois pode testemunhar experiência e elaboração da memória, exigindo análise de distância temporal, condições da entrevista e outras evidências. Para avaliar procedência e autenticidade, investigue autoria, data, suporte, circulação, integridade e trajetória do documento; para avaliar o conteúdo, examine finalidade, público, vocabulário, afirmações e silêncios. Esses procedimentos podem ser chamados de crítica externa e interna, mas se articulam na investigação, sem uma fronteira mecânica. Um documento oficial não é automaticamente neutro, e uma fonte pessoal não é automaticamente inútil. Séries documentais são construídas ou examinadas segundo critérios de comparação: cartas, inventários e registros pessoais também podem compor séries. Continuidade perfeita não é requisito para que uma série seja estudada; lacunas e mudanças de categorias precisam ser explicitadas. Confrontar fontes não é contar votos: vários relatos podem repetir a mesma origem, e divergências podem revelar posições e condições diferentes. Registre o que o material sustenta e o que permanece incerto.",
+        "steps": [
+          "Formule a pergunta antes de decidir a função de cada fonte.",
+          "Verifique procedência, integridade, autoria, suporte e circulação.",
+          "Interprete conteúdo, destinatário e finalidade em contexto.",
+          "Confronte evidências, dependências e lacunas sem exigir neutralidade absoluta."
+        ],
+        "example": "Exemplo original: um anúncio de comércio e uma carta privada descrevem a mesma rua de maneiras distintas. O anúncio pode enfatizar vantagens para atrair clientes; a carta pode registrar experiências de um morador. O pesquisador compara datas, públicos, posições e outros vestígios, em vez de descartar um tipo inteiro ou assumir que ambos descrevem toda a população.",
+        "pitfall": "Classificar apenas pela idade do documento, presumir que todo diário é não seriável ou tomar três cópias do mesmo relato como três confirmações independentes."
+      },
+      {
+        "level": "advanced",
+        "title": "Historiografia, interpretação e usos do passado",
+        "explanation": "Historiografia pode designar a produção escrita da história e o estudo crítico de como essa produção formula problemas, seleciona evidências e constrói explicações. Comparar obras exige examinar perguntas, conceitos, escalas, fontes, procedimentos e contextos de produção; uma lista de nomes e escolas não substitui essa análise. Perspectivas de duração, como a discutida por Braudel no âmbito dos Annales, ampliam o olhar para processos que não se esgotam no evento isolado. Investigações podem também reduzir a escala, acompanhar trajetórias e relações locais ou analisar práticas e representações. Esses recortes não pertencem de modo exclusivo a uma única escola e podem se combinar; uma série de preços não identifica por si a filiação teórica de um autor. Diferentes interpretações não tornam qualquer afirmação igualmente válida: é necessário explicar a relação entre evidência e conclusão, considerar contraevidências, citar a origem dos materiais e reconhecer limites. Revisar uma explicação com novas fontes ou perguntas é parte da pesquisa; inventar documentos ou suprimir evidência contrária não é uma revisão legítima. Memórias individuais e coletivas selecionam experiências e atribuem sentidos, podendo ser objetos e fontes da investigação histórica. Isso não faz da memória sinônimo de mentira, nem torna a escrita acadêmica automaticamente livre de perspectivas. Monumentos, exposições e comemorações também podem ser examinados quanto a escolhas e silêncios. Contextualizar uma ação do passado significa investigar condições e categorias de seus agentes, sem presumir que todos pensavam igual ou que compreender equivalha a justificar.",
+        "steps": [
+          "Compare problema, escala, conceitos e uso de fontes nas interpretações.",
+          "Separe diferença de enfoque e incompatibilidade de afirmações factuais.",
+          "Avalie evidências e contraevidências e preserve a rastreabilidade das referências.",
+          "Analise memória e usos públicos em seus contextos sem equiparar toda perspectiva a falsificação."
+        ],
+        "example": "Cenário hipotético: uma obra explica uma mobilização por alterações nos salários; outra acompanha redes de vizinhança por cartas e atas. Para compará-las, investigue se tratam da mesma questão, quais evidências sustentam cada argumento e se os enfoques podem se complementar. O tipo de documento, sozinho, não autoriza atribuir cada obra a uma escola fechada.",
+        "pitfall": "Deduzir uma escola pelo tipo de fonte, confundir pluralidade interpretativa com licença para inventar fatos ou tratar contextualização como aprovação moral automática."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em um cenário hipotético, uma lei altera a organização do trabalho em um ano, mas documentos de anos posteriores indicam permanência de parte das práticas anteriores em diferentes localidades. Qual interpretação é mais adequada?",
+        "hint": "Separe a data de uma decisão dos ritmos de sua aplicação e procure o alcance das evidências apresentadas.",
+        "solution": "C distingue o marco legal e o processo social: pode haver aplicação desigual e permanências que exigem investigação. A presume mudança imediata de todas as práticas. B descarta datas que seguem relevantes para localizar o marco. D transforma permanências em prova de que nada mudou, ignorando a coexistência entre continuidades e transformações.",
+        "options": [
+          "A data da lei prova que todas as práticas mudaram naquele mesmo dia.",
+          "A permanência de práticas torna qualquer data irrelevante para a pesquisa.",
+          "O marco legal e as mudanças nas práticas podem ter ritmos diferentes, a investigar em cada contexto.",
+          "A existência de qualquer permanência prova que nenhuma transformação ocorreu."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um livro publicado em 1970 interpreta acontecimentos de 1820. Uma pesquisa atual investiga como historiadores de 1970 representavam o passado. Para essa pergunta atual, qual uso do livro é metodologicamente adequado?",
+        "hint": "A função da fonte depende da pergunta, não apenas do intervalo entre publicação e acontecimento narrado.",
+        "solution": "A usa o livro como evidência primária da produção historiográfica de 1970, interrogando conceitos, escolhas e contexto. Ele pode ser interpretação secundária dos eventos de 1820, mas a pergunta atual se refere à representação produzida em 1970. B e C impõem classificação fixa pela idade ou formato. D dispensa crítica por confundir publicação com neutralidade.",
+        "options": [
+          "Analisá-lo como fonte primária para estudar a representação historiográfica produzida em 1970.",
+          "Recusá-lo como fonte primária de qualquer pesquisa, pois narra acontecimentos anteriores.",
+          "Classificá-lo como primário de 1820 apenas porque é um livro impresso.",
+          "Usá-lo como descrição neutra, dispensando exame de conceitos e contexto de publicação."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Duas obras sustentam explicações diferentes para um processo histórico. A primeira apresenta uma conclusão com documentos citados; a segunda propõe outra leitura e indica novas fontes e evidências que contrariam parte da conclusão anterior. Qual procedimento permite avaliar essa divergência?",
+        "hint": "Pluralidade de interpretações exige exame do vínculo entre pergunta, evidências e argumento, sem escolher apenas pela antiguidade ou novidade.",
+        "solution": "D permite conferir as fontes, a pertinência dos argumentos e os limites de ambas as obras, inclusive a contraevidência. Uma nova interpretação não vence só por ser mais recente, como em A. B transforma a anterioridade em autoridade irrevogável. C trata toda divergência como equivalência automática e abandona critérios de evidência. A avaliação pode justificar revisão, manutenção parcial ou rejeição de conclusões.",
+        "options": [
+          "Escolher a obra mais recente apenas pela data, sem conferir suas fontes.",
+          "Manter integralmente a primeira conclusão porque foi publicada antes.",
+          "Declarar as duas explicações igualmente válidas sem examinar evidências.",
+          "Comparar perguntas, fontes, argumentos e contraevidências antes de avaliar as conclusões."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Escalas e representações espaciais",
+    "objective": "Ler representações espaciais, calcular distâncias e áreas sob escala declarada, avaliar projeções e redimensionamento e distinguir escala cartográfica de agregação de dados, sem inferências individuais indevidas.",
+    "prerequisites": [
+      "Razões, proporções e potências",
+      "Conversões entre centímetros, metros e quilômetros",
+      "Leitura de legendas e comparação de conjuntos de dados"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Escala, legenda e medida de distâncias",
+        "explanation": "Mapas são representações seletivas, construídas para determinados objetivos. Antes de medir, leia título, legenda, orientação, fonte, data e escala. A legenda informa o significado dos símbolos; uma cor não tem sentido universal independente dela. A escala numérica 1:n expressa a razão entre comprimentos representados e correspondentes no terreno, usando a mesma unidade. No modelo de escala constante, D = d×n: se d está em centímetros, D sai em centímetros e só depois é convertido. Para 1 cm no mapa, n/100 dá metros e n/100000 dá quilômetros; essas divisões não são fórmulas para qualquer comprimento sem considerar d. O menor denominador representa maior escala: 1:10000 é maior que 1:100000. Mantidos formato e condições de representação, maior escala permite mostrar área menor com mais detalhe; ampliar uma imagem pronta não cria informação que não existia. A escala gráfica relaciona um segmento desenhado e distâncias indicadas. Se o mapa e a barra forem redimensionados juntos, uniformemente nas duas direções, a barra mantém a relação com a representação; números de escala e frases como 1 cm equivale a 500 m precisam de atualização. Esticar só a largura ou copiar a barra separadamente invalida essa regra simples. A distância medida por um segmento entre dois lugares não é automaticamente distância por estrada nem tempo de viagem. Em mapas de grande extensão, a escala efetiva pode variar conforme posição e direção; uma medida precisa exige considerar a projeção e o sistema de referência, não apenas o denominador nominal.",
+        "steps": [
+          "Leia título, legenda, data, orientação e finalidade antes de interpretar símbolos.",
+          "Multiplique o comprimento pelo denominador usando a mesma unidade.",
+          "Converta a unidade final e diferencie linha reta, trajeto e tempo.",
+          "Confira redimensionamento e limites da escala nominal antes de usar uma régua."
+        ],
+        "example": "Exemplo original sob escala constante: na escala 1:80000, um segmento de 2,5 cm representa 200000 cm, isto é, 2 km. Se uma estrada entre os pontos faz curvas, essa conta do segmento reto não fornece automaticamente o comprimento percorrido pela estrada nem a duração da viagem.",
+        "pitfall": "Interpretar 1:n como unidades diferentes, medir um mapa redimensionado com a escala numérica antiga ou concluir que uma ampliação aumenta o detalhe real dos dados."
+      },
+      {
+        "level": "intermediate",
+        "title": "Áreas, redimensionamento e propriedades das projeções",
+        "explanation": "Uma escala de comprimentos se aplica a duas dimensões no cálculo de área. Em uma representação plana com escala uniforme 1:n e sem distorção relevante para o exercício, A real = A representada×n², mantendo unidades quadradas. Como 1 km = 100000 cm, 1 km² = 10000000000 cm². Elevar o denominador ao quadrado sem elevar o fator de conversão da unidade produz erro. Uma ampliação uniforme por fator k multiplica comprimentos por k e áreas desenhadas por k²; o denominador da nova escala numérica é n/k. A área do terreno continua a mesma. Essas relações geométricas não eliminam distorções de projeção em um mapa real. Projeções transformam uma superfície curva em representação plana e não preservam simultaneamente todas as propriedades em toda a extensão. Projeções conformes preservam ângulos localmente, sem garantir igualdade de áreas; projeções equivalentes preservam proporções de áreas, mas podem alterar formas. Equidistância se refere a distâncias particulares previstas pela projeção, não a todos os pares de pontos. Mercator é conforme e Mollweide é equivalente; escolher uma não torna a outra universalmente errada. Para comparar áreas, uma projeção equivalente pode ser pertinente; para outra finalidade, serão relevantes outras propriedades, a localização e a extensão do território. Registre sistema, projeção e unidade em vez de concluir precisão pela aparência de um mapa.",
+        "steps": [
+          "Confira a hipótese de escala uniforme e use n² para áreas.",
+          "Converta unidades quadradas com o quadrado do fator linear.",
+          "Na ampliação, use k para comprimento, k² para área desenhada e n/k para a escala.",
+          "Escolha a propriedade pertinente da projeção e reconheça suas limitações."
+        ],
+        "example": "Exemplo distinto: uma área de 3 cm² em um desenho com escala uniforme 1:20000 corresponde a 3×20000² = 1200000000 cm² = 0,12 km². Se o desenho e sua barra forem ampliados uniformemente por fator 2, a área desenhada passa a 12 cm² e a escala a 1:10000; 12×10000² fornece a mesma área do terreno.",
+        "pitfall": "Multiplicar área apenas por n, supor que uma projeção equivalente preserve todos os ângulos ou que a ampliação física altere a área real representada."
+      },
+      {
+        "level": "advanced",
+        "title": "Escala de análise, agregação e limites da inferência",
+        "explanation": "Escala cartográfica e escala de análise não são a mesma coisa. A primeira relaciona medida representada e terreno; a segunda diz respeito ao recorte e ao nível em que um fenômeno é investigado, como bairro, município ou região. Mudar o zoom da mesma imagem não refaz por si uma agregação estatística. O problema da unidade areal modificável, conhecido pela sigla MAUP, envolve a sensibilidade de resultados ao modo de reunir dados em unidades espaciais. O efeito de escala compara níveis de agregação, como pequenos setores reunidos em distritos; o efeito de zoneamento compara delimitações diferentes em um nível comparável. Tais mudanças podem alterar médias, correlações e padrões aparentes, mas não há lei que obrigue toda correlação a cair continuamente quando as unidades ficam menores. Para investigar a sensibilidade, mantenha definições e período comparáveis e explicite como os dados foram agregados. Relações entre médias de grupos também não provam a mesma relação entre indivíduos: essa passagem sem evidência individual é uma falácia ecológica. Mapas temáticos exigem ainda distinguir contagem absoluta, proporção e densidade; população maior não significa necessariamente densidade maior, que depende da área. Classes de legenda e fronteiras de unidades são escolhas de representação e análise, não prova de que o fenômeno muda abruptamente na fronteira. Comparações em outras unidades e métodos adequados podem esclarecer a robustez, sem prometer uma técnica que elimine automaticamente todo problema ou autorizar procura seletiva de um resultado desejado.",
+        "steps": [
+          "Identifique se a mudança envolve representação visual ou unidade de análise.",
+          "Separe nível de agregação e alteração de limites em nível comparável.",
+          "Mantenha definições e período e examine sensibilidade a escolhas espaciais.",
+          "Evite inferir atributos individuais por médias e diferencie contagem, taxa e densidade."
+        ],
+        "example": "Cenário hipotético: um conjunto de pontos é agregado em duas divisões da mesma região, ambas com quatro zonas, mas com limites diferentes. Mudar esses limites pode redistribuir os totais por zona mesmo sem alterar nenhum ponto. Trata-se de examinar zoneamento, e não de concluir que os moradores ou os fatos mudaram entre os dois mapas.",
+        "pitfall": "Chamar qualquer mudança de zoom de MAUP, exigir queda monotônica da correlação ou atribuir a cada indivíduo o comportamento médio observado em seu distrito."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em um exercício com escala constante 1:200.000, um segmento reto tem comprimento de 4 cm no mapa, sem redimensionamento. Qual distância no terreno corresponde a esse segmento?",
+        "hint": "Calcule primeiro em centímetros e depois use 100000 cm por quilômetro; não interprete o segmento como tempo de viagem.",
+        "solution": "B calcula 4×200000 = 800000 cm e divide por 100000 para obter 8 km. A, C e D apresentam respectivamente um décimo, dez vezes e um centésimo dessa distância; não correspondem à conversão correta. O resultado descreve o segmento sob a escala declarada, sem informar trajeto por estrada ou tempo de viagem.",
+        "options": [
+          "0,8 km.",
+          "8 km.",
+          "80 km.",
+          "0,08 km."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma representação plana de escala uniforme 1:25.000, uma região ocupa área de 16 cm². Desconsidere distorções. Depois ocorre ampliação uniforme para 200% do tamanho linear original. Qual é a área real da região e qual escala numérica deve indicar a cópia ampliada?",
+        "hint": "A área real usa o quadrado do denominador. A ampliação linear por dois duplica os comprimentos e divide o denominador da escala por dois.",
+        "solution": "D obtém 16×25000² = 10000000000 cm² = 1 km². A ampliação tem fator k = 2, e a nova escala é 1:12.500. A área desenhada passa a 16×2² = 64 cm²; 64×12500² confirma a área real inalterada. A mantém o denominador antigo. B altera indevidamente a área real junto com o desenho. C multiplica o denominador em vez de dividi-lo.",
+        "options": [
+          "1 km² e 1:25.000.",
+          "4 km² e 1:12.500.",
+          "1 km² e 1:50.000.",
+          "1 km² e 1:12.500."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em uma análise hipotética, os mesmos registros de um período são inicialmente agregados em 100 setores e depois em 20 distritos que reúnem esses setores. As definições das duas variáveis permanecem iguais, mas a correlação entre médias muda. Qual interpretação é adequada?",
+        "hint": "Observe a mudança de nível de agregação e separe relações entre médias de relações entre pessoas.",
+        "solution": "A identifica uma comparação de níveis de agregação compatível com o efeito de escala do MAUP e preserva o limite de inferência individual. B confunde uma análise de dados agregados com mudança apenas visual. C escolhe um nível como verdade universal sem justificativa. D transforma médias de grupo em comportamento de cada pessoa. A mudança observada também não autoriza uma regra universal sobre o sentido de toda correlação.",
+        "options": [
+          "O resultado é sensível ao nível de agregação; as médias não demonstram por si a mesma relação entre indivíduos.",
+          "A diferença só pode ser efeito de zoom da imagem, sem relação com agregação.",
+          "A correlação dos distritos é necessariamente a verdadeira em qualquer escala.",
+          "A associação entre médias prova que cada pessoa segue exatamente a mesma relação."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Racionalismo e empirismo",
+    "objective": "Comparar teses racionalistas e empiristas sobre origem e justificação do conhecimento, reconstruir argumentos de Descartes, Locke, Leibniz e Hume e distinguir demonstração, experiência e expectativa indutiva.",
+    "prerequisites": [
+      "Distinção entre crença, argumento e conclusão",
+      "Noções de experiência sensível e raciocínio",
+      "Leitura de hipóteses e identificação de generalizações"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Origem das ideias e justificação das crenças",
+        "explanation": "Epistemologia investiga o conhecimento, suas fontes, condições e limites. Perguntar de onde veio uma ideia não é exatamente o mesmo que perguntar por que uma afirmação deve ser aceita. Uma figura observada pode sugerir uma conjectura matemática, mas medições de alguns desenhos e uma demonstração têm alcances diferentes. No debate moderno, racionalismo e empirismo designam famílias de posições, com divergências internas. Em linhas gerais, racionalistas como Descartes e Leibniz reconhecem papel de princípios ou recursos intelectuais que não se reduzem a generalizar sensações; isso não significa dispensar toda experiência em qualquer investigação. Empiristas como Locke e Hume dão à experiência papel central na origem dos conteúdos mentais, sem dispensar raciocínio, comparação e inferência. Para Locke, sensação e reflexão são fontes de ideias: sensação refere-se à experiência de objetos externos; reflexão, à experiência das operações da própria mente, como perceber, duvidar e querer. Rejeitar ideias ou princípios inatos não é negar a existência de capacidades mentais. De outro lado, disposições inatas não precisam ser entendidas como uma criança já afirmando conscientemente todas as proposições. Leibniz distingue o estímulo da experiência e o fundamento de verdades necessárias: muitos casos concordantes não demonstram, por si, necessidade universal. Ao comparar autores, evite transformar uma oposição sobre fontes e fundamentos em caricaturas de razão sem mundo ou experiência sem pensamento. A distinção entre conhecer a priori e a posteriori se refere à dependência da justificação em relação à experiência pertinente, não simplesmente à idade em que alguém aprendeu palavras.",
+        "steps": [
+          "Separe a aquisição de um conceito e a justificação de uma afirmação.",
+          "Identifique o papel atribuído à experiência e aos recursos intelectuais.",
+          "Em Locke, distinga sensação e reflexão sem excluir operações mentais.",
+          "Compare teses específicas, evitando atribuir a toda corrente a posição de um só autor."
+        ],
+        "example": "Exemplo autoral: observar vários quadrados pode motivar uma conjectura sobre uma propriedade geométrica. Justificá-la por uma demonstração a partir de definições e premissas não é o mesmo que medir alguns desenhos. A experiência pode estimular a pergunta sem ser o único fundamento da prova apresentada.",
+        "pitfall": "Afirmar que todo racionalista despreza observações, que todo empirista rejeita raciocínio ou que conhecer a priori significa nascer repetindo uma frase."
+      },
+      {
+        "level": "intermediate",
+        "title": "Dúvida cartesiana e investigação lockeana",
+        "explanation": "Nas primeiras Meditações, Descartes suspende assentimento ao que admite dúvida para buscar um fundamento seguro. Duvidar metodicamente não equivale a demonstrar que toda crença é falsa nem a encerrar a investigação em ceticismo definitivo. Enganos dos sentidos, sonho e hipótese de um enganador ampliam o alcance do exame. Mesmo supondo engano, o exercício de pensar não pode ocorrer sem que exista quem pensa enquanto o exerce. O cogito é uma certeza nessa situação reflexiva; não é uma conclusão obtida pela observação externa do corpo e não demonstra, sozinho, toda a realidade do mundo físico. A sequência posterior do argumento cartesiano precisa ser examinada, em vez de declarar que qualquer pensamento pessoal é verdadeiro. Locke, no Ensaio sobre o entendimento humano, critica princípios inatos e investiga como ideias simples provenientes da experiência fornecem material para operações de combinação, comparação e abstração. Assim, a mente não é apenas um recipiente que recebe passivamente um mundo já explicado: ela trabalha sobre os materiais recebidos. A reflexão também é experiência, e não uma reserva de ideias prontas independente dela. Comparar essas propostas exige identificar o problema e o procedimento: uma busca cartesiana de certeza frente à dúvida e uma investigação lockeana sobre alcance e origem das ideias não são apenas dois slogans opostos. Não se deve transferir automaticamente para ambos uma classificação kantiana posterior de juízos, nem apresentar um único método como prática exclusiva de todos os autores agrupados em cada corrente.",
+        "steps": [
+          "Reconstrua a finalidade e as etapas da dúvida nas primeiras Meditações.",
+          "Distinga suspensão de assentimento, falsidade demonstrada e certeza do pensar.",
+          "Em Locke, identifique materiais da experiência e operações sobre ideias.",
+          "Compare argumentos sem substituir a análise por rótulos ou categorias posteriores."
+        ],
+        "example": "Situação hipotética, sem citação literal: alguém imagina que está sendo enganado sobre o ambiente. Na linha argumentativa das primeiras Meditações, o próprio ato de duvidar confirma a existência de quem o exerce enquanto pensa. Isso não basta, sem outros argumentos, para concluir que cada detalhe percebido no ambiente corresponde ao mundo exterior.",
+        "pitfall": "Tratar dúvida metódica como prova de falsidade de tudo, tomar o cogito como garantia de qualquer opinião ou confundir reflexão lockeana com ideias inatas."
+      },
+      {
+        "level": "advanced",
+        "title": "Hume, necessidade e limites da inferência indutiva",
+        "explanation": "Na Investigação sobre o entendimento humano, Hume distingue impressões, mais vívidas, e ideias, menos vívidas, discutindo a relação entre experiência e pensamento. Distingue também relações de ideias e questões de fato. Uma relação aritmética pode ser examinada sem investigar a existência de determinados objetos; já uma afirmação sobre o que ocorrerá amanhã não se transforma em demonstração apenas pela repetição de casos passados. A análise humeana de causalidade e indução pergunta o que autoriza passar do observado ao não observado. Presumir que o futuro seguirá o passado porque isso funcionou no passado pressupõe justamente a continuidade que se pretende justificar. Costume e hábito ajudam a explicar nossa expectativa, sem converter a repetição em necessidade lógica demonstrada. Isso não significa que toda previsão seja falsa ou que Hume simplesmente ordene abandonar a vida prática e a investigação. Leibniz, em outro percurso, sustenta que exemplos sensíveis não bastam para fundamentar necessidade universal e atribui à razão recursos que a experiência pode despertar. A semelhança parcial de uma crítica a generalizações não torna os dois autores equivalentes: seus projetos e fundamentos diferem. Para ler um problema atual, pergunte se está em discussão origem de um conceito, validade dedutiva ou apoio empírico a uma previsão. Um experimento pode oferecer evidência relevante, sem que o seu sucesso torne uma lei logicamente necessária. A força do debate está em reconstruir limites e justificativas, não em classificar toda ciência como racionalismo e toda observação como empirismo. Desdobramentos posteriores reformulam os problemas; não é correto atribuir automaticamente a um autor moderno qualquer tese contemporânea com nome parecido.",
+        "steps": [
+          "Identifique se o argumento trata de relação de ideias ou questão de fato.",
+          "Localize a passagem de casos observados para casos não observados.",
+          "Examine se a justificativa da uniformidade pressupõe o que quer provar.",
+          "Distinga crítica da necessidade, falsidade de previsões e abandono da prática."
+        ],
+        "example": "Modelo autoral: um equipamento respondeu do mesmo modo em dez ensaios. A frase responderá assim em todo ensaio futuro extrapola o conjunto observado. Os resultados podem apoiar uma expectativa sob condições definidas, mas a repetição, sozinha, não fornece uma demonstração lógica de uniformidade eterna.",
+        "pitfall": "Dizer que Hume nega toda verdade matemática, que repetição prova necessidade ou que questionar o fundamento da indução equivale a demonstrar falsidade de toda previsão."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma descrição da posição de Locke afirma que ideias podem provir tanto da experiência com objetos externos quanto da experiência das operações da própria mente. Como interpretar essa segunda fonte?",
+        "hint": "Reflexão, nesse contexto, também pertence à experiência; não se confunde com uma coleção pronta de ideias inatas.",
+        "solution": "C identifica a reflexão como experiência das operações mentais, ao lado da sensação. A introduz ideias prontas independentes da experiência, contrariando a tese apresentada. B exclui a reflexão, apesar de o enunciado incluí-la. D transforma a origem das ideias em garantia automática de verdade, conclusão que não decorre dessa classificação.",
+        "options": [
+          "É um conjunto de proposições prontas e inatas, independente de qualquer experiência.",
+          "É impossível em Locke, pois somente objetos externos podem fornecer ideias.",
+          "É a reflexão sobre operações mentais, entendida como fonte de experiência.",
+          "É uma garantia de que toda opinião formada na mente é necessariamente verdadeira."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Na linha argumentativa das primeiras Meditações de Descartes, uma pessoa admite hipoteticamente estar enganada sobre tudo que percebe, mas continua duvidando. Qual conclusão corresponde ao papel do cogito nesse momento?",
+        "hint": "Examine o que o próprio ato de duvidar pressupõe, sem acrescentar garantias sobre cada objeto exterior.",
+        "solution": "A reconhece a existência de quem pensa enquanto exerce a dúvida, mesmo sob a hipótese de engano. B vai além do argumento ao validar todas as percepções. C confunde duvidar do corpo com provar inexistência de qualquer pensante. D substitui a certeza reflexiva por uma contagem empírica de observações. O cogito não demonstra sozinho cada aspecto do mundo externo.",
+        "options": [
+          "A existência de quem pensa é certa enquanto exerce o pensamento, mesmo sob a hipótese de engano.",
+          "Todas as percepções externas passam automaticamente a ser verdadeiras.",
+          "A hipótese de engano demonstra que não existe ninguém pensando.",
+          "A certeza só surge depois de contar quantas vezes os sentidos acertaram."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um argumento afirma: o futuro repetirá o passado porque, nos casos passados, confiar nessa repetição funcionou. Qual crítica se aproxima do problema humeano da indução?",
+        "hint": "Verifique se usar sucessos passados para garantir casos futuros já pressupõe a continuidade que está sendo defendida.",
+        "solution": "D mostra que o argumento usa a passagem do passado ao futuro para justificar essa mesma passagem, sem fornecer uma demonstração não circular de necessidade. A trata repetição como prova lógica suficiente. B confunde crítica da justificação com prova de falsidade de toda previsão. C nega a distinção humeana ao converter relações aritméticas em simples previsão de eventos.",
+        "options": [
+          "Qualquer número de sucessos passados demonstra logicamente necessidade universal futura.",
+          "A crítica demonstra que toda previsão futura será falsa.",
+          "Toda relação aritmética é apenas previsão contingente de eventos futuros.",
+          "O argumento pressupõe a continuidade que tenta justificar ao usar o passado como garantia do futuro."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Socialização, instituições e família",
+    "objective": "Analisar a socialização ao longo da vida, distinguir posições, papéis, instituições e organizações e investigar diversidade familiar e práticas de cuidado sem determinismo ou classificação jurídica automática.",
+    "prerequisites": [
+      "Noções de cultura, normas e grupos sociais",
+      "Leitura de situações hipotéticas",
+      "Distinção entre descrição e julgamento de valor"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Socialização e participação ao longo da vida",
+        "explanation": "Socialização é o processo pelo qual pessoas aprendem e reelaboram linguagens, normas, valores e formas de participar da vida social. Ocorre em interações e não apenas quando alguém dá uma ordem ou uma aula. Família, cuidadores, escola, pares, trabalho, religião e meios de comunicação podem atuar como agentes, com mensagens nem sempre concordantes. A socialização primária costuma designar aprendizagens iniciais e vínculos fundamentais da infância; a secundária envolve inserção em outros contextos e aprendizagem de papéis e conhecimentos mais específicos. Essa distinção não cria duas caixas separadas por uma data exata, nem significa que a secundária só ocorra em organizações formais. Uma pessoa também aprende códigos em um grupo informal ou ambiente digital. Aprendizagens iniciais são importantes, mas não determinam de modo irreversível toda trajetória: mudanças de contexto, interação e reflexão podem transformar práticas. Ressocialização envolve reorganização relevante de padrões, expectativas e identidades, em condições que podem incluir coerção, mas não se limitam a ela ou a instituições totais. Não é sinônimo de qualquer novo detalhe aprendido. Agentes sociais não transmitem uma cultura única e perfeitamente uniforme. Na interação, pessoas podem reproduzir, negociar e contestar expectativas; crianças e adolescentes também participam da construção de sentidos e de culturas de pares. O olhar sociológico examina condições, oportunidades e relações de poder, sem explicar toda conduta por uma única influência familiar ou presumir que indivíduos sejam cópias passivas do meio.",
+        "steps": [
+          "Identifique agentes e situações concretas de aprendizagem social.",
+          "Distinga aprendizagens iniciais e inserção em outros contextos sem fronteira rígida.",
+          "Examine continuidade e mudança ao longo da trajetória.",
+          "Reconheça interpretação e participação dos sujeitos, além das expectativas recebidas."
+        ],
+        "example": "Cenário original: ao ingressar em um grupo de música, uma pessoa adulta aprende formas de organizar ensaios e combina novas regras de participação com os colegas. A aprendizagem fora da infância e da família mostra continuidade da socialização. A negociação das regras evidencia participação ativa, em vez de simples cópia de ordens.",
+        "pitfall": "Reduzir socialização à infância, afirmar que toda aprendizagem inicial é irreversível ou que só organizações formais podem socializar."
+      },
+      {
+        "level": "intermediate",
+        "title": "Posições, papéis e instituições em situações concretas",
+        "explanation": "Status, em análise sociológica, pode significar posição em relações sociais, como estudante ou coordenador; não indica necessariamente prestígio ou renda. Papel é o conjunto de expectativas associado a uma posição. A mesma pessoa ocupa diferentes posições e lida com expectativas de vários interlocutores. Estas não determinam mecanicamente tudo que ela faz e podem ser negociadas ou contestadas. Na distinção didática usual, conflito de papéis envolve demandas incompatíveis vinculadas a posições diferentes, enquanto tensão de papel envolve exigências difíceis de conciliar dentro da mesma posição. Não basta citar duas tarefas ou qualidades: rigor e empatia, por exemplo, não são necessariamente incompatíveis. É preciso mostrar a situação que torna as demandas conflitantes, como prazos simultâneos e recursos insuficientes. Posições atribuídas e conquistadas distinguem modos de atribuição e acesso, mas conquista não significa ausência de condições sociais ou igualdade de oportunidades. Instituições sociais envolvem padrões relativamente duradouros de normas, práticas e relações, como educação, economia e família. Não são todas justas, consensuais ou imutáveis; podem reproduzir desigualdades e ser transformadas por conflitos. Uma organização é uma coletividade concreta com participantes, objetivos e regras, como determinada escola. Ela pode realizar práticas da instituição educacional, sem ser equivalente a toda a educação. O termo instituição também tem usos cotidianos para organizações; na análise, declare o sentido e evite confundir um prédio com o conjunto de relações e normas.",
+        "steps": [
+          "Identifique a posição e as expectativas, sem confundir status com riqueza.",
+          "Verifique se a incompatibilidade envolve posições diferentes ou uma só.",
+          "Descreva o obstáculo concreto antes de afirmar conflito ou tensão.",
+          "Distinga padrões institucionais e organizações particulares e examine poder e mudança."
+        ],
+        "example": "Situação hipotética: uma pessoa é estudante e trabalha em uma loja. Uma prova e um turno obrigatório são marcados para o mesmo horário, sem possibilidade de presença nos dois lugares. Há demandas incompatíveis de posições diferentes, um exemplo de conflito de papéis, não mera diferença de opinião sobre a mesma tarefa.",
+        "pitfall": "Tratar duas qualidades compatíveis como conflito necessário, interpretar todo status como prestígio ou confundir uma escola específica com a instituição educação inteira."
+      },
+      {
+        "level": "advanced",
+        "title": "Diversidade familiar, cuidado e critérios de pesquisa",
+        "explanation": "Família pode ser estudada como instituição, conjunto de vínculos e práticas cotidianas. Formas de filiação, união, residência, autoridade e cuidado variam historicamente e entre contextos. Arranjos monoparentais, recompostos, extensos e com casais do mesmo gênero não devem ser automaticamente classificados como falha de socialização por diferirem de um modelo tomado como padrão. Também não se pode concluir igualdade de recursos ou ausência de conflito apenas pela composição do grupo. A abordagem das práticas familiares, associada a David H. J. Morgan, chama atenção para atividades pelas quais relações são vividas e sustentadas, como cuidar, organizar rotinas e manter contato. Isso amplia a análise para além de uma lista de moradores, sem afirmar que qualquer atividade de cuidado seja por si idêntica a todo vínculo de parentesco. Parentes podem morar em casas diferentes, enquanto pessoas sem parentesco podem compartilhar um domicílio. Critérios de pesquisa, categorias censitárias e reconhecimento jurídico não são necessariamente equivalentes; resultados exigem explicitar qual definição foi utilizada. Investigar a divisão do cuidado demanda perguntar quem faz quais tarefas, com que tempo e recursos, se há remuneração e como trabalho, serviços públicos e outras redes participam. Agência de crianças não equivale a recomendar que assumam responsabilidades de adultos. Na comparação de famílias, considere condições sociais e trajetórias em vez de atribuir resultados automaticamente ao gênero, à biologia ou à forma de união. Estatísticas sobre mudança familiar precisam de fonte, período, território e definição, sem importar tendências de um país como se fossem dados brasileiros universais.",
+        "steps": [
+          "Declare a definição de família e de domicílio utilizada na pesquisa.",
+          "Observe vínculos, rotinas e divisão do cuidado sem hierarquizar arranjos por composição.",
+          "Relacione práticas e condições de trabalho, serviços, tempo e poder.",
+          "Separe achado sociológico, categoria estatística e conclusão jurídica ou causal."
+        ],
+        "example": "Exemplo hipotético: dois parentes vivem em casas diferentes e se alternam no acompanhamento de um familiar, enquanto colegas sem parentesco dividem outro endereço. Contar moradores de cada domicílio não descreve sozinho a rede de cuidado. A pesquisa precisa esclarecer se estuda coabitação, parentesco, práticas ou outra dimensão.",
+        "pitfall": "Equiparar família e endereço, deduzir reconhecimento jurídico por uma observação sociológica ou atribuir qualidade do cuidado automaticamente à composição do grupo."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em um grupo informal, adolescentes aprendem regras de convivência com colegas, discutem propostas e modificam uma regra que consideram injusta. Qual interpretação é adequada?",
+        "hint": "Considere aprendizagem fora de organizações formais e a possibilidade de negociar, e não apenas obedecer, expectativas.",
+        "solution": "B reconhece pares como agentes e a participação ativa na aprendizagem e revisão de práticas. A limita socialização à família e infância. C exige organização formal, apesar da aprendizagem descrita. D atribui irreversibilidade a toda regra e nega a mudança que o cenário informa. Não é necessário classificar qualquer revisão de regra como ressocialização integral.",
+        "options": [
+          "Não há socialização, porque ela termina necessariamente na primeira infância.",
+          "Há socialização entre pares com interpretação e negociação ativa de regras.",
+          "Só haveria socialização se o grupo se tornasse uma organização formal.",
+          "Toda regra aprendida é irreversível, portanto a mudança descrita é impossível."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um cenário hipotético, uma coordenadora recebe, na mesma função, duas ordens: conduzir presencialmente duas reuniões distintas no mesmo horário, sem substituição ou possibilidade de remarcação. Na distinção didática entre conflito de papéis e tensão de papel, qual descrição é adequada?",
+        "hint": "O enunciado situa as duas demandas na mesma posição e explicita por que são incompatíveis.",
+        "solution": "D identifica tensão dentro de uma posição: as duas exigências da coordenação são incompatíveis nas condições explicitadas. A inventa outra posição não mencionada. B confunde incompatibilidade de ordens claras com falta de definição. C ignora que a simultaneidade, sem substituição ou remarcação, impede presença em ambas. A classificação usa a distinção didática declarada no enunciado.",
+        "options": [
+          "Conflito entre a posição de coordenadora e uma posição familiar não mencionada.",
+          "Apenas ausência de definição das ordens, pois nenhum horário foi estabelecido.",
+          "Ausência de qualquer incompatibilidade, porque ocupar uma posição garante cumprir todas as ordens.",
+          "Tensão de papel: exigências incompatíveis vinculadas à mesma posição de coordenadora."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma pesquisa hipotética quer compreender redes de cuidado familiar. Os participantes relatam ajuda regular de parentes que moram em outros endereços, além de convivência com colegas sem parentesco no mesmo domicílio. Qual procedimento é mais adequado?",
+        "hint": "Endereço e vínculo familiar são dimensões distintas; explicitar o critério ajuda a não excluir relações relevantes.",
+        "solution": "A permite observar a rede de cuidado e distinguir parentesco, coabitação e práticas. B equipara família a endereço e exclui vínculos descritos. C trata coabitação como prova automática de parentesco. D transforma a observação sociológica em conclusão jurídica sem base. O procedimento não presume que toda ajuda tenha o mesmo significado nem garante direitos legais por si.",
+        "options": [
+          "Explicitar os critérios e investigar vínculos e práticas de cuidado além da lista de moradores de cada domicílio.",
+          "Excluir todos os parentes de outros endereços, pois família é sempre idêntica ao domicílio.",
+          "Presumir que todos os colegas coabitantes tenham parentesco entre si.",
+          "Concluir automaticamente que toda pessoa que ajuda possui o mesmo reconhecimento jurídico de filiação."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Artes visuais, música, dança e teatro",
+    "objective": "Identificar recursos de artes visuais, música, dança e teatro, comparar sua organização em descrições autossuficientes e relacionar escolhas formais, adaptação, contexto e acesso sem atribuir intenção ou história sem evidência.",
+    "prerequisites": [
+      "Leitura de descrições e distinção entre observar e interpretar",
+      "Noções de espaço, tempo, contraste e repetição",
+      "Reconhecimento de contextos de produção e circulação cultural"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Artes visuais e música: recursos e organização",
+        "explanation": "Analisar arte envolve perceber escolhas e relacioná-las a sentidos possíveis, sem reduzir uma obra a adivinhar o que o autor pensou. Nas artes visuais, linha, forma, cor, claro-escuro, textura e espaço são recursos de descrição. Observe como contrastes, repetições, proporções e relações entre partes orientam a atenção. Equilíbrio visual não exige simetria perfeita, e textura pode ser material ou sugerida por marcas e imagens. Um significado não decorre automaticamente de uma cor: vermelho, por exemplo, precisa ser interpretado com composição e contexto. Na música, altura se refere à percepção de grave e agudo, não a som forte ou fraco. Intensidade ou dinâmica envolve contrastes de força sonora; duração e ritmo dizem respeito à organização temporal, incluindo silêncios; timbre ajuda a distinguir qualidades sonoras de instrumentos, vozes e modos de produzir som. Andamento se refere à velocidade de referência da execução, sem ser sinônimo de todo o ritmo. Melodia, harmonia e textura são outras dimensões de análise, mas uma prática musical não precisa apresentar todas elas segundo um único modelo de tradição ocidental. Uma frase pode manter suas alturas e ritmo enquanto muda de timbre ou dinâmica. Categorias como repetição e contraste atravessam linguagens, porém operam com materiais diferentes: repetir linhas numa imagem não é literalmente produzir uma melodia. Descreva primeiro o que o material disponibiliza e depois apresente a interpretação com seus indícios, sem tomar preferência pessoal como prova de superioridade cultural.",
+        "steps": [
+          "Descreva linhas, cores, texturas e relações espaciais sem supor sentido universal.",
+          "Separe altura, dinâmica, timbre, duração e andamento na descrição sonora.",
+          "Localize repetição, variação e contraste em seus materiais próprios.",
+          "Justifique interpretações com recursos observados e contexto, além do gosto pessoal."
+        ],
+        "example": "Descrição original autossuficiente: uma composição visual apresenta formas escuras repetidas e uma forma clara isolada; um trecho musical repete a mesma frase em uma flauta e depois em outra fonte sonora. A imagem permite discutir contraste e repetição; o trecho permite discutir mudança de timbre sem concluir que as notas necessariamente mudaram.",
+        "pitfall": "Confundir agudo com forte, timbre com velocidade, equilíbrio com simetria obrigatória ou uma cor isolada com emoção e intenção comprovadas."
+      },
+      {
+        "level": "intermediate",
+        "title": "Dança e teatro: corpo, ação, tempo e espaço",
+        "explanation": "Na dança, corpo, ações, espaço, tempo e qualidades de movimento ajudam a descrever a organização coreográfica. Partes do corpo podem iniciar movimentos; níveis, direções e trajetórias organizam o espaço; pausas, duração e relações temporais organizam o tempo. Qualidades podem ser sustentadas, abruptas, leves ou intensas, conforme o contexto da descrição. Solo, grupo, aproximações, distâncias e contatos também compõem relações. Uma dança pode dialogar com música, silêncio ou outros sons: não é apenas ilustração de uma melodia nem exige movimentos virtuosos idênticos para todos os corpos. No teatro, atuação e ação cênica articulam corpos, vozes, gestos, objetos e relação com o público. Cenografia, figurino, luz e som podem produzir sentidos, sem serem meras decorações. A iluminação pode selecionar uma área ou alterar relações de visibilidade; figurinos podem sugerir diferenças e transformações, sem garantir uma identidade fora da cena. Há montagens narrativas com personagens e conflitos, mas esses não são requisitos rígidos de toda experiência teatral. Texto falado, palco italiano e cenário realista tampouco são obrigatórios. Dança e teatro podem compartilhar recursos corporais e se integrar, sem que todo corpo filmado prove por si a presença de todas as linguagens. Ao analisar, descreva o procedimento disponível e o que ele sustenta: o uso de um espaço aberto não determina automaticamente participação comunitária, autoria coletiva, gratuidade ou uma posição política específica.",
+        "steps": [
+          "Na dança, identifique ações, níveis, trajetórias, tempo e qualidades descritas.",
+          "No teatro, examine atuação, espaço e relações entre luz, som, objetos e público.",
+          "Diferencie recurso observado e conclusão sobre intenção ou autoria.",
+          "Reconheça combinações e diferenças sem impor fala, narrativa ou modelo corporal único."
+        ],
+        "example": "Cenário hipotético: intérpretes atravessam uma diagonal lentamente, param juntos e retomam com movimentos breves. A descrição sustenta análise de trajetória, duração, pausa e contraste de qualidade. Em uma cena teatral distinta, uma cadeira deslocada e uma mudança de luz podem redefinir o espaço ficcional sem um cenário realista completo.",
+        "pitfall": "Exigir música para toda dança, fala e personagem fixo para todo teatro ou inferir coautoria apenas porque moradores de uma comunidade atuam."
+      },
+      {
+        "level": "advanced",
+        "title": "Encontros entre linguagens, contexto e acesso",
+        "explanation": "Obras podem relacionar imagem, som, movimento e cena por repetição, contraste, simultaneidade e alternância. Não existe uma separação universal e rígida em que hibridismo, intermidialidade e multimídia sejam sempre categorias exclusivas ou uma delas signifique falta de elaboração artística. Descrever o procedimento concreto costuma ser mais produtivo que escolher um rótulo sem justificativa. Na adaptação ou transposição entre linguagens, decisões recriam aspectos de uma obra: um texto pode orientar sequência, imagens ou relações de uma encenação. Não é necessário perder toda narração no teatro, nem preservar cada palavra para manter uma relação com o material de partida. A comparação exige saber qual fonte foi usada e quais escolhas foram efetivamente apresentadas. Contexto inclui autoria, colaboração, período, público, espaços de circulação e condições materiais. A presença de entrevistas pode sustentar procedimentos documentais, mas o uso palavra por palavra, a edição e a autoria não devem ser presumidos. Financiamento público ou privado, isoladamente, não prova qualidade, autonomia ou intenção. Em manifestações culturais de grupos e comunidades, identifique participantes e fontes sem transformar toda prática em representação fixa de um povo. Acesso também integra produção e recepção: descrição verbal de elementos visuais, legendas de fala e sons pertinentes, interpretação em língua de sinais, condições físicas e mediação podem atender necessidades diferentes. Um recurso não resolve sozinho todas as barreiras. Uma análise fundamentada articula o que a obra faz, os indícios disponíveis e as condições de participação, reconhecendo o que não foi informado.",
+        "steps": [
+          "Descreva como materiais de diferentes linguagens se articulam.",
+          "Na adaptação, compare escolhas observáveis com a fonte explicitada.",
+          "Examine autoria, colaboração, circulação e limites dos dados de contexto.",
+          "Considere diferentes barreiras e recursos de acesso sem presumir solução universal."
+        ],
+        "example": "Exemplo inteiramente hipotético: uma equipe cria cena a partir de uma narrativa original e decide manter um narrador enquanto transforma descrições de ambiente em luz e objetos. A adaptação não perde obrigatoriamente a narração: ela a reorganiza. Para analisar autoria e participação, ainda é necessário saber como cada integrante colaborou.",
+        "pitfall": "Inventar uma obra ou participação histórica, chamar atores automaticamente de coautores ou tratar financiamento e uso de tecnologia como provas de valor artístico."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição hipotética de um trecho musical: as mesmas alturas e durações são repetidas pelo mesmo instrumento, mas na segunda execução o som é mais forte. Qual recurso mudou explicitamente?",
+        "hint": "Separe forte/fraco de grave/agudo, da duração e da fonte sonora descritos como mantidos.",
+        "solution": "C identifica a dinâmica, ligada ao contraste entre mais forte e mais fraco. A diz que alturas ficaram mais agudas, embora tenham sido mantidas. B muda durações que o enunciado declara iguais. D presume troca de instrumento não ocorrida. O enunciado não obriga concluir mudança de emoção ou intenção específica.",
+        "options": [
+          "Altura: todas as notas ficaram necessariamente mais agudas.",
+          "Duração: cada nota passou necessariamente a durar o dobro.",
+          "Dinâmica: houve contraste de intensidade sonora entre as execuções.",
+          "Instrumentação: foi obrigatoriamente substituído o instrumento."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma descrição coreográfica original, um grupo se desloca em diagonal, faz uma pausa coletiva e retoma com movimentos mais rápidos em nível baixo. Não há gravação ou imagem a consultar. Qual análise se apoia nos dados fornecidos?",
+        "hint": "Localize trajetória, pausa, velocidade e nível, sem inventar objetos, autoria ou conteúdo verbal.",
+        "solution": "A articula espaço e tempo da dança a partir de diagonal, pausa, rapidez e nível baixo. B exige fala, que não foi informada e não é requisito da dança. C inventa troca de instrumentos sem dados sonoros. D presume autoria comunitária por haver grupo, conclusão que não decorre do número de intérpretes. A descrição é suficiente para identificar os recursos solicitados.",
+        "options": [
+          "A trajetória diagonal e o nível baixo organizam o espaço; pausa e retomada rápida organizam o tempo.",
+          "A descrição prova um diálogo falado obrigatório para que exista dança.",
+          "A retomada rápida demonstra que um violino foi substituído por um tambor.",
+          "A presença de grupo prova que todos os moradores da região escreveram a coreografia."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma equipe adapta uma narrativa original para a cena e informa que manteve um narrador, converteu descrições de ambiente em objetos e luz e selecionou trechos do texto. Qual conclusão é sustentada?",
+        "hint": "Compare o procedimento relatado com afirmações universais sobre adaptação, qualidade e autoria.",
+        "solution": "D reconhece recriação e reorganização de recursos, inclusive a manutenção possível da narração. A impõe uma perda obrigatória negada pelo próprio caso. B transforma seleção em transcrição integral sem base. C faz um julgamento de qualidade a partir de um recurso isolado. Não é necessário atribuir uma obra histórica ou escola para analisar as escolhas descritas.",
+        "options": [
+          "Toda adaptação teatral elimina necessariamente qualquer narrador.",
+          "Selecionar trechos significa manter integralmente cada palavra da narrativa.",
+          "O uso de luz prova, sozinho, qualidade superior a qualquer outra adaptação.",
+          "A adaptação reorganiza recursos e pode manter a narração enquanto recria descrições por outros meios."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Práticas corporais e sociedade",
+    "objective": "Relacionar práticas corporais, cultura e participação social, reconhecer barreiras de acesso e analisar representações e projetos com evidências, sem reduzir corpos a desempenho ou presumir causas e benefícios automáticos.",
+    "prerequisites": [
+      "Noções de cultura, participação e desigualdade",
+      "Leitura de situações hipotéticas",
+      "Distinção entre evidência, hipótese e promessa"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Movimento, cultura e sentidos das práticas",
+        "explanation": "O corpo tem dimensões biológicas e também é vivido por meio de relações, aprendizagens e significados históricos e culturais. Jogos, brincadeiras, danças, lutas, ginásticas, esportes e práticas de aventura podem ser investigados como práticas corporais. Regras, gestos, músicas, objetos, maneiras de ensinar e sentidos de participação não são iguais em todos os lugares. Na definição da OMS, atividade física envolve movimento produzido por músculos esqueléticos com gasto de energia. Essa definição destaca uma dimensão, enquanto a análise de práticas corporais destaca sentidos e formas de organização social; elas podem se referir à mesma experiência e não são categorias que se excluem. Uma prática em academia também tem contexto cultural, assim como uma brincadeira comunitária também envolve esforço corporal. Não se deve chamar a primeira de apenas biológica nem a segunda de independente do corpo material. Educação Física pode articular vivência, compreensão e reflexão sobre essas dimensões, em vez de reduzir aprendizagem a gasto calórico, recorde ou seleção de quem tem melhor desempenho. Regras podem variar segundo finalidade e contexto, como competição formal, aprendizagem ou encontro recreativo. Conhecer uma versão não autoriza chamá-la de forma única e autêntica de toda uma comunidade. Ao estudar práticas de um grupo, identifique origem e participantes quando houver fonte e reconheça transformações, sem inventar ancestralidades ou considerar a cultura parada no tempo.",
+        "steps": [
+          "Identifique a prática e os sentidos atribuídos pelos participantes.",
+          "Relacione dimensões corporais e culturais sem tratá-las como opostas.",
+          "Compare regras, contextos e objetivos antes de julgar uma variação.",
+          "Valorize aprendizagem e participação, além de desempenho e gasto energético."
+        ],
+        "example": "Cenário hipotético: um grupo adapta um jogo de perseguição para um espaço menor, combina zonas de pausa e discute a origem das versões que conhece. A análise pode tratar de deslocamento e esforço, mas também de regras, memória e decisões coletivas. Modificar regras não significa automaticamente destruir toda relação cultural da prática.",
+        "pitfall": "Opor cultura e biologia, atribuir uma origem sem fonte ou considerar só a competição oficial uma prática corporal legítima."
+      },
+      {
+        "level": "intermediate",
+        "title": "Acesso, diferenças e condições de participação",
+        "explanation": "Participar de uma prática depende de mais que interesse ou esforço individual. Custos, transporte, horários, segurança, informação, espaço, equipamentos e acolhimento podem facilitar ou dificultar acesso. Normas de gênero, racismo e barreiras para pessoas com deficiência também precisam ser examinados, sem presumir que integrantes de um grupo tenham desejos ou capacidades idênticos. Marcadores sociais podem se combinar de maneiras específicas: conhecer uma diferença de participação não demonstra sozinho a contribuição causal de cada fator. É necessário investigar condições e ouvir participantes, inclusive quem não conseguiu entrar ou permanecer. Uma instalação anunciada como aberta não garante acesso efetivo se o trajeto é inviável, a comunicação exclui pessoas ou os horários não atendem o público. A participação pode exigir adaptação de materiais, regras, espaço, comunicação e formas de acompanhamento, mantendo objetivos de aprendizagem e condições de segurança. Oferecer exatamente o mesmo recurso a todos não resolve sempre barreiras diferentes. Ao mesmo tempo, adaptar não equivale a presumir incapacidade ou separar alguém sem conhecer suas necessidades e preferências. A Educação Física escolar pode ampliar repertório e oportunidades, em articulação com outras redes; não é solução automática de toda desigualdade. Avaliar um projeto exige observar entrada, permanência, experiências e distribuição das oportunidades, em vez de contar apenas matrículas ou declarar inclusão por existir um equipamento.",
+        "steps": [
+          "Mapeie barreiras materiais, comunicacionais e de acolhimento no contexto informado.",
+          "Escute participantes e não participantes sem atribuir preferências naturais a grupos.",
+          "Relacione adaptações a objetivos, necessidades e segurança.",
+          "Distinga participação efetiva, oferta nominal e conclusão causal não demonstrada."
+        ],
+        "example": "Situação original: uma oficina é gratuita, mas acontece quando o transporte coletivo já terminou. Pessoas interessadas de outro bairro relatam que não conseguem voltar para casa. A gratuidade retira um custo, mas não resolve a barreira de horário e deslocamento; a equipe precisa investigar alternativas com o público.",
+        "pitfall": "Explicar uma diferença apenas por talento natural, presumir que gratuidade elimine toda barreira ou declarar o efeito de cada marcador por uma comparação isolada."
+      },
+      {
+        "level": "advanced",
+        "title": "Mídia, consumo e avaliação de projetos e eventos",
+        "explanation": "A mídia seleciona quais práticas, pessoas e resultados recebem visibilidade e como são apresentados. Uma cobertura pode ampliar repertório e referências, mas também reforçar estereótipos ao destacar aparência ou vida pessoal e ignorar a realização esportiva. Compare linguagem, imagens, tempo e critérios de destaque; não suponha neutralidade automática nem uma intenção única em toda publicação. Publicidade e mercados ligados a esporte, lazer e exercício podem financiar atividades e facilitar circulação de produtos, mas consumo não é requisito universal para participar, nem aparência de um corpo comprova saúde, caráter ou competência. Eventos e obras esportivas também precisam de análise contextual. Promessas de legado não bastam: investigue custo total, manutenção, quem poderá usar o espaço, horários, acessibilidade, impactos e continuidade das atividades. Um projeto pode ter benefícios e problemas diferentes para grupos distintos; não se conclui que todo evento causa desenvolvimento ou que todo evento é necessariamente inútil. A Carta Internacional da UNESCO e seus materiais de Educação Física de qualidade destacam participação, inclusão, avaliação e condições de oferta; esses princípios ajudam a formular perguntas, sem substituir a apuração de um caso concreto. Na avaliação, defina objetivos verificáveis, acompanhe resultados e torne explícitos fontes, período e limites. Uma comparação de números antes e depois não isola sozinha todas as causas de mudança. Práticas comunitárias, escola, programas públicos e iniciativas privadas podem ser estudados quanto ao que fazem e a quem atendem, evitando usar o tipo de financiamento como prova suficiente de qualidade ou justiça.",
+        "steps": [
+          "Analise escolhas de linguagem e destaque, sem confundir imagem e prova de saúde ou valor.",
+          "Separe publicidade, promessa e resultado verificável.",
+          "Avalie custo total, manutenção, uso posterior e distribuição de oportunidades.",
+          "Use evidências e acompanhamento para comparar objetivos, resultados e limites."
+        ],
+        "example": "Projeto hipotético: uma pista será entregue após um festival, mas o anúncio não informa manutenção, horários de abertura nem equipe de atividades. A pista pode ter uso social, porém a promessa ainda não prova continuidade ou acesso. Perguntar por plano, responsáveis e monitoramento permite uma análise melhor que apoiar ou rejeitar todo evento por princípio.",
+        "pitfall": "Tomar visibilidade ou obra pronta como garantia de participação, usar aparência como diagnóstico ou aceitar dados inventados como pesquisa e conclusão de causalidade."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma turma investiga versões de um jogo de roda, conversa com participantes e adapta regras ao espaço e aos objetivos da aula. Qual interpretação relaciona melhor prática corporal e cultura?",
+        "hint": "Considere significados, regras e aprendizagem sem opor esforço corporal e contexto social.",
+        "solution": "C articula gestos, regras, memória e participação como dimensões culturais da experiência corporal. A reduz a análise ao gasto energético. B considera legítimo apenas o modelo federado. D trata cultura como imutável e ignora que adaptações podem ser discutidas com objetivos explícitos. O cenário não atribui origem histórica específica sem fonte.",
+        "options": [
+          "Somente o gasto energético importa, sem relevância de regras ou significados.",
+          "A atividade só tem valor cultural se for modalidade de federação internacional.",
+          "A prática reúne movimento, significados e regras que podem ser discutidos e contextualizados.",
+          "Qualquer adaptação elimina necessariamente todo sentido cultural do jogo."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma oficina hipotética é gratuita. Pessoas interessadas relatam que o último ônibus parte antes do encerramento, dificultando seu retorno ao bairro. Qual análise é sustentada?",
+        "hint": "Gratuidade e viabilidade de transporte são condições diferentes; leia o obstáculo efetivamente relatado.",
+        "solution": "A identifica a barreira de horário e transporte sem negar que gratuidade ajude em outro aspecto. B presume que ausência de taxa resolva qualquer obstáculo. C atribui falta de interesse apesar do interesse relatado. D transforma uma situação específica em prova de incapacidade de todo um grupo. Investigar alternativas com participantes é compatível com o cenário.",
+        "options": [
+          "A gratuidade não elimina a barreira de horário e transporte relatada; é preciso investigar alternativas com o público.",
+          "Ser gratuita garante automaticamente que qualquer pessoa consiga frequentar e voltar para casa.",
+          "O problema demonstra ausência de interesse, independentemente do relato das pessoas.",
+          "O obstáculo prova incapacidade natural de todos os moradores do bairro para a prática."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um anúncio promete que um evento deixará uma instalação esportiva para uso coletivo, mas não informa manutenção, horários, acessibilidade nem acompanhamento posterior. Qual procedimento permite avaliar melhor a promessa de legado?",
+        "hint": "Separe anúncio e evidência de uso contínuo; busque objetivos, responsabilidades e resultados verificáveis.",
+        "solution": "D solicita os dados pertinentes para examinar continuidade e distribuição das oportunidades. A toma visibilidade como garantia. B conclui inutilidade de todo evento sem analisar o caso. C usa uma fotografia como prova de funcionamento permanente. Pedir plano e acompanhamento não determina previamente apoiar ou rejeitar a proposta, nem substitui sua avaliação concreta.",
+        "options": [
+          "Aceitar o legado como comprovado porque o evento terá divulgação.",
+          "Concluir que nenhum evento esportivo pode produzir qualquer benefício.",
+          "Considerar uma fotografia da instalação suficiente para provar uso contínuo de toda a comunidade.",
+          "Examinar plano de uso, custos, manutenção, condições de acesso, responsáveis e acompanhamento dos resultados."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Força, movimento e energia",
+    "objective": "Descrever movimento em um referencial, identificar forças e sistemas e resolver situações idealizadas com leis de Newton, trabalho, energia e potência, declarando condições e unidades.",
+    "prerequisites": [
+      "Operações com números e potências",
+      "Conversões de unidades de comprimento e tempo",
+      "Leitura de sentidos opostos e distinção entre massa e velocidade"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Posição, deslocamento e mudanças do movimento",
+        "explanation": "Para descrever movimento, escolha um referencial: uma pessoa sentada pode estar em repouso em relação ao banco de um veículo e em movimento em relação à rua. Posição indica onde um corpo está nesse referencial; em uma linha orientada, deslocamento é posição final menos inicial. Distância percorrida soma os comprimentos do trajeto e não é sempre igual ao módulo do deslocamento. Se há ida e volta ao mesmo ponto, o deslocamento total pode ser zero mesmo com distância positiva. Velocidade média usa deslocamento dividido pelo intervalo de tempo; rapidez média usa distância percorrida pelo intervalo. Em uma dimensão, um sinal negativo informa sentido no eixo escolhido, não necessariamente diminuição da rapidez. Aceleração descreve mudança da velocidade por tempo, e não a própria velocidade; um objeto pode ter velocidade diferente de zero e aceleração zero. A direção da velocidade também importa: mudar de direção pode envolver aceleração mesmo sem mudar a rapidez. No SI, posição e distância são medidas em metros, tempo em segundos, velocidade em m/s e aceleração em m/s². Uma força é uma interação descrita por módulo, direção e sentido; não é sinônimo de velocidade nem uma quantidade que precisa estar sempre no sentido do movimento. Para estudar uma situação, separe o que foi informado sobre trajetória e tempo do que foi informado sobre forças. Um relato de movimento não identifica sozinho todas as interações que o produziram.",
+        "steps": [
+          "Declare o referencial e o sentido positivo antes de usar sinais.",
+          "Separe posição final, deslocamento e distância total percorrida.",
+          "Calcule razões com unidades e intervalos de tempo compatíveis.",
+          "Distinga velocidade, mudança de velocidade e força."
+        ],
+        "example": "Exemplo original: em uma linha, alguém avança 8 m e retorna 3 m em um intervalo total de 5 s. A distância é 11 m, o deslocamento é +5 m, a rapidez média é 2,2 m/s e a velocidade média é +1 m/s. As duas médias respondem a perguntas diferentes e não informam a velocidade em cada instante.",
+        "pitfall": "Dividir apenas o trecho de ida pelo tempo total, confundir retorno com distância negativa ou afirmar que aceleração zero exige velocidade zero."
+      },
+      {
+        "level": "intermediate",
+        "title": "Forças, corpo escolhido e leis de Newton",
+        "explanation": "Nas situações clássicas descritas em um referencial inercial, a força resultante é a soma vetorial das forças que atuam sobre o corpo escolhido. Forças no mesmo eixo podem ser somadas com sinais definidos; em sentidos opostos, seus módulos não são simplesmente adicionados. A primeira lei relaciona resultante nula à manutenção de velocidade constante, incluindo repouso, e não à inexistência de qualquer força. Para massa constante, a segunda lei é F resultante = m×a; uma resultante não nula determina a direção e o sentido da aceleração, que podem diferir dos da velocidade. Massa é medida em kg, força em N e aceleração em m/s². O peso é a força gravitacional exercida sobre o corpo, com módulo mg no modelo próximo da superfície terrestre. A normal é força de contato perpendicular à superfície; seu módulo não é sempre mg, mas pode ser igual em uma mesa horizontal sem outras componentes verticais nem aceleração vertical. Na terceira lei, forças de uma mesma interação têm módulos iguais e sentidos opostos e atuam em corpos diferentes. Peso e normal sobre um mesmo bloco não são esse par. Se analisamos dois blocos juntos, a força de contato entre eles é interna; ao isolar um deles, ela precisa entrar em seu diagrama. Por isso a força aplicada ao conjunto não é automaticamente a força de contato. Declare ainda se atrito e resistência do ar são considerados; omiti-los de uma situação real sem autorização pode alterar o resultado.",
+        "steps": [
+          "Escolha o corpo ou conjunto e liste as forças externas correspondentes.",
+          "Represente direções e sentidos, incluindo peso e contato quando pertinentes.",
+          "Aplique a segunda lei com massa e unidades corretas.",
+          "Para encontrar contato, isole um corpo sem confundir ação e reação no mesmo diagrama."
+        ],
+        "example": "Situação hipotética: um carrinho de 3 kg recebe 14 N horizontais para a direita e resistência de 2 N para a esquerda, com forças verticais equilibradas. A resultante horizontal é 12 N e a aceleração é 12/3 = 4 m/s² para a direita. A conta usa resultante, não apenas a força aplicada de 14 N.",
+        "pitfall": "Tratar peso e normal como ação e reação, supor que normal sempre vale mg ou aplicar a força externa total a cada bloco como se agisse isoladamente sobre todos."
+      },
+      {
+        "level": "advanced",
+        "title": "Trabalho, energia mecânica e potência em modelos",
+        "explanation": "Trabalho mecânico descreve transferência de energia associada à ação de uma força e ao deslocamento. Para uma força constante no mesmo eixo do deslocamento de uma partícula, W = F×d com sinais coerentes: mesmo sentido produz trabalho positivo, sentido oposto produz negativo; força perpendicular ao deslocamento realiza trabalho nulo nesse modelo. A forma geral para força constante usa o ângulo entre força e deslocamento, e não qualquer ângulo desenhado. A unidade de trabalho e energia é o joule, J. A energia cinética é K = mv²/2; dobrar a rapidez quadruplica K para a mesma massa. O teorema trabalho-energia relaciona a soma dos trabalhos à variação de K da partícula. A energia potencial gravitacional pertence à interação entre corpo e Terra; próximo da superfície, com g aproximadamente constante, sua variação é mg vezes a mudança de altura. O nível zero pode ser escolhido, mas deve ser mantido no balanço. Energia mecânica soma cinética e potenciais consideradas. Ela se conserva em modelos apropriados sem transferência líquida por processos dissipativos ou outras ações externas relevantes; energia total não é destruída quando energia mecânica diminui, podendo haver transferência e mudança de forma, como aumento de energia interna. Não se deve chamar o trabalho do atrito sempre negativo em qualquer sistema: o efeito depende do contato e do movimento considerados. Na subida vertical ideal sem ar, K diminui enquanto potencial aumenta; no ponto mais alto a velocidade é zero por um instante, mas a gravidade e a aceleração não são zero. Potência média é energia transferida ou trabalho dividido pelo tempo correspondente, medida em watts, J/s; não é uma quantidade de energia nem prova isolada de rendimento.",
+        "steps": [
+          "Defina o sistema, o nível de referência e as hipóteses do balanço.",
+          "Separe trabalho, energia cinética e variação de energia potencial.",
+          "Verifique se há dissipação ou outras transferências antes de conservar energia mecânica.",
+          "Se houver tempo fornecido, calcule potência com unidade de energia por tempo."
+        ],
+        "example": "Exemplo original: um corpo de 2 kg cai do repouso por 5 m, sem ar, com g = 10 m/s². A redução da potencial é 100 J e o ganho de cinética é 100 J; 2×v²/2 = 100 leva a v = 10 m/s. Transferir 100 J em 4 s corresponderia a potência média de 25 W, mas o tempo dessa queda não foi declarado como 4 s.",
+        "pitfall": "Confundir sinal do trabalho do peso e variação da potencial, afirmar ausência de gravidade no ponto mais alto ou confundir redução de energia mecânica com destruição de energia."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um bloco permanece em repouso sobre uma mesa horizontal em um referencial inercial. Sobre ele atuam apenas o peso e a força normal, com módulos iguais e sentidos verticais opostos. Qual conclusão é adequada?",
+        "hint": "Equilíbrio de forças no mesmo corpo não significa ausência de forças nem caracteriza o par de ação e reação.",
+        "solution": "B reconhece resultante zero e distingue o par de forças de uma interação, que atua em corpos diferentes. A nega forças explicitamente descritas. C chama peso e normal no mesmo bloco de ação e reação. D exige aceleração não nula apesar de resultante zero e repouso. A reação ao peso envolve a força gravitacional do bloco sobre a Terra, não a normal.",
+        "options": [
+          "Não existe qualquer força sobre o bloco, pois ele está em repouso.",
+          "A resultante é nula, mas peso e normal não formam um par de ação e reação entre si.",
+          "Peso e normal formam ação e reação porque atuam no mesmo corpo.",
+          "O bloco deve acelerar verticalmente porque recebe duas forças."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Dois blocos A (6 kg) e B (4 kg) estão em contato sobre mesa horizontal sem atrito, com A à esquerda de B. Uma força horizontal de 50 N é aplicada somente em A para a direita, e ambos aceleram juntos. Qual é o módulo da força de contato que A exerce em B?",
+        "hint": "Calcule a aceleração da massa conjunta e depois isole B, cuja única força horizontal é o contato de A.",
+        "solution": "D usa massa total 6+4 = 10 kg e aceleração 50/10 = 5 m/s². Em B, a força de contato é 4×5 = 20 N. B, 30 N, é o módulo da resultante sobre A, não o contato solicitado. C confunde força aplicada ao conjunto com contato sobre B. A não corresponde à aplicação da segunda lei nas condições fornecidas. A reação de B sobre A tem 20 N para a esquerda.",
+        "options": [
+          "12 N.",
+          "30 N.",
+          "50 N.",
+          "20 N."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um objeto de 3 kg é lançado verticalmente para cima com velocidade inicial de 12 m/s. Após o lançamento, atua apenas o peso; despreze o ar, use um referencial inercial e g = 10 m/s² constante. Qual é a altura máxima acima do ponto de lançamento?",
+        "hint": "No ponto mais alto a velocidade é zero. Igualar energia cinética inicial ao aumento da potencial permite calcular a altura sem exigir massa igual a 1 kg.",
+        "solution": "A calcula K inicial = 3×12²/2 = 216 J e aumento de potencial = 3×10×h. Logo h = 216/30 = 7,2 m, ou v inicial²/(2g). B omite o fator 2 no denominador. C usa v/g, que tem unidade de tempo, não de altura. D divide mais uma vez por dois. No topo a velocidade zera momentaneamente, mas a aceleração gravitacional continua para baixo.",
+        "options": [
+          "7,2 m.",
+          "14,4 m.",
+          "1,2 m.",
+          "3,6 m."
+        ],
+        "correctIndex": 0
+      }
+    ]
   }
 ];
 
@@ -1116,6 +1760,234 @@ export const authoredCurriculumBatch06ReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "Acoplamento 1:1 nas mesmas condições: ΔG_total = +15 + (−25) = −10 kJ/mol. Saldo negativo indica favorecimento termodinâmico no modelo, sem garantir velocidade. B soma módulos (+40) ignorando sinais. C inverte sinal (+10). D ignora a segunda transformação e o acoplamento declarado."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Tempo histórico, fontes e historiografia",
+    "contentSha256": "b8432506188e005cc1c40c7caa7b4b86208e99a31438be0aa9f0c9e7eb2773f1",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.archives.gov/education/lessons/worksheets",
+      "https://www.historians.org/resource/statement-on-standards-of-professional-conduct/",
+      "https://www.historians.org/wp-content/uploads/2024/05/AP-Histories-Historical-Thinking-Skills.pdf",
+      "https://www.persee.fr/doc/ahess_0395-2649_1958_num_13_4_2781",
+      "https://www.historybenchmarks.ca/primary-source-evidence",
+      "https://www.historybenchmarks.ca/continuity-and-change",
+      "https://www.historybenchmarks.ca/historical-perspectives"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A opção C é a única que articula marco legal e processo social com ritmos diferentes, exigindo investigação contextual — coerente com a explicação básica sobre separação entre data da decisão e aplicação desigual. A assume causalidade imediata e universal da data; B descarta a relevância do marco cronológico; D comete falácia de generalização a partir de permanências parciais, ignorando coexistência de mudança e continuidade."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A opção A usa corretamente o livro de 1970 como fonte primária da historiografia daquela época, pois a pergunta atual investiga representações produzidas em 1970 — aplicação direta do princípio de que a função da fonte depende da pergunta. B e C impõem classificação fixa por antiguidade ou formato, contradizendo o texto. D dispensa crítica ao confundir publicação com neutralidade, violando o procedimento de exame de conceitos e contexto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção D é o único procedimento que exige comparação sistemática de perguntas, fontes, argumentos e contraevidências antes de avaliar conclusões, alinhado à explicação avançada sobre pluralidade interpretativa não equivaler a validade automática. A escolhe por recência sem conferir fontes; B transforma anterioridade em autoridade irrevogável; C iguala explicações divergentes sem critério de evidência, abandonando a avaliação historiográfica."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Escalas e representações espaciais",
+    "contentSha256": "f672c2707f9cc7dde22950bb127cc56c7d711c5f83dabd625be1c4e4301c8803",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/metodologia/anexos/anexo_5_1_guia_ensmedio.pdf",
+      "https://www.usgs.gov/educational-resources/map-projections-working-manual",
+      "https://www.giss.nasa.gov/tools/gprojector/help/projections/",
+      "https://learn.arcgis.com/en/projects/choose-the-right-projection/",
+      "https://support.esri.com/en-us/gis-dictionary/modifiable-areal-unit-problem",
+      "https://gistbok-ltb.ucgis.org/current/concept/FC-07-026"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Escala 1:200.000, segmento 4 cm: D = 4 × 200.000 = 800.000 cm. Conversão: 1 km = 100.000 cm → 800.000 / 100.000 = 8 km. Opção B (8 km) está correta. A (0,8 km) seria dividir por 1.000.000 em vez de 100.000; C (80 km) multiplicaria por 10; D (0,08 km) dividiria por 10.000.000. O enunciado especifica 'sem redimensionamento' e 'segmento reto', evitando confusão com trajeto ou tempo."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Área real = 16 cm² × 25.000² = 16 × 625.000.000 = 10.000.000.000 cm² = 1 km² (já que 1 km² = 10¹⁰ cm²). Ampliação uniforme 200% → fator linear k = 2. Nova escala: denominador n/k = 25.000/2 = 12.500 → 1:12.500. Área desenhada ampliada = 16 × k² = 16 × 4 = 64 cm². Verificação: 64 × 12.500² = 64 × 156.250.000 = 10.000.000.000 cm² = 1 km² (inalterada). Opção D coincide. A mantém escala antiga; B quadruplica indevidamente a área real, de 1 para 4 km²; C dobra denominador em vez de dividir."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Cenário: mesmos registros, mesmo período, agregação de 100 setores para 20 distritos (reunião de setores) → mudança de nível de agregação (efeito de escala do MAUP). Definições de variáveis iguais, correlação entre médias muda. Interpretação adequada: resultado sensível ao nível de agregação; médias de grupos não demonstram a mesma relação entre indivíduos (evita falácia ecológica). B confunde com zoom visual; C elege um nível como verdade universal; D comete falácia ecológica atribuindo comportamento de grupo a cada pessoa. Texto da seção avançada suporta explicitamente a opção A."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Racionalismo e empirismo",
+    "contentSha256": "bc3060a41e88bee39f7d1982d20ec1107b14c9c57cbe6a757962018142fc0a34",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.earlymoderntexts.com/assets/pdfs/descartes1641_1.pdf",
+      "https://www.earlymoderntexts.com/assets/pdfs/locke1690book1.pdf",
+      "https://www.earlymoderntexts.com/assets/pdfs/locke1690book2_1.pdf",
+      "https://www.earlymoderntexts.com/assets/pdfs/hume1748_1.pdf",
+      "https://www.earlymoderntexts.com/assets/pdfs/leibniz1705book1.pdf",
+      "https://openstax.org/books/introduction-philosophy/pages/7-3-justification"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Opção C é a única que captura a reflexão lockeana como experiência das operações mentais. A descreve inatismo (rejeitado por Locke), B nega a reflexão (contraria o enunciado), D confunde origem com garantia de verdade (não decorre da classificação). Índice 2 confirmado."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Opção A expressa o cogito: existência do pensante certa durante o ato de duvidar, mesmo sob hipótese de engano. B valida percepções externas (além do cogito), C nega existência do pensante (contradiz o argumento), D substitui certeza reflexiva por contagem empírica. Índice 0 confirmado."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Opção D identifica a circularidade humeana: usar sucessos passados para garantir o futuro pressupõe a continuidade que se quer provar. A afirma que repetição demonstra necessidade (o que Hume critica), B diz que previsões são falsas (Hume não nega expectativa prática), C confunde relações de ideias com previsões contingentes. Índice 3 confirmado."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Socialização, instituições e família",
+    "contentSha256": "a5fa9bc581f7a29552af11e17a95fb2922cde545d70abb7930e4e355279d5476",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/5-1-theories-of-self-development",
+      "https://openstax.org/books/introduction-sociology-3e/pages/5-3-agents-of-socialization",
+      "https://openstax.org/books/introduction-sociology-3e/pages/5-4-socialization-across-the-life-course",
+      "https://openstax.org/books/introduction-sociology-3e/pages/4-3-social-constructions-of-reality",
+      "https://openstax.org/books/introduction-sociology-3e/pages/14-1-what-is-marriage-what-is-a-family",
+      "https://openstax.org/books/introduction-sociology-3e/pages/14-2-variations-in-family-life",
+      "https://link.springer.com/book/10.1057/9780230304680"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "O cenário descreve adolescentes em grupo informal aprendendo e negociando regras. A opção B capta socialização entre pares com participação ativa. A, C, D são posições que o texto refuta explicitamente: socialização não termina na infância, não exige organização formal, regras não são irreversíveis. A solução explica cada distrator corretamente."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Cenário situa duas ordens incompatíveis na mesma posição (coordenadora), mesmo horário, sem substituição ou remarcação. Isso é tensão de papel por definição didática do texto. A inventa posição familiar inexistente. B ignora que horários foram estabelecidos. C faz afirmação absurda. A solução resolve independentemente e justifica cada opção."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Participantes relatam cuidado de parentes em outros endereços e coabitação com não-parentes. Opção A segue o texto: explicitar critérios e investigar vínculos/práticas além da lista de moradores. B equipara família a domicílio (pitfall explícito). C presume parentesco por coabitação (pitfall). D salta de observação sociológica para conclusão jurídica (pitfall). Solução conferida e correta."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Artes visuais, música, dança e teatro",
+    "contentSha256": "d5d274a9c590c30aff4f9e87878d0ea493a43323a19af6c5b7a2985ca2f3dd02",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.getty.edu/education/teachers/building_lessons/elements_art.pdf",
+      "https://www.getty.edu/education/teachers/building_lessons/principles_design.pdf",
+      "https://musictheory.pugetsound.edu/mt21c/The-Elements-of-Music.html",
+      "https://www.elementsofdance.org/",
+      "https://www.elementsofdance.org/space.html",
+      "https://www.rsc.org.uk/about-us/how-we-make-theatre/costume",
+      "https://www.rsc.org.uk/your-visit/access",
+      "https://resource.download.wjec.co.uk/vtc/2015-16/15-16_26/eng/index.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "O enunciado fixa alturas, durações e instrumento idênticos, alterando apenas 'o som é mais forte'; portanto, o recurso explícito é dinâmica (intensidade). A confunde altura com intensidade; B altera duração declarada igual; D inventa troca de instrumento não ocorrida. A resolução independe de conhecimento externo, usando só o texto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A descrição fornece diagonal (trajetória/espaço), pausa coletiva (tempo), retomada rápida (velocidade/tempo) e nível baixo (espaço); A articula exatamente esses elementos. B exige fala, não informada e não requisito de dança; C inventa dados sonoros (violino/tambor) inexistentes; D infere autoria comunitária apenas pelo número de intérpretes, conclusão não decorrente do texto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "O caso relata: manteve narrador, converteu descrições de ambiente em objetos/luz, selecionou trechos. D reconhece reorganização de recursos com possível manutenção da narração. A afirma perda obrigatória de narrador, contradita pelo caso; B iguala seleção a transcrição integral, sem base; C julga qualidade superior apenas pelo uso de luz, inferência inválida. A análise usa só o procedimento descrito."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Práticas corporais e sociedade",
+    "contentSha256": "e2a4b5531ae7d7ee8a0e750d1b7fb765f833639cd9b49d9a9f1293683b774a6e",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+      "https://www.unesco.org/en/quality-physical-education",
+      "https://www.unesco.org/en/legal-affairs/international-charter-physical-education-physical-activity-and-sport",
+      "https://www.unesco.org/en/articles/towards-victory-gender-equality",
+      "https://www.olympics.com/ioc/gender-equality/portrayal-guidelines"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Opção C articula movimento, significados, regras, memória e participação como dimensões culturais discutíveis e contextualizáveis. A reduz a análise a gasto energético (reducionismo biológico). B legitima apenas modelo federado (essencialismo institucional). D trata adaptação como destruição necessária de sentido cultural (cultura como imutável). Gabarito 2 está correto e distractores mapeiam conceitos do pitfall da seção basic."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Opção A identifica barreira de horário e transporte sem negar que gratuidade ajude em outro aspecto — leitura fiel do cenário. B presume que ausência de taxa resolva qualquer obstáculo (igualdade formal ≠ equidade). C atribui falta de interesse apesar do relato explícito de interesse (desconsidera evidência). D transforma obstáculo situacional em prova de incapacidade natural de todo grupo (essencialismo biológico). Gabarito 0 está correto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Opção D solicita dados pertinentes para examinar continuidade e distribuição de oportunidades (plano, custos, manutenção, acesso, responsáveis, acompanhamento). A toma visibilidade/divulgação como garantia de legado. B conclui inutilidade universal de todo evento sem analisar o caso. C usa fotografia como prova de funcionamento permanente e universal. Gabarito 3 está correto e distractores correspondem ao pitfall da seção advanced."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Força, movimento e energia",
+    "contentSha256": "dbf292255962114cb5e2e207c4a9aff68d64c04a5d5cee522db74846537a91bf",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/college-physics-2e/pages/2-1-displacement",
+      "https://openstax.org/books/college-physics-2e/pages/2-2-vectors-scalars-and-coordinate-systems",
+      "https://openstax.org/books/college-physics-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system",
+      "https://openstax.org/books/college-physics-2e/pages/4-4-newtons-third-law-of-motion-symmetry-in-forces",
+      "https://openstax.org/books/college-physics-2e/pages/7-2-kinetic-energy-and-the-work-energy-theorem",
+      "https://openstax.org/books/college-physics-2e/pages/7-3-gravitational-potential-energy",
+      "https://openstax.org/books/college-physics-2e/pages/7-7-power"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Bloco em repouso sobre mesa: forças são peso (Terra-bloco) e normal (mesa-bloco). Resultante nula (equilíbrio), mas peso e normal atuam no mesmo corpo → não são par ação-reação (3ª lei exige corpos diferentes). A reação ao peso é a força gravitacional do bloco sobre a Terra. Opção B é a única correta; A nega forças existentes, C confunde 3ª lei, D ignora resultante nula."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Sistema A+B: massa total 10 kg, F=50 N → a = 5 m/s². Isolando B (4 kg), única força horizontal é contato de A → F_contato = m_B·a = 4×5 = 20 N. Opção D correta. B (30 N) é resultante sobre A (6×5), não contato. C (50 N) é força externa no conjunto. A (12 N) não decorre da 2ª lei nas condições dadas."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Lançamento vertical: K_inicial = ½·3·12² = 216 J. No topo v=0 → toda K vira U: mgh = 216 → h = 216/(3·10) = 7,2 m. Equivalentemente h = v₀²/(2g) = 144/20 = 7,2 m. B (14,4 m) omite fator 2 no denominador (v₀²/g). C (1,2 m) usa v₀/g (unidade de tempo). D (3,6 m) divide por 2 novamente (v₀²/4g)."
       }
     ]
   }

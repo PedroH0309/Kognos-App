@@ -1,6 +1,35 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 11
+## Estado atual em 15/11/2026 — checkpoint 12
+
+Este estado prevalece sobre todos os históricos abaixo. Execução ativa a pedido
+do usuário; continuar até completar as aulas, sem encerrar neste checkpoint.
+
+- Lotes 03/04/05/06 completos, 16 aulas cada: 64 novas nesta etapa.
+- 631 testes da aplicação + seis do motor, lint alterado, build e leitor real
+  aprovados. API das 64 comparada; sete novas, 21 respostas e referências
+  expandidas em 320/375/768/1440 px aprovadas. Preview 3316 contém este checkpoint.
+- Restam 1.231 lacunas; ENEM editorial: 79 aprofundadas e 817 lacunas. Lista de
+  estudo: 79 aprofundadas, 48 guias e 780 planejadas. Revisão humana pendente.
+- CI do checkpoint 11 `43717481529` aprovada. Sem banco/merge/deploy.
+- Lote 06 contém TODOS os IDs da fila original [48..63]. Seu integrador reescreve
+  tudo; não reutilizá-lo para o lote 07 sem mudar arquivo e nomes de exports.
+- Próximo: lote 07, fila [64..79]. Começa `course-ca3586c5` Matemática — Operações,
+  divisibilidade e conjuntos numéricos. Rascunho e crítica foram lidos: há excesso
+  de teoria modular sem ensino e justificativas erradas de alternativas de MDC/MMC.
+  Ainda SEM versão principal, teste novo ou integração. Fontes OpenStax sobre
+  reais/propriedades/fatoração/MMC já conferidas; corrigir antes de nova crítica.
+- Seguem `course-e5132a3e` Português, `course-e1614f73` Literatura,
+  `course-8aa12850` Redação, `course-400807fd` Inglês e demais temas da fila.
+- Autoria Claude permanece em background, com rascunhos perto da quinta rodada.
+  Sem integração automática. Helpers estão em Temp e backups privados.
+- A crítica de Geografia confundiu dobrar e quadruplicar no distrator de 1→4 km²:
+  registro corrigido com original preservado e `_principalCorrections` privado.
+  Não reexecutar revisão em cache e apagar essa correção documental.
+- PR 117 draft, branch codex/quality-reliability-20261114. Antes de push, fetch e
+  preservar trabalho concorrente. `apps/web/AGENTS.md` gerado fica fora do commit.
+
+## Histórico — checkpoint 11
 
 Este estado prevalece sobre todos os históricos abaixo. Execução ativa por pedido
 expresso do usuário, até completar as aulas; não encerrar em um checkpoint.
