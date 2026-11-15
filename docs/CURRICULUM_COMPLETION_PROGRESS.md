@@ -4,7 +4,42 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 25
+## Estado atual — checkpoint 26
+
+Lote11 com oito aulas;136novas nesta etapa. Acrescentadas Inglês — Uso de língua
+inglesa em contextos socioculturais; Espanhol — Pronomes pessoais e tratamento;
+Física — Gravitação e movimentos orbitais; Química — Interações intermoleculares.
+Autoria principal Codex, crítica independente Claude Code/NVIDIA NIM e revisão
+pedagógica humana pendente. Nenhum rascunho bruto foi importado.
+
+Restam1159 lacunas entre1512 identidades;ENEM147 aprofundadas/749 lacunas.
+Estudo147 aprofundadas/34guias/726planejadas;índice353. Contagens editoriais,
+sem certificar habilidades oficiais nem homologação das provas.
+
+- Inglês: funções comunicativas em contexto, variedades além de US/UK,
+  esclarecimento sem estereótipos e possibilidade distinta de certeza.
+- Espanhol: formas efetivamente espanholas, concordância geral usted/ustedes,
+  voseo contextualizado e clíticos com função, referente e colocação. Retomada
+  de envelope singular para destinatárias plurais mantém se lo. Crítica teve
+  metadados de concordância e índices corrigidos explicitamente pelo principal,
+  com original integral preservado; texto e hashes mantidos.
+- Gravitação: simetria esférica, raio intercentros, ação/reação, órbita circular,
+  areolar distinta de angular, energia com zero no infinito e massas comparáveis
+  tratadas no movimento relativo. Novo teste RED→GREEN confere força6,67e-9N,
+  raio2e6m,velocidade2000m/s,período2000πs,energia-5e7J,razão dos extremos3.
+- Química: London coexiste, doador/aceptor, comparação com pressão controlada,
+  solvatação sem garantia universal de solubilidade, velocidade e equilíbrio
+  distintos. Sem valores experimentais inventados ou hierarquia universal.
+
+659testesapp+6motor,build/lint alterado aprovados. API das136 aulas comparada
+integralmente;4novas no Chromium,12respostas,explicações e referências abertas
+em320/375/768/1440px,sem exceções/rolagem horizontal;captura inspecionada.
+Fontes verificadas nas passagens pertinentes; bloqueios não contam como leitura.
+Testes corrigiram também extração numérica gulosa do raio no teste novo, sem
+alterar a conta ou afrouxar o resultado esperado. CI25success43755374221,
+head3a0edf7. Sem schema/banco/merge/deploy. Seguir Biologia e oito restantes.
+
+## Histórico — checkpoint 25
 
 Lote 11 iniciado com quatro aulas: Equações, inequações e sistemas; Morfologia
 e classes de palavras; Modernismo: fases e autores; Planejamento, escrita,

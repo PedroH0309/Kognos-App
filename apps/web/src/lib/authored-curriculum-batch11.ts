@@ -367,6 +367,374 @@ export const authoredCurriculumBatch11:readonly AuthoredLessonSpec[] = [
         "solution": "A: distingue a gratuidade da oficina do custo para chegar a ela e qualifica a possível barreira sem atribuí-la a todas as situações. B mantém a contradição por meio de um conectivo; C altera pontuação sem resolver conteúdo; D transfere o valor do transporte ao preço da atividade, mudando indevidamente a informação. Os valores e a situação são hipotéticos, não dados atribuídos a uma instituição real."
       }
     ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Uso de língua inglesa em contextos socioculturais",
+    "objective": "Interpretar funções comunicativas, registros e variedades do inglês em situações contextualizadas, negociar sentidos sem estereótipos e avaliar o alcance de mensagens em gêneros sociais.",
+    "prerequisites": [
+      "Leitura de frases curtas em inglês",
+      "Pronomes e verbos modais frequentes",
+      "Finalidade e interlocutor de um texto"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Situação, interlocutor e função comunicativa",
+        "explanation": "Uma frase participa de uma situação social: quem fala ou escreve, para quem, por qual canal e com que finalidade? Entender palavras não basta para identificar se a pessoa pede ajuda, oferece algo, convida, informa ou discorda. Uma pergunta com can ou could pode funcionar como pedido de ação, e não apenas como pergunta sobre capacidade. Em um pedido, could e would podem atenuar a formulação; can e will também podem fazer pedidos, em geral mais diretos. Não há uma palavra que garanta cortesia em qualquer contexto: tom, relação entre participantes, urgência e convenções locais também contam. Formalidade não é sinônimo de inteligência nem de correção absoluta. Uma conversa entre colegas e uma solicitação institucional podem exigir escolhas diferentes. Saudação, forma de tratamento, explicitação do motivo e encerramento ajudam a construir a relação, mas Hello não torna toda mensagem automaticamente adequada e Hey não é universalmente ofensivo. Compare a ação esperada com a resposta: se alguém solicita envio de um arquivo, responder apenas que sabe usar o computador pode deixar o pedido sem atendimento. Quando a intenção estiver incerta, peça esclarecimento em vez de atribuir uma intenção hostil por causa de uma única expressão. Na leitura, use as pistas disponíveis; não invente nacionalidade, hierarquia ou intimidade que o texto não informa.",
+        "steps": [
+          "Identifique participantes, canal e finalidade.",
+          "Relacione a forma da frase à ação esperada.",
+          "Observe grau de formalidade e pistas de cortesia.",
+          "Peça esclarecimento quando houver ambiguidade relevante."
+        ],
+        "example": "Diálogo autoral: em uma recepção, uma visitante pergunta “May I leave this folder here?” e recebe “Yes, on the desk”. O contexto sustenta um pedido de permissão para deixar a pasta, não uma previsão sobre o mês de maio. A resposta indica autorização e lugar; o significado de may foi identificado pela interação.",
+        "pitfall": "Traduzir isoladamente um modal, achar que toda pergunta testa capacidade ou transformar uma saudação em regra universal de respeito."
+      },
+      {
+        "level": "intermediate",
+        "title": "Variedades e construção compartilhada de sentido",
+        "explanation": "O inglês circula em comunidades diversas, com variações de vocabulário, pronúncia, grafia e gramática. Inglês britânico e estadunidense não esgotam essa diversidade: há, por exemplo, variedades indianas, nigerianas e singapurenses. Esses nomes não tornam todos os habitantes de um país falantes idênticos; diferenças regionais, sociais, de situação e trajetórias individuais também importam. Uma forma pouco familiar para você não demonstra falta de inteligência de quem a usa. Da mesma maneira, não é possível estabelecer toda a identidade de alguém por uma palavra ou um sotaque. Uma atividade pode pedir uma convenção específica de escrita, mas essa condição da tarefa não cria uma hierarquia de valor entre pessoas. Em interações entre falantes com repertórios diferentes, o objetivo inclui tornar a mensagem compreensível: reformular, explicar um termo, pedir repetição ou confirmar uma informação pode ser mais produtivo que imitar um sotaque idealizado. Pode-se perguntar “What do you mean by that term?” para esclarecer um termo, ou confirmar o ponto específico que gerou dúvida. Faça a pergunta sem pressupor que o outro está errado. Quando várias línguas fazem parte da experiência de alguém, esse repertório pode ajudar a negociar sentidos; não é necessário tratar cada cultura como um bloco fechado. Interpretação intercultural combina atenção às diferenças e disposição para rever a primeira leitura, sem reduzir uma pessoa a uma regra sobre seu país.",
+        "steps": [
+          "Reconheça a diversidade além de dois padrões nacionais.",
+          "Separe familiaridade da forma e compreensão da mensagem.",
+          "Localize a dúvida e solicite esclarecimento específico.",
+          "Confirme o sentido sem presumir identidade ou capacidade."
+        ],
+        "example": "Situação autoral: numa equipe internacional, a coordenadora diz “The draft is due next Wednesday”. Um participante pergunta “Do you mean the 18th?” e ela confirma a data. A confirmação evita depender de interpretações diferentes de next Wednesday; não exige adivinhar a origem dos participantes nem eliminar seus sotaques.",
+        "pitfall": "Usar uma variedade como prova de inferioridade, deduzir nacionalidade de uma expressão ou fingir compreensão para evitar uma pergunta de esclarecimento."
+      },
+      {
+        "level": "advanced",
+        "title": "Gênero, público e alcance das afirmações",
+        "explanation": "Ler criticamente em inglês envolve identificar quem publica, qual público procura alcançar e o que pretende que o leitor pense ou faça. Um convite, uma notícia, um anúncio e um comentário podem falar do mesmo assunto com funções diferentes. Expressões avaliativas apresentam uma posição, mas não comprovam que todos compartilham dela. Procure a evidência e o seu alcance: um relato individual não descreve automaticamente toda uma comunidade, e uma contagem de respostas de um grupo não representa toda a população sem informações adicionais. Observe também modalidade e condições. Em uma previsão como “The exhibition may reopen in July”, may apresenta possibilidade, não reabertura confirmada. O modal tem outros usos, portanto não substitua a análise da frase por uma tradução única. Uma condição introduzida por if delimita o que é proposto: retirar a condição pode tornar uma promessa mais forte do que o texto permite. Compare o que foi efetivamente dito com a inferência solicitada; não atribua religião, opinião política ou traço moral ao autor apenas por uma expressão figurada. Contexto pode sustentar uma leitura, mas contexto ausente não deve ser preenchido por estereótipo. Ao responder a um texto, você pode reformular a mensagem e distinguir informação, avaliação e hipótese, preservando essas marcas de alcance. Os textos curtos desta aula treinam essas operações; não certificam nível de proficiência nem domínio de todas as interações culturais.",
+        "steps": [
+          "Identifique gênero, público e ação pretendida.",
+          "Diferencie informação, avaliação e hipótese.",
+          "Examine modais, condições e alcance da evidência.",
+          "Escolha a inferência sustentada sem acrescentar estereótipos."
+        ],
+        "example": "Aviso autoral: “If enough volunteers register, we will add a second reading group.” O anúncio associa a abertura de outro grupo à inscrição de voluntários suficientes. Recontá-lo como segundo grupo já confirmado elimina a condição. O aviso, por si, não informa o número de inscrições nem a opinião de todos os moradores.",
+        "pitfall": "Transformar possibilidade em confirmação, apagar uma condição ou tratar um comentário como opinião universal de uma cultura."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Diálogo inteiramente autoral: durante o preparo de uma reunião, Jo escreve a Pat: “Could you send the updated agenda before noon, please?” Pat responde: “Sure, I will send it now”. Que função a pergunta de Jo desempenha nesse contexto?",
+        "hint": "Observe o arquivo solicitado, o prazo e a resposta que promete uma ação, em vez de interpretar could isoladamente.",
+        "options": [
+          "Investigar exclusivamente se Pat já sabia ler agendas na infância.",
+          "Confirmar que a reunião já terminou e dispensar qualquer envio.",
+          "Pedir que Pat envie a pauta atualizada antes do meio-dia.",
+          "Oferecer a Pat uma agenda que Jo já enviou, sem solicitar ação."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: o contexto e a resposta mostram um pedido de envio, com objeto e prazo explícitos. A toma could como passado de capacidade e ignora a interação; B acrescenta fim da reunião inexistente; D troca pedido por oferta e pressupõe envio já realizado. A leitura não depende de adivinhar nacionalidade ou grau de intimidade entre Jo e Pat."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Situação inteiramente autoral: numa equipe que usa inglês, uma participante não compreende um termo usado por outro integrante. O texto não informa país, sotaque nem formação de ninguém. Qual resposta ajuda a negociar o sentido sem acrescentar estereótipos?",
+        "hint": "Busque uma pergunta específica sobre a mensagem, sem diagnosticar competência geral nem atribuir origem ao interlocutor.",
+        "options": [
+          "“Could you explain what that term means in this task?”",
+          "“Your country must use English incorrectly, so the term has no meaning.”",
+          "“An unfamiliar term proves that the speaker cannot reason.”",
+          "“There is no need to clarify; every variety always uses every word identically.”"
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: pede explicação contextual e permite confirmar o significado necessário à tarefa. B inventa país e uma avaliação geral; C confunde familiaridade linguística com capacidade de raciocínio; D elimina indevidamente a possibilidade de variação. A pergunta não afirma que o termo esteja errado e não exige eliminar a variedade do participante."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Comunicado fictício, criado para a atividade: “The community cinema may offer a morning session next month. The schedule is not confirmed.” Qual interpretação preserva o alcance da mensagem?",
+        "hint": "Relacione may à frase seguinte sobre a programação ainda não confirmada; não acrescente aprovação de toda a comunidade.",
+        "options": [
+          "A sessão matinal está definitivamente agendada, sem qualquer incerteza.",
+          "O texto prova que todos os moradores desejam a sessão matinal.",
+          "A programação foi cancelada definitivamente e nenhuma sessão é possível.",
+          "A sessão matinal é uma possibilidade para o próximo mês, ainda sem confirmação."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: may indica possibilidade nesse enunciado, e a segunda frase explicita a falta de confirmação. A transforma possibilidade em certeza; B inventa opinião universal sem pesquisa ou depoimentos; C confunde ausência de confirmação com cancelamento definitivo. O comunicado é original e fictício, sem atribuição a um cinema ou instituição real."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Pronomes pessoais e tratamento em espanhol",
+    "objective": "Relacionar pronomes pessoais a participantes e funções sintáticas, escolher formas de tratamento contextualizadas e aplicar concordância, combinações e colocação pronominal em espanhol.",
+    "prerequisites": [
+      "Pessoa e número verbal",
+      "Sujeito e complementos do verbo",
+      "Leitura de enunciados curtos em espanhol"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Participantes, sujeito e tratamento",
+        "explanation": "Pronomes pessoais situam participantes do discurso: primeira pessoa inclui quem fala; segunda designa o interlocutor; terceira remete ao que se fala. Formas de sujeito incluem yo, tú, vos, él, ella, usted, nosotros/nosotras, vosotros/vosotras, ellos/ellas e ustedes. Ello é uma forma neutra de uso restrito, não o plural de él. Usted e ustedes designam interlocutores, mas exigem concordância verbal de terceira pessoa: usted trabaja e ustedes trabajan. Não substitua essas palavras por você, o senhor ou a senhora dentro de uma frase que deve permanecer em espanhol. Tú e vos podem ser formas de proximidade, conforme a variedade; usted é frequentemente associado a formalidade ou distância, mas as relações sociais não se deixam reduzir a uma regra por idade ou profissão. Na maior parte da Espanha, vosotros/vosotras aparece no tratamento plural informal; em áreas como Canárias e no uso americano corrente, ustedes atende também ao plural informal. Ustedes continua plural, mesmo quando inclui pessoas com quem há intimidade. O voseo americano apresenta diversidade: um padrão rioplatense de presente tem vos hablás, vos tenés e vos vivís; não projete esse paradigma a toda comunidade voseante. O sujeito pode ser omitido quando recuperável, embora explicitação possa desfazer ambiguidade ou marcar contraste. Escolher pronome inclui interpretar o contexto, e não apenas traduzir uma tabela portuguesa.",
+        "steps": [
+          "Identifique quem fala, quem recebe e de quem se fala.",
+          "Escolha número e tratamento conforme o contexto fornecido.",
+          "Conjugue usted e ustedes na terceira pessoa.",
+          "Reconheça variação regional sem transformar tendência em regra universal."
+        ],
+        "example": "Exemplos autorais de contraste: “Nosotras preparamos el cartel; ustedes organizan la sala”. Nosotras inclui a falante em um grupo feminino; ustedes designa vários interlocutores e combina com organizan. Uma instrução em contexto americano não precisa ser formal só por conter ustedes.",
+        "pitfall": "Escrever você como pronome espanhol, tratar ustedes como singular ou impor um único sistema de tratamento a todos os países e relações."
+      },
+      {
+        "level": "intermediate",
+        "title": "Formas tônicas, átonas e funções",
+        "explanation": "A forma depende da função na oração. Compare yo como sujeito com mí após certas preposições: para mí, de mí; no tuteo, para ti, de ti. Com con, empregam-se comigo em português e conmigo em espanhol; para o interlocutor de tuteo, contigo. Não conclua que toda preposição exige mí ou ti: entre tú y yo é uma construção diferente, e segundo a função também há exceções com según. No voseo, aparecem formas como con vos e para vos. Entre os átonos estão me, te, nos, os, lo, la, los, las, le, les e se. Me, te, nos e os podem exercer funções de complemento direto ou indireto; não possuem marca própria de gênero. No sistema geral baseado em função, lo/la/los/las retomam complemento direto com as distinções pertinentes, enquanto le/les marcam indireto sem distinguir masculino e feminino. Identificar pessoa humana não basta para chamar um complemento de indireto: a preposição a também pode introduzir objeto direto de pessoa. Há variação de uso, inclusive leísmo com condições de aceitação; por isso não trate todo le de pessoa como agramatical nem apague a distinção de funções. Quando le ou les precede lo, la, los ou las, a forma é se: a troca não transforma o destinatário em reflexivo. Se não mostra o número do destinatário, que pode ser esclarecido pelo contexto ou por complemento. Analise o que foi entregue e a quem, em vez de adivinhar pela ordem das pessoas mencionadas.",
+        "steps": [
+          "Separe sujeito, complemento preposicional e clítico.",
+          "Identifique o referente e a função do complemento.",
+          "Escolha forma e número sem atribuir gênero a le/les.",
+          "Substitua le/les por se antes de lo/la/los/las."
+        ],
+        "example": "Transformação autoral: “Envío las fotografías a mis primas” pode ser retomada como “Se las envío”. Las retoma as fotografias; se corresponde a les, destinatário plural esclarecido por a mis primas. A terminação plural de las vem das fotografias, não do número das primas.",
+        "pitfall": "Usar apenas a pergunta a quem para identificar função, flexionar le por gênero ou fazer o pronome do objeto mudar de número para marcar o destinatário."
+      },
+      {
+        "level": "advanced",
+        "title": "Colocação e interpretação dos clíticos",
+        "explanation": "Na escrita corrente, o clítico normalmente precede uma forma simples conjugada de indicativo ou subjuntivo: o bloco é escrito separado do verbo. Com infinitivo e gerúndio simples, aparece unido à forma verbal; no imperativo afirmativo, também se une, com a acentuação exigida pela palavra resultante. O imperativo negativo pede posição anterior: com a ordem de tuteo, compáralo contrasta com no lo compares. Em certas perífrases, há duas posições possíveis para o bloco: “Voy a revisarlas” e “Las voy a revisar” preservam o mesmo objeto. Isso não torna válida uma separação arbitrária entre a preposição e o infinitivo; “Voy a las revisar” não corresponde a essas construções. A mobilidade não se estende a toda sequência de verbos: é preciso analisar a construção concreta, não decorar que um pronome pode ir em qualquer lugar. Com tempos compostos usuais de haber, o clítico antecede o auxiliar, não se prende normalmente ao particípio. Ao combinar pronomes, mantenha o bloco e a ordem compatível com as funções; na combinação de indireto e direto aqui estudada, o indireto precede o direto. Se pode ter valores diferentes: em “Se las envío”, substitui les; em contexto de autocuidado pode ser reflexivo; com sujeito plural e ações mútuas pode ser recíproco; em outras construções marca impessoalidade ou passiva. Nem todo se é pronome reflexivo, e a mesma sequência curta pode exigir contexto para decidir. Revise forma, função, referente e colocação em conjunto.",
+        "steps": [
+          "Localize a forma verbal e o tipo de construção.",
+          "Escolha próclise ou ênclise e confira a grafia.",
+          "Mantenha o bloco de clíticos sem separação arbitrária.",
+          "Determine o valor de se pelo contexto e pela estrutura."
+        ],
+        "example": "Par autoral de tuteo: ao pedir uma cópia para si, alguém diz “Tráemela mañana”; ao proibir o mesmo envio, diz “No me la traigas mañana”. Me indica o destinatário e la retoma a cópia. A oposição afirmativo/negativo muda a colocação; a acentuação de tráemela deve ser conferida.",
+        "pitfall": "Escrever clítico separado depois de infinitivo, unir ao particípio por analogia ou classificar todo se como ação praticada sobre si mesmo."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma instrução autoral determina usar explicitamente ustedes para falar com várias pessoas. Qual frase apresenta a concordância verbal geral correspondente?",
+        "hint": "O interlocutor é plural, mas ustedes pede terceira pessoa gramatical do plural; não segunda pessoa do singular ou do plural.",
+        "options": [
+          "Ustedes prepara la exposición.",
+          "Ustedes preparan la exposición.",
+          "Ustedes preparáis la exposición.",
+          "Ustedes preparas la exposición."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: ustedes combina com preparan, terceira pessoa plural. A usa singular de terceira pessoa; C traz a forma de segunda pessoa plural associada a vosotros no sistema aqui estudado; D usa segunda pessoa singular. O exercício fixa a concordância geral com ustedes e não pede julgar todas as variedades locais nem deduzir formalidade pela idade dos destinatários."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Frase inteiramente autoral: “Entrego el sobre a las coordinadoras”. Para retomar simultaneamente el sobre e a las coordinadoras com clíticos, qual forma preserva o objeto singular e o destinatário plural, segundo a combinação geral estudada?",
+        "hint": "Identifique o objeto entregue e lembre a mudança de les antes de lo; o número do envelope não muda pelo número das destinatárias.",
+        "options": [
+          "Les lo entrego.",
+          "Se los entrego.",
+          "Lo se entrego.",
+          "Se lo entrego."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: lo retoma el sobre, masculino singular; les, correspondente às coordenadoras, torna-se se antes de lo. A mantém a sequência les lo que deve ser substituída; B pluraliza o objeto apesar do envelope singular; C inverte o bloco. Se é invariable e o contexto mantém o destinatário plural; não significa que as coordenadoras entreguem algo a si mesmas."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Na perífrase autoral “Voy a guardarlas”, las retoma unas carpetas. Qual reformulação mantém o mesmo objeto e emprega a outra posição possível do bloco pronominal nessa construção?",
+        "hint": "Procure o clítico antes do verbo conjugado, sem separá-lo entre a e guardar nem trocar o gênero ou o número das pastas.",
+        "options": [
+          "Las voy a guardar.",
+          "Voy a las guardar.",
+          "Voy a guardar las.",
+          "Los voy a guardar."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: Las voy a guardar equivale a Voy a guardarlas nessa perífrase e preserva o objeto feminino plural. B introduz o clítico entre preposição e infinitivo; C o escreve separado depois do infinitivo em vez de unido; D altera o referente para masculino plural. A possibilidade conferida para ir a + infinitivo não autoriza deslocamento irrestrito em toda combinação de verbos."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Gravitação e movimentos orbitais",
+    "objective": "Aplicar gravitação, campo, energia e leis de Kepler em modelos newtonianos, distinguindo altitude e raio orbital, condições de validade e órbitas circulares e elípticas.",
+    "prerequisites": [
+      "Força resultante e movimento circular",
+      "Conservação de energia e momento angular",
+      "Potências, raízes e unidades SI"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Força, campo e distância ao centro",
+        "explanation": "No modelo newtoniano, duas massas puntiformes se atraem com módulo F = Gm1m2/r², sendo r a distância entre elas e G a constante gravitacional, em N·m²/kg². Para corpos esfericamente simétricos não sobrepostos, a interação externa pode ser calculada como se cada massa estivesse em seu centro. Assim, o resultado não exige que toda altitude seja muito maior que o raio de um planeta esférico. Para formas irregulares próximas, a aproximação puntiforme pode falhar e é necessário considerar a distribuição de massa. As forças do par têm o mesmo módulo e sentidos opostos, mas atuam em corpos diferentes; não se anulam na equação de movimento de um único corpo. O campo gravitacional devido a uma massa esférica M, em ponto externo, tem módulo g = GM/r² e aponta para o centro. Ele se mede em N/kg, equivalente a m/s², e não depende da massa de teste. Na altura h acima de uma superfície de raio R, use r = R + h, não apenas h. G não é a aceleração local g: esta varia com posição e distribuição de massa. Se várias fontes atuam, some campos vetorialmente. Dobrar a distância mantendo massas reduz o módulo da força a um quarto; dobrar uma massa mantendo a outra e a distância duplica o módulo. Essas relações são do modelo clássico, adequado quando seus limites de campo e velocidade são respeitados, e não substituem correções relativísticas quando necessárias.",
+        "steps": [
+          "Defina as massas e a validade do modelo esférico ou puntiforme.",
+          "Use a distância ao centro com unidades consistentes.",
+          "Calcule módulo e direção da força ou do campo.",
+          "Separe ação e reação e confira proporcionalidades."
+        ],
+        "example": "Modelo autoral: um planeta esférico de raio R produz campo superficial g0. A uma altitude h = 2R, a distância ao centro é 3R; portanto g = g0/9. Usar 2R no denominador daria g0/4 e confundiria a altitude com o raio de posição. Nenhum valor de um planeta real é necessário.",
+        "pitfall": "Usar altitude como distância ao centro, confundir G com g ou somar ação e reação como se atuassem no mesmo satélite."
+      },
+      {
+        "level": "intermediate",
+        "title": "Órbita circular, período e queda livre",
+        "explanation": "Considere um satélite de massa m desprezível em comparação com M, sem arrasto ou propulsão, no campo externo esférico, e um referencial aproximadamente inercial em que M está em repouso. Em órbita circular, a gravitação fornece a força resultante radial: GMm/r² = mv²/r. Não some uma força centrípeta extra à gravidade; centrípeta descreve a resultante necessária. Resulta v = √(GM/r) e T = 2πr/v = 2π√(r³/GM). A velocidade é tangente e a aceleração aponta ao centro. O módulo de v permanece constante nessa órbita, mas a direção muda, de modo que há aceleração. A massa m se cancela na equação, e dois satélites ideais no mesmo raio requerem o mesmo módulo de velocidade. Entre órbitas circulares em torno do mesmo M, a de maior raio tem menor velocidade e maior período; isso não significa que toda manobra para chegar a ela dispense energia. Um objeto em órbita está em queda livre, sob gravidade diferente de zero. A sensação de ausência de apoio dos ocupantes não demonstra desaparecimento do campo. Uma órbita geoestacionária ainda exige direção prógrada, plano equatorial e período compatível com a rotação sideral terrestre; ter trajetória circular ou servir à comunicação não basta. Se as duas massas forem comparáveis, apenas escolher o centro de massa como origem não torna √(GM/r) a fórmula para a velocidade individual: é preciso distinguir separação relativa e órbita de cada corpo.",
+        "steps": [
+          "Confira hipóteses de massa central dominante e órbita circular.",
+          "Iguale gravitação e resultante centrípeta.",
+          "Obtenha velocidade e período com r = R + h.",
+          "Interprete aceleração, queda livre e limites do referencial."
+        ],
+        "example": "Comparação autoral sem repetir os dados das tarefas: duas órbitas circulares ideais no mesmo campo têm raios r e 9r. A relação v2/v1 = 1/3 vem da raiz inversa do raio; T2/T1 = 27 vem de 9 elevado a 3/2. Velocidade angular e velocidade linear não devem ser confundidas.",
+        "pitfall": "Acrescentar força centrípeta como interação extra, concluir gravidade zero por falta de apoio ou aplicar velocidade individual de massa pequena a um sistema binário comparável."
+      },
+      {
+        "level": "advanced",
+        "title": "Elipses, energia e leis de Kepler",
+        "explanation": "No problema isolado de dois corpos, o movimento relativo ligado com momento angular não nulo é elíptico, com o caso circular como particular. Na aproximação de massa central dominante, essa massa ocupa um foco da elipse, não seu centro geométrico. A segunda lei de Kepler afirma áreas iguais em tempos iguais; é velocidade areolar constante, não angular constante numa elipse excêntrica. O momento angular se conserva porque a força é central. Nos extremos da elipse, velocidade e raio são perpendiculares e rp·vp = ra·va. O semieixo maior é a = (rp + ra)/2 e não a distância instantânea. Com μ = GM, T² = 4π²a³/μ; para massas comparáveis, o movimento relativo usa G(M + m) e a referente à separação, não o semieixo individual sem ajuste. A energia potencial, escolhida zero no infinito, é U = -GMm/r. Essa negatividade depende da convenção; a diferença de energia não depende da escolha do zero. Para órbita elíptica com M dominante, E = -GMm/(2a) permanece constante e v² = μ(2/r - 1/a). Energia cinética e potencial variam ao longo da elipse. A velocidade de escape ideal no raio r é √(2μ/r), com energia total zero e ausência de outras forças; não é a velocidade circular √(μ/r). Alcance de escape não elimina gravidade. Modelos desprezam perturbações, atmosfera e correções relativísticas quando sua precisão não as exige. Verifique hipóteses antes de comparar períodos de sistemas com massas centrais diferentes.",
+        "steps": [
+          "Identifique semieixo maior, distâncias extremas e massa central.",
+          "Use áreas ou momento angular para comparar velocidades.",
+          "Calcule energia e velocidade com a mesma referência de potencial.",
+          "Compare períodos apenas com a constante gravitacional do sistema apropriado."
+        ],
+        "example": "Cálculo autoral em sistema diferente das tarefas: uma elipse ideal tem rp = 3L e ra = 5L. Então a = 4L e vp/va = 5/3, pela conservação do momento angular nos extremos. A constância das áreas não autoriza concluir que os dois trechos de mesmo ângulo durem o mesmo tempo.",
+        "pitfall": "Colocar a massa central no centro da elipse, confundir área e ângulo ou aplicar a proporcionalidade de Kepler entre sistemas com diferentes massas sem ajuste."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Modelo autoral: duas pequenas esferas esfericamente simétricas, de massas 4 kg e 9 kg, estão com distância entre centros de 0,6 m e não se sobrepõem. Calcule o módulo da força entre elas. Use G = 6,67 × 10^-11 N·m²/kg².",
+        "hint": "Multiplique as massas e divida pelo quadrado da distância entre centros, distinguindo 0,6 de seu quadrado.",
+        "options": [
+          "6,67 × 10^-10 N.",
+          "2,40 × 10^-9 N.",
+          "4,00 × 10^-9 N.",
+          "6,67 × 10^-9 N."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: F = 6,67 × 10^-11 × 4 × 9 / 0,36 = 6,67 × 10^-9 N. A é dez vezes menor; B corresponde aproximadamente a usar denominador 1 em vez de 0,36; C corresponde aproximadamente a dividir por 0,6, sem elevar ao quadrado. Os valores são de um exercício próprio, sem representar medição de laboratório ou dispositivo real."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Planeta fictício esférico com μ = 8 × 10^12 m³/s² e R = 1 × 10^6 m. Satélite de massa desprezível descreve órbita circular a h = 1 × 10^6 m, sem arrasto ou propulsão. Quais são sua velocidade e seu período?",
+        "hint": "Some R e h para obter r; calcule √(μ/r), depois o comprimento 2πr dividido pela velocidade.",
+        "options": [
+          "2000 m/s; 2000π s.",
+          "2828 m/s; aproximadamente 707π s.",
+          "4000 m/s; 1000π s.",
+          "2000 m/s; 1000π s."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: r = R + h = 2 × 10^6 m, v = √(8 × 10^12 / 2 × 10^6) = 2000 m/s. T = 2π × 2 × 10^6 / 2000 = 2000π s. B calcula velocidade e período usando h como raio; C duplica indevidamente a velocidade para o raio correto; D usa apenas metade da circunferência no tempo de uma volta. A força centrípeta é fornecida pela gravitação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Satélite fictício de massa 50 kg, desprezível diante da massa central, em campo com μ = 8 × 10^12 m³/s². A elipse tem distância de periastro rp = 2 × 10^6 m e de apoastro ra = 6 × 10^6 m. Sem outras forças e com U zero no infinito, quais são E e a razão das velocidades nos extremos?",
+        "hint": "Calcule a = (rp + ra)/2, use E = -μm/(2a) e conserve r·v nos dois extremos onde a velocidade é perpendicular ao raio.",
+        "options": [
+          "E = +5 × 10^7 J; v_periastro/v_apoastro = 3.",
+          "E = -5 × 10^7 J; v_periastro/v_apoastro = 3.",
+          "E = -5 × 10^7 J; v_periastro/v_apoastro = 1/3.",
+          "E = -1 × 10^8 J; v_periastro/v_apoastro = 1."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a = 4 × 10^6 m e E = -(8 × 10^12 × 50)/(2 × 4 × 10^6) = -5 × 10^7 J. De rp·vp = ra·va, vp/va = ra/rp = 3. A tem sinal incompatível com a elipse ligada nessa convenção; C inverte a razão; D usa rp no lugar de a na energia e ainda afirma velocidades iguais numa elipse excêntrica. Energia constante não significa velocidade constante."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Interações intermoleculares",
+    "objective": "Identificar interações entre partículas a partir da estrutura e relacionar polaridade, polarizabilidade e formação de novas interações a propriedades de líquidos e misturas, respeitando condições de comparação.",
+    "prerequisites": [
+      "Ligações covalentes e polaridade molecular",
+      "Íons e cargas parciais",
+      "Mudanças de estado e temperatura"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Estrutura e tipos de interação",
+        "explanation": "Uma ligação covalente mantém átomos na molécula; interações intermoleculares atuam entre moléculas. Na vaporização usual de uma substância molecular sem decomposição, as moléculas se afastam sem exigir rompimento de todas as ligações covalentes internas. A dispersão de London decorre de flutuações correlacionadas das distribuições eletrônicas, com dipolos instantâneos e induzidos; existe também entre moléculas polares, não só entre apolares. Polarizabilidade indica facilidade de deformar a nuvem eletrônica. Moléculas com dipolo permanente apresentam ainda interações dipolo–dipolo, dependentes da orientação. A geometria deve entrar na análise: ter ligações polares não garante dipolo resultante diferente de zero. Nos exemplos escolares mais usuais de ligação de hidrogênio, um H ligado a O, N ou F interage com um sítio aceptor adequado, como um par eletrônico disponível. Não basta a molécula conter H e O em lugares quaisquer; identifique doador e aceptor. Essa regra didática cobre os casos aqui estudados, sem pretender esgotar a definição de toda ligação de hidrogênio. Íons em solvente polar podem estabelecer interações íon–dipolo. Não descreva um sólido iônico como coleção de moléculas independentes unidas apenas por dispersão. As contribuições coexistem: dizer que uma delas ajuda a explicar uma propriedade não significa que as demais desapareceram.",
+        "steps": [
+          "Distinga ligação interna e interação entre partículas.",
+          "Determine geometria e dipolo molecular.",
+          "Reconheça dispersão, dipolos e possíveis doadores e aceptores.",
+          "Considere íons quando existirem, sem inventar moléculas no retículo."
+        ],
+        "example": "Análise autoral: uma molécula de acetona tem grupo C=O e pode aceitar ligação de hidrogênio de uma molécula de água, que oferece O–H. Ela não apresenta grupo O–H ou N–H para doar esse tipo usual de interação. As ligações de hidrogênio com a água não apagam as contribuições de dispersão.",
+        "pitfall": "Afirmar que London só existe em apolares ou que qualquer hidrogênio já permite ligação de hidrogênio entre moléculas iguais."
+      },
+      {
+        "level": "intermediate",
+        "title": "Propriedades e comparação controlada",
+        "explanation": "Para comparar temperaturas de ebulição, fixe a pressão externa: a ebulição ocorre quando a pressão de vapor de equilíbrio alcança essa pressão. Atrações mais intensas tendem a dificultar a separação das partículas e reduzir a pressão de vapor a uma mesma temperatura, mas a previsão exige considerar o conjunto de interações e a estrutura. Não use uma escala universal em que qualquer molécula polar necessariamente supera qualquer apolar; uma nuvem muito polarizável e a forma molecular podem tornar a dispersão decisiva. Em famílias de estrutura comparável, aumentar tamanho e polarizabilidade costuma intensificar dispersão; entre isômeros, alterações de forma e contato também podem modificar o resultado. Essas tendências não fornecem sozinhas um valor numérico exato. A viscosidade mede resistência ao escoamento e depende de interações, tamanho, forma e temperatura; densidade maior não é sua definição. Em muitos líquidos, aquecer reduz viscosidade, sem significar que todas as interações desapareceram. Coesão refere-se à atração entre partículas do próprio líquido; adesão envolve o contato com outro material. A tensão superficial se relaciona ao custo de ampliar a superfície e não constitui uma película sólida de moléculas imóveis. Uma comparação precisa indicar quais propriedades e condições foram mantidas, em vez de concluir que maior ebulição implica necessariamente maior viscosidade em qualquer par.",
+        "steps": [
+          "Fixe a propriedade, temperatura ou pressão da comparação.",
+          "Examine todas as contribuições, tamanho e forma.",
+          "Use tendências como justificativa qualitativa, não como cálculo exato.",
+          "Diferencie ebulição, pressão de vapor, viscosidade e tensão superficial."
+        ],
+        "example": "Cenário autoral: dois líquidos fictícios X e Y estão em equilíbrio com seus vapores a 25 °C; o dado fornecido é pX < pY. Isso permite dizer que X tem menor pressão de vapor nessas condições. Não informa, sozinho, qual líquido é mais denso nem autoriza calcular sua viscosidade. As letras não correspondem a uma tabela real.",
+        "pitfall": "Comparar ebulição em pressões diferentes sem ajuste ou transformar uma classificação de força em hierarquia universal para todas as moléculas e propriedades."
+      },
+      {
+        "level": "advanced",
+        "title": "Misturas, solvatação e limites da previsão",
+        "explanation": "Dissolver envolve reorganizar interações: separar partículas do soluto e do solvente demanda energia, enquanto estabelecer contatos soluto–solvente pode liberar energia. O balanço e a dispersão de matéria participam da viabilidade da mistura; por isso somente dizer que existe uma atração favorável não garante solubilidade ilimitada. Semelhante dissolve semelhante é um guia inicial, não lei sem exceções. Um composto pode ter uma região polar e outra pouco polar: o equilíbrio entre essas partes afeta sua interação com água. Um aceptor de ligação de hidrogênio pode interagir com a água mesmo sem doar entre moléculas iguais; essa possibilidade também não garante miscibilidade total. Na hidratação de um cátion, o lado parcialmente negativo da água tende a se orientar para o íon; para um ânion, a orientação favorável envolve o lado parcialmente positivo. Formar íon–dipolo não prova que todo sal seja muito solúvel: é preciso considerar o retículo e o balanço completo. Agitação pode aumentar a rapidez de dissolução, mas não torna necessariamente maior a solubilidade de equilíbrio a temperatura fixa. Diferencie quantidade já dissolvida, limite de solubilidade e velocidade do processo. Leia os dados de temperatura, composição e pressão quando forem relevantes. Interações explicam mecanismos e tendências, mas uma previsão quantitativa exige dados e um modelo com hipóteses próprias, em vez de inventar uma relação linear universal entre força e entalpia.",
+        "steps": [
+          "Identifique as interações que se desfazem e as que se formam.",
+          "Analise regiões polares e apolares sem regra absoluta.",
+          "Distinga orientação de solvatação e garantia de solubilidade.",
+          "Separe velocidade de dissolução e equilíbrio nas condições indicadas."
+        ],
+        "example": "Hipótese autoral: um sólido e água, mantidos à mesma temperatura, chegam ao mesmo limite de dissolução em dois recipientes; um foi agitado e chegou antes. O dado distingue rapidez e estado final. Não demonstra que a agitação tenha elevado o limite de equilíbrio nem que toda dissolução libere calor.",
+        "pitfall": "Garantir dissolução de qualquer sal só pela atração íon–dipolo ou confundir dissolver mais depressa com aumentar o limite de solubilidade."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Para esta análise escolar autoral, considere metanol CH3OH e clorometano CH3Cl, ambos moleculares e polares. Qual afirmação identifica corretamente as interações usuais entre moléculas iguais, sem excluir dispersão?",
+        "hint": "Examine se há H ligado a O, N ou F; diferencie ser polar de poder doar ligação de hidrogênio no modelo estudado.",
+        "options": [
+          "Metanol tem dispersão e pode formar ligações de hidrogênio entre suas moléculas; clorometano apresenta dispersão e dipolo–dipolo, sem o doador usual O–H/N–H/F–H.",
+          "Só clorometano possui dispersão, porque a ligação de hidrogênio a elimina no metanol.",
+          "Ambos são apolares porque suas fórmulas contêm carbono.",
+          "Clorometano forma a mesma rede usual de ligações de hidrogênio só porque contém hidrogênio."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: o O–H do metanol permite doação e o oxigênio fornece sítio aceptor; London continua presente. CH3Cl tem dipolo permanente e dispersão, mas não o grupo doador usual indicado. B exclui uma contribuição que coexiste; C ignora a polaridade fornecida; D trata qualquer H como doador equivalente. A afirmação não calcula nem hierarquiza universalmente pontos de ebulição."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Dados fictícios autorais: líquidos moleculares A e B têm a mesma temperatura de ebulição quando medidos, respectivamente, a 60 kPa e 100 kPa. Isso basta para concluir que suas interações são idênticas?",
+        "hint": "A condição de ebulição depende da pressão externa; compare quais variáveis foram diferentes nas duas medições.",
+        "options": [
+          "Sim: temperatura de ebulição nunca depende da pressão externa.",
+          "Sim: pressões diferentes provam igualdade de todos os dipolos moleculares.",
+          "Não: a comparação foi feita sob pressões diferentes e não demonstra igualdade de interações.",
+          "Não: os dados obrigam a concluir que A não tem interação entre moléculas."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: a temperatura de ebulição depende da pressão, e as duas medições não ocorreram na mesma condição. A nega essa dependência; B transforma diferença experimental em identidade molecular sem fundamento; D conclui ausência de interação sem suporte. Uma análise das forças exige estrutura e comparação apropriada, não apenas uma temperatura obtida sob pressões distintas."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num modelo autoral de hidratação de Na+ por moléculas de água, qual conclusão é adequada sem prometer solubilidade ilimitada de qualquer sal?",
+        "hint": "Relacione carga positiva do cátion às cargas parciais da água e separe atração local do balanço global da dissolução.",
+        "options": [
+          "Os hidrogênios parcialmente positivos são atraídos por Na+ como polos opostos.",
+          "O oxigênio parcialmente negativo tende a se orientar para Na+, formando interação íon–dipolo; dissolução ainda depende do balanço das interações e das condições.",
+          "A atração Na+–água prova que todo composto iônico dissolve em qualquer quantidade.",
+          "Hidratação significa quebrar obrigatoriamente as ligações O–H de toda a água."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a orientação do lado parcialmente negativo do oxigênio favorece a atração ao cátion. A troca a orientação favorável por cargas do mesmo sinal; C ignora retículo e demais fatores; D confunde reorganização entre partículas com rompimento obrigatório de ligações covalentes da água. O modelo explica uma interação local, sem dados de solubilidade para um sal específico."
+      }
+    ]
   }
 ];
 
@@ -502,6 +870,138 @@ export const authoredCurriculumBatch11ReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "A alternativa 0 distingue a gratuidade da oficina do custo para chegar a ela e qualifica a possível barreira de acesso ao caso descrito, sem atribuí-la a todas as situações. A alternativa 1 mantém a contradição lógica por meio de conectivo \"consequentemente\"; a 2 altera apenas pontuação após \"gratuita\" sem resolver o conflito de conteúdo; a 3 declara indevidamente que a oficina custa R$ 12, transferindo indevidamente o valor do transporte ao preço da atividade e apagando a informação da gratuidade."
+      }
+    ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Uso de língua inglesa em contextos socioculturais",
+    "contentSha256": "8dbe61eab74bc60f648cdf7f6e50fcb2720468a15caca761259085959bcee0d3",
+    "draftMethod": "Autoria Codex com conferência em fontes oficiais de ensino de inglês e acadêmicas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/requests-offers-invitations",
+      "https://www.teachingenglish.org.uk/professional-development/teachers/understanding-learners/intercultural-learning-1",
+      "https://www.teachingenglish.org.uk/professional-development/teachers/teaching-knowledge-database/d-h/englishes",
+      "https://owl.purdue.edu/owl/multilingual/world_englishes/index.html",
+      "https://www.coe.int/en/web/common-european-framework-reference-languages/plurilingualism-and-pluriculturalism",
+      "https://rm.coe.int/cefr-companion-volume-with-new-descriptors-2020/16809ea0d4",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/probability"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A pergunta 'Could you send the updated agenda before noon, please?' tem função de pedido de ação com objeto e prazo explícitos. A resposta correta (índice 2) identifica essa função de pedido, não traduzindo 'could' isoladamente como pergunta de capacidade ou inferindo competência infantil. O contexto comunicação (Jo→Pat, arquivos, prazo do meio-dia) sustenta a interpretação de pedido de envio, não investigação de histórico ou confirmação de fim de reunião."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Na Task 2, a participante não compreende um termo e o texto não informa país, sotaque nem formação. A resposta correta (índice 0) 'Could you explain what that term means in this task?' ajuda a negociar significado sem diagnosticar competência geral nem atribuir origem ao interlocutor, cumprindo o objetivo de clarificação sem estereótipos. As alternativas erradas inventam país, confundem familiaridade linguística com raciocínio ou eliminam variação indevidamente."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Na Task 3, o comunicado 'The community cinema may offer a morning session next month. The schedule is not confirmed.' usa 'may' para indicar possibilidade. A interpretação correta (índice 3) reconhece essa possibilidade sem transformá-la em certeza, respeitando a segunda frase sobre falta de confirmação. As opções erradas transformam possibilidade em certeza, inventam desejos universais sem pesquisa ou confundem ausência de confirmação com cancelamento definitivo."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Pronomes pessoais e tratamento em espanhol",
+    "contentSha256": "5ba1dcf19ffad7936d6acbcde3620be4e6d17e6435019c53cc94df03b3918c86",
+    "draftMethod": "Autoria e conferência Codex com RAE/ASALE, UCM e Academia Dominicana; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.rae.es/dpd/usted",
+      "https://www.rae.es/dpd/voseo",
+      "https://www.rae.es/dpd/pronombres%20personales%20%C3%A1tonos",
+      "https://www.ucm.es/plataformaele/pronombres",
+      "https://www.rae.es/dpd/pronombres%20personales%20t%C3%B3nicos",
+      "https://www.rae.es/dpd/se",
+      "https://www.rae.es/dpd/vosotros",
+      "https://www.rae.es/dpd/le%C3%ADsmo",
+      "https://academia.org.do/2018/12/04/temas-idiomaticos-7/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Na tarefa basica, a instrucao pede usar explicitamente ustedes para falar com varias pessoas. A alternativa 'Ustedes preparan' usa terceira pessoa plural correta, enquanto 'prepara' e singular, 'preparais' e forma vosotros e 'preparas' e tuteo informal - todas inadequadas para o contexto solicitado."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Na tarefa intermediaria, identifica-se el sobre (objeto direto singular masculino) e a las coordenadoras (indireto plural). A forma correta 'Se lo entrego' usa 'se' (substituto de 'les' antes de 'lo') + 'lo' (singular masculino). Opcoes erradas mantem 'les', invertem ordem ou usam numero plural incorreto para o envelope."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A, índice 0: Las voy a guardar conserva las, referente a unas carpetas, e emprega próclise ao verbo conjugado nessa perífrase. B, índice 1, introduz las entre a e guardar; C, índice 2, separa o clítico depois do infinitivo em vez de uni-lo; D, índice 3, altera o gênero para masculino. A mobilidade vale para essa construção e não é irrestrita entre verbos."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Gravitação e movimentos orbitais",
+    "contentSha256": "337c6cced6b79bcf1f2e630e1ab3a7efaa44186a67cdcbae01ac8b3adb13153c",
+    "draftMethod": "Autoria e cálculos Codex, conferidos com OpenStax e NASA; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/university-physics-volume-1/pages/13-1-newtons-law-of-universal-gravitation",
+      "https://openstax.org/books/university-physics-volume-1/pages/13-2-gravitation-near-earths-surface",
+      "https://openstax.org/books/university-physics-volume-1/pages/13-3-gravitational-potential-energy-and-total-energy",
+      "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy",
+      "https://openstax.org/books/university-physics-volume-1/pages/13-5-keplers-laws-of-planetary-motion",
+      "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "Cálculo F = 6,67e-11 × 4 × 9 / 0,6² = 6,67e-11 × 36 / 0,36 = 6,67e-9 N. A (6,67×10^-10) é 10x menor, possivelmente erro de G ou fator omitido. B (2,40×10^-9) usa denominador 1 em vez de 0,36. C (4,00×10^-9) divide por 0,6 sem elevar ao quadrado. D é o resultado correto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Cálculo r = R + h = 2×10^6 m, v = √(8×10^12/2×10^6) = √(4×10^6) = 2000 m/s. T = 2πr/v = 2000π s. B usa h como raio indevidamente. C duplica indevidamente a velocidade para o raio correto. D usa apenas metade da circunferência no tempo de uma volta."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "Cálculo a = (rp+ra)/2 = 4×10^6 m, E = -μm/2a = -(8×10^12×50)/(2×4×10^6) = -5×10^7 J. Relação vp/va = ra/rp = 6×10^6/2×10^6 = 3 pela conservação do momento angular. A tem sinal incompatível com elipse ligada. C inverte a razão. D usa rp no lugar de a na energia e afirma velocidades iguais em elipse excêntrica."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Interações intermoleculares",
+    "contentSha256": "07f037a5266ac0bb7863aece8cfc2dec7b13349bb6a9b4d00675d359886d0097",
+    "draftMethod": "Autoria e conferência Codex em referências acadêmicas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/10-1-intermolecular-forces",
+      "https://openstax.org/books/chemistry-2e/pages/10-2-properties-of-liquids",
+      "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions",
+      "https://openstax.org/books/chemistry-2e/pages/11-1-the-dissolution-process",
+      "https://openstax.org/books/chemistry-2e/pages/11-3-solubility",
+      "https://openstax.org/books/organic-chemistry/pages/2-12-noncovalent-interactions-between-molecules"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A alternativa correta (índice 0) identifica que o metanol possui dispersão e pode formar ligações de hidrogênio devido ao grupo O–H, enquanto o clorometano apresenta dispersão e dipolo–dipolo mas não possui o doador usual O–H/N–H/F–H. A alternativa 1 erradamente afirma que a ligação de hidrogênio elimina a dispersão no metanol, o que contradiz que a dispersão existe em todas as moléculas. A alternativa 2 ignora a polaridade das moléculas ao afirmar que ambas são apolares apenas por conter carbono. A alternativa 3 trata incorretamente qualquer átomo de hidrogênio como doador de ligação de hidrogênio. A resolução independente deste item confirma o índice 0 como correto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A comparação de temperaturas de ebulição realizadas a pressões diferentes (60 kPa para o líquido A e 100 kPa para o líquido B) não demonstra igualdade de interações moleculares, pois a temperatura de ebulição depende da pressão externa. A alternativa 0 nega incorretamente a dependência da pressão sobre o ponto de ebulição. A alternativa 1 transforma diferença experimental em identidade molecular sem fundamentação teórica. A alternativa 3 conclui inadequadamente que o líquido A não possui interações entre moléculas apenas pela estrutura da comparação. A resolução independente confirma o índice 2 como correto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "No modelo de hidratação de Na+ por água, o lado parcialmente negativo (pares de elétrons no oxigênio) tende a se orientar para o cátion, formando interação íon–dipolo, mas a solubilidade depende do balanço entre a energia de rede do sal e a energia de hidratação. A alternativa 0 inverte a direção da atração esperada (os hidrogênios parcialmente positivos seriam repelidos pelo cátion, não atraídos). A alternativa 2 afirma incorretamente que a atração prova solubilidade ilimitada para qualquer sal. A alternativa 3 confunde hidratação com quebra obrigatória de ligações O–H da água. A resolução independente confirma o índice 1 como correto."
       }
     ]
   }

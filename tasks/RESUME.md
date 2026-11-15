@@ -1,6 +1,37 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 25
+## Estado atual em 15/11/2026 — checkpoint 26
+
+CONTINUAR. Parada pedida pelo usuário:50% do limite da SESSÃO Codex. Ferramenta
+expõe só semanal3% e secondary:null,sem indicador da sessão. Usuário avisado;
+não substituir pelo semanal e não garantir parada sem dado. Consultar novamente.
+
+136novas;659app+6motor/build/lint/136API+4leitor12MCQ4larguras aprovados.
+Lacunas1159,ENEM147/749,estudo147/34/726,índice353. Humana pendente.
+Preview3316sessão52816. Logsprivate/checkpoint26-{tests,build,browser,lint}.log.
+CI25success43755374221head3a0edf7. Publicar26/PR/CI exata e seguir Biologia.
+
+Integrador11REESCREVE módulo: passar ALL8atuais +novas, não só novas:
+7e340768,431382bb,2798df57,2448edd7,2f868211,8d0566cf,343d1de0,dc101543.
+Críticas finais integrais lidas/aceitas/hashes atuais. Espanhol metadado corrigido
+explicitamente com originalpreservado. Testegravitacional corrigiu regexgulosa
+sem afrouxar a conta. Autores-base não reaplicar cegamente em aceitos.
+
+PróximaBio95699596 DNA/RNA/sínteseproteica: fontes abertas,semprincipal ainda.
+OpenStaxBiology15.1–15.5 em passagens pertinentes + NHGRIDNA/RNA/Transcription/
+Translation/GeneticCode. Cuidado com simplificações/erros do texto-fonte:
+splicingremoveíntrons,nãoéxons;éxonsincluemUTR,nãotudosetraduz; não garantir
+umamutaçãoaltereproteína nemresultadofuncional inevitável. NHGRISplicinginacessível.
+Criar tarefas próprias com fitasmolde/codificante5'/3' e tabelacódon fornecida;
+stop não aminoácido. Não foi escrito/testado ainda. Worker144PID7856 está na
+Química3,logTempkognos-curriculum-collaboration-v4-batch11-20261115.log.
+Depois8restantes:Bio95699596,Hist79189d89,Geoef936557,Filo46e6e772,
+Soc23767c57,Arte3dcee8cf,PE0ba1e0d3,Ciências6b13584f.
+
+AGENTSgerado fora decommit;raizoriginalsuja preservada;fetch antespush,nuncaforce.
+Sem schema/banco/merge/deploy. Helpers privados respaldados. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 25
 
 CONTINUAR as aulas. Usuário pediu parar ao50% do limite da SESSÃO do Codex.
 Ferramenta de conta só expõe semanal(2% última consulta), secondary:null;

@@ -910,3 +910,17 @@ test('equações e sistemas preservam domínio, sinais de quociente e verificaç
  const a=Number(system[1]),b=Number(system[2]),c=Number(system[3]),d=Number(system[4]),e=Number(system[5]),det=-a-b*d;assert.notEqual(det,0);
  const x=(-c-b*e)/det,y=(a*e-c*d)/det;assert.equal(a*x+b*y,c);assert.equal(d*x-y,e);assert.equal(choice(2),`x = ${x}; y = ${y}.`);
 });
+
+test('gravitação verifica raio intercentros, órbita circular e energia elíptica sem confundir referenciais',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Gravitação e movimentos orbitais');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const first=spec.tasks[0].prompt.match(/massas (\d+) kg e (\d+) kg.*distância entre centros de ([\d,]+) m.*G = ([\d,]+) × 10\^(-\d+)/);assert.ok(first);
+ const force=Number(first[4].replace(',','.'))*10**Number(first[5])*Number(first[1])*Number(first[2])/Number(first[3].replace(',','.'))**2;
+ assert.ok(Math.abs(force-6.67e-9)<1e-20);assert.equal(choice(0),'6,67 × 10^-9 N.');
+ const second=spec.tasks[1].prompt.match(/μ = (\d+) × 10\^(\d+).*R = (\d+) × 10\^(\d+).*h = (\d+) × 10\^(\d+)/);assert.ok(second);
+ const mu=Number(second[1])*10**Number(second[2]),radius=Number(second[3])*10**Number(second[4]),height=Number(second[5])*10**Number(second[6]),r=radius+height,speed=Math.sqrt(mu/r),period=2*Math.PI*r/speed;
+ assert.equal(speed,2000);assert.ok(Math.abs(period-2000*Math.PI)<1e-9);assert.equal(choice(1),'2000 m/s; 2000π s.');assert.notEqual(speed,Math.sqrt(mu/height));
+ const third=spec.tasks[2].prompt.match(/massa (\d+) kg.*μ = (\d+) × 10\^(\d+).*periastro.*(\d+) × 10\^(\d+) m.*apoastro.*(\d+) × 10\^(\d+) m/);assert.ok(third);
+ const m=Number(third[1]),central=Number(third[2])*10**Number(third[3]),rp=Number(third[4])*10**Number(third[5]),ra=Number(third[6])*10**Number(third[7]),a=(rp+ra)/2,energy=-central*m/(2*a);
+ const vp=Math.sqrt(central*(2/rp-1/a)),va=Math.sqrt(central*(2/ra-1/a));assert.ok(Math.abs(vp/va-ra/rp)<1e-12);assert.equal(energy,-5e7);assert.equal(choice(2),'E = -5 × 10^7 J; v_periastro/v_apoastro = 3.');
+});
