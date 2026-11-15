@@ -1041,3 +1041,10 @@ test('urbanização distingue aumento absoluto de participação e pontos percen
  const firstUrban=2000,firstTotal=5000,nextUrban=3000,nextTotal=10000,firstRate=100*firstUrban/firstTotal,nextRate=100*nextUrban/nextTotal;assert.equal(firstRate,40);assert.equal(nextRate,30);assert.equal(nextUrban-firstUrban,1000);assert.equal(nextRate-firstRate,-10);assert.equal(100*(nextRate-firstRate)/firstRate,-25);assert.ok(nextUrban>firstUrban&&nextRate<firstRate);
  assert.equal(task.options[task.correctIndex],'De 40% para 30%; a população urbana aumenta em número e perde participação no total.');assert.match(task.solution,/pontos percentuais/);
 });
+
+test('propriedades da matéria convertem densidade e distinguem quantidade de razão intensiva',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Ciências'&&s.topic==='Propriedades da matéria');assert.ok(spec);const task=spec.tasks[0];assert.ok(task.options&&typeof task.correctIndex==='number');assert.match(task.prompt,/0,2 kg.*100 cm³/);
+ const massKg=0.2,volumeCm=100,massG=massKg*1000,volumeM=volumeCm*1e-6,rhoG=massG/volumeCm,rhoSI=massKg/volumeM;assert.equal(rhoG,2);assert.ok(Math.abs(rhoSI-2000)<1e-9);assert.ok(Math.abs(rhoSI/rhoG-1000)<1e-9);
+ const valid=task.options.map((option,index)=>{const pair=option.match(/^([\d,]+) g\/cm³, equivalente a (\d+) kg\/m³\.$/);assert.ok(pair);return Number(pair[1].replace(',','.'))===rhoG&&Math.abs(Number(pair[2])-rhoSI)<1e-9?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[task.correctIndex]);
+ const t=spec.tasks[1];assert.ok(t.options&&typeof t.correctIndex==='number');assert.match(t.prompt,/triplica/);for(const factor of [1,2,3,10])assert.equal((massG*factor)/(volumeCm*factor),rhoG);assert.equal(t.options[t.correctIndex],'Massa e volume triplicam; a densidade permanece igual nas condições indicadas.');
+});

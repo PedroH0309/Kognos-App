@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 35
+## Estado atual — checkpoint 36
+
+Lote 13 completo: 176 novas aulas nesta etapa. Integradas Globalização e
+questões socioambientais; Teatro: dramaturgia, atuação e encenação; Práticas
+corporais de aventura; Propriedades da matéria. Catálogo em execução;
+revisão docente pendente, sem declaração de conclusão ou publicação.
+
+Restam 1.119 lacunas de 1.512 identidades editoriais. ENEM: 184 aprofundadas e
+712 lacunas. Estudo: 184 aprofundadas, 26 guias e 697 planejadas; índice 393.
+
+- Sociologia: cadeias globais, efeitos socioambientais desiguais e critérios
+  de transição justa; casos hipotéticos, sem estatísticas ou leis inventadas.
+- Arte: dramaturgia, atuação e encenação por textos e situações originais,
+  com formas de acesso; sem reprodução de peças nem imitação de artistas.
+- Educação Física: ambientes, avaliação contextual de riscos, participação e
+  conservação; sem garantia de risco zero ou instruções técnicas de manobras.
+- Ciências: massa, volume, densidade e unidades; critérios de propriedades;
+  transformações e energia com pureza e pressão explícitas. Teste crítico de
+  densidade observado falhar antes da integração e passar depois.
+
+Fontes primárias consultadas em trechos delimitados, com limites e evidências
+editoriais privadas preservados. Autoria Codex e crítica independente Claude
+Code/NVIDIA NIM. Os quatro pareceres foram lidos integralmente. Corrigida pelo
+principal uma imprecisão conceitual na redação do parecer de Ciências, com
+original integral preservado; conteúdo didático e gabaritos inalterados.
+Sem alegar leitura integral de livros/PDFs ou homologação humana.
+
+672 testes app + 6 motor, build e lint alterado aprovados. Comparação integral
+da API de 176 aulas; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções ou rolagem
+horizontal. Captura inspecionada. Logs privados checkpoint36-*.log.
+
+CI35 success 43772012185, head 882ced0. PR118 reúne vinte aulas após a
+integração externa do PR117 até 156; publicar checkpoint36 e acompanhar CI
+do novo head exato. Sem merge de PR, deploy, schema ou dependências novas.
+Continuar lote14; rascunhos até192 em worker único limitado, PID18472.
+
+## Histórico — checkpoint 35
 
 Doze aulas do lote13; 172 novas nesta etapa. Integradas Hereditariedade,
 mutações e biotecnologia; Brasil colonial e escravidão; Urbanização e redes

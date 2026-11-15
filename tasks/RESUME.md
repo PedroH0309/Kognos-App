@@ -1,6 +1,40 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 35
+## Estado atual em 15/11/2026 — checkpoint 36
+
+CONTINUAR até aulas completas; parar50%SESSÃO Codex. Indicador disponível só
+semanal29%/10080min, secondary:null. Não substituir semanal por sessão nem
+prometer detectar 50%session. Sem pergunta pendente.
+
+176novas;16lote13.672app+6motor/build/lint/176API+4leitor12MCQ4largurasPASS.
+Lacunas1119;ENEM184/712;estudo184/26/697;índice393. Logscheckpoint36-*.log.
+Preview3316 sessão56387/build176;fixtures176;captura batch13-complete inspecionada.
+CI35 43772012185 SUCCESS head882ced0;PR118OPEN. Publicar36/atualizarPR20novas,
+acompanharCIexata. PR117MERGEDexternamente156; não atualizar117.
+
+Module13ALL16:1507dbbd,bbd57e3f,b5beaee8,d071bb1d,1bf6ee18,b791cc78,
+3816b15d,2ec02a9b,afd8786c,00b9f8de,f9a2eaf7,15edc391,6f39fb3e,0ff9394f,
+0b6d0515,78f17021. Integrador13 reescreve: exigir todos se houver correção.
+Ciências teste crítico GREEN; parecer original preservado integralmente e
+conceptChecks[2] corrigido explicitamente pelo principal (não calor constante/
+temperatura zero). Não rerodar finish36/autores/refine já aplicados.
+Evidências privadas principal-editorial-evidence-checkpoint36.json.
+
+Lote14workerúnico PID18472, v4.py192, Tempbatch14log; anterior176PID8120 encerrou.
+Próximos Math381ba959,Port4cf23331,Litf6b546f4,Red08e33489,Eng7db9b0b2,
+Esp34239b0b,Phys ef8cd5f9,Chem0bb27332,Bio c795d057,Hist5458bd83,
+Geoe7c98d39,Philo51cdb3e3,Soc8a621b3c,Art1820d8ab,PE91b651d3,Sci3b97fbde.
+Math teste crítico Tempkognos-exponential-logarithmic-expected.test.ts RED
+observado antes de autoria. Planejado f=5(1/2)^x+2 decres/R/(2,∞), q1
+log3(x−1)+log3(x−3)=1 candidato0/4 domínio>3→4, q2(1/3)^(2x−1)≥27→x≤−1.
+Nenhum principalMath14 ainda. OpenStaxAlgebra2e6.1 body44-111,6.3body56-79,
+6.5body48-68,6.6body25-41 lidos; completar regras/propriedades antes de autoria.
+RawMath1 disponível, crítico em andamento; ler integral se usar/rejeitar.
+
+Helpers privados salvos. AGENTSgerado não commit. Originalroot suja preservada;
+fetch antes push/nãoforce/não mergear PR/não deploy. Não parar no checkpoint.
+
+## Histórico — checkpoint 35
 
 CONTINUAR;parar50%SESSÃOCodex. Sósemanal27%,secondary:null; nãousarsemanal
 comosessãonemprometerparadaindicadorinobservável. Semperguntapendente.

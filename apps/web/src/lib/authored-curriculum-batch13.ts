@@ -1103,6 +1103,374 @@ export const authoredCurriculumBatch13:readonly AuthoredLessonSpec[] = [
         "solution": "D, índice 3: a intervenção investiga a ligação entre o motivo e a tese e abre espaço para critérios e objeções. A confunde intensidade com razão; B assume a equivalência que precisaria justificar; C troca aceitação automática do antigo por aceitação automática do recente. O exercício não determina sozinho qual regra é justa e não atribui o debate a personagem histórico."
       }
     ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Globalização e questões socioambientais",
+    "objective": "Relacionar interdependências globais, cadeias produtivas e impactos socioambientais desiguais, avaliando propostas segundo evidências, distribuição de benefícios e participação.",
+    "prerequisites": [
+      "Instituições, poder e desigualdade",
+      "Produção, consumo e circulação",
+      "Diferença entre evidência e generalização"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Interdependências e escalas da globalização",
+        "explanation": "Globalização reúne processos de conexão e interdependência entre sociedades por circulação de bens, capitais, pessoas, informações e práticas culturais. Suas dimensões econômicas, políticas, tecnológicas e culturais se relacionam, mas não avançam no mesmo ritmo nem atingem todos de modo igual. Conexões de longa distância são anteriores à internet; tecnologias digitais e transportes participam de intensificações e reorganizações, sem eliminar barreiras materiais, fronteiras ou diferenças de acesso. Uma cadeia produtiva pode distribuir projeto, extração, componentes, montagem e venda por lugares distintos. Isso não significa que o valor, o poder de decisão e as condições de trabalho se distribuam igualmente. A etiqueta do último lugar de montagem tampouco descreve toda a origem dos insumos. No plano cultural, circulação de músicas, imagens e ideias pode envolver apropriações e reelaborações locais; não se deduz uniformidade completa apenas por haver um produto difundido. Estados, empresas, organizações e movimentos sociais continuam atuando, cooperando e disputando regras; interdependência não equivale a um governo mundial único nem ao desaparecimento da capacidade política nacional. Para analisar um caso, pergunte quais agentes se conectam, quais recursos circulam, que infraestrutura permite o fluxo e quem define suas condições. Uma conexão pode criar possibilidades e dependências ao mesmo tempo. A explicação sociológica deve identificar relações e conflitos em situações concretas, sem transformar todo comércio em benefício garantido ou todo intercâmbio em dano inevitável.",
+        "steps": [
+          "Identifique os agentes, os fluxos e as escalas envolvidos.",
+          "Relacione etapas produtivas sem presumir distribuição igual de valor ou poder.",
+          "Observe infraestrutura, barreiras e acesso desigual às conexões.",
+          "Diferencie interdependência de uniformidade cultural ou fim dos Estados."
+        ],
+        "example": "Cadeia fictícia autoral: um equipamento é projetado em um país, utiliza componentes de outros, recebe montagem em um terceiro e é vendido em vários mercados. A descrição mostra divisão de etapas e relações entre lugares, mas não informa por si quem recebe mais renda, quais empregos foram gerados ou se houve dano ambiental específico.",
+        "pitfall": "Reduzir globalização à internet, presumir que o mundo se tornou sem fronteiras ou concluir igualdade cultural e econômica apenas pela existência de conexões."
+      },
+      {
+        "level": "intermediate",
+        "title": "Produção, ambiente e vulnerabilidade social",
+        "explanation": "Questões socioambientais envolvem relações entre processos físicos e biológicos e a organização social de produção, consumo, moradia e decisão. Para analisar um produto, considere extração de materiais, fabricação, energia, transporte, uso e destinação final, definindo os limites da análise. Um impacto não desaparece porque ocorreu longe do consumidor, e reduzir uma etapa não demonstra automaticamente redução no conjunto. O uso de recursos pode gerar efeitos distribuídos de modo desigual entre grupos e territórios. Quem obtém o benefício econômico pode não ser quem suporta a poluição ou a perda de meios de vida; essa diferença precisa ser investigada, não presumida em qualquer caso. Na análise de desastres, um fenômeno físico não explica sozinho a extensão dos danos: exposição, moradia, infraestrutura, acesso a informação e capacidade de resposta influenciam a vulnerabilidade. Uma chuva semelhante pode produzir consequências diferentes em lugares com condições sociais distintas. Isso não significa que todo dano seja evitável ou que qualquer diferença observada tenha uma causa única. Relacione dados ambientais, condições de vida e decisões, distinguindo uma hipótese de um nexo demonstrado. Mudanças climáticas, perda de biodiversidade, poluição e resíduos se articulam, mas não são nomes intercambiáveis para o mesmo problema. Responsabilidade também não se resume a escolha individual nem desaparece por envolver estruturas: indivíduos, empresas e instituições atuam em posições e escalas diferentes. Comparações exigem critério, período e base de medida antes de atribuir culpa, benefício ou eficácia.",
+        "steps": [
+          "Defina etapas e limites da análise de produção e consumo.",
+          "Investigue onde aparecem benefícios e impactos e quais grupos são afetados.",
+          "Diferencie fenômeno físico, exposição e vulnerabilidade social.",
+          "Compare evidências sem reduzir problemas distintos a uma causa ou solução única."
+        ],
+        "example": "Situação autoral: uma embalagem usa menos material, mas passa a ser transportada por outro percurso e tem destino final diferente. A redução de material é uma informação relevante, porém insuficiente para declarar que todos os impactos diminuíram. É necessário explicitar quais efeitos e etapas foram comparados, sem inventar uma porcentagem ambiental universal.",
+        "pitfall": "Medir apenas uma etapa e concluir resultado global, naturalizar danos como iguais para todos ou confundir redução de resíduos com solução automática de todo problema climático."
+      },
+      {
+        "level": "advanced",
+        "title": "Governança, participação e transição justa",
+        "explanation": "Problemas que atravessam fronteiras exigem relacionar decisões locais, nacionais e internacionais, sem supor que uma escala substitui todas as outras. Governança envolve formas de coordenação e disputa entre atores; reconhecer um compromisso ou um selo não prova que a prática correspondente foi cumprida. Examine objetivos, critérios, acompanhamento e possibilidade de contestação. Uma transição para atividades de menor impacto pode reorganizar trabalho, renda e usos do território. A ideia de transição justa chama atenção para essas consequências, incluindo trabalho, proteção social e diálogo; não basta anunciar um benefício ambiental agregado e presumir que ninguém terá perdas. Participação efetiva requer que os grupos afetados tenham informação e possibilidade de influenciar decisões, em vez de serem apenas mencionados no discurso. A análise pode perguntar quem decide, quem paga, quem recebe os benefícios e como os resultados serão verificados. Reconhecer responsabilidades e capacidades diferentes não implica atribuir exatamente o mesmo comportamento a todos os países, comunidades ou indivíduos de uma categoria. Propostas podem combinar regulação, inovação, cooperação e mudanças de consumo, com limitações e conflitos que precisam ser examinados no contexto. Uma crítica bem sustentada distingue descrição de um problema, avaliação por critérios e recomendação; não transforma uma preferência institucional em lei científica inevitável. Compare alternativas e considere efeitos não pretendidos, evitando escolher automaticamente pela palavra sustentável. A aula apresenta instrumentos de análise sociológica, sem afirmar que uma política específica já resolveu todos os impactos ou impor requisitos jurídicos universais a situações não delimitadas.",
+        "steps": [
+          "Identifique atores, escalas e critérios da proposta.",
+          "Examine distribuição de benefícios, custos e condições de trabalho.",
+          "Verifique participação, acompanhamento e possibilidade de contestação.",
+          "Compare alternativas e limites sem usar rótulo ou promessa como prova de eficácia."
+        ],
+        "example": "Projeto fictício autoral: uma cidade pretende substituir uma atividade poluente e anuncia uma redução estimada de emissões. Uma análise de transição justa acrescenta perguntas sobre trabalhadores, alternativas de renda, moradores afetados e acompanhamento do resultado. Essas perguntas não negam o objetivo ambiental; examinam como alcançá-lo e como distribuir consequências.",
+        "pitfall": "Tratar toda iniciativa sustentável como automaticamente justa, confundir anúncio com execução ou transformar responsabilidades diferenciadas em julgamento uniforme de todas as pessoas de um grupo."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso autoral: um produto tem projeto em um país, componentes em outros e montagem final em um terceiro. Qual leitura é sustentada por essa descrição?",
+        "hint": "A distribuição de etapas indica relações entre lugares, mas não fornece automaticamente a divisão de valor, poder ou impactos.",
+        "options": [
+          "Há uma cadeia com etapas conectadas internacionalmente; o local de montagem não descreve sozinho toda a produção nem sua distribuição de benefícios.",
+          "Todo o valor foi criado obrigatoriamente apenas no país da montagem final.",
+          "A descrição prova que todas as fronteiras políticas deixaram de existir.",
+          "Todos os trabalhadores envolvidos recebem necessariamente a mesma renda e têm as mesmas condições."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: etapas distribuídas e conectadas caracterizam interdependência produtiva; para avaliar renda, decisões e efeitos seria necessário obter outras informações. B atribui toda a produção a uma etapa; C inventa desaparecimento de fronteiras; D deduz igualdade não informada. O caso é fictício e não identifica empresas, países ou percentuais reais."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cenário autoral: dois bairros enfrentam chuva intensa semelhante. Um dispõe de drenagem, moradias protegidas e alertas acessíveis; o outro tem carências nesses aspectos. Qual análise incorpora a dimensão socioambiental sem inventar resultados medidos?",
+        "hint": "Relacione fenômeno físico e condições sociais, sem afirmar que os danos foram iguais ou que um único fator explica qualquer desastre.",
+        "options": [
+          "A chuva demonstra que infraestrutura e condições de moradia nunca influenciam vulnerabilidade.",
+          "A diferença prova inferioridade natural dos moradores do segundo bairro.",
+          "Condições de infraestrutura, moradia e informação podem produzir vulnerabilidades diferentes; os danos efetivos ainda exigem verificação.",
+          "A semelhança da chuva garante exatamente o mesmo dano a cada pessoa, independentemente das condições descritas."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: o cenário oferece condições relevantes para vulnerabilidade desigual, mas não apresenta medição de danos. A exclui relações sociais sem fundamento; B naturaliza uma desigualdade; D supõe efeitos idênticos apesar das diferenças de proteção e exposição. Reconhecer vulnerabilidade não permite inventar um número de vítimas, uma causa única ou culpa individual."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: uma proposta promete reduzir emissões e afirma que isso garante, por si, uma transição justa. Qual análise examina adequadamente essa garantia?",
+        "hint": "Considere o objetivo ambiental e também quem participa, quem suporta custos e como trabalhadores e comunidades serão afetados.",
+        "options": [
+          "Aceitar a garantia sem examinar trabalho, renda ou participação, pois um benefício agregado exclui qualquer perda.",
+          "Rejeitar automaticamente toda redução de emissões, sem considerar as alternativas e seus efeitos.",
+          "Verificar apenas se o projeto usa a palavra sustentável em sua comunicação.",
+          "Avaliar a redução e sua comprovação, a distribuição de consequências, o trabalho, a proteção social e a participação dos grupos afetados."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: justiça da transição exige examinar consequências sociais e processo de decisão, além do objetivo ambiental e das evidências de sua realização. A transforma benefício agregado em ausência garantida de perdas; B rejeita o objetivo sem análise; C substitui verificação por rótulo. O exercício usa critérios analíticos e não afirma que toda proposta tenha exatamente os mesmos efeitos ou requisitos legais."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Teatro: dramaturgia, atuação e encenação",
+    "objective": "Analisar relações entre organização dramatúrgica, escolhas de atuação e composição da encenação, distinguindo fala, rubrica, personagem e recursos cênicos em exemplos autorais.",
+    "prerequisites": [
+      "Narrativa e diálogo",
+      "Corpo, voz e espaço como linguagens",
+      "Diferença entre descrição e interpretação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Dramaturgia e leitura do texto cênico",
+        "explanation": "Dramaturgia envolve a organização de ações, relações e materiais de uma criação teatral. Pode haver um texto escrito antes dos ensaios ou um processo em que escrita e cena se transformam em colaboração. Nesta aula, o texto dramático escrito é um ponto de entrada: identifique quem fala, para quem, em qual situação e que mudanças acontecem. Falas e rubricas cumprem funções diferentes. As falas são atribuídas a personagens ou vozes; rubricas, também chamadas didascálias, indicam aspectos da cena, como movimento, pausa, espaço, som ou iluminação. Frequentemente aparecem entre parênteses ou com destaque gráfico, mas a formatação pode variar. Uma rubrica não é automaticamente uma frase pronunciada pela personagem, e sua presença não proíbe adaptações justificadas no processo de encenação. A ação pode envolver um desejo, um impedimento, uma espera ou uma transformação na relação; conflito dramático não significa necessariamente briga física. Atos e cenas organizam muitos textos, sem constituir uma estrutura obrigatória para toda forma de teatro. Monólogo e diálogo também não esgotam as possibilidades: silêncio, gestos e ações podem participar da composição. A obra pode ser lida e discutida, além de representada; a finalidade cênica não torna sua leitura impossível ou sem valor. Ao interpretar, separe o que está escrito do que uma montagem específica escolhe acrescentar ou alterar.",
+        "steps": [
+          "Reconheça personagens, vozes, situação e relações.",
+          "Diferencie fala e indicação cênica sem depender apenas da aparência gráfica.",
+          "Observe ação e transformação sem exigir confronto físico.",
+          "Identifique a organização proposta e suas possibilidades de encenação."
+        ],
+        "example": "Microcena autoral: Lia: Guardei o último mapa. [Davi deixa uma mochila junto à porta e espera.] Davi: Então precisamos decidir o caminho. A frase entre colchetes indica ação e espera; não é fala de Davi. O mapa cria uma situação para a relação entre as personagens, sem exigir que uma discussão violenta aconteça.",
+        "pitfall": "Ler toda rubrica como fala, confundir conflito com agressão ou exigir uma estrutura única e texto verbal prévio para toda criação teatral."
+      },
+      {
+        "level": "intermediate",
+        "title": "Atuação: ações, corpo, voz e relação",
+        "explanation": "Atuação não se reduz a memorizar falas ou reproduzir uma emoção com um gesto fixo. O trabalho pode construir ações e relações por presença, corpo, voz, ritmo, pausa, olhar e deslocamento no espaço. Pergunte o que uma personagem tenta realizar em uma situação e como responde ao que outra faz. Uma mesma frase pode adquirir sentidos diferentes conforme contexto, entonação e ação: não existe uma equivalência universal entre um único gesto e um sentimento. Volume e velocidade não substituem intenção, escuta e clareza. Na análise de uma apresentação, descreva o recurso observado e explique que leitura ele permite, em vez de afirmar conhecer os sentimentos reais do artista. Personagem e pessoa que atua são instâncias distintas; uma fala ficcional não demonstra uma opinião pessoal do intérprete. Ensaiar permite comparar escolhas e modificar a construção em diálogo com outras funções da equipe. A improvisação pode ser um caminho de pesquisa e organização, sem significar ausência de atenção ou de critérios; diferentes processos utilizam graus distintos de planejamento. Para uma comparação didática, mantenha alguns elementos constantes e observe como uma mudança de pausa ou posição altera relações. O estudo aqui é conceitual e de leitura: não exige imitar um artista existente, forçar a voz, executar esforço físico ou revelar experiências pessoais. A expressividade não depende de um corpo padrão; diferentes modos de participação e recursos podem compor a cena.",
+        "steps": [
+          "Identifique a ação ou relação que está sendo construída.",
+          "Observe corpo, voz, ritmo, pausas e resposta aos parceiros.",
+          "Relacione a escolha ao contexto sem impor um código emocional único.",
+          "Distinga personagem, intérprete e interpretações possíveis do público."
+        ],
+        "example": "Comparação autoral: na frase Você chegou, uma personagem pode manter distância e fazer uma pausa antes de chegou, ou aproximar-se e falar de modo contínuo. Com o restante da situação explicitado, essas escolhas podem sugerir reserva ou acolhimento. Nenhuma delas comprova o estado emocional real de quem atua nem determina uma resposta idêntica de todo espectador.",
+        "pitfall": "Confundir atuação com gritar ou decorar, atribuir uma emoção fixa a todo gesto ou transformar a fala de personagem em confissão pessoal do artista."
+      },
+      {
+        "level": "advanced",
+        "title": "Encenação: escolhas que se articulam",
+        "explanation": "Encenação articula atuação, espaço, tempo e outros materiais para construir uma experiência teatral. Direção pode coordenar uma interpretação em colaboração com artistas e equipes; a divisão de funções varia entre processos, e não se deve pressupor um único criador que determine isoladamente tudo. Cenografia organiza relações espaciais e materiais; figurino participa da apresentação dos corpos e personagens; iluminação pode selecionar áreas e produzir contrastes; som e música podem criar ritmo, ambiente ou contraponto. Esses elementos não são necessariamente decoração de um texto que já teria sentido único. Uma montagem pode manter as palavras e modificar a relação entre as personagens ao reorganizar distâncias, pausas ou luz. A plateia também participa da situação de recepção: disposição, visibilidade e possibilidades de acompanhamento influenciam a experiência. Recursos de acessibilidade, como legendagem e audiodescrição em contextos apropriados, ampliam formas de acompanhar a criação e precisam dialogar com suas escolhas; não se exige coletar diagnósticos para discutir necessidades de acesso. Ao comparar versões, identifique o que mudou, o que permaneceu e qual efeito a descrição sustenta. Não invente som, gesto ou intenção que não tenham sido informados. A encenação pode sustentar interpretações diversas; uma hipótese precisa explicar os recursos observados, não declarar que toda luz baixa significa tristeza ou que um figurino define sozinho a moral de uma personagem. Todos os casos desta aula são escritos de forma suficiente para análise, sem depender de uma gravação ou imagem externa.",
+        "steps": [
+          "Mapeie atuação, espaço, luz, som e materiais indicados.",
+          "Explique como os elementos se relacionam, em vez de apenas listá-los.",
+          "Considere condições de recepção e acesso sem pressupor público uniforme.",
+          "Compare escolhas e sustente hipóteses pelos recursos efetivamente descritos."
+        ],
+        "example": "Montagens autorais hipotéticas: uma conversa pode ocorrer com duas cadeiras próximas e luz compartilhada, ou com cadeiras afastadas e zonas de luz separadas. A segunda organização torna a separação espacial mais marcada, sem provar automaticamente ódio entre as personagens. Analisar encenação é relacionar escolhas e efeitos possíveis, mantendo o limite da descrição.",
+        "pitfall": "Tratar cenografia, luz e som como adereços sem função expressiva, atribuir intenção não informada ou garantir o mesmo efeito a toda plateia."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Microcena autoral: Nara: A sala está pronta. [Ivo fecha o caderno, olha a janela e permanece em silêncio.] Ivo: Falta uma escolha. Qual análise do trecho entre colchetes é adequada?",
+        "hint": "Diferencie a indicação sobre ações e silêncio das palavras atribuídas às personagens.",
+        "options": [
+          "É obrigatoriamente uma fala longa que Nara deve pronunciar literalmente.",
+          "É uma prova de que o ator real fechou um caderno fora da ficção e revelou sua vida pessoal.",
+          "É uma rubrica com indicações de ação e silêncio, distinta das falas de Nara e Ivo.",
+          "É apenas uma lista de autores reais e não contém nenhuma indicação cênica."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: fechar o caderno, olhar a janela e permanecer em silêncio são indicações cênicas, enquanto as falas aparecem atribuídas às personagens. A transforma a rubrica em fala de Nara; B confunde situação ficcional e vida real; D ignora as ações descritas. O microtexto é criação do Kognos, sem reprodução ou atribuição a peça existente."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Situação autoral: duas versões conservam a fala Pode entrar. Na primeira, a personagem abre espaço junto à porta e fala sem pausa; na segunda, bloqueia a passagem e demora antes de responder. Qual leitura considera escolhas de atuação e contexto?",
+        "hint": "Observe a relação entre palavras, ação e pausa; não deduza sentimentos reais do intérprete nem um código universal de gestos.",
+        "options": [
+          "A relação entre fala, espaço e pausa pode alterar a leitura da permissão; as escolhas não comprovam a emoção pessoal de quem atua.",
+          "Como as palavras são iguais, corpo e pausa não podem ter qualquer efeito na situação.",
+          "Bloquear uma porta comprova que o intérprete real odeia o público em toda apresentação.",
+          "As duas versões exigem gritos para que a fala possa ser considerada atuação teatral."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: o gesto e a demora podem tensionar a permissão verbal, enquanto abrir passagem pode reforçá-la no caso descrito. B elimina a função de corpo e tempo; C inventa emoção pessoal e generaliza; D reduz atuação a volume. A análise se refere à situação ficcional e permite leituras sustentadas, sem garantir resposta idêntica de todo espectador."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: a equipe mantém as falas de uma cena, mas muda a disposição do público, separa as personagens em áreas de luz e substitui silêncio por um som recorrente. O que se pode afirmar sobre essa mudança?",
+        "hint": "Encenação organiza diferentes materiais; conservar palavras não significa conservar toda a experiência cênica.",
+        "options": [
+          "Nada mudou na encenação, pois apenas as palavras podem construir sentido no teatro.",
+          "A mudança demonstra necessariamente que o texto original foi apagado e substituído por outro.",
+          "As escolhas garantem que toda pessoa da plateia terá exatamente o mesmo sentimento.",
+          "A encenação foi reorganizada por espaço, luz e som, podendo alterar a experiência mesmo com as falas preservadas."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: foram alterados elementos expressivos e condições de recepção da montagem, embora as falas permaneçam. A restringe sentido às palavras; B contradiz a preservação informada; C garante uniformidade de reação sem fundamento. É preciso analisar a articulação concreta dos recursos, sem inventar qual som foi usado ou atribuir uma emoção obrigatória às áreas de luz."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Práticas corporais de aventura",
+    "objective": "Reconhecer características de práticas de aventura urbanas e na natureza e analisar decisões de participação, gestão de riscos e cuidado com espaços e pessoas.",
+    "prerequisites": [
+      "Cultura corporal e formas de lazer",
+      "Relação entre movimento e ambiente",
+      "Cooperação e respeito às diferenças"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Aventura como relação corporal com o ambiente",
+        "explanation": "Práticas corporais de aventura exploram desafios de movimento na interação com um ambiente que apresenta incertezas. A experiência pode envolver equilíbrio, deslocamento, orientação e decisões, mas não é definida por buscar o maior perigo possível. A BNCC distingue, segundo o ambiente, práticas urbanas e na natureza. Skate, patins e parkour aparecem associados a espaços urbanos; corrida orientada e outras práticas em ambientes naturais ilustram a segunda vertente. Essa organização é um critério didático, não uma prova de que toda modalidade só possa ser recriada em um único lugar. O contexto, a proposta e as condições efetivas importam. Uma bicicleta pode participar de usos cotidianos, de esporte e de aventura; o objeto sozinho não determina a finalidade. Nem toda prática de aventura é competição formal ou exige desempenho extremo. Na escola, propostas podem ser adaptadas e simuladas, considerando espaço disponível, orientação e características dos participantes. Estudar uma descrição, discutir um mapa ou comparar decisões são dimensões de aprendizagem, sem equivaler a dominar uma técnica corporal apenas por ler sobre ela. Reconhecer o patrimônio público e natural também integra a experiência: o espaço não é um obstáculo sem dono que possa ser danificado. A relação entre desafio, cuidado e participação é mais útil para compreender a aventura do que a promessa de provar coragem diante de colegas ou de um vídeo.",
+        "steps": [
+          "Identifique a relação entre movimento, desafio e ambiente.",
+          "Reconheça o critério urbano ou natureza no contexto estudado.",
+          "Diferencie finalidade da prática e simples presença de um equipamento.",
+          "Considere adaptação pedagógica, cuidado e respeito aos espaços."
+        ],
+        "example": "Comparação autoral de propostas descritas: um estudo de deslocamentos em um espaço urbano preparado e uma análise de orientação por referências de um ambiente natural podem tratar de aventura por relações diferentes com o meio. Nenhum dos casos autoriza reproduzir obstáculos de um vídeo nem demonstra domínio técnico apenas porque a turma conhece os nomes das práticas.",
+        "pitfall": "Definir aventura como perigo máximo, classificar toda bicicleta da mesma maneira ou confundir conhecer uma modalidade com estar preparado para executá-la."
+      },
+      {
+        "level": "intermediate",
+        "title": "Ler condições e gerir riscos",
+        "explanation": "Gestão de riscos envolve identificar perigos, considerar consequências possíveis e decidir se as condições permitem determinada proposta. Risco controlado não significa risco inexistente. Ambiente, clima, estado de equipamentos, organização, orientação e experiência dos participantes podem alterar as condições, e uma situação antes adequada pode deixar de ser. Uma proteção específica pode reduzir certas consequências sem eliminar todos os perigos; não existe um item que dispense avaliação, técnica e organização. As exigências variam conforme atividade e local, portanto não se escolhe equipamento apenas pela aparência ou por uma lista genérica. Na prática real, orientação qualificada e respeito a regras e advertências do espaço precisam acompanhar a avaliação. Uma decisão responsável pode ser adaptar, adiar ou interromper, em vez de manter um objetivo para demonstrar bravura. O planejamento também considera comunicação, acesso a apoio e possibilidades de participação, sem transformar uma informação isolada em garantia de segurança. Para analisar um caso escolar escrito, explicite o que mudou e qual consequência isso tem para a decisão; não tente solucionar uma situação técnica apenas supondo que alguém experiente dispensa os demais cuidados. Publicidade e vídeos podem omitir preparação, contexto e repetição: a imagem de sucesso não mostra a frequência de falhas nem torna uma ação adequada a qualquer pessoa. Esta aula oferece análise conceitual, sem fornecer instruções de manobras, cordas, resgate ou escolha de percurso real.",
+        "steps": [
+          "Identifique perigos e mudanças nas condições informadas.",
+          "Considere pessoas, ambiente, organização e equipamento em conjunto.",
+          "Reavalie a proposta sem tratar proteção ou experiência como garantia total.",
+          "Reconheça que adaptar, adiar ou interromper pode fazer parte do cuidado."
+        ],
+        "example": "Caso autoral: uma atividade planejada para um espaço preparado encontra condições do piso diferentes das avaliadas inicialmente. A existência de um plano anterior não resolve a mudança. A equipe precisa reavaliar com a orientação responsável e pode modificar ou suspender a proposta; o enunciado não fornece dados para declarar o local seguro nem ensinar uma técnica de travessia.",
+        "pitfall": "Supor que coragem, experiência ou equipamento isolado eliminam risco, manter um plano apesar de mudanças ou aprender uma manobra perigosa apenas por reprodução de vídeo."
+      },
+      {
+        "level": "advanced",
+        "title": "Participação, convivência e conservação",
+        "explanation": "Uma proposta educativa de aventura pode valorizar cooperação, autonomia e reconhecimento de diferenças sem ordenar pessoas por coragem ou aparência. Participar não deve significar aceitar exposição indesejada para evitar humilhação. A organização pode prever funções e formas de envolvimento adequadas ao contexto, com orientação e possibilidades de adaptação. Para discutir necessidades de acesso, foque condições funcionais e preferências de participação, sem exigir que uma pessoa revele diagnóstico de saúde. Inclusão não é apenas oferecer a todos um desafio idêntico e presumir condições iguais. No ambiente natural, visitação e conservação precisam ser articuladas: respeitar áreas e regras de uso, destinar resíduos de forma adequada, evitar perturbar a fauna e considerar outros usuários ajuda a reduzir impactos. As permissões e condições variam por local, e nem toda área oferece estrutura para qualquer prática. Um atalho pode parecer conveniente e ainda produzir dano; a duração mais curta não é critério suficiente para uma decisão. No espaço urbano, preserve equipamentos e patrimônio e considere circulação e segurança de outras pessoas, sem tratar a cidade como cenário livre de relações sociais. Ao avaliar uma proposta, reúna finalidade de aprendizagem, participação, cuidado e efeitos sobre o lugar; não aceite o rótulo ecológico como prova de ausência de impacto. As decisões pedem contexto e acompanhamento, não uma competição para maximizar risco ou uma lista de exigências universais independente da modalidade.",
+        "steps": [
+          "Observe se a proposta respeita participação e diferenças sem coerção.",
+          "Planeje formas de envolvimento e adaptações com orientação responsável.",
+          "Relacione uso do espaço a conservação e convivência.",
+          "Avalie limites e efeitos da proposta em vez de confiar apenas em rótulos."
+        ],
+        "example": "Situação autoral: uma turma analisa uma proposta que premia quem termina primeiro e expõe publicamente quem prefere outra função. Reformular os critérios para valorizar decisões, cooperação e participação pode mudar a experiência educativa. Isso não transforma qualquer adaptação em tecnicamente adequada: as condições e a orientação continuam necessárias.",
+        "pitfall": "Confundir igualdade com exigência idêntica para todos, constranger alguém a se expor ou afirmar que uma atividade chamada ecológica não causa impactos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Ficha autoral: uma unidade de estudo apresenta skate em espaço urbano preparado e corrida orientada em ambiente natural. Qual interpretação respeita o critério de classificação e a finalidade educativa?",
+        "hint": "O ambiente ajuda a organizar o estudo, mas não prova perigo obrigatório, competição ou adequação automática a qualquer participante.",
+        "options": [
+          "As duas práticas só podem ser reconhecidas como aventura se dispensarem toda organização e cuidado.",
+          "A distinção urbano/natureza considera o ambiente, e a proposta deve examinar desafios, condições e possibilidades de participação.",
+          "O uso de qualquer equipamento garante que todas as pessoas já dominam a prática.",
+          "As duas atividades exigem competição profissional como única finalidade possível na escola."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: o ambiente é o critério didático informado, e os desafios precisam ser relacionados às condições e à participação. A equipara aventura a ausência de cuidado; C transforma equipamento em domínio automático; D impõe finalidade profissional única. A ficha é descritiva e não orienta execução nem avalia a segurança de um local real."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso autoral: antes de uma atividade, a equipe constata mudança relevante nas condições do espaço avaliadas no planejamento. Um participante diz que usar proteção elimina a necessidade de reavaliar. Qual análise é adequada?",
+        "hint": "Diferencie reduzir certos riscos de eliminar todos e considere que planejamento depende das condições efetivas.",
+        "options": [
+          "A presença de proteção garante risco zero em qualquer ambiente e situação.",
+          "Se o plano foi escrito anteriormente, nenhuma mudança posterior pode alterar sua validade.",
+          "O participante mais confiante pode dispensar orientação e todas as regras do local.",
+          "É necessário reavaliar as condições com a orientação responsável; proteção isolada não garante adequação e pode ser preciso adaptar, adiar ou interromper."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a mudança exige nova avaliação, e proteção não elimina todos os perigos nem substitui organização e orientação. A promete risco zero; B congela o plano apesar das condições; C transforma confiança em competência universal. O caso não apresenta informações suficientes para escolher uma técnica ou afirmar que continuar é seguro."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Situação autoral: uma proposta se anuncia ecológica, mas incentiva atalhos em área frágil, deixa resíduos e ridiculariza quem solicita outra forma de participação. Qual revisão integra melhor os objetivos educativos?",
+        "hint": "Observe impactos e convivência, em vez de aceitar o rótulo ecológico ou medir sucesso apenas por velocidade.",
+        "options": [
+          "Rever o uso do espaço e os resíduos e organizar participação respeitosa e orientada, sem constranger colegas nem presumir impacto zero.",
+          "Manter tudo, pois a palavra ecológica prova que os resíduos não geram impacto.",
+          "Premiar quem corta mais caminho e constrange colegas, pois rapidez substitui cuidado.",
+          "Exigir divulgação de diagnósticos pessoais para permitir qualquer adaptação ou diálogo."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: conservação e convivência precisam aparecer nas ações e na organização, com respeito à participação e orientação. B usa rótulo como prova; C incentiva impacto e coerção; D exige informação sensível sem necessidade para a análise das formas de participação. A solução não prescreve percurso ou técnica: redefine critérios educativos e de cuidado no caso hipotético."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Propriedades da matéria",
+    "objective": "Relacionar massa, volume e densidade, distinguir propriedades extensivas e intensivas e interpretar transformações e mudanças de estado com suas condições de validade.",
+    "prerequisites": [
+      "Operações com números decimais",
+      "Razão entre grandezas",
+      "Leitura de unidades e estados físicos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Massa, volume e densidade com unidades",
+        "explanation": "Matéria tem massa e ocupa espaço. Isso inclui gases, mesmo quando não os vemos. Massa e volume são grandezas diferentes: massa se expressa, por exemplo, em quilogramas ou gramas; volume, em metros cúbicos, centímetros cúbicos ou litros. Peso é uma força gravitacional e sua unidade no SI é o newton; não é outro nome científico para massa. Para comparar amostras, não basta afirmar que uma é pesada: é necessário dizer qual grandeza e qual unidade estão sendo consideradas. A densidade média é a razão entre massa e volume, escrita como ρ = m/V. Se uma amostra homogênea tem 90 g e ocupa 30 cm³, sua densidade é 3 g/cm³. Uma amostra maior pode ter mais massa sem apresentar densidade maior. Antes de dividir, compatibilize as unidades. Um quilograma corresponde a 1000 g; 1 cm³ equivale a 1 mL; 1 L equivale a 1000 cm³. Como 1 cm é 0,01 m, elevar a conversão ao cubo fornece 1 cm³ = 0,000001 m³, e não 0,01 m³. Assim, 1 g/cm³ equivale a 1000 kg/m³. O número muda com a unidade, mas a grandeza representada permanece a mesma. A densidade também precisa de contexto: a composição, a fase, a temperatura e a pressão podem influenciá-la. Não se deve tratar um valor tabelado sem condições como identidade universal de qualquer porção de um material.",
+        "steps": [
+          "Identifique massa e volume e anote as unidades.",
+          "Converta as unidades antes de dividir, lembrando o cubo na unidade de volume.",
+          "Calcule ρ = m/V e mantenha a unidade no resultado.",
+          "Compare valores apenas com unidades e condições compatíveis."
+        ],
+        "example": "Cálculo autoral: uma amostra homogênea fictícia tem 72 g e 24 cm³. A razão 72/24 resulta em 3 g/cm³. Em SI, são 0,072 kg e 0,000024 m³; a divisão fornece 3000 kg/m³. Os dois resultados representam a mesma densidade, sem identificar automaticamente uma substância real.",
+        "pitfall": "Dividir massa por volume com unidades incompatíveis, converter cm³ como se fosse cm ou confundir maior massa com maior densidade."
+      },
+      {
+        "level": "intermediate",
+        "title": "O que muda quando muda a quantidade",
+        "explanation": "Uma propriedade extensiva depende da quantidade de material considerada; massa e volume são exemplos. Uma propriedade intensiva não depende simplesmente dessa quantidade; temperatura e densidade de uma amostra homogênea são exemplos, quando composição e condições físicas são mantidas. Se duas porções iguais do mesmo material, à mesma temperatura, pressão e fase, são reunidas sem reação ou mudança dessas condições, massa e volume se somam e a razão entre eles permanece igual. Isso não autoriza somar volumes de quaisquer líquidos diferentes e presumir resultado exato, nem concluir que comprimir um gás deixa sua densidade inalterada. O critério intensivo mantém condições comparáveis. Propriedade física pode ser caracterizada sem alterar a identidade química das substâncias: densidade, dureza, condutividade e temperaturas de mudança de estado são exemplos. Propriedade química descreve a capacidade de participar de transformação química, como combustibilidade. São dois critérios distintos: intensiva/extensiva pergunta sobre quantidade; física/química pergunta sobre identidade química. Uma propriedade pode ser física e intensiva ao mesmo tempo. Para caracterizar um material, combine evidências e condições, em vez de tomar uma característica isolada como prova única. Dois materiais diferentes podem compartilhar uma densidade em determinada condição, e aparência semelhante também não demonstra composição igual. Medidas têm limites de precisão; a comparação requer unidades, método e contexto, sem que isso impeça cálculos em um modelo didático com valores fornecidos.",
+        "steps": [
+          "Pergunte se a propriedade depende da quantidade nas condições mantidas.",
+          "Separe o critério intensiva/extensiva do critério física/química.",
+          "Compare massa e volume conjuntamente, sem alterar composição ou fase em silêncio.",
+          "Use um conjunto de propriedades para caracterizar, reconhecendo limites de identificação."
+        ],
+        "example": "Modelo autoral: duas porções de um material homogêneo têm, cada uma, 45 g e 15 cm³ nas mesmas condições. Ao reuni-las sem transformação ou alteração dessas condições, obtêm-se 90 g e 30 cm³. A densidade continua 3 g/cm³. Outro material poderia apresentar esse valor; só a razão não prova identidade química.",
+        "pitfall": "Afirmar que intensivo significa imutável em qualquer temperatura ou pressão, ou que uma única densidade identifica com certeza qualquer substância."
+      },
+      {
+        "level": "advanced",
+        "title": "Transformações, estados e energia",
+        "explanation": "Na transformação física, podem mudar forma, tamanho ou estado sem que isso, por si, altere a identidade química das substâncias. Na transformação química, novas substâncias são formadas. Triturar um sólido não equivale a queimá-lo: a fragmentação e a combustão têm naturezas diferentes. Sólido, líquido e gás são estados comuns; não são os únicos estados possíveis da matéria. Um gás ocupa o volume disponível do recipiente e tem massa, enquanto um sólido conserva aproximadamente sua forma e seu volume nas condições usuais consideradas. A passagem entre estados não significa desaparecimento da matéria. Fusão é passagem de sólido para líquido; solidificação, o sentido inverso. Vaporização leva de líquido a gás e pode ocorrer por evaporação, na superfície, ou por ebulição, com formação de bolhas no líquido. Condensação é a passagem de gás para líquido; sublimação é a passagem direta entre sólido e gás no sentido sólido para gás. Na curva idealizada de aquecimento de uma substância pura, a pressão constante e sem decomposição, a temperatura pode permanecer constante durante a mudança de estado com coexistência das fases. Isso não significa ausência de transferência de energia: o calor recebido está associado à mudança de estado, e não a uma elevação de temperatura naquele trecho. Calor é energia em transferência por diferença de temperatura, não uma substância armazenada no corpo. A pressão influencia a temperatura de ebulição; não se pode afirmar que qualquer água ferve sempre no mesmo valor. Misturas exigem análise própria, portanto o patamar de uma substância pura não é regra universal para todo material.",
+        "steps": [
+          "Verifique se há alteração de identidade química, além da aparência.",
+          "Identifique os estados inicial e final e a mudança correspondente.",
+          "Leia as condições de pureza, pressão e coexistência de fases.",
+          "Diferencie temperatura constante de ausência de transferência de energia."
+        ],
+        "example": "Descrição autoral, sem gráfico externo: durante a fusão de uma substância pura, em equilíbrio e a pressão constante, a temperatura permanece no valor de fusão enquanto coexistem sólido e líquido, embora receba energia. Depois que todo sólido funde, aquecer o líquido pode elevar sua temperatura. Essa descrição não é um roteiro para aquecer materiais desconhecidos.",
+        "pitfall": "Concluir que temperatura constante significa calor zero, que toda mudança visível é reação química ou que a ebulição de qualquer material ocorre sempre na mesma temperatura."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Dados autorais: uma amostra homogênea tem massa de 0,2 kg e volume de 100 cm³ nas condições informadas. Qual par expressa corretamente sua densidade nas duas unidades?",
+        "hint": "Converta 0,2 kg em gramas para a primeira razão e lembre que 1 cm³ equivale a um milionésimo de m³ para a razão em SI.",
+        "options": [
+          "2 g/cm³, equivalente a 2 kg/m³.",
+          "0,002 g/cm³, equivalente a 2 kg/m³.",
+          "200 g/cm³, equivalente a 200000 kg/m³.",
+          "2 g/cm³, equivalente a 2000 kg/m³."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: 0,2 kg são 200 g, e 200/100 = 2 g/cm³. Em SI, 100 cm³ são 0,0001 m³; 0,2/0,0001 = 2000 kg/m³. A acerta a primeira razão, mas erra a conversão para SI; B usa 0,2 como se fosse massa em gramas; C aumenta a razão em cem vezes. As duas unidades de uma alternativa precisam representar a mesma densidade calculada."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um modelo autoral, triplica-se a quantidade de um material homogêneo, mantendo composição, fase, temperatura e pressão, sem reação. Qual relação é correta?",
+        "hint": "Compare m/V antes e depois: quando numerador e denominador são multiplicados pelo mesmo fator, a razão não muda.",
+        "options": [
+          "Massa e volume triplicam; a densidade permanece igual nas condições indicadas.",
+          "Massa, volume e densidade triplicam necessariamente porque toda propriedade é extensiva.",
+          "A massa triplica, mas o volume fica obrigatoriamente igual sem qualquer alteração de condições.",
+          "O volume triplica e a massa permanece igual porque massa é uma propriedade intensiva."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: massa e volume são extensivos nesse modelo e triplicam, enquanto 3m/(3V) = m/V. B trata densidade como extensiva; C mantém volume sem fundamento nas condições dadas; D classifica massa incorretamente e altera apenas o denominador. O resultado não afirma que a densidade seja imune a mudanças de temperatura, pressão, composição ou fase."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Descrição autoral: uma substância pura recebe calor durante a ebulição idealizada, a pressão constante, sem decomposição e com líquido e vapor coexistindo. A temperatura permanece constante. Qual conclusão é adequada?",
+        "hint": "O enunciado já informa transferência de energia. Analise a mudança de estado, em vez de confundir temperatura com calor.",
+        "options": [
+          "A temperatura constante prova que nenhuma energia foi transferida, contrariando os dados.",
+          "A coexistência de líquido e vapor demonstra obrigatoriamente formação de novas substâncias.",
+          "A energia recebida pode estar associada à mudança de estado; temperatura constante nesse trecho não significa calor zero.",
+          "A descrição prova que todas as misturas e substâncias fervem na mesma temperatura, independentemente da pressão."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: nas condições idealizadas dadas, a transferência de energia acompanha a vaporização enquanto coexistem líquido e vapor, sem exigir elevação de temperatura. A contradiz o recebimento de calor; B confunde mudança de estado com reação; D transforma um caso condicionado em regra universal e ignora a pressão e a composição. Não há necessidade de consultar figura ou realizar aquecimento para responder."
+      }
+    ]
   }
 ];
 
@@ -1476,6 +1844,131 @@ export const authoredCurriculumBatch13ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "A alternativa de índice 3 representa a intervenção filosófica adequada ao questionar por que a repetição tornaria a regra justa e avaliar critérios e objeções aplicáveis, em vez de aceitar ou rejeitar automaticamente baseada apenas na duração ou recência. As opções 0, 1 e 2 representam falácias identificadas na própria aula: a) apelo à intensidade de voz como prova de justiça, b) equivalência automática entre duração e justiça, c) rejeição automática baseada apenas na idade da regra. A resolução independente confirma a capacidade de identificar a intervenção que investiga a ligação entre motivo e tese, abrindo espaço para critérios e objeções, conforme objetivo avançado da aula."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Globalização e questões socioambientais",
+    "contentSha256": "aa58d60a58ff9b5323eda70e0650258594efd016e5259c473e0b9a137f2e6a5a",
+    "draftMethod": "Autoria e análise sociológica Codex após rejeição de rascunho Claude Code; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/18-2-globalization-and-the-economy",
+      "https://openstax.org/books/introduction-sociology-3e/pages/8-3-global-implications-of-media-and-technology",
+      "https://www.wto.org/english/res_e/statis_e/miwi_e/miwi_e.htm",
+      "https://www.unep.org/en/publications/report/global-resources-outlook-2024",
+      "https://www.unep.org/en/what-we-do/sustainable-development-goals/why-do-sustainable-development-goals-matter/goal-10",
+      "https://www.ilo.org/publications/guidelines-just-transition-towards-environmentally-sustainable-economies",
+      "https://www.ipcc.ch/site/assets/uploads/2023/03/Doc4_Approved_AR6_SYR_SPM.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A alternativa correta reconhece a interdependência produtiva internacional sem atribuir distribuição automática de benefícios; as outras opções fazem inferências não suportadas (atribuição exclusiva de valor, desaparecimento de fronteiras, igualdade não informada de trabalhadores), conforme o gabarito e a explicação da questão."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A alternativa correta relaciona condições de infraestrutura e moradia à vulnerabilidade social sem inventar resultados medidos; as outras opções excluem relações sociais, naturalizam desigualdade ou supõem danos idênticos apesar das diferenças de proteção e exposição, conforme o gabarito e a explicação da questão."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A alternativa correta examina a redução de emissões juntamente com distribuição de consequências, trabalho e participação dos grupos afetados, conforme critérios de transição justa; as outras opções aceitam garantias sem exame, rejeitam reduções automaticamente, ou substituem verificação por rótulo, conforme o gabarito e a explicação da questão."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Teatro: dramaturgia, atuação e encenação",
+    "contentSha256": "ab68ef94e401027f19b4c8905b6c8100f6274a54d300fa764891951f7bef20a1",
+    "draftMethod": "Autoria e análise de cenas Codex com fontes educacionais e de instituições teatrais consultadas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://portal.educacao.go.gov.br/fundamental_dois/teatro-1-corte-texto-dramatico/",
+      "https://www.rsc.org.uk/about-us/how-we-make-theatre/voice",
+      "https://www.rsc.org.uk/learn/schools-and-teachers/teacher-resources/rehearsal-room-approaches-to-shakespeare",
+      "https://www.rsc.org.uk/your-visit/access/assisted-performances/?from=footer",
+      "https://www.ba.gov.br/fundacaocultural/noticias/2026-05/40092/funceb-promove-oficina-de-criacao-de-texto-e-cena-em-processo-colaborativo",
+      "https://www.itaucultural.org.br/secoes/noticias/itau-cultural-promove-curso-de-criacao-dramaturgica-e-encenacao-teatral"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A diferenciatura correta entre a rubrica [Ivo fecha o caderno, olha a janela e permanece em silêncio] e as falas atribuídas às personagens demonstra compreensão da estrutura diálogo/ação no teatro, confirmando o índice 2 como a única opção que respeita a distinção entre indicação cênica e fala verbal"
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A leitura da relação entre fala 'Pode entrar', gesto de porta e pausa suspensiva, rejeitando deduções sobre emoções pessoais do intérprete, alinha-se ao índice 0 que preserva a análise situacional sem imposições psicológicas não informadas"
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A constatação de que reorganização de espaço, luz e som altera experiência cênica mesmo com falas preservadas confirma o índice 3, que reconhece a articulação de múltiplos materiais encenográficos sem garantir reação uniforme ou atribuir intenções não informadas"
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Práticas corporais de aventura",
+    "contentSha256": "b53d3830e7a9a90b320c4c45985973d1310b963b4219644f08f5825ad5e1e08a",
+    "draftMethod": "Autoria e análise educacional Codex com fontes curriculares e de conservação consultadas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "https://www.referencialcurriculardoparana.pr.gov.br/Educacao-Fisica-9o-Ano",
+      "https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/educacao-fisica-praticas-corporais-de-aventura-como-se-divertir-sem-riscos/",
+      "https://www.gov.br/icmbio/pt-br/centrais-de-conteudo/publicacoes/publicacoes-diversas/Uso-publico/DiretrizesparaVisitaoemUnidadedeConservao.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A alternativa correta identifica que o ambiente (urbano vs. natureza) é o critério de classificação didática proposto pela BNCC, e que a proposta educativa deve examinar desafios, condições e possibilidades de participação, conforme a explicação da seção básica sobre aventura como relação corporal com o ambiente incerto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A alternativa correta estabelece que mudanças nas condições do espaço exigem reavaliação junto à orientação responsável, e que a presença de proteção sozinha não garante adequação da proposta, podendo ser necessário adaptar, adiar ou interromper a atividade, conforme a seção intermediária sobre gestão de riscos."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A alternativa correta propõe rever o uso do espaço e a destinação de resíduos, organizar participação respeitosa e orientada sem constranger colegas ou presumir impacto zero, integrando os conceitos de conservação e convivência da seção avançada sobre participação, convivência e conservação em ambientes naturais e urbanos."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Propriedades da matéria",
+    "contentSha256": "08c24307d8ad5d8f7e013848baac854bd6af8b9353d4b260c9e2e5bc528fd079",
+    "draftMethod": "Autoria e conferência conceitual e numérica Codex com OpenStax consultado; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+      "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+      "https://openstax.org/books/chemistry-2e/pages/1-4-measurements",
+      "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "O cálculo da densidade requer conversão de unidades: 0,2 kg equivalem a 200 g, divisão por 100 cm³ dá 2 g/cm³; em SI, 0,2 kg divididos por 0,0001 m³ dão 2000 kg/m³; a alternativa D apresenta ambas as razões corretamente e de forma consistente; as alternativas A, B e C contêm erros de conversão ou raciocínio incorreto sobre a razão massa/volume, resolução independente confirma."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Ao triplicar a quantidade de material homogêneo mantendo condições iguais, massa e volume triplem, mas a densidade, sendo razão m/V, permanece inalterada pois 3m/(3V)=m/V; as alternativas erradas tratam densidade como extensiva (B), mantêm volume sem alteração de condições (C) ou classificam massa como intensiva (D); a resolução independente confirma a correção da alternativa A."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Na ebulição idealizada com pressão constante e coexistência líquido-vapor, temperatura permanece constante mas energia é transferida para a mudança de estado (calor latente), não significando calor zero; a conclusão correta reconhece essa associação sem confundir temperatura com calor; as alternativas erradas afirmam ausência de energia (A), reação química (B) ou regra universal independende de pressão (D); a resolução independente valida a alternativa C."
       }
     ]
   }
