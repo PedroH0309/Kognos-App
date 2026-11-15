@@ -1,6 +1,37 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 22
+## Estado atual em 15/11/2026 — checkpoint 23
+
+CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
+- 121novas/lote10nove.655testesapp+6motor,70específicos,lint/build/leitorAPI121
+  +5novas15MCQ4larguras/referências/captura aprovados. Índice338,fixtures121,
+  preview3316sessão81699. LogsTemp/kognos-batch10-nine-*.
+- Lacunas1174,ENEM133/763,estudo133/36/738. Humana pendente;sem schema/banco/
+  merge/deploy. CI22 43746480742success5294632. Publicar23/PR/CI e seguir10.
+- Integrador10 reescreve módulo: TODOS noveIDs+novos obrigatórios:
+  course-4493de6d course-32c343f7 course-7dd582a1 course-d139d328
+  course-5e729792 course-9a514958 course-e58a955c course-0ab7c83e course-d945d2fd.
+- Críticasfinais lidas/hashatual. Espanhol/Física/Química metadadoscorrigidos
+  pelo principal com originais integrais. Não reaplicar bases indiscriminadamente.
+  Pêndulofinalfio1m foi recriticado. TestesRED→GREEN física/química/bio passaram.
+- PróximoHistce7b64bc. Draft1 LIDO integralmente; crítica1 insuficiente, autor2.
+  Semprincipal. Corrigir ouroXVposterior,1453bloqueiouniversal,feitorianãopermanente,
+  tráficosótriangular,percentuaissemrecorte ecausademográficaúnica universal.
+- FontesHist abertas: OpenStaxUSHistory2.1e2.4;WorldHistoryVol2 5.2e6.1;
+  UNESCOtreaty-tordesillas; MultiRioo-governo-geral redirecionamulti.rio(ainda
+  localizarconteúdonofim); UPenn dia.upenn.edu/en/content/TL005Mita/2024resumo.
+  MAPAArquivoNacionalmanutenção/LOCmapa1562 403: nãoalegarleituraintegral.
+  OpenStaxUSHistory2.1 erraCanáriaportuguesae primeirouniversalcontato;
+  NÃOreproduzir. Fonteconsultada não significa aceitar qualquer frase.
+- Próximos10[121:128]: Histce7b64bc,Geo3a59924cágua,Filobfc3221fciência,
+  Soc92cfdde9movimentos/direitos,Arte29321e07técnicas,PE3886ac5bdanças,
+  Ciênciasf582c765genética/evolução. Worker128PID1716logTemp/kognos-curriculum-
+  collaboration-v4-batch10-20261115.log. Ao terminar128 ampliar144 deliberadamente.
+- HelpersTemp respaldadosprivate/curriculum-run/resume-helpers. AGENTSgerado
+  fora decommit. Restore next-env só raizativa,fetchantespush,nuncaforce.
+  Raizoriginalsuja preservada;sem matar usuário/Claude/proxy.
+
+## Histórico — checkpoint 22
 
 CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
 - Lotes03–09 completos,10primeiras4.116novas.652testes app+6motor,67específicos,
@@ -8,7 +39,9 @@ CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
   Índice333;fixtures116;preview3316sessão27313. LogsTemp/kognos-batch10-four-*.
 - Lacunas1179, ENEM128/768, estudo128/37/742. Homologação humana pendente.
   Sem schema/banco/merge/deploy. CI21 43744460232 success head14e4c7d.
-- Publicar22 e atualizarPR117116/652/1179, conferir CI headexato; continuar10.
+- Checkpoint22 publicado5294632, PR117atualizado116/652/1179.
+  CI22 43746480742 SUCCESS no head529463279bdcccd25e5a812ff325b4cc22b6fb17.
+  Continuar10, sem merge/deploy.
 - Integrador10 reescreve módulo, usar TODOS os4anteriores +novos:
   course-4493de6d course-32c343f7 course-7dd582a1 course-d139d328.
   Hashesfinais/críticas lidos; metadadosPort corrigidos pelo principal preservam
@@ -77,3 +110,13 @@ branch codex/quality-reliability-20261114; PR117 draft. Raiz original suja prese
 - Novo teste quantitativo em authored-curriculum-lessons.test.ts RED esperado
   por ausência de spec; não publicar teste falhando. Integrador10 preparado
   Temp/kognos-integrate-batch10.mjs, ainda sem módulo10/agregador/index.
+
+- Inglêsdraft2 agora LIDO integralmente, corrigido por Temp/kognos-correct-
+  reported-speech.py; principal pronto, crítico sessão73475 em execução.
+  Corrigidos mudançasobrigatóriasdepronomes/deíticos/backshift, askordemerrada,
+  função shedeMaria, Heaskedmetheanswer indevidamenteagramatical, relatoENEMem
+  Inglês. Contextos próprios e referências explícitas; perguntasordemdeclarativa,
+  pedido notto, conteúdo ainda atual pode presente. Ler parecerfinal/hash antes.
+- Espanhol9a514958 workerautor1 em andamento. Fontes localizadas RAEel/al/del,
+  Fundéuagua, AcademiaEcuatoriana contraçãoemnomes e Cervantesloneutro.
+  Ainda sem principalEspanhol. Próximos Físicae58a955c/Química0ab7c83e/Biod945d2fd.

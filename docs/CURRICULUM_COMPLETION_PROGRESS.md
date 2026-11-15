@@ -4,7 +4,42 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 22
+## Estado atual — checkpoint 23
+
+Lote10 ampliado para nove aulas;121 novas nesta etapa. Acrescentadas Inglês —
+Discurso direto e indireto; Espanhol — Artigos e contrações; Física — Impulso,
+quantidade de movimento e colisões; Química — Ligações, geometria e polaridade;
+Biologia — Mitose e meiose. Homologação docente humana pendente.
+
+Restam1174lacunas entre1512identidades. ENEM133aprofundadas/763lacunas;
+estudo133aprofundadas,36guias,738planejadas; índice338. Um guia recebeu
+prioridade de conteúdo aprofundado novo, mantendo seu texto histórico intacto.
+As unidades editoriais não certificam habilidades oficiais. Catálogo em execução.
+
+- Inglês: referências explícitas e backshift condicionado ao contexto; retiradas
+  mudanças obrigatórias de pronomes e alegação de redação ENEM em inglês.
+- Espanhol: corrigidos uns, lo diante de nome, del mesa/casa, con la contraído
+  e pel como regra. RAE confirma el agua feminino; él pessoal e El de nome
+  próprio não seguem automaticamente a contração de artigo comum.
+- Física: sistema/intervalo e sinais explícitos. Teste calcula -3000N·s/-15000N,
+  5/3m/s e perda16/3J; pêndulo com fio1m usa duas etapas e chega a0,45m.
+- Química: retículo não é molécula isolada; geometrias eletrônica e molecular
+  distintas. Teste confere CaF2,8elétronsNH3 e dipolos1,5D a120°/zero a180°.
+- Biologia: S duplica DNA, não ploidia; I separa homólogos,II irmãs,sem novaS.
+  Teste confere8/16pósS,3/6porcélula pósI e8possibilidades contra4produtos.
+
+Verificação:655testes da aplicação e6do motor,70específicos,lint alterado e
+build aprovados. API121comparada; cinco novas no Chromium,15respostas,
+explicações e referências expandidas em320/375/768/1440px,sem exceções ou
+rolagem horizontal; captura inspecionada. FontesOpenStax/RAE/BC/Pearson
+consultadas; exemplos e questões próprios. Química e Bio autoria principalCodex.
+Pareceres com transcrições e justificativas erradas de distratores corrigidos
+explicitamente pelo principal, com originais completos preservados e hashes
+atuais; não se atribuem essas correções ao Claude. Revisão por IA não é docente.
+CI22 aprovada43746480742,head5294632. Sem schema/banco,merge ou deploy.
+Seguem História e as outras seis disciplinas do lote10.
+
+## Histórico — checkpoint 22
 
 Lote 10 iniciado com quatro aulas: Matemática — Potências, radicais e notação
 científica; Português — Ortografia, acentuação e pontuação; Literatura —

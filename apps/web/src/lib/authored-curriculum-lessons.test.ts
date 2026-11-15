@@ -827,3 +827,46 @@ test('potências e radicais preservam sinais e normalizam contagem com cancelame
  const normalized=choice(2).match(/^([\d,]+) × 10\^(-?\d+) unidades$/);assert.ok(normalized);const coefficient=Number(normalized[1].replace(',','.'));
  assert.ok(coefficient>=1&&coefficient<10);assert.ok(Math.abs(coefficient*10**Number(normalized[2])-values[0]/values[1])<1e-9);
 });
+
+test('impulso e colisões distinguem sinal, perda cinética e as duas fases do pêndulo',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Impulso, quantidade de movimento e colisões');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const decimal=(value:string)=>Number(value.replace(',','.'));
+ const first=spec.tasks[0].prompt.match(/massa (\d+) kg.*de (\d+) m\/s para (\d+) m\/s.*intervalo de ([\d,]+) s/);assert.ok(first);
+ const impulse=Number(first[1])*(Number(first[3])-Number(first[2])),meanForce=impulse/decimal(first[4]);
+ assert.equal(choice(0),`${impulse} N·s; ${meanForce} N.`);
+ const second=spec.tasks[1].prompt.match(/m1 = (\d+) kg.*v1 = ([+-]?\d+) m\/s.*m2 = (\d+) kg.*v2 = ([+-]?\d+) m\/s/);assert.ok(second);
+ const m1=Number(second[1]),v1=Number(second[2]),m2=Number(second[3]),v2=Number(second[4]),common=(m1*v1+m2*v2)/(m1+m2);
+ const loss=(m1*v1*v1+m2*v2*v2-(m1+m2)*common*common)/2;assert.ok(loss>0);
+ const answer=choice(1).match(/^([\d]+)\/([\d]+) m\/s.*perda de ([\d]+)\/([\d]+) J/);assert.ok(answer);
+ assert.ok(Math.abs(Number(answer[1])/Number(answer[2])-common)<1e-12);assert.ok(Math.abs(Number(answer[3])/Number(answer[4])-loss)<1e-12);
+ const third=spec.tasks[2].prompt.match(/massa ([\d,]+) kg.*velocidade (\d+) m\/s.*bloco de massa ([\d,]+) kg.*g = (\d+) m\/s²/);assert.ok(third);
+ const small=decimal(third[1]),initial=Number(third[2]),block=decimal(third[3]),g=Number(third[4]),speed=small*initial/(small+block),height=speed*speed/(2*g);
+ assert.equal(choice(2),`${height.toFixed(2).replace('.',',')} m.`);
+ assert.notEqual(height,small*initial*initial/(2*(small+block)*g),'energia cinética não se conserva durante o engaste');
+});
+
+test('polaridade do modelo soma dipolos vetorialmente e distingue geometria eletrônica e molecular',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Ligações, geometria e polaridade molecular');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ assert.match(choice(0),/CaF2.*retículo/);
+ const valence=spec.tasks[1].prompt.match(/N = (\d+) e H = (\d+)/);assert.ok(valence);const electrons=Number(valence[1])+3*Number(valence[2]);assert.equal(electrons,8);
+ assert.equal(electrons/2,4);assert.match(choice(1),/tetraédrica.*piramidal trigonal/i);
+ const third=spec.tasks[2].prompt.match(/módulo ([\d,]+) D.*ângulo de (\d+)°.*linear.*(180)°/);assert.ok(third);
+ const dipole=Number(third[1].replace(',','.')),angle=Number(third[2]);assert.ok(dipole>0);
+ const sum=(theta:number)=>Math.sqrt(Math.max(0,2*dipole*dipole*(1+Math.cos(theta*Math.PI/180))));
+ assert.equal(choice(2),`${sum(angle).toFixed(1).replace('.',',')} D; ${sum(Number(third[3])).toFixed(0)} D.`);
+ assert.notEqual(sum(angle),2*dipole);
+});
+
+test('mitose e meiose não confundem replicação, redução de ploidia e combinações potenciais',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Mitose e meiose');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const beforeS=Number(spec.tasks[0].prompt.match(/2n = (\d+)/)?.[1]);assert.ok(beforeS>0);assert.match(spec.tasks[0].prompt,/após a fase S.*antes da separação/);
+ assert.equal(choice(0),`${beforeS} cromossomos duplicados; ${2*beforeS} cromátides.`);
+ const diploid=Number(spec.tasks[1].prompt.match(/2n = (\d+)/)?.[1]);assert.ok(diploid>0&&diploid%2===0);assert.match(spec.tasks[1].prompt,/após a meiose I.*antes da meiose II/);
+ assert.equal(choice(1),`${diploid/2} cromossomos duplicados; ${diploid} cromátides por célula.`);
+ const pairs=Number(spec.tasks[2].prompt.match(/n = (\d+) pares/)?.[1]);assert.ok(pairs>2);assert.match(spec.tasks[2].prompt,/ignore crossing-over/);
+ assert.equal(choice(2),`${2**pairs} combinações potenciais; ${2**2} produtos celulares.`);
+ assert.notEqual(2**pairs,2**2);
+});
