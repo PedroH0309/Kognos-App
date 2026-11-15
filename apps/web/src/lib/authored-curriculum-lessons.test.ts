@@ -323,6 +323,89 @@ test('eletricidade cotidiana separa série, fator de potência e rendimento sem 
  assert.notEqual(inputA,inputA/efficiencyA);
 });
 
+test('bioquímica calcula cinética no modelo declarado e soma energia apenas com acoplamento',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Bioquímica celular e biomoléculas');assert.ok(spec);
+ const kinetic=spec.tasks[1];assert.ok(kinetic.options&&typeof kinetic.correctIndex==='number');
+ const value=(pattern:RegExp)=>Number(kinetic.prompt.match(pattern)?.[1]);
+ const limit=value(/Vmax = (\d+) µmol/),km=value(/Km = (\d+) mmol/),substrate=value(/\[S\] = (\d+) mmol/);
+ assert.ok(limit>0&&km>0&&substrate>0);
+ const rate=limit*substrate/(km+substrate);
+ assert.equal(kinetic.options[kinetic.correctIndex],`${rate} µmol/min.`);
+ assert.notEqual(rate,limit/2);
+ const energy=spec.tasks[2];assert.ok(energy.options&&typeof energy.correctIndex==='number');
+ const values=[...energy.prompt.matchAll(/ΔG = ([−+]?\d+) kJ\/mol/g)].map(match=>Number(match[1].replace('−','-')));
+ assert.equal(values.length,2);assert.ok(values[0]>0&&values[1]<0);
+ const sum=values.reduce((total,value)=>total+value,0);
+ assert.equal(energy.options[energy.correctIndex],`ΔG total = ${String(sum).replace('-','−')} kJ/mol; favorável termodinamicamente no modelo acoplado.`);
+ assert.match(energy.solution,/não garante velocidade/);
+ assert.match(spec.sections[1].explanation,/não é uma medida universal de afinidade/);
+});
+
+test('química ambiental conserva estequiometria e distingue carga removida da remanescente',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Química ambiental');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const acid=spec.tasks[1].prompt,coefficient=Number(acid.match(/CaCO3 \+ (\d+) H\+/)?.[1]),moles=Number(acid.match(/consumir (\d+,\d+) mol/)?.[1].replace(',','.')),molarMass=Number(acid.match(/igual a (\d+) g\/mol/)?.[1]);
+ assert.ok(coefficient>0&&moles>0&&molarMass>0);
+ assert.equal(choice(1),`${moles/coefficient*molarMass} g.`);
+ // CaCO3 + 2H+ -> Ca2+ + CO2 + H2O: atom and charge counts, independent of masses.
+ const atoms=(formula:string)=>{
+  const totals:Record<string,number>={};
+  for(const match of formula.matchAll(/([A-Z][a-z]?)(\d*)/g))totals[match[1]]=(totals[match[1]]??0)+Number(match[2]||1);
+  return totals;
+ };
+ const combine=(...parts:Record<string,number>[])=>parts.reduce((sum,part)=>{for(const [element,count] of Object.entries(part))sum[element]=(sum[element]??0)+count;return sum;},{} as Record<string,number>);
+ assert.deepEqual(combine(atoms('CaCO3'),{H:coefficient}),combine(atoms('Ca'),atoms('CO2'),atoms('H2O')));
+ assert.equal(coefficient,2);
+ const third=spec.tasks[2].prompt,flow=Number(third.match(/saída de (\d+) m³\/d/)?.[1]),concentrations=third.match(/de (\d+) mg\/L na entrada para (\d+) mg\/L/);assert.ok(concentrations&&flow>0);
+ const incoming=flow*1000*Number(concentrations[1])/1e6,outgoing=flow*1000*Number(concentrations[2])/1e6,removed=incoming-outgoing,efficiency=100*removed/incoming;
+ assert.ok(removed>0&&removed<incoming);
+ assert.equal(choice(2),`${removed} kg/d e ${efficiency}%.`);
+ assert.notEqual(efficiency,100*outgoing/incoming);
+ assert.notEqual(efficiency,100*removed/outgoing);
+ assert.match(spec.sections[2].explanation,/não prova que toda carga foi destruída/);
+});
+
+test('unidades convertem área ao quadrado e cancelam dimensões na pressão e em Reynolds',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Grandezas, unidades e análise dimensional');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,speed=Number(first.match(/(\d+) km\/h/)?.[1]),area=Number(first.match(/(\d+) cm²/)?.[1]);assert.ok(speed>0&&area>0);
+ assert.equal(choice(0),`${speed*1000/3600} m/s e ${String(area*.01**2).replace('.',',')} m².`);
+ const add=(...vectors:number[][])=>vectors[0].map((_,index)=>vectors.reduce((sum,vector)=>sum+vector[index],0));
+ const negate=(vector:number[])=>vector.map(value=>-value);
+ const mass=[1,0,0],length=[0,1,0],time=[0,0,1];
+ const acceleration=add(length,time.map(value=>-2*value)),force=add(mass,acceleration),surface=length.map(value=>2*value),pressure=add(force,negate(surface));
+ const density=add(mass,length.map(value=>-3*value));
+ assert.deepEqual(add(density,acceleration,length),pressure);
+ const superscript=(value:number)=>String(value).replaceAll('-','⁻').replaceAll('1','¹').replaceAll('2','²').replaceAll('3','³');
+ const dimension=pressure.map((power,index)=>power===0?'':'MLT'[index]+(power===1?'':superscript(power))).join('');
+ assert.equal(choice(1),dimension+'.');
+ const third=spec.tasks[2].prompt,numeric=(pattern:RegExp)=>Number(third.match(pattern)?.[1].replace(',','.'));
+ const rho=numeric(/ρ = (\d+) kg/),velocity=numeric(/v = (\d+,\d+) m\/s/),size=numeric(/L = (\d+,\d+) m/),viscosity=numeric(/μ = (\d+,\d+) Pa/);assert.ok([rho,velocity,size,viscosity].every(value=>value>0));
+ const reynolds=rho*velocity*size/viscosity;
+ const speedDimension=add(length,negate(time)),dynamicViscosity=add(pressure,time);
+ assert.deepEqual(add(density,speedDimension,length,negate(dynamicViscosity)),[0,0,0]);
+ assert.equal(choice(2),`${reynolds}, adimensional.`);
+ assert.match(spec.sections[2].explanation,/não revela C = 2π/);
+});
+
+test('multimodalidade confere maioria e crescimento sem tratar altura visual como duplicação',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Inglês'&&lesson.topic==='Gêneros e textos multimodais');assert.ok(spec);
+ const survey=spec.tasks[1];assert.ok(survey.options&&typeof survey.correctIndex==='number');
+ const counts=survey.prompt.match(/(Eighteen) of (thirty) respondents/);assert.ok(counts);
+ const vocabulary:Record<string,number>={eighteen:18,thirty:30};
+ const proportion=vocabulary[counts[1].toLowerCase()]/vocabulary[counts[2].toLowerCase()];
+ assert.ok(proportion>.5&&proportion<1);
+ assert.match(survey.options[survey.correctIndex],/^A majority of the thirty respondents/);
+ assert.ok(survey.solution.includes(`${100*proportion}%`));
+ const chart=spec.tasks[2];assert.ok(chart.options&&typeof chart.correctIndex==='number');
+ const values=chart.prompt.match(/attendance is (\d+) in Week 1 and (\d+) in Week 2/),axis=chart.prompt.match(/axis starts at (\d+)/);assert.ok(values&&axis);
+ const initial=Number(values[1]),final=Number(values[2]),baseline=Number(axis[1]),growth=100*(final-initial)/initial;
+ assert.ok(chart.options[chart.correctIndex].startsWith(`Attendance rose by ${growth}%;`));
+ assert.notEqual(final/initial,2);
+ assert.ok((final-baseline)/(initial-baseline)>final/initial);
+ assert.match(chart.options[chart.correctIndex],/data do not show doubling/);
+});
+
 test('geometria confere cantos, cone parcialmente cheio e ordem das transformações',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Geometria e medidas');assert.ok(spec);
  const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};

@@ -370,6 +370,466 @@ export const authoredCurriculumBatch06:readonly AuthoredLessonSpec[] = [
         "correctIndex": 0
       }
     ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Gêneros e textos multimodais",
+    "objective": "Interpretar finalidade, público e relações entre palavras, composição e dados em gêneros em inglês, fundamentando inferências e distinguindo destaque visual de evidência.",
+    "prerequisites": [
+      "Leitura básica de enunciados em inglês e modais",
+      "Noções de título, legenda, imagem e finalidade comunicativa",
+      "Porcentagens e leitura de escalas com dados fornecidos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Propósito, público e modos de construção de sentido",
+        "explanation": "Um texto pode combinar palavras, imagens, organização espacial, sons e gestos. A leitura multimodal observa como esses recursos participam do sentido em vez de tratar tudo que não é palavra como decoração. Um aviso impresso, um anúncio, uma tirinha e um vídeo podem mobilizar combinações diferentes; multimodalidade não é exclusiva da internet. Em inglês, identifique propósito e público: um convite pode usar Join us, um aviso pode instruir Keep the gate closed e um anúncio pode tentar persuadir com uma promessa. A mesma fotografia pode receber sentidos diferentes conforme título e legenda. Uma imagem de uma praça cheia, acompanhada de Welcome to our meeting, apresenta uma situação; com No room for anyone else, enfatiza um limite. Essas formulações autorais não provam a ocorrência real do evento. Texto e imagem podem complementar, repetir parcialmente ou produzir contraste; não precisam sempre entrar em conflito nem formar ironia. Observe o que cada recurso efetivamente permite concluir. Cor, tamanho e posição podem criar destaque, mas seus significados dependem do contexto cultural e do conjunto. Uma palavra em vermelho não prova urgência verdadeira ou fraude, e uma fotografia atraente não demonstra que a promessa publicitária foi cumprida. Quando o material é apresentado por uma descrição acessível, use as informações fornecidas e não invente elementos fora dela.",
+        "steps": [
+          "Identifique propósito, público e recursos efetivamente apresentados.",
+          "Localize imperativos e expressões de convite ou instrução em inglês.",
+          "Relacione palavras e descrição visual sem supor oposição obrigatória.",
+          "Separe representação e destaque de prova factual do que foi anunciado."
+        ],
+        "example": "Descrição autoral hipotética: um cartaz apresenta um livro aberto ao lado de Open a new chapter: join our reading group. A imagem reforça o tema de leitura e a expressão new chapter também sugere uma nova experiência. Não é necessário concluir que se trata de uma página literal nem identificar um livro real ausente da descrição.",
+        "pitfall": "Tratar fotografia como prova automática de uma promessa, supor que toda relação entre palavra e imagem é irônica ou inferir elemento visual não fornecido."
+      },
+      {
+        "level": "intermediate",
+        "title": "Gêneros, legendas e dados com escopo definido",
+        "explanation": "Gênero se relaciona a práticas e finalidades de comunicação; formato e meio dizem respeito a formas de apresentação e circulação, com fronteiras que podem se sobrepor. Um anúncio pode circular em cartaz ou vídeo, e um carrossel pode servir a divulgação, venda ou relato. Não basta dizer que é um post para saber seu objetivo. Memes podem reutilizar referências e construir humor ou comentários, sem depender sempre de um único modelo visual. Infográficos e painéis organizam dados com títulos, legendas, ícones e gráficos; não são corretos apenas por parecerem técnicos. Ao ler números em inglês, confira count, percentage, sample e respondents: contagem, porcentagem, amostra e respondentes. Leia eixo, unidade e período antes de comparar. A legenda pode limitar um título amplo com termos como preliminary, voluntary ou only this group. Majority significa mais da metade; não equivale a all. A frase 60% of respondents preferred mornings descreve uma preferência dos respondentes, sem demonstrar causa de resultados ou representar necessariamente toda população. A presença de referência permite procurar uma fonte, mas DOI, logotipo ou aparência profissional não garantem por si que o dado foi descrito fielmente. No audiovisual, som, montagem e legendas também importam; uma transcrição parcial não permite reconstruir com certeza toda imagem ou música omitida. Compare o que está disponível e explicite limites da inferência.",
+        "steps": [
+          "Diferencie propósito comunicativo e forma de circulação.",
+          "Leia título, números, unidades e qualificações da legenda em conjunto.",
+          "Calcule proporções com a base informada e preserve o grupo observado.",
+          "Verifique atribuição e acesso à fonte sem tratar um símbolo como certificado de verdade."
+        ],
+        "example": "Painel autoral hipotético: Volunteers at one school; 12 of 20 respondents chose the afternoon; caption: Optional survey, one class only. O valor é 60% dos respondentes dessa turma. A legenda limita o alcance: não se pode concluir que 60% de todas as escolas ou de todos os estudantes prefiram a tarde.",
+        "pitfall": "Confundir maioria com totalidade, número de respondentes com população inteira ou legenda qualificadora com um detalhe que pode ser ignorado."
+      },
+      {
+        "level": "advanced",
+        "title": "Enquadramento e avaliação crítica de gráficos e mensagens",
+        "explanation": "A leitura crítica confronta afirmações e evidências sem presumir que toda persuasão seja engano. Um título pode destacar uma interpretação, enquanto escala, recorte e período mostram o alcance dos dados. Em gráfico de barras, a extensão da barra representa magnitude; iniciar a base acima de zero pode exagerar proporções visuais. Isso não torna a intenção do autor automaticamente conhecida, mas exige cuidado na comparação. Outros gráficos têm convenções próprias: não se impõe a mesma regra de leitura a qualquer linha, mapa ou diagrama. Verifique os valores em vez de medir apenas a aparência. Se uma contagem vai de 50 para 55, o aumento é 5 em 50, ou 10%, e não duplicação. Em inglês, doubled significa que o valor final é duas vezes o inicial. Uma fotografia pode criar proximidade ou emoção e ainda não comprovar a origem ou causa de um problema. Antes de chamar um conteúdo de desinformação deliberada, é preciso mais que cor forte ou uma legenda dramática; intenção, falsidade, contexto e circulação são questões distintas. Compare autoria identificável, possibilidade de conferir a fonte, método e consistência entre alegação e dados. Também separe publicidade, opinião e descrição de resultados. Uma resposta bem fundamentada pode reconhecer que um texto chama atenção de forma eficaz e apontar, ao mesmo tempo, que seus números não sustentam a conclusão. A análise deve descrever o recurso, explicar seu possível efeito e indicar a evidência relevante, sem inventar dados de uma imagem não mostrada.",
+        "steps": [
+          "Compare a frase do título com os valores e a base de cálculo.",
+          "Identifique o tipo de gráfico e o efeito de escala pertinente a ele.",
+          "Separe efeito persuasivo, verdade da alegação e intenção do produtor.",
+          "Fundamente a avaliação em elementos fornecidos e fontes conferíveis."
+        ],
+        "example": "Gráfico de barras autoral hipotético: Attendance goes from 50 to 55; vertical axis starts at 49. A diferença visual pode parecer grande, mas a contagem aumentou 10%. A escala recortada ajuda a explicar o efeito visual e não basta para concluir que o produtor tinha intenção deliberada de enganar.",
+        "pitfall": "Inferir confiabilidade pela aparência, chamar toda emoção de falsidade ou aceitar doubled sem conferir se o valor final é o dobro do inicial."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Accessible description of an original hypothetical poster: a bicycle is parked beside a library. Large text says Leave the car at home. Ride with us on Sunday. Smaller text says Meet by the library at 9 a.m. Which interpretation is supported by the words and the described image?",
+        "hint": "Relacione os imperativos Leave e Ride ao convite, e use a legenda para lugar e horário; não acrescente preço ou venda que não aparecem.",
+        "solution": "B reconhece um convite para passeio de bicicleta no domingo, com encontro junto à biblioteca às 9h. A inventa venda de automóveis. C troca domingo por todos os dias e altera o horário. D ignora o convite e trata a fotografia como única informação. A imagem reforça o tema; não comprova a realização do evento.",
+        "options": [
+          "The poster advertises cars for sale at the library.",
+          "The poster invites people to cycle on Sunday and meet by the library at 9 a.m.",
+          "The poster requires everyone to cycle every day at 9 p.m.",
+          "The poster contains no invitation because only the picture can communicate meaning."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Original hypothetical infographic, fully described: title Meeting preferences; data Eighteen of thirty respondents preferred morning meetings; caption Voluntary survey in one club, not a population estimate. Which inference respects both the data and the caption?",
+        "hint": "Dezoito de trinta correspondem a 60%; preserve a referência aos respondentes de um clube, sem converter preferência em causa de desempenho.",
+        "solution": "D calcula 18/30 = 60%, uma maioria dos respondentes daquele clube, e mantém o limite declarado. A generaliza para todos. B inverte numerador e denominador e supera 100%. C inventa um efeito causal da preferência sobre o desempenho, que o painel não mediu.",
+        "options": [
+          "All people everywhere prefer morning meetings.",
+          "Thirty of eighteen respondents, or more than 100%, preferred mornings.",
+          "Morning meetings caused higher performance for 60% of all students.",
+          "A majority of the thirty respondents preferred mornings, but the result is not a population estimate."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Accessible description of an original hypothetical bar chart: attendance is 40 in Week 1 and 44 in Week 2; the vertical axis starts at 38. Its headline says Participation doubled. Which assessment follows from the supplied values and scale?",
+        "hint": "Calcule (44−40)/40 e compare doubled com a duplicação real. A escala de barras pode afetar a aparência, sem mudar os valores nem provar intenção.",
+        "solution": "C calcula aumento de 4/40 = 10%, com razão final/inicial 1,1, e não 2. O eixo iniciado em 38 pode ampliar a diferença percebida entre as barras. A confunde aumento de 4 com 100%. B toma a altura visual como substituta dos valores. D inventa que uma escala alterada muda a contagem real. A avaliação não exige atribuir intenção ao autor.",
+        "options": [
+          "Attendance rose by 100% because four more people attended.",
+          "The headline is proved solely because the second bar looks much taller.",
+          "Attendance rose by 10%; the truncated bar axis can magnify the visual difference, but the data do not show doubling.",
+          "Starting the axis at 38 changes the real attendance from 44 to 80."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Diversidade cultural hispano-americana",
+    "objective": "Interpretar textos em espanhol sobre diversidade cultural hispano-americana, reconhecer variações linguísticas e analisar pertencimentos, contato e participação sem estereótipos ou generalizações nacionais.",
+    "prerequisites": [
+      "Leitura de espanhol e uso de pistas contextuais",
+      "Noções de língua, cultura e identidade",
+      "Distinção entre exemplo local e afirmação sobre toda uma população"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Um recorte cultural com pluralidade interna",
+        "explanation": "Hispano-América e América Latina não são termos equivalentes. No uso linguístico-cultural usual, o primeiro recorte se relaciona à América de língua espanhola; o segundo é mais amplo e inclui, por exemplo, o Brasil de língua portuguesa. Mesmo onde o espanhol é amplamente usado, a vida cultural não se reduz a uma língua, uma origem ou um costume. Povos indígenas, populações afrodescendentes, diferentes processos migratórios, desigualdades e histórias locais participam de formações culturais variadas. Nenhum país tem apenas uma voz ou uma prática que represente todos os moradores. Festas, literatura, música, artes visuais, experiências urbanas e rurais podem expressar pertencimentos e disputas. Aprender sobre diversidade exige ler quem fala e em que contexto, em vez de transformar uma celebração ou comida em essência nacional. Um texto pode valorizar uma tradição e também defender sua transformação. Em um enunciado autoral como Nuestra fiesta cambia porque también cambia el barrio, a palavra también relaciona mudança da festa e do bairro: não afirma perda automática de cultura. Compare termos de alcance como algunas comunidades, muchas personas e todo el país. Uma observação sobre um grupo delimitado não descreve necessariamente todos os habitantes. Identifique ainda de quem é a perspectiva: voz de um narrador, entrevista ou instituição não equivale à opinião de toda sociedade. A leitura cultural fundamentada reconhece diferenças internas e conexões com outros lugares, sem exigir que pessoas mantenham práticas imutáveis para serem consideradas autênticas.",
+        "steps": [
+          "Identifique o recorte e evite usar Hispano-América e América Latina como sinônimos exatos.",
+          "Localize quem fala, de qual grupo e em qual situação.",
+          "Preserve quantificadores e limites geográficos das afirmações.",
+          "Compare tradição e mudança sem presumir perda automática de pertencimento."
+        ],
+        "example": "Texto autoral hipotético: En nuestro barrio, unas familias conservan la música de sus abuelos y otras incorporan nuevos ritmos; organizamos juntos el encuentro. O trecho descreve variação dentro de um bairro e ação compartilhada. Não afirma que todo um país tenha uma única música nem que incorporar ritmos elimine memória.",
+        "pitfall": "Tratar uma prática como essência de todo país, confundir os dois recortes continentais ou presumir que mudança cultural prova ausência de autenticidade."
+      },
+      {
+        "level": "intermediate",
+        "title": "Variação do espanhol e leitura contextual",
+        "explanation": "O espanhol apresenta variações de pronúncia, vocabulário e formas de tratamento. Uma variedade não é linguisticamente inferior apenas por diferir da referência usada em outra região. O seseo, geral na Hispano-América e aceito nas normas cultas correspondentes, realiza c diante de e/i e z com o som associado a s; assim, casa e caza podem ter a mesma pronúncia, embora a escrita e os significados permaneçam diferentes. Não é correto descrever ceceo como padrão geral do Caribe nem deduzir um sistema inteiro de pronúncia ouvindo apenas uma palavra. O voseo americano pode envolver vos e formas verbais como vos tenés ou vos sabés, com distribuição e combinações regionais; não se resume a um hábito de um só país nem torna todos os falantes de um território iguais. Tú tienes exemplifica outra forma de tratamento, sem estabelecer superioridade automática. A escolha entre tratamentos e registros depende também de relações sociais e situação. No vocabulário, guagua pode designar ônibus em algumas regiões e bebê em outras, entre outros sentidos registrados. O contexto precisa decidir: bilhete, parada e trajeto favorecem a leitura de transporte, enquanto canciones de cuna pode favorecer bebê. Uma palavra isolada não comprova nacionalidade, etnia ou intenção do falante. Consulte a acepção e as marcas de uso em dicionários pertinentes, mantendo abertura para variação interna e mudança. Para compreender um texto, relacione pronome, verbo, léxico e situação em vez de decorar uma lista rígida que trate países como blocos homogêneos.",
+        "steps": [
+          "Reconheça variação como recurso de comunidades e contextos, sem hierarquia automática.",
+          "Distinga som, grafia e significado no seseo.",
+          "Observe tratamentos e formas verbais sem transformar um traço em passaporte nacional.",
+          "Escolha a acepção pelo contexto e confira marcas de uso em fontes linguísticas."
+        ],
+        "example": "Diálogo autoral hipotético: ¿Vos tenés el programa del festival? — Sí, y también el mapa. Vos tenés é uma construção voseante possível; a forma, sozinha, não permite identificar com certeza a cidade ou nacionalidade dos participantes. A resposta trata do programa e do mapa, sem informar essas identidades.",
+        "pitfall": "Chamar seseo de erro, atribuir ceceo a todo o Caribe ou usar um único vocábulo como prova da nacionalidade de alguém."
+      },
+      {
+        "level": "advanced",
+        "title": "Contato de línguas, direitos e participação cultural",
+        "explanation": "A diversidade hispano-americana inclui línguas indígenas vivas e comunidades multilíngues, não apenas diferenças regionais do espanhol. Nomes abrangentes podem reunir variantes e autodenominações diversas; por isso catálogos como o do INALI, no México, distinguem recortes e referências das comunidades. Não se deve apresentar qualquer frase inventada como exemplo autêntico de uma língua que não foi conferida. Contato pode envolver empréstimos lexicais, alternância de línguas e mudanças em variedades, mas classificar um caso requer observar contexto e padrões, não supor que uma palavra determine uma gramática inteira. Usar mais de uma língua não demonstra deficiência intelectual ou incapacidade de aprender. Transmissão entre gerações, materiais, espaços de uso e reconhecimento social podem influenciar continuidade de uma língua. Uma proposta de educação bilíngue deve considerar participação e necessidades dos falantes, sem presumir uma solução igual para todas as comunidades. A análise cultural também precisa distinguir visibilidade e poder de decisão: exibir imagens de um povo não comprova que ele participou da curadoria ou concordou com o uso. A defesa da diversidade se articula a direitos humanos; não exige congelar costumes nem aprovar qualquer violência como tradição. Em textos em espanhol, conectivos e negações delimitam posições: aprender español no significa abandonar nuestra lengua rejeita uma equivalência entre aprender uma língua e renunciar a outra. Isso não prova que a preservação esteja garantida; descreve a posição defendida. Compare o enunciado, as condições concretas e o alcance de cada inferência.",
+        "steps": [
+          "Reconheça línguas e autodenominações sem inventar dados ou exemplos gramaticais.",
+          "Observe contexto antes de classificar empréstimo ou alternância linguística.",
+          "Diferencie presença simbólica e participação nas decisões.",
+          "Leia negações e limites para separar posição defendida e resultado garantido."
+        ],
+        "example": "Texto autoral hipotético: Queremos publicar el relato en ambas lenguas. Para hacerlo, invitaremos a las personas mayores y a los jóvenes a revisar la versión. O texto apresenta um projeto participativo e bilíngue. Não garante que todas as divergências foram resolvidas ou que a transmissão da língua esteja assegurada por uma publicação.",
+        "pitfall": "Inventar uma frase quéchua e chamá-la de espanhol de contato, considerar bilinguismo deficiência ou tratar tradução isolada como garantia de continuidade cultural."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Texto autoral hipotético: En nuestra ciudad no existe una sola manera de celebrar. Algunas familias mantienen prácticas antiguas; otras las transforman y muchas combinan referencias. ¿Qué interpretación respeta el alcance del texto?",
+        "hint": "Observe no existe una sola, algunas e muchas; o trecho fala de diversidade interna, sem afirmar que todos seguem o mesmo padrão.",
+        "solution": "C reconhece maneiras diversas de celebrar na cidade. A contradiz a negação de uma única maneira. B amplia o caso local para todos os países, sem base. D identifica transformação com desaparecimento automático de cultura, relação que o trecho não afirma. As marcas de quantificação impedem a leitura homogênea.",
+        "options": [
+          "Todas las familias celebran exactamente de la misma manera.",
+          "El texto describe necesariamente las costumbres de todos los países americanos.",
+          "En la ciudad conviven prácticas distintas, conservadas, transformadas o combinadas.",
+          "Cualquier transformación elimina automáticamente la cultura de la comunidad."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Diálogo autoral hipotético: La guagua sale de esta parada a las ocho. Compra el billete antes de subir; el trayecto hasta el centro dura veinte minutos. En este contexto, ¿qué sentido de guagua está mejor sustentado?",
+        "hint": "Parada, billete, subir e trayecto se articulam ao campo do transporte; escolha o sentido pelo contexto, não por uma nacionalidade presumida.",
+        "solution": "A é a acepção de veículo de transporte coletivo, sustentada por parada, bilhete e trajeto. B é outro sentido regional registrado, mas não corresponde às ações e objetos do diálogo. C e D não atendem ao campo semântico e à situação apresentada. O trecho não permite concluir com certeza qual é o país dos falantes.",
+        "options": [
+          "Un vehículo de transporte colectivo.",
+          "Un bebé que escucha canciones de cuna.",
+          "Un instrumento de cuerda usado en un concierto.",
+          "Una montaña que separa dos regiones."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Texto autoral hipotético: Aprender español no significa abandonar nuestra lengua. Queremos ampliar oportunidades y mantener la transmisión a los niños; para ello necesitamos materiales y participación de la comunidad. ¿Qué análisis recoge la posición y sus límites?",
+        "hint": "Relacione a negação da equivalência com os objetivos e condições declaradas; não transforme necessidade de apoio em garantia de resultado.",
+        "solution": "D reconhece a busca de oportunidades e continuidade da língua, associada a materiais e participação. A inverte a negação e faz do espanhol abandono obrigatório. B elimina o apoio que o texto declara necessário. C atribui um resultado universal já garantido a uma posição e a um projeto, sem evidência. O trecho sustenta intenção e condições, não previsão certa.",
+        "options": [
+          "El texto afirma que aprender español obliga a abandonar la otra lengua.",
+          "El texto sostiene que los materiales y la participación no tienen importancia.",
+          "La declaración garantiza por sí sola que todas las lenguas serán transmitidas para siempre.",
+          "El texto busca compatibilizar nuevas oportunidades y transmisión de la lengua, con apoyo material y participación."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Grandezas, unidades e análise dimensional",
+    "objective": "Expressar grandezas e conversões com unidades coerentes, verificar homogeneidade dimensional e construir relações e grupos adimensionais reconhecendo o que a análise não determina.",
+    "prerequisites": [
+      "Álgebra, potências e raízes",
+      "Proporções e notação científica",
+      "Noção de medida e operações com unidades"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Grandezas, unidades e fatores de conversão",
+        "explanation": "Uma medida de grandeza é expressa por um valor numérico associado a uma unidade. Comprimento é uma grandeza; metro é uma unidade; 3 é um valor numérico possível em uma medida como 3 m. Trocar a unidade muda o número que expressa a medida, preservando a grandeza. O SI tem sete unidades de base: metro (m), quilograma (kg), segundo (s), ampere (A), kelvin (K), mol (mol) e candela (cd), associadas a comprimento, massa, tempo, corrente elétrica, temperatura termodinâmica, quantidade de substância e intensidade luminosa. Unidades derivadas combinam essas bases: velocidade em m/s, aceleração em m/s², força em kg·m/s², chamada newton (N), e energia em kg·m²/s², chamada joule (J). Grandeza, unidade e dimensão não são sinônimos. Prefixos como quilo (10³), centi (10⁻²), mili (10⁻³) e micro (10⁻⁶) indicam fatores, e o símbolo distingue maiúsculas de minúsculas. Símbolos de unidade não recebem plural nem ponto de abreviação. Na conversão, use fatores equivalentes a um: 1 km = 1000 m e 1 h = 3600 s. Se a unidade aparece elevada a uma potência, o fator também recebe essa potência: 1 cm² = 10⁻⁴ m² e 1 cm³ = 10⁻⁶ m³. Para temperatura, a escala exige atenção: 20 °C corresponde a 293,15 K, enquanto uma diferença de 20 °C tem o mesmo valor numérico de 20 K. A conversão entre valores de temperatura não é simples multiplicação de prefixo.",
+        "steps": [
+          "Identifique grandeza, unidade inicial e unidade solicitada.",
+          "Multiplique por fatores equivalentes, cancelando unidades sem apagar potências.",
+          "Eleve o fator quando converter áreas ou volumes.",
+          "Diferencie valor de temperatura e diferença de temperatura."
+        ],
+        "example": "Modelo de conversão: 2,5 cm³ correspondem a 2,5×(10⁻² m)³ = 2,5×10⁻⁶ m³. Aplicar apenas 10⁻² daria uma conversão de comprimento, incompatível com o volume. O valor pode também ser escrito como 0,0000025 m³, mantendo a mesma grandeza.",
+        "pitfall": "Converter cm² como se fosse cm, confundir massa e força ou somar 273,15 a uma diferença de temperaturas em vez de ao valor Celsius correspondente."
+      },
+      {
+        "level": "intermediate",
+        "title": "Dimensão, homogeneidade e limites da verificação",
+        "explanation": "A dimensão descreve a dependência de uma grandeza em relação às grandezas de base. Usaremos M para massa, L para comprimento e T para tempo nas relações mecânicas. A velocidade tem dimensão LT⁻¹; aceleração, LT⁻²; força, MLT⁻²; energia, ML²T⁻². Pressão é força por área e tem dimensão ML⁻¹T⁻², cuja unidade coerente é o pascal, Pa = N/m². Dimensões obedecem às regras de expoentes: multiplicar soma expoentes e dividir os subtrai. Em uma equação física homogênea, os termos somados e os dois lados da igualdade têm dimensões compatíveis. Isso permite detectar, por exemplo, uma soma indevida entre velocidade e comprimento. Constantes numéricas puras, como 2 ou π, não alteram dimensões, mas um coeficiente físico pode ter dimensão: na lei F = kx, k tem dimensão MT⁻². Homogeneidade é condição de compatibilidade, não prova suficiente de uma lei. Tanto mv² quanto mv²/2 têm dimensão de energia; a análise sozinha não escolhe o coeficiente correto da energia cinética clássica. Grandezas distintas também podem ter a mesma dimensão, como energia e momento de uma força, sem serem a mesma coisa. Em funções como seno ou exponencial, o argumento deve ser adimensional no uso físico correspondente; a notação e o significado da variável precisam ser conhecidos. Confira sempre as unidades do coeficiente e as hipóteses do modelo antes de substituir números.",
+        "steps": [
+          "Escreva cada dimensão como potências das bases escolhidas.",
+          "Some ou subtraia expoentes ao multiplicar ou dividir grandezas.",
+          "Compare termos de soma e lados da igualdade.",
+          "Use o resultado para detectar incompatibilidade, sem concluir validade física completa."
+        ],
+        "example": "Na expressão s = v0t + at², v0t tem dimensão LT⁻¹×T = L, e at² tem LT⁻²×T² = L. A equação é homogênea. Isso não prova que o coeficiente do segundo termo seja correto para um modelo de aceleração constante: dimensões não distinguem at² de at²/2.",
+        "pitfall": "Dizer que mesma dimensão prova mesma grandeza ou lei correta, ou tratar todo coeficiente escrito por uma letra como número adimensional."
+      },
+      {
+        "level": "advanced",
+        "title": "Deduzir potências e formar grupos adimensionais",
+        "explanation": "A análise pode restringir a forma de uma relação quando as variáveis e hipóteses são explicitadas. Suponha que um período τ dependa apenas da massa m e de uma constante elástica k de dimensão MT⁻², na forma τ = C m^a k^b, com C adimensional. O lado direito tem dimensão M^(a+b) T^(−2b). Igualar a T exige a+b = 0 e −2b = 1; portanto b = −1/2 e a = 1/2, dando τ = C√(m/k). A análise não revela C = 2π: esse valor vem da dinâmica do oscilador ideal, não das dimensões. Se houver outras variáveis relevantes, como amortecimento, a hipótese inicial precisa ser revista. Grupos adimensionais são combinações com expoentes finais nulos. No número de Reynolds, Re = ρvL/μ, densidade tem ML⁻³, velocidade LT⁻¹, comprimento L e viscosidade dinâmica ML⁻¹T⁻¹. Numerador e denominador têm a mesma dimensão; Re é de dimensão um. Comparar grupos pode ajudar a estudar semelhança entre sistemas, mas não prova que todo modelo represente o fenômeno real ou que um único valor determine o regime em qualquer geometria. A escolha de variáveis e a comparação com dados continuam essenciais. Mudar unidades não é a mesma coisa que mudar fisicamente o tamanho de um sistema: a coerência dimensional preserva a forma de uma relação na conversão, enquanto uma mudança física pode alterar parâmetros e hipóteses. Ao deduzir potências ou comparar números adimensionais, registre o que foi assumido e o que ainda depende de teoria ou experiência.",
+        "steps": [
+          "Liste as variáveis supostas relevantes e suas dimensões.",
+          "Expresse a relação por potências e iguale expoentes de cada base.",
+          "Separe a dependência dimensional de constantes e funções ainda desconhecidas.",
+          "Forme grupos com expoentes nulos e avalie limites da semelhança física."
+        ],
+        "example": "Modelo hipotético de período τ dependente só de comprimento l e aceleração g: τ = C l^a g^b. Como [g] = LT⁻², resulta L^(a+b)T^(−2b) = T; logo a = 1/2 e b = −1/2. A forma é C√(l/g), mas C e condições de validade não são determinadas apenas por esse cálculo.",
+        "pitfall": "Deduzir 2π só por dimensões, omitir variável fisicamente relevante ou confundir troca de unidade com garantia de semelhança entre sistemas de tamanhos diferentes."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num exercício hipotético, uma velocidade é 54 km/h e uma área é 250 cm². Quais são seus valores em m/s e m², respectivamente?",
+        "hint": "A velocidade usa 1000 m por km e 3600 s por hora. A área usa o quadrado de 10⁻² m por cm, não o fator linear.",
+        "solution": "B calcula 54×1000/3600 = 15 m/s e 250×10⁻⁴ = 0,025 m². A converte a velocidade corretamente, mas aplica fator linear à área. C transforma a velocidade por fator dez inadequado. D combina os dois erros. O valor da área cai por 10.000 ao passar de cm² para m².",
+        "options": [
+          "15 m/s e 2,5 m².",
+          "15 m/s e 0,025 m².",
+          "5,4 m/s e 0,025 m².",
+          "5,4 m/s e 2,5 m²."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "No modelo hidrostático p = p0 + ρgh, use M para massa, L para comprimento e T para tempo. Densidade ρ tem dimensão ML⁻³ e g é aceleração. Qual é a dimensão comum de p, p0 e ρgh?",
+        "hint": "Pressão é força por área. No produto ρgh, some os expoentes de densidade, aceleração e comprimento.",
+        "solution": "D obtém ML⁻³×LT⁻²×L = ML⁻¹T⁻², a dimensão de pressão. A é dimensão de força, sem dividir por área. B é dimensão de energia. C altera indevidamente o expoente temporal de −2 para −1. A igualdade de dimensões verifica homogeneidade, sem provar por si todas as hipóteses hidrostáticas.",
+        "options": [
+          "MLT⁻².",
+          "ML²T⁻².",
+          "ML⁻¹T⁻¹.",
+          "ML⁻¹T⁻²."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em um modelo hipotético, Re = ρvL/μ, com densidade ρ = 1000 kg/m³, velocidade v = 0,30 m/s, comprimento L = 0,020 m e viscosidade dinâmica μ = 0,0010 Pa·s. Sabendo que Pa = kg·m⁻¹·s⁻², qual valor e dimensão resultam para Re? Não se pede classificação do regime de escoamento.",
+        "hint": "Multiplique os três fatores do numerador e divida por μ; compare a unidade do numerador com Pa·s para verificar o cancelamento.",
+        "solution": "C calcula 1000×0,30×0,020 = 6 e 6/0,0010 = 6000. A unidade do numerador é kg·m⁻¹·s⁻¹, igual a Pa·s, portanto Re é adimensional. A erra o valor por fator mil. B divide incorretamente por 0,1 em vez de 0,0010. D mantém indevidamente a unidade de viscosidade após a divisão. O resultado não define sozinho um limite universal de turbulência.",
+        "options": [
+          "6, adimensional.",
+          "60, adimensional.",
+          "6000, adimensional.",
+          "6000 Pa·s."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Química ambiental",
+    "objective": "Relacionar transformações químicas a qualidade da água e impactos no ar e no solo, distinguir indicadores e mecanismos e calcular neutralização e cargas removidas sob hipóteses explícitas.",
+    "prerequisites": [
+      "Concentração, mol e massa molar",
+      "Conservação de átomos e balanceamento de equações",
+      "Noções de ácido-base, oxidação e redução e conversão de unidades"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Indicadores da água, concentração e demanda de oxigênio",
+        "explanation": "Química ambiental estuda espécies, transformações e transporte no ambiente, relacionando condições e processos aos efeitos observados. Uma substância pode ocorrer naturalmente e ainda causar impacto em concentração ou contexto inadequados; natural não significa sempre inofensivo. Qualidade da água não se resume a aparência, pH ou um único número. pH expressa condição ácido-base; no modelo diluído, pH = −log[H3O+]. Uma redução de uma unidade corresponde a aumento de dez vezes na concentração de hidrônio nesse modelo, e não a uma diferença percentual linear. Oxigênio dissolvido, OD, é oxigênio molecular presente na água, diferente dos átomos de oxigênio ligados na molécula H2O. Demanda bioquímica de oxigênio, DBO, expressa consumo de oxigênio por atividade biológica em condições de ensaio definidas, frequentemente relacionado à matéria orgânica biodegradável. Ela não é a quantidade de oxigênio já dissolvido. Uma demanda elevada pode contribuir para reduzir OD se o consumo superar reposição, com consequências para organismos aeróbios. DQO é uma medida de equivalente de oxigênio ligada à oxidação química nas condições do método; não identifica sozinha todos os compostos, nem deve ser usada com limites universais para diagnosticar a origem industrial ou a toxicidade de uma amostra. Nutrientes em excesso podem favorecer eutrofização e aumentar consumo de oxigênio na respiração e decomposição. Avalie indicador, unidade, condições de ensaio e contexto, sem converter uma razão isolada em prova de segurança, causa única ou ausência de contaminantes.",
+        "steps": [
+          "Identifique a espécie ou parâmetro medido e sua unidade.",
+          "Separe OD disponível e DBO como demanda em ensaio.",
+          "Relacione entrada de matéria e nutrientes ao consumo e reposição de oxigênio.",
+          "Compare indicadores com contexto, sem declarar qualidade integral por um número."
+        ],
+        "example": "Modelo hipotético de comparação: soluções diluídas têm [H3O+] de 10⁻⁵ mol/L e 10⁻⁶ mol/L. Seus pH são 5 e 6, respectivamente, e a primeira tem dez vezes a concentração de hidrônio. Isso não informa, por si, quais outros contaminantes existem nem a adequação de cada água para consumo.",
+        "pitfall": "Confundir DBO com OD, chamar água transparente de comprovadamente potável ou inferir toxicidade e origem de um efluente por uma razão isolada sem condições do método."
+      },
+      {
+        "level": "intermediate",
+        "title": "Atmosfera, acidificação e reações com balanço",
+        "explanation": "Processos ambientais diferentes precisam de mecanismos distintos. Gases como CO2, CH4 e N2O participam do efeito estufa, relacionado à interação com radiação infravermelha; o efeito natural e sua intensificação não se confundem com a perda de ozônio estratosférico. Na estratosfera, ozônio contribui para proteção contra radiação ultravioleta. Próximo à superfície, O3 pode ser poluente secundário formado em reações envolvendo óxidos de nitrogênio e compostos orgânicos voláteis sob luz solar. A mesma fórmula química não implica o mesmo papel em todos os lugares. Deposição ácida pode envolver ácidos produzidos a partir de SO2 e NOx; não é equivalente a todo efeito climático do CO2. A absorção de CO2 pelo oceano altera equilíbrios ácido-base e pode diminuir pH e disponibilidade de carbonato, afetando processos de formação de estruturas de carbonato de cálcio. Acidificar significa tornar mais ácido em relação à condição anterior, sem exigir que o pH final seja menor que 7. A análise quantitativa exige equações balanceadas. Na reação idealizada CaCO3 + 2 H+ → Ca2+ + CO2 + H2O, átomos e carga se conservam: um mol de carbonato consome dois mols de H+. H+ é uma notação simplificada para o próton solvatado no meio aquoso. Essa proporção permite calcular uma quantidade estequiométrica ideal, mas não determina sozinha a resposta de um rio real: equilíbrio, outras espécies, mistura e condições do sistema importam. Separar os mecanismos evita propor uma única medida como solução automática de qualquer impacto.",
+        "steps": [
+          "Identifique a espécie, a região ambiental e o mecanismo pertinente.",
+          "Distinga efeito estufa, ozônio e deposição ou acidificação.",
+          "Confira balanço de elementos e carga antes de usar coeficientes.",
+          "Use proporções molares nas hipóteses do modelo, sem extrapolar para um tratamento real completo."
+        ],
+        "example": "Na representação simplificada CO2 + H2O ⇌ HCO3− + H+, ambos os lados têm um carbono, três oxigênios e dois hidrogênios, e a carga total é zero. A equação ajuda a discutir uma etapa de equilíbrio; não significa que todo CO2 dissolvido se converta integralmente em H+ ou que o oceano já tenha pH abaixo de 7.",
+        "pitfall": "Trocar ozônio estratosférico por poluição fotoquímica, chamar qualquer acidificação de pH final abaixo de 7 ou calcular estequiometria com equação sem balanço de carga."
+      },
+      {
+        "level": "advanced",
+        "title": "Tratamento, destino de resíduos e balanço de carga",
+        "explanation": "Prevenir geração e reduzir liberações pode ser mais eficaz que apenas transferir um contaminante de lugar. Processos de tratamento têm funções distintas: coagulação e floculação favorecem agregação de partículas; sedimentação e filtração separam materiais nas condições do sistema; desinfecção atua sobre microrganismos, sem garantir remoção de toda substância química. Adsorção envolve retenção na superfície de um material e não é sinônimo de absorção no seu interior. Processos biológicos e químicos podem transformar compostos, com produtos e limites que precisam ser acompanhados. Metais, como elementos, não desaparecem por biodegradação: podem mudar de forma química ou de compartimento. No solo, mobilidade e exposição dependem de espécie, concentração, pH e interações; a mera redução de uma concentração em água não prova que toda carga foi destruída. Para um fluxo de vazão Q, a carga por tempo é produto da vazão e da concentração, com unidades compatíveis. Se Q está em m³/d e C em mg/L, Q×C/1000 fornece kg/d, pois 1 m³ contém 1000 L e 1 kg contém um milhão de mg. Mantida a mesma vazão de entrada e saída, a remoção aparente do parâmetro no fluxo aquoso é Q(Centrada − Csaída)/1000. A eficiência relativa usa a carga de entrada como base, não a carga remanescente. Se houver diluição ou variação de vazão, compare cargas em cada corrente, não apenas concentrações. Avaliar resíduos e lodos integra o balanço: uma boa análise registra para onde materiais foram e quais transformações ocorreram, sem declarar ausência de impacto por uma etapa isolada.",
+        "steps": [
+          "Associe cada etapa ao alvo e ao mecanismo de separação ou transformação.",
+          "Converta concentração e vazão para obter massa por tempo.",
+          "Compare cargas com a vazão de cada corrente e calcule a eficiência pela entrada.",
+          "Inclua resíduos e produtos no destino dos materiais, sem confundir remoção de um fluxo com desaparecimento."
+        ],
+        "example": "Modelo hipotético de mesma vazão: 200 m³/d entram com 30 mg/L de um parâmetro e saem com 15 mg/L. A carga passa de 6 para 3 kg/d, com redução de 3 kg/d e 50%. O cálculo não informa sozinho se a diferença foi transformada, retida em lodo ou transferida a outro compartimento.",
+        "pitfall": "Comparar só concentrações quando a vazão muda, dividir a remoção pela carga de saída ou dizer que todo material retirado da água deixou de existir."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em um cenário hipotético, um corpo de água apresenta DBO elevada e baixo oxigênio dissolvido. Sem outros dados sobre composição e fontes, qual interpretação distingue os dois parâmetros e evita conclusão excessiva?",
+        "hint": "DBO expressa demanda de consumo nas condições do ensaio; OD indica oxigênio disponível na água. Nenhum dos dois identifica sozinho todos os contaminantes.",
+        "solution": "C separa demanda e disponibilidade e reconhece risco para organismos aeróbios quando o consumo supera a reposição. A confunde DBO com reserva disponível. B transforma transparência em prova integral de qualidade. D atribui fonte industrial e substância específica sem análise suficiente. O cenário não permite uma identificação química completa.",
+        "options": [
+          "DBO elevada significa que há obrigatoriamente grande reserva de OD para os organismos.",
+          "A água é comprovadamente potável se estiver visualmente transparente.",
+          "Demanda elevada pode contribuir para baixo OD, mas esses dados não identificam sozinhos todas as fontes e substâncias.",
+          "Os dois valores provam que uma indústria específica liberou um único metal identificado."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "No modelo estequiométrico ideal CaCO3 + 2 H+ → Ca2+ + CO2 + H2O, pretende-se consumir 0,20 mol de H+ com CaCO3 puro. Adote massa molar do CaCO3 igual a 100 g/mol e reação completa segundo essa equação. Qual massa é requerida no modelo?",
+        "hint": "Um mol de CaCO3 consome dois mols de H+. Calcule os mols necessários antes de multiplicar pela massa molar.",
+        "solution": "A usa n(CaCO3) = 0,20/2 = 0,10 mol e massa = 0,10×100 = 10 g. B usa proporção 1:1 indevida. C divide novamente por dois, produzindo 5 g, que consumiriam apenas 0,10 mol de H+. D inverte a proporção: 0,20×2×100 = 40 g. É um cálculo de modelo, sem garantir a resposta de qualquer corpo de água real.",
+        "options": [
+          "10 g.",
+          "20 g.",
+          "5 g.",
+          "40 g."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um fluxo aquoso hipotético tem vazão constante de entrada e saída de 500 m³/d. A concentração de um parâmetro passa de 80 mg/L na entrada para 20 mg/L na saída, sem diluição nem correntes não contabilizadas. Qual carga foi removida do fluxo aquoso por dia e qual é a eficiência relativa à entrada?",
+        "hint": "Calcule as cargas inicial e final com Q×C/1000 em kg/d e use (entrada−saída)/entrada para a eficiência, sem concluir destino não informado.",
+        "solution": "D calcula carga de entrada 500×80/1000 = 40 kg/d e de saída 500×20/1000 = 10 kg/d. A remoção é 30 kg/d e a eficiência é 30/40×100 = 75%. A informa carga e fração remanescentes. B mantém remoção correta, mas usa 25%, que é a fração da saída. C apresenta massa removida maior que a carga de entrada. O balanço não demonstra por si destruição de toda a matéria retirada.",
+        "options": [
+          "10 kg/d e 25%.",
+          "30 kg/d e 25%.",
+          "60 kg/d e 75%.",
+          "30 kg/d e 75%."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Bioquímica celular e biomoléculas",
+    "objective": "Relacionar estrutura e função de biomoléculas, compreender a ação de enzimas e interpretar modelos explícitos de cinética e acoplamento energético, sem transformar simplificações em regras universais.",
+    "prerequisites": [
+      "Átomos, ligações e polaridade",
+      "Organização básica da célula",
+      "Proporções e operações com números negativos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Água, biomoléculas e relação entre estrutura e função",
+        "explanation": "A bioquímica celular relaciona composição, organização e transformações da matéria viva. Água e íons participam do meio celular; água é polar, estabelece ligações de hidrogênio e dissolve muitos solutos iônicos ou polares, mas não é solvente universal. Essa limitação ajuda a entender a organização de membranas. Entre as principais famílias orgânicas estão carboidratos, lipídios, proteínas e ácidos nucleicos. Carboidratos incluem monossacarídeos e cadeias de açúcares com funções energéticas e estruturais. A fórmula (CH2O)n descreve muitos açúcares simples, mas não define todos os carboidratos e derivados. Amido e celulose contêm unidades de glicose, porém diferem nas ligações e na organização, o que altera propriedades e o reconhecimento enzimático. Lipídios são diversos e não constituem todos polímeros de uma unidade repetitiva. Triacilgliceróis participam de reservas; fosfolipídios de membrana são anfipáticos, com região hidrofílica e regiões hidrofóbicas. Proteínas são cadeias de aminoácidos: sequência é estrutura primária, padrões locais como hélices pertencem à secundária, dobramento tridimensional de uma cadeia à terciária; estrutura quaternária existe quando há associação de mais de uma cadeia polipeptídica. Nem toda proteína apresenta esse último nível. DNA e RNA são polímeros de nucleotídeos, compostos por base, açúcar e fosfato; diferem em componentes e organização e participam do armazenamento e da expressão da informação. Há também RNA catalítico. ATP é um nucleotídeo com três fosfatos que participa de transferências e acoplamentos energéticos; não deve ser confundido com um polímero de reserva semelhante ao amido. A função depende da estrutura e do contexto celular, não apenas de uma lista de elementos.",
+        "steps": [
+          "Identifique a família e suas unidades ou componentes sem presumir que todo lipídio seja polímero.",
+          "Relacione polaridade e regiões anfipáticas à interação com água.",
+          "Compare ligações, dobramento e associação de cadeias antes de atribuir função.",
+          "Distinga nucleotídeo isolado, ácido nucleico e reserva de carboidrato."
+        ],
+        "example": "Descrição original: uma molécula possui uma região que interage com água e duas caudas que interagem pouco com ela. Esse arranjo é compatível com um fosfolipídio anfipático de membrana. Não basta chamá-lo inteiramente apolar; a coexistência das regiões ajuda a explicar sua organização em meio aquoso.",
+        "pitfall": "Tratar água como solvente de qualquer substância, todos os lipídios como inteiramente apolares ou toda proteína como portadora de estrutura quaternária."
+      },
+      {
+        "level": "intermediate",
+        "title": "Catálise, condições do meio e modelo de saturação",
+        "explanation": "Enzimas aceleram reações por uma via com menor barreira de ativação. Não alteram a variação de energia livre entre reagentes e produtos nem o equilíbrio da reação; aceleram sua aproximação nas condições pertinentes. A maioria é proteica, mas existem RNAs catalíticos. O sítio ativo e as interações com substratos ajudam a explicar especificidade; ajuste induzido descreve mudanças conformacionais na interação, e não uma peça rígida que serve indistintamente a qualquer molécula. Temperatura e pH afetam atividade, e a resposta depende da enzima e das condições: elevar temperatura não aumenta atividade indefinidamente. Desnaturação pode modificar o dobramento sem exigir ruptura da sequência de ligações peptídicas. Algumas enzimas precisam de cofatores, como íons ou moléculas orgânicas; regulação e inibição não seguem um único mecanismo universal. Para determinadas reações, nas condições de medição e no intervalo em que o modelo se aplica, uma relação de velocidade inicial pode ser escrita v = Vmax[S]/(Km + [S]). [S] e Km devem ter unidades de concentração compatíveis. Vmax é a velocidade limite do modelo para aquela quantidade de enzima e condição; com [S] = Km, v = Vmax/2. Km não é uma medida universal de afinidade, pois não é em geral uma constante de equilíbrio de ligação. A equação não descreve todas as enzimas, nem toda regulação ou conjunto de substratos. Antes de calcular, identifique que o enunciado autoriza esse modelo, mantenha suas condições e confira que 0 < v < Vmax quando os parâmetros e a concentração são positivos e finitos. Um resultado numérico não demonstra que qualquer sistema biológico obedeça à mesma equação.",
+        "steps": [
+          "Separe barreira de ativação, velocidade e equilíbrio químico.",
+          "Leia as condições de temperatura, pH e quantidade de enzima.",
+          "Use a equação apenas no modelo declarado, com unidades compatíveis.",
+          "Confira a velocidade limite e evite transformar Km em afinidade universal."
+        ],
+        "example": "Exemplo hipotético distinto: um ensaio descrito pelo modelo tem Vmax = 80 µmol/min, Km = 2 mmol/L e [S] = 2 mmol/L. A velocidade é 80×2/(2+2) = 40 µmol/min, metade da velocidade limite. Isso decorre dos parâmetros fornecidos, não da suposição de que todas as enzimas se comportam assim.",
+        "pitfall": "Afirmar que a enzima torna qualquer reação termodinamicamente favorável, que calor sempre aumenta sua atividade ou que a equação de saturação e Km valem para todos os sistemas."
+      },
+      {
+        "level": "advanced",
+        "title": "Metabolismo, ATP e interpretação do acoplamento",
+        "explanation": "Metabolismo reúne transformações organizadas em vias: no balanço global, catabolismo degrada moléculas e pode fornecer energia e intermediários; anabolismo constrói componentes com consumo de recursos. Isso não significa que cada etapa de uma via tenha o mesmo sinal de variação de energia livre. ATP participa do acoplamento entre processos por mecanismos celulares, como transferência de fosfato e intermediários compartilhados. Romper uma ligação isoladamente exige energia; a hidrólise completa do ATP pode ter variação de energia livre negativa porque se consideram reagentes, produtos e condições, e não uma ligação cuja quebra por si liberaria energia. Quando duas transformações estão efetivamente acopladas em uma proporção definida, suas variações de energia livre se somam para avaliar o processo global naquela condição. ΔG negativo indica favorecimento termodinâmico no sentido considerado, sem garantir rapidez nem explicar sozinho o mecanismo. O valor depende das condições e não deve ser confundido automaticamente com um valor padrão tabelado. Na glicólise, uma glicose origina dois piruvatos e, no balanço usual da via, dois ATP líquidos e dois NADH no citosol; quatro ATP são produzidos e dois foram investidos. A fermentação pode regenerar NAD+ e permitir continuidade da glicólise, sem fornecer ATP adicional na etapa fermentativa clássica. Na respiração aeróbia de células eucarióticas, a cadeia na membrana mitocondrial interna transfere elétrons até o O2 e contribui para o gradiente usado pela ATP sintase. Procariontes não possuem mitocôndrias e podem usar sua membrana plasmática em processos respiratórios. Não há rendimento fixo de 38 ATP aplicável a toda célula: transporte, vias, acoplamento e condições importam. Interprete sempre o modelo e o balanço fornecidos, sem converter esta explicação em orientação clínica ou alimentar.",
+        "steps": [
+          "Identifique os processos e as condições a que cada ΔG se refere.",
+          "Verifique acoplamento real e proporção antes de somar variações.",
+          "Distinga favorecimento termodinâmico e velocidade de reação.",
+          "Separe ATP bruto e líquido e reconheça os limites de rendimentos simplificados."
+        ],
+        "example": "Modelo original: um processo requer +12 kJ/mol e uma transformação a ele efetivamente acoplada, na proporção 1:1 e nas mesmas condições, apresenta −20 kJ/mol. A soma é −8 kJ/mol. O processo global fica termodinamicamente favorecido nesse modelo, mas apenas colocar reagentes juntos não demonstra o mecanismo de acoplamento nem a velocidade.",
+        "pitfall": "Somar processos sem acoplamento, dizer que a quebra isolada de ligação libera energia ou usar quatro ATP brutos da glicólise como saldo líquido."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma comparação conceitual, amido e celulose são formados por unidades de glicose, mas possuem diferentes tipos de ligações e organização das cadeias. Qual conclusão é adequada?",
+        "hint": "A composição em unidades não determina sozinha a estrutura tridimensional nem o reconhecimento por uma enzima.",
+        "solution": "B reconhece que ligações e organização podem alterar propriedades e reconhecimento enzimático, mesmo quando o monossacarídeo é o mesmo. A ignora a estrutura. C confunde ambos os carboidratos com proteínas. D supõe que água rompa instantaneamente qualquer ligação glicosídica, sem condições ou catálise que sustentem essa conclusão.",
+        "options": [
+          "Ter unidades de glicose garante estrutura, propriedades e digestibilidade idênticas.",
+          "Diferentes ligações e organização podem alterar propriedades e reconhecimento enzimático.",
+          "Ambos são proteínas, pois suas cadeias contêm aminoácidos de glicose.",
+          "Toda ligação das duas moléculas é instantaneamente rompida apenas por contato com água."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um ensaio hipotético segue o modelo v = Vmax[S]/(Km + [S]), sob temperatura e quantidade de enzima fixas. Foram fornecidos Vmax = 120 µmol/min, Km = 2 mmol/L e [S] = 6 mmol/L. Qual velocidade inicial o modelo prevê?",
+        "hint": "Some Km e [S] no denominador, multiplique Vmax pela concentração e mantenha as unidades de velocidade.",
+        "solution": "D calcula v = 120×6/(2+6) = 720/8 = 90 µmol/min. A usa metade de Vmax, válida se [S] = Km, condição ausente. B multiplica Vmax por [S]/Km e omite a soma no denominador, obtendo 360. C usa a velocidade limite como se já fosse atingida em concentração finita. O resultado é menor que 120 e pertence ao modelo declarado.",
+        "options": [
+          "60 µmol/min.",
+          "360 µmol/min.",
+          "120 µmol/min.",
+          "90 µmol/min."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em um modelo hipotético, duas transformações estão efetivamente acopladas na proporção 1:1, nas mesmas condições: a primeira tem ΔG = +15 kJ/mol e a segunda tem ΔG = −25 kJ/mol. Qual conclusão descreve o processo global nessas condições?",
+        "hint": "Some as variações com seus sinais. Um resultado negativo informa favorecimento termodinâmico, mas não determina a velocidade.",
+        "solution": "A soma +15 + (−25) = −10 kJ/mol, favorecendo termodinamicamente o processo global no modelo acoplado. Isso não garante velocidade nem decorre de simplesmente misturar reagentes. B soma módulos e perde os sinais. C inverte o sinal do saldo. D ignora a transformação favorável e o acoplamento declarado.",
+        "options": [
+          "ΔG total = −10 kJ/mol; favorável termodinamicamente no modelo acoplado.",
+          "ΔG total = +40 kJ/mol; a soma dos módulos determina o sentido.",
+          "ΔG total = +10 kJ/mol; o saldo impede o processo no modelo.",
+          "ΔG total = +15 kJ/mol; o acoplamento declarado não participa do balanço."
+        ],
+        "correctIndex": 0
+      }
+    ]
   }
 ];
 
@@ -495,6 +955,167 @@ export const authoredCurriculumBatch06ReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "O texto original afirma 40 vagas e 60 inscrições e conclui que todos serão atendidos — conclusão inválida pois demanda > oferta. A preserva as quantidades (40 e 60), reconhece que a demanda excede a oferta e que os dados não garantem atendimento universal. B altera para 60 vagas, inventando ampliação não declarada. C altera para 40 inscrições, apagando o excesso. D mantém os números mas preserva a conclusão excessiva trocando apenas o conectivo ('assim'), sem corrigir a relação lógica. A restrição 'sem dados sobre ampliação ou desistências' impede inferir atendimento total."
+      }
+    ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Gêneros e textos multimodais",
+    "contentSha256": "33ca5385e3b4a55de1664f361b88f01c724c099620070b620424845ee0b74a6e",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/writing-guide/pages/18-1-mixing-genres-and-modes",
+      "https://openstax.org/books/writing-guide/pages/18-3-glance-at-genre-genre-audience-purpose-organization",
+      "https://openstax.org/books/writing-guide/pages/17-3-glance-at-genre-relationship-between-image-and-rhetoric",
+      "https://analysisfunction.civilservice.gov.uk/support/communicating-analysis/introduction-to-data-visualisation-e-learning/module-5-bar-charts/",
+      "https://owl.purdue.edu/owl/research_and_citation/conducting_research/evaluating_sources_of_information/evaluation_during_reading.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A descrição acessível fornece imagem (bicicleta junto à biblioteca) e texto em dois tamanhos: imperativos 'Leave the car at home. Ride with us on Sunday' e informação 'Meet by the library at 9 a.m.'. Opção B sintetiza corretamente o convite para pedalar no domingo com encontro às 9h junto à biblioteca. Opção A introduz venda de automóveis inexistente. Opção C substitui 'Sunday' por 'every day' e '9 a.m.' por '9 p.m.'. Opção D contradiz a presença de linguagem imperativa de convite no texto. O gabarito 1 (B) é inequivocamente correto e os distractores são bem fundamentados."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Dados: 18 de 30 respondentes preferiram manhãs → 18/30 = 60% (maioria, >50%). Legenda: 'Voluntary survey in one club, not a population estimate' restringe escopo aos respondentes daquele clube. Opção D: 'A majority of the thirty respondents preferred mornings, but the result is not a population estimate' — calcula corretamente 60%, usa 'majority' próprio (>50%), preserva 'thirty respondents' e incorpora limitação da legenda. Opção A generaliza para 'all people everywhere'. Opção B inverte numerador/denominador (30/18 > 100%). Opção C inventa causalidade 'caused higher performance' não medida. Gabarito 3 (D) é único que respeita dados e legenda."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Valores fornecidos: Week 1 = 40, Week 2 = 44. Aumento absoluto = 4; aumento percentual = 4/40 = 10%; razão final/inicial = 44/40 = 1,1 (não 2, logo não 'doubled'). Eixo vertical inicia em 38 (truncado), o que pode ampliar diferença visual entre barras sem alterar contagens reais. Manchete 'Participation doubled' é falsa segundo os dados. Opção C: 'Attendance rose by 10%; the truncated bar axis can magnify the visual difference, but the data do not show doubling' — cálculo correto, reconhece efeito de escala truncada, não atribui intenção ao autor. Opção A confunde +4 pessoas com +100%. Opção B toma altura visual como prova. Opção D afirma que eixo altera contagem real (44→80), absurdo. Gabarito 2 (C) é tecnicamente exato."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Diversidade cultural hispano-americana",
+    "contentSha256": "bdfab1cd075b4d65c58b7d2d45c720a5fadd934fbe439a40a4925ff9467942f8",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.rae.es/dpd/seseo",
+      "https://www.rae.es/dpd/voseo",
+      "https://dle.rae.es/guagua",
+      "https://www.inali.gob.mx/sitios/clin-inali/",
+      "https://www.unesco.org/en/legal-affairs/unesco-universal-declaration-cultural-diversity"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "O enunciado 'En nuestra ciudad no existe una sola manera de celebrar. Algunas familias mantienen prácticas antiguas; otras las transforman y muchas combinan referências' usa quantificadores 'no existe una sola', 'algunas', 'otras', 'muchas' que delimitam o alcance à cidade e à diversidade interna. A opção C ('En la ciudad conviven prácticas distintas, conservadas, transformadas o combinadas') espelha exatamente essa leitura. A contradiz a negação inicial; B generaliza indevidamente para 'todos los países'; D impõe uma consequência (eliminação automática da cultura) que o texto não afirma."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "O diálogo 'La guagua sale de esta parada a las ocho. Compra el billete antes de subir; el trayecto hasta el centro dura veinte minutos' fornece cotexto de transporte: 'parada', 'billete', 'subir', 'trayecto', 'centro', 'minutos'. Esses itens léxicos selecionam a acepção de veículo coletivo (opção A). A opção B (bebê) é sentido atestado noutros contextos (ex.: 'canciones de cuna'), mas incompatível com as ações de comprar bilhete e fazer trajeto. C e D são semanticamente alheios. O texto não permite inferir nacionalidade dos falantes, conforme ensina a lição."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "O texto 'Aprender español no significa abandonar nuestra lengua. Queremos ampliar oportunidades y mantener la transmisión a los niños; para ello necesitamos materiales y participación de la comunidad' contém uma negação de equivalência ('no significa'), dois objetivos coordenados ('ampliar oportunidades' e 'mantener la transmisión') e uma condição declarada ('necesitamos materiales y participación'). A opção D captura a posição (compatibilizar) e seus limites (depende de apoio material e participação). A inverte a negação; B nega a condição explicitada; C transforma intenção condicional em garantia universal e eterna, o que o texto não sustenta."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Grandezas, unidades e análise dimensional",
+    "contentSha256": "4861105efdbfa5ba2250d79e408a3b81840066db7c53da90192cf3a300f6cca4",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.bipm.org/en/publications/si-brochure",
+      "https://openstax.org/books/university-physics-volume-1/pages/1-2-units-and-standards",
+      "https://openstax.org/books/university-physics-volume-1/pages/1-3-unit-conversion",
+      "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Velocidade: 54 km/h = 54×1000/3600 = 15 m/s correto. Área: 250 cm² = 250×(10⁻²)² = 250×10⁻⁴ = 0,025 m² correto. Opção B é a única com ambos valores certos; A erra área (fator linear), C erra velocidade (fator 10), D erra ambos."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "ρ = ML⁻³, g = LT⁻², h = L → ρgh = ML⁻³·LT⁻²·L = ML⁻¹T⁻². Pressão = força/área = MLT⁻²/L² = ML⁻¹T⁻². Opção D confere; A é força, B é energia, C tem expoente temporal errado (−1 em vez de −2)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Numerador: 1000×0,30×0,020 = 6 kg·m⁻¹·s⁻¹. Denominador: 0,0010 Pa·s = 0,0010 kg·m⁻¹·s⁻¹. Quociente = 6000 adimensional. Opção C correta; A erra por 10³, B divide por 0,1, D mantém unidade indevida."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Química ambiental",
+    "contentSha256": "0757d22c51870c12bf42a818a40cac9c4966aa1886a7815974a2b6e7de6a8495",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.usgs.gov/water-science-school/science/biochemical-oxygen-demand-bod-and-water",
+      "https://www.epa.gov/acidrain/what-acid-rain",
+      "https://www.epa.gov/ground-level-ozone-pollution/ground-level-ozone-basics",
+      "https://www.epa.gov/ghgemissions/overview-greenhouse-gases",
+      "https://www.noaa.gov/education/resource-collections/ocean-coasts/ocean-acidification",
+      "https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh",
+      "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+      "https://www.cdc.gov/drinking-water/about/how-water-treatment-works.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Opção C é a única que distingue corretamente DBO (demanda de consumo em ensaio) de OD (oxigênio dissolvido disponível), admite que demanda elevada pode contribuir para baixo OD quando consumo excede reposição, e evita conclusão excessiva ao declarar que os dados não identificam sozinhos todas as fontes e substâncias. A trata DBO como reserva, B infere potabilidade de transparência, D atribui indústria e metal específicos sem base analítica."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Estequiometria da equação CaCO3 + 2H+ → Ca2+ + CO2 + H2O mostra 1 mol CaCO3 consumindo 2 mol H+. Para 0,20 mol H+, n(CaCO3)=0,10 mol; massa=0,10×100=10 g. Opção B usa razão 1:1 (20 g), C divide novamente por 2 (5 g, consumiria só 0,10 mol H+), D inverte a razão (0,20×2×100=40 g). Cálculo válido apenas no modelo idealizado."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Carga entrada = 500×80/1000 = 40 kg/d; carga saída = 500×20/1000 = 10 kg/d; remoção = 30 kg/d; eficiência = (40-10)/40×100 = 75%. Opção A reporta carga de saída (10 kg/d) e fração remanescente (25%). B acerta remoção mas usa 25% (fração de saída, não eficiência). C apresenta remoção 60 kg/d > carga de entrada (impossível). Balanço não prova destruição da matéria removida."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Bioquímica celular e biomoléculas",
+    "contentSha256": "718e6944b36a3f8daef014453d9428e632d4c226ee7638a464b238b9287ee720",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/2-2-water",
+      "https://openstax.org/books/biology-2e/pages/3-2-carbohydrates",
+      "https://openstax.org/books/biology-2e/pages/3-3-lipids",
+      "https://openstax.org/books/biology-2e/pages/3-4-proteins",
+      "https://openstax.org/books/biology-2e/pages/3-5-nucleic-acids",
+      "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+      "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+      "https://openstax.org/books/biology-2e/pages/7-4-oxidative-phosphorylation",
+      "https://iubmb.qmul.ac.uk/kinetics/ek4t6.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B afirma que diferentes ligações e organização podem alterar propriedades e reconhecimento enzimático mesmo com mesmo monossacarídeo, o que é bioquimicamente correto (α vs β-glicosídicas). A ignora estrutura tridimensional. C comete erro categorial (carboidratos ≠ proteínas). D assume hidrólise espontânea instantânea sem catálise, o que é falso."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Aplicando v = Vmax[S]/(Km+[S]) com Vmax=120, Km=2, [S]=6: v = 120×6/(2+6) = 720/8 = 90 µmol/min. A (60) seria válida só se [S]=Km. B (360) omite a soma no denominador (usa Vmax×[S]/Km). C (120) confunde velocidade limite com velocidade em [S] finita. Resultado 90 < Vmax, consistente."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Acoplamento 1:1 nas mesmas condições: ΔG_total = +15 + (−25) = −10 kJ/mol. Saldo negativo indica favorecimento termodinâmico no modelo, sem garantir velocidade. B soma módulos (+40) ignorando sinais. C inverte sinal (+10). D ignora a segunda transformação e o acoplamento declarado."
       }
     ]
   }

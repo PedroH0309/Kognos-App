@@ -4,7 +4,40 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 10
+## Estado atual — checkpoint 11
+
+O lote 06 contém nove aulas. Foram acrescentadas Inglês — Gêneros e textos
+multimodais; Espanhol — Diversidade cultural hispano-americana; Física — Grandezas,
+unidades e análise dimensional; Química — Química ambiental; Biologia — Bioquímica
+celular e biomoléculas. São 57 aulas novas nesta etapa, com revisão docente humana
+pendente. Restam 1.238 lacunas entre 1.512 identidades. ENEM editorial: 73 temas
+aprofundados e 823 lacunas; lista de estudo: 73 aprofundadas, 50 guias e 784 temas
+em desenvolvimento. Essas contagens não certificam habilidades oficiais.
+
+- Inglês: descrições multimodais autossuficientes, sem imagens ausentes ou estudos
+  médicos fabricados. Testes conferem 18/30, crescimento de 40 para 44 e efeito de
+  um eixo truncado, sem inferir intenção a partir da apresentação.
+- Espanhol: corrigidas afirmações sobre ceceo, distribuição regional e exemplos
+  quéchuas inventados. A diversidade não é reduzida a um traço de cada país;
+  seseo, voseo e sentidos de guagua são contextualizados com referências da RAE.
+- Física: unidades, coerência dimensional, conversões de área, pressão e Reynolds
+  são recalculados; consistência dimensional não prova fórmula nem regime de fluxo.
+- Química: separados OD, DBO e DQO, mecanismos atmosféricos e balanço de carga.
+  Neutralização e remoção são calculadas sem diagnosticar origem ou toxicidade
+  por um indicador isolado nem equiparar remoção a destruição.
+- Biologia: corrigidas universalizações sobre carboidratos, lipídios, proteínas,
+  Km e ATP. Modelo cinético e acoplamento energético têm hipóteses explícitas e
+  recálculo nativo; retiradas extrapolações clínicas e rendimento fixo de 38 ATP.
+
+Verificação: 629 testes da aplicação e seis do motor, lint dos arquivos alterados
+e build aprovados. Chromium comparou a API das 57 aulas, abriu as cinco novas,
+respondeu às 15 questões e conferiu explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal. A CI do checkpoint 10
+passou (run 43715069408). Sem publicação no banco, merge, deploy ou mudanças de
+schema/RLS. A execução segue nos temas restantes; História está corrigida e
+aceita em arquivos privados, aguardando integração no próximo checkpoint.
+
+## Histórico — checkpoint 10
 
 O lote 06 começou com Matemática — Geometria e medidas; Português — Leitura,
 inferência e interpretação textual; Literatura — Barroco e Arcadismo; Redação —

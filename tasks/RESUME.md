@@ -1,6 +1,30 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 10
+## Estado atual em 15/11/2026 — checkpoint 11
+
+Este estado prevalece sobre todos os históricos abaixo. Execução ativa por pedido
+expresso do usuário, até completar as aulas; não encerrar em um checkpoint.
+
+- Lotes 03/04/05 completos (16 cada), lote 06 com nove aulas: 57 novas nesta etapa.
+- 629 testes da aplicação + seis do motor, lint alterado, build e leitor real
+  aprovados. API das 57 comparada; cinco novas aulas, 15 respostas e referências
+  expandidas em 320/375/768/1440 px aprovadas. Preview 3316 contém este checkpoint.
+- Restam 1.238 lacunas; ENEM editorial: 73 aprofundadas, 823 lacunas. Lista de
+  estudo: 73 aprofundadas, 50 guias e 784 planejadas. Revisão humana pendente.
+- CI do checkpoint 10 `43715069408` aprovada. Sem banco/merge/deploy.
+- IDs do lote 06 (integrador reescreve tudo; manter TODOS):
+  `course-40b23112 course-0f508a76 course-b82ee91c course-f4182a5e course-c1380ae4 course-ad4ac447 course-4dc391a5 course-bfdc69a6 course-6c839b74`.
+- História — Tempo histórico, fontes e historiografia (`course-1d95d9c6`):
+  corrigida, crítica independente aceita e lida; NÃO integrada ainda. Próximo lote.
+- Geografia — Escalas e representações espaciais (`course-5888a55a`): rascunho lido;
+  corrigir fórmulas sem condição, origens falsas de distratores e estatísticas
+  com p-valores incompatíveis; não apresentar MAUP como redução monotônica de r.
+- Continuar Filosofia, Sociologia, Arte, Educação Física e Ciências até fechar 06;
+  depois demais temas da fila. Autoria Claude segue em background sem autointegração.
+- Helpers Temp e backups privados; não reaplicar patches antigos. Antes de novo
+  push, fetch e verificar concorrência. PR 117 continua draft.
+
+## Histórico — checkpoint 10
 
 Este estado prevalece sobre os históricos abaixo. A execução permanece ativa.
 
