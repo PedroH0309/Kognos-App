@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints, type ExamId} from './exam-blueprints.ts';
-import {canonicalExamTopicMappings, canonicalLessonForExam, canonicalCoverageByExam} from './canonical-lesson-reuse.ts';
+import {canonicalExamTopicMappings, canonicalLessonForExam, canonicalCoverageByExam, semanticReviewQueue, provaoPartialReferencesByExam} from './canonical-lesson-reuse.ts';
 import {deepAuthoredCurriculumLesson, authoredCurriculumSpecs} from './authored-curriculum-lessons.ts';
 
 /** Regression for cross-exam reuse of the authored batches introduced in PR #117.
@@ -40,5 +40,33 @@ test('authored ENEM batches share exact-scope canonical objects only with regist
     assert.equal(coverage[exam].total, registered.length);
     assert.equal(coverage[exam].deep, linked.length);
     assert.equal(coverage[exam].missing, registered.length - linked.length);
+  }
+});
+
+
+test('partial semantic overlaps remain advisory across every registered exam', () => {
+  const exams = Object.keys(examBlueprints) as ExamId[];
+  const mappings = canonicalExamTopicMappings();
+  const mapped = new Set(mappings.map(row => JSON.stringify([row.exam, row.examTopicId, row.canonicalId])));
+  const queue = semanticReviewQueue();
+  const official = provaoPartialReferencesByExam();
+  for (const ref of queue) {
+    assert.equal(ref.eligibleForFullAlias, false);
+    assert.ok(ref.coveredScope.trim().length > 0);
+    assert.ok(ref.missingScope.trim().length > 0, 'partial link must specify missing learning objectives');
+    const topic = curriculumTopics.find(topic => topic.id === ref.targetTopicId);
+    assert.ok(topic, 'partial target must be registered');
+    assert.ok(topic.exams.includes(ref.exam), 'partial target must belong to the exam');
+    assert.notEqual(ref.targetTopicId, ref.sourceCanonicalId);
+    assert.equal(mapped.has(JSON.stringify([ref.exam, ref.targetTopicId, ref.sourceCanonicalId])), false,
+      'a partial source was silently promoted to full canonical coverage');
+  }
+  for (const exam of exams) {
+    for (const ref of official[exam]) {
+      assert.equal(ref.fullyCovered, false);
+      assert.strictEqual(ref.lesson.id, ref.canonicalId);
+      assert.equal(mapped.has(JSON.stringify([exam, ref.examTopicId, ref.canonicalId])), false,
+        'an official Provão advisory source was promoted to full coverage');
+    }
   }
 });
