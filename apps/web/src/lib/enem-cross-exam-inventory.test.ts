@@ -9,6 +9,18 @@ import {enemCanonicalPriorityAudit} from './enem-canonical-priority.ts';
 test('ENEM-first cross-exam inventory partitions full, partial and missing topics', () => {
   const mappings = canonicalExamTopicMappings();
   const advisories = semanticReviewQueue();
+  // Every approved full reference to a canonical ID must resolve to the
+  // identical authored object, even when several exams use that lesson.
+  const canonicalObjects = new Map<string, (typeof mappings)[number]['lesson']>();
+  for (const row of mappings) {
+    const previous = canonicalObjects.get(row.canonicalId);
+    if (previous) {
+      assert.strictEqual(row.lesson, previous,
+        'Canonical lesson duplicated across exams: ' + row.canonicalId);
+    } else {
+      canonicalObjects.set(row.canonicalId, row.lesson);
+    }
+  }
   const examRows = (Object.keys(examBlueprints) as ExamId[]).map(exam => {
     const topics = curriculumTopics.filter(topic => topic.exams.includes(exam));
     const rows = mappings.filter(row => row.exam === exam);
@@ -46,6 +58,18 @@ test('ENEM-first cross-exam inventory partitions full, partial and missing topic
     });
     assert.equal(bySubject.reduce((sum, row) => sum + row.entries, 0), topics.length);
     assert.equal(bySubject.reduce((sum, row) => sum + row.fullLinks, 0), rows.length);
+    assert.equal(bySubject.reduce((sum, row) => sum + row.missing, 0),
+      topics.length - fullIds.size, 'subject missing totals must reconcile: ' + exam);
+    assert.equal(bySubject.reduce((sum, row) => sum + row.partialOnly, 0),
+      partialOnly.size, 'subject partial-only totals must reconcile: ' + exam);
+    for (const row of rows) {
+      const topic = topics.find(item => item.id === row.examTopicId)!;
+      for (const unrelated of (Object.keys(examBlueprints) as ExamId[])
+        .filter(other => !topic.exams.includes(other))) {
+        assert.equal(canonicalLessonForExam(unrelated, topic), null,
+          'Unrelated exam inherited lesson: ' + unrelated + '/' + topic.id);
+      }
+    }
     return {
       exam, entries: topics.length,
       distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
