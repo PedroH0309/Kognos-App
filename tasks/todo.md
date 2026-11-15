@@ -33,5 +33,6 @@
 - [x] Integrar primeiro conjunto do lote 11: 132 novas, 658 testes, build e leitor real aprovados.
 - [x] Integrar metade do lote11:136novas,659testes,build e leitor real aprovados.
 - [x] Integrar12do lote11:140novas,661testes,build e leitor real aprovados.
+- [x] Concluir lote 11: 144 novas aulas, 661 testes, build e leitor real aprovados.
 - [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
 - [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.

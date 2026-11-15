@@ -1,6 +1,39 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 27
+## Estado atual em 15/11/2026 — checkpoint 28
+
+CONTINUAR. Usuário pediu parar a 50% do limite da SESSÃO Codex. Ferramenta só
+mostra semanal (último 7%), secondary:null; sessão indisponível. Não substituir
+semanal por sessão ou prometer garantia. Consultar periodicamente.
+
+Lote 11 completo, 144 novas; 661 app + 6 motor, build, lint alterado e leitor
+aprovados. 1.151 lacunas; ENEM 154/742; estudo 154/30/723; índice 361.
+Preview 3316 sessão 56537; logs private/checkpoint28-*.log. Humana pendente.
+CI 27 success 43758639795, head 2266838. Publicar 28 e conferir CI do head exato.
+
+Lote 12 iniciado: worker v4 limite160, PID5840, log Temp
+kognos-curriculum-collaboration-v4-batch12-20261115.log. Worker144 encerrou.
+Primeira Matemática f81404ed já tem autoria privada Codex, crítica aceita e
+integralmente lida, ainda sem integração. Fonte IMPA módulo e OpenStax7.1/7.4
+lidas; PDFs IMPA abertos depois, não usados como cópia. Não alterar referência
+sem renovar crítica de contexto. Gabaritos2/0/1. Preparar teste algébrico primeiro
+(expansão por coeficientes, agrupamento e domínio exclui±5), depois integrar.
+Questões: (3x-4)^2; 6x²+15x+4xy+10y; (x³-125)/(x²-25). Nenhuma homologação.
+
+Demais temas do lote12: Português7a81e1ec, Lit237cf014, Redaçãod0f6d214,
+Inglês9e223a4b,Espanholb17518b1,Física4c7c5bec,Químicad5903a1a,Bio0536eebb,
+Hist1198af3f,Geof66d7527,Filo69cf6de6,Socc6064524,Artea18970e3,
+PEe942ed50,Ciências4c61183d. Usar títulos/disciplinas literais de queue.json.
+Ainda criar integrador/módulo12 e conectar agregador sem sobrescrever lote11.
+
+Integrador11 REESCREVE módulo: lote11 completo com ALL16 IDs nos registros.
+Não executar com subconjunto. Críticas finais de Soc/Arte/PE/Ciências lidas.
+Correções metadados Ecologia explícitas, original integral preservado. Não
+reaplicar autores-base de aceitos cegamente: podem apagar ajustes posteriores.
+AGENTS gerado fora de commit; raiz original suja preservada; fetch antes de
+push, nunca force. Sem schema, banco, merge ou deploy. Não finalizar aqui.
+
+## Histórico — checkpoint 27
 
 CONTINUAR. Parar a50% do limite da SESSÃO Codex, conforme usuário. Ferramenta
 sómostra semanal6%,secondary:null; sessão indisponível. Usuário informado;

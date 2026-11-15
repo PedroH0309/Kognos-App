@@ -1103,6 +1103,374 @@ export const authoredCurriculumBatch11:readonly AuthoredLessonSpec[] = [
         "solution": "D, índice 3: a preferência de Rui sobre roupa não sustenta a rejeição do relatório, caracterizando ataque pessoal irrelevante no contexto. A aceita a falsa relação; B transforma falácia numa prova automática da tese contrária; C proíbe avaliações que podem ser pertinentes. O diagnóstico atinge essa justificativa de Rui, sem conferir por si a verdade dos dados ou a qualidade do relatório."
       }
     ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Mídias, ideologia e consumo",
+    "objective": "Analisar produção, circulação e recepção de mensagens, relacionando ideologia, publicidade e consumo sem supor efeitos uniformes ou confundir visibilidade com verdade e representatividade.",
+    "prerequisites": [
+      "Cultura e socialização",
+      "Desigualdade e relações de poder",
+      "Diferença entre fonte, evidência e interpretação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Produção, circulação e recepção",
+        "explanation": "Mídias são meios e práticas de comunicação, incluindo impressos, rádio, televisão e ambientes digitais. Uma mensagem envolve produção, seleção, formato, circulação e recepção; não chega ao público fora de relações sociais. Pergunte quem produz, com quais recursos, para qual público e com que finalidade. Informar, entreter e persuadir podem coexistir num mesmo espaço, sem tornar notícia e anúncio a mesma coisa. Propriedade, financiamento e rotinas editoriais podem influenciar quais temas aparecem e quais vozes são ouvidas. Selecionar conteúdo, às vezes analisado como gatekeeping, não ocorre só na redação de um jornal: plataformas e sistemas de recomendação também ordenam visibilidade. Porém, mostrar que houve seleção não prova, por si, mentira deliberada ou coordenação secreta entre todos os produtores. Os públicos interpretam mensagens em contextos e trajetórias diferentes, podendo concordar, contestar ou reinterpretar. Reconhecer participação não elimina assimetrias de recursos e poder de distribuição. Em abordagens sociológicas distintas, pode-se examinar funções de informação e integração, disputas por controle e desigualdade, ou os sentidos e símbolos construídos nas interações. São perguntas analíticas, não garantias de que uma única teoria explique toda situação. Diferencie a mensagem produzida, seu alcance observado e o efeito que se pretende atribuir a ela: exposição não é automaticamente adesão ou mudança de comportamento.",
+        "steps": [
+          "Identifique produtor, formato, público e finalidade.",
+          "Examine seleção, financiamento e distribuição.",
+          "Considere interpretações e condições diferentes de recepção.",
+          "Separe alcance e efeito demonstrado."
+        ],
+        "example": "Situação autoral: duas rádios cobrem a abertura de uma praça. Uma entrevista comerciantes; outra, usuários do transporte. A diferença de fontes permite investigar enquadramentos e prioridades. Não autoriza, sozinha, afirmar que uma rádio inventou o evento ou que todos os ouvintes pensarão de modo idêntico.",
+        "pitfall": "Supor que a mensagem é neutra por ser técnica ou que todo público recebe e aceita o conteúdo exatamente como o produtor deseja."
+      },
+      {
+        "level": "intermediate",
+        "title": "Ideologia, mercadorias culturais e sentidos do consumo",
+        "explanation": "Ideologia tem usos diferentes. Pode designar um conjunto de ideias e valores que orienta uma interpretação social; em tradições críticas, interessa como representações legitimam relações de poder ou apresentam arranjos históricos como se fossem naturais e inevitáveis. Não é apenas insulto para opinião contrária, nem toda ocorrência do termo significa mentira consciente. É necessário explicitar o conceito e mostrar como uma representação opera. Se uma mensagem trata uma desigualdade social como destino biológico sem examinar história e instituições, pode-se investigar naturalização; isso exige analisar enunciados e evidências, não adivinhar intenção pessoal. Adorno e Horkheimer desenvolveram a crítica da indústria cultural, examinando padronização e produção de bens culturais segundo a lógica da mercadoria. O conceito não significa simplesmente qualquer fábrica de objetos artísticos ou toda criação popular espontânea, e deve ser situado como uma interpretação teórica. Estudá-lo não obriga presumir que cada espectador seja incapaz de resistência ou que toda obra tenha o mesmo efeito. Consumo também envolve significados: objetos podem funcionar como marcas de pertencimento, distinção ou aspiração, além de utilidade prática. Esses sentidos variam entre grupos e situações. Não se deve reduzir toda compra a necessidade natural nem todo consumidor a alguém enganado. Relacione escolhas e desigualdade de recursos, sem usar marcas ou ausência delas para medir o valor de uma pessoa.",
+        "steps": [
+          "Declare em que sentido ideologia está sendo usada.",
+          "Investigue naturalizações e relações de poder com evidências.",
+          "Situe a crítica da indústria cultural e seus limites analíticos.",
+          "Examine utilidade, pertencimento e desigualdade no consumo."
+        ],
+        "example": "Anúncio fictício autoral: um catálogo apresenta um relógio como único sinal de que alguém merece respeito. A análise pode investigar a associação entre objeto, status e reconhecimento social, em vez de aceitá-la como lei natural. Isso não permite concluir que todo comprador desse relógio tenha a mesma motivação.",
+        "pitfall": "Usar ideologia apenas como xingamento ou apresentar uma teoria da indústria cultural como prova de que todos os públicos e produtos são idênticos."
+      },
+      {
+        "level": "advanced",
+        "title": "Publicidade, plataformas e avaliação crítica",
+        "explanation": "Publicidade busca influenciar públicos por argumentos, imagens, identificação e apelos afetivos; patrocínio e inserção de produto podem aproximar conteúdo comercial e editorial. Para analisar, identifique o vínculo comercial informado, a promessa e as evidências oferecidas. Uma parceria paga não torna toda afirmação falsa, mas é informação pertinente para avaliar interesses e a independência de uma recomendação. Curtidas, visualizações e posição no feed medem aspectos de circulação segundo critérios da plataforma; não certificam qualidade, veracidade ou opinião de toda a sociedade. Em plataformas com recomendação por dados, histórico de interação, regras de ordenação e incentivos econômicos podem participar da seleção do que aparece. Não há um algoritmo único para todos os serviços, e um feed individual não é uma amostra aleatória da população. É possível investigar repetição de conteúdos e exposição seletiva sem afirmar que cada usuário está sempre isolado em uma bolha absoluta. As pessoas também buscam outras fontes, discutem fora da plataforma e produzem contrapontos, com possibilidades de acesso desiguais. Ao comparar conteúdos, confira autoria, data, contexto, documentos de apoio e a distinção entre relato, opinião e alegação verificável. Uma crítica sociológica deve relacionar estrutura econômica, escolhas técnicas e práticas dos públicos, evitando tanto atribuir todos os resultados à tecnologia quanto presumir que escolhas individuais resolvam sozinhas problemas estruturais. As atividades usam situações inventadas, sem coletar histórico de navegação, consumo ou dados pessoais dos estudantes.",
+        "steps": [
+          "Identifique publicidade, patrocínio e promessa verificável.",
+          "Separe vínculo comercial e prova sobre o produto.",
+          "Examine critérios de visibilidade e limites da amostra.",
+          "Cruze fontes e relacione estruturas e práticas sociais."
+        ],
+        "example": "Modelo autoral: uma plataforma fictícia ordena textos por interações anteriores, enquanto uma biblioteca disponibiliza um catálogo por tema e data. Os critérios produzem caminhos diferentes de acesso. Isso não prova que tudo no primeiro serviço seja falso ou tudo no segundo seja verdadeiro: cada conteúdo continua exigindo avaliação de fonte e evidência.",
+        "pitfall": "Confundir popularidade e verdade, patrocínio e falsidade automática ou feed pessoal e representação estatística da população."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação inteiramente autoral: um portal escolhe apenas entrevistas com proprietários de lojas para discutir uma reforma urbana, embora outros grupos sejam afetados. Qual procedimento analítico evita supor neutralidade ou manipulação universal sem evidência?",
+        "hint": "Observe seleção de fontes e vozes ausentes; não conclua automaticamente a intenção do produtor ou a reação de todo leitor.",
+        "options": [
+          "O formato digital garante que nenhuma escolha editorial foi feita.",
+          "Todo leitor necessariamente aceitará a posição do portal sem questionar.",
+          "Investigar como a seleção enquadra o tema, quais perspectivas ficam ausentes e como públicos distintos podem interpretar a cobertura.",
+          "A ausência de entrevistas prova que todos os demais meios participam de uma coordenação secreta."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: examina seleção e recepção com perguntas verificáveis. A confunde suporte técnico e neutralidade; B impõe efeito uniforme; D transforma uma lacuna editorial em prova de coordenação universal. Identificar vozes ausentes é ponto de partida para analisar enquadramento, sem afirmar previamente que os relatos presentes sejam falsos ou que cada leitor reaja do mesmo modo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Campanha fictícia autoral: “Só quem compra o modelo Z é uma pessoa de sucesso; essa hierarquia é natural e nunca pode mudar”. Qual leitura examina ideologia e consumo sem avaliar pessoas pelo objeto comprado?",
+        "hint": "Separe a associação comercial entre produto e prestígio da alegação de que uma hierarquia social seria natural e imutável.",
+        "options": [
+          "A campanha comprova biologicamente o valor superior dos compradores.",
+          "A afirmação de imutabilidade dispensa investigar história e relações sociais.",
+          "Toda aquisição do modelo Z tem obrigatoriamente uma única motivação, sem variação entre compradores.",
+          "A campanha associa mercadoria e prestígio e naturaliza uma hierarquia; essas relações podem ser examinadas criticamente, sem deduzir o valor ou a intenção de cada comprador."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: identifica a construção de prestígio e a naturalização, sem adotar a hierarquia como fato nem homogeneizar consumidores. A aceita uma superioridade biológica não demonstrada; B toma a alegação como justificativa para dispensar análise; C inventa motivação universal. O nome Z não corresponde a produto real, e a mensagem foi criada para a atividade."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cenário fictício autoral: uma resenha informa parceria paga e registra muitas curtidas. Uma pessoa conclui: “Isso prova que o produto é o melhor e que toda a população concorda”. Qual avaliação preserva o que os dados permitem?",
+        "hint": "Diferencie interesse comercial, interações observadas, desempenho verificável e representatividade da opinião.",
+        "options": [
+          "Parceria paga e curtidas não provam superioridade nem concordância universal; é preciso examinar evidências sobre a promessa e os limites do público observado.",
+          "Qualquer parceria paga demonstra automaticamente que todas as frases da resenha são falsas.",
+          "Curtidas constituem, por definição, amostra aleatória de toda a população.",
+          "A popularidade dispensa qualquer verificação do produto, do método ou do contexto."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a relação comercial é relevante e as curtidas indicam interações, mas não comprovam qualidade superior ou opinião universal. B troca conflito de interesse por falsidade necessária; C atribui representatividade inexistente; D confunde circulação e validação. O cenário não permite concluir se o produto é bom ou ruim: a inferência feita excede as informações fornecidas."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Fotografia, cinema e audiovisual",
+    "objective": "Analisar enquadramento, luz, montagem e som em fotografia e audiovisual, relacionando escolhas formais e construção de sentido sem confundir registro, interpretação e prova de um acontecimento.",
+    "prerequisites": [
+      "Composição visual e contraste",
+      "Sequência e duração",
+      "Diferença entre descrição e interpretação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Fotografia: enquadramento, luz e leitura",
+        "explanation": "A fotografia pode documentar, interpretar, construir ficções e experimentar formas. O registro fotográfico envolve luz sobre uma superfície sensível ou sensor, mas a imagem não chega pronta sem escolhas. Enquadrar é selecionar o campo visível e o que fica fora dele; composição organiza relações entre linhas, formas, sujeitos e espaços. Ponto de vista e altura da câmera alteram o que se vê e como os elementos se relacionam, sem impor uma emoção universal. A iluminação pode revelar ou ocultar texturas e produzir contrastes; cor e preto e branco também participam da leitura. Foco destaca planos de nitidez, e profundidade de campo diz respeito à faixa que aparece aceitavelmente nítida. Exposição e tempo de captação afetam a imagem; um tempo mais longo pode registrar rastros de movimento, dependendo do deslocamento e das condições, sem que todo borrado seja defeito. Distingua descrição e interpretação: identificar uma pessoa ao lado de uma porta é diferente de afirmar que está triste ou tentando fugir. Para sustentar uma leitura, relacione elementos visíveis e contexto. Imagens podem ser posadas ou espontâneas, e uma aparência casual não comprova ausência de encenação. Legenda, edição, suporte e circulação também orientam sentidos. Recortar depois da captação pode mudar a informação disponível, e a presença de edição não demonstra automaticamente fraude: importa o uso e o que se afirma sobre a imagem.",
+        "steps": [
+          "Descreva o que está apresentado antes de inferir intenções.",
+          "Examine campo, fora de campo e composição.",
+          "Relacione luz, cor, foco e tempo aos efeitos observáveis.",
+          "Confira legenda, contexto e condições de circulação."
+        ],
+        "example": "Fotografia hipotética autoral: uma cadeira iluminada ocupa o centro e uma janela fica quase fora do quadro. A descrição identifica posição e luz. Ler a cena como espera ou ausência pode ser uma interpretação a justificar, não informação factual sobre quem morava ali. Nenhuma fotografia externa é necessária para compreender o caso.",
+        "pitfall": "Tratar fotografia como cópia neutra do mundo ou converter qualquer sentimento sugerido pela composição em fato comprovado sobre a pessoa retratada."
+      },
+      {
+        "level": "intermediate",
+        "title": "Cinema: planos, montagem e organização do tempo",
+        "explanation": "No cinema e em outras produções audiovisuais, o plano pode ser entendido como uma unidade contínua entre cortes no resultado apresentado. Escala de enquadramento, ângulo, movimento e duração participam da atenção do espectador. Um plano geral pode situar relações espaciais; um plano próximo pode destacar um rosto ou detalhe, sem garantir um único significado. Cena e sequência são unidades de organização narrativa e não quantidades fixas de segundos ou planos. Uma cena pode ser construída por vários planos ou sustentar-se num plano longo. Montagem seleciona e articula materiais, estabelecendo relações de continuidade, contraste, simultaneidade ou passagem do tempo. Nem todo corte significa que a ação ocorreu depois da anterior: pode haver ações paralelas, lembranças ou deslocamentos. Elipse omite um intervalo ou etapa da história; a duração na tela não precisa corresponder à duração do acontecimento narrado. Montagem não se reduz a corrigir erros de gravação, e plano longo não significa ausência de escolhas de mise-en-scène, enquadramento ou atuação. No uso associado a certas teorias de montagem, a justaposição também pode produzir sentidos pelo confronto entre imagens. Distinga constatação formal e efeito interpretado: a ordem dos planos pode sugerir relação, mas não demonstra que essa relação tenha ocorrido fora da obra. Observe o conjunto da sequência em vez de atribuir significado invariável a todo close, ângulo baixo ou corte rápido.",
+        "steps": [
+          "Identifique planos e relações de escala, ângulo e duração.",
+          "Examine a ordem e o que a montagem omite ou aproxima.",
+          "Separe tempo da história e duração na tela.",
+          "Justifique efeitos pelo conjunto, evitando dicionário fixo de emoções."
+        ],
+        "example": "Sequência autoral descrita: um plano mostra mãos dobrando um mapa e outro mostra uma estrada vazia. A aproximação pode sugerir preparação de viagem, mas não demonstra que a estrada seja destino real da pessoa. Se a ordem mudar, novas relações podem surgir. A montagem participa da construção, não apenas da soma de imagens isoladas.",
+        "pitfall": "Achar que todo corte conserva tempo e espaço reais ou que um enquadramento tem sempre o mesmo efeito em qualquer filme."
+      },
+      {
+        "level": "advanced",
+        "title": "Som, ponto de vista e análise do audiovisual",
+        "explanation": "A trilha sonora inclui fala, música, ruídos e escolhas de silêncio; não é sinônimo apenas de música. Som diegético pertence ao universo narrado, como uma voz ou rádio da cena, mesmo que sua fonte não apareça no quadro. Som extradiegético, como uma música de comentário sem origem nesse universo, vem de fora dele. Essa distinção depende da construção da obra: uma fonte pode ser revelada depois ou mudar de estatuto ao longo da sequência. Assim, fora de campo não significa automaticamente extradiegético, e toda narração não tem obrigatoriamente o mesmo estatuto. Som e imagem podem reforçar-se, contradizer-se, antecipar ou atravessar cortes. Uma música pode sugerir tensão ao público sem provar uma intenção oculta de uma pessoa filmada. Documentário trabalha com relações com o mundo histórico, mas também envolve seleção, montagem, entrevista e ponto de vista; ter escolhas não o torna necessariamente ficção ou mentira. Compare as alegações com registros e contexto, distinguindo reconstituição, encenação, arquivo e depoimento quando identificados. O audiovisual também aparece em televisão, vídeo e práticas artísticas, sem depender exclusivamente da sala de cinema. Ao planejar uma produção própria, explicite intenção, roteiro ou storyboard, enquadramentos e organização sonora, considerando como tornar conteúdo compreensível por meios como legendas e descrição. A atividade não exige filmar colegas, divulgar imagens pessoais ou reproduzir trechos protegidos: é possível analisar uma sequência inteiramente descrita e criada para estudo.",
+        "steps": [
+          "Identifique os sons e sua relação com o universo narrativo.",
+          "Examine como som e imagem organizam ponto de vista.",
+          "Separe efeito expressivo e comprovação histórica.",
+          "Planeje produção e acessibilidade sem exposição pessoal obrigatória."
+        ],
+        "example": "Cena autoral fictícia: a tela mostra uma rua vazia e ouvimos o sino de uma bicicleta que ainda não aparece. Depois a ciclista entra no quadro e o sino continua. O som pertence à ação narrada mesmo quando sua fonte estava fora do campo visual; sua ausência inicial na imagem não o tornava extradiegético.",
+        "pitfall": "Confundir fonte invisível e som fora da narrativa ou usar uma trilha de suspense como prova da culpa de uma pessoa real."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso autoral inteiramente descrito: uma fotografia ampla mostra duas pessoas conversando diante de uma fila. Um recorte posterior mantém apenas uma das pessoas e retira a outra e a fila. Qual conclusão considera o enquadramento sem inventar o que ocorreu?",
+        "hint": "Compare a informação visível antes e depois do recorte; a retirada de contexto não comprova automaticamente intenção ou solidão real.",
+        "options": [
+          "O recorte muda a informação disponível e pode orientar outra leitura; não prova que a pessoa estivesse sozinha no acontecimento.",
+          "O recorte prova que nunca houve outra pessoa na situação original.",
+          "Toda mudança de enquadramento altera fisicamente o passado registrado.",
+          "A imagem recortada necessariamente tem um único sentido, independente de legenda e circulação."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: o recorte elimina elementos do campo apresentado e pode modificar a interpretação. B nega informação explicitamente fornecida; C confunde representação e acontecimento; D apaga contexto e diversidade de leitura. A análise não chama toda edição de fraude: examina a informação retirada e o que pode ou não ser afirmado a partir da imagem."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Sequência fictícia autoral: um plano mostra uma semente sendo colocada num vaso. Após um corte, vemos a mesma planta já crescida em outro momento, sem mostrar o crescimento. Qual operação de tempo narrativo a descrição evidencia?",
+        "hint": "Observe a etapa omitida entre os dois momentos; não é necessário supor uma filmagem contínua de todo o processo.",
+        "options": [
+          "Prova de que a planta cresceu instantaneamente no mundo histórico.",
+          "Obrigação de que todo plano tenha exatamente um segundo.",
+          "Elipse temporal: a montagem omite o intervalo de crescimento entre os momentos apresentados.",
+          "Ausência de montagem, pois não foi usado um efeito visual chamativo na transição."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: há um intervalo da história omitido entre a semeadura e a planta crescida, caracterizando elipse. A toma a compressão narrativa como prova de crescimento instantâneo; B inventa duração fixa; D ignora que o corte já organiza os dois planos. O exercício descreve todos os elementos necessários, sem depender de vídeo ou fotografia ausente."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Documentário fictício autoral: uma pessoa entra numa sala. A edição acrescenta música de suspense sem fonte no universo filmado e uma legenda sugere que ela tinha más intenções; nenhum outro dado é fornecido. Qual análise distingue recurso expressivo e comprovação?",
+        "hint": "Localize a origem narrativa da música e pergunte que evidência, além da sugestão estética, sustentaria uma alegação sobre intenção real.",
+        "options": [
+          "Música de suspense comprova necessariamente a intenção real da pessoa.",
+          "A música funciona como comentário extradiegético; música e legenda orientam uma leitura, mas não bastam para provar intenção real sem outras evidências.",
+          "Toda música é diegética apenas porque pode ser ouvida pelo espectador.",
+          "A presença de montagem torna todo documentário necessariamente mentira e dispensa examinar seus registros."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a música não tem fonte no universo filmado e atua como comentário extradiegético; o efeito de suspense e a legenda não provam uma intenção real. A transforma sugestão em evidência suficiente; C confunde audição do público e origem diegética; D generaliza falsidade de toda seleção. O caso é inventado e não atribui conduta a uma pessoa existente."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Lutas e artes marciais",
+    "objective": "Comparar lutas e artes marciais como práticas corporais e culturais, reconhecendo oposição, regras, histórias e respeito ao oponente sem reduzir sua diversidade a violência ou desempenho competitivo.",
+    "prerequisites": [
+      "Práticas corporais como cultura",
+      "Regras e convivência",
+      "Leitura de situações hipotéticas"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Oposição, regras e respeito",
+        "explanation": "Nas lutas, participantes organizam ações de oposição: procuram alcançar um objetivo enquanto respondem às ações do oponente. Conforme a prática e suas regras, o objetivo pode envolver desequilibrar, imobilizar, atingir um alvo permitido ou excluir de uma área. Isso não significa que qualquer ação seja autorizada nem que vencer exija causar dano. Ataque e defesa se relacionam, e técnicas, distâncias e critérios de resultado variam. A existência de oposição não transforma o parceiro em inimigo. Uma prática educativa precisa de limites conhecidos, respeito às interrupções e cuidado com a integridade de todos. Distinguir luta e briga não depende apenas da aparência de um gesto: considere contexto, finalidade, consentimento e normas de convivência. Uma agressão não vira prática legítima só porque alguém chama o ato de golpe ou usa uniforme. Também não se deve presumir que a prática de uma luta torne alguém violento ou moralmente superior. Regras e valores precisam aparecer nas condutas, inclusive no modo como se trata quem está aprendendo. Nesta aula, analisamos situações descritas; não há necessidade de reproduzir golpes, quedas ou contato físico sem orientação. Ler um texto não substitui ensino presencial apropriado para executar técnicas.",
+        "steps": [
+          "Identifique objetivo e ações de oposição no caso descrito.",
+          "Examine regras, limites e formas de interrupção.",
+          "Observe a conduta em relação ao oponente.",
+          "Separe análise cultural de execução física de técnicas."
+        ],
+        "example": "Exemplo autoral: numa história de treino, duas pessoas conhecem os limites da atividade e interrompem a disputa ao sinal combinado. O interesse analítico está em como as regras organizam a oposição e protegem a convivência. O relato não ensina uma técnica nem autoriza reproduzir contato físico em casa.",
+        "pitfall": "Confundir oposição com hostilidade ou considerar que nome de modalidade e uniforme autorizam ignorar os limites acordados."
+      },
+      {
+        "level": "intermediate",
+        "title": "Histórias, tradições e transformações",
+        "explanation": "Lutas e artes marciais têm histórias diversas, com dimensões técnicas, educativas, culturais e, em alguns casos, competitivas. As categorias podem se sobrepor: uma prática pode cultivar tradições e também apresentar formas esportivas. Não existe uma fronteira universal pela qual toda arte marcial não tenha competição e todo esporte tenha perdido sua cultura. O judô foi organizado por Jigoro Kano no Japão, em 1882, dialogando com formas anteriores de combate e com um projeto educativo. Isso não autoriza atribuir a Kano a invenção de todas as lutas. A capoeira se desenvolveu no Brasil em contextos afro-brasileiros de resistência e sociabilidade; reúne luta, jogo, música e outras dimensões culturais. Reduzi-la a uma dança sem oposição ou a uma técnica sem canto e memória empobrece sua compreensão. A roda e os saberes transmitidos por mestres e mestras são importantes nessa continuidade. O reconhecimento patrimonial não significa congelar uma cultura num único formato: práticas vivas mudam e guardam diferenças internas. A roda de capoeira e o ofício dos mestres tiveram reconhecimento pelo Iphan em 2008; a roda recebeu reconhecimento da Unesco em 2014. Essas datas indicam reconhecimento, não nascimento da prática. Compare histórias com atenção à autoria das narrativas e sem supor que todas as lutas tenham uma única origem asiática.",
+        "steps": [
+          "Localize prática, sujeitos e contexto histórico.",
+          "Diferencie formação histórica e reconhecimento institucional.",
+          "Compare dimensões culturais, educativas e esportivas sem torná-las exclusivas.",
+          "Reconheça diversidade interna e transmissão de saberes."
+        ],
+        "example": "Caso autoral de pesquisa: um grupo encontra uma notícia de reconhecimento patrimonial e conclui que a prática começou naquela data. Ao distinguir reconhecimento e formação histórica, corrige a cronologia e passa a investigar relatos, documentos e saberes de praticantes, sem transformar uma cerimônia institucional em data de invenção.",
+        "pitfall": "Tomar reconhecimento patrimonial como nascimento de uma tradição ou classificar todas as lutas como práticas idênticas de uma única origem."
+      },
+      {
+        "level": "advanced",
+        "title": "Valores, inclusão e leitura crítica",
+        "explanation": "Documentos de organizações de artes marciais apresentam valores como respeito, autocontrole e aprendizagem. A Carta do Budô, da associação japonesa responsável pelo documento, critica a preocupação exclusiva com vitória e habilidade técnica. Esse é um posicionamento normativo: descreve princípios a buscar, não prova que toda pessoa praticante sempre os cumpra. Examinar uma situação exige comparar discurso e ação. Humilhar iniciantes, desrespeitar uma interrupção ou excluir alguém por estereótipo contradiz uma proposta educativa, mesmo se o responsável invocar tradição. Respeito a mestres e saberes não elimina a possibilidade de questionar condutas inadequadas. Também não cabe atribuir aptidão ou incapacidade automática a gênero, aparência ou origem. Na aprendizagem, análise de regras, pesquisa histórica e discussão de situações podem ampliar as formas de participação. Ajustes devem considerar objetivos e opções funcionais, sem exigir exposição de diagnóstico ou experiência pessoal de violência. Uma regra adaptada em atividade escolar precisa ser identificada como adaptação, sem ser apresentada como regulamento oficial de toda modalidade. A prática competitiva não é incompatível com cooperação: os participantes precisam uns dos outros para aprender e disputar sob regras. Para avaliar uma proposta, pergunte quem participa, quais limites estão claros e como se reage quando alguém pede interrupção. Esta análise não promete benefícios clínicos nem substitui orientação técnica para a prática corporal.",
+        "steps": [
+          "Distinga princípio declarado de comportamento observado.",
+          "Examine estereótipos e condições de participação.",
+          "Identifique adaptações e o âmbito de cada regra.",
+          "Avalie respeito às interrupções e dignidade dos participantes."
+        ],
+        "example": "Situação autoral: um cartaz anuncia respeito, mas a discussão de regras permite zombarias de quem está começando. A análise identifica a incoerência entre o princípio e a conduta e propõe acolhimento e esclarecimento dos limites. Nenhuma experiência pessoal, diagnóstico ou demonstração física é exigida para argumentar.",
+        "pitfall": "Usar um código de valores como garantia automática de boa conduta ou justificar humilhação e exclusão em nome de tradição ou vitória."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação fictícia: durante uma atividade de oposição, uma participante pede a interrupção prevista nas regras. O colega continua e afirma que vencer permite desconsiderar esse pedido. Qual análise respeita o caráter educativo da luta?",
+        "hint": "Verifique se a busca de resultado pode ultrapassar os limites combinados e a integridade do oponente.",
+        "options": [
+          "O pedido pode ser ignorado sempre que a pessoa estiver perto de vencer.",
+          "Qualquer uso do nome de uma modalidade torna a continuação automaticamente legítima.",
+          "A oposição só é educativa se os participantes forem inimigos fora da atividade.",
+          "A busca de resultado deve respeitar a interrupção e os limites; continuar nessa condição contradiz a proposta educativa."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: competir não elimina o dever de respeitar a interrupção prevista e os limites da atividade. A transforma vitória em autorização irrestrita; B toma um nome como justificativa automática; C confunde oponente e inimigo. A resposta avalia a conduta descrita e não precisa de execução de golpes para ser resolvida."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma ficha autoral compara a capoeira, manifestação afro-brasileira com jogo, luta e música, e o judô, organizado por Jigoro Kano no Japão em 1882 com propósito educativo. Qual conclusão é sustentada por essas informações?",
+        "hint": "Use os contextos apresentados para avaliar a hipótese de origem única; não invente uma hierarquia cultural.",
+        "options": [
+          "Todas as lutas foram inventadas por Jigoro Kano em 1882.",
+          "Há trajetórias distintas; música e tradição não impedem dimensões de oposição e educação.",
+          "A presença de música prova que a capoeira não pode ter dimensão de luta.",
+          "Ter uma origem diferente demonstra inferioridade técnica e cultural de uma das práticas."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: os contextos descritos mostram diversidade histórica e coexistência de dimensões culturais e educativas. A estende a organização do judô a todas as práticas; C exclui indevidamente a luta por haver música; D cria uma hierarquia sem base. A informação histórica não exige copiar movimentos nem material de terceiros."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: uma escola divulga um código de respeito, mas uma oficina ridiculariza iniciantes e exige que cada aluno revele um diagnóstico para participar de uma discussão textual sobre regras. Qual mudança é coerente com inclusão e análise crítica?",
+        "hint": "Compare o valor anunciado e as condições da atividade; discutir regras não exige exposição de informações de saúde.",
+        "options": [
+          "Manter a humilhação porque qualquer costume se justifica ao receber o nome de tradição.",
+          "Trocar o código por uma promessa de que toda pessoa praticante tem comportamento perfeito.",
+          "Interromper a ridicularização e oferecer participação na análise sem exigir diagnóstico, considerando as opções funcionais necessárias.",
+          "Excluir iniciantes da discussão porque apenas competidores podem compreender regras."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: a mudança aproxima a conduta do valor declarado e permite discutir regras sem exposição de diagnóstico. A usa tradição para justificar humilhação; B substitui avaliação por garantia falsa; D limita aprendizagem sem fundamento. A questão trata da organização educativa descrita e não realiza avaliação clínica de ninguém."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Ecologia, biomas e sustentabilidade",
+    "objective": "Relacionar níveis ecológicos, fluxo de energia, ciclos de matéria e diversidade dos biomas à avaliação de propostas de sustentabilidade com indicadores e limites de interpretação explícitos.",
+    "prerequisites": [
+      "Seres vivos e ambiente",
+      "Fotossíntese e respiração",
+      "Leitura de situações e evidências"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Níveis ecológicos e diversidade dos ambientes",
+        "explanation": "A Ecologia investiga relações entre organismos e ambiente. Distinguir níveis de organização ajuda a formular perguntas e interpretar dados. Um organismo é um indivíduo; uma população reúne indivíduos da mesma espécie em uma área e período considerados. Comunidade envolve populações de diferentes espécies e suas relações. Ecossistema inclui componentes vivos e fatores físicos e químicos em interação, como luz, água e condições do solo. Contar uma população não mede automaticamente toda a biodiversidade do lugar. Bioma é uma categoria de abrangência maior, associada a conjuntos de ambientes com características como clima e formações vegetais, conforme a classificação adotada. Um bioma não é uma espécie nem uma paisagem inteiramente uniforme. Temperatura, chuva e sua distribuição ao longo do ano ajudam a compreender padrões, mas relevo, solos, história e interações também importam. No Brasil, a classificação terrestre do IBGE distingue Amazônia, Caatinga, Cerrado, Mata Atlântica, Pampa e Pantanal. Essa divisão não elimina ambientes aquáticos e transições, nem significa que toda vegetação baixa esteja degradada. Para analisar um caso, delimite área, período e a unidade observada antes de comparar resultados. Um registro de indivíduos de uma espécie num lago não autoriza concluir como é a comunidade de todos os lagos do bioma.",
+        "steps": [
+          "Delimite área e período do estudo.",
+          "Identifique se os dados tratam de indivíduo, população, comunidade ou ecossistema.",
+          "Diferencie um ambiente local da classificação de bioma.",
+          "Restrinja a conclusão à unidade efetivamente observada."
+        ],
+        "example": "Modelo autoral: uma ficha acompanha uma única espécie de caramujo numa lagoa ao longo de uma estação. Outra registra também plantas, peixes, água e temperatura. A primeira focaliza uma população delimitada; a segunda reúne informações de componentes de um ecossistema. As duas podem ser úteis sem responder exatamente à mesma pergunta.",
+        "pitfall": "Confundir uma população com toda a comunidade ou tratar um bioma como um único ecossistema homogêneo."
+      },
+      {
+        "level": "intermediate",
+        "title": "Energia flui; matéria participa de ciclos",
+        "explanation": "Produtores incorporam carbono inorgânico em matéria orgânica, usando energia luminosa na fotossíntese ou energia de reações químicas na quimiossíntese. Consumidores obtêm matéria e energia ao se alimentar de outros organismos ou de seus materiais. Fungos e bactérias decompositoras participam da transformação de resíduos e restos, devolvendo nutrientes ao ambiente; não estão presentes apenas depois do último predador. Uma cadeia representa uma sequência alimentar, enquanto uma teia articula várias relações. Quando uma seta é definida como transferência do alimento ao consumidor, ela indica essa direção, e a convenção deve ser informada. A energia é transformada e parte se dissipa como calor durante os processos metabólicos; esse calor não retorna integralmente aos produtores como energia química alimentar. A matéria circula entre seres vivos e reservatórios como ar, água e solo, em escalas de tempo distintas. A decomposição contribui para os ciclos, mas não cria átomos do nada. A eficiência de transferência entre níveis varia: uma porcentagem usada num exercício precisa ser fornecida como hipótese, e não tratada como lei universal de dez por cento. Quantidade de indivíduos, biomassa e energia por área e tempo são medidas diferentes, de modo que uma pirâmide de números não equivale automaticamente a uma pirâmide de energia. Ao explicar uma alteração, explicite a rede e os limites do modelo em vez de prever que toda espécie responderá da mesma forma.",
+        "steps": [
+          "Identifique produtores, consumidores e decompositores.",
+          "Confira a convenção usada nas setas alimentares.",
+          "Separe transferência de energia e circulação de matéria.",
+          "Reconheça hipóteses e limites antes de extrapolar o modelo."
+        ],
+        "example": "Modelo autoral descrito: folhas alimentam um inseto, que serve de alimento a uma ave; fungos e bactérias transformam resíduos desses organismos. A cadeia simplifica relações, enquanto a decomposição conecta materiais de diferentes etapas aos ciclos. O calor liberado pelos processos não vira automaticamente alimento novo para a árvore.",
+        "pitfall": "Afirmar que decompositores reciclam integralmente a energia ou que toda transferência trófica apresenta uma eficiência fixa."
+      },
+      {
+        "level": "advanced",
+        "title": "Sustentabilidade exige critérios e acompanhamento",
+        "explanation": "Avaliar sustentabilidade envolve relações ecológicas, uso de recursos e condições sociais. Uma proposta precisa declarar o problema, a escala, os objetivos e como acompanhar resultados. Prevenir desperdício, reduzir geração de resíduos e conservar ambientes são direções relevantes, mas um selo verbal como verde não substitui evidência. Compare indicadores compatíveis: volume de água usado, resíduos gerados, qualidade do ambiente e efeitos sobre pessoas respondem a perguntas diferentes. Melhorar um deles não comprova ausência de todos os outros impactos. Perda e fragmentação de habitat podem afetar populações e relações ecológicas; restaurar exige considerar o ambiente de referência, sem substituir todo campo nativo por árvores apenas porque floresta parece mais verde. O planejamento deve considerar conhecimento local e condições de participação, em vez de atribuir toda responsabilidade a escolhas individuais. Metas internacionais de consumo e produção responsáveis e de conservação expressam objetivos; sua existência não prova que já foram atingidas. Para comparar uma ação antes e depois, confira se o método, a área e o período são compatíveis e se outras mudanças podem explicar o resultado. Uma observação isolada pode orientar novas perguntas sem estabelecer causalidade definitiva. Sustentabilidade não é sinônimo de impacto zero demonstrado por um único indicador. Reconhecer limites da evidência ajuda a revisar decisões e evita apresentar uma intervenção hipotética como sucesso ambiental já verificado.",
+        "steps": [
+          "Defina objetivo, escala e indicadores da proposta.",
+          "Compare medições com métodos e períodos compatíveis.",
+          "Considere biodiversidade, recursos e consequências sociais.",
+          "Declare limites e ajuste a ação com base no acompanhamento."
+        ],
+        "example": "Caso autoral: uma biblioteca propõe diminuir descartes ao ampliar reparo e reuso. A equipe registra materiais usados, resíduos e acesso ao serviço em períodos comparáveis. Uma queda de resíduos pode apoiar esse objetivo específico, mas não resolve sozinha questões de consumo de água, transporte ou condições de trabalho.",
+        "pitfall": "Usar melhora de um indicador como prova de impacto ambiental zero ou confundir anúncio de meta com resultado acompanhado."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um estudo fictício acompanha todos os indivíduos identificados de uma mesma espécie de rã numa lagoa durante uma estação. A ficha não inclui outras espécies nem mede água e solo. Qual unidade é diretamente focalizada?",
+        "hint": "Considere a identidade da espécie e a delimitação de área e período; não amplie o registro para tudo que existe no ambiente.",
+        "options": [
+          "Toda a biosfera, porque qualquer organismo representa todas as regiões do planeta.",
+          "Uma comunidade completa, pois indivíduos da mesma espécie incluem necessariamente todas as espécies.",
+          "Uma população delimitada dessa espécie, nessa área e período.",
+          "Um bioma inteiro homogêneo, independentemente das informações coletadas."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: o estudo focaliza indivíduos da mesma espécie em área e período definidos, isto é, uma população delimitada. A extrapola para a biosfera; B confunde uma espécie e o conjunto de populações; D transforma uma observação local em bioma completo. A ficha pode informar esse nível sem medir toda a comunidade ou o ecossistema."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Num modelo autoral de lago, algas fazem fotossíntese, pequenos consumidores comem algas e microrganismos decompõem restos. Qual afirmação diferencia corretamente energia e matéria nesse modelo?",
+        "hint": "Examine o destino de nutrientes e de parte da energia durante o metabolismo; decompor não significa devolver calor como alimento.",
+        "options": [
+          "Nutrientes podem retornar aos reservatórios e ser reutilizados; parte da energia se dissipa como calor e não é reciclada integralmente como energia alimentar.",
+          "Os microrganismos criam novos átomos de carbono do nada durante cada decomposição.",
+          "Todo calor liberado é convertido automaticamente em alimento químico pelas algas.",
+          "A teia só funciona se todas as transferências tiverem exatamente dez por cento de eficiência."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a matéria participa de ciclos e os nutrientes podem ser reutilizados, enquanto a energia é transformada e parte se dissipa como calor. B viola conservação da matéria; C equipara calor dissipado a reposição automática de alimento; D transforma uma aproximação didática em lei universal. A distinção não exige assumir uma eficiência numérica ausente do enunciado."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma escola fictícia mede resíduos em períodos comparáveis e encontra menos descarte após iniciar reparos e reuso. O relatório anuncia: isso prova impacto ambiental zero em todas as atividades. Qual avaliação é sustentada pelos dados descritos?",
+        "hint": "Separe o indicador medido da afirmação sobre todos os impactos; confira também o que um antes e depois não demonstra sozinho.",
+        "options": [
+          "Menor descarte comprova que nenhum recurso natural foi consumido pela escola.",
+          "Um único indicador permite dispensar análise de água, energia, biodiversidade e condições sociais.",
+          "A existência de um programa comprova automaticamente todas as metas internacionais de sustentabilidade.",
+          "O dado apoia a redução observada de descarte; não demonstra impacto zero nem atribui sozinho toda a mudança ao programa."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a medição sustenta uma observação específica de menor descarte sob condições comparáveis. Não mede todos os impactos e, sem examinar outras mudanças, não isola causalidade. A confunde reduzir resíduos com não consumir recursos; B abandona dimensões não medidas; C transforma um programa local em comprovação universal de metas. A análise conserva a utilidade do indicador e declara seu alcance."
+      }
+    ]
   }
 ];
 
@@ -1505,6 +1873,137 @@ export const authoredCurriculumBatch11ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "No exemplo de Lia e Rui, a rejeição baseada apenas na preferência de Rui por roupa alheia não refuta os dados e método apresentados por Lia; trata-se de ataque pessoal irrelevante (ad hominem). A opção 3 examina corretamente essa relação, afirmando que o traço pessoal citado não invalida os argumentos e o relatório ainda necessita avaliação por evidências. As outras opções incorretamente afirmam que a preferência refuta todos os dados (0), prova que Lia está certa em tudo (1), ou proíbem qualquer crítica relevante (2)."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Mídias, ideologia e consumo",
+    "contentSha256": "deb948cf281ddedbedce06a37b028d69401da67de8b09f693d9aeb0ea3bbaf24",
+    "draftMethod": "Autoria e conferência Codex com referências acadêmicas e UNESCO; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/8-2-media-and-technology-in-society",
+      "https://openstax.org/books/introduction-sociology-3e/pages/8-4-theoretical-perspectives-on-media-and-technology",
+      "https://plato.stanford.edu/entries/ideology/",
+      "https://plato.stanford.edu/entries/adorno/",
+      "https://www.unesco.org/mil4teachers/en/module10/unit4",
+      "https://www.unesco.org/mil4teachers/en/module11/unit1"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Na situação de portal que entrevista apenas proprietários de lojas sobre reforma urbana, o procedimento analítico que evita supor neutralidade ou manipulação universal é investigar como a seleção enquadra o tema, quais perspectivas ficam ausentes e como públicos distintos podem interpretar a cobertura. A alternativa correta (índice 2) foca em perguntas verificáveis sobre seleção e recepção, ao contrário da opção 0 que confunde suporte técnico com neutralidade, da opção 1 que impõe efeito uniforme de aceitação, e da opção 3 que transforma lacuna editorial em prova de coordenação secreta sem evidência."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "D, índice3: a campanha associa mercadoria e prestígio e apresenta a hierarquia como natural e imutável. Essa relação pode ser examinada sem julgar o valor ou a motivação de cada comprador. A aceita superioridade biológica não demonstrada; B usa a alegação de imutabilidade para dispensar investigação; C inventa motivação universal. O diagnóstico não homogeneíza consumidores nem toma a mensagem como fato."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Em resenha com parceria paga e muitas curtidas, a conclusão de que 'isso prova que o produto é o melhor e que toda a população concorda' excede as informações fornecidas. A alternativa correta (índice 0) diferencia interesse comercial, interações observadas e limites do público observado, afirmando que parceria e curtidas não comprovam qualidade superior nem concordância universal. As demais opções incorretamente afirmam que parceria paga torna tudo falso (B), que curtidas são amostra aleatória da população (C) ou que popularidade dispensa verificação (D)."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Fotografia, cinema e audiovisual",
+    "contentSha256": "b678f942cb5512d3a856e25880318d2471c25c4fc65541aead07e9bc84bee2f4",
+    "draftMethod": "Autoria e conferência Codex com museus, universidades e BFI; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.moma.org/momaorg/shared/flattened_pages/moma_learning/themes/photography/",
+      "https://www.getty.edu/education/for_teachers/curricula/exploring_photographs/background1.html",
+      "https://artlang.yale.edu/deep-observation-and-reflection/photographic-exploration",
+      "https://www.screen.scot/binaries/content/assets/screen-scot/film-education/frameworks-and-guides/bfi-education-moving-image-in-the-classroom-1.pdf",
+      "https://filmglossary.ccnmtl.columbia.edu/term/montage/",
+      "https://filmglossary.ccnmtl.columbia.edu/term/editing/",
+      "https://filmglossary.ccnmtl.columbia.edu/term/diegetic-sound/",
+      "https://filmglossary.ccnmtl.columbia.edu/term/non-diegetic-sound/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A questão sobre recorte fotográfico pergunta que conclusão considerar sem inventar o ocorrido. O índice 0 (opção A) está correto pois o recorte elimina elementos do campo apresentado e pode orientar outra leitura, mas não prova que a pessoa estivesse sozinha no acontecimento. As distratores são inválidas: a opção B nega informação explicitamente fornecida (duas pessoas na cena original); a opção C confunde representação com acontecimento físico (o recorte não altera o passado); a opção D apaga contexto e diversidade de leitura ao afirmar sentido único independente de legenda e circulação. A resolução independente confirma que a análise correta relaciona elementos visíveis antes e depois do recorte sem estender inferências além do visível."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A questão sobre sequência fictícia autoral de cinema pergunta que operação de tempo narrativo a descrição evidencia. O índice 2 (opção C) está correto pois há um intervalo da história omitido entre a semeadura e a planta crescida, caracterizando elipse. As distratores são inválidas: a opção 0 prova incorretamente crescimento instantâneo no mundo histórico; a opção 1 inventa obrigatoriedade de todo plano ter exatamente um segundo; a opção 3 ignora que o corte já organiza os dois planos, confundindo ausência de efeito visual chamativo com ausência de montagem. A resolução independente verifica que o exercício descreve todos os elementos necessários sem depender de vídeo ou fotografia ausente."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "A questão sobre documentário fictício autoral pergunta que análise distingue recurso expressivo e comprovação. O índice 1 (opção B) está correto pois a música funciona como comentário extradiegetico; música e legenda orientam uma leitura, mas não bastam para provar intenção real sem outras evidências. As distratores são inválidas: a opção 0 transforma sugestão estética em evidência suficiente da intenção real da pessoa; a opção 2 confunde audição do público e origem diegética (qualquer som audível seria diegético, o que é falso); a opção 3 generaliza falsamente que toda montagem torna todo documentário necessariamente mentiroso, dispensando examen de registros. A resolução independente confirma que o caso é inventado e não atribui conduta a pessoa existente, mantendo a distinção entre efeito expressivo e comprovação."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Lutas e artes marciais",
+    "contentSha256": "ccd9e8579c4837338dcc5f063e5688b1893009b3f35b901113aa2ca5afe59381",
+    "draftMethod": "Autoria Codex; referências oficiais conferidas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://bcr.iphan.gov.br/bens-culturais/roda-de-capoeira/",
+      "https://ijf.org/page/history",
+      "https://www.nipponbudokan.or.jp/english/budochater",
+      "https://www.nipponbudokan.or.jp/english/kodomo_eng",
+      "https://basenacionalcomum.mec.gov.br/images/BNCC_20dez_site.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "Análise independente da Tarefa 1: a alternativa D é a única que respeita a interrupção e os limites da atividade educativa, enquanto A ignora regras quando há vantagem competitiva, B usa nome de modalidade como justificativa automática e C conflui oponente com inimigo, conforme explicação sobre regras e convivência na prática de lutas educativas."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Análise independente da Tarefa 2: a alternativa B é a única que reconhece trajetórias históricas distintas entre capoeira e judô sem criar hierarquia cultural, enquanto A atribui invenção a Kano sem base, C exclui indevidamente a luta por haver música e D cria hierarquia sem base, conforme contexto sobre diversidade histórica e coexistência de dimensões."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Análise independente da Tarefa 3: a alternativa C é a única que interrompe ridicularização e permite participação na análise sem exigir diagnóstico, enquanto A justifica humilhação pela tradição, B substitui avaliação por garantia falsa e D limita aprendizagem sem fundamento, conforme discussão sobre valores, inclusão e análise crítica de proposta educativa."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Ecologia, biomas e sustentabilidade",
+    "contentSha256": "738195a4aa49f46dbe2e2c7086b36fd57f0605b1219e94c0898ed88a8b8d29d8",
+    "draftMethod": "Autoria Codex; conferência conceitual com fontes primárias e educacionais; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/44-1-the-scope-of-ecology",
+      "https://openstax.org/books/biology-2e/pages/44-3-terrestrial-biomes",
+      "https://openstax.org/books/biology-2e/pages/46-2-energy-flow-through-ecosystems",
+      "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+      "https://openstax.org/books/biology-2e/pages/47-3-threats-to-biodiversity",
+      "https://sdgs.un.org/goals/goal12",
+      "https://sdgs.un.org/goals/goal15",
+      "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/Sintese_Descricao_Biomas.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "O enunciado descreve estudo que acompanha todos os indivíduos de uma mesma espécie de rã em uma lagoa durante uma estação, sem incluir outras espécies nem medir água e solo. A unidade diretamente focalizada é, corretamente, uma população delimitada dessa espécie nessa área e período. O índice 2 está correto: as opções 0 (biosfera) e 3 (bioma) são extensões indevidas da observação local, enquanto a opção 1 (comunidade) erroneamente pressupõe que indivíduos de uma espécie incluem necessariamente todas as espécies. A explicação do gabarito corretamente identifica a população como o nível de organização adequado e descreve por que as outras opções estão erradas, sem inventar estatísticas ou atribuir regras universais sem fonte."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "No modelo descrito, algas fazem fotossíntese, pequenos consumidores comem algas e microrganismos decompõem restos; não se estabelece cadeia única em que decompositores recebam apenas consumidores. A opção 0 distingue nutrientes reutilizados nos ciclos e energia parcialmente dissipada como calor, sem reciclagem integral como energia alimentar. A opção 1 inventa criação de átomos; a 2 transforma calor em alimento automaticamente; a 3 impõe eficiência universal de dez por cento. O gabarito 0 e a solução estão corretos."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "O cenário da escola que mede resíduos e anuncia 'impacto ambiental zero' recebe avaliação correta no índice 3: o dado sustenta a redução observada de descarte sob condições comparáveis, mas não demonstra impacto zero nem atribui sozinho toda a mudança ao programa. O índice 3 está correto: a opção 0 confunde menor descarte com não-consumo de recursos naturais; a opção 1 erradamente dispensa análise de água, energia, biodiversidade e condições sociais baseada em um único indicador; a opção 2 transforma automaticamente um programa local em comprovação de todas as metas internacionais de sustentabilidade. A solução do gabarito conserva a utilidade do indicador e declara seu alcance restrito, sem inventar cifras ou citar metas como já atingidas."
       }
     ]
   }

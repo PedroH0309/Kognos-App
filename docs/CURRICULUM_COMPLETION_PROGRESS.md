@@ -4,7 +4,45 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 27
+## Estado atual — checkpoint 28
+
+Lote 11 completo com 16 aulas; 144 novas nesta etapa. Integradas Mídias,
+ideologia e consumo; Fotografia, cinema e audiovisual; Lutas e artes marciais;
+Ecologia, biomas e sustentabilidade. Autoria principal Codex e crítica
+independente Claude Code/NVIDIA NIM. Homologação pedagógica humana pendente.
+
+Restam 1.151 lacunas de 1.512 identidades editoriais. ENEM: 154 aprofundadas e
+742 lacunas. Estudo: 154 aprofundadas, 30 guias e 723 planejadas. Índice: 361.
+
+- Sociologia distingue seleção editorial, usos de ideologia, indústria cultural
+  como teoria atribuída, recepção ativa e publicidade sem inferência universal.
+- Arte explica enquadramento, elipse, montagem, som diegético/extradiegético e
+  diferença entre sugestão estética e prova; casos textuais próprios sem imagens
+  ou filmes ausentes necessários para resolver as questões.
+- Educação Física aborda oposição, história e cultura, reconhecimento distinto
+  de origem, valores normativos e conduta observada. Sem execução física ou
+  solicitação de diagnósticos para participar.
+- Ciências distingue população, comunidade, ecossistema e bioma; energia e
+  matéria; indicadores e causalidade. Sem lei universal de eficiência de 10%,
+  estatísticas antigas como atuais ou promessa de impacto zero.
+
+Críticas finais lidas e hashes atuais conferidos. Ecologia foi revisada novamente
+após corrigir a referência IBGE para o PDF efetivamente lido. Correções explícitas
+nos metadados de Sociologia e Ciências preservam os pareceres originais e não
+atribuem navegação ao Claude sem ferramentas. Fontes bloqueadas não contam como
+leitura integral. Exemplos, exercícios e textos próprios; referências para fatos
+e conceitos, sem copiar obras, mapas, fotografias, filmes ou atividades externas.
+
+661 testes da aplicação e 6 do motor, build e lint alterado aprovados. API das
+144 aulas comparada integralmente; quatro novas no Chromium com 12 respostas,
+explicações e referências expandidas em 320/375/768/1440 px, sem exceções ou
+rolagem horizontal. Captura inspecionada. CI 27 aprovada, execução 43758639795,
+head 2266838. Sem schema, banco, merge ou deploy.
+
+Próximo: lote 12, 16 temas até 160 novas. Worker Claude limitado a um autor por
+vez já iniciado. Não finalizar no checkpoint; catálogo permanece em execução.
+
+## Histórico — checkpoint 27
 
 Lote11 com12 aulas;140novas nesta etapa. Acrescentadas DNA, RNA e síntese
 proteica; Iluminismo e revoluções modernas; Vegetação e biomas do Brasil;
