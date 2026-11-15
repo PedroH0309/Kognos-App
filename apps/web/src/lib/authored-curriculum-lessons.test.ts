@@ -268,3 +268,35 @@ test('mudanças de estado calculam energia de fusão e saída de massa sem criar
  assert.ok(mass.options[mass.correctIndex].startsWith(`${initial} g e ${initial-outgoing} g,`));
  assert.equal(initial,(initial-outgoing)+outgoing);
 });
+
+test('probabilidade e estatística ponderam frequências, atualizam a urna e invertem a base condicional',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Probabilidade e estatística');assert.ok(spec);
+ const selected=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const values=spec.tasks[0].prompt.match(/valores (\d+), (\d+) e (\d+) com frequências absolutas (\d+), (\d+) e (\d+)/);assert.ok(values);
+ const observations=[1,2,3].flatMap(index=>Array(Number(values[index+3])).fill(Number(values[index])) as number[]).sort((a,b)=>a-b);
+ const mean=observations.reduce((sum,value)=>sum+value,0)/observations.length;
+ const median=(observations[observations.length/2-1]+observations[observations.length/2])/2;
+ assert.equal(selected(0),`Média ${String(mean).replace('.',',')} e mediana ${String(median).replace('.',',')}.`);
+ const balls=['a','a','a','a','v','v','v'];
+ const pairs=balls.flatMap((first,i)=>balls.flatMap((second,j)=>i!==j?[[first,second]]:[]));
+ const favorable=pairs.filter(pair=>pair.every(color=>color==='a')).length;
+ const fraction=selected(1).split('/').map(Number);
+ assert.equal(fraction[0]/fraction[1],favorable/pairs.length);
+ assert.notEqual(favorable/pairs.length,(4/7)**2);
+ const fromA=.10*.20,fromB=.90*.02,conditional=fromA/(fromA+fromB);
+ const answer=selected(2).match(/^(\d+)\/(\d+), aproximadamente ([\d,]+)%$/);assert.ok(answer);
+ assert.equal(Number(answer[1])/Number(answer[2]),conditional);
+ assert.equal(Number(answer[3].replace(',','.')),Number((100*conditional).toFixed(2)));
+ assert.notEqual(conditional,.20);assert.notEqual(conditional,.10);
+});
+
+test('evidências distinguem contagem absoluta e taxa quando a base de participantes muda',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Redação'&&lesson.topic==='Argumentos, repertório e evidências');assert.ok(spec);
+ const task=spec.tasks[2];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const first=task.prompt.match(/primeiro, foram (\d+) casos entre (\d+) participantes/),second=task.prompt.match(/segundo, (\d+) entre (\d+)/);assert.ok(first&&second);
+ const firstCases=Number(first[1]),firstTotal=Number(first[2]),secondCases=Number(second[1]),secondTotal=Number(second[2]);
+ const initialRate=100*firstCases/firstTotal,finalRate=100*secondCases/secondTotal;
+ assert.ok(secondCases>firstCases&&finalRate<initialRate);
+ assert.equal(task.options[task.correctIndex],`A taxa caiu de ${initialRate}% para ${finalRate}%, diferença de ${initialRate-finalRate} pontos percentuais, enquanto o total de casos aumentou.`);
+ assert.notEqual(initialRate-finalRate,100*(initialRate-finalRate)/initialRate);
+});

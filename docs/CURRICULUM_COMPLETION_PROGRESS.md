@@ -4,7 +4,47 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 6
+## Estado atual — checkpoint 7
+
+O lote 05 começou com Matemática — Probabilidade e estatística; Português —
+Argumentação e coesão; Literatura — Classicismo e Quinhentismo; Redação —
+Argumentos, repertório e evidências. São 36 aulas novas nos lotes 03/04/05 desta
+etapa, todas com revisão pedagógica humana pendente.
+
+Restam 1.259 lacunas entre 1.512 identidades. O recorte editorial ENEM tem 53 temas
+aprofundados e 843 lacunas. A lista de estudo ENEM tem 53 aulas aprofundadas,
+54 guias introdutórios e 800 temas em desenvolvimento. O catálogo completo ainda
+não está concluído.
+
+- Matemática: incluídas estatística descritiva efetivamente explicada, média por
+  frequências, mediana, dispersão, contagem, condicionamento e hipóteses binomiais.
+  Removidos cálculos falsos de distratores e aproximações normais sem suporte.
+  O teste enumera retiradas e confere bases de Bayes, média e mediana.
+- Português: tese pode ser formulada na conclusão; removidas ordem argumentativa
+  universal e falsas pesquisas. Retomadas, progressão, concessão e alcance das
+  inferências são ensinados com textos autorais e questões sem dupla resposta.
+- Literatura: separados Classicismo português e escrita quinhentista ligada à
+  colonização. Removidas citações e versos falsamente atribuídos a Anchieta e
+  sinalefas impossíveis; incluídas lírica e épica camonianas, informação, catequese
+  e análise do olhar colonial, sem apagar expressões indígenas.
+- Redação: retirados dados inventados atribuídos a instituições e referências
+  jurídicas incorretas. Seleção, atribuição e mediação do repertório distinguem
+  ficção, evidência, interpretação e demonstração empírica. O teste confere taxas
+  de 40% e 30%, diferença em pontos percentuais e crescimento absoluto dos casos.
+
+A conferência principal corrigiu também erros do próprio revisor: leitura do
+distrator da média e confusão entre acesso público e domínio público. Críticas
+originais foram preservadas; as referências mantêm seus direitos e licenças.
+As aulas não copiam os exemplos das fontes.
+
+Verificação: 614 testes da aplicação e seis do motor aprovados, lint dos arquivos
+alterados e build de produção aprovados. Chromium comparou as respostas da API
+das 36 aulas, abriu as quatro novas e respondeu às 12 questões e explicações,
+sem exceções ou rolagem horizontal em 320/375/768/1440 px. A CI do checkpoint 6
+passou (run 43661331904). Sem merge, deploy, publicação no banco ou alteração de
+schema/RLS.
+
+## Histórico — checkpoint 6
 
 O lote 04 chegou a 16 aulas, uma por disciplina. Foram acrescentadas História —
 Industrialização e trabalho; Geografia — Clima e ambiente; Filosofia — Filosofia
