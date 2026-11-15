@@ -6,14 +6,15 @@ import {authoredCurriculumBatch07,authoredCurriculumBatch07ReviewRecords} from '
 import {authoredCurriculumBatch08,authoredCurriculumBatch08ReviewRecords} from './authored-curriculum-batch08.ts';
 import {authoredCurriculumBatch09,authoredCurriculumBatch09ReviewRecords} from './authored-curriculum-batch09.ts';
 import {authoredCurriculumBatch10,authoredCurriculumBatch10ReviewRecords} from './authored-curriculum-batch10.ts';
+import {authoredCurriculumBatch11,authoredCurriculumBatch11ReviewRecords} from './authored-curriculum-batch11.ts';
 import type {AuthoredLessonSpec} from './authored-lesson-quality.ts';
 import type {CurriculumTopic} from './curriculum-catalog.ts';
 import type {CourseLesson} from './course-content.ts';
 import {courseId} from './curriculum-id.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 
-export const authoredCurriculumSpecs:readonly AuthoredLessonSpec[]=[...authoredCurriculumBatch03,...authoredCurriculumBatch04,...authoredCurriculumBatch05,...authoredCurriculumBatch06,...authoredCurriculumBatch07,...authoredCurriculumBatch08,...authoredCurriculumBatch09,...authoredCurriculumBatch10];
-export const authoredCurriculumReviewRecords=[...batch03Reviews,...authoredCurriculumBatch04ReviewRecords,...authoredCurriculumBatch05ReviewRecords,...authoredCurriculumBatch06ReviewRecords,...authoredCurriculumBatch07ReviewRecords,...authoredCurriculumBatch08ReviewRecords,...authoredCurriculumBatch09ReviewRecords,...authoredCurriculumBatch10ReviewRecords] as const;
+export const authoredCurriculumSpecs:readonly AuthoredLessonSpec[]=[...authoredCurriculumBatch03,...authoredCurriculumBatch04,...authoredCurriculumBatch05,...authoredCurriculumBatch06,...authoredCurriculumBatch07,...authoredCurriculumBatch08,...authoredCurriculumBatch09,...authoredCurriculumBatch10,...authoredCurriculumBatch11];
+export const authoredCurriculumReviewRecords=[...batch03Reviews,...authoredCurriculumBatch04ReviewRecords,...authoredCurriculumBatch05ReviewRecords,...authoredCurriculumBatch06ReviewRecords,...authoredCurriculumBatch07ReviewRecords,...authoredCurriculumBatch08ReviewRecords,...authoredCurriculumBatch09ReviewRecords,...authoredCurriculumBatch10ReviewRecords,...authoredCurriculumBatch11ReviewRecords] as const;
 const specs=new Map(authoredCurriculumSpecs.map(spec=>[JSON.stringify([spec.subject,spec.topic]),spec]));
 const references=new Map(authoredCurriculumReviewRecords.map(record=>[JSON.stringify([record.subject,record.topic]),record.verifiedSourceUrls]));
 

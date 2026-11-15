@@ -1,6 +1,34 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 24
+## Estado atual em 15/11/2026 — checkpoint 25
+
+CONTINUAR as aulas. Usuário pediu parar ao50% do limite da SESSÃO do Codex.
+Ferramenta de conta só expõe semanal(2% última consulta), secondary:null;
+indicador de sessão indisponível, não substituir pelo semanal. Usuário informado.
+Consultar periodicamente, sem afirmar garantia de parada enquanto indisponível.
+
+132novas;658app+6motor/build/lint/132API+4leitor12MCQ4larguras aprovados.
+Lacunas1163,ENEM143/753,estudo143/34/730,índice349. Humana pendente.
+Preview3316sessão92941. Logsprivate/checkpoint25-{tests,build,browser}.log.
+CI24success43751484051head2b699b0. Publicar25,conferirCI exata,e continuar.
+
+Lote11 integra ALL4:7e340768,431382bb,2798df57,2448edd7. Integrador11
+REESCREVE módulo: sempre passar esses4 além de novas aulas aceitas. Críticas
+finais completas lidas; escrita metadado corrigido explicitamente, original
+preservado; hashes/contextos atuais. Não reaplicar autores-base em aceitos.
+
+Próxima Inglês2f868211: raw1lido e rejeitado por estereótipos US/UK, mistura de
+línguas e inferências religiosas indevidas. Sem autoria principal ainda. Fontes
+abertas: BCrequests,BCinterculturallearning1,BCEnglishes,PurdueWorldEnglishes,
+COEplurilingualism e CEFR2020 pp89/136–138. UNcurriculum403 não lido. Escrever
+conteúdo próprio sobre pragmática, variedades/clarificação e leitura crítica.
+Restantes IDs na seção histórica24. Worker144PID7856,único e bounded,logTemp
+kognos-curriculum-collaboration-v4-batch11-20261115.log. Não parar no checkpoint.
+
+Sem schema/banco/merge/deploy. AGENTSgerado fora de commit. Raiz original
+suja preservada; fetch antes push, nunca force. Helpers respaldados privadamente.
+
+## Histórico — checkpoint 24
 
 CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
 - Lote10 completo16;128novas.657testesapp+6motor,build/lint alterado/leitor128

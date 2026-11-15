@@ -4,7 +4,41 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 24
+## Estado atual — checkpoint 25
+
+Lote 11 iniciado com quatro aulas: Equações, inequações e sistemas; Morfologia
+e classes de palavras; Modernismo: fases e autores; Planejamento, escrita,
+revisão e reescrita. Total de 132 novas aulas nesta etapa. Autoria Codex,
+crítica independente Claude Code/NVIDIA NIM e revisão humana pendente.
+
+Restam 1163 lacunas entre 1512 identidades editoriais. ENEM: 143 aprofundadas,
+753 lacunas. Estudo: 143 aprofundadas, 34 guias e 730 planejadas; índice349.
+O guia histórico de morfologia é preservado com prioridade do novo conteúdo.
+
+- Matemática: domínio antes da simplificação, candidato excluído, sinais de
+  inequações racionais e sistemas 2×2. Teste novo RED→GREEN recalcula raízes,
+  regiões e extremos, determinante e as duas equações.
+- Morfologia: estrutura não é sílaba; flexão, derivação e composição; dez classes
+  tradicionais brasileiras, classificadas em contexto. Meio/meia distingue
+  advérbio invariável e numeral fracionário com concordância.
+- Modernismo: periodização convencional, diversidade de projetos, obras e datas
+  conferidas. Clarice 1943 não foi deslocada para caber no corte de 1945.
+  Exemplos próprios, sem reproduzir obras literárias ou ilustrações.
+- Redação: tarefa, planejamento, rascunho, roteiro reverso, revisão de relações
+  e reescrita comparada. Dados fictícios identificados; sem fórmula universal
+  de parágrafos, minutos ou nota. Leitura em voz alta opcional e acessível.
+  Metadado da crítica corrigido pelo principal: exemplos versus tarefas e
+  numeração de alternativas; parecer original integral preservado.
+
+Verificação: 658 testes app e seis do motor, build e lint dos arquivos alterados
+aprovados. API das132 aulas comparada integralmente. Quatro novas no Chromium,
+12 respostas, explicações e referências expandidas em320/375/768/1440px, sem
+exceções ou rolagem horizontal. Captura inspecionada. Fontes consultadas em
+passagens pertinentes, sem alegar leitura integral de fontes bloqueadas.
+CI24 aprovada43751484051 no head2b699b0. Sem schema/banco, merge ou deploy.
+Prosseguir com Inglês e as12 restantes do lote11, sem tratar rascunhos como prontos.
+
+## Histórico — checkpoint 24
 
 Lote 10 concluído com 16 aulas; 128 novas nesta etapa de autoria. Acrescentadas
 História — Expansão marítima e colonização; Geografia — Hidrografia e recursos

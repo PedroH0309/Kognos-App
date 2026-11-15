@@ -30,5 +30,6 @@
 - [x] Iniciar lote 10 com quatro aulas: 652 testes, build e leitor real aprovados.
 - [x] Ampliar lote 10 para nove aulas: 655 testes, build e leitor real aprovados.
 - [x] Concluir lote 10: 128 novas aulas, 657 testes, build e leitor real aprovados.
+- [x] Integrar primeiro conjunto do lote 11: 132 novas, 658 testes, build e leitor real aprovados.
 - [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
 - [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.

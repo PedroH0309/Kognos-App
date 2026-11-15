@@ -894,3 +894,19 @@ test('genética introdutória usa probabilidade por descendente e frequências e
  assert.equal(choice(2),'2/3 dos sobreviventes são pigmentados; houve sobrevivência diferencial de variantes já presentes no modelo.');
  assert.equal(pigmented/total,2/3);assert.notEqual(pigmented/total,pigmented/(Number(counts[1])+Number(counts[2])));
 });
+
+test('equações e sistemas preservam domínio, sinais de quociente e verificação simultânea',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Equações, inequações e sistemas');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const equation=spec.tasks[0].prompt.match(/\(x\^2 - (\d+)\)\/\(x - (\d+)\) = (\d+)/);assert.ok(equation);
+ const root=Number(equation[2]),rhs=Number(equation[3]);assert.equal(Number(equation[1]),root*root);assert.equal(rhs-root,root);
+ assert.equal(choice(0),'Nenhum número real; conjunto solução vazio.');assert.equal((rhs-root)-root,0,'candidato algébrico zera o denominador original');
+ const inequality=spec.tasks[1].prompt.match(/\(x - (\d+)\)\/\(x \+ (\d+)\) ≥ 0/);assert.ok(inequality);
+ const zero=Number(inequality[1]),pole=-Number(inequality[2]);assert.ok(pole<zero);
+ const belongs=(x:number)=>x<pole||x>=zero;
+ for(const x of [pole-10,pole-0.1,pole,(pole+zero)/2,zero,zero+0.1])assert.equal(belongs(x),x!==pole&&(x-zero)/(x-pole)>=0);
+ assert.equal(choice(1),`x < ${pole} ou x ≥ ${zero}.`);
+ const system=spec.tasks[2].prompt.match(/(\d+)x \+ (\d+)y = (\d+); (\d+)x - y = (\d+)/);assert.ok(system);
+ const a=Number(system[1]),b=Number(system[2]),c=Number(system[3]),d=Number(system[4]),e=Number(system[5]),det=-a-b*d;assert.notEqual(det,0);
+ const x=(-c-b*e)/det,y=(a*e-c*d)/det;assert.equal(a*x+b*y,c);assert.equal(d*x-y,e);assert.equal(choice(2),`x = ${x}; y = ${y}.`);
+});
