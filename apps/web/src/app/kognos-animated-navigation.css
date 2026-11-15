@@ -339,7 +339,7 @@
   margin-top:5px;
  }
  .app-layout.sidebar-collapsed .side-nav{
-  padding-inline:0;
+  padding-inline:4px;
  }
  .app-layout.sidebar-collapsed .app-sidebar .k-nav-expanded{
   margin:0;
