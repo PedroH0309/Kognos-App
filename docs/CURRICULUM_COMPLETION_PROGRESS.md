@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 21
+## Estado atual — checkpoint 22
+
+Lote 10 iniciado com quatro aulas: Matemática — Potências, radicais e notação
+científica; Português — Ortografia, acentuação e pontuação; Literatura —
+Pré-modernismo; Redação — Gêneros e critérios específicos por banca.
+Total de 116 novas nesta etapa; homologação docente humana pendente.
+Restam 1.179 lacunas entre 1.512 identidades. ENEM editorial: 128 aprofundadas
+e 768 lacunas; estudo 128 aprofundadas, 37 guias, 742 planejadas. Índice333.
+
+- Matemática: corrigido símbolo radical chamado de radicando e proibição de
+  somar radicais diferentes. Domínio, módulo da raiz de quadrado, parênteses,
+  expoente negativo e zero explícitos. Teste RED→GREEN recalcula -16, 6√3 e
+  razão de massas 800000, distinguindo valor equivalente e forma normalizada.
+- Português: grafia em contexto, porquês, acentuação com condições e pontuação
+  sintática. A primeira crítica trocou índices e classificou saúde como
+  proparoxítona; nova conferência resolveu corretamente. O principal corrigiu
+  metadados imprecisos sobre terminações e dois erros no distrator D, mantendo
+  parecer original integral. Texto didático correto e hashes atuais.
+- Literatura: Pré-modernismo não é escola uniforme ou rascunho para 1922.
+  Datas de folhetim e livro distinguidas. Microtextos são próprios, sem falsa
+  atribuição a autores históricos, naturalização de estereótipos ou diagnóstico.
+- Redação: gênero, finalidade e leitor orientam composição. Comparação datada
+  ENEM2026, FUVEST2027 e caso anterior Unesp2026. Guia FUVEST oficial aberto;
+  prevê escolher opção na folha. O manual Vunesp2026 foi lido em fonte oficial;
+  não é apresentado como manual2027. PDF INEP502 não alegado como lido.
+  Nenhum texto, questão ou material de cursinho foi copiado como conteúdo.
+
+Verificação: 652 testes da aplicação e seis do motor, 67 testes específicos,
+lint alterado e build aprovados. API das116 comparada; quatro novas abertas
+em Chromium,12respostas/explicações/referências expandidas em320/375/768/1440px,
+sem exceções ou rolagem horizontal; captura inspecionada.
+Português/Literatura/Redação têm autoria principal Codex e crítica Claude/NIM.
+Helper privado agora rejeita aceitação com índices contraditórios, preservando
+rejeição fundamentada de gabarito incorreto; smoke do contrato aprovado.
+CI21 aprovada43744460232, head14e4c7d. Sem schema/banco, merge ou deploy.
+Segue lote10, worker limitado128; catálogo integral ainda em execução.
+
+## Histórico — checkpoint 21
 
 Lote 09 completo com 16 aulas; 112 novas nesta etapa. Acrescentadas História —
 Renascimento e Reformas religiosas; Geografia — Clima, massas de ar e mudanças

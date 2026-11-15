@@ -814,3 +814,16 @@ test('clima compara frequências com limiar fixo sem fabricar atribuição causa
  assert.equal(task.options[task.correctIndex],`A frequência observada é ${(second/first).toFixed(1).replace('.',',')} vezes a inicial; os dados isolados não demonstram a causa da diferença.`);
  const text=spec.sections.map(section=>section.explanation).join(' ');assert.match(text,/2011–2020/);assert.match(text,/1850–1900/);assert.match(text,/infravermelha/);
 });
+
+test('potências e radicais preservam sinais e normalizam contagem com cancelamento de unidades',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Potências, radicais e notação científica');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt.match(/\[\((-\d+)\)\^(\d+) · (\d+)\^(\d+)\]\/((\d+)\^(\d+))/);assert.ok(first);
+ assert.equal(Number(choice(0)),Number(first[1])**Number(first[2])*Number(first[3])**Number(first[4])/Number(first[6])**Number(first[7]));
+ const roots=[...spec.tasks[1].prompt.matchAll(/√(\d+)/g)].map(match=>Number(match[1]));assert.equal(roots.length,3);
+ const reduced=choice(1).match(/^(\d+)√(\d+)$/);assert.ok(reduced);
+ assert.ok(Math.abs(Number(reduced[1])*Math.sqrt(Number(reduced[2]))-(Math.sqrt(roots[0])-Math.sqrt(roots[1])+Math.sqrt(roots[2])))<1e-12);
+ const values=[...spec.tasks[2].prompt.matchAll(/([\d,]+) × 10\^(-?\d+) g/g)].map(match=>Number(match[1].replace(',','.'))*10**Number(match[2]));assert.equal(values.length,2);
+ const normalized=choice(2).match(/^([\d,]+) × 10\^(-?\d+) unidades$/);assert.ok(normalized);const coefficient=Number(normalized[1].replace(',','.'));
+ assert.ok(coefficient>=1&&coefficient<10);assert.ok(Math.abs(coefficient*10**Number(normalized[2])-values[0]/values[1])<1e-9);
+});
