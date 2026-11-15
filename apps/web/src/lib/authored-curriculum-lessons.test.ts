@@ -649,6 +649,37 @@ test('misturas fecham balanço sem diagnosticar causa de déficit nem perder sol
  assert.equal(residue-solute+distillate,total-solute);
 });
 
+test('células convertem milímetros e micrômetros ao calcular ampliação da imagem',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Células e seres vivos');assert.ok(spec);
+ const task=spec.tasks[2],image=Number(task.prompt.match(/imagem de ([\d,]+) mm/)?.[1].replace(',','.')),real=Number(task.prompt.match(/diâmetro real de (\d+) µm/)?.[1]);
+ assert.ok(image>0&&real>0&&task.options&&typeof task.correctIndex==='number');
+ const magnification=image*1000/real;
+ assert.equal(task.options[task.correctIndex],`${magnification} vezes; ampliação, por si só, não garante distinguir estruturas menores.`);
+ assert.notEqual(magnification,image/real);
+});
+
+test('trabalho distingue produtividade por trabalhador de crescimento da produção total',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Sociologia'&&lesson.topic==='Trabalho e transformações produtivas');assert.ok(spec);
+ const task=spec.tasks[2],before=task.prompt.match(/antes: (\d+) peças e (\d+) trabalhadores/),after=task.prompt.match(/depois: (\d+) peças e (\d+) trabalhadores/);assert.ok(before&&after&&task.options&&typeof task.correctIndex==='number');
+ const initial=Number(before[1])/Number(before[2]),final=Number(after[1])/Number(after[2]),growth=Math.round((final/initial-1)*100);
+ assert.ok(initial>0&&final>initial);
+ assert.equal(task.options[task.correctIndex],`De ${initial} para ${final} peças por trabalhador no período: aumento de ${growth}%; isso não mede sozinho esforço, salário ou causa da mudança.`);
+ assert.ok(Math.abs(growth-(Number(after[1])/Number(before[1])-1)*100)>1);
+});
+
+test('relevo e solos calculam perda por área e média ponderada sem igualar erosão a exportação',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Relevo, solos e recursos naturais');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const second=spec.tasks[1].prompt,value=(name:string)=>Number(second.match(new RegExp(`${name} = (\\d+(?:,\\d+)?)`))?.[1].replace(',','.'));
+ const factors=['R','K','LS','C','P'].map(value);assert.ok(factors.every(factor=>factor>0));
+ const loss=factors.reduce((product,factor)=>product*factor,1),reference=value('T');assert.ok(loss<reference);
+ assert.equal(choice(1),`${loss.toFixed(2).replace('.',',')} t/ha/ano; abaixo do valor de comparação dado.`);
+ const third=spec.tasks[2].prompt,zones=[...third.matchAll(/(\d+) ha com perda estimada de (\d+) t\/ha\/ano/g)];assert.equal(zones.length,2);
+ const area=zones.reduce((total,zone)=>total+Number(zone[1]),0),total=zones.reduce((sum,zone)=>sum+Number(zone[1])*Number(zone[2]),0);
+ assert.equal(choice(2),`${total} t/ano no conjunto e média ${total/area} t/ha/ano; não determina o sedimento exportado na saída.`);
+ assert.notEqual(total/area,zones.reduce((sum,zone)=>sum+Number(zone[2]),0)/zones.length);
+});
+
 test('respiração distingue ATP bruto e líquido e soma equivalentes sob rendimento declarado',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Metabolismo e respiração celular');assert.ok(spec);
  const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};

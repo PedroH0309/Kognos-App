@@ -830,6 +830,649 @@ export const authoredCurriculumBatch08:readonly AuthoredLessonSpec[] = [
         "solution": "A relaciona o caminho alternativo de prótons ao desacoplamento entre transporte de elétrons e síntese de ATP. B contradiz o maior consumo observado: bloqueio completo da redução de O2 não o explica. C ignora que consumir O2 e capturar energia em ATP são medidas distintas. D confunde fermentação, que regenera NAD+ sem cadeia respiratória, com fosforilação oxidativa. Os resultados valem para o ensaio hipotético controlado; não determinam rendimento exato nem efeito universal em organismo inteiro."
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Feudalismo e mundo medieval",
+    "objective": "Distinguir vínculos senhoriais, vassálicos e servis na Europa medieval, analisar poderes e representações sociais e explicar transformações sem supor um sistema uniforme ou transição inevitável.",
+    "prerequisites": [
+      "Noções de cronologia histórica e periodização da Idade Média",
+      "Conceito de modo de produção e relações sociais de produção",
+      "Conhecimento geográfico básico da Europa ocidental"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Terra, vínculos e diversidade de condições",
+        "explanation": "Feudalismo é uma categoria construída posteriormente por historiadores e usada com sentidos diferentes: pode destacar vínculos entre senhores e vassalos ou, em análise mais ampla, formas de poder e apropriação do trabalho camponês. Não foi um código único aplicado igualmente a toda Europa medieval. A concentração de recursos fundiários e de poderes locais se articulou a monarquias, costumes e instituições que não desapareceram simplesmente. Senhorio é domínio de direitos e poderes sobre terras e pessoas; vassalagem designa vínculos de fidelidade, auxílio e conselho, frequentemente associados a benefícios ou feudos, sobretudo em meios aristocráticos. Essas relações não são idênticas à servidão camponesa. Campesinato incluía pessoas com condições jurídicas e posses diversas: proprietários, arrendatários, dependentes e servos, com diferenças locais e temporais. Servidão envolve restrições jurídicas e dependência pessoal; não se diagnostica automaticamente apenas pela presença de um pagamento ou de serviço agrícola. Corveia costuma designar trabalho obrigatório devido ao senhor; prestações em produto e cobranças por instalações também aparecem, mas seus nomes, valores e aplicação variavam. Um camponês juridicamente livre podia dever encargos, e um servo não era simplesmente um vassalo militar pobre. Também não se deve impor a todo tempo e lugar uma regra única sobre posse, casamento ou venda. A produção rural era central, mas subsistência não equivale a ausência completa de mercados, moeda ou circulação. Para interpretar uma situação, localize lugar, época, agentes, direitos e obrigações documentados.",
+        "steps": [
+          "Defina qual sentido de feudalismo está sendo utilizado.",
+          "Separe vínculo vassálico de relação senhorial e condição servil.",
+          "Identifique obrigações efetivamente descritas sem inventar estatuto jurídico.",
+          "Considere diversidade regional, temporal e econômica."
+        ],
+        "example": "Quadro autoral para comparação, sem reproduzir documento histórico: uma pessoa promete conselho e auxílio militar a um senhor em relação a um benefício; outra cultiva uma parcela e deve prestações agrícolas. Ambos os vínculos podem envolver terra, mas não são por isso a mesma relação de vassalagem. O estatuto preciso exige informações adicionais.",
+        "pitfall": "Classificar todo camponês como servo ou todo pagamento como servidão, confundir vassalagem com trabalho camponês ou tratar economia rural como isolamento absoluto."
+      },
+      {
+        "level": "intermediate",
+        "title": "Poderes, Igreja, cidades e representações",
+        "explanation": "O poder medieval podia combinar jurisdições e lealdades sobrepostas. Reis, nobres, bispos, mosteiros e comunidades urbanas possuíam recursos e atribuições diferentes. Nem todo senhor cunhava moeda ou exercia todos os níveis de justiça; esses direitos dependiam de concessões, disputas e costumes. Fragmentação não significa ausência total de autoridade régia, nem monarquia medieval equivale ao Estado nacional contemporâneo. No Ocidente latino, instituições eclesiásticas tinham papel religioso, cultural, econômico e político: administravam propriedades, produziam escritos e participavam de relações de poder. O clero não era um bloco sem conflitos, e sua importância na escrita não significa monopólio absoluto de toda cultura ou alfabetização. A representação das três ordens, associando oração, guerra e trabalho a funções complementares, podia justificar hierarquias. Ela é uma visão normativa: não um censo completo, nem prova de que todos aceitassem a posição atribuída. Mulheres, comerciantes, artesãos, pobres e grupos religiosos diversos não se deixam reduzir sem problemas a três caixas fixas. O crescimento de cidades, feiras e redes de comércio em partes da Europa transformou relações sem extinguir de imediato dependências rurais. Autonomias urbanas e associações profissionais resultaram de negociações e conflitos, sem constituir liberdade igual para todos. Contatos com o Mediterrâneo, o mundo islâmico e Bizâncio já existiam antes das cruzadas; elas não criaram o comércio do nada. O mundo medieval era mais amplo que o feudalismo do Ocidente latino, incluindo trajetórias que não cabem naquele modelo.",
+        "steps": [
+          "Identifique quais poderes cada agente possui no caso concreto.",
+          "Analise funções e conflitos internos das instituições religiosas.",
+          "Leia as três ordens como representação social com finalidade.",
+          "Relacione campo, cidade e redes de contato sem ruptura automática."
+        ],
+        "example": "Situação didática autoral: uma abadia aparece como proprietária de terras e produtora de manuscritos. Isso permite discutir suas dimensões econômica e cultural, mas não prova que todos os habitantes fossem monges, que só religiosos soubessem escrever ou que a abadia controlasse toda a região sem oposição.",
+        "pitfall": "Transformar as três ordens em fotografia completa da população, atribuir os mesmos direitos a todo senhor ou inventar desaparecimento imediato da servidão pelo crescimento urbano."
+      },
+      {
+        "level": "advanced",
+        "title": "Crises, negociações e crítica de fontes",
+        "explanation": "Fomes, epidemias, guerras e conflitos sociais marcaram partes da Europa nos séculos XIV e XV com intensidade desigual. A Peste Negra reduziu populações e alterou relações entre terra, trabalho e demanda, mas não tornou automaticamente todos os sobreviventes livres ou prósperos. Em certas regiões, escassez de trabalhadores favoreceu reivindicações por remuneração e condições; autoridades e proprietários reagiram com coerção e regulação. O Estatuto dos Trabalhadores inglês de 1351, após a ordenação de 1349, procurou regular salários e mobilidade, entre outras medidas. Isso revela uma tentativa normativa, não prova de cumprimento integral ou vitória de um único grupo. Revoltas e negociações não tiveram as mesmas causas e resultados em toda parte. A substituição de serviços por pagamentos, o arrendamento, o trabalho assalariado e a persistência de dependências coexistiram. Pagar renda em dinheiro não transfere automaticamente propriedade da terra e não basta para classificar uma sociedade inteira como capitalista. Monarquias ampliaram capacidades fiscais e administrativas por caminhos diferentes; não se deve atribuir o mesmo imposto, moeda ou exército a todos os reinos. Relações servis foram enfraquecidas, mantidas ou reforçadas em diferentes trajetórias; falar em transição exige explicitar lugar, escala e conceito. Ao ler uma fonte, separe o que prescreve, descreve ou reivindica. Identifique autoria, finalidade, data, público e mediação de tradução. Um contrato pode mostrar obrigações de um caso, sem representar todos os contratos; uma lei pode evidenciar conflito sem garantir o resultado desejado. Exemplos inventados para ensinar não são testemunhos de época nem base para estimativas históricas de lucro, produtividade ou mortalidade.",
+        "steps": [
+          "Situe a transformação no lugar e período pertinentes.",
+          "Relacione condições demográficas a respostas políticas e sociais diversas.",
+          "Diferencie mudança de obrigação, posse e forma de trabalho.",
+          "Examine natureza e limites da fonte antes de generalizar."
+        ],
+        "example": "Fonte de referência, resumida em redação própria: na carta de Fulbert de Chartres a Guilherme da Aquitânia, datada de 1020 e disponibilizada no Internet Medieval Sourcebook, há deveres de auxílio e conselho e reciprocidade do senhor. A carta orienta como o vínculo deveria funcionar; não demonstra que toda relação efetiva cumprisse aqueles deveres. Não é transcrição nem contrato inventado.",
+        "pitfall": "Confundir norma com cumprimento, tratar arrendamento como prova suficiente de capitalismo ou calcular lucros históricos com produção, unidades e custos não fornecidos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Quadro didático autoral, sem transcrição histórica: em uma exploração rural, determinada família deve trabalhar alguns dias na reserva do senhor e também entregar parte da colheita. O quadro não informa sua condição jurídica. Qual conclusão é sustentada?",
+        "hint": "Identifique as prestações descritas e o limite dos dados; elas não demonstram sozinhas o estatuto pessoal.",
+        "options": [
+          "A família é necessariamente escravizada e pode ser vendida separadamente da terra.",
+          "A família é necessariamente vassala militar, pois qualquer obrigação pressupõe homenagem.",
+          "Há prestação de trabalho obrigatório e em produto; falta informação para determinar seu estatuto jurídico preciso.",
+          "A família é proprietária plena da reserva e não tem obrigações perante o senhor."
+        ],
+        "correctIndex": 2,
+        "solution": "C identifica trabalho devido ao senhor e entrega em produto sem inventar estatuto jurídico. A atribui escravização e regra de venda ausentes. B confunde prestação camponesa com vínculo vassálico militar. D contradiz os encargos descritos e inventa propriedade plena. A diversidade de condições exige mais dados sobre dependência pessoal, direitos e costumes; conhecer obrigações não autoriza reduzir todo caso à mesma categoria."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Formulação didática autoral: uma representação ideal divide a sociedade entre os que oram, os que guerreiam e os que trabalham, afirmando que cada função sustenta as demais. Qual análise histórica é adequada?",
+        "hint": "Uma representação que atribui funções pode justificar uma ordem social; não precisa ser um levantamento completo das práticas e grupos.",
+        "options": [
+          "É uma visão normativa que pode legitimar hierarquias, sem provar que toda a população caiba integralmente em três grupos.",
+          "É um censo preciso de toda Europa e demonstra que não existiam comerciantes ou artesãos.",
+          "É prova de que todos os camponeses aceitaram voluntariamente cada encargo sem conflitos.",
+          "É um programa de igualdade jurídica contemporânea que elimina privilégios por nascimento."
+        ],
+        "correctIndex": 0,
+        "solution": "A distingue representação ideal de descrição completa e reconhece uma possível função de legitimação. B transforma esquema em censo e apaga grupos. C supõe consentimento e ausência de conflito sem evidência. D projeta igualdade contemporânea sobre um discurso que distribui funções e posições hierárquicas. Analisar a representação não exige tomá-la como verdadeira nem presumir que todos a rejeitassem de modo uniforme."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Síntese autoral baseada no registro do National Archives sobre o Estatuto dos Trabalhadores inglês de 1351: após a peste, autoridades buscaram limitar remuneração, regular deslocamentos e impor emprego a trabalhadores considerados aptos. Qual interpretação preserva o contexto e o limite da evidência?",
+        "hint": "A norma permite examinar objetivos e conflitos; sozinha não prova aplicação integral nem consequência uniforme.",
+        "options": [
+          "A lei prova que a peste melhorou igualmente a vida de todos e aboliu toda dependência.",
+          "O estatuto demonstra que não havia contratação remunerada nem tentativa de controlar salários.",
+          "As medidas provam cumprimento absoluto e salários idênticos em toda Europa por vários séculos.",
+          "A regulação revela reação à disputa por trabalho na Inglaterra, sem demonstrar por si só cumprimento integral ou fim universal da servidão."
+        ],
+        "correctIndex": 3,
+        "solution": "D relaciona o registro a conflitos sobre trabalho no contexto inglês e distingue intenção normativa de resultado. A converte transformação desigual em benefício universal e inventa abolição total. B nega justamente os salários e a regulação descritos. C amplia indevidamente lugar e tempo e presume cumprimento perfeito. A fonte permite estudar tentativas de controle, mas efeitos concretos exigem outras evidências, como registros locais e práticas de contratação."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Relevo, solos e recursos naturais",
+    "objective": "Relacionar relevo, formação e propriedades dos solos, distinguir processos erosivos e interpretar conservação e estimativas de perda sem confundir modelo, medição e exportação de sedimentos.",
+    "prerequisites": [
+      "Noções de intemperismo, clima e vegetação",
+      "Leitura de unidades de área e taxas anuais",
+      "Multiplicação, proporção e média ponderada"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Relevo e pedogênese: processos e diagnóstico",
+        "explanation": "O relevo reúne formas da superfície produzidas por processos internos e externos, como tectonismo, intemperismo, erosão e deposição. Planalto não é sinônimo de terreno perfeitamente plano acima de uma altitude fixa, nem depressão exige estar abaixo do nível do mar: classificações usam posição relativa, formas e processos. Planícies estão associadas ao predomínio de acumulação sedimentar no recorte considerado. As formas atuais podem envolver histórias longas e retrabalhamento recente. Intemperismo altera e desagrega materiais no local; erosão envolve desprendimento e transporte, por água, vento e outros agentes. Pedogênese integra transformações minerais, matéria orgânica, organismos, circulação de água e organização de horizontes. Clima, organismos, relevo, material de origem e tempo interagem; não existe correspondência automática de um clima ou uma rocha a uma única classe de solo. Basalto, floresta e clima úmido não bastam para diagnosticar Latossolo. No SiBCS, a classificação depende de atributos e horizontes diagnósticos, conforme os critérios do sistema. B latossólico, B textural e B nítico são conceitos distintos; não se deve atribuir simplesmente um mesmo B textural a todos os Latossolos, Nitossolos e Argissolos. A cor superficial ou a profundidade isolada também não substitui exame de perfil e análises. Nem todo solo tem uma sequência completa e idêntica A, B, C, e sedimentos recentes podem apresentar estratificação sem que cada camada corresponda a um horizonte pedogenético. Conhecer o ambiente orienta hipóteses, enquanto diagnóstico exige evidências pertinentes.",
+        "steps": [
+          "Diferencie forma de relevo, posição relativa e processo predominante.",
+          "Separe alteração local de remoção e transporte.",
+          "Relacione os fatores de formação sem determinismo de clima ou rocha.",
+          "Use atributos diagnósticos e perfil para classificar, reconhecendo dados ausentes."
+        ],
+        "example": "Cenário autoral: dois pontos sobre a mesma rocha basáltica e no mesmo clima apresentam perfis com espessuras e drenagem diferentes. Não se conclui que ambos pertençam à mesma ordem só pela rocha e pelo clima compartilhados. A comparação pede observar horizontes e atributos diagnósticos de cada perfil, além da posição na paisagem.",
+        "pitfall": "Diagnosticar uma ordem de solo só por basalto, clima ou cor, confundir intemperismo com transporte ou reduzir planalto e depressão a limites fixos de altitude."
+      },
+      {
+        "level": "intermediate",
+        "title": "Propriedades, erosão e conservação de recursos",
+        "explanation": "Textura descreve proporções de areia, silte e argila; estrutura se refere à organização das partículas em agregados. Porosidade, continuidade dos poros, compactação, matéria orgânica e mineralogia influenciam água, ar e resistência à erosão. Um solo argiloso bem agregado pode ter boa infiltração; não se deduz impermeabilidade apenas da textura. Fertilidade também não se determina só pela cor ou pela proporção de argila: requer propriedades químicas, biológicas e a finalidade considerada. Impacto de gotas, escoamento entre sulcos e fluxo concentrado podem remover solo. Sulcos e voçorocas não são etapas obrigatórias de uma mesma sequência em toda vertente; voçorocas podem ser estabilizadas e recuperadas com intervenções adequadas, embora haja perdas difíceis de reverter. Erosão eólica e movimentos de massa têm mecanismos diferentes da erosão hídrica em lâmina e sulcos. Cobertura do solo, rotação, menor revolvimento, cultivo em nível e terraços podem compor conservação, conforme condições locais e projeto. Nenhuma prática garante sozinha ausência de erosão, e valores de redução não devem ser inventados como se fossem resultados de campo. Solo, água, biodiversidade e recursos minerais têm ritmos de reposição diferentes. Formação de solo pode ser lenta diante de perdas aceleradas, limitando sua renovação na escala de vida humana; restaurar cobertura não recompõe instantaneamente todo perfil perdido. Uma bacia conecta usos e efeitos a montante e jusante. Planejar envolve observar infiltração, escoamento, qualidade da água, uso da terra e impactos sociais, sem presumir que uma estimativa única certifique conservação integral.",
+        "steps": [
+          "Analise textura junto com estrutura e poros, evitando diagnóstico por uma variável.",
+          "Identifique o processo erosivo antes de selecionar uma intervenção.",
+          "Combine práticas conforme o sistema e reconheça necessidade de monitoramento.",
+          "Considere escala temporal e conexão entre solo, água e demais recursos."
+        ],
+        "example": "Cenário autoral: duas amostras têm textura argilosa, mas uma apresenta agregados estáveis e poros contínuos e a outra está compactada. A textura semelhante não permite atribuir igual infiltração às duas. Medidas de campo podem testar a diferença; o cenário não fornece taxas reais nem permite escolher uma dose de correção agrícola.",
+        "pitfall": "Tratar todo solo argiloso como impermeável, declarar voçoroca inevitavelmente irreversível ou apresentar prática conservacionista como garantia sem verificar condições."
+      },
+      {
+        "level": "advanced",
+        "title": "Estimativa de perda e limites da escala",
+        "explanation": "Na formulação multiplicativa de USLE/RUSLE usada neste exercício, A = R × K × LS × C × P estima perda média anual por erosão hídrica em lâmina e sulcos para as condições representadas. R descreve erosividade, K erodibilidade, LS comprimento e declividade, C cobertura e manejo, e P práticas de suporte. Adotando R em MJ·mm/(ha·h·ano) e K em t·h/(MJ·mm), com LS, C e P adimensionais, A fica em t/ha/ano. Unidades compatíveis são essenciais; não se combinam valores de sistemas diferentes sem conversão. Os fatores precisam de métodos, calibração e dados locais, não são constantes universais de uma classe de solo ou bioma. LS não cresce necessariamente de forma linear com comprimento nem por uma única lei exponencial de declividade. O software RUSLE2 tem procedimentos mais detalhados; a multiplicação escolar não é uma execução desse programa. O resultado não prevê sozinho uma chuva específica, voçorocas, erosão de margens, vento ou deslizamentos. Tampouco é automaticamente a massa de sedimento entregue na saída de uma bacia: deposição e conectividade alteram o transporte. Para áreas com taxas diferentes, massa anual estimada é soma de taxa vezes área e a taxa média é ponderada por área, não soma ou média simples sem pesos. Comparar A a um valor T fornecido pode servir ao exercício, mas T não é tolerância universal, comprovação de solo saudável ou autorização ambiental. Uma comparação de cenários depende de manter ou alterar explicitamente os fatores e não substitui medição ou planejamento técnico.",
+        "steps": [
+          "Confira processo, formulação e unidades dos fatores.",
+          "Multiplique os valores fornecidos sem inventar calibração regional.",
+          "Para várias áreas, some massas e use média ponderada das taxas.",
+          "Separe estimativa de erosão, comparação dada e exportação real de sedimentos."
+        ],
+        "example": "Experimento algébrico autoral: mantendo R, K, LS e P fixos no modelo multiplicativo, reduzir C à metade reduz A à metade. Isso é relação matemática sob as premissas, não medição de que qualquer prática reduz exatamente metade da erosão real. Para converter essa taxa em massa, ainda é preciso conhecer a área representada.",
+        "pitfall": "Somar taxas de áreas diferentes, aplicar fatores tabelados sem contexto, chamar a conta de simulação RUSLE2 ou igualar perda na vertente a exportação na saída da bacia."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Observação didática autoral: após alteração química de uma rocha, parte do material permanece no local; depois, água de chuva remove partículas e as deposita em uma área mais baixa. Qual análise distingue os processos sem inventar classificação do solo?",
+        "hint": "Alteração no local, remoção e transporte e acumulação podem integrar a história da mesma paisagem.",
+        "options": [
+          "Intemperismo só ocorre quando todo material é transportado para outro lugar.",
+          "Há intemperismo, seguido de erosão e deposição; o relato não determina sozinho a ordem do solo.",
+          "A deposição prova que o solo é Latossolo e que não houve erosão a montante.",
+          "A água transforma automaticamente todo depósito em solo com horizontes A, B e C completos."
+        ],
+        "correctIndex": 1,
+        "solution": "B diferencia alteração no local, remoção e transporte e deposição sem deduzir uma classe pedológica não diagnosticada. A confunde intemperismo com transporte. C atribui Latossolo sem perfil e nega a erosão narrada. D trata deposição como formação instantânea de horizontes completos. A sequência foi dada neste cenário, mas não é uma cronologia obrigatória de todos os solos e paisagens."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cálculo autoral em unidades compatíveis na formulação multiplicativa de RUSLE: R = 6500, K = 0,022, LS = 2,0, C = 0,04 e P = 0,5. Compare a estimativa A ao valor didático T = 10 t/ha/ano, sem tratá-lo como limite universal. Qual resultado corresponde aos dados?",
+        "hint": "Use A = R × K × LS × C × P; compare apenas ao valor fornecido, sem afirmar que isso certifica conservação integral.",
+        "options": [
+          "11,44 t/ha/ano; acima do valor de comparação dado.",
+          "2,86 t/ha/ano; abaixo do valor de comparação dado.",
+          "5,72 t/ha/ano; abaixo do valor de comparação dado.",
+          "22,88 t/ha/ano; acima do valor de comparação dado."
+        ],
+        "correctIndex": 2,
+        "solution": "C: 6500·0,022·2,0·0,04·0,5 = 5,72 t/ha/ano e 5,72 < 10. A omite o fator P = 0,5. B divide o resultado correto por dois novamente. D multiplica o resultado correto por quatro sem apoio nos dados. Esses erros aritméticos não correspondem automaticamente a tipos reais de manejo. Estar abaixo do valor didático dado não comprova ausência de outros processos erosivos nem qualidade integral do solo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Agregação autoral de estimativas médias no mesmo período: zona X tem 10 ha com perda estimada de 4 t/ha/ano; zona Y tem 30 ha com perda estimada de 12 t/ha/ano. Considere cada taxa representativa de sua zona. Sem dados de deposição ou transporte até a saída, qual conclusão é correta?",
+        "hint": "Calcule taxa vezes área em cada zona, some as massas e divida pela área total; exportação na saída exige outras informações.",
+        "options": [
+          "400 t/ano no conjunto e média 10 t/ha/ano; não determina o sedimento exportado na saída.",
+          "400 t/ano no conjunto e média 8 t/ha/ano; é a média simples correta para áreas diferentes.",
+          "640 t/ano no conjunto e média 16 t/ha/ano; basta somar as duas taxas.",
+          "400 t/ano no conjunto e média 10 t/ha/ano; exatamente 400 t/ano necessariamente saem da bacia."
+        ],
+        "correctIndex": 0,
+        "solution": "A: X contribui com 10·4 = 40 t/ano e Y com 30·12 = 360 t/ano; total 400 e área total 40 ha, logo média ponderada 10 t/ha/ano. B usa média simples (4 + 12)/2 = 8, ignorando pesos. C soma taxas e multiplica indevidamente 16 pela área total. D acerta a agregação, mas confunde erosão estimada nas zonas com exportação na saída. Deposição, fontes não representadas e conectividade exigem dados próprios."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Ética, moral e justiça",
+    "objective": "Distinguir descrição de costumes e justificação normativa, comparar critérios de consequências, dever e virtude e analisar princípios de justiça sem aplicar teorias por rótulos ou contagem de beneficiados.",
+    "prerequisites": [
+      "Noções básicas de argumentação filosófica",
+      "Conhecimento geral de história das ideias ocidentais",
+      "Familiaridade com conceitos de norma, valor e dever"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Costumes, justificação e critérios de justiça",
+        "explanation": "Ética e moral possuem usos diferentes e, em muitos textos, aparecem como sinônimos. Uma distinção didática possível chama moral ao conjunto de normas, valores e avaliações de um grupo e ética à reflexão crítica sobre sua justificação. Essa convenção ajuda nesta aula, mas não é uma regra linguística universal nem uma fronteira que todo filósofo sempre utilizou. Uma norma pode ser defendida e descumprida; moral não equivale simplesmente a tudo que as pessoas fazem. Descrever que um costume existe é diferente de justificar que deve ser seguido. Antiguidade, aprovação majoritária e legalidade não bastam sozinhas como demonstração de correção moral: é preciso examinar as razões e os critérios adotados. Isso também não significa que toda norma social seja errada ou que a reflexão se reduza a gosto privado. Uma argumentação apresenta premissas, considera objeções e procura coerência. Justiça pode envolver distribuição de recursos e encargos, reconhecimento, procedimentos, direitos e reparação, conforme a teoria e o problema. Igualdade, necessidade, contribuição e mérito são critérios que precisam de definição e justificativa; não se escolhe um automaticamente pelo nome. Tratar pessoas igualmente pode requerer reconhecer diferenças relevantes, sem tornar qualquer diferença uma justificativa de privilégio. Cumprimento de uma regra e legitimidade da própria regra são perguntas relacionadas, mas distintas. Na leitura filosófica, esclareça o vocabulário empregado pelo autor e se a conclusão é descritiva, normativa ou uma crítica a outro argumento.",
+        "steps": [
+          "Identifique como o texto define ética e moral, sem impor uma convenção universal.",
+          "Separe descrição de prática, norma defendida e justificativa.",
+          "Explicite o critério de justiça relevante e suas razões.",
+          "Examine coerência, consequências e objeções sem reduzir tudo a preferência."
+        ],
+        "example": "Situação autoral: uma biblioteca tem o costume de pedir a devolução de livros em determinada data. Descrever que as pessoas seguem ou não o prazo é uma questão de prática; discutir se o prazo distribui acesso de forma justificável exige razões sobre disponibilidade, necessidade e alternativas. A existência do costume não encerra a avaliação.",
+        "pitfall": "Afirmar que ética e moral nunca podem ser sinônimos, confundir norma com todo comportamento observado ou tratar legalidade como prova suficiente de justiça."
+      },
+      {
+        "level": "intermediate",
+        "title": "Consequências, dever e formação do caráter",
+        "explanation": "Teorias éticas oferecem critérios de justificação que não devem ser confundidos com palavras de aprovação. No utilitarismo clássico de Bentham e Mill, a avaliação se vincula à felicidade ou ao bem-estar dos afetados de modo imparcial. Não é simplesmente fazer o que agrada à maioria nem contar pessoas beneficiadas: intensidade, duração, efeitos adversos e incerteza importam; Mill também distingue qualidades de prazeres. Suas discussões sobre justiça e direitos não se resumem a autorizar qualquer agressão à minoria por popularidade. Na ética de Kant, a máxima da ação deve poder ser querida como lei universal, e a humanidade deve ser tratada como fim, nunca meramente como meio. Isso não proíbe toda cooperação instrumental: ao contratar um serviço, pessoas podem colaborar para fins recíprocos sem reduzir uma delas a mero instrumento. Autonomia não equivale a fazer qualquer coisa desejada, e agir conforme o dever por interesse não é idêntico a agir por dever. Na ética aristotélica, virtudes se desenvolvem por práticas e escolhas orientadas pela razão prática; não são só traços inatos ou obediência mecânica. O meio relativo à situação não é média aritmética nem moderação de toda ação, pois há ações censuradas em si no argumento do autor. Aristóteles distingue formas de justiça, incluindo distribuição e correção, e sua discussão histórica não equivale a um programa contemporâneo de direitos iguais. Comparar teorias exige reconstruir razões e diferenças internas; não significa declarar que toda teoria precisa ser misturada com as demais para valer.",
+        "steps": [
+          "Identifique o fundamento do julgamento, além do rótulo favorável.",
+          "Diferencie bem-estar agregado de votação e contagem de beneficiados.",
+          "Examine máxima, dever e respeito à pessoa no argumento kantiano.",
+          "Relacione escolha e formação de caráter na perspectiva aristotélica."
+        ],
+        "example": "Dilema autoral: uma pessoa cogita prometer ajuda sem pretender cumprir, para obter um favor. Uma análise kantiana examina a máxima de prometer falsamente e o respeito ao outro como agente. Isso é diferente de perguntar apenas se a mentira, nesse caso, gera mais vantagens imediatas para quem a conta. O cenário não reproduz fala de um docente nem julga toda promessa de qualquer contexto.",
+        "pitfall": "Confundir utilidade com maioria, tratar pessoa como fim como proibição de todo serviço ou transformar a virtude aristotélica em média numérica universal."
+      },
+      {
+        "level": "advanced",
+        "title": "Justiça como equidade e deliberação fundamentada",
+        "explanation": "Rawls propõe justiça como equidade para a estrutura básica da sociedade. A posição original e o véu de ignorância são dispositivos hipotéticos de representação, não um contrato histórico ou uma votação real em que todos esquecem todos os fatos. As partes desconhecem aspectos particulares que poderiam favorecer sua posição, mas dispõem de conhecimentos gerais pertinentes. Em sua formulação dos princípios, liberdades básicas iguais têm prioridade; desigualdades sociais e econômicas devem se ligar a posições abertas sob igualdade equitativa de oportunidades e favorecer ao máximo os menos favorecidos, com as condições da teoria. A igualdade equitativa de oportunidades tem prioridade sobre o princípio da diferença. Logo, melhorar a renda dos menos favorecidos não basta para justificar perda de liberdades básicas ou oportunidade apenas nominal. O princípio da diferença não significa igualdade numérica em toda distribuição nem simples maximização da soma social. Na razão pública, Rawls aborda a justificação de questões constitucionais essenciais e de justiça básica em uma democracia pluralista. Não é exigência de banir religião de toda conversa, nem de substituir deliberação por consenso científico; razões e evidências precisam ser articuladas a valores políticos e reciprocidade no âmbito pertinente. Posição original e razão pública têm funções diferentes e não devem virar a mesma receita para toda decisão cotidiana. Em questões de recursos, ambiente ou gerações futuras, esclareça quem é afetado, quais fatos são conhecidos e quais pressupostos normativos sustentam a escolha. Discordância razoável não prova que todas as respostas sejam igualmente justificadas, e evidências empíricas não determinam sozinhas o que deve contar como justo.",
+        "steps": [
+          "Identifique o objeto institucional e o caráter hipotético da posição original.",
+          "Considere liberdades, oportunidades e diferença com suas prioridades.",
+          "Distinga razão pública de contrato hipotético e de censura geral a doutrinas.",
+          "Explicite fatos, critérios e objeções ao justificar uma decisão."
+        ],
+        "example": "Comparação autoral: duas regras institucionais oferecem as mesmas liberdades formais, mas uma mantém barreiras sociais que impedem acesso efetivo a posições. A avaliação rawlsiana não termina na frase as vagas estão abertas: igualdade equitativa de oportunidades exige examinar condições que vão além da proibição nominal de discriminação. Isso não equivale a garantir resultados idênticos a cada pessoa.",
+        "pitfall": "Omitir igualdade equitativa de oportunidades, comprar liberdades com ganho agregado ou aplicar o véu de ignorância como votação real sem conhecimento algum."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário autoral: uma associação defende uma regra apenas porque ela é antiga e amplamente aceita. Considerando a distinção didática adotada nesta aula, qual avaliação é adequada?",
+        "hint": "Reconhecer existência e aceitação de uma norma não substitui examinar sua justificação, e isso não torna toda tradição incorreta.",
+        "options": [
+          "A aceitação prova automaticamente que a regra é justa e dispensa razões.",
+          "Por ser antiga, a regra é necessariamente injusta e deve ser rejeitada sem exame.",
+          "Refletir criticamente consiste apenas em escolher o gosto individual mais intenso.",
+          "O costume é um dado relevante, mas sua justificação pode ser examinada por argumentos e objeções."
+        ],
+        "correctIndex": 3,
+        "solution": "D separa descrição e aceitação de uma norma de sua justificação. A toma popularidade como prova suficiente de justiça. B troca esse erro por rejeição automática de toda tradição. C reduz reflexão a preferência sem razões. A distinção didática não impõe que ética e moral nunca sejam sinônimos em outros textos, nem afirma que uma norma aceita seja sempre incorreta."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Escolha autoral para estudo: uma comunidade compara ampliar uma praça para muitas pessoas com melhoria pequena por pessoa ou adaptar um espaço de convivência para menos pessoas com melhoria maior por pessoa. Não há medidas dos efeitos ou de sua duração. Qual procedimento se aproxima do critério utilitarista, sem inventar qual projeto vence?",
+        "hint": "Quantidade de pessoas é uma informação, mas não fornece sozinha a comparação de bem-estar de todos os afetados.",
+        "options": [
+          "Escolher sempre o projeto com mais pessoas, independentemente da intensidade e dos prejuízos.",
+          "Comparar imparcialmente benefícios e prejuízos esperados, considerando magnitude, duração e incerteza, sem decidir só pelo número de pessoas.",
+          "Escolher o projeto preferido pelo decisor, porque utilidade significa seu ganho particular.",
+          "Dividir recursos igualmente em todo caso, porque utilitarismo exige igualdade numérica de toda distribuição."
+        ],
+        "correctIndex": 1,
+        "solution": "B expressa a orientação às consequências para os afetados sem transformar contagem em resultado suficiente. A ignora magnitude e prejuízos; mais pessoas com ganho pequeno não garantem maior bem-estar total. C confunde imparcialidade utilitarista com interesse exclusivo do decisor. D impõe uma regra igualitária automática que não define o critério utilitarista. Sem dados adicionais, não se deduz qual projeto produz o melhor resultado."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Proposta institucional autoral: uma reforma alega melhorar a renda dos menos favorecidos, mas restringe liberdades básicas de um grupo e mantém acesso a posições aberto apenas no papel, com barreiras de oportunidade. Qual análise é compatível com as prioridades da justiça como equidade de Rawls?",
+        "hint": "O princípio da diferença não substitui a prioridade das liberdades básicas nem da igualdade equitativa de oportunidades.",
+        "options": [
+          "A melhora de renda torna a reforma automaticamente justa, quaisquer que sejam as outras condições.",
+          "A reforma só precisa obter maioria simples; direitos e oportunidades não integram a teoria.",
+          "A alegação de ganho de renda não basta: devem ser respeitadas liberdades básicas iguais e igualdade equitativa de oportunidades, com suas prioridades.",
+          "Justiça exige apenas que todas as pessoas recebam valor monetário idêntico em toda situação."
+        ],
+        "correctIndex": 2,
+        "solution": "C considera a articulação dos princípios e suas prioridades. A transforma o princípio da diferença em autorização para sacrificar condições anteriores. B reduz justiça a decisão majoritária. D confunde a teoria com igualdade aritmética universal. A questão não decide validade jurídica de uma reforma real: examina a coerência do argumento com a concepção filosófica indicada e com os dados hipotéticos fornecidos."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Trabalho e transformações produtivas",
+    "objective": "Distinguir trabalho e emprego, comparar formas de organização produtiva e interpretar tecnologia, controle e produtividade sem determinismo ou inferências além dos dados.",
+    "prerequisites": [
+      "Noções de relações sociais e divisão de tarefas",
+      "Leitura de descrições de processos de produção",
+      "Razão, porcentagem e comparação de períodos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Trabalho, emprego e relações sociais",
+        "explanation": "Trabalho é mais amplo que emprego remunerado. Produzir bens e prestar serviços para outras pessoas ou para uso próprio pode incluir cuidado e tarefas domésticas sem pagamento. Em estatísticas de trabalho, emprego designa especificamente atividades por remuneração ou lucro, segundo definições e período de referência; isso não significa que quem esteja fora dessa categoria não realize trabalho socialmente necessário. Uma pessoa pode combinar atividades remuneradas e não remuneradas. Não se infere desemprego apenas por observar cuidado doméstico: procura e disponibilidade para emprego e outros critérios precisam ser considerados na classificação pertinente. A divisão social do trabalho distribui atividades entre grupos e ocupações; a divisão técnica organiza tarefas dentro de um processo. Elas não são necessariamente independentes de hierarquias de classe, gênero, raça e poder, mas diferenças sociais não podem ser diagnosticadas por um caso sem contexto. Na análise de Marx, força de trabalho é a capacidade de trabalhar, enquanto trabalho é sua atividade efetiva; os meios e objetos de trabalho integram o processo produtivo. Quem possui ou controla esses meios e quem decide ritmos, objetivos e destino dos produtos são perguntas sobre relações sociais, não apenas sobre ferramentas. Trabalho assalariado, produção autônoma, cooperação e atividades não remuneradas podem coexistir. Seu valor social não se resume ao salário recebido. Para analisar uma descrição, identifique atores, recursos, formas de remuneração e controle antes de aplicar um rótulo a toda a sociedade.",
+        "steps": [
+          "Identifique a atividade realizada, inclusive trabalho não remunerado.",
+          "Diferencie emprego e demais formas de trabalho no conceito usado.",
+          "Separe divisão de ocupações e divisão de tarefas no processo.",
+          "Examine controle, propriedade e remuneração com dados suficientes."
+        ],
+        "example": "Situação autoral: duas oficinas usam ferramentas semelhantes, mas em uma os trabalhadores decidem coletivamente sobre produção e distribuição e, em outra, um proprietário contrata mão de obra e dirige o processo. A semelhança técnica não prova identidade das relações de propriedade e controle. O exemplo não informa desempenho ou renda de nenhuma delas.",
+        "pitfall": "Equiparar falta de salário a ausência de trabalho, inferir desemprego sem seus critérios ou explicar relações sociais apenas pelo tipo de ferramenta."
+      },
+      {
+        "level": "intermediate",
+        "title": "Taylorismo, fordismo e produção enxuta",
+        "explanation": "Taylor apresentou na administração científica a análise sistemática de tarefas, seleção e treinamento e maior separação entre planejamento gerencial e execução. Sua proposta de eficiência e cooperação deve ser lida também como formulação de um administrador, não como prova de que todos os trabalhadores se beneficiaram igualmente. Taylorismo não é simplesmente qualquer uso de máquina nem exige por definição uma linha móvel. No fordismo, padronização, peças intercambiáveis, divisão de operações e fluxo contínuo de montagem se articularam à produção em massa. A linha móvel desenvolvida na Ford em 1913 levou o trabalho até postos especializados e contribuiu para controlar a cadência; isso não autoriza dizer que Henry Ford inventou toda divisão do trabalho ou toda montagem já existente. No sistema Toyota, just-in-time busca produzir o necessário no momento e quantidade pertinentes ao fluxo, com coordenação entre etapas. Não significa estoque absolutamente zero em qualquer operação: a própria descrição da empresa prevê estoques mínimos e reposição. Jidoka envolve detectar anormalidades e interromper processos para tratar problemas; não é automação sem participação humana. Essas estratégias podem combinar padronização, equipes e fornecedores, mas autonomia, intensidade e distribuição de ganhos dependem da organização real. Terceirização não é sinônimo de just-in-time e não decorre obrigatoriamente de toda tecnologia. Modelos coexistem, são adaptados e sofrem resistência e negociação; não formam etapas universais que se substituem completamente na mesma data em todos os países e setores.",
+        "steps": [
+          "Identifique planejamento, execução e controle no processo descrito.",
+          "Diferencie análise de tarefas e organização de uma linha móvel.",
+          "Explique just-in-time e jidoka sem extremos de estoque zero e ausência humana.",
+          "Compare modelos como formas adaptáveis, examinando efeitos e conflitos."
+        ],
+        "example": "Cenário autoral: uma etapa retira um pequeno lote da anterior, que repõe o consumido conforme o fluxo; se surgir defeito, a operação pode ser interrompida para investigação. A descrição ajuda a discutir reposição e detecção de problemas sem afirmar que não haja estoque ou que trabalhadores controlem todas as decisões estratégicas.",
+        "pitfall": "Reduzir taylorismo a máquina, atribuir a Ford invenção de toda especialização, confundir just-in-time com estoque sempre zero ou presumir autonomia plena pela existência de equipes."
+      },
+      {
+        "level": "advanced",
+        "title": "Plataformas, produtividade e limites da evidência",
+        "explanation": "Mudanças digitais podem reorganizar distribuição de tarefas, avaliação, remuneração e vigilância. Gestão algorítmica usa procedimentos computacionais para coordenar trabalho e aparece em plataformas e também em empresas tradicionais. Flexibilidade de acesso a tarefas não demonstra ausência de controle; avaliações, metas, preços e acesso a oportunidades podem ser definidos ou mediados por sistemas. A situação jurídica de cada relação exige contexto e regras aplicáveis; não se declara que todo trabalhador de aplicativo tem o mesmo vínculo em todo país. Informalidade, precariedade e trabalho por plataforma são conceitos relacionados em certos estudos, mas não sinônimos automáticos. Indicadores devem informar população, período, definição e método. Produtividade física do trabalho pode ser medida como unidades produzidas por trabalhador ou por hora, com limites de comparabilidade. Produção total maior não implica aumento igual dessa razão: o denominador e a jornada importam. Mesmo com horas comparáveis, uma mudança pode envolver equipamento, materiais, organização, qualidade dos produtos ou composição de tarefas. A razão não mede sozinha esforço pessoal, salário, bem-estar ou causa do resultado. Também não prova que ganhos tenham sido distribuídos igualmente. Na análise marxiana, mais-valia se relaciona ao valor criado pelo trabalho além do valor da força de trabalho; não deve ser identificada automaticamente com qualquer diferença entre receita e salário ou com um indicador físico de produtividade. Tecnologia pode eliminar, modificar e criar tarefas, mas dados de uma unidade em dois momentos não demonstram tendência universal de empregos. Uma análise fundamentada combina indicadores com condições de trabalho, controle, ação coletiva e instituições.",
+        "steps": [
+          "Descreva os mecanismos de coordenação e avaliação, além da etiqueta digital.",
+          "Defina numerador, denominador, período e condições de comparabilidade.",
+          "Calcule produção e produtividade sem confundi-las.",
+          "Separe resultado observado, causa investigada e distribuição dos ganhos."
+        ],
+        "example": "Microcaso autoral: uma plataforma permite escolher horário de conexão, mas distribui tarefas por pontuação e pode alterar prioridades segundo avaliações. Há alguma escolha de horário e também coordenação externa. A descrição não informa renda líquida, vínculo jurídico ou efeitos em toda a população; isso exigiria outros dados e critérios.",
+        "pitfall": "Chamar toda flexibilidade de autonomia plena, converter produção em salário ou explicar causalmente uma mudança só porque dois indicadores variaram juntos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário autoral: Rosa prepara refeições e cuida de uma pessoa de sua própria família sem pagamento por essas atividades. O texto não informa outras ocupações, procura de emprego ou disponibilidade. Qual conclusão é sustentada?",
+        "hint": "A atividade de cuidado pode ser trabalho sem constituir emprego por remuneração; não há dados para classificar toda a situação ocupacional de Rosa.",
+        "options": [
+          "Ela não realiza trabalho, pois nenhuma atividade sem salário pode ser trabalho.",
+          "As atividades descritas são trabalho não remunerado; não se determina apenas por elas toda sua situação de emprego ou desemprego.",
+          "Ela está necessariamente desempregada, mesmo sem informação sobre procura e disponibilidade.",
+          "Toda atividade doméstica deve ser classificada como emprego assalariado formal."
+        ],
+        "correctIndex": 1,
+        "solution": "B reconhece produção de serviços e cuidado sem remuneração e o limite de informação sobre Rosa. A reduz trabalho a salário. C infere desemprego sem os critérios e sem saber se ela exerce outra atividade. D inventa vínculo formal e remuneração que o cenário nega. A distinção estatística não desvaloriza cuidado nem presume que todas as atividades de uma pessoa pertençam à mesma categoria."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Processo autoral: uma fábrica padroniza um produto e usa peças intercambiáveis; o conjunto em montagem se desloca por uma linha e cada posto executa uma operação especializada. Qual análise identifica essa organização sem inventar seus efeitos sociais?",
+        "hint": "Observe a combinação de padronização, divisão de operações e fluxo de montagem; o caso não informa salários ou aceitação dos trabalhadores.",
+        "options": [
+          "É produção artesanal integral por cada pessoa, sem divisão técnica de operações.",
+          "É prova de just-in-time, porque qualquer linha móvel necessariamente elimina estoques.",
+          "É uma organização associada ao fordismo; seus dados não bastam para concluir ganhos iguais ou ausência de conflito.",
+          "É uma estrutura sem controle de ritmo, pois a linha móvel garante autonomia individual ilimitada."
+        ],
+        "correctIndex": 2,
+        "solution": "C identifica a combinação associada ao fordismo e mantém limites da descrição. A contradiz os postos especializados. B toma linha móvel como prova de just-in-time e acrescenta estoque zero. D ignora que a linha pode organizar cadência e relações de controle. A identificação de um modelo não demonstra que as condições de trabalho, salários ou ganhos sejam iguais em toda fábrica que o adote."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Dados didáticos fictícios da mesma unidade, em períodos comparáveis e com a mesma carga horária por trabalhador: antes: 1800 peças e 120 trabalhadores; depois: 2400 peças e 100 trabalhadores. Compare a produtividade física por trabalhador no período. Não há dados de salário, esforço ou decomposição de causas.",
+        "hint": "Divida produção pelo número de trabalhadores em cada período e calcule a variação sobre a razão inicial, não sobre a produção total.",
+        "options": [
+          "De 15 para 24 peças por trabalhador no período: aumento de 60%; prova de que todos os salários subiram 60%.",
+          "De 15 para 24 peças por trabalhador no período: aumento de 33,3%; igual ao crescimento da produção total.",
+          "De 120 para 100 peças por trabalhador no período: queda de 16,7%; basta comparar a quantidade de trabalhadores.",
+          "De 15 para 24 peças por trabalhador no período: aumento de 60%; isso não mede sozinho esforço, salário ou causa da mudança."
+        ],
+        "correctIndex": 3,
+        "solution": "D: antes, 1800/120 = 15 peças por trabalhador; depois, 2400/100 = 24. A variação é (24 − 15)/15 = 0,60, ou 60%. A acerta a razão e a variação, mas inventa aumento salarial. B confunde crescimento da produção total (600/1800 ≈ 33,3%) com crescimento da produtividade. C usa número de trabalhadores no lugar da razão. Com jornadas comparáveis, a diferença continua sem provar intensidade individual, distribuição de ganhos ou qual fator causou a mudança."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Elementos visuais: ponto, linha, cor, forma e textura",
+    "objective": "Reconhecer ponto, linha, cor, forma e textura, explicar suas relações na composição e sustentar interpretações com características e contexto, distinguindo descrição, hipótese e intenção documentada.",
+    "prerequisites": [
+      "Noções básicas de observação visual",
+      "Familiaridade com vocabulário descritivo simples (grande, pequeno, claro, escuro, liso, rugoso)"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Marcas, formas, cores e superfícies",
+        "explanation": "Elementos visuais são recursos para descrever e construir imagens e objetos; diferentes propostas pedagógicas os agrupam de maneiras distintas. Nesta aula destacamos ponto, linha, cor, forma e textura, sem afirmar que toda obra se reduza obrigatoriamente a cinco unidades isoladas. Um ponto visual é uma marca localizada e percebida como unidade em relação ao campo: pode ter tamanho, formato e material. Não se confunde com o ponto geométrico ideal sem dimensão. Uma linha pode ser traço, contorno ou direção sugerida; varia em espessura, continuidade, curvatura e orientação. A metáfora de ponto em movimento ajuda a construí-la, mas não define a origem de toda linha de toda obra. Forma pode designar a organização de uma figura; distinguimos figuras bidimensionais e volumes tridimensionais quando isso ajuda a análise. Contornos podem ser produzidos por traço ou por encontro de áreas de cor. Textura tátil é qualidade física da superfície e textura visual é a aparência representada ou percebida; uma fotografia pode mostrar rugosidade sem que o papel tenha esse relevo. Cor depende de luz, materiais e percepção: superfícies refletem parte da luz e telas também podem emitir luz. Matiz distingue famílias cromáticas, valor descreve claro/escuro e saturação a intensidade cromática no vocabulário empregado. Grafite e imagens sem matizes variados ainda permitem analisar valores. Um mesmo recurso pode atuar em várias dimensões, como linhas repetidas que também constroem textura e áreas tonais.",
+        "steps": [
+          "Descreva a marca em relação à escala e ao suporte.",
+          "Diferencie traço, contorno, figura plana e volume.",
+          "Separe qualidade física e aparência representada da superfície.",
+          "Identifique matiz, claro/escuro e saturação sem reduzir cor apenas a matiz."
+        ],
+        "example": "Estudo autoral descrito por inteiro: em uma folha, pequenas marcas circulares se agrupam perto de uma borda e ficam mais espaçadas na outra. Cada marca pode ser percebida como ponto, e o conjunto permite comparar densidade e distribuição. Se uma fileira orientar o olhar, ela também pode sugerir uma direção linear sem ser um traço contínuo.",
+        "pitfall": "Afirmar que ponto visual não tem tamanho, que todo contorno exige traço ou que uma imagem de rugosidade transfere automaticamente relevo ao suporte."
+      },
+      {
+        "level": "intermediate",
+        "title": "Contraste, organização e sistemas de cor",
+        "explanation": "Os elementos se relacionam na composição. Repetições e variações podem construir ritmo; contraste de tamanho, valor, cor ou textura pode produzir ênfase. Equilíbrio envolve distribuição de pesos visuais e pode ser simétrico, assimétrico ou radial, sem depender só de igualdade numérica de objetos. Figura e fundo são relações perceptivas e podem ser ambíguas; não se reduz todo fundo a área sem informação. Linhas, bordas e alinhamentos podem orientar trajetos de leitura, mas não garantem que toda pessoa olhe os elementos na mesma ordem. Valor e saturação não são a mesma coisa: uma cor muito saturada não é necessariamente clara, e destacar um título pode depender da diferença claro/escuro em relação ao fundo. Cores complementares dependem do sistema e círculo adotados; não se chama amarelo de complementar do azul sem dizer qual modelo está em uso. Mistura de luz em RGB é aditiva: vermelho e verde podem produzir amarelo, e a combinação adequada dos três canais permite branco. Isso não equivale a misturar quaisquer tintas vermelha, verde e azul para obter branco. Pigmentos e impressão envolvem absorção seletiva e modelos subtrativos, com efeitos dos materiais; sistemas didáticos tradicionais de pintura não são idênticos ao RGB. Ao planejar comunicação visual, não dependa exclusivamente da distinção entre dois matizes para informar: texto, forma e posição também podem carregar a diferença. A análise deve considerar suporte, iluminação, reprodução e acesso às informações.",
+        "steps": [
+          "Identifique relações de repetição, contraste e distribuição.",
+          "Diferencie claro/escuro de intensidade cromática.",
+          "Declare o modelo ao falar de mistura e complementaridade.",
+          "Verifique leitura usando também texto, forma e posição."
+        ],
+        "example": "Comparação autoral: a mesma figura retangular aparece em duas composições descritas: em uma, todos os retângulos têm tamanho e intervalo semelhantes; na outra, há um retângulo muito maior entre os pequenos. A primeira favorece repetição regular, e a segunda acrescenta contraste de escala. Não é necessário chamar uma delas de melhor sem saber o objetivo.",
+        "pitfall": "Tomar saturação como claridade, misturar regras de luz e pigmento ou garantir significado e hierarquia universais a uma combinação de cores."
+      },
+      {
+        "level": "advanced",
+        "title": "Expressão, contexto e interpretação fundamentada",
+        "explanation": "Descrever recursos formais é diferente de demonstrar o que uma obra significa ou o que seu autor quis dizer. Uma leitura pode propor relações entre marcas, materiais, espaço e contexto, mas deve indicar quais observações a sustentam. Cores podem adquirir sentidos diferentes em tradições e situações diferentes; não se reduz grandes regiões do mundo a um código fixo de branco, vermelho ou azul. Linhas curvas ou quebradas não revelam automaticamente emoção, idade ou condição de quem as produziu. Marcas irregulares podem resultar de escolha expressiva, ferramenta, suporte ou reprodução. Também não se deduz que toda forma geométrica seja racionalista ou toda forma orgânica pertença a uma escola específica. Textura pode integrar material, técnica e memória, mas superfície envelhecida não prova sozinha data ou narrativa de decadência. Observe se a textura é física, representada ou ambas e como participa da experiência da obra. Em instalações, luz, volume, som e deslocamento podem se articular; uma descrição precisa distingue o que está no cenário do que a interpretação acrescenta. Informações de autoria, materiais e contexto podem confirmar ou limitar hipóteses, sem tornar toda análise uma biografia. Estudos autorais podem variar um elemento predominante para comparar efeitos, reconhecendo que alterar cor pode também mudar contraste e figura-fundo. Quando o acesso se dá por descrição verbal ou reprodução, declare os limites: não afirme ter tocado material, visto imagem ou confirmado intenção que não foi apresentada. Argumentar sobre arte admite leituras diferentes, sem dispensar evidências e sem transformar rótulos de estilo em explicação completa.",
+        "steps": [
+          "Descreva primeiro características presentes ou fornecidas.",
+          "Proponha sentidos e explicite as pistas de cada hipótese.",
+          "Considere contexto e diferenças de suporte e reprodução.",
+          "Separe interpretação possível e intenção ou dado documentado."
+        ],
+        "example": "Microcaso autoral: uma gravura descrita tem traços que oscilam de espessura. Pode-se analisar o contraste dessas marcas e comparar hipóteses de gesto ou ferramenta. Sem informação adicional, não se conclui qual era o estado emocional da pessoa nem qual instrumento exato foi usado. A hipótese deve permanecer proporcional às pistas.",
+        "pitfall": "Atribuir significado único a toda cor, diagnosticar quem desenhou pelo traço ou inventar materiais, imagens e intenções ausentes da descrição."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação autoral: uma fotografia de parede áspera foi impressa sobre papel liso, sem relevo. A imagem mostra sulcos e irregularidades da parede. Qual descrição distingue corretamente aparência e suporte?",
+        "hint": "A representação de uma superfície não implica que o suporte impresso tenha a mesma qualidade física.",
+        "options": [
+          "A aspereza da parede foi fisicamente transferida ao papel, mesmo sem relevo.",
+          "Há textura visual representada; o papel liso não adquire por isso a textura tátil da parede.",
+          "Não há textura visual, pois ela só existe em objetos tridimensionais tocáveis.",
+          "A fotografia deixa de ter forma e valores porque representa uma superfície áspera."
+        ],
+        "correctIndex": 1,
+        "solution": "B diferencia a rugosidade representada da superfície física do papel. A contradiz o suporte liso e confunde representação com transferência de material. C nega textura visual justamente por ela não ser relevo real no suporte. D apaga outros elementos que podem coexistir na fotografia. Uma impressão real pode ter textura própria; no cenário foi explicitado papel liso para isolar a distinção."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cartaz autoral descrito integralmente: há um fundo muito escuro e, no centro, um título grande e muito claro; nenhuma relação específica de matizes é informada. Qual recurso sustenta diretamente o destaque do título na descrição?",
+        "hint": "Claro e escuro dizem respeito ao valor; não invente matizes complementares ou repetição não fornecida.",
+        "options": [
+          "Complementaridade garantida entre azul e amarelo, embora esses matizes não tenham sido informados.",
+          "Ausência de contraste, pois só a saturação poderia produzir destaque.",
+          "Ritmo por repetição regular de vários títulos, mesmo havendo apenas um descrito.",
+          "Ênfase pelo contraste de valor e escala entre título e fundo."
+        ],
+        "correctIndex": 3,
+        "solution": "D usa as pistas fornecidas: título claro e grande em fundo escuro, combinação que pode favorecer ênfase. A inventa matizes e uma relação cromática sem modelo. B nega o contraste claro/escuro e o papel da escala. C cria repetição inexistente no cenário. Não se conclui uma ordem de leitura universal nem que o cartaz esteja completo para qualquer objetivo; a pergunta identifica o recurso descrito."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Instalação didática fictícia sobre memória de um bairro, descrita sem imagem externa: pontos de luz marcam datas; fios conectam cartas em papéis retangulares claros e escuros; alguns papéis são lisos e outros fisicamente enrugados. Qual leitura articula os elementos sem inventar significado obrigatório ou intenção comprovada?",
+        "hint": "Use marcas, conexões, formas, valores e superfícies descritos; diferencie leitura possível de código universal.",
+        "options": [
+          "Pontos, conexões lineares, recortes, valores e texturas podem relacionar registros e diferenças materiais, sustentando uma leitura de redes de memória sem provar uma intenção única.",
+          "Os papéis escuros significam necessariamente luto em toda cultura e comprovam a morte de todas as pessoas que escreveram.",
+          "Os fios demonstram que a instalação trata de uma guerra específica, embora nenhuma guerra tenha sido indicada.",
+          "A rugosidade prova idade exata dos documentos e torna desnecessário qualquer dado de autoria, contexto ou material."
+        ],
+        "correctIndex": 0,
+        "solution": "A reúne ponto, linha, forma, claro/escuro e textura a partir do cenário e qualifica a interpretação como possível. B inventa código universal e evento biográfico. C acrescenta guerra não informada. D transforma aparência física em datação exata sem evidência e dispensa contexto indevidamente. O caráter fictício foi explicitado: não se apresentam cartas reais, documentação de campo ou intenção confirmada de artista existente."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esportes e suas regras",
+    "objective": "Ler regras e distinguir objetivo, pontuação, ações permitidas e estratégia, comparar modalidades e elaborar adaptações pedagógicas explícitas sem confundi-las com regulamento oficial.",
+    "prerequisites": [
+      "Noções de jogo, cooperação e oposição",
+      "Leitura de situações descritas e placares",
+      "Distinção entre acordo escolar e regra de uma competição"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Para que servem regras e como consultá-las",
+        "explanation": "Esportes possuem formas de prática, organização e regulamentação que permitem reconhecer objetivos e comparar desempenhos. As regras delimitam espaço, participantes, materiais, ações, pontuação, tempo e formas de resolver ocorrências; não se resumem a proibir movimentos. Uma regra sobre como marcar ponto é diferente de uma estratégia escolhida para tentar pontuar. No basquetebol, por exemplo, o objetivo é marcar na cesta adversária e impedir pontuação adversária dentro das condições do jogo, enquanto escolher determinada organização defensiva é decisão tática. Regulamentos podem variar entre entidades, categorias e formatos: basquete cinco contra cinco, três contra três e práticas escolares não devem ser tratados como se tivessem todas as mesmas regras. Também não se transfere uma regra do vôlei de quadra ao de praia sem consultar o documento correspondente. Para conferir uma situação, identifique modalidade, versão e contexto, localize a regra e suas exceções e confira se o regulamento da competição acrescenta condições. Esta aula usa referências FIBA 2026 para basquetebol cinco contra cinco e FIVB 2025–2028 para voleibol de quadra, sem substituir os manuais completos. Decisões de arbitragem precisam dos fatos relevantes; uma descrição parcial pode não permitir concluir sobre toda infração. Competir envolve respeito, comunicação e responsabilidade, e fair play não se reduz a aproveitar qualquer vantagem sem considerar regras ou participantes. Discordar de uma decisão não autoriza violência ou discriminação.",
+        "steps": [
+          "Identifique modalidade, categoria, formato e edição da referência.",
+          "Separe objetivo, regra de execução e escolha estratégica.",
+          "Localize condições e exceções antes de aplicar uma regra.",
+          "Use procedimentos de comunicação e resolução de conflito compatíveis com a prática."
+        ],
+        "example": "Comparação autoral: uma equipe decide trocar a marcação individual por outra organização defensiva. Isso é uma escolha de estratégia dentro das regras, não uma alteração automática do valor de uma cesta. Se o grupo escolar mudar o alvo ou a pontuação, deve anunciar que está usando uma adaptação, em vez de atribuí-la à federação.",
+        "pitfall": "Confundir tática com regra, aplicar edição ou formato errado ou presumir que uma adaptação escolar seja regra oficial de toda competição."
+      },
+      {
+        "level": "intermediate",
+        "title": "Comparação de basquetebol e voleibol de quadra",
+        "explanation": "No basquetebol FIBA cinco contra cinco, duas equipes têm cinco jogadores em quadra por vez. A partida regular se divide em quatro quartos de dez minutos; o tempo de jogo não é a duração total no relógio da parede, pois há interrupções e intervalos. Em empate após o quarto período, podem ocorrer prorrogações de cinco minutos até o desempate. Um lance livre convertido vale um ponto; cestas de campo valem dois ou três conforme a zona e condições do arremesso. Avançar conduzindo a bola exige observar regras de drible e passos; nem todo contato é automaticamente falta, mas contatos e condutas fora dos limites podem ser sancionados. Essas noções não equivalem às regras NBA nem resolvem sozinhas todos os casos. No voleibol de quadra FIVB há seis jogadores de cada equipe em jogo. O objetivo é enviar a bola conforme as regras e vencer disputas, chamadas rallies, obtendo pontos. A equipe pode dar até três toques para devolver a bola, além do contato de bloqueio, que não conta nesse limite. Isso não torna legal qualquer forma de reter ou lançar a bola. A partida é vencida por quem ganha três sets. Os sets não decisivos vão a 25 pontos com dois de vantagem; havendo empate de dois sets para cada equipe, o quinto vai a 15, também com dois de vantagem. Pontuação, rodízio e ações de jogadores têm regras e exceções próprias; não se reduz o esporte à ideia de três toques sem examinar o restante. Comparar modalidades exige dizer qual quantidade está sendo contada: jogadores em jogo não são o total inscrito e pontos de um set não são sets vencidos.",
+        "steps": [
+          "Identifique participantes em jogo, objetivo e unidade de pontuação.",
+          "Diferencie tempo de jogo e duração total de um evento.",
+          "No voleibol, separe contatos da equipe, bloqueio, pontos e sets.",
+          "Aplique o critério de vitória ao formato e momento da partida."
+        ],
+        "example": "Situação autoral de voleibol de quadra: um contato de bloqueio é seguido por três toques da equipe e devolução ao outro lado, sem outra infração descrita. O bloqueio não é contado como um dos três toques da equipe nessa regra. A conclusão se limita à contagem; não se inventa que a jogada foi necessariamente legal em todos os demais aspectos.",
+        "pitfall": "Somar o bloqueio ao limite de três toques no vôlei de quadra, encerrar um set com só um ponto de vantagem ou confundir jogadores em quadra com toda a inscrição."
+      },
+      {
+        "level": "advanced",
+        "title": "Adaptação pedagógica, participação e avaliação",
+        "explanation": "Aprender um esporte pode envolver jogos reduzidos e adaptações com propósito definido. Alterar espaço, material, alvo, número de participantes ou condição para pontuar muda demandas e oportunidades. A escolha deve manter objetivos de aprendizagem claros e permitir participação, sem tratar a forma escolar como cópia obrigatória de competição adulta. Antes de começar, registre regras de duração, pontuação, reinício, contatos permitidos, substituições e como resolver dúvidas. Mudar uma regra no meio apenas para favorecer um grupo compromete a compreensão do acordo. Uma adaptação pode preservar parte da lógica de cooperação e oposição e, ao mesmo tempo, modificar uma regra oficial; dizer isso explicitamente é mais rigoroso que inventar autorização da federação. Observar participação exige indicadores concretos, como variedade de pessoas envolvidas nas ações, clareza das orientações e oportunidade de exercer diferentes papéis. Só o placar não mede todo aprendizado, cooperação ou justiça. Escolhas funcionais, como instruções também por escrito, bola mais leve ou ajustes de espaço, podem ser combinadas sem exigir exposição pública de diagnósticos pessoais. Arbitragem, organização e registro também podem ser experiências de aprendizagem, sem substituir permanentemente a participação de alguém por papel periférico imposto. A inclusão não garante ausência de competição nem significa alterar uma regra de modo secreto. Após a prática, compare os efeitos ao objetivo e revise o acordo para a próxima rodada; não conclua que uma modificação funciona igualmente para todos os grupos sem observar resultados.",
+        "steps": [
+          "Defina qual aprendizagem e participação a adaptação pretende favorecer.",
+          "Registre as regras completas antes da rodada e diferencie referência oficial e acordo local.",
+          "Distribua papéis e recursos considerando escolhas funcionais sem exposição pessoal.",
+          "Avalie indicadores além do placar e ajuste o próximo acordo com transparência."
+        ],
+        "example": "Proposta autoral para estudo: em um jogo de alvo com bola leve, o grupo reduz o espaço e compara quantas pessoas participam efetivamente das jogadas em duas rodadas. Isso permite investigar um efeito da mudança sem atribuir resultados reais ainda não observados. A regra adaptada e os critérios de comparação devem ser apresentados antes da atividade.",
+        "pitfall": "Chamar regra inventada de oficial, medir toda aprendizagem só pela vitória ou exigir divulgação de informação de saúde para oferecer uma opção funcional."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário autoral: uma pessoa assiste a um jogo FIBA cinco contra cinco e a uma prática escolar de basquete com outra quantidade de participantes. Conclui que ambos precisam ter exatamente o mesmo regulamento em todos os aspectos. Qual análise é adequada?",
+        "hint": "Identifique formato e contexto antes de transferir regras; uma adaptação explícita não muda automaticamente o regulamento federativo.",
+        "options": [
+          "Toda prática escolar precisa repetir integralmente o regulamento adulto, sem possibilidade de adaptação.",
+          "Qualquer adaptação passa a valer automaticamente em toda competição oficial FIBA.",
+          "Uma regra local elimina a necessidade de informar objetivo, pontuação e ações permitidas.",
+          "É necessário conferir contexto e referência; a escola pode declarar adaptações sem apresentá-las como regulamento oficial."
+        ],
+        "correctIndex": 3,
+        "solution": "D distingue referência oficial e acordo pedagógico. A transforma um formato competitivo em obrigação universal da escola. B atribui alcance federativo a uma decisão local. C elimina justamente as informações necessárias para compreender o jogo. A distinção não autoriza mudar regras de maneira secreta nem diz que toda adaptação seja adequada a qualquer objetivo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Situação autoral sob as regras FIVB 2025–2028 de voleibol de quadra: em um set que não é o quinto decisivo, o placar estava 24–24 e a equipe A venceu o rally seguinte. Sem outra ocorrência, o set termina em 25–24?",
+        "hint": "No set não decisivo, chegar a 25 não basta quando não se alcançou a diferença mínima de dois pontos.",
+        "options": [
+          "Sim, pois qualquer equipe encerra o set exatamente ao marcar 25, mesmo com vantagem de um.",
+          "Não; 25–24 tem vantagem de um, e o jogo continua até alguma equipe atingir dois de vantagem, respeitado o mínimo do set.",
+          "Não; é obrigatório zerar os placares e reiniciar um novo set em 0–0.",
+          "Sim, porque esse rally equivale automaticamente a dois pontos em qualquer empate."
+        ],
+        "correctIndex": 1,
+        "solution": "B: A passa a 25 e B permanece em 24, diferença de um. O set continua; se A ganhar o rally seguinte, por exemplo, 26–24 satisfaz a diferença de dois. A omite a condição de vantagem. C inventa reinício do set e D inventa valor duplo do rally. O quinto decisivo tem mínimo diferente, mas também exige dois pontos de vantagem; o enunciado delimitou set não decisivo."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cenário autoral: para um jogo escolar adaptado, o grupo reduz a altura do alvo e propõe que cada equipe envolva mais participantes na circulação da bola antes de pontuar. Não há dados de resultado ainda. Qual procedimento é mais coerente com aprendizagem e transparência?",
+        "hint": "A adaptação precisa ser identificada, compreendida e avaliada; não se apresenta seu efeito como fato já comprovado.",
+        "options": [
+          "Anunciar as regras adaptadas e critérios de observação antes do jogo, combinar papéis e avaliar depois se ampliaram oportunidades de participação.",
+          "Apresentar a proposta como nova regra FIBA oficial, mesmo sem documento que a estabeleça.",
+          "Mudar a pontuação sem avisar durante o jogo sempre que uma equipe estiver perdendo.",
+          "Concluir antes da prática que a mudança garante participação igual de todas as pessoas em qualquer grupo."
+        ],
+        "correctIndex": 0,
+        "solution": "A torna explícita a adaptação e propõe observar seus efeitos sem inventar resultado. B atribui autoridade oficial inexistente. C altera unilateralmente o acordo e dificulta compreensão e comparação. D transforma objetivo em garantia universal antes de qualquer observação. A avaliação deve considerar participação e compreensão, além do placar, respeitando escolhas funcionais sem exigir exposição pessoal."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Células e seres vivos",
+    "objective": "Explicar a organização celular dos seres vivos, distinguir tipos de células e níveis de organização e interpretar observações e escalas sem transformar limites do método em conclusões indevidas.",
+    "prerequisites": [
+      "Noções de organismo, ambiente e reprodução",
+      "Leitura de descrições de estruturas",
+      "Razão e conversão entre milímetro e micrômetro"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Células, organismos e teoria celular",
+        "explanation": "A célula é uma unidade básica de organização e funcionamento dos seres vivos celulares. A teoria celular reúne a organização dos organismos em células, o papel delas nas funções vitais e a origem de novas células por divisão de células preexistentes nas condições de reprodução celular estudadas. Isso não é uma explicação completa para a origem das primeiras formas de vida. Um organismo unicelular realiza suas funções por uma célula; em organismos multicelulares, células se integram e podem se especializar. Células típicas possuem membrana plasmática, citoplasma, material genético e ribossomos. A membrana delimita e participa de trocas seletivas; citosol é a parte fluida do citoplasma, que inclui estruturas celulares; DNA armazena informação hereditária e ribossomos participam da síntese de proteínas. Especializações podem modificar esse quadro: hemácias maduras de mamíferos, por exemplo, perdem núcleo e outras estruturas, sem transformar a linhagem do organismo em procarionte. Não se deve usar um esquema ideal como se cada célula madura tivesse todas as mesmas partes. Vírus são entidades acelulares que dependem de células hospedeiras para se replicar; não são bactérias muito pequenas. Sua relação com definições de vida envolve critérios discutidos, não devendo a aula apresentar uma lista de características como resposta definitiva a toda questão. Também não se exige uso de oxigênio, movimento visível ou presença de clorofila de todo ser vivo. Para analisar uma amostra, diferencie estrutura, função e o que foi efetivamente observado.",
+        "steps": [
+          "Identifique se a descrição trata de célula, organismo ou entidade acelular.",
+          "Relacione membrana, citoplasma, material genético e ribossomos às funções.",
+          "Diferencie organismo unicelular e célula especializada de um multicelular.",
+          "Reconheça o alcance da teoria celular e limites de esquemas típicos."
+        ],
+        "example": "Exemplo autoral: uma levedura é um organismo unicelular eucarionte, enquanto uma célula de um tecido de uma árvore integra um organismo multicelular. Ter apenas uma célula não define automaticamente uma bactéria, assim como pertencer a uma planta não significa que toda célula precise realizar fotossíntese.",
+        "pitfall": "Equiparar unicelular a bactéria, chamar vírus de célula ou exigir as mesmas estruturas e estratégias metabólicas de todos os seres vivos e células maduras."
+      },
+      {
+        "level": "intermediate",
+        "title": "Tipos celulares e integração de funções",
+        "explanation": "Bactérias e arqueias apresentam organização procariótica: não possuem núcleo delimitado por membrana. Isso não significa ausência de DNA, ribossomos, membrana ou organização interna. Bactérias e arqueias são grupos distintos e não devem ser reduzidos a uma mesma identidade. Células eucarióticas possuem organização com núcleo e compartimentos membranosos em sua descrição típica e ocorrem em animais, plantas, fungos e muitos organismos unicelulares. O núcleo abriga parte principal do DNA celular, mas mitocôndrias e plastídios também têm DNA próprio. Ribossomos produzem proteínas; retículo endoplasmático e complexo de Golgi participam de síntese, processamento e destino de moléculas, com funções distintas. Mitocôndrias participam da respiração e da síntese de ATP em muitas células eucarióticas, inclusive vegetais. Cloroplastos realizam fotossíntese nas células que os têm; não estão em toda célula de toda planta. Parede celular e membrana plasmática também não são a mesma estrutura. Células vegetais típicas apresentam parede com celulose; fungos possuem composição de parede diferente, e animais não apresentam essa parede. A presença de parede não basta para identificar planta. Em organismos multicelulares, diferenciação produz tipos celulares com expressão e funções distintas; isso não implica que toda diferença entre células decorra de DNA totalmente diferente. Tecidos, órgãos e sistemas descrevem níveis de integração em muitos organismos, mas não são uma sequência obrigatória de todo ser vivo. Funções dependem de redes de estruturas, não de organelas isoladas que trabalhem sem trocas ou regulação.",
+        "steps": [
+          "Diferencie núcleo delimitado de ausência de material genético.",
+          "Associe grupos a tipos de organização sem confundir bactérias e arqueias.",
+          "Relacione estruturas e funções, evitando exclusividade falsa de mitocôndrias ou cloroplastos.",
+          "Situe células e níveis de integração conforme o organismo."
+        ],
+        "example": "Comparação autoral: uma célula de fungo e uma célula animal podem ter núcleo e mitocôndrias. A primeira pode apresentar parede, enquanto a segunda não tem parede celular. Essa diferença não torna o fungo uma planta; tipo de organização e composição da parede precisam ser interpretados com outros atributos.",
+        "pitfall": "Dizer que procariontes não têm DNA, que só animais respiram em mitocôndrias ou que toda parede celular identifica uma planta."
+      },
+      {
+        "level": "advanced",
+        "title": "Observação, escala e conclusões proporcionais",
+        "explanation": "Estudar células requer relacionar evidências e limites do método. Microscópios e técnicas de preparação revelam aspectos diferentes; uma imagem não mostra necessariamente tudo que existe no espécime. Coloração, contraste, espessura, resolução e preparo influem no que se distingue. Ampliação é razão entre dimensão da imagem e dimensão correspondente do objeto, medidas em unidades iguais. Resolução é a capacidade de distinguir detalhes próximos; ampliar uma imagem já obtida não cria detalhes que o método não registrou. Para converter, 1 mm corresponde a 1000 µm e 1 µm a 1000 nm. A razão de ampliação não tem unidade de comprimento. Uma barra de escala só acompanha corretamente redimensionamento se imagem e barra forem alteradas juntas de modo compatível; um número de ampliação impresso pode deixar de valer após redimensionar uma reprodução. Não deduza tipo celular apenas pelo tamanho nem conclua ausência de estrutura só porque ela não aparece em uma observação sem técnica apropriada. Distinguir hipótese e confirmação pode exigir outras observações, controles e métodos. Esquemas didáticos também não são fotografias nem reproduzem obrigatoriamente proporções reais. Ao comparar amostras, mantenha critérios de escala e preparo explícitos, evitando atribuir diferença de contraste diretamente a função ou identidade. Evidências sobre células se articulam a reprodução, hereditariedade e metabolismo, mas uma única imagem não determina todos esses processos ou a história evolutiva inteira de um organismo.",
+        "steps": [
+          "Identifique método, preparação e quais estruturas poderiam ser detectadas.",
+          "Converta imagem e objeto para a mesma unidade antes de calcular ampliação.",
+          "Separe aumento de tamanho aparente e resolução de detalhes.",
+          "Formule conclusões compatíveis com a evidência e indique verificações adicionais."
+        ],
+        "example": "Situação autoral: uma micrografia de contraste baixo não permite identificar claramente o núcleo. Isso não demonstra por si que a célula seja procariótica: pode haver limitação de método ou preparação. Outra técnica e controles podem testar a hipótese, sem que se invente o resultado da nova observação.",
+        "pitfall": "Dividir medidas com unidades diferentes, tomar ampliação como resolução ou transformar uma estrutura não observada em estrutura comprovadamente ausente."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição didática autoral: uma população celular aumenta porque células já presentes se dividem, originando novas células. Qual relação com a teoria celular é sustentada, sem extrapolar para a origem da primeira vida?",
+        "hint": "A origem de novas células em processos celulares atuais não é a mesma pergunta histórica sobre as primeiras formas de vida.",
+        "options": [
+          "Toda célula surge espontaneamente de matéria sem organização celular, como a descrição comprova.",
+          "A divisão demonstra que todos os organismos são multicelulares com órgãos.",
+          "A formação de novas células a partir de preexistentes é compatível com a teoria celular, sem resolver sozinha a origem da primeira vida.",
+          "A divisão transforma obrigatoriamente cada célula em vírus acelular."
+        ],
+        "correctIndex": 2,
+        "solution": "C corresponde ao processo narrado e reconhece seu alcance. A contradiz a presença de células anteriores e inventa geração espontânea. B generaliza multicelularidade e órgãos a partir de uma população celular. D confunde reprodução celular com origem de vírus. O cenário é uma descrição autoral, não relatório de um experimento que tenha demonstrado toda história da vida."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cenário autoral: uma célula viva de raiz vegetal apresenta núcleo e mitocôndrias, mas não possui cloroplastos. Em condições compatíveis com respiração aeróbia, qual interpretação é adequada?",
+        "hint": "Mitocôndrias também ocorrem em vegetais, e fotossíntese não é função de toda célula de uma planta.",
+        "options": [
+          "Pode participar de respiração mitocondrial sem realizar fotossíntese nessa célula; a ausência de cloroplastos não a torna animal.",
+          "Não pode produzir ATP por nenhum processo, porque toda célula vegetal depende diretamente de um cloroplasto próprio.",
+          "É obrigatoriamente procariótica, mesmo com núcleo delimitado informado.",
+          "A presença de mitocôndrias demonstra que a raiz é um animal e não parte da planta."
+        ],
+        "correctIndex": 0,
+        "solution": "A separa respiração mitocondrial e fotossíntese e mantém o contexto vegetal. B torna cloroplastos condição de toda produção de ATP e ignora os outros processos. C contradiz a organização nuclear descrita. D atribui mitocôndrias exclusivamente a animais, embora ocorram também em muitas células vegetais, fúngicas e de eucariontes unicelulares. A conclusão não fornece uma taxa de produção de ATP nem afirma que toda célula vegetal tenha a mesma atividade."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cálculo autoral de uma reprodução: uma célula de diâmetro real de 5 µm aparece com diâmetro na imagem de 2,5 mm. Essa reprodução não será redimensionada durante o cálculo. Qual é a ampliação linear e qual limite de interpretação deve ser mantido?",
+        "hint": "Converta 2,5 mm para micrômetros e divida pelo diâmetro real; aumentar tamanho não cria resolução nova.",
+        "options": [
+          "0,5 vez; basta dividir 2,5 por 5 sem converter unidades.",
+          "2500 vezes; o diâmetro real deve ser ignorado no cálculo.",
+          "500 vezes; isso garante distinguir qualquer estrutura menor, independentemente do método.",
+          "500 vezes; ampliação, por si só, não garante distinguir estruturas menores."
+        ],
+        "correctIndex": 3,
+        "solution": "D: 2,5 mm = 2500 µm e ampliação linear = 2500/5 = 500. A ignora a conversão entre milímetros e micrômetros. B usa só o tamanho convertido da imagem, sem dividir pelo objeto. C acerta a razão, mas confunde aumento com resolução ilimitada. A ampliação é adimensional e só se aplica à reprodução e ao tamanho de exibição declarados; outras estruturas dependem de resolução, contraste e preparação."
+      }
+    ]
   }
 ];
 
@@ -1125,6 +1768,235 @@ export const authoredCurriculumBatch08ReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "Desacoplador permite H+ retornar sem ATP sintase → gradiente cai, cadeia acelera (maior O2 consumido), menos ATP capturado. Opção A descreve exatamente isso. B: bloqueio do complexo IV reduziria consumo de O2, não aumentaria. C: pressupõe que O2 consumido ∝ ATP formado, falso sob desacoplamento. D: fermentação lática não ocorre em mitocôndrias nem usa fosforilação oxidativa. Gabarito e explicação de distractores estão corretos."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Feudalismo e mundo medieval",
+    "contentSha256": "68eb801494fcb7e0016cf2f8216ca7ce75f00f8aab6d1ccf026a5a23fe389ac0",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://sourcebooks.web.fordham.edu/sbook1i.asp",
+      "https://sourcebooks.web.fordham.edu/source/fulbert1.asp",
+      "https://openstax.org/books/world-history-volume-1/pages/13-1-the-post-roman-west-in-the-early-middle-ages",
+      "https://openstax.org/books/world-history-volume-1/pages/13-2-the-seljuk-migration-and-the-call-from-the-east",
+      "https://openstax.org/books/world-history-volume-1/pages/16-4-the-long-term-effects-of-global-transformation",
+      "https://www.metmuseum.org/essays/monasticism-in-western-medieval-europe",
+      "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/early-modern/plague/",
+      "https://academic.oup.com/cornell-scholarship-online/book/45931/chapter-abstract/404344245"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A opção C é a única sustentada: o quadro descreve prestações de trabalho (corveia) e produto (renda em espécie) sem informar dependência pessoal, direitos de movimento, herança ou costume local; A inventa escravidão e venda separada da terra; B confunde obrigação camponesa com homenagem vassálica militar; D contradiz os encargos explícitos e inventa propriedade plena isenta."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A opção A identifica corretamente as três ordens como representação normativa com função de legitimação hierárquica, sem pretender exaustão populacional; B transforma esquema ideal em censo factual e apaga comerciantes/artesãos; C pressupõe consentimento unânime e ausência de conflitos sem evidência; D anacronicamente projeta programa igualitário contemporâneo sobre discurso medieval de complementaridade funcional."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção D situa a regulação no contexto inglês pós-Peste Negra, reconhece o conflito salarial e de mobilidade, e distingue intenção legislativa de efetividade real; A universaliza benefício desigual e inventa abolição total de dependências; B nega a própria existência de contratação remunerada que a lei busca controlar; C estende indevidamente espaço (toda Europa), tempo (séculos) e pressupõe cumprimento perfeito."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Relevo, solos e recursos naturais",
+    "contentSha256": "5b6d01311d7ac6feb935b6ce85d1abd911f79681e9991ff47e73a22acf8bd840",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/18306-relevo-do-brasil.html",
+      "https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1176834",
+      "https://www.embrapa.br/en/web/solos/sibcs/horizontes-diagnosticos",
+      "https://www.embrapa.br/en/web/solos/sibcs/propriedades-do-solo",
+      "https://www.nrcs.usda.gov/sites/default/files/2022-10/RUSLE2%20Handbook_0.pdf",
+      "https://www.nrcs.usda.gov/resources/tech-tools/water-erosion-rusle2",
+      "https://www.fao.org/about/meetings/soil-erosion-symposium/key-messages/en/",
+      "https://www.fao.org/land-water/soils/overview/en"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Na tarefa básica, a opção correta (Índice 1) distingue intemperismo, erosão e deposição sem deduzir classe pedológica; as outras opções incorretamente afirmam que intemperismo requer transporte total, atribuem Latossolo sem perfil ou transformam depósito em solo instantaneamente, conforme explicação da solução."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Na tarefa intermediária, a opção correta (Índice 2) resulta do cálculo 6500×0,022×2,0×0,04×0,5 = 5,72 t/ha/ano, abaixo do valor T=10. As outras opções representam erros aritméticos: omissão do fator P, divisão indevida e multiplicação exagerada sem fundamentação."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Na tarefa avançada, a opção correta (Índice 0) apresenta média ponderada de 10 t/ha/ano baseada em 10·4 + 30·12 = 400 t/ano sobre 40 ha; as alternativas erradas usam média simples (8), soma indevida de taxas (16) ou afirmam erroneamente que 400 t/ano necessariamente exportam da bacia."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Ética, moral e justiça",
+    "contentSha256": "5a2b6b7f199991a0a096c5908fbc4b172ff7b930e5517a8e084bdc78f628087c",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.gutenberg.org/files/11224/11224-h/11224-h.htm",
+      "https://www.gutenberg.org/files/5682/5682-h/5682-h.htm",
+      "https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html",
+      "https://classics.mit.edu/Aristotle/nicomachaen.5.v.html",
+      "https://plato.stanford.edu/entries/rawls/",
+      "https://plato.stanford.edu/entries/public-reason/",
+      "https://chicagounbound.uchicago.edu/uclrev/vol64/iss3/1/",
+      "https://liberalarts.tamu.edu/pols/wp-content/uploads/sites/20/2020/09/Rawls-A-Theory-of-Justice-3-22.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "No exercício básico, a alternativa D 'O costume é um dado relevante, mas sua justificação pode ser examinada por argumentos e objeções' é a única que separa descrição de aceitação de uma norma de sua justificação, alinhando-se à distinção central da aula entre prática e norma defendida, ao passo que A confunde aceitação com justiça, B rejeita toda tradição automaticamente e C reduz reflexão a gosto individual."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "No exercício intermediário, a alternativa B 'Comparar imparcialmente benefícios e prejuízos esperados, considerando magnitude, duração e incerteza, sem decidir só pelo número de pessoas' expressa corretamente a orientação utilitarista às consequências para os afetados sem transformar contagem em resultado suficiente, ao contrário de A que ignora magnitude e prejuízos, C que confunde imparcialidade com interesse do decisor e D que impõe igualdade numérica automática."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "No exercício avançado, a alternativa C 'A alegação de ganho de renda não basta: devem ser respeitadas liberdades básicas iguais e igualdade equitativa de oportunidades, com suas prioridades' considera a articulação dos princípios rawlsianos e suas prioridades, ao passo que A transforma o princípio da diferença em autorização para sacrificar condições anteriores, B reduz justiça a decisão majoritária e D confunde teoria com igualdade aritmética universal."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Trabalho e transformações produtivas",
+    "contentSha256": "60399aaa018d450d9e1923be36f74299d1c7939c8893baf32558c437d4685533",
+    "draftMethod": "Autoria e conferência principal pelo Codex com fontes verificadas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://ilostat.ilo.org/blog/work-and-employment-are-not-synonyms/",
+      "https://www.ilo.org/topics-and-sectors/care-economy",
+      "https://www.marxists.org/archive/marx/works/1867-c1/ch07.htm",
+      "https://www.gutenberg.org/cache/epub/6435/pg6435-images.html",
+      "https://www.thehenryford.org/collections/explore/articles/detail/articles/2021/07/22/ford-methods-and-the-ford-shops",
+      "https://global.toyota/en/company/vision-and-philosophy/production-system/",
+      "https://www.ilo.org/publications/algorithmic-management-work-and-its-implications-different-contexts"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A atividade de cuidado sem pagamento configura trabalho não remunerado, mas não basta para determinar situação de emprego ou desemprego de Rosa, pois faltam dados sobre procura e disponibilidade de trabalho; a opção correta reconhece esse limite sem inferir categoricamente."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A organização com linha móvel, padronização e postos especializados é caracteristicamente associada ao fordismo, mas os dados do caso não permitem concluir sobre ganhos iguais ou ausência de conflito entre trabalhadores; a opção correta mantém esse limite analítico."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A produtividade por trabalhador passou de 15 para 24 peças (aumento de 60%), mas esse cálculo sozinho não mensura esforço, salário ou causas da mudança, conforme a lição alerta sobre não confundir produção total com produtividade relativa."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Elementos visuais: ponto, linha, cor, forma e textura",
+    "contentSha256": "bd639a0e38e37c77044c0edf905cd95621ad714488376484d682f2ed7c51bce2",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.getty.edu/education/teachers/building_lessons/elements_art.pdf",
+      "https://www.getty.edu/education/teachers/building_lessons/principles_design.pdf",
+      "https://www.getty.edu/education/k-12-learning/describe-listen-draw/vocabulary-for-describing-an-artwork/",
+      "https://www.nga.gov/educational-resources/elements-art",
+      "https://developer.mozilla.org/en-US/docs/Glossary/RGB"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A resposta correta B distingue textura visual representada da textura tátil do papel liso, evitando a inferência de que imagens de rugosidade transferem automaticamente relevo ao suporte, que é o conceito central e o principal alerta de pitfall da lição sobre marcas e superfícies."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A opção D identifica corretamente que o contraste de valor e escala entre o título claro e grande em fundo escuro sustentam o destaque, sem assumir matizes cromáticos não informados, alinhando-se ao aviso da lição para declarar o modelo ao falar de complementaridade e não confundir saturação com claridade."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A resposta correta A articula uma possível leitura de rede de memória a partir dos elementos descritos (pontos, conexões lineares, recortes, valores e texturas), qualificando-a como interpretativa em vez de definitiva, resistindo aos três alertas de pitfall sobre código cultural universal, dedução biográfica e datação exata sem evidência."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esportes e suas regras",
+    "contentSha256": "d5a4d1866620f26b79ba76b13ce625a0eb49900ce10623766d0666701edd89cb",
+    "draftMethod": "Autoria e conferência principal pelo Codex com fontes verificadas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://about.fiba.basketball/en/our-sport/official-basketball-rules",
+      "https://about.fiba.basketball/en/services/resource-hub/downloads",
+      "https://www.nz.basketball/wp-content/uploads/2026/07/documents-corporate-fiba-official-rules-2026-v1-1.pdf",
+      "https://www.fivb.com/volleyball/the-game/official-volleyball-rules/",
+      "https://www.fivb.com/wp-content/uploads/2025/01/FIVB-Volleyball_Rules2025_2028-EN-v05.pdf",
+      "https://www.unesco.org/en/legal-affairs/international-charter-physical-education-physical-activity-and-sport"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "Na tarefa básica, D distingue o regulamento oficial da adaptação pedagógica declarada. A impõe rigidez universal ao contexto escolar, B atribui alcance federativo a uma decisão local e C elimina informações necessárias para compreender o jogo. A identificação de contexto e referência não autoriza modificar regras secretamente."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Na tarefa intermediária, B aplica a vantagem mínima de dois pontos: 25–24 representa diferença de um e o set não decisivo continua; 26–24 seria um término possível. A ignora a vantagem, C inventa reinício do set e D inventa valor duplo do rally. O quinto decisivo tem mínimo diferente, mas não dispensa a vantagem de dois."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Na tarefa avançada, A anuncia regras adaptadas e critérios antes do jogo, combina papéis e propõe avaliar oportunidades de participação. B atribui autoridade oficial inexistente, C muda unilateralmente o acordo e D garante resultado universal antes de observar. A proposta é pedagógica e não um efeito já comprovado."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Células e seres vivos",
+    "contentSha256": "ad9f6af7a56a41bf5814eb17c19e3162527642e345f35946e56fc3ceea1be055",
+    "draftMethod": "Autoria e conferência principal pelo Codex com fontes verificadas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/4-1-studying-cells",
+      "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+      "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+      "https://openstax.org/books/biology-2e/pages/21-1-viral-evolution-morphology-and-classification",
+      "https://openstax.org/books/biology-2e/pages/1-1-the-science-of-biology"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A alternativa C corresponde à relação sustentada pela teoria celular: novas células a partir de preexistentes, sem afirmar resolver a origem da primeira vida. A opção A defende geração espontânea, contradizendo a presença de células anteriores. A opção B generaliza indevidamente multicelularidade e órgãos a partir de divisão celular. A opção D confunde reprodução celular com origem de vírus, entidades acelulares."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A alternativa A separa corretamente respiração mitocondrial e fotossíntese, mantendo o contexto vegetal, visto que mitocôndrias ocorrem em células vegetais e a ausência de cloroplastos não implica animalidade. A alternativa B incorretamente torna cloroplastos condição única de produção de ATP, ignorando a respiração mitocondrial. A alternativa C contradiz o núcleo delimitado, característico de eucariotos. A alternativa D atribui mitocôndrias exclusivamente a animais, fato falso visto que ocorrem também em muitas células vegetais e fúngicas."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A alternativa D calcula corretamente a amplificação linear: 2,5 mm = 2500 µm, dividindo por 5 µm obtém-se 500 vezes. A alternativa A ignora a conversão de unidades entre milímetros e micrômetros. A alternativa B usa apenas o tamanho da imagem sem dividir pelo diâmetro real. A alternativa C acerta o valor numérico, porém incorretamente afirma que a ampliação garante distinguir qualquer estrutura menor, confundindo aumento com resolução, que depende de método, contraste e preparo."
       }
     ]
   }

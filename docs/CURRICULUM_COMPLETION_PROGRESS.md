@@ -4,7 +4,49 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 17
+## Estado atual — checkpoint 18
+
+Lote 08 completo com 16 aulas; são 96 novas nesta etapa. Últimas sete:
+História — Feudalismo e mundo medieval; Geografia — Relevo, solos e recursos
+naturais; Filosofia — Ética, moral e justiça; Sociologia — Trabalho e transformações
+produtivas; Arte — Elementos visuais: ponto, linha, cor, forma e textura;
+Educação Física — Esportes e suas regras; Ciências — Células e seres vivos.
+Revisão docente humana pendente; o catálogo integral continua em execução.
+
+Restam 1.199 lacunas entre 1.512 identidades. ENEM editorial: 109 aprofundadas
+e 787 lacunas. Lista de estudo: 109 aprofundadas, 41 guias e 757 planejadas.
+Contagens editoriais não certificam habilidades oficiais.
+
+- História: encargos não demonstram isoladamente estatuto servil; removidos
+  documentos fictícios com nomes históricos e cálculos baseados em produção inventada.
+- Geografia: corrigidas classificações de solo por clima/rocha e tolerância universal;
+  teste independente calcula RUSLE 5,72 t/ha/ano e média ponderada 10 t/ha/ano,
+  distinguindo erosão na encosta de sedimento exportado na saída.
+- Filosofia: distinguidas convenções de ética/moral e teorias normativas; Rawls
+  mantém prioridades de liberdades e igualdade equitativa de oportunidades.
+- Sociologia: trabalho não equivale a emprego; produtividade não mede esforço
+  individual nem determina salário. Teste calcula aumento de produtividade de 60%.
+- Arte: textura visual não é necessariamente tátil; valor, saturação e modelos
+  de cor são distintos; interpretação não prova intenção ou diagnóstico pessoal.
+- Educação Física: regras FIBA 2026 e FIVB 2025–2028 com escopo explícito;
+  adaptação pedagógica é identificada e usa escolhas funcionais de acessibilidade.
+- Ciências: vírus não são células; plantas respiram; célula de raiz não exige
+  cloroplasto. Teste calcula ampliação de 500× sem confundir com resolução.
+
+Verificação: 645 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 96 aulas e abriu as sete novas:
+21 questões, explicações e referências expandidas em 320/375/768/1440 px,
+sem exceções ou rolagem horizontal. As verificações dos textos históricos
+permanecem, com prioridade atualizada para as substituições revisadas.
+
+Autoria principal de Trabalho, Esportes e Células pelo Codex; crítica separada
+pelo Claude Code via NVIDIA NIM. As demais têm rascunho do Claude e correções
+principais do Codex. Indisponibilidade do modelo Ultra exigiu Lightning por
+processo, sem mudar a configuração global ou dispensar leitura das críticas.
+CI do checkpoint 17 aprovada (43732469514, head 45569cf). Sem banco/schema/RLS,
+merge ou deploy. Segue o lote 09 com Porcentagem e juros em revisão privada.
+
+## Histórico — checkpoint 17
 
 Lote 08 ampliado para nove aulas; são 89 novas nesta etapa. As cinco últimas:
 Inglês — Modais e condicionais; Espanhol — Inferência e vocabulário em espanhol;

@@ -1,6 +1,79 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 17
+## Estado atual em 15/11/2026 — checkpoint 18
+
+CONTINUAR até completar as aulas, sem encerrar neste checkpoint. PR draft 117.
+Worktree C:/Users/pedro/.codex/worktrees/kognos-quality-20261114; branch
+codex/quality-reliability-20261114. Raiz original tem trabalho do usuário.
+
+- Lotes 03–08 completos, 96 novas. 645 testes + seis do motor, build, lint
+  alterado e leitor aprovados. API 96; últimas sete com 21 respostas e
+  referências em quatro larguras. Preview 3316 contém 96. Índice 313.
+- Lacunas 1199; ENEM 109/787; estudo 109/41/757. Homologação docente pendente.
+- Arquivos privados finais e hashes são a verdade, não reaplicar scripts base.
+  Newton tem 28,8 N (script base errado); Geografia exige refinamento do exemplo.
+- Lote08 completo: ec7605b5 dbf21a8e 84476138 547b99f1 10a4bfef 1b39a7ec
+  c16348f7 0ef210b6 bdb5db0b 7f0fb858 9a137405 dce3680a a907a354 561bf0c8
+  213b533d a90fa732; todos prefixados course-. Integrador reescreve o lote,
+  deve receber TODOS os IDs, nunca subconjunto acidental.
+- Autoria Codex nas três Trabalho/Esportes/Células, crítica Claude separada.
+- Worker próprio v4 PID inicial 19984, limite112, um autor; Lightning por
+  processo. Log Temp/kognos-curriculum-collaboration-v4-20261115.log.
+  Não fechar Claude do usuário/proxy. Helpers v2 são importados pelo crítico.
+- Críticas finais: Temp/kognos-review-final-lightning.py ID. Ler inteiro;
+  aceite não é prova. Verificar texto/contexto pelo readiness helper.
+- Próximo lote09 course-908579c0 Porcentagem e juros: principal pronto, crítica
+  Lightning solicitada; teste RED em Temp/kognos-batch09-math-red.test.ts.
+  Só transportar teste/integrar módulo09 após fechar este checkpoint.
+- course-d975676a Português: draft1 e crítica1 lidos, ambos aceitam absurdos
+  (ausência de sujeitos no céu; implicatura falsa com porque; denotação fixa;
+  bala por notícia). Precisa reescrita principal e fontes verificadas.
+- Demais09: 7774e4cc Literatura; 7e1c2be2 Redação; 1e013a84 Inglês;
+  3a987540 Espanhol; e243247f Física; e296f2d6 Química; 19628dfd Biologia;
+  beb74772 História; e0d9a321 Geografia; 9bfe0da1 Filosofia; bb4de815 Sociologia;
+  09d10671 Arte; f341096e Educação Física; d79458d8 Ciências.
+- Redação: localizar e ler cartilha oficial INEP 2026, sobretudo competência V;
+  não confundir zero da competência com zero de toda redação.
+- Restore next-env só na RAIZ ativa. AGENTS gerado fica fora do commit.
+  Fetch antes de push, ler concorrência, sem force. Sem schema/banco/merge/deploy.
+- CI17 43732469514 success head45569cf; atualizar PR e CI após commit18.
+
+## Histórico — checkpoint 17
+
+Atualização de trabalho após esse commit (15/11, 13:35 local): as sete aulas
+restantes do lote 08 já têm principal-corrected e referências em privado.
+História e Geografia têm crítica aceita, lida e hash/contexto atuais. Filosofia,
+Sociologia, Arte, Educação Física e Ciências aguardam a crítica serial em curso
+na sessão própria (runner kognos-review-final-lightning.py). NÃO integrar só
+porque a estrutura passa. Os três testes novos de Geografia/Sociologia/Ciências
+estão em RED no working tree porque esses módulos ainda não foram integrados;
+o commit publicado 45569cf tem 642 testes aprovados e CI 43732469514 success.
+
+O provedor NIM padrão Ultra passou a falhar por timeout, inclusive em chamada
+mínima. Proxy /health respondeu200 e catálogo NIM200; autenticação nativa do
+Claude está ausente. Não mudar configuração global nem tentar credenciais novas.
+Teste pelo Claude Code com modelo NIM Lightning respondeu JSON corretamente.
+Revisões agora usam nvidia_nim/nvidia/nemotron-3.5-lightning-30b-a3b só por
+argumento de cada processo; não alegar modelo Anthropic. Geo foi aceita por essa
+sessão e deve manter o exemplo básico refinado (comparação de perfis), diferente
+da tarefa de erosão. Runner v3 antigo foi encerrado apenas nos processos próprios.
+Autoria v4 retomada com um worker, PID inicial19984, limite112, log Temp/
+kognos-curriculum-collaboration-v4-20261115.log; prepara o lote09 [96..111].
+
+Sociologia foi escrita pelo Codex, sem usar rascunho paralelo que não chegou;
+draftMethod próprio registrado. Educação Física e Ciências também são de autoria
+principal pelo Codex; antes de integrar, atualizar draftMethod retirando a frase
+crítica ainda pendente SOMENTE após crítica aceita e lida. Arte partiu de draft1
+do Claude, corrigido pelo Codex. Referências FIBA2026 e FIVB2025–2028 conferidas;
+não substituir pelas regras antigas. Exemplos são autorais e distintos das tarefas.
+Helpers finais copiados para private/curriculum-run/resume-helpers. JSON final
+prevalece sobre script base; Geo requer kognos-refine-soil-example.py após base.
+
+Após as seis críticas: integrar TODOS os16 IDs do lote08, regenerar índice,
+medir contagens reais e fixtures, testes focados/full/lint/build, restore só de
+next-env na raiz, preview e leitor das sete novas em quatro larguras; só depois
+documentar checkpoint18, fetch/push e atualizar PR/CI. Continuar lote09 em seguida.
+
 
 Continuar até completar as aulas; não encerrar neste checkpoint. PR 117 draft.
 Sem banco, schema/RLS, merge ou deploy; revisão docente humana pendente.
