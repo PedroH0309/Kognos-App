@@ -768,3 +768,39 @@ test('intervenção ENEM mantém escopo, articulação e zero na competência se
  assert.match(choice(2),/não.*automaticamente.*redação inteira/);
  assert.match(spec.sections.map(section=>section.explanation).join(' '),/não.*garant.*200/);
 });
+
+
+test('trabalho e energia respeitam ângulo, dissipação e fronteiras da potência útil',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Trabalho, energia e potência');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,force=Number(first.match(/força constante de (\d+) N/)?.[1]),distance=Number(first.match(/deslocamento retilíneo de (\d+) m/)?.[1]),angle=Number(first.match(/ângulo de (\d+)°/)?.[1]);assert.ok(force>0&&distance>0&&angle>0);
+ assert.equal(choice(0),`${Math.round(force*distance*Math.cos(angle*Math.PI/180))} J, para o trabalho dessa força.`);
+ const second=spec.tasks[1].prompt,mass=Number(second.match(/massa (\d+) kg/)?.[1]),height=Number(second.match(/desnível de (\d+) m/)?.[1]),g=Number(second.match(/g = (\d+) m\/s²/)?.[1]),dissipation=Number(second.match(/dissipando (\d+) J/)?.[1]);assert.ok(mass>0&&height>0&&g>0&&dissipation>0);
+ const kinetic=mass*g*height-dissipation;assert.ok(kinetic>0);assert.equal(choice(1),`${kinetic} J; aproximadamente ${Math.sqrt(2*kinetic/mass).toFixed(2).replace('.',',')} m/s.`);
+ const third=spec.tasks[2].prompt,load=Number(third.match(/carga de (\d+) kg/)?.[1]),lift=Number(third.match(/altura de (\d+) m/)?.[1]),seconds=Number(third.match(/em (\d+) s/)?.[1]),gravity=Number(third.match(/g = (\d+) m\/s²/)?.[1]),efficiency=Number(third.match(/rendimento global de (\d+)%/)?.[1])/100;assert.ok(load>0&&lift>0&&seconds>0&&gravity>0&&efficiency>0&&efficiency<1);
+ const useful=load*gravity*lift/seconds;assert.equal(choice(2),`${useful} W úteis e ${useful/efficiency} W de entrada.`);assert.notEqual(useful/efficiency,useful*efficiency);
+});
+
+
+test('tabela periódica conta elétrons, compara série isoeletrônica e detecta salto de ionização',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Tabela periódica e propriedades');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const configuration=spec.tasks[0].prompt.match(/1s2 2s2 2p6 3s2 3p4/);assert.ok(configuration);
+ const electrons=[...configuration[0].matchAll(/(\d+)[sp](\d+)/g)].reduce((total,orbital)=>total+Number(orbital[2]),0);assert.equal(electrons,16);assert.match(choice(0),/Z = 16; período 3; grupo 16/);
+ const ions=[{name:'O2−',z:8,charge:-2},{name:'F−',z:9,charge:-1},{name:'Na+',z:11,charge:1},{name:'Mg2+',z:12,charge:2}];
+ for(const ion of ions){assert.ok(spec.tasks[1].prompt.includes(ion.name));assert.equal(ion.z-ion.charge,10);}
+ const increasing=[...ions].sort((a,b)=>b.z-a.z).map(ion=>ion.name).join(' < ');assert.equal(choice(1),increasing+'.');
+ const energies=[...spec.tasks[2].prompt.matchAll(/E[1-4] = (\d+)/g)].map(match=>Number(match[1]));assert.equal(energies.length,4);assert.ok(energies.every(value=>value>0));
+ const jumps=energies.slice(1).map((energy,index)=>energy/energies[index]),valence=jumps.indexOf(Math.max(...jumps))+1;assert.equal(valence,2);assert.match(choice(2),/duas.*valência.*grupo 2/);
+});
+
+
+test('fotossíntese distingue origem do oxigênio e saldo líquido do ciclo de Calvin',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Fotossíntese');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ assert.match(spec.tasks[0].prompt,/água.*18O/);assert.match(choice(0),/O2.*água/);
+ const second=spec.tasks[1].prompt,carbon=Number(second.match(/fixação de (\d+) CO2/)?.[1]);assert.ok(carbon>0&&carbon%3===0);
+ assert.equal(choice(1),`${carbon/3} G3P líquidos, ${carbon*3} ATP e ${carbon*2} NADPH no modelo.`);
+ assert.match(choice(2),/CAM.*separação temporal/);
+ assert.match(spec.sections.map(section=>section.explanation).join(' '),/não.*somente.*noite/);
+});

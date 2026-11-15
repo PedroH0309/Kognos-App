@@ -4,7 +4,49 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 19
+## Estado atual — checkpoint 20
+
+Lote 09 ampliado para nove aulas; são 105 novas nesta etapa. Últimas cinco:
+Inglês — Pronomes, conectores e relações semânticas; Espanhol — Cognatos e
+falsos cognatos em espanhol; Física — Trabalho, energia e potência;
+Química — Tabela periódica e propriedades; Biologia — Fotossíntese.
+Homologação docente humana pendente; o catálogo integral continua em execução.
+
+Restam 1.190 lacunas entre 1.512 identidades. ENEM editorial: 118 aprofundadas
+e 778 lacunas. Lista de estudo: 118 aprofundadas, 37 guias e 752 planejadas.
+As contagens são unidades editoriais, sem certificação de habilidades oficiais.
+
+- Inglês: removidos frase incompleta, provided that classificado como concessivo
+  e distinção inventada entre thus/therefore. Referência contextual, they singular,
+  posse/reflexividade e condições não confirmadas distinguidos.
+- Espanhol: não há tradução automática por semelhança. RAE registra usos que
+  invalidam proibições absolutas sobre carpeta, oficina e suceso. Criticou-se
+  também a confusão entre parentesco etimológico e falso amigo em contexto.
+- Física: teste independente calcula trabalho projetado de 100 J, energia
+  cinética de 80 J e 8,94 m/s, potência útil 800 W e entrada 1000 W. Sistema,
+  referencial, dissipação, potência média e rendimento têm hipóteses explícitas.
+- Química: teste conta 16 elétrons, compara quatro íons isoeletrônicos e
+  identifica salto depois da segunda ionização num modelo didático. Tendências
+  têm exceções; raios operacionais e sinais de afinidade não são confundidos.
+- Biologia: O2 deriva da água; Calvin tem saldo líquido, não todos os
+  intermediários disponíveis. Teste calcula 2 G3P, 18 ATP e 12 NADPH para
+  seis CO2; CAM temporal e C4 espacial típicos não dispensam Calvin.
+
+Verificação: 650 testes da aplicação e seis do motor, 50 testes específicos,
+lint alterado e build aprovados. API das 105 comparada; cinco novas abertas
+em Chromium com 15 respostas, explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal. Índice 322.
+
+Espanhol, Física, Química e Biologia têm autoria principal Codex e crítica
+separada Claude Code/NIM. Não se atribui um rascunho não utilizado ao Claude.
+Em Espanhol, corrigidos pelo principal erros do parecer (repetição inexistente,
+transcrições e relação falsa de distratores), com original integral preservado.
+Helpers privados agora rejeitam parecer incompleto ou incoerente antes de
+salvar como final, sem diminuir exigências de conteúdo; smoke de contrato passou.
+CI19 aprovada (43739422221, head6684943). Sem schema/banco, merge ou deploy.
+Seguem História e as outras seis disciplinas do lote 09.
+
+## Histórico — checkpoint 19
 
 Lote 09 iniciado com quatro aulas: Matemática — Porcentagem e juros;
 Português — Semântica e figuras de linguagem; Literatura — Parnasianismo

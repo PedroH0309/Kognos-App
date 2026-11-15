@@ -1,6 +1,78 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 19
+## Estado atual em 15/11/2026 — checkpoint 20
+
+CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
+Worktree C:/Users/pedro/.codex/worktrees/kognos-quality-20261114; branch
+codex/quality-reliability-20261114; PR117 draft. Raiz original tem trabalho usuário.
+
+- Lotes03–08 completos,09nove. Total105 novas. 650 testes + seis do motor,
+  50 específicos, build/lint/leitor aprovados. API105; cinco novas15respostas,
+  quatro larguras/referências. Preview3316/fixtures105; índice322.
+- Lacunas1190, ENEM118/778, estudo118/37/752. Homologação humana pendente;
+  sem banco/schema/RLS/merge/deploy. CI19 43739422221 success head6684943.
+- Integrador09 reescreve módulo: TODOS os nove IDs obrigatórios:
+  course-908579c0 course-d975676a course-7774e4cc course-7e1c2be2
+  course-1e013a84 course-3a987540 course-e243247f course-e296f2d6 course-19628dfd.
+- Próximos09[105..111]: course-beb74772 História Renascimento e Reformas
+  religiosas; course-e0d9a321 Geografia Clima, massas de ar e mudanças climáticas;
+  course-9bfe0da1 Filosofia Filosofia política e democracia; course-bb4de815
+  Sociologia Estado, poder e cidadania; course-09d10671 Arte Perspectiva e
+  composição visual; course-f341096e EdFísica Esportes coletivos e individuais;
+  course-d79458d8 Ciências Corpo humano e saúde.
+- História draft1 LIDO integralmente. Crítica1 ainda não chegou na última leitura;
+  worker passou a tentativa2 por erroJSON. Nenhum principal pronto. Corrigir:
+  poema Petrarca As Três Cordas sem fonte/cartasLaura; humanismo secular como
+  regra; Trento fundando jesuítas (aprovados1540, antes de1545); HenriqueVIII
+  tratado imediatamente luterano; Augsburgo obrigando todos sem exceções;
+  cronologia revolução1688 no séculoXVIII; narrativa linear de tolerância.
+- Fontes História abertas: OpenStax world-history-volume-2/5-1-the-protestant-
+  reformation; LOC https://wwws.loc.gov/exhibits/vatican/humanism.html;
+  Parliament Act of Supremacy1534; Newberry https://dcc.newberry.org/?p=18521.
+  Hanover1559 e fontes primárias de Trento ainda precisam leitura pertinente.
+- Espanhol/Física/Química/Bio autoria principal Codex, crítica Claude separada.
+  Pareceres corrigidos explicitamente pelo principal preservam originais;
+  não reaplicar scripts base nem afirmar correção principal feita pelo Claude.
+- Helper final privado exige3questões em ordem, reasoning>=80, concepts>=3,
+  scope>=80, decisão coerente; salva incompletos e tenta até3vezes. Wrapper
+  Lightning atualizado para _reviewModel. Não afeta configuração global.
+- Worker próprio v4 raizPID19984, limite112, um autor; log Temp/kognos-
+  curriculum-collaboration-v4-20261115.log. Não matar usuário/proxy. Ao acabar
+  limite112, ampliar próximo lote deliberadamente, sem reduzir qualidade.
+- Helpers Temp respaldados em private/curriculum-run/resume-helpers. Restore
+  next-env só na RAIZ ativa. AGENTS gerado fora do commit. Fetch/preservar
+  concorrência antes de push, sem force. Atualizar PR/CI após commit20.
+
+## Histórico — checkpoint 19
+
+Trabalho local posterior ao commit19 (CI19 43739422221 success, head6684943):
+- Módulo09 já ampliado localmente para oito aulas: quatro publicadas + Inglês,
+  Espanhol, Física e Química. Total104 LOCAL, ainda sem novo índice/build/leitor.
+  Preview3316 e fixtures permanecem100, NÃO executar leitor com fixtures novas
+  antes de rebuild correspondente.
+- Física/Química têm testes RED→GREEN específicos. Biologia Fotossíntese
+  course-19628dfd principal pronto, crítica sessão93926 pendente de leitura;
+  teste RED já no agregador, portanto suíte atual falha até integrar Biologia.
+- Após crítica Bio aceita e lida, integrador09 com TODOS os nove IDs:
+  908579c0 d975676a 7774e4cc 7e1c2be2 1e013a84 3a987540 e243247f e296f2d6
+  19628dfd (cada um com course-). Index/metrics/fixtures, focused50, full650,
+  build/lint e novo leitor105 com cinco aulas/15MCQ/4widths; contagens confirmar.
+- Espanhol, Física, Química e Biologia são autoria principal Codex independente;
+  não alegar rascunho Claude usado. Crítica separada via ClaudeCodeNIMLightning.
+- Espanhol crítica omitiu2questões duas vezes, depois3respondidas com erros
+  de transcrição, alegação de exemplo repetido e relaçãofalsa de distractores.
+  Correções principais documentadas, original integral preservado. Aula e
+  índices2/0/3 não alterados. Versão final informática, nunca reaplicar antiga.
+- Crítico helper Temp/kognos-review-final.py agora exige3questões completas,
+  índices em ordem, justificativas>=80, conceitos>=3 e decisão coerente com
+  issues; inválidos preservados em principal-incomplete-review e retries3.
+  Cache também rejeita incompletos. WrapperLightning ajustado para _reviewModel.
+  Smoke isolado aprovou caso válido/rejeitou incompleto/inconsistente/duplicado.
+- Helpers novos e alterações copiados a private/curriculum-run/resume-helpers.
+- Próximo História course-beb74772 está em autoriaworker. Fontes primárias
+  encontradas: OpenStax world-history-volume-2/5-1-the-protestant-reformation,
+  LOC exhibits/vatican/humanism.html, Parliament Act of Supremacy1534 e
+  Hanover history/texts/engref/er79.html (1559). Ainda não autoradas pelo principal.
 
 CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não encerrar neste checkpoint.
 Worktree C:/Users/pedro/.codex/worktrees/kognos-quality-20261114; branch
