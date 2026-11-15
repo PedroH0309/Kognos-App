@@ -300,3 +300,61 @@ test('evidências distinguem contagem absoluta e taxa quando a base de participa
  assert.equal(task.options[task.correctIndex],`A taxa caiu de ${initialRate}% para ${finalRate}%, diferença de ${initialRate-finalRate} pontos percentuais, enquanto o total de casos aumentou.`);
  assert.notEqual(initialRate-finalRate,100*(initialRate-finalRate)/initialRate);
 });
+
+test('eletricidade cotidiana separa série, fator de potência e rendimento sem contar perdas duas vezes',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Eletricidade cotidiana');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt;
+ const voltage=Number(first.match(/fonte de (\d+) V/)?.[1]),resistors=first.match(/de (\d+) Ω e (\d+) Ω/);assert.ok(resistors);
+ const resistance=Number(resistors[1])+Number(resistors[2]),current=voltage/resistance;
+ assert.equal(choice(0),`${current} A e ${current*Number(resistors[1])} V.`);
+ const second=spec.tasks[1].prompt;
+ const rms=Number(second.match(/eficaz de (\d+) V/)?.[1]),apparent=Number(second.match(/aparente de (\d+) VA/)?.[1]),factor=Number(second.match(/fator de potência (?:de )?(\d+(?:,\d+)?)/)?.[1].replace(',','.')),duration=Number(second.match(/Em (\d+) h/)?.[1]);
+ assert.ok([rms,apparent,factor,duration].every(value=>value>0&&Number.isFinite(value)));
+ const active=apparent*factor;
+ assert.equal(choice(1),`${apparent/rms} A e ${active*duration/1000} kWh.`);
+ assert.notEqual(apparent/rms,active/rms);
+ const third=spec.tasks[2].prompt,decimal=(pattern:RegExp)=>Number(third.match(pattern)?.[1].replace(',','.'));
+ const power=decimal(/de ([\d,]+) kW/),hours=decimal(/por (\d+) h/),days=decimal(/durante (\d+) dias/),efficiencyA=decimal(/útil de (\d+)%/)/100,efficiencyB=decimal(/rendimento de (\d+)%/)/100,price=decimal(/R\$ ([\d,]+)\/kWh/);
+ assert.ok([power,hours,days,efficiencyA,efficiencyB,price].every(value=>value>0&&Number.isFinite(value)));
+ const inputA=power*hours*days,useful=inputA*efficiencyA,inputB=useful/efficiencyB,saving=(inputA-inputB)*price;
+ assert.equal(choice(2),`${inputB} kWh e R$ ${saving.toFixed(2).replace('.',',')}.`);
+ assert.equal(inputB*efficiencyB,useful);
+ assert.notEqual(inputA,inputA/efficiencyA);
+});
+
+test('ecologia aplica eficiências sucessivas fornecidas, sem impor regra universal de dez por cento',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Ecologia e impactos ambientais');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const initial=Number(task.prompt.match(/([\d.]+) kJ/)?.[1].replaceAll('.',''));
+ const rates=[...task.prompt.matchAll(/(\d+)%/g)].map(match=>Number(match[1])/100);
+ assert.equal(rates.length,2);assert.ok(initial>0);
+ const final=rates.reduce((energy,rate)=>energy*rate,initial);
+ assert.equal(task.options[task.correctIndex],`${final} kJ por metro quadrado por ano.`);
+ assert.notEqual(final,initial*.1*.1);
+ assert.notEqual(final,initial*rates[1]);
+ assert.match(spec.sections[1].explanation,/não é reciclada/);
+ assert.match(spec.sections[2].explanation,/nem toda exótica se torna invasora/);
+});
+
+test('soluções conservam quantidade analítica e usam volume final nas conversões e misturas',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Soluções e concentração');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,mass=Number(first.match(/(\d+) g de soluto/)?.[1]),volume=Number(first.match(/de (\d+) mL/)?.[1]);
+ assert.ok(mass>0&&volume>0);
+ assert.equal(choice(0),`${mass/(volume/1000)} g/L e ${100*mass/volume}% m/v.`);
+ const second=spec.tasks[1].prompt,grams=Number(second.match(/([\d,]+) g de NaCl/)?.[1].replace(',','.')),molarMass=Number(second.match(/([\d,]+) g\/mol/)?.[1].replace(',','.')),litres=Number(second.match(/de (\d+) mL/)?.[1])/1000;
+ assert.ok(grams>0&&molarMass>0&&litres>0);
+ const analytical=grams/molarMass/litres;
+ assert.equal(choice(1),analytical.toFixed(3).replace('.',',')+' mol/L.');
+ assert.notEqual(analytical,analytical*2);
+ const third=spec.tasks[2].prompt,parts=[...third.matchAll(/(\d+) mL de solução(?: aquosa)? de NaCl a ([\d,]+) mol\/L/g)].map(match=>({volume:Number(match[1])/1000,concentration:Number(match[2].replace(',','.'))}));
+ assert.equal(parts.length,2);
+ const finalVolume=Number(third.match(/final informado de (\d+) mL/)?.[1])/1000;
+ const totalMoles=parts.reduce((sum,part)=>sum+part.volume*part.concentration,0),concentration=totalMoles/finalVolume;
+ assert.equal(choice(2),concentration.toFixed(3).replace('.',',')+' mol/L.');
+ assert.ok(finalVolume>parts.reduce((sum,part)=>sum+part.volume,0));
+ assert.notEqual(concentration,parts.reduce((sum,part)=>sum+part.concentration,0)/parts.length);
+ const options=spec.tasks[2].options!;
+ options.forEach((option,index)=>{if(index!==spec.tasks[2].correctIndex)assert.ok(Math.abs(Number(option.split(' ')[0].replace(',','.'))-concentration)>1e-9);});
+});

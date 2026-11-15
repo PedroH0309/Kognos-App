@@ -1,4 +1,37 @@
-# Retomada após pausa solicitada pelo usuário
+# Continuidade do catálogo — execução retomada
+
+## Estado atual em 15/11/2026 — checkpoint 8
+
+A pausa anterior foi revogada pelo usuário. A execução continua. Os registros
+abaixo desta seção descrevem a pausa histórica e foram superados por este estado.
+
+- Lotes 03/04: 16 aulas cada; lote 05: dez; total desta etapa: 42 aulas.
+- 621 testes da aplicação + seis do motor, lint alterado e build aprovados.
+- API de todas as 42 aulas comparada; seis novas aulas abertas no leitor público,
+  18 respostas, explicações e referências expandidas em quatro larguras aprovadas.
+- Restam 1.253 lacunas. ENEM editorial: 59 aprofundadas e 837 lacunas.
+- Revisão docente humana pendente. Sem merge, deploy, publicação no banco ou
+  alteração de schema/RLS. `legacy/` permanece intacto.
+- Geografia — Urbanização e globalização (`course-8a0ee99e`): versão corrigida e
+  crítica final aceitas em arquivos privados; falta ler a crítica inteira,
+  acrescentar teste de proporção urbana, integrar e verificar.
+- Depois: Filosofia `course-47f820f7`, Sociologia `course-0e21cfd0`, Arte
+  `course-e176a6df`, Educação Física `course-130d1225`, Ciências `course-a254bbd8`.
+- Preview 3316 contém o checkpoint 8. Parar apenas esse processo antes de build.
+- A fila Claude Code foi retomada com dois workers e ignora arquivos de versão
+  principal. O helper de crítica agora invalida cache por conteúdo e contexto
+  editorial, preservando as críticas anteriores. Backups privados atualizados.
+
+IDs atuais completos do lote 05 para integração (reescreve o arquivo inteiro):
+`course-3c1c6438 course-e4a5aa54 course-c5049767 course-0a23ce3d course-2b490f5f course-a73beb78 course-e752d495 course-e7200af0 course-67789452 course-09d3e70e`.
+
+O patch privado da pausa é antigo: não reaplicá-lo. Preservar o trabalho particular
+no diretório original. Detalhes verificados em `docs/CURRICULUM_COMPLETION_PROGRESS.md`.
+
+## Registro histórico da pausa — superado pelo estado atual
+
+Retomada autorizada pelo usuário em 15/11/2026. O checkpoint abaixo registra a
+pausa anterior; a execução do catálogo foi retomada a partir dos arquivos salvos.
 
 Em 14/11/2026 à noite (Brasil), o usuário pediu para dormir e continuar no dia
 seguinte. A fila Claude Code, as críticas em andamento e o servidor de preview

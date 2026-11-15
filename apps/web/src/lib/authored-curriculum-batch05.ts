@@ -367,6 +367,558 @@ export const authoredCurriculumBatch05:readonly AuthoredLessonSpec[] = [
         "correctIndex": 3
       }
     ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Vocabulário contextual e cognatos",
+    "objective": "Usar semelhanças lexicais, estrutura da frase e pistas discursivas para interpretar vocabulário em inglês, distinguindo falsos amigos, polissemia e limites da inferência sem transformar traduções em equivalências universais.",
+    "prerequisites": [
+      "Leitura de frases simples em inglês",
+      "Noções de substantivo, verbo, adjetivo e advérbio",
+      "Identificação de negação, contraste e informação explícita"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Semelhança de palavras como hipótese de leitura",
+        "explanation": "Na leitura em inglês, palavras próximas de formas portuguesas podem oferecer pontos de apoio: information, cultural, natural e different permitem levantar hipóteses de sentido em muitos contextos. Isso não significa que toda aparência semelhante garanta tradução idêntica. Em sentido linguístico, cognatos se relacionam à origem das palavras; no ensino de leitura, fala-se também em cognatos transparentes e falsos cognatos para discutir semelhanças úteis ou enganosas. É importante não confundir parentesco histórico com identidade de todos os sentidos atuais. A tarefa prática é verificar a palavra na frase. Terminações como -tion e -al podem ajudar a reconhecer famílias, mas não funcionam como tradutores automáticos nem determinam a pronúncia portuguesa da forma inglesa. Observe também a classe gramatical e a posição: cultural pode caracterizar events, enquanto culture pode nomear um campo de práticas e conhecimentos. Prefixos e sufixos oferecem pistas quando a formação é reconhecível: unhappy contrasta com happy e reusable se relaciona a uso repetido. Nem toda palavra pode ser dividida livremente em partes, e o mesmo conjunto de letras pode ter outra história ou função. Ler palavras vizinhas, verbo, determinantes e complementos ajuda a testar o sentido. Em public information about local events, information não informa por si só quais eventos ou horários estão disponíveis; é necessário continuar a leitura. Uma compreensão parcial pode ser suficiente para a pergunta, sem exigir traduzir cada palavra ou autorizar inventar detalhes. Registre novos itens com uma frase e um sentido contextual, e não apenas com uma equivalência isolada. Assim, o vocabulário reconhecido serve de apoio à compreensão, preservando o que o texto afirma e o que ainda precisa de confirmação.",
+        "steps": [
+          "Use semelhança lexical para formular uma hipótese, sem decidir pela aparência isolada.",
+          "Observe classe gramatical, posição e combinações com outras palavras.",
+          "Teste pistas de formação apenas quando elas se aplicarem à palavra encontrada.",
+          "Releia a frase e registre o sentido contextual, separando informação dada e detalhe não informado."
+        ],
+        "example": "Trecho hipotético e autoral: The cultural center shares information about local festivals. Visitors can read the schedule at the entrance. Cultural, information e local ajudam na orientação inicial. A segunda frase acrescenta onde consultar a programação; reconhecer cognatos na primeira não permitiria inventar datas ou dizer que todos os eventos são gratuitos.",
+        "pitfall": "Transformar uma terminação em regra universal de tradução, pronunciar toda palavra inglesa como portuguesa ou usar cognatos para preencher informações que não aparecem no texto."
+      },
+      {
+        "level": "intermediate",
+        "title": "Falsos amigos e palavras com mais de um sentido",
+        "explanation": "Falsos amigos são semelhanças entre línguas que podem induzir uma leitura inadequada em determinado uso. No inglês corrente, actually frequentemente corrige uma expectativa ou enfatiza o que é de fato o caso; não equivale automaticamente a atualmente, para o que currently pode ser adequado conforme a frase. Pretend costuma indicar fingir ou representar como se algo fosse verdadeiro, inclusive em brincadeira ou encenação; não é a escolha automática para pretender no sentido de planejar. Library pode indicar biblioteca ou coleção de recursos, e não deve ser traduzida como livraria apenas pela semelhança. Sensible, ao avaliar uma decisão, pode significar sensato ou razoável, sem equivaler necessariamente a sensível. Esses alertas não são proibição de examinar outros sentidos em outras construções. Realize mostra por que listas binárias são limitadas: pode significar perceber ou dar-se conta, mas também concretizar um objetivo ou realizar uma ambição. O complemento e o contexto orientam a escolha. Resume como verbo, em um contexto de atividade interrompida, pode significar retomar; o substantivo résumé, também grafado resume em certos usos, pode indicar currículo e também síntese em contextos específicos. Grafia, função e pronúncia devem ser consultadas conforme a necessidade, sem declarar que uma forma tenha um único significado para sempre. Substituir a palavra por uma hipótese em português pode ajudar, mas uma frase aparentemente plausível ainda pode estar errada; a confirmação exige relação com o conjunto do texto. Quando duas leituras continuam possíveis e a distinção importa, consulte um dicionário confiável e compare os sentidos e as construções, em vez de escolher sempre a primeira entrada.",
+        "steps": [
+          "Identifique a palavra suspeita e a função que desempenha na frase.",
+          "Compare os sentidos possíveis com complementos, contraste, tempo e finalidade do trecho.",
+          "Em palavras polissêmicas, evite reduzir toda ocorrência ao mesmo equivalente português.",
+          "Se o contexto não decidir o ponto relevante, consulte a entrada e a construção apropriadas."
+        ],
+        "example": "Trechos hipotéticos e autorais: A) The debate will resume once the audio problem is fixed. B) The applicant attached a resume describing previous jobs. Em A, retomar uma atividade interrompida corresponde ao verbo. Em B, o objeto anexado é um currículo no contexto de candidatura. Uma tradução única baseada apenas nas letras não atende aos dois casos.",
+        "pitfall": "Traduzir actually como atualmente sem verificar o uso, dizer que realize nunca pode significar concretizar ou tratar a primeira tradução de dicionário como obrigatória em todos os contextos."
+      },
+      {
+        "level": "advanced",
+        "title": "Inferir sentido com pistas e preservar limites",
+        "explanation": "Inferência lexical combina hipóteses com evidências linguísticas, não adivinhação livre. Definições, reformulações, exemplos, contraste e consequências podem restringir o sentido. Em uma frase com that is ou in other words, o autor pode explicar uma expressão; such as pode introduzir exemplos. However orienta contraste, e therefore pode apresentar consequência ou conclusão. Esses recursos precisam ser interpretados no encadeamento real: o conectivo não garante sozinho a verdade do argumento. Negação e modalidade também mudam a leitura. Em did not realize, o reconhecimento é negado; em may realize a goal, a realização é uma possibilidade, não um fato já confirmado. Para testar uma alternativa de sentido, preserve sujeitos, tempo, grau de certeza e relação entre informações. Uma paráfrase que troca sometimes por always altera o alcance, mesmo que várias palavras pareçam sinônimas. Colocações, como combinações de verbo e complemento, ajudam a distinguir acepções, sem serem provas absolutas fora do contexto. Também é preciso reconhecer insuficiência: saber que uma sala estava crowded permite entender que havia muitas pessoas, mas não calcular quantas estavam presentes sem outro dado. Um trecho pode sustentar um sentido aproximado suficiente para a compreensão e ainda não permitir decidir uma tradução técnica exata. A consulta ao dicionário pode confirmar grafia, classe, acepções e usos, mas a escolha final continua ligada à frase. O bom leitor explica qual pista sustenta a hipótese e por que as alternativas não se ajustam; não transforma uma associação pessoal em informação do autor nem atribui a toda prova um tipo fixo de vocabulário ou distrator.",
+        "steps": [
+          "Localize o trecho suficiente para a pergunta e identifique pistas explícitas ou relações discursivas.",
+          "Teste hipóteses preservando negação, modalidade, tempo e quantificadores.",
+          "Elimine leituras incompatíveis com o complemento ou a informação ao redor, sem acrescentar fatos.",
+          "Declare o limite da inferência quando faltar contexto e use consulta lexical quando necessário."
+        ],
+        "example": "Trecho hipotético e autoral: The old room was cramped: only a narrow passage remained between the desks. The new room offers much more space. A passagem estreita e o contraste com mais espaço sustentam cramped como apertado no contexto. O texto não fornece medidas da sala, causa da mudança ou número exato de ocupantes, e a interpretação não deve criá-los.",
+        "pitfall": "Preservar o substantivo mas inverter a negação, transformar possibilidade em certeza ou inferir quantidade e causa exatas apenas de uma descrição qualitativa."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Leia o trecho hipotético e autoral: The museum offers information about temporary exhibitions. The dates change during the year. Qual leitura de temporary é compatível com as duas frases?",
+        "hint": "A semelhança com temporário é uma hipótese apoiada pela informação de que as datas mudam; não acrescente gratuidade ou permanência que o trecho não afirma.",
+        "solution": "C interpreta temporary como temporárias, compatível com exposições e datas que mudam. A afirma permanência, que contraria a caracterização. B troca o assunto por temperatura, baseando-se em semelhança parcial de letras. D acrescenta entrada gratuita para todas as exposições, informação ausente. O cognato auxilia, mas a segunda frase ajuda a confirmar a leitura e a delimitar o que pode ser concluído.",
+        "options": [
+          "As exposições são permanentes e suas datas nunca mudam.",
+          "O texto informa exclusivamente a temperatura das salas do museu.",
+          "O museu informa sobre exposições temporárias, cujas datas variam ao longo do ano.",
+          "A entrada em qualquer exposição é gratuita, como demonstrado pela palavra temporary."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "No trecho hipotético e autoral During the drama rehearsal, Leo pretended to be a reporter. He was playing a role, qual sentido de pretended é sustentado pelo contexto?",
+        "hint": "Rehearsal e playing a role situam a ação numa encenação; o verbo não informa um plano profissional futuro nem uma reportagem efetivamente publicada.",
+        "solution": "A corresponde a fingiu ou representou ser repórter numa encenação. B toma pretend por planejar uma carreira e ignora o ensaio. C transforma o papel interpretado em profissão comprovada, sem apoio. D introduz publicação de reportagem, que não consta do trecho. A leitura depende de drama rehearsal e playing a role; fingir aqui faz parte de atuação e não implica necessariamente intenção de enganar fora da cena.",
+        "options": [
+          "Fingiu ou representou ser repórter durante uma encenação.",
+          "Planejou obrigatoriamente seguir carreira de repórter no futuro.",
+          "Comprovou que já trabalhava profissionalmente como repórter.",
+          "Publicou uma reportagem real durante o ensaio."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare os trechos hipotéticos e autorais: I — After reading the notice, Jo realized that the workshop had moved. II — Through years of practice, Jo realized her ambition to become a violin maker. Qual combinação traduz realized de acordo com cada contexto?",
+        "hint": "No primeiro, há reconhecimento de uma informação; no segundo, a ambição é alcançada após prática. O mesmo verbo não exige um único equivalente português.",
+        "solution": "D distingue percebeu ou se deu conta em I e concretizou ou realizou sua ambição em II. A impõe concretização à descoberta de que a oficina mudou. B reduz a ambição alcançada a mera percepção, apagando o processo de realização informado. C acrescenta negação aos dois trechos, que não existe. A polissemia é resolvida pelos complementos e pela situação, sem declarar que realize sempre tem um dos dois sentidos independentemente do contexto.",
+        "options": [
+          "I: concretizou a mudança da oficina; II: concretizou sua ambição.",
+          "I: percebeu a mudança; II: apenas percebeu que tinha uma ambição, sem realizá-la.",
+          "I e II: não percebeu nem realizou qualquer coisa, pois o verbo exige negação.",
+          "I: percebeu que a oficina havia mudado; II: concretizou sua ambição de fabricar violinos."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Conectivos, pronomes e estruturas verbais",
+    "objective": "Interpretar relações expressas por conectivos, acompanhar referentes e funções dos pronomes e reconhecer tempo, modo e aspecto em estruturas verbais espanholas, com exemplos contextualizados e atenção à variedade linguística.",
+    "prerequisites": [
+      "Leitura de frases simples em espanhol",
+      "Noções de sujeito, complemento e classes de palavras",
+      "Formas básicas de presente, passado e futuro"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Conectivos: relação de sentido e forma sonora",
+        "explanation": "Conectivos articulam informações, e sua escolha depende da relação de sentido e da construção. Y costuma acrescentar elementos; o apresenta alternativas, que nem sempre são mutuamente exclusivas. Antes do som vocálico inicial /i/, a conjunção y normalmente assume a forma e, como em madres e hijas. A regra não exige que a sílaba seja tônica e depende do som, não apenas da letra. Quando há o início de um ditongo como em hielo, mantém-se y no uso correspondente: agua y hielo. Há construções especiais, como uma pergunta iniciada por ¿Y Inés?, e palavras de pronúncia variável exigem atenção ao modo de dizer. A conjunção o passa a u antes do som inicial /o/, inclusive quando se escreve h antes da vogal: minutos u horas. Não é regra de trocar o por u diante de qualquer vogal, nem de exigir tonicidade. Pero introduz contraste; sino pode substituir um elemento anteriormente negado, como em No es lunes, sino martes. Quando a correção contrapõe orações com verbos em forma pessoal, usa-se sino que na construção geral atual: No llamó, sino que escribió. Há outros usos de sino, como no solo... sino también, de modo que não se deve proibir qualquer ocorrência fora de uma única frase-modelo. Porque pode apresentar causa, para que finalidade, aunque concessão, si condição e cuando relação temporal, conforme o contexto. Comparemos Se quedó porque llovía e Se quedó para que pudiéramos hablar: a primeira explica motivo e a segunda apresenta finalidade. Os conectivos não são palavras intercambiáveis para decorar: alterar um deles pode mudar o raciocínio. A pontuação ajuda a delimitar relações e grupos, mas uma vírgula não substitui a leitura do período completo.",
+        "steps": [
+          "Identifique a relação: adição, alternativa, contraste, causa, finalidade, condição ou tempo.",
+          "Para y/e e o/u, considere o som inicial da palavra seguinte e as condições da construção.",
+          "Diferencie contraste com pero e correção com sino ou sino que no contexto.",
+          "Leia as duas partes do período para verificar se a ligação preserva o sentido pretendido."
+        ],
+        "example": "Trechos hipotéticos e autorais: El equipo preparó mapas e instrucciones. Podemos reunirnos hoy u otro día. No faltó material, sino tiempo. O primeiro usa e antes do som /i/ de instrucciones; o segundo usa u antes do /o/ de otro, sem depender de acento tônico; o terceiro corrige o elemento negado.",
+        "pitfall": "Inverter y/e e o/u, decidir só pela tonicidade ou traduzir todo sino por um único uso português sem examinar a construção."
+      },
+      {
+        "level": "intermediate",
+        "title": "Pronomes, complementos e continuidade referencial",
+        "explanation": "Pronomes e expressões relativas ajudam a acompanhar pessoas, objetos e ideias. Sujeitos como yo, tú, él, ella, nosotros e ustedes nem sempre precisam aparecer, pois a forma verbal e o contexto podem recuperá-los; explicitá-los também pode criar contraste. Usted e ustedes se referem a interlocutores, mas se combinam com formas verbais de terceira pessoa. Vosotros e vos pertencem a variedades legítimas do espanhol, com formas próprias; não se deve presumir que toda região use o mesmo tratamento. Em exemplos de variedades, tú tienes e vos tenés podem dirigir-se a uma pessoa, enquanto ustedes tienen e vosotros tenéis podem dirigir-se a um grupo. O voseo atual não se reduz ao tratamento formal arcaico com vos. No esquema básico de complementos, lo, la, los e las podem retomar objeto direto, e le ou les objeto indireto. Há variação de uso, incluindo leísmo, que exige contexto e não se resolve aplicando uma regra única a toda comunidade. Na combinação de dois pronomes em casos como dar algo a alguém, o indireto vem antes do direto: me lo, te la, nos los. Le e les assumem se diante de lo, la, los e las: a partir de Doy el cuaderno a Elena, podem-se construir Le doy el cuaderno e Se lo doy, mantendo contexto para identificar a destinatária. Se nessa combinação não expressa necessariamente reflexividade. Em outros casos, se pode participar de reflexividade, de verbos pronominais ou de construções como Se venden entradas e Se vive bien; esses usos não são todos equivalentes. No uso geral, clíticos precedem muitas formas conjugadas, como Se lo entrego; ligam-se ao infinitivo, gerúndio e imperativo afirmativo em contextos como entregárselo, entregándoselo e entrégaselo. No imperativo negativo, ficam antes: No se lo entregues. Perífrases admitem alternativas em muitos casos, como Lo voy a leer e Voy a leerlo, sem autorizar mover pronomes livremente em toda construção. Relativos conectam uma informação a um antecedente: La autora que llegó admite que referido a pessoa; con quien e con la que podem introduzir outras relações. Cuyo, cuja forma varia, é determinante relativo possessivo e concorda com o possuído: el escritor cuyas novelas leí. Demonstrativos como este, ese e aquel situam referências no espaço ou no discurso; esto, eso e aquello são neutros e podem retomar ideias, não se empregando esto diretamente antes de libro no lugar de este libro.",
+        "steps": [
+          "Identifique o referente e a função de cada forma, considerando tratamento e variedade.",
+          "Na substituição de complementos, diferencie o que é entregue e a quem, preservando a ordem e a mudança le/les para se diante do direto.",
+          "Observe forma verbal, polaridade e construção antes de escolher posição dos clíticos.",
+          "Em relativos e demonstrativos, confira antecedente, concordância e retomada de ideias, sem proibir que para pessoas."
+        ],
+        "example": "Trecho hipotético e autoral: Conocí a una investigadora cuyas cartas conserva el museo. Hablé con ella sobre esos documentos. Cuyas concorda com cartas, o elemento possuído; ella retoma investigadora e esos documentos retoma as cartas no encadeamento. A pessoa mais próxima na frase não decide sozinha todo referente.",
+        "pitfall": "Usar le lo na combinação padrão, duplicar um complemento sem observar a estrutura da frase ou afirmar que todo se é reflexivo e que o relativo que nunca pode referir-se a pessoas."
+      },
+      {
+        "level": "advanced",
+        "title": "Tempo, modo, aspecto e construções verbais",
+        "explanation": "Formas verbais expressam tempo, pessoa, modo e perspectiva sobre a ação. Canté apresenta um evento passado delimitado, enquanto cantaba pode descrever hábito ou situação em curso no passado; he cantado usa auxiliar haber e particípio. A distribuição do passado simples e composto varia entre regiões e contextos: não se deve transferir mecanicamente as preferências do português. Haber auxiliar acompanha o sujeito, como hemos leído; no uso existencial impessoal, o padrão geral mantém singular, como hay o había varias opciones. Ser e estar também não se reduzem a permanente e temporário: identificação, caracterização, estado e localização entram em construções distintas, e es listo e está listo podem indicar, respectivamente, inteligência e prontidão. Indicativo e subjuntivo não equivalem simplesmente a real e irreal. Desejos, avaliações, negações, relações temporais e o modo de apresentar informação participam da escolha: Me alegra que estés aquí pode avaliar uma presença real, sem expressar dúvida sobre ela. Em Quiero que vengas, o subjuntivo integra o desejo referente a outra pessoa; em uma expressão de ação do mesmo sujeito, Quiero viajar pode usar infinitivo. Para um evento futuro em subordinada temporal sem antecedente expresso, Cuando llegues, te avisaré usa presente de subjuntivo; numa descrição habitual, Cuando llego, saludo al equipo usa indicativo. Na condicional aberta Si puedo, participaré, a condição emprega indicativo; na hipótese Si pudiera, participaría, o imperfeito de subjuntivo combina-se com condicional. Para hipótese passada não realizada, Si hubiera sabido, habría ayudado é uma construção possível, sem excluir todas as outras combinações admitidas. O condicional também pode servir a cortesia ou futuro visto de um ponto passado. Não se usa automaticamente condicional depois de si em todas essas construções; a função de si e o sentido do período importam. Perífrases combinam formas para indicar perspectivas como intenção ou previsão em ir a + infinitivo, ação em curso em estar + gerundio, repetição em volver a + infinitivo, cessação em dejar de + infinitivo e recência em acabar de + infinitivo no contexto apropriado. Estoy leyendo não é o mesmo que Voy a leer ou He dejado de leer. Interpretar depende da construção completa e do contexto; não exige decorar uma tradução fixa para cada forma nem chamar todo evento futuro de certeza. Em leitura de voz, La carta fue escrita por Ana apresenta passiva com ser e particípio, enquanto Se venden entradas exemplifica passiva com se e concordância com entradas; Se vive bien não apresenta esse mesmo sujeito paciente. Construções modais como tener que + infinitivo podem expressar obrigação e poder + infinitivo pode indicar possibilidade ou capacidade, conforme o contexto. Reconhecer a forma não dispensa interpretar quem age, quem é afetado e qual compromisso modal o enunciado assume.",
+        "steps": [
+          "Reconheça pessoa e perspectiva temporal, diferenciando evento delimitado, hábito e construção composta.",
+          "Interprete modo verbal na construção, sem reduzir subjuntivo a dúvida ou evento falso.",
+          "Compare condição aberta, hipótese e relação temporal futura, preservando as formas adequadas ao sentido.",
+          "Identifique a perífrase e sua contribuição de duração, início, repetição, cessação ou projeção, sem substituir forma não finita arbitrariamente."
+        ],
+        "example": "Mensagens hipotéticas e autorais: A) Estoy revisando las notas. B) Voy a revisar las notas. C) He dejado de revisar las notas. Em A, a revisão é apresentada em curso; em B, há projeção de revisão, sem o mesmo valor progressivo; em C, apresenta-se cessação. A semelhança do verbo principal não torna iguais as três perspectivas.",
+        "pitfall": "Tratar todo subjuntivo como fato duvidoso, formar si tendría para a hipótese padrão que exige si tuviera ou confundir vou fazer, estou fazendo e deixei de fazer."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Complete o texto hipotético e autoral segundo a construção padrão: Marta preparó té ___ infusiones. No compró café, ___ cacao. Qual sequência mantém a adição antes do som /i/ e a correção do elemento negado?",
+        "hint": "A primeira lacuna vem antes de infusiones, iniciada pelo som vocálico /i/; na segunda, contrapõem-se nomes após negação, sem novo verbo em forma pessoal.",
+        "solution": "C usa e antes de infusiones e sino para substituir café por cacao no segmento negado. A mantém y no contexto em que ocorre a mudança para e. B usa u, forma de o diante do som /o/, não a conjunção de adição solicitada. D introduz sino que sem uma oração com novo verbo pessoal, inadequado à construção apresentada. O som inicial, e não a tonicidade isolada, orienta a primeira escolha.",
+        "options": [
+          "y / sino",
+          "u / pero",
+          "e / sino",
+          "e / sino que"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "No texto hipotético e autoral Marta entrega la carta a Luis. Luego, Marta se la entrega antes de salir, qual análise de se la na segunda frase preserva os referentes dados?",
+        "hint": "Identifique a destinatária ou destinatário do ato e o objeto entregue. A forma se pode substituir le quando vem antes de la, sem tornar a ação necessariamente reflexiva.",
+        "solution": "A identifica se como forma de le diante de la, retomando Luis como destinatário no contexto, enquanto la retoma la carta. B troca objeto e destinatário. C atribui reflexividade obrigatória apesar de Luis estar indicado como destinatário, e D toma la por artigo diante de verbo, ignorando seu papel de complemento. A frase retoma a entrega; o contexto fornece referentes que a combinação isolada nem sempre revelaria.",
+        "options": [
+          "Se retoma Luis como destinatário, substituindo le diante de la; la retoma la carta.",
+          "Se retoma a carta como objeto direto e la retoma Luis como destinatário masculino.",
+          "Se prova obrigatoriamente que Marta entrega a carta a si mesma, ignorando o contexto.",
+          "La é apenas artigo do verbo entrega e não retoma nenhum complemento."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um falante usa o padrão geral para formular uma hipótese presente: Si yo ___ más tiempo, ___ otro curso. O contexto não afirma que ele tenha esse tempo. Qual par completa adequadamente a construção hipotética com imperfeito de subjuntivo e condicional simples?",
+        "hint": "A própria pergunta delimita a construção: a condição usa imperfeito de subjuntivo, e a consequência usa condicional simples; não escolha apenas por semelhança com o português.",
+        "solution": "D usa tuviera, imperfeito de subjuntivo, e haría, condicional simples, conforme a hipótese e a construção solicitadas. A emprega tendría na condição, fora do padrão delimitado. B troca as funções de condição e consequência. C usa presente e futuro para uma condicional aberta, diferente da construção pedida, embora essa combinação possa ser correta em outro contexto. A análise não transforma uma escolha deste exercício em proibição de todas as variedades ou usos de si.",
+        "options": [
+          "tendría / haría",
+          "tendría / hiciera",
+          "tengo / haré",
+          "tuviera / haría"
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Eletricidade cotidiana",
+    "objective": "Relacionar corrente, tensão e resistência em circuitos ideais; distinguir potência, energia, fator de potência e rendimento; calcular consumo e custo em modelos explícitos de uso cotidiano, sem tratar contas escolares como projetos de instalação.",
+    "prerequisites": [
+      "Razões, proporções e operações com unidades",
+      "Conversão entre minutos e horas e entre watts e quilowatts",
+      "Noções de energia e representação textual de circuitos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Carga, corrente, tensão e associações de resistores",
+        "explanation": "Corrente elétrica representa fluxo de carga: numa descrição média, I = ΔQ/Δt, em amperes, equivalentes a coulombs por segundo. A corrente não é uma quantidade de energia que o aparelho consome; cargas circulam enquanto energia é transferida e transformada. Tensão é diferença de potencial entre dois pontos, relacionada à energia transferida por unidade de carga, e mede-se em volts. Resistência relaciona tensão e corrente em um componente. Para um resistor ôhmico nas condições consideradas, U = RI descreve proporcionalidade com resistência constante; temperatura e características do material podem alterar o comportamento, e nem todo aparelho é resistor ôhmico. Num circuito ideal de corrente contínua, uma fonte mantém a tensão, fios ideais não apresentam queda de potencial e o modelo deve informar como os elementos se conectam. Resistores em série estão no mesmo caminho sem ramificação entre eles: a corrente é a mesma, as quedas de tensão se somam e a resistência equivalente é a soma das resistências. Em paralelo, os ramos ligam-se aos mesmos dois nós e têm a mesma tensão; a corrente total é a soma das correntes nos ramos e 1/Req = 1/R1 + 1/R2 para dois resistores. Conexão não se define pelo desenho parecer horizontal ou vertical, mas pelos nós e caminhos. Em uma associação paralela de resistências positivas, a equivalente é menor que cada resistência individual. A expressão circuito aberto descreve interrupção do caminho, não ausência obrigatória de tensão entre todos os pontos. Um curto-circuito oferece um caminho de resistência muito baixa e pode produzir corrente elevada, limitada pelas condições reais da fonte e dos condutores. Esses conceitos servem à análise de modelos; não autorizam construir ou modificar ligações em rede elétrica doméstica.",
+        "steps": [
+          "Identifique a grandeza e sua unidade, distinguindo fluxo de carga e transferência de energia.",
+          "Verifique se o componente é tratado como ôhmico e se as condições mantêm a resistência adotada.",
+          "Reconheça série por caminho comum e paralelo por dois nós comuns.",
+          "Calcule a equivalente e depois tensões e correntes, conferindo conservação de carga e soma das quedas."
+        ],
+        "example": "Modelo hipotético: resistores de 12 Ω e 6 Ω estão em paralelo numa fonte ideal de 12 V. As correntes são 12/12 = 1 A e 12/6 = 2 A; a fonte fornece 3 A. A equivalente é 12/3 = 4 Ω, menor que 6 Ω. O cálculo compara ramos entre os mesmos dois nós e não descreve montagem em tomada.",
+        "pitfall": "Confundir corrente com energia consumida, aplicar U = RI a qualquer aparelho sem hipóteses ou usar a mesma tensão em cada resistor de uma associação em série."
+      },
+      {
+        "level": "intermediate",
+        "title": "Potência, energia e leitura de grandezas em corrente alternada",
+        "explanation": "Potência é taxa de transformação ou transferência de energia, P = ΔE/Δt; watt equivale a joule por segundo. Energia não é potência: um aparelho de maior potência pode consumir menos energia no período se funcionar por menos tempo. Para potência constante, E = Pt. Potência em quilowatts multiplicada por tempo em horas fornece energia em quilowatt-hora; 1 kWh = 3.600.000 J. Minutos precisam ser convertidos em horas, e 1000 W correspondem a 1 kW. Na corrente contínua de um modelo ideal, a potência elétrica recebida pode ser calculada por P = UI. Para resistor ôhmico, também se obtêm P = RI² e P = U²/R, sempre nas condições do modelo e sem trocar a tensão do componente pela tensão total de outro trecho. Na rede alternada, tensão e corrente variam no tempo. Valores eficazes, ou RMS, não são valores de pico. Para uma carga puramente resistiva, a potência média é Uef Ief. Em uma carga geral de corrente alternada monofásica, define-se potência aparente S = Uef Ief, em volt-ampere, e fator de potência FP = P/S para o receptor considerado, com P sendo potência ativa média em watts. Assim, P = S × FP; não se calcula toda corrente apenas por P/Uef quando FP é diferente de 1. No modelo senoidal, o fator de potência relaciona-se ao cosseno da defasagem; outras formas de onda exigem cuidado e não se resumem sempre a esse ângulo. Fator de potência não é rendimento: relaciona potência ativa e aparente, sem informar diretamente que fração da energia recebida vira o efeito útil desejado. Para energia ativa em um período, use a potência ativa média e o tempo apropriado. A potência indicada numa placa também pode ser nominal ou variar durante a operação; o enunciado deve esclarecer o valor utilizado.",
+        "steps": [
+          "Separe watts ou quilowatts de joules ou quilowatt-hora.",
+          "Converta tempo e potência antes de multiplicar, verificando se o valor é constante ou médio.",
+          "Em corrente alternada, distinga valor eficaz, potência aparente, potência ativa e fator de potência.",
+          "Use a potência ativa de entrada para calcular energia recebida, sem substituí-la automaticamente por potência útil ou aparente."
+        ],
+        "example": "Estimativa hipotética: uma lâmpada recebe potência ativa constante de 12 W e funciona cinco horas por dia durante 30 dias. A energia é 0,012 × 5 × 30 = 1,8 kWh. O resultado não é 1,8 kW, pois se trata de energia acumulada; a potência de entrada já foi informada e não precisa ser dividida novamente pelo rendimento.",
+        "pitfall": "Tratar kWh como potência, multiplicar watts por minutos como se obtivesse kWh ou confundir potência ativa com aparente e fator de potência com rendimento."
+      },
+      {
+        "level": "advanced",
+        "title": "Consumo, rendimento e limites das estimativas cotidianas",
+        "explanation": "Uma estimativa de consumo deve delimitar período, tempo efetivo de funcionamento e o significado da potência. Se uma máquina liga e desliga ou modula sua operação, multiplicar a potência máxima por todas as horas pode ser inadequado; use potência média medida ou um ciclo de funcionamento explicitamente modelado. A energia útil é a parte associada ao efeito desejado. Num modelo de conversão com rendimento η = Eútil/Eentrada, pode-se calcular Eentrada = Eútil/η, desde que a energia fornecida inicialmente seja útil. Se o problema já fornece potência elétrica de entrada, primeiro calcule a energia recebida por Pentrada × t; dividir de novo por η contaria perdas duas vezes. Comparar equipamentos exige o mesmo serviço útil e condições comparáveis: apenas menor potência nominal não garante menor consumo para qualquer tarefa. Em bombas de calor, o coeficiente de desempenho compara calor transferido e energia elétrica fornecida; pode superar 1 porque há energia térmica transferida do ambiente, não criação de energia nem rendimento de conversão comum acima de 100%. Para um modelo simples de cobrança, custo variável = energia ativa em kWh × preço hipotético em reais por kWh. Uma conta real pode incluir componentes que esse modelo não representa; não se devem inventar impostos, horários ou regras gerais de tarifação. Se o exercício oferece preços diferentes por período, some os custos de cada parcela, sem calcular uma média simples que ignore durações e consumo. Também não se conclui que alterar o fator de potência de um aparelho reduza automaticamente sua energia ativa por uma proporção igual. A leitura de corrente e potência ajuda a compreender sobrecarga e aquecimento, mas dimensionar instalação depende de condições e requisitos técnicos específicos. Não se usa uma margem universal de 80% como autorização para selecionar fios e proteções. Fusíveis, disjuntores, dispositivos diferenciais e aterramento têm funções distintas; nenhum número de exercício deve servir de instrução para intervir em circuitos energizados.",
+        "steps": [
+          "Defina o serviço, a potência de entrada e o tempo efetivo ou ciclo de uso.",
+          "Aplique rendimento somente à relação útil/entrada correspondente, sem descontar perdas duas vezes.",
+          "Calcule custo pelo preço e pelo recorte explicitamente fornecidos, preservando limites de uma estimativa didática.",
+          "Separe compreensão física e projeto de instalação; não deduza proteção ou segurança por uma regra numérica isolada."
+        ],
+        "example": "Modelo hipotético de ciclo: um equipamento recebe 100 W quando seu motor está ligado e zero no restante do tempo; adote funcionamento ligado em 40% das horas, durante 24 horas por dia por 30 dias. A potência média desse modelo é 40 W e a energia é 0,040 × 24 × 30 = 28,8 kWh. O cálculo não promete representar qualquer geladeira real nem inclui outros consumos não modelados.",
+        "pitfall": "Dividir por rendimento uma energia de entrada já calculada, comparar serviços úteis diferentes ou apresentar preço e regra de proteção hipotéticos como especificação real de instalação."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num circuito ideal de corrente contínua, uma fonte de 20 V alimenta dois resistores ôhmicos de 6 Ω e 4 Ω em série, sem outros elementos ou ramificações. Qual é a corrente no circuito e a queda de tensão no resistor de 6 Ω?",
+        "hint": "Some as resistências em série para obter a corrente comum; depois aplique U = RI ao resistor pedido, sem atribuir a ele toda a tensão da fonte.",
+        "solution": "B calcula Req = 6 + 4 = 10 Ω e I = 20/10 = 2 A. A queda no resistor de 6 Ω é 6×2 = 12 V; no de 4 Ω, 8 V, somando 20 V. A aplica toda a tensão ao primeiro resistor e ignora o segundo. C mantém a corrente correta mas atribui os 20 V a apenas um elemento. D imporia 5 A e queda de 30 V no resistor de 6 Ω, incompatíveis com a resistência total de 10 Ω e a fonte de 20 V. Não há necessidade de uma figura para identificar o único caminho informado.",
+        "options": [
+          "Aproximadamente 3,33 A e 20 V.",
+          "2 A e 12 V.",
+          "2 A e 20 V.",
+          "5 A e 30 V."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um receptor monofásico hipotético opera com tensão eficaz de 200 V, potência aparente de 800 VA e fator de potência 0,75, todos constantes. Em 10 h de funcionamento, qual é a corrente eficaz e a energia ativa recebida?",
+        "hint": "A corrente é S/Uef; a potência ativa é S×FP. Converta essa potência para kW antes de multiplicar pelas horas.",
+        "solution": "A calcula Ief = 800/200 = 4 A e P = 800×0,75 = 600 W = 0,6 kW. Em 10 h, E = 0,6×10 = 6 kWh. B usa P/Uef como corrente, ignorando o fator de potência. C usa a potência aparente como se fosse ativa no cálculo de energia, e D combina os dois erros. O fator de potência foi usado para relacionar P e S, não como rendimento útil da máquina.",
+        "options": [
+          "4 A e 6 kWh.",
+          "3 A e 6 kWh.",
+          "4 A e 8 kWh.",
+          "3 A e 8 kWh."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num modelo hipotético, a máquina A recebe potência elétrica de entrada constante de 1,2 kW por 4 h ao dia durante 10 dias, com rendimento útil de 75%. A máquina B presta exatamente o mesmo serviço útil total com rendimento de 90%. Adote preço fictício uniforme de R$ 0,80/kWh apenas para a energia de entrada. Quanta energia B recebe e qual a economia em relação a A nesse modelo?",
+        "hint": "Calcule a entrada de A por potência e tempo, depois a energia útil por seu rendimento. A entrada de B é essa mesma energia útil dividida por 0,90.",
+        "solution": "D calcula entrada de A = 1,2×4×10 = 48 kWh e energia útil = 48×0,75 = 36 kWh. B recebe 36/0,90 = 40 kWh para o mesmo serviço. A diferença de entrada é 8 kWh e a economia fictícia é 8×0,80 = R$ 6,40. A confunde a energia útil com entrada de B. B ignora o maior rendimento ao manter 48 kWh. C divide novamente a entrada de A pelo rendimento e produz 64 kWh, contando perdas duas vezes. Não há preço real ou previsão de fatura nessa comparação.",
+        "options": [
+          "36 kWh e R$ 9,60.",
+          "48 kWh e R$ 0,00.",
+          "64 kWh e aumento de R$ 12,80.",
+          "40 kWh e R$ 6,40."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Soluções e concentração",
+    "objective": "Caracterizar soluções e solubilidade, distinguir as bases das unidades de concentração e resolver conversões, diluições e misturas pela conservação do soluto sob hipóteses explícitas.",
+    "prerequisites": [
+      "Conceitos de mistura, substância, mol e massa molar",
+      "Proporções, porcentagens e operações com unidades",
+      "Conversão entre g, mg, kg, mL e L"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Solução, solubilidade e base da concentração",
+        "explanation": "Solução é uma mistura homogênea, cuja composição é uniforme na escala considerada. Não se restringe a um sólido dissolvido em água: há soluções com componentes de diferentes estados, e o solvente não é sempre água. Em uma solução aquosa usual, a água é solvente e os componentes dissolvidos são solutos. A identificação de solvente e soluto considera proporções e convenções do sistema; não depende apenas de qual material foi acrescentado primeiro. Dissolver envolve interações entre partículas e pode produzir aquecimento ou resfriamento. Um soluto molecular pode permanecer como moléculas dispersas. Ao dissolver um sal iônico, como NaCl, a rede cristalina se separa em íons solvatados; não se trata de quebrar moléculas discretas de NaCl do cristal. Solubilidade é um limite de concentração de equilíbrio para um soluto e um solvente em condições especificadas. Uma solução saturada está nesse limite; uma insaturada, abaixo dele; uma supersaturada contém mais soluto dissolvido que o equilíbrio permite e não é o estado estável correspondente. Diluída e concentrada são comparações de quantidade relativa, não sinônimos de insaturada e saturada. Temperatura e, especialmente para gases, pressão podem alterar solubilidade. Não é correto afirmar que aquecer sempre aumenta a dissolução de qualquer soluto. Para quantificar composição, a concentração em massa por volume usa C = massa do soluto/volume final da solução. Se a massa está em gramas e o volume em litros, C sai em g/L. O denominador não é necessariamente o volume inicial de água: dissolução e mistura podem alterar volume. Também se deve distinguir quantidade dissolvida e sólido não dissolvido; a massa total despejada num recipiente pode superar a massa que efetivamente integra a solução.",
+        "steps": [
+          "Identifique componentes, fase homogênea e condições do sistema.",
+          "Diferencie concentração comparativa e limite de solubilidade nas condições dadas.",
+          "Use apenas a quantidade efetivamente dissolvida quando o problema tratar da solução.",
+          "Calcule massa por volume final com unidades compatíveis, sem trocar solução por solvente."
+        ],
+        "example": "Modelo hipotético: 8 g de um soluto estão completamente dissolvidos em 400 mL de solução, sem perdas. O volume é 0,400 L, portanto C = 8/0,400 = 20 g/L. O resultado não informa sozinho se a solução está saturada, pois seria necessário conhecer a solubilidade nas condições consideradas.",
+        "pitfall": "Usar volume de água inicial como se fosse obrigatoriamente o volume final, chamar toda solução concentrada de saturada ou contar precipitado como soluto dissolvido."
+      },
+      {
+        "level": "intermediate",
+        "title": "Unidades de concentração e conversões com dados suficientes",
+        "explanation": "Unidades de concentração precisam de uma base definida. Porcentagem m/m indica massa de soluto por 100 unidades de massa de solução, como gramas por 100 g; porcentagem m/v, no uso convencional, indica gramas de soluto por 100 mL de solução; porcentagem v/v compara o volume indicado de um componente com o volume final, observadas as condições de medida. Não é correto tratar essas notações como intercambiáveis ou afirmar que toda razão massa/volume seja adimensional. Como 1 g = 1000 mg e 1 L = 1000 mL, 1 g/L = 1 mg/mL. Também 1% m/v corresponde a 10 g/L. Molaridade, ou concentração em quantidade de matéria, é c = n/V, com n em mol e V em litros de solução. Como n = massa/massa molar, uma concentração em g/L dividida pela massa molar em g/mol fornece mol/L. Molalidade tem outra base: mol de soluto por quilograma de solvente, sem usar massa de toda a solução nem seu volume. Fração em massa divide massa do componente pela massa total; fração molar divide seu número de mols pela soma dos mols dos componentes. Para converter base de massa em base de volume, pode ser necessária densidade da solução, relacionando sua massa total e seu volume. A densidade do soluto puro não substitui automaticamente esse dado. Partes por milhão em massa correspondem a uma parte de massa por um milhão de partes de solução, como mg/kg. A aproximação entre mg/L e ppm em massa depende de densidade próxima de 1 kg/L e não é identidade universal. Volumes e concentrações que os utilizam podem variar com temperatura; em sistema sem perda ou reação, frações em massa e molalidade não variam só por expansão térmica. Concentração analítica, neste contexto, expressa a quantidade total do composto introduzido por volume final, independentemente de sua distribuição entre espécies dissolvidas. Para NaCl a 0,200 mol/L, isso representa 0,200 mol de unidades de fórmula por litro; em um modelo de dissociação completa, cada íon teria 0,200 mol/L, e a soma seria 0,400 mol/L, sem mudar a concentração analítica do sal.",
+        "steps": [
+          "Escreva qual quantidade pertence ao numerador e ao denominador da unidade pedida.",
+          "Converta massa e volume antes de calcular e use massa molar quando passar de g para mol.",
+          "Para molalidade, separe massa de solvente da massa total de solução.",
+          "Só faça conversões entre bases distintas quando densidade ou outros dados necessários estiverem disponíveis."
+        ],
+        "example": "Modelo hipotético com 100 g de solução: 15 g são soluto e 85 g são solvente. A composição é 15% m/m. Sem volume ou densidade, não se pode concluir que seja 15% m/v ou calcular uma molaridade numérica. Já a massa de solvente usada numa eventual molalidade seria 0,085 kg, não 0,100 kg.",
+        "pitfall": "Confundir molaridade e molalidade, usar 100 g de solução como 100 mL sem dado de densidade ou converter todo mg/L em ppm em massa sem considerar a base."
+      },
+      {
+        "level": "advanced",
+        "title": "Diluição, mistura e limites dos modelos",
+        "explanation": "Diluir é reduzir concentração por adição de solvente, mantendo a quantidade do soluto considerado quando não há reação, perda, precipitação ou outra transformação que a altere. Em uma diluição que conserva os mols de soluto, c1V1 = c2V2; se a grandeza conservada é massa do mesmo soluto e C está em massa por volume, C1V1 = C2V2 também pode ser usada. O volume final precisa ser conhecido ou calculado de acordo com as hipóteses, sem presumir aditividade de todos os líquidos. V1 e V2 são os volumes inicial e final de solução, respectivamente; nenhum deles é, por definição, o volume de solvente acrescentado. Na mistura de soluções do mesmo soluto, some suas quantidades: nfinal = c1V1 + c2V2. Depois divida pelo volume final informado ou legitimamente obtido. A média simples das concentrações só atende a condições particulares, como volumes iguais e aditivos, sem alterações de soluto; não é regra para toda mistura. Se os solutos reagem entre si, a estequiometria deve ser analisada antes da concentração final da espécie remanescente. Se há evaporação apenas do solvente, sem perda de soluto, a quantidade dissolvida pode permanecer até um limite, enquanto a concentração aumenta; saturação e precipitação podem impedir manter toda a massa dissolvida. Relações com propriedades também dependem do modelo: em soluções suficientemente diluídas e próximas do comportamento ideal, efeitos coligativos se relacionam ao número efetivo de partículas, não simplesmente à massa pesada. Dissociação e associação podem mudar esse número. O fator de van't Hoff, i, representa o efeito do número de partículas no modelo coligativo; não é uma regra universal de multiplicação por um inteiro. Mesmo quando o modelo ideal permite usar i vezes a concentração analítica como concentração efetiva de partículas, esse produto não redefine a concentração analítica do composto. Quanto maior a exigência de precisão, mais importam temperatura, composição, interações e definição da espécie. Um cálculo escolar é válido quando suas hipóteses e unidades correspondem ao sistema descrito.",
+        "steps": [
+          "Identifique qual quantidade e qual espécie se conservam e quais processos podem alterá-las.",
+          "Calcule massa ou mols de cada parcela antes de misturar ou diluir.",
+          "Use volume final da solução, sem soma automática de volumes nem média simples indevida.",
+          "Confira solubilidade, reação, perdas e limites de idealidade antes de extrapolar a fórmula."
+        ],
+        "example": "Modelo de evaporação: uma solução contém 3 g de soluto não volátil em 100 mL. Se apenas solvente se perde, o volume final é informado como 60 mL e todo o soluto permanece dissolvido, C passa de 30 g/L para 3/0,060 = 50 g/L. O aumento da concentração não criou soluto; depende da permanência dos 3 g na solução.",
+        "pitfall": "Aplicar diluição quando o soluto reage ou precipita, tirar média simples de concentrações com volumes diferentes ou usar volume anterior à adição final de solvente."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num modelo hipotético, 12 g de soluto estão completamente dissolvidos em volume final de 200 mL de solução. Qual é a concentração em g/L e em % m/v?",
+        "hint": "Converta 200 mL em litros para g/L. Para % m/v, identifique quantos gramas correspondem a 100 mL da solução, não a 100 g.",
+        "solution": "B calcula C = 12/0,200 = 60 g/L. Em 100 mL, a massa correspondente é 6 g, portanto 6% m/v. A esquece a diferença entre o volume informado e um litro. C usa 0,020 L, dez vezes menor que 0,200 L. D divide indevidamente a concentração por dez. Sem densidade, não é possível substituir esse resultado por uma porcentagem m/m equivalente.",
+        "options": [
+          "12 g/L e 1,2% m/v.",
+          "60 g/L e 6% m/v.",
+          "600 g/L e 60% m/v.",
+          "6 g/L e 0,6% m/v."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma solução hipotética contém 5,85 g de NaCl totalmente dissolvidos em volume final de 500 mL. Adote massa molar do NaCl igual a 58,5 g/mol. Qual é a concentração analítica de NaCl em mol/L, sem convertê-la em concentração total de íons?",
+        "hint": "Calcule a quantidade de NaCl pela massa dividida pela massa molar e depois divida por 0,500 L. A dissociação não duplica a quantidade analítica de NaCl informada.",
+        "solution": "D calcula n = 5,85/58,5 = 0,100 mol e c = 0,100/0,500 = 0,200 mol/L. A informa apenas n como se o volume fosse um litro. B toma a massa 5,85 como mols antes de dividir por 0,500 L. C multiplica por dois para contar partículas iônicas num modelo de dissociação completa, mas a pergunta pede concentração analítica de NaCl, não soma das concentrações dos íons.",
+        "options": [
+          "0,100 mol/L.",
+          "11,7 mol/L.",
+          "0,400 mol/L.",
+          "0,200 mol/L."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "No mesmo modelo de temperatura, misturam-se 150 mL de solução aquosa de NaCl a 0,40 mol/L e 250 mL de solução de NaCl a 0,10 mol/L. Acrescenta-se água até volume final informado de 500 mL. Todo o sal permanece dissolvido, sem reação ou perda. Qual é a concentração analítica final?",
+        "hint": "Some os mols provenientes das duas parcelas e use o volume final de 0,500 L. Não é necessário presumir volume aditivo para chegar ao volume final, pois ele foi fornecido.",
+        "solution": "C calcula n1 = 0,40×0,150 = 0,060 mol e n2 = 0,10×0,250 = 0,025 mol. O total é 0,085 mol, portanto cfinal = 0,085/0,500 = 0,170 mol/L. A usa média simples de concentrações apesar dos volumes distintos e da adição final de água. B divide pelo total numérico de 0,400 L das parcelas anteriores, ignorando o volume final informado. D apresenta a quantidade em mol como se fosse concentração em um litro.",
+        "options": [
+          "0,250 mol/L.",
+          "0,2125 mol/L.",
+          "0,170 mol/L.",
+          "0,085 mol/L."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Ecologia e impactos ambientais",
+    "objective": "Relacionar populações, comunidades e ecossistemas, interpretar fluxo de energia e ciclos da matéria e explicar impactos ambientais com mecanismos, evidências e limites das medidas de conservação.",
+    "prerequisites": [
+      "Fotossíntese, respiração e decomposição",
+      "Leitura de proporções, tabelas e relações de causa e efeito",
+      "Distinção entre seres vivos e componentes físicos do ambiente"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Organização ecológica, populações e relações",
+        "explanation": "Ecologia investiga relações dos organismos entre si e com o ambiente. Uma população reúne indivíduos da mesma espécie em uma área e período; comunidade reúne populações de espécies diferentes. Ecossistema inclui a comunidade e os componentes abióticos com suas interações: água, luz, solo e temperatura não são populações. Ecossistema não tem tamanho fixo obrigatório; pode ser delimitado conforme a pergunta do estudo. Bioma é um conjunto regional amplo de ecossistemas com características ambientais e biológicas relacionadas; biosfera abrange as regiões do planeta onde existe vida. Habitat indica onde um organismo vive; nicho envolve condições, recursos e interações associados à sua existência, e não apenas seu endereço. Densidade populacional é número de indivíduos por área ou volume. O tamanho de uma população varia com nascimentos, mortes, imigração e emigração. Recursos limitados e interações podem restringir crescimento; capacidade de suporte é uma propriedade do sistema e de suas condições, não uma constante eterna. Na competição, organismos disputam recursos limitados e ambos podem ter custos. Na predação e herbivoria há consumo de outros organismos ou partes deles; no parasitismo, o parasita se beneficia em prejuízo do hospedeiro. Mutualismo beneficia os participantes, enquanto comensalismo descreve benefício de um sem efeito relevante detectado no outro, no contexto considerado. Essas classificações não significam que a natureza busque equilíbrio moral ou que toda interação tenha intensidade invariável. Mudanças nas condições podem alterar resultados e abundâncias.",
+        "steps": [
+          "Delimite espécie, área e período da população estudada.",
+          "Distinga comunidade de ecossistema pela inclusão dos fatores abióticos.",
+          "Relacione habitat, recursos e interações sem reduzir nicho a um local.",
+          "Identifique entradas e saídas de indivíduos e os efeitos das relações ecológicas."
+        ],
+        "example": "Em um modelo hipotético, uma população de 80 indivíduos tem 12 nascimentos, 7 mortes, 4 imigrantes e 9 emigrantes no período. O tamanho final é 80 + 12 − 7 + 4 − 9 = 80. Houve renovação e movimento de indivíduos, embora o saldo seja zero; isso não prova ausência de processos ecológicos.",
+        "pitfall": "Chamar um conjunto de espécies de população, incluir água como parte da comunidade ou supor que saldo populacional zero signifique que ninguém nasceu ou morreu."
+      },
+      {
+        "level": "intermediate",
+        "title": "Teias alimentares, energia e ciclos da matéria",
+        "explanation": "Em uma cadeia alimentar, a seta do alimento para o consumidor indica transferência de matéria e energia. Produtores sintetizam matéria orgânica a partir de fontes inorgânicas; na fotossíntese usam luz, e há quimioautótrofos que obtêm energia de reações químicas. Consumidores usam matéria orgânica de outros organismos. Decompositores, como muitos fungos e bactérias, atuam sobre restos e resíduos de vários níveis, devolvendo nutrientes a processos do ambiente; não ocupam apenas o último elo de uma fila. Uma teia reúne várias relações alimentares: um onívoro pode participar de mais de um nível trófico. Energia flui pelos processos e parte é dissipada como calor; ela não é reciclada pelos decompositores. A matéria circula entre reservatórios e organismos, mas um ecossistema local pode importar e exportar matéria. Não se deve interpretar ciclo como um circuito local perfeitamente fechado. Pirâmides de energia usam energia transferida ou produzida por área e tempo e não se invertem entre níveis sucessivos. Pirâmides de biomassa medem estoque em determinado momento e podem ser invertidas, como em certos sistemas aquáticos com renovação rápida de produtores. A eficiência de transferência não é universalmente 10%; use o valor informado, quando o exercício estabelecer um modelo. No ciclo do carbono, fotossíntese incorpora carbono inorgânico, enquanto respiração, decomposição e combustão podem devolver CO2. No nitrogênio, fixação converte N2 em formas assimiláveis; nitrificação transforma amônio em nitrito e nitrato; desnitrificação pode devolver N2 à atmosfera. Plantas não utilizam diretamente todo o N2 atmosférico como nutriente. O fósforo circula por rochas, solo, água e organismos, sem uma fase gasosa importante no modelo escolar usual.",
+        "steps": [
+          "Leia o sentido das setas e identifique a fonte de matéria de cada consumidor.",
+          "Separe fluxo de energia de circulação de elementos químicos.",
+          "Confira se o gráfico mede energia por tempo ou estoque de biomassa.",
+          "Use a eficiência informada e relacione cada transformação ao ciclo correto."
+        ],
+        "example": "Modelo hipotético: produtores disponibilizam 800 unidades de energia por área e tempo, com transferência de 15% ao consumidor primário e 20% deste ao secundário. Chegam 120 e depois 24 unidades, respectivamente. Aplicar automaticamente 10% em cada etapa produziria outro resultado e ignoraria as hipóteses fornecidas.",
+        "pitfall": "Reciclar energia no desenho de uma teia, tratar decompositores como consumidores apenas do topo ou aplicar a regra dos 10% a todo ecossistema real."
+      },
+      {
+        "level": "advanced",
+        "title": "Mecanismos de impacto e conservação com evidências",
+        "explanation": "Um impacto deve ser explicado por mecanismo e escala, não apenas por um rótulo de dano. O excesso de nutrientes que chega a um corpo de água pode favorecer crescimento de algas e outros produtores. A respiração e a decomposição da matéria orgânica podem elevar o consumo de oxigênio e causar hipóxia: essa sequência caracteriza um mecanismo de eutrofização. Não significa que algas jamais produzam oxigênio ou que toda água esverdeada tenha a mesma causa. Alguns contaminantes persistentes podem se acumular no organismo ao longo do tempo, processo chamado bioacumulação; quando suas concentrações aumentam entre níveis tróficos, fala-se em biomagnificação. Isso não acontece igualmente com toda substância e depende de propriedades químicas, assimilação e eliminação. Perda e fragmentação de habitat podem reduzir áreas disponíveis, conectividade e fluxo gênico e aumentar efeitos de borda. Espécies introduzidas são chamadas exóticas em relação à região; nem toda exótica se torna invasora, mas algumas se estabelecem e causam impactos. Sobre-exploração e mudanças climáticas podem interagir com pressões locais, tornando insuficiente avaliar cada fator isoladamente. Efeito estufa natural participa das condições térmicas da Terra; sua intensificação pelo aumento de gases de efeito estufa não se confunde com a destruição do ozônio estratosférico. Conservação inclui proteger áreas, reduzir fontes de pressão e restaurar processos e habitats. Corredores podem favorecer deslocamento e conectividade, mas não garantem solução universal; efeitos dependem de espécies e paisagem. Restauração não equivale a substituir uma floresta diversa por qualquer plantação. Para avaliar uma medida, defina indicadores, condição inicial, comparação adequada e tempo de acompanhamento. Correlação isolada não demonstra causalidade; dados hipotéticos não devem ser apresentados como medição real de uma bacia ou instituição.",
+        "steps": [
+          "Ligue a pressão ambiental ao processo ecológico e ao efeito observado.",
+          "Distinga nutrientes, contaminantes persistentes e perda de habitat.",
+          "Escolha medidas que reduzam a causa e considere efeitos combinados e limitações.",
+          "Compare indicadores antes e depois com controles pertinentes, sem transformar associação em prova causal automática."
+        ],
+        "example": "Em uma paisagem hipotética, dois fragmentos florestais mantêm a mesma área total após a abertura de uma estrada, mas o deslocamento de uma espécie entre eles cai. Área total preservada não prova conectividade preservada. Uma passagem de fauna pode ser avaliada por uso e sobrevivência, com acompanhamento; sua simples construção não demonstra recuperação de todos os processos.",
+        "pitfall": "Usar área plantada como prova suficiente de biodiversidade restaurada, dizer que todo contaminante se magnifica ou atribuir efeitos locais a uma única causa sem evidência."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um estudo hipotético registra as populações de plantas, aves e insetos de um parque e analisa suas interações com luz, água e solo. Qual nível inclui explicitamente todos esses componentes?",
+        "hint": "Comunidade reúne populações, enquanto a inclusão das interações com fatores abióticos amplia o nível considerado.",
+        "solution": "C é ecossistema, pois inclui seres vivos, fatores abióticos e suas interações. A seria um conjunto de indivíduos da mesma espécie. B inclui as populações de espécies diferentes, mas não engloba por si só o componente abiótico. D descreve uma unidade regional ampla e não é o nome solicitado para a integração descrita no parque.",
+        "options": [
+          "População.",
+          "Comunidade.",
+          "Ecossistema.",
+          "Bioma."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma cadeia hipotética, produtores disponibilizam 2.000 kJ por metro quadrado por ano. A transferência dos produtores aos consumidores primários é de 12%; destes aos secundários, de 25%. Qual energia chega aos consumidores secundários no modelo?",
+        "hint": "Calcule a parcela transferida em cada etapa sucessiva. A segunda porcentagem incide sobre a energia dos primários, não sobre os produtores.",
+        "solution": "B resulta de 2.000 × 0,12 = 240 e 240 × 0,25 = 60 kJ por metro quadrado por ano. A corresponde aos primários, sem aplicar a segunda transferência. C aplica apenas 25% à energia dos produtores. D impõe 10% em duas etapas, embora o enunciado tenha fornecido eficiências diferentes.",
+        "options": [
+          "240 kJ por metro quadrado por ano.",
+          "60 kJ por metro quadrado por ano.",
+          "500 kJ por metro quadrado por ano.",
+          "20 kJ por metro quadrado por ano."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em um lago hipotético, o aporte de nutrientes aumenta, ocorre proliferação de algas e a decomposição posterior eleva o consumo de oxigênio. O lago apresenta hipóxia e mortandade de peixes. Qual interpretação e medida atuam de modo mais direto sobre o mecanismo descrito?",
+        "hint": "Identifique a entrada que desencadeia a sequência e diferencie excesso de nutrientes de concentração de substâncias persistentes ao longo da teia.",
+        "solution": "D reconhece a eutrofização e reduz a entrada de nutrientes que sustenta o processo, por exemplo com tratamento adequado dos efluentes que os transportam. A confunde esse mecanismo com biomagnificação e ignora sua causa. B elimina consumidores sem reduzir a carga e ainda atribui a eles exclusividade da respiração. C confunde perda de ozônio com processo aquático e propõe acréscimo do fator que agravou o problema.",
+        "options": [
+          "É biomagnificação; retirar apenas predadores elimina a carga de nutrientes.",
+          "É respiração exclusiva de peixes; eliminar peixes controla a causa do aporte.",
+          "É destruição do ozônio; acrescentar nutrientes recupera o oxigênio dissolvido.",
+          "É eutrofização; reduzir o aporte de nutrientes atua sobre a causa descrita."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Cidadania e direitos",
+    "objective": "Distinguir direitos civis, políticos e sociais, analisar mudanças e exclusões na cidadania brasileira e comparar reconhecimento jurídico, participação e acesso efetivo a direitos.",
+    "prerequisites": [
+      "Cronologia geral do Brasil entre Império e República",
+      "Noções de Constituição, Estado e democracia",
+      "Leitura de fontes e comparação de contextos históricos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Dimensões da cidadania e limites do sufrágio no século XIX",
+        "explanation": "Cidadania envolve pertencimento político, direitos, deveres e formas de participação na vida coletiva. Direitos civis se relacionam a liberdades e garantias, como expressão e proteção jurídica; direitos políticos, à participação no poder, inclusive voto e candidatura; direitos sociais, a condições de vida e proteção, como educação e saúde. Essa distinção ajuda a analisar processos, mas não estabelece uma sequência universal obrigatória nem separa direitos que, na prática, se sustentam mutuamente. Na história brasileira, o reconhecimento formal de igualdade conviveu com exclusões. O Império manteve a escravidão e um sistema eleitoral restrito, com critérios de renda e eleições inicialmente indiretas. O requisito censitário dizia respeito à renda; não se deve confundi-lo com um censo demográfico. A Constituição de 1824 não criou uma proibição geral de voto dos analfabetos: essa exclusão foi estabelecida pela reforma eleitoral de 1881, a Lei Saraiva. Essa reforma introduziu eleição direta e título eleitoral, mas manteve exigência de renda e restringiu o eleitorado. Por isso, eleição direta não significa automaticamente sufrágio universal. A Constituição de 1891 suprimiu a exigência censitária de renda, mas manteve outras barreiras, inclusive aos analfabetos, e o voto feminino não foi reconhecido nacionalmente naquele momento. O fim de uma restrição não elimina todas as formas de exclusão. A abolição da escravidão em 1888 foi uma ruptura fundamental da ordem jurídica, mas não tornou automaticamente igualitário o acesso à terra, renda, educação ou participação. Para interpretar uma fonte, pergunte quem tinha o direito, em que condições e quais grupos permaneciam excluídos.",
+        "steps": [
+          "Classifique a dimensão do direito sem supor uma cronologia universal.",
+          "Compare regras e grupos incluídos ou excluídos em cada momento.",
+          "Distinga voto direto, critério de renda e exigência de alfabetização.",
+          "Separe transformação jurídica de acesso efetivo às condições de cidadania."
+        ],
+        "example": "Duas reformas hipotéticas mostram a diferença: uma elimina votação em dois graus, mas mantém renda mínima; outra elimina renda mínima, mas preserva barreiras de alfabetização. Ambas alteram regras importantes, porém nenhuma, só por isso, permite concluir que todas as pessoas adultas foram incluídas.",
+        "pitfall": "Dizer que voto direto e universal são sinônimos, que a Constituição de 1824 já proibiu genericamente o voto dos analfabetos ou que o fim da renda mínima eliminou todas as exclusões."
+      },
+      {
+        "level": "intermediate",
+        "title": "Conquistas, restrições e redemocratização no século XX",
+        "explanation": "A ampliação da cidadania brasileira não foi uma marcha sem recuos. Mobilizações de mulheres, trabalhadores e outros grupos participaram das disputas por direitos; mudanças legais não devem ser explicadas apenas como dádiva de governantes. O Código Eleitoral de 1932 reconheceu nacionalmente o voto feminino e instituiu a Justiça Eleitoral e o voto secreto. Isso não incluiu os analfabetos no eleitorado, nem tornou imediatamente iguais todas as condições de participação. A Constituição de 1934 incorporou o sufrágio feminino. A expansão da legislação trabalhista e a CLT de 1943 fortaleceram direitos sociais para segmentos do trabalho, com limites de cobertura no período. Essa expansão coexistiu com o autoritarismo do Estado Novo, de 1937 a 1945: uma conquista social não prova, por si, liberdade política plena. Na ordem constitucional de 1946 havia eleições presidenciais diretas e voto secreto, mas persistia a exclusão eleitoral dos analfabetos. Não é correto transportar o Colégio Eleitoral da ditadura para todo o período anterior. A ditadura iniciada em 1964 restringiu direitos, cassou mandatos e empregou censura e repressão; a redemocratização resultou de processos e disputas sociais e institucionais. O reconhecimento do voto dos analfabetos ocorreu na Emenda Constitucional nº 25, de 1985, antes da Constituição de 1988. Esta consolidou a regra de voto facultativo para analfabetos e incluiu a possibilidade de voto aos 16 e 17 anos. A eleição presidencial direta de 1989 encerrou o longo intervalo sem escolha direta do presidente pelo eleitorado. Distinguir essas datas evita atribuir toda conquista a um único texto constitucional.",
+        "steps": [
+          "Relacione mobilização social e mudança institucional sem apagar os sujeitos envolvidos.",
+          "Diferencie reconhecimento do voto feminino de inclusão eleitoral de todos os adultos.",
+          "Compare expansão social e restrições políticas em regimes distintos.",
+          "Organize os marcos de 1932, 1946, 1964, 1985, 1988 e 1989 sem fundi-los."
+        ],
+        "example": "Uma mulher alfabetizada adulta em 1955 podia participar das eleições presidenciais diretas, atendidas as regras de alistamento. Outra mulher adulta, analfabeta, encontrava a barreira da alfabetização. O contraste mostra que o reconhecimento do voto feminino não havia removido todas as exclusões políticas.",
+        "pitfall": "Afirmar que não existia eleição presidencial direta sob a Constituição de 1946 ou que os analfabetos só obtiveram direito ao voto pela primeira vez em 1988."
+      },
+      {
+        "level": "advanced",
+        "title": "Direito formal, participação e efetividade",
+        "explanation": "A Constituição de 1988 organiza um Estado Democrático de Direito e reconhece um amplo conjunto de direitos. A análise histórica precisa distinguir a previsão normativa das condições concretas de exercício. Igualdade perante a lei é indispensável, mas não informa sozinha se todas as pessoas conseguem acesso à justiça, educação ou serviços públicos. Uma política pode ampliar cobertura e ainda enfrentar desigualdades territoriais e sociais; avaliar isso exige indicadores pertinentes e fontes identificadas, sem inventar estatísticas. O exercício da cidadania também ultrapassa a eleição periódica: associações, reivindicações coletivas, debate público e fiscalização de políticas integram a vida democrática, observadas as garantias e regras correspondentes. No sistema constitucional brasileiro, plebiscito e referendo são instrumentos de consulta: o primeiro antecede a decisão política submetida à consulta e o segundo examina posteriormente um ato normativo ou administrativo. Iniciativa popular permite apresentar proposição legislativa mediante requisitos legais, e não aprovar automaticamente uma lei sem tramitação. Em eleições, direito de votar e direito de candidatar-se são distintos. O voto facultativo dos analfabetos não elimina a inelegibilidade prevista constitucionalmente para esse grupo. Também é errado afirmar que toda pessoa pode votar ou candidatar-se sem condições: há regras de nacionalidade, idade e alistamento, entre outras. Na comparação de fontes, separe o que diz a norma, a interpretação do autor e o resultado observado. Debater prioridades de políticas não autoriza inventar decisões judiciais ou afirmar que qualquer demanda individual será automaticamente acolhida. Reconhecer limites e conflitos ajuda a estudar a efetividade de direitos sem transformar uma explicação histórica em promessa de resultado jurídico.",
+        "steps": [
+          "Identifique a norma e o período antes de comparar práticas sociais.",
+          "Diferencie reconhecimento jurídico, acesso efetivo e evidência usada na avaliação.",
+          "Separe votar, candidatar-se, consultar o eleitorado e propor uma lei.",
+          "Analise participação e desigualdade com fontes, sem fabricar estatísticas ou precedentes."
+        ],
+        "example": "Em uma situação hipotética, uma lei prevê acesso a um serviço, mas moradores de bairros afastados enfrentam deslocamentos que dificultam utilizá-lo. A existência da norma e o obstáculo de acesso podem ser verdadeiros ao mesmo tempo. Avaliar a efetividade exige observar disponibilidade e atendimento, sem concluir que o direito deixou de existir por causa da dificuldade.",
+        "pitfall": "Tratar aprovação de um direito como prova de acesso integral, confundir iniciativa popular com aprovação automática ou concluir que poder votar significa poder disputar qualquer cargo."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "A Lei Saraiva, de 1881, introduziu eleições diretas no Império e manteve critérios de renda, além de excluir analfabetos do eleitorado. Qual conclusão distingue corretamente forma de eleição e alcance da participação?",
+        "hint": "Voto direto indica como se escolhe o representante; sufrágio universal trata do alcance da inclusão eleitoral.",
+        "solution": "C distingue os critérios: a escolha direta dispensou o sistema eleitoral em graus, mas não removeu renda e alfabetização como barreiras. A confunde eleição direta com participação universal. B atribui à reforma a eliminação de uma exigência que o enunciado informa ter sido mantida. D confunde o século XIX com o reconhecimento nacional do voto feminino em 1932.",
+        "options": [
+          "O voto direto tornou automaticamente universal a participação adulta.",
+          "A reforma eliminou a exigência de renda como condição eleitoral.",
+          "A eleição tornou-se direta sem que isso significasse sufrágio universal.",
+          "A reforma reconheceu nacionalmente o voto feminino."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual sequência descreve corretamente o voto dos analfabetos na transição democrática brasileira?",
+        "hint": "Identifique o marco de 1985 e sua relação com a Constituição promulgada três anos depois.",
+        "solution": "A identifica a Emenda Constitucional nº 25 de 1985 como marco de reconhecimento do voto dos analfabetos e a Constituição de 1988 como consolidação de sua facultatividade. B antecipa essa inclusão para 1946, que mantinha a exclusão. C ignora a mudança de 1985. D confunde o reconhecimento do voto feminino em 1932 com uma inclusão dos analfabetos que não ocorreu naquele código.",
+        "options": [
+          "Reconhecimento em 1985 pela Emenda nº 25 e voto facultativo consolidado em 1988.",
+          "Inclusão em 1946 e revogação dessa inclusão em 1985.",
+          "Primeiro reconhecimento em 1988, sem marco anterior em 1985.",
+          "Inclusão dos analfabetos pelo Código Eleitoral de 1932."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma campanha hipotética afirma que, porque a Constituição permite voto facultativo aos analfabetos, eles também podem candidatar-se aos cargos eletivos nas mesmas condições. Qual avaliação está correta segundo a distinção constitucional entre votar e ser eleito?",
+        "hint": "Direito de votar e elegibilidade são dimensões distintas: conferir um deles não dispensa a regra aplicável ao outro.",
+        "solution": "D separa o voto facultativo da inelegibilidade constitucional dos analfabetos. A confunde capacidade eleitoral ativa com possibilidade de candidatura. B nega indevidamente o direito de votar. C inventa uma exceção por aprovação em plebiscito, instrumento que não substitui os requisitos constitucionais de elegibilidade.",
+        "options": [
+          "A conclusão é válida, pois todo eleitor tem elegibilidade irrestrita.",
+          "A conclusão é falsa porque analfabetos não podem votar.",
+          "A candidatura passa a ser válida se aprovada em plebiscito local.",
+          "A conclusão confunde voto facultativo com elegibilidade; analfabetos são inelegíveis."
+        ],
+        "correctIndex": 3
+      }
+    ]
   }
 ];
 
@@ -495,6 +1047,205 @@ export const authoredCurriculumBatch05ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "Opção D calcula corretamente: 40/100=40%, 60/200=30%, queda de 10 pontos percentuais, enquanto casos absolutos sobem de 40 para 60. A confunde aumento absoluto com taxa, B ignora denominador (200) assumindo 60%, C alega causalidade e representatividade municipal não suportadas. Conclusão respeita números e alcance amostral declarado."
+      }
+    ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Vocabulário contextual e cognatos",
+    "contentSha256": "8d274eba025c9d16ec824e3adab4caf2122f14800a5482e37208f9bc9fdbbd9f",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://dictionary.cambridge.org/grammar/british-grammar/actual-and-",
+      "https://dictionary.cambridge.org/us/dictionary/english/pretend",
+      "https://dictionary.cambridge.org/dictionary/english/realize",
+      "https://dictionary.cambridge.org/dictionary/english/resume",
+      "https://dictionary.cambridge.org/dictionary/english/sensible",
+      "https://dictionary.cambridge.org/dictionary/english/library"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "O trecho 'The museum offers information about temporary exhibitions. The dates change during the year' sustenta 'temporárias' (C) pelo cognato e pela segunda frase; A contradiz 'dates change', B confunde com 'temperature', D introduz gratuidade ausente no texto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Em 'During the drama rehearsal, Leo pretended to be a reporter. He was playing a role', 'pretended' significa fingir/representar na encenação (A); B troca por planejar carreira, C transforma papel em profissão comprovada, D adiciona publicação de reportagem inexistente no trecho."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Em I 'realized that the workshop had moved' indica percepção/descoberta; em II 'realized her ambition to become a violin maker' indica concretização após prática. D distingue corretamente; A impõe concretização à descoberta, B reduz a realização a percepção, C adiciona negação inexistente."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Conectivos, pronomes e estruturas verbais",
+    "contentSha256": "c92c3b96d9fac5bd6fa08b68d4b73d5e07cb4d8e7d8a3d321f174199d10c8b6b",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.rae.es/dpd/y",
+      "https://www.rae.es/dpd/o",
+      "https://www.rae.es/dpd/sino",
+      "https://www.rae.es/dpd/pronombres%20personales%20%C3%A1tonos",
+      "https://www.rae.es/dpd/cuyo",
+      "https://www.rae.es/dpd/cuando",
+      "https://www.rae.es/dpd/si",
+      "https://www.rae.es/dpd/haber",
+      "https://www.rae.es/dpd/estar"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A lacuna 1 precede 'infusiones' (som inicial /i/), exigindo 'e' por regra fonológica; 'y' (opção A) viola a alternância. A lacuna 2 corrige elemento negado 'café' por 'cacao' sem novo verbo pessoal, pedindo 'sino'; 'sino que' (opção D) exige oração com verbo conjugado. Opção B usa 'u' (forma de 'o' antes de /o/), imprópria para adição. Opção C (e / sino) satisfaz ambas as condições."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Em 'Marta entrega la carta a Luis', 'la carta' é OD e 'a Luis' é OI. Na reprise 'se la entrega', a ordem clítica padrão é OI+OD; 'le' (OI) torna-se 'se' diante de 'la' (OD) por regra morfológica, não por reflexividade. Opção A identifica corretamente: 'se' retoma Luis (OI) e 'la' retoma 'la carta' (OD). Opção B inverte as funções. Opção C força leitura reflexiva ignorando o contexto. Opção D trata 'la' como artigo, não como pronome de OD."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A hipótese presente (segunda condicional) exige imperfeito de subjuntivo na protase ('si' + tivesse) e condicional simples na apódose. 'tuviera' (imperfeito subjuntivo de tener) e 'haría' (condicional de hacer) formam o par canônico. Opção A usa 'tendría' (condicional) na protase, inadequado. Opção B troca as formas. Opção C usa presente/futuro (condicional aberta), não hipótese. Opção D atende exatamente à construção delimitada no enunciado."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Eletricidade cotidiana",
+    "contentSha256": "35decf49497b4e2b2d22a6dda6adedabc9c88c544a3add3e19fab2baea18c0cf",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/college-physics-2e/pages/20-1-current",
+      "https://openstax.org/books/college-physics-2e/pages/20-2-ohms-law-resistance-and-simple-circuits",
+      "https://openstax.org/books/college-physics-2e/pages/20-4-electric-power-and-energy",
+      "https://openstax.org/books/college-physics-2e/pages/21-1-resistors-in-series-and-parallel",
+      "https://openstax.org/books/college-physics-2e/pages/23-12-rlc-series-ac-circuits"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Circuito série: Req=6+4=10Ω, I=20/10=2A. Queda no resistor de 6Ω: U=RI=6×2=12V (o de 4Ω tem 8V, soma 20V). Opção B correta. A usa 20V/6Ω≈3,33A ignorando o segundo resistor. C mantém I=2A mas atribui 20V ao resistor de 6Ω violando U=RI. D resulta em 5A e 30V, incompatíveis com Req=10Ω e fonte 20V."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Ief=S/Uef=800/200=4A. P=S×FP=800×0,75=600W=0,6kW. E=P×t=0,6×10=6kWh. Opção A correta. B calcula I=P/Uef=600/200=3A ignorando que FP≠1. C usa S=800VA como potência ativa gerando 8kWh. D combina ambos erros. FP usado corretamente para P=S×FP, não como rendimento."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Entrada A=1,2×4×10=48kWh. Útil=48×0,75=36kWh. Entrada B=36/0,90=40kWh. Diferença=8kWh. Economia=8×0,80=R$6,40. Opção D correta. A confunde energia útil (36kWh) com entrada de B. B ignora rendimento maior mantendo 48kWh. C divide entrada de A por 0,75 novamente (48/0,75=64kWh) contando perdas em dobro."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Soluções e concentração",
+    "contentSha256": "2e08554e2fc1f2b2abfa4d8b379c8fb5dbf910c7fd737b5295bdd3acb07be3a9",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+      "https://openstax.org/books/chemistry-2e/pages/3-4-other-units-for-solution-concentrations",
+      "https://openstax.org/books/chemistry-2e/pages/11-1-the-dissolution-process",
+      "https://openstax.org/books/chemistry-2e/pages/11-3-solubility",
+      "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "C = 12 g / 0,200 L = 60 g/L. % m/v = gramas em 100 mL = 6 g/100 mL = 6% m/v. Opção B confere. A usa 12 g/L (esquece converter 200 mL para 0,2 L). C usa 0,020 L (dez vezes menor). D divide 60 por 10. Distratores explicados corretamente."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "n(NaCl) = 5,85 g / 58,5 g/mol = 0,100 mol. c = 0,100 mol / 0,500 L = 0,200 mol/L. Opção D confere. A apresenta apenas n (0,100 mol) como se volume fosse 1 L. B trata massa 5,85 como mols (5,85/0,5 = 11,7). C dobra para 0,400 contando íons, mas a pergunta pede concentração analítica de NaCl."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "n1 = 0,40 mol/L × 0,150 L = 0,060 mol. n2 = 0,10 mol/L × 0,250 L = 0,025 mol. n_total = 0,085 mol. c_final = 0,085 mol / 0,500 L = 0,170 mol/L. Opção C confere. A faz média simples (0,40+0,10)/2 = 0,25. B divide por 0,400 L (soma dos volumes iniciais) ignorando volume final 0,500 L. D apresenta n_total (0,085) como concentração."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Ecologia e impactos ambientais",
+    "contentSha256": "d64428403da616e72afe40143862d04da839edeab3550310dda9a52009217d08",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/45-1-population-demography",
+      "https://openstax.org/books/biology-2e/pages/45-6-community-ecology",
+      "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+      "https://openstax.org/books/biology-2e/pages/46-2-energy-flow-through-ecosystems",
+      "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+      "https://openstax.org/books/biology-2e/pages/47-3-threats-to-biodiversity",
+      "https://openstax.org/books/biology-2e/pages/47-4-preserving-biodiversity"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A questão pede o nível que inclua explicitamente seres vivos (plantas, aves, insetos) e fatores abióticos (luz, água, solo) com suas interações. População (A) refere-se a uma única espécie. Comunidade (B) reúne populações de espécies diferentes, mas exclui o componente abiótico. Ecossistema (C) é a definição padrão que integra comunidade e fatores abióticos em interação. Bioma (D) é unidade regional ampla, não o nível de integração local descrito. O gabarito 2 (Ecossistema) está correto e os distractores são adequadamente explicados na solução."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Cálculo independente: produtores = 2.000 kJ/m²/ano. Transferência produtores → primários = 12% → 2.000 × 0,12 = 240 kJ/m²/ano (opção A, energia nos primários). Transferência primários → secundários = 25% → 240 × 0,25 = 60 kJ/m²/ano (opção B). Opção C (500) resulta de 25% aplicado diretamente aos 2.000, ignorando a etapa intermediária. Opção D (20) assume 10% em duas etapas (2.000 × 0,1 × 0,1), contradizendo as eficiências dadas no enunciado. Gabarito 1 (60) está correto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "O enunciado descreve a sequência causal clássica de eutrofização: aumento de nutrientes → floração de algas → decomposição da matéria orgânica → consumo elevado de oxigênio → hipóxia → mortandade. Opção D identifica corretamente o mecanismo (eutrofização) e a medida que atua na causa (reduzir aporte de nutrientes, ex.: tratamento de efluentes). Opção A confunde com biomagnificação (contaminantes persistentes em teia trófica) e propõe medida irrelevante. Opção B atribui a hipóxia à respiração exclusiva de peixes e propõe eliminar peixes, sem reduzir a carga de nutrientes. Opção C confunde destruição da camada de ozônio (estratosfera) com processo aquático e propõe adicionar nutrientes, agravando o problema. Gabarito 3 está correto."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Cidadania e direitos",
+    "contentSha256": "6d476d6248e4424db0510ee13272527a3423901ab1fd6a4b75d36a91d9f25c09",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.tse.jus.br/institucional/museu-do-voto/temas/eleicoes-nos-tempos-do-imperador",
+      "https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-3029-9-janeiro-1881-546079-publicacaooriginal-59786-pl.html",
+      "https://www.tse.jus.br/servicos-eleitorais/glossario/termos/titulo-eleitoral/1o-titulo-eleitoral-1881",
+      "https://www.tse.jus.br/jurisprudencia/julgados-historicos/assembleia-constituinte-1946",
+      "https://www.tse.jus.br/comunicacao/noticias/2016/Novembro/constituicao-de-1985-garantiu-o-direito-ao-voto-aos-eleitores-analfabetos",
+      "https://www.camara.leg.br/noticias/704228-veja-a-cronologia-do-voto-feminino-no-brasil/",
+      "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "https://www2.camara.leg.br/a-camara/conheca/historia/a1republica.html/",
+      "https://www.tse.jus.br/legislacao/codigo-eleitoral/leis-ordinarias/lei-nb0-9.709-de-18-de-novembro-de-1998",
+      "https://www.tse.jus.br/servicos-eleitorais/glossario/termos/eleicao-direta",
+      "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-5452-1-maio-1943-415500-publicacaooriginal-1-pe.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Questão básica sobre Lei Saraiva: opção C ('A eleição tornou-se direta sem que isso significasse sufrágio universal') é a única que distingue corretamente FORMA de eleição (direta vs. graus) de ALCANCE (universal vs. restrito por renda e alfabetização). A confunde direto com universal; B contradiz o enunciado (renda mantida); D anacronismo (voto feminino só em 1932). Gabarito 2 confirmado independemente."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Questão intermediária sobre voto de analfabetos na transição: opção A ('Reconhecimento em 1985 pela Emenda nº 25 e voto facultativo consolidado em 1988') é historicamente precisa — EC 25/1985 (Art. 3) primeiro garantiu o exercício do voto a analfabetos; CF/1988 (Art. 14, §1) tornou facultativo. B inverte (1946 mantinha exclusão); C apaga marco de 1985; D confunde com voto feminino de 1932. Gabarito 0 confirmado independemente."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Questão avançada sobre voto facultativo vs. elegibilidade: opção D ('A conclusão confunde voto facultativo com elegibilidade; analfabetos são inelegíveis') reflete CF/1988 Art. 14 §1 (voto facultativo) e §4 (inelegibilidade dos analfabetos). A erra ao igualar capacidade eleitoral ativa e passiva; B nega direito de votar (falso, é facultativo); C inventa exceção via plebiscito que não existe na Constituição. Gabarito 3 confirmado independemente."
       }
     ]
   }

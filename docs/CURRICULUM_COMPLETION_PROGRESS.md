@@ -4,7 +4,47 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 7
+## Estado atual — checkpoint 8
+
+Retomada autorizada em 15/11/2026. O lote 05 chegou a dez aulas com Inglês —
+Vocabulário contextual e cognatos; Espanhol — Conectivos, pronomes e estruturas
+verbais; Física — Eletricidade cotidiana; Química — Soluções e concentração;
+Biologia — Ecologia e impactos ambientais; História — Cidadania e direitos.
+São 42 aulas novas nos lotes 03/04/05, com revisão docente humana pendente.
+
+Restam 1.253 lacunas entre 1.512 identidades. O recorte editorial ENEM contém
+59 temas aprofundados e 837 lacunas; a lista de estudo ENEM contém 59 aulas
+aprofundadas, 52 guias introdutórios e 796 temas em desenvolvimento.
+
+- Inglês: cognatos como hipóteses de leitura, falsos amigos e polissemia; sem
+  equivalências universais para realize/resume. Exemplos autorais contextualizados.
+- Espanhol: corrigidas alternâncias fonológicas y/e e o/u, combinação de clíticos,
+  relativos, condições verbais e haber existencial. Críticas que inventavam
+  exigência de tonicidade foram confrontadas com o DPD da RAE e rejeitadas.
+- Física: separados fator de potência, rendimento e energia de entrada; retiradas
+  regras de instalação e tarifas inventadas. Testes recalculam série, corrente
+  eficaz, energia ativa e comparação do mesmo serviço útil sem perdas duplicadas.
+- Química: diferenciadas bases de concentração, molaridade analítica e partículas;
+  conservação e volume final explícitos em diluição e mistura. Testes recalculam
+  massa/volume, NaCl e mistura com adição final de água.
+- Biologia: retirados números sem fonte sobre uma bacia real e alegações legais
+  inadequadas. Recomposto escopo de populações, relações, teias, energia, ciclos e
+  impactos. O teste aplica as duas eficiências tróficas informadas, sem impor 10%.
+- História: corrigidos voto analfabeto em 1881/1985, eleições diretas sob a ordem
+  de 1946 e distinção entre votar e candidatar-se. Eliminadas decisões judiciais
+  inventadas e previsões automáticas de resultado jurídico.
+
+Verificação: 621 testes da aplicação e seis do motor aprovados, incluindo os quatro
+testes de integridade entre provas incorporados da branch remota. Lint dos arquivos
+alterados e build de produção aprovados. Chromium comparou os payloads das 42
+aulas, abriu as seis novas e respondeu às 18 questões, conferindo explicações e
+referências expandidas em 320/375/768/1440 px, sem exceções ou rolagem horizontal.
+Espanhol e História exibiram 12 referências cada, dentro do contrato de publicação.
+A CI do checkpoint 7 passou (run 43662941105). Sem merge, deploy, publicação no
+banco ou alteração de schema/RLS. A fila e a conferência das aulas seguintes
+continuam; este checkpoint não conclui o catálogo.
+
+## Histórico — checkpoint 7
 
 O lote 05 começou com Matemática — Probabilidade e estatística; Português —
 Argumentação e coesão; Literatura — Classicismo e Quinhentismo; Redação —
