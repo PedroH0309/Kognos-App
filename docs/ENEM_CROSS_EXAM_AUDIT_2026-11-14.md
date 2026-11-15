@@ -127,3 +127,22 @@ O PR #117 também declara expansão de conteúdos, testes locais (592 testes da 
 A descrição **atual** do [PR #117](https://github.com/PedroH0309/Kognos-App/pull/117) passou a declarar **38 temas ENEM aprofundados e 858 lacunas em 896 entradas**, em vez dos 22/874 registrados na fotografia anterior. A variação dentro da própria branch #117 é de **+16 temas / -16 lacunas declaradas**; contra a fotografia CI do #114 (14/882), a diferença é de **+24 temas / -24 lacunas**, **não** um ganho validado no mesmo checkout. O PR #117 informa 607 testes de aplicação, seis do motor e build aprovados localmente, mas também relata dívida de lint global (87 erros, 115 avisos), revisão docente pendente e ausência de merge/deploy.
 
 **Critério de integração:** não somar contagens entre PRs nem marcar 38 como cobertura verificada do #114. Antes de atualizar a linha de base, auditar no mesmo commit as aulas novas do #117, seus IDs, cobertura integral, publicação/resolução de alias, disciplinas, pré-requisitos, exemplos, capítulos e questões A–D; executar auditoria ENEM antes/depois e regressões de isolamento. O #114 continua exclusivamente com testes/documentação e não deve sobrescrever os arquivos autorais do #117. O alvo de 20/11 permanece de risco muito elevado.
+
+
+## Reconciliação entre branches — 14/11/2026, 23h (Brasília)
+
+**Estado observado nos PRs, sem mesclar branches:** [#93](https://github.com/PedroH0309/Kognos-App/pull/93) e [#99](https://github.com/PedroH0309/Kognos-App/pull/99) estão fechados; [#114](https://github.com/PedroH0309/Kognos-App/pull/114) e [#117](https://github.com/PedroH0309/Kognos-App/pull/117) permanecem abertos. O PR #117 informa **53** temas profundos do ENEM, **843** lacunas editoriais entre **896** entradas e **1.259** lacunas agregadas entre **1.512** identidades curriculares. Estes são **números declarados pelo PR #117**, não resultados do teste `KOGNOS_CROSS_EXAM_AUDIT` no checkout combinado. A descrição do PR #117 também informa 614 testes de aplicação, seis testes do motor, build e lint dos arquivos alterados aprovados; não é uma certificação da CI conjunta. O lint global ainda tem dívida relatada de 87 erros e 115 avisos.
+
+| Métrica | Snapshot auditado #114 | Declaração #117 | Delta declarado (não validado em conjunto) |
+|---|---:|---:|---:|
+| Entradas editoriais ENEM | 896 | 896 | 0 |
+| Vínculos/temas profundos ENEM | 14 | 53 | +39 |
+| Lacunas integrais ENEM | 882 | 843 | -39 |
+| Referências parciais | 9 | não informado | indeterminado |
+| Aliases integrais semânticos revisados | 1 | não informado | indeterminado |
+| IDs canônicos profundos distintos | 14 | não informado | indeterminado |
+| Duplicações persistidas removidas | 0 | não informado | indeterminado |
+
+**Bloqueio de reconciliação:** os totais do #117 não demonstram, por si, que cada tema adicional usa o mesmo objeto canônico em todos os exames elegíveis, nem comprovam escopo integral da matriz oficial do Inep. É necessário integrar temporariamente as branches em um checkout de teste, executar o inventário por disciplina, comparar IDs e objetivos, e registrar links integrais, referências parciais e complementos, antes de atualizar a coluna auditada. Não promover referências parciais a integrais. As 896 entradas são editoriais do Kognos, não 896 habilidades oficiais do ENEM.
+
+**Produção nesta atualização:** somente reconciliação documental; zero novas aulas, zero aliases integrais verificados e zero registros persistidos eliminados. Sem merge, deploy, schema ou RLS alterados. Prazo de 20/11 em risco muito elevado; manter produção e validação após essa data enquanto houver lacunas.
