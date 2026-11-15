@@ -37,5 +37,6 @@
 - [x] Iniciar lote 12: 148 novas aulas, 662 testes, build e leitor real aprovados.
 - [x] Ampliar lote 12: 152 novas aulas, 664 testes, build e leitor real aprovados.
 - [x] Integrar doze do lote 12: 156 novas aulas, 666 testes, build e leitor real aprovados.
+- [x] Completar lote 12: 160 novas aulas, 666 testes, build e leitor real aprovados.
 - [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
 - [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.

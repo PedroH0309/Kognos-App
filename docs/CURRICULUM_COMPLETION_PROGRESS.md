@@ -4,7 +4,49 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 31
+## Estado atual — checkpoint 32
+
+Lote 12 completo com dezesseis aulas; 160 novas nesta etapa. Acrescentadas
+Gênero, raça e relações sociais; Música: ritmo, melodia, harmonia e timbre;
+Ginásticas e práticas de condicionamento; Terra, Lua e Sistema Solar.
+Autoria Codex, fontes conferidas e crítica independente Claude Code/NVIDIA NIM;
+homologação pedagógica humana pendente.
+
+Restam 1.135 lacunas de 1.512 identidades editoriais. ENEM: 169 aprofundadas e
+727 lacunas. Estudo: 169 aprofundadas, 28 guias e 710 planejadas; índice 377.
+
+- Sociologia: categorias e socialização, mecanismos de discriminação,
+  interseccionalidade e leitura de dados, sem inferir intenções individuais
+  de médias ou converter propostas de avaliação em requisitos legais.
+- Música: ritmo/pulso/andamento/compasso, melodia e harmonia, timbre e textura.
+  Casos escritos completos, sem depender de áudio, figura ou partitura ausente.
+- Educação Física: finalidades das ginásticas, capacidades e variáveis de
+  organização, inclusão e crítica à mídia. Aula conceitual, sem prescrever
+  execução, cargas, diagnóstico, dieta ou uso de substâncias.
+- Ciências: componentes do sistema, rotação/translação, fases e eclipses,
+  estações e referenciais, com limites de escala. Inclinação de 23,4 graus
+  relativa à perpendicular ao plano orbital, corrigindo imprecisão da fonte.
+
+As críticas finais foram lidas integralmente e seus hashes conferidos. Rascunhos
+com generalizações, números sem fontes, classificações e conceitos incorretos
+foram descartados mesmo quando receberam aceite automático. A revisão por IA
+não substitui revisão docente. Nenhum material externo foi copiado.
+
+A nova aula de Música substitui uma versão anterior no leitor. O teste da etapa
+14 foi atualizado para verificar essa prioridade e validar a aula ativa,
+mantendo todas as verificações da versão histórica e de suas seis atividades.
+Falha inicial preservada; teste específico e suíte completa aprovados depois.
+
+666 testes app + 6 motor, build e lint alterado aprovados. API das 160 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI 31 aprovada 43764821385, head 0bae72c.
+
+Continuar lote 13: Funções afim, quadrática e modular; Concordância, regência e
+crase; Literatura africana de língua portuguesa; Planejamento e projeto de texto.
+Sem schema, banco, merge ou deploy. Catálogo em execução.
+
+## Histórico — checkpoint 31
 
 Lote 12 com doze aulas; 156 novas nesta etapa. Acrescentadas Genética mendeliana;
 Revolução Industrial e trabalho; População, migração e demografia; Filosofia

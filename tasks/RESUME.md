@@ -1,6 +1,42 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 31
+## Estado atual em 15/11/2026 — checkpoint 32
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
+(último17%), secondary:null; sessão indisponível. Não substituir semanal por
+sessão, nem garantir parada inobservável. Consultar periodicamente.
+
+160 novas; lote12 completo. 666 app + 6 motor, build/lint e 160API + 4leitor12MCQ,
+4larguras aprovados. Lacunas1135; ENEM169/727; estudo169/28/710; índice377.
+Logsprivate/checkpoint32-*.log; REDtestestage14preservado. Humana pendente.
+CI31success43764821385head0bae72c. Publicar32/PR e acompanhar CI exata.
+Preview3316 sessão25496; build160. Captura batch12-complete inspecionada.
+
+Lote12ALL16: f81404ed,7a81e1ec,237cf014,d0f6d214,9e223a4b,b17518b1,
+4c7c5bec,d5903a1a,0536eebb,1198af3f,f66d7527,69cf6de6,c6064524,a18970e3,
+e942ed50,4c61183d. Críticasatuaislidas/aceitas. Não reaplicar autores-base nos
+aceitos. Música substitui stage14 no leitor: testeprioridade atualizado, todas
+asserções da versãohistórica+6tarefas mantidas; testeativo validado; suíteGREEN.
+
+Raw160terminou. Novo worker176PID8120 logTemp
+kognos-curriculum-collaboration-v4-batch13-20261115.log; um worker limitado.
+Último Math1507dbbd. Próximos: Portbbd57e3f,Litb5beaee8,Redaçãod071bb1d,
+Inglês1bf6ee18,Espanholb791cc78,Física3816b15d,Química2ec02a9b,
+Bioafd8786c,Hist00b9f8de,Geof9a2eaf7,Filo15edc391,Soc6f39fb3e,
+Arte0ff9394f,PE0b6d0515,Ciências78f17021. Não duplicarworker.
+Criar módulo/integrador13 e registrar agregadores só após primeiros aceites.
+Mapear índice leve atualizado; NÃO incluir textos no bundle inicial.
+
+Helpers emTemp e cópia privada/resume-helpers. Fontes/limites nos registros
+privados: apenas passagens pertinentes lidas, não documentos inteiros; sem
+áudios externos reproduzidos ou materiais copiados. EducaçãoFísicaconceitual,
+semterapia/doses/dadosmédicos; Ciênciascorrige23.4perpendicular e face lunar
+aproximadamenteconstante/nãosempreescura. Casoastronômico não pedeolharSol.
+
+AGENTS gerado fora decommit; raizoriginalsuja preservada;fetchantespush,nunca
+force. Sem schema,banco,merge/deploy. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 31
 
 CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
 (último15%), secondary:null; sessão indisponível. Não substituir semanal por
