@@ -64,6 +64,8 @@
  width:18px;height:18px;display:block;justify-self:center;
  color:var(--flow-muted);pointer-events:none;
 }
+/* Match the app form selectors so the wrapper owns the only border and focus ring. */
+.app-layout .k-curriculum-flow .k-curriculum-topic-search input[type="search"],
 .k-curriculum-flow .k-curriculum-topic-search input[type="search"]{
  display:block;width:100%;height:100%;min-width:0;min-height:0;
  margin:0;padding:0;border:0;border-radius:0;outline:0;box-shadow:none;
