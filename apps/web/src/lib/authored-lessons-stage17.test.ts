@@ -11,6 +11,7 @@ import {stage16Topics} from './authored-lessons-stage16.ts';
 import {stage17Lesson,stage17Topics,stage17EverydayContexts} from './authored-lessons-stage17.ts';
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
 import {everydayContexts,everydayContextFor} from './everyday-lesson-contexts.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 
 test('Stage 17 provides 32 individually written lessons in all sixteen disciplines',()=>{
  assert.equal(stage17Topics.length,32);
@@ -34,7 +35,9 @@ test('Stage 17 provides 32 individually written lessons in all sixteen disciplin
   assert.ok(topic,'Stage 17 uses canonical curriculum titles: '+key);
   const lesson=stage17Lesson(topic);
   assert.ok(lesson,'Lesson missing: '+key);
-  assert.deepEqual(starterLesson(topic),lesson,'Stage 17 must override generic introductory template');
+  const active=starterLesson(topic);
+  assert.deepEqual(active,deepAuthoredCurriculumLesson(topic)??lesson,'Prefer reviewed curriculum replacements, retaining the original stage 17 fallback');
+  assert.ok(parseCourseDocument(active),'Active lesson schema must be valid');
   assert.equal(starterCoverage(topic),'thematic');
   assert.ok(parseCourseDocument(lesson),'Lesson schema must be valid');
   assert.equal(lesson.review,'introductory');

@@ -3,17 +3,24 @@ import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {parseCourseDocument} from './course-content.ts';
 import {deepMathLesson,deepMathTopicNames} from './deep-math-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {starterCoverage,starterLesson} from './starter-lessons.ts';
 
-test('All eight individually authored mathematics topics are present in the curriculum and parse as lessons',()=>{
+test('All eight original mathematics lessons remain valid and reviewed curriculum replacements take priority',()=>{
  assert.equal(deepMathTopicNames.length,8);
  for(const name of deepMathTopicNames){
   const topic=curriculumTopics.find(item=>item.subject==='Matemática'&&item.topic===name);
   assert.ok(topic,'Missing curriculum topic: '+name);
   const direct=deepMathLesson(topic);
   assert.ok(direct);
-  const lesson=starterLesson(topic);
-  assert.deepEqual(lesson,direct,'The curriculum must prefer the authored lesson');
+  const active=starterLesson(topic);
+  const replacement=deepAuthoredCurriculumLesson(topic);
+  assert.deepEqual(active,replacement??direct,'Prefer the reviewed curriculum replacement, retaining the original fallback');
+  assert.ok(parseCourseDocument(active),'Malformed active lesson: '+name);
+  // Preserve all six exercises and the original lesson contract even when a
+  // newer curriculum lesson is served. Replacement quality is checked in
+  // authored-curriculum-lessons.test.ts, including hashes and answer calculations.
+  const lesson=direct;
   assert.ok(parseCourseDocument(lesson),'Malformed CourseLesson: '+name);
   assert.equal(starterCoverage(topic),'thematic');
   assert.equal(lesson.review,'introductory','Teacher review must not be invented');
@@ -44,7 +51,8 @@ test('Mathematics problems include original computations, explicit verification 
  const text=deepMathTopicNames.flatMap(name=>{
   const topic=curriculumTopics.find(t=>t.subject==='Matemática'&&t.topic===name);
   assert.ok(topic);
-  const l=starterLesson(topic);
+  const l=deepMathLesson(topic);
+  assert.ok(l,'Original mathematics lesson remains available: '+name);
   return [...l.sections.flatMap(s=>[s.explanation,s.example,s.pitfall]),...l.tasks.map(t=>t.solution)];
  }).join(' ');
  for(const needle of ['MDC','MMC','proporcionalidade','juros simples','juros compostos','√','inequação','sistema','notação científica']){

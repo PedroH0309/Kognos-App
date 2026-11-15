@@ -1,0 +1,41 @@
+# Execução do catálogo completo
+
+- [x] Medir o escopo integral: 1.512 identidades; 1.295 lacunas iniciais.
+- [x] Registrar o contrato de conteúdo e os limites da revisão por IA.
+- [x] Implementar testes e validação comum, incluindo rejeição de rascunhos ruins.
+- [x] Iniciar autoria e revisão separadas com Claude Code, com retomada por ID.
+- [x] Separar índice do navegador dos textos completos servidos pela API.
+- [x] Integrar e verificar o primeiro lote sob o contrato comum: três aulas,
+      592 testes da aplicação, build e leitor público real aprovados.
+- [x] Ampliar o lote 03 para 16 aulas e verificar 605 testes, build e leitor real.
+- [x] Corrigir a abertura direta de alias sem ressuscitar conteúdo retirado.
+- [x] Iniciar lote 04 com quatro aulas: 607 testes, build e leitor real aprovados.
+- [x] Ampliar lote 04 para nove aulas: 609 testes, build e leitor real aprovados.
+- [x] Completar lote 04 com 16 aulas: 612 testes, build e leitor real aprovados.
+- [x] Iniciar lote 05 com quatro aulas: 614 testes, build e leitor real aprovados.
+- [x] Ampliar lote 05 para dez aulas: 621 testes, build e leitor real aprovados.
+- [x] Completar lote 05 com 16 aulas: 624 testes, build e leitor real aprovados.
+- [x] Iniciar lote 06 com quatro aulas: 625 testes, build e leitor real aprovados.
+- [x] Ampliar lote 06 para nove aulas: 629 testes, build e leitor real aprovados.
+- [x] Completar lote 06 com 16 aulas: 631 testes, build e leitor real aprovados.
+- [x] Iniciar lote 07 com quatro aulas: 632 testes, build e leitor real aprovados.
+- [x] Ampliar lote 07 para nove aulas: 635 testes, build e leitor real aprovados.
+- [x] Completar lote 07 com 16 aulas: 638 testes, build e leitor real aprovados.
+- [x] Iniciar lote 08 com quatro aulas: 639 testes, build e leitor real aprovados.
+- [x] Ampliar lote 08 para nove aulas: 642 testes, build e leitor real aprovados.
+- [x] Completar lote 08 com 16 aulas: 645 testes, build e leitor real aprovados.
+- [x] Iniciar lote 09 com quatro aulas: 647 testes, build e leitor real aprovados.
+- [x] Ampliar lote 09 para nove aulas: 650 testes, build e leitor real aprovados.
+- [x] Completar lote 09 com 16 aulas: 651 testes, build e leitor real aprovados.
+- [x] Iniciar lote 10 com quatro aulas: 652 testes, build e leitor real aprovados.
+- [x] Ampliar lote 10 para nove aulas: 655 testes, build e leitor real aprovados.
+- [x] Concluir lote 10: 128 novas aulas, 657 testes, build e leitor real aprovados.
+- [x] Integrar primeiro conjunto do lote 11: 132 novas, 658 testes, build e leitor real aprovados.
+- [x] Integrar metade do lote11:136novas,659testes,build e leitor real aprovados.
+- [x] Integrar12do lote11:140novas,661testes,build e leitor real aprovados.
+- [x] Concluir lote 11: 144 novas aulas, 661 testes, build e leitor real aprovados.
+- [x] Iniciar lote 12: 148 novas aulas, 662 testes, build e leitor real aprovados.
+- [x] Ampliar lote 12: 152 novas aulas, 664 testes, build e leitor real aprovados.
+- [x] Integrar doze do lote 12: 156 novas aulas, 666 testes, build e leitor real aprovados.
+- [ ] Repetir autoria, correção, revisão e integração até zerar as lacunas.
+- [ ] Confirmar toda a cobertura no runtime, testes, build, CI e relatório final.

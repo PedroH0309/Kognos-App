@@ -1,33 +1,26 @@
 'use client';
 
-import {useCallback,useEffect,useState} from 'react';
 import {Award,BookOpenCheck,CheckCircle2,Flame,LockKeyhole,RefreshCw,Star,Target,Trophy,Zap} from 'lucide-react';
 import {getSupabase} from '@/lib/supabase';
 import type {AchievementSummary} from '@/lib/ai-achievements';
+import {useAsyncResource} from '@/lib/use-async-resource';
 import styles from './AchievementSpace.module.css';
 
 type Props={userId:string|null;onPractice:()=>void};
+async function loadAchievements(userId:string,signal:AbortSignal):Promise<AchievementSummary>{
+ const supabase=getSupabase();
+ const {data,error}=await supabase?.auth.getSession()??{data:{session:null},error:null};
+ signal.throwIfAborted();
+ if(error||!data.session||data.session.user.id!==userId)throw new Error('Entre novamente para consultar suas conquistas.');
+ const response=await fetch('/api/ai-achievements',{
+  headers:{Authorization:`Bearer ${data.session.access_token}`},cache:'no-store',signal
+ });
+ if(!response.ok)throw new Error('Não foi possível consultar suas conquistas. Tente novamente.');
+ return response.json();
+}
+
 export default function AchievementSpace({userId,onPractice}:Props){
- const [stats,setStats]=useState<AchievementSummary|null>(null);
- const [loading,setLoading]=useState(true);
- const [error,setError]=useState('');
- const load=useCallback(async()=>{
-  if(!userId){setLoading(false);setStats(null);return;}
-  setLoading(true);setError('');
-  try{
-   const supabase=getSupabase();
-   const {data,error:sessionError}=await supabase!.auth.getSession();
-   if(sessionError||!data.session||data.session.user.id!==userId)throw new Error('Entre novamente para consultar suas conquistas.');
-   const response=await fetch('/api/ai-achievements',{
-    headers:{Authorization:`Bearer ${data.session.access_token}`},cache:'no-store'
-   });
-   const body=await response.json();
-   if(!response.ok)throw new Error(body.error||'Não foi possível consultar suas conquistas.');
-   setStats(body as AchievementSummary);
-  }catch(e){setStats(null);setError(e instanceof Error?e.message:'Falha ao carregar as conquistas.');}
-  finally{setLoading(false);}
- },[userId]);
- useEffect(()=>{void load();},[load]);
+ const {data:stats,loading,error,refresh:load}=useAsyncResource(userId,loadAchievements,'Falha ao carregar as conquistas.');
  const next=stats?100-(stats.xp%100):100;
  return <main className="app-content">
   <div className={styles.heading}>

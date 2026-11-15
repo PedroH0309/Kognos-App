@@ -567,7 +567,8 @@
   flex-shrink: 0;
 }
 
-.ks-badge.is-detected {
+.ks-badge.is-detected,
+.ks-badge.ks-badge-warning {
   background: var(--state-warning-bg);
   border-color: var(--state-warning-border);
   color: var(--state-warning);
@@ -587,7 +588,8 @@
   background: var(--kognos-patina);
 }
 
-.ks-badge.is-ready {
+.ks-badge.is-ready,
+.ks-badge.ks-badge-success {
   background: var(--state-success-bg);
   border-color: var(--state-success-border);
   color: var(--state-success);
@@ -597,7 +599,8 @@
   background: var(--state-success);
 }
 
-.ks-badge.is-neutral {
+.ks-badge.is-neutral,
+.ks-badge.ks-badge-neutral {
   background: var(--surface-elevated);
   border-color: var(--border-hairline);
   color: var(--text-muted);
@@ -642,7 +645,7 @@
 }
 
 .ks-toast.is-success { border-color: var(--state-success-border); }
-.ks-toast.is-warning { border-color: var(--state-warning-border); }
+.ks-toast.is-warning,.ks-toast.ks-toast-warning { border-color: var(--state-warning-border); }
 .ks-toast.is-error { border-color: var(--state-error-border); }
 .ks-toast.is-info { border-color: var(--state-info-border); }
 
@@ -656,7 +659,7 @@
 }
 
 .ks-toast.is-success .ks-toast-icon { color: var(--state-success); }
-.ks-toast.is-warning .ks-toast-icon { color: var(--state-warning); }
+.ks-toast.is-warning .ks-toast-icon,.ks-toast.ks-toast-warning .ks-toast-icon { color: var(--state-warning); }
 .ks-toast.is-error .ks-toast-icon { color: var(--state-error); }
 .ks-toast.is-info .ks-toast-icon { color: var(--state-info); }
 
@@ -1411,6 +1414,54 @@
   .ks-section { max-width: none; padding: 0; }
 }
 
-/* ============================================================
-   END OF COMPONENT KIT
-   ============================================================ */
+/* Layout and state classes consumed by the incremental kit migration.
+ * Keep these token-based; a class name alone cannot replace layout behavior. */
+.ks-flex{display:flex}
+.ks-flex-col{flex-direction:column}
+.ks-flex-wrap{flex-wrap:wrap}
+.ks-items-center{align-items:center}
+.ks-items-start{align-items:flex-start}
+.ks-justify-center{justify-content:center}
+.ks-gap-1{gap:var(--space-1)}
+.ks-gap-2{gap:var(--space-2)}
+.ks-gap-4{gap:var(--space-4)}
+.ks-mt-3{margin-top:var(--space-3)}
+.ks-p-6{padding:var(--space-6)}
+.ks-space-y-1>*+*{margin-top:var(--space-1)}
+.ks-space-y-2>*+*{margin-top:var(--space-2)}
+.ks-text-xs{font-size:var(--text-xs)}
+.ks-text-sm{font-size:var(--text-sm)}
+.ks-text-xl{font-size:var(--text-xl)}
+.ks-text-muted{color:var(--text-muted)}
+.ks-font-semibold{font-weight:var(--weight-semibold)}
+.ks-bg-surface-raised{background:var(--surface-raised)}
+.ks-rounded-lg{border-radius:var(--radius-lg)}
+.ks-shadow-lg{box-shadow:var(--shadow-lg)}
+.ks-cursor-pointer{cursor:pointer}
+.ks-fixed{position:fixed}
+.ks-inset-0{inset:0}
+.ks-z-50{z-index:50}
+.ks-w-12{width:var(--space-12)}
+.ks-w-48{width:12rem;max-width:100%}
+.ks-w-64{width:16rem;max-width:100%}
+.ks-h-5{height:var(--space-5)}
+.ks-h-12{height:var(--space-12)}
+.ks-h-full{height:100%}
+.ks-link{color:var(--text-body);text-decoration:underline;text-underline-offset:3px}
+.ks-link:hover{color:var(--kognos-cyan)}
+.ks-link:focus-visible{outline:var(--focus-ring-width) solid var(--focus-ring-color);outline-offset:3px}
+.ks-card.ks-card-primary{border-color:var(--border-brand-soft)}
+.ks-badge.ks-badge-sm{font-size:var(--text-xs);padding:var(--space-1) var(--space-2)}
+.ks-badge.ks-badge-primary{color:var(--text-body);background:color-mix(in oklch,var(--kognos-violet) 12%,var(--surface-raised));border-color:var(--border-brand-soft)}
+.ks-skeleton-circle{border-radius:50%;border:3px solid var(--border-strong);border-top-color:var(--kognos-violet)}
+.ks-animate-spin{animation:ks-spin .85s linear infinite}
+@keyframes ks-spin{to{transform:rotate(360deg)}}
+/* Skeleton placeholders and blocking loaders need different geometry. */
+.ks-skeleton-card.ks-fixed,.ks-skeleton-card.ks-inline{
+ height:auto;display:grid;place-items:center;padding:var(--space-6);border-radius:0;
+ background:color-mix(in srgb,var(--page-bg,var(--surface-abyss)) 44%,transparent);
+ -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);animation:none;
+}
+.ks-skeleton-card.ks-inline{position:absolute;inset:0;z-index:9;border-radius:inherit}
+.less-motion .ks-skeleton,.reduced-motion .ks-skeleton,.less-motion .ks-animate-spin,.reduced-motion .ks-animate-spin{animation:none}
+@media(prefers-reduced-motion:reduce){.ks-skeleton,.ks-animate-spin{animation:none}}

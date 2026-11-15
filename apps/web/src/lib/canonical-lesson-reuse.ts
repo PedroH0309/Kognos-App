@@ -6,7 +6,8 @@
 import {curriculumTopics, type CurriculumTopic} from './curriculum-catalog.ts';
 import {examBlueprints, type ExamId} from './exam-blueprints.ts';
 import {deepProvaoLesson} from './provao-depth-lessons.ts';
-import {deepEnemLesson} from './enem-depth-batch01.ts';
+import {deepEnemLesson} from './enem-depth-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {provaoTopics} from './provao-paulista.ts';
 import {courseId} from './curriculum-id.ts';
 
@@ -177,7 +178,7 @@ const sharedOfficialProvaoLessons=new Map<string,NonNullable<ReturnType<typeof d
 function sharedOfficialProvaoLesson(source:CurriculumTopic){
  const cached=sharedOfficialProvaoLessons.get(source.id);
  if(cached)return cached;
- const lesson=deepProvaoLesson(source)??deepEnemLesson(source);
+ const lesson=deepProvaoLesson(source)??deepEnemLesson(source)??deepAuthoredCurriculumLesson(source);
  if(!lesson||lesson.id!==source.id)return null;
  sharedOfficialProvaoLessons.set(source.id,lesson);
  return lesson;
@@ -583,7 +584,7 @@ export function canonicalReuseAudit(){
       ])
     ) as Record<ExamId,string[]>,
     allUniqueDeepCanonicalIds:[...new Set([
-      ...curriculumTopics.map(topic=>(deepProvaoLesson(topic)??deepEnemLesson(topic))?.id),
+      ...curriculumTopics.map(topic=>(deepProvaoLesson(topic)??deepEnemLesson(topic)??deepAuthoredCurriculumLesson(topic))?.id),
       // Official Provão leaves can have authored depth without being listed
       // in the editorial multi-exam blueprint. Count the authored lesson once.
       ...provaoTopics.map(topic=>{
@@ -627,8 +628,8 @@ export function canonicalReuseAudit(){
       ])
     ),
     /** Counts only confirmed deep-lesson references; no introductory outlines. */
-    deepCurriculumTopics:curriculumTopics.filter(topic=>Boolean(deepProvaoLesson(topic)??deepEnemLesson(topic))).length,
-    missingDeepCurriculumTopics:curriculumTopics.filter(topic=>!(deepProvaoLesson(topic)??deepEnemLesson(topic))).length,
+    deepCurriculumTopics:curriculumTopics.filter(topic=>Boolean(deepProvaoLesson(topic)??deepEnemLesson(topic)??deepAuthoredCurriculumLesson(topic))).length,
+    missingDeepCurriculumTopics:curriculumTopics.filter(topic=>!(deepProvaoLesson(topic)??deepEnemLesson(topic)??deepAuthoredCurriculumLesson(topic))).length,
     /** Unreviewed semantic overlaps must not be reported as full coverage. */
     approvedPartialAssociations:verifiedPartialAssociations().length,
     /** No automated fuzzy matching is accepted as pedagogical equivalence. */

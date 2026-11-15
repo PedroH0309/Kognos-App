@@ -47,11 +47,13 @@ test('the Kog explanation button appears once for each visible lesson tab',()=>{
 
 test('loading uses a blurred circular indicator without visible "Carregando" banners',()=>{
  assert.match(overlay,/role="status" aria-live="polite" aria-label=\{label\}/);
- assert.match(overlay,/className="k-ui-loading-spinner"/);
- assert.match(css,/backdrop-filter:blur\(7px\)/);
- assert.match(css,/@keyframes k-ui-spin/);
- assert.match(css,/animation:k-ui-spin \.85s linear infinite/);
- assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+ const kit=read('apps/web/src/app/kognos-kit.css');
+ assert.match(overlay,/ks-skeleton-circle ks-w-12 ks-h-12 ks-animate-spin/);
+ assert.match(kit,/\.ks-skeleton-card\.ks-fixed/);
+ assert.match(kit,/backdrop-filter:blur\(7px\)/);
+ assert.match(kit,/@keyframes ks-spin/);
+ assert.match(kit,/animation:ks-spin \.85s linear infinite/);
+ assert.match(kit,/@media\(prefers-reduced-motion:reduce\)/);
  assert.match(app,/<KognosLoadingOverlay label="Preparando área de estudos"/);
  assert.match(kog,/<KognosLoadingOverlay inline label=\{pending\?/);
  assert.match(room,/<KognosLoadingOverlay inline label="Carregando o assunto"/);
