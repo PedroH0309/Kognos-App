@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 36
+## Estado atual — checkpoint 37
+
+Quatro aulas do lote14: 180 novas nesta etapa. Integradas Funções exponencial
+e logarítmica; Vozes verbais e colocação pronominal; Literatura indígena e
+afro-brasileira; Formulação de tese. Revisão docente pendente; catálogo em
+execução, sem declaração de conclusão ou publicação em produção.
+
+Restam 1.115 lacunas de 1.512 identidades editoriais. ENEM: 188 aprofundadas e
+708 lacunas. Estudo: 188 aprofundadas, 26 guias e 693 planejadas; índice 397.
+
+- Matemática: gráficos, domínio e imagem, propriedades condicionadas e
+  equações/inequações; teste crítico RED antes e GREEN depois da integração,
+  incluindo raiz fora do domínio, imagem aberta e fronteira inclusiva.
+- Português: transposição de vozes, funções de se, concordância e colocação
+  pronominal delimitada ao registro, com reconhecimento da variação de uso.
+- Literatura: autoria e representação, diversidade indígena e afro-brasileira,
+  memória e elaboração formal. Textos didáticos originais e identificados,
+  sem imitar autores nem atribuir fragmentos fictícios a povos ou obras.
+- Redação: tese, tema e recorte, alcance e sustentação, revisão com objeções.
+  Sem modelo universal de prova, estatísticas ou citações fabricadas.
+
+Fontes primárias consultadas em trechos delimitados; autoria Codex e crítica
+independente Claude Code/NVIDIA NIM, lida integralmente. Imprecisões dos
+pareceres de Português e Redação corrigidas pelo principal, com originais
+completos privados preservados. Texto das aulas e gabaritos inalterados;
+sem alegação de leitura integral das obras ou homologação humana.
+
+673 testes app + 6 motor, build e lint alterado aprovados. API das 180 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas,
+explicações e referências expandidas em 320/375/768/1440 px, sem exceções ou
+rolagem horizontal. Captura inspecionada. Logs checkpoint37-*.log privados.
+
+CI36 success43773898884, head feb0d38. PR118 passa a reunir vinte e quatro
+aulas após as156 do PR117 integrado externamente; publicar37 e acompanhar
+CI do head exato. Sem merge de PR, deploy, schema ou dependências novas.
+Continuar Inglês, Espanhol, Física e Química do lote14.
+
+## Histórico — checkpoint 36
 
 Lote 13 completo: 176 novas aulas nesta etapa. Integradas Globalização e
 questões socioambientais; Teatro: dramaturgia, atuação e encenação; Práticas

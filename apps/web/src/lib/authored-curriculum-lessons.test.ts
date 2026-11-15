@@ -1048,3 +1048,13 @@ test('propriedades da matéria convertem densidade e distinguem quantidade de ra
  const valid=task.options.map((option,index)=>{const pair=option.match(/^([\d,]+) g\/cm³, equivalente a (\d+) kg\/m³\.$/);assert.ok(pair);return Number(pair[1].replace(',','.'))===rhoG&&Math.abs(Number(pair[2])-rhoSI)<1e-9?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[task.correctIndex]);
  const t=spec.tasks[1];assert.ok(t.options&&typeof t.correctIndex==='number');assert.match(t.prompt,/triplica/);for(const factor of [1,2,3,10])assert.equal((massG*factor)/(volumeCm*factor),rhoG);assert.equal(t.options[t.correctIndex],'Massa e volume triplicam; a densidade permanece igual nas condições indicadas.');
 });
+
+test('exponencial e logaritmo preservam domínio, imagem e sentido de inequação decrescente',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Matemática'&&s.topic==='Funções exponencial e logarítmica');assert.ok(spec);
+ const a=spec.tasks[0];assert.match(a.prompt,/5·\(1\/2\)\^x \+ 2/);assert.ok(a.options);assert.equal(a.options[a.correctIndex!],'Decrescente, domínio ℝ e imagem (2,+∞).');
+ const f=(x:number)=>5*(1/2)**x+2;for(const x of [-10,-1,0,1,10]){assert.ok(f(x)>2);assert.ok(f(x+1)<f(x));}assert.equal(f(0),7);
+ const b=spec.tasks[1];assert.match(b.prompt,/log₃\(x−1\) \+ log₃\(x−3\) = 1/);assert.ok(b.options);assert.equal(b.options[b.correctIndex!],'x = 4.');
+ const valid=[0,4].filter(x=>x>3&&Math.abs(Math.log(x-1)/Math.log(3)+Math.log(x-3)/Math.log(3)-1)<1e-12);assert.deepEqual(valid,[4]);
+ const c=spec.tasks[2];assert.match(c.prompt,/\(1\/3\)\^\(2x−1\) ≥ 27/);assert.ok(c.options);assert.equal(c.options[c.correctIndex!],'x ≤ −1.');
+ for(const x of [-4,-2,-1,-0.5,0,1,4])assert.equal((1/3)**(2*x-1)>=27-1e-10,x<=-1);
+});

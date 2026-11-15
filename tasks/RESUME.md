@@ -1,6 +1,40 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 36
+## Estado atual em 15/11/2026 — checkpoint 37
+
+CONTINUAR;parar50%SESSÃO. Sósemanal31%/10080min,secondary:null. Não usar semanal
+como sessão; sem indicador da sessão não prometer parada exata. Sem pergunta.
+
+180novas/4lote14.673app+6motor/build/lint/180API+4leitor12MCQ4largurasPASS.
+Lacunas1115;ENEM188/708;estudo188/26/693;índice397. Logscheckpoint37-*.log.
+Preview3316sessão18641build180;fixtures180;captura batch14-four inspecionada.
+CI36 43773898884 SUCCESS headfeb0d38;PR118OPEN. Publicar37/atualizarPR24novas,
+acompanharCIexata. PR117MERGEDexternamente156; nunca atualizar117.
+
+Module14ALL4:381ba959,4cf23331,f6b546f4,08e33489. Integrador14REESCREVE exigir
+todosIDsnaspróximasintegrações. Autorhelperscríticas finais válidas/lidas/hash
+inalterados. Math testecríticoGREEN,12MCQbrowser. Evidência editorial
+principal-editorial-evidence-checkpoint37.json. ParecerPortforem/será/textoswas
+e Redpresencial(nãoinformado,eraorientado) corrigidos pelo principal com
+originaiscompletos preservados; não rerodar finish37/autores jáaplicados.
+
+Worker192PID18472 Tempbatch14log,único. Inglês7db9b0b2raw1REVIEWED,Espanhol
+34239b0bautor1emexecução;Phys ef8cd5f9/Chem0bb27332 próximos. Nenhum próprio
+Inglês/Espanhol/Física/Química14 ainda. Fontes Inglês BODY lidas:
+BritishCouncil falsefriends?page=1 linhas68-78; definição cognato muito vaga
+sameinlanguages não adotar como origem. MerriamWebster/cognate56-87,
+actual44-70,eventually31-55,pretend44-102,sensible40-104,library54-91.
+Cambridgeactual/eventually/pretend403 não usar como corpo. Não afirmar actual
+nunca temporal/sensible nunca sensorial; delimitar contexto para actualreal,
+eventuallydesfechoe nãoocasionalmente,pretendfingire nãointent; diferenças
+parciaispolissêmicas. Planejarteoriacognatesorigemcompartilhada≠meraaparência,
+falsefriendssemântica não exigir origem distinta. Exemplos/3tarefas originais.
+Não copiar frasesdicionário/exemplosatuaisautomaticamenterecolhidos.
+
+Helpersprivadossalvos/AGENTSgeradonão commit/raizoriginalsujapreservada.
+Fetchantespush/noforce/nãomergedePR/nãodeploy. Não parar no checkpoint.
+
+## Histórico — checkpoint 36
 
 CONTINUAR até aulas completas; parar50%SESSÃO Codex. Indicador disponível só
 semanal29%/10080min, secondary:null. Não substituir semanal por sessão nem
