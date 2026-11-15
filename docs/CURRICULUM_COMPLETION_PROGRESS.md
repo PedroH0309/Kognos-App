@@ -4,7 +4,56 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 5
+## Estado atual — checkpoint 6
+
+O lote 04 chegou a 16 aulas, uma por disciplina. Foram acrescentadas História —
+Industrialização e trabalho; Geografia — Clima e ambiente; Filosofia — Filosofia
+antiga e ética clássica; Sociologia — Durkheim, Marx e Weber; Arte — História da
+arte e patrimônio cultural; Educação Física — Esporte, jogos e cultura corporal;
+Ciências — Mudanças de estado e transformações. Com o lote 03, são 32 aulas nesta
+etapa, com revisão pedagógica humana pendente.
+
+Restam 1.263 lacunas entre 1.512 identidades. O recorte editorial ENEM tem 49 temas
+aprofundados e 847 lacunas; a lista de estudo ENEM contém 49 aulas aprofundadas,
+55 guias e 803 temas em desenvolvimento. As contagens representam unidades
+editoriais diferentes, sem certificar habilidades oficiais ou cobertura completa.
+
+Correções principais deste checkpoint:
+
+- História: retiradas substituição instantânea do artesanato, invenção do salário
+  na fábrica e cronologia linear da resistência. Distintos alcance e fiscalização
+  das leis, relações escravistas nas cadeias e limites dos modelos produtivos.
+- Geografia: reescritos critérios climáticos misturados, sistemas confundidos e
+  projeções numéricas sem dados suficientes. Diferenciadas evapotranspiração real,
+  potencial e de referência, volume de chuva e frequência de dias, mitigação e
+  adaptação. Sem multiplicadores universais inventados para projeções.
+- Filosofia: retirada digressão medieval; corrigida atribuição da temperança a
+  uma parte isolada da alma, explicitados limites do meio-termo e diferenças entre
+  critérios estoicos, epicuristas e céticos, sem falsas citações antigas.
+- Sociologia: eliminada oposição entre compreensão e causalidade em Weber;
+  diferenciados regulação e integração, força de trabalho e trabalho, valor novo,
+  mais-valia e bases das taxas. Sem conclusões automáticas sobre plataformas.
+- Arte: corrigidas cronologia da Bienal, listas de participantes e registros
+  patrimoniais inventados. Panorama de linguagens e contextos, com preservação
+  material e salvaguarda imaterial, sem reduzir patrimônio a preço ou antiguidade.
+- Educação Física: retirados dados falsamente atribuídos ao IBGE, origens e
+  consensos de peteca sem comprovação e conteúdo centrado em prova docente.
+  Exemplos variados de tática e publicidade, inclusão por opções funcionais e
+  limites das inferências sobre amostras de cobertura.
+- Ciências: explicitadas condições das transições de fase e exceções de misturas;
+  incluídas transformações físicas e químicas, evidências e conservação de massa.
+  Reversibilidade e bolhas não são tratadas como provas universais de reação.
+
+Verificação: 612 testes da aplicação e seis do motor aprovados, lint dos arquivos
+alterados e build de produção aprovados. Os novos testes recalculam amplitude,
+parcela da chuva, mais-valia e taxa, energia de fusão e saída de massa. Chromium
+comparou as respostas da API das 32 aulas, abriu as sete novas pela navegação
+pública e respondeu às 21 questões, conferindo explicações e ausência de rolagem
+horizontal em 320/375/768/1440 px. As 12 referências de Arte foram expandidas e
+conferidas em 320/375/768 px. A CI do checkpoint 5 passou (run 43659010985).
+Sem merge, deploy, alteração de schema ou publicação no banco.
+
+## Histórico — checkpoint 5
 
 O lote 04 chegou a nove aulas. Além das quatro anteriores, foram integradas
 Literatura — Trovadorismo e Humanismo; Espanhol — Cognatos, falsos cognatos e

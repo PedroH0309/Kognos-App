@@ -224,3 +224,47 @@ test('genética calcula expectativa, condicionamento e mapa de três pontos sem 
  assert.equal(first+second,32);
  assert.ok(frequency(0,2)<first+second,'eventos duplos não aparecem como recombinantes dos marcadores externos');
 });
+
+test('clima distingue amplitude mensal, extremos diários e parcela de chuva da parcela de dias',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Clima e ambiente');
+ assert.ok(spec);
+ const amplitude=spec.tasks[0],rain=spec.tasks[1];
+ assert.ok(amplitude.options&&typeof amplitude.correctIndex==='number');
+ const values=[...amplitude.prompt.matchAll(/(\d+) °C/g)].map(match=>Number(match[1]));
+ assert.equal(values.length,4);
+ assert.ok(amplitude.options[amplitude.correctIndex].startsWith(`${values[0]-values[1]} °C,`));
+ assert.notEqual(values[0]-values[1],values[2]-values[3]);
+ assert.ok(rain.options&&typeof rain.correctIndex==='number');
+ const amounts=[...rain.prompt.matchAll(/(\d+) mm/g)].map(match=>Number(match[1]));
+ assert.equal(amounts.length,2);
+ const fraction=100*amounts[0]/amounts.reduce((sum,value)=>sum+value,0);
+ assert.ok(rain.options[rain.correctIndex].includes(fraction.toFixed(1).replace('.',',')+'%'));
+ assert.notEqual(fraction,100*6/31);
+ assert.match(rain.solution,/210\/200 × 100 = 105%/);
+});
+
+test('mais-valia separa valor transferido, valor novo e denominador da taxa',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Sociologia'&&lesson.topic==='Durkheim, Marx e Weber');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const number=(pattern:RegExp)=>Number(task.prompt.match(pattern)?.[1]);
+ const constant=number(/é (\d+) unidades/),created=number(/criado é (\d+)/),variable=number(/(\d+) correspondem/);
+ assert.ok([constant,created,variable].every(value=>Number.isFinite(value)&&value>0));
+ const surplus=created-variable,rate=100*surplus/variable;
+ assert.equal(task.options[task.correctIndex],`Mais-valia de ${surplus} unidades; taxa de mais-valia de ${rate}%.`);
+ assert.notEqual(rate,100*surplus/(constant+variable));
+ assert.notEqual(surplus,constant+created);
+});
+
+test('mudanças de estado calculam energia de fusão e saída de massa sem criar matéria',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Mudanças de estado e transformações');assert.ok(spec);
+ const energy=spec.tasks[1],mass=spec.tasks[2];assert.ok(energy.options&&typeof energy.correctIndex==='number');
+ const grams=Number(energy.prompt.match(/(\d+) g de gelo/)?.[1]),latent=Number(energy.prompt.match(/L = (\d+) J\/g/)?.[1]);
+ assert.ok(grams>0&&latent>0);
+ assert.equal(energy.options[energy.correctIndex],(grams*latent).toLocaleString('pt-BR')+' J');
+ assert.match(energy.prompt,/já estão a 0 °C/);assert.match(energy.prompt,/pressão constante/);
+ assert.ok(mass.options&&typeof mass.correctIndex==='number');
+ const initial=Number(mass.prompt.match(/juntos (\d+) g/)?.[1]),outgoing=Number(mass.prompt.match(/exatamente (\d+) g/)?.[1]);
+ assert.ok(initial>outgoing&&outgoing>0);
+ assert.ok(mass.options[mass.correctIndex].startsWith(`${initial} g e ${initial-outgoing} g,`));
+ assert.equal(initial,(initial-outgoing)+outgoing);
+});

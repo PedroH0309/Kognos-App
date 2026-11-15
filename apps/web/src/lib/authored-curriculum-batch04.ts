@@ -830,6 +830,650 @@ export const authoredCurriculumBatch04:readonly AuthoredLessonSpec[] = [
         "correctIndex": 0
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Industrialização e trabalho",
+    "objective": "Analisar mudanças e permanências na produção e nas relações de trabalho, relacionando industrialização, conflitos sociais, direitos historicamente disputados e modelos de organização produtiva, com leitura crítica de fontes.",
+    "prerequisites": [
+      "Noções de sociedade agrária, comércio e urbanização",
+      "Diferença entre trabalho livre remunerado e trabalho escravizado",
+      "Leitura de fontes com atenção a autoria, contexto e finalidade"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Industrialização: tecnologia e relações sociais",
+        "explanation": "A industrialização iniciada na Grã-Bretanha no século XVIII envolveu mudanças articuladas na produção, nas fontes de energia, nos investimentos, nos transportes e nas relações sociais. Não foi um acontecimento instantâneo nem resultado de uma única invenção. Máquinas e uso crescente de energia hidráulica e a vapor ampliaram possibilidades de produzir, mas sua difusão dependeu de capital, mercados, conhecimentos, recursos e decisões políticas. No artesanato, o trabalhador costuma dominar várias etapas do produto; na manufatura, a divisão de tarefas pode reunir trabalho predominantemente manual; na maquinofatura, máquinas assumem papel central no processo. Esses modelos são instrumentos de comparação: oficinas, produção doméstica e fábricas coexistiram, sem uma substituição completa em uma data única. Trabalho assalariado já existia antes das fábricas modernas; a industrialização ampliou e reorganizou sua presença em muitos contextos. O controle dos meios de produção e da jornada podia concentrar-se no empregador, enquanto trabalhadores dependiam da remuneração para viver e negociavam em condições desiguais. Relógios, horários e supervisão passaram a regular fortemente o ritmo de muitas atividades. A expansão industrial também se conectou a redes coloniais e escravistas: a pesquisa do Science and Industry Museum sobre comerciantes de Manchester evidencia vínculos entre tecidos britânicos, comércio com o Brasil e produtos do trabalho escravizado. Assim, trabalho assalariado em uma região não demonstra que toda a cadeia produtiva fosse livre. A análise deve distinguir períodos, setores e posições sociais, incluindo mulheres e crianças, sem converter uma experiência local na história de todos os trabalhadores.",
+        "steps": [
+          "Localize o período e o espaço e separe industrialização de uma invenção isolada.",
+          "Compare divisão de tarefas, ferramentas, máquinas e controle do processo de trabalho.",
+          "Identifique quem controla recursos e horários e como a remuneração se relaciona à subsistência.",
+          "Observe coexistências e conexões comerciais, inclusive relações coloniais e escravistas."
+        ],
+        "example": "Situação hipotética para comparação: numa cidade, uma oficina produz calçados manualmente, famílias costuram peças em casa para um comerciante e uma fábrica concentra máquinas e operários. A fábrica pode ampliar a produção e impor horários, sem provar que as outras formas desapareceram ou que todos passaram a trabalhar sob o mesmo contrato.",
+        "pitfall": "Explicar a industrialização apenas pela máquina a vapor, supor que o salário foi inventado na fábrica ou confundir trabalho livre remunerado com igualdade de poder entre as partes."
+      },
+      {
+        "level": "intermediate",
+        "title": "Conflitos, organização e conquista de direitos",
+        "explanation": "A expansão das fábricas e das cidades colocou em disputa salários, jornadas, segurança, moradia e participação política. Em numerosos contextos, jornadas extensas e trabalho infantil integraram condições duras de vida, mas horas, remuneração e formas de proteção variaram no tempo e entre setores. Não se deve atribuir um mesmo número de horas a todo o século XIX. Trabalhadores atuaram por associações, auxílio mútuo, greves, mobilização política e outras formas de resistência, frequentemente enfrentando repressão. O ludismo incluiu ataques organizados a máquinas no início do século XIX britânico, ligados a conflitos sobre trabalho e subsistência; não equivale simplesmente a ignorância ou rejeição de qualquer tecnologia. O cartismo articulou reivindicações de reforma política e ampliação da representação. Essas experiências não formam uma escada obrigatória em que uma resistência supostamente irracional se transforma em organização apenas depois. Leis foram conquistadas em disputas e tiveram alcance e fiscalização limitados. O Parlamento britânico destaca que a lei fabril de 1833 ampliou a regulação do trabalho infantil em setores têxteis e criou inspetores, mas sua aplicação enfrentou dificuldades. Isso não estabeleceu, de uma vez, direitos idênticos para toda a população trabalhadora. No Brasil, atividades industriais e trabalho assalariado coexistiram com a escravidão, abolida legalmente em 1888; as desigualdades raciais persistiram depois. A formação operária reuniu trabalhadores de diversas origens e não pode ser reduzida à imigração europeia. A greve de 1917 em São Paulo é um marco importante: a pesquisa da FGV relaciona carestia, reivindicações de trabalho e organizações já atuantes. Não é correto apresentá-la como a primeira greve brasileira nem como explosão sem organização anterior.",
+        "steps": [
+          "Distingua condições de vida, reivindicações econômicas e demandas políticas.",
+          "Interprete resistências conforme o contexto, evitando julgar toda ação como simples aversão às máquinas.",
+          "Ao ler uma lei histórica, pergunte quem era abrangido e como se fiscalizava o cumprimento.",
+          "Relacione o caso brasileiro à escravidão, à diversidade dos trabalhadores e a organizações anteriores às grandes greves."
+        ],
+        "example": "Exercício de leitura histórica: uma fonte relata que uma lei limitou trabalho infantil em determinadas fábricas, mas faltavam agentes para inspecioná-las. A conclusão adequada distingue norma e efetivação. A existência da lei é mudança relevante, porém não comprova que todas as crianças de todos os setores deixaram imediatamente de trabalhar.",
+        "pitfall": "Confundir aprovação de uma lei com cumprimento integral, afirmar ausência absoluta de organização antes de uma greve ou apagar trabalhadores negros e brasileiros da história operária."
+      },
+      {
+        "level": "advanced",
+        "title": "Organização produtiva e análise crítica das transformações",
+        "explanation": "Taylorismo, fordismo e produção enxuta ajudam a comparar estratégias de organização, mas não são etapas que todos os países e empresas percorreram de maneira uniforme. Na administração científica de Frederick Taylor, sistematizada em obra de 1911, a gerência estuda tarefas, define métodos e padrões e orienta a execução. A separação entre planejamento e execução e o estudo dos tempos ajudam a compreender a busca de controle e produtividade; o discurso do próprio Taylor sobre cooperação deve ser lido como proposta de um autor situado, não como prova de harmonia permanente entre classes. O fordismo associa-se à produção em grande escala de bens padronizados e à linha móvel de montagem: a Ford combinou técnicas e conhecimentos anteriores em seu sistema de 1913, sem inventar sozinha toda divisão do trabalho. A linha pode elevar a produtividade e também impor ritmos repetitivos. O Sistema Toyota de Produção enfatiza fluxo sincronizado e produção conforme a necessidade, conhecidos como just-in-time, além de jidoka, que permite detectar anormalidades e interromper o processo, e melhorias contínuas. Reduzir estoques e desperdícios não significa eliminar qualquer estoque em todas as circunstâncias. A descrição oficial da empresa informa seus objetivos declarados; avaliar efeitos sobre trabalhadores exige outras evidências e contexto. Esses modelos podem coexistir e combinar-se. Automação e plataformas digitais introduzem outras possibilidades de coordenação, avaliação e distribuição de tarefas, mas a tecnologia, sozinha, não determina remuneração, autonomia ou direitos. A comparação histórica deve examinar propriedade, controle do ritmo, qualificação, negociação e distribuição dos ganhos. Não cabe presumir que todo trabalho por aplicativo tenha um único regime jurídico ou aplicar regras inventadas a todas as plataformas.",
+        "steps": [
+          "Identifique o mecanismo descrito: estudo e padronização de tarefas, linha móvel ou sincronização do fluxo.",
+          "Separe objetivos declarados por gestores de efeitos sociais que precisam de evidências.",
+          "Compare controle do ritmo, autonomia e distribuição dos ganhos sem presumir progresso social automático.",
+          "Reconheça combinações entre modelos e evite conclusões jurídicas universais sobre novas formas de trabalho."
+        ],
+        "example": "Caso hipotético: uma fábrica combina linha móvel com reposição de componentes conforme o consumo e autoriza interromper a linha diante de defeitos. Não é necessário escolher uma etiqueta exclusiva: há elementos de produção em linha e de fluxo puxado com controle de qualidade. Para discutir condições de trabalho, ainda seria preciso investigar jornadas, remuneração e participação dos trabalhadores.",
+        "pitfall": "Confundir just-in-time com estoque sempre igual a zero, tratar a descrição de uma empresa como avaliação social neutra ou assumir que aumento de produtividade garante automaticamente melhores condições de vida."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma situação hipotética, uma fábrica mecanizada cresce enquanto oficinas artesanais e famílias que produzem para comerciantes continuam trabalhando na mesma região. Qual interpretação é sustentada por essa descrição?",
+        "hint": "Separe o crescimento de uma forma de produção da alegação de desaparecimento de todas as outras; observe exatamente o que o caso informa.",
+        "solution": "B reconhece a coexistência explicitamente descrita: a mecanização pode expandir-se sem eliminar imediatamente oficinas e produção doméstica. A contradiz o enunciado ao afirmar substituição completa. C transforma a fábrica na origem de todo trabalho remunerado, inferência sem apoio e historicamente inadequada. D conclui igualdade de condições a partir de proximidade geográfica, que não informa contratos, jornadas ou poder de negociação.",
+        "options": [
+          "A mecanização já eliminou inteiramente qualquer atividade artesanal nessa região.",
+          "Formas distintas de organização da produção coexistem durante o processo de industrialização.",
+          "Todo trabalho remunerado da história surgiu exclusivamente nessa fábrica mecanizada.",
+          "A localização na mesma região garante condições e contratos idênticos para todos."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma síntese didática, baseada na pesquisa da FGV sobre São Paulo em 1917, relaciona a greve à piora das condições de vida e de trabalho e à atuação de organizações operárias anteriores à paralisação. Qual explicação respeita essa relação histórica?",
+        "hint": "O texto apresenta condições materiais e organização coletiva em interação; não afirma um único fator nem atribui a todos os trabalhadores a mesma origem.",
+        "solution": "C articula agravamento das condições de vida e ação coletiva previamente construída, como apresenta a síntese. A elimina a organização anterior expressamente informada. B transforma uma experiência localizada em desaparecimento nacional e imediato dos conflitos, sem evidência. D reduz os trabalhadores a uma única origem e faz uma generalização que nem o texto nem a diversidade histórica sustentam. O caso exige explicar relações entre condições e atuação dos sujeitos.",
+        "options": [
+          "O movimento ocorreu sem qualquer associação ou atuação operária anterior.",
+          "A greve encerrou imediatamente todos os conflitos de trabalho em todo o Brasil.",
+          "Dificuldades de subsistência e de trabalho interagiram com redes e organizações operárias já existentes.",
+          "Somente pessoas de uma única origem nacional participaram de toda a formação operária brasileira."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num caso hipotético, uma empresa adota reposição conforme o consumo, mantém estoques pequenos de componentes e permite interromper a linha ao detectar defeitos. Seu anúncio afirma que isso melhora a eficiência. Qual análise combina identificação do modelo e crítica da fonte?",
+        "hint": "Considere fluxo conforme a demanda, estoques explicitamente existentes e interrupção diante de anormalidades. O anúncio revela a posição da empresa, mas não mede sozinho todas as consequências sociais.",
+        "solution": "A relaciona o fluxo puxado e a parada diante de defeitos a elementos do Sistema Toyota e distingue uma intenção empresarial de evidência sobre todos os efeitos sociais. B contradiz os estoques pequenos, que existem no caso, e transforma uma tendência em regra absoluta. C ignora os mecanismos descritos e reduz qualquer fábrica ao artesanato. D infere condições de trabalho ideais somente do anúncio, sem investigar jornadas, remuneração, autonomia ou participação.",
+        "options": [
+          "Há elementos de just-in-time e jidoka; avaliar efeitos sobre trabalhadores requer evidências além do anúncio empresarial.",
+          "O caso demonstra que just-in-time exige estoque exatamente zero em qualquer empresa e situação.",
+          "A existência de componentes e controle de qualidade prova ausência de máquinas e de organização industrial.",
+          "A declaração de eficiência comprova, sozinha, remuneração ideal e autonomia plena de todos os trabalhadores."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Clima e ambiente",
+    "objective": "Distinguir tempo e clima, interpretar temperatura e precipitação, relacionar fatores e sistemas atmosféricos à diversidade climática brasileira e analisar mudanças ambientais, riscos, mitigação e adaptação com limites explícitos dos dados.",
+    "prerequisites": [
+      "Localização por latitude e noções de altitude e relevo",
+      "Leitura de médias, porcentagens e séries temporais",
+      "Noções do ciclo da água e de ocupação do espaço"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Tempo, clima e interpretação de dados",
+        "explanation": "Tempo atmosférico é o estado da atmosfera em determinado lugar e momento, descrito por elementos como temperatura, umidade, pressão, ventos e precipitação. Clima envolve padrões e variabilidade dessas condições ao longo de períodos extensos. Uma tarde fria não refuta uma tendência de aquecimento de décadas, assim como um dia quente não basta para caracterizar o clima de uma região. Normais climatológicas são referências calculadas para períodos padronizados, usualmente de trinta anos; o INMET publica, entre outras, a referência 1991–2020. Uma normal não significa que todos os anos tenham valores iguais à média. Para comparar registros, examine período, localização, instrumentos, unidade e frequência de medição. A amplitude térmica anual, no uso escolar com médias mensais, é a diferença entre a maior e a menor média mensal; ela não equivale à diferença entre extremos absolutos de dias isolados. Em um climograma, normalmente aparecem médias mensais de temperatura e totais mensais de chuva, em eixos com unidades diferentes. A soma dos totais mensais fornece a chuva anual; uma média de doze médias mensais só representa a média anual segundo uma convenção de pesos que deve estar clara. Não confunda milímetros de precipitação com porcentagem de dias chuvosos. Fatores como latitude, altitude, relevo, distância do mar, vegetação e circulação atmosférica ajudam a explicar diferenças espaciais. Em geral, a altitude favorece temperaturas menores em comparações adequadas, e a influência marítima pode moderar a amplitude, mas nenhum fator isolado determina todos os elementos de qualquer local. Classificações climáticas sintetizam padrões com critérios próprios; não basta uma temperatura ou um mês chuvoso para atribuir qualquer classe completa.",
+        "steps": [
+          "Separe observação pontual, padrão sazonal e tendência de longo prazo.",
+          "Confira período, unidade e significado de cada número antes de comparar lugares.",
+          "Calcule amplitude com valores comparáveis e some precipitações apenas quando os períodos não se sobrepõem.",
+          "Relacione padrões a vários fatores, evitando transformar uma tendência geográfica em regra sem exceções."
+        ],
+        "example": "Dados hipotéticos: uma localidade tem maior média mensal de 27 °C e menor de 19 °C. A amplitude térmica anual das médias mensais é 27 − 19 = 8 °C. Isso não informa sua máxima absoluta, sua chuva anual nem a temperatura de todos os dias; cada conclusão exigiria outros dados.",
+        "pitfall": "Usar um dia isolado para definir o clima, confundir média com extremo ou somar valores de temperatura como se fossem totais mensais de chuva."
+      },
+      {
+        "level": "intermediate",
+        "title": "Diversidade brasileira, circulação e água",
+        "explanation": "A diversidade climática brasileira resulta da grande extensão territorial e da interação entre circulação atmosférica, relevo, oceanos e superfícies continentais. Em síntese escolar, há áreas equatoriais quentes e úmidas, extensas áreas tropicais com sazonalidade de chuvas, o semiárido de chuvas escassas e irregulares e áreas subtropicais com maior contraste térmico sazonal. Esses padrões não tornam todo o Norte igualmente chuvoso nem todo o Nordeste seco: o litoral, o interior e as áreas elevadas apresentam diferenças relevantes. Frentes, transporte de umidade, convecção e sistemas de convergência ajudam a explicar episódios e regimes de chuva. A Zona de Convergência Intertropical, ZCIT, relaciona-se ao encontro dos ventos alísios em baixas latitudes e seu deslocamento sazonal influencia chuvas em partes do Norte e Nordeste. A Zona de Convergência do Atlântico Sul, ZCAS, é outro sistema: uma faixa persistente de nuvens e precipitação, geralmente orientada de noroeste para sudeste, da região amazônica ao Atlântico Sul, importante sobretudo no período quente e chuvoso em partes do Centro-Oeste e Sudeste. Não é um sinônimo de ZCIT nem se explica pela identificação de qualquer dia de chuva intensa. El Niño e La Niña envolvem condições do Pacífico tropical e mudanças na circulação, com efeitos que variam por região, época e interação com outros sistemas; não garantem chuva ou seca em toda cidade brasileira. No balanço de água, precipitação é entrada importante; evaporação e transpiração retiram água para a atmosfera, enquanto infiltração, armazenamento e escoamento redistribuem a água. A evapotranspiração potencial representa uma demanda sob condições definidas de água disponível; a evapotranspiração real pode ser limitada pela falta de água no solo. Portanto, demanda atmosférica elevada pode coexistir com perda real de água reduzida num solo muito seco. A evapotranspiração de referência da FAO usa uma superfície padronizada e não é uma medida direta de toda paisagem real.",
+        "steps": [
+          "Localize a região e considere sazonalidade, relevo e circulação antes de generalizar um clima.",
+          "Distinga ZCIT, ZCAS e frentes, sem atribuir qualquer chuva a um único sistema por exclusão.",
+          "Ao avaliar El Niño ou La Niña, procure recorte regional e temporal e reconheça efeitos probabilísticos.",
+          "Separe oferta de água, demanda evaporativa e evapotranspiração efetivamente realizada."
+        ],
+        "example": "Cenário hipotético: durante um mês de 30 dias, um episódio identificado por análise meteorológica produz 160 mm em quatro dias e os demais dias somam 240 mm. O total mensal é 400 mm; o episódio corresponde a 160/400 = 40% da chuva, embora ocupe apenas 4/30 dos dias. Frequência de dias e volume de chuva são medidas diferentes.",
+        "pitfall": "Definir ZCAS apenas pelo número de dias chuvosos, dizer que El Niño produz o mesmo efeito em todo o país ou limitar a evapotranspiração potencial pela água real do solo como se os conceitos fossem idênticos."
+      },
+      {
+        "level": "advanced",
+        "title": "Mudança climática, ambiente e gestão do risco",
+        "explanation": "O efeito estufa natural ocorre porque gases atmosféricos absorvem e emitem radiação infravermelha e influenciam o balanço de energia terrestre. Ele não deve ser confundido com o buraco na camada de ozônio nem tratado como um fenômeno que precisaria desaparecer: sua intensificação por atividades humanas é parte central da mudança climática atual. O IPCC atribui inequivocamente o aquecimento global observado à atividade humana, principalmente às emissões de gases de efeito estufa. Combustíveis fósseis e mudanças no uso da terra participam dessas emissões. Variabilidade natural continua existindo, mas não explica sozinha a tendência recente de aquecimento global. Projeções climáticas analisam respostas a condições e trajetórias de emissões; não são previsões exatas do tempo de uma cidade em uma data futura. Uma projeção deve informar cenário, período, referência e incerteza. Não se pode multiplicar uma variação de temperatura por um número universal e deduzir chuva ou evapotranspiração sem os dados e o modelo adequados. Mudanças locais, como impermeabilização e redução de cobertura vegetal, também alteram escoamento e condições térmicas. Ilha de calor urbana e aquecimento global têm escalas e mecanismos relacionados, porém distintos: um não explica integralmente o outro. Risco climático envolve o perigo físico, a exposição de pessoas e bens e a vulnerabilidade, ligada às condições sociais e à capacidade de resposta. Uma mesma chuva pode ter impactos muito diferentes conforme ocupação, drenagem, relevo e proteção social. Mitigação busca reduzir emissões ou ampliar remoções de gases de efeito estufa; adaptação busca reduzir danos e vulnerabilidades diante dos efeitos do clima. Transporte de baixa emissão pode contribuir para mitigação, enquanto alerta e planejamento para enchentes são medidas de adaptação. Algumas ações contribuem para ambas, mas seus efeitos e limites precisam ser avaliados, sem prometer eliminar todo risco.",
+        "steps": [
+          "Distinga efeito estufa natural, sua intensificação e fenômenos de escala local.",
+          "Leia cenário, horizonte e referência de uma projeção e preserve os intervalos e limites dos dados.",
+          "Analise perigo, exposição e vulnerabilidade em conjunto, incluindo desigualdades sociais.",
+          "Classifique ações pela finalidade e avalie possíveis benefícios conjuntos e limites."
+        ],
+        "example": "Caso hipotético: dois bairros recebem chuva semelhante, mas um possui moradias em área inundável e drenagem insuficiente, enquanto o outro tem menor exposição e infraestrutura adequada. A diferença de danos não permite concluir que a chuva foi diferente: exposição e vulnerabilidade também importam. Alertas e planejamento territorial reduzem riscos, enquanto reduzir emissões atua na mitigação.",
+        "pitfall": "Confundir um cenário com previsão diária certa, atribuir todo desastre apenas à chuva ou supor que adaptação dispensa reduzir emissões e garante ausência de perdas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma série hipotética de médias mensais de temperatura de um ano tem maior média de 29 °C e menor de 21 °C. No mesmo local, um dia isolado registrou máxima de 35 °C e mínima de 18 °C. Qual é a amplitude anual das médias mensais informadas?",
+        "hint": "O cálculo pedido usa a maior e a menor média mensal, e não os extremos observados num único dia nem a soma de temperaturas.",
+        "solution": "C usa as duas médias mensais comparáveis: 29 − 21 = 8 °C. A apresenta 35 − 18 = 17 °C, amplitude diária dos extremos mencionados, que responde outra pergunta. B apresenta a soma 29 + 21 = 50 °C, sem representar amplitude. D apresenta 35 − 21 = 14 °C e mistura máxima diária com média mensal. A escolha das medidas deve corresponder ao período e ao conceito solicitado.",
+        "options": [
+          "17 °C, usando a máxima e a mínima daquele dia isolado.",
+          "50 °C, somando as duas médias mensais extremas.",
+          "8 °C, subtraindo a menor média mensal da maior.",
+          "14 °C, comparando a máxima diária com a menor média mensal."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um mês hipotético de 31 dias, uma análise meteorológica identificou seis dias de ZCAS em uma estação. Nesses seis dias caíram 210 mm; nos demais 25 dias, 200 mm. Qual afirmação interpreta corretamente a participação do episódio no total mensal?",
+        "hint": "A parcela de chuva exige comparar milímetros com milímetros, usando como denominador a chuva de todos os dias do mês; a parcela de dias é outra razão.",
+        "solution": "A soma as parcelas sem sobreposição: 210 + 200 = 410 mm, e calcula 210/410 × 100 ≈ 51,2%. B calcula 6/31 × 100 ≈ 19,4%, que é a parcela de dias, não a de precipitação. C usa 210/200 × 100 = 105%, comparação com a outra parcela e não com o total. D toma os 200 mm dos demais dias como se fossem o episódio, invertendo as categorias. A identificação da ZCAS foi fornecida pela análise, não inferida só da quantidade de chuva.",
+        "options": [
+          "Cerca de 51,2% da chuva mensal ocorreu nos seis dias identificados de ZCAS.",
+          "Cerca de 19,4% da chuva mensal, porque seis dos 31 dias pertencem ao episódio.",
+          "Exatamente 105% do total mensal, pois a parcela do episódio deve ser dividida somente pelos outros dias.",
+          "A parcela da ZCAS foi de 200 mm, pois esse é o total registrado nos demais dias."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num município hipotético, o plano A amplia transporte coletivo de baixa emissão para reduzir gases de efeito estufa. O plano B melhora alertas de enchentes e reduz ocupação em áreas expostas para diminuir danos. Sem presumir efeitos adicionais, qual distinção descreve as finalidades declaradas?",
+        "hint": "Observe o objetivo de cada medida: atuar sobre emissões que contribuem para o aquecimento ou reduzir exposição e danos diante dos efeitos do clima.",
+        "solution": "D identifica a redução de emissões do plano A como mitigação e a redução de riscos do plano B como adaptação. As medidas podem ter benefícios adicionais, mas isso não altera as finalidades explicitadas. A inverte os conceitos. B afirma que alertas reduzem diretamente todas as emissões, algo que o caso não informa. C promete eliminar qualquer risco, conclusão que não decorre de planejamento ou infraestrutura. Não há garantia de ausência de danos nem autorização para dispensar uma das frentes.",
+        "options": [
+          "A é adaptação por reduzir emissões; B é mitigação por alertar para enchentes.",
+          "Ambos eliminam diretamente todas as emissões do município, inclusive as não relacionadas ao transporte.",
+          "O plano B garante ausência de qualquer dano futuro e torna desnecessário avaliar vulnerabilidades.",
+          "A tem finalidade de mitigação; B tem finalidade de adaptação, sem garantia de eliminar todo risco."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia antiga e ética clássica",
+    "objective": "Relacionar investigação racional, conhecimento e vida boa na filosofia antiga; distinguir a ética de Sócrates, Platão e Aristóteles e comparar escolas helenísticas sem reduzir suas propostas a slogans contemporâneos.",
+    "prerequisites": [
+      "Noções de pólis e contexto da Grécia antiga",
+      "Distinção entre argumento e afirmação sem justificativa",
+      "Conceitos iniciais de ética, virtude e vida coletiva"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Da investigação da natureza ao exame da vida",
+        "explanation": "A filosofia antiga reúne problemas diversos sobre natureza, conhecimento, vida coletiva e ação humana; não constitui uma doutrina única nem se reduz à ética. Pensadores chamados pré-socráticos investigaram princípios e transformações da natureza por argumentos distintos. A passagem para a argumentação filosófica não significou o desaparecimento instantâneo dos mitos. Sofistas atuaram na educação e no debate público da pólis, discutindo linguagem, convenções e vida política; não é adequado atribuir a todos uma única tese. Sócrates é conhecido por fontes como os diálogos de Platão, e distinguir personagem literária e pessoa histórica evita tratar cada fala de um diálogo como registro literal. O exame socrático interroga definições, pede razões e confronta consequências: enumerar exemplos de coragem não é ainda definir o que torna tais ações corajosas. Em vários diálogos, conhecimento e virtude estão estreitamente ligados, e agir mal é relacionado à ignorância do bem; isso deve ser compreendido como posição filosófica em discussão, não como descoberta científica sobre qualquer comportamento. Platão relaciona ética, política e educação. Na República, a justiça é investigada pela comparação entre cidade e alma. A razão, a dimensão impetuosa ou irascível e os apetites desempenham funções distintas; a justiça envolve uma ordenação adequada entre elas. A temperança não é simplesmente a virtude isolada do apetite: envolve concordância sobre a direção racional. A Forma do Bem orienta a relação entre conhecimento e vida justa no projeto platônico. A distinção entre opinião e conhecimento não autoriza dizer que toda experiência sensível seja inútil ou que aprender seja decorar opiniões de autoridade. Interpretar essas propostas exige reconstruir argumentos e reconhecer seu contexto político, inclusive exclusões da cidadania antiga, sem identificá-las automaticamente com instituições atuais.",
+        "steps": [
+          "Identifique qual problema está em discussão: natureza, conhecimento, definição moral ou organização política.",
+          "Reconstrua perguntas e razões do exame socrático, distinguindo exemplo e definição.",
+          "Na República, relacione partes da alma, educação e justiça sem atribuir cada virtude mecanicamente a uma parte isolada.",
+          "Considere autoria, forma dialógica e contexto antes de converter uma fala em tese histórica universal."
+        ],
+        "example": "Diálogo hipotético e autoral: alguém define coragem como enfrentar qualquer perigo; outra pessoa pergunta se arriscar a vida sem propósito também seria coragem. A objeção testa a definição e exige distinguir coragem de imprudência. O exemplo ilustra um procedimento de exame, sem ser citação de Sócrates ou Platão.",
+        "pitfall": "Tratar todos os filósofos antigos ou sofistas como uma escola única, chamar uma paráfrase de citação literal ou confundir questionar uma definição com negar qualquer possibilidade de conhecimento."
+      },
+      {
+        "level": "intermediate",
+        "title": "Aristóteles: vida boa, hábito e deliberação",
+        "explanation": "Na ética de Aristóteles, eudaimonia costuma ser traduzida por felicidade ou florescimento e designa uma vida de atividade conforme a excelência, não um sentimento passageiro ou a simples posse de bens. O estudo da ética tem finalidade prática: importa formar disposições para agir bem. Virtudes do caráter são desenvolvidas por hábitos e educação, mas não por repetição mecânica de qualquer conduta. Virtudes intelectuais envolvem aprendizagem e experiência. A prudência, ou phronesis, é relevante para deliberar sobre a ação em situações concretas e não se confunde com habilidade de obter qualquer objetivo, inclusive injusto. A doutrina do meio-termo descreve a excelência em relação a excessos e faltas, considerando circunstâncias e orientação racional. Não é a média aritmética entre duas quantidades nem uma autorização para negociar uma dose moderada de toda injustiça: Aristóteles reconhece ações cuja própria caracterização já implica erro, sem um meio virtuoso correspondente. Coragem, por exemplo, não é ignorar riscos nem recuar sempre; importa responder de modo adequado ao perigo e ao fim da ação. A disposição virtuosa inclui conhecer o que se faz, escolher a ação por ela mesma e agir com caráter estável; apenas produzir um resultado exterior aparentemente correto não demonstra todo esse processo. Educação, amizade, instituições e condições materiais também entram na discussão da vida boa. A ética aristotélica não equivale à ideia de que qualquer privação externa seja irrelevante. Sua articulação com a política deve ser lida criticamente em um contexto que legitimou hierarquias e exclusões, como a escravidão e restrições à participação política das mulheres. Reconhecer esses limites históricos não exige reduzir toda sua filosofia a eles nem importar sua concepção de cidadania como norma para o presente.",
+        "steps": [
+          "Diferencie vida boa como atividade duradoura de prazer momentâneo ou simples acumulação de bens.",
+          "Relacione hábito, escolha e deliberação na formação do caráter.",
+          "Aplique o meio-termo a circunstâncias e razões, sem calcular uma média universal.",
+          "Reconheça que há ações sem meio virtuoso e examine criticamente o contexto político da teoria."
+        ],
+        "example": "Caso hipotético: uma pessoa relata uma falha importante numa atividade coletiva, escolhendo momento, palavras e destinatários para corrigi-la sem humilhar ninguém. A avaliação não depende apenas de falar pouco ou muito; exige considerar veracidade, finalidade e circunstâncias. Uma medida aritmética de palavras não determina por si só a ação adequada.",
+        "pitfall": "Reduzir virtude a hábito automático, prudência a oportunismo ou meio-termo a uma quantidade intermediária que tornaria virtuosa qualquer ação."
+      },
+      {
+        "level": "advanced",
+        "title": "Escolas helenísticas e comparação de critérios éticos",
+        "explanation": "No período helenístico e em desenvolvimentos posteriores no mundo romano, escolas filosóficas discutiram como viver bem em contextos de transformação política. Isso não significa que a vida coletiva tenha desaparecido ou que todas as escolas ensinassem isolamento. Para os estoicos, a virtude tem valor decisivo para a vida boa; riqueza, saúde e reputação não são bens morais no mesmo sentido. Chamar algo de indiferente nesse vocabulário não significa proibir cuidado com a saúde ou ação em favor de outras pessoas: há coisas preferíveis e deveres nas relações sociais. Em Epicteto, distinguir o que depende de nós e o que não depende orienta o exame de juízos e escolhas; não promete controle físico de todos os acontecimentos nem exige passividade diante da injustiça. A crítica às paixões perturbadoras também não equivale a uma ordem simples de não sentir qualquer afeto. Epicuro toma o prazer como referência, mas não propõe satisfazer todo impulso imediatamente. Uma vida prudente avalia consequências das escolhas e dos desejos, incluindo tranquilidade e ausência de dor; amizades e necessidades simples têm importância. Um prazer pode ser recusado se trouxer perturbações maiores, e uma dificuldade pode ser enfrentada por uma consequência melhor. O ceticismo pirrônico, associado a Pirro e desenvolvido em textos de Sexto Empírico, exercita a suspensão do juízo diante da oposição entre argumentos sem decisão estabelecida. Isso difere de afirmar dogmaticamente que nada pode ser conhecido; seguir aparências e práticas cotidianas não equivale a provar uma teoria definitiva sobre a realidade. Comparar escolas exige identificar o critério de cada uma, e não transformar todas em técnica moderna de produtividade ou tratamento clínico. A comparação com problemas atuais é possível quando apresentada como aplicação interpretativa, sem atribuir aos antigos respostas literais sobre situações que não conheceram.",
+        "steps": [
+          "Identifique o critério da escola: virtude, prazer prudentemente avaliado ou suspensão do juízo em disputas.",
+          "Diferencie indiferente moral estoico de ausência de cuidado ou responsabilidade social.",
+          "No epicurismo, analise consequências e tipos de desejo, sem igualar prazer a excesso contínuo.",
+          "Na leitura cética, distinga suspender uma conclusão de declarar uma impossibilidade universal de conhecer."
+        ],
+        "example": "Comparação hipotética e autoral: diante de uma promessa de fama, uma leitura estoica pergunta pela justiça das escolhas, uma epicurista avalia desejos e consequências para a tranquilidade, e uma cética pode examinar argumentos opostos antes de concluir sobre o valor prometido. O caso compara critérios; não inventa uma fala histórica nem afirma que as escolas sempre recomendariam a mesma decisão.",
+        "pitfall": "Reduzir estoicismo a insensibilidade, epicurismo a consumo sem limites e ceticismo à certeza de que nada se sabe, apagando diferenças entre critérios e métodos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num diálogo hipotético, Lia afirma: ser justo é obedecer a qualquer ordem. Rui pergunta: e se a ordem exigir prejudicar injustamente alguém? Qual procedimento filosófico a pergunta de Rui ilustra?",
+        "hint": "A pergunta apresenta uma dificuldade para a definição inicial e convida a examinar sua coerência; ela não prova sozinha uma definição alternativa completa.",
+        "solution": "B descreve o exame de uma definição por suas consequências, procedimento compatível com a investigação socrática. A considera a autoridade suficiente e elimina justamente a pergunta apresentada. C confunde objeção localizada com prova de impossibilidade de conhecer qualquer coisa. D inventa um resultado experimental inexistente no diálogo. O caso permite revisar a definição inicial, sem constituir citação histórica ou demonstração de toda uma teoria da justiça.",
+        "options": [
+          "Aceitar qualquer ordem como justa apenas porque veio de uma autoridade.",
+          "Testar uma definição moral por uma consequência que coloca sua adequação em dúvida.",
+          "Demonstrar definitivamente que nenhum conhecimento humano é possível.",
+          "Medir experimentalmente uma lei física sobre a velocidade de execução de ordens."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um estudante diz que, na ética aristotélica, qualquer conduta se torna virtuosa quando praticada em quantidade intermediária. Qual correção expressa adequadamente os limites da doutrina do meio-termo?",
+        "hint": "Considere a diferença entre medida aritmética e resposta racional às circunstâncias, bem como ações cuja própria caracterização já envolve erro.",
+        "solution": "D distingue meio relativo às circunstâncias de média numérica e reconhece que nem toda ação admite meio virtuoso. A transforma a ética em cálculo fixo, que a teoria não oferece. B dispensa escolha e razões, aspectos relevantes da virtude. C torna todo ato virtuoso apenas por repetição, confundindo formação de hábitos adequados com automatismo. O meio-termo não serve para justificar uma dose moderada de qualquer injustiça.",
+        "options": [
+          "O meio-termo é sempre a metade matemática da maior quantidade disponível.",
+          "O resultado exterior basta para a virtude, sem qualquer escolha ou consideração das razões.",
+          "Qualquer comportamento repetido muitas vezes se torna automaticamente virtuoso.",
+          "O meio depende de circunstâncias e razão, e há ações que não admitem um meio virtuoso."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Três formulações didáticas e autorais propõem: I — riqueza não substitui o valor moral de uma escolha justa; II — um prazer pode ser recusado se trouxer perturbações maiores; III — diante de argumentos contrapostos sem decisão estabelecida, suspende-se o juízo. Qual associação é mais adequada aos critérios estudados?",
+        "hint": "Localize o papel da virtude no estoicismo, das consequências prazerosas ou perturbadoras no epicurismo e da suspensão no ceticismo pirrônico.",
+        "solution": "A associa I à prioridade da virtude estoica, II à avaliação prudente das consequências no epicurismo e III à suspensão pirrônica. B troca epicurismo e estoicismo, além de atribuir suspensão metódica à ética aristotélica sem apoio. C reduz os critérios à satisfação imediata e à riqueza, negando as formulações. D converte suspensão do juízo em certeza dogmática e apaga as diferenças entre as escolas. As frases são paráfrases didáticas originais, não citações de obras antigas.",
+        "options": [
+          "I: estoicismo; II: epicurismo; III: ceticismo pirrônico.",
+          "I: epicurismo; II: estoicismo; III: doutrina aristotélica do meio-termo.",
+          "I, II e III defendem que riqueza e satisfação imediata são sempre o único critério moral.",
+          "As três escolas afirmam a mesma certeza definitiva de que todo conhecimento é impossível."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Durkheim, Marx e Weber",
+    "objective": "Distinguir problemas, métodos e conceitos de Durkheim, Marx e Weber e aplicá-los a situações sociais com evidências e hipóteses explícitas, sem reduzir os autores a oposição rígida entre sociedade e indivíduo.",
+    "prerequisites": [
+      "Noções de sociologia e pesquisa empírica",
+      "Contexto de industrialização e capitalismo",
+      "Diferença entre descrição, explicação e julgamento moral"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Durkheim: fatos sociais, solidariedade e regulação",
+        "explanation": "Durkheim, Marx e Weber são referências clássicas para investigar transformações da modernidade, mas não formaram uma escola única nem esgotam as origens da sociologia. Marx desenvolveu uma crítica da economia política antes da consolidação da sociologia como disciplina universitária; Durkheim e Weber participaram de sua institucionalização com propostas distintas. Para Durkheim, maneiras coletivas de agir, pensar e sentir podem ser estudadas como fatos sociais: possuem existência que não se reduz à decisão de um indivíduo e exercem pressão sobre condutas. Exterioridade, coercitividade e generalidade devem ser articuladas; algo não se torna fato social apenas por ocorrer muitas vezes. Língua, normas escolares e regras jurídicas são exemplos que antecedem a participação de uma pessoa e são aprendidos na socialização. Tratar fatos sociais como coisas é uma orientação de investigação: definir o objeto, afastar explicações baseadas apenas em impressões e procurar evidências, sem afirmar que pessoas sejam objetos sem ação. Na análise da solidariedade, a mecânica se associa à semelhança e à força de crenças compartilhadas, enquanto a orgânica se relaciona à diferenciação e à interdependência da divisão do trabalho. São distinções analíticas, não sinônimos de máquinas e organismos biológicos nem uma garantia de que sociedades modernas sejam sempre harmoniosas. A divisão do trabalho pode apresentar formas problemáticas. Anomia envolve insuficiência ou desajuste da regulação social; não é simplesmente falta de amizades nem ausência de qualquer norma em toda a sociedade. Explicar padrões coletivos também não exige negar experiências individuais: uma relação estatística entre grupos não determina a história de cada pessoa. A pesquisa deve distinguir integração e regulação e verificar suas condições, sem usar conceitos como diagnóstico automático de indivíduos.",
+        "steps": [
+          "Defina o fenômeno coletivo e procure normas e instituições que ultrapassem a vontade individual.",
+          "Articule exterioridade, pressão social e difusão, evitando definir fato social só pela frequência.",
+          "Compare solidariedade por semelhança e por interdependência sem pressupor ausência de conflitos.",
+          "Diferencie problema de regulação de isolamento individual e não transfira diretamente médias coletivas a cada pessoa."
+        ],
+        "example": "Caso hipotético: novos estudantes encontram horários, critérios de avaliação e uma língua de ensino que não criaram sozinhos. Podem negociar mudanças, mas enfrentam expectativas e consequências por descumprimento. O caso permite investigar exterioridade e coerção das normas, sem afirmar que qualquer regra seja justa ou imutável.",
+        "pitfall": "Confundir fato social com qualquer ocorrência frequente, solidariedade orgânica com harmonia garantida ou anomia com um sentimento individual de solidão."
+      },
+      {
+        "level": "intermediate",
+        "title": "Marx: produção, classes e exploração",
+        "explanation": "Na análise de Marx, compreender uma sociedade exige investigar como as pessoas produzem sua vida material e como se organizam as relações de produção. Forças produtivas incluem recursos, técnicas e capacidades de trabalho; relações de produção envolvem propriedade, controle e apropriação do que é produzido. Não se trata de afirmar que uma máquina explique sozinha toda política, cultura ou mudança histórica. No capitalismo, a posição de classe relaciona-se ao controle dos meios de produção e à necessidade de vender força de trabalho, sem reduzir todas as trajetórias sociais a duas descrições individuais idênticas. Força de trabalho é a capacidade de trabalhar, comprada por determinado período; seu uso na produção pode gerar valor novo maior que o valor correspondente à sua reprodução, expresso no salário sob as hipóteses do modelo. A mais-valia é esse excedente apropriado pelo capital. Ela não é simplesmente a receita de vendas, qualquer diferença entre dois preços ou todo o valor de uma mercadoria, pois materiais e meios de produção também transferem valor ao produto. Numa representação didática, valor total = capital constante transferido + capital variável + mais-valia. A taxa de mais-valia compara mais-valia com capital variável; não é a taxa de lucro, cuja base inclui o capital considerado na análise. Trata-se de reconstruir uma teoria do valor e da exploração, não de afirmar que todo preço observado se deduza diretamente de um cálculo escolar. A alienação envolve relações em que o trabalhador não controla plenamente produto e processo de sua atividade, e não apenas estar aborrecido no emprego. O fetichismo da mercadoria descreve como relações entre pessoas assumem aparência de propriedades e relações entre coisas; não significa simplesmente gostar de comprar. Luta de classes envolve conflitos de interesses nas relações sociais, podendo assumir formas econômicas e políticas variadas, sem tornar qualquer resultado histórico automático.",
+        "steps": [
+          "Identifique quem controla meios de produção e como o trabalho e os produtos são apropriados.",
+          "Distinga trabalho efetivamente realizado e força de trabalho vendida por um período.",
+          "No modelo numérico, separe valor transferido, valor novo, salário e excedente, identificando a base de cada taxa.",
+          "Use alienação e fetichismo como conceitos de relações sociais, sem reduzi-los a emoções ou preferências de consumo."
+        ],
+        "example": "Modelo didático hipotético: uma produção transfere 300 unidades de valor de materiais e equipamentos e acrescenta 180 de valor novo. Se 60 correspondem ao capital variável, a mais-valia é 180 − 60 = 120; o total é 480. A taxa de mais-valia é 120/60 = 200%, diferente de comparar 120 com todo o capital adiantado. Os números ilustram a teoria, sem representar uma empresa real ou recomendação financeira.",
+        "pitfall": "Chamar receita total de mais-valia, confundir taxa de exploração com taxa de lucro ou tratar relações materiais como causa mecânica única de todo acontecimento social."
+      },
+      {
+        "level": "advanced",
+        "title": "Weber: sentido, causalidade e formas de dominação",
+        "explanation": "Para Weber, a sociologia procura compreender interpretativamente a ação social e explicar causalmente seu desenvolvimento e seus efeitos. Compreender sentidos não é apenas sentir empatia nem abandonar evidências e causalidade. Uma ação é social quando seu sentido se orienta pela conduta de outras pessoas; duas pessoas realizarem movimentos parecidos por acaso não basta. Seus tipos analíticos incluem ação racional referente a fins, com cálculo de meios e consequências; racional referente a valores, orientada pela convicção no valor da conduta; afetiva, ligada a estados emocionais; e tradicional, apoiada no costume. Condutas concretas podem misturar orientações. Tipo ideal é uma construção que acentua traços para comparação, e não uma média estatística nem um exemplo moralmente perfeito. Na análise da dominação legítima, Weber distingue legitimidade apoiada na tradição, no reconhecimento de qualidades carismáticas e na crença em regras legalmente estabelecidas e competências dos cargos. Legitimidade nesse uso diz respeito à crença que sustenta obediência, sem certificar justiça moral. A burocracia apresenta traços como competências definidas, hierarquia, registros e impessoalidade; não é sinônimo de qualquer atraso administrativo nem garantia universal de eficiência e ausência de abuso. A racionalização envolve transformações de regras, cálculo e formas de organizar a vida, sem uma história em que tradição e valores desapareçam completamente. Weber também distingue dimensões de estratificação, como situação de classe no mercado, prestígio dos grupos de status e organização para influenciar poder. Ao investigar religião e capitalismo, não afirma que uma crença tenha sido sua causa única. Comparar os três clássicos exige relacionar perguntas distintas: Durkheim investiga instituições e regulação, Marx relações de produção e conflito, Weber sentidos e relações de poder, sem excluir outras dimensões de cada obra. Aplicações contemporâneas precisam de evidências; chamar um algoritmo de burocracia não prova, por si só, toda uma relação de dominação ou exploração.",
+        "steps": [
+          "Pergunte qual sentido orienta a ação em relação a outras pessoas e busque evidências para a interpretação.",
+          "Compare orientações de ação sem presumir tipos puros em cada conduta real.",
+          "Diferencie tipo ideal de ideal moral e crença de legitimidade de aprovação ética.",
+          "Ao combinar autores, explicite conceitos, hipóteses e dados, sem transformar analogias em conclusões automáticas."
+        ],
+        "example": "Caso hipotético: uma servidora atende por critérios gerais e competência do cargo, enquanto usuários obedecem por reconhecer a validade das regras. Isso permite analisar traços de dominação racional-legal. Se uma pessoa a segue por devoção pessoal excepcional, o fundamento da crença pode envolver carisma; a posição no organograma não resolve sozinha a interpretação.",
+        "pitfall": "Opor compreensão a toda explicação causal, confundir tipo ideal com modelo perfeito ou supor que legitimidade sociológica prove justiça e que toda regra escrita elimine conflitos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Numa situação hipotética, uma estudante ingressa em uma escola cujos horários e critérios de avaliação existiam antes de sua matrícula. Descumpri-los pode trazer sanções, embora estudantes possam organizar propostas de mudança. Qual leitura se aproxima do conceito durkheimiano de fato social?",
+        "hint": "Considere anterioridade coletiva e pressão sobre a conduta; a possibilidade de mudança não elimina a existência de normas sociais.",
+        "solution": "C identifica exterioridade e pressão das normas sem concluir que sejam eternas ou necessariamente justas. A reduz a regra à criação individual da estudante, contrariando sua existência anterior. B supõe imutabilidade, que não decorre do conceito. D confunde frequência de matrícula com definição suficiente de fato social e ignora a organização normativa descrita. A análise investiga instituições e efeitos coletivos sem negar a possibilidade de ação e transformação.",
+        "options": [
+          "Os critérios foram criados exclusivamente pela vontade individual da nova estudante.",
+          "Normas sociais são necessariamente imutáveis, e nenhuma mobilização pode alterá-las.",
+          "As normas ultrapassam a decisão individual e pressionam condutas, embora possam ser transformadas coletivamente.",
+          "A frequência de matrículas, sozinha, define qualquer regra como fato social, independentemente de sua existência coletiva."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um modelo marxiano didático e hipotético, o capital constante transferido ao produto é 240 unidades de valor e o valor novo criado é 120. Desse valor novo, 40 correspondem ao capital variável. Qual é a mais-valia e sua taxa em relação ao capital variável?",
+        "hint": "O valor novo já exclui o valor transferido pelos materiais e equipamentos. Subtraia o capital variável do valor novo e use o capital variável como base da taxa.",
+        "solution": "A calcula mais-valia = 120 − 40 = 80 e taxa = 80/40 × 100 = 200%. B confunde todo o valor novo com excedente e divide 120 por 40. C usa 240 + 120 = 360, valor total do produto, como mais-valia. D calcula corretamente 80, mas usa 240 + 40 = 280 como base, obtendo cerca de 28,6%, que não é a taxa solicitada. As hipóteses ilustram relações conceituais do modelo e não são dados de mercado ou de uma empresa real.",
+        "options": [
+          "Mais-valia de 80 unidades; taxa de mais-valia de 200%.",
+          "Mais-valia de 120 unidades; taxa de mais-valia de 300%.",
+          "Mais-valia de 360 unidades; taxa de mais-valia de 900%.",
+          "Mais-valia de 80 unidades; taxa de mais-valia de aproximadamente 28,6%."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em entrevistas hipotéticas, Iara afirma que escolheu uma ação por dever moral, mesmo sem vantagem pessoal, e Paulo relata ter comparado custos e meios para atingir uma meta. Uma pesquisa weberiana pretende compreender esses sentidos e investigar seus efeitos. Qual interpretação é adequada?",
+        "hint": "Distinga orientação por convicção de valor e cálculo de meios para fins. Considere que interpretar sentidos e explicar efeitos podem integrar a mesma pesquisa.",
+        "solution": "D associa o relato de Iara à orientação racional referente a valores e o de Paulo à orientação racional referente a fins, preservando a possibilidade de explicação causal. A troca as duas orientações. B torna tipos analíticos avaliações morais de pessoas, finalidade que eles não têm. C exclui causalidade da abordagem compreensiva, contrariando sua proposta metodológica. Os relatos permitem uma hipótese interpretativa, a ser conferida com contexto e evidências, sem garantir que toda conduta real seja um tipo puro.",
+        "options": [
+          "Iara descreve cálculo de meios para fins; Paulo descreve convicção incondicional em um valor.",
+          "Tipo ideal significa que Iara é moralmente perfeita e Paulo é necessariamente injusto.",
+          "Compreender os sentidos impede investigar causas, desenvolvimento e efeitos das ações.",
+          "Iara aproxima-se da orientação por valores e Paulo da orientação por fins; a pesquisa também pode buscar explicação causal."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "História da arte e patrimônio cultural",
+    "objective": "Relacionar formas artísticas a contextos, técnicas e instituições, comparar mudanças de linguagem em um panorama histórico e distinguir preservação material e salvaguarda de práticas culturais com participação de seus detentores.",
+    "prerequisites": [
+      "Noções de tempo histórico e diversidade cultural",
+      "Elementos visuais como linha, cor, volume e composição",
+      "Distinção entre descrição de uma obra e interpretação de seus sentidos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Ler arte historicamente: forma, função e contexto",
+        "explanation": "História da arte investiga produções, práticas, modos de circulação e interpretações em diferentes sociedades. Não é uma escala em que povos antigos seriam incapazes e o presente representaria aperfeiçoamento obrigatório. Pinturas rupestres, objetos cerâmicos, esculturas, edifícios, imagens religiosas e performances podem ter funções e significados que não coincidem com a ideia atual de obra exposta em museu. Para analisá-los, pergunte sobre materiais, técnica, autoria quando conhecida, função, público e condições de produção. Ausência de assinatura não significa ausência de conhecimento ou criação. Na Antiguidade, convenções de representação podiam expressar hierarquia, ritual ou poder; a falta de semelhança fotográfica não prova erro técnico. Na Europa medieval, imagens e arquitetura religiosas participaram de experiências de culto, ensino e organização social, mas a produção não foi uniforme nem exclusivamente religiosa. No Renascimento europeu, o estudo da Antiguidade e da figura humana articulou-se a novas encomendas, oficinas e debates sobre conhecimento. A perspectiva linear usa relações geométricas para construir profundidade a partir de um ponto de vista; linhas paralelas em certas direções podem ser representadas como convergentes para pontos de fuga. Não é a única forma legítima de representar espaço. Perspectiva atmosférica cria profundidade por variações de cor, contraste e nitidez. No barroco, composições dinâmicas, contrastes de luz e efeitos de envolvimento podem intensificar narrativas religiosas ou políticas, com grandes diferenças regionais. A pintura ilusionista de teto pode sugerir arquitetura e céu além da superfície real; não se confunde, só por isso, com perspectiva atmosférica. Esses recortes europeus não organizam toda a produção do mundo: tradições africanas, asiáticas, indígenas e americanas têm temporalidades e critérios próprios, atravessados por encontros e relações de poder.",
+        "steps": [
+          "Descreva materiais, organização visual e função antes de atribuir valor ou sentido.",
+          "Localize produção e circulação no tempo e no espaço, reconhecendo lacunas de autoria e documentação.",
+          "Compare convenções de representação sem usar realismo como medida universal de qualidade.",
+          "Distinga recursos de profundidade e contextualize estilos como recortes históricos, não regras de todas as culturas."
+        ],
+        "example": "Descrição hipotética e autoral: numa imagem ritual, uma figura ocupa espaço maior que outras, embora todas estejam lado a lado. O tamanho pode indicar importância simbólica, sem pretender representar distância física. Antes de julgar a proporção como erro, é necessário investigar função, convenções e contexto da produção.",
+        "pitfall": "Tratar arte como evolução linear rumo à fotografia, supor que toda produção antiga tinha a mesma finalidade ou chamar qualquer efeito de profundidade de uma única técnica."
+      },
+      {
+        "level": "intermediate",
+        "title": "Arte no Brasil, modernismos e experiências contemporâneas",
+        "explanation": "A história da arte no Brasil inclui produções indígenas anteriores à colonização e tradições vivas que não devem ser reduzidas ao passado. A colonização articulou encomendas religiosas e civis, circulação de modelos europeus e trabalho de artistas e artesãos de diversas origens em relações desiguais, inclusive escravistas. Talha em madeira, escultura e pintura participaram de ambientes barrocos e rococós, com variações locais; não houve uma única forma de arte colonial. No século XIX, academias e salões contribuíram para definir formação, gêneros e reconhecimento, enquanto outras produções permaneciam fora desses circuitos. Na arte moderna, transformações de cor, forma, espaço e materiais questionaram convenções de representação. No cubismo, fragmentação e articulação de pontos de vista problematizaram a representação de objetos por uma única visão; na abstração, relações entre formas, cores e ritmos podem organizar a obra sem obrigação de representar objetos reconhecíveis. Modernismo não significa apenas pintar temas brasileiros nem abolir qualquer relação com tradições. A Semana de Arte Moderna de 1922, em São Paulo, foi um marco de debates, sem criar do nada todas as experiências modernas ou representar igualmente todas as regiões e grupos. O modernismo brasileiro desenvolveu projetos diferentes de relação entre linguagem, identidade, cultura popular e circulação internacional. Museus, crítica, colecionadores e exposições também influenciam o que ganha visibilidade. A primeira Bienal de São Paulo ocorreu em 1951, num pavilhão provisório na Esplanada do Trianon, conforme seu arquivo institucional, e ampliou circuitos de encontro e legitimação. Na produção contemporânea, instalações podem organizar espaço e experiência do público; performances podem usar ação e duração como parte da obra; trabalhos conceituais podem enfatizar uma proposta ou procedimento. Pintura e escultura continuam presentes: novos meios não as extinguem. Nem toda obra participativa permite tocar livremente objetos; sua proposta e orientações precisam ser verificadas.",
+        "steps": [
+          "Reconheça diversidade e continuidade de produções indígenas, afro-brasileiras, populares e institucionais.",
+          "Relacione mudanças de linguagem a contextos e circuitos, sem confundir modernismo com um tema obrigatório.",
+          "Compare representação, fragmentação e abstração por seus procedimentos, não por suposta facilidade de execução.",
+          "Na arte contemporânea, observe espaço, ação, tempo e proposta, respeitando condições de participação."
+        ],
+        "example": "Projeto hipotético e autoral: uma artista dispõe sons e objetos num percurso, de modo que a posição do visitante altera a experiência. A análise considera relações espaciais e temporais da instalação, não apenas o objeto mais bonito. Fotografar uma parte pode documentar um aspecto, mas não reproduz automaticamente toda a experiência proposta.",
+        "pitfall": "Confundir arte moderna com tudo o que foi feito recentemente, afirmar que 1922 criou sozinho o modernismo ou chamar abstração de ausência de escolhas formais."
+      },
+      {
+        "level": "advanced",
+        "title": "Patrimônio, memória e decisões de preservação",
+        "explanation": "Patrimônio cultural envolve referências de memória e identidade atribuídas por grupos sociais a bens, práticas e lugares. Não é sinônimo de tudo o que é caro, antigo ou oficialmente reconhecido, nem se limita a palácios e obras de artistas consagrados. A dimensão material inclui edificações, conjuntos, documentos, objetos e outros suportes; a imaterial envolve saberes, modos de fazer, celebrações, formas de expressão e lugares ligados a práticas coletivas. As dimensões se relacionam: um instrumento é material, mas sua fabricação, execução e transmissão podem integrar saberes e práticas imateriais. No Brasil, o Iphan apresenta o tombamento como instrumento de proteção de bens materiais e o registro como instrumento de reconhecimento de bens imateriais, articulado a ações de salvaguarda. Tombamento não é sinônimo automático de transferência de propriedade ao Estado, e registro não transforma uma prática viva em objeto que deva permanecer idêntico para sempre. Documentação, apoio à transmissão, acesso a materiais e participação dos detentores podem ser tão relevantes quanto conservar um objeto. Um prédio restaurado sem considerar moradores, usos e acessibilidade pode gerar conflitos; valorização turística não garante benefícios distribuídos a todos. A educação patrimonial envolve investigar referências com as comunidades, ouvindo versões, identificando ausências e discutindo escolhas de memória. Museus também selecionam, classificam e exibem, e seus acervos têm histórias de aquisição que podem suscitar debates sobre procedência e restituição. Reconhecer diversidade não dispensa conferir autoria, origem e contexto; copiar ou divulgar conhecimentos restritos sem diálogo pode desrespeitar seus detentores. Uma proposta de preservação deve explicitar o que se deseja manter, para quem e com quais efeitos, incluindo condições de continuidade da prática. Assim, conservar não se reduz a congelar e mudar não significa necessariamente destruir uma referência cultural.",
+        "steps": [
+          "Identifique os grupos para os quais o bem ou a prática tem valor de referência e investigue sua história.",
+          "Distinga suporte material, saberes e práticas, reconhecendo suas relações.",
+          "Compare tombamento e registro sem concluir transferência automática de propriedade ou congelamento cultural.",
+          "Avalie participação, transmissão, acesso e efeitos sociais junto à conservação física."
+        ],
+        "example": "Situação hipotética: uma festa comunitária depende de músicos, preparação de alimentos, espaço de encontro e transmissão entre gerações. Guardar uma roupa antiga pode conservar um objeto importante, mas não garante sozinho a continuidade da celebração. Ouvir os participantes e apoiar condições de realização trata dimensões que o armazenamento do objeto não resolve.",
+        "pitfall": "Confundir patrimônio com preço ou antiguidade, trocar tombamento e registro ou preservar apenas fachadas sem considerar usos, pessoas e continuidade cultural."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma descrição hipotética de pintura informa que linhas de um piso convergem para um ponto de fuga e que objetos são organizados geometricamente para sugerir profundidade a partir de uma posição de observação. Qual recurso é diretamente descrito?",
+        "hint": "O enunciado informa construção geométrica e ponto de fuga; não menciona profundidade obtida por perda de nitidez nem a presença de tinta metálica.",
+        "solution": "C identifica perspectiva linear, pois a descrição enfatiza construção geométrica do espaço e ponto de fuga. A descreve perspectiva atmosférica, que usaria alterações de cor, contraste e nitidez e não é o recurso informado. B é uma técnica de aplicação de ouro, sem relação necessária com o mecanismo descrito. D é um processo de impressão, não a organização espacial apresentada. Identificar o recurso não basta para atribuir autoria ou data exata à pintura hipotética.",
+        "options": [
+          "Perspectiva atmosférica, definida exclusivamente pela redução de nitidez com a distância.",
+          "Talha dourada, porque qualquer representação de piso exige madeira revestida de ouro.",
+          "Perspectiva linear, com organização geométrica do espaço e ponto de fuga.",
+          "Xilogravura, pois toda convergência de linhas prova impressão por matriz de madeira."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma proposta artística hipotética, uma ação realizada durante vinte minutos envolve movimentos e sons diante do público. Seu registro em vídeo documenta o evento, mas a ação e sua duração integram a obra. Qual interpretação se aproxima da linguagem descrita?",
+        "hint": "Observe o papel da ação e do tempo, sem concluir que a existência de vídeo converta automaticamente todo o trabalho em pintura ou elimine outras linguagens.",
+        "solution": "A reconhece a ação e sua duração como elementos de uma performance, sem confundir o registro com reprodução integral da experiência. B supõe que somente quadros possam ser arte e ignora o enunciado. C transforma qualquer documentação em prova de ausência de criação. D diz que novas linguagens extinguiram pintura e escultura, generalização não sustentada. O contexto e a proposta importam; duração de vinte minutos, sozinha, não definiria qualquer evento como obra artística.",
+        "options": [
+          "A proposta mobiliza ação e duração, elementos que podem integrar uma performance artística.",
+          "A atividade só pode ser pintura de cavalete, porque arte exige necessariamente um quadro fixo.",
+          "O registro em vídeo demonstra que nenhuma escolha artística ocorreu na ação.",
+          "A existência dessa proposta comprova que pintura e escultura deixaram de existir."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma comunidade hipotética deseja preservar tanto um prédio de referência quanto um modo de fazer transmitido entre gerações. Qual proposta distingue adequadamente dimensões e instrumentos de preservação, sem prometer resultados automáticos?",
+        "hint": "Separe conservação de um suporte material e continuidade de um saber coletivo. Considere proteção, documentação, transmissão e participação dos detentores.",
+        "solution": "D distingue a proteção material do prédio, para a qual tombamento pode ser instrumento pertinente, e a dimensão imaterial do modo de fazer, cujo reconhecimento e salvaguarda demandam participação e continuidade. A inverte os instrumentos. B confunde proteção com transferência automática de propriedade. C presume que guardar um objeto e proibir toda mudança assegura transmissão, o que apaga práticas e pessoas. A proposta exige estudo e diálogo; não declara que o caso fictício já recebeu reconhecimento oficial.",
+        "options": [
+          "Tombar exclusivamente a técnica imaterial e registrar apenas a parede do prédio como celebração.",
+          "Proteger o prédio significa transferir automaticamente sua propriedade ao Estado, sem outro procedimento.",
+          "Guardar uma peça pronta e proibir qualquer mudança garante sozinho a continuidade de todo saber.",
+          "Investigar proteção material do prédio e reconhecimento e salvaguarda do saber, com participação da comunidade e apoio à transmissão."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esporte, jogos e cultura corporal",
+    "objective": "Interpretar jogos e esportes como práticas culturais, comparar regras e lógicas de participação e analisar diversidade, acessibilidade, competição, mídia e acesso sem reduzir a cultura corporal ao rendimento.",
+    "prerequisites": [
+      "Experiências de participação ou observação de jogos",
+      "Noções de regras, cooperação e competição",
+      "Leitura crítica de textos, anúncios e dados simples"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Jogos, esportes e sentidos da cultura corporal",
+        "explanation": "Práticas corporais são construídas e transmitidas socialmente: gestos, regras, materiais e modos de participar recebem sentidos em diferentes grupos e épocas. Cultura corporal não é apenas uma lista de exercícios nem um padrão de corpo considerado ideal. Envolve jogos, esportes, danças, lutas, ginásticas e outras manifestações, articulando movimento, expressão, convivência e conhecimento. Jogos podem ter regras negociadas pelos participantes e variar conforme espaço e finalidade; esportes costumam apresentar maior institucionalização, regras formalizadas e formas organizadas de comparação de desempenho. Essa distinção não significa que jogos sejam sempre sem competição ou que esportes só possam ser praticados profissionalmente. A mesma modalidade pode ser vivida no lazer, na escola ou em competições de rendimento, com objetivos e condições diferentes. No contexto educativo, aprender envolve compreender decisões, experimentar estratégias e conviver, não apenas selecionar quem já apresenta melhor desempenho. Um jogo cooperativo propõe metas comuns e pode avaliar realização coletiva; em jogos de oposição, adversários disputam resultados sob regras. Cooperação e oposição podem coexistir, como em equipes que colaboram internamente e enfrentam outra equipe. Regras ajudam a tornar desafios compreensíveis, mas precisam ser adequadas ao contexto e discutidas com segurança e participação. Modificar tamanho da quadra, tempo, material ou forma de pontuar numa atividade escolar não apaga automaticamente o vínculo com uma modalidade; é preciso esclarecer quais objetivos se mantêm e o que muda. Resultado esportivo também não mede o valor de uma pessoa: desempenho depende de aprendizagem, oportunidades e condições, além das características da tarefa.",
+        "steps": [
+          "Identifique finalidade, participantes, regras, materiais e espaço da prática.",
+          "Compare regras institucionalizadas e combinações locais sem hierarquizar jogos e esportes.",
+          "Observe onde existem cooperação, oposição e decisões compartilhadas.",
+          "Avalie adaptações conforme o objetivo educativo, participação e condições de segurança."
+        ],
+        "example": "Situação hipotética: um grupo joga bola numa praça com duas equipes e combina que todos devem receber um passe antes da finalização. Há competição entre equipes e cooperação dentro delas. A regra local altera as decisões e pode ampliar participação, mas precisa ser observada para verificar se de fato funciona para todos.",
+        "pitfall": "Afirmar que jogos nunca têm regras ou competição, que todo esporte exige profissionalização ou que vencer autoriza desrespeitar participantes."
+      },
+      {
+        "level": "intermediate",
+        "title": "Lógicas esportivas, diversidade e memória cultural",
+        "explanation": "Uma forma de comparar esportes é observar sua lógica de ação. Em provas de marca, resultados como tempo, distância ou carga permitem comparação sob condições definidas; em práticas de precisão, importa atingir ou aproximar um alvo. Em jogos de rede ou parede, busca-se enviar um objeto de modo que o adversário tenha dificuldade de devolvê-lo segundo as regras. Nos de invasão, equipes procuram avançar e alcançar uma meta enquanto protegem seu espaço. Em campo e taco, alternam-se ações de rebater, percorrer trajetos e defender; nos técnico-combinatórios, sequências e execuções são avaliadas por critérios; nos de combate, há confronto direto regulado. Essas categorias são instrumentos de análise, não substituem regras de cada modalidade e admitem especificidades. O voleibol de quadra, por exemplo, difere de um jogo de invasão porque as equipes ocupam campos separados pela rede durante as jogadas usuais. Conhecer a lógica permite transferir perguntas táticas, como criar espaços ou escolher trajetórias, sem supor técnicas iguais em todos os esportes. Práticas populares e tradicionais também preservam e recriam memórias. Brincadeiras podem circular com nomes e regras diferentes; investigar sua história requer ouvir participantes e consultar fontes, em vez de inventar uma origem única para cada gesto. A roda de capoeira, reconhecida pelo Iphan como patrimônio cultural brasileiro em 2008, articula jogo, luta, música, dança e transmissão de saberes de matrizes africanas recriadas no Brasil. Reduzi-la a exercício físico ou apenas a confronto apaga dimensões importantes. Reconhecer contribuições indígenas, africanas e de outros grupos não autoriza tratar culturas como uniformes, imóveis ou disponíveis para apropriação sem respeito aos seus detentores.",
+        "steps": [
+          "Compare o objetivo motor e a interação com adversários para identificar a lógica de uma prática.",
+          "Use categorias como ferramentas, preservando diferenças de regras e técnicas.",
+          "Ao investigar tradições, diferencie memória, hipótese e informação documentada.",
+          "Valorize participantes e mestres como sujeitos da transmissão cultural, sem reduzir manifestações a rendimento."
+        ],
+        "example": "Exemplo de leitura tática: no voleibol, enviar a bola a um espaço desprotegido do campo adversário pode dificultar a devolução. Como a rede separa os campos durante a jogada usual, ocupar espaços no próprio lado e escolher a trajetória da bola são problemas diferentes de avançar fisicamente até uma meta dentro do campo adversário.",
+        "pitfall": "Classificar apenas pelo uso de uma bola, chamar toda luta de violência sem regras ou atribuir histórias e consensos a pesquisadores que não foram consultados."
+      },
+      {
+        "level": "advanced",
+        "title": "Participação, acessibilidade e leitura crítica da mídia",
+        "explanation": "O acesso a jogos e esportes depende de condições materiais e sociais: espaços, transporte, custo, tempo, equipamentos, informação, acolhimento e acessibilidade podem favorecer ou restringir a participação. Sexo, gênero, raça, deficiência ou aparência não justificam impedir alguém de aprender ou presumir suas capacidades. A Carta Internacional da UNESCO defende oportunidades inclusivas de educação física e esporte. Na prática educativa, discutir barreiras com quem participa ajuda a escolher adaptações funcionais: bola sonora quando adequada, sinalização compreensível, materiais com contraste, rotas acessíveis ou diferentes formas de comunicar regras. Não existe uma adaptação única que resolva toda necessidade, e presença física na quadra não comprova participação significativa. As escolhas devem respeitar autonomia e privacidade; não é necessário exigir exposição de diagnóstico para conversar sobre uma barreira de acesso. Competição pode favorecer aprendizagem quando há respeito a regras, adversários e arbitragem, mas também pode produzir exclusão se o único critério for selecionar vencedores. Espetáculo esportivo e publicidade dão visibilidade a determinadas práticas e corpos, relacionando-se a audiência, patrocínio e consumo. Um anúncio não prova que comprar um produto garanta desempenho ou pertencimento. Analisar cobertura exige delimitar veículos, período, categorias e método: contar minutos permite descrever aquela amostra, não demonstrar sozinho as preferências de toda a população ou a causa comercial de uma ausência. Compare representação, fontes e estereótipos, distinguindo observação e inferência. Propostas de ampliação do acesso podem combinar espaços públicos, diversidade de atividades e participação comunitária, mas seus resultados devem ser acompanhados. Não se confunde o direito de participar com obrigação de atingir um padrão corporal ou consumir equipamentos caros.",
+        "steps": [
+          "Identifique barreiras de acesso com os próprios participantes e preserve escolhas e privacidade.",
+          "Proponha adaptações compatíveis com objetivo, segurança e participação efetiva.",
+          "Na análise de mídia, delimite amostra e separe dados observados de hipóteses sobre causas e público.",
+          "Questione promessas de consumo e padrões corporais sem transformar diferenças em incapacidade."
+        ],
+        "example": "Anúncio hipotético e autoral: um tênis é apresentado com a frase quem usa já é campeão. A imagem de um atleta e a promessa de pertencimento podem estimular consumo, mas não demonstram que o produto garanta vitória. Analisar a mensagem exige separar recurso persuasivo, características verificáveis do produto e resultados esportivos que dependem de várias condições.",
+        "pitfall": "Exigir diagnóstico público como condição de inclusão, presumir capacidade por aparência ou transformar uma amostra de programação em prova da preferência de toda a população."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em um jogo escolar hipotético, duas equipes disputam pontos e cada uma planeja passes entre seus integrantes. Antes de começar, combinam uma adaptação de pontuação para ampliar a participação e avaliam seus efeitos durante a atividade. Qual leitura é mais adequada?",
+        "hint": "A disputa entre equipes pode coexistir com ações cooperativas e com negociação pedagógica das regras; observe a finalidade informada.",
+        "solution": "B reconhece oposição entre equipes, cooperação nos passes e possibilidade de adaptar regras para o objetivo educativo. A nega a cooperação explicitamente descrita. C confunde mudança pedagógica combinada com ausência de qualquer regra. D transforma vitória em medida de valor pessoal, o que não decorre da atividade. A adaptação precisa ser acompanhada para verificar seus efeitos, sem garantir inclusão apenas por ter sido proposta.",
+        "options": [
+          "A presença de disputa impede qualquer cooperação entre participantes.",
+          "Competição entre equipes e cooperação interna coexistem, e a adaptação pode ser avaliada pelo objetivo educativo.",
+          "Modificar uma regra combinada significa necessariamente jogar sem regra alguma.",
+          "A equipe vencedora demonstra que seus integrantes têm maior valor como pessoas."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em duas práticas hipotéticas, A consiste em lançar objetos para aproximá-los de um alvo e B consiste em avançar coletivamente por um campo compartilhado para alcançar a meta adversária e proteger a própria. Qual associação de lógicas é coerente?",
+        "hint": "Observe a finalidade da ação e a relação espacial entre participantes; a presença de um objeto não basta para classificar qualquer modalidade.",
+        "solution": "C identifica precisão na aproximação do alvo em A e invasão no avanço e defesa de metas em B. A troca as finalidades. B chama as duas de marca sem informar comparação por tempo, distância percorrida ou carga, e D as classifica como rede apesar de não haver separação desse tipo no enunciado. As categorias ajudam a ler o problema motor, mas não revelam sozinhas todas as regras de uma modalidade real.",
+        "options": [
+          "A é invasão; B é precisão, porque toda meta representa apenas lançamento individual.",
+          "A e B são necessariamente provas de marca, sem interação com adversários ou alvos.",
+          "A apresenta lógica de precisão; B apresenta lógica de invasão.",
+          "A e B são jogos de rede com campos obrigatoriamente separados por uma rede."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma pesquisa escolar hipotética observa uma única grade esportiva de 200 minutos: 150 de modalidade X e 50 de modalidade Y. Nenhum outro veículo ou dia foi analisado. Qual conclusão os dados sustentam sem extrapolação?",
+        "hint": "Calcule a participação de X nos minutos observados e preserve o limite da amostra; a grade não é pesquisa de preferência ou prática esportiva da população.",
+        "solution": "A calcula 150/200 × 100 = 75% e limita a conclusão à amostra. B troca minutos de programação por porcentagem de pessoas, sem ter entrevistado a população. C inventa uma causa exclusiva não investigada. D conclui que uma prática inexiste por não aparecer no recorte, confundindo ausência de cobertura e ausência de atividade. Outras questões sobre escolha editorial, financiamento ou interesses do público exigiriam fontes e métodos adicionais.",
+        "options": [
+          "X ocupa 75% do tempo observado nessa grade; o recorte não mede sozinho a preferência da população.",
+          "Exatamente 75% de toda a população pratica X, pois a grade representa automaticamente todos os habitantes.",
+          "A única causa da diferença é obrigatoriamente a falta de interesse por Y, já demonstrada pelos minutos.",
+          "Qualquer prática ausente dessa grade deixou de existir na comunidade."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Mudanças de estado e transformações",
+    "objective": "Identificar mudanças de estado, relacioná-las a energia e pressão, distinguir transformações físicas e químicas por sua composição e interpretar evidências e conservação de massa em sistemas delimitados.",
+    "prerequisites": [
+      "Noções de matéria, partículas e substância",
+      "Leitura de massa, temperatura e unidades de energia",
+      "Operações de multiplicação, soma e subtração"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Estados físicos e caminhos das transformações",
+        "explanation": "Sólido, líquido e gasoso são estados físicos comuns da matéria, relacionados à organização, à interação e ao movimento de suas partículas. No modelo escolar de um sólido, as partículas permanecem próximas e vibram em torno de posições; não ficam completamente imóveis. Um líquido tem volume aproximadamente definido em condições usuais e toma a forma da parte do recipiente que ocupa, enquanto um gás se expande pelo espaço disponível e é muito mais compressível. Essas descrições são modelos com condições de aplicação, não a afirmação de que líquidos nunca variem de volume. Fusão é a passagem de sólido a líquido; solidificação é o caminho inverso. Vaporização é a passagem de líquido a gasoso, e condensação ou liquefação designa o caminho inverso nesse contexto. Sublimação é a passagem direta de sólido a gasoso, e deposição ou ressublimação é a passagem direta de gasoso a sólido. Evaporação ocorre na superfície e pode acontecer abaixo da temperatura de ebulição; a roupa seca sem que a água precise ferver. Na ebulição, formam-se bolhas de vapor no interior do líquido em condições apropriadas de pressão e temperatura. O vapor de água é invisível; a nuvem esbranquiçada vista perto de água quente contém pequenas gotículas, portanto não deve ser identificada como gás visível. Mudança de estado não exige formar uma nova substância: gelo e água líquida continuam sendo água. Também não se confunde estado físico com fase de um sistema: dois líquidos que não se misturam podem formar duas fases líquidas. A descrição de uma transformação deve indicar o estado inicial, o final e as condições, sem supor que toda alteração observável seja uma reação química.",
+        "steps": [
+          "Identifique estados inicial e final para nomear a mudança sem inverter a direção.",
+          "Distinga evaporação superficial de ebulição com formação de vapor no líquido.",
+          "Use o modelo de partículas sem afirmar imobilidade no sólido ou expansão nula no líquido.",
+          "Separe estado físico, número de fases e composição da substância."
+        ],
+        "example": "Exemplo cotidiano: água líquida colocada em uma forma pode solidificar quando perde energia em condições adequadas no congelador. Antes e depois, continua sendo água; o caminho observado é líquido para sólido. A mudança não autoriza afirmar que as partículas ficaram imóveis nem que o volume permaneceu necessariamente idêntico.",
+        "pitfall": "Trocar condensação por evaporação, dizer que o vapor de água é a nuvem branca ou concluir que duas fases significam obrigatoriamente dois estados físicos diferentes."
+      },
+      {
+        "level": "intermediate",
+        "title": "Energia, temperatura e condições da mudança de estado",
+        "explanation": "Calor é energia transferida em razão de diferença de temperatura, e não uma substância guardada dentro de um corpo. Aquecer pode elevar a temperatura ou produzir mudança de estado. No modelo de uma substância pura em equilíbrio, sob pressão constante, a temperatura permanece no valor de transição durante a coexistência das fases envolvidas. A energia recebida pode alterar sua organização e interações sem elevar a temperatura nesse intervalo; isso não significa que não haja transferência de energia. Fusão, vaporização e sublimação exigem absorção de energia nas condições consideradas; os processos inversos liberam energia. Para uma massa m que muda completamente de estado na temperatura de transição, a quantidade de energia em módulo pode ser calculada por Q = mL, com L sendo o calor latente específico informado para a substância e as condições. Massa em gramas exige L em joules por grama para obter Q em joules. Se a amostra começar em outra temperatura, também será necessário considerar energia para aquecê-la até a transição; a fórmula de mudança de estado sozinha não representa todas as etapas. Num gráfico de aquecimento, é preciso ler eixos e condições antes de interpretar trechos inclinados ou patamares. Não se deve inventar um gráfico ausente nem presumir que todo patamar prove pureza. Misturas geralmente podem mudar de estado ao longo de intervalos, mas há comportamentos particulares, como misturas eutéticas na fusão e azeotrópicas na ebulição sob condições definidas. A pressão também importa: a água pura ferve aproximadamente a 100 °C sob pressão de uma atmosfera, e não em qualquer lugar. Pressão externa menor reduz sua temperatura de ebulição; pressão maior pode elevá-la. Assim, uma temperatura característica sempre precisa ser vinculada às condições.",
+        "steps": [
+          "Confira substância, pressão, temperatura inicial e mudança de estado solicitada.",
+          "Determine se há apenas transição ou também aquecimento ou resfriamento fora dela.",
+          "Multiplique massa por calor latente com unidades compatíveis e interprete absorção ou liberação.",
+          "Ao ler dados ou curvas, preserve as hipóteses e evite generalizações sobre todas as misturas."
+        ],
+        "example": "Modelo didático: para fundir completamente 30 g de gelo já a 0 °C, sob condições em que a fusão se dá nessa temperatura, adote L = 334 J/g e despreze perdas. A energia absorvida é 30 × 334 = 10.020 J. Esse valor não inclui aquecer o gelo se ele estivesse inicialmente abaixo de 0 °C nem aquecer a água depois da fusão.",
+        "pitfall": "Aplicar Q = mL ao aquecimento inteiro sem separar etapas, supor que toda mudança de estado mantenha temperatura constante sem condições ou usar 100 °C como regra universal de ebulição."
+      },
+      {
+        "level": "advanced",
+        "title": "Transformações físicas, reações e conservação de massa",
+        "explanation": "Uma transformação física altera aspectos como estado, forma ou distribuição sem formar novas substâncias por reação química. Fundir gelo e fragmentar um material são exemplos; fragmentação pode ser difícil de desfazer e ainda assim continuar física. Uma transformação química envolve formação de substâncias com composição ou estrutura química diferente, como na combustão ou na formação de ferrugem. Reversibilidade, rapidez, aparência dramática ou necessidade de aquecer não são critérios suficientes para distinguir as duas. Em uma chama de vela, por exemplo, podem coexistir processos: a cera funde, vaporiza e parte reage com o oxigênio na combustão. O fenômeno precisa ser analisado por etapas, sem afirmar que o simples derretimento já é a reação. Alteração de cor, liberação de gás, formação de sólido ou mudança de temperatura podem ser indícios, mas cada sinal requer contexto. Bolhas também surgem na ebulição de água sem formação de nova substância; uma mudança de cor pode decorrer de mistura ou diluição. A conclusão sobre uma reação depende do conjunto de evidências e da identificação de produtos e condições. Nas transformações físicas e nas reações químicas usuais, a massa se conserva quando se considera todo o sistema e não há troca de matéria com o ambiente, dentro da precisão relevante. Um sistema fechado para matéria pode trocar energia e ainda permitir essa análise de massa. Se gás escapa de um recipiente aberto, a balança pode registrar redução, sem que matéria tenha deixado de existir: ela passou para o ambiente. Se uma reação incorpora oxigênio do ar, a massa dos produtos recolhidos pode superar a de um reagente inicialmente pesado. Delimitar recipiente, conteúdo e trocas evita comparar partes diferentes como se fossem o mesmo sistema. Exemplos de sistemas fechados são modelos de interpretação; não são instruções para aquecer ou provocar reações que gerem pressão em recipientes selados.",
+        "steps": [
+          "Pergunte se houve formação de novas substâncias ou somente alteração física.",
+          "Considere evidências em conjunto, sem usar bolhas ou cor como prova isolada universal.",
+          "Defina quais materiais e recipientes entram na massa comparada e identifique trocas com o ambiente.",
+          "Explique ganhos ou perdas aparentes pela entrada ou saída de matéria, preservando o sistema escolhido."
+        ],
+        "example": "Situação hipotética de pesagem: um processo em recipiente aberto produz gás que deixa o conjunto. Se a balança registra menos massa ao final, não é correto concluir destruição de matéria. Para comparar massas totais, seria necessário contabilizar também o gás transferido para o ambiente, sem transformar o exemplo em procedimento de laboratório.",
+        "pitfall": "Definir reação apenas pela irreversibilidade, afirmar que qualquer bolha indica nova substância ou comparar massa de um reagente com massa de produtos que incorporaram material do ambiente."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma situação hipotética, pequenas gotículas de água aparecem na superfície externa de uma garrafa fria e fechada, em ambiente com vapor de água no ar. Qual transformação explica diretamente a formação dessas gotas?",
+        "hint": "A água considerada vem do ar e passa a gotículas na superfície fria; identifique o estado inicial e o final, sem supor vazamento da garrafa.",
+        "solution": "B identifica condensação: água no estado gasoso presente no ar passa ao estado líquido nas condições da superfície fria. A inverte o caminho e descreve vaporização. C exigiria passagem direta de sólido a gás, que não foi relatada. D trata o processo como formação de uma nova substância, quando a mudança descrita preserva a identidade da água. O fechamento da garrafa não impede a condensação da água externa.",
+        "options": [
+          "Vaporização da água do ar, passando de líquido para gasoso.",
+          "Condensação da água do ar, passando de gasoso para líquido.",
+          "Sublimação de gelo externo, passando diretamente de sólido para gás.",
+          "Reação química que transforma o vidro da garrafa em uma nova substância chamada água."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Num modelo ideal, 80 g de gelo puro já estão a 0 °C, sob pressão constante em que a fusão ocorre nessa temperatura. Adote calor latente de fusão L = 334 J/g e despreze perdas. Qual energia é absorvida para fundir completamente o gelo, sem aquecer a água depois?",
+        "hint": "A amostra já está na temperatura de transição e o pedido termina ao completar a fusão. Use massa em gramas e o calor latente em joules por grama.",
+        "solution": "D aplica Q = mL: 80 × 334 = 26.720 J. A usa 8 g e fica dez vezes abaixo. B toma o valor para apenas 1 g como se fosse toda a amostra. C usa 160 g, o dobro da massa fornecida. Não é necessário acrescentar aquecimento inicial ou final, pois as condições delimitam apenas a fusão. A temperatura constante no modelo não significa energia absorvida igual a zero.",
+        "options": [
+          "2.672 J",
+          "334 J",
+          "53.440 J",
+          "26.720 J"
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em um modelo hipotético, recipiente e conteúdo têm juntos 200 g antes de uma reação química que forma gás. Não há troca de matéria durante a reação. Depois, uma abertura permite que exatamente 12 g de gás saiam, sem outra troca de matéria. Qual é a massa do conjunto logo após a reação ainda fechada e após a saída do gás, respectivamente?",
+        "hint": "Primeiro considere o sistema completo sem saída de matéria; depois subtraia apenas a massa que efetivamente atravessa o limite do sistema.",
+        "solution": "C mantém 200 g enquanto toda a matéria permanece no conjunto e calcula 200 − 12 = 188 g após a saída do gás. A antecipa uma perda antes de ocorrer troca de matéria. B ignora os 12 g transferidos ao ambiente. D soma a massa de gás como se tivesse sido criada além dos reagentes, contrariando a conservação. A diferença de leitura na segunda etapa não representa destruição de matéria, pois o gás passou a fazer parte do ambiente.",
+        "options": [
+          "188 g e 188 g, porque formar gás destrói imediatamente 12 g de matéria.",
+          "200 g e 200 g, mesmo depois de 12 g de matéria saírem do conjunto.",
+          "200 g e 188 g, considerando a conservação na etapa fechada e a saída posterior de matéria.",
+          "212 g e 200 g, porque o gás é massa nova criada além dos reagentes iniciais."
+        ],
+        "correctIndex": 2
+      }
+    ]
   }
 ];
 
@@ -1098,6 +1742,225 @@ export const authoredCurriculumBatch04ReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "Total 1000 gametas. Parentais ABC(350) e abc(350). Duplos recombinantes AbC(10) e aBc(10) diferem dos parentais apenas no alelo B/b → B é locus central (ordem A–B–C). Intervalo A–B: recombinantes simples Abc(60)+aBC(60) + duplos AbC(10)+aBc(10) = 140 → 14%. Intervalo B–C: recombinantes simples ABc(80)+abC(80) + duplos AbC(10)+aBc(10) = 180 → 18%. Alternativa A compatível. B troca locus central. C omite duplos (12 e 16). D usa 28 e 32, que não são as distâncias adjacentes pedidas: 28% é a frequência entre os marcadores externos e 32 cM é a soma das estimativas dos dois intervalos. Distâncias são estimativas genéticas (cM), não físicas."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Industrialização e trabalho",
+    "contentSha256": "ffa69264caa10e3c3c0858f329d6ad50ce2d81939e6fe4881393bb866d1d6da9",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://blog.scienceandindustrymuseum.org.uk/langworthy-brothers/",
+      "https://www.parliament.uk/about/living-heritage/transformingsociety/livinglearning/19thcentury/overview/factoryact/",
+      "https://atlas.fgv.br/verbetes/greve-geral-de-1917",
+      "https://www.gutenberg.org/ebooks/6435",
+      "https://www.thehenryford.org/collections/explore/articles/ford-methods-and-the-ford-shops",
+      "https://global.toyota/en/company/vision-and-philosophy/production-system/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "O enunciado descreve fábrica mecanizada crescendo enquanto oficinas artesanais e produção doméstica continuam na mesma região. A opção B afirma coexistência de formas distintas de organização produtiva durante a industrialização, correspondendo exatamente ao cenário descrito. A opção A contradiz o texto ao alegar eliminação completa do artesanato. A opção C faz inferção histórica sem apoio ao tornar a fábrica origem exclusiva de todo trabalho remunerado. A opção D infere igualdade de condições apenas da proximidade geográfica, sem informação sobre contratos, jornadas ou poder de negociação."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A síntese baseada na pesquisa da FGV relaciona a greve de 1917 à piora das condições de vida e trabalho e à atuação de organizações operárias anteriores. A opção C articula agravamento das condições de subsistência e ação coletiva previamente construída, respeitando a interação entre fatores materiais e organização. A opção A nega a organização anterior expressamente informada. A opção B transforma experiência localizada em fim imediato e nacional de conflitos, sem evidência. A opção D homogeneiza a origem dos trabalhadores em única nacionalidade, contrariando a diversidade histórica e o próprio texto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "O caso hipotético descreve reposição conforme consumo (fluxo puxado), estoques pequenos de componentes e autorização para interromper a linha ante defeitos (jidoka), com anúncio empresarial de ganho de eficiência. A opção A identifica corretamente elementos do Sistema Toyota de Produção e distingue a intenção declarada da empresa da necessidade de evidências independentes para avaliar efeitos sobre trabalhadores. A opção B contradiz o enunciado ao transformar 'estoques pequenos' em regra absoluta de estoque zero. A opção C ignora os mecanismos descritos e reduz a fábrica a artesanato. A opção D infere condições ideais de trabalho apenas do anúncio, sem investigar jornadas, remuneração, autonomia ou participação."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Clima e ambiente",
+    "contentSha256": "7d575a5d76e4103077b56a92810d494faf528d884022ce6309b75ce66e480309",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://portal.inmet.gov.br/servicos/normais-climatol%C3%B3gicas",
+      "https://portal.inmet.gov.br/noticias/zona-de-convergencia-do-atlantico-sul-zcas",
+      "https://www.fao.org/4/X0490E/x0490e04.htm",
+      "https://www.ipcc.ch/report/ar6/syr/summary-for-policymakers/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Questão pede amplitude anual das médias mensais: maior média 29 °C, menor 21 °C → 29−21=8 °C. Alternativa A (17 °C) usa máxima/mínima diária (35−18), respondendo amplitude diária. B (50 °C) soma as médias, sem sentido de amplitude. D (14 °C) mistura máxima diária (35) com menor média mensal (21), incomparáveis. Gabarito C é o único que usa as duas médias mensais comparáveis do mesmo período."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Total mensal = 210 mm (6 dias ZCAS) + 200 mm (25 dias demais) = 410 mm. Participação do episódio = 210/410 ≈ 51,2%. Alternativa B confunde fração de dias (6/31 ≈ 19,4%) com fração de chuva. C usa denominador errado (210/200 = 105%), comparando episódio apenas aos demais dias. D inverte categorias atribuindo 200 mm à ZCAS. Gabarito A calcula corretamente mm/mm sobre o total do mês sem sobreposição."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Plano A visa reduzir emissões de GEE (transporte baixa emissão) → finalidade de mitigação. Plano B visa reduzir danos por enchentes (alertas, menor ocupação em área exposta) → finalidade de adaptação. Alternativa A inverte os conceitos. B afirma que alertas eliminam 'todas as emissões', não suportado pelo enunciado. C promete 'ausência de qualquer dano futuro' e dispensa avaliação de vulnerabilidade, promessa infundada. D descreve corretamente as finalidades declaradas sem garantir eliminação total de risco."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia antiga e ética clássica",
+    "contentSha256": "8b1af277207322d27600089fc5fa501719fc348cb57f3f50753c9494b107d33b",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://plato.stanford.edu/entries/plato-ethics-politics/",
+      "https://plato.stanford.edu/entries/aristotle-ethics/",
+      "https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html",
+      "https://classics.mit.edu/Epicurus/menoec.html",
+      "https://classics.mit.edu/Epictetus/epicench.html",
+      "https://plato.stanford.edu/entries/skepticism-ancient/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A pergunta de Rui apresenta contraexemplo que testa a definição 'ser justo é obedecer a qualquer ordem' ao mostrar consequência injusta (prejudicar alguém), procedimento característico do elênco socrático: examinar definições por suas consequências sem provar teoria alternativa, nem recorrer a autoridade, nem demonstrar impossibilidade de conhecimento, nem medir lei física."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A doutrina aristotélica do meio-termo (Ética a Nicômaco II.6) estabelece que a virtude é meio relativo a nós, determinado pela razão como o prudente faria, não média aritmética; Aristóteles lista ações (adultério, furto, homicídio) cuja própria descrição implica erro, sem meio virtuoso; a virtude requer conhecimento, escolha e caráter estável, não resultado exterior nem repetição mecânica."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "I corresponde ao estoicismo: virtude como único bem, riqueza como indiferente (preferível mas não bem moral); II ao epicurismo: avaliação hedônica prudente que recusa prazer se traz perturbação maior à ataraxia (Carta a Meneceu); III ao pirronismo: epoché perante argumentos equipolentes, não certeza dogmática de impossibilidade de conhecer; outras opções trocam escolas ou caricaturam."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Durkheim, Marx e Weber",
+    "contentSha256": "ad8b821b395a14049450df0aacfc05714d5337059b2e9c5d96ba1ae856b074f0",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://classiques.uqam.ca/classiques/Durkheim_emile/regles_methode/regles_methode_tdm.html",
+      "https://openstax.org/books/introduction-sociology-3e/pages/4-2-theoretical-perspectives-on-society",
+      "https://www.marxists.org/archive/marx/works/1867-c1/ch06.htm",
+      "https://www.marxists.org/archive/marx/works/1867-c1/ch09.htm",
+      "https://plato.stanford.edu/entries/weber/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A opção C captura corretamente exterioridade (normas anteriores à estudante), pressão sobre condutas (sanções por descumprimento) e possibilidade de transformação coletiva (propostas de mudança), sem imputar imutabilidade ou criação individual. A nega anterioridade coletiva; B imputa imutabilidade inexistente no conceito; D confunde frequência de matrículas com definição de fato social, ignorando a organização normativa descrita."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "O modelo fornece: capital constante (c) = 240; valor novo = v + s = 120; capital variável (v) = 40. Mais-valia (s) = valor novo − v = 120 − 40 = 80. Taxa de mais-valia = s/v = 80/40 = 200%. A está correta. B toma todo o valor novo (120) como mais-valia e calcula 120/40 = 300%. C soma c + valor novo (360) como mais-valia. D acerta a mais-valia (80) mas usa base errada (c+v = 280), resultando ~28,6%, que seria taxa de lucro, não taxa de mais-valia solicitada."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Iara relata ação por dever moral sem vantagem pessoal → orientação racional referente a valores (Wertrational). Paulo relata comparação de custos e meios para meta → orientação racional referente a fins (Zweckrational). A pesquisa weberiana combina compreensão interpretativa (Verstehen) e explicação causal. D associa corretamente e preserva a explicação causal. A inverte as duas orientações. B confunde tipo ideal (construção analítica) com perfeição moral. C opõe compreensão a causalidade, contrariando a proposta metodológica weberiana de integrar ambas."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "História da arte e patrimônio cultural",
+    "contentSha256": "7b24306a77efefd5305428b354ffe666317068435d44753b14fdcaf5c93c312a",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://resources.metmuseum.org/resources/metpublications/pdf/The_Art_of_Renaissance_Europe_A_Resource_for_Educators.pdf",
+      "https://bienal.org.br/exposicoes/1a-bienal-de-sao-paulo/",
+      "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material",
+      "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-imaterial",
+      "https://www.gov.br/iphan/pt-br/patrimonio-cultural/educacao-patrimonial/inventarios-participativos/inventarios-participativos",
+      "https://www.moma.org/collection/terms/cubism/multiple-perspectives",
+      "https://www.moma.org/interactives/moma_through_time/1960/making-space-for-a-new-type-of-art",
+      "https://mam.org.br/wp-content/uploads/2022/04/mam-modernoondemodernoquando-catalogo-com-ad.pdf",
+      "https://www.metmuseum.org/ko/essays/baroque-rome"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "O enunciado descreve explicitamente 'linhas convergem para um ponto de fuga' e 'organização geométrica para sugerir profundidade a partir de uma posição de observação', que são a definição canônica de perspectiva linear. A opção A descreve perspectiva atmosférica (redução de nitidez), não mencionada. B (talha dourada) e D (xilogravura) são técnicas de execução/material, não recursos de representação espacial. A resolução independe do gabarito: a descrição textual mapeia diretamente à definição de perspectiva linear."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A proposta hipotética centra-se em 'ação realizada durante vinte minutos', 'movimentos e sons diante do público' e afirma que 'a ação e sua duração integram a obra', o que define performance artística. O registro em vídeo é explicitamente separado como documentação. B impõe pintura como única arte (falso). C inverte a lógica: registro não anula escolha artística. D generaliza indevidamente que novas linguagens extinguem as anteriores. A resposta correta identifica a linguagem sem overclaims."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "O cenário apresenta duas demandas: preservar 'prédio de referência' (bem material) e 'modo de fazer transmitido entre gerações' (bem imaterial/saber). A opção D propõe investigar proteção material do prédio (tombamento como instrumento cabível) e reconhecimento/salvaguarda do saber (registro com participação e apoio à transmissão), sem automatismos. A inverte os instrumentos (tombar imaterial, registrar parede). B confunde tombamento com transferência obrigatória de propriedade. C reduz salvaguarda a guardar objeto e proibir mudanças, apagando a dimensão viva e os detentores."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esporte, jogos e cultura corporal",
+    "contentSha256": "5c92b9f7900818690437a572b1635c6fa61ed2eab73bfead886967c515789810",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.unesco.org/en/legal-affairs/international-charter-physical-education-physical-activity-and-sport",
+      "https://bcr.iphan.gov.br/bens-culturais/roda-de-capoeira/",
+      "https://basenacionalcomum.mec.gov.br/images/BNCC_20dez_site.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "O enunciado descreve disputa entre equipes (oposição) e passes planejados internamente (cooperação), além de adaptação combinada para ampliar participação. Opção B é a única que reconhece a coexistência oposição/cooperação e a avaliação pedagógica da adaptação. A nega cooperação descrita. C confunde mudança combinada com ausência de regra. D transforma vitória em mérito pessoal, extrapolando o contexto educativo."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Prática A (lançar para aproximar de alvo) define lógica de precisão; prática B (avançar em campo compartilhado para meta adversária defendendo a própria) define lógica de invasão. Opção C associa corretamente. A inverte as lógicas. B classifica ambas como marca sem critério de tempo/distância/carga. D impõe separação por rede inexistente no enunciado."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Grade de 200 min: 150 min modalidade X = 75% do tempo observado nessa amostra. Opção A calcula corretamente e restringe conclusão ao recorte. B comete falácia ecológica (minutos → população). C inventa causa única não investigada. D confunde ausência de cobertura com inexistência da prática. Todas as demais extrapolam os dados."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Mudanças de estado e transformações",
+    "contentSha256": "c0c63ce37a1cae029952badea8feb89f0381d1106fdf94304929ccae39af1305",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions",
+      "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+      "https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations",
+      "https://openstax.org/books/college-physics-2e/pages/14-3-phase-change-and-latent-heat"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Gotículas em garrafa fria fechada provêm de vapor de água do ar (gasoso) que condensa na superfície fria (líquido); opção B descreve exatamente condensação gasoso→líquido. A inverte a direção (vaporização), C invoca sublimação de gelo não relatado, D propõe reação química absurda transformando vidro em água. O fechamento da garrafa não afeta a condensação externa."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Gelo a 0 °C funde completamente sob pressão constante; energia absorvida Q = mL = 80 g × 334 J/g = 26.720 J. Opção D corresponde. A usa 8 g (dez vezes menor), B usa massa unitária 1 g, C usa 160 g (dobro). O enunciado delimita apenas a fusão, sem aquecimento antes ou depois, e a temperatura constante no modelo não implica energia zero."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Sistema fechado (recipiente + conteúdo = 200 g) conserva massa durante a reação: 200 g logo após. Ao abrir, 12 g de gás saem; massa final = 200 − 12 = 188 g. Opção C reflete as duas etapas. A antecipa perda inexistente na etapa fechada e iguala as massas. B ignora a saída de 12 g. D soma 12 g como massa nova criada, violando conservação. A redução de leitura não é destruição de matéria, é transferência para o ambiente."
       }
     ]
   }
