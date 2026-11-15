@@ -735,6 +735,374 @@ export const authoredCurriculumBatch13:readonly AuthoredLessonSpec[] = [
         "solution": "D, índice 3: Cr2O7^2- + 14 H+ + 6 I- → 2 Cr^3+ + 3 I2 + 7 H2O. Há dois Cr, sete O, catorze H e seis I em cada lado; a carga à esquerda é −2+14−6=+6 e à direita 2·(+3)=+6. Os dois Cr passam de +6 a +3 e recebem seis elétrons; seis I passam de −1 a zero e cedem seis. A falha em H e carga; B falha em I e carga; C falha em I, embora conservar carga sozinha não detecte esse erro."
       }
     ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Hereditariedade, mutações e biotecnologia",
+    "objective": "Relacionar transmissão de variantes, efeitos de mutações e finalidades de técnicas biotecnológicas, reconhecendo condições e limites sem determinismo genético.",
+    "prerequisites": [
+      "DNA, genes e cromossomos",
+      "Meiose, gametas e fecundação",
+      "Síntese de proteínas e leitura em trincas"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Herança, variantes e ambiente",
+        "explanation": "Hereditariedade envolve a transmissão de informação genética entre gerações. Genes ocupam regiões do material genético; variantes de um mesmo gene podem ser chamadas de alelos. Em um modelo diploide autossômico simples, um indivíduo recebe um alelo de cada progenitor em determinado locus. Na meiose, os alelos se separam na formação de gametas, e a fecundação reúne contribuições; recombinação e segregação podem gerar novas combinações sem necessariamente criar novos alelos. O genótipo descreve a constituição genética considerada; o fenótipo corresponde a características observáveis, resultantes de relações entre constituição genética, desenvolvimento e ambiente. Nem toda característica depende de apenas um gene com dois alelos e dominância completa. Dominante não significa mais frequente, melhor ou mais forte; descreve uma relação de expressão fenotípica em um modelo e contexto. Uma mutação pode introduzir uma variante nova, em vez de apenas recombinar variantes existentes. Na reprodução sexuada humana, uma alteração restrita a células somáticas, como certas células da pele, não passa aos descendentes por gametas; uma variante presente na linhagem germinativa pode ser transmitida, sem que isso obrigue todos os descendentes a recebê-la. Essa distinção não deve ser transformada em regra sobre toda forma de reprodução: organismos que se multiplicam a partir de tecidos vegetativos têm outras possibilidades de transmissão. Conhecer uma variante não determina automaticamente todas as características de uma pessoa, nem permite hierarquizar indivíduos ou grupos.",
+        "steps": [
+          "Defina o locus e o modelo de herança em análise.",
+          "Diferencie transmissão de alelos, recombinação e origem de variantes.",
+          "Relacione genótipo e ambiente ao fenótipo sem reduzir tudo a um gene.",
+          "Identifique a linhagem celular e a forma de reprodução antes de concluir transmissão."
+        ],
+        "example": "Situação autoral: duas mudas geneticamente iguais são cultivadas sob condições diferentes e desenvolvem alturas distintas. O resultado é compatível com influência ambiental no fenótipo; não demonstra que a mudança de altura tenha alterado obrigatoriamente a sequência do DNA. Identidade genética considerada não equivale a destino fenotípico idêntico.",
+        "pitfall": "Confundir dominante com superior, proporção genética com certeza por família ou qualquer mudança adquirida com variante transmitida por gametas."
+      },
+      {
+        "level": "intermediate",
+        "title": "Mutações: posição, tipo e consequência",
+        "explanation": "Mutações são alterações da sequência de DNA, que podem surgir em processos de replicação ou por ação de agentes mutagênicos, entre outras causas. Seus efeitos dependem do local, do tipo de alteração e do contexto; não são necessariamente prejudiciais nem surgem dirigidas para atender a uma necessidade do organismo. Algumas variantes são neutras em certo contexto, outras afetam sobrevivência ou reprodução. Uma substituição troca uma base; uma inserção acrescenta bases e uma deleção remove bases. Em uma região codificante lida em trincas, inserções ou deleções cujo tamanho não é múltiplo de três podem deslocar o quadro de leitura a partir da alteração. Remover três bases preserva o agrupamento posterior nesse modelo, mas não garante que a proteína mantenha sua função: a identidade de um aminoácido, uma região reguladora ou outros sinais relevantes podem ser afetados. Substituições em regiões codificantes podem conservar o aminoácido, trocar um aminoácido ou gerar uma parada prematura, conforme a sequência; fora delas, podem afetar regulação ou não apresentar efeito detectado. Um códon de parada sinaliza término da tradução e não representa um aminoácido comum no código genético padrão. Retirá-lo não equivale simplesmente a retirar um aminoácido. Uma classificação da mudança descreve parte do problema, mas não estabelece diagnóstico ou consequência clínica individual. Para analisar um exercício, explicite fita, direção, ponto de início e condições do modelo, em vez de converter toda alteração de DNA na mesma previsão sobre a proteína.",
+        "steps": [
+          "Localize a alteração e identifique substituição, inserção ou deleção.",
+          "Defina se o trecho é codificante e como a leitura foi estabelecida.",
+          "Confira o tamanho da alteração e a preservação ou mudança de quadro.",
+          "Distinga efeito na sequência, função e consequência no organismo."
+        ],
+        "example": "Modelo autoral de sequência codificante lida a partir da primeira base: ATG CAA GGT. A substituição de uma base em CAA por CTA conserva o número de bases e o agrupamento em trincas; isso não demonstra função inalterada. A análise de quais aminoácidos seriam codificados exigiria aplicar o código genético, e não apenas contar as letras.",
+        "pitfall": "Dizer que toda deleção desloca o quadro, que preservar o quadro garante função ou que um códon de parada codifica um aminoácido a ser removido."
+      },
+      {
+        "level": "advanced",
+        "title": "Biotecnologia: distinguir copiar, ler e modificar",
+        "explanation": "Biotecnologia emprega organismos, células ou componentes biológicos em finalidades técnicas; não se restringe à edição de DNA, incluindo usos tradicionais como fermentação. Nas técnicas de material genético, diferencie finalidades. PCR amplifica um segmento de DNA: gera cópias para análise, selecionando o trecho por iniciadores e síntese repetida. Sequenciamento identifica a ordem das bases; ele não modifica automaticamente o genoma que está sendo estudado. Clonagem molecular produz cópias de fragmentos e pode empregar vetores, como plasmídeos; não equivale à clonagem reprodutiva de um organismo inteiro. Engenharia genética pode alterar DNA por inserções, remoções ou mudanças de bases. Um organismo transgênico recebeu artificialmente sequência de DNA de outra espécie; nem toda edição consiste em inserir material de outra espécie. Sistemas baseados em CRISPR foram adaptados de mecanismos bacterianos e podem direcionar modificações; o resultado pretendido precisa ser verificado, pois a técnica não garante precisão ou efeito funcional por seu nome. Benefícios e riscos dependem do organismo, da alteração, da finalidade e do contexto, não de uma oposição simples entre natural e artificial. Ao ler uma alegação, pergunte qual técnica foi empregada, o que foi medido e o que continua sem demonstração. Produzir cópias ou observar uma sequência não prova correção de uma variante, função de uma proteína, segurança ambiental ou eficácia terapêutica. Discussões éticas incluem finalidade, consequências, consentimento e proteção de dados quando houver pessoas envolvidas. Esta aula trabalha conceitos e casos hipotéticos; não interpreta exames pessoais, coleta informação de saúde ou apresenta protocolo de edição genética.",
+        "steps": [
+          "Identifique se a finalidade é amplificar, determinar sequência, clonar ou modificar.",
+          "Separe resultado molecular de efeito funcional e de aplicação prática.",
+          "Confira evidências de resultado pretendido e efeitos não pretendidos.",
+          "Analise finalidade e consequências sem presumir segurança ou perigo universais."
+        ],
+        "example": "Caso autoral: uma equipe hipotética amplifica um fragmento e depois determina sua sequência. Ela pode comparar a ordem das bases obtida com uma referência, mas essas operações não demonstram que o DNA das células originais tenha sido corrigido. Também não equivalem à criação de um organismo clonado; as técnicas respondem a perguntas diferentes.",
+        "pitfall": "Confundir PCR com edição, sequenciamento com terapia ou toda modificação genética com transgenia; deduzir precisão e segurança apenas do nome da técnica."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso autoral sobre reprodução sexuada humana: uma variante é detectada apenas em uma linhagem de células da pele de uma pessoa, sem presença na linhagem germinativa segundo as hipóteses do exercício. Qual conclusão é adequada?",
+        "hint": "Diferencie células somáticas e linhagem que pode contribuir para os gametas, sem acrescentar certeza de transmissão.",
+        "options": [
+          "A variante será transmitida obrigatoriamente a todos os descendentes, por estar em qualquer célula do corpo.",
+          "A alteração transforma automaticamente todos os genes de todos os gametas da pessoa.",
+          "A variante prova superioridade biológica da pessoa em relação a indivíduos sem ela.",
+          "A variante somática descrita não é transmitida por gametas nessa situação; isso não define toda forma de reprodução dos organismos."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: o caso delimita uma alteração somática sem presença na linhagem germinativa, no contexto de reprodução sexuada humana. Não há via de transmissão por gametas nas hipóteses dadas. A universaliza transmissão; B inventa modificação de todos os gametas; C atribui hierarquia sem fundamento. A conclusão respeita o caso e não exclui outras formas de transmissão em organismos com reprodução vegetativa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo autoral: a fita codificante 5′-ATGAAACCCGGG-3′ é lida em trincas desde a primeira base, sem processamento adicional. A remove apenas a base da posição 4; B remove as posições 4 a 6. Qual comparação é correta sobre o quadro posterior à alteração?",
+        "hint": "Agrupe a sequência em trincas e compare remover uma base com remover três; não confunda preservar o quadro com garantir a função da proteína.",
+        "options": [
+          "A e B preservam obrigatoriamente a mesma proteína e sua função, pois ambas são deleções.",
+          "A desloca o quadro a partir da alteração; B preserva o quadro, sem garantir função proteica inalterada.",
+          "A preserva o quadro e B o desloca, pois três é sempre incompatível com leitura em trincas.",
+          "A e B tornam obrigatoriamente todas as bases restantes códons de parada."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: o original agrupa ATG AAA CCC GGG. A gera ATG AAC CCG GG, mudando o agrupamento após a retirada de uma base; B gera ATG CCC GGG e mantém o quadro posterior ao retirar três bases. Preservar quadro não garante a mesma sequência proteica nem função. A promete identidade funcional sem apoio; C inverte os efeitos; D inventa paradas sem aplicar o código. Os grupos finais dependem do modelo explicitado, e as letras isoladas não autorizam diagnóstico."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: uma equipe anuncia que amplificou por PCR um trecho de DNA e confirmou sua sequência. Sem evidência adicional de modificação das células originais, qual afirmação respeita o que foi realizado?",
+        "hint": "Diferencie copiar e ler um trecho de modificar um genoma e comprovar resultado funcional.",
+        "options": [
+          "Foram produzidas cópias e analisada uma sequência; isso não demonstra edição corretiva do genoma original nem sua segurança.",
+          "A PCR corrigiu necessariamente todas as variantes em todas as células do organismo.",
+          "Determinar a sequência prova que a equipe clonou um organismo inteiro geneticamente idêntico.",
+          "A ausência de um procedimento de edição prova que o fragmento analisado não contém qualquer variante."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: amplificação e leitura permitem obter e analisar cópias, mas não comprovam modificação das células originais nem efeitos funcionais ou segurança de uma aplicação. B atribui edição universal à PCR; C confunde análise de fragmento com clonagem reprodutiva; D transforma ausência de edição em ausência de variantes, uma conclusão sem relação necessária. O caso é hipotético e não apresenta teste clínico individual."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Brasil colonial e escravidão",
+    "objective": "Relacionar administração, atividades econômicas e escravização na América portuguesa, reconhecendo diversidade regional, ação dos sujeitos e limites das fontes históricas.",
+    "prerequisites": [
+      "Expansão marítima e colonização",
+      "Diferença entre fonte histórica e interpretação",
+      "Trabalho compulsório, comércio e poder"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Colonização, administração e economias conectadas",
+        "explanation": "A expressão Brasil colonial é uma forma de estudar a América portuguesa, sem presumir que o território, a sociedade e o Estado nacional atuais já existissem prontos. A colonização se desenvolveu sobre espaços ocupados por povos indígenas diversos, envolvendo conquista, alianças, violência e transformação de relações econômicas. No século XVI, a Coroa distribuiu capitanias hereditárias a donatários para promover ocupação e exploração sob autoridade portuguesa. A criação do governo-geral em 1548, com a chegada de Tomé de Sousa em 1549, buscou maior coordenação; não extinguiu imediatamente todas as capitanias hereditárias. A administração reuniu autoridades régias e poderes locais, com interesses que podiam convergir ou entrar em conflito. A produção de açúcar articulou lavouras, beneficiamento, financiamento e comércio atlântico. Engenho pode designar o conjunto produtivo, além da instalação de moagem; não se trata apenas de uma plantação. A mineração, intensificada entre o fim do século XVII e o XVIII, ampliou movimentos populacionais, abastecimento e fiscalização, sem fazer desaparecer a produção agrícola. Gado, alimentos, transportes e comércio interno também sustentavam a sociedade colonial. A orientação exportadora de atividades importantes não significa ausência de trocas locais nem sucessão de ciclos em que uma atividade apaga por completo as outras. Para interpretar esse conjunto, relacione trabalho, circulação de mercadorias, poder e diferenças de tempo e região, evitando reduzir três séculos a uma estrutura imóvel.",
+        "steps": [
+          "Delimite espaço e período sem projetar o Estado atual sobre a colônia.",
+          "Diferencie capitanias, coordenação régia e atuação local.",
+          "Relacione produção exportadora a trabalho, transporte e abastecimento.",
+          "Observe coexistências e mudanças em vez de ciclos que eliminariam toda atividade anterior."
+        ],
+        "example": "Situação didática autoral: um engenho vende açúcar para o comércio atlântico e compra alimentos e animais de outros produtores. O caso mostra que exportação pode depender de circuitos internos de abastecimento. Ele não prova que todos os engenhos comprassem os mesmos produtos nem que desaparecessem os interesses metropolitanos.",
+        "pitfall": "Supor território nacional pronto, extinção imediata das capitanias pelo governo-geral ou inexistência de mercado interno por causa da exportação."
+      },
+      {
+        "level": "intermediate",
+        "title": "Escravização indígena e tráfico atlântico",
+        "explanation": "A escravidão colonial era uma relação de coerção e poder que transformava pessoas em propriedade sob a ordem vigente e submetia seu trabalho e sua vida a controle violento. Povos indígenas foram escravizados e também submetidos a outras formas de trabalho e domínio; normas restritivas, disputas e exceções não produziram uma proteção uniforme nem encerraram imediatamente a prática. A expansão da escravização de africanos se relacionou a redes mercantis atlânticas, interesses de colonizadores e negociantes e transformações regionais na demanda de trabalho. Não resulta de uma suposta inferioridade natural de indígenas nem de uma aptidão biológica de africanos para o cativeiro. Pessoas trazidas da África tinham origens, línguas e conhecimentos diversos, e não compunham uma população culturalmente homogênea. O tráfico envolvia captura, deslocamento forçado, comércio e violência; a participação de agentes em diferentes pontos da rede não reduz o papel dos interesses coloniais nem torna livre a escolha dos escravizados. A presença africana cresceu de maneiras desiguais conforme lugar e atividade, coexistindo com trabalho indígena e com trabalhadores livres. O trabalho escravizado não se limitou aos canaviais: alcançou mineração, serviços, transporte e ambientes urbanos. Também não se deve identificar toda a população negra da colônia com condição cativa, pois existiam pessoas libertas e livres, ainda em uma sociedade profundamente hierarquizada. Reconhecer essa complexidade não suaviza a violência estrutural; permite examinar de modo mais preciso como ela operava e era contestada.",
+        "steps": [
+          "Identifique quem controlava trabalho e condição jurídica, sem naturalizar a coerção.",
+          "Considere coexistência de formas de trabalho e diferenças regionais.",
+          "Relacione tráfico e escravização a redes e interesses históricos.",
+          "Reconheça diversidade de origens e condições sem apagar a violência do sistema."
+        ],
+        "example": "Comparação autoral de conceitos: uma restrição da Coroa à escravização indígena e uma denúncia de captura podem ser analisadas conjuntamente para investigar distância entre norma e prática. A existência da regra não prova cumprimento universal; a denúncia também precisa ser situada e confrontada com outras evidências, sem ser convertida automaticamente em descrição de todo o território.",
+        "pitfall": "Explicar escravidão por traços naturais de um povo, tratar africanos como grupo homogêneo ou confundir proibição escrita com desaparecimento imediato da prática."
+      },
+      {
+        "level": "advanced",
+        "title": "Resistências, sujeitos e leitura crítica de fontes",
+        "explanation": "Pessoas escravizadas não aceitaram passivamente a ordem colonial. Fugas, formação de quilombos, enfrentamentos e construção de vínculos de apoio compuseram resistências, com formas e objetivos variados. Quilombos não eram todos iguais nem necessariamente isolados: podiam manter relações de troca, conflito e negociação com populações ao redor. Palmares, na região da Serra da Barriga, tornou-se uma referência de resistência e reuniu experiências culturais e políticas que não se resumem a uma aldeia uniforme. Reconhecer ação histórica não significa negar a desigualdade de forças ou afirmar que toda negociação era livre e sem coerção. Para estudar esse universo, pergunte quem produziu o documento, para qual destinatário, com que finalidade e em quais circunstâncias. Uma ordem de captura revela intenção repressiva, mas não prova sozinha que a operação foi executada como planejado. Um registro de venda pode indicar circulação de mercadorias, sem quantificar toda a economia de uma região. Textos de autoridades frequentemente descrevem fugitivos pela perspectiva de quem procurava controlá-los; suas categorias devem ser analisadas, não assumidas como verdade neutra sobre as pessoas. Cruze fontes escritas, vestígios materiais e estudos, distinguindo testemunho, hipótese e interpretação. A memória pública de Palmares e da escravidão é também construída em outros tempos; um monumento atual não é uma fotografia direta da vida colonial. A ruptura de um vínculo político com a metrópole não equivale, por si, ao fim das hierarquias e relações de trabalho, e o estudo das continuidades exige seguir seus processos específicos.",
+        "steps": [
+          "Reconheça formas diversas de resistência e seus contextos.",
+          "Identifique produtor, finalidade e perspectiva de cada fonte.",
+          "Separe intenção registrada, ação executada e alcance da evidência.",
+          "Relacione outras fontes e distinga história colonial de memória posterior."
+        ],
+        "example": "Exercício metodológico autoral: comparar uma planta administrativa, uma lista de mercadorias e vestígios de moradia pode revelar aspectos diferentes de um mesmo espaço colonial. A planta mostra uma representação de organização; não registra necessariamente todo o uso real do lugar. A combinação de fontes ajuda a formular hipóteses sem fingir que cada documento responde a todas as perguntas.",
+        "pitfall": "Retratar escravizados como passivos, todo quilombo como isolado ou o vocabulário de uma autoridade repressora como descrição neutra das pessoas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso autoral de revisão: uma ficha diz que a criação do governo-geral em 1548 extinguiu imediatamente todas as capitanias hereditárias e eliminou poderes locais. Qual correção é historicamente adequada?",
+        "hint": "Diferencie uma tentativa de coordenação e centralização da substituição total e instantânea de instituições.",
+        "options": [
+          "A ficha está correta, pois uma nova autoridade eliminava automaticamente qualquer forma anterior de administração.",
+          "O governo-geral buscou coordenação régia, mas capitanias e poderes locais continuaram existindo, com relações e conflitos próprios.",
+          "A correção é afirmar que os donatários se tornaram soberanos independentes de Portugal.",
+          "A mudança encerrou a colonização e aboliu de imediato qualquer forma de trabalho compulsório."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a coordenação régia não significou extinção instantânea das capitanias hereditárias nem de poderes locais. A confunde criação institucional com eliminação total; C atribui soberania independente aos donatários; D inventa fim da colonização e do trabalho compulsório. A análise deve distinguir os objetivos da medida e o funcionamento histórico das instituições."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Atividade autoral: qual explicação relaciona de forma adequada a expansão do trabalho africano escravizado na América portuguesa e a presença de trabalho indígena?",
+        "hint": "Procure uma relação histórica entre interesses e redes, sem transformar diferenças humanas em aptidões naturais para a escravidão.",
+        "options": [
+          "Africanos teriam nascido naturalmente destinados ao cativeiro, por isso não havia interesses econômicos envolvidos.",
+          "Os povos indígenas nunca foram submetidos a trabalho compulsório na colonização portuguesa.",
+          "Toda mudança foi instantânea e idêntica em todas as regiões, sem coexistência de formas de trabalho.",
+          "A expansão ligou-se a redes e interesses do tráfico e da produção, com ritmos regionais e coexistência de trabalho indígena e outras relações."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a explicação articula redes mercantis, demanda de trabalho e diferenças de tempo e espaço. A naturaliza e racializa uma relação histórica de violência; B apaga a escravização indígena; C inventa uniformidade e substituição instantânea. A coerção não se explica por aptidão biológica de um povo, e reconhecer coexistências não diminui a centralidade da escravidão."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Composição didática autoral, não documento de arquivo: Texto A relata o pedido de uma autoridade para capturar fugitivos; Texto B menciona trocas de alimentos com um quilombo. Qual interpretação respeita o alcance desses fragmentos?",
+        "hint": "Diferencie pedido e execução e considere que uma relação de troca não exclui coerção ou resistência.",
+        "options": [
+          "A indica intenção repressiva; B sugere relações de troca. É preciso cruzar evidências, sem concluir execução do pedido nem isolamento absoluto do quilombo.",
+          "O pedido de A comprova automaticamente que toda a captura ocorreu e não houve resistência.",
+          "B prova que todo quilombo era isolado e incapaz de manter relações com outras populações.",
+          "As trocas citadas em B demonstram que a escravidão deixou de envolver violência em toda a colônia."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: o pedido registra intenção, e as trocas são indício de relação com outros agentes no caso composto. Não demonstram sozinhos execução da captura nem ausência de conflitos. B transforma solicitação em resultado garantido; C contradiz o contato descrito; D generaliza trocas para negar violência estrutural. Os fragmentos são inventados para a atividade e não devem ser atribuídos a um arquivo ou personagem real."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Urbanização e redes urbanas",
+    "objective": "Distinguir urbanização, crescimento e expansão física, interpretar relações entre cidades e avaliar desigualdades de acesso a oportunidades com indicadores adequados.",
+    "prerequisites": [
+      "População absoluta e relativa",
+      "Porcentagens e pontos percentuais",
+      "Fluxos, território e serviços"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Urbanização, população e forma do espaço",
+        "explanation": "Urbanização é um processo de transformação da organização social e territorial ligado às cidades. Na dimensão demográfica, a taxa ou grau de urbanização expressa a parcela da população que reside em áreas classificadas como urbanas: população urbana dividida pela população total, multiplicada por cem. Crescimento urbano em número de habitantes e aumento dessa participação não são a mesma coisa. A população urbana pode crescer enquanto sua parcela no total diminui, caso o total cresça proporcionalmente mais. Também não confunda esse percentual com a parcela do território coberta por edificações: população e área física são grandezas diferentes. A expansão da mancha urbanizada descreve formas construídas e sua continuidade; um perímetro administrativo não coincide necessariamente com toda a ocupação observada. Para comparar dados, confira classificação, recorte territorial, data e denominador, pois mudanças de delimitação podem influenciar os resultados. No Brasil, industrialização, mudanças no campo, migrações e concentração de atividades e serviços participaram da urbanização, sem explicar todos os lugares por uma causa única. O espaço rural não desaparece quando a população urbana se torna predominante, e relações entre campo e cidade continuam relevantes. Um indicador agregado descreve uma dimensão do processo, mas não informa sozinho a qualidade das moradias, o acesso a infraestrutura ou a distribuição de oportunidades. Ao dizer que uma taxa passou de um valor a outro, diferencie mudança em pontos percentuais de variação relativa sobre a taxa inicial.",
+        "steps": [
+          "Separe população urbana, população total e área urbanizada.",
+          "Calcule a participação com denominador e classificação explícitos.",
+          "Compare números absolutos, percentuais e pontos percentuais.",
+          "Relacione o indicador a processos históricos sem extrair dele toda a qualidade urbana."
+        ],
+        "example": "Exemplo autoral: um território tem 8000 moradores urbanos entre 10000 residentes, taxa de 80%. Outro tem 12000 urbanos entre 20000 residentes, taxa de 60%. O segundo possui mais moradores urbanos em número, mas menor participação urbana. Os dois casos são fictícios e não correspondem a municípios reais nem permitem comparar infraestrutura.",
+        "pitfall": "Confundir percentual de habitantes com percentual de área, crescimento absoluto com aumento de participação ou pontos percentuais com variação percentual relativa."
+      },
+      {
+        "level": "intermediate",
+        "title": "Redes, centralidades e integração entre municípios",
+        "explanation": "Uma rede urbana reúne cidades e relações de circulação de pessoas, bens, informação e decisões. Centralidade expressa a capacidade de um centro oferecer funções e influenciar outras localidades; não é simplesmente sua posição no mapa ou seu número de habitantes. Uma cidade pode atrair usuários de serviços especializados, enquanto depende de outro centro para funções diferentes. Hierarquia não significa que só existam deslocamentos entre cidades de classes imediatamente vizinhas, nem que todos os fluxos passem obrigatoriamente pela capital estadual. Na REGIC 2018, o IBGE analisou hierarquia e regiões de influência considerando gestão e oferta de equipamentos e serviços; seus cinco níveis principais são Metrópoles, Capitais Regionais, Centros Sub-Regionais, Centros de Zona e Centros Locais. Trata-se do recorte da pesquisa indicada, não de uma lista de grandezas populacionais fixas e universais. A unidade de análise pode reunir municípios fortemente integrados, em vez de tratar cada limite municipal como um nó isolado. Deslocamentos frequentes para trabalho e estudo ajudam a perceber essa integração e não equivalem, por si, à mudança permanente de residência. Conurbação envolve continuidade física entre manchas urbanizadas; integração funcional também pode ocorrer sem continuidade construída completa. Uma região metropolitana instituída administrativamente não demonstra sozinha que toda a sua área esteja conurbada. Ao interpretar mapa ou descrição de fluxos, identifique o que as ligações representam e o período observado, sem transformar uma seta em prova de dependência para todas as atividades.",
+        "steps": [
+          "Identifique os centros e a natureza dos fluxos entre eles.",
+          "Relacione centralidade a funções e serviços, sem reduzi-la à população.",
+          "Diferencie deslocamento frequente e migração de residência.",
+          "Separe continuidade física, integração funcional e recorte administrativo."
+        ],
+        "example": "Rede didática autoral: moradores de Vila Norte estudam em Cidade Lago e retornam para casa; empresas de ambas contratam serviços de Centro Vale. Os fluxos revelam relações de estudo e de serviços, mas não demonstram que os três núcleos formem uma mancha construída contínua, nem que todas as funções se concentrem em um único centro.",
+        "pitfall": "Ordenar influência somente por população, considerar deslocamento diário uma migração permanente ou confundir região administrativa com conurbação integral."
+      },
+      {
+        "level": "advanced",
+        "title": "Desigualdades e acesso a oportunidades",
+        "explanation": "As relações entre cidades e os deslocamentos dentro delas são vividos de modo desigual. Segregação socioespacial envolve distribuição desigual de grupos e condições de acesso, relacionada a renda, mercado de terras e moradia, infraestrutura e decisões públicas, entre outros processos. Não se explica por uma suposta incapacidade natural dos moradores de um bairro. Acessibilidade urbana é a facilidade de alcançar oportunidades como emprego, escola, atendimento e lazer; depende tanto de transporte e conexão quanto da localização das pessoas e atividades. Duas moradias à mesma distância em linha reta de um serviço podem ter acessos diferentes por barreiras físicas, trajetos disponíveis, frequência, custo e condições de deslocamento. A velocidade média dos veículos mede uma característica da circulação, mas não demonstra sozinha inclusão de quem caminha, usa bicicleta ou transporte coletivo. Para avaliar uma proposta, defina oportunidades consideradas, tempo e custo admissíveis, modos de transporte e grupos comparados. Médias de uma cidade podem esconder diferenças entre bairros e horários. Uma nova ligação pode reduzir certa viagem sem resolver todas as necessidades; compare antes e depois e investigue outros fatores antes de atribuir qualquer mudança exclusivamente à intervenção. Planejamento pode combinar localização de serviços, moradia e transporte, e suas consequências devem ser avaliadas segundo os objetivos e as pessoas afetadas. Um mapa de fluxos ou um índice de urbanização não demonstra automaticamente segurança, sustentabilidade ou justiça na distribuição de oportunidades.",
+        "steps": [
+          "Identifique quais grupos, lugares e oportunidades estão sendo comparados.",
+          "Considere tempo, custo, conexões e modos além da distância geométrica.",
+          "Use indicadores adequados e observe diferenças escondidas pelas médias.",
+          "Avalie efeitos e limites da proposta sem prometer solução universal."
+        ],
+        "example": "Situação autoral: dois bairros ficam a quatro quilômetros de uma escola. Um tem rota contínua e serviço frequente; outro exige uma travessia longa e espera maior. A mesma distância não implica o mesmo acesso. Uma avaliação precisa incluir o caminho viável e as condições de uso, sem atribuir os resultados a características naturais dos moradores.",
+        "pitfall": "Confundir velocidade de automóveis com acesso de toda a população, usar a média para negar desigualdades locais ou afirmar causalidade apenas porque algo mudou depois da obra."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Dados autorais fictícios, com a mesma classificação urbana nos dois momentos: no primeiro, 2000 residentes urbanos de 5000 totais; no segundo, 3000 urbanos de 10000 totais. Qual comparação das taxas é correta?",
+        "hint": "Calcule urbanos/total em cada momento e compare participação e número absoluto separadamente.",
+        "options": [
+          "De 40% para 60%; a taxa necessariamente aumenta sempre que há mais moradores urbanos.",
+          "De 20% para 30%; basta dividir sempre a população urbana pelo total do segundo momento.",
+          "De 40% para 30%; a população urbana aumenta em número e perde participação no total.",
+          "De 60% para 70%; a taxa urbana é a fração rural restante em cada momento."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: 2000/5000·100=40% e 3000/10000·100=30%. Há mil moradores urbanos a mais, mas redução de dez pontos percentuais na participação; a queda relativa da taxa é 10/40=25%, uma medida diferente. A confunde aumento absoluto com participação; B troca o denominador inicial; D usa a parcela rural como se fosse urbana. Os números são hipotéticos, sem atribuição a um censo real."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Rede fictícia: a Cidade A recebe moradores de outras localidades para serviços especializados e decisões empresariais. A Cidade B tem mais habitantes, mas a descrição não informa oferta comparável dessas funções. Qual conclusão é sustentada?",
+        "hint": "Considere funções e relações descritas, sem transformar tamanho populacional em critério único ou atribuir uma classe oficial sem pesquisa.",
+        "options": [
+          "B obrigatoriamente influencia mais localidades em todas as funções apenas por ter mais habitantes.",
+          "A apresenta indícios de centralidade nas funções citadas; isso não permite classificar toda a rede apenas pelo tamanho populacional.",
+          "As relações descritas provam que A e B possuem continuidade física de edificações em todo o espaço entre elas.",
+          "Receber usuários de serviços significa necessariamente que todos migraram de residência de forma permanente."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a atração para serviços e decisões é indício de centralidade funcional, e a comparação exige informações sobre relações e oferta. A impõe população como critério único; C inventa conurbação sem informação sobre a mancha construída; D confunde deslocamentos de usuários com mudança permanente. O caso não autoriza atribuir às cidades fictícias uma classe específica da REGIC."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: uma proposta afirma que elevar a velocidade média dos carros garante, sozinho, melhor acesso de todos os bairros a escolas e empregos. Qual avaliação enfrenta melhor o limite dessa afirmação?",
+        "hint": "Acesso inclui oportunidades alcançáveis por pessoas que usam modos diferentes e enfrentam custos e tempos distintos.",
+        "options": [
+          "Aceitar a garantia para todos, pois a velocidade de carros descreve integralmente as condições de quem caminha.",
+          "Examinar apenas a distância em linha reta e ignorar rotas, custos e horários.",
+          "Usar exclusivamente a média municipal para concluir que não existem diferenças entre bairros.",
+          "Comparar oportunidades acessíveis por tempo, custo e diferentes modos e grupos, além da velocidade média de veículos."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a avaliação relaciona oportunidades e condições de deslocamento para grupos e modos diversos. A universaliza uma métrica de automóveis; B ignora a rede e barreiras; C apaga diferenças que uma média pode esconder. Melhorar certa velocidade pode ajudar alguns trajetos, mas não comprova sozinho a garantia de acesso universal afirmada no caso."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Mito e filosofia",
+    "objective": "Comparar funções de narrativas míticas e investigação filosófica, reconhecer transformações na tradição grega e avaliar razões sem reduzir mito a mentira ou filosofia a certeza infalível.",
+    "prerequisites": [
+      "Narrativa, explicação e argumento",
+      "Contextualização histórica",
+      "Tese, razão e objeção"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Distinguir formas de dar sentido sem caricaturas",
+        "explanation": "Mitos podem organizar narrativamente origens, relações com o sagrado, valores e experiências de uma coletividade. No estudo de tradições antigas, o termo não equivale simplesmente ao uso cotidiano de mito como informação falsa a ser desmentida. Uma narrativa pode ter importância simbólica e cultural sem funcionar como demonstração de uma hipótese física. A investigação filosófica, por sua vez, formula perguntas e procura explicitar conceitos, razões e dificuldades: o que a tese quer dizer, por que aceitá-la e quais objeções a atingem? A comparação didática entre mythos e logos ajuda a perceber modos de justificar e comunicar, mas não deve se tornar uma oposição entre pessoas incapazes de pensar e pessoas superiores. Narrar não impede toda reflexão, e apresentar um argumento não garante que ele seja válido ou que suas premissas sejam verdadeiras. Também não basta negar uma tradição para produzir filosofia: a negação pode continuar sem sustentação. Ao analisar uma passagem, identifique o problema que ela enfrenta, os recursos usados e a forma pela qual pede adesão do leitor. Um relato de origem pode apelar a personagens e acontecimentos extraordinários; um argumento pode relacionar afirmações e consequências que podem ser discutidas. Esses recursos podem aparecer combinados. A distinção serve à leitura crítica, não a classificar povos como atrasados ou a declarar que uma única cultura possui toda capacidade racional.",
+        "steps": [
+          "Identifique o problema e a função do relato ou da explicação.",
+          "Reconheça recursos narrativos e razões apresentadas.",
+          "Diferencie importância simbólica e demonstração de uma tese.",
+          "Evite confundir argumentação, verdade garantida e superioridade cultural."
+        ],
+        "example": "Comparação autoral, sem atribuição a tradição real: uma narrativa conta que uma ponte nasceu do pacto entre seres extraordinários; um debate pergunta quando uma travessia pode ser considerada justa e quais razões sustentam a resposta. Os dois textos podem tratar de relações humanas, mas organizam sua comunicação de maneiras diferentes. Não se trata de reproduzir um mito ou de comprovar a história de uma ponte existente.",
+        "pitfall": "Definir mito apenas como mentira, filosofia como qualquer opinião pessoal ou distinção entre discursos como hierarquia natural entre povos."
+      },
+      {
+        "level": "intermediate",
+        "title": "Transformações na tradição grega e limites do esquema",
+        "explanation": "Na tradição grega, pensadores dos séculos VI e V a.C. investigaram princípios da natureza e formas de compreender o mundo, abrindo questões que atravessariam a história da filosofia ocidental. O recorte não afirma que antes deles ninguém raciocinava, nem que toda reflexão humana se originou isoladamente em um só povo. Contatos entre sociedades e práticas de discussão compõem o contexto; a vida das cidades gregas incluiu debates sobre organização e justiça, sem que isso garanta participação igual para todas as pessoas. A passagem do mito à filosofia é uma fórmula didática para transformações de perguntas e justificações, não uma data em que todos abandonaram crenças ou todas as narrativas desapareceram. Os relatos antigos associam Tales de Mileto à água como princípio; Anaximandro é relacionado ao ápeiron, o indefinido. O interesse está em perguntar o que fundamenta uma explicação e como as diferenças entre propostas podem ser examinadas, sem converter essas ideias em resultados atuais da química. As informações preservadas sobre muitos desses pensadores dependem de fragmentos e testemunhos posteriores, exigindo cautela na atribuição de frases e intenções. O termo pré-socrático também é uma classificação posterior, não prova de que cada autor tenha vivido inteiramente antes de Sócrates. Além disso, Platão empregou mitos nos seus diálogos: narrativa e reflexão filosófica não se excluíram de modo definitivo. Uma leitura histórica cuidadosa distingue esquemas úteis, fontes disponíveis e debates que não se resolvem por uma sucessão linear entre erro e verdade.",
+        "steps": [
+          "Situe o recorte grego sem confundi-lo com a totalidade do pensamento humano.",
+          "Compare perguntas e princípios sem tratá-los como ciência contemporânea.",
+          "Diferencie fragmento, testemunho posterior e reconstrução interpretativa.",
+          "Reconheça continuidades e usos filosóficos de narrativas, inclusive em Platão."
+        ],
+        "example": "Ficha comparativa autoral: ao estudar Tales e Anaximandro, registrar água e ápeiron é um início, mas a leitura precisa perguntar como cada princípio pretende explicar a natureza e por quais fontes conhecemos a proposta. Uma lista de nomes não prova que os autores rejeitaram toda dimensão divina nem permite atribuir-lhes uma frase sem referência.",
+        "pitfall": "Imaginar substituição instantânea de todas as crenças, igualar pré-socrático a anterior em toda cronologia ou tratar testemunho posterior como texto autógrafo preservado."
+      },
+      {
+        "level": "advanced",
+        "title": "Examinar teses, razões e papel das narrativas",
+        "explanation": "Para avaliar filosoficamente uma tese, reconstrua seu significado e as razões oferecidas. Pergunte se os termos mantêm o mesmo sentido, se a conclusão decorre do que foi afirmado e se há uma objeção relevante. Um nome prestigioso, a antiguidade de uma narrativa ou a quantidade de pessoas que concordam não substituem automaticamente a justificação. Isso não torna todo testemunho inútil: é preciso avaliar competência, contexto e relação da fonte com a questão, sem transferir autoridade ilimitada. Uma narrativa pode sugerir um problema, mostrar consequências imagináveis e convidar à reflexão; sua força pedagógica não equivale a prova de cada evento que descreve. Da mesma forma, um exemplo criado para discutir justiça não deve ser apresentado como acontecimento documentado. Ao comparar mito e filosofia, examine a função concreta do recurso, em vez de procurar uma palavra mágica que classifique todo texto. Uma objeção bem formulada procura testar a tese; discordar por insulto não cumpre esse papel. Também não se exige que toda questão filosófica seja encerrada por experimento, nem que qualquer resposta abstrata seja infalível. Quando faltarem razões, reconheça o limite e proponha uma pergunta mais precisa. Na leitura de um diálogo, separe a fala de uma personagem, a estratégia do texto e a interpretação sobre o autor. Essa atenção evita atribuições indevidas e permite discutir como argumentos e narrativas se relacionam sem apagar suas diferenças.",
+        "steps": [
+          "Reformule tese e razões de modo fiel.",
+          "Examine termos, relações e possíveis objeções.",
+          "Diferencie função ilustrativa de uma narrativa e prova de uma afirmação.",
+          "Registre limites e evite atribuir falas ou histórias inventadas a filósofos reais."
+        ],
+        "example": "Problema autoral: uma assembleia fictícia afirma que só uma família deve usar um poço porque sempre foi assim. A investigação pode perguntar se antiguidade basta para justificar exclusividade e quais critérios poderiam valer para todos os usuários. Questionar a razão apresentada não obriga aceitar qualquer alternativa sem examiná-la, nem afirma que essa assembleia tenha existido na Grécia.",
+        "pitfall": "Trocar argumento por prestígio ou insulto, tratar ilustração como prova histórica ou supor que uma dúvida transforma automaticamente qualquer conclusão em verdadeira."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Atividade autoral de comparação: qual afirmação evita uma oposição simplista entre mito e filosofia?",
+        "hint": "Considere funções narrativas e exigência de razões, sem supor que um tipo de discurso torne pessoas naturalmente superiores.",
+        "options": [
+          "Todo mito é apenas uma mentira deliberada, sem importância cultural ou simbólica.",
+          "Narrativas míticas podem organizar sentidos e valores; a investigação filosófica examina conceitos e razões, sem garantir infalibilidade.",
+          "Toda opinião individual é uma demonstração filosófica, mesmo sem explicar seus motivos.",
+          "Todo argumento é verdadeiro apenas porque usa palavras abstratas e não conta uma história."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a afirmação reconhece função narrativa e investigação por razões, sem definir mito como fraude ou filosofia como certeza automática. A reduz o mito a mentira deliberada; C dispensa justificação; D confunde aparência abstrata com verdade. A comparação exige analisar como cada texto funciona, sem transformar diferenças em superioridade natural de pessoas ou povos."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso autoral: um resumo diz que o nascimento da filosofia na tradição grega fez desaparecer imediatamente todas as narrativas míticas, que nunca mais foram usadas por filósofos. Qual avaliação é adequada?",
+        "hint": "Compare a imagem de ruptura total com a presença de mitos nos diálogos de Platão e com a complexidade das transformações históricas.",
+        "options": [
+          "O resumo é correto, pois qualquer filósofo é, por definição, incapaz de usar narrativa.",
+          "O único erro é que as narrativas desapareceram de todas as culturas exatamente no mesmo dia.",
+          "O resumo exagera a ruptura: houve transformações nas explicações, mas narrativas persistiram e Platão também empregou mitos em sua obra.",
+          "O resumo demonstra que a filosofia nunca examinou razões ou diferenças entre explicações."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: a transformação não foi uma eliminação instantânea e universal, e o uso de mitos em Platão impede a generalização de que filósofos nunca os empregaram. A impõe proibição inexistente; B universaliza ainda mais o erro; D nega a investigação por razões sem fundamento. Reconhecer continuidade não elimina diferenças entre recursos narrativos e argumentação."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Composição autoral, não citação antiga: um debatedor afirma que uma regra é justa apenas porque foi repetida durante muitas gerações. Qual intervenção examina filosoficamente a justificação apresentada?",
+        "hint": "Teste se o motivo dado sustenta a justiça da regra; não substitua a tese por outra aceita apenas por prestígio ou antiguidade.",
+        "options": [
+          "Repetir a mesma frase mais alto, pois intensidade de voz prova justiça.",
+          "Aceitar automaticamente a regra, pois duração e justiça são sempre equivalentes.",
+          "Rejeitar a regra só pela idade e aceitar qualquer regra recente sem exame.",
+          "Perguntar por que a repetição tornaria a regra justa e avaliar critérios e objeções aplicáveis ao caso."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a intervenção investiga a ligação entre o motivo e a tese e abre espaço para critérios e objeções. A confunde intensidade com razão; B assume a equivalência que precisaria justificar; C troca aceitação automática do antigo por aceitação automática do recente. O exercício não determina sozinho qual regra é justa e não atribui o debate a personagem histórico."
+      }
+    ]
   }
 ];
 
@@ -978,6 +1346,136 @@ export const authoredCurriculumBatch13ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "O exercício avançado de balanceio iónico Cr2O7^2- + H+ + I- → Cr^3+ + I2 + H2O, alternativa D (1,14,6,2,3,7) conserva dois Cr, sete O, catorze H e seis I em cada lado, com carga total +6 em ambos os lados, e equaliza seis elétrons na transformação redox em meio ácido."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Hereditariedade, mutações e biotecnologia",
+    "contentSha256": "54ef1efd366aa62ba38795e4739f4681f4686a713757ae13f16e215416fe2718",
+    "draftMethod": "Autoria, análise de sequência e teste RED Codex após rejeição de rascunho Claude Code; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.genome.gov/genetics-glossary/Mutation",
+      "https://www.genome.gov/genetics-glossary/Frameshift-Mutation",
+      "https://www.genome.gov/genetics-glossary/Genetic-Engineering",
+      "https://www.genome.gov/genetics-glossary/Polymerase-Chain-Reaction-PCR",
+      "https://www.genome.gov/genetics-glossary/CRISPR",
+      "https://www.genome.gov/genetics-glossary/Transgenic",
+      "https://www.genome.gov/genetics-glossary/Phenotype",
+      "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+      "https://openstax.org/books/biology-2e/pages/17-1-biotechnology"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "Na situacao de variante detectada apenas em linhagem somatica (celulas da pele) sem presencia na linhagem germinativa, na reproducao sexuada humana, a variante nao tem via de transmitancia por gametas. A opcao A atribui transmissao obrigatoria a todos os descendentes, incorretamente. A opcao B inventa manipulacao automatica de todos os gametas. A opcao C atribuir hierarquia biologica sem fundamento. A opcao D corretamente limita a conclusao ao caso descrito, noting that the distinction does not define all reproduction forms, alinhando-se ao texto da aula sobre nao transformar a distincao em regra universal para todas as formas de reproducao (comprimento significativo acima de 80 caracteres)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Conferência e correção da justificativa pelo principal, com parecer original preservado: B, índice 1: o original agrupa ATG AAA CCC GGG. A gera ATG AAC CCG GG, mudando o agrupamento após a retirada de uma base; B gera ATG CCC GGG e mantém o quadro posterior ao retirar três bases. Preservar quadro não garante a mesma sequência proteica nem função. A promete identidade funcional sem apoio; C inverte os efeitos; D inventa paradas sem aplicar o código. Os grupos finais dependem do modelo explicitado, e as letras isoladas não autorizam diagnóstico."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A amplificacao por PCR produz copias de um segmento de DNA e o sequenciamento determina a ordem das bases; nenhuma das duas tecnicas modifica automaticamente o genoma das celulas originais. A opcao B incorretamente atribui edicao corretiva universal ao PCR. A opcao C confunde analise de fragmento com clonagem reprodutiva de organismo inteiro. A opcao D transforma ausencia de procedimento de edicao em ausencia de variantes, que e conclusao sem relacionamento necessario. A opcao A e a unica que respeita fielmente o que a PCR e o sequenciamento realmente realizam (ou nao realizam) (comprimento significativo acima de 80 caracteres)."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Brasil colonial e escravidão",
+    "contentSha256": "8bdde76302a3aa3c0e12e0d1420d308cf27ddcde8ca06fdb412cb0a652633985",
+    "draftMethod": "Autoria e análise histórica Codex com fontes públicas consultadas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://multi.rio/index.php/historia-do-brasil/america-portuguesa/80-ocupa%C3%A7%C3%A3o-litor%C3%A2nea/8728-o-governo-geral",
+      "https://multi.rio/index.php/historia-do-brasil/rio-de-janeiro/2416",
+      "https://multi.rio/index.php/historia-do-brasil/america-portuguesa/8735",
+      "https://multi.rio/index.php/historia-do-brasil/rio-de-janeiro/2435",
+      "https://multi.rio/index.php/historia-do-brasil/america-portuguesa/8733",
+      "https://multi.rio/index.php/historia-do-brasil/rio-de-janeiro/50-a-cidade-do-rio-de-janeiro-sob-a-%C3%B3rbita-de-portugal/2439-as-minas-gerais-os-caminhos-e-os-descaminhos-do-ouro",
+      "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/institucional/memoria/memoria-fazendaria/arrecadacao-de-impostos-no-brasil-colonial",
+      "https://www.gov.br/mdh/pt-br/navegue-por-temas/memoria-e-verdade-da-escravidao/acao/lugares-de-memoria/quilombo-dos-palmares"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Na tarefa básica, a alternativa B correta porque o texto da aula afirma explicitamente que o governo-geral 'buscou maior coordenação; não extinguiu imediatamente todas as capitanias hereditárias', diferentemente da alternativa A que afirma eliminação automática."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Na tarefa intermediária, a alternativa D correta porque articoliza redes mercantis, demanda de trabalho e diferenças regionais, ao contrário da alternativa A que naturaliza a escravidão por traços naturais, conforme alertam as 'pitfalls' do módulo."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Na tarefa avançada, a alternativa A correta porque diferencia intenção registrada de execução comprovada, alinhando-se ao princípio metodológico da aula de que 'uma ordem de captura revela intenção repressiva, mas não prova sozinha que a operação foi executada'."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Urbanização e redes urbanas",
+    "contentSha256": "15cefcbaba4bf559c77e6d51db167e3c3ad72f4b200afe5d727c992bf7393aaf",
+    "draftMethod": "Autoria, razões percentuais e teste RED Codex com fontes públicas consultadas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102138.pdf",
+      "https://www.ibge.gov.br/apps/areas_urbanizadas/pdf/Informativo_Areas_Urbanizadas_do_Brasil_2019.pdf",
+      "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15798-regioes-de",
+      "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15782-arranjos-populacionais-e-concentracoes-urbanas-do-brasil.html?=&t=o-que-e",
+      "https://ipea.gov.br/acessooportunidades/",
+      "https://www.ipea.gov.br/acessooportunidades/sobre/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Cálculo: 2000/5000·100=40% e 3000/10000·100=30%. A taxa cai de 40% para 30%, redução de 10 pontos percentuais. Embora haja mil moradores urbanos a mais, a participação relativa diminui. A alternativa correta identifica esse aumento absoluto versus perda de participação, enquanto as outras erradamente assumem que mais moradores urbanos sempre aumenta a taxa (A), usam denominador errado (B) ou confundem com parcela rural (D)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Conferência e correção da justificativa pelo principal, com parecer original preservado: B, índice 1: a atração para serviços e decisões é indício de centralidade funcional, e a comparação exige informações sobre relações e oferta. A impõe população como critério único; C inventa conurbação sem informação sobre a mancha construída; D confunde deslocamentos de usuários com mudança permanente. O caso não autoriza atribuir às cidades fictícias uma classe específica da REGIC."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A avaliação deve comparar oportunidades acessíveis por tempo, custo e diferentes modos (caminhada, bicicleta, transporte coletivo) e grupos de população, não se restringir à velocidade média de veículos. A alternativa correta adota essa abordagem multifatorial; as outras universalizam métricas de automóveis (A), ignoram rede e barreiras (B) ou apagam diferenças entre bairros usando média municipal (C)."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Mito e filosofia",
+    "contentSha256": "c4c463574074d75cfa6250145301a615ae6638883882bd205b8cc08942794ade",
+    "draftMethod": "Autoria e conferência histórico-conceitual Codex com fontes acadêmicas consultadas; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://plato.stanford.edu/entries/presocratics/",
+      "https://plato.stanford.edu/entries/plato-myths/",
+      "https://plato.stanford.edu/entries/ancient-political/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A alternativa de índice 1 evita oposição simplista entre mito e filosofia ao reconhecer que narrativas míticas podem organizar sentidos e valores, enquanto a investigação filosófica examina conceitos e razões sem garantia de infalibilidade. Esta resolução independente demonstra compreensão da distinção entre importância simbólica e demonstração de tese, ao contrário da opção 0 que reduz mito a mentira deliberada sem importância cultural, da opção 2 que equivale qualquer opinião a demonstração filosófica sem explicação de motivos, e da opção 3 que confunde verdade com uso de palavras abstratas. Cada alternativa foi analisada isoladamente para verificar a capacidade de distinguir funções diferentes dos tipos de discurso."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A alternativa de índice 2 avalia o resumo de forma adequada ao apontar que a transformação não foi ruptura instantânea e universal, narrativas persistiram e Platão empregou mitos em suas obras, conforme evidência histórica e o próprio texto da aula que afirma 'Platão empregou mitos nos seus diálogos: narrativa e reflexão filosófica não se excluíram de modo definitivo'. As outras opções falham: a 0 atribui capacidade narrativa impossível a filósofos por definição, a 1 universaliza o erro para todas as culturas no mesmo dia (algo que o resumo não afirma) e a 3 nega que a filosofia examine razões ou diferenças entre explicações, o que é fundamental ao método filosófico segundo o próprio conteúdo da aula."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A alternativa de índice 3 representa a intervenção filosófica adequada ao questionar por que a repetição tornaria a regra justa e avaliar critérios e objeções aplicáveis, em vez de aceitar ou rejeitar automaticamente baseada apenas na duração ou recência. As opções 0, 1 e 2 representam falácias identificadas na própria aula: a) apelo à intensidade de voz como prova de justiça, b) equivalência automática entre duração e justiça, c) rejeição automática baseada apenas na idade da regra. A resolução independente confirma a capacidade de identificar a intervenção que investiga a ligação entre motivo e tese, abrindo espaço para critérios e objeções, conforme objetivo avançado da aula."
       }
     ]
   }

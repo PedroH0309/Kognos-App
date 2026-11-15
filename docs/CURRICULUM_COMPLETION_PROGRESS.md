@@ -4,7 +4,54 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 34
+## Estado atual — checkpoint 35
+
+Doze aulas do lote13; 172 novas nesta etapa. Integradas Hereditariedade,
+mutações e biotecnologia; Brasil colonial e escravidão; Urbanização e redes
+urbanas; Mito e filosofia. Catálogo em execução; revisão docente pendente.
+
+Restam 1.123 lacunas de 1.512 identidades editoriais. ENEM: 181 aprofundadas e
+715 lacunas. Estudo: 181 aprofundadas, 26 guias e 700 planejadas; índice 389.
+
+- Biologia: transmissão e variantes, ambiente, tipos de mutação e quadro de
+  leitura; copiar, ler e editar DNA como finalidades distintas. Sem protocolo
+  de laboratório, interpretação de exames pessoais ou promessas clínicas.
+- História: instituições e economias conectadas, escravização indígena e
+  africana, tráfico e resistências. Sem naturalização racial da escravidão;
+  fragmentos didáticos identificados, sem falsa atribuição a arquivo real.
+- Geografia: população absoluta versus participação, mancha e rede urbana,
+  centralidade e acesso a oportunidades. Casos fictícios; REGIC como recorte
+  2018, sem atribuir a pesquisa uma classificação atual de cidades inventadas.
+- Filosofia: mito e razões sem caricaturas, transformações gregas e fontes
+  fragmentárias, narrativas em Platão e exame de justificações. Sem citações
+  inventadas, ruptura total instantânea ou superioridade natural de um povo.
+
+Autoria Codex e crítica independente Claude Code/NVIDIA NIM, lida integralmente.
+Justificativas de biologia e geografia corrigidas pelo principal com parecer
+original preservado: uma opção inverte indevidamente o efeito das deleções;
+não informar serviços de uma cidade não comprova ausência desses serviços.
+Conteúdo e contexto mantidos, hashes atuais conferidos. Limitações de consulta
+registradas: parte das definições REGIC e Arranjos foi acessível apenas no texto
+indexado oficial; os PDFs/HTML completos respectivos retornaram indisponível.
+Outros PDFs e fontes foram lidos somente nas passagens pertinentes indicadas.
+
+Dois novos testes críticos começaram em RED antes da autoria: removem uma/três
+bases e reagrupam a sequência; comparam crescimento absoluto, participação,
+pontos percentuais e variação relativa. Ambos GREEN após integração; filtro
+também executou um teste histórico de urbanização, preservado e aprovado.
+
+671 testes app + 6 motor, build e lint alterado aprovados. API das 172 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI34 success43770243924 no head fc48bd0. Publicar35 e
+acompanhar CI do novo head exato.
+
+PR118 reúne dezesseis aulas após a integração externa do PR117 até156. Sem
+merge de PR, deploy, schema ou novas dependências. Restam quatro do lote13:
+Globalização e questões socioambientais; Teatro: dramaturgia, atuação e
+encenação; Práticas corporais de aventura; Propriedades da matéria.
+
+## Histórico — checkpoint 34
 
 Metade do lote13: oito aulas, 168 novas nesta etapa. Novas: Inferência de
 sentidos em inglês; Presente do indicativo em espanhol; Hidrostática e pressão;

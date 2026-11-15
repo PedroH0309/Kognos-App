@@ -1027,3 +1027,17 @@ test('reações e balanceamento verificam todos os átomos, carga e coeficientes
  assert.match(spec.tasks[2].prompt,/Cr2O7\^2- \+ H\+ \+ I- → Cr\^3\+ \+ I2 \+ H2O/);assert.match(spec.tasks[2].prompt,/ácido/);assert.equal(check(2,([a,b,c,d,e,f])=>[2*a-d,7*a-f,b-2*f,c-2*e,-2*a+b-c-3*d]),'1, 14, 6, 2, 3, 7.');
  assert.equal(-2+14-6,3*2,'carga +6 em ambos os lados');assert.equal(2*(6-3),6,'seis elétrons recebidos pelo cromo');assert.equal(6*(0-(-1)),6,'seis elétrons cedidos pelo iodeto');
 });
+
+test('mutações distinguem deleção de uma ou três bases sem prometer proteína funcional',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Biologia'&&s.topic==='Hereditariedade, mutações e biotecnologia');assert.ok(spec);const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const match=task.prompt.match(/ATGAAACCCGGG/);assert.ok(match);const dna=match[0],start=3;assert.match(task.prompt,/posição 4/);assert.match(task.prompt,/posições 4 a 6/);
+ const single=dna.slice(0,start)+dna.slice(start+1),triple=dna.slice(0,start)+dna.slice(start+3),groups=(s:string)=>s.match(/.{1,3}/g)??[];
+ assert.equal(single,'ATGAACCCGGG');assert.equal(triple,'ATGCCCGGG');assert.deepEqual(groups(dna),['ATG','AAA','CCC','GGG']);assert.deepEqual(groups(single),['ATG','AAC','CCG','GG']);assert.deepEqual(groups(triple),['ATG','CCC','GGG']);assert.equal((dna.length-single.length)%3,1);assert.equal((dna.length-triple.length)%3,0);
+ assert.equal(task.options[task.correctIndex],'A desloca o quadro a partir da alteração; B preserva o quadro, sem garantir função proteica inalterada.');assert.match(task.solution,/função/);
+});
+
+test('urbanização distingue aumento absoluto de participação e pontos percentuais',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Geografia'&&s.topic==='Urbanização e redes urbanas');assert.ok(spec);const task=spec.tasks[0];assert.ok(task.options&&typeof task.correctIndex==='number');const data=task.prompt.match(/2000.*5000.*3000.*10000/);assert.ok(data);
+ const firstUrban=2000,firstTotal=5000,nextUrban=3000,nextTotal=10000,firstRate=100*firstUrban/firstTotal,nextRate=100*nextUrban/nextTotal;assert.equal(firstRate,40);assert.equal(nextRate,30);assert.equal(nextUrban-firstUrban,1000);assert.equal(nextRate-firstRate,-10);assert.equal(100*(nextRate-firstRate)/firstRate,-25);assert.ok(nextUrban>firstUrban&&nextRate<firstRate);
+ assert.equal(task.options[task.correctIndex],'De 40% para 30%; a população urbana aumenta em número e perde participação no total.');assert.match(task.solution,/pontos percentuais/);
+});

@@ -1,6 +1,42 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 34
+## Estado atual em 15/11/2026 — checkpoint 35
+
+CONTINUAR;parar50%SESSÃOCodex. Sósemanal27%,secondary:null; nãousarsemanal
+comosessãonemprometerparadaindicadorinobservável. Semperguntapendente.
+
+172novas,12lote13.671app+6motor/build/lint/172API+4leitor12MCQ4largurasPASS.
+Lacunas1123;ENEM181/715;estudo181/26/700;índice389. Logscheckpoint35-*.log.
+Preview3316sessão50612build172;fixtures172;capturabatch13-twelveinspecionada.
+TestescríticosBio/GeoREDantesautoriaGREENnativos;filtroincluivertestehistóricopass.
+
+PR118OPENanteriofc48bd0CI43770243924SUCCESS. Publicar35,atualizarPR16adicionais,
+acompanharCIexata. Main9a12f7fincorporada/validada;PR117MERGEDexternamente156.
+Nunca atualizar117comnovas; não mergearPR/deploy. Fetchantespush,nunca force.
+
+Módulo13ALL12:1507dbbd,bbd57e3f,b5beaee8,d071bb1d,1bf6ee18,b791cc78,
+3816b15d,2ec02a9b,afd8786c,00b9f8de,f9a2eaf7,15edc391. Integrador13REESCREVE:
+sempreatodosIDs. Críticasfinaisatuaislidas/hash/contextválidos. Não rerodarhelpers
+refine-*jáexecutados; originais completosprivados, metadadoscorrigidosexplícitos.
+Evidenceeditorialem principal-editorial-evidence-checkpoint35.json;humanapendente.
+
+PróximosSoc6f39fb3e,Arte0ff9394f,PE0b6d0515,Ciências78f17021. Worker176PID8120
+logTempbatch13;últimoSoc2tentativa apósJSONerro; não duplicar. Só ampliar192seencerrar.
+Ainda nenhumautorSoc/Arte/PE/Ciências. SociologiafontesBODYlidas:
+WTO2023wtr23_e.htm11-17 (posição institucional prócooperação,nãolei universal);
+ILOguidelinesjusttransition55/64/70(folha2016,nãoPDFinteiro);
+UNEPhttps://www.unep.org/en/publications/report/global-resources-outlook-2024
+24-32,semcopiarestatísticas/cenários como certezas. IPCC/ONUHTML/PDF403.
+WTOglobalchainshttps://www.wto.org/english/res_e/statis_e/miwi_e/miwi_e.htm
+somenteconteúdobuscaindexado completointro;abrirbodyseusar. OpenStaxglobalização
+buscanãoretornounadadireto. PróximopesquisarabrirIPCCFAQ4/UNEPGoal10oucapítulos,
+articularglobalcadeias/impactosdesiguais/participaçãotransiçãojusta,semalegartodo
+comérciobom/mau/nem leis universais. Não escrever notíciasatuaissemconferência.
+
+Helpersprivadossalvos;AGENTSgeradonãocommit;raizoriginalsuja preservada.
+Não parar no checkpoint,seguirautoriaechecagemdaslacunas.
+
+## Histórico — checkpoint 34
 
 CONTINUAR. Parar50%SESSÃOCodex: ferramenta sósemanal24%, secondary:null.
 Não substituir semanal por sessão nem prometer parada impossível de medir.
