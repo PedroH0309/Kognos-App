@@ -174,3 +174,53 @@ test('funções e gráficos conferem imagens, inclinação perpendicular e inter
  assert.ok(profit((roots[0]+roots[1])/2)>0);
  assert.ok(profit(0)<0&&profit(10)<0);
 });
+
+test('trabalho e energia conferem atrito, altura e balanço de mola com dissipação',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Trabalho e energia');
+ assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const format=(value:number,places?:number)=>value.toLocaleString('pt-BR',places===undefined?{}:{minimumFractionDigits:places,maximumFractionDigits:places});
+ assert.equal(choice(0),format(-.25*3*10*5).replace('-','−')+' J');
+ assert.equal(choice(1),format(15**2/(2*10))+' m');
+ const task=spec.tasks[2],number=(pattern:RegExp)=>Number(task.prompt.match(pattern)?.[1].replace(',','.'));
+ const mass=number(/(\d+) kg/),speed=number(/(\d+) m\/s/),coefficient=number(/coeficiente ([\d,]+)/),spring=number(/k = (\d+) N\/m/),gravity=number(/g = (\d+) m\/s²/);
+ assert.ok([mass,speed,coefficient,spring,gravity].every(value=>Number.isFinite(value)&&value>0));
+ const friction=coefficient*mass*gravity,initial=mass*speed**2/2;
+ const compression=(-friction+Math.sqrt(friction**2+spring*mass*speed**2))/spring;
+ const duration=number(/em (\d+) s,/),efficiency=number(/rendimento de (\d+)%/)/100;
+ assert.ok(duration>0&&efficiency>0&&efficiency<=1);
+ const inputPower=initial/efficiency/duration;
+ assert.equal(choice(2),format(compression,2)+' m e '+format(inputPower)+' W');
+ assert.ok(Math.abs(spring*compression**2/2+friction*compression-initial)<1e-9);
+ assert.ok(task.options&&typeof task.correctIndex==='number');
+ task.options.forEach((option,index)=>{
+  if(index===task.correctIndex)return;
+  const values=option.match(/^([\d,]+) m e ([\d,]+) W$/);assert.ok(values);
+  const x=Number(values[1].replace(',','.')),power=Number(values[2].replace(',','.'));
+  assert.ok(Math.abs(spring*x*x/2+friction*x-initial)>1||Math.abs(power-inputPower)>1e-9);
+ });
+});
+
+test('genética calcula expectativa, condicionamento e mapa de três pontos sem confundir extremos',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Genética e hereditariedade');
+ assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const cross=(left:string[],right:string[])=>left.flatMap(a=>right.map(b=>a+b));
+ const offspring=cross(['R','r'],['r']);
+ assert.equal(choice(0),String(120*offspring.filter(genotype=>genotype==='rr').length/offspring.length));
+ const eligible=cross(['A','a'],['A','a']).filter(genotype=>genotype.includes('A'));
+ const heterozygous=eligible.filter(genotype=>genotype.includes('a'));
+ assert.equal(choice(1),`${heterozygous.length}/${eligible.length}`);
+ const classes=[...spec.tasks[2].prompt.matchAll(/([Aa][Bb][Cc]): (\d+)/g)].map(match=>({gamete:match[1],count:Number(match[2])}));
+ assert.equal(classes.length,8);
+ const total=classes.reduce((sum,row)=>sum+row.count,0);
+ const ranked=classes.toSorted((a,b)=>b.count-a.count),parental=ranked[0].gamete,double=ranked.at(-2)!.gamete;
+ const changed=[...parental].flatMap((allele,index)=>allele!==double[index]?[index]:[]);
+ assert.deepEqual(changed,[1]);
+ const frequency=(left:number,right:number)=>100*classes.filter(row=>(row.gamete[left]===row.gamete[left].toUpperCase())!==(row.gamete[right]===row.gamete[right].toUpperCase())).reduce((sum,row)=>sum+row.count,0)/total;
+ const first=frequency(0,1),second=frequency(1,2);
+ assert.equal(choice(2),`A–B–C; A–B = ${first} cM e B–C = ${second} cM`);
+ assert.equal(frequency(0,2),28);
+ assert.equal(first+second,32);
+ assert.ok(frequency(0,2)<first+second,'eventos duplos não aparecem como recombinantes dos marcadores externos');
+});

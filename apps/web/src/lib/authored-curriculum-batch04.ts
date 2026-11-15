@@ -370,6 +370,466 @@ export const authoredCurriculumBatch04:readonly AuthoredLessonSpec[] = [
         "correctIndex": 1
       }
     ]
+  },
+  {
+    "subject": "Literatura",
+    "topic": "Trovadorismo e Humanismo",
+    "objective": "Distinguir convenções da poesia trovadoresca galego-portuguesa e manifestações do Humanismo em Portugal, relacionando forma, voz, contexto, crônica histórica, poesia palaciana e teatro sem confundir períodos ou inventar citações.",
+    "prerequisites": [
+      "Distinção entre autor, voz lírica, narrador e personagem",
+      "Noções de verso, estrofe, repetição e diálogo",
+      "Leitura de contextos históricos sem tratar períodos como blocos homogêneos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Cantigas: voz, interlocução e construção formal",
+        "explanation": "A poesia trovadoresca galego-portuguesa se desenvolveu na Idade Média peninsular, sobretudo entre o final do século XII e meados do XIV, em contextos de corte e apresentação musical. Circulou por diferentes reinos e chegou até nós em testemunhos manuscritos; não se limita ao território de Portugal atual. Entre os conjuntos preservados estão os cancioneiros da Ajuda, da Biblioteca Nacional e da Vaticana, que não têm necessariamente a mesma composição. Nas cantigas de amor, uma voz masculina frequentemente expressa sofrimento e serviço diante de uma senhora idealizada; nas de amigo, a voz feminina apresenta relações amorosas, ausências e encontros, dialogando por vezes com mãe, amigas ou elementos naturais. Voz lírica não é biografia: não se pode deduzir o sexo do autor a partir dela. Na sátira, escárnio e maldizer se diferenciam principalmente pelo modo de crítica, mais ambíguo e indireto no primeiro e mais explícito no segundo; identificar um nome isoladamente não substitui examinar o funcionamento do texto. Refrão é um segmento repetido; paralelismo relaciona estruturas semelhantes com variações. Uma cantiga de refrão contém esse segmento recorrente, enquanto uma cantiga de mestria não tem refrão. Essas classificações formais não coincidem automaticamente com gêneros: não se deve afirmar que toda cantiga de amor seja de mestria ou toda repetição seja uma prova suficiente de cantiga de amigo.",
+        "steps": [
+          "Identifique voz e interlocutor sem confundi-los com a identidade de quem compôs.",
+          "Relacione situação amorosa ou estratégia satírica às convenções, considerando mais de uma pista.",
+          "Separe classificação de gênero e presença ou ausência de refrão.",
+          "Observe repetições e variações e explique como participam do sentido e da apresentação."
+        ],
+        "example": "Comparação didática autoral: duas estrofes podem repetir a mesma frase final e variar imagens de espera nos versos anteriores. A frase recorrente funciona como refrão; as construções semelhantes com variação permitem analisar paralelismo. Isso não autoriza atribuir o exercício a um trovador real nem concluir o gênero sem examinar voz e situação.",
+        "pitfall": "Definir mestria como presença de refrão, confundir voz feminina com autoria feminina ou classificar sátira apenas pela existência de um nome próprio."
+      },
+      {
+        "level": "intermediate",
+        "title": "Humanismo, poesia palaciana e permanências",
+        "explanation": "No estudo escolar da literatura portuguesa, Humanismo designa um período de transformações entre tradições medievais e novas formas de pensar e representar a experiência humana, particularmente no século XV e no início do XVI. A periodização organiza o estudo, mas não descreve uma troca instantânea de todas as crenças, formas e instituições. Atenção à ação humana, observação social e interesse por registros históricos podem coexistir com referências cristãs e estruturas de corte. Não é adequado afirmar que a religião simplesmente desapareceu. A poesia palaciana conserva temas amorosos e satíricos, explorando recursos da palavra em situações de convívio cortesão. O Cancioneiro Geral, compilado por Garcia de Resende e publicado em 1516, reúne composições de diferentes autores; o organizador não é autor de todos os poemas. A relação com a música se altera em comparação à tradição trovadoresca, e o trabalho verbal ganha destaque, com jogos de linguagem, antíteses, trocadilhos e formas como mote e glosa. O mote oferece um núcleo retomado e desenvolvido pela glosa. Redondilha maior designa verso de sete sílabas poéticas, e menor, de cinco; a contagem poética segue convenções de pronúncia e vai até a última sílaba tônica, não se confunde com contar mecanicamente sílabas escritas. Convém distinguir essas manifestações da introdução e expansão de formas italianizantes associadas ao Classicismo; estudar Humanismo não equivale a deslocar toda a aula para sonetos camonianos.",
+        "steps": [
+          "Situe a periodização como instrumento de estudo e procure mudanças junto a permanências.",
+          "Diferencie compilação de autoria individual ao considerar o Cancioneiro Geral.",
+          "Observe temas herdados e o trabalho verbal, identificando a relação entre mote e desenvolvimento.",
+          "Distinga medidas e convenções poéticas sem inventar escansão ou atribuições de versos."
+        ],
+        "example": "Exercício autoral contemporâneo: um texto apresenta o mote “A pressa esquece o caminho” e depois desenvolve imagens de passos, desvios e reencontro. A análise pode acompanhar a retomada do núcleo e suas transformações, como exercício da relação entre mote e glosa. O exemplo não é documento do século XVI nem comprova uma métrica determinada.",
+        "pitfall": "Tratar Humanismo como abandono completo da religião, atribuir toda coletânea a seu compilador ou apresentar um exercício atual como poema histórico."
+      },
+      {
+        "level": "advanced",
+        "title": "Crônica histórica e teatro: documentos, vozes e crítica",
+        "explanation": "Duas manifestações importantes para estudar a produção portuguesa do período são a crônica histórica e o teatro. Fernão Lopes, ligado à guarda das escrituras da Torre do Tombo em 1418 e depois ao ofício de cronista régio, escreveu crônicas de reinados portugueses. Sua narrativa articula documentação, organização dos acontecimentos, construção de cenas e participação de diferentes atores, inclusive coletivos. Valorizar investigação documental não significa neutralidade absoluta: seleção, perspectiva e contexto político também participam do relato. Uma crônica histórica pode ser estudada como fonte e como construção narrativa, exigindo comparação e análise, não aceitação literal de toda afirmação. No teatro de Gil Vicente, cenas, tipos sociais, comicidade e alegorias permitem representar e criticar comportamentos. Uma personagem pode condensar traços de um grupo ou vício; isso não a torna retrato exato de todas as pessoas desse grupo. Alegoria organiza uma representação que remete a valores ou ideias além da ação literal. Nos autos, referências religiosas e julgamento moral podem coexistir com sátira social; crítica a um clérigo ou nobre não prova, por si, rejeição de toda religião ou de qualquer ordem social. Farsas e outros modos de composição também integram sua produção. Ao comparar textos, observe quem fala, qual situação organiza a ação, como o público é levado a avaliar comportamentos e quais convenções foram mobilizadas. Os exemplos didáticos desta aula são contemporâneos e autorais; não reproduzem falas, poemas ou cenas de obras históricas existentes.",
+        "steps": [
+          "Diferencie documento consultado, voz narrativa e interpretação na crônica histórica.",
+          "Observe seleção de acontecimentos e participação de indivíduos e grupos sem presumir neutralidade total.",
+          "Relacione ação cênica, personagem-tipo, comicidade e alegoria à crítica de comportamentos.",
+          "Avalie continuidades religiosas e sociais junto à crítica, evitando conclusões universais a partir de um caso."
+        ],
+        "example": "Cena didática autoral fictícia: uma personagem chamada Vaidade exibe um espelho enorme, mas se recusa a ouvir qualquer outra voz. O nome e o objeto ajudam a construir uma alegoria de comportamento; a cena pode produzir crítica sem descrever uma pessoa histórica específica. Ela ilustra um recurso de leitura, não constitui trecho de Gil Vicente.",
+        "pitfall": "Confundir documentação com ausência de perspectiva ou tomar a crítica de um comportamento como prova de que uma obra rejeita toda instituição e crença de sua época."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num exercício contemporâneo autoral que retoma convenções medievais, uma voz feminina conversa com a mãe sobre a espera por notícias do amado. As estrofes repetem a mesma frase final. Qual análise distingue adequadamente voz, gênero e forma?",
+        "hint": "Relacione a situação às convenções da cantiga de amigo, reconheça o refrão e separe a voz construída da identidade de quem escreveu o exercício.",
+        "solution": "B relaciona voz feminina e situação amorosa a convenções da cantiga de amigo e identifica a frase final recorrente como refrão, sem deduzir autoria. A confunde voz lírica com identidade do autor. C define mestria de modo invertido: mestria não tem refrão. D ignora a situação amorosa para classificar como sátira apenas pela interlocução. A identificação resulta de pistas combinadas, e o enunciado deixa claro que o material é atual, não manuscrito medieval.",
+        "options": [
+          "A voz feminina comprova que o autor do texto atual ou de toda cantiga semelhante é mulher.",
+          "O exercício retoma convenções da cantiga de amigo e usa refrão, sem permitir deduzir a identidade do autor pela voz.",
+          "A frase recorrente comprova que se trata de cantiga de mestria, definida pela presença obrigatória de refrão.",
+          "Conversar com a mãe transforma necessariamente o texto em sátira de maldizer."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um comentário didático afirma: “No Humanismo português, toda referência religiosa desapareceu, e Garcia de Resende escreveu sozinho todos os poemas do Cancioneiro Geral de 1516.” Qual revisão enfrenta os dois problemas?",
+        "hint": "Diferencie mudanças culturais de ruptura total e organização de uma coletânea de autoria de cada composição nela reunida.",
+        "solution": "C corrige as duas generalizações: mudanças e atenção à experiência humana coexistiram com referências religiosas, e Resende compilou uma coletânea de diferentes autores. A mantém o erro sobre religião. B mantém a autoria única. D transfere a obra para um gênero e autoria que não correspondem ao que está em análise. A revisão não nega o papel de Resende nem as transformações do período; delimita o que essas informações permitem afirmar.",
+        "options": [
+          "A religião realmente desapareceu, embora o Cancioneiro Geral reúna diferentes autores.",
+          "Referências religiosas permaneceram, mas Resende é necessariamente o autor de todos os poemas reunidos.",
+          "O período envolve mudanças e permanências religiosas, e Resende organizou uma coletânea com composições de diferentes autores.",
+          "O Cancioneiro Geral é uma crônica régia escrita por Fernão Lopes, sem composições poéticas."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare dois fragmentos didáticos autorais, sem atribuição histórica: I — “A narrativa reuniu cartas e relatos, mas escolheu acompanhar sobretudo os grupos que defendiam a nova autoridade.” II — “Em cena, a personagem Cobiça carrega sacos e exige recompensa até para ouvir quem pede ajuda.” Qual interpretação combina leitura da narrativa e do recurso teatral sem generalizar?",
+        "hint": "Uso de documentos não elimina seleção e perspectiva; nome e ações da personagem podem construir uma alegoria de comportamento.",
+        "solution": "D reconhece seleção e ponto de vista em I, mesmo havendo fontes, e a representação alegórica de um comportamento em II. A transforma documentação em neutralidade absoluta. B reduz a cena a um retrato histórico comprovado de todas as pessoas de um grupo. C declara que alegoria impede crítica, embora nome e ação possam justamente construí-la. Os fragmentos ilustram procedimentos de leitura e não são trechos de Fernão Lopes ou Gil Vicente.",
+        "options": [
+          "I é automaticamente neutro porque utiliza documentos, independentemente da seleção narrativa.",
+          "II comprova como se comportavam todas as pessoas de um grupo histórico real, sem qualquer outra evidência.",
+          "A presença de uma alegoria em II impede qualquer leitura de crítica a comportamentos.",
+          "I permite discutir seleção e perspectiva; II constrói uma alegoria por nome e ação, sem provar um retrato universal."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Cognatos, falsos cognatos e contexto",
+    "objective": "Usar semelhanças entre português e espanhol como pistas, verificar falsos amigos e acepções pelo contexto e distinguir diferenças lexicais, gramaticais e regionais sem inventar regras de formação ou tradução única.",
+    "prerequisites": [
+      "Leitura de frases simples em espanhol",
+      "Identificação de substantivos, adjetivos, verbos e artigos",
+      "Distinção entre semelhança gráfica e sentido numa situação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Semelhança, origem e hipótese de leitura",
+        "explanation": "Português e espanhol compartilham muitas palavras de origem relacionada, mas proximidade entre as línguas não permite traduzir por substituição automática de letras. Em sentido histórico, cognatos são palavras de origem comum; reconhecer essa origem exige informação linguística, não apenas aparência. No ensino de leitura, a semelhança formal e um sentido próximo podem ajudar a levantar hipóteses: información e informação, cultural e cultural permitem compreender muitas passagens quando a sintaxe e o contexto confirmam o uso. Correspondências como -ción e -ção aparecem em diversos pares, mas não são uma máquina para inventar toda palavra espanhola a partir de uma portuguesa. Mesmo palavras relacionadas podem desenvolver acepções, registros e combinações diferentes. O método é partir da frase: identifique a função da palavra, observe o que ela modifica ou complementa e teste uma interpretação. Em um texto sobre organização de atividades, información pode tratar de dados ou orientações oferecidos ao público; não se transforma em uma ação de informar só porque as palavras compartilham uma família. Uma hipótese lexical também precisa respeitar o argumento do texto. Se uma alternativa preserva a aparência da palavra mas muda sujeito, negação ou relação entre fatos, ela pode estar errada. Use semelhanças para ampliar compreensão e reserve a conferência em dicionário ou fonte adequada para sentidos e formas que o contexto não resolva.",
+        "steps": [
+          "Localize a palavra na frase e reconheça sua função gramatical.",
+          "Use a semelhança com o português como hipótese inicial, sem inventar uma regra universal de transformação.",
+          "Teste o sentido com complementos, modificadores e tema da passagem.",
+          "Confira acepções e origem quando forem necessárias, distinguindo-as da simples aparência."
+        ],
+        "example": "Trecho autoral fictício: “El centro publicó información sobre las actividades culturales del mes.” A semelhança de información com informação e de culturales com culturais ajuda a entender o assunto, mas a relação entre publicou e sobre as atividades confirma a leitura. O trecho não informa que todas as atividades sejam gratuitas ou obrigatórias.",
+        "pitfall": "Transformar uma correspondência frequente em regra sem exceções ou tratar palavras parecidas como garantia de que toda a alternativa preserve o sentido."
+      },
+      {
+        "level": "intermediate",
+        "title": "Falsos amigos e diferenças de sentido no uso",
+        "explanation": "Falsos amigos são palavras de forma semelhante que podem conduzir a sentidos inadequados quando uma língua é lida pela outra. A expressão falsos cognatos aparece com esse uso em materiais escolares, mas diferença de sentido não comprova, por si, origem histórica diferente. A leitura deve avaliar a acepção concreta e não depender de listas absolutas. Em espanhol, polvo pode designar poeira ou pó, enquanto o animal chamado polvo em português é pulpo. No contexto de limpeza, “quitar el polvo” se refere a retirar poeira, não a remover um animal. Rojo, quando nomeia uma cor, corresponde a vermelho, não ao roxo do português. Exquisito pode indicar qualidade ou sabor muito apreciados; numa avaliação elogiosa de comida, traduzi-lo automaticamente por esquisito como estranho pode inverter o tom. Esses exemplos não autorizam declarar que cada palavra possui uma só acepção em toda variedade e registro. Também não se deve importar uma armadilha de outra língua sem verificar o par estudado: éxito e êxito podem compartilhar o sentido de sucesso em espanhol e português. Quando houver sobreposição parcial de acepções, o importante é identificar qual delas está em uso, e não forçar toda ocorrência para uma categoria fixa. Definições, exemplos, contraste e consequências descritas na frase ajudam a selecionar o sentido. A consulta a dicionário deve considerar marcas de região, registro e classe gramatical.",
+        "steps": [
+          "Reconheça uma possível interferência do português e proponha uma interpretação alternativa.",
+          "Procure pistas de avaliação, ação, contraste ou explicação na passagem espanhola.",
+          "Verifique se o sentido escolhido preserva o tom e as relações da frase.",
+          "Evite classificações absolutas quando houver várias acepções ou diferenças entre variedades."
+        ],
+        "example": "Trecho autoral fictício: “Después de abrir las ventanas, encontraron polvo sobre los libros y lo retiraron con un paño.” Livros, limpeza e pano sustentam a acepção poeira. A hipótese do animal marinho não se ajusta à sequência descrita, embora a escrita coincida com a palavra portuguesa para esse animal.",
+        "pitfall": "Traduzir exquisito por estranho em qualquer contexto, confundir polvo com pulpo ou chamar éxito de falso amigo de êxito por influência do inglês."
+      },
+      {
+        "level": "advanced",
+        "title": "Polissemia, gênero e variação sem respostas artificiais",
+        "explanation": "Uma palavra pode assumir sentidos diferentes na mesma língua, e palavras próximas entre línguas podem se sobrepor apenas em determinados usos. Firma, em espanhol, pode designar uma assinatura ou uma empresa; documentos, pessoas que assinam, contratos e ações da organização ajudam a distinguir as ocorrências. O português também conhece firma em mais de um uso, portanto a diferença não pode ser resumida a uma tradução única para todas as frases. A gramática oferece outras pistas, mas exige atenção ao sentido. La leche é feminino e el viaje é masculino em espanhol; em português, o leite é masculino e a viagem, feminino. Essa diferença de gênero não transforma automaticamente as palavras em termos de significado oposto. Artigos e concordância precisam acompanhar a estrutura da língua em que o texto foi produzido. Há também variação regional: coche, auto e carro podem ser usados para automóvel em diferentes contextos e variedades, sem que a existência de um torne os outros sempre errados. Escolher uma tradução depende de público, situação, registro e acepção, não de uma lista que atribua exclusividade absoluta a cada país. Em questões de alternativa única, duas formulações igualmente corretas não devem ser distinguidas por uma preferência inventada. Para responder, compare cada opção ao contexto completo e elimine mudanças de sentido ou relações não autorizadas, preservando número, referência e tom. Se a frase não fornece a informação necessária para escolher entre acepções possíveis, reconheça a ambiguidade em vez de inventar uma regra para resolvê-la.",
+        "steps": [
+          "Identifique a acepção pelo contexto e compare outras possibilidades da mesma palavra.",
+          "Use artigo e concordância como pistas, distinguindo gênero gramatical e significado lexical.",
+          "Considere variedade e registro sem declarar incorreta uma forma válida apenas por preferência.",
+          "Exija evidência que diferencie as alternativas e reconheça ambiguidades reais de tradução."
+        ],
+        "example": "Comparação autoral fictícia: em “Firme aquí antes de entregar el formulario”, a ação solicitada é assinar num lugar indicado; em “La firma abrió una nueva sede”, a organização abre uma unidade. A mesma família lexical participa de contextos diferentes, e a leitura precisa acompanhar ação, sujeito e complemento.",
+        "pitfall": "Impor uma única tradução a todas as ocorrências, confundir gênero com sentido oposto ou inventar uma preferência regional para desempatar duas respostas válidas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Trecho autoral fictício: “La biblioteca ofrece información sobre el horario y las actividades culturales.” Qual leitura usa adequadamente as semelhanças com o português sem acrescentar dados?",
+        "hint": "Identifique o que a biblioteca oferece e a relação de sobre com os assuntos da informação, preservando o alcance da frase.",
+        "solution": "A preserva a relação: há informações sobre horário e atividades culturais. B confunde a existência de informação com uma obrigação de participação. C acrescenta gratuidade não informada. D inventa que a biblioteca está fechada. Palavras semelhantes ajudam a reconhecer o tema, mas só a frase completa permite avaliar o que foi efetivamente afirmado e o que uma alternativa introduz por conta própria.",
+        "options": [
+          "A biblioteca oferece informações sobre o horário e as atividades culturais.",
+          "A biblioteca exige que todas as pessoas participem das atividades culturais.",
+          "O texto garante que todas as atividades sejam gratuitas.",
+          "A passagem informa que a biblioteca está fechada permanentemente."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Texto autoral fictício: “Probamos el postre y nos gustó muchísimo. Era exquisito; volveríamos solo para comerlo otra vez.” Qual interpretação de exquisito preserva o tom da passagem?",
+        "hint": "Relacione a palavra às expressões nos gustó muchísimo e comerlo otra vez; as avaliações ao redor orientam a acepção.",
+        "solution": "C preserva o elogio: no contexto, exquisito indica sabor ou qualidade muito apreciados. A transfere automaticamente a ideia de estranho do português e contradiz a avaliação. B introduz um problema sanitário não mencionado. D confunde apreciação da sobremesa com indicação de preço, que o trecho não fornece. A leitura depende das expressões de satisfação e intenção de repetir a experiência, não apenas da aparência da palavra.",
+        "options": [
+          "A sobremesa foi considerada estranha e desagradável pelas pessoas do texto.",
+          "A palavra comprova que a sobremesa estava imprópria para consumo.",
+          "A sobremesa foi muito apreciada, com avaliação elogiosa de sabor ou qualidade.",
+          "O termo informa necessariamente que a sobremesa tinha o menor preço do local."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare frases autorais fictícias: I — “La firma anunció nuevos puestos de trabajo.” II — “El formulario está completo, pero falta tu firma al final.” Qual interpretação acompanha o contexto de cada ocorrência de firma?",
+        "hint": "No primeiro caso, o sujeito anuncia empregos; no segundo, algo falta no fim de um formulário. A mesma palavra pode ter mais de uma acepção.",
+        "solution": "B distingue empresa em I e assinatura em II. O anúncio de postos de trabalho aponta para uma organização; no formulário, a frase solicita a marca de quem assina. A inverte as acepções. C fixa assinatura nas duas ocorrências, ignorando a ação organizacional da primeira. D fixa empresa nas duas, ignorando o contexto do formulário. O português também admite firma em usos variados; o exercício avalia seleção contextual, não uma tradução única obrigatória.",
+        "options": [
+          "I significa assinatura, e II significa empresa, independentemente das ações descritas.",
+          "I remete a uma empresa, e II remete à assinatura de uma pessoa no formulário.",
+          "As duas ocorrências precisam significar assinatura porque a palavra tem uma única acepção.",
+          "As duas ocorrências precisam significar empresa porque o contexto não pode alterar a leitura."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Trabalho e energia",
+    "objective": "Calcular trabalho e variações de energia em modelos de massa constante, distinguir conservação de energia total e mecânica e resolver balanços com gravidade, mola, atrito, potência e rendimento.",
+    "prerequisites": [
+      "Forças e leis de Newton",
+      "Deslocamento, velocidade e unidades do SI",
+      "Equações de primeiro e segundo grau e cosseno de ângulos usuais"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Trabalho: força, deslocamento e sinal",
+        "explanation": "No modelo de partícula, o trabalho de uma força constante é W = Fd cos θ, em que θ é o ângulo entre a força e o deslocamento analisado. Ele é escalar e se mede em joules: 1 J equivale a 1 N·m. Uma componente da força no sentido do deslocamento contribui com trabalho positivo; no sentido contrário, com trabalho negativo; perpendicularmente, com trabalho nulo. O sinal descreve a transferência nessa interação e não um julgamento de esforço ou qualidade. Para concluir se a energia cinética aumenta ou diminui, considere a soma dos trabalhos, não apenas uma força isolada. Se o corpo desliza numa superfície horizontal fixa e a normal é vertical, ela não realiza trabalho nesse deslocamento horizontal. Isso não autoriza afirmar que toda força normal sempre tenha trabalho nulo: a relação com o deslocamento do ponto de aplicação precisa ser examinada. Também não se deve concluir que uma força constante em módulo produza o mesmo trabalho em qualquer direção. Para forças que variam ao longo do percurso, divida o movimento em trechos adequados ou use a área algébrica de um gráfico da componente paralela da força em função da posição, quando ele for fornecido. A área abaixo do eixo contribui negativamente. Declare o referencial e as condições do modelo, pois deslocamento e energia cinética podem mudar entre referenciais, mantendo a relação consistente nos referenciais inerciais.",
+        "steps": [
+          "Identifique força e deslocamento no intervalo e referencial escolhidos.",
+          "Use o ângulo entre esses vetores e calcule cada trabalho com seu sinal.",
+          "Some as contribuições para interpretar o trabalho total e confira J = N·m.",
+          "Se a força variar, acompanhe sua componente paralela ao longo do percurso, sem aplicar uma força inicial a todo o deslocamento."
+        ],
+        "example": "Modelo autoral: uma força de 15 N faz 30 graus com um deslocamento horizontal de 4 m. Usando a aproximação cos 30° ≈ 0,866, o trabalho dessa força é aproximadamente 15 × 4 × 0,866 = 51,96 J. O resultado se refere à força indicada; outras forças ainda precisam ser consideradas para determinar o trabalho total.",
+        "pitfall": "Usar um ângulo que não seja o de força com deslocamento ou concluir sobre o trabalho total a partir de uma única contribuição."
+      },
+      {
+        "level": "intermediate",
+        "title": "Teorema trabalho–energia e energias potenciais",
+        "explanation": "Para uma partícula de massa constante, em um referencial inercial, a energia cinética é Ec = mv²/2 e o trabalho total das forças é sua variação: Wtotal = Ec final − Ec inicial. Essa relação não exige que cada força seja constante, mas o cálculo do trabalho deve respeitar sua variação. Próximo à superfície da Terra, com g tratado como constante, a energia potencial gravitacional do sistema corpo–Terra pode ser escrita como mgh, escolhendo um nível de referência. O valor absoluto depende dessa escolha; diferenças de altura determinam diferenças de potencial nesse modelo. Uma altura negativa em relação ao nível escolhido não é, por si, erro físico. Para uma mola ideal que obedece à lei de Hooke, a energia elástica é kx²/2, em que x mede deformação em relação ao comprimento natural, e não necessariamente em relação ao equilíbrio de um sistema com carga. Ao incluir os potenciais, o trabalho das forças conservativas correspondentes é −ΔEp. Assim, Em = Ec + Ep pode ser acompanhado por ΔEm igual ao trabalho das demais forças, nas condições desse modelo. A energia mecânica permanece constante quando esse trabalho restante é nulo; isso pode ocorrer com forças de vínculo que não realizam trabalho. Atrito cinético e arrasto podem reduzir a parcela mecânica, transferindo energia para outras formas. Não se trata de destruição de energia total. Defina o sistema e evite contabilizar duas vezes o mesmo efeito, como incluir simultaneamente a variação de um potencial e o trabalho da força conservativa correspondente no mesmo lado do balanço.",
+        "steps": [
+          "Defina sistema, referencial, estados inicial e final e referência de energia potencial.",
+          "Calcule Ec = mv²/2, gravidade com g constante e deformação em relação ao comprimento natural da mola.",
+          "Escolha entre trabalho total igual a ΔEc ou balanço de energia mecânica com trabalhos restantes.",
+          "Inclua perdas mecânicas sem duplicar o peso ou a força elástica quando seus potenciais já aparecem."
+        ],
+        "example": "Modelo autoral: um bloco de 0,5 kg passa a deslizar a 4 m/s numa mesa horizontal e para após 2 m somente pelo atrito. Sua energia cinética inicial é 4 J, então o trabalho do atrito é −4 J. Com g = 10 m/s² e normal igual a mg, 4 = μ × 0,5 × 10 × 2 fornece μ = 0,4. A energia mecânica diminui; a total não é destruída.",
+        "pitfall": "Medir deformação a partir de um equilíbrio que não coincide com o comprimento natural, contar o peso e seu potencial duas vezes ou exigir que toda altura de referência seja positiva."
+      },
+      {
+        "level": "advanced",
+        "title": "Balanços em etapas, potência e rendimento",
+        "explanation": "Em situações com várias transformações, acompanhe estados e transferências em vez de escolher uma fórmula apenas pelo nome do objeto. Um bloco pode perder energia potencial gravitacional, adquirir cinética, comprimir uma mola e transferir parte da energia mecânica ao ambiente por atrito. No modelo de massa constante sem rotação, escreva Em inicial + Wrestante = Em final, incluindo nos potenciais apenas as forças conservativas que decidiu representar dessa maneira. Se o atrito cinético tiver módulo constante e atuar contra o deslocamento relativo numa superfície fixa, seu trabalho sobre o bloco é −fd no trecho considerado. Na compressão máxima de uma mola, a velocidade pode ser zero naquele instante sem que o corpo permaneça parado depois; examine as forças para discutir o movimento seguinte. A potência média associada a um trabalho é W/Δt, em watts, com 1 W = 1 J/s. Para uma força, a potência instantânea é o produto escalar da força pela velocidade do ponto de aplicação: Fv cos θ. Média e valor instantâneo não são automaticamente iguais quando força ou velocidade variam. Num processo em que energia útil é uma parcela da energia de entrada, rendimento é η = Eútil/Eentrada; use o mesmo intervalo e uma definição clara de útil. Um modelo ideal pode usar η = 1, enquanto perdas especificadas reduzem essa fração. Não some uma perda por atrito novamente se ela já foi incluída como trabalho restante. Sistemas com entrada ou saída de massa, rotação ou outros modos de armazenamento exigem termos adicionais; o balanço simplificado só vale para as hipóteses declaradas.",
+        "steps": [
+          "Divida o processo em estados e localize cada transferência e forma de armazenamento.",
+          "Escreva o balanço com as hipóteses do modelo e resolva somente raízes fisicamente admissíveis.",
+          "Para potência, identifique intervalo, trabalho útil e diferença entre média e instante.",
+          "Para rendimento, relacione energia útil e de entrada sem contar a mesma perda duas vezes."
+        ],
+        "example": "Modelo autoral: um equipamento ergue 30 kg por 4 m em 5 s, com velocidades inicial e final iguais, g = 10 m/s² e rendimento de 80%. O ganho de potencial é 1.200 J e a potência útil média, 240 W. A energia de entrada é 1.200/0,8 = 1.500 J, portanto a potência média de entrada é 300 W; os 300 J restantes não integram o ganho útil declarado.",
+        "pitfall": "Usar a forma simplificada em sistema aberto sem novos termos, confundir energia e potência ou afirmar que rendimento ideal precisa ser estritamente menor que 100%."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um bloco de 3 kg já desliza numa superfície horizontal fixa e é empurrado por uma força horizontal de 20 N. Atuam também peso, normal e atrito cinético, com coeficiente 0,25. Ele percorre 5 m no sentido do movimento. Use g = 10 m/s². Qual é o trabalho do atrito nesse trecho?",
+        "hint": "Não há aceleração vertical, portanto N = mg. A força de atrito tem módulo μN e sentido contrário ao deslocamento do bloco.",
+        "solution": "A normal é 3 × 10 = 30 N, e o atrito tem módulo 0,25 × 30 = 7,5 N. Seu trabalho é −7,5 × 5 = −37,5 J, alternativa A. B e D têm módulos incompatíveis com μmgd, e C troca o sinal apesar da oposição ao movimento. A força aplicada de 20 N contribui para o trabalho total, mas o enunciado pede apenas a contribuição do atrito.",
+        "options": [
+          "−37,5 J",
+          "−150 J",
+          "37,5 J",
+          "−75 J"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um corpo de 0,8 kg é lançado verticalmente para cima a 15 m/s. Despreze o ar e considere g = 10 m/s² constante. Qual é a altura máxima em relação ao ponto de lançamento?",
+        "hint": "No ponto mais alto a velocidade vertical é zero. Iguale a energia cinética inicial ao ganho de energia potencial gravitacional.",
+        "solution": "A energia cinética inicial é 0,8 × 15²/2 = 90 J. No topo ela se converte em ganho de potencial: 90 = 0,8 × 10 × h, portanto h = 11,25 m, alternativa A. B é o dobro desse resultado e não satisfaz o balanço. C repete o número da velocidade, mas isso não a converte em altura. D também não atende a mgh = 90 J. O valor é uma diferença de altura em relação ao lançamento.",
+        "options": [
+          "11,25 m",
+          "22,5 m",
+          "15,0 m",
+          "9,0 m"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "No instante em que toca uma mola ideal não deformada, um bloco de 2 kg se move a 6 m/s. Durante a compressão numa superfície horizontal fixa, há atrito cinético de coeficiente 0,50; k = 400 N/m e g = 10 m/s². Antes disso, num trecho sem atrito, um equipamento preparou esse movimento em 3 s, com rendimento de 80%, tendo como energia útil apenas a energia cinética do bloco no contato. Despreze rotação e outras perdas na compressão. Quais são a compressão máxima e a potência média de entrada do equipamento na preparação?",
+        "hint": "Calcule a energia cinética no contato. Ela se divide entre mola e atrito durante a compressão; para a preparação, relacione essa energia útil ao rendimento e ao intervalo de 3 s.",
+        "solution": "No contato, Ec = 2 × 6²/2 = 36 J, e o atrito durante a compressão vale 0,50 × 2 × 10 = 10 N. Então 36 = 200x² + 10x, cuja raiz positiva é 0,40 m: 32 J na mola e 4 J associados ao atrito. Na preparação, a energia de entrada é 36/0,80 = 45 J, e a potência média de entrada é 45/3 = 15 W. B acerta os dois resultados. A erra a compressão; C se aproxima da compressão sem atrito e usa a potência útil de 12 W como entrada; D multiplica a energia útil por 0,80 em vez de dividir, produzindo 9,6 W.",
+        "options": [
+          "0,30 m e 15 W",
+          "0,40 m e 15 W",
+          "0,42 m e 12 W",
+          "0,40 m e 9,6 W"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Ligações químicas",
+    "objective": "Relacionar modelos de ligação iônica, covalente e metálica a estruturas e propriedades; usar elétrons de valência, Lewis, geometria e polaridade para interpretar interações e comparações entre substâncias.",
+    "prerequisites": [
+      "Elétrons de valência, íons e tabela periódica",
+      "Diferença entre átomo, molécula e rede de partículas",
+      "Noções de estado físico, dissolução e condução elétrica"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Modelos de ligação e estrutura das substâncias",
+        "explanation": "Ligações químicas descrevem interações que estabilizam conjuntos de átomos ou íons, envolvendo a organização dos elétrons, especialmente os de valência. No modelo iônico, cátions e ânions se atraem e podem formar redes cristalinas, como no NaCl. A fórmula expressa a proporção entre íons; não se deve imaginar necessariamente moléculas isoladas de NaCl no cristal. Na ligação covalente, pares de elétrons participam do compartilhamento entre átomos. Isso pode ocorrer em moléculas, como H₂O, ou em redes extensas, como o diamante; portanto, covalente não é sinônimo de molecular nem de baixo ponto de fusão. O modelo metálico considera elétrons deslocalizados numa estrutura de centros metálicos e ajuda a explicar condução e deformação dos materiais, sem reduzir todos os metais a propriedades idênticas. A eletronegatividade ajuda a discutir distribuição desigual de densidade eletrônica numa ligação, mas não existe um único número que classifique sem exceções qualquer substância em qualquer condição. Caráter iônico e covalente são modelos e tendências, cuja aplicação deve ser confrontada com estrutura e propriedades. No sólido iônico comum, os íons não se deslocam livremente pela rede para transportar corrente; fundido, ou dissolvido quando há íons móveis em solução, o material pode conduzir. Nem todo sal se dissolve igualmente em água. Da mesma forma, uma solução condutora não prova sozinha que a substância inicial era um sólido iônico, pois substâncias moleculares também podem formar íons ao reagir com água.",
+        "steps": [
+          "Identifique constituintes e organização: moléculas, rede iônica, rede covalente ou estrutura metálica.",
+          "Relacione o modelo à participação dos elétrons sem usar um limiar numérico como regra universal.",
+          "Ao analisar condução, verifique quais cargas podem mover-se e em qual estado ou solução.",
+          "Evite transferir propriedades de uma substância para toda uma classe sem considerar a estrutura."
+        ],
+        "example": "Comparação didática: no cristal de NaCl, a organização é uma rede de íons, enquanto em H₂ há moléculas com ligação covalente entre dois átomos. No diamante, a rede covalente se estende pelo sólido. Os três casos mostram por que identificar o tipo de interação não dispensa perguntar como as partículas se organizam.",
+        "pitfall": "Chamar todo sólido covalente de molecular, afirmar que todo sal é solúvel ou concluir o tipo de ligação apenas por uma propriedade isolada."
+      },
+      {
+        "level": "intermediate",
+        "title": "Lewis, domínios eletrônicos e polaridade molecular",
+        "explanation": "Estruturas de Lewis representam elétrons de valência e ajudam a acompanhar ligações e pares não ligantes. Some os elétrons disponíveis e ajuste a contagem quando houver carga: carga negativa acrescenta elétrons e positiva retira. Distribua os elétrons segundo uma estrutura coerente, reconhecendo que a regra do octeto é útil em muitos casos, mas possui exceções e não prova sozinha a estrutura de toda espécie. Para moléculas simples, o modelo de repulsão dos domínios eletrônicos, conhecido por VSEPR, organiza regiões de densidade ao redor de um átomo central. Uma ligação simples, dupla ou tripla conta como um domínio nessa análise, e cada par livre também conta como um. Dois domínios sem pares livres no central levam a arranjo linear; três, a trigonal plano; quatro, a tetraédrico. Geometria eletrônica inclui pares livres, enquanto geometria molecular descreve posições dos átomos. Em NH₃, três ligações e um par livre no nitrogênio correspondem a arranjo eletrônico tetraédrico e forma molecular piramidal trigonal. Em H₂O, duas ligações e dois pares livres no oxigênio produzem forma angular. Não se atribui o mesmo ângulo exato a toda molécula de uma classe. Polaridade de ligação também não é polaridade da molécula: os dipolos precisam ser combinados conforme a geometria. No CO₂ linear, ligações C=O são polares, mas suas contribuições opostas se cancelam no modelo de molécula simétrica; em H₂O, a forma angular não permite esse cancelamento.",
+        "steps": [
+          "Conte elétrons de valência e considere a carga antes de construir a representação de Lewis.",
+          "Conte domínios ao redor do central, tratando ligação múltipla como um domínio.",
+          "Separe arranjo eletrônico e posição dos átomos para nomear a geometria molecular.",
+          "Avalie a soma das contribuições dipolares na geometria, sem inferir polaridade apenas pela presença de ligação polar."
+        ],
+        "example": "Exemplo didático: em CH₄, o carbono participa de quatro ligações simples e não possui par livre na estrutura usual. Os quatro domínios produzem forma tetraédrica; com ligantes iguais e distribuição simétrica, as contribuições se cancelam e a molécula é apolar. A conclusão exige geometria e equivalência dos ligantes, não apenas contar letras da fórmula.",
+        "pitfall": "Contar uma ligação dupla como dois domínios, confundir arranjo eletrônico com forma molecular ou afirmar que qualquer molécula com ligação polar é polar."
+      },
+      {
+        "level": "advanced",
+        "title": "Interações entre partículas e propriedades observáveis",
+        "explanation": "É preciso distinguir ligações que organizam uma molécula e interações entre moléculas. Na ebulição de uma substância molecular que não se decompõe, a separação entre moléculas aumenta sem que seja necessário quebrar todas as suas ligações covalentes internas. Forças de dispersão de London estão presentes em sistemas moleculares, inclusive apolares, e dependem de fatores como polarizabilidade e contato entre partículas. Moléculas polares também podem apresentar atrações entre dipolos permanentes. No tratamento escolar usual, ligações de hidrogênio são reconhecidas quando hidrogênio ligado a N, O ou F interage com um sítio aceptor adequado de outra molécula ou da própria estrutura. Apenas possuir hidrogênio na fórmula não basta. O grupo O–H permite que moléculas de etanol formem essas interações entre si; um éter pode aceitar ligação de hidrogênio da água, mas, sem H ligado a N, O ou F, não oferece o mesmo papel de doador entre suas próprias moléculas. Comparar temperaturas de ebulição exige considerar conjunto das interações, tamanho, forma e pressão, e não uma hierarquia absoluta que torne qualquer ligação de hidrogênio sempre dominante sobre dispersão de qualquer outra substância. Dissolução também envolve balanço entre interações do soluto, do solvente e das novas combinações, além das condições do sistema. A expressão semelhante dissolve semelhante é orientação qualitativa, não garantia universal de solubilidade. Para redes iônicas, covalentes e metais, a estrutura extensa exige análise própria; não se pode aplicar diretamente uma regra de moléculas pequenas a todos os sólidos.",
+        "steps": [
+          "Diferencie ligações internas de uma molécula e interações entre partículas da substância.",
+          "Identifique dispersão, polaridade e possíveis papéis de doador e aceptor em ligações de hidrogênio.",
+          "Compare substâncias em condições compatíveis, considerando tamanho e forma junto às interações.",
+          "Explique propriedades por um conjunto de evidências e reconheça os limites de regras qualitativas."
+        ],
+        "example": "Comparação didática: H₂O e H₂S têm formas angulares, mas isso não as torna equivalentes em todas as interações. No tratamento usual, O–H permite extensa associação por ligações de hidrogênio entre moléculas de água, enquanto H₂S não apresenta esse mesmo padrão. Geometria é uma informação relevante, mas não substitui a análise da natureza dos átomos e das interações.",
+        "pitfall": "Tratar toda mudança de estado como quebra de ligações covalentes, considerar CH₄ doador típico de ligação de hidrogênio por conter H ou transformar uma tendência de solubilidade em regra sem exceções."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Considere NaCl sólido em condições ambientes e NaCl puro fundido, sem outras substâncias. No modelo escolar de condução por íons, qual diferença explica a condução muito maior no material fundido?",
+        "hint": "A existência de cargas e a possibilidade de elas se deslocarem são questões diferentes; a fusão não transforma automaticamente o sal em sódio metálico e gás cloro.",
+        "solution": "B relaciona a condução aos íons móveis no material fundido, enquanto no sólido comum eles permanecem organizados em posições da rede. A nega incorretamente a existência de cargas nos íons do cristal. C transforma a fusão numa reação de formação de elementos, não descrita. D atribui o transporte do fundido apenas a elétrons livres de um metal, modelo inadequado ao sal. A composição iônica e a mobilidade precisam ser analisadas juntas.",
+        "options": [
+          "O cristal não contém partículas com carga elétrica, e só a fusão cria cátions e ânions.",
+          "No fundido, os íons podem deslocar-se; no sólido comum, sua mobilidade na rede é muito limitada.",
+          "A fusão produz necessariamente sódio metálico e gás cloro, que explicam toda condução.",
+          "NaCl fundido conduz exclusivamente por um mar de elétrons metálicos, sem participação de íons."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Para H₂O neutra, considere seis elétrons de valência do oxigênio e um de cada hidrogênio. Na estrutura usual de Lewis, o O faz duas ligações simples e possui dois pares livres. Qual é a geometria molecular e a polaridade compatível com essa descrição?",
+        "hint": "Há quatro domínios ao redor do O, mas apenas dois são posições de átomos ligados; a forma dos átomos não coincide com o nome do arranjo de todos os domínios.",
+        "solution": "C distingue arranjo eletrônico e forma molecular: os quatro domínios se organizam aproximadamente de modo tetraédrico, mas as posições dos três átomos formam uma molécula angular, cujas contribuições dipolares não se cancelam. A supõe geometria linear que não corresponde aos dois pares livres. B chama o arranjo eletrônico de geometria molecular e atribui cancelamento inadequado. D troca a descrição pela de três ligações e um par livre, ausente no enunciado.",
+        "options": [
+          "Linear e apolar, porque toda molécula com dois átomos ligados ao central é linear.",
+          "Tetraédrica e apolar, pois os quatro domínios correspondem obrigatoriamente a quatro átomos ligados.",
+          "Angular e polar, com duas ligações e dois pares livres no oxigênio central.",
+          "Piramidal trigonal e polar, com três ligações e um par livre no oxigênio."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "advanced",
+        "prompt": "Compare etanol, CH₃CH₂OH, e éter dimetílico, CH₃OCH₃, ambos de fórmula molecular C₂H₆O. No tratamento escolar usual, qual diferença permite ao etanol formar ligações de hidrogênio entre suas próprias moléculas de modo que o éter puro não reproduz?",
+        "hint": "Observe onde o hidrogênio está ligado, além da presença de oxigênio; ter um sítio aceptor não é o mesmo que possuir um grupo doador adequado.",
+        "solution": "D identifica o O–H do etanol como grupo doador e a ausência de H ligado a N, O ou F no éter, para esse padrão de interação entre moléculas próprias. O éter pode aceitar ligação de hidrogênio da água, o que não o torna doador no líquido puro. A confunde fórmula molecular com estrutura. B inventa ligação iônica e C supõe que qualquer C–H desempenhe o mesmo papel. A distinção contribui para explicar propriedades, sem dispensar outras interações e condições na comparação.",
+        "options": [
+          "A fórmula molecular igual obriga as duas substâncias a apresentar exatamente a mesma organização e todas as mesmas interações.",
+          "O etanol é obrigatoriamente uma rede iônica, enquanto o éter não contém elétrons de valência.",
+          "Qualquer hidrogênio ligado a carbono no éter substitui sempre o papel do grupo O–H nas ligações de hidrogênio usuais.",
+          "O etanol possui O–H doador; o éter não possui esse doador entre moléculas próprias, embora seu O possa aceitar interação com água."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Genética e hereditariedade",
+    "objective": "Relacionar genes, alelos e expressão às formas de herança; resolver cruzamentos e probabilidades com hipóteses explícitas e interpretar ligação, recombinação e limites de conclusões sobre fenótipos.",
+    "prerequisites": [
+      "DNA, cromossomos e meiose",
+      "Probabilidade simples, proporções e porcentagens",
+      "Distinção entre hipótese de um modelo e determinação de uma característica real"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Genes, alelos e segregação nos cruzamentos",
+        "explanation": "Genes são regiões do material genético relacionadas à produção de produtos funcionais, como RNA e, em muitos casos, proteínas. Alelos são variantes de um mesmo locus. No modelo diploide nuclear usual de um locus autossômico, o indivíduo possui duas cópias, que podem apresentar alelos iguais ou diferentes: homozigose e heterozigose. Essa descrição não deve ser estendida sem ajustes a todo organismo, organela ou situação cromossômica. Na meiose, a segregação dos cromossomos homólogos ajuda a explicar por que cada gameta recebe uma cópia daquele par no modelo. Em Aa, com segregação regular, os gametas A e a têm probabilidades iguais. Genótipo descreve a constituição considerada; fenótipo é a característica expressa, que pode depender de outros genes, regulação e ambiente. Dominância completa significa que o heterozigoto apresenta, para o caráter estudado, o mesmo fenótipo do homozigoto dominante; não significa que o alelo seja melhor, mais frequente ou sempre benéfico. Em Aa × Aa, a combinação aleatória dos gametas fornece probabilidades 1/4 AA, 1/2 Aa e 1/4 aa. Sob dominância completa e condições equivalentes de viabilidade, a proporção fenotípica esperada é 3:1. Ela é uma expectativa probabilística, não promessa de que todo conjunto de quatro descendentes terá exatamente três de um tipo e um de outro. Antes de calcular, declare símbolos, padrão de expressão e hipóteses do cruzamento.",
+        "steps": [
+          "Defina o locus, os alelos e o padrão de expressão indicado no problema.",
+          "Liste os gametas e suas probabilidades segundo o modelo de segregação.",
+          "Combine gametas e diferencie proporções genotípicas e fenotípicas.",
+          "Trate resultados como probabilidades e valores esperados, não garantias de contagem exata."
+        ],
+        "example": "Modelo autoral: numa planta hipotética, A é completamente dominante sobre a para a característica indicada. Em AA × aa, o primeiro progenitor fornece apenas A e o segundo apenas a; todos os genótipos esperados são Aa. A conclusão depende do modelo e não afirma que toda característica de qualquer planta siga essa relação de dominância.",
+        "pitfall": "Confundir dominância com frequência ou superioridade, ou interpretar uma probabilidade de 25% como obrigação de ocorrer exatamente uma vez a cada quatro descendentes."
+      },
+      {
+        "level": "intermediate",
+        "title": "Padrões de expressão, genealogias e probabilidade condicional",
+        "explanation": "A segregação dos alelos não exige dominância completa. Na dominância incompleta, o heterozigoto tem fenótipo intermediário nas condições do modelo; na codominância, características dos dois alelos são reconhecíveis no heterozigoto. Uma população pode ter múltiplos alelos para um locus, sem que cada indivíduo diploide tenha todos eles. Dois ou mais genes podem influenciar um caráter, e interações como epistasia alteram a passagem de genótipo a fenótipo. Genes em cromossomos diferentes podem segregar independentemente; genes muito afastados num mesmo cromossomo também podem exibir frequências próximas da independência, mas isso não prova que estejam em cromossomos distintos. Em herança ligada ao X, a constituição de cromossomos sexuais do modelo modifica os genótipos possíveis; uma regra autossômica não pode ser aplicada sem adaptação. Herança mitocondrial tem lógica própria e, no padrão humano usual, transmissão materna, sem garantir expressão idêntica em todos os descendentes. Genealogias ou heredogramas organizam relações entre gerações e características, mas um desenho isolado nem sempre permite determinar uma única hipótese. Sob modelo autossômico recessivo, penetrância completa, sem novas mutações ou outras explicações, dois progenitores com fenótipo dominante e um descendente aa devem ser Aa. Para um novo descendente com fenótipo dominante de Aa × Aa, a probabilidade de ser heterozigoto é 2/3: exclui-se aa e restam três combinações equiprováveis: AA, Aa e aA, sendo as duas últimas o mesmo genótipo heterozigoto. O condicionamento muda o conjunto de possibilidades. Esses exercícios não constituem diagnóstico de pessoas reais nem autorizam inferir relações familiares fora das hipóteses fornecidas.",
+        "steps": [
+          "Identifique se o modelo é autossômico, ligado a cromossomo sexual ou de outra transmissão.",
+          "Teste os genótipos contra todas as relações descritas e explicite penetrância, mutações e viabilidade quando relevantes.",
+          "Para eventos independentes, multiplique probabilidades; para alternativas excludentes, some.",
+          "Se houver uma condição, restrinja o universo antes de calcular e não use a probabilidade anterior sem ajuste."
+        ],
+        "example": "Modelo autoral de dominância incompleta: duas flores heterozigotas Rr apresentam cor intermediária, enquanto RR e rr têm cores distintas. Em Rr × Rr, as probabilidades genotípicas 1:2:1 também correspondem a três fenótipos na mesma proporção. O fenótipo intermediário não significa que os alelos tenham se misturado e perdido a possibilidade de segregar.",
+        "pitfall": "Aplicar 3:1 a qualquer padrão, deduzir um modo de herança por uma única pista ou esquecer de excluir possibilidades incompatíveis com a condição do enunciado."
+      },
+      {
+        "level": "advanced",
+        "title": "Ligação, recombinação, mutação e expressão",
+        "explanation": "Genes próximos num mesmo cromossomo tendem a ser transmitidos juntos, fenômeno chamado ligação gênica. Crossing over entre cromátides não irmãs de cromossomos homólogos na meiose pode gerar combinações recombinantes. Num cruzamento-teste adequado, classes de descendentes permitem estimar os gametas de um heterozigoto, distinguindo arranjos parentais e recombinantes. A frequência observada é a quantidade de recombinantes dividida pelo total. A probabilidade teórica de recombinação não ultrapassa 50% no modelo usual; flutuações amostrais podem produzir estimativas diferentes. Esse valor não equivale diretamente a distância física em pares de bases. Em intervalos pequenos ou numa aproximação didática que desconsidere eventos não detectados, 1% de recombinação corresponde a cerca de 1 centimorgan. Eventos duplos podem restaurar a combinação dos marcadores externos, de modo que frequência entre extremos e soma de distâncias adjacentes não precisam coincidir. Num teste de três pontos, comparar classes parentais e duplas recombinantes permite identificar o marcador central, desde que se reconheçam as classes e as hipóteses de viabilidade. Mutações são mudanças no material genético: podem alterar bases, segmentos ou organização cromossômica. Nem toda mudança de sequência modifica um aminoácido ou produz efeito observável, e nem toda mutação é prejudicial. Alterações somáticas e da linhagem germinativa têm consequências diferentes para transmissão entre gerações. Expressão também é regulada: possuir um alelo não significa produzir o mesmo RNA ou proteína em toda célula e condição. Muitos fenótipos envolvem múltiplos genes e ambiente; uma medida de variação numa população não fornece uma porcentagem genética para o destino de um indivíduo.",
+        "steps": [
+          "Identifique arranjos parentais e recombinantes e confira o total observado.",
+          "Calcule frequência e interprete mapas como estimativas genéticas, distinguindo distância física.",
+          "Em três pontos, determine o marcador central e conte eventos duplos em cada intervalo correspondente.",
+          "Relacione variantes, expressão e ambiente, evitando tratar toda mutação ou genótipo como resultado individual inevitável."
+        ],
+        "example": "Cruzamento-teste autoral fictício de dois loci: 320 AB, 320 ab, 80 Ab e 80 aB, sendo AB e ab parentais. São 160 recombinantes entre 800, ou 20%. Na aproximação didática sem eventos não detectados, estima-se 20 cM; isso não significa 20 pares de bases nem garante uma relação fixa entre distância genética e física.",
+        "pitfall": "Somar classes sem verificar o total, converter frequência diretamente em distância física ou inferir destino individual a partir de uma estimativa populacional."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num modelo didático de plantas diploides, R é completamente dominante sobre r para sementes lisas, e rr produz sementes rugosas. Em Rr × rr, com segregação regular, fecundação aleatória e viabilidade equivalente, qual é o número esperado de descendentes rugosos entre 120?",
+        "hint": "O primeiro progenitor fornece R ou r com probabilidades iguais; o segundo fornece apenas r. Valor esperado não significa contagem obrigatória numa amostra real.",
+        "solution": "Rr × rr produz probabilidade de 1/2 para Rr e 1/2 para rr. Logo, o número esperado de sementes rugosas é 120 × 1/2 = 60, alternativa A. B usa 1/4, proporção que não corresponde a esse cruzamento. C equivale a 1/3 e D a 3/4, também incompatíveis com os gametas dados. O resultado é expectativa do modelo; uma amostra observada pode apresentar flutuação sem que isso, isoladamente, invalide a herança descrita.",
+        "options": [
+          "60",
+          "30",
+          "40",
+          "90"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Numa genealogia simulada, um caráter autossômico tem dominância completa de A sobre a, penetrância completa e viabilidade equivalente. Dois progenitores com fenótipo dominante tiveram um descendente aa. Admita ausência de novas mutações. Sabe-se que um novo descendente tem fenótipo dominante. Qual a probabilidade de seu genótipo ser Aa?",
+        "hint": "O descendente aa permite inferir os genótipos parentais no modelo. Depois restrinja as combinações às compatíveis com o fenótipo dominante do novo descendente.",
+        "solution": "Os dois progenitores devem ser Aa para fornecer a e ainda expressar o fenótipo dominante. Em Aa × Aa, as combinações equiprováveis são AA, Aa, aA e aa. Condicionando ao fenótipo dominante, exclui-se aa: duas das três combinações restantes são heterozigotas, portanto 2/3, alternativa A. B usa a probabilidade não condicionada de aa; C mantém 1/2 sem aplicar a condição; D exclui indevidamente a possibilidade AA. O cálculo pertence ao cenário simulado, sem diagnóstico ou inferência sobre famílias reais.",
+        "options": [
+          "2/3",
+          "1/4",
+          "1/2",
+          "1"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Num cruzamento-teste fictício de três loci ligados, as classes reconstruídas de gametas são ABC: 350; abc: 350; Abc: 60; aBC: 60; ABc: 80; abC: 80; AbC: 10; aBc: 10. Considere ABC e abc parentais, AbC e aBc duplos recombinantes, viabilidade equivalente e ausência de eventos não detectados. Use a aproximação didática de 1% de recombinação por intervalo para 1 cM. Qual ordem e quais distâncias entre loci adjacentes são compatíveis?",
+        "hint": "Compare cada classe dupla à parental correspondente para identificar o locus central. Depois conte recombinantes em cada par adjacente, incluindo eventos duplos nos dois intervalos.",
+        "solution": "Comparar ABC com AbC e abc com aBc mostra mudança apenas de B/b, logo B é central: A–B–C ou a ordem inversa. O total é 1.000. Para A–B, recombinam Abc, aBC, AbC e aBc: 60 + 60 + 10 + 10 = 140, ou 14%. Para B–C, contam ABc, abC, AbC e aBc: 80 + 80 + 10 + 10 = 180, ou 18%. A é correta na aproximação dada. B coloca C no centro; C omite os eventos duplos nos dois intervalos; D usa valores que não correspondem a esses pares adjacentes. São estimativas de mapa genético, não distância física em bases.",
+        "options": [
+          "A–B–C; A–B = 14 cM e B–C = 18 cM",
+          "A–C–B; A–C = 14 cM e C–B = 18 cM",
+          "A–B–C; A–B = 12 cM e B–C = 16 cM",
+          "A–B–C; A–B = 28 cM e B–C = 32 cM"
+        ],
+        "correctIndex": 0
+      }
+    ]
   }
 ];
 
@@ -482,6 +942,162 @@ export const authoredCurriculumBatch04ReviewRecords = [
         "index": 2,
         "correctIndex": 1,
         "reasoning": "A promessa de simplicidade contrasta com 'four passwords' e 'two offices'; 'Simplicity at its finest' funciona como ironia crítica. Opção B identifica o contraste; A isola o elogio final; C generaliza para 'todos os aplicativos'; D atribui causa (esquecimento de senhas) não presente. Gabarito 1 é a interpretação melhor sustentada."
+      }
+    ]
+  },
+  {
+    "subject": "Literatura",
+    "topic": "Trovadorismo e Humanismo",
+    "contentSha256": "b3f9a25fbd344db63b845fa89e76be1b20a7d47760236a85ce66707b0ec0b818",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://cantigas.fcsh.unl.pt/sobreascantigas.asp",
+      "https://ensina.rtp.pt/artigo/fernao-lopes-o-oficio-de-escrever-a-historia/",
+      "https://ensina.rtp.pt/explicador/cancioneiro-geral-de-garcia-de-resende/",
+      "https://estudoautonomo.dge.mec.pt/sites/default/files/2025-05/gta-27_portugues.o-ano_tema-06_subtema-1_-gil-vicente-o-homem-e-a-obra-1.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B identifica corretamente convenções da cantiga de amigo (voz feminina, espera, diálogo com mãe) e a presença de refrão (frase final recorrente), sem deduzir autoria. A confunde voz com autor; C inverte definição de mestria (mestria não tem refrão); D classifica erroneamente como sátira por causa da interlocução com a mãe, que é convenção de cantiga de amigo."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A opção C corrige as duas generalizações falsas: o Humanismo envolve mudanças e permanências religiosas (não desaparecimento total) e Resende organizou coletânea de múltiplos autores (não escreveu sozinho). A mantém erro sobre religião; B mantém autoria única; D troca gênero e autor (crônica de Fernão Lopes)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção D reconhece que o fragmento I, embora use documentos (cartas, relatos), permite discutir seleção e perspectiva narrativa (não neutralidade automática). No fragmento II, o nome 'Cobiça' e a ação constroem alegoria de comportamento, sem comprovar retrato universal de grupo histórico. A assume neutralidade por usar documentos; B generaliza personagem como prova histórica; C inverte função da alegoria (diz que impede crítica, quando a constrói)."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Cognatos, falsos cognatos e contexto",
+    "contentSha256": "1956083f8ad4aaa680613f48998d98705fe20c52ed07c4649385912db74aff5c",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://dle.rae.es/exquisito",
+      "https://dle.rae.es/polvo",
+      "https://dle.rae.es/pulpo",
+      "https://dle.rae.es/rojo",
+      "https://dle.rae.es/%C3%A9xito",
+      "https://dle.rae.es/firma",
+      "https://dle.rae.es/leche",
+      "https://dle.rae.es/viaje"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A opção A traduz fielmente 'ofrece información sobre el horario y las actividades culturais' sem adicionar obrigação (B), gratuidade (C) ou fechamento (D); o gabarito e a explicação dos distractores estão corretos e baseados no texto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "O contexto 'nos gustó muchísimo' e 'volveríamos solo para comerlo otra vez' confirma avaliação elogiosa; exquisito significa 'excelente/saboroso', não 'estranho' (A), 'imprópria' (B) nem 'menor preço' (D). Gabarito e resolução independentes conferem."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "Em I, 'La firma anunció nuevos puestos' indica organização/empresa; em II, 'falta tu firma al final' indica assinatura. A opção B distingue corretamente as acepções; A inverte, C e D forçam sentido único. Resolução independente valida o gabarito."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Trabalho e energia",
+    "contentSha256": "2657d6c9d83077816ae547efe7be31e7e6f10343b6bc0834b06c71c69d702523",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/college-physics-2e/pages/7-1-work-the-scientific-definition",
+      "https://openstax.org/books/college-physics-2e/pages/7-2-kinetic-energy-and-the-work-energy-theorem",
+      "https://openstax.org/books/college-physics-2e/pages/7-3-gravitational-potential-energy",
+      "https://openstax.org/books/college-physics-2e/pages/7-7-power"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "Cálculo independente: N = mg = 3 kg × 10 m/s² = 30 N; fatrito = μN = 0,25 × 30 N = 7,5 N; W = −fatrito × d = −7,5 N × 5 m = −37,5 J. Alternativa A corresponde. B (−150 J) seria μmgd com μ=1 ou d=20 m; C (37,5 J) inverte sinal ignorando oposição ao deslocamento; D (−75 J) dobra o módulo do atrito ou da distância. O enunciado pede apenas o trabalho do atrito, não o total."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Cálculo independente: Ec_inicial = ½ × 0,8 kg × (15 m/s)² = 0,4 × 225 = 90 J. No topo v=0, Ec_final=0. Conservação: Ec_inicial = ΔEp = mgh → h = 90 J / (0,8 kg × 10 m/s²) = 90/8 = 11,25 m. Alternativa A. B (22,5 m) dobra o resultado, possivelmente usando v²/g sem o ½; C (15,0 m) confunde velocidade com altura; D (9,0 m) não satisfaz mgh = 90 J."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "Cálculo independente: No contato Ec = ½ × 2 × 6² = 36 J. Durante compressão: fatrito = μmg = 0,5 × 2 × 10 = 10 N. Balanço: 36 = ½kx² + fatrito·x = 200x² + 10x → 200x²+10x−36=0 → Δ=100+28800=28900=170² → x = (−10+170)/400 = 0,40 m. Preparação: E_útil = 36 J, η=0,8 → E_entrada = 36/0,8 = 45 J. P_média_entrada = 45 J / 3 s = 15 W. Alternativa B. A erra compressão (0,30 m); C usa compressão sem atrito (√(36/200)≈0,42 m) e potência útil (12 W) como entrada; D multiplica por 0,8 (28,8 J) em vez de dividir, dando 9,6 W."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Ligações químicas",
+    "contentSha256": "c8ed92a8cac33f010869d26567f593bcfde77820faa08809c0696799aaaafcd8",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding",
+      "https://openstax.org/books/chemistry-2e/pages/7-3-lewis-symbols-and-structures",
+      "https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity",
+      "https://openstax.org/books/chemistry-2e/pages/10-1-intermolecular-forces"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Opção B está correta: a fusão libera os íons Na⁺ e Cl⁻ da rede cristalina, permitindo seu deslocamento e condução; no sólido, embora existam cargas, elas estão fixas em posições de rede. A nega a existência de íons no cristal (falso). C descreve eletrólise/descomposição, não fusão simples. D atribui condução metálica (mar de elétrons) a um sal iônico fundido, modelo errado."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Opção C está correta: O central tem 4 domínios (2 ligações + 2 pares livres) → arranjo eletrônico tetraédrico; geometria molecular é angular (posições dos 3 átomos). Dipolos das ligações O–H não se cancelam → molécula polar. A assume linearidade ignorando pares livres. B confunde arranjo eletrônico com geometria molecular e erro de polaridade. D descreve NH₃ (3 ligações + 1 par livre), não H₂O."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Opção D está correta: etanol tem grupo O–H, onde H ligado a O atua como doador de ligação de hidrogênio entre moléculas próprias; éter dimetílico (CH₃–O–CH₃) tem oxigênio como aceptor, mas nenhum H ligado a N, O ou F, logo não doa ligações de hidrogênio no líquido puro. A ignora isomeria estrutural. B afirma rede iônica e ausência de elétrons de valência, absurdo. C equipara C–H a O–H como doador, contrário à regra escolar (só H em N/O/F)."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Genética e hereditariedade",
+    "contentSha256": "58d375711545883e43f386a72177ad6596104beab304b0057d17c672ffbc929f",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/12-1-mendels-experiments-and-the-laws-of-probability",
+      "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+      "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+      "https://openstax.org/books/biology-2e/pages/13-1-chromosomal-theory-and-genetic-linkage",
+      "https://openstax.org/books/biology-2e/pages/16-1-regulation-of-gene-expression",
+      "https://openstax.org/books/biology-2e/pages/15-1-the-genetic-code"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "Rr × rr produz gametas R/r (1/2 cada) e r (1); genótipos esperados 1/2 Rr (liso) e 1/2 rr (rugoso); valor esperado em 120 = 60 rugosos. Alternativa A=60 correta. B=30 seria 1/4 (próprio de Aa×Aa), C=40 seria 1/3, D=90 seria 3/4; nenhuma corresponde aos gametas deste cruzamento. O enunciado deixa claro que é expectativa do modelo, não contagem obrigatória."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Filho aa com pais de fenótipo dominante em autossômico recessivo, penetrância completa, sem novas mutações → pais obrigatoriamente Aa. Novo filho com fenótipo dominante em Aa×Aa: universo AA, Aa, aA, aa equiprováveis; condiciona a fenótipo dominante (exclui aa) → 3 combinações, 2 heterozigotas → 2/3. Alternativa A=2/3 correta. B=1/4 é prob. incondicional de aa. C=1/2 ignora condicionamento. D=1 exclui AA indevidamente."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Total 1000 gametas. Parentais ABC(350) e abc(350). Duplos recombinantes AbC(10) e aBc(10) diferem dos parentais apenas no alelo B/b → B é locus central (ordem A–B–C). Intervalo A–B: recombinantes simples Abc(60)+aBC(60) + duplos AbC(10)+aBc(10) = 140 → 14%. Intervalo B–C: recombinantes simples ABc(80)+abC(80) + duplos AbC(10)+aBc(10) = 180 → 18%. Alternativa A compatível. B troca locus central. C omite duplos (12 e 16). D usa 28 e 32, que não são as distâncias adjacentes pedidas: 28% é a frequência entre os marcadores externos e 32 cM é a soma das estimativas dos dois intervalos. Distâncias são estimativas genéticas (cM), não físicas."
       }
     ]
   }

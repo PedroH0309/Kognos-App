@@ -4,7 +4,48 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 4
+## Estado atual — checkpoint 5
+
+O lote 04 chegou a nove aulas. Além das quatro anteriores, foram integradas
+Literatura — Trovadorismo e Humanismo; Espanhol — Cognatos, falsos cognatos e
+contexto; Física — Trabalho e energia; Química — Ligações químicas; Biologia —
+Genética e hereditariedade. Com o lote 03, são 25 aulas nesta etapa, todas com
+revisão pedagógica humana pendente.
+
+Restam 1.270 lacunas entre 1.512 identidades. O recorte editorial ENEM tem 43 temas
+aprofundados e 853 lacunas; a lista de estudo ENEM contém 43 aulas aprofundadas,
+58 guias e 806 temas em desenvolvimento. A auditoria dos módulos já existentes
+para os 1.270 temas pendentes não encontrou candidatos que passassem pelo contrato
+comum de conteúdo completo. Não foram promovidos guias a aulas por rótulo.
+
+Correções deste checkpoint:
+
+- Literatura: retiradas atribuições e citações falsas, mestria definida como
+  ausência de refrão, distinção entre voz e autoria, e foco em poesia palaciana,
+  crônica e teatro do Humanismo, com fontes verificadas de NOVA, RTP e DGE.
+- Espanhol: eliminadas falsas regras de formação e questões com duas respostas
+  válidas; acepções, polissemia e gênero conferidos no DLE, com oito verbetes nos
+  materiais. Sem equivalências universais inventadas.
+- Física: explicitadas massa constante, referência de potencial e condições de
+  trabalho da normal. A questão avançada combina mola com atrito e preparação
+  anterior com potência de entrada e rendimento, sem impor duração incompatível
+  à compressão. O teste recalcula os resultados e os distratores.
+- Química: retirados limiares universais de eletronegatividade, contagens falsas
+  e alternativas duplicadas em correção. Modelos, estrutura, mobilidade, Lewis,
+  geometria e interações são relacionados às condições observadas.
+- Biologia: segregação, dominância, genealogias, condicionamento, expressão e
+  recombinação com hipóteses explícitas. O teste calcula expectativa, 2/3
+  condicionado, mapa de 14/18 cM e diferença entre frequência externa e soma dos
+  intervalos, sem interpretar mapa como distância física ou diagnóstico.
+
+Verificação: 609 testes da aplicação e seis do motor, lint dos arquivos alterados
+e build de produção aprovados. Chromium comparou a API das 25 aulas aos textos,
+abriu as cinco novas, respondeu às 15 questões e mostrou explicações, sem exceções
+ou rolagem horizontal em 320/375/768/1440 px. As oito referências do DLE expandidas
+também foram conferidas em 320/375/768 px. A CI do checkpoint 4 passou; o novo
+commit ainda deve passar pela CI. Sem merge, deploy ou publicação no banco.
+
+## Histórico — checkpoint 4
 
 O lote 04 começou com quatro aulas integradas e conferidas: Matemática — Funções
 e gráficos; Português — Gêneros e linguagens; Redação — Estrutura
