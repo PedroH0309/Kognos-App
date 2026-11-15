@@ -45,6 +45,12 @@ quatro deste checkpoint. Sincronização local com main não alterou conteúdo.
 CI32 aprovada 43767140718 no head eef844b; publicar33 e acompanhar CI exata.
 Não foi realizado merge de PR ou deploy por esta execução. Nenhum schema mudou.
 
+Atualização: main9a12f7f (PR114 integrado externamente) foi incorporada localmente
+no mergee781bce. Contadores permanecem iguais; 667+6 testes, build e leitor
+164API/4aulas/12respostas/4larguras repetidos e aprovados após a sincronização.
+Logs checkpoint33-upstream-*.log. CI33success43768555037 no head16fa61b;
+CI do novo head seguirá em acompanhamento.
+
 Continuar lote13 com Inglês, Espanhol, Física e Química; depois outras oito
 disciplinas. O catálogo segue em execução, sem declarar conclusão global.
 

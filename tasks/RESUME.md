@@ -8,12 +8,15 @@ secondary:null; não substituir por semanal nem prometer parada inobservável.
 164 novas, lote13primeiras4integradas. 667app+6motor,build/lint,164API,
 4leitor12respostas/4larguras aprovados. Lacunas1131; ENEM173/723;
 estudo173/27/707; índice381. Logsprivate/checkpoint33-*.log.
-Preview3316sessão79271 build164; fixtures164; captura batch13-first inspecionada.
+Preview3316sessão80161 build164; fixtures164; captura batch13-first inspecionada.
 
 PR117 MERGED EXTERNAMENTE até156/0bae72c, squashmain5b9e0e1. Não atualizar117
 com trabalho posterior. PR118 OPEN contém8aulas apósmerge:4CP32+4CP33.
 Localmergeeef844b sincronizoumainsemalterarconteúdo; CI3243767140718SUCCESS.
-Publicar33 e acompanhar CIexata. Não mergear/deploy.
+CP33publicado16fa61bCI43768555037SUCCESS. Main9a12f7f/PR114integrado
+externamente incorporadolocalmergee781bce:contadoresiguais667+6/build/browser
+164API+4aulasaprovados; logscheckpoint33-upstream. PublicarsyncacompanharCI.
+Não mergearPR/deploy.
 
 Módulo13ALL4:1507dbbd,bbd57e3f,b5beaee8,d071bb1d. Integrador13sempreTODOSosIDs
 para não apagar anteriores. Autores-base Math/Port STALE: Mathmetadadoscorrigidos
