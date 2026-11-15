@@ -324,7 +324,11 @@ export function semanticReviewQueue(){
   // A source outside the blueprint remains advisory; no full alias is created.
   const partials=partialCoverageByExam();
   const provaoPartials=provaoPartialReferencesByExam();
-  return (Object.keys(examBlueprints) as ExamId[]).flatMap(exam=>{
+  // Review ENEM partial gaps first, regardless of blueprint declaration order.
+  // This changes queue order only: no advisory source becomes full coverage.
+  const reviewExams=(Object.keys(examBlueprints) as ExamId[]).sort((a,b)=>
+    Number(b==='enem')-Number(a==='enem'));
+  return reviewExams.flatMap(exam=>{
     const seen=new Set<string>();
     const references=[
       ...partials[exam].map(ref=>({...ref,sourceOrigin:'blueprint' as const})),
@@ -451,7 +455,10 @@ export function canonicalAuthoringBacklog(){
       advisorySourceIds:advisorySources,
       hasPartialReference:advisorySources.length>0
     }];
-  }).sort((a,b)=>b.examCount-a.examCount||
+  // ENEM-first is a scheduling rule, not a claim of official competency coverage.
+  // Preserve cross-exam reuse priority *within* each ENEM/non-ENEM group.
+  }).sort((a,b)=>Number(b.missingExams.includes('enem'))-Number(a.missingExams.includes('enem'))||
+    b.examCount-a.examCount||
     Number(b.hasPartialReference)-Number(a.hasPartialReference)||
     a.subject.localeCompare(b.subject)||a.title.localeCompare(b.title)||
     a.topicId.localeCompare(b.topicId));
