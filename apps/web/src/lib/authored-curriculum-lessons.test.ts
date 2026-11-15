@@ -323,6 +323,32 @@ test('eletricidade cotidiana separa série, fator de potência e rendimento sem 
  assert.notEqual(inputA,inputA/efficiencyA);
 });
 
+test('geometria confere cantos, cone parcialmente cheio e ordem das transformações',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Geometria e medidas');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const garden=spec.tasks[0].prompt.match(/(\d+) m por (\d+) m/),path=spec.tasks[0].prompt.match(/uniforme (\d+) m/);assert.ok(garden&&path);
+ const length=Number(garden[1]),width=Number(garden[2]),border=Number(path[1]);
+ const pathArea=(length+2*border)*(width+2*border)-length*width;
+ assert.equal(choice(0),`${pathArea} m².`);assert.notEqual(pathArea,2*(length+width)*border);
+ const second=spec.tasks[1].prompt;
+ const radius=Number(second.match(/raio interno (\d+) cm/)?.[1]),waterHeight=Number(second.match(/até altura (\d+) cm/)?.[1]),coneRadius=Number(second.match(/borda (\d+) cm/)?.[1]),coneHeight=Number(second.match(/altura interna (\d+) cm/)?.[1]);
+ assert.ok([radius,waterHeight,coneRadius,coneHeight].every(value=>value>0));
+ const waterVolume=Math.PI*radius**2*waterHeight,capacity=Math.PI*coneRadius**2*coneHeight/3;
+ assert.ok(waterVolume<capacity);
+ const finalHeight=coneHeight*Math.cbrt(waterVolume/capacity);
+ assert.equal(choice(1),finalHeight.toFixed(1).replace('.',',')+' cm.');
+ assert.ok(Math.abs(Math.PI*(coneRadius*finalHeight/coneHeight)**2*finalHeight/3-waterVolume)<1e-9);
+ const third=spec.tasks[2].prompt,vertex=third.match(/C\((\d+), (\d+)\)/),vector=third.match(/vetor \((\d+), −(\d+)\)/);assert.ok(vertex&&vector);
+ const x=Number(vertex[1]),y=Number(vertex[2]),tx=Number(vector[1]),ty=-Number(vector[2]);
+ const coordinate=(value:number)=>String(value).replace('-','−');
+ assert.equal(choice(2),`(${coordinate(-y+tx)}, ${coordinate(x+ty)}).`);
+ assert.notDeepEqual([-y+tx,x+ty],[-(y+ty),x+tx]);
+ const example=spec.sections[0].example,sides=example.match(/iguais de (\d+) m e base de (\d+) m/);assert.ok(sides);
+ const height=Math.sqrt(Number(sides[1])**2-(Number(sides[2])/2)**2);
+ assert.match(example,new RegExp(`= ${height} m`));
+ assert.match(spec.sections[2].explanation,/orientação no plano, inclusive com ângulo negativo/);
+});
+
 test('átomos introdutórios conservam neutralidade e ponderam massas pelas abundâncias',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Átomos e tabela periódica introdutória');assert.ok(spec);
  const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};

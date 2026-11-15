@@ -4,7 +4,40 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 9
+## Estado atual — checkpoint 10
+
+O lote 06 começou com Matemática — Geometria e medidas; Português — Leitura,
+inferência e interpretação textual; Literatura — Barroco e Arcadismo; Redação —
+Coesão, coerência e progressão. Com os três lotes anteriores, são 52 aulas novas
+nesta etapa, com autoria assistida e revisão docente humana pendente.
+
+Restam 1.243 lacunas entre 1.512 identidades. ENEM editorial: 68 temas aprofundados
+e 828 lacunas. Lista de estudo ENEM: 68 aprofundadas, 50 guias e 789 temas em
+desenvolvimento. Contagens editoriais não certificam habilidades oficiais.
+
+- Geometria: corrigidos lados incompatíveis com altura, orientação de rotações e
+  origens falsas de distratores. O cone parcial tem vértice para baixo e raio
+  variável, com capacidade conferida. O teste recalcula caminho com cantos, nível
+  da água por semelhança e transformações em ordens diferentes.
+- Português: retiradas atribuições fictícias a instituições reais, inferências
+  necessariamente dedutivas, ironia identificada apenas por aspas e confusão entre
+  voz citada e autor. Exemplos incluem pressuposição, implicatura cancelável e
+  relação explícita entre textos, sem regra universal de prova.
+- Literatura: retirados versos falsamente atribuídos, academia inventada e datas
+  indevidas; Barroco não é explicado apenas por mineração. Pastoril não comprova
+  biografia ou conspiração, e traços comuns não são exclusivos de uma escola.
+- Redação: corrigida questão em que pronome pessoal e demonstrativo eram ambos
+  válidos. Referência, coerência e progressão são ensinadas com reescritas sem
+  ordem universal de tese/conclusão ou dados fabricados para sustentar argumentos.
+
+Verificação: 625 testes da aplicação e seis do motor aprovados; lint alterado e
+build de produção aprovados. Chromium comparou a API das 52 aulas, abriu as quatro
+novas, respondeu às 12 questões e conferiu explicações e referências expandidas
+em 320/375/768/1440 px, sem exceções ou rolagem horizontal. A CI do checkpoint 9
+passou (run 43713256507). Sem merge, deploy, alteração de schema/RLS ou publicação
+no banco. O trabalho continua nos próximos temas do lote 06.
+
+## Histórico — checkpoint 9
 
 O lote 05 está completo com 16 aulas, uma por disciplina. Foram acrescentadas
 Geografia — Urbanização e globalização; Filosofia — Filosofia medieval e

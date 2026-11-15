@@ -1,6 +1,31 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 9
+## Estado atual em 15/11/2026 — checkpoint 10
+
+Este estado prevalece sobre os históricos abaixo. A execução permanece ativa.
+
+- Lotes 03/04/05 completos (16 cada) e quatro aulas no lote 06: 52 aulas nesta etapa.
+- 625 testes da aplicação + seis do motor, lint alterado, build e leitor real
+  aprovados. API das 52 comparada; quatro novas aulas, 12 respostas e referências
+  expandidas em 320/375/768/1440 px aprovadas. Preview 3316 contém este checkpoint.
+- Restam 1.243 lacunas; ENEM editorial: 68 aprofundadas, 828 lacunas. Lista de
+  estudo: 68 aprofundadas, 50 guias, 789 planejadas. Revisão humana pendente.
+- CI do checkpoint 9 `43713256507` aprovada. Sem publicação no banco/merge/deploy.
+- IDs atuais do lote 06: `course-40b23112 course-0f508a76 course-b82ee91c course-f4182a5e`.
+  `kognos-integrate-batch06.mjs` reescreve o lote inteiro: preservar todos os IDs.
+- Inglês — Gêneros e textos multimodais (`course-c1380ae4`): versão principal e
+  crítica aceitas em arquivos privados; falta ler a crítica inteira, criar teste
+  de dados (18/30 e 40→44), integrar e verificar. Descrições são autossuficientes,
+  sem estatísticas médicas inventadas nem imagem que não existe.
+- Espanhol — Diversidade cultural hispano-americana (`course-ad4ac447`): rascunho
+  tem erros graves de ceceo, distribuição regional e frases quéchuas inventadas;
+  refazer antes de nova crítica. Já conferidos DPD seseo/voseo e DLE guagua.
+- Seguem os demais temas a partir da fila original [54..63], com correção principal.
+- Helpers corrigidos do lote 06 estão em Temp e em backups privados. Para Português,
+  executar correção e depois refinamento, que preserva a crítica anterior e corrige
+  leitura de dias alternativos de inscrição. Nunca reaplicar patches antigos.
+
+## Histórico — checkpoint 9
 
 Este é o estado mais recente e prevalece sobre todos os registros históricos abaixo.
 
