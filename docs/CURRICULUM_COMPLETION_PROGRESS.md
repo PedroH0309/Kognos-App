@@ -4,7 +4,37 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 12
+## Estado atual — checkpoint 13
+
+O lote 07 começou com Matemática — Operações, divisibilidade e conjuntos
+numéricos; Português — Gêneros textuais e tipos de discurso; Literatura —
+Romantismo e nacionalismo; Redação — Paragrafação e conectivos. São 68 aulas
+novas nesta etapa. Revisão docente humana continua pendente.
+
+Restam 1.227 lacunas entre 1.512 identidades. ENEM editorial: 83 aprofundadas
+e 813 lacunas. Lista de estudo ENEM: 83 aprofundadas, 48 guias e 776 planejadas.
+Essas contagens editoriais não certificam habilidades oficiais.
+
+- Matemática: operações, conjuntos, MDC/MMC e restos com condições explícitas;
+  teste recalcula todas as alternativas e a menor solução simultânea. O teste
+  histórico mantém as seis questões de cada aula antiga e confere a prioridade
+  da nova fonte curricular no leitor, sem eliminar as verificações legadas.
+- Português: separados gêneros, sequências e formas de discurso. Retirados
+  exemplos históricos falsos e conclusões de fraude ou qualidade sem evidência.
+- Literatura: corrigidas datas, atribuições e generalizações; nacionalismo não
+  apaga a produção anterior a 1836 nem autoras negras, incluindo Maria Firmina.
+  Os exercícios são originais e autossuficientes, com 12 referências no leitor.
+- Redação: parágrafos e conectivos ensinados por função, sem número obrigatório
+  de frases, proibições artificiais ou inferência de causalidade por conectivo.
+
+Verificação: 632 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 68 aulas e abriu as quatro novas,
+respondeu às 12 questões e verificou explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal. CI do checkpoint 12
+aprovada (run 43720220273). Sem banco, merge, deploy ou alteração de schema/RLS.
+O trabalho continua em Inglês — Tempos e aspectos verbais e nos demais temas.
+
+## Histórico — checkpoint 12
 
 O lote 06 está completo com 16 aulas, uma por disciplina. São 64 aulas novas nesta
 etapa. As sete últimas são História — Tempo histórico, fontes e historiografia;

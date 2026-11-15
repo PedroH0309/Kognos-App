@@ -323,6 +323,22 @@ test('eletricidade cotidiana separa série, fator de potência e rendimento sem 
  assert.notEqual(inputA,inputA/efficiencyA);
 });
 
+test('divisibilidade confere simultaneamente MDC e MMC e busca o menor resto compatível',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Operações, divisibilidade e conjuntos numéricos');assert.ok(spec);
+ const gcd=(a:number,b:number):number=>b===0?a:gcd(b,a%b),lcm=(a:number,b:number)=>a/gcd(a,b)*b;
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const common=Number(task.prompt.match(/MDC\(a,b\) = (\d+)/)?.[1]),multiple=Number(task.prompt.match(/MMC\(a,b\) = (\d+)/)?.[1]),first=Number(task.prompt.match(/a = (\d+)/)?.[1]);assert.ok(common>0&&multiple>0&&first>0);
+ const candidates=task.options.map(Number),matching=candidates.filter(candidate=>gcd(first,candidate)===common&&lcm(first,candidate)===multiple);
+ assert.deepEqual(matching,[Number(task.options[task.correctIndex])]);
+ assert.equal(matching[0],common*multiple/first);
+ const congruences=spec.tasks[2];assert.ok(congruences.options&&typeof congruences.correctIndex==='number');
+ const constraints=[...congruences.prompt.matchAll(/resto (\d+) na divisão por (\d+)/g)].map(match=>({remainder:Number(match[1]),modulus:Number(match[2])}));assert.equal(constraints.length,3);
+ const period=constraints.reduce((value,rule)=>lcm(value,rule.modulus),1);
+ const valid=Array.from({length:period},(_,index)=>index+1).filter(value=>constraints.every(rule=>value%rule.modulus===rule.remainder));
+ assert.equal(valid.length,1);assert.equal(congruences.options[congruences.correctIndex],String(valid[0]));
+ assert.ok(congruences.options.every((option,index)=>index===congruences.correctIndex||constraints.some(rule=>Number(option)%rule.modulus!==rule.remainder)));
+});
+
 test('ciências aplica força resultante ao sistema e conserva energia na subida ideal',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Força, movimento e energia');assert.ok(spec);
  const contact=spec.tasks[1];assert.ok(contact.options&&typeof contact.correctIndex==='number');

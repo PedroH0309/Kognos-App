@@ -1,6 +1,31 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 12
+## Estado atual em 15/11/2026 — checkpoint 13
+
+Este estado prevalece sobre os históricos. Continuar até completar as aulas;
+não encerrar neste checkpoint. PR 117 draft; sem merge/deploy/banco.
+
+- Lotes 03–06 completos, quatro aulas no lote 07: 68 novas nesta etapa.
+- 632 testes da aplicação e seis do motor, lint alterado, build e leitor real
+  aprovados. API das 68 comparada; quatro novas, 12 respostas e referências
+  expandidas em 320/375/768/1440 px aprovadas. Preview 3316 contém 68 aulas.
+- Restam 1.227 lacunas; ENEM editorial 83/813; lista de estudo 83/48/776.
+  Revisão humana pendente. CI anterior 43720220273 aprovada.
+- Integrador batch07 reescreve tudo: manter course-ca3586c5 course-e5132a3e
+  course-e1614f73 course-8aa12850 e acrescentar novos IDs. Lotes anteriores intactos.
+- Próximo course-400807fd Inglês — Tempos e aspectos verbais: draft2 lido,
+  ainda sem versão principal. Corrigir absolutos sobre present continuous,
+  stative verbs, past perfect e futuros e questões com respostas ambíguas.
+  Fontes British Council e Cambridge estão sendo conferidas. Seguem Espanhol
+  course-176421ee, Física course-b3e78a50 e Química course-e31ebf0d.
+- Teste histórico de matemática agora permite prioridade curricular e preserva
+  TODAS as verificações das aulas antigas. Não reverter essa correção de teste.
+- Crítica de Literatura teve descrições A/B trocadas; original preservado e
+  _principalCorrections documentado. Não apagar correções documentais do cache.
+- Autoria Claude em background sem integração automática; helpers Temp e backups
+  privados. Fetch antes de push; preservar concorrência. AGENTS gerado fora do commit.
+
+## Histórico — checkpoint 12
 
 Este estado prevalece sobre todos os históricos abaixo. Execução ativa a pedido
 do usuário; continuar até completar as aulas, sem encerrar neste checkpoint.
