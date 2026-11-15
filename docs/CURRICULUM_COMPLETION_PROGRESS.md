@@ -4,7 +4,55 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 20
+## Estado atual — checkpoint 21
+
+Lote 09 completo com 16 aulas; 112 novas nesta etapa. Acrescentadas História —
+Renascimento e Reformas religiosas; Geografia — Clima, massas de ar e mudanças
+climáticas; Filosofia — Filosofia política e democracia; Sociologia — Estado,
+poder e cidadania; Arte — Perspectiva e composição visual; Educação Física —
+Esportes coletivos e individuais; Ciências — Corpo humano e saúde.
+Homologação docente humana pendente; catálogo integral ainda em execução.
+
+Restam 1.183 lacunas entre 1.512 identidades. ENEM editorial: 124 aprofundadas
+em 896 assuntos, 772 lacunas. Lista de estudo: 124 aprofundadas, 37 guias e
+746 planejadas em 907 itens. Índice de disponibilidade: 329 identidades.
+As contagens são unidades editoriais, sem certificação de habilidades oficiais.
+
+- História: corrigidas atribuições fictícias, cronologia jesuítica e tridentina,
+  Henrique VIII como luterano automático, universalização de Augsburgo e
+  narrativa de progresso inevitável até tolerância religiosa universal.
+- Geografia: separa tempo e clima, massas de ar e projeções. Retirados previsão
+  frontal e números futuros inventados. Teste calcula frequência 2,5 vezes em
+  amostras fictícias, sem atribuir causa; 1,1 °C é recorte histórico do AR6.
+- Filosofia e Sociologia: poder de fato não prova legitimidade moral. Modelos
+  contratualistas e tipos weberianos não viram cronologia universal. Direitos
+  formais não garantem condições idênticas de participação; maioria eleitoral
+  não elimina direitos e competição futura numa democracia constitucional.
+- Artes: paralelas ao plano de imagem não convergem todas ao mesmo ponto;
+  condições de um/dois/três pontos são explícitas. Terços não são lei biológica,
+  centralização não é erro obrigatório e composição não permite diagnóstico.
+- Educação Física: classificação depende da prova; revezamento tem equipe,
+  individual também tem tática. Retirados protocolos de treino sem fundamento.
+  Adaptações funcionais não exigem diagnósticos nem garantem vitória ou saúde.
+- Ciências: integra sistemas, diferencia digestão/absorção e ventilação/respiração
+  celular; homeostase é dinâmica, negativa não significa ruim. Prevenção e
+  determinantes sociais sem prescrição clínica, dados inventados ou culpa pessoal.
+
+Verificação: 651 testes da aplicação e seis do motor, 66 testes específicos,
+lint alterado e build aprovados. API das 112 comparada; sete novas abertas
+em Chromium com 21 respostas, explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal; captura inspecionada.
+
+Sociologia e Ciências têm autoria principal Codex com crítica separada Claude
+Code/NIM; não se atribui rascunho Claude não utilizado. Referências e limitações
+registradas: BNCC e World Athletics indexados oficialmente, mas acesso direto
+403; página oficial de regras de tênis aberta. Não alegar leitura integral de
+fontes bloqueadas. Ciências usa OpenStax e OMS consultadas. Nenhum texto ou
+questão proprietário copiado. Revisão por IA não é homologação docente.
+CI20 aprovada (43741200048, head a6b7569). Sem schema/banco, merge ou deploy.
+Segue lote 10; worker com limite 128, sem redução do contrato editorial.
+
+## Histórico — checkpoint 20
 
 Lote 09 ampliado para nove aulas; são 105 novas nesta etapa. Últimas cinco:
 Inglês — Pronomes, conectores e relações semânticas; Espanhol — Cognatos e

@@ -826,6 +826,649 @@ export const authoredCurriculumBatch09:readonly AuthoredLessonSpec[] = [
         "solution": "D reconhece a separação temporal do padrão CAM descrito. A confunde essa organização com a separação espacial típica C4 e ainda nega indevidamente Calvin e custos energéticos. B exclui a Rubisco sem base e ignora a organização descrita. C troca o processo por respiração exclusiva. O esquema não determina espécie, produtividade ou comportamento estomático em toda condição; a palavra clássico delimita o padrão analisado."
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Renascimento e Reformas religiosas",
+    "objective": "Relacionar transformações culturais do Renascimento e pluralização religiosa dos séculos XVI e XVII, distinguindo humanismo, correntes reformistas, renovação católica e limites dos acordos confessionais por meio de contexto e fontes.",
+    "prerequisites": [
+      "Diversidade política e religiosa da Europa medieval",
+      "Noções de fonte histórica, instituição e interpretação",
+      "Localização dos séculos XIV a XVII e dos principais espaços europeus"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Renascimento, humanismo e patronato",
+        "explanation": "Renascimento é uma categoria usada para estudar transformações culturais que ganharam força em cidades italianas desde o século XIV e circularam com ritmos diversos por outros espaços europeus. Não foi um nascimento da cultura depois de uma Idade Média sem conhecimento: houve continuidades, apropriações e disputas. O humanismo valorizou estudo e crítica de textos gregos e latinos e práticas ligadas à gramática, retórica, poesia, história e filosofia moral. Não constitui uma única doutrina política ou uma negação obrigatória do cristianismo. Humanistas trabalharam para governos urbanos, famílias governantes e autoridades eclesiásticas; o estudo de autores antigos podia servir a projetos religiosos e políticos diferentes. Mecenato e patronato envolviam recursos, prestígio e interesses de quem encomendava obras; não provam liberdade artística irrestrita nem adesão automática de toda a população aos mesmos ideais. As artes exploraram observação, representação do corpo, espaço e repertórios clássicos, convivendo com temas cristãos e tradições anteriores. Inovações não apareceram de modo uniforme em todas as obras. A impressão com tipos móveis difundida na Europa a partir do século XV ampliou possibilidades de circulação, mas não tornou todos alfabetizados ou eliminou censura, preço e barreiras linguísticas. É necessário distinguir essa história europeia de afirmações falsas sobre invenção mundial da impressão. Ao analisar uma obra ou documento, verifique produção, destinatários e circulação; uma imagem mitológica isolada não demonstra que seu autor ou patrocinador rejeitasse toda crença religiosa.",
+        "steps": [
+          "Situe tempo e lugar sem uma oposição entre trevas e luz.",
+          "Relacione estudo de fontes clássicas e práticas humanistas.",
+          "Examine quem patrocina, produz e recebe a obra.",
+          "Compare mudanças e continuidades com evidências específicas."
+        ],
+        "example": "Comparação autoral de situações possíveis: uma mesma residência encomenda uma imagem devocional e outra de tema mitológico. A variedade de temas permite investigar repertórios, usos e patronato, mas não comprova abandono de toda crença religiosa. Para uma conclusão sobre obras históricas específicas, seria preciso identificar autores, datas, contratos e circulação, não inventá-los a partir deste cenário.",
+        "pitfall": "Tratar humanismo como ateísmo obrigatório ou tomar Renascimento como ruptura completa e simultânea com toda tradição medieval."
+      },
+      {
+        "level": "intermediate",
+        "title": "Reformas protestantes e trajetórias distintas",
+        "explanation": "As Reformas do século XVI envolveram disputas sobre doutrina, práticas religiosas e autoridade, articuladas a interesses políticos e sociais. A controvérsia das 95 teses de Lutero em 1517 é um marco, não o primeiro questionamento cristão nem uma separação institucional já concluída naquele instante. A crítica às indulgências precisa distinguir a doutrina católica sobre penas temporais e os abusos de pregação e arrecadação; reduzi-la a uma compra oficialmente simples de perdão de qualquer pecado distorce o debate. Lutero desenvolveu posições sobre justificação pela fé e autoridade das Escrituras; isso não equivale a negar toda importância ética às ações ou a eliminar toda organização eclesiástica. Correntes reformadas associadas a outros líderes apresentaram diferenças sobre sacramentos, governo religioso e salvação. A expansão não foi fruto apenas de convicção individual ou apenas de cálculo financeiro: autoridades territoriais, comunidades, pregadores e redes de impressão atuaram de maneiras diversas. Na Inglaterra, o Ato de Supremacia de 1534 reconheceu Henrique VIII como chefe da Igreja inglesa e rompeu a jurisdição papal. Isso não tornou imediatamente a doutrina inglesa idêntica à luterana; houve mudanças e conflitos posteriores, incluindo restauração católica sob Maria e reorganização sob Elizabeth. Ato de 1559 e configuração de 1534 não são o mesmo documento. Não confunda ainda cristianismo ocidental latino com toda a diversidade religiosa europeia: comunidades judaicas, muçulmanas, cristãs orientais e outras populações não desaparecem porque o recorte da aula examina rupturas com Roma.",
+        "steps": [
+          "Separe marco inicial, desenvolvimento doutrinário e ruptura institucional.",
+          "Diferencie crítica religiosa e apropriação política sem reduzir uma à outra.",
+          "Compare correntes protestantes e a trajetória inglesa.",
+          "Use datas e fontes para evitar tratar processos diferentes como um único acontecimento."
+        ],
+        "example": "Cenário autoral: autoridades de uma cidade apoiam um pregador reformista, mas parte da comunidade contesta uma medida sobre bens eclesiásticos. O apoio institucional não prova unanimidade dos habitantes nem demonstra que todos compartilhem os mesmos motivos. A análise precisa distinguir autoridades, grupos sociais, práticas e argumentos.",
+        "pitfall": "Afirmar que todos os reformadores defendiam exatamente a mesma doutrina ou que romper a autoridade de Roma tornava automaticamente um reino luterano."
+      },
+      {
+        "level": "advanced",
+        "title": "Renovação católica, acordos e limites da coexistência",
+        "explanation": "A renovação católica reuniu iniciativas anteriores e posteriores às rupturas protestantes, com reformas internas e reação ao desafio confessional. O Concílio de Trento, realizado em etapas entre 1545 e 1563, reafirmou posições doutrinárias católicas e estabeleceu medidas disciplinares e de formação, incluindo seminários. Não criou em 1563 toda a educação religiosa nem fundou a Companhia de Jesus: a aprovação papal dessa ordem ocorreu em 1540, antes da abertura do concílio. Educação e missões tiveram diferentes relações com expansão europeia e poderes locais; não devem ser descritas como encontro cultural sempre pacífico nem como experiência idêntica em todo lugar. Conflitos confessionais envolveram também dinastias, territórios e alianças, sem que religião fosse apenas uma máscara sem significado para os agentes. A Paz de Augsburgo de 1555 organizou uma coexistência limitada entre catolicismo e adesão à Confissão de Augsburgo no Sacro Império. Não garantiu liberdade individual universal nem incluiu todas as confissões; a autoridade de reforma territorial tinha exceções e condições. A reserva eclesiástica e regras para situações particulares impedem resumir o acordo como imposição uniforme e sem limites por qualquer governante sobre todas as pessoas. Em 1648, os acordos de Vestfália ampliaram o reconhecimento à confissão reformada, sem criar instantaneamente um mundo de Estados laicos ou direitos iguais para todos. A análise histórica deve distinguir regra escrita, implementação e experiência de minorias. Mudança cultural e pluralização confessional não levam automaticamente a tolerância moderna; convivência, perseguição e negociação coexistiram.",
+        "steps": [
+          "Diferencie renovação interna e reação às rupturas.",
+          "Confira cronologia de concílio, ordem religiosa e decisão institucional.",
+          "Delimite sujeitos e confissões abrangidos por um acordo.",
+          "Distinga norma, prática e liberdade contemporânea sem narrativa de progresso inevitável."
+        ],
+        "example": "Comparação cronológica autoral com marcos documentados: a aprovação papal da Companhia de Jesus ocorreu em 1540, e Trento abriu em 1545. A ordem já existia antes do concílio; sua atuação posterior na renovação católica não permite atribuir ao concílio a aprovação inicial. A sequência ajuda a evitar confundir participação num processo e criação institucional.",
+        "pitfall": "Confundir acordo confessional restrito com liberdade religiosa universal ou atribuir a Trento instituições que já existiam antes dele."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário didático autoral: um estudioso do século XV compara versões latinas de uma obra antiga para preparar uma edição encomendada por uma autoridade eclesiástica. Qual interpretação evita opor automaticamente humanismo e cristianismo?",
+        "hint": "Considere a prática de leitura e comparação de fontes clássicas e a diversidade dos vínculos institucionais dos humanistas.",
+        "options": [
+          "A comparação de textos clássicos e o patronato religioso podem coexistir; o cenário não prova abandono obrigatório da fé.",
+          "O uso de latim demonstra que o estudioso rejeita todos os autores antigos e nunca realiza trabalho filológico.",
+          "Qualquer encomenda religiosa torna impossível estudar os clássicos em qualquer período ou instituição.",
+          "O cenário comprova o nome do estudioso e o título de um poema de Petrarca, mesmo sem essas informações."
+        ],
+        "correctIndex": 0,
+        "solution": "A reconhece compatibilidade entre estudo dos clássicos e vínculo religioso, sem transformar humanismo em ateísmo obrigatório. B nega a atividade de comparação descrita. C impõe uma incompatibilidade universal ausente da história. D inventa identificação e obra que o cenário não fornece. O caso é autoral e não deve ser citado como documento de uma encomenda real."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Resumo autoral para estudo de documento real: o Ato de Supremacia inglês de 1534 reconheceu Henrique VIII como chefe da Igreja da Inglaterra, rompendo a jurisdição papal no reino. O que essa mudança permite concluir, sem atribuir automaticamente doutrina idêntica à de Lutero?",
+        "hint": "Diferencie reorganização da autoridade eclesiástica e identidade completa de crenças entre correntes religiosas.",
+        "options": [
+          "A decisão prova que todos os ingleses passaram imediatamente a defender exatamente a mesma teologia luterana.",
+          "O ato encerrou todas as disputas religiosas inglesas e assegurou tolerância universal para os séculos seguintes.",
+          "O ato reorganizou a autoridade religiosa em torno da monarquia; a trajetória doutrinária inglesa exige análise adicional.",
+          "A data de 1534 demonstra que o documento foi aprovado durante o reinado de Elizabeth, sem relação com Henrique VIII."
+        ],
+        "correctIndex": 2,
+        "solution": "C corresponde à mudança de jurisdição descrita e evita concluir igualdade completa com o luteranismo. A confunde autoridade e doutrina e universaliza adesão popular. B inventa fim de conflitos e tolerância universal. D troca o reinado e confunde marcos de 1534 e 1559. A fonte parlamentar é real; o resumo didático não é uma citação literal do ato."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Ao comparar políticas confessionais do século XVI, uma ficha autoral registra que a Paz de Augsburgo de 1555 abrangia catolicismo e Confissão de Augsburgo, excluindo outras confissões e prevendo condições e exceções. Qual avaliação é compatível com esse recorte?",
+        "hint": "Verifique a diferença entre reconhecimento restrito de coexistência e direito individual universal de escolher qualquer religião.",
+        "options": [
+          "O acordo garantia imediatamente a todas as pessoas igualdade de direitos religiosos, sem qualquer exclusão.",
+          "A existência de duas confissões no acordo demonstra que todos os territórios europeus se tornaram Estados laicos.",
+          "As exceções são irrelevantes: qualquer governante podia impor qualquer religião a todos sem limites ou condições.",
+          "Tratava-se de coexistência confessional limitada, que não equivale à liberdade religiosa individual universal."
+        ],
+        "correctIndex": 3,
+        "solution": "D distingue o âmbito restrito do acordo de uma garantia universal. A contradiz exclusões e condições. B transforma um arranjo do Sacro Império numa laicização de toda a Europa. C apaga as exceções expressamente indicadas e amplia o alcance para qualquer religião. O texto normativo e sua aplicação histórica também precisam ser diferenciados: a existência do acordo não comprova experiências idênticas para todas as populações."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Clima, massas de ar e mudanças climáticas",
+    "objective": "Distinguir tempo e clima, relacionar fatores geográficos, massas de ar e frentes às condições atmosféricas e interpretar evidências de mudanças climáticas e frequências sem previsões inventadas ou atribuição causal por um dado isolado.",
+    "prerequisites": [
+      "Latitude, altitude e leitura de localização geográfica",
+      "Noções de temperatura, umidade, pressão e precipitação",
+      "Porcentagens, comparação de frequências e identificação de fonte e período"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Tempo, clima e referências de comparação",
+        "explanation": "Tempo descreve condições atmosféricas em um lugar e intervalo, como chuva numa tarde ou queda de temperatura durante uma frente. Clima envolve a distribuição dessas condições em períodos mais longos, incluindo médias, variabilidade, sazonalidade e extremos; não é apenas o tempo de um dia repetido. Normais climatológicas padronizadas costumam usar períodos consecutivos de trinta anos, como 1991–2020, com regras de cálculo, qualidade e disponibilidade de dados. Uma tabela de trinta números incompletos não se torna automaticamente uma normal válida. O INMET disponibiliza normais de diferentes períodos; comparar valores exige conferir estação, variável, unidade, método e base temporal. Uma média não informa sozinha frequência de dias extremos nem garante a condição de amanhã. Temperatura, umidade, pressão, vento e precipitação são elementos observados, enquanto latitude, altitude, relevo, circulação oceânica, distância do mar e cobertura da superfície ajudam a explicar padrões. A influência de um fator depende dos demais: altitude não fornece uma taxa universal e exata de resfriamento para toda situação atmosférica, e litoral não significa sempre chuva. A água e a terra respondem de maneira diferente ao aquecimento, contribuindo para contrastes de amplitude térmica, mas um diagnóstico regional requer dados. Na leitura de climogramas, diferencie temperatura média e precipitação acumulada; somar temperaturas mensais não produz temperatura média anual, e a altura de uma barra de chuva não deve ser lida como grau Celsius. Um evento local frio não refuta por si só uma tendência de temperatura média global.",
+        "steps": [
+          "Identifique lugar, intervalo e variável observada.",
+          "Diferencie descrição de um evento e estatística climática.",
+          "Confira período de referência, unidade e qualidade da série.",
+          "Relacione elementos e fatores sem usar uma única regra universal."
+        ],
+        "example": "Situação autoral: duas cidades têm a mesma média anual de temperatura, mas uma concentra chuva em poucos meses e a outra tem precipitação distribuída. A média térmica compartilhada não demonstra climas idênticos. Para comparar, a turma precisa de distribuição sazonal, extremos, relevo e período dos dados, sem inventar valores ausentes.",
+        "pitfall": "Usar um dia como prova de todo um clima, confundir unidades num climograma ou tratar uma normal como previsão garantida para amanhã."
+      },
+      {
+        "level": "intermediate",
+        "title": "Massas de ar, transformações e frentes",
+        "explanation": "Uma massa de ar é um grande volume com características de temperatura e umidade relativamente homogêneas, adquiridas em sua região de origem e modificadas durante o deslocamento. Rótulos de origem não garantem propriedades imutáveis em qualquer trajetória. Na nomenclatura internacional usual, cP indica continental polar e cT, continental tropical; trocar essas letras altera o significado. No estudo escolar do Brasil, aparecem mEc, equatorial continental; mEa, equatorial atlântica; mTa, tropical atlântica; mTc, tropical continental; e mPa, polar atlântica. Essas convenções precisam ser reconhecidas no material fornecido, sem misturar esquemas. A mEc pode ser quente e úmida apesar da origem continental amazônica, com participação da evapotranspiração e da disponibilidade de água; por isso continental não equivale a seca sem exceção. A mTc costuma ser descrita como quente e seca, enquanto massas atlânticas transportam umidade em contextos próprios. Incursões de ar de origem polar podem provocar resfriamento em partes do Brasil, inclusive friagem na Amazônia, mas um termômetro isolado não identifica toda a origem e trajetória. Frentes são zonas de transição: numa frente fria, ar relativamente frio avança substituindo ar mais quente; numa quente ocorre a configuração inversa de avanço. Umidade, estabilidade, relevo e dinâmica influenciam nuvens, chuva e vento. Não há queda fixa de temperatura nem prazo universal de cessação da chuva após toda frente fria. Sistemas de alta pressão também não garantem temperatura amena, céu limpo ou ausência de riscos em toda circunstância.",
+        "steps": [
+          "Confira a convenção de siglas e a região de origem.",
+          "Considere como superfície e trajetória modificam temperatura e umidade.",
+          "Identifique qual massa avança e qual é substituída na frente.",
+          "Evite prever intensidade e duração sem dados da situação."
+        ],
+        "example": "Cenário autoral: um volume de ar frio e inicialmente seco permanece sobre um oceano relativamente mais quente e ganha umidade. Sua história de deslocamento ajuda a explicar a mudança; não se deve manter uma propriedade de origem como se fosse impossível modificá-la nem concluir chuva de duração exata sem outros dados.",
+        "pitfall": "Chamar cT de polar continental, afirmar que toda massa continental é seca ou converter uma frente em previsão numérica fixa sem observações."
+      },
+      {
+        "level": "advanced",
+        "title": "Mudanças climáticas, atribuição e leitura de frequências",
+        "explanation": "Mudanças climáticas são alterações persistentes em propriedades do sistema climático e podem envolver causas naturais e humanas. Variabilidade natural também atua em várias escalas, não apenas no tempo curto e sem qualquer oscilação prolongada. Para o aquecimento global recente, o AR6 do IPCC atribui de forma inequívoca a influência humana, principalmente às emissões de gases de efeito estufa. O relatório de síntese de 2023 apresenta cerca de 1,1 °C de aquecimento em 2011–2020 em relação a 1850–1900; esse número tem período e referência definidos, não é uma leitura de qualquer ano posterior. O efeito estufa envolve absorção e emissão de radiação infravermelha; sua intensificação não é a mesma coisa que buraco na camada de ozônio. Mudanças em gases, aerossóis, uso do solo e outros componentes alteram o balanço energético de modos que exigem análise. Cenários são trajetórias condicionadas a hipóteses, não previsões únicas inevitáveis. O aquecimento pode alterar probabilidades e intensidades de extremos, mas atribuir um evento específico exige métodos, dados e definição do evento; não se inventa um fator de aumento para todo o planeta. Ao comparar frequências, mantenha limiar, duração, amostragem e unidades compatíveis. Uma razão de frequências observadas em dois conjuntos não prova sozinha a causa da diferença nem fornece automaticamente um período de retorno confiável. Mitigação procura limitar causas, como emissões; adaptação procura reduzir danos e vulnerabilidades. São ações complementares e contextualizadas, sem garantia de que uma única medida elimine todo risco.",
+        "steps": [
+          "Confira período, referência e alcance de uma conclusão climática.",
+          "Diferencie evidência de influência humana global e atribuição de evento específico.",
+          "Compare frequências com limiar e amostragem definidos.",
+          "Separe cenários, observações e ações de mitigação ou adaptação."
+        ],
+        "example": "Comparação autoral de medidas: reduzir emissões de uma atividade atua sobre uma causa do aquecimento; ajustar drenagem urbana a riscos de inundação atua sobre vulnerabilidades e impactos. Uma ação pode combinar objetivos, mas classificar essas funções não comprova sua eficácia num município específico sem dados, projeto e avaliação.",
+        "pitfall": "Trocar o período de um número do IPCC, tratar cenário como certeza ou deduzir causa e retorno universal de um evento a partir de uma pequena amostra."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um comentário autoral afirma: “Hoje fez frio na minha cidade; logo, a média global não pode estar aumentando.” Qual avaliação respeita a diferença entre tempo local e tendência climática global?",
+        "hint": "Observe a diferença de escala espacial e temporal entre uma observação diária e uma série de médias globais.",
+        "options": [
+          "O comentário é conclusivo, pois uma única observação local determina a temperatura média de todo o planeta por décadas.",
+          "O frio observado pode ser real, mas esse dado isolado não refuta uma tendência da média global avaliada em séries e escalas apropriadas.",
+          "Uma tendência global implica necessariamente que nunca volte a ocorrer nenhum dia frio em nenhum lugar.",
+          "Não é possível estudar clima com observações, apenas com opinião individual sobre as estações do ano."
+        ],
+        "correctIndex": 1,
+        "solution": "B separa as escalas: um evento local frio pode coexistir com aumento de médias globais de longo prazo. A transforma um ponto em medida do planeta inteiro; C converte tendência estatística em proibição de toda ocorrência fria; D nega o papel de observações e análise. A resposta não confirma uma série local não fornecida nem exige negar o dia frio para reconhecer a tendência global."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "No esquema escolar brasileiro de massas de ar, a mEc tem origem continental amazônica e pode ser quente e úmida. Qual explicação evita a regra equivocada de que continental significa sempre seca?",
+        "hint": "Considere condições da superfície e disponibilidade de água, além do nome usado para indicar a região de origem.",
+        "options": [
+          "A origem continental obriga que a massa não contenha vapor de água em nenhuma situação.",
+          "A sigla mEc demonstra que a massa se origina obrigatoriamente sobre gelo polar e nunca muda no trajeto.",
+          "Toda umidade prova origem exclusivamente oceânica, sendo impossível contribuição da vegetação continental.",
+          "Água disponível e evapotranspiração na região de origem ajudam a explicar a umidade; rótulo continental não é proibição universal de ar úmido."
+        ],
+        "correctIndex": 3,
+        "solution": "D relaciona as características às condições amazônicas e evita a generalização indevida. A trata continental como ausência obrigatória de vapor; B troca origem equatorial por polar e nega transformações; C elimina fontes continentais de umidade sem fundamento. A explicação não afirma intensidade de chuva, caminho ou horário de uma massa real sem dados; esclarece o alcance do esquema usado."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Exercício estatístico autoral, sem dados de estação ou projeção real: sob o mesmo limiar fixo de calor e procedimento de contagem, primeira amostra: 8 dias em 100; segunda amostra: 20 dias em 100. Qual comparação descritiva é correta, sem concluir causa climática apenas desses números?",
+        "hint": "Divida cada contagem pelo tamanho da amostra e compare as duas frequências; razão não é demonstração automática de causa.",
+        "options": [
+          "A frequência observada é 2,5 vezes a inicial; os dados isolados não demonstram a causa da diferença.",
+          "A frequência observada é 20 vezes a inicial e prova a mesma alteração em todos os continentes.",
+          "O número 20 demonstra retorno exato de um evento a cada vinte anos, independentemente da unidade observada.",
+          "As amostras provam que todo dia acima do limiar foi causado exclusivamente pela passagem de uma frente fria."
+        ],
+        "correctIndex": 0,
+        "solution": "A: as frequências observadas são 8/100 = 0,08 e 20/100 = 0,20. A razão é 0,20/0,08 = 2,5. B confunde a contagem com a razão e extrapola globalmente. C troca dias observados por período de retorno em anos sem modelo. D atribui uma causa exclusiva ausente dos dados. A comparação é descritiva do exercício; não estima sozinha tendência de uma região, probabilidade futura ou atribuição de evento real."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia política e democracia",
+    "objective": "Analisar justificações da autoridade política e da democracia, distinguir poder de fato e legitimidade normativa e comparar consentimento, representação, participação e deliberação com atenção a direitos, desigualdades e possibilidade de contestação.",
+    "prerequisites": [
+      "Identificação de tese, argumento e objeção",
+      "Distinção entre descrição de fatos e avaliação normativa",
+      "Noções de instituição, regra e participação coletiva"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Poder, autoridade e legitimidade",
+        "explanation": "A filosofia política examina como justificar instituições, direitos, decisões coletivas e o exercício do poder. Ela se relaciona à ética, que também pode tratar de justiça e relações sociais; não há uma separação simples entre moral apenas individual e política apenas coletiva. Poder de fato envolve capacidade de produzir efeitos e obter obediência. A questão normativa da autoridade pergunta quando alguém tem direito de impor decisões e que obrigações poderiam justificar a obediência. Aceitação social, tradição e eficácia podem ajudar a explicar por que um poder se mantém, mas não demonstram automaticamente que ele seja moralmente legítimo. O termo legitimidade é usado de modos diferentes em análises sociológicas e filosóficas; é necessário indicar qual sentido está em discussão. Estado e governo também não são sinônimos: na organização estatal moderna, instituições e ordem política não se reduzem ao conjunto de dirigentes de um mandato. Isso não significa que o Estado seja imutável ou que exista uma definição única para todos os períodos e teorias. Democracia relaciona-se à participação em decisões coletivas sob alguma forma de igualdade política, mas há disputas sobre procedimentos, inclusão e limites. A democracia ateniense e as democracias representativas atuais não têm a mesma escala nem a mesma composição do corpo de cidadãos; exclusões históricas impedem tratá-las como modelos idênticos de participação universal. Para argumentar, separe uma descrição institucional de uma defesa normativa e pergunte quais razões apoiam a passagem de uma para a outra.",
+        "steps": [
+          "Identifique se a afirmação descreve poder ou procura justificá-lo.",
+          "Diferencie obediência obtida e direito de comandar.",
+          "Esclareça o sentido de legitimidade e o modelo de instituição.",
+          "Examine quem participa e quem fica excluído da decisão."
+        ],
+        "example": "Caso autoral: uma associação esportiva aprova regras para seus integrantes. Isso não a transforma automaticamente em Estado nem justifica impor a mesma regra a toda a população de um território. A comparação ajuda a perguntar por âmbito, adesão e autoridade sem concluir que qualquer organização com um dirigente tenha a mesma natureza política.",
+        "pitfall": "Concluir que obediência, popularidade ou eficácia demonstram por si sós justiça, ou usar Estado e governo como nomes intercambiáveis em qualquer contexto."
+      },
+      {
+        "level": "intermediate",
+        "title": "Justificações do poder e modelos de contrato",
+        "explanation": "Teorias de contrato social usam problemas de acordo, segurança, direitos e liberdade para discutir autoridade. Não devem ser lidas como prova de que toda sociedade nasceu de uma reunião real com assinatura de todos. Em Hobbes, a insegurança de uma condição sem poder comum fundamenta a defesa de uma autoridade capaz de garantir paz; o soberano não precisa ser um monarca em toda formulação, e o tema da autopreservação impede resumir sua teoria como renúncia sem qualquer ressalva à vida. Em Locke, governo por consentimento e proteção de direitos se articulam a limites do poder e condições de resistência quando a confiança política é rompida. Isso não equivale a atribuir ao autor todas as instituições ou inclusões das democracias atuais; a história das teorias exige contexto e crítica. Em Rousseau, soberania do povo e vontade geral envolvem orientação ao interesse comum; vontade geral não é simplesmente soma de desejos particulares nem qualquer decisão majoritária tomada em condições arbitrárias. Soberania e governo possuem funções distintas na obra. Essas posições não são três descrições idênticas de um mesmo contrato: divergem sobre autoridade, liberdade e papel dos governados. Comparar autores exige identificar o problema, as premissas e as condições de cada argumento. Também permite questionar limites: que consentimento conta, como lidar com desigualdades e quem é incluído como participante? A existência de uma tradição influente não resolve essas questões por autoridade do nome. Uma resposta filosófica deve apresentar razões e objeções, sem converter um resumo didático em citação literal ou em consenso entre todos os pensadores.",
+        "steps": [
+          "Localize o problema que cada teoria pretende resolver.",
+          "Diferencie acordo justificativo e relato histórico comprovado.",
+          "Compare segurança, direitos e liberdade sem igualar os autores.",
+          "Formule uma objeção sobre consentimento, limites ou inclusão."
+        ],
+        "example": "Comparação autoral de argumentos: uma posição sustenta que segurança exige poder comum; outra enfatiza que o exercício do governo deve permanecer limitado por direitos. Identificar essa diferença é mais útil que escrever apenas “ambos falam em contrato”. O resumo não autentica palavras literais de um autor nem elimina a necessidade de ler condições e contexto de sua obra.",
+        "pitfall": "Tratar contrato como certidão histórica de origem de todo Estado ou interpretar vontade geral como autorização automática para qualquer desejo da maioria."
+      },
+      {
+        "level": "advanced",
+        "title": "Representação, participação e deliberação democrática",
+        "explanation": "Teorias democráticas podem justificar procedimentos por igualdade política, liberdade, qualidade de decisões ou outras razões, e discordam sobre como equilibrá-las. Representação, participação e deliberação não são necessariamente regimes que se excluem: uma ordem representativa pode incluir conselhos, consultas e outros espaços de participação. O papel e o poder de decisão de cada mecanismo dependem de seu desenho; a mera existência de uma reunião não garante inclusão. Mandatos e calendários eleitorais variam, de modo que quatro anos não define toda democracia. Competição real e possibilidade de substituição dos dirigentes também não significam troca obrigatória a cada eleição. Perspectivas deliberativas valorizam troca de razões em condições de liberdade e igualdade, sem exigir que toda decisão resulte em unanimidade ou dispensar votação quando o desacordo persiste. Na vertente neorrepublicana, liberdade como não dominação chama atenção ao poder arbitrário ou não controlado, mesmo quando não há interferência efetiva em cada momento. Igualdade formal de voto pode coexistir com desigualdade de voz, acesso à informação e capacidade de influenciar a agenda. Em democracias constitucionais, a vontade majoritária precisa ser analisada junto a direitos e condições de contestação; vitória eleitoral não torna qualquer medida justa ou democraticamente aceitável. Erosão democrática pode envolver restrições graduais à oposição e aos controles institucionais, sem um único roteiro universal ou uma causa isolada suficiente. Autonomia judicial, informação, participação e fiscalização importam, mas não autorizam afirmar que toda nomeação de magistrado seja captura ou que um órgão sozinho garanta a democracia.",
+        "steps": [
+          "Diferencie representação, participação e troca de razões.",
+          "Examine regras de acesso, agenda e decisão de cada mecanismo.",
+          "Analise maiorias junto a direitos e contestação.",
+          "Procure evidências de restrição institucional sem roteiros ou causas automáticas."
+        ],
+        "example": "Situação autoral: uma consulta pública recebe propostas e publica respostas justificadas, mas parte da população não consegue acessar seu único canal digital. A existência formal de consulta não demonstra participação em condições iguais; o caso permite discutir acesso e desenho do procedimento sem afirmar resultados de um programa real ou exigir exposição de dados pessoais.",
+        "pitfall": "Equiparar contagem de votos a legitimidade ilimitada, impor unanimidade a toda deliberação ou supor que tecnologia e eleições isoladas garantam inclusão."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário autoral: um governante obtém obediência por medo. Um observador conclui: “Como consegue ser obedecido, possui necessariamente o direito moral de governar.” Qual problema há na inferência?",
+        "hint": "Diferencie capacidade de obter um comportamento e justificação normativa do direito de impor decisões.",
+        "options": [
+          "Ela demonstra que qualquer uso de força é aceito unanimemente por todas as pessoas afetadas.",
+          "Ela prova que ninguém obedece a instituições por razões diferentes do medo.",
+          "Ela transforma poder de fato em legitimidade normativa sem apresentar uma justificação suficiente dessa passagem.",
+          "Ela confirma que a existência de um território torna moralmente correta qualquer decisão tomada nele."
+        ],
+        "correctIndex": 2,
+        "solution": "C identifica a passagem não justificada: obter obediência demonstra capacidade efetiva, não por si só direito moral de governar. A inventa aceitação unânime; B universaliza um motivo que pertence apenas ao cenário; D usa localização como garantia de correção. A análise não estabelece automaticamente qual teoria de legitimidade é verdadeira; mostra que a conclusão precisa de razões adicionais."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Numa comparação autoral de teorias contratualistas, uma estudante afirma: “Se Hobbes, Locke e Rousseau usam a ideia de contrato, então defendem a mesma autoridade sem limites e descrevem a assinatura real que originou todos os Estados.” Qual revisão é adequada?",
+        "hint": "Observe a diferença entre recurso de justificação, condições de autoridade e relato histórico documentado.",
+        "options": [
+          "Contrato significa sempre um documento real preservado, ainda que não exista qualquer fonte apresentada.",
+          "As teorias diferem sobre poder, direitos e liberdade; contrato não é prova automática de uma assinatura histórica universal.",
+          "A referência a contrato demonstra que Locke e Rousseau rejeitam toda participação dos governados em qualquer forma política.",
+          "Os três autores afirmam que toda vontade particular de um governante é idêntica ao interesse comum."
+        ],
+        "correctIndex": 1,
+        "solution": "B preserva as diferenças teóricas e evita confundir argumento de justificação com evidência de um acontecimento histórico universal. A exige um documento sem fonte. C apaga consentimento e soberania popular das discussões pertinentes. D iguala vontade particular e interesse comum e atribui uma tese uniforme sem apoio. A revisão não precisa afirmar que os três autores concordam em todos os limites ou instituições."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral em uma democracia constitucional: após vencer uma eleição competitiva, uma maioria propõe impedir que grupos de oposição se organizem e concorram novamente. Qual análise considera tanto a decisão eleitoral quanto as condições de contestação democrática?",
+        "hint": "A possibilidade de disputar futuras decisões e a proteção de direitos não se esgotam na contagem da última eleição.",
+        "options": [
+          "A vitória torna toda medida da maioria automaticamente justa, sem necessidade de examinar direitos ou regras futuras.",
+          "Eleição competitiva exige que o mesmo grupo seja proibido de governar de novo, independentemente das regras e da preferência dos eleitores.",
+          "Qualquer desacordo demonstra que a população deve deixar de votar para que exista deliberação.",
+          "A vitória não autoriza suprimir automaticamente direitos e competição futura; a proposta ameaça condições de contestação democrática."
+        ],
+        "correctIndex": 3,
+        "solution": "D examina o limite da autorização eleitoral: impedir organização e concorrência futura da oposição ameaça condições que permitem contestação e participação. A transforma maioria em poder ilimitado. B confunde possibilidade de substituição com troca obrigatória. C opõe desacordo e voto sem fundamento. O caso é didático, não diagnóstico de um país ou orientação eleitoral dirigida a pessoas específicas."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Estado, poder e cidadania",
+    "objective": "Analisar Estado, governo, poder e dominação como relações sociais, distinguir tipos de legitimidade e dimensões da cidadania e investigar diferenças entre reconhecimento formal, participação e acesso efetivo a direitos.",
+    "prerequisites": [
+      "Instituições, normas e relações sociais",
+      "Distinção entre descrição sociológica e avaliação moral",
+      "Leitura de situações coletivas sem generalizar de um indivíduo para toda população"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Estado, governo e relações de poder",
+        "explanation": "Poder não aparece somente no Estado: empresas, famílias, associações, meios de comunicação e movimentos também podem influenciar ações e decisões. Na análise sociológica, é importante observar recursos, regras, posições e possibilidades de resistência, em vez de atribuir toda influência à personalidade de um dirigente. Estado e governo não são nomes equivalentes. No estudo do Estado moderno, examinamos instituições e organização territorial da autoridade; governo refere-se ao exercício da direção política em uma configuração institucional e período, sem esgotar o conjunto estatal. Também é preciso distinguir Estado, sociedade e nação: identidades culturais e vínculos políticos não se sobrepõem de modo automático em todos os casos. Na formulação de Weber, o Estado moderno reivindica o monopólio do uso legítimo da força física em determinado território. Isso não significa que nenhuma violência privada exista nem que todo ato praticado por um agente estatal seja justo. A reivindicação de legitimidade e as condições de autorização devem ser analisadas; até usos de força por particulares podem ser submetidos a regras estatais. A definição descreve um problema de organização da dominação, não uma aprovação moral de toda coerção. Relações de classe, burocracias, interesses e disputas ajudam a investigar decisões públicas. Teorias sociológicas diferem sobre como esses elementos se articulam, e a presença de uma instituição formal não comprova neutralidade de todos os seus efeitos. Pergunte quem decide, com quais recursos, sob quais regras e sobre quem a decisão incide.",
+        "steps": [
+          "Identifique os agentes e os recursos que permitem influenciar decisões.",
+          "Diferencie instituições estatais e direção governamental.",
+          "Examine reivindicação de legitimidade e regras de coerção.",
+          "Evite confundir descrição de poder com aprovação moral automática."
+        ],
+        "example": "Caso autoral: uma grande empresa altera as condições de acesso a um serviço privado e afeta a rotina de um bairro. Isso permite analisar poder econômico e relações sociais, mas não transforma automaticamente a empresa em Estado. Seria necessário distinguir influência, organização territorial da autoridade e regras que enquadram a atividade.",
+        "pitfall": "Afirmar que só o governo exerce poder, que qualquer organização influente é um Estado ou que a definição de Weber aprova toda violência estatal."
+      },
+      {
+        "level": "intermediate",
+        "title": "Dominação e tipos de legitimidade",
+        "explanation": "Weber distingue poder em sentido amplo e dominação relacionada à probabilidade de encontrar obediência a determinadas ordens. A crença na legitimidade ajuda a explicar a estabilidade de relações de comando, mas não é prova de correção moral do ponto de vista de toda teoria ética. Os tipos tradicional, carismático e racional-legal são instrumentos analíticos, não uma sequência obrigatória pela qual todas as sociedades passam. Na dominação tradicional, a validade é apoiada no costume reconhecido. Na carismática, seguidores atribuem qualidades extraordinárias a uma liderança; carisma não significa apenas simpatia, fama ou capacidade técnica objetivamente comprovada. Na racional-legal, a obediência se dirige a regras e competências de cargos; a pessoa exerce autoridade segundo uma ordem impessoal, não por possuir um poder pessoal sem limites. Nenhum desses tipos demonstra sozinho que o regime seja democrático. Uma administração pode apresentar procedimentos burocráticos sem garantir igualdade política ou respeito efetivo a direitos. Casos históricos combinam fundamentos e mudam com disputas e institucionalização; encontrar uma regra escrita não exclui toda tradição ou apelo carismático. Na pesquisa, procure o motivo alegado para obedecer, a organização do comando e as condições de contestação. Não deduza o tipo de legitimidade apenas de roupa, idade ou aparência de uma pessoa. Tampouco se conclui aceitação unânime a partir de uma manifestação pública: obediência pode envolver interesse, hábito, medo e crenças diferentes entre os participantes. A análise precisa de evidências situadas e reconhecimento desses limites.",
+        "steps": [
+          "Identifique a razão invocada para obedecer.",
+          "Compare costume, atribuição pessoal extraordinária e competência de cargo.",
+          "Considere combinações e mudanças em vez de fases universais.",
+          "Separe crença de legitimidade e avaliação ética das decisões."
+        ],
+        "example": "Situação autoral: a direção de uma organização procura justificar uma decisão tanto por uma norma de competência quanto por um costume antigo do grupo. A coexistência dessas razões permite investigar combinação de fundamentos; não é necessário forçar toda a situação a um único tipo puro nem concluir que o conteúdo da decisão seja justo apenas por haver uma norma.",
+        "pitfall": "Definir carisma como ser agradável, considerar burocracia prova de democracia ou transformar tipos ideais em etapas inevitáveis de evolução."
+      },
+      {
+        "level": "advanced",
+        "title": "Cidadania, direitos e desigualdade de participação",
+        "explanation": "Cidadania envolve pertencimento político, direitos, deveres e formas de participação, com trajetórias históricas de inclusão, conflito e exclusão. Uma distinção associada a T. H. Marshall separa dimensões civis, políticas e sociais. Direitos civis dizem respeito a liberdades e garantias, como acesso à justiça; políticos envolvem participação no exercício do poder; sociais dizem respeito a condições de bem-estar e participação na vida social. Essa classificação é uma ferramenta analítica, não uma ordem cronológica obrigatória para todos os países. A discussão de percursos nacionais, como a de José Murilo de Carvalho para o Brasil, exige contexto em vez de aplicar mecanicamente a sequência inglesa. Reconhecimento formal e efetivação também diferem: uma previsão pode existir e seu exercício encontrar barreiras econômicas, territoriais, institucionais ou discriminatórias. A Constituição brasileira de 1988 inclui cidadania e dignidade da pessoa humana entre seus fundamentos; isso não significa que todas as desigualdades tenham sido eliminadas pela promulgação. Direitos humanos não se reduzem a direitos eleitorais de nacionais: a dignidade das pessoas não depende de comprovar participação numa eleição. Ao investigar desigualdade, identifique regra, acesso, recursos e resultados, sem concluir uma causa exclusiva com poucos dados. Participação inclui organização coletiva, acompanhamento e contestação, além do voto, conforme os mecanismos de cada contexto. Uma atividade aberta formalmente pode continuar inacessível a parte da população. Essa diferença não demonstra que o direito nunca existiu; mostra a necessidade de analisar condições efetivas, práticas institucionais e disputas por reconhecimento e implementação.",
+        "steps": [
+          "Diferencie dimensões civis, políticas e sociais com exemplos pertinentes.",
+          "Situe a trajetória histórica sem sequência universal.",
+          "Separe previsão formal e condições concretas de exercício.",
+          "Investigue barreiras e evidências sem atribuir uma causa isolada sem dados."
+        ],
+        "example": "Cenário autoral: há previsão de oferta educacional, mas estudantes de uma área rural enfrentam transporte irregular e grande distância. O caso permite discutir condições de exercício de um direito social; não comprova inexistência da previsão nem uma causa única para todas as desigualdades educacionais do país. É preciso investigar infraestrutura, organização e experiência dos grupos envolvidos.",
+        "pitfall": "Reduzir cidadania a votar, supor que um direito escrito se realiza automaticamente ou aplicar a cronologia de um país como lei de toda sociedade."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Numa análise autoral do Estado moderno, uma estudante diz: “Se o Estado reivindica o monopólio do uso legítimo da força, então toda violência de qualquer agente estatal é moralmente correta.” Qual avaliação evita confundir definição sociológica e aprovação moral?",
+        "hint": "Reivindicação de legitimidade e organização da coerção não demonstram automaticamente justiça de cada ato concreto.",
+        "options": [
+          "A conclusão é necessária, pois o cargo de um agente torna correta qualquer ação que ele pratique.",
+          "A frase prova que nenhuma violência privada jamais ocorre num território com Estado.",
+          "A formulação permite investigar autoridade e autorização, mas não aprova moralmente todo ato de violência estatal.",
+          "A existência de coerção demonstra que Estado, governo e empresa privada são sempre a mesma instituição."
+        ],
+        "correctIndex": 2,
+        "solution": "C preserva o sentido analítico e rejeita a passagem automática para aprovação moral. A transforma cargo em licença ilimitada; B confunde reivindicação de monopólio legítimo com inexistência empírica de violência privada; D apaga distinções institucionais. Para examinar um ato concreto, é necessário investigar regras, contexto e critérios de avaliação, sem concluir tudo de uma definição."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cenário autoral: numa repartição, o atendimento é autorizado por uma norma que define as competências do cargo, e a obrigação permanece quando muda a pessoa que o ocupa. Qual fundamento de dominação é enfatizado nesse recorte weberiano?",
+        "hint": "O enunciado destaca regras e competências impessoais, e não costume ancestral ou qualidades extraordinárias de uma pessoa.",
+        "options": [
+          "Racional-legal, pela autoridade vinculada às regras e competências do cargo no recorte descrito.",
+          "Carismático, pois qualquer servidor se torna extraordinário simplesmente por ocupar um cargo.",
+          "Tradicional, porque toda regra escrita deriva necessariamente de um costume ancestral imutável.",
+          "Ausência completa de autoridade, pois trocar o ocupante extingue necessariamente qualquer instituição."
+        ],
+        "correctIndex": 0,
+        "solution": "A identifica o fundamento enfatizado: competência definida por regra e continuidade institucional independente da pessoa. B confunde cargo com reconhecimento carismático. C transforma toda regra escrita em tradição e ignora o critério do enunciado. D contradiz a continuidade descrita. A classificação do recorte não prova que não existam outros fundamentos no caso completo, nem certifica qualidade ou justiça do atendimento."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: um conselho permite formalmente que todos os integrantes apresentem propostas. Na prática, reuniões em horário único e ausência de tradução impedem parte deles de acompanhar a discussão. Qual conclusão é sustentada sem inventar o motivo de cada ausência?",
+        "hint": "Compare a possibilidade prevista pela regra e as condições concretas de participação que o próprio cenário informa.",
+        "options": [
+          "A abertura formal garante participação efetiva idêntica, ainda que existam barreiras descritas.",
+          "As ausências demonstram obrigatoriamente desinteresse pessoal e incapacidade de todos os integrantes afetados.",
+          "A regra não pode existir, pois qualquer dificuldade prática elimina automaticamente todo reconhecimento formal.",
+          "O direito formal de apresentar propostas pode coexistir com barreiras à participação efetiva; é preciso investigar e enfrentar essas condições."
+        ],
+        "correctIndex": 3,
+        "solution": "D distingue reconhecimento e exercício. O cenário informa obstáculos de horário e linguagem, permitindo investigar desigualdade de participação sem atribuir desinteresse ou incapacidade. A nega as barreiras; B inventa motivos e estereotipa os afetados; C confunde implementação imperfeita com inexistência de regra. A análise é sociológica e didática, sem apresentar levantamento real nem solicitar dados pessoais dos estudantes."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Perspectiva e composição visual",
+    "objective": "Analisar recursos de profundidade e organização visual, distinguir perspectiva linear e atmosférica e justificar escolhas de composição com evidências, sem regras universais de beleza ou interpretações psicológicas sem fonte.",
+    "prerequisites": [
+      "Linhas paralelas, formas e planos",
+      "Diferença entre espaço representado e superfície do suporte",
+      "Contraste de valor, cor e escala visual"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Profundidade e perspectiva linear",
+        "explanation": "Uma imagem plana pode sugerir profundidade por sobreposição, variação de tamanho aparente, posição, modelagem e construção perspectiva. Esses recursos precisam ser interpretados juntos: um objeto desenhado menor não está necessariamente mais distante se seu tamanho físico for diferente. Perspectiva linear, no modelo central ideal, relaciona um ponto de vista, um plano de imagem e direções espaciais. Na configuração usual de um ponto para um ambiente ou objeto alinhado ao plano da imagem, as linhas paralelas de profundidade convergem para o mesmo ponto de fuga. Não significa que todas as linhas desenhadas convirjam para ele. Linhas paralelas ao plano da imagem permanecem paralelas nessa projeção; uma fachada frontal não tem de ser deformada para obedecer a um ponto destinado ao recuo. No modelo usual com plano de imagem vertical e vista horizontal, a linha do horizonte corresponde ao nível dos olhos para as direções horizontais e pode ser definida mesmo em um interior sem céu visível. O ponto de fuga não precisa estar no centro da folha, pois enquadramento e ponto de vista são escolhas. Para construir uma caixa frontal simples, desenhe a face, prolongue as direções de profundidade para o ponto de fuga e determine o término do volume; não conecte todos os cantos a um ponto como se todas as direções espaciais fossem iguais. Também não se conclui que qualquer face lateral resultante será necessariamente um paralelogramo. A construção é um recurso de representação, não uma obrigação para toda forma de arte.",
+        "steps": [
+          "Identifique quais pistas sugerem distância e quais dependem de tamanho físico.",
+          "Defina ponto de vista, plano de imagem e configuração usada.",
+          "Separe linhas de recuo e linhas paralelas ao plano da imagem.",
+          "Confira coerência entre as famílias de direções sem convergir tudo."
+        ],
+        "example": "Descrição autoral autossuficiente: um círculo interrompe parte do contorno de um quadrado, cobrindo-o. A sobreposição sugere o círculo à frente nesse arranjo, mesmo sem linhas de fuga. Isso não prova distância métrica nem tamanho físico dos objetos; demonstra uma pista de ordem espacial na representação.",
+        "pitfall": "Mandar todas as linhas para o mesmo ponto, exigir céu visível para definir horizonte ou tomar tamanho desenhado como medida automática de distância."
+      },
+      {
+        "level": "intermediate",
+        "title": "Direções de fuga e perspectiva atmosférica",
+        "explanation": "Quando uma caixa é vista de canto na configuração usual de dois pontos, duas famílias de arestas horizontais, paralelas dentro de cada família, convergem para pontos distintos sobre o horizonte. As verticais permanecem paralelas no modelo com plano de imagem vertical e vista horizontal. Não se deve medir automaticamente noventa graus entre os pontos desenhados: a relação entre direções do objeto e sua projeção depende do ponto de vista. Em configurações de três pontos, a direção vertical também pode ter um ponto de fuga finito, que não fica obrigatoriamente na mesma linha dos pontos de fuga horizontais. A expressão um, dois ou três pontos descreve uma organização de direções principais, não um limite universal para todos os objetos de uma cena complexa. Perspectiva atmosférica usa mudanças de contraste, cor e nitidez para sugerir distância, relacionadas à presença da atmosfera no caminho da luz. Objetos distantes podem parecer menos definidos e com contraste reduzido, mas não existe obrigação de que todos sejam sempre azuis ou mais claros em qualquer iluminação e condição. Perspectivas linear e atmosférica podem combinar-se ou ser exploradas separadamente; uma paisagem não precisa exibir construção geométrica explícita para sugerir profundidade. Projeções paralelas, como certas axonometrias, têm outra lógica e não são necessariamente erros de perspectiva linear. A escolha de um sistema pode responder a função, tradição, intenção documentada ou experimentação. Sem a obra e seu contexto, não se deduz inferioridade técnica ou cultural por ausência de um ponto de fuga central.",
+        "steps": [
+          "Agrupe arestas por direção espacial antes de localizar fugas.",
+          "Confira as hipóteses que mantêm verticais paralelas.",
+          "Diferencie construção geométrica e efeitos atmosféricos.",
+          "Analise o sistema empregado sem impor um único padrão a toda obra."
+        ],
+        "example": "Comparação autoral: numa paisagem descrita, a montanha próxima tem contorno bem definido, enquanto uma serra distante perde contraste sob névoa. A gradação permite discutir perspectiva atmosférica sem precisar inventar uma grade de fuga. Outra condição de iluminação poderia alterar cores e contrastes, portanto a descrição não cria uma regra de azul obrigatório para toda distância.",
+        "pitfall": "Colocar obrigatoriamente os três pontos no horizonte, exigir pontos separados por noventa graus na folha ou tratar perspectiva atmosférica como convergência de linhas pela cor."
+      },
+      {
+        "level": "advanced",
+        "title": "Composição, hierarquia e interpretação",
+        "explanation": "Composição envolve relações entre elementos no suporte: distribuição, escala, enquadramento, contraste, repetição, ritmo, equilíbrio, áreas ocupadas e espaços entre formas. Equilíbrio visual não é uma medida do estado emocional de quem criou a imagem. Simetria, assimetria e arranjos radiais podem organizar pesos visuais de maneiras diferentes, e nenhuma solução é obrigatoriamente melhor para toda finalidade. Um elemento pode ganhar destaque por tamanho, valor, cor, isolamento ou posição; a leitura ainda depende de contexto, experiência e tarefa do observador. Não se deve afirmar que um recurso controla de forma idêntica o olhar de todas as pessoas. A regra dos terços é uma orientação de composição que divide a área em três faixas horizontais e três verticais; suas interseções podem servir como lugares de experimentação. Não é lei biológica, não exige excluir o centro e não garante máximo impacto. Proporção áurea também não constitui certificado universal de beleza ou intenção de um artista. Para analisar uma composição, descreva primeiro as relações presentes e depois formule uma interpretação justificada. Um enquadramento pode omitir informações, produzir tensão ou destacar uma figura, mas o efeito percebido não prova sozinho a intenção documentada. Reorganizar uma composição e comparar alternativas é uma prática de estudo útil: explicite o que mudou e que hipótese de leitura pretende testar. Um resultado visual não permite diagnosticar saúde, personalidade ou pertencimento cultural de uma pessoa. A análise crítica admite pluralidade de soluções sustentadas pela obra.",
+        "steps": [
+          "Descreva escala, contraste, distribuição e enquadramento.",
+          "Identifique uma hipótese de hierarquia visual com pistas concretas.",
+          "Compare alternativas sem transformar guias em leis.",
+          "Separe efeito percebido, interpretação e intenção documentada."
+        ],
+        "example": "Situação autoral de projeto: um cartaz usa título grande, informações menores e ampla margem vazia. Em uma revisão, a equipe reduz o título e aproxima os blocos de texto. Comparar as versões permite discutir hierarquia e espaço, sem declarar que uma delas seja universalmente bela ou que todos os públicos sigam o mesmo percurso de leitura.",
+        "pitfall": "Declarar o centro um erro obrigatório, usar terços como garantia de beleza ou deduzir intenção e diagnóstico psicológico apenas do arranjo visual."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição autoral de desenho, com vista horizontal e plano da imagem vertical: um corredor reto tem linhas de profundidade paralelas que convergem para um ponto no horizonte. As arestas horizontais frontais são paralelas ao plano da imagem. O que mantém coerência na construção usual de um ponto?",
+        "hint": "Separe a família de linhas de recuo das linhas que permanecem paralelas ao plano da imagem.",
+        "options": [
+          "Convergir também toda aresta frontal ao mesmo ponto, porque qualquer linha deve terminar nele.",
+          "Manter o recuo convergente e as horizontais frontais paralelas entre si, sem exigir ponto de fuga no centro da folha.",
+          "Colocar o horizonte abaixo dos olhos porque não há céu visível dentro do corredor.",
+          "Concluir que o desenho informa automaticamente comprimento real e material de todas as paredes."
+        ],
+        "correctIndex": 1,
+        "solution": "B preserva a distinção das direções no modelo dado: o recuo converge, enquanto as horizontais frontais paralelas ao plano da imagem permanecem paralelas. A mistura famílias de direções. C confunde horizonte geométrico com céu visível. D inventa escala métrica e material. O enunciado contém todas as relações necessárias, sem depender de uma figura ausente."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Descrição autoral de uma caixa vista de canto: duas famílias de arestas horizontais convergem para dois pontos diferentes no horizonte, e as arestas verticais permanecem paralelas. Qual análise corresponde ao modelo usual com vista horizontal, sem impor propriedades de outra configuração?",
+        "hint": "Considere quais duas direções têm fugas finitas e qual direção permanece paralela nessa projeção.",
+        "options": [
+          "É obrigatoriamente perspectiva atmosférica, pois cor e nitidez são as únicas relações descritas.",
+          "Todas as arestas devem convergir para um único ponto para que qualquer representação espacial seja possível.",
+          "A descrição prova que os dois pontos precisam formar noventa graus medidos sobre a folha.",
+          "É compatível com perspectiva de dois pontos no modelo dado; não exige um terceiro ponto vertical finito."
+        ],
+        "correctIndex": 3,
+        "solution": "D corresponde às duas direções horizontais com fugas distintas e às verticais paralelas sob as hipóteses descritas. A invoca gradação atmosférica que não aparece. B impõe um único ponto a todas as direções. C confunde relações espaciais e sua projeção na folha. A resposta identifica a configuração, sem afirmar que todo objeto de qualquer cena tenha apenas esses pontos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Descrição autoral: uma imagem organiza um círculo central e formas equivalentes dispostas simetricamente dos dois lados. Um comentário afirma: “Está errada porque todo elemento principal deve ficar fora do centro, nos terços.” Qual avaliação é mais consistente?",
+        "hint": "Guias de composição oferecem possibilidades; examine se o comentário transforma uma orientação em proibição universal.",
+        "options": [
+          "A centralização e a simetria podem ser escolhas compositivas; os terços não constituem uma lei que torne esse arranjo automaticamente errado.",
+          "O comentário demonstra uma lei biológica segundo a qual nenhum observador consegue olhar para o centro.",
+          "A simetria prova que a pessoa autora possui um diagnóstico psicológico específico, mesmo sem contexto.",
+          "A regra dos terços garante o mesmo máximo impacto para toda obra, público e finalidade, sem necessidade de análise."
+        ],
+        "correctIndex": 0,
+        "solution": "A reconhece a pluralidade de soluções e rejeita a proibição universal. B inventa uma lei de percepção; C infere diagnóstico sem evidência; D transforma uma orientação em garantia absoluta. O círculo central e a simetria são relações descritas no caso, mas não permitem provar beleza universal ou intenção da autoria sem outras informações."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esportes coletivos e individuais",
+    "objective": "Distinguir a organização individual e coletiva em provas e modalidades, relacionar regras a decisões táticas e avaliar adaptações escolares com participação, segurança e critérios explícitos.",
+    "prerequisites": [
+      "Noção de regra e objetivo de jogo",
+      "Observação de cooperação e oposição em práticas corporais"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Classificar a prova, não apenas o nome do esporte",
+        "explanation": "Para distinguir organização individual e coletiva, comece pela prova ou formato efetivamente disputado. Numa prova individual, o resultado competitivo é atribuído à atuação do participante; isso não significa ausência de orientação, apoio, treinamento compartilhado ou interação com adversários. Numa organização coletiva, parceiros coordenam ações para um resultado comum. A presença de várias pessoas no mesmo local não basta para tornar a disputa coletiva: corredores podem competir entre si em uma prova individual. Por outro lado, o nome atletismo não permite classificar automaticamente todas as suas provas como individuais, pois há revezamentos por equipes. Também é preciso especificar simples ou duplas ao discutir o tênis. A existência de um gesto executado por uma pessoa de cada vez não elimina a cooperação de uma equipe. Outro critério é a lógica do confronto: podem ser comparadas marcas, precisão, composição de movimentos, disputa territorial, devolução sobre rede ou parede, campo e taco ou combate. Esses critérios não equivalem simplesmente ao número de participantes. Futebol e voleibol envolvem equipes, mas apresentam problemas de jogo distintos; o voleibol não se torna esporte de invasão só por ser coletivo. As classificações são ferramentas para estudar demandas da atividade, e não rankings de valor. Não se conclui que uma categoria desenvolva obrigatoriamente solidariedade enquanto a outra produza egoísmo, nem que uma seja sempre mais fácil. Para sustentar uma classificação, informe participantes, relações de cooperação ou oposição, objetivo e modo de estabelecer o resultado.",
+        "steps": [
+          "Identifique a prova ou formato específico.",
+          "Observe se há parceiros com resultado comum ou competidores individuais.",
+          "Descreva objetivo, oposição e critério de resultado.",
+          "Explique a classificação sem atribuir virtudes ou defeitos automáticos."
+        ],
+        "example": "Cenário autoral: participantes treinam juntos para uma disputa de arremesso de peso, ajudam a organizar o material e depois têm suas marcas individuais comparadas. A cooperação na preparação é real, mas não transforma por si só o formato competitivo em uma disputa por equipes. A distância alcançada, e não a proximidade de um alvo, fundamenta o critério de marca.",
+        "pitfall": "Classificar pelo simples número de pessoas presentes ou supor que todo esporte com equipe tenha a mesma lógica territorial."
+      },
+      {
+        "level": "intermediate",
+        "title": "Técnica, tática e estratégia em contexto",
+        "explanation": "Técnica refere-se aos modos de executar ações, enquanto tática envolve escolhas diante das condições concretas da disputa; estratégia pode designar um plano mais amplo para organizar a atuação. As definições têm usos variados, mas a distinção ajuda a explicar por que executar um movimento corretamente não garante escolher o melhor momento de empregá-lo. Em atividades coletivas, ocupar espaços, oferecer apoio, comunicar-se e coordenar coberturas são problemas relacionados às regras e às ações de parceiros e adversários. Em uma disputa individual com oponente direto, também há decisões sobre colocação, ritmo, antecipação e escolha de ações. Portanto, individual não significa ausência de tática. A solução depende do cenário: passar, avançar ou finalizar não são receitas universais sem observar linhas disponíveis e oposição. Um plano não dispensa ajustes durante a disputa. Regras alteram oportunidades, restrições e critérios de sucesso; transportar uma solução de uma modalidade a outra sem conferir essas condições pode ser inadequado. Também é necessário diferenciar um indicador e uma conclusão: contar passes não prova sozinho qualidade de participação ou eficiência em qualquer jogo. Para analisar um episódio, descreva o estado da disputa, as alternativas disponíveis e o motivo da escolha, admitindo informações que faltam. Uma atividade escolar pode simplificar espaço ou quantidade de participantes para destacar determinado problema tático. A simplificação precisa ser anunciada como adaptação da atividade, sem ser apresentada automaticamente como regulamento oficial de competição. Comparar situações ajuda a formular hipóteses, mas um lance isolado não permite inferir todas as capacidades de uma pessoa.",
+        "steps": [
+          "Descreva regras e situação antes de escolher uma ação.",
+          "Separe execução técnica, decisão situada e plano geral.",
+          "Identifique parceiros, adversários e alternativas disponíveis.",
+          "Justifique a decisão e reconheça limites das informações."
+        ],
+        "example": "Situação autoral: em uma partida de tênis de simples, a pessoa que recebe a bola observa o adversário deslocado para um lado e considera direcionar a devolução ao espaço aberto. A decisão é tática mesmo sem parceiro na quadra. Sua execução depende de técnica e condições do lance, sem garantia de ponto ou prescrição de um golpe universal.",
+        "pitfall": "Afirmar que só equipes usam tática ou que uma única contagem de ações demonstra qualidade em qualquer modalidade."
+      },
+      {
+        "level": "advanced",
+        "title": "Adaptações, participação e avaliação crítica",
+        "explanation": "No contexto escolar, uma adaptação pode ajustar espaço, material, comunicação, tempo ou organização para tornar a experiência acessível e coerente com o objetivo de aprendizagem. A decisão deve considerar segurança, condições reais de participação e clareza das regras. Adaptar não significa que toda mudança preserve automaticamente a mesma lógica do esporte: é preciso identificar o que permanece e o que muda. Uma tarefa de prática pode destacar um fundamento sem reproduzir uma competição oficial. Regras acordadas precisam ser conhecidas e aplicadas com critérios compreensíveis, com possibilidade de discutir efeitos e rever barreiras. Igualdade formal de instrução não garante acesso equivalente se sinais ou materiais não puderem ser percebidos ou utilizados. É possível oferecer explicações por diferentes meios e perguntar quais recursos funcionais ajudam a participação, sem exigir exposição de diagnósticos ou classificar pessoas por supostas incapacidades. A avaliação pode observar compreensão das regras, justificativa das decisões, cooperação quando pertinente e reflexão sobre a experiência, em vez de reduzir toda aprendizagem ao placar. Vitória não comprova por si só respeito, inclusão ou qualidade de ensino. Também não há garantia de que qualquer atividade esportiva produza os mesmos benefícios em todas as condições. Dados sobre desempenho precisam de finalidade clara e interpretação contextual; não se deve converter um número isolado em diagnóstico ou criar vigilância pessoal como requisito da aula. A análise crítica inclui quem consegue participar, quais condições favorecem ou dificultam o objetivo e como testar uma alternativa sem estigmatizar participantes.",
+        "steps": [
+          "Defina o objetivo pedagógico e a barreira observável.",
+          "Escolha ajustes funcionais e explicite quais regras mudaram.",
+          "Confira segurança e compreensão com a turma.",
+          "Avalie participação e aprendizagem para rever a proposta."
+        ],
+        "example": "Proposta autoral: em uma atividade escolar de acertar alvos, a turma experimenta bolas de tamanhos diferentes e compara facilidade de manipulação e critérios de pontuação previamente combinados. A experiência permite discutir materiais e acessibilidade; não é automaticamente uma regra oficial de uma modalidade nem um teste clínico de quem participa.",
+        "pitfall": "Chamar qualquer adaptação de regra oficial, exigir diagnóstico como entrada na atividade ou usar vitória como única prova de aprendizagem."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma comparação autoral, há uma corrida de 100 metros com classificação individual e um revezamento 4 × 100 metros com resultado por equipe. Qual interpretação evita classificar todas as provas apenas pelo nome atletismo?",
+        "hint": "Observe a unidade à qual o resultado é atribuído e a existência de parceiros na prova descrita.",
+        "options": [
+          "As duas provas são coletivas apenas porque várias pessoas estão presentes na pista.",
+          "Todo atletismo é individual, portanto o resultado de um revezamento não pode pertencer à equipe.",
+          "A primeira tem organização individual; o revezamento envolve parceiros com resultado comum, exigindo especificar a prova.",
+          "Qualquer treinamento em grupo transforma automaticamente a corrida individual em revezamento."
+        ],
+        "correctIndex": 2,
+        "solution": "C distingue os formatos descritos e o resultado comum dos parceiros no revezamento. A confunde presença simultânea com equipe. B generaliza o nome da modalidade e contradiz o cenário. D confunde organização do treinamento com a prova disputada. A classificação exige explicitar a situação, sem negar cooperação e apoio fora de uma competição individual."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cenário autoral de jogo escolar de invasão: quem está com a bola tem a passagem direta bloqueada, mas observa uma colega desmarcada e uma linha de passe livre. Qual decisão considera as informações dadas, sem prometer sucesso automático?",
+        "hint": "Relacione a oposição existente e a alternativa de apoio descrita, em vez de impor uma ação única a todos os lances.",
+        "options": [
+          "Considerar o passe à colega livre como alternativa para manter a ação coletiva, observando mudanças na defesa antes da execução.",
+          "Finalizar obrigatoriamente através do bloqueio, pois qualquer passe demonstra ausência de técnica.",
+          "Ignorar a colega porque a presença de um portador da bola transforma todo jogo de invasão em individual.",
+          "Garantir que qualquer passe resultará em ponto, independentemente de deslocamentos e execução."
+        ],
+        "correctIndex": 0,
+        "solution": "A utiliza o apoio e a linha disponível como elementos de decisão situada, sem garantir resultado. B impõe uma finalização sem considerar oposição. C confunde ação de um participante com organização da disputa. D transforma uma oportunidade em certeza. A leitura pode mudar durante o lance e deve respeitar as regras da atividade, não uma receita aplicável a qualquer esporte."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: uma atividade comunica o início de cada rodada apenas por som. Parte da turma relata dificuldade para perceber o sinal. Qual encaminhamento enfrenta a barreira sem exigir exposição de diagnósticos pessoais?",
+        "hint": "Compare mudar o recurso de comunicação, excluir participantes e coletar informações clínicas desnecessárias ao objetivo.",
+        "options": [
+          "Manter apenas o som porque oferecer a mesma instrução garante acesso idêntico a qualquer pessoa.",
+          "Excluir quem não percebe o sinal e usar somente o placar dos demais como medida de inclusão.",
+          "Exigir que cada estudante publique um diagnóstico antes de discutir qualquer recurso da atividade.",
+          "Combinar sinais por mais de um meio, verificar sua compreensão e ajustar a proposta a partir das necessidades funcionais relatadas."
+        ],
+        "correctIndex": 3,
+        "solution": "D enfrenta a barreira de comunicação por ajustes funcionais e conferência de compreensão, sem tornar informação clínica uma condição de participação. A ignora o obstáculo descrito. B exclui e confunde placar com inclusão. C exige exposição desnecessária. A escolha dos recursos deve ser construída com atenção à segurança e às condições reais da atividade."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Corpo humano e saúde",
+    "objective": "Relacionar níveis de organização e integração dos sistemas humanos, interpretar regulação por retroalimentação e analisar ações de saúde com atenção às condições sociais e à qualidade das evidências.",
+    "prerequisites": [
+      "Célula como unidade dos seres vivos",
+      "Trocas de matéria e energia",
+      "Diferença entre observação e conclusão"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Organização e integração do organismo",
+        "explanation": "O corpo humano pode ser estudado em níveis de organização, incluindo células, tecidos, órgãos e sistemas. Um órgão reúne diferentes tecidos e participa de funções em conjunto com outras estruturas; a divisão em sistemas é uma ferramenta de estudo, não a existência de compartimentos independentes. O sistema digestório transforma alimentos e permite absorver substâncias; digestão e absorção não são sinônimos. A primeira envolve processamento mecânico e químico, enquanto a segunda corresponde à passagem de substâncias através do epitélio para o meio interno. Grande parte da absorção de nutrientes ocorre no intestino delgado, e a circulação participa de sua distribuição. O sistema respiratório realiza trocas gasosas: nos pulmões, oxigênio pode passar dos alvéolos ao sangue, e dióxido de carbono segue no sentido contrário, conforme os gradientes. Ventilar os pulmões e realizar respiração celular também são processos diferentes. A circulação conecta regiões do organismo, mas o coração não é o local que produz todo o oxigênio transportado. Rins, vias urinárias, sistemas nervoso e endócrino e outros componentes participam da manutenção e coordenação do organismo. Ao explicar uma função, siga os caminhos e as relações necessários, sem atribuir tudo a um único órgão. Listar nomes ajuda a reconhecer estruturas, mas compreender exige relacioná-las a processos. Um esquema didático deve informar o que suas setas representam: circulação de matéria, comunicação ou sequência de eventos não são relações intercambiáveis.",
+        "steps": [
+          "Identifique o nível de organização da estrutura.",
+          "Relacione órgãos e sistemas sem isolá-los.",
+          "Diferencie transformação, absorção e transporte.",
+          "Explique o significado de cada conexão no esquema."
+        ],
+        "example": "Esquema autoral descrito: depois da digestão de amido, moléculas de glicose podem ser absorvidas no intestino delgado e distribuídas pela circulação. O alimento não atravessa inteiro até cada célula. O exemplo conecta processamento, passagem pelo epitélio e transporte, sem afirmar que todos os nutrientes sigam exatamente a mesma rota.",
+        "pitfall": "Confundir ventilação com respiração celular, absorção com digestão ou tratar cada sistema como independente dos demais."
+      },
+      {
+        "level": "intermediate",
+        "title": "Homeostase e mecanismos de regulação",
+        "explanation": "Homeostase designa a manutenção dinâmica de condições internas em faixas compatíveis com o funcionamento do organismo. Não significa imobilidade nem que todas as variáveis tenham um único valor exato em qualquer pessoa e circunstância. Em um modelo de retroalimentação negativa, uma mudança é detectada, a informação participa de um processo de integração e a resposta tende a contrariar o desvio. Negativa não significa moralmente ruim: descreve a relação entre resposta e mudança inicial. Na regulação térmica, a evaporação do suor pode contribuir para a perda de calor; sua eficácia depende de condições ambientais, e não se conclui que suar sempre mantenha qualquer pessoa segura. Sistemas nervoso e endócrino participam da coordenação por diferentes formas de sinalização. A integração permite ajustar processos em vez de exigir que cada órgão funcione isoladamente. Retroalimentação positiva amplifica uma mudança em um circuito, como em etapas da coagulação; não é sinônimo de boa saúde ou de controle universalmente desejável. Seu estudo requer considerar contexto e mecanismos que limitam o processo. Para interpretar um modelo, identifique variável, mudança inicial, resposta e efeito, e verifique se a resposta reduz ou reforça a mudança. Uma representação simplificada não contém toda a complexidade do corpo. Dados isolados, sem método e contexto, não permitem diagnosticar alguém. Exercícios de regulação podem usar variáveis fictícias e relações declaradas, sem pedir medidas pessoais ou produzir conclusões clínicas.",
+        "steps": [
+          "Identifique qual variável o modelo acompanha.",
+          "Separe mudança inicial, detecção e resposta.",
+          "Verifique se a resposta contraria ou amplifica a mudança.",
+          "Reconheça limites do modelo e evite diagnóstico por dado isolado."
+        ],
+        "example": "Analogia autoral não biológica: um reservatório possui sensor que aciona entrada de água quando o nível cai e a interrompe quando ele retorna à faixa prevista. A resposta contraria a redução inicial, ilustrando retroalimentação negativa. O reservatório não reproduz toda a fisiologia humana; serve apenas para explicitar a relação de controle.",
+        "pitfall": "Interpretar negativa como prejudicial, positiva como benéfica ou homeostase como ausência completa de variação."
+      },
+      {
+        "level": "advanced",
+        "title": "Saúde, prevenção e condições de vida",
+        "explanation": "A saúde envolve processos biológicos e condições de vida, incluindo moradia, saneamento, educação, trabalho e acesso a recursos e serviços. Uma explicação que atribui toda diferença de saúde apenas à vontade individual ignora barreiras e desigualdades. Ações coletivas e cuidado individual podem complementar-se; observar um fator de risco em um grupo não determina o destino de cada pessoa nem autoriza estereótipos. Na prevenção de infecções, vacinas estimulam respostas imunes específicas e podem produzir memória imunológica. Elas não são antibióticos e não constituem garantia absoluta de proteção idêntica para todas as pessoas e doenças. Antibióticos têm ação contra bactérias suscetíveis, não são tratamento geral de infecções virais. Resistência antimicrobiana diz respeito à capacidade de microrganismos de não responder aos medicamentos, e não a uma pessoa ficar simplesmente acostumada ao produto. Essas distinções são conceitos de educação científica, sem prescrever medicamento, dose ou calendário individual. Para avaliar uma afirmação sobre saúde, confira autoria, data, método e se o resultado realmente sustenta a conclusão. Um relato isolado não demonstra eficácia universal; uma comparação entre grupos pode envolver diferenças que precisam ser investigadas. Em um projeto escolar, é possível estudar infraestrutura pública e informações oficiais sem coletar diagnósticos dos colegas. A pergunta de pesquisa deve ser necessária, respeitosa e proporcional. Conclusões sobre problemas coletivos exigem dados adequados e atenção às condições reais de acesso às medidas propostas.",
+        "steps": [
+          "Distinga mecanismos biológicos e condições sociais relacionadas à saúde.",
+          "Diferencie vacinação, antibiótico e resistência microbiana.",
+          "Confira fonte, método e alcance da conclusão.",
+          "Escolha dados necessários sem expor informações clínicas de colegas."
+        ],
+        "example": "Análise autoral de uma mensagem fictícia: um anúncio diz que um único produto substitui todas as vacinas e garante proteção para qualquer infecção. A turma verifica quem publicou, quais evidências foram apresentadas e se a conclusão excede os resultados. A promessa universal não decorre da simples presença de um depoimento, e a atividade não prescreve produto nem solicita informações clínicas dos estudantes.",
+        "pitfall": "Culpar pessoas por toda desigualdade, prometer prevenção infalível ou apresentar resistência antimicrobiana como hábito do corpo ao medicamento."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição autoral: em um esquema de troca gasosa pulmonar, uma seta deve indicar o trajeto de oxigênio do ar alveolar para o sangue. Qual leitura relaciona corretamente sistemas e processos?",
+        "hint": "Diferencie troca entre alvéolos e sangue, transporte circulatório e uso de oxigênio pelas células.",
+        "options": [
+          "O coração produz todo o oxigênio do organismo, portanto o ar não participa da troca pulmonar.",
+          "O oxigênio passa dos alvéolos ao sangue e pode ser transportado pela circulação aos tecidos; isso não equivale ao movimento de ventilação.",
+          "Os alvéolos digerem alimentos inteiros e os enviam sem transformação diretamente a cada célula.",
+          "A existência de pulmões demonstra que sistema respiratório e circulação nunca precisam interagir."
+        ],
+        "correctIndex": 1,
+        "solution": "B relaciona troca pulmonar e transporte, distinguindo-os da entrada e saída de ar. A atribui produção de oxigênio ao coração. C mistura digestão e trocas gasosas. D nega a integração dos sistemas. A descrição oferece o trajeto necessário sem depender de uma imagem ausente e não confunde ventilação com reações celulares."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo didático fictício: quando uma variável interna X aumenta acima da faixa de referência, um mecanismo é acionado e sua resposta reduz X em direção à faixa. Sem inferir um diagnóstico, qual relação caracteriza o circuito descrito?",
+        "hint": "Compare o sentido da mudança inicial e o efeito da resposta, sem atribuir valor moral aos termos.",
+        "options": [
+          "Retroalimentação positiva, porque toda resposta que ajuda o organismo necessariamente amplifica X.",
+          "Ausência de regulação, porque regular exige que X jamais possa variar em nenhuma circunstância.",
+          "Retroalimentação negativa, pois a resposta contraria o aumento inicial de X no modelo.",
+          "Diagnóstico obrigatório de uma doença específica, mesmo sem saber qual variável X representa."
+        ],
+        "correctIndex": 2,
+        "solution": "C identifica a relação de oposição ao desvio inicial: X sobe e a resposta reduz X em direção à faixa. A confunde utilidade com sinal da retroalimentação. B define homeostase como imobilidade. D inventa diagnóstico sem variável e contexto clínico. O exercício avalia um modelo de controle e não uma condição pessoal do estudante."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cenário autoral: um bairro tem oferta irregular de água tratada. Um comentário conclui que qualquer diferença de saúde decorre exclusivamente da falta de vontade de seus moradores. Qual avaliação respeita as informações e os limites da evidência?",
+        "hint": "Considere a barreira de infraestrutura descrita sem transformar uma observação em causa única ou diagnóstico de cada morador.",
+        "options": [
+          "A conclusão é excessiva: infraestrutura e acesso são condições relevantes a investigar, e os dados não justificam culpar moradores nem diagnosticar indivíduos.",
+          "O comentário está demonstrado porque condições de moradia e saneamento nunca se relacionam à saúde.",
+          "A informação basta para afirmar que todas as pessoas do bairro têm exatamente a mesma doença.",
+          "Qualquer dificuldade de infraestrutura prova que ações coletivas são inúteis e que só resta avaliar a vontade pessoal."
+        ],
+        "correctIndex": 0,
+        "solution": "A reconhece uma condição social relevante e o limite causal do cenário. B descarta determinantes sem fundamento. C inventa diagnóstico universal. D converte uma barreira em prova de inutilidade de ações coletivas. Investigar abastecimento, condições de vida e acesso é compatível com responsabilidade pública e evita estereótipos, sem atribuir causa clínica individual."
+      }
+    ]
   }
 ];
 
@@ -1108,6 +1751,230 @@ export const authoredCurriculumBatch09ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "A questão descreve padrão didático explicitamente clássico de uma planta que captura CO2 à noite, o incorpora em ácidos orgânicos e os armazena, liberando-o internamente para o ciclo de Calvin durante o dia com redução da abertura dos estômatos; a alternativa correta (índice 3) identifica essa estratégia como CAM, com separação temporal entre fixação inicial e disponibilização posterior de CO2 para Calvin, diferentemente do C4 de separação espacial e das respostas erradas que afirmam eliminação completa do ciclo de Calvin, prova de que a Rubisco jamais participa da assimilação de carbono ou respiração mitocondrial exclusiva, reforçando que o padrão clássico não determina espécie nem comportamento estomático em toda condição."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Renascimento e Reformas religiosas",
+    "contentSha256": "dfe8a94e307c20d3eb0727a66552d4da4c0c465ddcb7ae3031d356c6f7189740",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://wwws.loc.gov/exhibits/vatican/humanism.html",
+      "https://dcc.newberry.org/?p=18521",
+      "https://openstax.org/books/world-history-volume-2/pages/5-1-the-protestant-reformation",
+      "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/collections/common-prayer/act-of-supremacy/",
+      "https://history.hanover.edu/texts/engref/er79.html",
+      "https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi%3Adocument-4386",
+      "https://www.vatican.va/content/paul-vi/en/speeches/1963/documents/hf_p-vi_spe_19631104_seminari.html",
+      "https://www.jesuits.global/2021/09/26/on-27-september-1540-the-society-of-jesus-received-papal-approval/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A comparação de textos clássicos e o patronato religioso podem coexistir; o cenário não prova abandono obrigatório da fé. O gabarito A está correto pois reconhece essa compatibilidade sem transformar humanismo em ateísmo obrigatório, enquanto os distratores B, C e D invertem ou exageram limitações não presentes no texto da aula."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "O Ato de Supremacia de 1534 reorganizou autoridade religiosa em torno da monarquia; a trajetória doutrinária inglesa exige análise adicional. O gabarito C está correto pois descreve a mudança de jurisdição sem concluir igualdade completa com o luteranismo, enquanto os distratores A, B e D invertem fatos históricos ou atribuem consequências não previstas no documento original."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Tratava-se de coexistência confessional limitada, que não equivale à liberdade religiosa individual universal. O gabarito D está correto pois distingue o âmbito restrito do acordo de uma garantia universal, enquanto os distratores A, B e C exageram ou invertem o alcance e as condições da Paz de Augsburgo, contradizendo o recorte da aula."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Clima, massas de ar e mudanças climáticas",
+    "contentSha256": "2a3170e7140896f31830e4816b8a02c7b04663c4c23dace35b8a1908375d8870",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://portal.inmet.gov.br/servicos/normais-climatol%C3%B3gicas",
+      "https://portal.inmet.gov.br/uploads/normais/NORMAISCLIMATOLOGICAS.pdf",
+      "https://www.ncei.noaa.gov/products/wmo-climate-normals",
+      "https://www.noaa.gov/jetstream/synoptic/air-masses",
+      "https://www.weather.gov/lmk/basic-fronts",
+      "https://www.ufsm.br/app/uploads/sites/413/2018/12/arte_meteorologia_aplicada.pdf",
+      "https://www.ipcc.ch/report/ar6/syr/longer-report/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A resposta correta (índice 1) fundamenta que um evento frio local, embora real, não invalida uma tendência de aquecimento global medida em séries e escalas apropriadas; a explicação rejeita a ideia de que um dado isolado determine a temperatura média do planeta por décadas, e também nega que tendência global impeça completamente dias frios em algum lugar."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A opção correta (índice 3) explica que a massa mEc, apesar da origem continental amazônica, pode ser quente e úmida devido à disponibilidade de água e evapotranspiração na região, desconstruindo a equivocada regra de que 'continental' significa sempre seca; as outras opções incorretamente transferem propriedades de origem ou negam transformações durante o deslocamento."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opção correta (índice 0) compara as duas frequências observadas (8/100 e 20/100), calculando razão de 2,5 vezes, mas explicitamente alerta que essa razão isolada não demonstra causa climática, nem período de retorno automático, evitando conclusões não suportadas pelos dados do exercício."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia política e democracia",
+    "contentSha256": "fb10ccf0f8f3a4e63071772aa37aa913dd8db7434ad28ff6bf347bf22db4c2aa",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://plato.stanford.edu/entries/democracy/",
+      "https://plato.stanford.edu/entries/authority/",
+      "https://plato.stanford.edu/entries/hobbes-moral/",
+      "https://www.gutenberg.org/cache/epub/7370/pg7370-images.html",
+      "https://plato.stanford.edu/entries/rousseau/",
+      "https://plato.stanford.edu/entries/republicanism/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A questão básica apresenta um cenário de governante obedecido por medo e pede o problema na inferência de direito moral de governar. A alternativa correta (índice 2) identifica a passagem não justificada de poder de fato para legitimidade normativa, enquanto as distratores 0, 1 e 3 introduzem alegações de aceitação unânime, universalização de motivo ou territorialidade como fonte de correção, que não abordam o núcleo do problema."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "A questão intermediária pede revisão de afirmação sobre Hobbes, Locke e Rousseau defendendo autoridade sem limites e assinatura real de todos os Estados. A alternativa correta (índice 1) preserva as diferenças teóricas entre os autores e afirma que contrato não é prova automática de assinatura histórica universal, enquanto as outras opções incorretamente afirmam que contrato significa documento real preservado, que Locke e Rousseau rejeitam participação política ou que todos igualam vontade particular a interesse comum."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A questão avançada situa-se em democracia constitucional após eleição competitiva, onde maioria propõe impedir oposição de se organizar e concorrer. A alternativa correta (índice 3) examina o limite da autorização eleitoral, afirmando que vitória não autoriza suprimir direitos e competição futura, ameaçando condições de contestação democrática. As distratores 0, 1 e 2 transformam maioria em poder ilimitado, confundem proibição com obrigação ou opõem desacordo ao voto sem fundamento."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Estado, poder e cidadania",
+    "contentSha256": "6b1f43a017ff1c56a375ee764671c32beba1b80308e22b42f347da9a7cb08f06",
+    "draftMethod": "Autoria e conferência principal pelo Codex com fontes verificadas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/17-1-power-and-authority",
+      "https://openstax.org/books/introduction-sociology-3e/pages/17-2-forms-of-government",
+      "https://periodicos.fgv.br/reh/article/view/2029",
+      "https://www.tse.jus.br/legislacao/codigo-eleitoral/constituicao-federal/constituicao-da-republica-federativa-do-brasil",
+      "https://www.unicef.org/brazil/declaracao-universal-dos-direitos-humanos"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Questão solicita avaliação que distinga definição sociológica de aprovação moral de violência estatal; a opção correta (Índice 2) preserva caráter analítico ao afirmar que a formulação permite investigar autoridade e autorização, mas não aprova moralmente todo ato de violência estatal, rejeitando a passagem automática para justiça; distractores A, B e D cometem os erros de transformar cargo em licença ilimitada, confundir monopólio legítimo com inexistência empírica de violência privada e apagar distinções institucionais entre Estado, governo e empresa privada."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Questão pede identificar o fundamento weberiano de dominação baseado em regras e competências de cargo, independentemente da pessoa que o ocupa; a opção correta (Índice 0) racional-legal, pela autoridade vinculada às regras e competências do cargo no recorte descrito, garantindo continuidade institucional; distractores B, C e D cometem equívocos de confundir cargo com reconhecimento carismático, toda regra escrita com tradição ancestral imutável e trocar ocupante com extinção da instituição."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Questão situa coerência entre abertura formal e barreiras efetivas de participação em contexto de conselho; a opção correta (Índice 3) distingue direito formal de condições concretas de exercício, afirmando que o direito pode coexistir com barreiras e é preciso investigar e enfrentá-las; distractores A, B e D negam as barreiras descritas, inventam motivos de ausência baseados em estereótipos e confundem implementação imperfeita com inexistência de reconhecimento formal."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Perspectiva e composição visual",
+    "contentSha256": "a25f9662fcafb63efc80fff7f456445f80ff2c9993c65481d396d2023681f06e",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.nationalgallery.org.uk/paintings/glossary/perspective",
+      "https://www.nationalgallery.org.uk/paintings/glossary/vanishing-point",
+      "https://www.nationalgallery.org.uk/paintings/glossary/aerial-perspective",
+      "https://www.mos.org/leonardo/activities/perspective.html",
+      "https://www.getty.edu/education/teachers/building_lessons/principles_design.pdf",
+      "https://www.getty.edu/education/k-12-learning/describe-listen-draw/vocabulary-for-describing-an-artwork/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A questão 1 avalia a compreensão de perspectiva de um ponto em corredor; a opção correta (Índice 1) mantém a coerência ao preservar linhas de recuo convergentes e horizontais frontais paralelas ao plano da imagem, diferentemente das distrações que incorretamente convergem todas as linhas ao mesmo ponto ou inferem escala métrica automática, o que configuraria falácia de representação espacial."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A questão 2 foca em caixa vista de canto com duas fugas horizontais; a resposta correta (Índice 3) identifica a configuração como perspectiva de dois pontos compatível com verticalidade paralela, ao contrário das opções que impõem regras de ângulos de noventa graus entre pontos de fuga ou atmosfera atmosférica obrigatória, que seriam inferências espaciais inválidas."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A questão 3 apresenta círculo central simetrizado com comentário sobre regra dos terços; a opção correta (Índice 0) reconhece que centralização e simetria são escolhas composicionais, não proibidas universalmente pela regra dos terços, ao contrário das outras opções que inventam leis biológicas ou garantias de impacto máximo sem fonte documentada."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Esportes coletivos e individuais",
+    "contentSha256": "f5ba74e15b139ed3c3b9e1464d256112c51bc8a10629ef02f565ff231ff00a64",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://basenacionalcomum.mec.gov.br/images/BNCC_20dez_site.pdf",
+      "https://worldathletics.org/competitions/world-athletics-relays/world-athletics-relays-7216920/key-info",
+      "https://www.world.tennis/en/about-us/governance/rules-and-regulations/?type=rules"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A opção correta distingue organizações individuais e coletivas pelo resultado atribuído, enquanto as distratores cometem erros como confundir presença com equipe (A), generalizar o nome da modalidade (B) ou confundir treinamento com competição (D)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A opção correta utiliza apoio e linha livre como elementos de decisão tática sem garantir sucesso, ao contrário de B que impõe finalização sem considerar oposição, C que confunde ação individual com disputa coletiva e D que transforma oportunidade em certeza independente de execução."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção correta combina múltiplos meios de sinalização e verifica compreensão funcional, ao contrário de A que mantém apenas som, B que exclui participantes e C que exige diagnóstico desnecessário, todos falhando em enfrentar a barreira de comunicação sem estigmatizar."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Corpo humano e saúde",
+    "contentSha256": "00ac781c418a8b929c062de8dd4216dbf790bc04b1c41b6b32dcf6fc286176e5",
+    "draftMethod": "Autoria e conferência principal pelo Codex com fontes verificadas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-2-structural-organization-of-the-human-body",
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-4-gas-exchange",
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-7-chemical-digestion-and-absorption-a-closer-look",
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-5-homeostasis",
+      "https://www.who.int/health-topics/social-determinants-of-health",
+      "https://www.who.int/news-room/questions-and-answers/item/vaccines-and-immunization-what-is-vaccination",
+      "https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção correta identifica o trajeto de oxigênio dos alvéolos ao sangue e seu transporte circulatório, distinguindo explicitamente da ventilação, enquanto as distratores atribuem produção de oxigênio ao coração (0), misturam digestão com trocas gasosas (2) ou negam integração sistêmica (3)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A opção correta identifica a retroalimentação negativa como relação em que a resposta contrarie o aumento inicial da variável X, enquanto as distratores confundem utilidade com sinal da retroalimentação (0), definem homeostase como imobilidade (1) ou inventam diagnóstico clínico sem contexto (3)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opção correta reconhece que a conclusão de que diferenças de saúde decorrem exclusivamente da vontade dos moradores é excessiva, afirmando que infraestrutura e acesso são condições relevantes, enquanto as distratores descartam determinações sociais sem fundamento (1), inventam diagnóstico universal (2) ou convertem barreiras em prova de ineficácia das ações coletivas (3)."
       }
     ]
   }

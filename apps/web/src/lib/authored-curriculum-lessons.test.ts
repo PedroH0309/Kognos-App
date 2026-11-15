@@ -804,3 +804,13 @@ test('fotossíntese distingue origem do oxigênio e saldo líquido do ciclo de C
  assert.match(choice(2),/CAM.*separação temporal/);
  assert.match(spec.sections.map(section=>section.explanation).join(' '),/não.*somente.*noite/);
 });
+
+
+test('clima compara frequências com limiar fixo sem fabricar atribuição causal',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Clima, massas de ar e mudanças climáticas');assert.ok(spec);
+ const task=spec.tasks[2];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const sample=task.prompt.match(/primeira amostra: (\d+) dias em (\d+); segunda amostra: (\d+) dias em (\d+)/);assert.ok(sample);
+ const first=Number(sample[1])/Number(sample[2]),second=Number(sample[3])/Number(sample[4]);assert.ok(first>0&&second>first);
+ assert.equal(task.options[task.correctIndex],`A frequência observada é ${(second/first).toFixed(1).replace('.',',')} vezes a inicial; os dados isolados não demonstram a causa da diferença.`);
+ const text=spec.sections.map(section=>section.explanation).join(' ');assert.match(text,/2011–2020/);assert.match(text,/1850–1900/);assert.match(text,/infravermelha/);
+});
