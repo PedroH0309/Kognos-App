@@ -1,6 +1,33 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 13
+## Estado atual em 15/11/2026 — checkpoint 14
+
+Este estado prevalece sobre os históricos. Execução ativa até completar aulas;
+não encerrar neste checkpoint. PR 117 draft; sem banco/merge/deploy.
+
+- 73 aulas novas: lotes 03–06 completos e nove no 07; 635 testes + seis do motor,
+  lint alterado, build, API das 73 e leitor das cinco novas aprovados. Foram 15
+  respostas e referências expandidas em 320/375/768/1440 px. Preview 3316 = 73.
+- Restam 1.222 lacunas; ENEM 88/808; estudo 88/47/772. Revisão humana pendente.
+  CI do checkpoint 13 43723017121 aprovada.
+- Integrador 07 reescreve tudo: manter course-ca3586c5 course-e5132a3e
+  course-e1614f73 course-8aa12850 course-400807fd course-176421ee
+  course-b3e78a50 course-e31ebf0d course-e43a4fab antes de acrescentar outros.
+- Biologia: crítica acertou volume, mas errou unidade de partículas. Correção
+  _principalCorrections preserva original-units; não apagar ao reutilizar cache.
+- Próximo course-67ca78bb História: draft3/crítica lidos e versão principal
+  reescrita; nova crítica em execução. NÃO integrada neste checkpoint. Corrigidas
+  realeza divina, cidadania, determinismos e generalizações; fontes conferidas.
+- Geografia course-87b3d0a9: reviewed bruto lido, ainda SEM versão principal.
+  Erros graves aceitos: hotspot inverte direção do movimento, ondas P diretas
+  presumidas na sombra, Pangeia 300 Ma confundida com extinção 252 Ma, tomografia
+  tratada como diagnóstico químico único. Reescrever antes de integrar.
+- Restantes 07: course-998f05a6 Filosofia; course-a8d7ba10 Sociologia;
+  course-def934f8 Arte; course-5e32cba9 Educação Física; course-25151546 Ciências.
+- Autoria Claude continua sem autointegração. Helpers em Temp/backups privados;
+  fetch antes de push, preservar concorrência e não commitar AGENTS gerado.
+
+## Histórico — checkpoint 13
 
 Este estado prevalece sobre os históricos. Continuar até completar as aulas;
 não encerrar neste checkpoint. PR 117 draft; sem merge/deploy/banco.

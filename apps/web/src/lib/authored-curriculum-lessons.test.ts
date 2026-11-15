@@ -558,3 +558,52 @@ test('soluções conservam quantidade analítica e usam volume final nas convers
  const options=spec.tasks[2].options!;
  options.forEach((option,index)=>{if(index!==spec.tasks[2].correctIndex)assert.ok(Math.abs(Number(option.split(' ')[0].replace(',','.'))-concentration)>1e-9);});
 });
+
+test('membranas conservam soluto impermeante no modelo osmótico sem confundir volume perdido e restante',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Células, organelas e membranas');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const initialVolume=Number(task.prompt.match(/inicial de (\d+) mL/)?.[1]),initial=Number(task.prompt.match(/impermeante de (\d+) mOsm\/L/)?.[1]),external=Number(task.prompt.match(/reservatório a (\d+) mOsm\/L/)?.[1]);
+ assert.ok(initialVolume>0&&external>initial);
+ const particlesMilliOsmoles=initial*initialVolume/1000;
+ const finalVolume=particlesMilliOsmoles/external*1000;
+ const selected=task.options[task.correctIndex];
+ assert.match(selected,/mL, com perda líquida de água\.$/);
+ assert.ok(Math.abs(Number.parseFloat(selected)-finalVolume)<1e-9);
+ assert.ok(Math.abs(particlesMilliOsmoles-finalVolume*external/1000)<1e-9);
+ assert.notEqual(finalVolume,initialVolume-finalVolume);
+ assert.ok(finalVolume<initialVolume);
+});
+
+test('misturas fecham balanço sem diagnosticar causa de déficit nem perder soluto na destilação ideal',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Química'&&lesson.topic==='Matéria, transformações e separação de misturas');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,initial=Number(first.match(/amostra de (\d+) g/)?.[1]),sand=Number(first.match(/(\d+) g de areia seca/)?.[1]),salt=Number(first.match(/(\d+) g de cloreto de sódio seco/)?.[1]);
+ assert.ok(initial>sand+salt);
+ assert.equal(choice(0),`${initial-sand-salt} g; os dados não identificam a causa da diferença.`);
+ const third=spec.tasks[2].prompt,total=Number(third.match(/de (\d+) g contém/)?.[1]),solute=Number(third.match(/contém (\d+) g de sal/)?.[1]),distillate=Number(third.match(/recolhidos (\d+) g de água/)?.[1]);
+ assert.ok(total>solute+distillate);
+ const residue=total-distillate,percentage=100*solute/residue;
+ assert.equal(choice(2),`${residue} g de resíduo com ${percentage.toFixed(1).replace('.',',')}% m/m de sal.`);
+ assert.notEqual(percentage,100*solute/total);
+ assert.equal(residue-solute+distillate,total-solute);
+});
+
+test('cinemática recalcula percursos, impacto com desnível e transformação entre eixos paralelos',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Física'&&lesson.topic==='Cinemática escalar e vetorial');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt;
+ const segments=[...first.matchAll(/velocidade constante de ([+-]?\d+) m\/s durante (\d+) s/g)].map(match=>Number(match[1])*Number(match[2]));
+ assert.equal(segments.length,2);
+ assert.equal(choice(0),`Δs = ${segments.reduce((a,b)=>a+b,0)} m; d = ${segments.reduce((a,b)=>a+Math.abs(b),0)} m`);
+ const second=spec.tasks[1].prompt,height=Number(second.match(/altura (\d+) m/)?.[1]),speed=Number(second.match(/inicial de (\d+) m\/s/)?.[1]);
+ const sine=Number(second.match(/sen 37° = ([\d,]+)/)?.[1].replace(',','.')),cosine=Number(second.match(/cos 37° = ([\d,]+)/)?.[1].replace(',','.')),g=Number(second.match(/g = (\d+) m\/s²/)?.[1]);
+ assert.ok(height>0&&speed>0&&g>0);
+ const vx=speed*cosine,vy=speed*sine,time=(vy+Math.sqrt(vy*vy+2*g*height))/g;
+ assert.ok(time>2*vy/g);
+ assert.ok(Math.abs(height+vy*time-g*time*time/2)<1e-9);
+ assert.equal(choice(1),`${Math.round(vx*time)} m`);
+ spec.tasks[1].options!.forEach((option,index)=>{if(index!==spec.tasks[1].correctIndex)assert.ok(Math.abs(Number.parseFloat(option)-vx*time)>1);});
+ const third=spec.tasks[2].prompt,acceleration=third.match(/a' = \((\d+) i \+ (\d+) j\)/);assert.ok(acceleration);
+ assert.match(third,/eixos paralelos e sem rotação/);
+ assert.equal(choice(2),`(${Number(acceleration[1])} i + ${Number(acceleration[2])} j) m/s²`);
+});

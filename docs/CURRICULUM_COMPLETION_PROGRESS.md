@@ -4,7 +4,42 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 13
+## Estado atual — checkpoint 14
+
+O lote 07 tem nove aulas. Acrescentadas Inglês — Tempos e aspectos verbais;
+Espanhol — Leitura global e localização de informações; Física — Cinemática
+escalar e vetorial; Química — Matéria, transformações e separação de misturas;
+Biologia — Células, organelas e membranas. São 73 novas nesta etapa, com revisão
+docente humana pendente.
+
+Restam 1.222 lacunas entre 1.512 identidades. ENEM editorial: 88 aprofundadas,
+808 lacunas. Lista de estudo: 88 aprofundadas, 47 guias, 772 planejadas; uma nova
+fonte substitui um guia histórico. Não se certificam habilidades oficiais.
+
+- Inglês: retiradas proibições automáticas por marcadores, obrigatoriedade de
+  past perfect e oposição absoluta entre futuros. Questões agora especificam
+  contexto e construção, sem rejeitar leituras gramaticais alternativas.
+- Espanhol: textos autorais hipotéticos substituem estatísticas sem fonte;
+  possibilidade não é certeza e voz citada não implica adesão ou refutação.
+- Física: condições de referenciais sem rotação e fórmulas de lançamento
+  explicitadas, vetor separado de módulo e origens falsas de distratores
+  retiradas. Teste recalcula percurso, raiz de impacto e transformação.
+- Química: retirada regra universal de 80 °C, garantia de pureza e equiparação
+  de ultrafiltração à dessalinização. Teste recalcula déficit sem diagnosticar
+  causa e porcentagem em massa com denominador final, conservando o soluto.
+- Biologia: retiradas extrapolações clínicas, lise universal e falsa situação
+  contra gradiente. Modelo osmótico tem hipóteses e teste com conversão de
+  unidades; rota secretora ensina topologia e limites de inferência. Unidade
+  errada na crítica foi corrigida com registro original preservado.
+
+Verificação: 635 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 73 aulas e abriu as cinco novas, respondeu
+às 15 questões e conferiu explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal. CI do checkpoint 13
+aprovada (run 43723017121). Sem banco, schema/RLS, merge ou deploy.
+O trabalho continua em História — Antiguidade oriental e clássica e demais temas.
+
+## Histórico — checkpoint 13
 
 O lote 07 começou com Matemática — Operações, divisibilidade e conjuntos
 numéricos; Português — Gêneros textuais e tipos de discurso; Literatura —

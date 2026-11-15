@@ -367,6 +367,473 @@ export const authoredCurriculumBatch07:readonly AuthoredLessonSpec[] = [
         "correctIndex": 2
       }
     ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Tempos e aspectos verbais",
+    "objective": "Interpretar referências temporais e perspectivas simples, progressivas e perfeitas no inglês, formar estruturas frequentes e escolher formas pelo sentido pretendido, sem transformar marcadores em regras automáticas.",
+    "prerequisites": [
+      "Reconhecimento de sujeito e verbo em inglês",
+      "Formas básicas de be, have e verbos irregulares frequentes",
+      "Noções de presente, passado e referência futura"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Referência temporal e perspectiva simples ou progressiva",
+        "explanation": "Tempo e aspecto ajudam a organizar o que se diz sobre uma situação. Aqui usamos os nomes didáticos simple, continuous e perfect, mas o nome da forma não determina sozinho a data do acontecimento. O simple present pode apresentar hábitos, estados e generalizações: Elisa repairs bicycles on Saturdays descreve uma rotina. Com he, she ou it, o verbo lexical recebe normalmente -s; nas negativas e perguntas, does acompanha a forma base: Elisa does not repair scooters; Does she repair bicycles? Be tem formas próprias, como is e are, sem esse auxiliar do. O present continuous combina am/is/are com a forma em -ing e pode mostrar um processo em curso ou uma situação temporária no período atual, não somente algo acontecendo no exato segundo da fala. Elisa is repairing bicycles at another workshop this month apresenta uma circunstância temporária. Uma rotina não precisa durar para sempre, e uma situação temporária pode incluir ações repetidas. Palavras como usually e now são pistas, não comandos que tornam um aspecto obrigatório. O significado do verbo também importa: know, em seu sentido comum de saber, normalmente aparece na forma simples; think pode exprimir opinião em I think it is useful ou atividade de considerar em I am thinking about the problem. No passado, o simple past usa forma regular em -ed ou irregular e pode narrar um evento ou um período concluído, não apenas um instante. Was/were + -ing apresenta uma atividade em desenvolvimento em um ponto passado. Em Nora was drawing when the bell rang, a campainha ocorre durante o desenho; isso não prova que Nora parou de desenhar. Compare sempre referência, sentido e construção, sem trocar a leitura por uma lista de palavras-gatilho.",
+        "steps": [
+          "Localize o momento ou período a que a situação se refere.",
+          "Decida se o texto apresenta hábito, estado, evento concluído ou processo em curso.",
+          "Confira sujeito, auxiliar e forma principal, incluindo does + forma base.",
+          "Use marcadores como pistas e releia o sentido inteiro antes de descartar uma forma."
+        ],
+        "example": "Exemplos autorais: Leo checks the equipment every Friday apresenta hábito; Leo is checking the equipment this afternoon apresenta a atividade em desenvolvimento ou planejada no período indicado. Leo checked the equipment yesterday apresenta evento passado concluído. Leo was checking the equipment at nine apresenta o processo naquele ponto passado, sem informar sozinho quando terminou.",
+        "pitfall": "Tratar simple como permanente, continuous como exclusivamente agora ou a ocorrência simultânea de outro evento como prova de interrupção definitiva."
+      },
+      {
+        "level": "intermediate",
+        "title": "Aspecto perfeito: anterioridade, ligação e duração",
+        "explanation": "O aspecto perfeito relaciona uma situação anterior a um ponto de referência. No present perfect, have/has + particípio relaciona o anterior ao presente: The team has repaired three lamps apresenta três reparos como resultado relevante agora. Não é mera tradução automática do pretérito português. Em inglês padrão, uma localização em um período passado encerrado, como yesterday, normalmente pede simple past: The team repaired three lamps yesterday. O present perfect também pode apresentar um estado que continua, como Ada has known Rui for years; portanto perfect não significa sempre ação encerrada. For indica duração, enquanto since aponta o início de um intervalo; nenhuma dessas palavras exige por si uma única forma verbal. Have/has been + -ing forma o present perfect continuous e frequentemente põe em foco uma atividade ou sua duração: The team has been repairing lamps all morning. Isso pode descrever atividade ainda em curso ou recentemente terminada com efeitos presentes; não garante que cada tarefa esteja incompleta. Há contextos em que as formas simples e progressiva são possíveis com diferenças de foco. Para um ponto de referência passado, had + particípio forma o past perfect: By the time Ada opened the room, Rui had checked the wiring situa a verificação antes da abertura. Had been + -ing pode salientar duração anterior ou até uma referência passada: Rui had been checking the wiring for an hour when Ada arrived. A forma perfeita não precisa aparecer em toda menção a um acontecimento mais antigo. Em Rui checked the wiring before Ada opened the room, before já ordena os fatos, e ambos os verbos no simple past são possíveis. Already, before e after não obrigam automaticamente had. Desenhe uma linha temporal e pergunte se o texto precisa marcar anterioridade, resultado, continuidade ou duração; depois confira o auxiliar e o particípio, inclusive formas irregulares como written.",
+        "steps": [
+          "Defina o ponto de referência: agora ou outro momento passado.",
+          "Separe localização passada encerrada de ligação com o presente.",
+          "Reconheça have/has/had + particípio e a combinação been + -ing.",
+          "Compare resultado e atividade sem presumir exclusão absoluta entre as leituras.",
+          "Confira se a ordem já está clara por before ou after antes de declarar past perfect obrigatório."
+        ],
+        "example": "Cenário autoral: às 16h, Bia entrou no laboratório; às 15h, Caio havia concluído a conferência. Caio had checked the list before Bia entered explicita a anterioridade. Caio checked the list before Bia entered também pode ordenar esses fatos. Já Caio was checking the list when Bia entered apresenta a conferência em curso na entrada e muda o cenário, se nada mais esclarecer sua conclusão.",
+        "pitfall": "Chamar todo perfect de concluído, exigir had por causa de already/before ou considerar uma alternativa incorreta apenas porque outra perspectiva também é possível."
+      },
+      {
+        "level": "advanced",
+        "title": "Referência futura e combinações de tempo e aspecto",
+        "explanation": "O inglês usa várias construções para referência futura. Will + forma base pode apresentar previsão, promessa ou decisão tomada no momento; uma previsão com will não é, por definição, desprovida de evidência. Be going to + forma base frequentemente apresenta intenção anterior ou previsão ligada a sinais presentes. O present continuous pode apresentar um arranjo futuro: We are recording the interview tomorrow indica uma atividade combinada, sem exigir verbo de movimento. Esses usos são tendências de sentido e contexto, não categorias sempre exclusivas. Em certos enunciados, mais de uma forma é possível com diferente perspectiva; não se deve inventar uma oposição gramatical absoluta para produzir um gabarito. Com um ponto futuro explícito, will be + -ing pode apresentar atividade em desenvolvimento: At ten tomorrow, I will be revising the script. Will have + particípio pode situar conclusão anterior ao ponto projetado: By Friday, I will have revised all four pages. Will have been + -ing pode salientar duração de uma atividade até uma referência futura: By noon, I will have been practising for two hours. Essas construções combinam referência e aspecto; não significam que todo evento futuro precise delas. Também é necessário identificar a função da oração. Quando when introduz uma oração temporal com sentido de quando algo acontecer, usamos normalmente uma forma presente para essa referência futura: I will send a message when the session ends. O present perfect também é possível nesse tipo de oração para salientar conclusão. Isso não proíbe will depois de toda ocorrência de when. Em Do you know when the session will end?, when introduz uma pergunta indireta sobre o horário, e will é adequado. A pergunta indireta mantém sujeito antes do auxiliar: when the session will end, não a inversão da pergunta direta When will the session end? Antes de selecionar uma forma, identifique a intenção comunicativa e o papel de cada oração.",
+        "steps": [
+          "Diferencie previsão, intenção e arranjo, admitindo sobreposição contextual.",
+          "Localize o ponto futuro e decida se interessa processo, conclusão anterior ou duração.",
+          "Monte will be + -ing, will have + particípio ou will have been + -ing conforme o foco.",
+          "Verifique se when introduz oração temporal ou pergunta indireta.",
+          "Confira ordem de sujeito e auxiliar sem aplicar a proibição indiscriminada de will."
+        ],
+        "example": "Exemplo autoral: At eight tomorrow, Lara will be editing the recording apresenta processo no horário futuro. By noon, Lara will have edited both recordings apresenta conclusão projetada. Para combinar pergunta e aviso: Do you know when the workshop will begin? I will call you when it begins. A primeira oração pergunta um horário; a última situa temporalmente a ligação.",
+        "pitfall": "Exigir verbo de movimento no arranjo futuro, opor will e going to sem contexto ou proibir will depois de when também nas perguntas indiretas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Complete no inglês padrão, com simple present no primeiro espaço e present continuous no segundo: Nara usually ____ the studio on Fridays, but this week she ____ at a temporary location. Qual par respeita as formas solicitadas e a concordância?",
+        "hint": "Com she, o verbo lexical no simple present afirmativo recebe normalmente -s; o continuous precisa de is seguido de forma em -ing.",
+        "options": [
+          "manage / is working",
+          "manages / are working",
+          "manages / is working",
+          "does manages / working"
+        ],
+        "correctIndex": 2,
+        "solution": "C atende às duas estruturas: manages concorda com Nara, e is working combina o auxiliar singular com -ing. A usa manage sem -s com sujeito singular no afirmativo simples. B usa are com she, em vez de is. D emprega does manages, quando does pede forma base, e deixa working sem o auxiliar necessário. A resposta se apoia nas formas explicitamente pedidas; usually não constitui proibição universal de aspecto progressivo."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cenário autoral: o grupo concluiu a revisão às 14h; Lia abriu o arquivo às 15h. Qual forma marca explicitamente a revisão como anterior à referência passada por meio de past perfect simples? By the time Lia opened the file, the group ____ the review.",
+        "hint": "O enunciado pede uma construção específica de anterioridade: had seguido do particípio. Não basta dizer que qualquer simple past seria impossível em toda narrativa.",
+        "options": [
+          "had completed",
+          "was completing",
+          "has completed",
+          "had completing"
+        ],
+        "correctIndex": 0,
+        "solution": "A usa had + completed e marca explicitamente a conclusão anterior à abertura passada. B apresenta processo em curso, sem marcar a conclusão anterior pedida. C é present perfect e vincula a situação ao presente, não fornece a construção passada solicitada. D troca o particípio por completing depois de had, sem a estrutura necessária. A escolha não significa que toda narrativa de fatos ordenados exija past perfect; aqui essa forma foi explicitamente solicitada."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Duas frases autorais: Do you know when the train ____? I will send a message when it ____. A primeira pergunta indiretamente o horário de chegada futuro; a segunda situa a mensagem na chegada. Qual par respeita essas funções e a concordância no inglês padrão?",
+        "hint": "Na pergunta indireta, will é possível e vem depois do sujeito. Na oração temporal com referência futura, procure a forma presente com it.",
+        "options": [
+          "will arrive / will arrives",
+          "will arrives / arrives",
+          "arrive will / arrive",
+          "will arrive / arrives"
+        ],
+        "correctIndex": 3,
+        "solution": "D completa Do you know when the train will arrive? e I will send a message when it arrives. A primeira oração é pergunta indireta e permite will; a segunda é temporal e usa presente para referência futura. A contém will arrives, com -s indevido depois do modal. B repete esse erro no primeiro espaço. C inverte a ordem esperada na pergunta indireta e usa arrive sem -s com it. Não há proibição geral de will depois de when: a função da oração importa."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Leitura global e localização de informações em espanhol",
+    "objective": "Construir uma compreensão global de textos em espanhol, localizar dados com suas condições e distinguir informação explícita, inferência sustentada e conclusão não autorizada.",
+    "prerequisites": [
+      "Vocabulário de avisos, horários e atividades cotidianas em espanhol",
+      "Reconhecimento de negação e de expressões temporais",
+      "Noções de autor, leitor e finalidade comunicativa"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Visão global: assunto, finalidade e síntese",
+        "explanation": "A leitura global busca compreender de que trata o texto e o que ele procura comunicar como conjunto. Antes de traduzir palavra por palavra, observe título, formato e situação: um aviso pode comunicar mudança de atendimento; uma opinião pode defender uma escolha; uma narrativa pode construir uma experiência. Essas pistas orientam uma hipótese, mas não substituem a leitura. Tema é o assunto tratado; finalidade é o que o texto faz nessa situação, como informar uma alteração ou convidar para uma atividade. Uma síntese precisa relacionar os pontos centrais sem transformar um detalhe em assunto único. O título pode ser figurado, interrogativo ou insuficiente; a ideia central não precisa estar na primeira ou na última frase. Termos recorrentes, pronomes e relações entre frases ajudam a acompanhar o conjunto. Nem toda palavra do mesmo campo tem o mesmo significado: préstamo pode indicar empréstimo de livros em um aviso de biblioteca, e devolución indica devolução. Use o contexto para decidir o que precisa consultar. Uma palavra desconhecida que determina condição, prazo ou ação pode exigir atenção imediata; não é preciso ignorá-la em nome de uma suposta leitura rápida obrigatória. Após a primeira passagem, formule uma frase que resuma o texto e confira se ela preserva a informação central. Não há modelo único de organização para todos os textos de uma prova, nem garantia de compreensão apenas por ler começo e fim.",
+        "steps": [
+          "Observe gênero, título e situação para formular uma hipótese inicial.",
+          "Leia o conjunto e identifique assunto e finalidade sem confundi-los.",
+          "Relacione informações centrais e detalhes que as especificam.",
+          "Confira a síntese contra todo o texto e consulte palavras decisivas."
+        ],
+        "example": "Aviso autoral hipotético: La biblioteca abrirá también los sábados durante mayo. El préstamo seguirá disponible de lunes a viernes. Consulte el horario de las actividades en recepción. Síntese: o aviso comunica ampliação temporária da abertura e delimita serviços. Abrir aos sábados não informa que todos os serviços funcionarão nesses dias.",
+        "pitfall": "Resumir só a primeira frase, presumir que um serviço acompanha todo horário de abertura ou tratar cognatos e palavras do mesmo campo como sinônimos perfeitos."
+      },
+      {
+        "level": "intermediate",
+        "title": "Localizar dados sem perder prazo, condição e referente",
+        "explanation": "A localização de uma informação começa pelo que a pergunta exige: quem, onde, quando, por qual canal ou sob qual condição. Procure nomes, datas, horários e expressões equivalentes, mas leia a oração completa e o contexto. Uma palavra repetida numa alternativa pode aparecer no texto com outra função. No se admitirán solicitudes fuera de plazo informa uma restrição; retirar no inverte a afirmação. Hasta el viernes pode delimitar um prazo; antes de las ocho exige atenção à anterioridade, não autoriza incluir automaticamente as oito. Diferencie inscrição, participação, divulgação do resultado e atendimento, pois cada ação pode ter datas próprias. Pronomes e expressões como esta actividad ou dicha solicitud precisam ser ligados ao antecedente adequado; proximidade ajuda, mas sentido e concordância também importam. Marcadores como además, sin embargo e por tanto sinalizam relações de acréscimo, contraste e conclusão em contexto; não dispensam verificar o conteúdo relacionado. Uma inferência pode combinar pistas sem estar escrita literalmente, enquanto localizar um horário explicitado exige recuperar o dado informado. Identifique essa diferença no comando da questão. Para conferir uma opção, separe todas as suas partes: sujeito, ação, lugar e condição. Uma alternativa pode acertar o local e errar o dia. A presença de um dado verdadeiro não valida a frase inteira, e ausência de informação não equivale por si à prova do contrário.",
+        "steps": [
+          "Transforme a pergunta em um alvo preciso de busca.",
+          "Localize o trecho e leia negações, limites e condições junto do dado.",
+          "Reconstrua referentes e separe datas de ações diferentes.",
+          "Confira todas as partes da alternativa e não somente uma palavra coincidente."
+        ],
+        "example": "Aviso autoral hipotético: La inscripción se realiza por correo hasta el jueves. La entrega de materiales será el sábado en la sala dos. Este servicio no requiere reserva. O canal de inscrição é correo; sábado e sala dos pertencem à entrega. Para interpretar este servicio, examine a ligação com a entrega, sem deslocar automaticamente sua condição para a inscrição.",
+        "pitfall": "Transferir horário ou condição de uma ação para outra, omitir a negação ou aceitar uma alternativa parcialmente correta por repetir um nome do aviso."
+      },
+      {
+        "level": "advanced",
+        "title": "Integrar informações, vozes e graus de certeza",
+        "explanation": "Em textos mais densos, a compreensão global exige integrar informações distribuídas e reconhecer quem sustenta cada posição. Expresões como algunas personas proponen ou según la organización introduzem uma voz que não se confunde automaticamente com a posição do autor. Entretanto, citar alguém também não prova rejeição: é necessário ler o comentário e o desenvolvimento. Uma concessão com aunque pode admitir um ponto e apresentar uma ressalva, sem negar o fato admitido. Es posible que e podría indicam possibilidade; não autorizam converter uma hipótese em resultado garantido. Se o texto diz que uma proposta ainda está em estudo, não se conclui que foi aprovada nem que será rejeitada. Diferencie a evidência interna de uma interpretação e a verificação externa de uma afirmação factual: compreender o que um autor declara não transforma a declaração em verdade comprovada. Na resposta, preserve alcance e modalidade. Algunos participantes não significa todos; por ahora delimita o momento; solo restringe o alcance conforme sua posição. Para avaliar uma síntese, confronte-a com passagens que poderiam desmenti-la. Uma inferência sustentada precisa de pistas e não pode depender de uma pesquisa, decisão ou intenção que o texto não apresenta. Uma alternativa pode combinar uma informação correta com uma consequência inventada. Explique separadamente o que está escrito, o que pode ser inferido e o que continua indeterminado. Essa prática permite ler avisos e argumentações sem transformar conectivos ou conhecimento prévio em autorização para acrescentar dados.",
+        "steps": [
+          "Marque quem afirma cada informação e qual é o comentário do autor.",
+          "Preserve possibilidade, quantidade, condição e recorte temporal.",
+          "Integre partes distantes sem inventar decisão, intenção ou causalidade.",
+          "Teste cada síntese contra ressalvas e contraexemplos presentes no texto."
+        ],
+        "example": "Fragmento autoral hipotético: Algunos vecinos proponen abrir el centro los domingos. La dirección estudiará la propuesta, aunque todavía no ha decidido si habrá personal disponible. Es posible que anuncie una respuesta la próxima semana. A proposta existe, mas a decisão e a disponibilidade continuam abertas; a semana seguinte é possibilidade de anúncio, não data garantida de abertura.",
+        "pitfall": "Transformar possibilidade em certeza, confundir voz citada com adesão ou rejeição automática e converter concessão em negação do fato concedido."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Aviso autoral hipotético: El taller de reparación comenzará el lunes. Las sesiones combinarán demostraciones y práctica con herramientas. Quienes asistan deberán traer un objeto sencillo para examinarlo en grupo. Qual síntese abrange a informação central?",
+        "hint": "Busque uma síntese da atividade anunciada e de seu funcionamento, sem reduzir o aviso a um objeto ou inventar serviço de venda.",
+        "options": [
+          "Um anúncio de venda de ferramentas sem atividade prática.",
+          "O anúncio de uma oficina de reparação com demonstrações, prática e orientação aos participantes.",
+          "Uma proibição de examinar objetos durante as sessões.",
+          "A suspensão definitiva de todas as oficinas de segunda-feira."
+        ],
+        "correctIndex": 1,
+        "solution": "B sintetiza a oficina anunciada, a combinação de demonstração e prática e a orientação para trazer um objeto. A inventa venda e elimina a prática explicitada. C contradiz a instrução de examinar um objeto em grupo. D inventa suspensão, quando o texto anuncia o início. A síntese precisa integrar as frases, sem transformar um detalhe em tema exclusivo nem extrapolar para outras oficinas."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Aviso autoral hipotético: Las solicitudes se enviarán por correo hasta el miércoles. La lista de participantes se publicará el viernes en la recepción. No se recibirán solicitudes en persona. Segundo o aviso, por qual canal devem ser enviadas as solicitações?",
+        "hint": "Separe o envio de solicitações da publicação da lista e leia a proibição de entrega presencial.",
+        "options": [
+          "Presencialmente, na recepção, na sexta-feira.",
+          "Pela publicação da lista na quarta-feira.",
+          "Por qualquer canal, pois não há restrição.",
+          "Por correio, respeitando o prazo de quarta-feira."
+        ],
+        "correctIndex": 3,
+        "solution": "D recupera o canal por correo e o prazo hasta el miércoles. A transfere recepção e sexta-feira da publicação da lista para o envio, além de contrariar a proibição presencial. B troca ações e datas: a lista será publicada na sexta-feira. C ignora tanto o canal indicado quanto No se recibirán solicitudes en persona. O local da lista não se torna automaticamente local de inscrição."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Fragmento autoral hipotético: Algunos lectores piden ampliar el horario del archivo. La coordinación considera útil la propuesta, pero todavía no ha decidido si podrá aplicarla. Podría anunciar una respuesta el próximo mes. Qual conclusão é sustentada?",
+        "hint": "Diferencie avaliação favorável, decisão ainda ausente e anúncio apenas possível.",
+        "options": [
+          "A coordenação avalia favoravelmente a proposta, mas sua aplicação ainda não foi decidida e o anúncio no mês seguinte é possível.",
+          "A ampliação já foi aprovada e começará obrigatoriamente no mês seguinte.",
+          "Todos os leitores rejeitam a proposta e a coordenação a cancelou.",
+          "A proposta foi aplicada, mas uma pesquisa comprovou sua inutilidade."
+        ],
+        "correctIndex": 0,
+        "solution": "A preserva considera útil, todavía no ha decidido e podría: há avaliação favorável, decisão pendente e possibilidade de anúncio. B converte possibilidade em certeza e confunde anúncio de resposta com início da ampliação. C troca algunos por todos, inverte o pedido e inventa cancelamento. D inventa aplicação e pesquisa. O texto não permite concluir que a proposta será necessariamente aprovada ou rejeitada."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Cinemática escalar e vetorial",
+    "objective": "Distinguir distância, deslocamento e velocidades, aplicar equações com suas hipóteses e analisar componentes, lançamentos, movimento circular e referenciais em translação, sem confundir módulo com vetor.",
+    "prerequisites": [
+      "Aritmética básica e álgebra elementar",
+      "Noções de vetores: soma, subtração, multiplicação por escalar",
+      "Sistema Internacional de Unidades (SI)",
+      "Funções do 1º e 2º grau e interpretação gráfica"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Fundamentos da cinemática escalar: posição, deslocamento, velocidade e aceleração",
+        "explanation": "A cinemática escalar estuda o movimento de partículas sem investigar suas causas. Na descrição unidimensional, usamos coordenadas e componentes com sinal em um eixo orientado. A posição escalar s é a coordenada do móvel em uma reta orientada, medida a partir de uma origem arbitrária. O deslocamento escalar Δs = s_final - s_inicial indica a variação de posição com sinal: positivo se no sentido da orientação da reta, negativo se contrário. A velocidade média escalar v_m = Δs/Δt fornece a taxa média de variação da posição num intervalo Δt; sua unidade no SI é m/s. A velocidade instantânea é o limite de v_m quando Δt tende a zero, correspondendo à derivada ds/dt. A aceleração média escalar a_m = Δv/Δt mede a taxa média de variação da velocidade; a aceleração instantânea é dv/dt. Em movimento retilíneo uniforme (MRU), a aceleração é nula e a velocidade constante; a posição varia linearmente com o tempo: s = s0 + v·t. Em movimento retilíneo uniformemente variado (MRUV), a aceleração é constante e não nula; as equações horárias são v = v0 + a·t, s = s0 + v0·t + ½·a·t² e v² = v0² + 2·a·Δs. A análise de gráficos s×t, v×t e a×t permite extrair informações: a inclinação da reta tangente ao gráfico s×t dá a velocidade instantânea; a área sob o gráfico v×t corresponde ao deslocamento; a inclinação do gráfico v×t dá a aceleração. É fundamental distinguir distância percorrida (soma dos módulos dos deslocamentos parciais, não negativa) do deslocamento escalar (diferença entre posições final e inicial, com sinal). A rapidez média é a distância percorrida dividida pelo tempo, enquanto a velocidade média com sinal usa deslocamento. As áreas nos gráficos são algébricas: trechos abaixo do eixo contribuem negativamente para o deslocamento. Para distância, somam-se áreas em módulo. As equações com t pressupõem tempo inicial zero; de modo geral, use o intervalo Δt. Modelos por trechos idealizam mudanças instantâneas de velocidade; a transição real exige aceleração durante algum intervalo.",
+        "steps": [
+          "Identificar a origem e a orientação do eixo de posições para definir s com sinal correto.",
+          "Calcular deslocamento como diferença de posições finais e iniciais, mantendo o sinal.",
+          "Aplicar equações do MRU (a=0) ou MRUV (a=constante≠0) conforme a aceleração do problema.",
+          "Interpretar gráficos: inclinação de s×t = velocidade; área de v×t = deslocamento; inclinação de v×t = aceleração.",
+          "Distinguir distância percorrida (sempre ≥0) de deslocamento escalar (pode ser negativo)."
+        ],
+        "example": "Um carro parte do km 20 de uma estrada orientada no sentido crescente dos quilômetros. Avança até o km 80, retorna até o km 50 e para. Seu deslocamento escalar total é Δs = 50 - 20 = +30 km. A distância total percorrida é (80-20) + |50-80| = 60 + 30 = 90 km.",
+        "pitfall": "Confundir distância percorrida com deslocamento escalar; esquecer o sinal do deslocamento ao escolher a orientação do eixo; usar equação do MRU quando há aceleração não nula."
+      },
+      {
+        "level": "intermediate",
+        "title": "Cinemática vetorial: vetores posição, deslocamento, velocidade e aceleração; movimento bidimensional",
+        "explanation": "Na cinemática vetorial, as grandezas são representadas por vetores em dois ou três dimensões. O vetor posição r(t) = x(t)i + y(t)j + z(t)k localiza a partícula em relação à origem de um sistema de coordenadas cartesianas. O vetor deslocamento Δr = r_final - r_inicial é a diferença vetorial entre as posições final e inicial; sua magnitude é a distância em linha reta entre os dois pontos, e sua direção é a do segmento orientado que liga a posição inicial à final. A velocidade média vetorial v_m = Δr/Δt tem a mesma direção de Δr; a velocidade instantânea v = dr/dt = (dx/dt)i + (dy/dt)j + (dz/dt)k é tangente à trajetória no ponto considerado. A aceleração média a_m = Δv/Δt e a instantânea a = dv/dt = d²r/dt² apontam na direção da variação da velocidade, não necessariamente tangentes à trajetória. No movimento de projéteis (lançamento oblíquo) desprezando a resistência do ar, a aceleração é constante e vertical: a = -g j, com g ≈ 9,8 m/s². As componentes do movimento se desacoplam: no eixo x (horizontal), MRU com v_x = v0_x = v0·cosθ; no eixo y (vertical), MRUV com a_y = -g, v_y = v0·senθ - g·t, y = y0 + v0·senθ·t - ½·g·t². Para mesma altura de lançamento e queda, campo gravitacional uniforme e ausência de resistência do ar, o alcance é R = v0²·sen(2θ)/g. Mantido v0 e para ângulos entre 0° e 90°, seu máximo é v0²/g a 45°. Com alturas diferentes, resolva a equação vertical até o nível de chegada. Para lançamento com componente vertical positiva, a elevação máxima sobre o ponto inicial é H = (v0²·sen²θ)/(2g). O tempo T = 2·v0·senθ/g vale para retorno ao mesmo nível. Com origem horizontal no lançamento, a trajetória é y(x) = y0 + x·tanθ - (g·x²)/(2·v0²·cos²θ), para cosθ diferente de zero. A velocidade em qualquer instante tem componentes v_x constante e v_y variável; seu módulo é v = √(v_x² + v_y²) e para determinar sua direção por componentes, respeite os sinais e o quadrante, não apenas o valor de uma tangente.",
+        "steps": [
+          "Decompor vetores iniciais (posição, velocidade) em componentes cartesianas x, y (e z se 3D).",
+          "Tratar cada componente independentemente: MRU no eixo sem aceleração, MRUV no eixo com aceleração constante.",
+          "Recompor vetores resultantes (velocidade, posição) a partir das componentes calculadas.",
+          "Calcular parâmetros do lançamento oblíquo: alcance R, altura máxima H, tempo de voo T, equação da trajetória y(x).",
+          "Determinar velocidade e aceleração em instantes específicos via derivação ou equações horárias vetoriais."
+        ],
+        "example": "Uma bola é lançada do solo com velocidade inicial de 20 m/s a 30° acima da horizontal. Componentes: v0_x = 20·cos30° ≈ 17,32 m/s; v0_y = 20·sen30° = 10 m/s. Alcance R = (20²·sen60°)/9,8 ≈ 35,3 m. Altura máxima H = (10²)/(2·9,8) ≈ 5,1 m. Tempo de voo T = 2·10/9,8 ≈ 2,04 s.",
+        "pitfall": "Esquecer que a aceleração horizontal é nula (sem resistência do ar); trocar sen por cos nas componentes; usar g = 10 m/s² sem avisar que é aproximação; assumir que velocidade e aceleração têm mesma direção no movimento curvilíneo."
+      },
+      {
+        "level": "advanced",
+        "title": "Movimento relativo, movimento circular uniforme e uniformemente variado, aceleração tangencial e normal",
+        "explanation": "O movimento relativo exige declarar como os referenciais se relacionam. Para sistemas cartesianos com eixos paralelos, mesma orientação e sem rotação relativa, r = r' + R, onde R localiza a origem móvel no sistema fixo. Derivando no tempo comum da mecânica clássica, v = v' + V e a = a' + A, em que V e A são velocidade e aceleração da origem móvel. Se V é constante, A = 0 e as acelerações coincidem. Essas expressões simples não abrangem eixos em rotação: nesse caso aparecem termos adicionais, que não serão calculados aqui. Não se somam velocidades a acelerações, pois suas unidades diferem. Outro exemplo da importância vetorial é o movimento circular. Em uma circunferência de raio fixo R, a rapidez é u = |ω|R, sendo ω a velocidade angular em radianos por segundo. A velocidade vetorial é tangente à trajetória; u e |ω|R são módulos, não vetores. Mesmo no movimento circular uniforme, com rapidez constante, há mudança de direção da velocidade e aceleração normal para o centro, com módulo a_n = u²/R = ω²R. Se a rapidez varia, também há componente tangencial; com orientação angular escolhida, a componente tangencial com sinal é αR. Para aceleração angular constante, ω = ω0 + αt e θ = θ0 + ω0t + αt²/2, tomando t inicial zero. Componentes tangencial e normal são perpendiculares, de modo que o módulo resultante é a = √(a_t² + a_n²). Em trajetória curva regular mais geral, a componente normal tem módulo u²/ρ, onde ρ é o raio local de curvatura, e a tangencial depende da variação da rapidez. Uma aceleração não precisa apontar no sentido do movimento, e velocidade de módulo constante não significa velocidade vetorial constante.",
+        "steps": [
+          "Declare eixos paralelos, orientação e ausência de rotação antes de usar a soma simples entre referenciais.",
+          "Some componentes de velocidade com velocidade e aceleração com aceleração, mantendo unidades.",
+          "No movimento circular, diferencie vetor tangente, rapidez e aceleração normal.",
+          "Use equações angulares de aceleração constante somente quando essa hipótese for dada.",
+          "Combine componentes perpendiculares pelo teorema de Pitágoras."
+        ],
+        "example": "Um carro move-se em uma pista circular de raio 50 m. Sua velocidade aumenta uniformemente de 10 m/s para 20 m/s em 5 s. Aceleração tangencial a_t = (20-10)/5 = 2 m/s². No instante em que v = 15 m/s, a_n = 15²/50 = 4,5 m/s². Aceleração resultante a = √(2² + 4,5²) ≈ 4,92 m/s².",
+        "pitfall": "Escrever v = ωR como igualdade vetorial, considerar aceleração nula no movimento circular uniforme ou aplicar a soma simples a referenciais com rotação."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um móvel move-se ao longo de uma reta orientada. No instante t = 0 s, sua posição é s = +10 m. Move-se com velocidade constante de -4 m/s durante 3 s, depois inverte o sentido e move-se com velocidade constante de +6 m/s durante 2 s. Qual é o deslocamento escalar total Δs e a distância total percorrida d? Considere a inversão instantânea como idealização e despreze a duração da transição.",
+        "hint": "Calcule o deslocamento em cada trecho com sinal e some algebricamente; a distância é a soma dos módulos.",
+        "solution": "No primeiro trecho, Δs1 = -4·3 = -12 m; no segundo, Δs2 = 6·2 = +12 m. O deslocamento total é 0 m e a distância é |-12| + |12| = 24 m, portanto A. B troca deslocamento por distância, tornando esta nula apesar do percurso. C registra somente o primeiro trecho. D fornece +12 m e 12 m, que correspondem ao segundo trecho, não ao movimento inteiro. A troca instantânea de velocidade é uma idealização por trechos.",
+        "options": [
+          "Δs = 0 m; d = 24 m",
+          "Δs = 24 m; d = 0 m",
+          "Δs = -12 m; d = 12 m",
+          "Δs = 12 m; d = 12 m"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Um projétil é lançado do topo de um edifício de altura 45 m com velocidade inicial de 30 m/s formando ângulo de 37° acima da horizontal (sen 37° = 0,6; cos 37° = 0,8). Adotando g = 10 m/s² e desprezando a resistência do ar, qual é o alcance horizontal do projétil até atingir o solo? Considere solo horizontal, gravidade uniforme e a aproximação numérica final ao metro mais próximo.",
+        "hint": "Ache o tempo de voo resolvendo a equação horária vertical y(t) = 0 com y0 = 45 m; depois use x = v0_x·t.",
+        "solution": "As componentes são v0x = 30·0,8 = 24 m/s e v0y = 30·0,6 = 18 m/s. Com origem vertical no solo, 45 + 18t - 5t² = 0; a raiz positiva é t = (18 + √1224)/10 ≈ 5,299 s. Logo o deslocamento horizontal é 24t ≈ 127,2 m, arredondado a 127 m: A. B, 86 m, aproxima o resultado de usar indevidamente o tempo simétrico 3,6 s do retorno à altura inicial. C, 72 m, e D, 144 m, não satisfazem o impacto: com vx = 24 m/s corresponderiam a 3 s e 6 s, quando y seria 54 m e -27 m, respectivamente. Não se atribui a esses distratores uma origem de cálculo que não produza seus valores.",
+        "options": [
+          "127 m",
+          "86 m",
+          "72 m",
+          "144 m"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Considere eixos paralelos e sem rotação relativa, com mesma orientação e o tempo comum da mecânica clássica. Um referencial S' move-se com velocidade vetorial constante v_S'S = (4 i + 3 j) m/s em relação a um referencial inercial S. No referencial S', uma partícula tem velocidade vetorial v' = (2 i - 5 j) m/s e aceleração vetorial a' = (1 i + 2 j) m/s². Qual é a aceleração vetorial a da partícula medida no referencial S?",
+        "hint": "Referencial S' move-se com velocidade constante em relação a S inercial → sua aceleração é nula. Use a transformação de Galileu para aceleração.",
+        "solution": "A origem de S' tem velocidade constante, portanto aceleração A = 0. Para os eixos paralelos sem rotação indicados, a = a' + A = (1 i + 2 j) m/s²: A. B e C apresentam componentes diferentes de (1,2), sem aceleração da origem ou rotação que sustente a diferença. D repete os números (4,3) da velocidade da origem, mas com unidade de aceleração: esses números não definem sua derivada, que é zero. A velocidade da partícula, fornecida no enunciado, não precisa ser somada à aceleração.",
+        "options": [
+          "(1 i + 2 j) m/s²",
+          "(5 i - 2 j) m/s²",
+          "(3 i - 3 j) m/s²",
+          "(4 i + 3 j) m/s²"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Matéria, transformações e separação de misturas",
+    "objective": "Compreender a classificação da matéria, diferenciar transformações físicas e químicas, e aplicar métodos de separação de misturas homogêneas e heterogêneas com base nas propriedades físicas dos componentes.",
+    "prerequisites": [
+      "Conceito de átomo, molécula e íon",
+      "Noções de propriedades físicas e químicas",
+      "Unidades de medida do SI (massa, volume, temperatura)",
+      "Razão, porcentagem em massa e balanço de massas"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Composição, fases e transformações da matéria",
+        "explanation": "Uma substância pura tem composição química definida; uma mistura reúne componentes em proporções que podem variar. Uniformidade visual não prova pureza: uma solução de sal em água pode parecer uniforme e conter mais de uma substância. Homogênea descreve uma única fase no nível de observação considerado; heterogênea apresenta mais de uma. Fase não equivale a substância: água líquida e gelo podem formar duas fases de uma mesma substância. Alguns sistemas exigem instrumentos para reconhecer sua heterogeneidade. Substância simples contém um elemento químico, como O₂; composta contém mais de um, como H₂O. Essa classificação não é a mesma que mistura homogênea ou heterogênea. Uma transformação física conserva a identidade química dos componentes considerados, como na fusão do gelo. Uma transformação química envolve formação de novas espécies. Bolhas, cor ou temperatura podem ser indícios, mas isoladamente não demonstram reação: água em ebulição forma vapor sem criar uma nova substância, e dissolver um material pode alterar a temperatura. A conservação da massa, no tratamento químico usual, exige contabilizar todos os materiais. Em recipiente aberto, gases podem sair ou entrar, modificando a massa medida sem violar a conservação. A diferença entre massa inicial e frações recuperadas é um déficit de recuperação; sem outros dados, não revela se houve erro de medida, material retido, volatilização ou outra causa. Não se deve diagnosticar impureza ou reação apenas por esse valor.",
+        "steps": [
+          "Diferencie composição química de aparência e número de fases.",
+          "Verifique se a transformação preserva ou altera a identidade das substâncias.",
+          "Trate sinais observáveis como pistas a investigar, não provas isoladas.",
+          "Defina o sistema e contabilize entradas, saídas e frações recuperadas."
+        ],
+        "example": "Exemplo autoral: 40 g de gelo puro em um recipiente fechado fundem completamente, sem perda de material. A massa de água permanece 40 g e a mudança é física. Se uma solução transparente também estivesse presente, transparência não permitiria concluir que todo o conteúdo fosse uma substância pura.",
+        "pitfall": "Contar fases como se fossem substâncias, usar bolhas como prova suficiente de reação ou atribuir causa específica a uma diferença de massa não investigada."
+      },
+      {
+        "level": "intermediate",
+        "title": "Escolher uma sequência pelo componente que se deseja recuperar",
+        "explanation": "Métodos de separação exploram diferenças entre propriedades dos componentes e precisam de um objetivo: recuperar um sólido, um líquido ou ambos. Peneiração seleciona tamanhos em relação à malha; separação magnética pode retirar limalha de ferro de componentes que não respondem da mesma forma ao ímã. Adicionar água pode dissolver seletivamente um sal enquanto areia permanece insolúvel nas condições dadas. Uma filtração comum retém a areia suspensa e deixa passar a solução salina; não retém o sal dissolvido apenas por ser sal. Sedimentação e decantação podem separar fases quando há separação suficiente, e centrifugação pode acelerar a separação de partículas suspensas. Densidade, tamanho, meio e tempo influenciam o resultado; não basta comparar apenas o peso de duas amostras. Líquidos imiscíveis, já em fases separadas, podem ser separados por decantação com equipamento apropriado. Para recuperar um soluto não volátil, evaporação pode remover o solvente, mas não o recolhe necessariamente. Se também se deseja recuperar a água, a destilação com condensação permite coletá-la, sob hipóteses adequadas. A ordem pode admitir mais de uma sequência válida; chamar uma de mais eficiente exige critério e dados. Cada etapa deve indicar qual fração é retida, qual segue adiante e quais perdas são possíveis. A aparência da fração recuperada não certifica sua pureza. Os exemplos são modelos de raciocínio, não instruções para aquecer recipientes fechados ou manipular solventes perigosos.",
+        "steps": [
+          "Liste propriedades relevantes e o que deve ser recuperado ao final.",
+          "Escolha uma operação seletiva e acompanhe o destino de cada componente.",
+          "Diferencie sólido suspenso de soluto dissolvido antes de propor filtração.",
+          "Inclua condensação se a recuperação do solvente também fizer parte do objetivo."
+        ],
+        "example": "Mistura autoral idealizada de ferro, areia e sal: o ímã retira ferro; água dissolve sal; filtração retém areia; destilação da solução permite recolher água e deixar sal no resíduo. Secagem e verificação de pureza são etapas distintas. O modelo não garante recuperação quantitativa em um procedimento real.",
+        "pitfall": "Filtrar sal dissolvido como se fosse sólido suspenso, evaporar solvente quando se pretende recolhê-lo ou declarar ótima uma ordem sem critério de comparação."
+      },
+      {
+        "level": "advanced",
+        "title": "Volatilidade, limites de separação e balanço quantitativo",
+        "explanation": "Na destilação, uma fração vaporiza e depois condensa; o vapor pode ter composição diferente da fase líquida. Para uma solução de água e sal não volátil, o modelo ideal recolhe água e mantém sal no resíduo, desprezando arraste e perdas. Com dois líquidos voláteis miscíveis, não se deve supor que o primeiro destilado seja automaticamente um componente puro. A coluna de fracionamento promove etapas de contato entre vapor e líquido e pode melhorar a separação. Não existe um limite universal de 80 °C de diferença entre pontos de ebulição que decida sozinho o método: composição, pressão, equilíbrio líquido-vapor e pureza desejada importam. Misturas azeotrópicas impõem limites à destilação convencional em dada pressão; uma coluna não garante pureza total em qualquer mistura. Reduzir pressão pode diminuir temperaturas de ebulição, mas não prova que uma separação seja possível ou que todo componente seja estável nas condições adotadas. A extração depende da distribuição em fases apropriadas e das propriedades dos componentes, não somente do rótulo polar. Cromatografia depende de interações distintas com fases móvel e estacionária e pode servir a análise ou separação preparativa conforme a técnica. Membranas também diferem: ultrafiltração não deve ser equiparada à remoção de sais dissolvidos por osmose reversa. Para um balanço ideal, massa inicial é igual à soma das frações finais. A porcentagem em massa do soluto usa a massa da solução remanescente, não a massa inicial depois que parte do solvente saiu. Esse cálculo exige explicitar ausência de arraste, reação, perda de soluto e precipitação quando se fala em solução final.",
+        "steps": [
+          "Identifique quais componentes são voláteis e quais hipóteses o modelo usa.",
+          "Considere equilíbrio, pressão e objetivo sem aplicar um corte universal de temperatura.",
+          "Declare limites de pureza e não confunda técnicas de membrana.",
+          "Faça o balanço de soluto e solvente e use a massa final no denominador."
+        ],
+        "example": "Exemplo autoral idealizado: uma solução de 100 g contém 10 g de sal não volátil. Recolhem-se 50 g de água pura por destilação, sem outras perdas. Restam 50 g, contendo os mesmos 10 g de sal: 20% m/m. Isso descreve solução somente se a quantidade de sal puder permanecer dissolvida na temperatura final indicada pelo modelo.",
+        "pitfall": "Garantir pureza pelo ponto de ebulição, tratar ultrafiltração como dessalinização universal ou manter o denominador inicial após retirar solvente."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma amostra de 150 g de uma mistura de areia e cloreto de sódio é processada. Recuperam-se 90 g de areia seca e 55 g de cloreto de sódio seco. Considerando apenas esses dados, qual é o déficit de recuperação e o que se pode concluir sobre sua causa?",
+        "hint": "Subtraia as massas recuperadas da inicial e separe o cálculo da investigação da causa.",
+        "options": [
+          "0 g; não houve diferença de massa.",
+          "10 g; houve necessariamente reação química.",
+          "5 g; os dados não identificam a causa da diferença.",
+          "15 g; a diferença prova evaporação do sal."
+        ],
+        "correctIndex": 2,
+        "solution": "C: 150 - (90 + 55) = 5 g não foram contabilizados nas frações recuperadas. O enunciado não distingue material retido, perda na manipulação, erro de medida ou outra causa. A erra a diferença. B e D erram o valor e acrescentam causas não demonstradas. O déficit de recuperação não indica desaparecimento de matéria nem permite afirmar, sozinho, presença de impurezas voláteis."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo idealizado: uma mistura contém limalha de ferro atraída por ímã, areia insolúvel em água e sal solúvel não volátil. Deseja-se separar o ferro, reter a areia e também recolher a água usada para dissolver o sal. Qual sequência atende a esses objetivos?",
+        "hint": "Acompanhe ferro, areia, sal dissolvido e água; recuperar água requer recolher vapor condensado, não somente deixá-lo escapar.",
+        "options": [
+          "Filtração seca, seguida de peneiração do sal dissolvido.",
+          "Ímã; adição de água; filtração; destilação da solução com coleta do condensado.",
+          "Adição de água e filtração comum, que retém todo o sal dissolvido.",
+          "Evaporação com liberação do vapor, sem condensação, para recolher a água."
+        ],
+        "correctIndex": 1,
+        "solution": "B retira ferro por magnetismo, dissolve sal, retém areia por filtração e recolhe água por destilação com condensação. A não oferece uma sequência capaz de separar o sal dissolvido por peneiração. C atribui à filtração comum retenção de soluto dissolvido. D libera o vapor e, sem coleta por condensação, não atende ao objetivo de recolher a água. A resposta vale para as propriedades e idealizações informadas, sem garantir rendimento de um experimento real."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma solução idealizada de 200 g contém 20 g de sal não volátil. São recolhidos 80 g de água pura por destilação. Não há arraste, reação nem outras perdas, e todo o sal permanece dissolvido na temperatura final. Qual é a massa do resíduo e sua porcentagem em massa de sal, com uma casa decimal?",
+        "hint": "O sal permanece no resíduo; subtraia a água recolhida da massa inicial antes de calcular a porcentagem.",
+        "options": [
+          "120 g de resíduo com 10,0% m/m de sal.",
+          "200 g de resíduo com 16,7% m/m de sal.",
+          "80 g de resíduo com 25,0% m/m de sal.",
+          "120 g de resíduo com 16,7% m/m de sal."
+        ],
+        "correctIndex": 3,
+        "solution": "D: a massa do resíduo é 200 - 80 = 120 g. Permanecem 20 g de sal e 100 g de água; a porcentagem é 100·20/120 ≈ 16,7% m/m. A mantém a porcentagem inicial de 10%, ignorando a retirada de solvente. B não subtrai a água recolhida da massa total. C usa os 80 g do destilado como se fossem o resíduo e calcula 20/80. O resultado depende das hipóteses de sal não volátil, ausência de arraste e permanência em solução explicitadas."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Células, organelas e membranas",
+    "objective": "Relacionar organização celular, funções de organelas e permeabilidade de membranas, interpretando transporte e tráfego secretor com hipóteses explícitas e sem extrapolações clínicas.",
+    "prerequisites": [
+      "Noções de moléculas, íons e polaridade",
+      "Diferença entre concentração e quantidade de soluto",
+      "Razão, porcentagem e proporcionalidade"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Organização celular e divisão de funções",
+        "explanation": "A célula integra estruturas que mantêm trocas, transformação de energia e produção de moléculas. O modelo celular geral inclui membrana plasmática, citoplasma, material genético e ribossomos; células especializadas podem perder componentes durante sua diferenciação, como hemácias maduras de mamíferos. Procariontes, como bactérias e arqueas, não apresentam núcleo envolvido por membrana nuclear; seu DNA cromossômico ocupa a região do nucleoide. Isso não significa ausência de organização interna ou de membrana plasmática. Eucariontes apresentam compartimentalização membranosa e, no modelo geral, núcleo delimitado por envoltório. Tamanho isolado não define o grupo. Ribossomos sintetizam proteínas e não são compartimentos delimitados por membrana. Mitocôndrias participam da respiração celular aeróbia e da produção de ATP, mas nem todo ATP celular é produzido nelas; a glicólise ocorre no citosol. Células vegetais também têm mitocôndrias. Cloroplastos realizam fotossíntese em células que os possuem, mas não estão em todas as células de uma planta, como muitas células de raízes. Retículo rugoso, Golgi e vesículas participam de uma rota de proteínas secretadas; retículo liso participa, entre outras funções, da síntese de lipídios. Lisossomos e vacúolos líticos atuam na degradação em compartimentos apropriados. Peroxissomos realizam reações oxidativas e contêm enzimas que lidam com peróxido de hidrogênio. Uma organela pode ter várias funções, e uma função pode envolver várias estruturas. Desenhos são modelos: não se deve supor que toda célula possua exatamente todas as estruturas desenhadas.",
+        "steps": [
+          "Identifique núcleo delimitado e organização, sem classificar só pelo tamanho.",
+          "Diferencie ribossomos de compartimentos membranosos.",
+          "Relacione funções a estruturas sem impor exclusividade indevida.",
+          "Considere tipo celular e diferenciação ao interpretar um modelo geral."
+        ],
+        "example": "Situação autoral: uma célula de folha pode conter cloroplastos e mitocôndrias, realizando fotossíntese e respiração. Uma célula de raiz sem cloroplastos pode respirar usando mitocôndrias e matéria orgânica recebida de outros tecidos. Não se infere ausência de respiração pela presença de fotossíntese.",
+        "pitfall": "Afirmar que vegetais não respiram, que todo ATP nasce na mitocôndria ou que qualquer célula deve manter todos os componentes do modelo geral."
+      },
+      {
+        "level": "intermediate",
+        "title": "Membrana seletiva, transporte e osmose",
+        "explanation": "A membrana plasmática tem uma estrutura lipídica com proteínas associadas e seleciona trocas conforme propriedades da substância e das vias disponíveis. Uma molécula atravessar por difusão simples não significa que todas atravessem com igual facilidade. Difusão facilitada usa canais ou transportadores e é passiva quando o fluxo líquido ocorre a favor do gradiente pertinente. Para íons, concentração e diferença de potencial elétrico compõem o gradiente eletroquímico; observar apenas concentração pode levar a uma conclusão errada. Transporte ativo move um componente contra seu gradiente com acoplamento energético. No transporte ativo primário, pode haver hidrólise direta de ATP; no secundário, um gradiente previamente estabelecido sustenta o movimento acoplado de outro soluto. Não se deve dizer que transporte secundário é sem custo energético apenas porque o cotransportador não hidrolisa ATP diretamente. Osmose é movimento líquido de água através de membrana seletivamente permeável. No modelo de mesma temperatura, sem diferença inicial relevante de pressão e com solutos impermeantes, água tende a entrar no lado mais concentrado em partículas osmoticamente ativas. Em células, tonicidade depende de permeabilidade e duração da observação, não somente da concentração total de qualquer soluto. Meio hipertônico pode causar perda de água; hipotônico pode aumentar volume, mas isso não garante lise de toda célula em qualquer condição. Parede celular e pressão de turgor alteram a resposta vegetal. Se um modelo conserva a quantidade de soluto impermeante e despreza pressão, a concentração muda inversamente com o volume aquoso; essa simplificação não é previsão universal para uma célula viva regulada.",
+        "steps": [
+          "Identifique permeabilidade e o gradiente pertinente a cada substância.",
+          "Separe fluxo passivo de transporte acoplado a energia.",
+          "Na osmose, explicite solutos impermeantes, pressão e condições de observação.",
+          "Use conservação de soluto somente quando o modelo a permite."
+        ],
+        "example": "Modelo autoral: uma bolsa flexível contém soluto impermeante a 200 mOsm/L e está em grande reservatório a 250 mOsm/L, com mesma temperatura, sem pressão oposta relevante e permeabilidade apenas à água. A bolsa perde água; ao equilibrar concentrações no modelo, Vfinal/Vinicial = 200/250 = 0,8. Isso não demonstra crenação específica ou doença.",
+        "pitfall": "Chamar transporte secundário de energeticamente gratuito, reduzir gradiente iônico à concentração ou prever lise obrigatória apenas pelo rótulo hipotônico."
+      },
+      {
+        "level": "advanced",
+        "title": "Rota secretora, compartimentos e limites de inferência",
+        "explanation": "Uma proteína destinada à secreção pela rota convencional começa a ser traduzida em ribossomo que pode ser direcionado ao retículo endoplasmático por sinais da cadeia nascente e maquinaria de reconhecimento. A proteína entra no lúmen do retículo ou é inserida em sua membrana, conforme suas características. O retículo participa de dobramento e controle de qualidade; não basta produzir uma cadeia para garantir função ou destino correto. Cargas seguem para o Golgi, onde podem ser modificadas e encaminhadas, e vesículas secretoras podem fundir-se com a membrana plasmática. O conteúdo luminal de uma vesícula secretora é liberado ao exterior na exocitose, enquanto sua membrana se incorpora à membrana plasmática. Uma proteína transmembrana mantém relações topológicas ao longo dessa rota: um domínio voltado ao lúmen do retículo pode terminar voltado ao meio extracelular. Nem toda proteína celular passa pelo retículo e Golgi: muitas proteínas citosólicas permanecem fora dessa rota e muitas proteínas mitocondriais são importadas por outras vias. Mitocôndrias e cloroplastos não são simplesmente etapas do tráfego vesicular secretor. Alterar o transporte pode provocar acúmulo em um compartimento ou redução de secreção, mas um resultado isolado não identifica automaticamente o mecanismo molecular, a mutação ou uma doença. Em experimento, é preciso controlar síntese, viabilidade celular, tempo e especificidade do tratamento. Marcadores e imagens indicam localização dentro dos limites de resolução e método; colocalização aparente não prova ligação molecular direta. A leitura de um resultado deve separar observação, hipótese e teste necessário para distinguir explicações alternativas.",
+        "steps": [
+          "Identifique se a proteína pertence à rota secretora convencional.",
+          "Acompanhe retículo, Golgi, vesícula e membrana mantendo a orientação dos domínios.",
+          "Distinga conteúdo luminal de proteína inserida na membrana.",
+          "Separe acúmulo observado de causa molecular e proponha controles adequados."
+        ],
+        "example": "Modelo autoral: uma proteína secretada marcada aparece primeiro no retículo, depois no Golgi e mais tarde no meio externo. O padrão temporal é compatível com a rota convencional. Se um tratamento aumenta a marca no Golgi, isso pode motivar investigar a saída desse compartimento, sem provar sozinho que uma única proteína de revestimento foi inibida.",
+        "pitfall": "Enviar toda proteína pelo Golgi, confundir lúmen com citosol ou transformar acúmulo observado em diagnóstico molecular sem controles."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação autoral: uma célula vegetal de raiz não apresenta cloroplastos observáveis, mas contém mitocôndrias e ribossomos. Qual conclusão é compatível com essa descrição?",
+        "hint": "Ausência de cloroplasto não equivale a ausência de respiração; ribossomos e mitocôndrias têm funções diferentes.",
+        "options": [
+          "Ela pode realizar respiração mitocondrial e síntese de proteínas, embora não realize fotossíntese por cloroplastos nessa condição.",
+          "Ela não pode sintetizar proteínas porque somente cloroplastos fazem essa síntese.",
+          "A presença de mitocôndrias prova que a célula é animal.",
+          "A ausência de cloroplastos prova que a célula não possui membrana plasmática."
+        ],
+        "correctIndex": 0,
+        "solution": "A distingue funções: mitocôndrias são compatíveis com respiração e ribossomos com síntese proteica, sem exigir cloroplastos na célula de raiz. B atribui exclusividade falsa aos cloroplastos e ignora ribossomos. C erra porque vegetais também possuem mitocôndrias. D não relaciona a ausência de cloroplasto à organização da membrana plasmática. A descrição não determina todas as taxas metabólicas nem a viabilidade em qualquer meio."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma bolsa idealizada tem volume aquoso inicial de 12 mL e concentração de soluto impermeante de 300 mOsm/L. Está em grande reservatório a 400 mOsm/L. Apenas água atravessa; despreze pressão oposta, mudança de temperatura e regulação. Qual é seu volume final quando as concentrações se igualam nesse modelo?",
+        "hint": "Conserve a quantidade de soluto: concentração inicial vezes volume inicial é igual à concentração final vezes volume final.",
+        "options": [
+          "16 mL, pois a bolsa necessariamente recebe água.",
+          "12 mL, pois água não pode atravessar uma membrana seletiva.",
+          "9 mL, com perda líquida de água.",
+          "3 mL, pois a diferença de volumes é o volume final."
+        ],
+        "correctIndex": 2,
+        "solution": "C: 300·12 = 400·Vfinal, portanto Vfinal = 9 mL. A bolsa perde 3 mL de água no modelo e conserva a quantidade de soluto. A inverte a direção e a razão. B contraria a permeabilidade à água explicitada. D confunde os 3 mL perdidos com o volume remanescente. Esse cálculo usa as hipóteses do modelo; não descreve automaticamente toda célula viva nem prova lise ou crenação de um tipo celular."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Proteína transmembrana autoral hipotética segue a rota convencional do retículo ao Golgi e depois à membrana plasmática. Um domínio está voltado ao lúmen do retículo, e sua orientação é preservada no transporte e na fusão. Onde esse domínio ficará após a exocitose?",
+        "hint": "O lúmen da vesícula se comunica com o exterior na fusão; não se transforma em citosol.",
+        "options": [
+          "Obrigatoriamente dentro da matriz mitocondrial.",
+          "Voltado ao meio extracelular.",
+          "Voltado ao citosol porque toda membrana se inverte na fusão.",
+          "Dentro do núcleo porque toda proteína transmembrana passa por ele."
+        ],
+        "correctIndex": 1,
+        "solution": "B: o domínio luminal permanece voltado ao interior dos compartimentos da rota e torna-se extracelular quando a vesícula funde com a membrana plasmática. A introduz um destino mitocondrial que não pertence à rota informada. C exige inversão que contradiz a preservação de orientação indicada e o modelo de fusão. D inventa passagem nuclear obrigatória. A resposta trata da topologia do domínio, não afirma uma função clínica ou estabilidade específica da proteína."
+      }
+    ]
   }
 ];
 
@@ -499,6 +966,167 @@ export const authoredCurriculumBatch07ReviewRecords = [
         "index": 2,
         "correctIndex": 2,
         "reasoning": "O primeiro parágrafo apresenta duas informações: (1) novas vagas abertas, (2) transporte ainda impede parte do público. O objetivo explícito é retomar nominalmente o obstáculo de deslocamento (informação 2) como objeto de exame. Opção C retoma 'essa dificuldade de transporte' e a coloca como foco. A inverte para 'facilidade', B inventa 'extinção de todas as rotas' (ausente no texto), D retoma 'ampliação de vagas' (informação 1, não o obstáculo pedido). Gabarito 2 correto."
+      }
+    ]
+  },
+  {
+    "subject": "Inglês",
+    "topic": "Tempos e aspectos verbais",
+    "contentSha256": "404a4317d4e767d762982c6a3ad6db16c33faf1c33ecfb3064e611955840e0d6",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/present-simple",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/present-continuous",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/past-continuous",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/present-perfect-simple-continuous",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/past-perfect",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/future-forms-will-be-going-present-continuous",
+      "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/future-continuous-future-perfect",
+      "https://dictionary.cambridge.org/uk/grammar/british-grammar/future-perfect-continuous",
+      "https://dictionary.cambridge.org/grammar/british-grammar/when"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Sujeito Nara (3ª pessoa singular) exige -s no simple present afirmativo (manages) e is + -ing no present continuous (is working). Opção A falha no -s, B usa are com she, D usa does manages (does pede forma base) e omite auxiliar em working. O raciocínio independe de 'usually' como gatilho rígido."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Cenário pede marcação explícita de anterioridade a ponto passado (opened) via past perfect simples: had + particípio (had completed). B é past continuous (processo, não conclusão anterior), C é present perfect (ligação ao presente), D usa completing após had (forma inválida). A solução nota que nem toda narrativa ordenada exige past perfect, mas aqui a forma foi solicitada."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Primeira oração é pergunta indireta (Do you know when the train will arrive?) — will permitido, sujeito antes do auxiliar. Segunda é oração temporal com referência futura (when it arrives) — presente simples com -s em it. A e B inserem -s indevido após modal will; C inverte ordem na indireta e omite -s em arrive com it. A função da oração, não a presença de when, dita a forma."
+      }
+    ]
+  },
+  {
+    "subject": "Espanhol",
+    "topic": "Leitura global e localização de informações em espanhol",
+    "contentSha256": "ff7a63fd09172fa89cdd0df48cbeb2021ae292faa2a827b22ff217e161b7ff46",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://cvc.cervantes.es/ensenanza/biblioteca_ele/asele/pdf/09/09_0794.pdf",
+      "https://www.euskadi.eus/contenidos/documentacion/inn_doc_lenguas/es_def/adjuntos/500011c_Pub_BGN_orienta_lectura_ESO.pdf",
+      "https://cvc.cervantes.es/ensenanza/biblioteca_ele/diccio_ele/diccionario/comprensionlectora.htm",
+      "https://cvc.cervantes.es/ensenanza/biblioteca_ele/diccio_ele/diccionario/inferencia.htm",
+      "https://cvc.cervantes.es/ensenanza/biblioteca_ele/diccio_ele/diccionario/marcadoresdiscurso.htm"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B sintetiza corretamente os três elementos do aviso: oficina de reparação, combinação de demonstração e prática, e orientação de trazer objeto para exame em grupo. A inventa venda de ferramentas e elimina a prática. C contradiz 'deberán traer un objeto sencillo para examinarlo en grupo'. D inventa suspensão definitiva quando o texto anuncia início ('comenzará')."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "D recupera exatamente 'por correo' (canal) e 'hasta el miércoles' (prazo). A transfere 'recepción' e 'viernes' da publicação da lista para o envio e ignora 'No se recibirán solicitudes en persona'. B troca ações e datas: a lista será publicada na sexta-feira, não na quarta. C ignora canal indicado e a proibição explícita. O local da lista não se torna automaticamente local de inscrição."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A preserva 'considera útil' (avaliação favorável), 'todavía no ha decidido' (decisão pendente) e 'podría' (possibilidade de anúncio). B converte 'podría' em certeza e confunde anúncio de resposta com início da ampliação. C troca 'algunos' por 'todos', inverte o pedido (pedem ampliação, não rejeitam) e inventa cancelamento. D inventa aplicação e pesquisa inexistentes. O texto não permite concluir aprovação ou rejeição necessária."
+      }
+    ]
+  },
+  {
+    "subject": "Física",
+    "topic": "Cinemática escalar e vetorial",
+    "contentSha256": "b52b378235f06ae0e2dc73c3281357c4eeac1a720c523ba431abac161df189ba",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/university-physics-volume-1/pages/3-1-position-displacement-and-average-velocity",
+      "https://openstax.org/books/university-physics-volume-1/pages/3-4-motion-with-constant-acceleration",
+      "https://openstax.org/books/university-physics-volume-1/pages/4-1-displacement-and-velocity-vectors",
+      "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion",
+      "https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion",
+      "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "Trecho 1: Δs1 = v1·Δt1 = (-4 m/s)·3 s = -12 m. Trecho 2: Δs2 = v2·Δt2 = (+6 m/s)·2 s = +12 m. Deslocamento total Δs = -12 + 12 = 0 m. Distância d = |Δs1| + |Δs2| = 12 + 12 = 24 m. Opção A corresponde exatamente. B inverte os valores, C considera só o primeiro trecho, D só o segundo."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "v0x = 30·cos37° = 30·0,8 = 24 m/s; v0y = 30·sen37° = 30·0,6 = 18 m/s. Equação vertical com origem no solo: y(t) = 45 + 18t - 5t² = 0 → 5t² - 18t - 45 = 0. Raiz positiva t = (18 + √1224)/10 ≈ 5,299 s. Alcance x = v0x·t ≈ 24·5,299 ≈ 127,2 m → 127 m. B (86 m) usa t=3,6 s (retorno à altura inicial). C (72 m) corresponde a t=3 s (y=54 m). D (144 m) corresponde a t=6 s (y=-27 m)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Referencial S' move-se com velocidade constante (4i+3j) m/s em relação a S inercial → aceleração da origem A = 0. Para eixos paralelos, mesma orientação, sem rotação e tempo comum, a transformação de Galileu para aceleração é a = a' + A. Logo a = a' = (1i+2j) m/s². B e C têm componentes arbitrárias. D confunde a velocidade da origem (4,3) com aceleração, mas sua derivada é nula. A velocidade da partícula v' não entra no cálculo da aceleração."
+      }
+    ]
+  },
+  {
+    "subject": "Química",
+    "topic": "Matéria, transformações e separação de misturas",
+    "contentSha256": "2068093a7810106ff858011f110273ec3af8f49370e0b1ca724ce0242937dc6c",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+      "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+      "https://ocw.mit.edu/courses/res-5-0001-digital-lab-techniques-manual-spring-2007/resources/distillation-i-simple-fractional-distillations/index.html",
+      "https://chemlab.truman.edu/files/2015/07/Fractional-Distillation-2017.pdf",
+      "https://www.epa.gov/system/files/documents/2024-03/ws-commercial-bmp-watersenseatwork_section7.1_waterpurification.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Déficit = 150 - (90 + 55) = 5 g. Opção C acerta o valor e a interpretação: os dados não permitem concluir causa (erro de medida, material retido, volatilização, etc.). A erra o valor (0 g). B erra o valor (10 g) e infere reação química sem base. D erra o valor (15 g) e atribui a evaporação do sal, que é não volátil."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Objetivo: separar ferro (magnético), reter areia (insolúvel), recuperar água (solvente). B: ímã remove ferro; água dissolve sal; filtração retém areia e passa solução; destilação com condensação recolhe água e deixa sal no resíduo. A propõe peneiração de sal dissolvido (impossível). C diz que filtração comum retém sal dissolvido (falso). D evapora sem condensação, não recupera água."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Massa inicial 200 g (20 g sal + 180 g água). Destilados 80 g de água pura. Resíduo = 200 - 80 = 120 g. Sal permanece 20 g (não volátil, sem perdas). % m/m = (20/120)×100 = 16,666...% ≈ 16,7%. D está correto. A usa 10% (porcentagem inicial, ignora remoção de solvente). B mantém massa total 200 g (não subtrai destilado). C confunde destilado (80 g) com resíduo e calcula 20/80 = 25%."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Células, organelas e membranas",
+    "contentSha256": "1536a3f5b28a94ca341c75c7b0da21dc7645a12f7f11de8b74e34d21cbadad93",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+      "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+      "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+      "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+      "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+      "https://openstax.org/books/biology-2e/pages/5-3-active-transport"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A célula de raiz sem cloroplastos mantém mitocôndrias (respiração aeróbia) e ribossomos (síntese proteica). Opção A captura essa compatibilidade funcional sem exclusividade indevida. B atribui síntese proteica só a cloroplastos (falso). C confunde mitocôndrias com célula animal (vegetais também as têm). D faz nexo inexistente entre ausência de cloroplasto e membrana plasmática. O gabarito A está correto e os distractores são bem fundamentados."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "Quantidade de partículas osmoticamente ativas conservada: 300 mOsm/L × 0,012 L = 3,6 mOsm. No equilíbrio idealizado, Vfinal = 3,6 mOsm / (400 mOsm/L) = 0,009 L = 9 mL. A bolsa perde 3 mL de água: C. A inverte a direção e a razão; B nega a permeabilidade à água dada; D confunde volume perdido com restante. O número 3600 obtido com mL sem conversão não tem unidade mOsm: seria necessário dividir por 1000."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "Proteína transmembrana na rota convencional: domínio luminal do RE → lúmen do Golgi → lúmen da vesícula secretora → meio extracelular na fusão (exocitose). A orientação é preservada; o lúmen vesicular se torna contínuo com o exterior. Opção B descreve corretamente essa topologia. A introduz destino mitocondrial não informado. C exige inversão de topologia que contradiz o enunciado. D inventa passagem nuclear obrigatória. Gabarito B correto."
       }
     ]
   }
