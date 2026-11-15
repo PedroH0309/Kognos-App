@@ -834,6 +834,657 @@ export const authoredCurriculumBatch07:readonly AuthoredLessonSpec[] = [
         "solution": "B: o domínio luminal permanece voltado ao interior dos compartimentos da rota e torna-se extracelular quando a vesícula funde com a membrana plasmática. A introduz um destino mitocondrial que não pertence à rota informada. C exige inversão que contradiz a preservação de orientação indicada e o modelo de fusão. D inventa passagem nuclear obrigatória. A resposta trata da topologia do domínio, não afirma uma função clínica ou estabilidade específica da proteína."
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Antiguidade oriental e clássica",
+    "objective": "Comparar formas de poder, trabalho, participação e legitimação na Mesopotâmia, no Egito, nas poleis gregas e em Roma, situando diferenças no tempo e interpretando fontes sem modelos universais ou anacronismos.",
+    "prerequisites": [
+      "Localização do Nilo, Tigre, Eufrates e Mediterrâneo",
+      "Leitura de datas a.C. e d.C.",
+      "Noções de fonte histórica, cidadania e hierarquia social"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Mesopotâmia e Egito: diversidade, trabalho e poder",
+        "explanation": "Antiguidade oriental é um recorte didático convencional, não uma civilização única nem uma etapa inferior que levaria inevitavelmente à Grécia. Mesopotâmia designa uma região associada ao Tigre e Eufrates, na qual se sucederam e interagiram diferentes povos e formas políticas. Cidades como Uruk e reinos e impérios de maior extensão não podem ser reduzidos a um único modelo permanente de cidade-Estado. Agricultura, redes de troca, templos, palácios e formas de trabalho sustentaram sociedades desiguais. Rios ofereciam recursos e exigiam decisões sobre uso e organização, mas a geografia não determina sozinha um regime político. A escrita cuneiforme registrou atividades administrativas, tradições religiosas e outros gêneros; não se limitava a leis. A coleção de decisões associada a Hamurabi, rei da Babilônia no século XVIII a.C., permite estudar direito, hierarquia e representação régia. Não deve ser tratada como o primeiro texto legal da humanidade nem como código moderno de igualdade jurídica. No Egito, o Nilo, a produção agrícola e a administração se articularam à formação e manutenção do poder régio, com períodos de centralização e fragmentação. A realeza era ligada à ordem religiosa e à maat, mas reconhecer a sacralidade do cargo não exige afirmar que egípcios desconhecessem a mortalidade do governante. Também existiram mudanças dinásticas, conflitos e contatos externos. A oposição simples entre Egito sempre unido e Mesopotâmia sempre fragmentada apaga transformações de ambos. Compare lugar, período, trabalho, autoridade e fonte disponível, sem supor que todo habitante compartilhava a posição oficial dos governantes.",
+        "steps": [
+          "Localize sociedades e períodos sem fundir milênios em um único regime.",
+          "Relacione recursos, trabalho e administração sem determinismo geográfico.",
+          "Interprete escrita e monumentos como fontes situadas, inclusive de legitimação.",
+          "Compare centralização e fragmentação reconhecendo mudanças em ambos os espaços."
+        ],
+        "example": "Comparação autoral de fontes: um registro administrativo pode ajudar a investigar distribuição de produtos; uma inscrição régia pode apresentar o governante como guardião da ordem. O segundo documento não prova que toda a população aprovasse o rei. Ambos exigem perguntas sobre produção, finalidade e contexto.",
+        "pitfall": "Tratar Hamurabi como código moderno igualitário, deduzir poder absoluto apenas da irrigação ou opor rei egípcio imortal a todo governante mesopotâmico apenas humano."
+      },
+      {
+        "level": "intermediate",
+        "title": "Grécia: polis e participação política com exclusões",
+        "explanation": "As poleis gregas eram comunidades políticas distintas, com território, instituições e relações de conflito e cooperação. Compartilhar práticas culturais e religiosas não significava formar um Estado nacional grego unificado. Atenas e Esparta são casos importantes, mas não resumem todas as experiências do mundo grego. A democracia ateniense foi construída por transformações históricas; no período clássico, cidadãos homens adultos podiam participar diretamente da assembleia, enquanto muitas funções eram preenchidas por sorteio e outras por eleição. Não se deve dizer que todo cargo era sorteado ou que todas as regras ficaram iguais por séculos. A lei de cidadania de Péricles, de 451/450 a.C., exigia ascendência ateniense de pai e mãe para o pertencimento cívico correspondente; direitos políticos não eram estendidos a toda a população residente. Mulheres, pessoas escravizadas e estrangeiros residentes estavam excluídos dessa participação na assembleia, embora isso não significasse ausência de atuação social, econômica ou religiosa. A democracia direta entre cidadãos coexistia com escravidão e dominação externa. Em Esparta, instituições como dupla realeza, conselho de anciãos, éforos e assembleia organizavam o poder dos espartíatas. A exploração dos hilotas sustentava essa organização; eles não eram cidadãos plenos. Uma imagem de igualdade perfeita entre todos os moradores confunde o grupo dominante com a sociedade inteira. A comparação deve perguntar quem decide, como se ocupa um cargo e quem trabalha sem os mesmos direitos. Não transforme Atenas em sociedade inteiramente aberta nem Esparta em comunidade sem conflitos e mudanças. Guerras, alianças, intercâmbios e a expansão macedônica modificaram o mundo das poleis, sem apagar imediatamente suas instituições ou diferenças locais.",
+        "steps": [
+          "Defina polis sem confundi-la com país moderno ou simples área urbana.",
+          "Separe participação direta, sorteio e eleição em instituições concretas.",
+          "Identifique grupos excluídos e diferenças entre direitos políticos e vida social.",
+          "Compare Atenas e Esparta sem converter o grupo cidadão em toda a população."
+        ],
+        "example": "Comparação autoral: dizer que uma decisão era submetida à assembleia de cidadãos não informa que mulheres, estrangeiros residentes ou escravizados votassem. Uma pesquisa sobre trabalho em Atenas precisa incluir esses grupos, mesmo quando a fonte institucional se concentra nos cidadãos. O recorte da fonte não define toda a sociedade.",
+        "pitfall": "Equiparar democracia ateniense a sufrágio universal, entender exclusão política como inexistência de agência social ou tomar espartíatas e hilotas como o mesmo grupo jurídico."
+      },
+      {
+        "level": "advanced",
+        "title": "Roma: república, expansão e concentração imperial",
+        "explanation": "A história romana abrange mudanças longas e disputadas. Datas tradicionais para a fundação e a passagem da monarquia à república devem ser reconhecidas como marcos transmitidos por tradições posteriores, não como acontecimentos documentados com a mesma segurança em todos os detalhes. Na república, magistraturas, Senado e assembleias compunham uma organização desigual de poder. Colegialidade e duração limitada de muitas magistraturas não eliminavam a influência das elites; tampouco transformavam o Senado em parlamento moderno. Conflitos entre grupos patrícios e plebeus produziram mudanças institucionais e jurídicas, mas plebeus não formavam uma classe de renda única. A expansão romana sobre o Mediterrâneo articulou conquista, tributos, escravização, circulação e disputas por recursos. Seus efeitos variaram entre regiões e grupos; não há uma causa isolada que explique a crise republicana. Competição aristocrática, violência política, comandos militares e guerras civis contribuíram para transformações no poder. Após essas disputas, Augusto concentrou autoridade e comando militar mantendo instituições e linguagem republicanas. O Principado não equivale nem a continuidade sem mudança nem a abolição instantânea de toda magistratura. A permanência do nome de uma instituição não garante manutenção de sua força política anterior. Cidadania também mudou de alcance ao longo da história romana e não deve ser projetada como direito igual de todos desde a fundação. Mesmo sua ampliação não eliminou escravidão, diferenças sociais ou desigualdades de gênero. Para estudar legados jurídicos e políticos, compare contextos: influências posteriores não tornam o direito antigo idêntico ao atual, nem autorizam narrar Grécia e Roma como únicos produtores de cultura ou como destinos inevitáveis da história de outras sociedades.",
+        "steps": [
+          "Diferencie marcos tradicionais, evidências e interpretações sobre os primeiros períodos.",
+          "Relacione instituições republicanas a disputas sociais sem analogia direta com parlamentos atuais.",
+          "Analise expansão e crise com múltiplos processos e grupos envolvidos.",
+          "Compare permanência institucional e mudança efetiva de poder no Principado.",
+          "Discuta legados sem supor identidade entre cidadania antiga e direitos atuais."
+        ],
+        "example": "Análise autoral: um texto de legitimação pode afirmar restauração de instituições enquanto práticas de comando revelam concentração de autoridade. Para estudar Augusto, confronte a linguagem republicana com a posição militar e política do governante, sem concluir apenas pelo nome Senado que a distribuição de poder permaneceu igual.",
+        "pitfall": "Chamar o Senado de parlamento moderno, reduzir plebeus a uma classe homogênea ou deduzir continuidade de poder pela permanência dos nomes das instituições."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma comparação entre Mesopotâmia e Egito considera diferentes períodos, registros administrativos e inscrições régias. Qual procedimento evita uma generalização indevida?",
+        "hint": "Os dois espaços passaram por mudanças políticas; fontes de governantes apresentam perspectivas situadas.",
+        "options": [
+          "Presumir que o Egito sempre foi unido e toda a Mesopotâmia permaneceu dividida.",
+          "Concluir que a irrigação determina automaticamente o mesmo regime em qualquer sociedade.",
+          "Usar a inscrição régia como prova de aprovação unânime do governante.",
+          "Comparar períodos e tipos de fonte, reconhecendo mudanças políticas e finalidades dos registros."
+        ],
+        "correctIndex": 3,
+        "solution": "D permite comparar sem transformar uma fase em regra de toda a história e sem confundir representação régia com opinião universal. A apaga fragmentações egípcias e unificações mesopotâmicas. B impõe determinismo geográfico sem considerar decisões e conflitos sociais. C toma legitimação por consenso comprovado. A escolha exige contextualização histórica, não nega que rios, escrita e poder estejam relacionados."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Ao estudar Atenas clássica, uma turma observa participação direta de cidadãos homens na assembleia e exclusão de mulheres, escravizados e estrangeiros residentes desse direito. Qual interpretação é adequada?",
+        "hint": "Diferencie a forma de decisão dentro do corpo cidadão do alcance da cidadania sobre os moradores.",
+        "options": [
+          "A participação direta comprova sufrágio universal de todos os residentes.",
+          "A democracia direta de cidadãos coexistia com exclusões; ausência de voto não implica inexistência de atuação social dos excluídos.",
+          "Os grupos sem participação na assembleia não realizavam qualquer atividade econômica ou religiosa.",
+          "Toda instituição ateniense era preenchida por eleição, sem sorteio."
+        ],
+        "correctIndex": 1,
+        "solution": "B preserva participação direta e restrição de direitos, sem apagar a agência dos grupos excluídos. A confunde corpo cidadão com todos os residentes. C transforma exclusão política em ausência de vida social, econômica e religiosa, o que não decorre da informação. D generaliza um método único de escolha e contraria a coexistência de eleição e sorteio em funções diferentes. O conceito de democracia precisa ser situado no contexto."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma análise do Principado de Augusto identifica manutenção do Senado e de magistraturas, junto à concentração de autoridade e comando militar no governante. Qual conclusão decorre dessa combinação?",
+        "hint": "A continuidade do nome de uma instituição não prova continuidade da distribuição efetiva do poder.",
+        "options": [
+          "Instituições republicanas podiam continuar existindo enquanto sua posição no conjunto de poder era transformada.",
+          "A presença do Senado prova que não ocorreu concentração de autoridade.",
+          "Augusto aboliu simultaneamente todas as instituições e palavras republicanas.",
+          "A concentração de poder eliminou imediatamente a escravidão e universalizou direitos iguais."
+        ],
+        "correctIndex": 0,
+        "solution": "A distingue permanência institucional e mudança na distribuição efetiva de autoridade, compatíveis no Principado. B nega a concentração explicitada apenas porque o Senado existe. C contradiz a manutenção de Senado e magistraturas. D inventa eliminação da escravidão e igualdade universal, que não decorrem do arranjo político. A análise não identifica o Senado antigo com um parlamento moderno nem reduz toda a transição a uma troca de título."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Geologia e estrutura terrestre",
+    "objective": "Distinguir camadas composicionais e mecânicas da Terra, relacionar tectônica e formação de rochas e interpretar evidências geológicas e modelos com hipóteses, unidades e limites explícitos.",
+    "prerequisites": [
+      "Noções de ondas e de estados físicos",
+      "Leitura de direções cardeais e de milhões de anos",
+      "Conversão entre centímetros e quilômetros"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Camadas terrestres: composição, comportamento e evidências",
+        "explanation": "A estrutura interna da Terra é investigada combinando evidências, não por observação direta de todo o interior. Terremotos geram ondas cujos tempos e trajetos dependem das propriedades dos materiais. Ondas P são compressivas e podem atravessar sólidos e líquidos; ondas S de cisalhamento não se propagam no interior de líquidos como ondas S. Reflexões, refrações e conversões de fases tornam os registros mais complexos do que simplesmente ouvir ou não uma onda em uma estação. A ausência de um registro isolado também pode depender de trajetória, fonte e detecção. No modelo global, o comportamento das ondas, junto a outras evidências, sustenta um núcleo externo líquido e um núcleo interno sólido. Não se deve afirmar que toda onda P direta chega a qualquer distância; existem zonas de sombra e fases diferentes. Pela composição, distinguimos crosta, manto e núcleo; pela resposta mecânica, distinguimos, entre outras regiões, litosfera rígida e astenosfera mais deformável. Litosfera inclui crosta e parte superior do manto: não é sinônimo de crosta. O manto é predominantemente sólido e pode deformar-se lentamente em tempos geológicos, sem ser um oceano global de magma. Crosta continental e oceânica diferem em espessura média e composição, mas uma única rocha não representa toda a variabilidade de cada uma. Dados sísmicos, gravidade, campo magnético, amostras acessíveis e experimentos ajudam a restringir modelos; cada método tem alcance e limitações. O modelo pode ser robusto em aspectos gerais sem fornecer composição detalhada e única de todo ponto profundo.",
+        "steps": [
+          "Separe classificação por composição da classificação por comportamento mecânico.",
+          "Relacione ondas e materiais sem deduzir toda a estrutura de uma estação isolada.",
+          "Diferencie sólido deformável ao longo do tempo de material inteiramente fundido.",
+          "Combine evidências e explicite o que o modelo permite concluir."
+        ],
+        "example": "Comparação autoral: crosta e manto são categorias composicionais; litosfera e astenosfera dizem respeito ao comportamento mecânico. Assim, parte do manto integra a litosfera. Dizer que a placa inclui manto não significa que ela seja inteiramente líquida nem que crosta e litosfera sejam equivalentes.",
+        "pitfall": "Chamar litosfera de crosta, tratar manto inteiro como magma ou deduzir travessia pelo núcleo apenas porque uma estação não registrou ondas S."
+      },
+      {
+        "level": "intermediate",
+        "title": "Placas, vulcanismo e transformações das rochas",
+        "explanation": "Placas litosféricas movem-se relativamente e interagem em limites divergentes, convergentes e transformantes, com zonas de deformação que podem ser extensas. Divergência pode acompanhar formação de crosta oceânica em dorsais; convergência pode envolver subducção ou colisão continental; movimento transformante envolve deslizamento lateral. Nem toda convergência tem o mesmo vulcanismo, e nem todo vulcão está em limite de placa. O movimento resulta de processos acoplados, incluindo a tração de placas frias em subducção e diferenças de energia gravitacional; não se reduz a placas passivamente levadas por esteiras uniformes de magma. No modelo simplificado de ponto quente relativamente fixo, uma placa em movimento carrega centros vulcânicos antigos para longe da fonte. A direção do centro mais jovem para os mais antigos indica o sentido do movimento da placa relativamente à fonte, dentro das hipóteses. Pontos quentes reais podem mover-se, e trajetórias podem mudar; a hipótese de fonte fixa não é certeza universal. Processos internos e externos também se articulam no ciclo das rochas. Ígneas formam-se pela solidificação de material fundido. Sedimentares podem resultar da acumulação e litificação de sedimentos ou de precipitação, conforme o caso. Metamórficas resultam de transformações de rochas preexistentes em estado predominantemente sólido sob novas condições; fusão seguida de solidificação corresponde a outra etapa. Intemperismo altera materiais, erosão remove e transporte e deposição os redistribuem. O ciclo não obriga toda rocha a passar por todas as etapas em uma ordem única nem estabelece duração fixa para cada passagem.",
+        "steps": [
+          "Identifique o movimento relativo e as condições do limite de placas.",
+          "No modelo de ponto quente, declare a referência e acompanhe idades e posições.",
+          "Relacione tipo de rocha ao processo de formação, não somente à aparência.",
+          "Evite impor ordem única ao ciclo das rochas ou motor único à tectônica."
+        ],
+        "example": "Modelo autoral: uma fonte fixa forma vulcões enquanto uma placa segue para leste. O centro mais jovem fica junto da fonte, a oeste dos mais antigos; estes foram transportados para leste. Se a placa percorre 5 cm/ano por 2 milhões de anos, o deslocamento idealizado é 100 km. Isso é movimento relativo no modelo, sem provar que toda fonte real permaneceu imóvel.",
+        "pitfall": "Inverter o sentido do movimento no modelo de ponto quente, chamar metamorfismo de fusão ou exigir uma sequência circular única para todas as rochas."
+      },
+      {
+        "level": "advanced",
+        "title": "Modelos, história geológica e risco: o alcance das inferências",
+        "explanation": "Um resultado geofísico precisa ser distinguido da interpretação que se faz dele. Modelos de tomografia estimam variações de velocidade de ondas a partir de dados e hipóteses; não são fotografias diretas da composição química. Uma região com velocidade menor pode motivar investigar temperatura, composição, estado dos materiais e resolução do método. O dado isolado não escolhe automaticamente uma única explicação nem prova um conduto contínuo de material até o núcleo. Para reconstruir história geológica, compare evidências independentes, como posições de rochas, estruturas, idades e registros paleomagnéticos, respeitando o que cada uma mede. Datação relativa ordena acontecimentos segundo relações observadas; uma idade numérica exige método e material adequados e não pode ser inventada a partir de uma simples posição no mapa. A escala do tempo é decisiva: eventos separados por dezenas de milhões de anos não são simultâneos apenas por pertencerem a um longo intervalo geológico. Também é diferente explicar processos e prever precisamente um evento futuro. A distribuição de falhas e terremotos contribui para avaliar perigo sísmico, mas não fornece método confiável para marcar dia, local e magnitude de um terremoto específico. Alerta precoce detecta um terremoto já iniciado e tenta avisar antes da chegada de ondas mais danosas em alguns locais; isso não é previsão anterior à ruptura. Risco envolve, além do perigo físico, exposição e vulnerabilidade. Dois lugares sujeitos a perigos semelhantes podem ter consequências diferentes conforme edificações, população e preparação. Uma análise responsável mantém hipóteses, incertezas e escalas visíveis, em vez de substituir ausência de dados por uma certeza técnica.",
+        "steps": [
+          "Separe observação, modelo e explicação possível.",
+          "Compare evidências independentes e avalie resolução e alternativas.",
+          "Distinga ordem relativa de idade numérica e confira a escala temporal.",
+          "Diferencie perigo, exposição e vulnerabilidade ao discutir risco.",
+          "Separe previsão específica, avaliação probabilística e alerta após o início."
+        ],
+        "example": "Cenário autoral: um modelo mostra região de menor velocidade sísmica, mas não fornece composição medida diretamente. Uma interpretação térmica pode ser testada com outros dados, sem excluir de saída efeitos composicionais ou limitações de resolução. Da mesma forma, um mapa de perigo não determina sozinho o dano de um evento numa cidade.",
+        "pitfall": "Tratar tomografia como análise química única, confundir eventos distantes no tempo ou chamar alerta de terremoto já iniciado de previsão exata antes da ruptura."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Qual afirmação distingue corretamente classificações da estrutura terrestre e estado físico no modelo geral?",
+        "hint": "Litosfera é uma categoria mecânica que inclui crosta e parte do manto; sólido pode deformar-se lentamente.",
+        "options": [
+          "Litosfera e crosta são sinônimos em qualquer continente ou oceano.",
+          "Todo o manto é um oceano líquido de magma que suporta as placas.",
+          "O núcleo externo é sólido porque ondas P não se propagam em líquidos.",
+          "A litosfera inclui crosta e parte do manto; o manto é predominantemente sólido e pode deformar-se em tempos geológicos."
+        ],
+        "correctIndex": 3,
+        "solution": "D separa classificação mecânica e composicional e reconhece deformação lenta de material sólido. A exclui indevidamente a parte mantélica da litosfera. B transforma todo o manto em líquido, o que não corresponde ao modelo sustentado pelas evidências. C erra o estado do núcleo externo e a propriedade das ondas P, que podem atravessar líquidos. Não se deve confundir deformação em longos tempos com fusão completa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cadeia autoral idealizada: A tem 2 Ma e C tem 8 Ma; A fica a noroeste de C. A fonte de vulcanismo permanece fixa e a placa mantém movimento retilíneo de 8 cm/ano entre a formação dos dois centros. Qual separação esperada e qual sentido de movimento da placa são compatíveis com o modelo?",
+        "hint": "Use a diferença de idades, converta centímetros em quilômetros e acompanhe o centro jovem sendo levado na direção dos mais antigos.",
+        "options": [
+          "480 km; movimento da placa para sudeste, de A para C.",
+          "480 km; movimento da placa para noroeste, de C para A.",
+          "48 km; movimento da placa para sudeste, de A para C.",
+          "960 km; movimento da placa para noroeste, de C para A."
+        ],
+        "correctIndex": 0,
+        "solution": "A: a diferença é 8 - 2 = 6 milhões de anos. A 8 cm/ano, o deslocamento é 48 milhões de centímetros; dividindo por 100.000 cm/km, resulta 480 km. A placa carrega os centros antigos para longe da fonte, portanto o sentido de jovem A para antigo C é sudeste. B acerta distância mas inverte sentido. C erra a conversão por fator 10. D dobra a distância e inverte sentido. A conclusão depende da fonte fixa e do movimento constante dados; não é uma regra para todo ponto quente real."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um modelo tomográfico identifica uma região profunda com velocidade sísmica menor que a vizinhança, sem outras informações independentes no enunciado. Qual interpretação respeita o alcance desse dado?",
+        "hint": "Velocidade inferida não é composição química diretamente medida; avalie explicações e limitações antes de concluir.",
+        "options": [
+          "O resultado prova composição química única e dispensa outros métodos.",
+          "O resultado determina o dia e a magnitude do próximo terremoto na superfície.",
+          "O resultado permite investigar hipóteses térmicas, composicionais e limitações do modelo, mas não decide sozinho entre elas.",
+          "O resultado prova que todo o manto é líquido e que não existem placas sólidas."
+        ],
+        "correctIndex": 2,
+        "solution": "C distingue a variação de velocidade estimada de suas explicações possíveis e pede comparação com outras evidências. A converte uma propriedade inferida em composição única sem dados suficientes. B transforma uma imagem do interior em previsão específica de terremoto, algo não autorizado. D generaliza uma anomalia regional para estado líquido de todo o manto. Reconhecer alternativas e resolução não significa descartar o método, mas usar seus resultados dentro do alcance observado."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Iluminismo e Kant",
+    "objective": "Situar a pluralidade do Iluminismo e interpretar esclarecimento, limites do conhecimento e autonomia moral em Kant, distinguindo crítica racional de opinião arbitrária ou obediência cega.",
+    "prerequisites": [
+      "Diferença entre argumento e apelo à autoridade",
+      "Noções de experiência, razão e conhecimento",
+      "Distinção entre princípio de ação e resultado desejado"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Iluminismo, crítica e uso público da razão",
+        "explanation": "Iluminismo designa debates e projetos diversos, especialmente associados ao século XVIII, e não uma doutrina única aceita por todos os pensadores. Crítica de autoridades, investigação da natureza, educação, tolerância e organização política aparecem em combinações diferentes. Não se deve concluir que todos os iluministas fossem ateus, defensores do mesmo regime ou contrários a qualquer tradição. A valorização da razão exige examinar argumentos; não transforma toda opinião individual em verdade. Tampouco os ideais de universalidade eliminaram automaticamente exclusões históricas: é necessário distinguir princípios formulados, posições concretas dos autores e práticas das sociedades. Em seu ensaio sobre esclarecimento, de 1784, Kant discute a saída de uma condição de tutela na qual alguém deixa outro pensar em seu lugar. Isso não equivale a rejeitar todo estudo ou orientação de especialistas, mas a não substituir julgamento por submissão irrefletida. Kant distingue uso público da razão, como a intervenção de alguém enquanto estudioso diante de um público leitor, do uso privado vinculado ao desempenho de uma função institucional. Os termos não correspondem simplesmente a falar numa praça ou dentro de casa. A distinção permite compreender como o ensaio articula crítica pública e deveres de função em seu contexto, sem transformá-la em defesa de silêncio absoluto ou em autorização para qualquer conduta. Para analisar um texto, identifique quem fala, em que papel, qual afirmação está sendo defendida e quais razões podem ser examinadas. Esclarecimento não é possuir respostas prontas sobre tudo, mas participar criticamente de um processo de formação do juízo.",
+        "steps": [
+          "Situe autor, período e questão sem impor unanimidade ao Iluminismo.",
+          "Distinga argumento de obediência automática e de opinião sem justificação.",
+          "No ensaio kantiano, identifique o papel em que a razão é exercida.",
+          "Compare princípios universais e exclusões concretas sem presumir sua coincidência."
+        ],
+        "example": "Cenário autoral: no exercício de uma função institucional, uma pessoa segue e explica um procedimento atribuído ao cargo. Para a distinção do ensaio, a razão vinculada a esse encargo corresponde ao uso privado, ainda que a explicação seja ouvida por muitas pessoas. Privado não significa necessariamente segredo ou ambiente doméstico. Essa análise do papel é diferente de sua intervenção como estudiosa diante de leitores.",
+        "pitfall": "Tratar todos os iluministas como iguais, confundir uso público com cargo público ou entender pensar por si como ignorar argumentos e conhecimento alheios."
+      },
+      {
+        "level": "intermediate",
+        "title": "Conhecimento: experiência e condições de possibilidade",
+        "explanation": "Na filosofia crítica de Kant, investigar conhecimento inclui perguntar como a experiência objetiva é possível e quais são seus limites. O conhecimento humano começa com a experiência, mas disso não se segue que todos os seus elementos sejam extraídos dela. A sensibilidade fornece intuições sob formas de espaço e tempo; o entendimento pensa o que é dado por meio de conceitos e categorias. Não se trata de escolher entre sentidos que copiam tudo sem atividade do sujeito e uma mente que inventa qualquer realidade sem dados. Conhecer objetos da experiência envolve a articulação entre receptividade e atividade conceitual. A distinção entre a priori e a posteriori diz respeito à relação de justificação com a experiência, não a adivinhar algo antes de observá-lo nem a uma memória cronologicamente anterior ao nascimento. A priori também não significa que qualquer opinião pessoal seja necessária ou universal. Na distinção didática entre fenômeno e coisa em si, fenômeno é o objeto como aparece sob as condições do conhecimento humano; isso não é sinônimo de ilusão ou imagem falsa. A coisa em si não é conhecida teoricamente como seria independentemente dessas condições. Reconhecer limite não significa provar que nada existe fora da mente, nem autorizar afirmações científicas arbitrárias sobre o que está além da experiência possível. A crítica examina pretensões da razão para evitar tanto dogmatismo quanto conclusões céticas apressadas. Ao interpretar uma alternativa, confira se ela mantém a contribuição de experiência e conceitos e se respeita o limite de aplicação proposto; não reduza a posição a uma mistura vaga de empirismo e racionalismo.",
+        "steps": [
+          "Identifique a pergunta sobre condições e limites do conhecimento.",
+          "Separe sensibilidade e entendimento sem torná-los fontes isoladas suficientes.",
+          "Diferencie justificação a priori de antecipação temporal ou opinião subjetiva.",
+          "Leia fenômeno sem equipará-lo a ilusão e respeite o limite sobre a coisa em si."
+        ],
+        "example": "Exemplo autoral didático: perceber posições e mudanças de um objeto envolve dados sensíveis e organização da experiência. Dizer que o sujeito contribui com condições de conhecimento não autoriza concluir que escolhe livremente qualquer resultado da observação. A investigação crítica pergunta por essas condições, não oferece uma licença para fabricar evidências.",
+        "pitfall": "Chamar fenômeno de falsidade, confundir a priori com palpite antecipado ou concluir que a mente cria arbitrariamente toda a existência por conhecer sob condições."
+      },
+      {
+        "level": "advanced",
+        "title": "Autonomia, dever e universalização da máxima",
+        "explanation": "Na ética kantiana, uma máxima é um princípio subjetivo de ação: o que alguém propõe fazer em certas circunstâncias e com qual finalidade. O exame moral não se limita ao sucesso da ação nem à preferência de quem decide. Um imperativo hipotético vincula uma ação a um fim desejado; o categórico pretende validade moral que não dependa de uma vantagem particular. Na formulação da lei universal, examine se a máxima pode valer universalmente sem contradição pertinente, em vez de perguntar apenas se a maioria gosta do resultado. No exemplo clássico da promessa enganosa para obter vantagem, a máxima depende de confiança na promessa enquanto permite ao agente prometer sem intenção de cumprir. Universalizar essa permissão compromete a prática de confiança que o próprio meio pressupõe. A análise não afirma que toda promessa seja inválida nem se reduz ao medo de ser descoberto. Outra formulação exige tratar a humanidade em si e nos outros sempre também como fim, nunca apenas como meio. A palavra apenas importa: colaborar com alguém para obter um serviço não é automaticamente imoral; instrumentalização meramente como recurso, sem consideração pela condição de agente, é o problema. Autonomia moral não é fazer qualquer coisa que se deseja nem aceitar uma regra só porque uma autoridade a impôs; é a vontade racional legislando segundo princípio moral universal. Agir em conformidade com o dever e agir por dever são distinções de motivação, não de aparência externa apenas. A mesma conduta observada pode ser praticada por medo de punição ou por respeito ao dever; não se identifica a motivação com certeza só pelo efeito visível. Ao resolver um caso, explicite máxima, motivo e formulação usada, sem substituir o argumento por rótulo.",
+        "steps": [
+          "Formule circunstância, ação e finalidade na máxima.",
+          "Diferencie conselho condicionado a um fim de exigência moral categórica.",
+          "Examine universalização sem trocar o teste por gosto da maioria.",
+          "Verifique respeito às pessoas como fins, distinguindo meio de mero meio.",
+          "Separe resultado observado e motivação para não inventar certeza sobre o agente."
+        ],
+        "example": "Cenário autoral: uma pessoa cumpre um acordo apenas para evitar prejuízo à reputação; outra afirma cumpri-lo por respeito ao dever. Os resultados podem coincidir, mas a distinção kantiana pergunta pelo princípio da vontade. A descrição de uma ação externa, sozinha, não prova que alguém agiu por dever.",
+        "pitfall": "Definir autonomia como vontade pessoal sem limites, tratar todo uso de serviço como mero meio ou confundir agir por dever com agir só por receio de punição."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma estudiosa escreve de casa um texto dirigido a leitores, apresentando razões para criticar a organização de uma instituição. Considerando a distinção do ensaio de Kant sobre esclarecimento, qual leitura é adequada?",
+        "hint": "Público e privado, nesse argumento, dizem respeito ao papel e à destinação do uso da razão, não apenas ao local físico.",
+        "options": [
+          "É uso privado necessariamente, porque o texto foi escrito em casa.",
+          "É uso público da razão no papel de estudiosa diante de leitores; a localização doméstica não decide a classificação.",
+          "É impossível criticar qualquer instituição no uso público da razão.",
+          "A presença de uma opinião elimina a necessidade de apresentar razões examináveis."
+        ],
+        "correctIndex": 1,
+        "solution": "B acompanha o sentido específico do uso público como intervenção de estudiosa diante de um público leitor. A substitui o papel pelo endereço. C transforma a distinção em proibição absoluta de crítica, o que não corresponde à defesa do uso público. D dispensa a justificação, quando o cenário apresenta razões a examinar. A resposta interpreta o ensaio, sem definir regras jurídicas de uma instituição atual."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Qual formulação é compatível com a articulação kantiana de sensibilidade, entendimento e limites do conhecimento teórico?",
+        "hint": "Não basta escolher sentidos sem conceitos ou conceitos sem dados; fenômeno também não significa automaticamente ilusão.",
+        "options": [
+          "Conhecer é copiar sensações sem qualquer contribuição conceitual.",
+          "A mente pode fabricar qualquer fato como verdadeiro sem dados sensíveis.",
+          "Fenômeno significa necessariamente imagem falsa e inútil para conhecer.",
+          "O conhecimento de objetos da experiência articula dados sensíveis e organização conceitual, sem conhecer teoricamente a coisa em si independentemente dessas condições."
+        ],
+        "correctIndex": 3,
+        "solution": "D reúne contribuição sensível, conceitual e limite do conhecimento teórico. A elimina a atividade do entendimento. B converte condições de conhecimento em criação arbitrária de fatos. C confunde fenômeno com falsidade, quando o termo designa o objeto sob as condições de sua aparição e conhecimento. O limite sobre coisa em si não prova ausência de realidade nem autoriza afirmação empírica sem evidências."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cenário autoral: para receber um recurso, alguém promete cumprir um acordo já com a intenção de não o cumprir. Justifica a ação apenas pela vantagem que obterá. Pelo teste kantiano da máxima de promessa enganosa, qual análise é adequada?",
+        "hint": "A máxima usa a confiança na promessa enquanto permite enganar; o teste não é apenas calcular a chance de punição.",
+        "options": [
+          "Universalizar a permissão de prometer enganosamente compromete a confiança pressuposta pela própria prática usada para obter a vantagem.",
+          "A ação se torna moralmente válida sempre que o agente consegue evitar descoberta.",
+          "A vantagem pessoal prova que a máxima é universalizável.",
+          "O caso demonstra que qualquer promessa sincera é necessariamente imoral."
+        ],
+        "correctIndex": 0,
+        "solution": "A identifica a tensão na máxima: obter algo por uma promessa pressupõe confiança, mas a permissão universal de promessa enganosa destrói a base que o meio utiliza. B reduz moralidade a prudência para evitar punição. C toma interesse particular como critério suficiente de validade universal. D estende a crítica da promessa enganosa a toda promessa, algo que não decorre do argumento. A análise considera a máxima informada, sem inventar uma intenção além do cenário."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Estratificação e desigualdade social",
+    "objective": "Distinguir dimensões da estratificação, interpretar indicadores e mobilidade e analisar mecanismos de reprodução da desigualdade sem estatísticas fabricadas ou inferências causais baseadas apenas em associação.",
+    "prerequisites": [
+      "Noções de renda, patrimônio e instituições",
+      "Média, razão e diferença absoluta",
+      "Distinção entre hipótese, associação e causa"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Estratificação: recursos, reconhecimento e poder",
+        "explanation": "Estratificação social designa uma organização duradoura de posições e oportunidades desiguais. Não é qualquer diferença individual: envolve padrões de acesso a recursos, prestígio e capacidade de decisão que atravessam instituições e grupos. Renda é um fluxo em um período; patrimônio é um estoque de bens e direitos, considerando dívidas quando se fala em patrimônio líquido. Duas pessoas com renda semelhante podem ter patrimônios e condições de segurança muito diferentes. Classe, prestígio e poder são dimensões relacionadas, mas não idênticas. Em Marx, relações com os meios de produção e conflitos de classe são centrais; isso não se reduz a dividir faixas de salário em uma tabela. Em Weber, posição de classe no mercado, honra ou status e organização do poder permitem investigar dimensões distintas que podem interagir. Distinção analítica não significa independência causal absoluta. Uma ocupação pode receber reconhecimento sem salário elevado, e possuir renda elevada não garante sozinho o mesmo acesso a decisões em qualquer contexto. Sistemas de estratificação podem impor barreiras de diferentes formas, como herança, normas, discriminação e desigual acesso à educação. Dizer que uma sociedade admite mobilidade não prova igualdade de oportunidades. Tampouco uma trajetória individual de ascensão demonstra ausência de barreiras coletivas. A análise precisa definir o recorte, os recursos observados e os grupos comparados. Identificar desigualdade não equivale a explicar integralmente sua origem, e renda não resume todas as formas de hierarquia social.",
+        "steps": [
+          "Separe renda recebida no período de patrimônio acumulado.",
+          "Identifique recursos, prestígio e decisões em situações concretas.",
+          "Compare perspectivas teóricas sem reduzi-las a faixas de renda.",
+          "Distinga possibilidade individual de mobilidade de igualdade de oportunidades."
+        ],
+        "example": "Cenário autoral: uma ocupação recebe grande reconhecimento público, enquanto outra é melhor remunerada mas pouco reconhecida naquele grupo. A comparação mostra que prestígio e renda não são a mesma medida. Para investigar poder, seria preciso observar também como cada grupo participa das decisões, sem presumir que a hierarquia de renda reproduz exatamente a de reconhecimento.",
+        "pitfall": "Confundir renda e patrimônio, chamar dimensões distintas de totalmente independentes ou usar um caso de ascensão para negar padrões de barreiras."
+      },
+      {
+        "level": "intermediate",
+        "title": "Medidas de desigualdade: denominadores, população e limites",
+        "explanation": "Um indicador resume uma dimensão definida e precisa de população, período, conceito de renda e método comparáveis. Média de renda não mostra como o total está distribuído. O coeficiente de Gini é uma medida de concentração: em sua escala usual de zero a um, zero expressa igualdade e valores maiores expressam maior concentração. Para uma pequena população de n pessoas com rendas não negativas e soma positiva, uma fórmula não corrigida é G = ΣiΣj|xi - xj| / (2nΣixi). A soma considera pares ordenados, inclusive os de diferença zero. Não confunda essa convenção com versões corrigidas para amostras. O Gini não informa sozinho quem recebe renda, quais grupos sofrem uma barreira ou qual política causou mudança. Distribuições diferentes podem apresentar o mesmo índice. Multiplicar todas as rendas pelo mesmo número positivo mantém esse Gini relativo, embora os valores monetários mudem. Pobreza e desigualdade também são distintas: pobreza exige um critério de privação ou uma linha definida; uma sociedade pode ter baixo Gini e renda insuficiente para muitas pessoas. Uma linha monetária requer moeda, período e critério explícitos, não um valor universal inventado. O IDH resume realizações médias em saúde, educação e renda e não é medida direta da distribuição. Seu ajuste à desigualdade incorpora perdas associadas à desigual distribuição dessas dimensões; não é simplesmente o Gini renomeado. Para ler uma série histórica, confira mudança de pesquisa, deflator, renda incluída e população antes de ligar pontos ou atribuir causas. Uma diferença entre dois anos não identifica sozinha o efeito isolado de uma lei.",
+        "steps": [
+          "Defina unidade de análise, renda, período e convenção do indicador.",
+          "Calcule média e distribuição separadamente.",
+          "Na fórmula apresentada, some diferenças de todos os pares e confira o denominador.",
+          "Diferencie pobreza, desenvolvimento médio e desigualdade.",
+          "Investigue comparabilidade e causas sem inventar séries ou mecanismos."
+        ],
+        "example": "População autoral hipotética com rendas 0, 0, 10 e 10: soma 20 e média 5. Há oito pares ordenados entre renda zero e renda dez, cada um com diferença 10: soma 80. Assim, G = 80/(2·4·20) = 0,5. Se as quatro rendas fossem 5, a média continuaria 5, mas G seria zero.",
+        "pitfall": "Usar média como descrição completa, misturar versões do Gini ou concluir que queda de um índice prova causalidade de uma política específica."
+      },
+      {
+        "level": "advanced",
+        "title": "Mobilidade e reprodução: mecanismos e evidência",
+        "explanation": "Mobilidade intrageracional acompanha mudanças de posição ao longo da trajetória de uma pessoa; intergeracional compara gerações, segundo uma medida definida. Mobilidade absoluta descreve o volume de mudanças observadas e pode refletir transformação da estrutura de ocupações ou de escolaridade. Mobilidade relativa investiga chances comparadas entre origens e destinos, levando em conta essa estrutura; não é apenas uma troca literal de lugares entre duas pessoas. Uma geração estudar mais anos que a anterior não prova, sozinha, que as diferenças de oportunidade entre origens desapareceram. A explicação sociológica examina mecanismos. Recursos econômicos podem financiar estudo e deslocamento; redes de relações podem facilitar informação; familiaridade com práticas valorizadas pela escola pode produzir vantagens. A análise de capital cultural e reprodução não afirma que cada trajetória esteja determinada ou que todo resultado seja apenas herança. Instituições e ações coletivas também podem transformar condições. Raça, gênero, classe e território podem articular barreiras específicas; uma comparação precisa identificar contexto e mecanismos, sem deduzir que seus efeitos são sempre independentes ou que uma fórmula única descreve todas as experiências. Duas pessoas com o mesmo diploma e rendas diferentes não constituem, sozinhas, um estudo controlado capaz de medir discriminação: ocupação, jornada, experiência e seleção podem exigir análise. Isso não nega discriminação; diferencia uma hipótese relevante da estimativa que requer dados e método. Uma investigação pode combinar evidência quantitativa, experiências e análise institucional. Para avaliar uma política, declare objetivo, público, comparação e limites, evitando atribuir toda a desigualdade a esforço individual ou a um único mecanismo sem demonstração.",
+        "steps": [
+          "Defina o tipo de mobilidade e a medida usada entre origem e destino.",
+          "Separe expansão geral de posições de mudança nas chances relativas.",
+          "Formule mecanismos de reprodução e condições de transformação.",
+          "Leia desigualdades entre grupos sem chamar comparação simples de experimento controlado.",
+          "Compare explicações e evidências antes de concluir efeito causal."
+        ],
+        "example": "Cenário autoral: uma seleção divulga instruções somente em uma rede de ex-participantes. Pessoas fora dessa rede não recebem a mesma informação, segundo as condições do cenário. Isso ilustra um mecanismo possível de vantagem pelo acesso a relações e informação; não determina qual pessoa será aprovada nem quantifica o efeito. Investigar sua importância exige comparar acesso, critérios de seleção e resultados, distinguindo mecanismo proposto e estimativa causal.",
+        "pitfall": "Equiparar mobilidade absoluta a igualdade de oportunidades, tratar herança social como destino inevitável ou chamar duas observações de controle estatístico completo."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário autoral: dois trabalhadores recebem o mesmo salário mensal. Um tem imóvel quitado e reservas; outro não possui bens e tem dívidas superiores às reservas. Qual conclusão é sustentada?",
+        "hint": "Separe o fluxo observado no mês do estoque líquido de bens, direitos e dívidas.",
+        "options": [
+          "Salários iguais provam patrimônios líquidos iguais.",
+          "Salários iguais provam poder político idêntico.",
+          "A igualdade do salário não implica igualdade de patrimônio líquido nem informa sozinha o poder político.",
+          "A existência de dívidas prova que o segundo nunca terá mobilidade."
+        ],
+        "correctIndex": 2,
+        "solution": "C distingue renda mensal, patrimônio e poder, sem afirmar o que os dados não medem. A ignora bens e dívidas diferentes. B atribui igualdade política apenas ao salário. D transforma uma condição atual em destino inevitável. O cenário permite comparar estoques e fluxos, mas não quantifica toda a desigualdade entre os dois nem identifica sua causa histórica completa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "População autoral hipotética com quatro pessoas e rendas de 10, 20, 30 e 40 unidades no mesmo período. Usando a fórmula não corrigida G = ΣiΣj|xi - xj|/(2nΣixi), qual é a média e o Gini?",
+        "hint": "A soma das rendas é 100; conte todos os pares ordenados, não somente os pares distintos sem repetição.",
+        "options": [
+          "25 unidades; Gini 0,50.",
+          "25 unidades; Gini 0,25.",
+          "100 unidades; Gini 0,25.",
+          "25 unidades; Gini 0,00."
+        ],
+        "correctIndex": 1,
+        "solution": "B: a média é 100/4 = 25. As diferenças dos pares não ordenados somam 10+20+30+10+20+10 = 100; na soma ordenada, o valor dobra para 200. O denominador é 2·4·100 = 800, logo G = 0,25. A dobra o índice; C confunde soma com média; D atribui igualdade a rendas diferentes. A fórmula e a pequena população são fornecidas para cálculo, não representam dados do Brasil."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Cenário autoral: em duas origens sociais, a geração de filhos estuda mais anos que a de pais, mas a diferença de acesso ao ensino superior entre as origens continua presente. Sem outros dados, qual interpretação é adequada?",
+        "hint": "Melhoria absoluta e igualdade de chances são afirmações diferentes; preserve os limites da comparação.",
+        "options": [
+          "O cenário comprova que a origem social deixou de influenciar qualquer oportunidade.",
+          "A melhoria prova que todas as barreiras institucionais foram eliminadas.",
+          "A diferença de acesso prova destino individual inevitável para cada filho.",
+          "Há melhoria absoluta de escolaridade, mas os dados não demonstram igualdade de chances entre origens nem determinam cada trajetória."
+        ],
+        "correctIndex": 3,
+        "solution": "D reconhece o aumento de escolaridade sem inferir igualdade de oportunidades ou destino individual fixo. A e B apagam a diferença de acesso que o próprio cenário preserva e extrapolam para todas as oportunidades e instituições. C converte padrão entre grupos em determinação de cada pessoa. Para avaliar mobilidade relativa ou causas de barreiras, seriam necessários recortes, medidas e dados adicionais."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Indústria cultural e arte digital",
+    "objective": "Analisar padronização e circulação cultural, reconhecer práticas de arte digital e avaliar mediações, participação e preservação por meio de descrições autorais autossuficientes e evidências delimitadas.",
+    "prerequisites": [
+      "Noções de produção, circulação e recepção artística",
+      "Distinção entre suporte, procedimento e finalidade",
+      "Leitura crítica de descrições e de dados de circulação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Indústria cultural como perspectiva crítica",
+        "explanation": "Indústria cultural é um conceito associado a Adorno e Horkheimer para analisar a organização da produção e do consumo cultural sob relações econômicas e administrativas. Nessa perspectiva, produtos podem ser planejados em série, com fórmulas reconhecíveis e variações que apresentam aparência de escolha individual. A crítica não equivale simplesmente a dizer que toda obra popular é ruim ou que um público numeroso demonstra ausência de pensamento. Trata-se de investigar como produção, distribuição e consumo são organizados e como interesses econômicos podem condicionar o que circula. Padronização diz respeito à repetição de estruturas; diferenças superficiais podem coexistir com uma fórmula repetida, sem que isso esgote todas as diferenças entre obras. Uma análise concreta precisa examinar forma e condições de circulação, não apenas condenar gosto alheio. A cultura popular também não deve ser imaginada como esfera sempre pura, imóvel e sem contato com mercados. Criadores e públicos podem negociar, reinterpretar e contestar formas existentes; reconhecer essas possibilidades não elimina assimetrias institucionais. A circulação digital pode ampliar acesso e permitir distribuição direta em certos contextos, mas ferramenta disponível não garante renda, visibilidade ou autonomia. Compare quem produz, quem escolhe o que é mostrado, quais critérios são empregados e quem recebe recursos. O conceito é uma lente crítica situada, não uma prova automática de que todo usuário reage passivamente ou de que toda produção comercial tem a mesma estrutura.",
+        "steps": [
+          "Identifique como produção, distribuição e consumo estão organizados.",
+          "Examine estruturas repetidas e o papel de variações superficiais.",
+          "Separe crítica institucional de julgamento automático sobre gosto ou tamanho de público.",
+          "Observe possibilidades de apropriação e resistência sem ignorar assimetrias."
+        ],
+        "example": "Cenário autoral hipotético: uma empresa oferece séries musicais com a mesma estrutura e campanha, alterando pequenas partes da apresentação e anunciando cada versão como inteiramente singular. A crítica pode investigar a relação entre fórmula e diferenciação aparente. Só o fato de haver muitas ouvintes não provaria, por si, esse mecanismo.",
+        "pitfall": "Usar popularidade como prova de passividade, chamar toda variação de falsa ou tratar cultura popular como domínio sem relações históricas com mercados."
+      },
+      {
+        "level": "intermediate",
+        "title": "Arte digital: regras, rede e experiência",
+        "explanation": "Arte digital reúne práticas diversas, não um estilo visual único. Uma obra pode usar programação, imagens, som, interfaces, rede ou ambientes virtuais em sua produção e experiência. Nem toda obra digital exige interação, inteligência artificial ou conexão permanente. Arte generativa pode empregar um conjunto de regras para produzir resultados; isso não implica necessariamente aprendizado de máquina, aleatoriedade ou variação infinita. Net art explora possibilidades e condições da rede como parte da obra, não apenas a divulgação de uma imagem em um site. Uma instalação interativa pode mudar conforme ações do público, mas interação técnica não garante que todas as decisões artísticas sejam compartilhadas. Para analisar autoria, descreva contribuições e escolhas, sem declarar automaticamente coautoria jurídica a toda pessoa que toca numa interface. Essa aula não decide direitos legais de uma obra concreta. Uma reprodução digital pode manter os mesmos dados de um arquivo, mas diferentes telas, programas, versões e contextos de apresentação podem alterar a experiência. A existência de cópias não elimina necessariamente a relevância de origem, documentação ou versão autorizada. Também é possível registrar uma execução em vídeo sem que o vídeo reproduza a interação que a constitui. Na análise, separe suporte, procedimento, resultado e relação com o público. Uma descrição autossuficiente pode informar o que o sistema faz e como o público participa, permitindo discutir a proposta sem exigir imagem ou som que não foi fornecido.",
+        "steps": [
+          "Identifique o papel do digital na obra, além de sua divulgação.",
+          "Descreva regras, entradas e resultados sem supor IA ou aleatoriedade.",
+          "Diferencie participação técnica de poder de decisão e de reconhecimento jurídico.",
+          "Compare registro de uma execução com experiência da obra em funcionamento."
+        ],
+        "example": "Obra autoral hipotética: em uma tela, cada clique acrescenta um quadrado; o sistema alterna azul e amarelo por regra fixa. Há interação e geração por regras, mas não foi informado uso de IA ou sorteio. Um vídeo documenta uma sequência possível, porém não oferece ao espectador a possibilidade de clicar e construir outra sequência.",
+        "pitfall": "Equiparar arte generativa a IA, presumir resultados infinitos ou confundir vídeo de uma interação com preservação integral da experiência interativa."
+      },
+      {
+        "level": "advanced",
+        "title": "Mediação, acesso e preservação",
+        "explanation": "Plataformas, instituições e dispositivos mediam a circulação da arte digital. Uma contagem de visualizações informa uma ocorrência definida pelo sistema de medição; não prova sozinha qualidade artística, remuneração justa, acesso de todos os grupos ou apoio consciente de cada visitante. Para investigar recomendação ou moderação, é preciso saber quais dados e critérios são observáveis. A redução de alcance de uma obra isolada não demonstra automaticamente censura, nem um aumento prova a causa de uma alteração de formato. Modelos de financiamento e governança podem ser comparados por critérios explícitos: custos, regras de decisão, remuneração, acessibilidade, público e continuidade. Usar um protocolo aberto ou declarar gestão cooperativa não resolve por si todas essas dimensões; da mesma forma, não condena um projeto ao fracasso antes de observar suas condições. A preservação demanda mais do que guardar uma cópia de arquivo. Obras dependem de programas, versões, equipamentos, conexões, entradas e modos de apresentação. Documentar comportamentos e aspectos considerados essenciais ajuda a avaliar estratégias como manutenção de equipamento, migração ou emulação. Essas estratégias podem alterar experiência e precisam de critérios e testes; não existe solução universal que preserve tudo sem mudança. É necessário registrar decisões e distinguir a obra, seu registro e uma reconstrução. Descrições, alternativas de acesso e instruções podem ampliar fruição, mas sua adequação depende da obra e do público. A análise crítica combina forma, infraestrutura e condições sociais, sem reduzir arte a métricas ou apresentar promessas técnicas como resultados já demonstrados.",
+        "steps": [
+          "Defina o que cada métrica mede e quais conclusões ela não autoriza.",
+          "Compare modelos de circulação por critérios explícitos e dados disponíveis.",
+          "Registre dependências e comportamentos relevantes para preservar a obra.",
+          "Teste estratégias de preservação e documente alterações de experiência.",
+          "Considere acesso e continuidade junto das decisões estéticas e institucionais."
+        ],
+        "example": "Cenário autoral: uma obra exige um navegador antigo e muda cores conforme teclas pressionadas. O museu guarda arquivos, descrição das respostas e vídeos de execução e testa uma versão emulada. O vídeo ajuda a comparar comportamento, mas não substitui a interação; a emulação precisa ser avaliada, não declarada idêntica apenas por iniciar sem erro.",
+        "pitfall": "Tomar alcance por qualidade, inferir censura de uma queda isolada ou prometer preservação integral apenas porque o arquivo original foi copiado."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Cenário autoral: uma empresa comercializa dez versões de um programa com a mesma estrutura narrativa, mudando pequenos detalhes e promovendo cada uma como escolha inteiramente singular. Qual análise se aproxima da crítica da indústria cultural sem extrapolar o cenário?",
+        "hint": "Relacione repetição estrutural e diferenciação aparente, sem deduzir reação idêntica de todos os espectadores.",
+        "options": [
+          "As variações superficiais podem apresentar singularidade enquanto a estrutura permanece padronizada; a recepção concreta ainda exige investigação.",
+          "O número dez prova que todos os públicos são incapazes de interpretar criticamente.",
+          "Qualquer obra comercial é necessariamente idêntica em todos os aspectos.",
+          "A existência de pequenas mudanças demonstra autonomia total frente à organização econômica."
+        ],
+        "correctIndex": 0,
+        "solution": "A relaciona a fórmula repetida à diferenciação aparente e limita a conclusão sobre públicos. B transforma quantidade de versões em incapacidade universal. C generaliza identidade total a qualquer obra comercial, além do cenário. D toma pequenas mudanças como prova de autonomia plena, ignorando a estrutura informada. A crítica examina organização e forma, sem exigir uma reação única de todos os espectadores."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Descrição autoral: uma obra online permite ao visitante escolher uma entre quatro palavras. Uma regra fixa reorganiza o texto conforme a escolha. Não usa sorteio ou modelo de IA. Qual afirmação é sustentada?",
+        "hint": "Separe regras computacionais, interação do visitante e tecnologias que o enunciado expressamente não informa ou exclui.",
+        "options": [
+          "Toda arte por regras usa obrigatoriamente IA generativa.",
+          "A escolha de palavras prova coautoria jurídica automática de todos os visitantes.",
+          "Há interação e transformação por regras, sem necessidade de IA ou aleatoriedade nesse caso.",
+          "O sistema produz necessariamente quantidade infinita de textos diferentes."
+        ],
+        "correctIndex": 2,
+        "solution": "C identifica interação e transformação por uma regra fixa, compatíveis com a descrição. A contradiz a ausência de IA e impõe equivalência falsa entre regra e aprendizado de máquina. B converte participação técnica em conclusão jurídica que não foi demonstrada. D afirma infinitude sem dados e apesar do conjunto limitado de escolhas informado. Uma análise adequada descreve procedimento e experiência antes de atribuir outras propriedades."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um acervo preserva arquivos de uma obra interativa e um vídeo de uma execução. A obra dependia de um programa que não funciona no sistema atual. Qual medida responde ao problema sem confundir documentação e experiência?",
+        "hint": "O registro visual ajuda a avaliar comportamentos, mas não permite por si toda a interação original.",
+        "options": [
+          "Declarar a preservação integral concluída porque o vídeo pode ser reproduzido.",
+          "Descartar arquivos e instruções, pois qualquer emulação será necessariamente idêntica.",
+          "Contar visualizações do vídeo para comprovar que a interação foi preservada.",
+          "Documentar dependências e comportamentos essenciais e testar uma estratégia de execução, comparando alterações com arquivos e registros."
+        ],
+        "correctIndex": 3,
+        "solution": "D combina documentação, execução e comparação segundo critérios, sem prometer identidade automática. A confunde um registro com a experiência interativa. B descarta evidências e trata emulação como garantia universal. C usa alcance do vídeo para provar uma propriedade que a métrica não mede. O vídeo pode apoiar o teste, mas não substitui sozinho todas as possibilidades de ação na obra."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Jogos e brincadeiras tradicionais",
+    "objective": "Reconhecer jogos e brincadeiras como práticas culturais vivas, comparar variantes registradas e planejar adaptações e avaliação com participação, segurança e respeito aos contextos de transmissão.",
+    "prerequisites": [
+      "Noções de regra, objetivo e participação em jogos",
+      "Reconhecimento da diversidade cultural e regional",
+      "Distinção entre relato de prática, adaptação didática e regra esportiva oficial"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Tradição, variantes e registro de brincadeiras",
+        "explanation": "Jogos e brincadeiras tradicionais circulam por observação, convivência, relatos e experiências entre pessoas e gerações. Tradição não significa imobilidade: nomes, materiais, gestos e regras podem variar conforme lugar, grupo e momento. Um nome igual não garante regras idênticas, e nomes diferentes podem designar práticas próximas. O estudo da diversidade brasileira reconhece contribuições e trocas entre povos indígenas, populações africanas e afro-brasileiras, diferentes migrações e comunidades locais, sem reduzir cada prática a uma origem única presumida. Atribuir um nome indígena, uma data ou uma comunidade exige fonte específica; sem ela, não se preenche a lacuna com uma história provável. Para conhecer uma variante, registre quem a relata, em que contexto, como começa, qual é o objetivo, quais ações são permitidas e como termina. Esse registro descreve aquela experiência e não se torna automaticamente regulamento universal. Participantes também criam e negociam regras, em vez de apenas repetir um modelo pronto. Amarelinha, pião e brincadeiras de perseguição podem ser investigados por suas versões concretas, sem que a aula precise reproduzir todos os modos existentes. Conhecer a tradição envolve ouvir seus praticantes e distinguir descrição de julgamento. Uma prática não é inferior por usar material simples, e um jogo novo não se torna tradicional apenas porque o professor o chama assim. Nesta aula, variante é um modo concreto de praticar registrado em determinado contexto; adaptação didática é uma mudança criada explicitamente para um objetivo de aprendizagem. Continuidade de transmissão e reconhecimento pelos praticantes ajudam a estudar uma tradição, sem instituir teste universal de autenticidade. Jogos e brincadeiras podem ter regras e graus diferentes de formalização; a distinção entre os termos varia conforme uso e abordagem, não exige uma oposição rígida. Todos os cenários chamados autorais hipotéticos são simulações didáticas, não relatos de pesquisa de campo. O Território do Brincar apresenta sua atuação como escuta, intercâmbio, registro e difusão da cultura infantil; consultar seus registros identificados é diferente de atribuir realidade a uma simulação desta aula.",
+        "steps": [
+          "Identifique a variante, o contexto e a pessoa ou fonte do registro.",
+          "Descreva início, objetivo, materiais, ações e término.",
+          "Compare diferenças sem chamar toda variante de erro.",
+          "Separe informação documentada, hipótese de origem e adaptação criada na aula."
+        ],
+        "example": "Registro autoral hipotético: uma pessoa explica que aprendeu um jogo com irmãos, descreve material, início, ações e término e informa quando e onde costumava brincar. O registro documenta uma experiência de transmissão; não prova quem inventou a prática nem permite atribuir-lhe uma origem continental sem pesquisa adicional.",
+        "pitfall": "Inventar etimologia ou comunidade de origem, tratar transmissão como cópia sem mudança ou elevar um relato local a regra universal."
+      },
+      {
+        "level": "intermediate",
+        "title": "Experimentar, adaptar e observar participação",
+        "explanation": "Uma adaptação didática deve explicitar seu objetivo e as mudanças em relação à versão estudada. Pode alterar espaço, material, tempo, deslocamento, número de participantes ou critério de pontuação. Isso não a transforma em regra oficial de um esporte nem garante automaticamente inclusão. Antes de experimentar, combine regras compreensíveis, limites de espaço, possibilidade de pausa e materiais adequados ao grupo. A observação e a escuta indicam se a proposta favorece participação. Em um jogo de manter um objeto leve em circulação, por exemplo, permitir diferentes modos de envio pode ampliar possibilidades; a mudança precisa ser testada, porque algumas pessoas ainda podem ficar sem oportunidades. A duração da troca e o placar não medem sozinhos aprendizagem ou participação de cada pessoa. Compare quem recebe o objeto, quem decide, quanto tempo se espera e como participantes avaliam a experiência. A competição não é sempre excludente, e a cooperação não garante ausência de desigualdade. Não se deve atribuir automaticamente a um povo um sentido exclusivamente cooperativo nem copiar práticas rituais como exercícios genéricos. Para escolher uma proposta escolar, respeite as condições de espaço, conforto e participação; não imponha cargas pesadas ou esforços como prova de pertencimento cultural. Ajustes podem ser discutidos por necessidades funcionais e preferências, sem exigir exposição de diagnóstico de saúde. A versão adaptada deve ser identificada como tal e pode continuar sendo revista com os participantes. Uma variante escolar autoral inspirada na amarelinha pode ser descrita por inteiro: seis casas numeradas em sequência no chão, marcador macio, uma pessoa por vez no percurso e as demais fora da área de passagem. Na primeira rodada, lança-se o marcador à casa 1; se ele ficar dentro, percorrem-se as demais casas na ordem, sem pisar na casa marcada, volta-se pelo mesmo trajeto e recolhe-se o marcador. Nas rodadas seguintes, tenta-se a próxima casa. O grupo combina previamente se o percurso será feito por passos, saltos ou outra forma funcional de deslocamento. Se o marcador sair ou houver dificuldade, a tentativa termina e a pessoa retoma essa casa em sua próxima vez, sem eliminação. O objetivo é completar as seis casas respeitando a ordem e os acordos, não terminar antes de todos. Distâncias e trajetos devem permitir realização confortável e ser revistos. Esta é uma adaptação criada para estudo, não a regra de toda amarelinha; comparar com relatos locais permite identificar mudanças de objetivo, apoio, percurso e retorno. As seis casas da proposta foram escolhidas para esta sequência didática curta, que preserva casas, marcador e percurso como referências da amarelinha; não se afirma que esse número venha de registro de uma comunidade. Outro número pode ser testado conforme o objetivo. Para observar participação, registre ações como receber ou enviar o objeto, propor uma regra, decidir um percurso e tempo de espera, interpretando esses dados com a escuta do grupo.",
+        "steps": [
+          "Declare o objetivo da adaptação e quais regras foram alteradas.",
+          "Combine limites, materiais e formas de pausa antes de começar.",
+          "Observe oportunidades reais de ação e ouça participantes.",
+          "Reveja a regra com base no resultado, sem prometer inclusão automática."
+        ],
+        "example": "Adaptação autoral hipotética de um percurso de casas: a turma reduz distâncias e oferece modos combinados de deslocamento, mantendo ordem e turnos. Depois verifica conforto, compreensão das regras e possibilidades de completar o trajeto. A mudança é identificada como escolar e permanece aberta à revisão, sem receber o rótulo de regra oficial de toda amarelinha.",
+        "pitfall": "Afirmar que dois toques obrigatórios garantem participação, chamar uma adaptação de regra oficial ou exigir diagnóstico para negociar uma forma de jogar."
+      },
+      {
+        "level": "advanced",
+        "title": "Contextualização, mediação cultural e avaliação",
+        "explanation": "Estudar uma prática cultural requer atenção a quem a realiza e ao sentido que assume naquele contexto. Um vídeo ou relato pode documentar determinada experiência, mas não representa automaticamente todas as pessoas de um povo ou todas as épocas. Registre autoria, local e data quando disponíveis e diferencie uma fonte consultada de uma demonstração autorizada para reprodução. Convites a praticantes e diálogo com comunidades podem aprofundar a aprendizagem; não basta substituir essa escuta por personagens genéricos ou inventar cantos e rituais. Uma adaptação escolar precisa ser apresentada como criação didática e não como reprodução fiel de uma cerimônia que não se conhece. A aprendizagem pode ser avaliada por capacidade de explicar regras, comparar variantes, justificar mudanças, respeitar acordos e refletir sobre participação. Ganhar partidas não é medida suficiente, e presença física não demonstra sozinha compreensão. Uma exposição, descrição oral ou registro escrito pode contribuir para aprender; não é obrigatório que toda avaliação seja apenas competição ou apenas vivência corporal. Compare evidências em relação ao objetivo e ofereça modos de expressão pertinentes. A salvaguarda de uma prática viva não exige congelar cada detalhe, mas tampouco autoriza apagar seus praticantes ou transformar todas as diferenças em versões intercambiáveis. O estudo pode produzir um repertório de registros com fontes e comentários, preservando distinções entre o que foi documentado, o que foi adaptado e o que permanece desconhecido. O objetivo é compreender e dialogar, sem proclamar domínio de uma tradição inteira após uma única aula. Como descritores formativos possíveis, uma pessoa pode ainda precisar de apoio para explicar a regra, depois descrevê-la com clareza e, em outra etapa, comparar variantes e justificar a adaptação. Esses descritores não são escala universal nem hierarquia de valor cultural. A UNESCO trata a salvaguarda do patrimônio imaterial em relação às comunidades e à transmissão e recriação das práticas; isso não torna toda criação escolar uma tradição documentada. Eventuais protocolos para visita, registro, imagem ou apresentação devem ser definidos no contexto e com seus detentores, sem supor autorização pelo simples acesso a um material público. As referências consultadas estão disponíveis na aba Materiais, em Autoria e referências.",
+        "steps": [
+          "Examine contexto, autoria e alcance da fonte consultada.",
+          "Diferencie registro, autorização de uso e adaptação escolar.",
+          "Defina evidências de aprendizagem além do placar ou da presença.",
+          "Registre mudanças e incertezas sem inventar práticas rituais."
+        ],
+        "example": "Projeto autoral: a turma reúne relatos de brincadeiras de familiares e registros públicos identificados. Organiza versões, fontes e mudanças propostas para a escola. Ao apresentar o repertório, informa quais regras pertencem aos relatos e quais foram criadas para a atividade. Uma dúvida de origem fica marcada como dúvida, sem nome de povo inventado.",
+        "pitfall": "Declarar uma cerimônia fiel com base em um resumo, inventar autorização ou avaliar compreensão exclusivamente por vitória ou desempenho físico."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Dois relatos identificados usam o mesmo nome de brincadeira, mas descrevem regras diferentes de retorno ao jogo. Nenhum deles é um regulamento nacional. Qual registro é adequado?",
+        "hint": "A tradição admite variantes; preserve contexto e não transforme uma descrição local em norma universal.",
+        "options": [
+          "Apagar o relato menos parecido com a experiência pessoal do pesquisador.",
+          "Registrar as duas variantes, seus contextos e regras, sem declarar uma universal apenas pelo nome.",
+          "Concluir que uma comunidade inventou a brincadeira e todas as outras copiaram, sem fonte.",
+          "Misturar regras e atribuir a combinação como tradição idêntica de todos os lugares."
+        ],
+        "correctIndex": 1,
+        "solution": "B preserva a diversidade documentada e o alcance de cada relato. A substitui investigação por preferência pessoal. C inventa origem e difusão sem evidência. D apaga diferenças e atribui a todos uma combinação que não foi registrada como tal. Reconhecer variantes não impede compará-las; exige identificar o que se sabe e em qual contexto."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma adaptação escolar autoral com objeto leve, poucas pessoas concentram as ações, embora a troca dure bastante. O objetivo é ampliar oportunidades de participação. Qual ação atende ao problema sem garantir resultado antes do teste?",
+        "hint": "Duração da troca não informa quantas oportunidades cada pessoa teve. Procure observação, escuta e revisão da regra.",
+        "options": [
+          "Declarar inclusão comprovada somente porque a troca foi longa.",
+          "Manter tudo e avaliar apenas quem executou mais ações.",
+          "Exigir diagnóstico médico dos participantes para qualquer mudança de regra.",
+          "Testar mudanças de distância, organização e formas de envio, ouvindo participantes e comparando oportunidades de ação."
+        ],
+        "correctIndex": 3,
+        "solution": "D relaciona mudanças ao objetivo, testa resultados e inclui a escuta do grupo. A confunde duração coletiva com participação distribuída. B reforça o problema e usa volume de ações como único critério. C exige informação sensível que não é necessária para negociar ajustes funcionais no cenário. A estratégia não promete inclusão automática: sua adequação precisa ser observada e revista."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma turma pretende apresentar uma prática de comunidade que conhece apenas por um breve registro. Quer distinguir estudo, adaptação e reprodução cultural. Qual proposta é adequada?",
+        "hint": "Informação incompleta não autoriza inventar canto, ritual, origem ou consentimento.",
+        "options": [
+          "Identificar a fonte e seu alcance, buscar contexto e diálogo quando possível e nomear como adaptação escolar as mudanças criadas pela turma.",
+          "Criar cantos e atribuí-los à comunidade para a apresentação parecer autêntica.",
+          "Afirmar que o registro representa todas as pessoas da comunidade em todas as épocas.",
+          "Tratar o uso de um nome cultural como prova de autorização de reprodução integral."
+        ],
+        "correctIndex": 0,
+        "solution": "A preserva contexto e diferencia criação escolar de reprodução fiel, sem fingir um conhecimento que a turma não tem. B inventa material e atribuição. C universaliza o alcance de um registro breve. D confunde o uso de um nome com autorização. O estudo pode avançar com fontes e diálogo, mantendo explícito o que é conhecido, o que foi adaptado e o que exige mais investigação."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Eletricidade e ondas",
+    "objective": "Relacionar corrente, tensão, resistência, potência e energia em circuitos ideais, reconhecer ondas mecânicas e eletromagnéticas e calcular comprimento de onda e energia por fóton com unidades e hipóteses explícitas.",
+    "prerequisites": [
+      "Aritmética básica e álgebra elementar",
+      "Conceitos de carga elétrica, corrente, tensão e resistência",
+      "Unidades do SI: ampere, volt, ohm, watt, joule, hertz, metro"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Lei de Ohm e associação de resistores em série e paralelo",
+        "explanation": "Corrente elétrica mede a taxa de passagem de carga; tensão é diferença de potencial, relacionada à energia transferida por unidade de carga. Resistência relaciona tensão e corrente nas condições consideradas. A lei de Ohm estabelece a relação linear entre tensão (U), corrente (i) e resistência (R) em condutores ôhmicos: U = R · i. A tensão é medida em volts (V), a corrente em amperes (A) e a resistência em ohms (Ω). Em circuitos reais, resistores podem ser associados de duas formas principais. Em série, a mesma corrente atravessa todos os elementos e a resistência equivalente é a soma das resistências individuais: R_eq = R₁ + R₂ + ... + Rₙ. A tensão total divide-se proporcionalmente às resistências. Em paralelo, a tensão é a mesma em todos os ramos e a corrente total divide-se; a resistência equivalente satisfaz 1/R_eq = 1/R₁ + 1/R₂ + ... + 1/Rₙ, para pelo menos dois resistores de resistência positiva e finita, resultando em R_eq menor que a menor resistência individual. Para circuitos mistos, simplifica-se passo a passo: identifica-se grupos em série ou paralelo, calcula-se a equivalente e repete-se até obter um único resistor. A potência dissipada por um resistor é P = U · i = R · i² = U²/R, medida em watts (W). A energia consumida em um intervalo de tempo é E = P · t, em joules (J) se t estiver em segundos. Em aplicações práticas, deve-se respeitar a potência nominal dos resistores para evitar superaquecimento. Nos cálculos seguintes, os resistores são ôhmicos com resistência constante, a fonte é ideal e os fios têm resistência desprezada. A relação linear não deve ser generalizada a todo componente ou a qualquer temperatura. Os valores descrevem modelos de cálculo, não instruções de intervenção em instalações elétricas.",
+        "steps": [
+          "Identifique a configuração do circuito: resistores em série, paralelo ou misto.",
+          "Calcule a resistência equivalente usando as fórmulas de série (soma) ou paralelo (inverso da soma dos inversos).",
+          "Aplique a lei de Ohm (U = R · i) para encontrar a grandeza desconhecida (tensão, corrente ou resistência).",
+          "Se necessário, calcule potência (P = U · i) e energia (E = P · t)."
+        ],
+        "example": "Um circuito tem uma bateria de 12 V ligada a dois resistores em série: R₁ = 4 Ω e R₂ = 8 Ω. A corrente no circuito é i = U / (R₁ + R₂) = 12 V / 12 Ω = 1 A. A tensão em R₁ é U₁ = 4 Ω × 1 A = 4 V e em R₂ é U₂ = 8 Ω × 1 A = 8 V. A potência total dissipada é P = 12 V × 1 A = 12 W.",
+        "pitfall": "Confundir a fórmula do paralelo (soma dos inversos) com a soma direta das resistências, o que leva a valores de R_eq maiores que o correto."
+      },
+      {
+        "level": "intermediate",
+        "title": "Energia em circuitos e características das ondas",
+        "explanation": "Circuitos mistos combinam associações em série e paralelo. A estratégia de resolução consiste em identificar subconjuntos que estão exclusivamente em série ou exclusivamente em paralelo, substituí-los por sua resistência equivalente e iterar até obter um único resistor equivalente visto pela fonte. Após encontrar a corrente total fornecida pela fonte, usa-se a divisão de tensão (em série) e divisão de corrente (em paralelo) para determinar as grandezas em cada resistor individual. A potência dissipada em cada resistor pode ser calculada por P = R · i² (usando a corrente naquele resistor) ou P = U²/R (usando a tensão nele). A potência total fornecida pela fonte é igual à soma das potências dissipadas em todos os resistores (conservação de energia). A simplificação só é válida se as conexões realmente definem série ou paralelo; aparência do desenho não basta. Nem toda rede pode ser reduzida por essas duas operações. A energia elétrica consumida em um período é E = P · t; em quilowatt-hora (kWh), usa-se potência em kW e tempo em horas. Fatores práticos: resistores têm tolerância (ex.: ±5%), a resistência varia com temperatura (coeficiente de temperatura), e fios reais têm resistência não nula, embora muitas vezes desprezada em problemas didáticos. Onda é uma perturbação que se propaga. Ondas mecânicas, como som no ar e perturbações em uma corda, exigem meio material; ondas eletromagnéticas, como luz e rádio, também podem propagar-se no vácuo. Em um modelo periódico, período T é o tempo de um ciclo e frequência f = 1/T conta ciclos por segundo. Comprimento de onda λ é a distância de repetição espacial e v = λf relaciona essas grandezas. Amplitude descreve a dimensão da oscilação e não é a mesma coisa que frequência. Em uma corda idealizada, a perturbação pode levar energia sem que um ponto material viaje junto com a onda por todo o percurso. A velocidade de propagação depende da onda e do meio: não se aplica a velocidade da luz no vácuo ao som no ar.",
+        "steps": [
+          "Simplifique o circuito passo a passo: combine resistores em série (soma) e em paralelo (inverso da soma dos inversos) até obter R_eq total.",
+          "Calcule a corrente total da fonte: i_total = U_fonte / R_eq.",
+          "Retroceda a simplificação: use divisão de tensão (série) e divisão de corrente (paralelo) para achar U e i em cada resistor original.",
+          "Calcule potência individual (P = R · i² ou U²/R) e potência total; verifique se a soma coincide com P_fonte = U_fonte · i_total.",
+          "Diferencie meio de propagação, amplitude, período e comprimento de onda antes de aplicar v = λf."
+        ],
+        "example": "Considere uma bateria de 24 V ligada a R₁ = 6 Ω em série com a associação paralela de R₂ = 12 Ω e R₃ = 12 Ω. O paralelo equivale a 6 Ω (12||12 = 6). R_eq total = 6 + 6 = 12 Ω. i_total = 24 V / 12 Ω = 2 A. Tensão em R₁: U₁ = 6 Ω × 2 A = 12 V. Tensão no paralelo: U_par = 24 V - 12 V = 12 V. Corrente em cada R₂ e R₃: i = 12 V / 12 Ω = 1 A. Potência em R₁: 6 Ω × (2 A)² = 24 W. Em cada R₂/R₃: 12 Ω × (1 A)² = 12 W. Total: 24 + 12 + 12 = 48 W = 24 V × 2 A.",
+        "pitfall": "Esquecer que a divisão de corrente no paralelo usa as condutâncias (inverso das resistências) e não as resistências diretamente, invertendo a proporção."
+      },
+      {
+        "level": "advanced",
+        "title": "Ondas eletromagnéticas: frequência, comprimento de onda e energia do fóton",
+        "explanation": "Ondas eletromagnéticas propagam-se no vácuo à velocidade da luz c ≈ 3,00 × 10⁸ m/s. A relação fundamental entre frequência f (Hz), comprimento de onda λ (m) e velocidade é c = λ · f. A energia de um fóton é dada por E = h · f, onde h = 6,626 × 10⁻³⁴ J·s é a constante de Planck. Alternativamente, E = h · c / λ. O espectro eletromagnético vai de ondas de rádio (f ~ 10³–10⁹ Hz, λ ~ 10⁵–10⁻¹ m) a raios gama (f > 10¹⁹ Hz, λ < 10⁻¹¹ m). A luz visível ocupa aproximadamente 4,3 × 10¹⁴ Hz (vermelho) a 7,5 × 10¹⁴ Hz (violeta), correspondendo a λ ≈ 700 nm a 400 nm. A energia de fótons de luz visível está na faixa de 1,8 a 3,1 eV (1 eV = 1,602 × 10⁻¹⁹ J). Na refração em uma interface estacionária entre meios usuais transparentes, a frequência da onda transmitida permanece a da incidente; se sua velocidade muda, seu comprimento de onda também muda, pois v = λf. O índice n relaciona a velocidade de fase a c por v = c/n no modelo adotado. Para uma onda eletromagnética plana harmônica no vácuo, a intensidade média é proporcional ao quadrado da amplitude do campo elétrico; mantendo essa amplitude, não se acrescenta um fator de frequência à relação. Energia por fóton, E = hf, não é a mesma grandeza que intensidade ou potência total: esta também depende do fluxo de fótons. Aplicações: comunicações (rádio, micro-ondas), aquecimento (micro-ondas, infravermelho), imagem (raios X, UV), medicina (raios X, gama). Cálculos exigem atenção às potências de dez e unidades consistentes: f em Hz, λ em m, c em m/s, h em J·s, E em J.",
+        "steps": [
+          "Identifique a grandeza conhecida (f, λ ou E) e a incógnita.",
+          "Use c = λ · f para converter entre frequência e comprimento de onda no vácuo.",
+          "Use E = h · f ou E = h · c / λ para calcular a energia do fóton.",
+          "Verifique a ordem de grandeza: f em GHz (10⁹ Hz) → λ em cm; f em THz (10¹² Hz) → λ em µm; E em eV para fótons ópticos."
+        ],
+        "example": "Uma onda de rádio FM transmite a f = 100 MHz = 1,00 × 10⁸ Hz. No vácuo, λ = c / f = (3,00 × 10⁸ m/s) / (1,00 × 10⁸ Hz) = 3,00 m. A energia de um fóton é E = h · f = (6,626 × 10⁻³⁴ J·s) × (1,00 × 10⁸ Hz) = 6,63 × 10⁻²⁶ J ≈ 4,14 × 10⁻⁷ eV.",
+        "pitfall": "Usar f em MHz ou GHz diretamente na fórmula E = h · f sem converter para Hz, o que produz energias erradas por fatores de 10⁶ ou 10⁹."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um resistor ôhmico de 15 Ω é percorrido por uma corrente constante de 0,8 A. Qual é a tensão nos terminais desse resistor?",
+        "hint": "Aplique diretamente a lei de Ohm: U = R · i, com R em ohms e i em amperes.",
+        "solution": "Pela lei de Ohm nas condições dadas, U = R·i = 15·0,8 = 12 V: A. B, 18,75 V, corresponde numericamente a dividir 15 por 0,8, operação que não calcula tensão pela relação U = R·i. C, 1,875 V, não é o produto dos dados; não há necessidade de inventar uma troca específica de corrente para justificá-lo. D, 120 V, corresponde a multiplicar 15 por 8, ignorando a vírgula. Unidades e ordem de grandeza ajudam a conferir o resultado.",
+        "options": [
+          "12 V",
+          "18,75 V",
+          "1,875 V",
+          "120 V"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma bateria ideal de 18 V alimenta um circuito com três resistores: R₁ = 6 Ω em série com a associação paralela de R₂ = 12 Ω e R₃ = 12 Ω. Qual é a potência total dissipada no circuito? Considere fios ideais e resistores ôhmicos de resistência constante.",
+        "hint": "Primeiro calcule a resistência equivalente do paralelo (R₂||R₃), some com R₁ para obter R_eq total, ache a corrente total e depois P_total = U · i_total.",
+        "solution": "O paralelo de 12 Ω com 12 Ω equivale a 6 Ω (produto/soma = 144/24 = 6, ou inverso da soma dos inversos). R_eq total = 6 Ω + 6 Ω = 12 Ω. i_total = 18 V / 12 Ω = 1,5 A. P_total = U · i_total = 18 V × 1,5 A = 27 W. A alternativa B (27 W) está correta. A alternativa A (13,5 W) seria a potência apenas em R₁ (6 Ω × 1,5² A = 13,5 W) ou no conjunto paralelo (6 Ω × 1,5² A = 13,5 W), ignorando a outra parte. A alternativa C (54 W) resultaria de usar i = 3 A (dobro da corrente real, como se R_eq = 6 Ω). A alternativa D (108 W) corresponderia a P = U²/R com R = 3 Ω (valor incorreto de R_eq).",
+        "options": [
+          "13,5 W",
+          "27 W",
+          "54 W",
+          "108 W"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma onda eletromagnética no vácuo tem frequência f = 2,5 GHz. Qual é a energia de um único fóton dessa onda? (Use h = 6,63 × 10⁻³⁴ J·s e c = 3,00 × 10⁸ m/s)",
+        "hint": "Converta GHz para Hz (1 GHz = 10⁹ Hz) e use E = h · f.",
+        "solution": "Converta f = 2,5 GHz = 2,5·10⁹ Hz. A energia de um fóton é E = hf = 6,63·10⁻³⁴·2,5·10⁹ = 1,6575·10⁻²⁴ J, aproximadamente 1,66·10⁻²⁴ J: C. A, 1,66·10⁻³³ J, aproxima o resultado de usar somente 2,5, omitindo o fator 10⁹; não corresponde a usar MHz. B é dez vezes menor que o valor correto. D é um bilhão de vezes maior. O cálculo pede energia individual, não potência total de uma fonte, que exigiria informação adicional.",
+        "options": [
+          "1,66 × 10⁻³³ J",
+          "1,66 × 10⁻²⁵ J",
+          "1,66 × 10⁻²⁴ J",
+          "1,66 × 10⁻¹⁵ J"
+        ],
+        "correctIndex": 2
+      }
+    ]
   }
 ];
 
@@ -1127,6 +1778,230 @@ export const authoredCurriculumBatch07ReviewRecords = [
         "index": 2,
         "correctIndex": 1,
         "reasoning": "Proteína transmembrana na rota convencional: domínio luminal do RE → lúmen do Golgi → lúmen da vesícula secretora → meio extracelular na fusão (exocitose). A orientação é preservada; o lúmen vesicular se torna contínuo com o exterior. Opção B descreve corretamente essa topologia. A introduz destino mitocondrial não informado. C exige inversão de topologia que contradiz o enunciado. D inventa passagem nuclear obrigatória. Gabarito B correto."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Antiguidade oriental e clássica",
+    "contentSha256": "3bfb0f9d7419a928dec2ed0cb99b1095ad72afdf0ba8563a591b64b527f7396c",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/world-history-volume-1/pages/3-2-ancient-mesopotamia",
+      "https://openstax.org/books/world-history-volume-1/pages/3-3-ancient-egypt",
+      "https://openstax.org/books/world-history-volume-1/pages/6-2-ancient-greece",
+      "https://openstax.org/books/world-history-volume-1/pages/6-4-the-roman-republic",
+      "https://www.louvre.fr/en/the-code-of-hammurabi",
+      "https://www.metmuseum.org/essays/kings-and-queens-of-egypt",
+      "https://www.athenian-democracy.gr/en/",
+      "https://resources.metmuseum.org/resources/metpublications/pdf/Roman_Art_A_Resource_for_Educators.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "A questão básica testa a capacidade de comparar Mesopotâmia e Egito sem generalizações indevidas. A opção D é a única que espelha o procedimento ensinado: comparar períodos e tipos de fonte, reconhecendo mudanças políticas e finalidades dos registros. A opção A reproduz a oposição binária rejeitada no texto ('Egito sempre unido, Mesopotâmia sempre fragmentada'). A opção B impõe determinismo geográfico (irrigação → regime único), refutado na seção. A opção C confunde legitimação régia com consenso universal, erro explicitamente alertado no pitfall. O gabarito 3 está correto e a resolução independente confirma a coerência com a explicação e o example da seção básica."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "A questão intermediária avalia a compreensão da democracia ateniense como participação direta de cidadãos homens coexistindo com exclusões formais, sem apagar a atuação social dos grupos excluídos. A opção B captura essa nuance: 'democracia direta de cidadãos coexistia com exclusões; ausência de voto não implica inexistência de atuação social dos excluídos'. A opção A comete anacronismo de sufrágio universal. A opção C infere inexistência de atividade econômica/religiosa a partir da exclusão política — falácia de escopo que o texto adverte (pitfall e example). A opção D generaliza eleição única, ignorando o sorteio para muitas funções. O gabarito 1 está correto e a resolução valida a distinção entre corpo cidadão e totalidade dos residentes."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A questão avançada exige distinguir permanência institucional de mudança efetiva de poder no Principado. A opção A expressa corretamente: 'Instituições republicanas podiam continuar existindo enquanto sua posição no conjunto de poder era transformada'. A opção B nega a concentração de autoridade apenas pela existência do Senado, contradizendo o enunciado. A opção C afirma abolição simultânea de todas as instituições e vocabulário republicano, o que o texto nega explicitamente ('O Principado não equivale nem a continuidade sem mudança nem a abolição instantânea'). A opção D inventa consequências (fim da escravidão, igualdade universal) sem base no arranjo político descrito. O gabarito 0 está correto e a resolução confirma a compatibilidade entre forma e substância alterada."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Geologia e estrutura terrestre",
+    "contentSha256": "eb07f3ce3fc3bc16bf826b9d339344c0396d9c08d89352f456296e6206147e95",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://pubs.usgs.gov/gip/interior/index.html",
+      "https://pubs.usgs.gov/gip/dynamic/understanding.html",
+      "https://pubs.usgs.gov/gip/dynamic/hotspots.html",
+      "https://www.lpi.usra.edu/education/step2012/participant/rockCycle.shtml",
+      "https://www.usgs.gov/faqs/can-you-predict-earthquakes",
+      "https://www.nps.gov/subjects/geology/plate-tectonics-inner-earth-model.htm"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "Opção D é a única que separa classificação mecânica (litosfera = crosta + parte do manto) da composicional e reconhece manto sólido com deformação lenta. A confunde litosfera com crosta; B transforma manto inteiro em líquido; C erra estado do núcleo externo (líquido) e propriedade de ondas P (atravessam líquidos). Gabarito e explicação de distractores estão corretos."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "Diferença de idades: 8-2=6 Ma. Deslocamento: 8 cm/ano × 6.000.000 anos = 48.000.000 cm = 480 km (÷100.000 cm/km). Centro jovem A (2 Ma) a NW do antigo C (8 Ma): placa carrega centros antigos na direção do movimento, logo move-se de A para C (SE). Opção A acerta distância e sentido; B inverte sentido; C erra conversão (fator 10); D dobra distância e inverte sentido. Cálculo e gabarito conferem."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Tomografia infere variação de velocidade, não composição direta. Opção C respeita alcance: permite investigar hipóteses térmicas/composicionais e limitações do modelo sem decidir sozinha. A salta para composição única; B confere poder de previsão específica de terremoto não autorizado; D generaliza anomalia regional para manto inteiro líquido. Gabarito e explicação de distractores estão corretos."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Iluminismo e Kant",
+    "contentSha256": "d902f31322c3700e941ef68479b95ca0f7e5d3abf930a135b752805f7006b087",
+    "draftMethod": "Autoria pelo Codex após tentativas de geração sem JSON válido no Claude Code; crítica em sessão independente do Claude Code",
+    "verifiedSourceUrls": [
+      "https://de.wikisource.org/wiki/Beantwortung_der_Frage%3A_Was_ist_Aufkl%C3%A4rung%3F",
+      "https://www.gutenberg.org/files/4280/4280-h/4280-h.htm",
+      "https://www.gutenberg.org/cache/epub/5682/pg5682.html",
+      "https://plato.stanford.edu/entries/enlightenment/",
+      "https://plato.stanford.edu/entries/kant/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B identifica corretamente o uso público da razão como intervenção de estudiosa diante de público leitor, independentemente do local físico (casa). A opção A confunde classificação pelo endereço doméstico, ignorando o critério do papel. A opção C cria proibição absoluta de crítica institucional no uso público, o que contradiz a defesa kantiana da crítica pública. A opção D dispensa a apresentação de razões examináveis, quando o cenário explicitamente as inclui. A resolução independe de regras jurídicas atuais e fideliza a distinção do ensaio de 1784."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A opção D articula corretamente a contribuição sensível (dados), a organização conceitual (entendimento) e o limite teórico (coisa em si não conhecida independentemente das condições). A opção A elimina a atividade do entendimento reduzindo conhecimento a cópia passiva. A opção B converte as condições de possibilidade do conhecimento em criação arbitrária de fatos sem dados, o que Kant rejeita. A opção C equipara fenômeno a falsidade, confundindo o objeto sob condições de aparição com ilusão. A análise respeita a arquitetura crítica sem reduções empiristas ou racionalistas dogmáticos."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opção A capta a contradição performativa da máxima de promessa enganosa: universalizar a permissão de prometer sem intenção de cumprir destrói a confiança que a própria prática de prometer pressupõe como meio para obter a vantagem. A opção B reduz moralidade a prudência (evitar descoberta), confundindo imperativo hipotético com categórico. A opção C toma interesse particular como critério suficiente de universalidade, invertendo o teste kantiano. A opção D generaliza indevidamente a crítica da promessa enganosa para toda promessa sincera, o que não decorre do argumento. A resolução explicitou máxima, motivo e formulação sem substituir por rótulos."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Estratificação e desigualdade social",
+    "contentSha256": "e2b13348f539d000ca1954a54135d9417d0a768dbf35e9b2b44da39bfc2cfd82",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/9-1-what-is-social-stratification",
+      "https://openstax.org/books/introduction-sociology-3e/pages/4-2-theoretical-perspectives-on-society",
+      "https://openstax.org/books/introduction-sociology-3e/pages/16-2-theoretical-perspectives-on-education",
+      "https://www.ibge.gov.br/estatisticas/multidominio/condicoes-de-vida-desigualdade-e-pobreza/17374-indicadores-sociais-minimos.html",
+      "https://hdr.undp.org/data-center/human-development-index",
+      "https://hdr.undp.org/data-center/inequality-adjusted-human-development-index"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A questão 1 testa a distinção entre renda mensal (fluxo), patrimônio líquido (estoque de bens e direitos menos dívidas) e poder político. A opção C é a única que não extrapola: salários iguais não implicam patrimônios iguais (um tem imóvel quitado e reservas, o outro dívidas) nem informam sobre poder político. A confunde fluxo com estoque; B atribui igualdade política ao salário; D transforma condição atual em destino inevitável."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "A questão 2 exige cálculo da média (100/4=25) e do Gini pela fórmula não corrigida. Soma das diferenças absolutas dos 16 pares ordenados: 200. Denominador: 2·4·100=800. G=200/800=0,25. Opção B correta. A dobra o índice (0,50); C confunde soma total (100) com média; D atribui Gini zero a rendas desiguais. O enunciado especifica população autoral e fórmula, sem alegar dados reais."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A questão 3 apresenta melhoria absoluta de escolaridade (filhos estudam mais que pais) mantendo diferença de acesso ao superior entre origens. Opção D reconhece a melhoria sem inferir igualdade de chances nem destino individual fixo. A e B apagam a diferença que o cenário preserva e extrapolam para 'todas oportunidades' e 'todas barreiras'. C converte padrão grupal em determinação individual. A resposta preserva os limites da comparação sem dados adicionais."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Indústria cultural e arte digital",
+    "contentSha256": "157b9a7b24d59ccb8b7f4a98c4c063df739ce66adddf8377b7ec8e003cf3c97a",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.sfu.ca/~andrewf/Culture_industry_reconsidered.shtml",
+      "https://plato.stanford.edu/entries/adorno/",
+      "https://www.vam.ac.uk/articles/digital-art",
+      "https://www.vam.ac.uk/articles/digital-design-dictionary",
+      "https://whitney.org/artport/",
+      "https://www.variablemedia.net/e/welcome.html",
+      "https://www.guggenheim.org/conservation/the-variable-media-initiative"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A opção correta identifica repetição estrutural e diferenciação aparente sem extrapolar sobre recepção; B universaliza incapacidade crítica a partir de quantidade; C generaliza identidade total a toda obra comercial; D trata variações superficiais como autonomia plena, ignorando a estrutura padronizada informada."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A descrição exclui IA e sorteio e limita a escolha a quatro palavras; C é a única compatível: há interação e transformação por regra fixa finita. A contradiz a premissa; B salta de participação técnica para coautoria jurídica; D afirma infinitude sem base diante de conjunto finito de entradas."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "O problema exige preservar obra interativa cujo programa original não roda; D propõe documentar dependências/comportamentos essenciais e testar execução comparando com registros, sem prometer identidade automática. A confunde vídeo com experiência; B descarta evidências e assume emulação perfeita; C usa métrica de alcance (visualizações) para provar preservação de interatividade."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Jogos e brincadeiras tradicionais",
+    "contentSha256": "114b584cd7a013dd3c129b556cc2b4224234d508fa45e8f37ca0631f93a49792",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://territoriodobrincar.com.br/o-projeto/",
+      "https://territoriodobrincar.com.br/brincadeiras-pelo-brasil/",
+      "https://www.unesco.org/en/sport-and-anti-doping/traditional-sports-and-games",
+      "https://ich.unesco.org/en/convention"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B é a única que preserva ambas as variantes com seus contextos e regras, sem elevar uma a norma universal pelo nome compartilhado. A substitui investigação por preferência pessoal do pesquisador. C inventa origem e difusão sem evidência. D apaga diferenças e atribui a todos uma combinação não registrada. O gabarito e a resolução estão corretos e completos."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A opção D propõe testar mudanças funcionais (distância, organização, formas de envio) com escuta do grupo e comparação de oportunidades de ação, alinhada ao objetivo de ampliar participação sem prometer inclusão automática. A confunde duração coletiva com participação distribuída. B reforça o problema usando volume de ações como critério único. C exige diagnóstico médico desnecessário para ajustes funcionais. A resolução explica cada distrator corretamente."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opção A identifica a fonte e seu alcance, busca contexto e diálogo quando possível e nomeia explicitamente as criações da turma como adaptação escolar. B inventa cantos e atribuição falsa. C universaliza o alcance de um registro breve. D confunde uso de nome cultural com autorização de reprodução integral. A resolução discrimina corretamente cada erro."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Eletricidade e ondas",
+    "contentSha256": "2f3ba6e9b23108c2311c22e2b3137b623b454ffad466c0dec940bcd289cd56b2",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/college-physics-2e/pages/20-2-ohms-law-resistance-and-simple-circuits",
+      "https://openstax.org/books/college-physics-2e/pages/20-4-electric-power-and-energy",
+      "https://openstax.org/books/college-physics-2e/pages/21-1-resistors-in-series-and-parallel",
+      "https://openstax.org/books/college-physics-2e/pages/16-9-waves",
+      "https://openstax.org/books/college-physics-2e/pages/24-4-energy-in-electromagnetic-waves",
+      "https://openstax.org/books/college-physics-2e/pages/29-3-photon-energies-and-the-electromagnetic-spectrum"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "U = R·i = 15 Ω × 0,8 A = 12 V. Distratores: 18,75 V = 15/0,8 (divisão inversa), 1,875 V = erro de casa decimal/operação espúria, 120 V = 15×8 (ignora vírgula). Todos plausíveis e explicados."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Paralelo 12||12 = 6 Ω; R_eq = 6+6 = 12 Ω; i = 18/12 = 1,5 A; P = 18×1,5 = 27 W. Distratores: 13,5 W = potência só em R₁ ou só no paralelo (6×1,5²), 54 W = usa i=3 A (R_eq=6 Ω incorreto), 108 W = U²/R com R=3 Ω (R_eq errado). Todos derivados de erros conceituais identificáveis."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "f = 2,5 GHz = 2,5×10⁹ Hz; E = hf = 6,63×10⁻³⁴ × 2,5×10⁹ = 1,6575×10⁻²⁴ J ≈ 1,66×10⁻²⁴ J. Distratores: 10⁻³³ J = omite fator 10⁹ (usa 2,5 puro), 10⁻²⁵ J = dez vezes menor, 10⁻¹⁵ J = bilhão de vezes maior (erro de potência de dez). Todos correspondem a falhas de conversão de unidade."
       }
     ]
   }

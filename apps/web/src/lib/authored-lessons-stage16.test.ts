@@ -9,6 +9,7 @@ import {stage13Topics} from './authored-lessons-stage13.ts';
 import {stage14Topics} from './authored-lessons-stage14.ts';
 import {stage15Topics} from './authored-lessons-stage15.ts';
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {everydayContextFor,everydayContexts} from './everyday-lesson-contexts.ts';
 
 test('Stage 16 adds 16 original, syllabus-matched deep lessons across all established subjects',()=>{
@@ -32,7 +33,11 @@ test('Stage 16 adds 16 original, syllabus-matched deep lessons across all establ
   assert.ok(topic,'Expected a canonical syllabus topic: '+key);
   const lesson=stage16Lesson(topic);
   assert.ok(lesson,'Missing lesson: '+key);
-  assert.deepEqual(starterLesson(topic),lesson,'Deep lesson must override generic fallback');
+  const active=starterLesson(topic);
+  assert.deepEqual(active,deepAuthoredCurriculumLesson(topic)??lesson,'Reviewed curriculum replacements take priority over the original foundation');
+  assert.ok(parseCourseDocument(active),'Active reader lesson must remain valid: '+key);
+  // Keep the complete original six-question contract below. Replacement content
+  // has its own structural, hash and answer checks in authored-curriculum-lessons.test.ts.
   assert.equal(starterCoverage(topic),'thematic');
   assert.ok(parseCourseDocument(lesson),'Lesson must validate against the course schema: '+key);
   assert.match(lesson.authorship,/aula autoral.*sem homologação docente/);

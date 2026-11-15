@@ -4,7 +4,49 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 14
+## Estado atual — checkpoint 15
+
+Lote 07 completo: 16 aulas, uma por disciplina, somando 80 novas nesta etapa.
+As sete últimas são História — Antiguidade oriental e clássica; Geografia —
+Geologia e estrutura terrestre; Filosofia — Iluminismo e Kant; Sociologia —
+Estratificação e desigualdade social; Arte — Indústria cultural e arte digital;
+Educação Física — Jogos e brincadeiras tradicionais; Ciências — Eletricidade e
+ondas. Revisão docente humana permanece pendente.
+
+Restam 1.215 lacunas entre 1.512 identidades. ENEM editorial: 94 aprofundadas e
+802 lacunas. Lista de estudo: 94 aprofundadas, 46 guias e 767 planejadas; uma
+fonte substitui guia histórico. Contagens editoriais não certificam habilidades.
+
+- História: contextualizadas realeza, cidadania e instituições, sem determinismo
+  hidráulico, oposição universal entre Egito/Mesopotâmia ou Senado-parlamento.
+- Geografia: corrigidos sentido da placa em ponto quente, leitura de ondas na
+  sombra sísmica e tomografia como composição única. Teste recalcula conversão
+  de centímetros e milhões de anos, distância e sentido no modelo declarado.
+- Filosofia: pluralidade iluminista, uso público/privado, condições do conhecer
+  e autonomia sem caricaturas. Autoria principal pelo Codex após três falhas de
+  geração do Claude Code; crítica independente pelo Claude, registrada sem
+  atribuir ao programa um rascunho que ele não entregou.
+- Sociologia: retiradas séries e coortes fabricadas e causalidades sem método;
+  média e Gini recalculados, com fórmula declarada, e exemplos distintos das
+  questões. Renda, patrimônio, mobilidade e chances não são intercambiáveis.
+- Arte: sem parecer de autoria de IA, valores inventados de streaming ou efeito
+  inevitável de plataforma. Regras, experiência, métricas e preservação diferem.
+- Educação Física: retiradas origens e regulamentos falsos e rituais inventados;
+  tradição, variante e adaptação definidas. Amarelinha escolar autoral tem regras
+  completas; simulações não são apresentadas como registros de campo.
+- Ciências: corrigida intensidade com amplitude fixa e conversão de GHz nos
+  distratores. Ondas mecânicas e eletromagnéticas são diferenciadas; teste
+  recalcula circuito misto, potência e energia por fóton com todos os expoentes.
+
+Verificação: 638 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 80 aulas, abriu as sete novas e respondeu
+às 21 questões, com explicações e referências expandidas em 320/375/768/1440 px,
+sem exceções ou rolagem horizontal. Teste histórico do estágio 16 preserva todas
+as verificações de suas seis questões antigas e agora aceita a prioridade da
+fonte curricular revisada. CI do checkpoint 14 aprovada (run 43725072023).
+Sem banco, schema/RLS, merge ou deploy. Continua no lote 08 e demais temas.
+
+## Histórico — checkpoint 14
 
 O lote 07 tem nove aulas. Acrescentadas Inglês — Tempos e aspectos verbais;
 Espanhol — Leitura global e localização de informações; Física — Cinemática

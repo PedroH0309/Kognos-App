@@ -559,6 +559,48 @@ test('soluções conservam quantidade analítica e usam volume final nas convers
  options.forEach((option,index)=>{if(index!==spec.tasks[2].correctIndex)assert.ok(Math.abs(Number(option.split(' ')[0].replace(',','.'))-concentration)>1e-9);});
 });
 
+test('eletricidade e ondas recalculam circuito misto e energia por fóton com GHz convertido',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Eletricidade e ondas');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,resistance=Number(first.match(/de (\d+) Ω/)?.[1]),current=Number(first.match(/de ([\d,]+) A/)?.[1].replace(',','.'));
+ assert.ok(resistance>0&&current>0);assert.equal(choice(0),`${resistance*current} V`);
+ const second=spec.tasks[1].prompt,voltage=Number(second.match(/de (\d+) V/)?.[1]),resistors=[...second.matchAll(/R[₁₂₃] = (\d+) Ω/g)].map(match=>Number(match[1]));assert.equal(resistors.length,3);
+ const [series,left,right]=resistors,parallel=1/(1/left+1/right),total=series+parallel,amps=voltage/total;
+ assert.equal(choice(1),`${voltage*amps} W`);
+ assert.ok(Math.abs(series*amps**2+(voltage-series*amps)**2/left+(voltage-series*amps)**2/right-voltage*amps)<1e-9);
+ const third=spec.tasks[2].prompt,frequency=Number(third.match(/f = ([\d,]+) GHz/)?.[1].replace(',','.'))*1e9,planck=Number(third.match(/h = ([\d,]+) × 10⁻³⁴/)?.[1].replace(',','.'))*1e-34;
+ assert.ok(frequency>0&&planck>0);
+ const superscript:Record<string,string>={'⁻':'-','⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9'};
+ const parseEnergy=(option:string)=>{const match=option.match(/([\d,]+) × 10([⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+) J/);assert.ok(match);return Number(match[1].replace(',','.'))*10**Number([...match[2]].map(char=>superscript[char]).join(''));};
+ const energy=planck*frequency;
+ assert.ok(Math.abs(parseEnergy(choice(2))/energy-1)<0.005);
+ spec.tasks[2].options!.forEach((option,index)=>{if(index!==spec.tasks[2].correctIndex)assert.ok(Math.abs(parseEnergy(option)/energy-1)>0.5);});
+});
+
+test('estratificação calcula média e Gini da população hipotética sem inferir causalidade',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Sociologia'&&lesson.topic==='Estratificação e desigualdade social');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const values=task.prompt.match(/rendas de (\d+), (\d+), (\d+) e (\d+) unidades/);assert.ok(values);
+ const incomes=values.slice(1).map(Number),total=incomes.reduce((sum,value)=>sum+value,0),mean=total/incomes.length;
+ const gini=(items:number[])=>items.reduce((sum,a)=>sum+items.reduce((inner,b)=>inner+Math.abs(a-b),0),0)/(2*items.length*items.reduce((sum,value)=>sum+value,0));
+ const index=gini(incomes);
+ assert.equal(task.options[task.correctIndex],`${mean} unidades; Gini ${index.toFixed(2).replace('.',',')}.`);
+ assert.equal(gini(incomes.map(value=>value*2)),index);
+ assert.equal(gini(incomes.map(()=>mean)),0);
+ assert.ok(index>0&&index<1);
+});
+
+test('ponto quente fixo converte centímetros e milhões de anos e acompanha a direção de envelhecimento',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Geologia e estrutura terrestre');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const speed=Number(task.prompt.match(/de (\d+) cm\/ano/)?.[1]),ages=[...task.prompt.matchAll(/(\d+) Ma/g)].map(match=>Number(match[1]));
+ assert.equal(ages.length,2);assert.ok(speed>0&&ages[1]>ages[0]);
+ const distanceKm=speed*(ages[1]-ages[0])*1e6/1e5;
+ assert.match(task.prompt,/A fica a noroeste de C/);
+ assert.equal(task.options[task.correctIndex],`${distanceKm} km; movimento da placa para sudeste, de A para C.`);
+ assert.notEqual(distanceKm,speed*(ages[1]-ages[0]));
+});
+
 test('membranas conservam soluto impermeante no modelo osmótico sem confundir volume perdido e restante',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Células, organelas e membranas');assert.ok(spec);
  const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');

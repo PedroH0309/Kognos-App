@@ -1,6 +1,47 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 14
+## Estado atual em 15/11/2026 — checkpoint 15
+
+Este estado prevalece sobre os históricos. Continuar até completar as aulas;
+não encerrar neste checkpoint. PR 117 draft; sem banco/merge/deploy.
+
+- Lotes 03–07 completos: 80 novas. 638 testes da aplicação + seis do motor,
+  lint alterado, build e leitor real aprovados. API das 80 comparada; sete novas,
+  21 respostas e referências expandidas em 320/375/768/1440 px aprovadas.
+  Preview 3316 contém 80. CI anterior 43725072023 aprovada.
+- Restam 1.215 lacunas; ENEM 94/802; estudo 94/46/767. Revisão humana pendente.
+- Lote 07 completo na fila [64..79]. Não reescrever com subconjunto de IDs.
+  Integrador privado verifica hash de texto E contexto, normalizando CRLF como
+  leitura Python. Autoria individual preservada em draftMethod do principal.
+- Teste do estágio 16 agora permite substituição curricular e preserva TODAS
+  as verificações das seis questões e estrutura originais. Não reverter.
+- Próximo lote 08, fila [80..95]. course-ec7605b5 Matemática — Razões, escalas e
+  proporcionalidade: draft2 lido, ainda SEM correção principal ou teste. Steps
+  vieram como arrays; explicações curtas; homogeneidade não implica concentração
+  constante sob qualquer operação; proporções inversas requerem condições.
+  Escala gráfica só acompanha redimensionamento uniforme se a barra também muda.
+  Inverter razões consistentemente não é erro. Q3 dá 10 máquinas, com condições
+  de produtividade a explicitar. Fontes OpenStax 5.6/6.5 Prealgebra, Elementary
+  Algebra 8.9 e IBGE liv101675 localizadas; conferir conteúdo antes de publicar.
+- course-dbf21a8e Português — Variação/norma-padrão: draft3 e crítica lidos.
+  Norma-padrão não é sinônimo automático de norma culta; artigo antes de nome
+  próprio é facultativo no caso apresentado; estereótipos fonéticos e atribuição
+  a Bagno como inventor do termo são falsos. Notícia não vira editorial pelo
+  registro formal. Sem versão principal ainda. Fontes Ceale e Ciberdúvidas
+  21809 sobre artigo facultativo localizadas. Seguem Literatura course-84476138
+  e Redação course-547b99f1, ainda não lidas.
+- Fila antiga de dois workers foi encerrada só nos processos próprios para
+  reduzir timeouts. Autoria retomada com v3 de um worker (PID inicial 21836), log
+  Temp/kognos-curriculum-collaboration-v3-20261115.log; começou Matemática draft3.
+  Não matar proxy FCC nem Claude do usuário. Helpers v2 continuam necessários
+  para importação dos scripts de crítica. Sem autointegração.
+- Helpers e correções finais estão em Temp e backups privados. JSON principal
+  final é fonte da retomada: NÃO reaplicar scripts base sobre aula já corrigida;
+  refinamentos posteriores são necessários e mudam hashes/contexto da crítica.
+- Integrador batch08 já preparado em Temp (nomes/exports 08), mas não executado.
+  Antes de push, fetch, preservar concorrência e deixar AGENTS gerado fora.
+
+## Histórico — checkpoint 14
 
 Este estado prevalece sobre os históricos. Execução ativa até completar aulas;
 não encerrar neste checkpoint. PR 117 draft; sem banco/merge/deploy.
