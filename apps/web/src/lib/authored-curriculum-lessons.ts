@@ -3,14 +3,15 @@ import {authoredCurriculumBatch04,authoredCurriculumBatch04ReviewRecords} from '
 import {authoredCurriculumBatch05,authoredCurriculumBatch05ReviewRecords} from './authored-curriculum-batch05.ts';
 import {authoredCurriculumBatch06,authoredCurriculumBatch06ReviewRecords} from './authored-curriculum-batch06.ts';
 import {authoredCurriculumBatch07,authoredCurriculumBatch07ReviewRecords} from './authored-curriculum-batch07.ts';
+import {authoredCurriculumBatch08,authoredCurriculumBatch08ReviewRecords} from './authored-curriculum-batch08.ts';
 import type {AuthoredLessonSpec} from './authored-lesson-quality.ts';
 import type {CurriculumTopic} from './curriculum-catalog.ts';
 import type {CourseLesson} from './course-content.ts';
 import {courseId} from './curriculum-id.ts';
 import {examBlueprints,type ExamId} from './exam-blueprints.ts';
 
-export const authoredCurriculumSpecs:readonly AuthoredLessonSpec[]=[...authoredCurriculumBatch03,...authoredCurriculumBatch04,...authoredCurriculumBatch05,...authoredCurriculumBatch06,...authoredCurriculumBatch07];
-export const authoredCurriculumReviewRecords=[...batch03Reviews,...authoredCurriculumBatch04ReviewRecords,...authoredCurriculumBatch05ReviewRecords,...authoredCurriculumBatch06ReviewRecords,...authoredCurriculumBatch07ReviewRecords] as const;
+export const authoredCurriculumSpecs:readonly AuthoredLessonSpec[]=[...authoredCurriculumBatch03,...authoredCurriculumBatch04,...authoredCurriculumBatch05,...authoredCurriculumBatch06,...authoredCurriculumBatch07,...authoredCurriculumBatch08];
+export const authoredCurriculumReviewRecords=[...batch03Reviews,...authoredCurriculumBatch04ReviewRecords,...authoredCurriculumBatch05ReviewRecords,...authoredCurriculumBatch06ReviewRecords,...authoredCurriculumBatch07ReviewRecords,...authoredCurriculumBatch08ReviewRecords] as const;
 const specs=new Map(authoredCurriculumSpecs.map(spec=>[JSON.stringify([spec.subject,spec.topic]),spec]));
 const references=new Map(authoredCurriculumReviewRecords.map(record=>[JSON.stringify([record.subject,record.topic]),record.verifiedSourceUrls]));
 

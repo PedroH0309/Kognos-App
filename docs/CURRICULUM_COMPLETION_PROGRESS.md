@@ -4,7 +4,38 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 15
+## Estado atual — checkpoint 16
+
+Lote 08 iniciado com Matemática — Razões, escalas e proporcionalidade;
+Português — Variação linguística e norma-padrão; Literatura — Realismo e
+Naturalismo; Redação — Norma-padrão e revisão. São 84 aulas novas nesta etapa,
+com revisão docente humana ainda pendente.
+
+Restam 1.211 lacunas entre 1.512 identidades. ENEM editorial: 98 aprofundadas e
+798 lacunas. Lista de estudo: 98 aprofundadas, 43 guias e 766 planejadas; três
+fontes substituem guias históricos. Contagens editoriais não certificam habilidades.
+
+- Matemática: proporção direta/inversa condicionada ao modelo, escala linear,
+  áreas/volumes e conservação de soluto. Teste independente recalcula 6,75 km,
+  concentração de 14,4% m/m após evaporação e mínimo de dez máquinas.
+- Português: retiradas falsas origens de termos e estereótipos regionais;
+  norma-padrão e usos cultos diferenciados, artigo antes de nome próprio
+  contextualizado e revisão sem julgamento de capacidade do falante.
+- Literatura: corrigido o enredo de A Cartomante e a falsa equivalência entre
+  autor e narrador. Naturalismo não valida biologismo como ciência; marcos
+  literários e crítica de Machado conferidos em fontes primárias.
+- Redação: corrigida questão que tratava concordâncias partitivas admitidas
+  como erro; haver/fazer impessoais contextualizados, existir com sujeito,
+  crase e vírgula por análise sintática. Revisão preserva referentes e certeza.
+
+Verificação: 639 testes da aplicação e seis do motor, lint alterado e build
+aprovados. Chromium comparou a API das 84 aulas, abriu as quatro novas e
+respondeu às 12 questões, com explicações e referências expandidas em
+320/375/768/1440 px, sem exceções ou rolagem horizontal.
+CI do checkpoint 15 aprovada (run 43728379175). Sem schema/RLS, merge ou deploy.
+Segue autoria das demais aulas do lote 08, começando por Inglês e Espanhol.
+
+## Histórico — checkpoint 15
 
 Lote 07 completo: 16 aulas, uma por disciplina, somando 80 novas nesta etapa.
 As sete últimas são História — Antiguidade oriental e clássica; Geografia —

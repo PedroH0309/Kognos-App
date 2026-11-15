@@ -1,6 +1,41 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 15
+## Estado atual em 15/11/2026 — checkpoint 16
+
+Continuar até completar as aulas; não encerrar neste checkpoint. PR 117 draft.
+Sem banco, schema/RLS, merge ou deploy; revisão docente humana pendente.
+
+- Lotes 03–07 completos e lote 08 com quatro: 84 novas, 639 testes da aplicação
+  + seis do motor, lint alterado, build e leitor Chromium aprovados. API das 84
+  comparada, quatro novas e 12 respostas em quatro larguras com referências
+  expandidas. Preview 3316 contém 84. CI anterior 43728379175 aprovada.
+- Restam 1.211 lacunas; ENEM 98/798; estudo 98 aprofundadas/43 guias/766 planejadas.
+- Lote 08 contém course-ec7605b5, course-dbf21a8e, course-84476138,
+  course-547b99f1. Integrador reescreve TODO o lote: sempre passar todos os IDs.
+  Hash de texto e de contexto conferidos, normalizando CRLF como Python.
+- Literatura: correção de redação da crítica preservou original em privado;
+  não há menção racial na opção B, que propõe inferioridade biológica sem base.
+- Inglês course-10a4bfef: draft4 e crítica lidos. Corrigidos will após if,
+  backshift não obrigatório de must, hipóteses mistas e modais perfeitos. Texto
+  principal pronto, crítica final solicitada; LER resultado integral antes de
+  integrar. Não reaplicar helper base sobre refinamentos posteriores.
+- Espanhol course-1b39a7ec: draft3 lido, ainda SEM correção principal. Contém
+  metafonia inventada, desarrollo chamado de forma em -miento, falsos cognatos
+  mal comparados, celebração classificada como esdrúxula, questão sem lista de
+  correspondências e inferências que adicionam validação não dada. Reescrever
+  com contexto e léxico verificado em DLE/Cervantes. Seguem Física course-c16348f7,
+  Química course-0ef210b6 e Biologia course-bdb5db0b; consultar fila para demais.
+- Autoria v3b com um worker próprio (PID inicial 26292), log
+  Temp/kognos-curriculum-collaboration-v3b-20261115.log. Guardas pulam temas com
+  principal-corrected antes de nova autoria/crítica. Não matar Claude do usuário
+  nem proxy FCC. Helpers v2 ainda são importados pela crítica final.
+- Helper final kognos-review-final.py verifica texto E contexto. Aceite vazio
+  não substitui leitura crítica: revisores também erram. JSON final é fonte da
+  retomada. Helpers em Temp e backups privados; sem autointegração/commit.
+- Restaurar somente next-env alterado pelo build, sempre com cwd na RAIZ ativa.
+  Antes de push: fetch, preservar concorrência e excluir AGENTS gerado.
+
+## Histórico — checkpoint 15
 
 Este estado prevalece sobre os históricos. Continuar até completar as aulas;
 não encerrar neste checkpoint. PR 117 draft; sem banco/merge/deploy.

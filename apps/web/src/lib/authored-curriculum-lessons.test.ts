@@ -559,6 +559,25 @@ test('soluções conservam quantidade analítica e usam volume final nas convers
  options.forEach((option,index)=>{if(index!==spec.tasks[2].correctIndex)assert.ok(Math.abs(Number(option.split(' ')[0].replace(',','.'))-concentration)>1e-9);});
 });
 
+test('razões e escalas convertem unidades, conservam soluto e calculam o mínimo de máquinas',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Matemática'&&lesson.topic==='Razões, escalas e proporcionalidade');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const first=spec.tasks[0].prompt,denominator=Number(first.match(/escala 1:([\d ]+)/)?.[1].replaceAll(' ','')),centimetres=Number(first.match(/([\d,]+) cm/)?.[1].replace(',','.'));
+ assert.ok(denominator>0&&centimetres>0);
+ assert.equal(choice(0),(centimetres*denominator/100000).toLocaleString('pt-BR')+' km');
+ const second=spec.tasks[1].prompt,percentage=Number(second.match(/concentração (\d+)%/)?.[1]),initial=Number(second.match(/de (\d+) g dessa/)?.[1]),removed=Number(second.match(/evaporarmos (\d+) g de água/)?.[1]);
+ assert.ok(initial>removed&&percentage>0);
+ const solute=initial*percentage/100,remaining=initial-removed,finalPercentage=100*solute/remaining;
+ assert.equal(choice(1),finalPercentage.toLocaleString('pt-BR')+'% m/m');
+ assert.ok(finalPercentage>percentage);
+ const third=spec.tasks[2].prompt,baseline=third.match(/(\d+) máquinas.*?(\d+) horas por dia.*?([\d.]+) peças em (\d+) dias/),target=third.match(/produzir ([\d.]+) peças em (\d+) dias, com jornada de (\d+) horas por dia/);assert.ok(baseline&&target);
+ const machineCount=Number(baseline[1]),hours=Number(baseline[2]),pieces=Number(baseline[3].replaceAll('.','')),days=Number(baseline[4]);
+ const goal=Number(target[1].replaceAll('.','')),newDays=Number(target[2]),newHours=Number(target[3]),rate=pieces/(machineCount*hours*days),capacity=rate*newDays*newHours,minimum=Math.ceil(goal/capacity);
+ assert.ok(capacity>0&&minimum>0);
+ assert.equal(choice(2),`${minimum} máquinas`);
+ assert.ok(minimum*capacity>=goal&&(minimum-1)*capacity<goal);
+});
+
 test('eletricidade e ondas recalculam circuito misto e energia por fóton com GHz convertido',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Eletricidade e ondas');assert.ok(spec);
  const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
