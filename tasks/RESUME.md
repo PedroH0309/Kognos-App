@@ -1,6 +1,38 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 30
+## Estado atual em 15/11/2026 — checkpoint 31
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
+(último15%), secondary:null; sessão indisponível. Não substituir semanal por
+sessão, nem garantir parada inobservável. Consultar periodicamente.
+
+156 novas; lote12 doze. 666 app + 6 motor, build/lint e 156API + 4leitor12MCQ,
+4larguras aprovados. Lacunas1139; ENEM166/730; estudo166/28/713; índice373.
+Logsprivate/checkpoint31-*.log. Humana pendente. CI30success43763142874head4028c53.
+Publicar31/PR e acompanhar CI exata. Preview3316 após novo build.
+
+Integrador12 REESCREVE módulo: ALLatuais+novas. Dozeatuais:
+f81404ed,7a81e1ec,237cf014,d0f6d214,9e223a4b,b17518b1,4c7c5bec,d5903a1a,
+0536eebb,1198af3f,f66d7527,69cf6de6. Críticas finais lidas/aceitas/hashatuais;
+metadadosBio corrigidos explicitamente, original preservado. Não reaplicar
+autores-base em aceitos. Testesnovos enumeração Mendel e balanço demográfico.
+Regex do teste demográfico corrigida para captura não gulosa, sem mudar contas.
+
+Fontes/limites nos arquivosprivados. Históriaraw falsa produtividade/invenção
+burguesia/primeiralei1833 rejeitado mesmo com aceite automático. Georaw previsão
+fecundidade auxiliar/falsa populaçãoSudeste rejeitado; cifra53% da crítica
+também não adotada. Casospróprios. Filosofia recorte introdutório plural,
+não alegar abranger cada corrente nem consciência de máquina.
+
+Worker160PID5840 logTemp kognos-curriculum-collaboration-v4-batch12-20261115.log;
+último Sociologiac6064524. Próximos Artea18970e3,PEe942ed50,Ciências4c61183d.
+Não duplicarworker; ampliar176 somente apósfim160. Helpers em Temp e cópia
+privada/resume-helpers; draftsprivados não publicam sozinhos.
+
+AGENTS gerado fora decommit; raizoriginalsuja preservada;fetchantespush,nunca
+force. Sem schema,banco,merge/deploy. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 30
 
 CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
 (último12%), secondary:null; sessão indisponível. Não substituir semanal por

@@ -983,3 +983,20 @@ test('funções inorgânicas conservam átomos na neutralização completa, sem 
  assert.equal(task.options[task.correctIndex],'H3PO4 + 3 NaOH → Na3PO4 + 3 H2O.');
  const balance=totals('H3PO4 + 3 NaOH');assert.deepEqual(Object.fromEntries(balance),{H:6,Na:3,O:7,P:1});
 });
+
+test('genética mendeliana enumera segregação, cruzamento-teste e gametas independentes',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Biologia'&&s.topic==='Genética mendeliana');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ assert.match(spec.tasks[0].prompt,/Aa × Aa/);const mono=['A','a'].flatMap(a=>['A','a'].map(b=>[a,b].sort().join('')));assert.equal(mono.filter(x=>x==='aa').length/mono.length,1/4);assert.equal(choice(0),'1/4 por descendente, sem garantir um recessivo em cada grupo de quatro.');
+ assert.match(spec.tasks[1].prompt,/aa/);assert.match(spec.tasks[1].prompt,/recessivo/);const canProduceRecessive=(parent:string)=>[...parent].some(a=>a==='a');assert.equal(canProduceRecessive('AA'),false);assert.equal(canProduceRecessive('Aa'),true);assert.equal(choice(1),'Aa: o descendente aa exige um alelo a de cada progenitor, sob as hipóteses dadas.');
+ assert.match(spec.tasks[2].prompt,/AaBb × aabb/);assert.match(spec.tasks[2].prompt,/independente/);const gametes=['A','a'].flatMap(a=>['B','b'].map(b=>a+b)),children=gametes.map(g=>[g[0],'a'].sort().join('')+[g[1],'b'].sort().join(''));assert.equal(new Set(gametes).size,4);assert.equal(children.filter(g=>g==='Aabb').length/children.length,1/4);assert.equal(choice(2),'1/4 para Aabb, pois o primeiro progenitor deve fornecer Ab.');
+});
+
+test('demografia distingue densidade, saldo natural, migração e base percentual declarada',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Geografia'&&s.topic==='População, migração e demografia');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const density=spec.tasks[0].prompt.match(/(\d+) habitantes.*área de (\d+) km²/);assert.ok(density);const population=Number(density[1]),area=Number(density[2]);assert.equal(population/area,150);assert.equal(choice(0),`${population/area} hab/km²; a média não prova distribuição uniforme.`);
+ const balance=spec.tasks[1].prompt.match(/inicial de (\d+) residentes.*?(\d+) nascimentos.*?(\d+) óbitos.*?(\d+) entradas.*?(\d+) saídas/);assert.ok(balance);
+ const [initial,births,deaths,incoming,outgoing]=balance.slice(1).map(Number),natural=births-deaths,net=incoming-outgoing,delta=natural+net,final=initial+delta;assert.equal(natural,12);assert.equal(net,20);assert.equal(final,1032);assert.equal(100*delta/initial,3.2);assert.equal(1000*delta/initial,32);assert.notEqual(100*delta/final,3.2);assert.equal(choice(1),'Saldo natural: 12; saldo migratório: 20; população final: 1032; variação sobre a inicial: 3,2%.');
+ assert.match(spec.tasks[2].prompt,/saldo natural de -20.*saldo migratório de 35/);assert.equal(-20+35,15);assert.equal(choice(2),'Aumento de 15 pessoas; as entradas líquidas superam a perda natural no período.');
+});

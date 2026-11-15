@@ -735,6 +735,374 @@ export const authoredCurriculumBatch12:readonly AuthoredLessonSpec[] = [
         "solution": "B, índice 1: NH4+ doa próton à água e gera H3O+, favorecendo caráter ácido da solução sob as hipóteses dadas. A inventa metal obrigatório e pH universal; C atribui inércia a todos os cátions; D inventa transformação de elemento sem base. NH4Cl continua classificado como sal, enquanto o comportamento de seus íons explica por que essa classificação não implica neutralidade."
       }
     ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Genética mendeliana",
+    "objective": "Interpretar segregação e distribuição independente em modelos mendelianos, distinguindo genótipo, fenótipo e dominância e calculando probabilidades de cruzamentos com hipóteses e limites explícitos.",
+    "prerequisites": [
+      "Meiose e formação de gametas",
+      "Frações e probabilidades",
+      "Cromossomos homólogos e fecundação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Alelos, genótipos e segregação",
+        "explanation": "Mendel investigou padrões de herança em cruzamentos de ervilhas, formulando explicações com fatores hereditários antes de a base cromossômica ser conhecida. A interpretação atual relaciona esses fatores a genes e alelos, sem afirmar que Mendel observou moléculas de DNA. Alelos são variantes numa região genética; em um modelo diploide autossômico, um indivíduo tem dois alelos no locus considerado, um recebido de cada progenitor. Homozigoto tem alelos iguais nesse locus, e heterozigoto tem diferentes. Genótipo descreve a constituição genética considerada; fenótipo é a característica observável, que pode depender do genótipo e do ambiente. No modelo de dominância completa de A sobre a, AA e Aa apresentam o mesmo fenótipo, e aa apresenta o recessivo. Dominante não significa mais frequente, melhor, mais saudável ou transmitido com maior probabilidade por esse motivo. A primeira lei, ou segregação dos alelos, descreve a separação dos dois alelos na formação de gametas. No modelo sem distorção de segregação, Aa produz gametas A e a em proporções esperadas iguais; cada gameta leva um alelo desse locus, não a dupla Aa. A fecundação reúne alelos dos dois gametas. A notação com letras é uma convenção do problema: não implica que o gene inteiro desapareça no heterozigoto nem que todo caráter real siga dominância completa. Leia as hipóteses antes de associar letras e fenótipos.",
+        "steps": [
+          "Identifique locus, alelos e modelo de dominância.",
+          "Diferencie genótipo e fenótipo.",
+          "Determine quais alelos cada gameta pode receber.",
+          "Reúna alelos na fecundação sem atribuir valor biológico à letra maiúscula."
+        ],
+        "example": "Modelo autoral de planta fictícia: R é dominante completo sobre r para uma característica. As plantas RR e Rr podem ter o mesmo fenótipo e genótipos diferentes. Uma observação da característica dominante, sem cruzamento ou outra informação genética, não decide sozinha se a planta é RR ou Rr. A letra R não garante maior frequência na população.",
+        "pitfall": "Tratar dominante como superior ou mais comum, ou colocar dois alelos do mesmo locus diploide em cada gameta do modelo."
+      },
+      {
+        "level": "intermediate",
+        "title": "Cruzamentos e probabilidades, não cotas",
+        "explanation": "O quadro de Punnett organiza combinações de gametas e permite calcular proporções esperadas sob hipóteses como gametas equiprováveis, fecundação aleatória e ausência de diferenças de sobrevivência que alterem a contagem. Um homozigoto produz um tipo de gameta para o locus considerado; um heterozigoto produz dois no modelo de segregação usual. As células do quadro representam combinações, não uma ordem obrigatória de nascimento. A proporção genotípica 1:2:1 de um cruzamento entre dois heterozigotos pode corresponder à proporção fenotípica 3:1 quando há dominância completa e expressão prevista no modelo. Essas proporções são expectativas de probabilidade: quatro descendentes não precisam incluir exatamente um de cada classe do quadro. Para eventos independentes, a ocorrência anterior não obriga compensação nos seguintes. A regra do produto calcula a ocorrência conjunta de eventos independentes; a soma simples vale para alternativas mutuamente exclusivas. No cruzamento-teste, cruza-se um indivíduo de fenótipo dominante e genótipo desconhecido com um homozigoto recessivo. Um descendente recessivo pode mostrar que o progenitor dominante forneceu o alelo recessivo, sob hipóteses de expressão completa, filiação indicada e ausência de mutações. Já não observar recessivos em uma amostra pequena não prova automaticamente homozigose. É preciso distinguir possibilidade, evidência e certeza lógica dentro do modelo. Não use esses exercícios como diagnóstico ou inferência sobre pessoas reais.",
+        "steps": [
+          "Liste gametas possíveis e suas probabilidades.",
+          "Combine os gametas dos dois progenitores.",
+          "Conte genótipos antes de agrupar fenótipos.",
+          "Interprete proporções como expectativas e declare limites de amostras pequenas."
+        ],
+        "example": "Exemplo autoral ideal: uma planta CC cruzada com cc produz somente Cc no locus considerado, porque cada combinação reúne um C do primeiro progenitor e um c do segundo. Isso mostra por que uma previsão vem dos gametas possíveis, e não de dividir arbitrariamente o número de descendentes entre letras maiúsculas e minúsculas.",
+        "pitfall": "Converter probabilidade em número garantido numa família pequena ou considerar ausência de recessivos como prova automática de homozigose."
+      },
+      {
+        "level": "advanced",
+        "title": "Segunda lei, ligação gênica e limites do modelo",
+        "explanation": "A segunda lei, ou distribuição independente, descreve combinações de alelos de loci distintos na formação de gametas quando a segregação de um não condiciona a do outro. Para dois loci heterozigotos independentes, surgem quatro tipos de gametas em proporções esperadas iguais. Isso se relaciona ao comportamento dos cromossomos na meiose. Genes próximos no mesmo cromossomo podem apresentar ligação gênica, alterando as frequências de combinações; recombinação pode produzir combinações novas, e loci suficientemente afastados podem comportar-se aproximadamente como independentes. Portanto, não aplique automaticamente a multiplicação de probabilidades de loci sem verificar a hipótese. A proporção fenotípica 9:3:3:1 de um cruzamento diíbrido entre heterozigotos exige, além de independência, dominância completa em ambos os loci e ausência de interações que alterem o agrupamento fenotípico, entre outras condições do modelo. Dominância incompleta, codominância e epistasia podem modificar fenótipos e proporções sem exigir que os alelos deixem de segregar. Em uma população podem existir mais de dois alelos para um gene, embora um indivíduo diploide autossômico tenha dois nesse locus. Muitas características dependem de vários genes e do ambiente; não é adequado atribuir automaticamente inteligência, comportamento ou toda característica humana a um único par de letras. Para resolver um exercício de vários loci, defina o genótipo solicitado, os gametas necessários e a independência assumida, distinguindo probabilidade de genótipo e de fenótipo.",
+        "steps": [
+          "Identifique loci e a hipótese de distribuição independente.",
+          "Enumere os gametas necessários ao genótipo pedido.",
+          "Combine probabilidades somente nas condições adequadas.",
+          "Verifique dominância, ligação e interação antes de usar proporções fenotípicas prontas."
+        ],
+        "example": "Modelo autoral: em CcDd × CcDd, com loci independentes e dominância completa em ambos, o fenótipo C_D_ tem probabilidade 3/4·3/4=9/16. Se uma interação entre genes agrupar fenótipos de outro modo, essa proporção pode mudar. O cálculo genético não autoriza aplicar 9:3:3:1 a qualquer par de características sem conferir as hipóteses.",
+        "pitfall": "Aplicar 9:3:3:1 a qualquer cruzamento de dois genes ou confundir mudança de fenótipo com desaparecimento da segregação dos alelos."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Modelo autoral diploide: no cruzamento Aa × Aa, A tem dominância completa sobre a. Considere segregação igual, fecundação aleatória e igual sobrevivência dos genótipos. Qual é a probabilidade do fenótipo recessivo por descendente?",
+        "hint": "Enumere AA, Aa, aA e aa e não transforme as combinações possíveis numa ordem obrigatória para grupos pequenos.",
+        "options": [
+          "1/2 por descendente, pois toda letra minúscula já basta para o fenótipo recessivo.",
+          "1/4 por descendente, sem garantir um recessivo em cada grupo de quatro.",
+          "3/4 por descendente, porque AA também é recessivo.",
+          "Um recessivo obrigatório a cada quatro nascimentos, sem variação possível."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a combinação aa ocorre em uma de quatro combinações equiprováveis, dando 1/4. AA e os dois heterozigotos apresentam fenótipo dominante nesse modelo. A conta heterozigotos como recessivos; C troca fenótipos; D transforma probabilidade em cota determinística. A proporção esperada não exige um recessivo em cada conjunto de quatro descendentes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Cruzamento-teste fictício autoral: um progenitor de fenótipo dominante, com genótipo AA ou Aa, é cruzado com aa e produz ao menos um descendente recessivo aa. Considere filiação indicada, expressão completa e ausência de mutação. Qual genótipo é compatível para o progenitor dominante?",
+        "hint": "O descendente aa recebeu um a de cada progenitor; confira qual das duas possibilidades do progenitor dominante fornece esse alelo.",
+        "options": [
+          "AA, porque o progenitor aa pode fornecer sozinho os dois alelos do descendente.",
+          "aa, porque qualquer fenótipo dominante tem obrigatoriamente dois alelos recessivos.",
+          "AA ou Aa sem distinção, pois o descendente aa não informa nada nesse modelo.",
+          "Aa: o descendente aa exige um alelo a de cada progenitor, sob as hipóteses dadas."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: o progenitor aa fornece a, e o outro a precisa vir do progenitor de fenótipo dominante. Entre AA e Aa, apenas Aa pode fornecê-lo. A atribui os dois alelos de um locus ao mesmo progenitor; B contradiz o fenótipo declarado e as possibilidades; C ignora a informação do descendente. A conclusão vale nas hipóteses explícitas e não é uma inferência clínica sobre uma família real."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Modelo autoral: no cruzamento AaBb × aabb, os loci são autossômicos e têm distribuição independente, gametas equiprováveis e igual sobrevivência dos genótipos. Qual é a probabilidade de um descendente Aabb?",
+        "hint": "O progenitor aabb só fornece ab; identifique qual gameta do outro progenitor forma Aa no primeiro locus e bb no segundo.",
+        "options": [
+          "1/16 para Aabb, pois todo cruzamento de dois loci tem dezesseis gametas por progenitor.",
+          "9/16 para Aabb, usando obrigatoriamente a primeira classe de 9:3:3:1.",
+          "1/4 para Aabb, pois o primeiro progenitor deve fornecer Ab.",
+          "1 para Aabb, porque qualquer gameta do primeiro progenitor produz esse genótipo."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: AaBb produz AB, Ab, aB e ab, cada qual com 1/4 sob independência. Aabb resulta de Ab combinado com ab do progenitor aabb, logo 1/4. A confunde combinações e tipos de gametas; B aplica proporção de outro cruzamento e de fenótipos; D ignora os outros genótipos possíveis. A resposta é de genótipo e não exige uma regra universal sobre fenótipos."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Revolução Industrial e trabalho",
+    "objective": "Relacionar industrialização, organização fabril e conflitos do trabalho, interpretando causas múltiplas, fontes históricas e limites da legislação sem supor progresso uniforme ou automático.",
+    "prerequisites": [
+      "Manufatura e produção artesanal",
+      "Comércio atlântico e escravização",
+      "Leitura de fontes e cronologia histórica"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Industrialização como transformação histórica",
+        "explanation": "A primeira Revolução Industrial começou na Grã-Bretanha no século XVIII e se expandiu de modo desigual. Não foi uma única invenção nem uma troca instantânea de todas as oficinas por fábricas. A mecanização têxtil, o uso da energia hidráulica e a expansão da força a vapor transformaram ritmos e escalas de produção. A disponibilidade de carvão e os aperfeiçoamentos de motores importaram, mas máquinas exigiam investimento, manutenção, trabalhadores, matérias-primas e compradores. Redes de comércio, transporte, crédito e decisões políticas também compunham o processo. Por isso, uma lista de inventores não explica sozinha a industrialização. Watt aperfeiçoou motores a vapor; não criou sozinho a industrialização nem foi o primeiro a construir um motor desse tipo. A passagem do trabalho doméstico disperso para a concentração fabril podia reunir máquinas e trabalhadores sob direção empresarial, embora formas antigas e novas continuassem coexistindo. A burguesia comercial já existia antes desse processo: a indústria ampliou o peso de proprietários industriais, em vez de inventar toda a burguesia. Ao interpretar uma mudança, distinga condição favorável, inovação e consequência. A presença de carvão, por exemplo, não obriga qualquer região a industrializar-se. É preciso investigar como recursos, conhecimentos, relações sociais e mercados se articularam em um lugar e período determinados.",
+        "steps": [
+          "Localize região e período, sem impor cronologia única ao mundo.",
+          "Identifique energia, produção e organização do trabalho.",
+          "Relacione técnica a investimento, comércio e relações sociais.",
+          "Diferencie condição favorável de causa única e inevitável."
+        ],
+        "example": "Comparação didática autoral, sem dados de uma fábrica real: uma oficina recebe um motor, mas não dispõe de peças, capital ou compradores regulares. Outra combina equipamento, manutenção e encomendas. A diferença mostra por que ter uma máquina não basta para explicar a expansão sustentada da produção, sem negar a importância da inovação técnica.",
+        "pitfall": "Atribuir toda a industrialização a Watt ou supor que possuir carvão automaticamente produz o mesmo desenvolvimento em qualquer sociedade."
+      },
+      {
+        "level": "intermediate",
+        "title": "Relações de trabalho e circuitos globais",
+        "explanation": "Na organização fabril, trabalhadores assalariados vendem sua força de trabalho, e proprietários controlam instalações, equipamentos e decisões produtivas. Isso altera a autonomia sobre o ritmo, os horários e a sequência das tarefas. Divisão do trabalho e mecanização podem reduzir a autonomia de certos ofícios e criar outras especializações; não significam que todos os trabalhadores perderam exatamente a mesma qualificação. Homens, mulheres e crianças participaram da produção em condições desiguais. Ruído, poeira, acidentes, jornadas longas e insegurança de renda integraram experiências industriais, mas variavam por setor, região e período. Crescimento urbano e moradias precárias devem ser examinados em relação a emprego, infraestrutura e renda, sem afirmar que toda cidade ou toda família viveu uma história idêntica. As fábricas estavam ligadas a circuitos que ultrapassavam suas paredes: a indústria algodoeira britânica se articulou a matérias-primas produzidas com trabalho escravizado e a relações coloniais de poder e comércio. Assalariamento fabril e escravização são relações distintas; sua conexão econômica não as torna juridicamente iguais. Esse vínculo também impede contar uma história de liberdade universal produzida automaticamente pela mecanização. Para analisar uma fonte, pergunte quem a produziu, com qual objetivo e que experiência ela documenta. Um regulamento empresarial revela expectativas de disciplina, mas não demonstra sozinho que todos obedeciam; um relato individual informa uma experiência sem representar por si toda a classe trabalhadora.",
+        "steps": [
+          "Identifique quem controla meios de produção e horários.",
+          "Compare experiências sem transformar um caso em regra universal.",
+          "Relacione produção fabril a matérias-primas e trabalho em outras regiões.",
+          "Diferencie prescrição de regulamento, relato de experiência e prática comprovada."
+        ],
+        "example": "Situação fictícia autoral: um regulamento exige entrada ao toque de sino, enquanto uma carta imaginária de um trabalhador relata atrasos frequentes por problemas de transporte. O regulamento permite estudar a disciplina desejada pela direção; a carta sugere uma experiência e um conflito. Nenhum dos dois, sozinho, mede o cumprimento de horários de toda a indústria.",
+        "pitfall": "Equiparar assalariamento e escravização ou tratar uma norma empresarial como prova de obediência efetiva de todos os trabalhadores."
+      },
+      {
+        "level": "advanced",
+        "title": "Resistência, direitos e mudanças posteriores",
+        "explanation": "Trabalhadores não foram apenas destinatários passivos das mudanças. Associações, sindicatos, greves e campanhas políticas disputaram salários, tempo de trabalho, representação e condições de vida, enfrentando repressão e diferentes restrições. O ludismo envolveu ataques a equipamentos no início do século XIX em conflitos sobre emprego, remuneração e organização produtiva. Reduzi-lo à ignorância de pessoas que odiavam qualquer tecnologia apaga interesses e circunstâncias históricas. Também não se deve transformar todos os movimentos em um grupo único com o mesmo programa. A legislação resultou de disputas e teve alcance e execução limitados. O Factory Act britânico de 1833 criou restrições ao trabalho infantil em estabelecimentos têxteis abrangidos e instituiu inspetores; não eliminou imediatamente todo trabalho infantil, nem protegeu de modo igual todos os setores. A existência de uma lei e sua aplicação são perguntas diferentes, que exigem fontes e indicadores específicos. Na segunda metade do século XIX, a expansão do aço, da eletricidade, da indústria química e de novas redes de transporte e comunicação caracteriza processos chamados de Segunda Revolução Industrial. Essas mudanças não apagaram imediatamente o vapor ou outras fontes de energia e chegaram em ritmos diferentes a países e regiões. Aumento de produtividade descreve produção em relação a recursos empregados; não demonstra sozinho como a renda foi distribuída ou se a jornada diminuiu. Avaliar condições de vida exige considerar preços, salários, moradia, saúde, direitos e participação política, evitando tanto um progresso inevitável quanto a ideia de ausência de qualquer mudança.",
+        "steps": [
+          "Reconheça trabalhadores como agentes históricos e compare suas reivindicações.",
+          "Diferencie criação de lei, abrangência e fiscalização.",
+          "Localize mudanças da segunda industrialização sem supor substituição total de tecnologias.",
+          "Separe produtividade de distribuição de renda e conquista de direitos."
+        ],
+        "example": "Cenário autoral hipotético: duas regiões ampliam a produção com equipamentos novos. Em uma, há negociação sobre jornada e fiscalização; na outra, esses mecanismos são frágeis. O crescimento produtivo comum não permite concluir que ambas tiveram os mesmos direitos ou condições de vida. Seria necessário investigar relações políticas e dados de cada região.",
+        "pitfall": "Concluir que máquinas garantem direitos ou que a aprovação de uma lei significa cumprimento imediato e universal."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação hipotética autoral: uma região britânica do século XVIII reúne mecanização têxtil, acesso a energia, investimentos e redes de comércio. Qual interpretação explica melhor a expansão industrial descrita?",
+        "hint": "Relacione fatores técnicos e sociais, distinguindo uma condição favorável de uma causa que produza sozinha todo o processo.",
+        "options": [
+          "A energia disponível torna dispensáveis trabalhadores, manutenção e compradores.",
+          "Uma única invenção explica o processo, independentemente do comércio e do investimento.",
+          "A combinação de técnica, energia, capital e mercados ajuda a explicar o processo, sem torná-lo inevitável.",
+          "A presença de máquinas prova que todas as oficinas do mundo foram substituídas no mesmo momento."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: o caso reúne condições técnicas, econômicas e sociais cuja articulação ajuda a explicar a expansão. A elimina elementos necessários; B transforma uma inovação em causa única; D extrapola uma situação regional para uma substituição mundial simultânea. A interpretação considera os fatores fornecidos sem inventar uma lei universal de desenvolvimento."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso didático autoral: uma fábrica britânica compra algodão produzido por pessoas escravizadas em outra região e emprega trabalhadores assalariados no processamento. O que essa relação permite concluir?",
+        "hint": "Diferencie as relações de trabalho em cada etapa e observe a conexão econômica entre lugares distintos.",
+        "options": [
+          "Produção industrial assalariada podia estar economicamente ligada à escravização, sem que as duas relações fossem juridicamente idênticas.",
+          "Todos os assalariados da fábrica eram juridicamente escravizados porque processavam esse algodão.",
+          "A mecanização da fábrica demonstra que não existia coerção nas etapas anteriores de fornecimento.",
+          "O caso prova que todas as fábricas de qualquer setor e época tinham exatamente a mesma cadeia produtiva."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a cadeia descrita conecta relações distintas de exploração e trabalho. B confunde conexão econômica com identidade jurídica; C apaga a escravização explicitada no enunciado; D generaliza um caso para todos os setores e épocas. O raciocínio não equipara assalariamento e escravidão nem considera a fábrica isolada das regiões fornecedoras."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Exercício autoral: um estudo encontra a criação de limites legais ao trabalho infantil em estabelecimentos têxteis britânicos abrangidos pelo Factory Act de 1833. Também identifica dificuldades de inspeção e descumprimento. Qual conclusão é sustentada?",
+        "hint": "Uma norma pode representar mudança política sem que sua aplicação seja imediata ou universal; considere as duas evidências.",
+        "options": [
+          "A lei demonstra que todo trabalho infantil desapareceu em todos os setores no mesmo ano.",
+          "O descumprimento prova que não houve nenhuma alteração legal nem disputa política.",
+          "A existência de inspetores torna desnecessária qualquer investigação sobre condições efetivas.",
+          "A lei representou uma intervenção com alcance delimitado, cuja execução precisa ser investigada separadamente."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a criação de restrições é uma mudança legal, enquanto as dificuldades de fiscalização exigem examinar sua realização prática. A universaliza alcance e efeito; B nega a mudança explicitamente encontrada; C trata fiscalização formal como garantia automática. As evidências sustentam distinguir norma, abrangência e aplicação, sem declarar a lei inexistente ou plenamente cumprida."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "População, migração e demografia",
+    "objective": "Interpretar distribuição e mudanças populacionais, calculando densidade e balanço demográfico e distinguindo fluxos migratórios, taxas, estrutura etária e projeções.",
+    "prerequisites": [
+      "Razão e porcentagem",
+      "Leitura de tabelas e gráficos",
+      "Território e escala geográfica"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "População, distribuição e indicadores",
+        "explanation": "Demografia estuda o tamanho, a composição e a dinâmica das populações. População absoluta é o número de pessoas residentes no recorte e na data indicados. Densidade demográfica relaciona esse número à área: D = P/A, por exemplo em habitantes por quilômetro quadrado. A densidade é uma média territorial; não afirma que cada quilômetro quadrado tenha a mesma quantidade de moradores. Um território muito populoso pode ter densidade menor que outro de população menor se sua área for suficientemente maior. Antes de comparar, confira datas, unidades, limites territoriais e critérios de residência. Mudanças de fronteira ou de metodologia podem prejudicar uma comparação simples. Natalidade se refere aos nascimentos, mortalidade aos óbitos e fecundidade à reprodução; a taxa bruta de natalidade não é o mesmo indicador que o número médio de filhos por mulher. Taxas brutas anuais de natalidade e mortalidade costumam dividir os eventos do ano pela população do meio do período e multiplicar por mil. Já uma variação percentual entre dois totais pode usar a população inicial como base, conforme o enunciado. Não troque esses denominadores sem aviso. Para converter uma mesma razão entre porcentagem e por mil, lembre que 1% equivale a 10‰. Indicadores descrevem populações em contextos específicos; não medem valor humano nem autorizam classificar povos como superiores ou inferiores.",
+        "steps": [
+          "Identifique população, área, recorte e data.",
+          "Calcule densidade dividindo pessoas por área compatível.",
+          "Diferencie quantidade absoluta, porcentagem e taxa por mil.",
+          "Confira o denominador e os limites da comparação."
+        ],
+        "example": "Exemplo hipotético autoral: Vale tem 2400 residentes em 80 km², logo 30 hab/km²; Porto tem 1800 em 20 km², logo 90 hab/km². Vale tem mais moradores, mas Porto tem maior densidade média. Nenhuma dessas médias informa por si como as moradias se distribuem dentro de cada território.",
+        "pitfall": "Confundir mais populoso com mais densamente povoado, ou apresentar uma razão por mil como se tivesse o mesmo valor numérico em porcentagem."
+      },
+      {
+        "level": "intermediate",
+        "title": "Balanço populacional e migração",
+        "explanation": "Para um território e período fixos, o balanço demográfico relaciona o total final ao inicial: P_final = P_inicial + nascimentos − óbitos + entradas migratórias − saídas migratórias. A diferença entre nascimentos e óbitos é o saldo natural ou vegetativo; entradas menos saídas dão o saldo migratório. São quantidades de pessoas quando os dados estão em números absolutos. Um saldo positivo não significa ausência de saídas, e saldo zero não significa que ninguém se deslocou: entradas e saídas podem ser grandes e iguais. A mesma pessoa é emigrante em relação ao lugar de saída e imigrante em relação ao de chegada. Migração interna muda a residência dentro de um país; migração internacional cruza sua fronteira. A mudança pode ser temporária ou permanente. Deslocar-se diariamente para trabalhar sem trocar de residência habitual não equivale à mudança residencial considerada nesse balanço. As motivações podem combinar trabalho, estudo, vínculos familiares, violência e condições ambientais; nem toda mudança resulta de escolha livre ou de um único fator econômico. Deslocamento forçado pode ocorrer dentro do próprio país, sem cruzar fronteira internacional. Não deduza nacionalidade, situação jurídica ou motivo de uma pessoa apenas de um saldo agregado. No cálculo, mantenha o mesmo território e intervalo: migrar entre dois municípios altera cada total municipal, mas, por si, não muda o total do país que contém ambos. A equação supõe dados comparáveis e ausência de alterações territoriais ou ajustes de contagem não informados.",
+        "steps": [
+          "Fixe território e intervalo e separe quatro componentes.",
+          "Calcule nascimentos menos óbitos e entradas menos saídas.",
+          "Some ambos os saldos ao total inicial.",
+          "Interprete fluxos e escalas sem inferir motivos individuais a partir da soma."
+        ],
+        "example": "Caso autoral: em um período, um município recebe 70 pessoas que passam a residir nele e registra 70 saídas de residentes. Seu saldo migratório é zero, embora haja 140 movimentos contabilizados. Isso não diz que os motivos de entrada e saída foram iguais nem que não existiu migração.",
+        "pitfall": "Somar entradas sem descontar saídas, excluir migração do crescimento total ou tratar saldo zero como ausência de movimento."
+      },
+      {
+        "level": "advanced",
+        "title": "Estrutura etária, transição e projeção",
+        "explanation": "Uma pirâmide etária organiza a população por grupos de idade e pelas categorias de sexo apresentadas na fonte. Observe se as barras representam números absolutos ou percentuais e confira as larguras dos intervalos. Uma base relativamente estreita e maior participação de idades elevadas ajudam a descrever uma estrutura envelhecida, mas não identificam sozinhas todas as causas. Nascimentos, sobrevivência, migração seletiva por idade e a história de gerações anteriores podem influenciar a forma do gráfico. A transição demográfica é um modelo histórico de mudanças dos níveis de mortalidade e natalidade: a queda da mortalidade com natalidade ainda elevada amplia o saldo natural; a redução posterior da natalidade pode diminuir esse saldo. O modelo não exige calendários idênticos nem explica sozinho toda trajetória. Populações podem continuar crescendo após queda da fecundidade por sua composição etária e por migração; crescimento natural negativo pode coexistir com crescimento total positivo se as entradas líquidas forem suficientes. Taxa bruta de mortalidade é influenciada pela estrutura etária, de modo que compará-la isoladamente não mede a qualidade dos serviços de saúde. Projeções dependem de hipóteses sobre fecundidade, mortalidade e migração; não são contagens do futuro nem certezas sem condições. Ao analisar políticas, dados de um único ano não provam automaticamente causa e efeito. Uma maior participação de pessoas em idade de trabalhar tampouco garante emprego ou desenvolvimento: educação, condições de trabalho e instituições importam. Interprete tendências com contexto e incertezas, sem responsabilizar indivíduos por mudanças coletivas.",
+        "steps": [
+          "Leia eixos, unidades, categorias e intervalos etários.",
+          "Diferencie descrição da estrutura e explicação causal.",
+          "Considere migração e história das gerações junto ao saldo natural.",
+          "Identifique hipóteses de projeções e evite promessas determinísticas."
+        ],
+        "example": "Comparação hipotética autoral: duas localidades têm igual participação de pessoas de 20 a 39 anos, mas uma recebeu novos residentes nessa faixa e a outra tem gerações numerosas nascidas ali. O gráfico pode ser semelhante apesar de trajetórias diferentes. Para explicar sua forma, seriam necessários registros de nascimentos, óbitos e migração.",
+        "pitfall": "Deduzir uma causa única da forma da pirâmide ou tratar projeção condicional como certeza, sem conferir hipóteses e escala."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Dados hipotéticos autorais: um município tem 6000 habitantes em uma área de 40 km², na mesma data de referência. Qual é a densidade demográfica e seu limite de interpretação?",
+        "hint": "Divida o total de habitantes pela área e diferencie média territorial de distribuição efetiva em cada quilômetro quadrado.",
+        "options": [
+          "150 hab/km²; todos os quilômetros quadrados têm obrigatoriamente 150 moradores.",
+          "6000 hab/km²; população absoluta e densidade sempre são iguais.",
+          "0,0067 hab/km²; a área deve ser dividida pelo número de habitantes.",
+          "150 hab/km²; a média não prova distribuição uniforme."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: 6000/40=150 hab/km². A calcula a mesma média, mas conclui uniformidade sem evidência; B ignora a divisão pela área; C inverte a razão, obtendo área por pessoa, e usa unidade incompatível. A densidade permite comparar médias, desde que recortes e datas sejam compatíveis, sem localizar cada residência."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo autoral com território fixo e registros completos: população inicial de 1000 residentes; no período, 20 nascimentos, 8 óbitos, 30 entradas e 10 saídas migratórias. Sem ajustes de contagem, qual é o balanço e a variação percentual usando a população inicial como base?",
+        "hint": "Calcule separadamente nascimentos menos óbitos e entradas menos saídas; depois divida a variação total pelo total inicial e multiplique por 100.",
+        "options": [
+          "Saldo natural: 12; saldo migratório: 40; população final: 1052; variação sobre a inicial: 5,2%.",
+          "Saldo natural: 12; saldo migratório: 20; população final: 1032; variação sobre a inicial: 3,2%.",
+          "Saldo natural: 12; saldo migratório: 20; população final: 1032; variação sobre a inicial: 32%.",
+          "Saldo natural: 28; saldo migratório: 20; população final: 1048; variação sobre a inicial: 4,8%."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: saldo natural=20−8=12; migratório=30−10=20; variação=32; total final=1000+32=1032. A variação sobre a base inicial é 32/1000·100=3,2%. A soma saídas a entradas; C confunde 32 por mil com 32%; D soma óbitos aos nascimentos. A base inicial foi explicitada e não deve ser trocada pelo total final ou pela população do meio do ano."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Exercício hipotético autoral: no mesmo território e período, há saldo natural de -20 pessoas e saldo migratório de 35 pessoas, sem mudanças de limites ou ajustes de contagem. Qual é a variação do total de residentes?",
+        "hint": "O crescimento total soma os dois saldos; um saldo natural negativo não obriga queda se houver entradas líquidas suficientes.",
+        "options": [
+          "Aumento de 15 pessoas; as entradas líquidas superam a perda natural no período.",
+          "Queda de 20 pessoas; migração não participa do total de residentes.",
+          "Aumento de 55 pessoas; o sinal negativo do saldo natural deve ser descartado.",
+          "Total invariável; qualquer combinação de saldos diferentes se anula automaticamente."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: −20+35=15 pessoas. O saldo migratório positivo supera o natural negativo, permitindo crescimento total. B ignora migração; C transforma perda em ganho; D supõe cancelamento sem igualdade de módulos. A conta é em pessoas, não em taxa: sem uma base populacional não se calcula uma porcentagem única nem se deduz uma causa individual para os deslocamentos."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia contemporânea e tecnologia",
+    "objective": "Distinguir perspectivas contemporâneas sobre experiência, liberdade e racionalidade e analisar tecnologias com argumentos sobre fins, valores, autonomia e responsabilidade.",
+    "prerequisites": [
+      "Argumento, premissa e conclusão",
+      "Ética e conhecimento",
+      "Modernidade e transformações sociais"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Pluralidade de problemas e perspectivas",
+        "explanation": "A filosofia contemporânea reúne tradições e debates diversos, não uma doutrina única compartilhada por todos os autores. Neste recorte introdutório, estudamos experiência, liberdade e crítica social como caminhos para interrogar a tecnologia. A fenomenologia, associada a Husserl e desenvolvida por outros pensadores, investiga estruturas da experiência e como algo aparece à consciência. Intencionalidade, nesse contexto, significa que a consciência é consciência de algo; não equivale simplesmente a um plano ou desejo deliberado. Perspectivas existencialistas, como as de Sartre e Beauvoir, destacam existência concreta, escolhas e responsabilidade em situações históricas e sociais. Liberdade situada não significa poder realizar qualquer desejo sem limites nem culpar alguém por toda condição que sofre. A teoria crítica ligada à Escola de Frankfurt articula filosofia e investigação social para examinar dominação e possibilidades de emancipação. Seus autores e gerações também divergem entre si. Esses caminhos podem formular perguntas diferentes sobre uma mesma situação: como uma interface é vivida, quais escolhas ela permite ou restringe e quais interesses orientam seu funcionamento. A aproximação é didática e não torna as tradições sinônimas. Para interpretar um texto, localize o problema, reconstrua a tese e examine as razões apresentadas. Saber o nome de um autor não substitui a leitura do argumento; uma preferência pessoal só se torna uma posição discutível com justificativas e abertura a objeções.",
+        "steps": [
+          "Identifique problema, tese e razões, antes de associar um rótulo.",
+          "Diferencie intencionalidade fenomenológica de intenção como plano.",
+          "Relacione escolha e responsabilidade às condições concretas.",
+          "Compare perspectivas sem atribuir uma opinião única à filosofia contemporânea."
+        ],
+        "example": "Situação fictícia autoral: diante de um mapa digital, uma pessoa percebe a cidade sobretudo como rotas e tempos de viagem. Uma análise da experiência pode perguntar como essa mediação muda o que chama sua atenção. Outra análise pode discutir se ela dispõe de transporte e opções reais. São perguntas relacionadas, sem que uma resposta substitua automaticamente a outra.",
+        "pitfall": "Tratar fenomenologia como simples planejamento de ações ou entender liberdade situada como ausência de condições e limites sociais."
+      },
+      {
+        "level": "intermediate",
+        "title": "Técnica, racionalidade e fins",
+        "explanation": "Tecnologia envolve artefatos, conhecimentos, práticas e sistemas organizados; sua análise filosófica vai além de avaliar se um aparelho funciona. Uma questão instrumental pergunta pelos meios eficientes para alcançar um fim. Uma questão normativa pergunta se esse fim é justificável e quem pode participar de sua definição. Calcular o caminho mais rápido pode ser tecnicamente útil, mas a rapidez não resolve por si se o caminho é acessível ou se impõe custos injustos a outras pessoas. Horkheimer e Adorno criticam o predomínio de uma razão reduzida ao cálculo e ao controle, quando a reflexão sobre fins e emancipação é enfraquecida. Isso é uma interpretação filosófica, não uma prova de que todo cálculo ou toda ciência deva ser abandonado. Heidegger, por outro caminho, interroga a técnica moderna como modo de revelar e ordenar o mundo, no qual os entes podem aparecer sobretudo como recursos disponíveis. Sua questão não se reduz à existência de aparelhos perigosos nem coincide integralmente com a teoria crítica. Outros debates sobre tecnologia examinam como projetos incorporam valores e favorecem certas ações, por exemplo ao tornar algumas escolhas mais fáceis do que outras. Reconhecer valores no projeto não exige atribuir consciência ou culpa moral ao objeto. Também não implica que todos os usos e efeitos estejam determinados de uma vez por todas: contexto, instituições, usuários e possibilidade de transformação importam. Compare argumentos concretos, evitando tanto neutralidade absoluta presumida quanto condenação universal da técnica.",
+        "steps": [
+          "Separe eficiência dos meios e justificação dos fins.",
+          "Reconstrua o alvo específico da crítica à razão instrumental.",
+          "Diferencie a pergunta de Heidegger das perguntas da teoria crítica.",
+          "Investigue escolhas de projeto, contexto e alternativas possíveis."
+        ],
+        "example": "Caso autoral: um sistema de inscrições pode ordenar pedidos por rapidez de envio ou reservar atendimento presencial para quem não tem conexão. A escolha envolve objetivos e critérios, além de velocidade computacional. Discutir qual projeto é justificável exige explicitar inclusão, custos e acesso, sem concluir que qualquer solução digital é por definição justa ou injusta.",
+        "pitfall": "Transformar sucesso técnico em justificação ética ou reduzir toda crítica da tecnologia à proposta de destruir aparelhos e abandonar a razão."
+      },
+      {
+        "level": "advanced",
+        "title": "Autonomia, decisões e responsabilidade",
+        "explanation": "Nos debates atuais sobre sistemas automatizados, distinguir descrição e avaliação evita saltos indevidos. Dizer que um programa classifica muitos casos por minuto informa desempenho sob certas condições. Concluir que ele deve decidir sozinho exige premissas adicionais sobre legitimidade, erros, direitos e consequências. Dados e critérios podem reproduzir desigualdades, e uma elevada precisão média não demonstra que os erros estejam igualmente distribuídos entre grupos. Explicação, possibilidade de contestação e participação das pessoas afetadas são questões relevantes, mas nenhum mecanismo isolado garante justiça em toda situação. Autonomia humana inclui condições de compreender e avaliar opções; a existência de um botão não prova uma escolha informada quando alternativas estão ocultas ou incompreensíveis. Responsabilidade pode envolver quem projeta, contrata, implementa e utiliza um sistema, de acordo com seu papel e poder de decisão. Distribuí-la não significa dissolvê-la automaticamente nem atribuí-la exclusivamente à máquina. Há debates filosóficos sobre agência e estatuto moral de sistemas artificiais; não se deve apresentar como consenso que uma resposta linguística prova consciência. Para construir um argumento, explicite o caso, os valores em tensão, a proposta e a justificativa. Considere objeções e alternativas, como revisão humana efetiva e mudanças nos critérios. As situações desta aula são hipotéticas e não estabelecem regras jurídicas vigentes nem descrevem produtos reais. A conclusão deve ter alcance compatível com as evidências, sem substituir análise filosófica por confiança automática ou medo genérico da inovação.",
+        "steps": [
+          "Distinga afirmação de desempenho e conclusão normativa.",
+          "Pergunte quem define critérios, recebe benefícios e suporta riscos.",
+          "Examine autonomia, distribuição de erros e possibilidade de contestar.",
+          "Proponha uma conclusão justificada e responda a uma objeção relevante."
+        ],
+        "example": "Exemplo fictício autoral: um recomendador exibe somente obras semelhantes às já selecionadas. Uma análise pode reconhecer sua utilidade para encontrar preferências e perguntar se o projeto reduz o contato com perspectivas diferentes. Para avaliar a proposta de ampliar diversidade, explicite o valor defendido e examine efeitos, sem afirmar que todo usuário é incapaz de escolha.",
+        "pitfall": "Deduzir justiça de uma média de acertos ou concluir que a automação elimina toda responsabilidade de pessoas e instituições."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma leitura introdutória autoral de fenomenologia, a expressão intencionalidade da consciência indica que uma experiência é experiência de algo. Qual interpretação preserva esse sentido?",
+        "hint": "Compare a direção da experiência para algo com o uso cotidiano de intenção como plano deliberado.",
+        "options": [
+          "Toda experiência depende de um plano consciente detalhado feito antecipadamente.",
+          "Perceber uma árvore envolve uma consciência dirigida a algo, mesmo sem um plano deliberado de observá-la.",
+          "Intencionalidade significa que a consciência produz materialmente todas as árvores.",
+          "Somente atividades realizadas com objetivo econômico podem ser experiências conscientes."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a percepção é dirigida à árvore como algo experimentado; esse sentido não exige planejamento deliberado. A confunde o termo filosófico com plano; C transforma direção da experiência em criação material do objeto; D impõe um requisito econômico inexistente na definição. A resposta não resolve por si todas as questões sobre a existência do mundo exterior."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso autoral: uma instituição afirma que um sistema deve ser adotado porque conclui tarefas mais rapidamente, sem discutir finalidade, pessoas afetadas ou alternativas. Qual pergunta explicita o problema da razão reduzida ao cálculo instrumental?",
+        "hint": "A crítica não precisa negar a utilidade de medir tempo; ela pergunta se escolher meios eficientes basta para justificar os fins.",
+        "options": [
+          "Como aumentar ainda mais a velocidade, tratando a finalidade como indiscutível?",
+          "Como provar que nenhum conhecimento científico tem qualquer utilidade?",
+          "Como atribuir vontade e consciência ao equipamento apenas por ele funcionar?",
+          "O fim perseguido é justificável, para quem, e que consequências e alternativas devem ser consideradas?"
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a pergunta abre a avaliação dos fins e de suas implicações, além da eficiência dos meios. A mantém o fim fora de discussão; B converte uma crítica delimitada em rejeição universal da ciência; C atribui consciência sem argumento. A crítica não conclui que rapidez seja sempre ruim: ela mostra por que esse critério isolado não justifica a decisão."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Situação hipotética autoral: um seletor automatizado tem alta precisão média, mas o relatório não informa erros por grupo nem oferece explicação ou contestação aos afetados. Qual conclusão é filosoficamente justificada pelos dados disponíveis?",
+        "hint": "Diferencie uma medida global de desempenho das informações necessárias para avaliar justiça, autonomia e responsabilidade.",
+        "options": [
+          "A precisão média, sozinha, não demonstra justiça; é preciso examinar critérios, distribuição dos erros, contestação e responsabilidades.",
+          "A precisão média prova que o sistema jamais prejudica qualquer pessoa ou grupo.",
+          "A ausência de explicação demonstra que a máquina tem consciência e intenção de discriminar.",
+          "A automação elimina a responsabilidade de todas as pessoas que projetam e usam o sistema."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: uma medida agregada não decide sozinha se critérios e efeitos são justos. A conclusão pede investigação compatível com as lacunas, sem afirmar discriminação comprovada nesse caso. B converte média em garantia individual; C infere consciência e intenção sem evidência; D apaga os papéis humanos e institucionais. A análise distingue insuficiência de informação de uma condenação automática de qualquer automação."
+      }
+    ]
   }
 ];
 
@@ -987,6 +1355,133 @@ export const authoredCurriculumBatch12ReviewRecords = [
         "index": 2,
         "correctIndex": 1,
         "reasoning": "NH4+ doa próton à água gerando H3O+, conferindo caráter ácido à solução de NH4Cl segundo o modelo Brønsted–Lowry; a alternativa A erroneamente posta que todo sal contém um metal e apresenta pH universal 7, ignorando que NH4Cl não tem cátion metálico e que a classificação de sal não garante neutralidade, conforme a explicação avançada sobre hidrólise iônica e distinção entre classificação da substância e pH da solução."
+      }
+    ]
+  },
+  {
+    "subject": "Biologia",
+    "topic": "Genética mendeliana",
+    "contentSha256": "d7f297a2abf1bc52c5f14576f97dfc6c9acce19dd47001d863aa0467a7f518fc",
+    "draftMethod": "Autoria e enumeração genética Codex; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/biology-2e/pages/12-1-mendels-experiments-and-the-laws-of-probability",
+      "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+      "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+      "https://www.genome.gov/genetics-glossary/Mendelian-Inheritance",
+      "https://www.genome.gov/genetics-glossary/Allele",
+      "https://www.genome.gov/genetics-glossary/genotype",
+      "https://www.genome.gov/genetics-glossary/Phenotype"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Cada progenitor Aa produz gametas A e a com probabilidade1/2 por tipo. As quatro combinações AA,Aa,aA,aa têm1/4cada; somenteaa é recessivo sob dominância completa. O índice1 expressa1/4 por descendente sem cota de nascimentos. A toma uma única letraa como suficiente para fenótipo recessivo; C chamaAA de recessivo; D impõe contagem garantida em grupo pequeno. Não confundir probabilidade de gameta e de combinação."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "No cruzamento-teste entre dominante (AA ou Aa) × recessivo (aa), a ocência de qualquer descendente recessivo (aa) implica necessariamente que o progenitor dominante é heterocigoto Aa, pois um progenitor AA não poderia transmitir alelo recessivo algum. A opção AA contradiz a informação do descendente recessivo; a opção aa ignora o fenótipo dominante declarado; a opção sem distinção ignora a lógica do cruzamento-teste."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Sob distribuição independente, AaBb produzAB,Ab,aB,ab com1/4cada, enquanto aabb só produzab. Aabb exigeAb×ab, logo1/4 e índice2. A inventa dezesseis gametas por progenitor; B aplica9/16 de classefenotípica de outrocruzamento; D supõe que qualquer gameta produzAabb. Os outros gametas originamAaBb,aaBb ouaabb. A conta é de genótipo nas condições expressas, não proporção universal de fenótipos."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Revolução Industrial e trabalho",
+    "contentSha256": "bc62b8016e3c7c74e8af0005bd239beff67a19fb70e2114251f82ecaad9eb116",
+    "draftMethod": "Autoria Codex após rejeição factual de rascunho Claude Code; nova crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://historicengland.org.uk/content/docs/education/explorer/teachers-kit-steam-power-pdf/",
+      "https://blog.sciencemuseum.org.uk/remembering-james-watt/",
+      "https://www.scienceandindustrymuseum.org.uk/sites/default/files/2021-12/SIM_LargePrintBook_TextilesGallery_UpperLevel_Book1-compressed.pdf",
+      "https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/overview/textileindustries/",
+      "https://www.parliament.uk/about/living-heritage/transformingsociety/livinglearning/19thcentury/overview/factoryact/",
+      "https://www.gedling.gov.uk/leisure-culture-and-parks/parks-and-green-spaces/luddites",
+      "https://openstax.org/books/world-history-volume-2/pages/9-1-the-second-industrial-revolution"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A alternativa correta (C, índice 2) é a única que reconhece a articulação combinada de técnica, energia, capital e mercados sem pretender causalidade única ou resultado automático, alinhando-se ao objetivo da aula de interpretar causas múltiplas sem supor progresso uniforme ou automático na industrialização."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A alternativa correta (A, índice 0) é a única que distingue corretamente relações econômicas conexas de identidade jurídica entre assalariamento e escravização, conforme o foco da aula em conflitos do trabalho e organização fabril, diferenciando prescrição de prática real."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A alternativa correta (D, índice 3) é a única que distingue adequadamente a criação normativa de sua aplicação prática, reconhecendo limitações de fiscalização e abrangência, em linha com o objetivo da aula sobre limites da legislação sem supor progresso automático ou eliminação imediata de práticas."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "População, migração e demografia",
+    "contentSha256": "2ff955332211162c818ecceaee2b536ff8faf1792841eaaea20a3580c4439c11",
+    "draftMethod": "Autoria e cálculos Codex após rejeição de rascunhos Claude Code; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://wmr-educatorstoolkit.iom.int/glossary",
+      "https://desapublications.un.org/file/20622/download",
+      "https://anuario.ibge.gov.br/2024/glossario-2024.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "A densidade demográfica é calculada dividindo população pela área: 6000/40=150 hab/km². A alternativa correta (índice 3) fornece o valor numérico correto e observa que a média não prova distribuição uniforme, alinhando-se ao pitfall e à explicação sobre média territorial. As outras opções contêm erros de cálculo, unidade invertida ou afirmação falsa de uniformidade."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Calcula-se saldo natural: 20-8=12; saldo migratório: 30-10=20; população final: 1000+12+20=1032; variação percentual sobre a população inicial: (32/1000)*100=3,2%. A alternativa de índice 1 apresenta todos esses valores corretos. As outras opções apresentam erros nos saldos, no total final ou na porcentagem (32% instead of 3,2%)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "O crescimento total é a soma do saldo natural (-20) e do saldo migratório (+35), resultando em aumento de 15 pessoas. A alternativa de índice 0 expressa corretamente esse resultado e o raciocínio de que as entradas líquidas superam a perda natural. As outras opções ignoram a migração, descartam o sinal negativo ou somam módulos absolutamente."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia contemporânea e tecnologia",
+    "contentSha256": "c514dce81520913f16190582dff8e212b6f0d313bd2ce986516bdb738e229738",
+    "draftMethod": "Autoria e conferência conceitual Codex; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://plato.stanford.edu/entries/phenomenology/",
+      "https://plato.stanford.edu/entries/existentialism/",
+      "https://plato.stanford.edu/entries/critical-theory/",
+      "https://plato.stanford.edu/entries/heidegger/",
+      "https://plato.stanford.edu/entries/technology/",
+      "https://plato.stanford.edu/entries/ethics-ai/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A alternativa B preserva o sentido fenomenológico de intencionalidade como consciência dirigida ao objeto, sem exigir plano deliberado prévio; A confunde o termo com planejamento intencional, C transforma direção da experiência em criação material e D impõe requisito econômico inexistente, tornando-as distrators filosoficamente inadequados."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A alternativa D formula a pergunta normativa essencial sobre a justificabilidade dos fins tecnológicos e suas consequências, ao contrário de A que acelera sem questionar finalidade, B que rejeita toda ciência e C que atribui consciência ao equipamento sem fundamentação; a crítica busca explicitar inclusão, custos e acesso além da velocidade computacional."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A alternativa A corretamente limita o valor da precisão média agregada, exigindo análise de critérios, distribuição de erros, contestação e responsabilidade; B converte média em garantia individual injustificada, C infere consciência e intenção discriminatória sem evidência e D apaga papéis humanos e institucionais, tornando-se distrators logicamente inválidos."
       }
     ]
   }

@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 30
+## Estado atual — checkpoint 31
+
+Lote 12 com doze aulas; 156 novas nesta etapa. Acrescentadas Genética mendeliana;
+Revolução Industrial e trabalho; População, migração e demografia; Filosofia
+contemporânea e tecnologia. Autoria Codex, conferência de fontes e crítica
+independente Claude Code/NVIDIA NIM; homologação docente humana pendente.
+
+Restam 1.139 lacunas de 1.512 identidades editoriais. ENEM: 166 aprofundadas e
+730 lacunas. Estudo: 166 aprofundadas, 28 guias e 713 planejadas; índice 373.
+
+- Genética: genótipo/fenótipo, segregação, probabilidades, cruzamento-teste,
+  independência, ligação e limites das proporções. Teste enumera os gametas e
+  cruza alelos, sem inferência clínica sobre pessoas reais.
+- História: causas múltiplas da industrialização, disciplina fabril, relações
+  globais e escravização, agência dos trabalhadores e limites da legislação.
+  Números e generalizações sem comprovação do rascunho foram descartados.
+- Geografia: densidade, unidades, balanço natural/migratório, escalas,
+  estrutura etária e hipóteses de projeções. Teste RED→GREEN recalcula densidade,
+  saldos, total final e percentual pela base inicial expressa no problema.
+- Filosofia: fenomenologia, liberdade situada e teoria crítica; fins e meios,
+  Heidegger e técnica, autonomia, métricas agregadas e responsabilidade.
+
+Críticas completas lidas e hashes conferidos. Em Genética, o principal corrigiu
+explicitamente metadados imprecisos dos distratores e preservou a crítica
+original. Casos próprios e hipotéticos, referências externas sem copiar obras
+ou questões; registros distinguem trechos lidos, resultados indexados e páginas
+inacessíveis, sem atribuir ao Claude navegação que ele não realizou.
+
+666 testes app + 6 motor, build e lint alterado aprovados. API das 156 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI 30 aprovada 43763142874, head 4028c53.
+
+Continuar Gênero, raça e relações sociais; Música: ritmo, melodia, harmonia e
+timbre; Ginásticas e práticas de condicionamento; Terra, Lua e Sistema Solar.
+Sem schema, banco, merge ou deploy. Catálogo em execução.
+
+## Histórico — checkpoint 30
 
 Lote 12 com oito aulas; 152 novas nesta etapa. Acrescentadas Skimming e scanning;
 Possessivos e demonstrativos em espanhol; Estática, torque e equilíbrio; Funções
