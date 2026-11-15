@@ -870,3 +870,27 @@ test('mitose e meiose não confundem replicação, redução de ploidia e combin
  assert.equal(choice(2),`${2**pairs} combinações potenciais; ${2**2} produtos celulares.`);
  assert.notEqual(2**pairs,2**2);
 });
+
+test('recursos hídricos separam retirada e consumo e não escondem déficit sazonal na média',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Hidrografia e recursos hídricos');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const withdrawal=spec.tasks[1].prompt.match(/retira (\d+) L\/s.*retorna (\d+) L\/s/);assert.ok(withdrawal);
+ const taken=Number(withdrawal[1]),returned=Number(withdrawal[2]),consumed=taken-returned;assert.ok(taken>returned&&returned>0);
+ assert.equal(choice(1),`${consumed} L/s de consumo; ${100*consumed/taken}% da retirada.`);
+ const seasonal=spec.tasks[2].prompt.match(/chuvosa: (\d+) m³\/s; estação seca: (\d+) m³\/s.*demanda líquida de (\d+) m³\/s.*reserva de (\d+) m³\/s/);assert.ok(seasonal);
+ const wet=Number(seasonal[1]),dry=Number(seasonal[2]),demand=Number(seasonal[3]),reserve=Number(seasonal[4]);
+ assert.ok((wet+dry)/2>=demand+reserve);assert.ok(dry<demand+reserve);
+ assert.equal(choice(2),`A média é ${(wet+dry)/2} m³/s, mas há déficit de ${demand+reserve-dry} m³/s na seca; a média não garante atendimento contínuo.`);
+});
+
+test('genética introdutória usa probabilidade por descendente e frequências entre sobreviventes',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Genética e evolução introdutórias');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ assert.match(spec.tasks[1].prompt,/Aa × aa/);assert.match(spec.tasks[1].prompt,/independentes/);
+ const crosses=['A','a'].flatMap(first=>['a','a'].map(second=>[first,second].sort().join(''))),p=crosses.filter(genotype=>genotype==='aa').length/crosses.length;
+ assert.equal(p,1/2);assert.equal(p*p,1/4);assert.equal(choice(1),'1/2 para cada descendente; 1/4 para ambos serem aa.');
+ const counts=spec.tasks[2].prompt.match(/inicialmente (\d+) pigmentados e (\d+) sem pigmento.*sobrevivem (\d+) pigmentados e (\d+) sem pigmento/);assert.ok(counts);
+ const initial=Number(counts[1])/(Number(counts[1])+Number(counts[2])),pigmented=Number(counts[3]),total=pigmented+Number(counts[4]);assert.ok(pigmented/total>initial);
+ assert.equal(choice(2),'2/3 dos sobreviventes são pigmentados; houve sobrevivência diferencial de variantes já presentes no modelo.');
+ assert.equal(pigmented/total,2/3);assert.notEqual(pigmented/total,pigmented/(Number(counts[1])+Number(counts[2])));
+});

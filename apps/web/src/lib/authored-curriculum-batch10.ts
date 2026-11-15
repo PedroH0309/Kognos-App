@@ -830,6 +830,650 @@ export const authoredCurriculumBatch10:readonly AuthoredLessonSpec[] = [
         "solution": "C: as possibilidades são 2^3 = 8 ao longo de eventos independentes no modelo, enquanto uma meiose completa gera quatro produtos celulares, não oito. A troca os tipos de contagem; B transforma possibilidades em produção de um único evento; D usa o número de pares e apenas uma divisão. Não se afirma que uma única meiose produza todas as combinações nem que seus quatro produtos sejam sempre quatro genótipos diferentes."
       }
     ]
+  },
+  {
+    "subject": "História",
+    "topic": "Expansão marítima e colonização",
+    "objective": "Explicar a expansão marítima europeia e comparar formas de colonização, distinguindo interesses, instrumentos de domínio, experiências dos povos submetidos e limites de documentos e generalizações.",
+    "prerequisites": [
+      "Localização dos oceanos Atlântico e Índico",
+      "Monarquias e comércio na transição para a Idade Moderna",
+      "Diferença entre fonte histórica e interpretação"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Rotas e interesses em um mundo já habitado",
+        "explanation": "A expansão marítima europeia dos séculos XV e XVI articulou interesses comerciais, políticos e religiosos. Coroas e mercadores buscavam receitas, mercadorias e posições estratégicas, com objetivos nem sempre idênticos. A navegação portuguesa pela costa africana envolveu comércio, busca de ouro, captura e tráfico de pessoas escravizadas e conquista de posições; não surgiu apenas como uma viagem direta às especiarias asiáticas. A tomada de Constantinopla pelos otomanos em 1453 não explica sozinha esse processo, que já estava em curso, nem significa que todo comércio entre Europa e Ásia tenha simplesmente cessado. No Atlântico e no Índico existiam populações, rotas e conhecimentos anteriores às viagens europeias. Técnicas náuticas resultaram de circulação e combinação de saberes; a atuação europeia não equivale à invenção isolada de toda navegação. O fortalecimento de monarquias e a mobilização de recursos favoreceram expedições, sem eliminar riscos, disputas e negociações. Descoberta, quando aparece em um documento europeu, expressa um ponto de vista e não demonstra que a terra estivesse vazia ou sem história. Feitorias, fortalezas e redes comerciais podiam sustentar presença costeira e controle de fluxos, mas não provam ocupação de todo o interior. A expansão envolveu tanto comércio quanto violência e alianças; suas formas variaram conforme região e momento. Para explicá-la, conecte interesses, meios e condições, evitando transformar uma data isolada em causa suficiente.",
+        "steps": [
+          "Localize época, região e redes já existentes.",
+          "Relacione interesses comerciais, políticos e religiosos.",
+          "Distinga meios de navegação e objetivos da expansão.",
+          "Questione explicações de causa única e perspectivas de descoberta."
+        ],
+        "example": "Comparação autoral de escalas: um posto comercial fortificado em um litoral pode controlar acesso a um porto e facilitar negociações ou ataques. Isso não permite concluir, sem outros indícios, que todos os povos do interior obedeçam à mesma coroa. A interpretação deve separar presença localizada, influência comercial e domínio territorial efetivo.",
+        "pitfall": "Tratar 1453 como início e causa única de toda expansão, apresentar territórios como vazios ou confundir um posto costeiro com domínio completo de um continente."
+      },
+      {
+        "level": "intermediate",
+        "title": "Instituições coloniais e trabalho coercitivo",
+        "explanation": "Colonização envolve relações de domínio, apropriação de recursos e reorganização de poderes e territórios; não se reduz à chegada de uma embarcação. O Tratado de Tordesilhas, de 1494, estabeleceu uma divisão de pretensões entre as coroas de Castela e Portugal. Essa negociação europeia não demonstra consentimento dos povos que habitavam as regiões nem controle efetivo de tudo o que era reivindicado. Na América portuguesa, capitanias e governo-geral foram instrumentos administrativos. Criado em 1548 e instalado com Tomé de Sousa em 1549, o governo-geral buscou fortalecer a coordenação da Coroa e não extinguiu automaticamente as capitanias hereditárias. Na América espanhola, a encomienda concedia direitos de exigir tributos ou trabalho de comunidades indígenas, sob obrigações declaradas de proteção e catequese; não deve ser definida simplesmente como concessão de propriedade da terra. A existência de uma proteção declarada tampouco elimina a coerção e os abusos. Nos Andes coloniais, autoridades espanholas reorganizaram a mita, aproveitando e transformando formas anteriores de trabalho obrigatório para objetivos coloniais, incluindo a mineração; continuidade de nome não equivale a identidade de funcionamento e finalidade. A escravização de indígenas e o tráfico atlântico de africanos tiveram trajetórias regionais, simultaneidades e mudanças. Não houve uma substituição instantânea e universal de uma população por outra. Diferencie instituições, condição jurídica e práticas efetivas, sem minimizar a violência porque um regime não recebe o mesmo nome de outro.",
+        "steps": [
+          "Diferencie reivindicação diplomática e controle efetivo.",
+          "Identifique a instituição e a região analisadas.",
+          "Separe proteção declarada e experiência dos submetidos.",
+          "Compare regimes de trabalho sem tratá-los como equivalentes."
+        ],
+        "example": "Caso autoral de organização de uma linha do tempo: registrar 1548 como criação do governo-geral e 1549 como chegada de seu primeiro governador não é uma contradição, pois são eventos diferentes. Manter capitanias após esse momento também não invalida a mudança: coordenação central e autoridades locais puderam coexistir.",
+        "pitfall": "Tomar um tratado europeu por consentimento indígena, igualar encomienda a propriedade da terra ou afirmar que a criação do governo-geral aboliu todas as capitanias."
+      },
+      {
+        "level": "advanced",
+        "title": "Impactos, resistência e leitura de fontes",
+        "explanation": "A formação de conexões atlânticas ampliou deslocamentos de plantas, animais, pessoas e agentes de doenças, com efeitos desiguais. Nas Américas, epidemias se combinaram com guerras, deslocamentos forçados, exploração e desestruturação de condições de subsistência. A importância e a cronologia desses fatores precisam ser examinadas em cada caso. Um percentual de mortalidade sem população, período, região e método não pode ser estendido a todos os povos, e a queda demográfica não deve ser reduzida a uma suposta inferioridade biológica. O tráfico atlântico de pessoas escravizadas foi um processo de violência e mercantilização de seres humanos, articulado a redes econômicas e políticas. O esquema triangular ajuda a visualizar alguns circuitos, mas não descreve todas as viagens, conexões e fluxos. Povos indígenas e africanos agiram por meio de resistência, fugas, alianças, negociações e preservação ou transformação de práticas. Agir em uma relação desigual não significa ter liberdade plena nem concordar com a dominação. Também não autoriza reunir sociedades distintas em uma única vontade coletiva. Ao ler uma fonte, identifique autoria, destinatário, finalidade e contexto, distinguindo o que ela declara do que permite demonstrar. Uma justificativa religiosa ou civilizatória de um agente colonial é objeto de análise, não comprovação de superioridade. Confronte perspectivas e evidências, lembrando que mapas e relatos podem produzir pretensões de poder. Os efeitos históricos não tornam inevitáveis fronteiras atuais nem o desaparecimento de todos os povos submetidos.",
+        "steps": [
+          "Delimite população, período e escala das afirmações.",
+          "Relacione impactos ambientais, demográficos e sociais.",
+          "Reconheça ações dos submetidos sem apagar a coerção.",
+          "Analise a posição de uma fonte e confronte suas afirmações."
+        ],
+        "example": "Exemplo autoral de inferência: encontrar milho americano integrado a uma alimentação em outro continente indica circulação de uma planta e mudança de práticas. Esse indício isolado não mede quem lucrou com todas as trocas, a mortalidade de uma população ou a liberdade das pessoas deslocadas. Conexão entre regiões e distribuição igualitária de benefícios são afirmações diferentes.",
+        "pitfall": "Repetir uma justificativa colonial como verdade, aplicar a mesma taxa demográfica a povos distintos ou interpretar negociação sob pressão como consentimento livre."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Uma síntese autoral afirma: “Todas as viagens portuguesas começaram somente depois de 1453, porque nenhum comércio com a Ásia continuou após a tomada de Constantinopla”. Qual revisão histórica é adequada?",
+        "hint": "Confira a cronologia da expansão pela costa africana e evite transformar uma mudança política em interrupção total de redes comerciais.",
+        "options": [
+          "Manter a síntese: uma única data explica todas as viagens e elimina a necessidade de examinar interesses distintos.",
+          "Trocar 1453 por 1494 e manter a ideia de interrupção completa e causa única.",
+          "Rejeitar a explicação exclusiva: a expansão portuguesa já estava em curso e articulava interesses e condições diversos, sem cessação total de todo comércio euro-asiático.",
+          "Rejeitar apenas a palavra portuguesas, pois todas as navegações do mundo começaram em 1453."
+        ],
+        "correctIndex": 2,
+        "solution": "C: a afirmação combina uma cronologia incorreta com uma causalidade exclusiva e uma generalização sobre o comércio. A expansão portuguesa precede 1453, e interesses comerciais, políticos e religiosos não se reduzem a um único evento. A conserva os três problemas; B desloca a data sem corrigir a lógica; D apaga navegações anteriores de diferentes sociedades. Não é necessário negar a importância histórica dos otomanos para rejeitar a explicação totalizante."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma análise autoral, um estudante usa o Tratado de Tordesilhas de 1494 para concluir que todos os povos das terras reivindicadas aceitaram a divisão e passaram imediatamente ao controle efetivo das duas coroas. O que a existência desse tratado permite sustentar?",
+        "hint": "Distinga acordo entre signatários, consentimento de terceiros e capacidade efetiva de controlar um território.",
+        "options": [
+          "Que houve um acordo de repartição de pretensões entre Castela e Portugal; consentimento dos povos e controle de todas as áreas exigem outras evidências.",
+          "Que todo território reivindicado passou a estar vazio e disponível para ocupação.",
+          "Que todos os povos envolvidos foram representados pelos dois monarcas e assinaram o documento.",
+          "Que o documento aboliu, em 1494, as capitanias hereditárias americanas."
+        ],
+        "correctIndex": 0,
+        "solution": "A: o tratado documenta uma negociação entre duas coroas e suas pretensões; não comprova por si consentimento dos habitantes ou domínio de todas as regiões. B infere ausência de populações de uma divisão diplomática; C inventa representação e assinatura universais; D atribui ao tratado a abolição de uma instituição que não é seu objeto. A leitura precisa separar o alcance do documento das consequências que o estudante pretende demonstrar."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Dois registros inteiramente fictícios, criados para este exercício, descrevem uma região colonial. Um administrador chama a exigência de trabalho de proteção religiosa. Outro registro relata aldeias que negociaram a carga de trabalho sob ameaça e pessoas que fugiram. Qual análise respeita os limites dessas informações?",
+        "hint": "Separe a justificativa do administrador das práticas relatadas e reconheça ações sob coerção sem chamá-las automaticamente de adesão livre.",
+        "options": [
+          "A palavra proteção prova ausência de violência, tornando desnecessário examinar os relatos de ameaça.",
+          "As negociações provam que todos os habitantes escolheram livremente a dominação e receberam benefícios iguais.",
+          "As fugas demonstram que nenhum outro tipo de reação ocorreu em toda a história colonial.",
+          "A justificativa do administrador deve ser analisada como perspectiva; ameaça, negociação e fuga indicam relações coercitivas e ações dos submetidos, sem provar consentimento universal."
+        ],
+        "correctIndex": 3,
+        "solution": "D: a resposta distingue a linguagem de legitimação das práticas descritas e reconhece negociação e fuga em uma relação desigual. Não transforma o caso fictício em estatística histórica nem o estende a todas as sociedades. A toma uma justificativa por prova suficiente; B confunde ação sob ameaça com escolha plenamente livre e generaliza benefícios; C transforma um tipo de reação em exclusividade universal. Os registros são autorais e não citações atribuídas a pessoas históricas."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Hidrografia e recursos hídricos",
+    "objective": "Interpretar redes de drenagem e conexões entre águas superficiais e subterrâneas, distinguir retirada, retorno e consumo e avaliar disponibilidade hídrica com escala, sazonalidade, qualidade e usos múltiplos.",
+    "prerequisites": [
+      "Leitura de orientação em mapas",
+      "Unidades de volume e tempo",
+      "Razão, porcentagem e média aritmética"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Da rede de drenagem ao ciclo da água",
+        "explanation": "Rios, lagos, reservatórios e águas subterrâneas participam de sistemas conectados. Uma bacia hidrográfica superficial reúne a área que contribui com drenagem para um exutório definido, o ponto de saída escolhido para a análise. Divisores de águas separam áreas de contribuição; o limite de uma bacia não precisa coincidir com fronteiras municipais, estaduais ou nacionais. Sub-bacias podem ser analisadas dentro de bacias maiores, conforme o exutório adotado. Nascente, curso e foz descrevem partes de um rio; afluente é um curso que desemboca em outro. Montante indica o sentido em direção às nascentes, e jusante o sentido para o qual segue o fluxo. Margens direita e esquerda são identificadas olhando no sentido de jusante, não por um lado fixo da página. Vazão é volume que atravessa uma seção por unidade de tempo, como m³/s, e difere de volume armazenado, expresso em m³. O ciclo da água envolve precipitação, evaporação, transpiração, infiltração, escoamento e armazenamento, com percursos e tempos diferentes. Nem toda chuva chega imediatamente ao rio. Aquíferos armazenam e transmitem água em poros e fraturas de formações geológicas; não são necessariamente grandes cavernas ou rios subterrâneos. Recarga é a parcela de água que alcança o sistema saturado, e não toda infiltração no solo. Rios podem receber água subterrânea ou perder água para o subsolo, dependendo das condições locais. O divisor superficial não garante que os fluxos subterrâneos tenham exatamente os mesmos limites.",
+        "steps": [
+          "Defina o exutório e a área de contribuição.",
+          "Leia o sentido do fluxo antes de nomear margens.",
+          "Diferencie vazão e armazenamento pelas unidades.",
+          "Relacione chuva, infiltração, recarga e descarga sem supor percurso único."
+        ],
+        "example": "Exemplo autoral de armazenamento e fluxo: um reservatório contém 2.000 m³ e libera água a 2 m³/s constantes. Sem entradas, evaporação ou outras perdas no modelo, esse volume duraria 1.000 segundos. Não se pode chamar o estoque de vazão nem aplicar essa duração a um reservatório real sem verificar suas entradas e mudanças de operação.",
+        "pitfall": "Escolher margens pelo lado da página, confundir m³ com m³/s ou afirmar que toda água infiltrada recarrega imediatamente um aquífero."
+      },
+      {
+        "level": "intermediate",
+        "title": "Disponibilidade, usos e recortes brasileiros",
+        "explanation": "Ter água em um território não significa que toda ela esteja disponível, no mesmo momento e com qualidade adequada, para qualquer uso. A distribuição brasileira varia no espaço e no tempo, enquanto população, atividades econômicas e infraestrutura também se distribuem de modo desigual. A Divisão Hidrográfica Nacional reconhece doze regiões, que podem reunir uma bacia ou bacias e sub-bacias próximas para orientar o planejamento. Entre seus nomes estão Amazônica, Tocantins-Araguaia, São Francisco, Paraná, Paraguai e Uruguai; há também regiões formadas por conjuntos de bacias costeiras. Região hidrográfica de planejamento não deve ser tratada automaticamente como uma única bacia de rio, nem o recorte nacional como toda a extensão internacional de uma bacia. Os usos incluem abastecimento, irrigação, indústria, geração de energia, pesca, navegação e lazer. Para usos consuntivos, retirada é o total captado; retorno é a parcela que volta aos corpos hídricos; consumo corresponde à parcela que não retorna diretamente, considerando o recorte e o período de análise. No balanço simplificado, consumo = retirada − retorno. Isso não significa destruição da água no planeta. Um uso não consuntivo, como navegação, também depende de quantidade e qualidade e pode disputar condições com outros usos. A geração hidrelétrica é usualmente classificada como não consuntiva, mas barramentos alteram regimes de vazão e reservatórios podem ter perdas por evaporação. Água que retorna não é necessariamente devolvida no mesmo lugar, momento ou qualidade. Por isso, uma classificação de uso não substitui a avaliação de seus impactos.",
+        "steps": [
+          "Defina a escala espacial e temporal da disponibilidade.",
+          "Distinga bacia física e região de planejamento.",
+          "Separe retirada, retorno e consumo nas contas.",
+          "Avalie quantidade, qualidade e efeitos sobre os demais usos."
+        ],
+        "example": "Situação autoral de usos múltiplos: uma embarcação precisa de profundidade suficiente para navegar, enquanto a operação de um reservatório pode alterar o nível a jusante. A navegação não precisa retirar água para competir por condições de uso. Classificá-la como não consuntiva não significa que seu funcionamento seja independente de decisões sobre o rio.",
+        "pitfall": "Somar retirada e consumo como demandas independentes, chamar todo retorno de água potável ou concluir que usos não consuntivos não têm impactos ou conflitos."
+      },
+      {
+        "level": "advanced",
+        "title": "Balanços, sazonalidade e decisões na bacia",
+        "explanation": "Um balanço hídrico compara entradas, saídas e variação de armazenamento de um sistema em um intervalo definido. No modelo de reservatório, a variação do estoque depende de afluências, precipitação direta, liberações, evaporação e outros fluxos relevantes. Se entradas e saídas são vazões, é necessário considerar a duração para obter volumes. Não some estoques em m³ a fluxos em m³/s sem conversão. Evite contabilizar a mesma água duas vezes, por exemplo como disponibilidade independente de rio e aquífero quando há trocas entre ambos. Uma média anual pode ocultar falta de água na seca e excesso em períodos chuvosos. Reservatórios, infraestrutura e regras de operação podem modificar esse quadro, mas precisam entrar explicitamente no modelo; a média, sozinha, não prova atendimento contínuo. Impermeabilização do solo tende a reduzir infiltração local e acelerar escoamento para canais, podendo elevar picos de cheia. A intensidade da chuva, condições prévias do solo, relevo, drenagem e ocupação também importam; vegetação não garante ausência de toda inundação. Erosão e lançamento de efluentes afetam qualidade e podem limitar usos mesmo onde há volume. Uma decisão de gestão exige monitoramento, avaliação de incertezas, proteção de ecossistemas, saneamento, participação dos envolvidos e comparação de alternativas. Não existe uma porcentagem única de vazão ambiental que possa ser inventada e aplicada a todos os rios. Dados hipotéticos ajudam a raciocinar, mas não autorizam uma captação real nem comprovam uma classificação legal da água.",
+        "steps": [
+          "Escolha sistema, período e unidades do balanço.",
+          "Registre entradas, saídas e estoques sem dupla contagem.",
+          "Compare períodos críticos, em vez de usar apenas médias.",
+          "Inclua qualidade, ecossistemas e incertezas antes de avaliar alternativas."
+        ],
+        "example": "Exemplo autoral de mudança urbana: após pavimentar parte de uma área, um modelo mantém a mesma chuva e prevê chegada mais rápida de água ao canal. Isso é compatível com maior escoamento sobre superfícies impermeáveis, mas não determina sozinho a altura de uma cheia real. Seriam necessários dados de área, armazenamento, drenagem e condições anteriores, sem atribuir à vegetação proteção absoluta.",
+        "pitfall": "Usar média anual para garantir abastecimento em cada estação, duplicar água conectada em rio e aquífero ou tratar uma conta hipotética como autorização de uso real."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição autoral sem figura: uma pessoa está de frente para o sentido em que a água de um rio corre. Um afluente entra pelo lado da mão esquerda dessa pessoa. Como esse afluente deve ser situado?",
+        "hint": "A convenção das margens usa o observador olhando para jusante, no sentido do fluxo, independentemente da orientação da página.",
+        "options": [
+          "Na margem direita, pois margens são sempre definidas por quem olha para a nascente.",
+          "Na margem norte, porque esquerda e norte são equivalentes em qualquer rio.",
+          "Na margem esquerda, pois a pessoa olha para jusante e o afluente entra à sua esquerda.",
+          "Na margem sul, pois o fluxo de todo rio brasileiro segue obrigatoriamente para leste."
+        ],
+        "correctIndex": 2,
+        "solution": "C: o enunciado posiciona a pessoa olhando para jusante, o sentido do fluxo. O lado esquerdo dessa pessoa corresponde à margem esquerda nessa convenção. A inverte o referencial para montante; B e D confundem margens com pontos cardeais e acrescentam direções não fornecidas. Não é preciso um mapa ausente para resolver, pois a descrição informa orientação do observador e lado de entrada do afluente."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo autoral de um uso consuntivo: retira 120 L/s de um manancial e retorna 90 L/s diretamente ao mesmo sistema no mesmo intervalo. Sem outros fluxos no modelo, qual é o consumo e sua porcentagem em relação à retirada?",
+        "hint": "Subtraia o retorno da retirada; para a porcentagem, use como denominador o total captado, não o total devolvido.",
+        "options": [
+          "210 L/s de consumo; 175% da retirada.",
+          "30 L/s de consumo; 25% da retirada.",
+          "90 L/s de consumo; 75% da retirada.",
+          "120 L/s de consumo; 100% da retirada."
+        ],
+        "correctIndex": 1,
+        "solution": "B: consumo = 120 − 90 = 30 L/s, e 30/120 × 100 = 25%. A soma entrada e retorno indevidamente. C toma a vazão devolvida como consumo. D ignora o retorno explicitado. O resultado depende do recorte e do período definidos; não prova que a água retornada tenha qualidade adequada nem que o uso seja autorizado. O consumo nesse sentido não representa destruição da água no ciclo planetário."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Modelo autoral com duas estações de igual duração e vazões constantes em cada uma: estação chuvosa: 12 m³/s; estação seca: 4 m³/s. Sem reservatório, transferências ou outras entradas, há demanda líquida de 6 m³/s durante ambas e uma reserva de 2 m³/s no rio, estipulada apenas para este exercício. Qual avaliação quantitativa é correta?",
+        "hint": "Calcule a média das duas estações de mesma duração, mas compare oferta e soma de demanda com reserva em cada estação separadamente.",
+        "options": [
+          "A média é 8 m³/s e garante atendimento em todo instante, mesmo sem armazenar água.",
+          "A média é 16 m³/s; não existe déficit porque vazões de estações diferentes se somam como se fossem simultâneas.",
+          "A média é 8 m³/s e o déficit na seca é de 2 m³/s, pois a reserva pode ser ignorada.",
+          "A média é 8 m³/s, mas há déficit de 4 m³/s na seca; a média não garante atendimento contínuo."
+        ],
+        "correctIndex": 3,
+        "solution": "D: com durações iguais, a média é (12 + 4)/2 = 8 m³/s. A exigência do modelo é 6 + 2 = 8 m³/s; na seca há somente 4, faltando 4 m³/s. O excedente chuvoso não é transportado no tempo sem armazenamento explicitado. A confunde média com garantia contínua; B soma vazões não simultâneas; C desconsidera a reserva estipulada. Os 2 m³/s são hipótese didática, não padrão ambiental universal ou regra legal de qualquer rio."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Conhecimento e ciência",
+    "objective": "Distinguir crença, verdade e justificação, comparar fontes e formas de inferência e analisar criticamente propostas sobre método, teste e mudança do conhecimento científico.",
+    "prerequisites": [
+      "Proposição e argumento",
+      "Premissa e conclusão",
+      "Diferença entre exemplo e afirmação universal"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Acreditar, acertar e ter razões",
+        "explanation": "A epistemologia investiga natureza, fontes e limites do conhecimento. Conhecer que uma proposição é o caso difere de conhecer uma pessoa e de saber executar uma atividade; aqui o foco é o conhecimento proposicional. Crer que algo é verdadeiro é uma atitude do sujeito; verdade diz respeito ao que é o caso e não se torna equivalente à intensidade da convicção. Justificação envolve razões ou condições que sustentam uma crença, e não apenas a insistência em repeti-la. Uma análise tripartite discutida na epistemologia apresenta conhecimento como crença verdadeira justificada. Ela é um ponto de partida problemático, não uma definição aceita sem controvérsias por todos os filósofos. Contraexemplos associados ao problema de Gettier questionam se as três condições são suficientes: uma crença pode ser verdadeira e parecer bem sustentada, mas seu acerto depender de uma coincidência relevante. Isso não prova que nada possa ser conhecido, nem que qualquer crença seja tão boa quanto outra. Distinguir verdade e justificação também permite reconhecer que razões aparentemente boas podem levar a uma crença falsa, pois justificação nem sempre é garantia infalível. A percepção, a memória, o testemunho e o raciocínio podem participar da formação de crenças e precisam ser avaliados conforme contexto e confiabilidade. Não se deve chamar toda opinião de necessariamente falsa nem tratar uma resposta correta por palpite como demonstração de conhecimento. Pergunte o que se afirma, por que se acredita e se o caminho até o acerto sustenta a atribuição de conhecimento.",
+        "steps": [
+          "Identifique a proposição e a atitude de quem crê.",
+          "Separe sua verdade das razões disponíveis ao sujeito.",
+          "Examine a justificação e possíveis derrotadores.",
+          "Questione se o acerto depende de uma coincidência relevante."
+        ],
+        "example": "Situação autoral: uma pessoa prevê o resultado de uma moeda sem observá-la e acerta. O fato de a previsão ser verdadeira não fornece, por si, uma boa razão para atribuir conhecimento prévio do resultado. O exemplo separa verdade e justificação; não é uma reprodução de um caso histórico de Gettier nem demonstra que todo conhecimento seja impossível.",
+        "pitfall": "Igualar certeza subjetiva a verdade, tratar crença verdadeira justificada como solução filosófica consensual ou concluir que críticas à definição tornam todas as opiniões equivalentes."
+      },
+      {
+        "level": "intermediate",
+        "title": "Experiência, razão e alcance das inferências",
+        "explanation": "A disputa entre racionalismo e empirismo discute o papel da experiência e da razão na origem e justificação de conceitos e conhecimentos. Racionalistas admitem, em certos domínios, recursos de conhecimento que não se reduzem à experiência sensível; empiristas enfatizam a experiência, que pode incluir sensação e reflexão. Essas categorias não autorizam dizer que todo racionalista despreza observações ou que todo empirista rejeita raciocínio e matemática. Descartes e Locke são referências usuais nesses debates, mas suas obras não se resumem a slogans. A priori e a posteriori dizem respeito, nesse contexto, ao tipo de justificação: independente de experiência particular ou dependente dela. A distinção não equivale simplesmente a nascer sabendo versus aprender depois. Na dedução válida, se as premissas forem verdadeiras, a conclusão não pode ser falsa; validade não garante que as premissas sejam verdadeiras. A indução amplia o alcance das informações, passando de observações a expectativas ou generalizações que não são logicamente garantidas pelos casos observados. O problema da indução, associado a Hume, questiona a justificação dessa passagem e da expectativa de regularidade; ele não consiste em negar que as pessoas façam previsões. Quanto maior uma amostra, mais cuidadosa pode ser uma investigação, mas quantidade sozinha não elimina viés nem transforma uma generalização empírica em consequência dedutiva necessária. Compare o tipo de apoio fornecido, as condições da observação e o alcance exato da conclusão.",
+        "steps": [
+          "Pergunte qual papel experiência e razão têm no argumento.",
+          "Diferencie fonte de justificação e momento de aprendizagem.",
+          "Confira se a conclusão é necessária ou ampliativa.",
+          "Examine seleção dos casos e limites da generalização."
+        ],
+        "example": "Comparação autoral: de “todos os objetos do conjunto K têm etiqueta” e “este objeto pertence a K” segue dedutivamente que ele tem etiqueta, se as premissas forem verdadeiras. Já observar etiquetas em alguns objetos não garante que todos os membros de K as tenham. A segunda inferência amplia o que foi observado e pode falhar, mesmo sem erro na contagem dos casos.",
+        "pitfall": "Dizer que dedução válida torna qualquer premissa verdadeira, confundir a priori com ideia obrigatoriamente inata ou imaginar que indução numerosa vira prova lógica universal."
+      },
+      {
+        "level": "advanced",
+        "title": "Testes e mudança científica sem receita única",
+        "explanation": "A ciência envolve observações, modelos, argumentos, testes e práticas compartilhadas, com métodos que variam entre campos. Não há motivo para reduzir toda investigação a uma sequência única e infalível de passos. Na proposta de Popper, a falseabilidade exige que uma hipótese empírica corra o risco de entrar em conflito com observações possíveis; não significa que ela já seja falsa. Uma afirmação universal pode ser contrariada por um caso adequadamente estabelecido dentro de seu domínio, enquanto muitos casos favoráveis não demonstram sua verdade definitiva. Sobreviver a testes é diferente de provar certeza absoluta. Na prática, um resultado discordante envolve também condições experimentais, instrumentos e hipóteses auxiliares; investigar erro de medição não é, por si, fraude ou fuga ao teste. O problema surge quando ajustes tornam uma proposta imune a qualquer resultado possível, sem novos testes independentes. Kuhn analisa a ciência normal como resolução de problemas sob compromissos compartilhados, que incluem teorias, instrumentos, valores e exemplos. Anomalias persistentes e crises podem participar de mudanças de paradigma; nem todo resultado inesperado produz imediatamente uma revolução. Essa abordagem não equivale a dizer que ciência seja apenas preferência individual ou que não existam critérios de avaliação. Comparar Popper e Kuhn exige distinguir suas perguntas e perspectivas, sem reduzi-los a sinônimos. Reconhecer revisão, história e dimensões coletivas do conhecimento não elimina a necessidade de evidências, crítica e transparência sobre limites.",
+        "steps": [
+          "Identifique hipótese, domínio e consequência observável.",
+          "Pergunte que resultado seria incompatível com a proposta.",
+          "Examine instrumentos e hipóteses auxiliares sem imunizar a tese.",
+          "Diferencie teste crítico, ciência normal e mudança de paradigma."
+        ],
+        "example": "Exemplo autoral de leitura de pesquisa: uma equipe encontra um desvio inesperado e calibra novamente seus instrumentos antes de repetir o teste com outro método. Essa investigação pode ser legítima, pois examina condições auxiliares e mantém a possibilidade de erro da hipótese. Seria diferente declarar antecipadamente que qualquer resultado, inclusive o contrário do previsto, sempre confirma a proposta.",
+        "pitfall": "Usar falseável como sinônimo de falso, chamar qualquer anomalia de revolução kuhniana ou concluir que conhecimento revisável dispensa evidências."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso autoral: uma estudante acredita firmemente que um livro esteja no armário e apresenta razões que considera boas. Uma verificação mostra que o livro não está ali. Na análise tripartite do conhecimento proposicional discutida na aula, qual condição não está satisfeita?",
+        "hint": "Distingua a atitude de acreditar e as razões alegadas do fato de a proposição corresponder ou não ao que ocorre.",
+        "options": [
+          "A crença, pois toda convicção firme equivale à ausência de crença.",
+          "A verdade da proposição de que o livro está no armário, independentemente da força da convicção.",
+          "A necessidade de que todas as pessoas concordem com a estudante, condição universal da análise tripartite.",
+          "A obrigação de que todo conhecimento seja obtido somente pela visão direta."
+        ],
+        "correctIndex": 1,
+        "solution": "B: a verificação estabelece, no caso, que a proposição é falsa; falta a condição de verdade. A estudante possui a crença, de modo que A a descreve incorretamente. C e D acrescentam exigências que não constituem as três condições dessa análise. O enunciado não exige decidir se as razões eram boas de fato: mesmo que parecessem justificadoras, não tornariam verdadeira uma proposição falsa."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um modelo autoral, foram observadas 200 peças de um lote com mais peças ainda não examinadas; todas as 200 resistiram a um teste. Sem outra premissa que garanta uniformidade, um estudante conclui que toda peça do lote necessariamente resistirá. Qual análise é adequada?",
+        "hint": "Observe se a conclusão ultrapassa os casos examinados e se o número de observações fornece uma garantia lógica sobre os não examinados.",
+        "options": [
+          "É uma dedução válida, pois 200 observações tornam impossível qualquer exceção não observada.",
+          "É uma verdade a priori, porque o teste foi realizado em laboratório.",
+          "É uma generalização indutiva; os casos podem apoiar uma expectativa, mas não garantem logicamente a resistência de todas as peças não examinadas.",
+          "É uma contradição formal, pois nenhuma observação pode apoiar expectativa alguma."
+        ],
+        "correctIndex": 2,
+        "solution": "C: a conclusão vai além das peças efetivamente testadas. As observações podem ser relevantes, mas não implicam necessidade lógica sobre todos os casos restantes sem premissas adicionais. A confunde quantidade e garantia dedutiva; B confunde ambiente de laboratório com independência da experiência; D passa do limite da garantia à negação injustificada de qualquer apoio empírico. Seleção e representatividade das peças também importam."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Hipótese universal inteiramente autoral: “Toda amostra da classe Z, sob as condições C especificadas, apresenta sinal azul”. Qual resultado funcionaria como contraexemplo lógico, uma vez estabelecida de forma confiável a classificação da amostra e a realização de C?",
+        "hint": "Uma universalidade é contrariada por um caso que pertence ao domínio e, nas condições afirmadas, não apresenta a propriedade prevista.",
+        "options": [
+          "Uma amostra de Z, efetivamente sob C, que não apresenta sinal azul.",
+          "Mil novas amostras de Z sob C que apresentam sinal azul, tornando a hipótese definitivamente provada.",
+          "Uma amostra que não pertence a Z, observada fora de C, sem sinal azul.",
+          "A declaração de que qualquer cor possível deve ser contada como confirmação de azul."
+        ],
+        "correctIndex": 0,
+        "solution": "A: fornece um caso do domínio e nas condições da hipótese sem a propriedade afirmada, contrariando a universalidade. B descreve casos favoráveis e acrescenta uma conclusão indevida de prova definitiva; C não satisfaz domínio nem condições; D imuniza a frase redefinindo qualquer resultado como confirmação. A confiabilidade da classificação e das condições foi estipulada; em pesquisa real, esses pressupostos também precisam ser examinados. Falseabilidade não significa falsidade já demonstrada."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Movimentos sociais e direitos humanos",
+    "objective": "Analisar movimentos sociais por suas redes, demandas, identidades e formas de ação, relacionar mobilização e instituições e distinguir princípios de direitos humanos de sua efetivação histórica.",
+    "prerequisites": [
+      "Sociedade civil e Estado",
+      "Desigualdades sociais",
+      "Diferença entre explicação sociológica e avaliação normativa"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Ação coletiva, demandas e continuidade",
+        "explanation": "Movimentos sociais envolvem redes de pessoas, grupos e organizações que sustentam ações em torno de demandas e conflitos sociais ou culturais, com algum reconhecimento compartilhado de quem age e por quê. Não se reduzem a uma multidão reunida no mesmo lugar, embora manifestações possam integrar sua atuação. Uma fila ou um público de espetáculo não constitui automaticamente um movimento, pois compartilhar espaço não demonstra continuidade de relações e reivindicações. A organização pode ser descentralizada, sem sede, cadastro ou direção única; isso não significa ausência de coordenação. Um movimento também não é sinônimo de partido, sindicato ou organização não governamental, embora possa interagir com essas organizações ou incluí-las em suas redes. Demandas podem buscar transformação, preservação ou reversão de mudanças; o conceito sociológico não garante que toda pauta seja democrática ou compatível com direitos humanos. Reconhecer um fenômeno como movimento é uma operação analítica distinta de aprovar seus objetivos. Identidades coletivas são construídas nas relações e podem incluir conflitos internos; não exigem que todas as pessoas tenham experiências e posições idênticas. Ações locais podem se conectar a escalas nacionais e internacionais, mas maior escala não implica necessariamente maior legitimidade ou sucesso. Observe demandas, interlocutores, vínculos, organização, duração e repertórios antes de classificar. Uma fotografia de um ato permite ver parte de um evento, mas não comprova sozinha toda a história e a composição de uma mobilização.",
+        "steps": [
+          "Identifique demandas e interlocutores.",
+          "Procure vínculos e continuidade além de um encontro.",
+          "Diferencie movimento e organizações participantes.",
+          "Separe classificação sociológica e aprovação da pauta."
+        ],
+        "example": "Caso autoral: pessoas compartilham um abrigo de ônibus durante uma chuva e depois se dispersam sem pauta comum. A proximidade não demonstra movimento social. Isso difere de uma rede que mantém reuniões e reivindicações ao longo do tempo, embora uma manifestação dessa rede também possa ocupar aquele abrigo em outra ocasião.",
+        "pitfall": "Chamar qualquer aglomeração de movimento, exigir liderança única ou imaginar que uma definição sociológica aprova moralmente toda demanda."
+      },
+      {
+        "level": "intermediate",
+        "title": "Recursos, sentidos e relações com instituições",
+        "explanation": "A análise das mobilizações pode combinar perspectivas, sem supor uma causa automática de sucesso. A mobilização de recursos destaca meios como tempo, financiamento, conhecimento, redes e capacidades organizativas. Descontentamento não se transforma sozinho em ação sustentada, e possuir dinheiro não garante vitória. A análise de enquadramentos considera como atores interpretam problemas, propõem saídas e justificam a participação; isso não demonstra que toda interpretação seja verdadeira ou compartilhada por toda a sociedade. Oportunidades e restrições políticas dizem respeito a relações e condições de acesso, alianças, oposição e repressão, que também podem ser modificadas pela ação dos movimentos. Repertórios são formas de agir historicamente disponíveis, como manifestações, campanhas, petições, negociações e atuação em espaços participativos. Participar de instituições não significa automaticamente desmobilização, assim como atuar fora delas não garante independência ou eficácia. Um mesmo movimento pode combinar vias e apresentar divergências estratégicas. Redes digitais podem ampliar comunicação, arrecadação e visibilidade, mas uma publicação viral não comprova organização duradoura, representatividade de toda a população ou resultado político. Para avaliar efeitos, diferencie visibilidade, mudança de agenda, decisão formal e implementação. O fato de uma política surgir depois de um protesto não prova, sem outras evidências, que o protesto tenha sido sua causa única. Compare trajetórias, decisões, interações e explicações alternativas, evitando reduzir uma mudança a um líder isolado.",
+        "steps": [
+          "Mapeie recursos materiais, conhecimentos e vínculos.",
+          "Analise como o problema e as propostas são apresentados.",
+          "Identifique canais, alianças e restrições institucionais.",
+          "Diferencie alcance comunicativo, decisão e implementação."
+        ],
+        "example": "Exemplo autoral de recursos: uma rede de trabalhadores dispõe de pouco dinheiro, mas consegue espaços de reunião, voluntariado e conhecimentos técnicos para documentar uma demanda. Esses meios também são recursos de mobilização. Sua existência ajuda a explicar capacidade de agir, mas não garante adesão de todos os trabalhadores nem uma resposta favorável das instituições.",
+        "pitfall": "Usar curtidas como prova de representatividade, explicar toda mobilização apenas por dinheiro ou concluir que negociação institucional significa necessariamente fim do movimento."
+      },
+      {
+        "level": "advanced",
+        "title": "Direitos universais e efetivação desigual",
+        "explanation": "Direitos humanos se vinculam à dignidade de toda pessoa, sem depender de nacionalidade, renda, religião ou concordância com um grupo político. A Declaração Universal dos Direitos Humanos foi adotada pela Assembleia Geral das Nações Unidas em 10 de dezembro de 1948, no contexto do pós-Segunda Guerra. Ela articula direitos de diferentes dimensões, incluindo proteção contra violência e discriminação, liberdades, participação política, trabalho, educação e vida cultural. Sua adoção não criou instantaneamente igualdade material nem encerrou violações. A universalidade afirma titularidade para todas as pessoas; não descreve uma situação empírica em que todos já desfrutem igualmente dos direitos. Indivisibilidade e interdependência, reafirmadas na Conferência de Viena de 1993, permitem reconhecer que liberdade, participação e condições sociais se relacionam, sem tratar uma categoria inteira como descartável. Direitos humanos e cidadania se aproximam, mas não são idênticos: direitos humanos não pertencem apenas a quem tem cidadania de determinado Estado. Pessoas e grupos podem reivindicar proteção diante de barreiras específicas sem que isso contradiga a dignidade universal. Igualdade de direitos não exige ignorar obstáculos concretos à participação. Movimentos podem denunciar exclusões e disputar políticas, mas suas afirmações, práticas e resultados também precisam de análise crítica. Defender uma pauta em nome dos direitos humanos não torna automaticamente legítimo qualquer meio nem autoriza negar direitos de adversários. A efetivação depende de instituições, medidas e responsabilização; reconhecer o princípio é diferente de comprovar seu cumprimento em cada caso.",
+        "steps": [
+          "Distinga titularidade universal e acesso efetivo.",
+          "Relacione dimensões civis, políticas, sociais e culturais.",
+          "Identifique barreiras e propostas sem negar a dignidade de terceiros.",
+          "Examine evidências de implementação, e não apenas declarações."
+        ],
+        "example": "Situação autoral de interdependência: uma pessoa tem formalmente liberdade para buscar informações, mas não consegue acessar materiais em formato utilizável. A análise pode relacionar informação, educação e participação, sem exigir registro de diagnóstico de saúde. Reconhecer uma barreira funcional permite discutir condições de acesso; não prova que todos os direitos já estejam cumpridos só porque foram declarados.",
+        "pitfall": "Restringir direitos humanos aos cidadãos nacionais, confundir proclamação com efetivação ou considerar que a defesa de uma causa autoriza retirar a dignidade de seus opositores."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação autoral: moradores mantêm há meses uma rede de reuniões, registram problemas de transporte, elaboram reivindicações e articulam ações com grupos de bairros diferentes. Não possuem sede nem uma única liderança. Qual interpretação é sustentada?",
+        "hint": "Procure continuidade, vínculos e demandas compartilhadas; a presença de uma sede ou de um chefe único não é requisito universal.",
+        "options": [
+          "A ausência de sede impede qualquer coordenação e demonstra que não há ação coletiva.",
+          "Basta morar na mesma cidade para formar um movimento, mesmo sem rede ou demanda.",
+          "Toda rede de moradores é necessariamente um partido e participa apenas de eleições.",
+          "Os vínculos duradouros, as demandas e a articulação são indícios de movimento social, mesmo com coordenação descentralizada."
+        ],
+        "correctIndex": 3,
+        "solution": "D: o caso informa continuidade de relações, formulação de demandas e ações articuladas, elementos relevantes à identificação de um movimento. A confunde descentralização e ausência de organização; B usa apenas proximidade geográfica; C iguala movimento a partido. A conclusão é sobre os indícios descritos, não uma garantia de que todos os moradores participem ou concordem com a rede."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso autoral: uma campanha ganha muitas visualizações e, no mês seguinte, a prefeitura anuncia uma medida relacionada à pauta. Não há informação sobre reuniões, decisões anteriores ou execução. Qual conclusão respeita as evidências?",
+        "hint": "Diferencie visibilidade, sequência temporal, causalidade e implementação de uma política.",
+        "options": [
+          "A sequência e a visibilidade permitem levantar uma hipótese de influência, mas não demonstram causa única nem execução da medida.",
+          "As visualizações provam que todos os habitantes participaram e apoiaram a campanha.",
+          "O anúncio prova implementação completa e torna desnecessário acompanhar resultados.",
+          "A proximidade no tempo demonstra que nenhuma outra pessoa ou instituição influenciou a decisão."
+        ],
+        "correctIndex": 0,
+        "solution": "A: pode-se investigar a influência da campanha, mas os dados não permitem isolá-la como causa nem confirmar a execução. B confunde audiência digital com participação e apoio universais. C trata anúncio e implementação como o mesmo evento. D transforma sucessão temporal em prova causal exclusiva. Seria necessário examinar processos decisórios, outros atores, antecedentes e resultados efetivos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em um debate fictício, alguém afirma: “Como os direitos humanos são universais e foram proclamados internacionalmente, não existem mais barreiras específicas de acesso; somente cidadãos nacionais podem invocá-los”. Qual resposta identifica os dois erros?",
+        "hint": "A universalidade diz a quem os direitos pertencem; não garante seu cumprimento e não limita a titularidade à nacionalidade.",
+        "options": [
+          "A afirmação é correta, pois a proclamação elimina automaticamente qualquer desigualdade.",
+          "A universalidade vale apenas para quem possui a nacionalidade do país em que está.",
+          "Direitos pertencem a toda pessoa; sua proclamação não prova efetivação igual e barreiras concretas podem persistir.",
+          "A existência de uma barreira demonstra que nenhum direito humano pode ser reconhecido em lugar algum."
+        ],
+        "correctIndex": 2,
+        "solution": "C: distingue a titularidade universal da realização concreta e rejeita restringi-la aos nacionais. A presume que a declaração transforma instantaneamente condições sociais. B repete a exclusão por nacionalidade. D parte de uma violação ou obstáculo para negar todo o campo normativo. Identificar barreiras é compatível com direitos universais e pode orientar a investigação sobre medidas de acesso, sem exigir adesão a um movimento específico."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Pintura, desenho, escultura e gravura",
+    "objective": "Comparar materiais, suportes e processos de pintura, desenho, escultura e gravura, interpretar seus efeitos formais e distinguir indícios técnicos de atribuições e significados não demonstrados.",
+    "prerequisites": [
+      "Linha, cor, forma e textura",
+      "Diferença entre descrição e interpretação",
+      "Noções de superfície e volume"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Desenho e pintura: marcas, cor e suporte",
+        "explanation": "Ao analisar uma produção visual, diferencie material, suporte, técnica e efeito. Papel, tela e madeira podem funcionar como suportes; grafite, carvão, tinta e argila não são categorias equivalentes de suporte em toda situação. Desenho pode explorar linhas, manchas, contornos, hachuras e variações de claro e escuro, com meios secos ou líquidos. Não é obrigatoriamente preto e branco, esboço preparatório ou cópia fiel da realidade. Pode constituir uma obra autônoma. Pintura costuma envolver aplicação de materiais pictóricos sobre uma superfície; pigmento fornece cor e aglutinante mantém suas partículas associadas. Óleo, aquarela e acrílica diferem em composição e comportamento. Água usada para diluir uma aquarela não deve ser confundida automaticamente com o aglutinante. Marcas do gesto, transparências, sobreposições e espessuras podem integrar a expressão, sem existir uma única forma correta de acabamento. Desenho e pintura têm fronteiras históricas permeáveis e podem aparecer juntos na mesma obra; usar pincel, sozinho, não resolve toda classificação. Uma superfície plana pode sugerir profundidade e volume com contrastes e organização de formas, sem se tornar por isso um objeto escultórico tridimensional. Separe o que é observável do que exige ficha técnica ou pesquisa. A aparência de uma reprodução digital não permite determinar com certeza pigmento, aglutinante, autoria ou textura física de um original. Compare indícios e contexto, evitando hierarquizar linguagens como se uma fosse naturalmente superior à outra.",
+        "steps": [
+          "Identifique suporte, material e procedimento.",
+          "Observe linhas, manchas, camadas e relações de claro e escuro.",
+          "Diferencie volume sugerido e volume físico.",
+          "Use ficha técnica para conferir o que a aparência não demonstra."
+        ],
+        "example": "Estudo autoral de efeitos: duas superfícies recebem marcas diferentes, uma com linhas paralelas espaçadas e outra com linhas cruzadas mais densas. A segunda pode produzir uma região visualmente mais escura por hachura. O contraste organiza a imagem, mas não prova sozinho uma emoção específica do autor nem a época em que ela foi feita.",
+        "pitfall": "Tratar todo desenho como rascunho sem valor próprio, chamar água de aglutinante universal ou deduzir material e autoria apenas pela cor de uma imagem digital."
+      },
+      {
+        "level": "intermediate",
+        "title": "Escultura: construir, retirar e moldar",
+        "explanation": "A escultura trabalha relações de volume, superfície e espaço por processos variados. Talha ou entalhe retiram material de um bloco, em uma operação predominantemente subtrativa; modelagem conforma materiais maleáveis, como argila ou cera, podendo envolver adição e remoção. Montagem reúne elementos, e moldagem e fundição permitem transferir uma forma por meio de moldes e materiais adequados. Esses procedimentos podem se combinar: uma forma modelada pode orientar uma versão fundida, e uma peça fundida pode receber acabamento posterior. Escultura não é sinônimo de pedra nem de imagem humana; pode explorar vazios, abstrações, materiais diversos e relações com o ambiente. Em uma peça de vulto, observar de posições diferentes pode revelar aspectos que uma única fotografia oculta. No relevo, formas se projetam em relação a uma superfície de fundo, sem se reduzirem simplesmente a um desenho porque permanecem vinculadas a essa base. A cor também pode integrar a escultura; não se deve tratar toda superfície sem pintura atual como prova de ausência original de cor. Uma reprodução fotográfica registra um ponto de vista e pode achatar relações espaciais ou esconder escala e textura. A leitura deve considerar suporte, iluminação, localização e, quando disponíveis, informações do processo. Fundir mais de um exemplar não transforma automaticamente a obra em falsificação, assim como usar trabalho de oficina não resolve sozinho atribuição e autoria. Analise documentação e decisões de produção antes de presumir como uma peça foi criada.",
+        "steps": [
+          "Procure relações entre massa, vazio e superfície.",
+          "Diferencie subtração, modelagem, montagem e fundição.",
+          "Considere vários pontos de vista e a escala.",
+          "Confira processo e documentação sem deduzir autoria pelo material."
+        ],
+        "example": "Caso autoral: um artista faz um estudo maleável em cera e depois desenvolve uma versão em bronze por processo de fundição com molde apropriado. O material do estudo e o da versão final são diferentes, sem que a existência do modelo prove que o bronze foi talhado diretamente de um bloco. A descrição do percurso ajuda a distinguir etapas e processos.",
+        "pitfall": "Definir toda escultura como pedra esculpida, ignorar vazios e pontos de vista ou confundir o modelo inicial com o material e o processo da versão final."
+      },
+      {
+        "level": "advanced",
+        "title": "Gravura: matriz, impressão e circulação",
+        "explanation": "Na gravura e em outras técnicas de estampa, uma matriz ou dispositivo de transferência participa da produção de uma imagem impressa. Diferencie a matriz da estampa resultante e não confunda toda impressão artística com cópia fotográfica de uma pintura. Na xilogravura em relevo, partes elevadas da matriz de madeira recebem tinta e imprimem, enquanto áreas rebaixadas não a recebem no procedimento usual. Na gravura em encavo, a tinta fica em sulcos, com limpeza da superfície antes da impressão. No buril e na ponta-seca, marcas podem ser produzidas diretamente por ferramenta; na água-forte, a gravação envolve ação química nas áreas preparadas. A litografia é um processo planográfico: a transferência não depende do mesmo mecanismo de relevo ou sulco profundo, mas de tratamento da superfície e de sua afinidade diferenciada com materiais de impressão. Não é necessário haver entalhe para uma imagem ser uma estampa. Uma matriz pode permitir múltiplos exemplares, mas tiragens, provas, estados e intervenções podem variar; não se presume identidade absoluta de todos os resultados. Em transferência direta usual, a imagem pode aparecer invertida lateralmente em relação à matriz, exigindo atenção a letras. Cor, pressão, papel e modo de entintar também afetam o resultado. A técnica pode favorecer circulação, experimentação e autoria, sem determinar um único tema ou valor artístico. Para interpretar uma descrição, siga onde fica a tinta e como ela chega ao suporte, e não apenas a aparência de linhas ou a palavra impressão.",
+        "steps": [
+          "Distinga matriz e estampa.",
+          "Identifique onde fica a tinta antes da transferência.",
+          "Compare relevo, encavo e processo planográfico.",
+          "Considere inversão, tiragem e variações sem presumir falsificação."
+        ],
+        "example": "Comparação autoral de documentação: uma ficha descreve uma estampa obtida por litografia, com uma prova de cor diferente de outra. A ausência de sulcos profundos não invalida a identificação planográfica. A diferença entre provas também não basta para acusar falsificação; seria preciso conhecer a documentação, a edição e as decisões de impressão.",
+        "pitfall": "Inverter o papel de partes elevadas e sulcos, chamar toda estampa de reprodução sem autoria ou supor que litografia exige entalhe profundo da matriz."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição autoral: sobre uma folha de papel, uma pessoa produz uma imagem com grafite. A obra foi concebida como resultado final, não como estudo para outra. Qual análise é adequada?",
+        "hint": "Separe o material que deixa a marca do suporte que a recebe e evite tratar todo desenho como simples preparação.",
+        "options": [
+          "Grafite é o suporte e papel é o aglutinante, de modo que não existe desenho.",
+          "Papel é o suporte e grafite é o meio de desenho; a imagem pode ser uma obra autônoma.",
+          "A presença de grafite demonstra que a obra obrigatoriamente representa a realidade sem interpretação.",
+          "Uma imagem só é obra final se tiver cor e for realizada em tela."
+        ],
+        "correctIndex": 1,
+        "solution": "B: o papel recebe a marca e funciona como suporte; o grafite é o meio empregado no desenho. A confunde categorias e chama papel de aglutinante. C atribui à técnica uma obrigação de realismo que não existe. D impõe cor e tela como requisitos universais de obra final. O enunciado fornece os materiais e a finalidade, sem exigir uma fotografia ausente ou identificação de artista."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Dois processos escultóricos fictícios são descritos integralmente: em P, retira-se matéria de um bloco de madeira; em Q, juntam-se e conformam-se porções de argila maleável. Qual comparação corresponde às operações descritas?",
+        "hint": "Observe se a forma surge principalmente pela retirada de matéria ou pela conformação e junção de material maleável.",
+        "options": [
+          "P é modelagem aditiva em argila; Q é talha em pedra.",
+          "P e Q são necessariamente impressão planográfica, pois toda forma é uma estampa.",
+          "P é fundição em metal e Q exige obrigatoriamente um bloco de madeira.",
+          "P corresponde ao entalhe predominantemente subtrativo; Q à modelagem da argila."
+        ],
+        "correctIndex": 3,
+        "solution": "D: P retira material de madeira, caracterizando entalhe subtrativo; Q conforma e reúne argila maleável, caracterizando modelagem. A troca materiais e operações; B confunde processos escultóricos com estampa; C acrescenta metal e madeira que não correspondem às descrições. Modelagem pode também envolver remoção, mas aqui o caso explicita junção e conformação, sem exigir uma dicotomia absoluta para todo trabalho escultórico."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Procedimento autoral descrito sem imagem: em uma matriz de madeira, as áreas cavadas ficam sem tinta; um rolo entinta apenas as partes que permanecem elevadas, que transferem a imagem ao papel por contato. Qual identificação é sustentada?",
+        "hint": "Localize a tinta antes da impressão: ela está nas partes elevadas, e não nos sulcos ou em uma superfície planográfica tratada.",
+        "options": [
+          "Impressão em relevo, compatível com xilogravura, pois as partes elevadas entintadas imprimem.",
+          "Impressão em encavo, pois apenas os sulcos cheios de tinta imprimem no procedimento descrito.",
+          "Litografia, porque a descrição exige transferência por afinidade em uma superfície sem relevo.",
+          "Pintura direta sobre o papel sem transferência de qualquer matriz."
+        ],
+        "correctIndex": 0,
+        "solution": "A: a descrição especifica matriz de madeira e transferência das áreas elevadas entintadas, mecanismo de relevo compatível com xilogravura. B contradiz o enunciado ao colocar tinta nos sulcos. C atribui mecanismo planográfico não descrito. D ignora a transferência da matriz ao papel. A identificação se baseia no procedimento e não apenas em aparência, título de obra ou suposição de autoria."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Danças e expressões culturais",
+    "objective": "Analisar corpo, ritmo, espaço e relações na dança, reconhecer contextos de manifestações culturais e propor participação respeitosa, acessível e livre de estereótipos.",
+    "prerequisites": [
+      "Noções de ritmo e sequência temporal",
+      "Relação entre práticas corporais e cultura",
+      "Descrição de movimentos sem depender de vídeo"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Corpo, tempo e espaço como linguagem",
+        "explanation": "A dança é uma prática corporal e uma linguagem cultural que organiza movimentos, relações e sentidos. Não se limita à execução de passos difíceis, a competição ou ao gasto de energia. Pode integrar celebrações, encontros sociais, rituais, espetáculos e criação artística, com significados diferentes em cada contexto. Para analisá-la, observe o corpo e seus gestos, o espaço, o tempo, as qualidades do movimento e as relações entre participantes e ambiente. Espaço envolve direções, níveis, trajetos, formas e distância; tempo envolve duração, pausas, andamento e padrões rítmicos. Aumentar a velocidade de uma sequência não é o mesmo que mudar seu trajeto. Pulso é uma referência regular de marcação temporal; padrões rítmicos organizam durações e acentos e não se reduzem apenas à velocidade. Uma composição pode trabalhar silêncio e pausas, sem que a ausência de som externo elimine toda organização temporal. Gestos podem ser amplos ou pequenos, contínuos ou interrompidos, e diferentes partes do corpo podem participar. Relações incluem atuação individual, em pares, em grupos e com objetos ou o ambiente; dançar em par não exige um único modelo de pessoas ou papéis. Descrever esses elementos ajuda a comparar propostas sem julgar um corpo como naturalmente apto ou inapto. A análise pode usar descrições textuais e outras formas acessíveis, sem exigir uma filmagem pessoal ou realizar movimentos que ultrapassem as possibilidades de quem estuda.",
+        "steps": [
+          "Descreva quais partes do corpo e gestos participam.",
+          "Identifique direções, níveis, distâncias e trajetos.",
+          "Separe duração e andamento de padrões rítmicos.",
+          "Observe relações e sentidos sem reduzir dança a dificuldade física."
+        ],
+        "example": "Composição autoral para análise, sem exigir execução: um grupo alterna um gesto pequeno e uma pausa, mantendo posição no espaço. Outro realiza o mesmo padrão com trajetos curvos. A comparação pode distinguir a mudança espacial da organização temporal compartilhada, sem classificar um grupo como mais autêntico apenas por deslocar-se mais.",
+        "pitfall": "Confundir ritmo com velocidade apenas, pensar que toda dança exige deslocamento ou tratar virtuosismo e um tipo de corpo como requisitos universais de expressão."
+      },
+      {
+        "level": "intermediate",
+        "title": "Manifestações vivas e suas comunidades",
+        "explanation": "Danças não surgem fora da história: envolvem pessoas, territórios, memórias, conhecimentos e transformações. O samba de roda da Bahia, fortemente associado ao Recôncavo, reúne dança, música, poesia e práticas de convivência de comunidades negras, com influências africanas e diálogos com elementos portugueses. Não deve ser reduzido a uma coreografia única ou confundido com toda forma de samba. O frevo se vincula ao Carnaval e às ruas de Recife e Olinda, em Pernambuco, articulando música, agremiações e o passo dos passistas. Seus diálogos com a capoeira não tornam frevo e capoeira a mesma prática. As Matrizes Tradicionais do Forró reúnem música, dança, festas, instrumentos e modos de transmissão, com raízes nordestinas e circulação por outras regiões. O universo do forró inclui gêneros como baião, xote e xaxado; não corresponde a um único andamento ou passo para qualquer situação. Comparar essas expressões exige reconhecer contextos e diversidade interna, sem atribuir a todos os habitantes de um lugar a mesma prática. Patrimônio imaterial envolve saberes e formas de expressão mantidos e recriados por seus detentores. Reconhecimento institucional pode apoiar valorização e salvaguarda, mas não inventa a existência da manifestação nem exige congelá-la para sempre. Registrar, ensinar e divulgar implica ouvir quem a mantém viva, identificar origens e evitar apresentações caricaturais. Uma adaptação escolar deve explicitar seu caráter e não ser apresentada como reprodução completa de uma tradição a partir de poucos gestos.",
+        "steps": [
+          "Localize comunidades, território e contexto de realização.",
+          "Relacione dança, música, celebração e transmissão.",
+          "Reconheça diversidade interna e circulação cultural.",
+          "Diferencie salvaguarda de congelamento ou caricatura."
+        ],
+        "example": "Caso autoral de pesquisa: uma turma entrevista, com autorização, participantes de uma manifestação local e identifica diferenças entre versões ensinadas por pessoas de gerações distintas. A diversidade pode revelar transmissão e recriação, em vez de provar que toda mudança seja erro. O trabalho precisa indicar quem foi ouvido e em que contexto, sem falar por todas as comunidades.",
+        "pitfall": "Tratar uma manifestação como passo único, confundir diálogo entre tradições com identidade absoluta ou pensar que o registro patrimonial impede qualquer transformação."
+      },
+      {
+        "level": "advanced",
+        "title": "Participação, respeito e análise crítica",
+        "explanation": "Aprender danças envolve reconhecer e enfrentar barreiras que restringem participação. Julgamentos sobre gênero, idade, aparência, origem social ou capacidade corporal podem produzir exclusão; não são critérios suficientes para decidir quem pode aprender uma linguagem. Em atividades em pares ou grupos, funções podem ser combinadas e alternadas conforme a proposta, sem presumir que um gênero deva sempre conduzir e outro seguir. Contato corporal exige acordo entre participantes; recusar contato não equivale a recusar todo aprendizado. Uma proposta pode incluir análise, criação, variação de gestos e outras formas de participação, respeitando escolhas e condições funcionais. Acessibilidade não exige que todas as pessoas realizem movimentos idênticos nem que revelem diagnósticos de saúde para discutir formatos utilizáveis. Ao adaptar, preserve o objetivo expressivo e explique o que foi modificado, sem afirmar que qualquer alteração reproduz integralmente o contexto de origem. Também é necessário considerar espaço, distâncias e possibilidades de cada participante; esta aula não solicita acrobacias nem prescreve treino físico individual. Na circulação digital, um trecho de vídeo pode mostrar parte de uma performance, mas não representa toda a história da manifestação. Reconheça autoria, contexto e autorização de uso, evitando ridicularização e estereótipos. Criticar uma representação cultural exige examinar seus efeitos e as vozes dos envolvidos, não declarar que toda mistura seja proibida ou que qualquer apropriação seja automaticamente respeitosa. A participação deve ampliar conhecimento e expressão, sem humilhação, exposição pessoal obrigatória ou hierarquia entre culturas.",
+        "steps": [
+          "Identifique estereótipos e barreiras na proposta.",
+          "Combine formas de participação e contato com os envolvidos.",
+          "Adapte meios preservando e explicitando o objetivo de aprendizagem.",
+          "Confira autoria e contexto antes de divulgar representações."
+        ],
+        "example": "Situação autoral: uma atividade usaria contato entre participantes, mas parte da turma prefere analisar a organização espacial e criar uma versão sem contato. É possível discutir relações e escolhas coreográficas por esses caminhos, sem exigir justificativas médicas ou gravar pessoas para provar participação. Isso não autoriza dizer que a versão adaptada substitui todas as experiências da tradição estudada.",
+        "pitfall": "Vincular funções obrigatoriamente ao gênero, confundir igualdade com movimentos idênticos ou exigir diagnóstico, contato ou exposição em vídeo como condição de aprendizagem."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição autoral: uma sequência mantém exatamente os mesmos gestos e o mesmo trajeto, mas passa a ser realizada em metade do tempo, sem acrescentar pausas. Qual mudança foi explicitamente descrita?",
+        "hint": "Compare a duração da sequência com o trajeto e os gestos, que o enunciado mantém iguais.",
+        "options": [
+          "Mudança apenas do trajeto espacial, sem alterar a duração.",
+          "Troca obrigatória da origem cultural da dança, determinada pela velocidade.",
+          "Aceleração do andamento da sequência, uma alteração temporal, sem mudança descrita de trajeto ou gestos.",
+          "Desaparecimento de toda organização temporal, pois uma sequência rápida não possui tempo."
+        ],
+        "correctIndex": 2,
+        "solution": "C: realizar a mesma sequência em metade da duração implica executá-la mais rapidamente, alterando seu andamento temporal. O trajeto e os gestos foram mantidos no enunciado. A contradiz a descrição; B atribui origem cultural automaticamente à velocidade; D confunde maior rapidez e ausência de tempo. A análise não exige executar a sequência nem identificar uma dança real a partir de dados insuficientes."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma ficha autoral para comparação relaciona frevo às ruas e ao Carnaval de Recife e Olinda, e samba de roda às comunidades e práticas de música, dança e poesia da Bahia, especialmente do Recôncavo. Qual conclusão respeita esses contextos?",
+        "hint": "Reconhecer conexões e diversidade não significa transformar expressões diferentes em um único passo ou apagar seus participantes.",
+        "options": [
+          "São expressões com contextos e trajetórias próprios; compará-las exige reconhecer participantes, conhecimentos e diversidade interna.",
+          "Toda manifestação brasileira possui a mesma coreografia e nenhuma trajetória local.",
+          "Como há influência cultural entre práticas, todas se tornam necessariamente idênticas.",
+          "O reconhecimento patrimonial prova que uma prática foi inventada no dia do registro."
+        ],
+        "correctIndex": 0,
+        "solution": "A: reconhece especificidades sem impedir comparação, circulação ou mudanças. B apaga diversidade e histórias; C confunde influência e identidade absoluta; D troca existência e transmissão da prática pelo ato institucional de reconhecimento. A ficha não permite atribuir a cada pessoa da Bahia ou de Pernambuco uma única identidade ou obrigatoriedade de dançar, nem reduz as manifestações a um conjunto fixo de passos."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Caso autoral: uma proposta escolar fixa quem conduz uma dança pelo gênero e exige que todos publiquem um vídeo pessoal, mesmo quando há objeções. Qual revisão amplia participação respeitosa?",
+        "hint": "Examine estereótipos, escolhas de exposição e possibilidades de demonstrar aprendizagem sem exigir dados pessoais sensíveis.",
+        "options": [
+          "Manter as exigências, pois expressar desconforto prova incapacidade de aprender dança.",
+          "Excluir quem não aceitar contato ou publicação para tornar a turma uniforme.",
+          "Pedir diagnósticos de saúde de todos e publicar os dados junto aos vídeos.",
+          "Permitir combinar e alternar funções sem regra de gênero, oferecer formas de participação e avaliação sem exposição pessoal obrigatória e respeitar acordos de contato."
+        ],
+        "correctIndex": 3,
+        "solution": "D: remove uma regra de gênero injustificada e oferece meios de aprender e demonstrar compreensão sem impor exposição, contato ou diagnóstico. A transforma uma escolha em incapacidade; B exclui em nome de uniformidade; C solicita e expõe dados sensíveis sem necessidade didática. As alternativas de participação devem manter objetivos claros de aprendizagem e explicitar adaptações culturais, sem exigir movimentos idênticos para todos."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Genética e evolução introdutórias",
+    "objective": "Relacionar DNA, genes e alelos, interpretar probabilidades em um modelo mendeliano explícito e explicar mudanças populacionais por seleção sem determinismo genético ou finalidade evolutiva.",
+    "prerequisites": [
+      "Células e reprodução",
+      "Noções de DNA e cromossomos",
+      "Frações, proporções e eventos independentes"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "DNA, genes e características",
+        "explanation": "Em organismos celulares, o DNA participa do armazenamento de informação hereditária. Gene designa uma unidade funcional associada a um segmento de DNA, com informação para produtos como proteínas ou RNAs funcionais; nem todo DNA corresponde a um gene codificador de proteína. Cromossomos organizam DNA e proteínas, e um cromossomo contém muitos genes. Alelos são versões de uma sequência em um mesmo local do genoma; em um modelo diploide autossômico, um indivíduo pode ter dois alelos naquele local, um recebido de cada genitor. Uma população pode apresentar mais de duas versões, mesmo que cada indivíduo do modelo tenha apenas duas. Genótipo se refere à constituição genética considerada; fenótipo às características expressas, que podem resultar de relações entre genes e ambiente. Não é correto supor que toda característica seja determinada por um único gene ou que qualquer mudança observada seja uma mutação. No modelo de dois alelos, AA e aa são homozigotos, enquanto Aa é heterozigoto. Dominância descreve a expressão em heterozigose no contexto estudado, não superioridade, maior frequência ou vantagem evolutiva obrigatória. Identificar uma letra maiúscula em um exercício não demonstra que aquele alelo seja melhor. A reprodução transmite informação com mecanismos que podem recombinar variantes, mas descendentes não são uma mistura indiferenciada que apaga todos os alelos. Esses conceitos permitem construir modelos; não autorizam prever saúde, inteligência ou valor de pessoas a partir de um exercício simplificado.",
+        "steps": [
+          "Diferencie DNA, gene e cromossomo.",
+          "Localize o que alelo e genótipo descrevem.",
+          "Relacione fenótipo e condições ambientais.",
+          "Use dominância apenas para a relação de expressão do modelo."
+        ],
+        "example": "Exemplo autoral de notação: em um local autossômico de um organismo diploide fictício, P e p são duas versões possíveis. PP e pp indicam pares iguais e Pp indica versões diferentes. A notação não informa, sozinha, qual versão é mais comum na população ou se alguma aumenta a produção de descendentes em determinado ambiente.",
+        "pitfall": "Confundir gene e cromossomo, chamar alelo dominante de mais forte ou supor que qualquer diferença fenotípica demonstra alteração do DNA."
+      },
+      {
+        "level": "intermediate",
+        "title": "Segregação e probabilidade em modelos",
+        "explanation": "Na herança mendeliana de um local autossômico em um organismo diploide, os alelos se separam na formação dos gametas. Um gameta recebe uma versão daquele local, e a fecundação reúne versões de dois gametas. Para usar um quadro de cruzamento, declare genótipos parentais, probabilidades dos gametas e condições de expressão. No modelo usual sem distorções de segregação, um heterozigoto produz gametas dos dois tipos em igual proporção; um homozigoto transmite a mesma versão naquele local. Combinar gametas ajuda a calcular probabilidades, não a programar uma sequência obrigatória de nascimentos. Com dominância completa de A sobre a, AA e Aa podem expressar o mesmo fenótipo considerado, apesar de genótipos diferentes. Isso não significa que dominância completa explique toda característica: existem outros padrões de expressão e interações entre genes. Eventos tratados como independentes permitem multiplicar probabilidades; observar o resultado de um descendente não altera automaticamente a probabilidade do próximo no mesmo modelo. Uma chance de um quarto não garante um resultado em cada grupo de quatro, e amostras pequenas podem divergir bastante da proporção esperada. Recombinação pode reorganizar combinações de alelos já existentes, enquanto mutações são fonte de novas variantes de sequência. Não se deve confundir os dois processos nem aplicar segregação independente indiscriminadamente a todos os genes ligados. A resolução deve separar o que foi estipulado no modelo do que precisaria ser investigado em um organismo real.",
+        "steps": [
+          "Escreva os genótipos e os gametas possíveis.",
+          "Use as probabilidades de transmissão declaradas.",
+          "Conte genótipos antes de interpretar fenótipos.",
+          "Diferencie probabilidade, resultado observado e sequência obrigatória."
+        ],
+        "example": "Cruzamento autoral diferente dos exercícios: no modelo autossômico MM × mm, todos os gametas do primeiro genitor trazem M e os do segundo m. Todos os descendentes previstos são Mm naquele local. Isso exemplifica combinação de alelos; não demonstra identidade completa dos genomas dos descendentes nem informa qualquer outra característica não incluída no modelo.",
+        "pitfall": "Transformar proporções esperadas em calendário obrigatório de descendentes, confundir recombinação com criação de um alelo novo ou aplicar um modelo monogênico a qualquer característica real."
+      },
+      {
+        "level": "advanced",
+        "title": "Evolução de populações e seleção natural",
+        "explanation": "A evolução envolve mudanças hereditárias nas populações ao longo das gerações. Indivíduos crescem, aprendem e podem mudar de aparência durante a vida, mas isso não equivale automaticamente à evolução da população. A seleção natural relaciona variação hereditária e diferenças de sobrevivência e reprodução em condições específicas. Variantes já presentes podem ter contribuições diferentes para gerações seguintes; não é necessário que o ambiente produza exatamente a mutação de que um organismo precisaria. Mutações não surgem com finalidade de atender uma necessidade adaptativa, e seus efeitos podem ser favoráveis, desfavoráveis ou neutros conforme contexto. Aptidão evolutiva se relaciona à contribuição reprodutiva, não apenas à força física ou longevidade. Sobreviver mais tempo sem deixar descendentes não basta para concluir maior contribuição genética. O ambiente e as relações ecológicas importam; uma característica vantajosa em uma situação pode não ser em outra. Seleção não é o único mecanismo evolutivo: processos como deriva genética e fluxo gênico também podem modificar frequências. Uma mudança de frequência observada isoladamente não identifica sua causa sem outras evidências. Compare o modelo, seus denominadores e as hipóteses de herança e reprodução. A evolução não é uma escada inevitável em direção a organismos mais complexos, nem estabelece valor moral entre seres humanos. Modelos simplificados servem para compreender mecanismos e não substituem investigação de histórias evolutivas reais ou autorizam inferências sobre pessoas.",
+        "steps": [
+          "Verifique se a variação considerada é hereditária.",
+          "Compare sobrevivência e contribuição reprodutiva no contexto.",
+          "Conte frequências na população e no instante corretos.",
+          "Diferencie mecanismo demonstrado, hipótese e explicação com finalidade."
+        ],
+        "example": "Situação autoral: uma população muda de ambiente, e uma variante que antes contribuía com muitos descendentes deixa de ter a mesma vantagem nas novas condições. O caso mostra que aptidão depende do contexto, sem exigir uma finalidade evolutiva ou transformação voluntária de cada indivíduo. Para demonstrar a mudança real, seria preciso medir herança, frequências e contribuição reprodutiva, e considerar explicações alternativas.",
+        "pitfall": "Dizer que o organismo muda porque precisa, confundir frequência entre sobreviventes com porcentagem da população inicial ou transformar sobrevivência isolada em garantia de sucesso reprodutivo."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso autoral: plantas geneticamente idênticas no modelo crescem sob condições ambientais diferentes e apresentam alturas diferentes. Qual interpretação é compatível com as informações, sem inventar uma mutação?",
+        "hint": "A expressão de características pode depender do ambiente; uma diferença observada não demonstra por si mudança da sequência de DNA.",
+        "options": [
+          "A diferença pode envolver efeitos ambientais sobre o fenótipo, mesmo sem diferença genética estipulada entre as plantas.",
+          "Toda diferença de altura prova obrigatoriamente um novo alelo, ainda que não haja análise do DNA.",
+          "Fenótipo e genótipo são palavras para o mesmo conceito, sem qualquer distinção.",
+          "Um ambiente diferente transforma necessariamente todos os alelos recessivos em dominantes."
+        ],
+        "correctIndex": 0,
+        "solution": "A: as informações são compatíveis com influência do ambiente sobre o fenótipo de plantas geneticamente idênticas no modelo. B converte uma diferença observada em prova de mutação sem evidência. C apaga a distinção entre constituição genética e expressão. D inventa uma transformação obrigatória de relações de dominância. A interpretação não afirma que toda diferença em qualquer espécie seja ambiental nem dispensa investigação dos fatores em casos reais."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Modelo autoral diploide autossômico: Aa × aa, com segregação sem distorção, fecundação ao acaso e resultados de dois descendentes independentes. Qual é a probabilidade de aa para cada descendente e de ambos os dois serem aa?",
+        "hint": "O heterozigoto transmite A ou a com a mesma probabilidade; o homozigoto transmite a. Para dois resultados independentes, multiplique as chances.",
+        "options": [
+          "1/4 para cada descendente; 1/2 para ambos serem aa.",
+          "1/2 para cada descendente; certeza de exatamente um aa entre os dois.",
+          "1/2 para cada descendente; 1/4 para ambos serem aa.",
+          "Certeza de aa para cada descendente; nenhuma possibilidade de Aa."
+        ],
+        "correctIndex": 2,
+        "solution": "C: Aa produz gametas A e a com probabilidades iguais, enquanto aa fornece apenas a. Assim, cada descendente tem 1/2 de chance de Aa e 1/2 de aa. Para os dois independentes serem aa, a probabilidade é 1/2 × 1/2 = 1/4. A troca chances; B transforma expectativa em resultado obrigatório; D ignora os gametas A do heterozigoto. Um primeiro resultado não altera a probabilidade do seguinte nas condições declaradas."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Modelo autoral de organismos unicelulares fictícios, com reprodução assexuada: há inicialmente 40 pigmentados e 60 sem pigmento. Após uma condição ambiental, sobrevivem 30 pigmentados e 15 sem pigmento, devido à proteção conferida pelo pigmento no modelo. As variantes já existiam, a característica é hereditária e cada sobrevivente deixa o mesmo número de descendentes iguais a si, sem mutações ou migração. Qual conclusão é correta?",
+        "hint": "Use como denominador o total de sobreviventes, não a população inicial; a vantagem atua sobre variantes hereditárias que já estavam presentes.",
+        "options": [
+          "30% dos sobreviventes são pigmentados, pois o denominador deve continuar sendo 100.",
+          "2/3 dos sobreviventes são pigmentados; houve sobrevivência diferencial de variantes já presentes no modelo.",
+          "A condição ambiental fez todos os organismos sem pigmento criarem voluntariamente o alelo necessário.",
+          "A pigmentação é necessariamente vantajosa em todo ambiente e torna os organismos moralmente superiores."
+        ],
+        "correctIndex": 1,
+        "solution": "B: são 30 pigmentados entre 45 sobreviventes, ou 30/45 = 2/3, em comparação a 40/100 na população inicial. A proteção estipulada, a herança e a reprodução igual por sobrevivente conectam a sobrevivência diferencial à composição da descendência no modelo. A usa o denominador inicial para outra pergunta; C inventa intenção e criação dirigida apesar de variantes prévias; D generaliza vantagem e introduz um juízo moral sem base. Fora desse modelo, uma simples mudança de frequência não demonstraria sozinha a causa."
+      }
+    ]
   }
 ];
 
@@ -1115,6 +1759,238 @@ export const authoredCurriculumBatch10ReviewRecords = [
         "index": 2,
         "correctIndex": 2,
         "reasoning": "Análise independente: com n=3 pares homólogos e segregação independente sem crossing-over, há 2^3=8 combinações cromossômicas potenciais ao longo de múltiplas meioses; opção C (índice 2) está correta pois diferencia corretamente possibilidades de eventos múltiplos dos 4 produtos de uma única meiose, ao contrário de A que confunde os contadores, B que iguala possibilidades à produção celular ou D que usa base errada."
+      }
+    ]
+  },
+  {
+    "subject": "História",
+    "topic": "Expansão marítima e colonização",
+    "contentSha256": "5f4a96984adf6a1ec3648cbd786f93e71e07924dc20b5890ab16daa8eec35e26",
+    "draftMethod": "Autoria e conferência pelo Codex com fontes verificadas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/us-history/pages/2-1-portuguese-exploration-and-spanish-conquest",
+      "https://openstax.org/books/world-history-volume-2/pages/5-2-crossing-the-atlantic",
+      "https://www.unesco.org/en/memory-world/treaty-tordesillas",
+      "https://openstax.org/books/world-history-volume-2/pages/6-1-european-colonization-in-the-americas",
+      "https://openstax.org/books/us-history/pages/2-4-new-worlds-in-the-americas-labor-commerce-and-the-columbian-exchange",
+      "https://multirio.rio.rj.gov.br/index.php/historia-do-brasil/america-portuguesa/80-ocupa%C3%A7%C3%A3o-litor%C3%A2nea/8728-o-governo-geral",
+      "https://dia.upenn.edu/en/content/TL005Mita/",
+      "https://openstax.org/books/world-history-volume-2/pages/6-2-the-rise-of-a-global-economy"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A tarefa básica pede revisão da síntese que afirma todas as viagens portuguesas começarem somente após 1453; a correta alternativa rejeita explicação totalizante, reconhecendo que a expansão portuguesa já estava em curso com interesses diversos e sem cessação total do comércio euro-asiático, conforme cronologia histórica."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A tarefa intermediária corrige estudante que usa Tratado de Tordesilhas de 1494 para sustentar controle efetivo de todos povos; o gabarito correto (índice 0) sustenta apenas a divisão de pretensões entre Castela e Portugal, não consentimento dos habitantes nem domínio eficaz de todas as regiões."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A tarefa avançada exige análise de registros fictícios separando a justificativa religiosa do administrador das práticas relatadas de negociação e fuga sob ameaça; o gabarito correto (índice 3) respeita os limites dessas informações ao reconhecer relações coercitivas sem generalizar consentimento universal."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Hidrografia e recursos hídricos",
+    "contentSha256": "c70ceaef7b1b9f10fe3583e0652a3bf075769fa69ddc1c18941f02f86e9a636d",
+    "draftMethod": "Autoria e conferência pelo Codex com fontes oficiais; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.usgs.gov/water-science-school/water-cycle",
+      "https://www.usgs.gov/water-science-school/science/groundwater-what-groundwater",
+      "https://www.usgs.gov/water-science-school/science/watersheds-and-drainage-basins",
+      "https://www.usgs.gov/water-science-school/science/impervious-surfaces-and-flooding",
+      "https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/usos-da-agua",
+      "https://conjuntura2025.ana.gov.br/usos-da-agua.html",
+      "https://www.snirh.gov.br/portal/snirh-1/acesso-tematico/acesso-tematico/snirh/snirh-1/acesso-tematico/divisao-hidrografica",
+      "https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/panorama-das-aguas/regioes-hidrograficas"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A alternativa C está correta porque a convenção das margens usa o observador olhando para jusante; com a pessoa virada para o sentido do fluxo e o afluente entrando à esquerda, situa-se na margem esquerda. A alternativa A falha ao usar nascente como referência, B incorretamente equipara esquerda a norte, e D falsamente afirma que todos os rios brasileiros fluem para leste. A resolução é independente e excede 80 caracteres."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "A alternativa B está correta porque consumo = retirada − retorno = 120 − 90 = 30 L/s, e 30/120 × 100 = 25% da retirada. A alternativa A indevidamente soma retorno à retirada, C toma a vazão devolvida como consumo, e D ignora o retorno explicitado. O cálculo é verificável a partir dos valores fornecidos e excede 80 caracteres."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A alternativa D está correta porque a média das vazões é (12+4)/2 = 8 m³/s, mas na estação seca, mantendo-se a reserva de 2 m³/s, resta apenas 2 m³/s disponível contra demanda de 6 m³/s, gerando déficit de 4 m³/s. A média sozinha não garante atendimento contínuo. A alternativa C seria correta apenas se ignorasse a reserva, mas o hint exige comparar 'com reserva em cada estação separadamente'. As outras opções têm erros matemáticos ou lógicos. O raciocínio é independente e excede 80 caracteres."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Conhecimento e ciência",
+    "contentSha256": "1a77633fb8fe0837e96934fa62f4073bc80cb112503fc96398655532d6971df2",
+    "draftMethod": "Autoria e conferência pelo Codex com referências acadêmicas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://plato.stanford.edu/entries/knowledge-analysis/",
+      "https://plato.stanford.edu/entries/rationalism-empiricism/",
+      "https://plato.stanford.edu/entries/induction-problem/",
+      "https://plato.stanford.edu/entries/scientific-method/",
+      "https://plato.stanford.edu/entries/thomas-kuhn/",
+      "https://openstax.org/books/introduction-philosophy/pages/7-3-justification"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "B, índice 1: a verificação informa que o livro não está no armário; portanto a proposição é falsa e falta a condição de verdade na análise tripartite. A crença existe, mas não é preciso decidir se as razões alegadas são adequadas para identificar esse impedimento. A confunde crença e convicção; C acrescenta consenso universal; D exige visão direta como única fonte, sem fundamento na análise."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "C, índice 2: observar 200 peças resistentes não implica logicamente que todas as peças ainda não examinadas resistirão. Trata-se de generalização indutiva, cujo apoio depende também da seleção dos casos e de outras condições. A confunde número de testes e garantia dedutiva; B chama laboratório de justificação a priori; D nega indevidamente que observações possam apoiar expectativas. As observações podem apoiar, sem fornecer necessidade lógica."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Para a hipoteses universal 'toda amostra da classe Z, sob as condiciones C especificadas, apresenta sinal azul', um contraexemplo logico deve satisfazer tanto o dominio (class Z) quanto as conditions (C) especificadas, mas nao apresentar a propriedade prevista (sinal azul). A opcao A (indice 0) fornece exatamente esse contraexemplo: uma amostra de Z, efetivamente sob C, sem sinal azul. A opcao B erroneamente afirmaria que mil novas amostras favorecedoras tornam a hipoteses definitivamente provada, contradizendo o problema da inducao. A opcao C nao satisfaz dominio (nao pertence a Z) nem conditions (observada fora de C). A opcao D imuniza a hipoteses redefinindo qualquer cor possivel como confirmacao de azul, em vez de atuar como contraexemplo. A dica confirma que a universalidade e contrariada por um caso que pertence ao dominio e nas conditions afirmadas, nao apresenta a propriedade prevista."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Movimentos sociais e direitos humanos",
+    "contentSha256": "f7cd67ad8953db763542992c0ed99f116d2729ec5c136d0fd53b3443a6e80536",
+    "draftMethod": "Autoria e conferência pelo Codex com referências oficiais e acadêmicas; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/21-1-collective-behavior",
+      "https://openstax.org/books/introduction-sociology-3e/pages/21-2-social-movements",
+      "https://www.scielo.br/j/civitas/a/TTDYfmZM3W9tJTvRVqrK7Dr/?lang=pt",
+      "https://www.scielo.br/j/ln/a/7Z3vLtvbrTykKtSfx39QSXs/?lang=pt",
+      "https://www.unicef.org/brazil/declaracao-universal-dos-direitos-humanos",
+      "https://www.unicef.org/brazil/o-que-sao-direitos-humanos",
+      "https://bangkok.ohchr.org/what-are-human-rights"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "resolução independente: A alternativa D é correta porque identifica corretamente que vínculos duradouros, demandas e articulação são indícios de movimento social mesmo sem sede ou liderança única, o que está plenamente alinhado com a definição sociológica apresentada na explicação que descentralização não implica ausência de coordenação; as opções A, B e C foram eliminadas pois afirmam respectivamente que ausência de sede impede coordenação (contradiz a explicação), que moradia na mesma cidade basta para formar movimento sem rede ou demanda (ignorou os critérios mínimos) e que toda rede de moradores é necessariamente partido (redução indevida ao partido)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "resolução independente: A alternativa A é correta porque nuanceia corretamente a relação entre visibilidade/temporalidade e causalidade/implementação, conforme a explicação que alerta que política surgida após protesto não prova causa única nem execução; as outras opções foram eliminadas pois sobregeneralizam (B), confundem anúncio com implementação (C) ou assumem proximidade temporal como prova de exclusividade causal (D)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "resolução independente: A alternativa C é correta pois identifica os dois erros da afirmação claimada: direitos pertencem a toda pessoa (não apenas nacionais) e proclamação não prova efetivação igual e barreiras concretas podem persistir; as outras opções foram eliminadas pois A defende a eliminação automática de desigualdades (incorreta), B restringe titularidade aos nacionais (um dos erros da afirmação) e D nega todo o campo normativo baseado em uma barreira (extremismo)."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Pintura, desenho, escultura e gravura",
+    "contentSha256": "87af0faf6a13ce1d927babbc6b9c08ecc9fd54fcda8d131e2af661b7ab937bbb",
+    "draftMethod": "Autoria e conferência pelo Codex com referências de museus; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.npg.org.uk/schools-hub/painting-media-and-techniques",
+      "https://www.nga.gov/educational-resources/explore-basics-drawing",
+      "https://www.vam.ac.uk/articles/sculpture-techniques",
+      "https://www.npg.org.uk/collections/explore/glossary-of-art-terms/modelling",
+      "https://www.metmuseum.org/perspectives/series/materials-and-techniques",
+      "https://www.metmuseum.org/essays/the-printed-image-in-the-west-history-and-techniques",
+      "https://www.moma.org/s/ge/curated_ge/techniques/intaglio.html",
+      "https://www.moma.org/s/ge/curated_ge/techniques/lithography.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "O enunciado descreve produção de imagem com grafite sobre papel, concebida como resultado final, não estudo. A seção básica afirma que o desenho pode constituir obra autônoma e não é obrigatoriamente esboço preparatório ou cópia fiel da realidade. Além disso, papel funciona como suporte e grafite como meio de desenho. A alternativa 2 declara corretamente 'Papel é o suporte e grafite é o meio de desenho; a imagem pode ser uma obra autônoma', alinhando-se ao conteúdo. A alternativa 1 inverta as categorias (grafite como suporte, papel como aglutinante), contradizendo a definição de meios e suportes. A alternativa 3 impõe realismo obrigatório, conflitando com 'Não é obrigatoriamente cópia fiel da realidade'. A alternativa 4 exige cor e tela como requisitos universais, contradizendo a possibilidade de obra autônoma em preto e branco ou em outros suportes. Portanto, o índice correto é 1."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "O enunciado descreve dois processos: P retira matéria de bloco de madeira; Q junta e conforma argila maleável. A seção intermediária define talha/entalhe como operação predominantemente subtrativa e modelagem como conformação de materiais maleáveis como argila. A alternativa 4 afirma 'P corresponde ao entalhe predominantemente subtrativo; Q à modelagem da argila', que corresponde exatamente às definições. A alternativa 1 inverte os processos, atribuindo modelagem a P e talha a Q, o que não corresponde às descrições. A alternativa 2 erroneamente classifica ambos como impressão planográfica, ignorando que escultura e gravura são técnicas distintas. A alternativa 3 substitui os materiais (metal e madeira) pelos descritos, criando uma correspondência falsa. Assim, o índice correto é 3."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "O enunciado descreve procedimento em matriz de madeira onde áreas cavadas ficam sem tinta e rolo entinta partes elevadas, transferindo imagem ao papel. A seção avançada explica que na xilogravura em relevo, partes elevadas da matriz recebem tinta e imprimem, enquanto áreas rebaixadas não. A alternativa 1 afirma 'Impressão em relevo, compatível com xilogravura, pois as partes elevadas entintadas imprimem', que sustenta o procedimento descrito. A alternativa 2 incorretamente afirma que tinta está nos sulcos, contradizendo o enunciado. A alternativa 3 invoca litografia (processo planográfico) sem presença de mecanismo de relevo ou sulcos na descrição. A alternativa 4 ignora completamente a transferência da matriz, reduzindo a pintura direta, o que não corresponde ao procedimento de gravura. Portanto, o índice correto é 0."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Danças e expressões culturais",
+    "contentSha256": "4a7ad1e89e4f4d0de8bc43e6862328d289da48a865d876ec969834c57c55ceea",
+    "draftMethod": "Autoria e conferência pelo Codex com fontes educacionais e patrimoniais oficiais; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://curriculum.gov.bc.ca/content/ccfondements-de-la-danse12eelements-de-la-danse",
+      "https://efape.educacao.sp.gov.br/curriculopaulista/wp-content/uploads/2023/02/Educa%C3%A7%C3%A3o-F%C3%ADsica-Anos-Iniciais.pdf",
+      "https://bcr.iphan.gov.br/bens-culturais/samba-de-roda-do-reconcavo-baiano/",
+      "https://bcr.iphan.gov.br/bens-culturais/frevo/",
+      "https://bcr.iphan.gov.br/bens-culturais/matrizes-tradicionais-do-forro/",
+      "https://sme.goiania.go.gov.br/conexaoescola/eaja/educacao-fisica-situacoes-de-preconceito-na-escola/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A sequencia mantem gestos e trajeto iguais, mas reduz a duracao pela metade, o que altera explicitamente o andamento temporal (aceleracao), conforme descrito na alternativa 2; as outras opcoes incorretamente alteram trajeto, atribuem origem cultural ou eliminam a organizacao temporal, sendo inconsistentes com o enunciado."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A conclusao correta reconhece que frevo e samba de roda possuem contextos e trajetorias proprios, exigindo o reconhecimento de participantes e diversidade interna, conforme alternativa 0; as demais opcoes apagam diversidade, confundem influencia com identidade ou atribuem invencao ao registro patrimonial, sendo inconsistentes com a ficha descritiva."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A revisao que amplia participacao respeitosa deve remover regras de genero injustificadas e oferecer meios de participacao e avaliacao sem exposicao pessoal obrigatoria, respetando acordos de contato, conforme alternativa 3; as outras opcoes mantem exigencias discriminatorias, excluem ou solicitam dados sensiveis desnecessarios, sendo inadequadas ao objetivo de inclusao."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Genética e evolução introdutórias",
+    "contentSha256": "b84e90e24e5fd8046fbcaf11ba8b5eae07c42f78d2ccbb0b9a7e86f78b5b4387",
+    "draftMethod": "Autoria e conferência pelo Codex com fontes científicas institucionais; crítica independente pelo Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.genome.gov/genetics-glossary/Gene",
+      "https://www.genome.gov/genetics-glossary/Allele",
+      "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+      "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+      "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+      "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+      "https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/natural-selection/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A diferença de altura em plantas geneticamente idênticas sob condições ambientais diferentes é compatível com efeitos ambientais sobre o fenótipo, sem necessidade de mutação genética (opção A). As outras opções incorretamente afirmam que diferença fenotípica prova mutação (B), apaga distinção genótipo/fenótipo (C), ou transforma obrigatoriamente alelos recessivos com ambiente (D)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "No cruzamento diploide autossômico Aa × aa, o heterozigoto produz gametas A e a com probabilidade igual (1/2), enquanto o homozigoto aa transmite apenas a. Cada descendente tem 1/2 chance de genótipo aa. Para dois descendentes independentes ambos serem aa, multiplica-se 1/2 × 1/2 = 1/4. Isso confirma a alternativa C (índice 2); a alternativa A erra ao dar 1/4 por descendente, B afirma certeza onde há probabilidade, e D ignora gametas A do heterozigoto."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "Com 30 sobreviventes pigmentados de 45 total (30/45 = 2/3), o cálculo correto usa o total de sobreviventes como denominador, não a população inicial de 100. A variante pigmentada já existia na população original (40/100), e a sobrevivência diferencial devido à proteção do pigmento alterou a composição para 2/3 pigmentados entre sobreviventes. Isso confirma a alternativa B (índice 1); a alternativa A usa denominador incorreto, C inventa criação voluntária de alelo e D introduz juízo moral sem base."
       }
     ]
   }

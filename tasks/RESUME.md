@@ -1,6 +1,35 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 23
+## Estado atual em 15/11/2026 — checkpoint 24
+
+CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
+- Lote10 completo16;128novas.657testesapp+6motor,build/lint alterado/leitor128
+  +7novas21MCQ4larguras/referências/captura aprovados. Índice345,fixtures128,
+  preview3316sessão28247. LogsTemp/kognos-batch10-complete-*.
+- Lacunas1167;ENEM139/757;estudo139/35/733. Humana pendente,sem schema/banco/
+  merge/deploy. CI23success43748613559head1c3244c. Publicar24/PR/CI e seguir11.
+- Sete novas principal-autoria; críticas finais integrais lidas e hashes atuais.
+  Filosofia metadado de justificação/distrator corrigido explicitamente pelo
+  principal, parecer original preservado. Não reaplicar scripts base em conteúdo
+  aceito sem conferir alterações posteriores. Nenhuma fonte bloqueada foi marcada
+  como integralmente lida. Testes novos água e genética RED→GREEN.
+- Worker128 terminou; novo worker144PID7856, uma fila bounded, modeloLightning
+  porrequisição,semalterarconfigglobal. LogTemp/kognos-curriculum-collaboration-
+  v4-batch11-20261115.log. Nenhumprocessodousuário/Claude/proxyencerrado.
+- Lote11q[128:144]: Math7e340768equações;Port431382bbmorfologia;
+  Lit2798df57modernismo;Red2448edd7planejamento/revisão;Ing2f868211contextos;
+  Esp8d0566cfpronomes;Fís343d1de0gravitação;Quídc101543intermoleculares;
+  Bio95699596sínteseproteica;Hist79189d89iluminismo;Geoef936557biomas;
+  Filo46e6e772lógica;Soc23767c57mídias;Arte3dcee8cffotografia;
+  PE0ba1e0d3lutas;Ciências6b13584fecologia.
+- Criar integrador11 a partir10(mudar módulo/exportes),ligar aggregator/index
+  e testes pelo padrão. Começar primeiraMath; nenhumprincipal11feitoatéaqui.
+  Read/research/correct/reviewfreshantesintegrar. Nuncaimportarras cunhosbrutos.
+- Helpers seteautorias+metadata+reader respaldadosprivate/curriculum-run/
+  resume-helpers. AGENTSgerado fora decommit. Restore next-env só raizativa;
+  fetchantespush,nuncaforce. Raizoriginalsuja preservada.
+
+## Histórico — checkpoint 23
 
 CONTINUAR ATÉ COMPLETAR TODAS AS AULAS. Não finalizar neste checkpoint.
 - 121novas/lote10nove.655testesapp+6motor,70específicos,lint/build/leitorAPI121

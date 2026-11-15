@@ -4,7 +4,57 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 23
+## Estado atual — checkpoint 24
+
+Lote 10 concluído com 16 aulas; 128 novas nesta etapa de autoria. Acrescentadas
+História — Expansão marítima e colonização; Geografia — Hidrografia e recursos
+hídricos; Filosofia — Conhecimento e ciência; Sociologia — Movimentos sociais e
+direitos humanos; Arte — Pintura, desenho, escultura e gravura; Educação Física —
+Danças e expressões culturais; Ciências — Genética e evolução introdutórias.
+Revisão independente pelo Claude Code/NVIDIA NIM, conferência principal pelo
+Codex e homologação docente humana pendente. Não são aulas oficiais das provas.
+
+Restam 1167 lacunas entre 1512 identidades editoriais. ENEM: 139 aprofundadas,
+757 lacunas. Inventário de estudo: 139 aprofundadas, 35 guias e 733 planejadas;
+índice de disponibilidade: 345 registros. Guia histórico preservado quando o
+conteúdo novo assume prioridade. Estas contagens não certificam habilidades.
+
+- História: removidas causalidade exclusiva de 1453, bloqueio comercial total,
+  percentuais demográficos sem recorte e narrativa de consentimento colonial.
+  Tordesilhas distingue pretensão diplomática e controle; governo-geral criado
+  em 1548, instalado em 1549, sem abolição automática das capitanias.
+- Hidrografia: retiradas regras legais e estatísticas inventadas do rascunho.
+  Contas próprias verificam consumo de 30 L/s (25% de 120) e déficit sazonal de
+  4 m³/s apesar de média de 8. Não são autorização real de captação.
+- Filosofia: crença, verdade e justificação distintas; indução não é dedução;
+  falseável não significa falso. Popper e Kuhn sem slogans de certeza ou
+  relativismo. Metadado da crítica sobre justificação e um distrator corrigido
+  explicitamente pelo principal, preservando o parecer independente integral.
+- Sociologia: redes e demandas não se reduzem a multidão, partido ou liderança
+  única. Visibilidade não prova causalidade ou execução. Direitos universais
+  não significam efetivação automática nem exclusividade de cidadãos nacionais.
+- Arte: suporte, meio e efeito distintos; escultura por processos variados;
+  relevo imprime partes elevadas, encavo imprime sulcos, litografia planográfica.
+  Nenhuma obra, ilustração ou exercício de museu reproduzido.
+- Dança: elementos corporais e contextos de samba de roda, frevo e forró;
+  salvaguarda não congela manifestações. Participação sem regra de gênero,
+  publicação pessoal obrigatória ou captura de diagnósticos. Sem treino prescrito.
+- Genética: modelo Aa × aa confere 1/2 por descendente e 1/4 para dois aa
+  independentes. Modelo fictício de sobrevivência confere 30/45 = 2/3, com herança
+  e reprodução explicitadas; sem mutação dirigida ou superioridade moral.
+
+Verificação: 657 testes da aplicação e seis do motor, build e lint alterado
+aprovados. Dois testes quantitativos novos tiveram RED por ausência e GREEN
+após integração. API das 128 novas aulas comparada integralmente; sete novas
+no Chromium, 21 respostas, explicações e referências expandidas em 320, 375,
+768 e 1440 px, sem exceções ou rolagem horizontal. Captura inspecionada.
+Fontes oficiais e acadêmicas verificadas em trechos pertinentes; bloqueios e
+limites de acesso registrados privadamente, sem alegar leitura inexistente.
+Conteúdo, exemplos e tarefas originais; referências externas mantêm seus direitos.
+CI do checkpoint 23 aprovada: 43748613559, head 1c3244c.
+Sem schema/banco, merge ou deploy. Próximo lote 11 já iniciado, limitado a 144.
+
+## Histórico — checkpoint 23
 
 Lote10 ampliado para nove aulas;121 novas nesta etapa. Acrescentadas Inglês —
 Discurso direto e indireto; Espanhol — Artigos e contrações; Física — Impulso,
