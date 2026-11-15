@@ -1009,3 +1009,21 @@ test('funções afim quadrática e modular verificam dois pontos, máximo global
  assert.match(spec.tasks[1].prompt,/-x\^2 \+ 6x - 5/);const q=(x:number)=>-x*x+6*x-5;for(const x of [-100,-1,0,1,3,5,6,100])assert.equal(q(x),4-(x-3)**2);assert.equal(q(3),4);assert.equal(q(1),0);assert.equal(q(5),0);assert.equal(choice(1),'Máximo 4, atingido em x = 3; imagem (-∞, 4].');
  const inequality=spec.tasks[2].prompt.match(/\|2x - 3\| ≤ 5/);assert.ok(inequality);const left=(3-5)/2,right=(3+5)/2;assert.equal(left,-1);assert.equal(right,4);for(const x of [left-0.01,left,0,1.5,right,right+0.01])assert.equal(Math.abs(2*x-3)<=5,x>=left&&x<=right);assert.equal(choice(2),'[-1, 4].');
 });
+
+test('hidrostática converte área quadrática, conserva volume e distingue empuxo de peso aparente',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Física'&&s.topic==='Hidrostática e pressão');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const pressure=spec.tasks[0].prompt.match(/força normal de (\d+) N.*área de (\d+) cm²/);assert.ok(pressure);const force=Number(pressure[1]),areaCm=Number(pressure[2]),areaM=areaCm*1e-4;assert.equal(areaM,0.004);assert.equal(force/areaM,30000);assert.equal(choice(0),`${force/areaM} Pa.`);assert.notEqual(force/areaCm,force/areaM);
+ const hydraulic=spec.tasks[1].prompt.match(/A1 = (\d+) cm².*A2 = (\d+) cm².*F1 = (\d+) N.*d1 = (\d+) cm/);assert.ok(hydraulic);const [a1,a2,f1,d1]=hydraulic.slice(1).map(Number),f2=f1*a2/a1,d2=d1*a1/a2;assert.equal(f2,1500);assert.equal(d2,1);assert.equal(a1*d1,a2*d2);assert.equal(f1*d1/100,f2*d2/100);assert.equal(choice(1),`F2 = ${f2} N e d2 = ${d2} cm.`);
+ const buoyancy=spec.tasks[2].prompt.match(/massa (\d+) kg.*volume (\d+) L.*ρ = (\d+) kg\/m³.*g = (\d+) m\/s²/);assert.ok(buoyancy);const [mass,litres,rho,g]=buoyancy.slice(1).map(Number),volume=litres*1e-3,weight=mass*g,up=rho*g*volume,tension=weight-up;assert.equal(up,20);assert.equal(tension,10);assert.equal(tension+up-weight,0);assert.equal(choice(2),`Empuxo de ${up} N para cima e tração de ${tension} N para cima.`);assert.notEqual(up,weight);
+});
+
+test('reações e balanceamento verificam todos os átomos, carga e coeficientes primitivos',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Química'&&s.topic==='Reações e balanceamento');assert.ok(spec);
+ const gcd=(a:number,b:number):number=>b?gcd(b,a%b):a;
+ const check=(i:number,residuals:(n:number[])=>number[])=>{const task=spec.tasks[i];assert.ok(task.options&&typeof task.correctIndex==='number');const valid=task.options.map((option,index)=>{assert.match(option,/^\d+(?:, \d+)+\.$/);const coefficients=option.slice(0,-1).split(', ').map(Number);assert.ok(coefficients.every(n=>Number.isInteger(n)&&n>0));return residuals(coefficients).every(n=>n===0)&&coefficients.reduce(gcd)===1?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[task.correctIndex]);return task.options[task.correctIndex];};
+ assert.match(spec.tasks[0].prompt,/Al \+ HCl → AlCl3 \+ H2/);assert.match(spec.tasks[0].prompt,/menores inteiros positivos/);assert.equal(check(0,([a,b,c,d])=>[a-c,b-2*d,b-3*c]),'2, 6, 2, 3.');
+ assert.match(spec.tasks[1].prompt,/C2H6 \+ O2 → CO2 \+ H2O/);assert.equal(check(1,([a,b,c,d])=>[2*a-c,6*a-2*d,2*b-2*c-d]),'2, 7, 4, 6.');
+ assert.match(spec.tasks[2].prompt,/Cr2O7\^2- \+ H\+ \+ I- → Cr\^3\+ \+ I2 \+ H2O/);assert.match(spec.tasks[2].prompt,/ácido/);assert.equal(check(2,([a,b,c,d,e,f])=>[2*a-d,7*a-f,b-2*f,c-2*e,-2*a+b-c-3*d]),'1, 14, 6, 2, 3, 7.');
+ assert.equal(-2+14-6,3*2,'carga +6 em ambos os lados');assert.equal(2*(6-3),6,'seis elétrons recebidos pelo cromo');assert.equal(6*(0-(-1)),6,'seis elétrons cedidos pelo iodeto');
+});

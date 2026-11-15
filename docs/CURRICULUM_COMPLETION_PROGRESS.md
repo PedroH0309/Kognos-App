@@ -4,7 +4,51 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 33
+## Estado atual — checkpoint 34
+
+Metade do lote13: oito aulas, 168 novas nesta etapa. Novas: Inferência de
+sentidos em inglês; Presente do indicativo em espanhol; Hidrostática e pressão;
+Reações e balanceamento. Catálogo em execução; revisão docente humana pendente.
+
+Restam 1.127 lacunas de 1.512 identidades editoriais. ENEM: 177 aprofundadas e
+719 lacunas. Estudo: 177 aprofundadas, 27 guias e 703 planejadas; índice 385.
+
+- Inglês: pistas contextuais, voz e ironia, quantificadores e modalização,
+  inferência apoiada versus especulação, com trechos ingleses completos.
+- Espanhol: pessoas e tratamentos, flexões regulares/irregulares, limites dos
+  padrões e presente com referência futura. Fontes primárias RAE conferidas.
+- Física: pressão uniforme e média, referências e profundidade, Pascal como
+  variação de pressão, áreas/volume/trabalho e empuxo com equilíbrio de forças.
+- Química: conservação de elementos e carga, coeficientes mínimos, classificação,
+  sistema de equações e semirreações em meio ácido/básico. Casos simbólicos,
+  sem orientar procedimentos experimentais.
+
+Autoria Codex, fontes consultadas em passagens pertinentes e crítica separada
+Claude Code/NVIDIA NIM. Rascunhos com erros descartados. Duas críticas de
+espanhol alegaram frases ausentes e uma flexão incorreta; a comparação literal
+com o JSON e o paradigma RAE rejeitou essas alegações. Nova crítica aceitou o
+texto atual, mas suas razões ainda transcreveram algumas formas incorretamente.
+O principal refez essas justificativas; também delimitou some em inglês e a
+terminologia de coeficientes em química. Correções dos metadados explicitamente
+atribuídas ao principal, pareceres completos originais preservados em privado.
+Não declarar que a aprovação automática garante precisão ou revisão docente.
+
+Testes críticos de física e química começaram em RED antes da autoria. Após
+integração, ambos GREEN: cm²→m², prensa com volume/trabalho, empuxo/tração;
+todos os distratores de três balanços, MDC e cargas, incluindo alternativa
+balanceada que falha apenas no pedido de coeficientes mínimos.
+
+669 testes app + 6 motor, build e lint alterado aprovados. API das 168 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI anterior success43769145800 no head a73d166, incluindo
+sincronização com main9a12f7f. Publicar34 e acompanhar CI do novo head exato.
+
+PR118 em rascunho reúne doze aulas posteriores ao PR117 integrado externamente
+até156. Nenhum merge de PR, deploy, schema ou dependência alterada nesta etapa.
+Continuar outras oito disciplinas do lote13 e as lacunas seguintes.
+
+## Histórico — checkpoint 33
 
 Iniciado lote 13 com Funções afim, quadrática e modular; Concordância, regência
 e crase; Literatura africana de língua portuguesa; Planejamento e projeto de

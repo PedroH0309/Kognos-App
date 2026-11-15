@@ -1,6 +1,39 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 33
+## Estado atual em 15/11/2026 — checkpoint 34
+
+CONTINUAR. Parar50%SESSÃOCodex: ferramenta sósemanal24%, secondary:null.
+Não substituir semanal por sessão nem prometer parada impossível de medir.
+
+168novas,8lote13. 669app+6motor/build/lint/168API+4leitor12MCQ4largurasPASS.
+Lacunas1127;ENEM177/719;estudo177/27/703;índice385. Logscheckpoint34-*.log.
+Preview3316sessão52833build168;fixtures168;captura batch13-halfinspecionada.
+
+PR118OPEN;main9a12f7f incorporadae781bce;headanteriora73d166CI43769145800SUCCESS.
+Publicar34/atualizarPR118para12adicionais/seguirCIexata. Não mergearPR/deploy.
+PR117MERGEDexternamente156novas; nãoeditar117paratrabalhoposterior.
+
+Módulo13ALL8:1507dbbd,bbd57e3f,b5beaee8,d071bb1d,1bf6ee18,b791cc78,
+3816b15d,2ec02a9b. Integrador13 REESCREVEmódulo: sempreatodososIDs.
+Criticas finaisatuaislidas; SpanishaceiterecordmetadadosrefeitospeloPrincipal,
+pareceresoriginais+duasreviseerrôneasguardados. Inglês some nãoexcluitodos;
+químicaconsecutivosremovido. NÃO rerodarkognos-refine-checkpoint34-review-records.py
+nemkognos-refine-spanish-present.py, jáexecutados;baseSpanishSTALEsempre/sources.
+Dadosdocentespendentes. Evidênciaeditorialoriginalem principal-editorial-evidence-
+checkpoint34.json. Dois testescríticosnativos járegistradosna suite eGREEN.
+
+Próximos Biologiaafd8786c,História00b9f8de,Geografiaf9a2eaf7,Filosofia15edc391,
+Soc6f39fb3e,Arte0ff9394f,PE0b6d0515,Ciências78f17021. Worker176PID8120,
+últimologTempbatch13 aindaQuímica3; não duplicar nempublicarrawsemprincipal.
+Biologiasemautoriaainda. FontesNHGRIBODYlidas: Mutation15/19-20;GeneticEngineering
+14-18;PCR15/21-22;CRISPR16/20-21. PCRredirectcanônico.../Polymerase-Chain-Reaction-PCR.
+Não adotar mutaçãosempresomáticaintransmissívelparatodosorganismos(genpropagveget),
+reparossempreprecisos ou clinica. OpenStax17.1sósearchatéagora,nãobodylido.
+
+Helpersprivadosguardados; AGENTSgeradoforaGit;raizoriginalsuja preservada.
+Sem chaves emlogs/código/commits; sem schema/deploy/mergePR. Nãofinalizarcheckpoint.
+
+## Histórico — checkpoint 33
 
 CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Só semanal disponível (23%),
 secondary:null; não substituir por semanal nem prometer parada inobservável.
