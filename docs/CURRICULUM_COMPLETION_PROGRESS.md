@@ -4,7 +4,51 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 32
+## Estado atual — checkpoint 33
+
+Iniciado lote 13 com Funções afim, quadrática e modular; Concordância, regência
+e crase; Literatura africana de língua portuguesa; Planejamento e projeto de
+texto. Total: 164 novas aulas nesta etapa; revisão docente humana pendente.
+
+Restam 1.131 lacunas de 1.512 identidades editoriais. ENEM: 173 aprofundadas e
+723 lacunas. Estudo: 173 aprofundadas, 27 guias e 707 planejadas; índice 381.
+
+- Matemática: domínio/imagem, taxa afim, vértice e extremos no domínio efetivo,
+  módulo por partes e fronteiras de inequações. Teste crítico RED antes da
+  autoria, GREEN após integração: verifica todas as opções nos dois pontos,
+  quadrado completo, raízes e fronteiras, sem reduzir asserções anteriores.
+- Português: concordância com núcleo, haver/existir, regência e relativos,
+  crase com artigo/demonstrativo e casos facultativos. Um distrator foi
+  substituído e submetido a nova crítica independente do texto atualizado.
+- Literatura: pluralidade e cinco espaços literários; repertório verificado
+  e vozes/memória. Mayombe na libertação anticolonial, sem confundir guerra
+  civil; exemplos didáticos originais, sem falsas atribuições a autores.
+- Redação: comando, recorte, projeto argumentativo, sustentação e revisão.
+  Sem regra universal de palavras, parágrafos ou intervenção para toda banca;
+  exigências específicas contextualizadas em fontes oficiais consultadas.
+
+Autoria Codex e crítica independente Claude Code/NVIDIA NIM. Críticas finais
+lidas integralmente e vinculadas por hash ao conteúdo e contexto atuais.
+Rascunhos com erros foram rejeitados mesmo com aceite automático. Somente
+passagens e resumos pertinentes das fontes foram lidos; não alegar leitura
+integral de romances, artigos ou cartilhas. Sem material proprietário copiado.
+
+667 testes app + 6 motor, build e lint alterado aprovados. API das 164 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. Primeira chamada de lint teve caminho incorreto; chamada
+corrigida sobre os quatro arquivos reais passou, sem supressão de regras.
+
+O PR #117 foi integrado externamente em main até 156 novas aulas (0bae72c).
+O PR complementar #118 contém as oito seguintes: quatro do checkpoint 32 e
+quatro deste checkpoint. Sincronização local com main não alterou conteúdo.
+CI32 aprovada 43767140718 no head eef844b; publicar33 e acompanhar CI exata.
+Não foi realizado merge de PR ou deploy por esta execução. Nenhum schema mudou.
+
+Continuar lote13 com Inglês, Espanhol, Física e Química; depois outras oito
+disciplinas. O catálogo segue em execução, sem declarar conclusão global.
+
+## Histórico — checkpoint 32
 
 Lote 12 completo com dezesseis aulas; 160 novas nesta etapa. Acrescentadas
 Gênero, raça e relações sociais; Música: ritmo, melodia, harmonia e timbre;

@@ -1000,3 +1000,12 @@ test('demografia distingue densidade, saldo natural, migração e base percentua
  const [initial,births,deaths,incoming,outgoing]=balance.slice(1).map(Number),natural=births-deaths,net=incoming-outgoing,delta=natural+net,final=initial+delta;assert.equal(natural,12);assert.equal(net,20);assert.equal(final,1032);assert.equal(100*delta/initial,3.2);assert.equal(1000*delta/initial,32);assert.notEqual(100*delta/final,3.2);assert.equal(choice(1),'Saldo natural: 12; saldo migratório: 20; população final: 1032; variação sobre a inicial: 3,2%.');
  assert.match(spec.tasks[2].prompt,/saldo natural de -20.*saldo migratório de 35/);assert.equal(-20+35,15);assert.equal(choice(2),'Aumento de 15 pessoas; as entradas líquidas superam a perda natural no período.');
 });
+
+test('funções afim quadrática e modular verificam dois pontos, máximo global e fronteiras',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Matemática'&&s.topic==='Funções afim, quadrática e modular');assert.ok(spec);
+ const first=spec.tasks[0];assert.ok(first.options&&typeof first.correctIndex==='number');const points=first.prompt.match(/f\((\d+)\) = (\d+).*f\((\d+)\) = (\d+)/);assert.ok(points);const [x1,y1,x2,y2]=points.slice(1).map(Number);
+ const valid=first.options.map((option,index)=>{const formula=option.match(/^f\(x\) = (-?\d+)x ([+-]) (\d+)\.$/);assert.ok(formula);const a=Number(formula[1]),b=Number(formula[3])*(formula[2]==='-'?-1:1);return a*x1+b===y1&&a*x2+b===y2?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[first.correctIndex]);assert.equal((y2-y1)/(x2-x1),3);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ assert.match(spec.tasks[1].prompt,/-x\^2 \+ 6x - 5/);const q=(x:number)=>-x*x+6*x-5;for(const x of [-100,-1,0,1,3,5,6,100])assert.equal(q(x),4-(x-3)**2);assert.equal(q(3),4);assert.equal(q(1),0);assert.equal(q(5),0);assert.equal(choice(1),'Máximo 4, atingido em x = 3; imagem (-∞, 4].');
+ const inequality=spec.tasks[2].prompt.match(/\|2x - 3\| ≤ 5/);assert.ok(inequality);const left=(3-5)/2,right=(3+5)/2;assert.equal(left,-1);assert.equal(right,4);for(const x of [left-0.01,left,0,1.5,right,right+0.01])assert.equal(Math.abs(2*x-3)<=5,x>=left&&x<=right);assert.equal(choice(2),'[-1, 4].');
+});

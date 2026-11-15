@@ -1,6 +1,40 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 32
+## Estado atual em 15/11/2026 — checkpoint 33
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Só semanal disponível (23%),
+secondary:null; não substituir por semanal nem prometer parada inobservável.
+
+164 novas, lote13primeiras4integradas. 667app+6motor,build/lint,164API,
+4leitor12respostas/4larguras aprovados. Lacunas1131; ENEM173/723;
+estudo173/27/707; índice381. Logsprivate/checkpoint33-*.log.
+Preview3316sessão79271 build164; fixtures164; captura batch13-first inspecionada.
+
+PR117 MERGED EXTERNAMENTE até156/0bae72c, squashmain5b9e0e1. Não atualizar117
+com trabalho posterior. PR118 OPEN contém8aulas apósmerge:4CP32+4CP33.
+Localmergeeef844b sincronizoumainsemalterarconteúdo; CI3243767140718SUCCESS.
+Publicar33 e acompanhar CIexata. Não mergear/deploy.
+
+Módulo13ALL4:1507dbbd,bbd57e3f,b5beaee8,d071bb1d. Integrador13sempreTODOSosIDs
+para não apagar anteriores. Autores-base Math/Port STALE: Mathmetadadoscorrigidos
+com originalpreservado; Portq1Dalteradoecriticafrescaválida924f5085.
+Não rerodar kognos-refine-batch13-first-two.py: jáexecutado.
+Autorevidenceoriginalpreservadaem principal-editorial-evidence-checkpoint33.json.
+Textos/referências/hashes+críticaslidos; homologaçãohumana pendente.
+
+Próximos: Inglês1bf6ee18rawACEITOMASREJEITADOprincipal (quaseportuguês,
+inferênciacartasvioladasnãoimplicaautorizaçãonegada,críticarepeteerro).
+BritishCouncilInferencecorpo72-80lido; Cambridge reluctantly403; nenhum novo
+autorInglês ainda. Espanholb791cc78raw3tentativa; depoisFísica3816b15d,
+Química2ec02a9b,Bioafd8786c,Hist00b9f8de,Geof9a2eaf7,Filo15edc391,
+Soc6f39fb3e,Arte0ff9394f,PE0b6d0515,Ciências78f17021.
+Worker176PID8120logTempbatch13; não duplicar se ativo. Só ampliar192seencerrar.
+
+Raizoriginalsuja preservada; apps/web/AGENTS.mdgerado não commitar.
+Privados/resume-helpersguardamautores/leitores; nenhum token emlogs/commits.
+Não parar no checkpoint; continuar produção e revisão das próximas aulas.
+
+## Histórico — checkpoint 32
 
 CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
 (último17%), secondary:null; sessão indisponível. Não substituir semanal por
