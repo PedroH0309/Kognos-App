@@ -1,6 +1,43 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 29
+## Estado atual em 15/11/2026 — checkpoint 30
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
+(último12%), secondary:null; sessão indisponível. Não substituir semanal por
+sessão, nem garantir parada inobservável. Consultar periodicamente.
+
+152 novas; lote12 oito. 664 app + 6 motor, build/lint e 152API + 4leitor12MCQ,
+4larguras aprovados. Lacunas1143; ENEM162/734; estudo162/29/716; índice369.
+Preview3316 sessão36679. Logsprivate/checkpoint30-*.log. Humana pendente.
+CI29success43761511062headc36123d. Publicar30/PR e acompanhar CI exata.
+
+Integrador12 REESCREVE módulo: ALLatuais+novas. Oitoatuais:
+f81404ed,7a81e1ec,237cf014,d0f6d214,9e223a4b,b17518b1,4c7c5bec,d5903a1a.
+Todas críticas finais lidas/aceitas; metadadosEspanhol/Física/Química corrigidos
+explicitamente com originalintegral/hashes mantidos. Não reaplicar autores-base
+cegamente em aceitos. TestesnovosRED→GREEN estática e balanceamento de átomos.
+
+PróximaBio0536eebb Genética mendeliana: autoria privada própria JÁescrita,
+independente revisão em execução sessão44471, NÃOintegrada. Teste privado RED
+Temp/kognos-mendelian-expected.test.ts executado antes da autoria, NÃOanexado à
+suíte app para não quebrar30. Após aceite, ler crítica inteira, registrar teste
+em authored-curriculum-lessons.test.ts, integrarALL9+, rodarGREEN e pipeline.
+Gabaritos1/3/2: Aa×Aa¼semcota;A_×aa comdescaa obrigaAa sobnomutação/filiação/
+expressão completa;AaBb×aabbAabb¼ sobindependência. Sem genética de pessoasreais.
+FontesOpenStax12.1/12.2/12.3 eNHGRIMendelianInheritance/Allele/genotype/Phenotype
+lidas nos trechos; não copiar figuras/questões. Não adotar erro vagensamarelas
+OpenStax ou fraseNHGRIDominant/Recessive duasversõesdecadaprogenitor, nem
+classificar dominante maisfrequente/melhor. Ligação/epistasia/ambiente explícitos.
+
+Worker160PID5840 logTemp kognos-curriculum-collaboration-v4-batch12-20261115.log;
+último em História1198af3f. Química raw2timeout;nãoaproveitada. Workerpula own.
+Depois História1198af3f,Geof66d7527,Filo69cf6de6,Socc6064524,Artea18970e3,
+PEe942ed50,Ciências4c61183d. Não duplicarworker; ampliar176 somente apósfim160.
+
+AGENTS gerado fora decommit; raizoriginalsuja preservada;fetchantespush,nunca
+force. Sem schema,banco,merge/deploy. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 29
 
 CONTINUAR. Parar a 50% do limite da SESSÃO Codex; ferramenta só mostra semanal
 (último11%), secondary:null. Não substituir semanal por sessão ou garantir parada

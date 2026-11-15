@@ -4,7 +4,44 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 29
+## Estado atual — checkpoint 30
+
+Lote 12 com oito aulas; 152 novas nesta etapa. Acrescentadas Skimming e scanning;
+Possessivos e demonstrativos em espanhol; Estática, torque e equilíbrio; Funções
+inorgânicas. Autoria Codex e crítica independente Claude Code/NVIDIA NIM;
+homologação pedagógica humana pendente.
+
+Restam 1.143 lacunas de 1.512 identidades editoriais. ENEM: 162 aprofundadas e
+734 lacunas. Estudo: 162 aprofundadas, 29 guias e 716 planejadas; índice 369.
+
+- Inglês: textos completos próprios para ideia geral, horários, condições e
+  exceções; nenhuma estratégia de leitura apresentada como ótima universal.
+- Espanhol: pessoa e concordância, formas átonas/tônicas, demonstrativos e
+  variação regional, neutros, ambiguidade de su e grafia segundo DPD atual.
+- Física: equilíbrio de forças e torques, braço perpendicular, polos e reações,
+  atrito estático distinto do máximo, estabilidade e hipóteses de translação.
+  Teste RED→GREEN recalcula torque inclinado, reações pelos dois polos e atrito.
+- Química: Arrhenius/Brønsted, força/concentração/solubilidade, sais e nomes,
+  neutralização completa/parcial, óxidos e hidrólise. Teste RED→GREEN conta
+  átomos em todas as alternativas e identifica o único balanceamento correto.
+
+Críticas integrais lidas e hashes atuais conferidos. Metadados corrigidos
+explicitamente em Espanhol, Física e Química, com originais preservados:
+formas linguísticas, referente já explícito, origem não demonstrada de distrator
+e distinção entre erro de coeficientes e mudança de índices. Sem atribuir leitura
+web ao Claude sem ferramentas. Fontes e textos próprios mantêm a distinção entre
+conceitos públicos e materiais externos que não foram copiados.
+
+664 testes app + 6 motor, build e lint alterado aprovados. API das 152 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI 29 aprovada 43761511062, head c36123d.
+
+Continuar Genética mendeliana; Revolução Industrial e trabalho; População,
+migração e demografia; Filosofia contemporânea e tecnologia. Sem banco, schema,
+merge ou deploy. Catálogo em execução, sem homologação docente.
+
+## Histórico — checkpoint 29
 
 Lote 12 com quatro aulas: Produtos notáveis e fatoração; Sintaxe da oração e do
 período; Literatura brasileira contemporânea; Leitura da proposta e recorte

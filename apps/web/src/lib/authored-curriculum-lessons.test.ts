@@ -960,3 +960,26 @@ test('produtos notáveis verificam coeficientes, agrupamento e exclusões antes 
  assert.equal(choice(2),`(x^2 + ${k}x + ${k*k})/(x + ${k}), com x ≠ ${k} e x ≠ -${k}.`);
  assert.equal(k*k-Number(fraction[2]),0);assert.equal(k+k,10,'forma reduzida definida em 5 não reabre domínio original');
 });
+
+
+test('estática confere braço perpendicular, reações nos dois polos e atrito abaixo do limite',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Física'&&s.topic==='Estática, torque e equilíbrio');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const torque=spec.tasks[0].prompt.match(/força de (\d+) N.*distância de ([\d,]+) m.*ângulo de (\d+)°/);assert.ok(torque);
+ const force=Number(torque[1]),r=Number(torque[2].replace(',','.')),angle=Number(torque[3])*Math.PI/180,computed=force*r*Math.sin(angle);assert.ok(Math.abs(computed-6)<1e-12);assert.equal(choice(0),'6 N·m.');assert.notEqual(Math.round(computed),force*r);
+ const beam=spec.tasks[1].prompt.match(/comprimento (\d+) m.*peso (\d+) N.*carga de (\d+) N.*a (\d+) m.*esquerda/);assert.ok(beam);
+ const length=Number(beam[1]),weight=Number(beam[2]),load=Number(beam[3]),x=Number(beam[4]),right=(weight*length/2+load*x)/length,left=weight+load-right;
+ assert.equal(right*length-weight*length/2-load*x,0);assert.equal(-left*length+weight*length/2+load*(length-x),0);assert.equal(left+right,weight+load);assert.equal(choice(1),`Esquerda: ${left} N; direita: ${right} N, ambas para cima.`);
+ const friction=spec.tasks[2].prompt.match(/peso (\d+) N.*μ_s = ([\d,]+).*força horizontal de (\d+) N/);assert.ok(friction);const normal=Number(friction[1]),limit=normal*Number(friction[2].replace(',','.')),applied=Number(friction[3]);assert.ok(applied<limit);assert.equal(choice(2),`Atrito de ${applied} N para a esquerda, abaixo do limite de ${limit} N; o repouso é possível.`);
+});
+
+
+test('funções inorgânicas conservam átomos na neutralização completa, sem trocar índices das fórmulas',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Química'&&s.topic==='Funções inorgânicas');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');assert.match(task.prompt,/H3PO4.*NaOH/);assert.match(task.prompt,/completa/);
+ const totals=(side:string)=>{const total:Record<string,number>={};for(const term of side.trim().split(/\s+\+\s+/)){const match=term.trim().match(/^(?:(\d+) )?([A-Za-z0-9]+)$/);assert.ok(match);const coefficient=Number(match[1]??1),parts=[...match[2].matchAll(/([A-Z][a-z]?)(\d*)/g)];assert.equal(parts.map(p=>p[0]).join(''),match[2]);for(const [,element,count] of parts)total[element]=(total[element]??0)+coefficient*Number(count||1);}return Object.entries(total).sort(([a],[b])=>a.localeCompare(b));};
+ const balances=task.options.map(option=>{const sides=option.replace(/\.$/,'').split(' → ');assert.equal(sides.length,2);return JSON.stringify(totals(sides[0]))===JSON.stringify(totals(sides[1]));});
+ assert.deepEqual(balances.map((valid,index)=>valid?index:-1).filter(index=>index>=0),[task.correctIndex]);
+ assert.equal(task.options[task.correctIndex],'H3PO4 + 3 NaOH → Na3PO4 + 3 H2O.');
+ const balance=totals('H3PO4 + 3 NaOH');assert.deepEqual(Object.fromEntries(balance),{H:6,Na:3,O:7,P:1});
+});
