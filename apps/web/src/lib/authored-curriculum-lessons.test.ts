@@ -323,6 +323,49 @@ test('eletricidade cotidiana separa série, fator de potência e rendimento sem 
  assert.notEqual(inputA,inputA/efficiencyA);
 });
 
+test('átomos introdutórios conservam neutralidade e ponderam massas pelas abundâncias',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Ciências'&&lesson.topic==='Átomos e tabela periódica introdutória');assert.ok(spec);
+ const choice=(index:number)=>{const task=spec.tasks[index];assert.ok(task.options&&typeof task.correctIndex==='number');return task.options[task.correctIndex];};
+ const particles=spec.tasks[0].prompt.match(/(\d+) prótons e (\d+) nêutrons/);assert.ok(particles);
+ const protons=Number(particles[1]),neutrons=Number(particles[2]);
+ assert.equal(choice(0),`Z = ${protons}, A = ${protons+neutrons}, ${protons} elétrons.`);
+ const prompt=spec.tasks[1].prompt;
+ const masses=[...prompt.matchAll(/(\d+,\d+) u/g)].map(match=>Number(match[1].replace(',','.'))),abundances=[...prompt.matchAll(/(\d+)%/g)].map(match=>Number(match[1])/100);
+ assert.equal(masses.length,2);assert.equal(abundances.length,2);assert.equal(abundances[0]+abundances[1],1);
+ const mean=masses.reduce((sum,mass,index)=>sum+mass*abundances[index],0);
+ assert.equal(choice(1),mean.toFixed(1).replace('.',',')+' u.');
+ assert.notEqual(mean,(masses[0]+masses[1])/2);
+ const shells=[...spec.tasks[2].prompt.matchAll(/\b(\d+),(\d+),(\d+)\b/g)].map(match=>match.slice(1).map(Number));assert.equal(shells.length,2);
+ assert.ok(shells.every(distribution=>distribution.length===3));
+ assert.equal(shells[0].at(-1),1);assert.equal(shells[1].at(-1),7);
+ assert.equal(choice(2),'Ambos estão no período 3; o primeiro é do grupo 1 e forma +1, o segundo é do grupo 17 e forma −1.');
+ assert.match(spec.sections[2].explanation,/não se deve misturar raio covalente/);
+});
+
+test('atividade física soma os períodos moderados sem certificar todos os componentes da rotina',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Educação Física'&&lesson.topic==='Atividade física e qualidade de vida');assert.ok(spec);
+ const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const durations=task.prompt.match(/três períodos de (\d+) minutos e dois de (\d+) minutos/);assert.ok(durations);
+ const threshold=Number(task.prompt.match(/inferior de (\d+) minutos/)?.[1]);assert.ok(threshold>0);
+ const total=3*Number(durations[1])+2*Number(durations[2]);
+ assert.equal(task.options[task.correctIndex],`${total} minutos, acima do limite inferior aeróbio em ${total-threshold} minutos.`);
+ assert.match(task.solution,/sem permitir concluir que todas as recomendações foram atendidas/);
+ assert.match(spec.sections[2].explanation,/não prova automaticamente excesso de treinamento/);
+});
+
+test('urbanização distingue crescimento de moradores e mudança da parcela urbana',()=>{
+ const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Geografia'&&lesson.topic==='Urbanização e globalização');assert.ok(spec);
+ const task=spec.tasks[0];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const populations=[...task.prompt.matchAll(/(\d+) mil/g)].map(match=>Number(match[1]));
+ assert.equal(populations.length,4);
+ const [urbanBefore,urbanAfter,totalBefore,totalAfter]=populations;
+ const before=100*urbanBefore/totalBefore,after=100*urbanAfter/totalAfter;
+ assert.ok(urbanAfter>urbanBefore&&after<before);
+ assert.equal(task.options[task.correctIndex],`A população urbana cresceu, mas o grau caiu de ${before}% para ${after}%, queda de ${before-after} pontos percentuais.`);
+ assert.notEqual(before-after,100*(urbanAfter-urbanBefore)/urbanBefore);
+ assert.match(spec.sections[0].explanation,/não impor uma nomenclatura única/);
+});
+
 test('ecologia aplica eficiências sucessivas fornecidas, sem impor regra universal de dez por cento',()=>{
  const spec=authoredCurriculumSpecs.find(lesson=>lesson.subject==='Biologia'&&lesson.topic==='Ecologia e impactos ambientais');assert.ok(spec);
  const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');

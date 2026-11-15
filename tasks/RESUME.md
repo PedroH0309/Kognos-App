@@ -1,6 +1,29 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 8
+## Estado atual em 15/11/2026 — checkpoint 9
+
+Este é o estado mais recente e prevalece sobre todos os registros históricos abaixo.
+
+- Lotes 03/04/05: 16 aulas cada; total desta etapa: 48 aulas novas.
+- 624 testes da aplicação + seis do motor, lint alterado e build aprovados.
+- API das 48 aulas comparada; seis novas aulas no leitor, 18 respostas e referências
+  expandidas em quatro larguras aprovadas. Preview 3316 contém este checkpoint.
+- Restam 1.247 lacunas; ENEM editorial: 64 aprofundadas e 832 lacunas.
+- CI do checkpoint 8 `43711575221` aprovada; sem deploy, merge ou revisão humana.
+- Próximo lote começa em `course-40b23112` (Matemática — Geometria e medidas),
+  seguido de `course-0f508a76` (Português — Leitura, inferência e interpretação
+  textual) e demais entradas a partir do índice 48 da fila privada original.
+- A revisão inicial de geometria aceitou erros: lados incompatíveis com a altura,
+  falsas origens numéricas dos distratores e rotação negativa que supostamente
+  inverteria orientação. Corrigir e pedir nova crítica antes de integrar.
+- Helpers corrigidos de todo o lote estão em Temp e em backups privados. O helper
+  de seleção de fontes de filosofia deve seguir o de correção para manter nove
+  fontes publicáveis mais as três provas, dentro do limite de 12.
+
+IDs completos finais do lote 05 (não sobrescrever com listas históricas menores):
+`course-3c1c6438 course-e4a5aa54 course-c5049767 course-0a23ce3d course-2b490f5f course-a73beb78 course-e752d495 course-e7200af0 course-67789452 course-09d3e70e course-8a0ee99e course-47f820f7 course-0e21cfd0 course-e176a6df course-130d1225 course-a254bbd8`.
+
+## Histórico — checkpoint 8
 
 A pausa anterior foi revogada pelo usuário. A execução continua. Os registros
 abaixo desta seção descrevem a pausa histórica e foram superados por este estado.

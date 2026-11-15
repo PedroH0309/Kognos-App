@@ -919,6 +919,558 @@ export const authoredCurriculumBatch05:readonly AuthoredLessonSpec[] = [
         "correctIndex": 3
       }
     ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Urbanização e globalização",
+    "objective": "Distinguir urbanização e crescimento urbano, interpretar redes e fluxos da globalização e avaliar segregação, mobilidade e riscos com dados e critérios espaciais explícitos.",
+    "prerequisites": [
+      "Proporções, porcentagens e leitura de mapas",
+      "Noções de atividades econômicas e migração",
+      "Distinção entre população absoluta e participação relativa"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Urbanização, crescimento urbano e integração espacial",
+        "explanation": "Urbanização envolve a ampliação da importância das cidades na população e na organização social e econômica. Para comparar quantitativamente, o grau de urbanização é a parcela da população total classificada como urbana em um dado momento: população urbana dividida pela total, vezes 100. A expressão taxa de urbanização também é usada para esse indicador; por isso é necessário ler a definição e não impor uma nomenclatura única a toda fonte. Crescimento da população urbana é a variação de seu número de habitantes, que pode aumentar mesmo quando sua participação no total diminui. Migração, crescimento vegetativo e mudanças de classificação territorial podem contribuir para a variação observada. No Brasil, industrialização, transformações do campo, concentração fundiária, oferta desigual de serviços e movimentos populacionais participaram do processo histórico, com diferenças regionais. Não há uma única causa que explique toda migração, nem uma sequência idêntica para todos os países. Conurbação é a união física de manchas urbanizadas antes separadas, sem extinguir automaticamente limites municipais. Deslocamento pendular é o movimento recorrente entre locais de moradia e trabalho ou estudo, sem mudança permanente de residência por definição. Integração funcional pode existir entre cidades mesmo sem continuidade física completa. Município é unidade político-administrativa, enquanto cidade, área urbanizada e arranjo populacional são recortes distintos. A pesquisa sobre arranjos do IBGE considera contiguidade de áreas urbanizadas e deslocamentos para trabalho e estudo. Não confunda uma classificação estatística com a instituição legal de região metropolitana, nem suponha que qualquer agrupamento de cidades forme automaticamente uma nova unidade administrativa.",
+        "steps": [
+          "Identifique o recorte e a definição de urbano usada na fonte.",
+          "Calcule separadamente população absoluta e proporção urbana.",
+          "Distinga migração permanente de deslocamento pendular.",
+          "Separe continuidade física, integração funcional e limites administrativos."
+        ],
+        "example": "Em um cenário hipotético, a população urbana passa de 30 mil para 40 mil, enquanto a população total passa de 50 mil para 80 mil. A população urbana cresceu, mas sua participação caiu de 60% para 50%. Não há contradição: os denominadores e as grandezas comparadas são diferentes.",
+        "pitfall": "Deduzir aumento do grau de urbanização só porque aumentou o número de moradores urbanos, ou afirmar que conurbação funde juridicamente municípios."
+      },
+      {
+        "level": "intermediate",
+        "title": "Globalização, redes urbanas e funções de comando",
+        "explanation": "Globalização articula territórios por fluxos de mercadorias, capitais, informações, tecnologias e pessoas. Integração não significa distribuição igual de infraestrutura e poder: redes são seletivas e podem aproximar pontos distantes enquanto mantêm barreiras para outros grupos. Cidades participam dessas redes com funções diferentes, como produção, logística, gestão empresarial, pesquisa e serviços especializados. Hierarquia urbana não pode ser lida apenas como uma lista de tamanho populacional. Na REGIC do IBGE, a centralidade se relaciona à gestão e à oferta de bens e serviços que atraem ou articulam outros centros. Uma cidade pode exercer influência regional relevante sem ser a mais populosa; centros menores também mantêm vínculos especializados com circuitos internacionais. Metrópole é um centro de forte articulação e influência urbana, enquanto metropolização envolve expansão e reorganização dessas funções e relações. Cidade global destaca funções de conexão e comando em redes mundiais, não apenas população muito numerosa. Dispersão de unidades produtivas pode coexistir com concentração de decisões e finanças em outros lugares. Uma cadeia produtiva pode reunir pesquisa, fabricação e distribuição em diferentes territórios; as vantagens capturadas e as condições de trabalho não são necessariamente iguais. Infraestrutura digital não eliminou distância física, transporte, fronteiras ou conflitos: depende de energia, equipamentos, conectividade e acesso. Ao interpretar um mapa de fluxos, confira o que a espessura da linha representa, qual período foi medido e se a ligação indica mercadorias, passageiros ou decisões. Uma conexão isolada não demonstra que todo o território atingiu o mesmo grau de integração ou renda.",
+        "steps": [
+          "Identifique o tipo de fluxo e os centros conectados no mapa.",
+          "Distinga tamanho populacional de influência e funções urbanas.",
+          "Localize decisões, produção e distribuição sem presumir coincidência espacial.",
+          "Avalie integração desigual e dependência de infraestrutura material e digital."
+        ],
+        "example": "Uma empresa hipotética mantém decisões financeiras em uma metrópole, pesquisa em uma cidade universitária e montagem em outro país. A dispersão da fabricação não prova a dispersão do comando. Para estudar a rede, é preciso acompanhar tanto produtos quanto informações e decisões entre os locais.",
+        "pitfall": "Medir toda centralidade só pelo número de habitantes, supor que apenas capitais participam de redes internacionais ou afirmar que internet tornou irrelevante a infraestrutura física."
+      },
+      {
+        "level": "advanced",
+        "title": "Segregação, acessibilidade e riscos urbanos",
+        "explanation": "Segregação socioespacial envolve distribuição desigual de grupos, recursos e oportunidades no espaço. Preço da terra, mercado habitacional, discriminação, infraestrutura e decisões públicas contribuem para padrões que variam entre cidades; periferia não significa obrigatoriamente pobreza, e distância ao centro não explica sozinha todos os contrastes. Acessibilidade é a possibilidade de alcançar atividades e serviços, considerando tempo, custo, oferta e condições de uso; mobilidade descreve deslocamentos e condições de realizá-los. Uma obra que aumenta velocidade de veículos pode não melhorar acesso de quem depende de transporte coletivo ou enfrenta barreiras físicas. Expansão urbana dispersa pode alongar percursos e elevar custos de infraestrutura, mas os efeitos dependem da localização de moradia, emprego e serviços. Impermeabilização pode aumentar escoamento superficial; perda de vegetação, materiais e calor das atividades urbanas podem favorecer ilhas de calor. Isso não implica que toda cidade tenha o mesmo clima interno ou que uma única obra resolva inundações. Risco envolve ameaça, exposição e vulnerabilidade: um fenômeno físico não determina sozinho a distribuição de danos. Pessoas com menor acesso a moradia segura e infraestrutura podem enfrentar consequências mais graves. Problemas como transporte e drenagem frequentemente atravessam limites municipais e exigem coordenação em escala compatível. Avaliar uma intervenção inclui segurança, acesso ao trabalho, redes sociais e distribuição de custos e benefícios. Reduzir exposição a um perigo enquanto se ampliam deslocamentos e dificuldades de acesso demanda análise explícita; não basta contabilizar unidades habitacionais entregues. Políticas devem ser avaliadas por resultados acompanhados, com participação dos afetados e sem atribuir estatísticas inventadas a cidades reais.",
+        "steps": [
+          "Mapeie moradia, oportunidades, tempo e custo de acesso.",
+          "Explique o mecanismo ambiental e as condições locais de exposição.",
+          "Compare benefícios e encargos para grupos e municípios diferentes.",
+          "Avalie resultados sociais e ambientais, sem trocar um indicador isolado por sucesso integral."
+        ],
+        "example": "Num modelo hipotético, uma nova via reduz o trajeto de carro, mas o serviço de ônibus fica mais raro e o tempo de acesso ao trabalho de seus usuários aumenta. Melhora para um modo de transporte não demonstra melhoria universal de acessibilidade. A avaliação precisa distinguir grupos, custos e oportunidades alcançadas.",
+        "pitfall": "Naturalizar risco como destino inevitável da população pobre, tratar periferia como categoria social uniforme ou medir melhoria urbana apenas pela velocidade dos automóveis."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em um território hipotético de recorte e classificação constantes, a população urbana passa de 60 mil para 72 mil, e a população total passa de 100 mil para 150 mil. Qual interpretação distingue crescimento urbano e grau de urbanização?",
+        "hint": "Calcule a população urbana como porcentagem do total nos dois momentos e compare isso ao aumento absoluto dos moradores urbanos.",
+        "solution": "B calcula grau inicial 60/100 = 60% e final 72/150 = 48%: queda de 12 pontos percentuais, embora a população urbana tenha aumentado em 12 mil. A confunde a variação urbana absoluta com participação. C aplica o crescimento de 20% dos moradores urbanos diretamente ao grau inicial, ignorando o total. D nega o aumento absoluto informado.",
+        "options": [
+          "O grau de urbanização cresceu porque houve mais moradores urbanos.",
+          "A população urbana cresceu, mas o grau caiu de 60% para 48%, queda de 12 pontos percentuais.",
+          "O grau final é 72%, pois a população urbana cresceu 20%.",
+          "A população urbana diminuiu, pois o grau de urbanização caiu."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma rede hipotética, a cidade A tem 300 mil habitantes e concentra gestão de empresas e serviços especializados procurados por vários municípios. A cidade B tem 500 mil habitantes, mas exerce menor influência nesses fluxos. Qual conclusão é sustentada pelos dados?",
+        "hint": "O enunciado compara funções e atração de fluxos, não apenas o número de moradores. Não há informação para classificar formalmente essas cidades na REGIC.",
+        "solution": "D reconhece que influência e centralidade nos fluxos descritos não decorrem exclusivamente da população. A impõe ordem apenas demográfica. B elimina conexões que o enunciado afirma existirem. C atribui uma classe formal da REGIC sem levantamento e critérios suficientes; o exemplo é hipotético e não autoriza essa classificação específica.",
+        "options": [
+          "B necessariamente comanda A porque é mais populosa.",
+          "A não pode influenciar outras cidades por ter menos de um milhão de habitantes.",
+          "Os dados bastam para declarar A uma metrópole nacional oficial da REGIC.",
+          "A pode ter maior centralidade nesses fluxos mesmo com população menor que B."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um projeto hipotético reduz exposição de famílias a inundações ao transferi-las para moradias seguras. Porém, os novos locais ficam longe dos empregos e sem transporte adequado, aumentando tempo e custo de deslocamento. Qual avaliação considera os efeitos descritos sem negar a redução do perigo inicial?",
+        "hint": "Separe segurança diante das inundações de acessibilidade ao trabalho e avalie a distribuição de benefícios e dificuldades.",
+        "solution": "A reconhece a melhoria de segurança e a piora de acessibilidade, que devem ser consideradas conjuntamente. B transforma um benefício em prova de resultado integral. C ignora o acesso seguro à moradia e universaliza a preferência pela situação anterior. D supõe que distância não importa e que infraestrutura digital substitui qualquer deslocamento, o que não decorre do caso.",
+        "options": [
+          "Houve benefício de segurança, mas o prejuízo de acessibilidade precisa ser enfrentado na avaliação integrada.",
+          "Eliminar a exposição à inundação prova que todos os efeitos sociais foram positivos.",
+          "O aumento do deslocamento prova que reduzir risco de inundação é sempre indesejável.",
+          "A distância aos empregos é irrelevante porque a globalização elimina a necessidade de transporte."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia medieval e modernidade",
+    "objective": "Comparar problemas de fé e razão na filosofia medieval com debates modernos sobre conhecimento e legitimidade política, identificando continuidades e diferenças sem reduzir períodos a blocos uniformes.",
+    "prerequisites": [
+      "Noções de argumento, premissa e conclusão",
+      "Ideias gerais de Platão e Aristóteles",
+      "Contextualização da Idade Média, do Renascimento e da modernidade europeia"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Pluralidade medieval e relações entre fé e razão",
+        "explanation": "A filosofia medieval não se resume a uma única doutrina nem a um intervalo sem reflexão racional. Tradições cristãs, islâmicas e judaicas desenvolveram debates sobre conhecimento, ser, ética e política, dialogando com fontes antigas e entre si. Ibn Sina, Ibn Rushd e Maimônides foram pensadores, não apenas transmissores passivos de livros gregos. No mundo cristão, Agostinho, situado na Antiguidade tardia, tornou-se referência decisiva para o pensamento medieval. Sua reflexão relaciona interioridade, verdade e iluminação divina: a possibilidade de reconhecer verdades inteligíveis depende, em sua concepção, de uma luz da verdade que não se reduz à sensação corporal. Isso não equivale a afirmar que o estudante nada deve investigar. Tomás de Aquino distingue o conhecimento construído pela razão natural e a doutrina fundada na revelação. Algumas verdades sobre Deus podem ser investigadas racionalmente; mistérios como a Trindade não são demonstrados pela razão natural. A diferença de acesso não implica duas verdades contraditórias: na perspectiva tomista, verdade racional e verdade revelada não podem se opor em última instância. Tampouco há objetos sempre exclusivos: uma verdade alcançável pela razão pode também ser recebida pela fé. A escolástica é associada a formas de estudo e disputa argumentativa, com questões, objeções e respostas; não é sinônimo de proibição do debate. No problema dos universais, pergunta-se como termos e conceitos gerais se relacionam aos indivíduos. Ockham nega uma coisa universal comum existente fora da mente; conceitos podem significar muitos indivíduos. Isso não se reduz a dizer que só existem sons vazios. A economia explicativa associada à sua navalha não prova que qualquer explicação mais curta seja verdadeira.",
+        "steps": [
+          "Identifique a tradição e o problema, sem tratar toda a Idade Média como uniforme.",
+          "Distinga sensação, investigação racional e fundamento religioso em cada autor.",
+          "Separe diferença de acesso a uma verdade de contradição entre verdades.",
+          "No debate dos universais, diferencie indivíduo, conceito geral e realidade extramental."
+        ],
+        "example": "Em um diálogo autoral hipotético, uma pessoa afirma que duas vias de acesso ao conhecimento devem ter métodos idênticos. Uma resposta inspirada no problema tomista distingue demonstração racional e aceitação pela revelação, sem concluir que a diferença de método autorize contradições. O exemplo é uma explicação didática, não uma citação de Tomás.",
+        "pitfall": "Confundir filosofia medieval com ausência de razão, reduzir pensadores islâmicos e judeus a copiadores ou atribuir a Tomás duas verdades que podem se contradizer."
+      },
+      {
+        "level": "intermediate",
+        "title": "Método, experiência e condições do conhecimento moderno",
+        "explanation": "A passagem à modernidade envolveu transformações institucionais, culturais e científicas, com rupturas e continuidades. Não aconteceu porque todos abandonaram a religião de uma vez, nem fez desaparecer conceitos de origem anterior. Descartes usa a dúvida metódica para procurar um fundamento seguro: pode questionar os sentidos e muitas crenças, mas o próprio ato de duvidar implica atividade de pensamento e existência de quem pensa nesse ato. O cogito não demonstra sozinho a existência de todos os objetos externos nem significa que só pessoas inteligentes existem. Seu projeto valoriza evidência, análise de problemas e ordem da investigação; o papel de Deus permanece importante na fundamentação cartesiana. Racionalismo e empirismo nomeiam orientações com diferenças internas, não times em que um nunca observa e outro nunca raciocina. Locke recusa ideias inatas e relaciona a formação das ideias à sensação e à reflexão sobre operações mentais; não limita toda experiência a enxergar objetos externos. Hume diferencia impressões mais vívidas e ideias e examina como passamos de experiências repetidas a expectativas causais. Observar um evento seguido de outro não revela uma ligação necessária que garanta logicamente toda ocorrência futura; o hábito ajuda a explicar a expectativa. Isso não significa que ele proíba a ciência ou diga que nada acontece. Kant pergunta pelas condições da experiência e do conhecimento: espaço e tempo são formas da sensibilidade, enquanto categorias do entendimento, como causalidade, organizam o que pode ser objeto de experiência. Conhecemos fenômenos nessas condições, sem acesso teórico às coisas em si como se fossem objetos dados do mesmo modo. A atividade do sujeito não é autorização para cada pessoa inventar livremente a realidade.",
+        "steps": [
+          "Localize o problema e o método antes de associar um texto a uma corrente.",
+          "Diferencie dúvida como procedimento de uma conclusão de que nada pode ser conhecido.",
+          "Separe experiência repetida e necessidade lógica na análise de causalidade.",
+          "Em Kant, distinga formas da sensibilidade e categorias do entendimento."
+        ],
+        "example": "Num cenário autoral hipotético, um sinal luminoso precedeu várias vezes uma máquina ligar. Esperar nova ativação pode resultar da repetição observada, mas essa observação sozinha não é uma demonstração lógica de que toda ocorrência futura terá o mesmo resultado. A distinção ilustra o problema da inferência causal, sem reproduzir um exemplo do texto de Hume.",
+        "pitfall": "Tratar empirismo como recusa de raciocínio, fazer do cogito uma prova imediata de todo o mundo exterior ou confundir sujeito transcendental com opinião individual arbitrária."
+      },
+      {
+        "level": "advanced",
+        "title": "Legitimidade política, contrato e limites das comparações",
+        "explanation": "Na filosofia política moderna, teorias do contrato discutem a legitimidade do poder e as condições da vida comum. Estado de natureza é um recurso teórico que não deve ser tratado automaticamente como descrição de uma época histórica realmente observada. Hobbes analisa a insegurança onde falta um poder comum capaz de garantir a paz. A guerra não é apenas batalha ininterrupta: inclui disposição e insegurança duradouras. O pacto entre indivíduos autoriza um soberano, que não é simplesmente outro contratante nas mesmas condições. Esse soberano pode ser uma pessoa ou uma assembleia: a teoria não se reduz à afirmação de que só um monarca pode governar. Hobbes não elimina todo direito de autopreservação, por isso é falso dizer que ninguém pode resistir a uma ameaça direta à própria vida. Locke descreve liberdade e igualdade naturais sob uma lei de natureza, e não licença irrestrita para fazer qualquer coisa. A formação da sociedade política procura superar inconvenientes da aplicação privada dessa lei e proteger direitos; o governo se submete a uma relação de confiança e pode perder legitimidade quando a viola. A resistência não é sinônimo de oposição a qualquer decisão cotidiana. Rousseau, por sua vez, investiga uma associação em que a soberania pertence ao povo e a vontade geral se orienta ao interesse comum; ela não é simples soma de interesses privados ou qualquer vontade pessoal de quem governa. Esses autores não sustentam uma única doutrina de contrato nem justificam todos a mesma forma de soberania. O Iluminismo envolve crítica, debate sobre liberdade e uso da razão, mas não um consenso sem tensões ou uma igualdade social imediatamente realizada. Comparar autores exige explicitar o critério: origem da autoridade, representação, direitos, proteção ou condições de resistência. Um vocabulário semelhante não garante conclusões idênticas.",
+        "steps": [
+          "Diferencie hipótese filosófica de relato histórico no estado de natureza.",
+          "Identifique quem pactua e o que é autorizado em cada teoria.",
+          "Compare soberania, direitos e limites da obediência sem apagar exceções.",
+          "Avalie a tese concreta do texto, sem usar rótulo de época como prova de consenso."
+        ],
+        "example": "Em um debate autoral hipotético, dois defensores do consentimento discordam: um privilegia um poder comum forte contra a insegurança; outro exige limites institucionais para proteger direitos. A palavra consentimento não resolve a discordância. É preciso examinar os limites do governo e a posição dos governados, em vez de chamar toda teoria contratualista de idêntica.",
+        "pitfall": "Chamar estado de natureza de fase histórica obrigatória, dizer que Hobbes apaga toda autopreservação ou que vontade geral é qualquer preferência do governante."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma interpretação autoral hipotética, um estudante afirma: para Tomás de Aquino, se um mistério não pode ser demonstrado pela razão natural, isso prova que fé e razão admitem verdades contraditórias. Qual correção corresponde à posição tomista apresentada?",
+        "hint": "Distinga uma verdade que excede a demonstração racional de uma afirmação contrária à razão. Diferentes vias não autorizam contradição.",
+        "solution": "B distingue exceder o alcance demonstrativo da razão natural e contradizê-la. Na perspectiva tomista, a verdade não se opõe à verdade, embora nem todo conteúdo revelado seja racionalmente demonstrável. A inventa licença para a contradição. C apaga a distinção entre os modos de acesso. D nega que a razão natural possa investigar qualquer verdade sobre Deus, o que não corresponde à posição estudada.",
+        "options": [
+          "A ausência de demonstração prova que duas afirmações contraditórias são igualmente verdadeiras.",
+          "Um mistério pode ultrapassar a razão natural sem que fé e razão sejam fontes de verdades contraditórias.",
+          "Fé e razão têm necessariamente o mesmo método e o mesmo alcance demonstrativo.",
+          "A razão natural é incapaz de investigar qualquer questão sobre Deus."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em um texto autoral hipotético sobre Descartes, uma pessoa duvida da existência do mundo e conclui que pode duvidar até de que existe enquanto duvida. Qual análise identifica o limite dessa última afirmação no argumento do cogito?",
+        "hint": "Examine o que o próprio ato de duvidar pressupõe naquele momento, sem acrescentar uma prova automática dos objetos externos.",
+        "solution": "D identifica que duvidar é uma atividade de pensamento e, nesse ato, pressupõe a existência de quem pensa. A transforma o cogito em prova direta de todos os objetos. B confunde dúvida metódica com negação definitiva de toda verdade. C converte existência em prêmio por inteligência, condição que não integra o argumento.",
+        "options": [
+          "O cogito demonstra imediatamente que todas as percepções de objetos externos são verdadeiras.",
+          "Duvidar prova que nenhuma verdade pode ser alcançada sob qualquer condição.",
+          "Somente quem obtém respostas inteligentes existe, segundo o cogito.",
+          "O próprio ato de duvidar implica pensamento e existência de quem pensa naquele ato."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Considere a tese autoral hipotética: como Hobbes defende um soberano forte, seu argumento elimina absolutamente toda possibilidade de defesa da própria vida contra uma ameaça direta. Qual avaliação preserva a nuance da teoria?",
+        "hint": "A defesa do poder soberano deve ser comparada ao lugar da autopreservação; não confunda ausência de um direito geral de revolução com ausência de toda resistência.",
+        "solution": "A identifica o limite da tese: Hobbes preserva a autopreservação e não exige renúncia absoluta à defesa da vida contra ameaça direta. B exagera a conclusão contrária, fazendo de qualquer insatisfação um direito de revolução. C confunde o soberano com parte contratante em condições idênticas. D atribui a Hobbes a concepção rousseauniana de vontade geral sem demonstrar o argumento.",
+        "options": [
+          "A tese é excessiva: Hobbes preserva a autopreservação, inclusive diante de ameaça direta à própria vida.",
+          "A tese é falsa porque Hobbes autoriza revolução por qualquer discordância cotidiana com o soberano.",
+          "A tese é verdadeira porque o soberano pactua exatamente nas mesmas condições que cada súdito.",
+          "A tese é verdadeira porque Hobbes identifica toda vontade pessoal do soberano com a vontade geral de Rousseau."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Cultura, identidade e diversidade",
+    "objective": "Analisar cultura como aprendizagem social dinâmica, identidade como relação de pertencimento e diversidade em contextos de desigualdade, distinguindo compreensão contextual, direitos e relações de poder.",
+    "prerequisites": [
+      "Noções de socialização, grupo e instituição",
+      "Leitura de situações sociais e distinção entre descrição e julgamento",
+      "Comparação entre evidência observada e generalização"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Cultura aprendida, símbolos e mudança",
+        "explanation": "Cultura compreende saberes, valores, normas, símbolos, técnicas e práticas aprendidos e compartilhados socialmente. Não é sinônimo de escolaridade elevada, gosto refinado ou apenas produção artística: maneiras de organizar o trabalho e atribuir significado aos objetos também integram a análise cultural. A dimensão material inclui objetos e técnicas em uso; a imaterial envolve sentidos, conhecimentos, normas e valores. Elas se relacionam: um instrumento não tem significado social apenas por sua matéria física. Símbolos são elementos aos quais se atribuem significados compartilhados em contextos; um gesto pode assumir sentidos diferentes conforme a situação. Valores expressam referências do que se considera desejável; normas orientam condutas e podem ser formais ou informais, apoiadas por diferentes sanções. Socialização é o processo de aprendizagem e participação na vida social, envolvendo família, escola, pares, meios de comunicação e outras instituições. A transmissão cultural não é cópia sem mudança: pessoas interpretam e transformam repertórios. Também não é herança genética que determine automaticamente comportamento. Compartilhamento não implica consenso de todos: grupos têm conflitos e variações internas de geração, classe, religião e trajetória. No estudo da diversidade, não cabe classificar povos inteiros como se estivessem em uma única escada de superioridade cultural. A presença de um smartphone não torna alguém menos pertencente a um grupo tradicional nem comprova desaparecimento de sua cultura. Para analisar uma prática, descreva o contexto, seus sentidos para participantes e as relações que a sustentam, sem transformar uma observação local em regra sobre toda uma população.",
+        "steps": [
+          "Identifique práticas, objetos e significados no contexto observado.",
+          "Diferencie valores, normas e símbolos sem tratá-los como herança biológica.",
+          "Observe como repertórios são aprendidos e reinterpretados.",
+          "Procure diferenças internas antes de generalizar sobre um grupo."
+        ],
+        "example": "Em uma associação hipotética de moradores, avisos antes transmitidos oralmente passam a circular também num aplicativo. A mudança de suporte não prova que os vínculos comunitários desapareceram. Pode haver continuidade de significados e transformação das formas de participação, cujos efeitos precisam ser observados.",
+        "pitfall": "Confundir cultura com erudição, tratar grupos como homogêneos ou dizer que qualquer inovação tecnológica destrói automaticamente um pertencimento cultural."
+      },
+      {
+        "level": "intermediate",
+        "title": "Identidade, alteridade e desigualdades",
+        "explanation": "Identidade envolve maneiras de reconhecer a si e aos outros por pertencimentos e diferenças socialmente produzidos. Uma pessoa pode mobilizar vínculos locais, profissionais, religiosos e outros em situações distintas; isso não significa que possa escolher sem restrições como será tratada. Reconhecimento, discriminação e instituições influenciam as possibilidades de afirmar pertencimentos. Alteridade é a relação com o outro, que não precisa ser convertida em hierarquia. Etnocentrismo ocorre quando referências do próprio grupo são tomadas como medida universal para julgar os demais. Relativizar metodologicamente uma prática significa procurar compreendê-la em seu contexto, em vez de declarar de antemão que o diferente é inferior. Não exige aceitar qualquer violência ou suspender toda crítica: a defesa da diversidade não autoriza violação de direitos humanos. Estereótipos simplificam grupos em características rígidas; preconceito envolve julgamentos prévios, e discriminação se manifesta em práticas de tratamento desigual. Raça é analisada como classificação social com efeitos reais, sem pressupor raças humanas biologicamente hierarquizadas; etnicidade envolve referências de história, pertencimento e cultura. Diferença cultural e desigualdade de recursos ou poder não são sinônimos, embora possam estar articuladas. A interseccionalidade, desenvolvida no debate feminista negro e associada ao trabalho de Kimberlé Crenshaw, examina como relações como racismo e sexismo interagem e podem produzir efeitos que análises separadas não captam. Ela não exige inventar um índice pela soma de identidades, nem concluir toda experiência apenas pela lista de categorias de uma pessoa. É necessário investigar mecanismos e evidências no contexto.",
+        "steps": [
+          "Identifique pertencimentos e quem pode reconhecê-los ou recusá-los socialmente.",
+          "Separe compreensão contextual de aprovação moral automática.",
+          "Distinga diferenças, estereótipos e práticas discriminatórias.",
+          "Investigue interações entre mecanismos de desigualdade sem presumir trajetórias individuais."
+        ],
+        "example": "Em um caso autoral hipotético, uma instituição aceita homens de um grupo racial e mulheres de outro, mas rejeita especificamente mulheres do primeiro grupo. Examinar apenas homens e mulheres em conjunto ou apenas grupos raciais em conjunto pode ocultar o padrão combinado. A análise exige observar os cruzamentos, sem universalizar o caso para todas as instituições.",
+        "pitfall": "Naturalizar desigualdades como traços biológicos, reduzir interseccionalidade a uma soma mecânica ou presumir que relativizar uma prática exige aprovar toda violação de direitos."
+      },
+      {
+        "level": "advanced",
+        "title": "Circulação cultural, participação e poder",
+        "explanation": "Circulação de pessoas, produtos e informações favorece contatos, recombinações e disputas culturais. A globalização pode difundir padrões de consumo e, ao mesmo tempo, abrir espaço para releituras e afirmações locais. Nenhum desses processos autoriza concluir que todas as culturas se tornaram iguais ou que vivem isoladas. Hibridização descreve recombinações de elementos de diferentes trajetórias, sem pressupor mistura harmoniosa ou identidades originalmente puras. A análise precisa perguntar quem produz, decide, é reconhecido e recebe os benefícios. Uso de referências culturais pode envolver intercâmbio, colaboração, apropriação contestada ou exploração; esses termos não podem ser aplicados apenas porque houve contato entre grupos. Contexto, participação, autorização pertinente, atribuição e distribuição de benefícios ajudam a examinar relações concretas. Cultura não é um acervo congelado que um agente externo salva sozinho. Pessoas e coletivos que produzem práticas e expressões devem ser considerados sujeitos, com divergências internas e capacidade de decidir, e não apenas fontes de imagens exóticas. Salvaguardar uma expressão cultural envolve condições de continuidade e transmissão viva; não requer proibir toda mudança. Reconhecer diversidade também demanda distinguir presença simbólica e poder de participação: exibir uma imagem não prova que os representados controlam sua circulação ou recebem remuneração. A Declaração da UNESCO sobre Diversidade Cultural articula diversidade, diálogo e direitos humanos, sem autorizar que uma prática seja imposta a pessoas por tradição. Ao avaliar uma política ou contrato hipotético, separe a análise sociológica de uma conclusão jurídica automática: acesso público não significa domínio público, e um dado sobre visibilidade não basta para provar consentimento ou justiça na distribuição dos resultados.",
+        "steps": [
+          "Descreva circulação e recombinação sem presumir homogeneização total.",
+          "Verifique participação, atribuição e benefícios a partir de evidências.",
+          "Separe visibilidade dos produtores e controle sobre a representação.",
+          "Avalie continuidade cultural com transformação e respeito a direitos."
+        ],
+        "example": "Em um projeto autoral hipotético, um grupo cultural produz uma exposição digital com curadoria compartilhada, identificação dos autores e decisões sobre circulação e receita. A presença de ferramentas digitais não apaga a trajetória do grupo. Para avaliar a colaboração, importam as condições negociadas e sua realização, não apenas a imagem promocional de diversidade.",
+        "pitfall": "Confundir divulgação com consentimento, acesso público com domínio público ou preservação com proibição de toda mudança cultural."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Em uma comunidade hipotética, jovens aprendem uma técnica artesanal com pessoas mais velhas e adaptam seus desenhos para novos usos. Qual interpretação corresponde ao conceito sociológico de cultura?",
+        "hint": "Observe aprendizagem e transformação de significados, sem confundir transmissão social com reprodução genética ou imobilidade.",
+        "solution": "C reconhece transmissão e reelaboração social: aprender a técnica e transformar usos integram processos culturais. A reduz cultura à herança biológica. B supõe imobilidade como condição para existir cultura. D limita cultura à escolaridade elevada e ignora práticas e saberes compartilhados.",
+        "options": [
+          "A técnica comprova que cultura é transmitida biologicamente entre gerações.",
+          "A adaptação dos desenhos prova que a comunidade deixou de ter cultura.",
+          "A aprendizagem e a reelaboração da técnica mostram uma cultura transmitida e transformada socialmente.",
+          "A prática só poderia ser cultural se todos tivessem formação universitária."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma pesquisadora encontra uma prática pouco familiar e decide investigar seu contexto e os sentidos atribuídos pelos participantes antes de avaliá-la. Ela afirma que compreender não implica aprovar qualquer violência. Qual análise descreve esse procedimento?",
+        "hint": "Diferencie tomar a própria cultura como medida universal de buscar compreensão contextual mantendo a discussão de direitos.",
+        "solution": "A descreve relativização metodológica compatível com análise crítica e direitos humanos. B inverte o procedimento e torna o padrão do observador medida universal. C transforma contextualização em aprovação obrigatória, contrariando o enunciado. D troca investigação sociológica por determinismo biológico sem evidência.",
+        "options": [
+          "Compreensão contextual com possibilidade de crítica, sem hierarquização automática das culturas.",
+          "Etnocentrismo, pois toda prática deve ser julgada apenas pelos costumes da pesquisadora.",
+          "Aprovação moral obrigatória de toda violência desde que seja apresentada como tradição.",
+          "Demonstração de que práticas sociais são determinadas exclusivamente por genes."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "level": "advanced",
+        "prompt": "Em um cenário autoral hipotético, uma empresa usa comercialmente gravações de um coletivo cultural sem sua autorização e sem identificá-lo. A publicidade afirma que apenas dar visibilidade já garante uma relação justa. Qual avaliação considera as relações de poder descritas sem presumir um resultado judicial?",
+        "hint": "Compare a promessa de exposição com participação, atribuição e controle sobre o uso, que o cenário informa terem sido desconsiderados.",
+        "solution": "D identifica que visibilidade não supre automaticamente ausência de autorização e atribuição nem prova distribuição justa de benefícios. A transforma circulação em consentimento. B nega possibilidade de decisão dos produtores. C afirma um resultado jurídico específico sem informação suficiente, quando o problema pede análise da relação social descrita.",
+        "options": [
+          "A divulgação equivale automaticamente a consentimento, independentemente da posição dos produtores.",
+          "Produtores culturais não podem participar de decisões quando sua produção circula digitalmente.",
+          "O caso permite afirmar automaticamente qual será a sentença e o valor da indenização.",
+          "A visibilidade não demonstra justiça na relação; participação, autorização e atribuição precisam ser consideradas."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Arte brasileira e modernismo",
+    "objective": "Reconhecer contextos e escolhas formais do modernismo brasileiro, comparar propostas e desdobramentos e analisar criticamente representação e cânone a partir de obras e descrições autossuficientes.",
+    "prerequisites": [
+      "Noções de linha, cor, forma, composição e espaço",
+      "Contexto da Primeira República e das transformações urbanas",
+      "Distinção entre descrição, interpretação e informação histórica"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Renovação estética e contexto da Semana de 1922",
+        "explanation": "Arte brasileira abrange muitas tradições e períodos; não começou com o modernismo nem cabe numa única linguagem nacional. Nas primeiras décadas do século XX, artistas experimentaram modos de representar e organizar formas em diálogo com transformações urbanas e circulação internacional. Renovar não significava apenas escolher um tema brasileiro: podia envolver cor não naturalista, distorção expressiva, simplificação de volumes, fragmentação do espaço e questionamento de convenções acadêmicas. Uma escolha formal deve ser analisada na obra e em seu contexto, sem tratar qualquer deformação como erro de desenho ou toda obra moderna como abstrata. A exposição de Anita Malfatti de 1917 e sua recepção mostram que havia experiências e disputas anteriores a 1922. A Semana de Arte Moderna, no Theatro Municipal de São Paulo em fevereiro de 1922, reuniu exposição e apresentações de diferentes linguagens, com participação de figuras como Anita, Di Cavalcanti e Villa-Lobos. Seu valor histórico não exige imaginar adesão unânime, nem um manifesto único aceito por todos. Tarsila do Amaral tornou-se central no modernismo, mas não participou da Semana; estar ligada ao movimento não é o mesmo que ter exposto naquele evento. Também não se deve deduzir que todas as mulheres estiveram ausentes porque uma narrativa destaca principalmente homens. Na leitura visual, comece por relações observáveis de linha, cor, proporção, ritmo e espaço; depois relacione escolhas a temas e contexto. O rótulo de movimento não substitui evidências nem autoriza atribuir toda intenção possível ao artista.",
+        "steps": [
+          "Separe a história ampla da arte brasileira do marco modernista de 1922.",
+          "Observe escolhas formais antes de avaliar realismo ou beleza como critérios únicos.",
+          "Diferencie participação na Semana e vínculo posterior com o movimento.",
+          "Relacione descrição e contexto sem transformar hipótese em intenção comprovada."
+        ],
+        "example": "Em uma descrição autoral hipotética de pintura, os rostos são alongados, as cores contrastam e o espaço parece comprimido. Esses elementos podem contribuir para intensidade expressiva. Não basta dizer que a pintura é ruim porque as proporções não imitam uma fotografia, nem identificar um autor real apenas por esses traços genéricos.",
+        "pitfall": "Afirmar que a Semana inventou toda a arte moderna brasileira, atribuir sua participação a Tarsila ou julgar escolhas não naturalistas apenas como falta de habilidade."
+      },
+      {
+        "level": "intermediate",
+        "title": "Propostas, circulação e desdobramentos distintos",
+        "explanation": "O modernismo brasileiro reuniu projetos e trajetórias diferentes, e não uma fórmula estética obedecida por todos. O Manifesto da Poesia Pau-Brasil, de Oswald de Andrade em 1924, propõe renovação com elaboração de referências brasileiras em diálogo com o exterior. Na pintura de Tarsila, simplificações, cores e reelaborações de paisagens e temas participam desse debate. O Manifesto Antropófago, de Oswald em 1928, usa a antropofagia como metáfora de absorção e transformação crítica de referências, em vez de cópia subordinada ou defesa de isolamento cultural absoluto. Abaporu, pintura de Tarsila de 1928, tem relação decisiva com a formulação desse projeto; não é uma obra exposta na Semana seis anos antes. Pau-Brasil e Antropofagia se relacionam, mas seus manifestos e contextos não são idênticos. A circulação de revistas, exposições e correspondência articula diferentes centros: a revista Verde, criada em Cataguases, Minas Gerais, em 1927, é um exemplo que impede reduzir toda experiência ao mesmo núcleo paulistano. Nos desdobramentos, a figuração pode abordar experiências sociais e dramáticas. Retirantes, de Candido Portinari, é de 1944 e integra uma produção posterior à Semana, não uma apresentação de 1922. Outros debates exploram abstração, geometria e participação. Os Bichos de Lygia Clark, iniciados em 1960 no contexto de sua trajetória neoconcreta, envolvem estruturas articuláveis e relação ativa com o participante. Não são mera continuação formal de uma pintura antropofágica: mudam materiais, problemas e modos de experiência. Divisões geracionais da literatura não devem ser transferidas mecanicamente para todas as artes.",
+        "steps": [
+          "Identifique manifesto, autor e momento sem fundir propostas distintas.",
+          "Diferencie absorção crítica de imitação ou isolamento absoluto.",
+          "Observe circulação regional e trajetórias posteriores a 1922.",
+          "Compare forma, material e participação, sem impor a periodização de uma linguagem a todas."
+        ],
+        "example": "Uma comparação didática autoral pode contrastar uma pintura figurativa de tema social e um objeto articulável que envolve o participante. Tema reconhecível, composição, material e ação do público são critérios diferentes. A comparação não exige declarar que uma dessas experiências anulou a outra ou que ambas têm a mesma função.",
+        "pitfall": "Localizar a revista Verde em Recife, incluir Retirantes ou Abaporu na exposição de 1922 ou chamar toda experiência posterior de repetição da Antropofagia."
+      },
+      {
+        "level": "advanced",
+        "title": "Representação, cânone e leitura crítica",
+        "explanation": "Um cânone é uma seleção de artistas e obras que ganha centralidade por processos de crítica, ensino, acervos, mercado e exposição. Essa seleção pode ser revisada; não é uma lista neutra de tudo que foi produzido. Reconhecer a relevância da Semana não exige tratá-la como origem única ou triunfo inevitável. Da mesma forma, discutir limites de um projeto modernista não apaga automaticamente suas invenções formais. No debate sobre identidade nacional, é necessário perguntar quem representa, quem é representado e quem participa da definição dos sentidos. Referências a culturas indígenas ou afro-brasileiras em uma obra não provam, sozinhas, participação dos sujeitos retratados nas decisões. Também seria inadequado afirmar ausência absoluta de pessoas ou contribuições desses grupos de toda a arte moderna. Investigue trajetórias e contextos concretos, sem substituir pesquisa por generalizações. Leitura crítica combina descrição formal, fontes históricas e interpretação argumentada. Dizer que cores, escala ou composição produzem determinado efeito requer apontar como isso ocorre, e interpretações distintas precisam de sustentação, não de adivinhação da mente do autor. Uma exposição contemporânea pode pôr obras de épocas diferentes em diálogo sem torná-las equivalentes ou atribuir a um artista atual a intenção de outro. Participação, curadoria e acesso à palavra podem mudar o problema apresentado ao público. A descrição de uma montagem hipotética é uma proposta didática, não prova de que tal exposição ocorreu ou de que todos os seus participantes concordam. Rever o cânone amplia perguntas sobre repertório, autoria e poder, sem impor uma opinião uniforme a todos os povos ou grupos.",
+        "steps": [
+          "Identifique os agentes que selecionam e divulgam obras e narrativas.",
+          "Compare presença de referências culturais e participação de seus produtores.",
+          "Sustente interpretações por escolhas formais e fontes identificadas.",
+          "Leia diálogos curatoriais com atenção a diferenças de época, autoria e posição."
+        ],
+        "example": "Uma curadoria autoral hipotética apresenta uma obra histórica sobre identidade nacional e uma criação atual acompanhada de comentário de sua autora. A segunda não precisa ilustrar passivamente a primeira. Comparar as falas e os modos de apresentação pode revelar disputa de sentidos, sem presumir que uma obra responde por todos os integrantes de um grupo.",
+        "pitfall": "Confundir imagem de um grupo com participação nas decisões, tratar cânone como inventário completo ou atribuir uma mesma opinião a todos os povos indígenas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Descrição autoral hipotética: uma pintura usa cores não naturalistas, simplifica volumes e comprime a profundidade para intensificar a cena. Qual procedimento analítico considera essas escolhas sem exigir uma imagem externa ao enunciado?",
+        "hint": "O texto fornece relações formais; elas permitem discutir efeitos sem identificar automaticamente o autor nem julgar apenas pela semelhança fotográfica.",
+        "solution": "B propõe relacionar cor, volume e espaço ao efeito expressivo descrito. A transforma representação fotográfica em único critério e chama toda diferença de erro. C identifica um autor sem evidência específica. D ignora dados que o enunciado oferece e presume que forma e interpretação não se relacionam.",
+        "options": [
+          "Concluir que toda diferença em relação a uma fotografia prova incapacidade técnica.",
+          "Analisar como cor, simplificação dos volumes e espaço comprimido contribuem para a expressão.",
+          "Atribuir a pintura a um artista real somente por conter cores não naturalistas.",
+          "Desconsiderar escolhas formais porque apenas o título da obra pode produzir sentido."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma paráfrase didática autoral da proposta antropofágica, um criador absorve referências de procedências diversas e as transforma criticamente em uma elaboração própria. Qual interpretação corresponde a essa metáfora, sem tratá-la como citação literal do manifesto?",
+        "hint": "Compare transformação e autonomia de elaboração com reprodução obediente ou isolamento que proíbe qualquer contato.",
+        "solution": "D corresponde à absorção e transformação crítica proposta pela metáfora antropofágica. A troca transformação por imitação subordinada. B impõe pureza e isolamento absolutos. C interpreta literalmente a metáfora cultural como uma prescrição de comportamento físico, deslocando o sentido do problema.",
+        "options": [
+          "Copiar integralmente um modelo externo, mantendo-o como padrão obrigatório.",
+          "Eliminar qualquer contato externo para manter uma cultura absolutamente pura.",
+          "Converter a metáfora do manifesto em instrução literal de prática corporal.",
+          "Transformar criticamente referências recebidas, em vez de apenas copiá-las ou proibir contato."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "advanced",
+        "prompt": "Uma exposição autoral hipotética apresenta imagens históricas de uma comunidade e também obras atuais com textos escritos por artistas dessa comunidade. Um visitante afirma que ter sido representada nas imagens antigas já prova participação nas decisões de sua produção. Qual avaliação distingue representação e agência?",
+        "hint": "A presença de uma imagem e o poder de decidir sobre sua criação são questões diferentes; o enunciado não informa quem decidiu na produção histórica.",
+        "solution": "A distingue ser representado e participar da decisão: a primeira condição não comprova a segunda. B transforma retrato em prova automática de autoria. C nega que artistas atuais possam interpretar sua trajetória. D apaga diferenças de contexto e posição ao exigir uma opinião idêntica de toda a comunidade.",
+        "options": [
+          "A representação visual não prova, por si, participação nas decisões; essa agência precisa de evidências próprias.",
+          "Ser retratado prova automaticamente autoria e controle sobre todas as decisões da obra.",
+          "Somente críticos externos podem interpretar obras produzidas por artistas da comunidade.",
+          "Todos os membros da comunidade devem ter a mesma opinião sobre as imagens históricas."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Atividade física e qualidade de vida",
+    "objective": "Distinguir atividade física, exercício e comportamento sedentário, interpretar diretrizes populacionais e avaliar relações com qualidade de vida considerando contexto, inclusão e limites das evidências.",
+    "prerequisites": [
+      "Leitura de duração, frequência e intensidade",
+      "Noções de saúde como fenômeno influenciado por condições de vida",
+      "Distinção entre associação estatística e causalidade"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Movimento, exercício e qualidade de vida",
+        "explanation": "Atividade física envolve movimento corporal produzido pela musculatura esquelética com gasto de energia. Pode ocorrer no lazer, nos deslocamentos, nas tarefas domésticas e no trabalho. Exercício físico é uma forma planejada, estruturada e repetitiva de atividade física voltada a manter ou melhorar componentes da aptidão. Por isso, praticar atividade física não se limita a frequentar academia. Aptidão física se relaciona a capacidades como resistência cardiorrespiratória, força e outras que dependem do objetivo e da avaliação; não é sinônimo de um padrão estético. Comportamento sedentário é aquele realizado em vigília, sentado, reclinado ou deitado, com baixo gasto energético. Dormir não é incluído nessa definição por ser sono, e ficar parado em pé não corresponde automaticamente a essa postura sedentária. Inatividade física, no uso das diretrizes populacionais, significa não atingir os níveis recomendados de atividade: ela não é a mesma grandeza que tempo sedentário. Uma pessoa pode fazer exercícios e também permanecer muitas horas sentada ao longo do dia. Qualidade de vida envolve a percepção da pessoa sobre sua vida, seus objetivos e condições no contexto cultural em que vive. Aspectos físicos, psicológicos, relações sociais e ambiente importam; apenas aparência, peso ou desempenho esportivo não medem todo esse conjunto. Experiências corporais podem favorecer convivência e autonomia, mas oportunidades, segurança, prazer e condições materiais influenciam participação e resultados.",
+        "steps": [
+          "Identifique o contexto em que o movimento ocorre, além do lazer.",
+          "Distinga atividade ampla de exercício planejado e repetitivo.",
+          "Separe tempo sedentário em vigília de não atingir uma recomendação semanal.",
+          "Considere capacidades, percepção e contexto sem reduzir qualidade de vida à aparência."
+        ],
+        "example": "Em um cenário autoral hipotético, uma pessoa faz uma sessão de exercícios planejados e passa grande parte do restante do dia sentada em estudo e transporte. O exercício realizado e o tempo sedentário podem coexistir. Classificar apenas a sessão como suficiente para descrever toda a rotina apagaria essa diferença.",
+        "pitfall": "Confundir tempo sentado com inatividade semanal, incluir sono como comportamento sedentário ou avaliar saúde e qualidade de vida apenas por aparência física."
+      },
+      {
+        "level": "intermediate",
+        "title": "Interpretar recomendações sem transformar médias em garantias",
+        "explanation": "Diretrizes de saúde pública organizam recomendações por grupos e condições, com base em conjuntos de evidências. Nas diretrizes da OMS de 2020 para adultos, a faixa aeróbia de referência é 150 a 300 minutos semanais de intensidade moderada, ou 75 a 150 de vigorosa, ou combinação equivalente. Há também recomendação de fortalecimento muscular em pelo menos dois dias por semana. O componente aeróbio não resume todas as orientações. Alguma atividade pode trazer benefícios mesmo abaixo da faixa: 150 minutos não é uma fronteira em que antes nada tem valor e depois a saúde esteja garantida. Os tempos podem ser acumulados na semana, e a mesma duração em intensidades diferentes não deve ser somada como se fosse automaticamente equivalente. Frequência é quantas vezes ocorre; duração é quanto tempo; intensidade indica o esforço; tipo é a prática realizada. As faixas para crianças e adolescentes são diferentes das adultas, portanto não se deve aplicar uma única quantidade a qualquer idade. Benefícios e adaptações dependem da regularidade e do contexto, e variam entre pessoas. Práticas aeróbias, de força e de equilíbrio têm exigências e finalidades que não são idênticas. Progressão e recuperação ajudam a organizar a experiência; não se infere sobrecarga crônica apenas de um número isolado de minutos. Preferências, condições de participação e adaptações funcionais contribuem para continuidade. Uma recomendação populacional orienta análise de grupos e não permite deduzir, sozinha, diagnóstico ou programa individual para uma pessoa do enunciado.",
+        "steps": [
+          "Identifique grupo, componente da recomendação e fonte datada.",
+          "Some durações compatíveis, mantendo a intensidade e a semana explícitas.",
+          "Separe frequência, duração, intensidade e tipo de prática.",
+          "Leia a faixa como referência populacional, sem prometer resultado individual."
+        ],
+        "example": "Modelo hipotético de leitura de uma agenda adulta: quatro períodos de 35 minutos, todos moderados e na mesma semana, somam 140 minutos. O total está abaixo de 150, mas isso não significa ausência de benefício. Também não informa se houve fortalecimento muscular ou quanto tempo a pessoa ficou sentada.",
+        "pitfall": "Tratar 150 minutos como garantia de saúde, somar minutos moderados e vigorosos sem equivalência ou aplicar a referência adulta indistintamente a crianças."
+      },
+      {
+        "level": "advanced",
+        "title": "Evidências, barreiras e promoção de oportunidades",
+        "explanation": "Para relacionar atividade física e qualidade de vida, é preciso distinguir resultados observados e explicações causais. Um estudo transversal mede variáveis em um recorte de tempo; pode encontrar associação entre prática e percepção de bem-estar, mas não estabelece sozinho qual veio primeiro. Renda, acesso a espaços seguros, condições de trabalho e outros fatores podem influenciar ambas. Mesmo um estudo longitudinal requer análise de comparação, medidas e possíveis confundidores. Uma curva hipotética que cai após certo volume não prova automaticamente excesso de treinamento, nem fornece um limite universal para toda pessoa. Diagnosticar mecanismos hormonais a partir apenas desse desenho seria extrapolação. A participação também depende de oportunidades: tempo disponível, segurança, transporte, custo e acessibilidade podem facilitar ou dificultar práticas. Dizer apenas que todos devem ter força de vontade ignora essas condições. Ações em escola, comunidade e espaços públicos podem ampliar oportunidades, mas precisam considerar grupos, preferências e manutenção. Uma ciclovia ou praça não tem custo-efetividade superior garantida em qualquer município: uso, conexão, segurança, orçamento e contexto devem ser avaliados. Inclusão requer possibilidades reais de participação e adaptações funcionais, sem presumir incapacidade pela identidade ou exigir exposição pública de informações de saúde. Para avaliar um programa, acompanhe acesso, continuidade, experiência dos participantes e resultados pertinentes. Aumento de inscrições não prova, isoladamente, melhoria de toda a qualidade de vida; o indicador precisa corresponder à pergunta.",
+        "steps": [
+          "Identifique desenho do estudo e o que ele pode demonstrar.",
+          "Examine temporalidade, comparação e variáveis que podem influenciar a associação.",
+          "Mapeie barreiras de acesso e preferências sem responsabilização individual exclusiva.",
+          "Avalie indicadores e manutenção das ações, com participação e acessibilidade."
+        ],
+        "example": "Em um projeto autoral hipotético, uma escola oferece práticas em horários variados e consulta estudantes sobre barreiras de participação. O número de inscrições cresce, mas a equipe também verifica frequência, acesso e experiência. O aumento de um indicador é um resultado relevante, sem provar sozinho melhora universal de bem-estar.",
+        "pitfall": "Transformar associação transversal em diagnóstico de sobrecarga, declarar uma obra sempre mais custo-efetiva sem dados ou confundir inscrição com participação sustentada."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Num cenário hipotético, uma pessoa participa de exercício planejado e repetitivo em três dias da semana, mas permanece várias horas por dia sentada em vigília, com baixo gasto energético. Qual afirmação distingue corretamente os conceitos, sem calcular se atingiu uma recomendação semanal?",
+        "hint": "Exercício é uma categoria de atividade física; comportamento sedentário descreve outra característica da rotina e pode coexistir com sessões de exercício.",
+        "solution": "C reconhece a coexistência descrita. A supõe que uma sessão apaga automaticamente todo tempo sedentário. B exclui indevidamente o exercício do conceito mais amplo de atividade física. D identifica sedentarismo com sono, embora o enunciado trate de vigília e a definição faça essa distinção.",
+        "options": [
+          "Praticar exercício elimina automaticamente qualquer comportamento sedentário no restante do dia.",
+          "Exercício planejado não pertence à categoria de atividade física.",
+          "A rotina pode combinar exercício físico e períodos de comportamento sedentário.",
+          "As horas sentadas em vigília devem ser classificadas como sono."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Uma agenda adulta hipotética registra três períodos de 40 minutos e dois de 20 minutos, todos aeróbios de intensidade moderada na mesma semana. Compare apenas o total aeróbio com o limite inferior de 150 minutos da faixa moderada da OMS de 2020. Qual resultado está correto?",
+        "hint": "Multiplique a frequência pela duração em cada conjunto e some os minutos compatíveis; o cálculo não inclui componentes da rotina que não foram informados.",
+        "solution": "B calcula 3×40 + 2×20 = 120 + 40 = 160 minutos. O total supera o limite inferior aeróbio em 10 minutos, sem permitir concluir que todas as recomendações foram atendidas. A conta somente o primeiro conjunto. C soma durações sem considerar frequências. D conta apenas um período de 20 além dos 120, omitindo o segundo.",
+        "options": [
+          "120 minutos, abaixo do limite inferior aeróbio em 30 minutos.",
+          "160 minutos, acima do limite inferior aeróbio em 10 minutos.",
+          "60 minutos, abaixo do limite inferior aeróbio em 90 minutos.",
+          "140 minutos, abaixo do limite inferior aeróbio em 10 minutos."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "advanced",
+        "prompt": "Um levantamento transversal hipotético encontra associação entre maior atividade de lazer e maior satisfação com a vida. Não há medida anterior à prática nem controle de renda e acesso a espaços seguros. Qual conclusão respeita os limites dos dados?",
+        "hint": "Verifique se o desenho permite estabelecer a ordem temporal e excluir fatores que influenciam tanto participação quanto satisfação.",
+        "solution": "D reconhece uma associação sem atribuir causalidade isolada ou ignorar possíveis confundidores. A afirma causalidade exclusiva sem temporalidade e controle suficientes. B promete o mesmo resultado para cada pessoa a partir de um dado de grupo. C inventa ausência de qualquer influência ambiental, justamente quando acesso e renda não foram controlados.",
+        "options": [
+          "O estudo prova que a prática foi a única causa da satisfação observada.",
+          "Cada participante terá obrigatoriamente a mesma melhora individual de satisfação.",
+          "Os resultados provam que renda e ambiente jamais influenciam a relação.",
+          "Há associação, mas o desenho não prova sozinho causalidade nem exclui influência de renda e acesso."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Átomos e tabela periódica introdutória",
+    "objective": "Identificar partículas, átomos e íons, interpretar número atômico, isótopos e massas médias e usar a organização da tabela periódica em previsões introdutórias com limites explícitos.",
+    "prerequisites": [
+      "Noções de matéria, substância e carga elétrica",
+      "Adição, subtração e média ponderada",
+      "Leitura de símbolos, porcentagens e linhas e colunas"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Partículas, modelos e identidade do elemento",
+        "explanation": "Átomos são unidades constituintes dos elementos químicos; um elemento é identificado pelo número de prótons de seus átomos. Isso não significa que uma partícula isolada tenha todas as propriedades de uma amostra macroscópica, como ponto de fusão ou condutividade. No modelo nuclear, prótons positivos e nêutrons sem carga elétrica líquida formam o núcleo; elétrons negativos ocupam a região eletrônica. O núcleo concentra quase toda a massa, e a região eletrônica responde pela maior parte da extensão do átomo. O isótopo mais comum do hidrogênio tem núcleo com um próton e nenhum nêutron: não é correto exigir nêutrons em todo núcleo. Em unidades da carga elementar, cada próton tem +1 e cada elétron −1. Um átomo neutro tem tantos elétrons quanto prótons. Ao perder ou ganhar elétrons, torna-se um íon: cátion tem carga positiva e ânion, negativa. Essa transformação eletrônica não muda o elemento, pois mantém o número de prótons. Alterar o número de prótons envolve transformação nuclear, não simples ionização química. Modelos científicos mudaram com evidências: Dalton trabalhava com átomos como unidades indivisíveis em seu modelo; Thomson incluiu elétrons; Rutherford introduziu um núcleo pequeno e positivo; Bohr propôs níveis de energia quantizados, com êxito particular para o hidrogênio. No tratamento atual, orbitais descrevem estados e distribuições de probabilidade, sem órbitas planetárias definidas. Diagramas de camadas ajudam na introdução, mas não são fotografias do movimento eletrônico.",
+        "steps": [
+          "Identifique prótons, nêutrons e elétrons e suas cargas.",
+          "Use a igualdade de prótons e elétrons apenas para a espécie neutra.",
+          "Ao formar íons, altere elétrons sem modificar automaticamente o núcleo.",
+          "Leia modelos e diagramas conforme suas hipóteses e limites."
+        ],
+        "example": "Modelo didático: um átomo neutro com 9 prótons tem 9 elétrons. Ao receber um elétron, fica com 10 elétrons e carga −1, mantendo 9 prótons. O elemento não mudou, mas a espécie passou a ser um ânion. O número de nêutrons depende do isótopo e não pode ser deduzido apenas desse dado.",
+        "pitfall": "Dizer que ionização muda o número de prótons, que todo núcleo tem nêutrons ou que desenhos de elétrons em órbitas são a descrição quântica atual."
+      },
+      {
+        "level": "intermediate",
+        "title": "Número atômico, isótopos e massa média",
+        "explanation": "Número atômico Z é o número de prótons e define o elemento. Número de massa A é a contagem de prótons e nêutrons do núcleo: A = Z + n; portanto, n = A − Z. A é um inteiro sem unidade e não é a mesma grandeza que a massa medida de um átomo em unidade u. Na notação de um nuclídeo, o número de massa fica à esquerda acima do símbolo e Z à esquerda abaixo; a carga do íon aparece à direita acima. Como alternativa textual, informar elemento, A, Z e carga torna o enunciado autossuficiente. Se a carga em unidades elementares for q, o número de elétrons é Z − q: uma carga +2 indica dois elétrons a menos, enquanto −1 indica um a mais. Isótopos são átomos do mesmo elemento, com o mesmo Z e diferente número de nêutrons, portanto diferentes A. Ionização e diferença isotópica não são a mesma mudança. Isótopos costumam ter comportamento químico semelhante, mas diferenças de massa podem produzir efeitos isotópicos; não têm necessariamente a mesma estabilidade nuclear. A massa média de uma amostra é ponderada pelas abundâncias: soma-se cada massa isotópica multiplicada pela sua fração. A unidade u corresponde a um doze avos da massa de um átomo de carbono-12. Os valores médios tabulados não significam que um átomo individual tenha uma fração de nêutron. Abundâncias dependem da amostra, e usar A como massa em u é uma aproximação que precisa ser informada no modelo.",
+        "steps": [
+          "Calcule nêutrons por A − Z, sem usar a carga para alterar A.",
+          "Calcule elétrons por Z − q e confira o sinal da carga.",
+          "Compare Z e A para reconhecer isótopos do mesmo elemento.",
+          "Na média, use massas isotópicas e frações de abundância com soma igual a um."
+        ],
+        "example": "Uma espécie com Z = 8, A = 18 e carga −2 tem 8 prótons, 10 nêutrons e 10 elétrons. Outra espécie neutra com Z = 8 e A = 16 é do mesmo elemento e um isótopo diferente, com 8 nêutrons e 8 elétrons. A comparação separa núcleo e carga eletrônica.",
+        "pitfall": "Arredondar uma massa média para descobrir obrigatoriamente os nêutrons de todo átomo, ou tratar a carga do íon como mudança do número atômico."
+      },
+      {
+        "level": "advanced",
+        "title": "Ler a tabela: períodos, grupos e tendências",
+        "explanation": "A tabela periódica atual ordena elementos por número atômico crescente. Grupos são colunas, numeradas de 1 a 18, e períodos são linhas. A repetição de padrões eletrônicos ajuda a explicar semelhanças químicas, mas elementos de um grupo não são idênticos. Metais alcalinos pertencem ao grupo 1, excluindo o hidrogênio dessa família metálica; alcalino-terrosos, ao grupo 2; halogênios, ao 17; gases nobres, ao 18. O hidrogênio exige atenção por suas propriedades próprias, e o hélio tem a primeira camada completa com dois elétrons, embora esteja no grupo 18. Para elementos representativos simples, a distribuição de elétrons do átomo neutro em estado fundamental auxilia a leitura: 2,8,1 corresponde a três camadas ocupadas e um elétron na camada externa; 2,8,7 tem três camadas e sete elétrons externos. Não se transfere uma regra simplificada de camadas sem ressalvas para todos os metais de transição e íons. No modelo introdutório, perder ou receber elétrons pode levar a uma configuração de gás nobre, mas a regra do octeto não explica todos os compostos nem afirma que átomos desejam algo. Metais, ametais e metaloides apresentam características distintas; propriedades como condução e maleabilidade devem ser analisadas em condições definidas, com exceções. Dentro de comparações apropriadas, raios tendem a aumentar ao descer um grupo e diminuir ao avançar em um período; energia de primeira ionização tende ao sentido oposto, com exceções. Raio depende de definição e não se deve misturar raio covalente de um elemento com raio de van der Waals de outro. Eletronegatividade caracteriza atração de elétrons em ligação, e não é o mesmo que energia para retirar um elétron de átomo gasoso. A posição ajuda a formular previsões, sem substituir condições e evidências do sistema.",
+        "steps": [
+          "Localize linha, coluna e número atômico sem ordenar por massa média.",
+          "Para exemplos representativos simples, relacione distribuição neutra e elétrons externos.",
+          "Use formação de íons como modelo limitado, não como regra universal de ligação.",
+          "Compare tendências com propriedades e definições compatíveis, reconhecendo exceções."
+        ],
+        "example": "O lítio neutro tem Z = 3 e distribuição introdutória 2,1. Está no período 2 e grupo 1, na família dos metais alcalinos. Ao perder um elétron, Li+ fica com 2 elétrons; a carga muda sem transformar o núcleo em hélio, pois seus três prótons continuam presentes.",
+        "pitfall": "Ordenar a tabela por massa média, tratar hidrogênio como metal alcalino, aplicar octeto a todo composto ou comparar raios definidos por critérios diferentes."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Um átomo neutro hipotético possui 13 prótons e 14 nêutrons. Quais são seu número atômico Z, número de massa A e número de elétrons?",
+        "hint": "Z conta prótons, A soma prótons e nêutrons, e a neutralidade exige igualdade de elétrons e prótons.",
+        "solution": "D identifica Z = 13, A = 13 + 14 = 27 e 13 elétrons. A troca Z e A e usa nêutrons como elétrons. B confunde nêutrons com prótons para definir Z. C usa apenas os nêutrons como A e o total nuclear como elétrons. Nenhuma mudança de carga foi informada que permita alterar a condição de neutralidade.",
+        "options": [
+          "Z = 27, A = 13, 14 elétrons.",
+          "Z = 14, A = 27, 13 elétrons.",
+          "Z = 13, A = 14, 27 elétrons.",
+          "Z = 13, A = 27, 13 elétrons."
+        ],
+        "correctIndex": 3
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Em uma amostra hipotética, os únicos dois isótopos de um elemento têm massas de 10,0 u e 11,0 u, com abundâncias de 20% e 80%, respectivamente. Qual é a massa média ponderada dessa amostra?",
+        "hint": "Transforme porcentagens em frações e pondere cada massa por sua abundância; não faça média simples de abundâncias diferentes.",
+        "solution": "B calcula 10,0×0,20 + 11,0×0,80 = 2,0 + 8,8 = 10,8 u. A atribui pesos iguais aos dois isótopos. C considera apenas o isótopo menos abundante e D apenas o mais abundante. A média deve ficar entre 10,0 e 11,0 u e mais próxima de 11,0 u, coerente com a maior abundância desse isótopo.",
+        "options": [
+          "10,5 u.",
+          "10,8 u.",
+          "10,0 u.",
+          "11,0 u."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "level": "advanced",
+        "prompt": "No modelo introdutório, dois átomos neutros em estado fundamental têm distribuições por camadas 2,8,1 e 2,8,7. Para estes elementos representativos, qual afirmação relaciona corretamente posição e formação de íons com camada externa completa?",
+        "hint": "As duas distribuições têm três camadas ocupadas; compare perder um elétron no primeiro e receber um no segundo sem mudar os núcleos.",
+        "solution": "C identifica período 3 para ambos, grupo 1 para o primeiro e grupo 17 para o segundo. Na formação dos íons simples considerados, o primeiro perde um elétron e fica 2,8, com carga +1; o segundo recebe um e fica 2,8,8, com carga −1. A troca grupos e sinais. B confunde número de camadas com número de grupo. D supõe alteração nuclear para explicar uma mudança apenas eletrônica.",
+        "options": [
+          "O primeiro é do grupo 17 e ganha um elétron; o segundo é do grupo 1 e perde um.",
+          "Ambos pertencem ao grupo 3 porque apresentam três camadas ocupadas.",
+          "Ambos estão no período 3; o primeiro é do grupo 1 e forma +1, o segundo é do grupo 17 e forma −1.",
+          "Formar esses íons exige mudar os números de prótons dos dois núcleos."
+        ],
+        "correctIndex": 2
+      }
+    ]
   }
 ];
 
@@ -1246,6 +1798,198 @@ export const authoredCurriculumBatch05ReviewRecords = [
         "index": 2,
         "correctIndex": 3,
         "reasoning": "Questão avançada sobre voto facultativo vs. elegibilidade: opção D ('A conclusão confunde voto facultativo com elegibilidade; analfabetos são inelegíveis') reflete CF/1988 Art. 14 §1 (voto facultativo) e §4 (inelegibilidade dos analfabetos). A erra ao igualar capacidade eleitoral ativa e passiva; B nega direito de votar (falso, é facultativo); C inventa exceção via plebiscito que não existe na Constituição. Gabarito 3 confirmado independemente."
+      }
+    ]
+  },
+  {
+    "subject": "Geografia",
+    "topic": "Urbanização e globalização",
+    "contentSha256": "889f77ebb4af3df73377e51e882c3141801b7d0a22c2d82b21bd18fbdc22ab2a",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15798-regioes-de-influencia-das-cidades.html",
+      "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15782-arranjos-populacionais-e-concentracoes-urbanas-do-brasil.html",
+      "https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102138.pdf",
+      "https://unhabitat.org/sites/default/files/2020/10/wcr_2020_report.pdf",
+      "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/desenvolvimento-urbano-e-metropolitano/cidade-protagonista-da-acao-climatica/arquivos/planosetorialcidades.pdf",
+      "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/adaptabrasil-lanca-painel-cidades-para-facilitar-a-consulta-sobre-risco-climatico"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "Cálculo independente confirma: grau inicial 60/100=60%, final 72/150=48% (queda 12 p.p.), enquanto população urbana cresceu 12k. Opção B é a única que captura ambas as grandezas corretamente. A confunde absoluto com relativo; C aplica 20% ao grau; D nega o aumento absoluto."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Enunciado afirma que A (300k) concentra gestão/serviços especializados atraindo vários municípios, enquanto B (500k) exerce menor influência nesses fluxos. D é diretamente suportada: centralidade nesses fluxos não decorre só da população. A impõe ordem demográfica; B nega conexões declaradas; C atribui classe REGIC formal sem critérios em exemplo hipotético."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "Cenário: redução de exposição a inundações (benefício de segurança) + novos locais distantes de empregos sem transporte adequado (prejuízo de acessibilidade). A reconhece ambos e pede avaliação integrada. B transforma benefício parcial em sucesso total; C universaliza indesejabilidade ignorando segurança; D afirma irrelevância da distância sem base no caso."
+      }
+    ]
+  },
+  {
+    "subject": "Filosofia",
+    "topic": "Filosofia medieval e modernidade",
+    "contentSha256": "56086a7f8131a132b83aa54e32bf7c7fcd8ad0e87f8e3a288c30bf7408ec462e",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-philosophy/pages/4-3-jewish-christian-and-islamic-philosophy",
+      "https://www.newadvent.org/summa/1001.htm",
+      "https://plato.stanford.edu/entries/ockham/",
+      "https://www.gutenberg.org/cache/epub/59/pg59-images.html",
+      "https://www.gutenberg.org/cache/epub/9662/pg9662-images.html",
+      "https://www.gutenberg.org/files/52821/52821-h/52821-h.htm",
+      "https://www.gutenberg.org/cache/epub/3207/pg3207-images.html",
+      "https://www.gutenberg.org/files/7370/7370-h/7370-h",
+      "https://www.gutenberg.org/files/46333/46333-h/46333-h.htm"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B reflete a doutrina tomista: verdades de fé podem exceder a razão natural (mistérios) sem contradizê-la, pois ambas têm origem em Deus. A opção A inventa licença para contradição (doutrina do 'duplo verdade' condenada em 1277). A opção C apaga a distinção metodológica entre demonstração e autoridade. A opção D nega que a razão natural alcance verdades sobre Deus, contra as Cinco Vias."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A opção D captura o núcleo do cogito: duvidar é pensar, e quem pensa existe naquele ato (\"cogito, ergo sum\"). A opção A confunde o fundamento subjetivo com prova imediata do mundo externo (questão superada apenas com a prova de Deus e a veracidade divina). A opção B transforma dúvida metódica em ceticismo definitivo. A opção C introduz critério de inteligência inexistente no argumento."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A opção A preserva a nuance: Hobbes autoriza soberano forte mas mantém o direito de autopreservação intransferível; resistência a ameaça direta de morte é lícita (Leviathan XXI.11). A opção B exagera atribuindo direito de revolução por discordância cotidiana. A opção C ignora que o soberano não é parte do pacto mas seu resultado. A opção D confunde a vontade do soberano hobbesiano com a vontade geral rousseauniana."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Cultura, identidade e diversidade",
+    "contentSha256": "387da668c254c54622282b651f461fa9e93655f2c0f2f38bd4318a622216ece6",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/introduction-sociology-3e/pages/3-1-what-is-culture",
+      "https://openstax.org/books/introduction-sociology-3e/pages/3-2-elements-of-culture",
+      "https://openstax.org/books/introduction-sociology-3e/pages/11-1-racial-ethnic-and-minority-groups",
+      "https://www.unesco.org/en/legal-affairs/unesco-universal-declaration-cultural-diversity",
+      "https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A opção C identifica corretamente transmissão social e reelaboração como processos culturais. A confunde cultura com herança biológica. B trata adaptação como perda de cultura (imobilismo). D restringe cultura a escolaridade universitária (erudição). O exemplo da seção (associação de moradores com app) é distinto do exercício (técnica artesanal)."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A opção A descreve relativização metodológica com capacidade crítica e respeito a direitos humanos, conforme o enunciado. B inverte para etnocentrismo (medida universal do observador). C transforma compreensão em aprovação obrigatória de violência, contraditando o texto. D introduz determinismo biológico inexistente no cenário. Exemplo da seção (instituição com cruzamento raça/gênero) difere do exercício (pesquisadora)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A opção D avalia corretamente que visibilidade não supre ausência de autorização, atribuição e distribuição justa, sem presumir resultado judicial. A iguala divulgação a consentimento automático. B nega agência dos produtores. C afirma sentença e valor de indenização sem base fática. Exemplo da seção (exposição digital com curadoria compartilhada) é distinto do exercício (empresa usa gravações sem autorização)."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Arte brasileira e modernismo",
+    "contentSha256": "281b4bc1fa1a367f4f85ff3c8b796c84e65a90a99829dde933cf032dc90f15fc",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://brasilianafotografica.bn.gov.br/?p=26620",
+      "https://press.moma.org/wp-content/files_mf/tarsilaexpanded_final_290.pdf",
+      "https://www.moma.org/artists/50079-oswald-de-andrade",
+      "https://jornal.usp.br/artigos/tarsila-popular-e-antropofagica/",
+      "https://literaturabrasileira.ufsc.br/documentos?id=222631",
+      "https://masp.org.br/acervo/obra/retirantes",
+      "https://mam.rio/artistas/lygia-clark/",
+      "https://www.gov.br/funarte/pt-br/assuntos/noticias/todas-noticias/dia-internacional-da-mulher-funarte-homenageia-as-participantes-da-semana-de-arte-moderna-de-1922"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A opção B é a única que propõe análise das relações formais dadas (cor não naturalista, simplificação de volumes, espaço comprimido) em função do efeito expressivo, sem recorrer a critério fotográfico (A), atribuição de autoria por traço genérico (C) ou descarte dos dados formais (D). O enunciado fornece elementos observáveis que sustentam a interpretação expressiva."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "A paráfrase didática descreve absorção e transformação crítica de referências. A opção D corresponde exatamente: 'Transformar criticamente referências recebidas, em vez de apenas copiá-las ou proibir contato.' A opção A descreve imitação subordinada (oposto), B descreve isolamento absoluto (oposto), C desloca a metáfora para prescrição corporal literal (leitura ingênua)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "O enunciado opõe representação visual (estar nas imagens históricas) a agência decisória (participar das decisões de produção). A opção A distingue corretamente: representação não prova participação; agência requer evidências próprias. B confunde retrato com autoria automática. C nega capacidade interpretativa aos artistas da comunidade. D impõe consenso uniforme, apagando diferenças internas."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Atividade física e qualidade de vida",
+    "contentSha256": "e917d96c57a360f9318bde43c701f999e56c0a20cfa4c7ca8baf954ae4b2deff",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+      "https://www.who.int/publications/i/item/9789240015128",
+      "https://www.who.int/tools/whoqol",
+      "https://bvsms.saude.gov.br/bvs/publicacoes/guia_atividade_fisica_populacao_brasileira.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A rotina descrita combina exercício planejado (3 dias/semana) e comportamento sedentário (horas sentada em vigília). Opção C é a única que reconhece a coexistência sem apagar o tempo sedentário (A), excluir exercício da atividade física (B) ou confundir vigília com sono (D). Cálculo de recomendação semanal não é solicitado nem necessário."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "3 períodos × 40 min = 120 min; 2 períodos × 20 min = 40 min; total aeróbio moderado = 160 min. Limite inferior OMS 2020 = 150 min. Diferença = +10 min. Opção B reflete o cálculo correto e a ressalva de que fortalecimento muscular não foi informado. A omite os 20 min, C ignora frequências, D omite o segundo período de 20 min."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "Desenho transversal sem medida basal nem controle de renda/acesso permite apenas associação. Opção D enuncia associação sem causalidade isolada nem exclusão de confundidores. A atribui causalidade exclusiva sem temporalidade/controle; B generaliza efeito de grupo para indivíduo; C nega influência ambiental justamente quando variáveis não foram controladas."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Átomos e tabela periódica introdutória",
+    "contentSha256": "9d3048c244247cb1eec462149c609092364875b9a702953143643f6c27d27929",
+    "draftMethod": "Claude Code; correções e conferência pelo Codex; nova crítica em sessão independente",
+    "verifiedSourceUrls": [
+      "https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism",
+      "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+      "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+      "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 3,
+        "reasoning": "Átomo neutro com 13 prótons e 14 nêutrons: Z=13 (prótons), A=13+14=27, elétrons=13 (neutralidade). Opção D correta. A troca Z/A e usa nêutrons como elétrons; B usa nêutrons para Z; C usa nêutrons como A e total nuclear como elétrons. Nenhuma alteração de carga informada."
+      },
+      {
+        "index": 1,
+        "correctIndex": 1,
+        "reasoning": "Massa média = 10,0×0,20 + 11,0×0,80 = 2,0 + 8,8 = 10,8 u. Opção B correta. A faz média aritmética (pesos iguais); C e D usam apenas um isótopo. Resultado entre 10,0 e 11,0 u, mais próximo de 11,0 u pela maior abundância."
+      },
+      {
+        "index": 2,
+        "correctIndex": 2,
+        "reasoning": "Configurações 2,8,1 e 2,8,7 indicam três camadas (período 3). Primeira: 1 elétron externo → grupo 1, perde 1e⁻ forma +1. Segunda: 7 elétrons externos → grupo 17, ganha 1e⁻ forma −1. Opção C correta. A inverte grupos e sinais; B confunde número de camadas com grupo; D supõe mudança nuclear para ionização."
       }
     ]
   }

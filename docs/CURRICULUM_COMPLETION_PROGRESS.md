@@ -4,7 +4,45 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 8
+## Estado atual — checkpoint 9
+
+O lote 05 está completo com 16 aulas, uma por disciplina. Foram acrescentadas
+Geografia — Urbanização e globalização; Filosofia — Filosofia medieval e
+modernidade; Sociologia — Cultura, identidade e diversidade; Arte — Arte brasileira
+e modernismo; Educação Física — Atividade física e qualidade de vida; Ciências —
+Átomos e tabela periódica introdutória. Os lotes 03/04/05 somam 48 aulas novas
+nesta etapa, com revisão pedagógica humana pendente.
+
+Restam 1.247 lacunas entre 1.512 identidades. O recorte editorial ENEM tem 64 temas
+aprofundados e 832 lacunas; a lista de estudo ENEM contém 64 aulas aprofundadas,
+50 guias introdutórios e 793 temas em desenvolvimento. As unidades editoriais
+dessas listas são distintas; não representam certificação de habilidades oficiais.
+
+- Geografia distingue crescimento absoluto e proporção urbana, centralidade e
+  população, continuidade física e limites administrativos, segurança e acesso.
+- Filosofia inclui tradições medievais plurais, diferenças entre modos de conhecer,
+  condições kantianas e limites da obediência em Hobbes; sem cartas ou citações
+  inventadas, nem doutrina uniforme atribuída a períodos inteiros.
+- Sociologia diferencia cultura aprendida, identidade, etnocentrismo, relativização
+  e direitos, sem presumir experiências individuais apenas pela identidade.
+- Arte corrige participação de Tarsila, revista Verde em Cataguases e cronologia
+  de obras; questões têm descrições autossuficientes, sem pedir imagens ausentes.
+- Educação Física remove diagnóstico de sobrecarga por limiar inventado e inferência
+  causal de estudo transversal. Diretrizes adultas da OMS de 2020 são contextualizadas
+  por componente; não certificam saúde ou rotina completa pelo total de minutos.
+- Ciências distingue número de massa e massa média, íons e isótopos, e tendências
+  periódicas com definições compatíveis; não impõe octeto ou camadas a todo caso.
+
+Verificação: 624 testes da aplicação e seis do motor aprovados, lint alterado e
+build de produção aprovados. Novos testes recalculam proporção urbana, minutos
+semanais, neutralidade e média isotópica. Chromium comparou a API das 48 aulas e
+abriu as seis novas, respondeu às 18 questões e conferiu explicações e referências
+expandidas em 320/375/768/1440 px, sem exceções ou rolagem horizontal. Filosofia
+exibiu 12 referências e Arte 11. A CI do checkpoint 8 passou (run 43711575221).
+Sem merge, deploy, alteração de schema/RLS ou publicação no banco. A autoria
+continua nos próximos temas; o catálogo ainda não está completo.
+
+## Histórico — checkpoint 8
 
 Retomada autorizada em 15/11/2026. O lote 05 chegou a dez aulas com Inglês —
 Vocabulário contextual e cognatos; Espanhol — Conectivos, pronomes e estruturas
