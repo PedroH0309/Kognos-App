@@ -12,6 +12,10 @@ import {
   officialProvaoGradeCoverage
 } from './canonical-lesson-reuse.ts';
 import {enemCanonicalPriorityAudit} from './enem-canonical-priority.ts';
+import {indexedCanonicalTopicId} from './canonical-lesson-index.ts';
+import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {deepEnemLesson} from './enem-depth-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {provaoTopics} from './provao-paulista.ts';
 
 /**
@@ -37,6 +41,13 @@ test('ENEM-first inventory reconciles all registered exams and protects partial 
     assert.equal(coverage[exam].deep, rows.length, exam + ': full mapping mismatch');
     assert.equal(coverage[exam].missing, topics.length - rows.length, exam + ': missing mismatch');
     assert.equal(new Set(rows.map(row => row.examTopicId)).size, rows.length, exam + ': duplicated full mapping');
+    for (const topic of topics) {
+      const resolved=canonicalLessonForExam(exam,topic);
+      const direct=deepProvaoLesson(topic)??deepEnemLesson(topic)??deepAuthoredCurriculumLesson(topic);
+      if(direct) assert.equal(resolved?.id,direct.id,exam+': authored source omitted');
+      assert.equal(indexedCanonicalTopicId(exam,topic),resolved?.id??null,
+        exam+': client availability differs from runtime registry: '+topic.id);
+    }
     for (const row of rows) {
       assert.ok(ids.has(row.examTopicId), exam + ': unknown historical topic');
       const topic = topics.find(item => item.id === row.examTopicId);

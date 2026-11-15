@@ -1,7 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
-import {deepProvaoLesson} from './provao-depth-lessons.ts';
+import {canonicalLessonForExam} from './canonical-lesson-reuse.ts';
+import {indexedCanonicalTopicId} from './canonical-lesson-index.ts';
 import {provaoTopics} from './provao-paulista.ts';
 
 /**
@@ -17,8 +18,11 @@ test('every exam has an actionable exact-ID depth inventory without double count
  for(const topic of curriculumTopics){
   assert.ok(!seen.has(topic.id),'Duplicate curricular ID: '+topic.id);
   seen.add(topic.id);
-  const deep=Boolean(deepProvaoLesson(topic));
   for(const exam of topic.exams){
+   const lesson=canonicalLessonForExam(exam,topic);
+   const deep=Boolean(lesson);
+   assert.equal(indexedCanonicalTopicId(exam,topic),lesson?.id??null,
+    `Availability index drift: ${exam}/${topic.id}`);
    const row=byExam[exam];
    assert.ok(row,'Unknown exam: '+exam);
    row.total++;
