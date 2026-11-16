@@ -7,9 +7,15 @@ on:
 permissions:
   contents: read
 
+# Preserve runner capacity by cancelling superseded runs on the same branch or PR.
+concurrency:
+  group: kognos-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v4
