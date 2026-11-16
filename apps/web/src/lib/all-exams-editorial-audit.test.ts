@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
 import {examBlueprints, type ExamId} from './exam-blueprints.ts';
-import {canonicalExamTopicMappings, semanticReviewQueue} from './canonical-lesson-reuse.ts';
+import {canonicalExamTopicMappings, canonicalLessonForExam, semanticReviewQueue} from './canonical-lesson-reuse.ts';
 
 /**
  * Reproducible cross-exam inventory, ENEM first. Counts are editorial
@@ -57,4 +57,35 @@ test('audit every registered exam without counting partial references as coverag
   process.stdout.write('KOGNOS_ALL_EXAMS_EDITORIAL_AUDIT ' + JSON.stringify({
     officialSkillCertification: false, exams: inventory
   }) + '\n');
+});
+
+/** All registered exams must resolve the same authored instance for a canonical ID.
+ * Negative cases guard against leaking an unrelated exam's lesson via a shared ID.
+ */
+test('cross-exam full mappings preserve canonical object identity and exam isolation', () => {
+  const mappings = canonicalExamTopicMappings();
+  const topicsById = new Map(curriculumTopics.map(topic => [topic.id, topic]));
+  const byCanonical = new Map<string, (typeof mappings)[number]>();
+  const approved = new Set(mappings.map(row => row.exam + '\\0' + row.examTopicId));
+  const exams = Object.keys(examBlueprints) as ExamId[];
+  let shared = 0;
+  for (const row of mappings) {
+    const topic = topicsById.get(row.examTopicId);
+    assert.ok(topic, row.exam + ': mapping points to missing historical topic');
+    assert.ok(topic.exams.includes(row.exam), row.exam + ': unregistered exam membership');
+    assert.strictEqual(canonicalLessonForExam(row.exam, topic), row.lesson);
+    const first = byCanonical.get(row.canonicalId);
+    if (first) {
+      assert.strictEqual(first.lesson, row.lesson, 'canonical content was cloned');
+      if (first.exam !== row.exam) shared++;
+    } else byCanonical.set(row.canonicalId, row);
+  }
+  assert.ok(shared > 0, 'expected a real cross-exam canonical reuse');
+  for (const topic of curriculumTopics) {
+    for (const exam of exams) {
+      if (approved.has(exam + '\\0' + topic.id)) continue;
+      assert.equal(canonicalLessonForExam(exam, topic), null,
+        exam + ': non-approved exam-topic unexpectedly inherited a full lesson');
+    }
+  }
 });
