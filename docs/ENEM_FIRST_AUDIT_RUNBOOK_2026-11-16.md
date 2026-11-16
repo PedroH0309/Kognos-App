@@ -30,3 +30,9 @@ Para cada novo lote: revisar primeiro todas as aulas profundas existentes e os P
 ## Portões de publicação
 
 Exigir regressão curricular, testes de segurança entre dois usuários, design, TypeScript, build e CI do **head publicado**. Não declarar verde com base em SHA anterior. Documentar números antes/depois, IDs de vínculos aprovados, complementos parciais, duplicações efetivamente evitadas, riscos e bloqueios. Não fazer merge, deploy, alteração de schema ou RLS sem revisão/autorização. A meta 20/11 é aspiracional; lacunas e revisão pedagógica impedem declarar conclusão.
+
+## Reconciliação de proveniência — 16/11/2026
+
+Consulta direta ao GitHub nesta rodada: [PR #93](https://github.com/PedroH0309/Kognos-App/pull/93) e [PR #99](https://github.com/PedroH0309/Kognos-App/pull/99) estão **merged**, portanto seus lotes não devem ser contados como branches independentes além da main. [PR #118](https://github.com/PedroH0309/Kognos-App/pull/118) também está **merged** e adicionou 28 aulas; a fotografia de 15/11 antecede essa integração. [PR #120](https://github.com/PedroH0309/Kognos-App/pull/120) está **open/draft**, com testes de regressão e sem novos vínculos curriculares. Antes de atribuir um número atualizado de cobertura, execute o inventário no SHA efetivo da main e, separadamente, no head do PR. Não some números de descrições de PRs a contagens do registro, pois podem refletir snapshots diferentes.
+
+**Pendência bloqueante para nova afirmação quantitativa:** não há nesta rodada saída executada de `KOGNOS_CROSS_EXAM_AUDIT` sobre a main pós-#118. O resultado da CI do PR #120 em `2915924` valida os testes daquele SHA, não a cobertura pedagógica nem este documento. Nenhum alias novo, aula nova ou exclusão de duplicata é atribuído a esta reconciliação documental.
