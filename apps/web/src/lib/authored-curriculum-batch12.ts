@@ -1103,6 +1103,374 @@ export const authoredCurriculumBatch12:readonly AuthoredLessonSpec[] = [
         "solution": "A, índice 0: uma medida agregada não decide sozinha se critérios e efeitos são justos. A conclusão pede investigação compatível com as lacunas, sem afirmar discriminação comprovada nesse caso. B converte média em garantia individual; C infere consciência e intenção sem evidência; D apaga os papéis humanos e institucionais. A análise distingue insuficiência de informação de uma condenação automática de qualquer automação."
       }
     ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Gênero, raça e relações sociais",
+    "objective": "Analisar gênero e raça como relações sociais históricas, distinguindo categorias, estereótipos e discriminação e aplicando uma perspectiva interseccional à interpretação de situações e dados.",
+    "prerequisites": [
+      "Socialização e instituições",
+      "Desigualdade e relações de poder",
+      "Leitura de dados e argumentos"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Categorias, identidades e socialização",
+        "explanation": "Na análise sociológica, gênero envolve normas, papéis, identidades e relações de poder construídos em contextos sociais. Não é sinônimo simples de características corporais nem de orientação sexual. Sexo designa características biológicas consideradas nas classificações corporais; sua existência não torna inevitáveis as ocupações, capacidades ou posições políticas atribuídas a alguém. Identidade de gênero diz respeito à identificação da pessoa, e expressão de gênero à forma como ela se apresenta, sem que aparência determine automaticamente identidade ou orientação. Há debates sobre definições e formas de classificação, e os conceitos devem ser usados com clareza e respeito à diversidade. Normas são aprendidas em famílias, escolas, meios de comunicação e outras instituições; podem ser reproduzidas, negociadas e contestadas. Socialização não é uma programação que faz todos os indivíduos agirem igual. Raça, por sua vez, funciona como classificação social que atribui significados a diferenças percebidas e se relaciona a hierarquias históricas. Não corresponde a uma divisão da humanidade em tipos biológicos superiores ou inferiores. Ser uma construção social não significa ser imaginária ou sem efeitos: classificações podem influenciar acesso a oportunidades e tratamento institucional. Etnia enfatiza pertencimentos e referências culturais, como história, língua e práticas compartilhadas; não é sinônimo automático de raça ou nacionalidade. As categorias e seus significados variam historicamente e não autorizam inferir a capacidade ou a experiência de uma pessoa a partir do grupo em que é classificada.",
+        "steps": [
+          "Diferencie características corporais, normas, identidade, expressão e orientação.",
+          "Localize como papéis são ensinados e contestados.",
+          "Distingua raça, etnia e nacionalidade no contexto analisado.",
+          "Examine efeitos sociais sem naturalizar hierarquias ou uniformizar indivíduos."
+        ],
+        "example": "Caso hipotético autoral: uma escola distribui tarefas de organização apenas às meninas e reparos apenas aos meninos. Essa regra expressa uma expectativa social sobre papéis, não uma demonstração das capacidades de cada estudante. A análise pode perguntar como a divisão é ensinada e o que acontece quando estudantes a questionam.",
+        "pitfall": "Tratar papéis sociais como destinos biológicos ou concluir que uma classificação social não produz consequências reais."
+      },
+      {
+        "level": "intermediate",
+        "title": "Estereótipos, discriminação e instituições",
+        "explanation": "Estereótipo é uma generalização simplificadora sobre um grupo que apaga diferenças internas. Mesmo uma descrição aparentemente elogiosa pode impor expectativas rígidas. Preconceito envolve julgamentos prévios e disposições dirigidos a grupos; discriminação se refere a tratamentos e práticas que produzem desvantagens em razão de características ou classificações sociais. Não se deve reduzir toda desigualdade a uma opinião consciente de um indivíduo. Racismo pode operar em relações interpessoais e em mecanismos institucionais e históricos que reproduzem desvantagens associadas à classificação racial. Sexismo relaciona hierarquias e discriminação a gênero. Uma regra formulada com palavras aparentemente neutras pode produzir barreiras desiguais em um contexto concreto; investigar seu funcionamento requer observar critérios, acesso, execução e resultados. Isso não significa que qualquer diferença estatística prove sozinha a intenção de cada participante. No Brasil, escravização e exclusões posteriores integram a história das desigualdades raciais; identificar esses processos não equivale a atribuir a mesma trajetória a toda pessoa de um grupo. A análise estrutural pergunta como instituições, recursos e práticas se articulam para reproduzir padrões ao longo do tempo, reconhecendo também mudança e contestação. Ao ler relatos, preserve seu contexto e não transforme um depoimento em retrato de todas as pessoas. Ao ler uma tabela, confira população estudada, período, categorias e método. Diferencie a evidência de um padrão agregado das conclusões que exigem comparar mecanismos específicos ou investigar causas.",
+        "steps": [
+          "Identifique a generalização ou o tratamento descrito.",
+          "Diferencie julgamento, prática e mecanismo institucional.",
+          "Investigue efeitos e contexto sem exigir sempre uma declaração explícita de hostilidade.",
+          "Separe padrão agregado, hipótese causal e experiência individual."
+        ],
+        "example": "Exemplo autoral fictício: uma seleção exige presença em uma única faixa de horário e não oferece alternativa. Um estudo pode investigar se pessoas responsáveis por cuidados familiares enfrentam barreiras específicas e se a exigência é necessária. A regra deve ser analisada no contexto; seu texto genérico não demonstra por si ausência de efeitos desiguais.",
+        "pitfall": "Supor que discriminação depende sempre de insulto explícito ou, no extremo oposto, inferir toda intenção individual de uma diferença entre médias."
+      },
+      {
+        "level": "advanced",
+        "title": "Interseccionalidade, dados e transformação social",
+        "explanation": "A interseccionalidade, formulada por Kimberlé Crenshaw em sua crítica de 1989 a abordagens de discriminação, examina como relações como raça e gênero se articulam em situações específicas. Considerar apenas a experiência de alguns homens de um grupo racial ou de algumas mulheres de outro pode deixar de perceber problemas vividos por mulheres negras. Não se trata de uma conta que soma pontos de sofrimento nem de uma regra que determina antecipadamente a mesma experiência para todos. Classe, território, deficiência e outros fatores podem modificar condições e oportunidades. Uma análise interseccional identifica mecanismos e contexto, em vez de apenas listar identidades. Dados desagregados podem revelar padrões ocultos em uma média geral, mas exigem amostras adequadas, categorias claras e proteção de informações pessoais. Comparar a proporção de pessoas que acessam uma oportunidade requer denominadores compatíveis; números absolutos diferentes não bastam para medir chances. Movimentos negros, feministas e outros movimentos sociais contestam exclusões e formulam reivindicações, com diversidade interna de objetivos e estratégias. Políticas de acesso, permanência, formação e enfrentamento de barreiras podem ser discutidas segundo o problema que buscam resolver. Avaliar uma política exige distinguir objetivo, implementação e efeitos, ouvir grupos afetados e examinar alternativas e evidências. A simples existência da política não prova que toda desigualdade terminou. Estas ferramentas sociológicas não substituem a análise de normas jurídicas específicas: uma proposta de avaliação não é apresentada aqui como requisito legal universal. A conclusão deve explicar o alcance dos dados sem reduzir sujeitos a categorias nem apagar relações de poder.",
+        "steps": [
+          "Identifique relações que se articulam e o mecanismo concreto.",
+          "Compare grupos e denominadores adequados, observando limites dos dados.",
+          "Diferencie objetivo, execução e resultado de uma política.",
+          "Reconheça agência e diversidade interna dos movimentos e pessoas afetadas."
+        ],
+        "example": "Tabela didática fictícia: dois grupos tiveram dez inscrições aprovadas, mas um contava com vinte candidaturas e o outro com cem. As proporções são diferentes, embora os totais aprovados sejam iguais. Esse contraste orienta novas perguntas sobre acesso e seleção; sozinho não identifica causas nem autoriza expor dados individuais das pessoas participantes.",
+        "pitfall": "Reduzir interseccionalidade a uma soma fixa de desvantagens ou considerar que números agregados comprovam, sem investigação, um mecanismo causal específico."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Situação hipotética autoral: uma família afirma que uma profissão é inadequada para mulheres porque todas teriam a mesma incapacidade natural para exercê-la. Qual análise sociológica é sustentada?",
+        "hint": "Diferencie evidência sobre uma habilidade de uma generalização que transforma pertencimento de gênero em destino obrigatório.",
+        "options": [
+          "A afirmação naturaliza um papel e generaliza capacidades; é preciso examinar aprendizagem, oportunidades e diferenças individuais.",
+          "A afirmação comprova cientificamente que todas as mulheres têm a mesma capacidade profissional.",
+          "Uma expectativa familiar não pode ter qualquer relação com socialização ou oportunidades.",
+          "Toda norma familiar é idêntica em todas as sociedades, independentemente de história e contexto."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: o caso apresenta uma generalização naturalizante, sem evidência sobre cada pessoa. A análise investiga formação, oportunidades e diferenças internas. B trata a alegação como comprovação; C exclui a família da socialização; D impõe universalidade sem fundamento. A resposta não diagnostica capacidades individuais nem afirma que corpos e habilidades sejam indistintos em todos os aspectos."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso fictício autoral: uma instituição declara oferecer atendimento igual, mas mantém uma prática que exclui repetidamente pessoas racializadas de um serviço. Qual investigação é mais adequada?",
+        "hint": "Compare a declaração geral com o funcionamento concreto e seus efeitos, sem depender apenas de encontrar um insulto explícito.",
+        "options": [
+          "Encerrar a análise: a declaração de igualdade garante ausência de qualquer barreira.",
+          "Atribuir automaticamente a mesma intenção consciente a todos os funcionários, sem examinar a prática.",
+          "Examinar critérios, execução, registros e efeitos da prática, inclusive mecanismos institucionais de exclusão.",
+          "Concluir que categorias socialmente construídas nunca influenciam acesso a serviços."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: a investigação examina como a instituição funciona e quais efeitos produz, permitindo avaliar mecanismos e evidências. A confunde declaração com prática; B atribui intenções iguais sem pesquisa; D ignora efeitos de classificações sociais. A análise institucional não exige insulto explícito, mas também não dispensa demonstração do mecanismo e cuidado com as conclusões."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Exercício autoral: um relatório analisa separadamente gênero e raça, tomando apenas mulheres brancas como referência da experiência feminina e apenas homens negros como referência da experiência negra. Qual contribuição da interseccionalidade responde a esse limite?",
+        "hint": "Pergunte quais experiências podem desaparecer quando cada eixo é representado por apenas uma parte das pessoas que o compõem.",
+        "options": [
+          "Somar um ponto fixo por identidade, determinando a experiência de qualquer pessoa sem pesquisar o contexto.",
+          "Investigar como raça e gênero se articulam nas experiências de mulheres negras, sem presumir uniformidade do grupo.",
+          "Eliminar raça e gênero da pesquisa, pois toda categoria social é sem consequência.",
+          "Concluir que as experiências dos dois grupos escolhidos descrevem necessariamente todas as mulheres negras."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: a perspectiva investiga a articulação de relações que pode ficar invisível no recorte de eixo único, sem substituir pesquisa por identidade presumida. A cria uma aritmética fixa de sofrimento; C apaga relações relevantes; D universaliza experiências de partes dos grupos. O argumento identifica uma lacuna analítica e propõe investigá-la, sem decretar o mesmo resultado para toda pessoa."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Música: ritmo, melodia, harmonia e timbre",
+    "objective": "Distinguir organização temporal, linha melódica, relações harmônicas e qualidade timbral, analisando combinações e mudanças em descrições musicais completas sem exigir áudio externo.",
+    "prerequisites": [
+      "Sons e silêncios",
+      "Comparação entre grave e agudo",
+      "Sequência, repetição e contraste"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Ritmo, pulso e andamento",
+        "explanation": "Ritmo é a organização de sons e silêncios no tempo, incluindo durações, entradas e acentos. Pulso é uma referência de batidas percebidas; andamento indica sua velocidade. Um mesmo padrão de durações pode ser executado mais depressa ou mais devagar sem mudar suas proporções. Batidas por minuto, ou BPM, só ficam claras quando se sabe qual unidade está sendo contada. Sessenta batidas por minuto correspondem a uma batida por segundo; dobrar esse número reduz à metade o intervalo entre batidas regulares. Compasso organiza tempos em grupos segundo uma referência métrica: na notação usual, 3/4 contém três tempos de semínima e 4/4 contém quatro. Isso não informa sozinho quantas notas haverá, porque cada tempo pode ser subdividido ou ocupado por uma nota prolongada ou pausa. Acentos e síncopes podem contrastar com a organização métrica esperada; não se deve chamar qualquer ritmo diferente de erro. Também existem práticas com maior liberdade temporal, sem um pulso regular evidente. A notação e os conceitos desta aula são ferramentas de análise, sobretudo de repertórios que usam essa organização, e não condições para que toda cultura produza música válida. Para comparar descrições, separe quantidade de tempos, posição dos eventos e velocidade. Aumentar a intensidade sonora torna um trecho mais forte; não significa automaticamente torná-lo mais rápido ou mais agudo.",
+        "steps": [
+          "Identifique a unidade usada como pulso e a velocidade indicada.",
+          "Localize grupos de tempos e durações de sons e pausas.",
+          "Diferencie ritmo, compasso, andamento e intensidade.",
+          "Analise acentos e contrastes sem impor um único padrão a toda música."
+        ],
+        "example": "Padrão autoral escrito: em um grupo de quatro tempos, um som dura dois tempos e os dois sons seguintes duram um tempo cada. A soma é quatro, mas há três ataques de notas. Executar o grupo lentamente ou rapidamente altera sua duração em segundos, sem exigir que a relação 2:1:1 entre as durações seja mudada.",
+        "pitfall": "Confundir quantidade de notas com quantidade de tempos ou supor que mudar o BPM obrigatoriamente altera o compasso."
+      },
+      {
+        "level": "intermediate",
+        "title": "Melodia e harmonia: linhas e relações",
+        "explanation": "Melodia é uma linha musical percebida como sequência organizada de alturas e durações. Seu desenho pode subir, descer ou repetir notas; contorno é o percurso relativo, e extensão é a distância entre a nota mais grave e a mais aguda. Uma linha pode ser cantada ou tocada, passar entre instrumentos ou repetir uma altura com diferentes durações. Altura se relaciona à percepção de grave e agudo; não se confunde com volume. Harmonia examina relações entre alturas combinadas e sua organização ao longo do trecho. Acordes e suas sucessões são recursos importantes em muitos repertórios, mas nem toda música exige acompanhamento em acordes ou o mesmo sistema tonal. Na harmonia tonal, funções como tônica e dominante descrevem relações em uma tonalidade; uma lista de notas sem contexto não autoriza inferir toda a função ou intenção expressiva. Uma tríade pode ser formada por fundamental, terça e quinta; fundamental do acorde não é sempre a tônica da tonalidade. Uma melodia pode permanecer reconhecível quando o acompanhamento muda, embora sua percepção e as relações harmônicas se transformem. Também pode manter o contorno em uma transposição, que desloca as alturas por um mesmo intervalo. Observe que sequência e simultaneidade são modos de focalizar a análise, não universos isolados: uma melodia tem ritmo e pode sugerir relações harmônicas, e acordes podem ser apresentados em notas sucessivas. Interpretar música exige considerar o conjunto e suas convenções, sem afirmar que todo acorde maior comunica alegria ou toda passagem menor expressa tristeza de modo universal.",
+        "steps": [
+          "Descreva o contorno e as durações da linha principal.",
+          "Diferencie altura, intensidade e identidade da fonte.",
+          "Observe notas combinadas e sucessões harmônicas.",
+          "Relacione função e expressão ao contexto, sem fórmulas emocionais universais."
+        ],
+        "example": "Exemplo autoral simbólico: uma linha apresenta Sol–Lá–Si–Lá em alturas ascendentes e depois descendente. Se a linha for repetida com outro acompanhamento, as quatro notas e seu contorno podem ser preservados, enquanto as relações com as notas de apoio mudam. A descrição permite comparar melodia e harmonia sem supor uma gravação externa.",
+        "pitfall": "Chamar a fundamental de qualquer acorde de tônica da tonalidade ou reduzir harmonia a uma regra obrigatória idêntica em todas as tradições."
+      },
+      {
+        "level": "advanced",
+        "title": "Timbre, textura e escuta comparativa",
+        "explanation": "Timbre é a qualidade sonora que ajuda a distinguir fontes e modos de produzir som, mesmo quando altura e intensidade percebidas são semelhantes. Forma do instrumento, material, vibração, registro e modo de execução podem influenciar essa qualidade. O início do som, sua sustentação e seu término também participam da percepção. Não há correspondência simples em que um material ou uma família instrumental garanta sempre uma única cor sonora. Um mesmo instrumento pode produzir qualidades distintas com mudanças de articulação e técnica, e uma síntese pode aproximar características de diferentes fontes. Por isso, reconhecer um timbre não prova de modo infalível qual objeto foi usado. Textura diz respeito à organização e à relação entre linhas e camadas: uma única linha sem acompanhamento difere de uma linha apoiada por acordes ou de várias linhas com relativa independência. Textura não é sinônimo de timbre: mudar o instrumento de uma linha pode alterar a qualidade sonora sem acrescentar uma nova linha. Já acrescentar outra linha pode mudar a organização do conjunto, ainda que as fontes sejam parecidas. Para comparar duas versões, controle o que a descrição mantém igual e identifique o que foi alterado: ritmo, andamento, alturas, acompanhamento, timbre ou combinação de elementos. Sem ouvir uma gravação, não é possível afirmar qual versão real é mais brilhante ou reconhecer seu instrumento por experiência auditiva; porém é possível raciocinar sobre condições explicitadas em um caso escrito. Uma análise bem sustentada descreve evidências e limites, em vez de atribuir automaticamente a toda pessoa a mesma emoção ou audição.",
+        "steps": [
+          "Identifique quais parâmetros são iguais nas versões comparadas.",
+          "Distinga fonte, técnica, altura, intensidade e qualidade sonora.",
+          "Separe mudança timbral de mudança no número e na relação entre linhas.",
+          "Formule uma interpretação compatível com a descrição e declare limites de escuta."
+        ],
+        "example": "Situação autoral: uma linha é tocada por cordas primeiro com arco e depois com as cordas dedilhadas. Se notas e durações forem mantidas, a mudança de produção e ataque pode modificar o timbre e a articulação sem exigir outra sequência melódica. A descrição não pretende reproduzir áudio nem garantir que todo ouvinte identifique a técnica sem contexto.",
+        "pitfall": "Tratar timbre como sinônimo de frequência fundamental, ou confundir a troca da fonte sonora de uma linha com a adição de outra linha musical."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Modelo escrito autoral: um padrão mantém as mesmas durações relativas e o mesmo agrupamento de tempos. A execução passa de 60 para 120 batidas por minuto, contando a mesma unidade de pulso. Qual mudança é necessariamente indicada?",
+        "hint": "Compare a velocidade do pulso, mantendo separados andamento, agrupamento métrico e intensidade sonora.",
+        "options": [
+          "O compasso necessariamente muda de três para quatro tempos.",
+          "O volume sonoro necessariamente dobra e todas as notas se tornam mais agudas.",
+          "O intervalo entre pulsos regulares passa de 1 segundo para 0,5 segundo; o andamento aumenta.",
+          "O padrão deixa de conter ritmo, pois ritmo só existe a 60 batidas por minuto."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: 60/60=1 segundo por pulso e 60/120=0,5 segundo por pulso. A mesma unidade passa a ocorrer duas vezes mais frequentemente. A modifica o agrupamento sem evidência; B confunde velocidade com intensidade e altura; D impõe uma restrição inexistente. As durações relativas e o agrupamento foram mantidos no modelo, embora a duração absoluta da execução diminua."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Caso autoral totalmente descrito: uma voz apresenta Dó–Ré–Mi, uma nota após a outra; ao mesmo tempo, um teclado sustenta o conjunto Dó–Mi–Sol. O que a descrição permite distinguir?",
+        "hint": "Focalize a linha sucessiva da voz e as alturas combinadas que a acompanham, sem transformar essas funções em uma regra para toda música.",
+        "options": [
+          "A voz apresenta uma linha melódica, e o conjunto de notas do teclado participa do acompanhamento harmônico.",
+          "O teclado não pode participar de harmonia porque seus sons são simultâneos.",
+          "A voz não pode apresentar melodia porque também possui durações e ritmo.",
+          "A presença de Dó no teclado prova que toda a obra, não fornecida, está obrigatoriamente em Dó maior."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a descrição explicita uma linha sucessiva de alturas na voz e um conjunto sustentado que participa da harmonia. B nega justamente a combinação apresentada; C trata ritmo e melodia como incompatíveis; D infere a tonalidade de toda uma obra de informações insuficientes. A conclusão distingue o papel das camadas, sem supor que só exista harmonia com notas atacadas simultaneamente."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Comparação hipotética autoral: uma versão usa flauta e outra usa clarinete para a mesma linha, mantendo alturas, durações, andamento e intensidade percebida semelhantes, sem acrescentar vozes. Qual análise é adequada?",
+        "hint": "Distingua qualidade da fonte de organização temporal, alturas e número de linhas; não presuma escuta de um áudio não fornecido.",
+        "options": [
+          "A troca prova que as notas passaram obrigatoriamente de graves para agudas.",
+          "A troca obriga a existência de várias melodias independentes simultâneas.",
+          "Mesmas alturas e durações garantem que não possa haver qualquer diferença de qualidade sonora.",
+          "A fonte pode alterar o timbre sem exigir mudança da linha melódica nem adição de outra voz."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: fontes diferentes podem apresentar qualidades timbrais distintas, mantendo a linha descrita. A inventa mudança de altura; B acrescenta vozes que o caso exclui; C reduz identidade sonora a alturas e durações. Não é necessário reconhecer por audição uma gravação inexistente nem garantir que toda diferença será identificada infalivelmente por qualquer ouvinte."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Ginásticas e práticas de condicionamento",
+    "objective": "Distinguir finalidades das ginásticas, capacidades físicas e variáveis de organização do exercício, analisando práticas de condicionamento com inclusão, autonomia e crítica a promessas universais.",
+    "prerequisites": [
+      "Cultura corporal e participação",
+      "Diferença entre objetivo e resultado",
+      "Leitura crítica de informações sobre o corpo"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Ginásticas e suas finalidades",
+        "explanation": "As ginásticas reúnem práticas corporais com histórias, objetivos e organizações diferentes. Na classificação educacional da BNCC, a ginástica geral ou para todos valoriza expressão, exploração de movimentos, aprendizagem compartilhada e participação não competitiva. As ginásticas de condicionamento orientam exercícios à manutenção ou melhoria da condição física, com planejamento de sessões. As de conscientização corporal enfatizam percepção e atenção ao próprio corpo. Essa classificação ajuda a comparar finalidades, mas não transforma cada gesto em propriedade exclusiva de um grupo. Um movimento pode aparecer em práticas com objetivos distintos. Ginásticas competitivas, como a artística e a rítmica, possuem regras e critérios de avaliação esportiva, distinguindo-se de uma proposta escolar que não organiza disputa por desempenho. Atividade física é um conceito mais amplo, relacionado a movimento corporal com gasto de energia, inclusive em deslocamentos e tarefas cotidianas. Exercício físico é uma prática planejada e estruturada com objetivos de manutenção ou desenvolvimento de capacidades. Nem todo movimento cotidiano é um programa de exercício. Para reconhecer condicionamento, pergunte o que se pretende desenvolver e como a prática é organizada, em vez de decidir apenas pela presença de música, aparelhos ou suor. Aprender esses conceitos não exige reproduzir acrobacias ou seguir um treino por conta própria. A compreensão da cultura corporal inclui observar, analisar, comparar e participar de propostas adequadas com orientação.",
+        "steps": [
+          "Identifique a finalidade e a organização da prática descrita.",
+          "Diferencie participação expressiva, condicionamento, conscientização e competição.",
+          "Distinga atividade física cotidiana de exercício planejado.",
+          "Reconheça que o mesmo movimento pode assumir sentidos diferentes."
+        ],
+        "example": "Comparação fictícia autoral: uma turma cria uma apresentação coletiva sem ranking; outra estuda como sessões são organizadas para desenvolver capacidades; uma terceira observa percepções corporais em uma proposta orientada. As finalidades ajudam a analisar as práticas, sem supor que um único gesto ou equipamento determine toda sua classificação.",
+        "pitfall": "Definir qualquer movimento como ginástica de condicionamento ou considerar toda ginástica uma competição de acrobacias."
+      },
+      {
+        "level": "intermediate",
+        "title": "Capacidades e variáveis do planejamento",
+        "explanation": "Capacidades físicas são recursos do movimento, e uma prática pode solicitar várias ao mesmo tempo. Força envolve produzir tensão para atuar contra resistências; resistência muscular envolve sustentar ou repetir ações ao longo do esforço. Aptidão cardiorrespiratória se relaciona à sustentação de esforços com participação integrada dos sistemas de transporte e uso de oxigênio. Flexibilidade envolve amplitude de movimento, e equilíbrio se relaciona ao controle da postura. Essas capacidades não se resumem ao tamanho dos músculos nem a uma aparência corporal considerada ideal. No planejamento, frequência indica quantas sessões ocorrem em um intervalo; duração indica quanto tempo; intensidade descreve a exigência; tipo identifica a prática e as tarefas propostas. Repetições, séries, resistências e intervalos também podem compor a organização, conforme o objetivo. Aumentar o tempo não significa necessariamente aumentar a intensidade. A mesma tarefa externa pode representar esforços relativos diferentes para pessoas diferentes; portanto, não é adequado concluir que todos vivenciam uma sessão da mesma forma. Objetivos, experiências anteriores e condições individuais orientam adaptações e progressão, com atenção à recuperação. Uma tarefa que enfatiza uma capacidade não garante desenvolver igualmente todas as outras. Estas variáveis são estudadas aqui para compreender e avaliar descrições de práticas, não para estabelecer doses, cargas ou um plano individual. Copiar uma rotina divulgada na mídia sem considerar seu contexto confunde informação geral e orientação adequada para uma pessoa concreta.",
+        "steps": [
+          "Reconheça capacidades solicitadas sem reduzi-las à aparência.",
+          "Separe frequência, duração, intensidade e tipo.",
+          "Considere que o esforço relativo pode variar entre pessoas.",
+          "Relacione objetivos, adaptação, progressão e recuperação à orientação qualificada."
+        ],
+        "example": "Ficha didática hipotética: um planejamento altera apenas o número de sessões em uma semana, mantendo o tempo por sessão e as tarefas. A variável diretamente modificada é a frequência. Isso não demonstra que a intensidade por sessão aumentou nem estabelece que o novo número seja apropriado para qualquer estudante.",
+        "pitfall": "Confundir mais sessões ou mais minutos com maior intensidade, ou imaginar que uma mesma carga externa produz esforço relativo idêntico para todos."
+      },
+      {
+        "level": "advanced",
+        "title": "Inclusão, avaliação e mídia",
+        "explanation": "Uma proposta escolar de condicionamento deve favorecer aprendizagem e participação, considerando diferentes habilidades, preferências e necessidades. Inclusão não exige que todos executem movimentos idênticos, com a mesma amplitude ou resistência; adaptações podem preservar objetivos de aprendizagem. Também não se reduz a deixar alguém apenas observando por exclusão automática: diferentes formas de participação podem ser construídas com o professor. Comparar o progresso de uma pessoa em condições adequadas não equivale a publicar um ranking de corpos ou atribuir valor pessoal ao desempenho. Resultados de uma tarefa dependem de suas condições e não comprovam sozinhos a saúde global de alguém. A crítica à mídia pergunta que objetivos, evidências e interesses sustentam mensagens sobre corpo e exercício. Promessas de resultados rápidos, garantidos e iguais para qualquer pessoa ignoram diferenças e podem incentivar excesso ou práticas inadequadas. Mais esforço não é sempre melhor, e dor não é requisito que se deva buscar para validar uma atividade. A análise deve reconhecer limites e a importância de orientação responsável, sem ensinar uso de medicamentos ou suplementos como atalhos. Esta aula é conceitual: seus casos não prescrevem execução de movimentos, tratamento, dieta ou carga individual. Em uma avaliação pedagógica, podem ser examinados compreensão das variáveis, cooperação, respeito e capacidade de propor alternativas acessíveis. O cuidado com o corpo inclui autonomia informada, convívio e condições reais de acesso, em vez de uma obrigação de atingir um único padrão estético.",
+        "steps": [
+          "Investigue barreiras de acesso e possibilidades de adaptação com o professor.",
+          "Diferencie aprendizagem e cooperação de ranking corporal.",
+          "Examine evidências e limites de promessas divulgadas na mídia.",
+          "Avalie o alcance dos resultados sem diagnosticar saúde ou prescrever treinos."
+        ],
+        "example": "Cenário autoral: uma turma discute se deve avaliar apenas quem produz o maior resultado em uma tarefa. Outra proposta considera compreensão do objetivo, análise de variáveis, colaboração e progresso contextualizado. O debate permite examinar aprendizagem e inclusão sem exigir que todos tenham as mesmas condições ou exponham informações pessoais de saúde.",
+        "pitfall": "Usar aparência ou um resultado isolado como diagnóstico de saúde, ou confundir inclusão com a exigência de execução idêntica para todas as pessoas."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Caso hipotético autoral: uma proposta descreve sessões planejadas de exercícios, organizadas para desenvolver capacidades físicas, com objetivos e variáveis definidos. Qual finalidade aparece como central nessa descrição?",
+        "hint": "Observe o objetivo declarado, sem classificar a prática apenas pelo uso de música, aparelhos ou pela presença de movimentos repetidos.",
+        "options": [
+          "Uma competição oficial de ginástica artística, demonstrada apenas pela palavra sessão.",
+          "Uma apresentação obrigatoriamente sem qualquer objetivo físico ou planejamento.",
+          "Uma ginástica de condicionamento, pela organização voltada ao desenvolvimento de capacidades.",
+          "Uma atividade sem gasto de energia, porque toda prática planejada deixa de ser atividade física."
+        ],
+        "correctIndex": 2,
+        "solution": "C, índice 2: objetivos de capacidades e organização de sessões caracterizam a finalidade de condicionamento indicada. A inventa competição e modalidade; B nega os objetivos explícitos; D trata exercício e atividade física como excludentes. O caso não determina quais exercícios ou cargas seriam adequados a uma pessoa e não exige executá-los."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Ficha conceitual autoral: dois participantes realizam a mesma tarefa externa durante o mesmo tempo, mas relatam exigências de esforço diferentes. Qual interpretação é adequada?",
+        "hint": "Diferencie a tarefa externa da intensidade relativa vivenciada por uma pessoa, sem atribuir diagnóstico a um relato isolado.",
+        "options": [
+          "A mesma tarefa garante intensidade relativa idêntica, independentemente das pessoas.",
+          "A diferença prova, sem outras informações, uma doença em um dos participantes.",
+          "O tempo igual demonstra que frequência semanal e intensidade são a mesma variável.",
+          "A exigência relativa pode variar; a descrição não basta para diagnosticar saúde ou prescrever ajustes individuais."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: uma tarefa externa comum não garante o mesmo esforço relativo. A desconsidera diferenças; B transforma informação insuficiente em diagnóstico; C confunde tempo, frequência e intensidade. A análise reconhece o limite da descrição e a necessidade de orientação contextualizada, em vez de estabelecer uma carga ou classificar a saúde dos participantes."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Exercício autoral de leitura crítica: uma publicidade promete que uma única rotina produzirá o mesmo corpo em todas as pessoas em poucos dias e exige suportar dor para comprovar resultado. Qual avaliação é sustentada?",
+        "hint": "Examine promessa universal, diferenças individuais e a ideia de sofrimento obrigatório, sem criar outro protocolo de treino.",
+        "options": [
+          "A promessa ignora diferenças e limites; aprendizagem e cuidado exigem análise crítica e orientação responsável, sem buscar dor como requisito.",
+          "A exigência de dor é suficiente para comprovar cientificamente a eficácia e a segurança da rotina.",
+          "A promessa garante que adaptações e recuperação se tornam desnecessárias para qualquer pessoa.",
+          "O anúncio demonstra que o único objetivo válido de toda ginástica é padronizar a aparência."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: promessas iguais para todos desconsideram contexto e diferenças, e dor não é requisito a buscar como validação. B transforma sofrimento em prova; C elimina cuidados sem fundamento; D reduz finalidades diversas à padronização estética. A resposta avalia criticamente o anúncio, sem prescrever exercícios, doses ou tratamento."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Terra, Lua e Sistema Solar",
+    "objective": "Relacionar componentes do Sistema Solar e movimentos da Terra e da Lua à alternância de dias e noites, estações, fases e eclipses, interpretando modelos com limites explícitos.",
+    "prerequisites": [
+      "Luz, iluminação e sombra",
+      "Esfera, eixo e órbita",
+      "Comparação entre escalas de tempo"
+    ],
+    "sections": [
+      {
+        "level": "basic",
+        "title": "Corpos, órbitas e movimentos",
+        "explanation": "O Sistema Solar inclui o Sol e corpos ligados a ele pela gravidade: planetas, planetas anões, satélites naturais e pequenos corpos, como asteroides e cometas. O Sol é uma estrela, e a Terra é um planeta; a Lua é o satélite natural da Terra. Os oito planetas, na ordem de suas órbitas a partir do Sol, são Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano e Netuno. Plutão é classificado como planeta anão, e não como um dos oito planetas dessa lista. Essa ordem não significa que estejam alinhados no espaço nem igualmente separados. A luz visível pela qual observamos a Lua e muitos outros corpos é principalmente luz solar refletida; ver um astro brilhante não basta para classificá-lo como estrela. Rotação é o movimento em torno do próprio eixo; translação é o movimento orbital em torno de outro corpo ou do centro de massa do sistema. A rotação terrestre ajuda a explicar a alternância de iluminação solar em um lugar, e a órbita da Terra em torno do Sol se relaciona ao ano. Um dia solar médio tem cerca de 24 horas e um ano cerca de 365 dias e um quarto; são aproximações, não uma regra de calendário sem exceções. A Lua também gira e orbita: apresentar aproximadamente a mesma face à Terra não significa não ter rotação. Diagramas didáticos frequentemente alteram tamanhos e distâncias para permitir a visualização; é preciso distinguir representação e escala real.",
+        "steps": [
+          "Classifique Sol, Terra e Lua e reconheça os demais componentes.",
+          "Diferencie rotação e movimento orbital.",
+          "Relacione dia e ano aos movimentos adequados.",
+          "Confira escala e posição sem imaginar alinhamento fixo dos planetas."
+        ],
+        "example": "Modelo conceitual autoral: marque um ponto numa esfera terrestre e mantenha uma fonte luminosa distante em posição fixa enquanto a esfera gira. O ponto alterna entre regiões iluminada e não iluminada sem que seja necessário apagar a fonte. Trata-se de uma representação de dias e noites, com simplificações de escala e iluminação.",
+        "pitfall": "Explicar a noite pelo apagamento do Sol ou afirmar que a Lua não gira porque apresenta aproximadamente a mesma face à Terra."
+      },
+      {
+        "level": "intermediate",
+        "title": "Fases lunares e eclipses",
+        "explanation": "Fora das situações de eclipse, aproximadamente metade da Lua recebe iluminação solar direta. Da Terra, vemos frações diferentes dessa região iluminada conforme mudam as posições relativas de Sol, Terra e Lua. A sequência das fases não é causada pela sombra terrestre cobrindo a Lua toda semana. Na Lua nova, a direção aparente da Lua fica próxima à do Sol, e sua face voltada à Terra recebe pouca iluminação solar direta. Na cheia, ela aparece aproximadamente na direção oposta à do Sol no céu, permitindo ver a face quase toda iluminada. Nos quartos, cerca de metade do disco aparente está iluminada; a palavra quarto não significa que vemos somente um quarto do disco lunar. Entre essas posições, a aparência muda gradualmente. O ciclo de uma Lua nova à seguinte dura aproximadamente 29,5 dias, diferente dos cerca de 27,3 dias de uma volta orbital em relação às estrelas distantes, porque a Terra também avança em sua órbita. Eclipses exigem alinhamentos específicos: num eclipse solar, a Lua pode ocultar o Sol para observadores em parte da Terra; num lunar, a Lua atravessa a sombra terrestre. A órbita lunar é inclinada em relação ao plano orbital da Terra, por isso nem toda Lua nova produz eclipse solar nem toda cheia produz eclipse lunar. A face distante da Lua não é uma metade permanentemente sem iluminação: também passa por dia e noite. A orientação visual do crescente depende da perspectiva do observador, de modo que letras desenhadas no céu não são regra universal de fase.",
+        "steps": [
+          "Identifique a fonte de iluminação e o observador.",
+          "Compare posições relativas e fração iluminada do disco aparente.",
+          "Diferencie fases regulares e passagem por sombra em um eclipse.",
+          "Considere inclinação orbital e perspectiva antes de generalizar."
+        ],
+        "example": "Descrição autoral de modelo: uma Lua colocada aproximadamente de lado em relação à direção Terra–Sol pode mostrar ao observador terrestre metade do disco iluminada. Isso ajuda a interpretar um quarto lunar. A representação não precisa supor que a sombra da Terra cobriu metade da Lua nem que só existe iluminação na face voltada para nós.",
+        "pitfall": "Confundir fases com sombra terrestre ou deduzir que toda Lua cheia necessariamente entra na sombra da Terra."
+      },
+      {
+        "level": "advanced",
+        "title": "Estações, perspectiva e limites dos modelos",
+        "explanation": "As estações resultam principalmente da inclinação do eixo terrestre combinada com a translação e a manutenção aproximada de sua orientação ao longo de um ano. O eixo é inclinado cerca de 23,4 graus em relação à perpendicular ao plano orbital, não em relação ao próprio plano. Isso modifica a incidência dos raios solares e a duração do período iluminado em diferentes latitudes. Perto do solstício de dezembro, o hemisfério Sul está inclinado em direção ao Sol: em latitudes médias austrais, os dias são mais longos e a incidência é mais direta do que no inverno local. No hemisfério Norte ocorre a situação sazonal oposta. Em junho, a configuração se inverte. A distância Terra–Sol varia ao longo da órbita, mas não explica essa oposição simultânea das estações entre hemisférios. Não é correto atribuir o verão de um hemisfério apenas a estar mais próximo do Sol. Solstícios e equinócios são referências astronômicas; suas consequências de iluminação variam com latitude, e condições meteorológicas de um dia não são determinadas somente pela estação. A observação de um movimento aparente também exige atenção ao referencial: o deslocamento diário do Sol no céu não prova, sozinho, que ele orbita a Terra. Um modelo útil deve relacionar posição, iluminação, escala e período sem transformar uma simplificação em fato literal. Uma figura com órbita muito alongada pode exagerar distâncias, e círculos desenhados no papel não demonstram que todos os movimentos ocorrem num único plano. Esta análise é conceitual e não requer olhar diretamente para o Sol; observação solar necessita procedimentos e proteção específicos.",
+        "steps": [
+          "Localize hemisfério, latitude e posição sazonal.",
+          "Relacione inclinação e órbita à incidência e duração do dia.",
+          "Diferencie estação astronômica, distância e tempo meteorológico.",
+          "Avalie referencial e limites de escala de cada representação."
+        ],
+        "example": "Caso hipotético autoral: dois estudantes em latitudes médias, um no Norte e outro no Sul, comparam o mesmo período de junho. O modelo prevê maior duração de luz diurna no Norte e menor no Sul. Como os dois estão no mesmo planeta e momento orbital, uma explicação baseada apenas na distância Terra–Sol não resolve a diferença entre suas estações.",
+        "pitfall": "Medir a inclinação de 23,4 graus em relação ao plano orbital, ou explicar estações opostas apenas pela variação da distância ao Sol."
+      }
+    ],
+    "tasks": [
+      {
+        "level": "basic",
+        "prompt": "Modelo autoral da Terra esférica: um ponto da superfície alterna entre iluminação solar e ausência dela enquanto o planeta gira, mantendo o Sol como fonte luminosa. Qual movimento explica essa alternância diária?",
+        "hint": "Diferencie o giro em torno do próprio eixo da volta orbital relacionada ao ano, sem supor que a fonte luminosa se apaga.",
+        "options": [
+          "A órbita da Lua apaga o Sol todas as noites em todo o planeta.",
+          "A rotação da Terra muda a orientação do ponto em relação à iluminação solar.",
+          "A translação terrestre completa uma volta em 24 horas e substitui a rotação.",
+          "O Sol deixa de produzir energia toda vez que o ponto fica na região noturna."
+        ],
+        "correctIndex": 1,
+        "solution": "B, índice 1: com a rotação, o ponto muda sua orientação em relação à iluminação e alterna dia e noite no modelo. A transforma o ciclo diário em ocultação lunar universal; C troca os períodos e movimentos; D supõe o apagamento da estrela. A explicação é uma representação simplificada e não afirma que todas as latitudes tenham igual duração diária de luz em qualquer época."
+      },
+      {
+        "level": "intermediate",
+        "prompt": "Situação didática autoral: vista da Terra, a Lua aparece em direção aproximadamente oposta à do Sol e está fora da sombra terrestre. Qual interpretação é adequada?",
+        "hint": "Considere quanto da região iluminada fica voltada ao observador e se existe condição de sombra para um eclipse lunar.",
+        "options": [
+          "É necessariamente um eclipse lunar total, mesmo com a Lua fora da sombra da Terra.",
+          "É Lua nova: a face voltada à Terra precisa estar sem iluminação direta nessa posição.",
+          "A Lua passou a produzir luz visível como uma estrela, dispensando iluminação solar.",
+          "A Lua está na fase cheia ou próxima dela, e a descrição não indica eclipse lunar."
+        ],
+        "correctIndex": 3,
+        "solution": "D, índice 3: a oposição aparente permite ver quase toda a face iluminada, característica da cheia ou de uma posição próxima, sem exigir passagem pela sombra. A contradiz a condição fora da sombra; B usa a geometria da nova em posição oposta; C troca reflexão por produção estelar de luz. Uma Lua cheia não implica automaticamente eclipse, devido à geometria orbital."
+      },
+      {
+        "level": "advanced",
+        "prompt": "Comparação autoral: perto do solstício de dezembro, o hemisfério Sul está inclinado em direção ao Sol. Para localidades de latitudes médias nos dois hemisférios, qual explicação das estações é adequada?",
+        "hint": "Relacione incidência dos raios e duração do período iluminado, observando que os hemisférios vivem situações opostas no mesmo momento orbital.",
+        "options": [
+          "A inclinação favorece verão astronômico no Sul e inverno no Norte; a distância Terra–Sol sozinha não explica essa oposição.",
+          "Os dois hemisférios necessariamente têm verão porque o planeta está na mesma distância do Sol.",
+          "As estações dependem apenas de o Sol se apagar por mais horas no Norte.",
+          "A Terra interrompe sua rotação no Sul durante o verão, enquanto continua girando no Norte."
+        ],
+        "correctIndex": 0,
+        "solution": "A, índice 0: a inclinação altera a incidência e a duração da iluminação em sentidos sazonais opostos, favorecendo verão austral e inverno boreal. B ignora a geometria dos hemisférios; C inventa apagamento solar; D divide indevidamente a rotação de um mesmo planeta. A resposta descreve a referência astronômica sem garantir a temperatura ou o tempo meteorológico de uma cidade em um dia específico."
+      }
+    ]
   }
 ];
 
@@ -1482,6 +1850,133 @@ export const authoredCurriculumBatch12ReviewRecords = [
         "index": 2,
         "correctIndex": 0,
         "reasoning": "A alternativa A corretamente limita o valor da precisão média agregada, exigindo análise de critérios, distribuição de erros, contestação e responsabilidade; B converte média em garantia individual injustificada, C infere consciência e intenção discriminatória sem evidência e D apaga papéis humanos e institucionais, tornando-se distrators logicamente inválidos."
+      }
+    ]
+  },
+  {
+    "subject": "Sociologia",
+    "topic": "Gênero, raça e relações sociais",
+    "contentSha256": "6b5653ed7642d4991c66cd8f6aea041a23def13917b546345833d94cfa28e016",
+    "draftMethod": "Autoria Codex após rejeição editorial de rascunho Claude Code; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.genome.gov/genetics-glossary/Race",
+      "https://plato.stanford.edu/entries/feminism-gender/",
+      "https://plato.stanford.edu/entries/discrimination/",
+      "https://openstax.org/books/introduction-sociology-3e/pages/11-3-prejudice-discrimination-and-racism",
+      "https://openstax.org/books/introduction-sociology-3e/pages/12-1-sex-gender-identity-and-expression",
+      "https://openstax.org/books/introduction-sociology-3e/pages/11-1-racial-ethnic-and-minority-groups",
+      "https://ideas.wharton.upenn.edu/wp-content/uploads/2018/07/Crenshaw-1989.pdf"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 0,
+        "reasoning": "A alternativa correta é A porque a afirmação da família naturaliza papéis de gênero e generaliza capacidades sem evidência sobre cada mulher; a análise sociológica exige examinar formação, oportunidades e diferenças individuais, não aceitar generalizações como destinos biológicos. As demais alternativas apresentam erros: B trata a alegação como comprovação científica; C nega qualquer relação da expectativa familiar com socialização; D impõe universalidade incondicional das normas familiares, o que contradiza a variabilidade histórica e contextual."
+      },
+      {
+        "index": 1,
+        "correctIndex": 2,
+        "reasoning": "A alternativa correta é C porque a investigação adequada deve examinar critérios, execução, registros e efeitos da prática de exclusão, incluindo mecanismos institucionais, em vez de encerrar a análise prematuramente ou atribuir intenções conscientes idênticas a todos os funcionários. A alternativa A encerra a análise baseada apenas na declaração de igualdade, B atribui intenções iguais sem pesquisa empírica e D nega o impacto das categorias socialmente construídas no acesso a serviços, o que contradiz a sociologia crítica."
+      },
+      {
+        "index": 2,
+        "correctIndex": 1,
+        "reasoning": "A alternativa correta é B porque a contribuição da interseccionalidade consiste em investigar como raça e gênero se articulam nas experiências de mulheres negras, sem presumir uniformidade dentro do grupo. A alternativa A reduz a interseccionalidade a aritmética fixa de desvantagens; C apaga relações sociais relevantes; D universaliza a partir de recortes parcial dos grupos, exatamente o limite que a interseccionalidade busca superar ao perguntar quais experiências ficam invisíveis."
+      }
+    ]
+  },
+  {
+    "subject": "Arte",
+    "topic": "Música: ritmo, melodia, harmonia e timbre",
+    "contentSha256": "558f013f662a4777d784313f25d7f914ac50b39982b04849c8ef58237031b18d",
+    "draftMethod": "Autoria e conferência musical Codex após rejeição factual de rascunho Claude Code; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://www.open.edu/openlearn/mod/oucontent/view.php?id=102472&section=2",
+      "https://www.open.edu/openlearn/mod/oucontent/view.php?id=102472&section=3",
+      "https://www.open.edu/openlearn/mod/oucontent/view.php?id=102472&section=4",
+      "https://www.open.edu/openlearn/mod/oucontent/view.php?id=102598&section=1",
+      "https://www.open.edu/openlearn/mod/oucontent/view.php?id=102599&section=1",
+      "https://www.open.edu/openlearn/mod/oucontent/view.php?id=102598&section=2",
+      "https://www.open.edu/openlearn/mod/glossary/print.php?fullsearch=0&hook=ALL&id=103806&mode=&offset=0&pagelimit=0&sortkey=&sortorder="
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "Ao dobrar o BPM mantendo a mesma unidade de pulso, o intervalo entre pulsos halves de 1 segundo para 0,5 segundo; o agrupamento métrico e as durações relativas permanecem inalterados, de modo que a única mudança necessariamente indicada é o aumento do andamento, correspondendo à alternativa C."
+      },
+      {
+        "index": 1,
+        "correctIndex": 0,
+        "reasoning": "A descrição apresenta claramente uma linha sucessiva de alturas na voz (melodia) e um conjunto sustentado de notas no teclado (acompanhamento harmônico), de modo que a alternativa A distingue corretamente os papéis das camadas, enquanto as outras opções fazem inferências inválidas ou negam a combinação apresentada."
+      },
+      {
+        "index": 2,
+        "correctIndex": 3,
+        "reasoning": "A comparação entre flauta e clarinete mantendo alturas, durações, andamento e intensidade semelhantes demonstra que a fonte sonora pode alterar o timbre sem exigir mudança da linha melódica nem adição de vozes, de modo que a alternativa D é a análise adequada, enquanto as outras opções introduzem mudanças ou restrições não presentes no caso."
+      }
+    ]
+  },
+  {
+    "subject": "Educação Física",
+    "topic": "Ginásticas e práticas de condicionamento",
+    "contentSha256": "c2fbde8120e487f697fa5041e98bb04cc45d823f68bfaf4d8484e6bb247a0e3c",
+    "draftMethod": "Autoria e conferência educacional Codex; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "https://ninho.inca.gov.br/jspui/bitstream/123456789/6567/1/guia_atividade_fisica_populacao_brasileira.pdf",
+      "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+      "https://www.cdc.gov/physical-activity-basics/measuring/index.html"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 2,
+        "reasoning": "A descrição enfatiza sessões planejadas de exercícios organizadas para desenvolver capacidades físicas. A alternativa 2 identifica corretamente essa finalidade como ginástica de condicionamento, conforme a definição da aula de que o condicionamento visa manutenção ou melhoria da condição física por meio de sessões planejadas. As alternativas 0, 1 e 3 são distractores: a 0 incorretamente associa 'sessão' a ginástica artística competitiva; a 1 nega o objetivo físico e o planejamento explicitados; a 3 incorre na definição de atividade física, contradizendo a distinção da aula entre atividade física e exercício planejado."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "O enunciado apresenta dois participantes realizando a mesma tarefa externa pelo mesmo tempo, mas relatando exigências de esforço diferentes. A alternativa 3 adequa-se ao reconhecer que a exigência relativa pode variar e a descrição não basta para diagnosticar saúde ou prescrever ajustes individuais, alinhando-se ao princípio da aula de que a mesma tarefa pode representar esforços relativos diferentes para pessoas diferentes. As alternativas 0, 1 e 2 são distractores: a 0 falsa garantia de intensidade relativa idêntica independentemente das pessoas; a 1 incorretamente diagnostica doença a partir de informação insuficiente; a 2 confunde o tempo da tarefa com frequência semanal e variáveis de intensidade."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "O exercício propõe a análise crítica de anúncio que promete corpo uniforme em todas as pessoas em poucos dias e exige dor para comprovar resultado. A alternativa 0 avalia corretamente que a promessa ignora diferenças e limites, e que aprendizagem e cuidado exigem análise crítica e orientação responsável, sem buscar dor como requisito, conforme as diretrizes da aula sobre crítica à mídia. As alternativas 1, 2 e 3 são distractores: a 1 eleva a exigência de dor a prova científica de eficácia; a 2 elimina adaptações e recuperação necessárias; a 3 reduz finalidades diversas da ginástica ao padrão estético de aparência."
+      }
+    ]
+  },
+  {
+    "subject": "Ciências",
+    "topic": "Terra, Lua e Sistema Solar",
+    "contentSha256": "3f88207a87eea0491b5a89255354cff27b1fd8d04dd2a271e613f0509572a065",
+    "draftMethod": "Autoria e conferência astronômica Codex; crítica independente Claude Code via NVIDIA NIM",
+    "verifiedSourceUrls": [
+      "https://science.nasa.gov/solar-system/solar-system-facts/",
+      "https://science.nasa.gov/earth/facts/",
+      "https://science.nasa.gov/moon/moon-phases/",
+      "https://spaceplace.nasa.gov/seasons/en/",
+      "https://spaceplace.nasa.gov/eclipses/en/"
+    ],
+    "humanPedagogicalReview": "pending",
+    "questionChecks": [
+      {
+        "index": 0,
+        "correctIndex": 1,
+        "reasoning": "A rotação da Terra em torno do próprio eixo alterna a orientação de um ponto na superfície em relação à fonte solar, explicando a alternância dia/noite em 24 horas, enquanto a translação orbital leva cerca de 365 dias e a órbita lunar não causa apagamento solar noturno. Essa distinção evita a confusão entre movimento diário e anual."
+      },
+      {
+        "index": 1,
+        "correctIndex": 3,
+        "reasoning": "Com a Lua em direção aproximadamente oposta ao Sol e fora da sombra terrestre, a face iluminada voltada à Terra corresponde à fase cheia ou próxima; a ausência de passagem pela sombra descarta eclipse lunar, e a posição não corresponde à Lua nova (que ficaria entre Terra e Sol)."
+      },
+      {
+        "index": 2,
+        "correctIndex": 0,
+        "reasoning": "A inclinação axial de 23,4° combinada com a translação orbital cria estações opostas nos hemisférios no mesmo momento orbital; a variação da distância Terra-Sol é insuficiente e não explica a sazonalidade diferenciada, sendo a inclinação o fator determinante."
       }
     ]
   }

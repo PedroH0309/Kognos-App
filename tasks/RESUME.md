@@ -1,6 +1,252 @@
 # Continuidade do catálogo — execução retomada
 
-## Estado atual em 15/11/2026 — checkpoint 31
+## Estado atual em 15/11/2026 — checkpoint 38
+
+CONTINUAR;parar50%SESSÃO. Sósemanal33%/10080min,secondary:null. Não substituir
+semanal por sessão nem prometer detectar50%session. Sem pergunta pendente.
+
+184novas/8lote14.675app+6motor/build/lint/184API+4leitor12MCQ4largurasPASS.
+Lacunas1111;ENEM192/704;estudo192/25/690;índice401. Logscheckpoint38-*.log.
+Preview3316sessão47099build184;fixtures184;captura batch14-eight inspecionada.
+CI37 43775274710 SUCCESS head4ebe5a4;PR118OPEN. Publicar38/atualizarPR28novas,
+acompanharCIexata. PR117MERGEDexternamente156; não atualizar117.
+
+Module14ALL8:381ba959,4cf23331,f6b546f4,08e33489,7db9b0b2,34239b0b,ef8cd5f9,
+0bb27332. Integrador14REESCREVE exigir todosIDsnaspróximasintegrações.
+Evidência editorial principal-editorial-evidence-checkpoint38.json. Inglês
+eventuallyadvérbio/desfechonãoeventualmente;Spanishacentosparadigmas/trechos;
+FísicaYvsX corrigidos explicitamente nospareceres comoriginaisintegros.
+Não rerodar finish38/autores/refinements jáexecutados. Texto/hashinalterado.
+SpanishrespostaRAE nova crítica válida apósrejeiçãoinventadacoméiais→coméis;
+fonteDLEcomer216-225eDPDtemer199-254/haber2285-2296 lidas. Não adotarcríticafalsa.
+DoistestescríticosGREENconversões/intervalos/afim e mol/limitante/pureza/rendimento.
+
+Worker192PID18472Tempbatch14log,único. Próximos Bio c795d057,Hist5458bd83,
+Geoe7c98d39,Philo51cdb3e3,Soc8a621b3c,Art1820d8ab,PE91b651d3,Sci3b97fbde.
+ÚltimoBioautor2apósJSONerro; nenhumprincipalBio/Hist/Geo/Philo14 ainda.
+BiofontesBODYlidasOpenStaxBiology2e18.1 25-55/65-107/115-120;19.1 25-54;
+19.2 25-35 somente, completar drift/fluxoantesusar. Não adotar18.1fixaçãonecessária
+depescoçotartaruga,vestigialsemfunçãouniversal,embriõeshumanoscomguelras,
+ausênciadeoutrosmamíferosAustrália,nemseleçãosóemmilhõesanos.19.1HWsemacasalamento
+aleatório incompleto. Sem estatísticasreaiscopiadas/vacinasatuais/tratamento.
+Planejar frequênciasalélicas:modelodiploide100indiv40AA40Aa20aa→pA.60qa.40,
+semexigirHWpara contagem. Seleçãovariaçãopreexistentehereditária/sucessoreprodutivo,
+derivaamostragemaleatórianãoprovarseleçãodefreqsomente. Ainda nenhumtesteBioRED.
+
+Helpersprivadossalvos/AGENTSgeradonãocommit/originalrootsujapreservada.
+Fetchantespush/noforce/nãomergedePR/nãodeploy. Não parar no checkpoint.
+
+## Histórico — checkpoint 37
+
+CONTINUAR;parar50%SESSÃO. Sósemanal31%/10080min,secondary:null. Não usar semanal
+como sessão; sem indicador da sessão não prometer parada exata. Sem pergunta.
+
+180novas/4lote14.673app+6motor/build/lint/180API+4leitor12MCQ4largurasPASS.
+Lacunas1115;ENEM188/708;estudo188/26/693;índice397. Logscheckpoint37-*.log.
+Preview3316sessão18641build180;fixtures180;captura batch14-four inspecionada.
+CI36 43773898884 SUCCESS headfeb0d38;PR118OPEN. Publicar37/atualizarPR24novas,
+acompanharCIexata. PR117MERGEDexternamente156; nunca atualizar117.
+
+Module14ALL4:381ba959,4cf23331,f6b546f4,08e33489. Integrador14REESCREVE exigir
+todosIDsnaspróximasintegrações. Autorhelperscríticas finais válidas/lidas/hash
+inalterados. Math testecríticoGREEN,12MCQbrowser. Evidência editorial
+principal-editorial-evidence-checkpoint37.json. ParecerPortforem/será/textoswas
+e Redpresencial(nãoinformado,eraorientado) corrigidos pelo principal com
+originaiscompletos preservados; não rerodar finish37/autores jáaplicados.
+
+Worker192PID18472 Tempbatch14log,único. Inglês7db9b0b2raw1REVIEWED,Espanhol
+34239b0bautor1emexecução;Phys ef8cd5f9/Chem0bb27332 próximos. Nenhum próprio
+Inglês/Espanhol/Física/Química14 ainda. Fontes Inglês BODY lidas:
+BritishCouncil falsefriends?page=1 linhas68-78; definição cognato muito vaga
+sameinlanguages não adotar como origem. MerriamWebster/cognate56-87,
+actual44-70,eventually31-55,pretend44-102,sensible40-104,library54-91.
+Cambridgeactual/eventually/pretend403 não usar como corpo. Não afirmar actual
+nunca temporal/sensible nunca sensorial; delimitar contexto para actualreal,
+eventuallydesfechoe nãoocasionalmente,pretendfingire nãointent; diferenças
+parciaispolissêmicas. Planejarteoriacognatesorigemcompartilhada≠meraaparência,
+falsefriendssemântica não exigir origem distinta. Exemplos/3tarefas originais.
+Não copiar frasesdicionário/exemplosatuaisautomaticamenterecolhidos.
+
+Helpersprivadossalvos/AGENTSgeradonão commit/raizoriginalsujapreservada.
+Fetchantespush/noforce/nãomergedePR/nãodeploy. Não parar no checkpoint.
+
+## Histórico — checkpoint 36
+
+CONTINUAR até aulas completas; parar50%SESSÃO Codex. Indicador disponível só
+semanal29%/10080min, secondary:null. Não substituir semanal por sessão nem
+prometer detectar 50%session. Sem pergunta pendente.
+
+176novas;16lote13.672app+6motor/build/lint/176API+4leitor12MCQ4largurasPASS.
+Lacunas1119;ENEM184/712;estudo184/26/697;índice393. Logscheckpoint36-*.log.
+Preview3316 sessão56387/build176;fixtures176;captura batch13-complete inspecionada.
+CI35 43772012185 SUCCESS head882ced0;PR118OPEN. Publicar36/atualizarPR20novas,
+acompanharCIexata. PR117MERGEDexternamente156; não atualizar117.
+
+Module13ALL16:1507dbbd,bbd57e3f,b5beaee8,d071bb1d,1bf6ee18,b791cc78,
+3816b15d,2ec02a9b,afd8786c,00b9f8de,f9a2eaf7,15edc391,6f39fb3e,0ff9394f,
+0b6d0515,78f17021. Integrador13 reescreve: exigir todos se houver correção.
+Ciências teste crítico GREEN; parecer original preservado integralmente e
+conceptChecks[2] corrigido explicitamente pelo principal (não calor constante/
+temperatura zero). Não rerodar finish36/autores/refine já aplicados.
+Evidências privadas principal-editorial-evidence-checkpoint36.json.
+
+Lote14workerúnico PID18472, v4.py192, Tempbatch14log; anterior176PID8120 encerrou.
+Próximos Math381ba959,Port4cf23331,Litf6b546f4,Red08e33489,Eng7db9b0b2,
+Esp34239b0b,Phys ef8cd5f9,Chem0bb27332,Bio c795d057,Hist5458bd83,
+Geoe7c98d39,Philo51cdb3e3,Soc8a621b3c,Art1820d8ab,PE91b651d3,Sci3b97fbde.
+Math teste crítico Tempkognos-exponential-logarithmic-expected.test.ts RED
+observado antes de autoria. Planejado f=5(1/2)^x+2 decres/R/(2,∞), q1
+log3(x−1)+log3(x−3)=1 candidato0/4 domínio>3→4, q2(1/3)^(2x−1)≥27→x≤−1.
+Nenhum principalMath14 ainda. OpenStaxAlgebra2e6.1 body44-111,6.3body56-79,
+6.5body48-68,6.6body25-41 lidos; completar regras/propriedades antes de autoria.
+RawMath1 disponível, crítico em andamento; ler integral se usar/rejeitar.
+
+Helpers privados salvos. AGENTSgerado não commit. Originalroot suja preservada;
+fetch antes push/nãoforce/não mergear PR/não deploy. Não parar no checkpoint.
+
+## Histórico — checkpoint 35
+
+CONTINUAR;parar50%SESSÃOCodex. Sósemanal27%,secondary:null; nãousarsemanal
+comosessãonemprometerparadaindicadorinobservável. Semperguntapendente.
+
+172novas,12lote13.671app+6motor/build/lint/172API+4leitor12MCQ4largurasPASS.
+Lacunas1123;ENEM181/715;estudo181/26/700;índice389. Logscheckpoint35-*.log.
+Preview3316sessão50612build172;fixtures172;capturabatch13-twelveinspecionada.
+TestescríticosBio/GeoREDantesautoriaGREENnativos;filtroincluivertestehistóricopass.
+
+PR118OPENanteriofc48bd0CI43770243924SUCCESS. Publicar35,atualizarPR16adicionais,
+acompanharCIexata. Main9a12f7fincorporada/validada;PR117MERGEDexternamente156.
+Nunca atualizar117comnovas; não mergearPR/deploy. Fetchantespush,nunca force.
+
+Módulo13ALL12:1507dbbd,bbd57e3f,b5beaee8,d071bb1d,1bf6ee18,b791cc78,
+3816b15d,2ec02a9b,afd8786c,00b9f8de,f9a2eaf7,15edc391. Integrador13REESCREVE:
+sempreatodosIDs. Críticasfinaisatuaislidas/hash/contextválidos. Não rerodarhelpers
+refine-*jáexecutados; originais completosprivados, metadadoscorrigidosexplícitos.
+Evidenceeditorialem principal-editorial-evidence-checkpoint35.json;humanapendente.
+
+PróximosSoc6f39fb3e,Arte0ff9394f,PE0b6d0515,Ciências78f17021. Worker176PID8120
+logTempbatch13;últimoSoc2tentativa apósJSONerro; não duplicar. Só ampliar192seencerrar.
+Ainda nenhumautorSoc/Arte/PE/Ciências. SociologiafontesBODYlidas:
+WTO2023wtr23_e.htm11-17 (posição institucional prócooperação,nãolei universal);
+ILOguidelinesjusttransition55/64/70(folha2016,nãoPDFinteiro);
+UNEPhttps://www.unep.org/en/publications/report/global-resources-outlook-2024
+24-32,semcopiarestatísticas/cenários como certezas. IPCC/ONUHTML/PDF403.
+WTOglobalchainshttps://www.wto.org/english/res_e/statis_e/miwi_e/miwi_e.htm
+somenteconteúdobuscaindexado completointro;abrirbodyseusar. OpenStaxglobalização
+buscanãoretornounadadireto. PróximopesquisarabrirIPCCFAQ4/UNEPGoal10oucapítulos,
+articularglobalcadeias/impactosdesiguais/participaçãotransiçãojusta,semalegartodo
+comérciobom/mau/nem leis universais. Não escrever notíciasatuaissemconferência.
+
+Helpersprivadossalvos;AGENTSgeradonãocommit;raizoriginalsuja preservada.
+Não parar no checkpoint,seguirautoriaechecagemdaslacunas.
+
+## Histórico — checkpoint 34
+
+CONTINUAR. Parar50%SESSÃOCodex: ferramenta sósemanal24%, secondary:null.
+Não substituir semanal por sessão nem prometer parada impossível de medir.
+
+168novas,8lote13. 669app+6motor/build/lint/168API+4leitor12MCQ4largurasPASS.
+Lacunas1127;ENEM177/719;estudo177/27/703;índice385. Logscheckpoint34-*.log.
+Preview3316sessão52833build168;fixtures168;captura batch13-halfinspecionada.
+
+PR118OPEN;main9a12f7f incorporadae781bce;headanteriora73d166CI43769145800SUCCESS.
+Publicar34/atualizarPR118para12adicionais/seguirCIexata. Não mergearPR/deploy.
+PR117MERGEDexternamente156novas; nãoeditar117paratrabalhoposterior.
+
+Módulo13ALL8:1507dbbd,bbd57e3f,b5beaee8,d071bb1d,1bf6ee18,b791cc78,
+3816b15d,2ec02a9b. Integrador13 REESCREVEmódulo: sempreatodososIDs.
+Criticas finaisatuaislidas; SpanishaceiterecordmetadadosrefeitospeloPrincipal,
+pareceresoriginais+duasreviseerrôneasguardados. Inglês some nãoexcluitodos;
+químicaconsecutivosremovido. NÃO rerodarkognos-refine-checkpoint34-review-records.py
+nemkognos-refine-spanish-present.py, jáexecutados;baseSpanishSTALEsempre/sources.
+Dadosdocentespendentes. Evidênciaeditorialoriginalem principal-editorial-evidence-
+checkpoint34.json. Dois testescríticosnativos járegistradosna suite eGREEN.
+
+Próximos Biologiaafd8786c,História00b9f8de,Geografiaf9a2eaf7,Filosofia15edc391,
+Soc6f39fb3e,Arte0ff9394f,PE0b6d0515,Ciências78f17021. Worker176PID8120,
+últimologTempbatch13 aindaQuímica3; não duplicar nempublicarrawsemprincipal.
+Biologiasemautoriaainda. FontesNHGRIBODYlidas: Mutation15/19-20;GeneticEngineering
+14-18;PCR15/21-22;CRISPR16/20-21. PCRredirectcanônico.../Polymerase-Chain-Reaction-PCR.
+Não adotar mutaçãosempresomáticaintransmissívelparatodosorganismos(genpropagveget),
+reparossempreprecisos ou clinica. OpenStax17.1sósearchatéagora,nãobodylido.
+
+Helpersprivadosguardados; AGENTSgeradoforaGit;raizoriginalsuja preservada.
+Sem chaves emlogs/código/commits; sem schema/deploy/mergePR. Nãofinalizarcheckpoint.
+
+## Histórico — checkpoint 33
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Só semanal disponível (23%),
+secondary:null; não substituir por semanal nem prometer parada inobservável.
+
+164 novas, lote13primeiras4integradas. 667app+6motor,build/lint,164API,
+4leitor12respostas/4larguras aprovados. Lacunas1131; ENEM173/723;
+estudo173/27/707; índice381. Logsprivate/checkpoint33-*.log.
+Preview3316sessão80161 build164; fixtures164; captura batch13-first inspecionada.
+
+PR117 MERGED EXTERNAMENTE até156/0bae72c, squashmain5b9e0e1. Não atualizar117
+com trabalho posterior. PR118 OPEN contém8aulas apósmerge:4CP32+4CP33.
+Localmergeeef844b sincronizoumainsemalterarconteúdo; CI3243767140718SUCCESS.
+CP33publicado16fa61bCI43768555037SUCCESS. Main9a12f7f/PR114integrado
+externamente incorporadolocalmergee781bce:contadoresiguais667+6/build/browser
+164API+4aulasaprovados; logscheckpoint33-upstream. PublicarsyncacompanharCI.
+Não mergearPR/deploy.
+
+Módulo13ALL4:1507dbbd,bbd57e3f,b5beaee8,d071bb1d. Integrador13sempreTODOSosIDs
+para não apagar anteriores. Autores-base Math/Port STALE: Mathmetadadoscorrigidos
+com originalpreservado; Portq1Dalteradoecriticafrescaválida924f5085.
+Não rerodar kognos-refine-batch13-first-two.py: jáexecutado.
+Autorevidenceoriginalpreservadaem principal-editorial-evidence-checkpoint33.json.
+Textos/referências/hashes+críticaslidos; homologaçãohumana pendente.
+
+Próximos: Inglês1bf6ee18rawACEITOMASREJEITADOprincipal (quaseportuguês,
+inferênciacartasvioladasnãoimplicaautorizaçãonegada,críticarepeteerro).
+BritishCouncilInferencecorpo72-80lido; Cambridge reluctantly403; nenhum novo
+autorInglês ainda. Espanholb791cc78raw3tentativa; depoisFísica3816b15d,
+Química2ec02a9b,Bioafd8786c,Hist00b9f8de,Geof9a2eaf7,Filo15edc391,
+Soc6f39fb3e,Arte0ff9394f,PE0b6d0515,Ciências78f17021.
+Worker176PID8120logTempbatch13; não duplicar se ativo. Só ampliar192seencerrar.
+
+Raizoriginalsuja preservada; apps/web/AGENTS.mdgerado não commitar.
+Privados/resume-helpersguardamautores/leitores; nenhum token emlogs/commits.
+Não parar no checkpoint; continuar produção e revisão das próximas aulas.
+
+## Histórico — checkpoint 32
+
+CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
+(último17%), secondary:null; sessão indisponível. Não substituir semanal por
+sessão, nem garantir parada inobservável. Consultar periodicamente.
+
+160 novas; lote12 completo. 666 app + 6 motor, build/lint e 160API + 4leitor12MCQ,
+4larguras aprovados. Lacunas1135; ENEM169/727; estudo169/28/710; índice377.
+Logsprivate/checkpoint32-*.log; REDtestestage14preservado. Humana pendente.
+CI31success43764821385head0bae72c. Publicar32/PR e acompanhar CI exata.
+Preview3316 sessão25496; build160. Captura batch12-complete inspecionada.
+
+Lote12ALL16: f81404ed,7a81e1ec,237cf014,d0f6d214,9e223a4b,b17518b1,
+4c7c5bec,d5903a1a,0536eebb,1198af3f,f66d7527,69cf6de6,c6064524,a18970e3,
+e942ed50,4c61183d. Críticasatuaislidas/aceitas. Não reaplicar autores-base nos
+aceitos. Música substitui stage14 no leitor: testeprioridade atualizado, todas
+asserções da versãohistórica+6tarefas mantidas; testeativo validado; suíteGREEN.
+
+Raw160terminou. Novo worker176PID8120 logTemp
+kognos-curriculum-collaboration-v4-batch13-20261115.log; um worker limitado.
+Último Math1507dbbd. Próximos: Portbbd57e3f,Litb5beaee8,Redaçãod071bb1d,
+Inglês1bf6ee18,Espanholb791cc78,Física3816b15d,Química2ec02a9b,
+Bioafd8786c,Hist00b9f8de,Geof9a2eaf7,Filo15edc391,Soc6f39fb3e,
+Arte0ff9394f,PE0b6d0515,Ciências78f17021. Não duplicarworker.
+Criar módulo/integrador13 e registrar agregadores só após primeiros aceites.
+Mapear índice leve atualizado; NÃO incluir textos no bundle inicial.
+
+Helpers emTemp e cópia privada/resume-helpers. Fontes/limites nos registros
+privados: apenas passagens pertinentes lidas, não documentos inteiros; sem
+áudios externos reproduzidos ou materiais copiados. EducaçãoFísicaconceitual,
+semterapia/doses/dadosmédicos; Ciênciascorrige23.4perpendicular e face lunar
+aproximadamenteconstante/nãosempreescura. Casoastronômico não pedeolharSol.
+
+AGENTS gerado fora decommit; raizoriginalsuja preservada;fetchantespush,nunca
+force. Sem schema,banco,merge/deploy. Não finalizar no checkpoint.
+
+## Histórico — checkpoint 31
 
 CONTINUAR. Parar a 50% do limite da SESSÃO Codex. Ferramenta só mostra semanal
 (último15%), secondary:null; sessão indisponível. Não substituir semanal por

@@ -1000,3 +1000,77 @@ test('demografia distingue densidade, saldo natural, migração e base percentua
  const [initial,births,deaths,incoming,outgoing]=balance.slice(1).map(Number),natural=births-deaths,net=incoming-outgoing,delta=natural+net,final=initial+delta;assert.equal(natural,12);assert.equal(net,20);assert.equal(final,1032);assert.equal(100*delta/initial,3.2);assert.equal(1000*delta/initial,32);assert.notEqual(100*delta/final,3.2);assert.equal(choice(1),'Saldo natural: 12; saldo migratório: 20; população final: 1032; variação sobre a inicial: 3,2%.');
  assert.match(spec.tasks[2].prompt,/saldo natural de -20.*saldo migratório de 35/);assert.equal(-20+35,15);assert.equal(choice(2),'Aumento de 15 pessoas; as entradas líquidas superam a perda natural no período.');
 });
+
+test('funções afim quadrática e modular verificam dois pontos, máximo global e fronteiras',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Matemática'&&s.topic==='Funções afim, quadrática e modular');assert.ok(spec);
+ const first=spec.tasks[0];assert.ok(first.options&&typeof first.correctIndex==='number');const points=first.prompt.match(/f\((\d+)\) = (\d+).*f\((\d+)\) = (\d+)/);assert.ok(points);const [x1,y1,x2,y2]=points.slice(1).map(Number);
+ const valid=first.options.map((option,index)=>{const formula=option.match(/^f\(x\) = (-?\d+)x ([+-]) (\d+)\.$/);assert.ok(formula);const a=Number(formula[1]),b=Number(formula[3])*(formula[2]==='-'?-1:1);return a*x1+b===y1&&a*x2+b===y2?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[first.correctIndex]);assert.equal((y2-y1)/(x2-x1),3);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ assert.match(spec.tasks[1].prompt,/-x\^2 \+ 6x - 5/);const q=(x:number)=>-x*x+6*x-5;for(const x of [-100,-1,0,1,3,5,6,100])assert.equal(q(x),4-(x-3)**2);assert.equal(q(3),4);assert.equal(q(1),0);assert.equal(q(5),0);assert.equal(choice(1),'Máximo 4, atingido em x = 3; imagem (-∞, 4].');
+ const inequality=spec.tasks[2].prompt.match(/\|2x - 3\| ≤ 5/);assert.ok(inequality);const left=(3-5)/2,right=(3+5)/2;assert.equal(left,-1);assert.equal(right,4);for(const x of [left-0.01,left,0,1.5,right,right+0.01])assert.equal(Math.abs(2*x-3)<=5,x>=left&&x<=right);assert.equal(choice(2),'[-1, 4].');
+});
+
+test('hidrostática converte área quadrática, conserva volume e distingue empuxo de peso aparente',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Física'&&s.topic==='Hidrostática e pressão');assert.ok(spec);
+ const choice=(i:number)=>{const t=spec.tasks[i];assert.ok(t.options&&typeof t.correctIndex==='number');return t.options[t.correctIndex];};
+ const pressure=spec.tasks[0].prompt.match(/força normal de (\d+) N.*área de (\d+) cm²/);assert.ok(pressure);const force=Number(pressure[1]),areaCm=Number(pressure[2]),areaM=areaCm*1e-4;assert.equal(areaM,0.004);assert.equal(force/areaM,30000);assert.equal(choice(0),`${force/areaM} Pa.`);assert.notEqual(force/areaCm,force/areaM);
+ const hydraulic=spec.tasks[1].prompt.match(/A1 = (\d+) cm².*A2 = (\d+) cm².*F1 = (\d+) N.*d1 = (\d+) cm/);assert.ok(hydraulic);const [a1,a2,f1,d1]=hydraulic.slice(1).map(Number),f2=f1*a2/a1,d2=d1*a1/a2;assert.equal(f2,1500);assert.equal(d2,1);assert.equal(a1*d1,a2*d2);assert.equal(f1*d1/100,f2*d2/100);assert.equal(choice(1),`F2 = ${f2} N e d2 = ${d2} cm.`);
+ const buoyancy=spec.tasks[2].prompt.match(/massa (\d+) kg.*volume (\d+) L.*ρ = (\d+) kg\/m³.*g = (\d+) m\/s²/);assert.ok(buoyancy);const [mass,litres,rho,g]=buoyancy.slice(1).map(Number),volume=litres*1e-3,weight=mass*g,up=rho*g*volume,tension=weight-up;assert.equal(up,20);assert.equal(tension,10);assert.equal(tension+up-weight,0);assert.equal(choice(2),`Empuxo de ${up} N para cima e tração de ${tension} N para cima.`);assert.notEqual(up,weight);
+});
+
+test('reações e balanceamento verificam todos os átomos, carga e coeficientes primitivos',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Química'&&s.topic==='Reações e balanceamento');assert.ok(spec);
+ const gcd=(a:number,b:number):number=>b?gcd(b,a%b):a;
+ const check=(i:number,residuals:(n:number[])=>number[])=>{const task=spec.tasks[i];assert.ok(task.options&&typeof task.correctIndex==='number');const valid=task.options.map((option,index)=>{assert.match(option,/^\d+(?:, \d+)+\.$/);const coefficients=option.slice(0,-1).split(', ').map(Number);assert.ok(coefficients.every(n=>Number.isInteger(n)&&n>0));return residuals(coefficients).every(n=>n===0)&&coefficients.reduce(gcd)===1?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[task.correctIndex]);return task.options[task.correctIndex];};
+ assert.match(spec.tasks[0].prompt,/Al \+ HCl → AlCl3 \+ H2/);assert.match(spec.tasks[0].prompt,/menores inteiros positivos/);assert.equal(check(0,([a,b,c,d])=>[a-c,b-2*d,b-3*c]),'2, 6, 2, 3.');
+ assert.match(spec.tasks[1].prompt,/C2H6 \+ O2 → CO2 \+ H2O/);assert.equal(check(1,([a,b,c,d])=>[2*a-c,6*a-2*d,2*b-2*c-d]),'2, 7, 4, 6.');
+ assert.match(spec.tasks[2].prompt,/Cr2O7\^2- \+ H\+ \+ I- → Cr\^3\+ \+ I2 \+ H2O/);assert.match(spec.tasks[2].prompt,/ácido/);assert.equal(check(2,([a,b,c,d,e,f])=>[2*a-d,7*a-f,b-2*f,c-2*e,-2*a+b-c-3*d]),'1, 14, 6, 2, 3, 7.');
+ assert.equal(-2+14-6,3*2,'carga +6 em ambos os lados');assert.equal(2*(6-3),6,'seis elétrons recebidos pelo cromo');assert.equal(6*(0-(-1)),6,'seis elétrons cedidos pelo iodeto');
+});
+
+test('mutações distinguem deleção de uma ou três bases sem prometer proteína funcional',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Biologia'&&s.topic==='Hereditariedade, mutações e biotecnologia');assert.ok(spec);const task=spec.tasks[1];assert.ok(task.options&&typeof task.correctIndex==='number');
+ const match=task.prompt.match(/ATGAAACCCGGG/);assert.ok(match);const dna=match[0],start=3;assert.match(task.prompt,/posição 4/);assert.match(task.prompt,/posições 4 a 6/);
+ const single=dna.slice(0,start)+dna.slice(start+1),triple=dna.slice(0,start)+dna.slice(start+3),groups=(s:string)=>s.match(/.{1,3}/g)??[];
+ assert.equal(single,'ATGAACCCGGG');assert.equal(triple,'ATGCCCGGG');assert.deepEqual(groups(dna),['ATG','AAA','CCC','GGG']);assert.deepEqual(groups(single),['ATG','AAC','CCG','GG']);assert.deepEqual(groups(triple),['ATG','CCC','GGG']);assert.equal((dna.length-single.length)%3,1);assert.equal((dna.length-triple.length)%3,0);
+ assert.equal(task.options[task.correctIndex],'A desloca o quadro a partir da alteração; B preserva o quadro, sem garantir função proteica inalterada.');assert.match(task.solution,/função/);
+});
+
+test('urbanização distingue aumento absoluto de participação e pontos percentuais',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Geografia'&&s.topic==='Urbanização e redes urbanas');assert.ok(spec);const task=spec.tasks[0];assert.ok(task.options&&typeof task.correctIndex==='number');const data=task.prompt.match(/2000.*5000.*3000.*10000/);assert.ok(data);
+ const firstUrban=2000,firstTotal=5000,nextUrban=3000,nextTotal=10000,firstRate=100*firstUrban/firstTotal,nextRate=100*nextUrban/nextTotal;assert.equal(firstRate,40);assert.equal(nextRate,30);assert.equal(nextUrban-firstUrban,1000);assert.equal(nextRate-firstRate,-10);assert.equal(100*(nextRate-firstRate)/firstRate,-25);assert.ok(nextUrban>firstUrban&&nextRate<firstRate);
+ assert.equal(task.options[task.correctIndex],'De 40% para 30%; a população urbana aumenta em número e perde participação no total.');assert.match(task.solution,/pontos percentuais/);
+});
+
+test('propriedades da matéria convertem densidade e distinguem quantidade de razão intensiva',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Ciências'&&s.topic==='Propriedades da matéria');assert.ok(spec);const task=spec.tasks[0];assert.ok(task.options&&typeof task.correctIndex==='number');assert.match(task.prompt,/0,2 kg.*100 cm³/);
+ const massKg=0.2,volumeCm=100,massG=massKg*1000,volumeM=volumeCm*1e-6,rhoG=massG/volumeCm,rhoSI=massKg/volumeM;assert.equal(rhoG,2);assert.ok(Math.abs(rhoSI-2000)<1e-9);assert.ok(Math.abs(rhoSI/rhoG-1000)<1e-9);
+ const valid=task.options.map((option,index)=>{const pair=option.match(/^([\d,]+) g\/cm³, equivalente a (\d+) kg\/m³\.$/);assert.ok(pair);return Number(pair[1].replace(',','.'))===rhoG&&Math.abs(Number(pair[2])-rhoSI)<1e-9?index:-1;}).filter(i=>i>=0);assert.deepEqual(valid,[task.correctIndex]);
+ const t=spec.tasks[1];assert.ok(t.options&&typeof t.correctIndex==='number');assert.match(t.prompt,/triplica/);for(const factor of [1,2,3,10])assert.equal((massG*factor)/(volumeCm*factor),rhoG);assert.equal(t.options[t.correctIndex],'Massa e volume triplicam; a densidade permanece igual nas condições indicadas.');
+});
+
+test('exponencial e logaritmo preservam domínio, imagem e sentido de inequação decrescente',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Matemática'&&s.topic==='Funções exponencial e logarítmica');assert.ok(spec);
+ const a=spec.tasks[0];assert.match(a.prompt,/5·\(1\/2\)\^x \+ 2/);assert.ok(a.options);assert.equal(a.options[a.correctIndex!],'Decrescente, domínio ℝ e imagem (2,+∞).');
+ const f=(x:number)=>5*(1/2)**x+2;for(const x of [-10,-1,0,1,10]){assert.ok(f(x)>2);assert.ok(f(x+1)<f(x));}assert.equal(f(0),7);
+ const b=spec.tasks[1];assert.match(b.prompt,/log₃\(x−1\) \+ log₃\(x−3\) = 1/);assert.ok(b.options);assert.equal(b.options[b.correctIndex!],'x = 4.');
+ const valid=[0,4].filter(x=>x>3&&Math.abs(Math.log(x-1)/Math.log(3)+Math.log(x-3)/Math.log(3)-1)<1e-12);assert.deepEqual(valid,[4]);
+ const c=spec.tasks[2];assert.match(c.prompt,/\(1\/3\)\^\(2x−1\) ≥ 27/);assert.ok(c.options);assert.equal(c.options[c.correctIndex!],'x ≤ −1.');
+ for(const x of [-4,-2,-1,-0.5,0,1,4])assert.equal((1/3)**(2*x-1)>=27-1e-10,x<=-1);
+});
+
+test('termologia diferencia conversão de temperatura e de intervalo e interpola escala linear',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Física'&&s.topic==='Termologia e escalas termométricas');assert.ok(spec);
+ const first=spec.tasks[0];assert.match(first.prompt,/27 °C/);assert.ok(first.options);assert.equal(first.options[first.correctIndex!],'300,15 K e 80,6 °F.');assert.equal(27+273.15,300.15);assert.equal(27*9/5+32,80.6);
+ const second=spec.tasks[1];assert.match(second.prompt,/45 °F/);assert.ok(second.options);assert.equal(second.options[second.correctIndex!],'25 °C e 25 K.');assert.equal(45*5/9,25);
+ const third=spec.tasks[2];assert.match(third.prompt,/30 °X.*0 °C.*180 °X.*100 °C.*90 °X/);assert.ok(third.options);assert.equal(third.options[third.correctIndex!],'40 °C.');
+ const toC=(x:number)=>(x-30)*100/(180-30);assert.equal(toC(30),0);assert.equal(toC(180),100);assert.equal(toC(90),40);assert.notEqual(90*100/180,40);
+});
+
+test('mol e estequiometria conferem entidades, limitante, excesso, pureza e rendimento',()=>{
+ const spec=authoredCurriculumSpecs.find(s=>s.subject==='Química'&&s.topic==='Mol, massas e estequiometria');assert.ok(spec);
+ const a=spec.tasks[0];assert.match(a.prompt,/22 g de CO₂/);assert.ok(a.options);assert.equal(a.options[a.correctIndex!],'0,5 mol de CO₂ e 1,5 mol de átomos no total.');assert.equal(22/44,.5);assert.equal(22/44*3,1.5);
+ const b=spec.tasks[1];assert.match(b.prompt,/4 mol de Al.*3 mol de Cl₂/);assert.ok(b.options);assert.equal(b.options[b.correctIndex!],'2 mol de AlCl₃, com 2 mol de Al em excesso.');
+ const extent=Math.min(4/2,3/3),product=extent*2,alLeft=4-extent*2,clLeft=3-extent*3;assert.deepEqual([product,alLeft,clLeft],[2,2,0]);assert.equal(4,product+alLeft);assert.equal(3*2,product*3+clLeft*2);
+ const c=spec.tasks[2];assert.match(c.prompt,/250 g.*80%.*75%/);assert.ok(c.options);const target=250*.8/100*44*.75;assert.equal(target,66);const accepted=c.options.map((s,i)=>Number(s.replace(' g.',''))===target?i:-1).filter(i=>i>=0);assert.deepEqual(accepted,[c.correctIndex]);
+});

@@ -4,7 +4,301 @@ Solicitação de 14/11/2026: continuar a autoria com o Claude Code, pelos mesmos
 critérios, até completar as aulas. Este documento registra checkpoints; não
 declara conclusão do catálogo, homologação docente ou publicação em produção.
 
-## Estado atual — checkpoint 31
+## Estado atual — checkpoint 38
+
+Oito aulas do lote14: 184 novas nesta etapa. Integradas Cognatos e falsos
+cognatos em inglês; Tempos do passado em espanhol; Termologia e escalas
+termométricas; Mol, massas e estequiometria. Revisão docente pendente.
+
+Restam 1.111 lacunas de 1.512 identidades editoriais. ENEM: 192 aprofundadas e
+704 lacunas. Estudo: 192 aprofundadas, 25 guias e 690 planejadas; índice401.
+A nova estequiometria aprofunda uma identidade antes atendida por guia.
+
+- Inglês: aproximações úteis e falsos amigos, origem e sentido, polissemia;
+  frases originais, sem ensinar aparência como etimologia ou regras absolutas.
+- Espanhol: quatro pretéritos do indicativo, forma e aspecto, variação e
+  anterioridade. Crítica falsa à forma comíais confrontada com o texto e RAE,
+  seguida de nova revisão independente; sem trocar pelo presente coméis.
+- Física: calor, temperatura e energia interna, equilíbrio, conversões de
+  valores e intervalos, escala afim; sem confundir os modelos dos exemplos.
+- Química: entidades, mol e massa, limitante e excesso, pureza e rendimento;
+  cálculos autorais, sem roteiro de laboratório ou volume molar universal.
+
+Fontes primárias consultadas em trechos delimitados; autoria Codex e crítica
+independente Claude Code/NVIDIA NIM, lida integralmente. Rascunhos brutos
+aprovados automaticamente continham erros e não foram incorporados. Imprecisões
+dos pareceres finais de Inglês, Espanhol e Física corrigidas pelo principal,
+com originais integrais privados preservados e texto didático inalterado.
+
+675 testes app + 6 motor, build e lint alterado aprovados. Dois testes críticos
+observados RED antes e GREEN depois da integração. API de184 aulas comparada
+integralmente; quatro novas no Chromium com12 respostas, explicações e
+referências expandidas em320/375/768/1440px, sem exceções ou rolagem horizontal.
+Captura inspecionada; logs checkpoint38-*.log privados.
+
+CI37 success43775274710, head4ebe5a4. PR118 reúne28 aulas após as156 do PR117
+integrado externamente; publicar38 e acompanhar CI do head exato. Sem merge,
+deploy, schema ou dependências novas. Continuar Biologia, História, Geografia
+e Filosofia do lote14. Não há declaração de conclusão do catálogo.
+
+## Histórico — checkpoint 37
+
+Quatro aulas do lote14: 180 novas nesta etapa. Integradas Funções exponencial
+e logarítmica; Vozes verbais e colocação pronominal; Literatura indígena e
+afro-brasileira; Formulação de tese. Revisão docente pendente; catálogo em
+execução, sem declaração de conclusão ou publicação em produção.
+
+Restam 1.115 lacunas de 1.512 identidades editoriais. ENEM: 188 aprofundadas e
+708 lacunas. Estudo: 188 aprofundadas, 26 guias e 693 planejadas; índice 397.
+
+- Matemática: gráficos, domínio e imagem, propriedades condicionadas e
+  equações/inequações; teste crítico RED antes e GREEN depois da integração,
+  incluindo raiz fora do domínio, imagem aberta e fronteira inclusiva.
+- Português: transposição de vozes, funções de se, concordância e colocação
+  pronominal delimitada ao registro, com reconhecimento da variação de uso.
+- Literatura: autoria e representação, diversidade indígena e afro-brasileira,
+  memória e elaboração formal. Textos didáticos originais e identificados,
+  sem imitar autores nem atribuir fragmentos fictícios a povos ou obras.
+- Redação: tese, tema e recorte, alcance e sustentação, revisão com objeções.
+  Sem modelo universal de prova, estatísticas ou citações fabricadas.
+
+Fontes primárias consultadas em trechos delimitados; autoria Codex e crítica
+independente Claude Code/NVIDIA NIM, lida integralmente. Imprecisões dos
+pareceres de Português e Redação corrigidas pelo principal, com originais
+completos privados preservados. Texto das aulas e gabaritos inalterados;
+sem alegação de leitura integral das obras ou homologação humana.
+
+673 testes app + 6 motor, build e lint alterado aprovados. API das 180 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas,
+explicações e referências expandidas em 320/375/768/1440 px, sem exceções ou
+rolagem horizontal. Captura inspecionada. Logs checkpoint37-*.log privados.
+
+CI36 success43773898884, head feb0d38. PR118 passa a reunir vinte e quatro
+aulas após as156 do PR117 integrado externamente; publicar37 e acompanhar
+CI do head exato. Sem merge de PR, deploy, schema ou dependências novas.
+Continuar Inglês, Espanhol, Física e Química do lote14.
+
+## Histórico — checkpoint 36
+
+Lote 13 completo: 176 novas aulas nesta etapa. Integradas Globalização e
+questões socioambientais; Teatro: dramaturgia, atuação e encenação; Práticas
+corporais de aventura; Propriedades da matéria. Catálogo em execução;
+revisão docente pendente, sem declaração de conclusão ou publicação.
+
+Restam 1.119 lacunas de 1.512 identidades editoriais. ENEM: 184 aprofundadas e
+712 lacunas. Estudo: 184 aprofundadas, 26 guias e 697 planejadas; índice 393.
+
+- Sociologia: cadeias globais, efeitos socioambientais desiguais e critérios
+  de transição justa; casos hipotéticos, sem estatísticas ou leis inventadas.
+- Arte: dramaturgia, atuação e encenação por textos e situações originais,
+  com formas de acesso; sem reprodução de peças nem imitação de artistas.
+- Educação Física: ambientes, avaliação contextual de riscos, participação e
+  conservação; sem garantia de risco zero ou instruções técnicas de manobras.
+- Ciências: massa, volume, densidade e unidades; critérios de propriedades;
+  transformações e energia com pureza e pressão explícitas. Teste crítico de
+  densidade observado falhar antes da integração e passar depois.
+
+Fontes primárias consultadas em trechos delimitados, com limites e evidências
+editoriais privadas preservados. Autoria Codex e crítica independente Claude
+Code/NVIDIA NIM. Os quatro pareceres foram lidos integralmente. Corrigida pelo
+principal uma imprecisão conceitual na redação do parecer de Ciências, com
+original integral preservado; conteúdo didático e gabaritos inalterados.
+Sem alegar leitura integral de livros/PDFs ou homologação humana.
+
+672 testes app + 6 motor, build e lint alterado aprovados. Comparação integral
+da API de 176 aulas; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções ou rolagem
+horizontal. Captura inspecionada. Logs privados checkpoint36-*.log.
+
+CI35 success 43772012185, head 882ced0. PR118 reúne vinte aulas após a
+integração externa do PR117 até 156; publicar checkpoint36 e acompanhar CI
+do novo head exato. Sem merge de PR, deploy, schema ou dependências novas.
+Continuar lote14; rascunhos até192 em worker único limitado, PID18472.
+
+## Histórico — checkpoint 35
+
+Doze aulas do lote13; 172 novas nesta etapa. Integradas Hereditariedade,
+mutações e biotecnologia; Brasil colonial e escravidão; Urbanização e redes
+urbanas; Mito e filosofia. Catálogo em execução; revisão docente pendente.
+
+Restam 1.123 lacunas de 1.512 identidades editoriais. ENEM: 181 aprofundadas e
+715 lacunas. Estudo: 181 aprofundadas, 26 guias e 700 planejadas; índice 389.
+
+- Biologia: transmissão e variantes, ambiente, tipos de mutação e quadro de
+  leitura; copiar, ler e editar DNA como finalidades distintas. Sem protocolo
+  de laboratório, interpretação de exames pessoais ou promessas clínicas.
+- História: instituições e economias conectadas, escravização indígena e
+  africana, tráfico e resistências. Sem naturalização racial da escravidão;
+  fragmentos didáticos identificados, sem falsa atribuição a arquivo real.
+- Geografia: população absoluta versus participação, mancha e rede urbana,
+  centralidade e acesso a oportunidades. Casos fictícios; REGIC como recorte
+  2018, sem atribuir a pesquisa uma classificação atual de cidades inventadas.
+- Filosofia: mito e razões sem caricaturas, transformações gregas e fontes
+  fragmentárias, narrativas em Platão e exame de justificações. Sem citações
+  inventadas, ruptura total instantânea ou superioridade natural de um povo.
+
+Autoria Codex e crítica independente Claude Code/NVIDIA NIM, lida integralmente.
+Justificativas de biologia e geografia corrigidas pelo principal com parecer
+original preservado: uma opção inverte indevidamente o efeito das deleções;
+não informar serviços de uma cidade não comprova ausência desses serviços.
+Conteúdo e contexto mantidos, hashes atuais conferidos. Limitações de consulta
+registradas: parte das definições REGIC e Arranjos foi acessível apenas no texto
+indexado oficial; os PDFs/HTML completos respectivos retornaram indisponível.
+Outros PDFs e fontes foram lidos somente nas passagens pertinentes indicadas.
+
+Dois novos testes críticos começaram em RED antes da autoria: removem uma/três
+bases e reagrupam a sequência; comparam crescimento absoluto, participação,
+pontos percentuais e variação relativa. Ambos GREEN após integração; filtro
+também executou um teste histórico de urbanização, preservado e aprovado.
+
+671 testes app + 6 motor, build e lint alterado aprovados. API das 172 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI34 success43770243924 no head fc48bd0. Publicar35 e
+acompanhar CI do novo head exato.
+
+PR118 reúne dezesseis aulas após a integração externa do PR117 até156. Sem
+merge de PR, deploy, schema ou novas dependências. Restam quatro do lote13:
+Globalização e questões socioambientais; Teatro: dramaturgia, atuação e
+encenação; Práticas corporais de aventura; Propriedades da matéria.
+
+## Histórico — checkpoint 34
+
+Metade do lote13: oito aulas, 168 novas nesta etapa. Novas: Inferência de
+sentidos em inglês; Presente do indicativo em espanhol; Hidrostática e pressão;
+Reações e balanceamento. Catálogo em execução; revisão docente humana pendente.
+
+Restam 1.127 lacunas de 1.512 identidades editoriais. ENEM: 177 aprofundadas e
+719 lacunas. Estudo: 177 aprofundadas, 27 guias e 703 planejadas; índice 385.
+
+- Inglês: pistas contextuais, voz e ironia, quantificadores e modalização,
+  inferência apoiada versus especulação, com trechos ingleses completos.
+- Espanhol: pessoas e tratamentos, flexões regulares/irregulares, limites dos
+  padrões e presente com referência futura. Fontes primárias RAE conferidas.
+- Física: pressão uniforme e média, referências e profundidade, Pascal como
+  variação de pressão, áreas/volume/trabalho e empuxo com equilíbrio de forças.
+- Química: conservação de elementos e carga, coeficientes mínimos, classificação,
+  sistema de equações e semirreações em meio ácido/básico. Casos simbólicos,
+  sem orientar procedimentos experimentais.
+
+Autoria Codex, fontes consultadas em passagens pertinentes e crítica separada
+Claude Code/NVIDIA NIM. Rascunhos com erros descartados. Duas críticas de
+espanhol alegaram frases ausentes e uma flexão incorreta; a comparação literal
+com o JSON e o paradigma RAE rejeitou essas alegações. Nova crítica aceitou o
+texto atual, mas suas razões ainda transcreveram algumas formas incorretamente.
+O principal refez essas justificativas; também delimitou some em inglês e a
+terminologia de coeficientes em química. Correções dos metadados explicitamente
+atribuídas ao principal, pareceres completos originais preservados em privado.
+Não declarar que a aprovação automática garante precisão ou revisão docente.
+
+Testes críticos de física e química começaram em RED antes da autoria. Após
+integração, ambos GREEN: cm²→m², prensa com volume/trabalho, empuxo/tração;
+todos os distratores de três balanços, MDC e cargas, incluindo alternativa
+balanceada que falha apenas no pedido de coeficientes mínimos.
+
+669 testes app + 6 motor, build e lint alterado aprovados. API das 168 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI anterior success43769145800 no head a73d166, incluindo
+sincronização com main9a12f7f. Publicar34 e acompanhar CI do novo head exato.
+
+PR118 em rascunho reúne doze aulas posteriores ao PR117 integrado externamente
+até156. Nenhum merge de PR, deploy, schema ou dependência alterada nesta etapa.
+Continuar outras oito disciplinas do lote13 e as lacunas seguintes.
+
+## Histórico — checkpoint 33
+
+Iniciado lote 13 com Funções afim, quadrática e modular; Concordância, regência
+e crase; Literatura africana de língua portuguesa; Planejamento e projeto de
+texto. Total: 164 novas aulas nesta etapa; revisão docente humana pendente.
+
+Restam 1.131 lacunas de 1.512 identidades editoriais. ENEM: 173 aprofundadas e
+723 lacunas. Estudo: 173 aprofundadas, 27 guias e 707 planejadas; índice 381.
+
+- Matemática: domínio/imagem, taxa afim, vértice e extremos no domínio efetivo,
+  módulo por partes e fronteiras de inequações. Teste crítico RED antes da
+  autoria, GREEN após integração: verifica todas as opções nos dois pontos,
+  quadrado completo, raízes e fronteiras, sem reduzir asserções anteriores.
+- Português: concordância com núcleo, haver/existir, regência e relativos,
+  crase com artigo/demonstrativo e casos facultativos. Um distrator foi
+  substituído e submetido a nova crítica independente do texto atualizado.
+- Literatura: pluralidade e cinco espaços literários; repertório verificado
+  e vozes/memória. Mayombe na libertação anticolonial, sem confundir guerra
+  civil; exemplos didáticos originais, sem falsas atribuições a autores.
+- Redação: comando, recorte, projeto argumentativo, sustentação e revisão.
+  Sem regra universal de palavras, parágrafos ou intervenção para toda banca;
+  exigências específicas contextualizadas em fontes oficiais consultadas.
+
+Autoria Codex e crítica independente Claude Code/NVIDIA NIM. Críticas finais
+lidas integralmente e vinculadas por hash ao conteúdo e contexto atuais.
+Rascunhos com erros foram rejeitados mesmo com aceite automático. Somente
+passagens e resumos pertinentes das fontes foram lidos; não alegar leitura
+integral de romances, artigos ou cartilhas. Sem material proprietário copiado.
+
+667 testes app + 6 motor, build e lint alterado aprovados. API das 164 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. Primeira chamada de lint teve caminho incorreto; chamada
+corrigida sobre os quatro arquivos reais passou, sem supressão de regras.
+
+O PR #117 foi integrado externamente em main até 156 novas aulas (0bae72c).
+O PR complementar #118 contém as oito seguintes: quatro do checkpoint 32 e
+quatro deste checkpoint. Sincronização local com main não alterou conteúdo.
+CI32 aprovada 43767140718 no head eef844b; publicar33 e acompanhar CI exata.
+Não foi realizado merge de PR ou deploy por esta execução. Nenhum schema mudou.
+
+Atualização: main9a12f7f (PR114 integrado externamente) foi incorporada localmente
+no mergee781bce. Contadores permanecem iguais; 667+6 testes, build e leitor
+164API/4aulas/12respostas/4larguras repetidos e aprovados após a sincronização.
+Logs checkpoint33-upstream-*.log. CI33success43768555037 no head16fa61b;
+CI do novo head seguirá em acompanhamento.
+
+Continuar lote13 com Inglês, Espanhol, Física e Química; depois outras oito
+disciplinas. O catálogo segue em execução, sem declarar conclusão global.
+
+## Histórico — checkpoint 32
+
+Lote 12 completo com dezesseis aulas; 160 novas nesta etapa. Acrescentadas
+Gênero, raça e relações sociais; Música: ritmo, melodia, harmonia e timbre;
+Ginásticas e práticas de condicionamento; Terra, Lua e Sistema Solar.
+Autoria Codex, fontes conferidas e crítica independente Claude Code/NVIDIA NIM;
+homologação pedagógica humana pendente.
+
+Restam 1.135 lacunas de 1.512 identidades editoriais. ENEM: 169 aprofundadas e
+727 lacunas. Estudo: 169 aprofundadas, 28 guias e 710 planejadas; índice 377.
+
+- Sociologia: categorias e socialização, mecanismos de discriminação,
+  interseccionalidade e leitura de dados, sem inferir intenções individuais
+  de médias ou converter propostas de avaliação em requisitos legais.
+- Música: ritmo/pulso/andamento/compasso, melodia e harmonia, timbre e textura.
+  Casos escritos completos, sem depender de áudio, figura ou partitura ausente.
+- Educação Física: finalidades das ginásticas, capacidades e variáveis de
+  organização, inclusão e crítica à mídia. Aula conceitual, sem prescrever
+  execução, cargas, diagnóstico, dieta ou uso de substâncias.
+- Ciências: componentes do sistema, rotação/translação, fases e eclipses,
+  estações e referenciais, com limites de escala. Inclinação de 23,4 graus
+  relativa à perpendicular ao plano orbital, corrigindo imprecisão da fonte.
+
+As críticas finais foram lidas integralmente e seus hashes conferidos. Rascunhos
+com generalizações, números sem fontes, classificações e conceitos incorretos
+foram descartados mesmo quando receberam aceite automático. A revisão por IA
+não substitui revisão docente. Nenhum material externo foi copiado.
+
+A nova aula de Música substitui uma versão anterior no leitor. O teste da etapa
+14 foi atualizado para verificar essa prioridade e validar a aula ativa,
+mantendo todas as verificações da versão histórica e de suas seis atividades.
+Falha inicial preservada; teste específico e suíte completa aprovados depois.
+
+666 testes app + 6 motor, build e lint alterado aprovados. API das 160 aulas
+comparada integralmente; quatro novas no Chromium com 12 respostas, explicações
+e referências expandidas em 320/375/768/1440 px, sem exceções/rolagem horizontal;
+captura inspecionada. CI 31 aprovada 43764821385, head 0bae72c.
+
+Continuar lote 13: Funções afim, quadrática e modular; Concordância, regência e
+crase; Literatura africana de língua portuguesa; Planejamento e projeto de texto.
+Sem schema, banco, merge ou deploy. Catálogo em execução.
+
+## Histórico — checkpoint 31
 
 Lote 12 com doze aulas; 156 novas nesta etapa. Acrescentadas Genética mendeliana;
 Revolução Industrial e trabalho; População, migração e demografia; Filosofia

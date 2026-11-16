@@ -4,6 +4,7 @@ import {curriculumTopics} from './curriculum-catalog.ts';
 import {parseCourseDocument} from './course-content.ts';
 import {stage14Lesson,stage14Topics,stage14EverydayContexts} from './authored-lessons-stage14.ts';
 import {starterLesson,starterCoverage} from './starter-lessons.ts';
+import {deepAuthoredCurriculumLesson} from './authored-curriculum-lessons.ts';
 import {deepMathTopicNames} from './deep-math-lessons.ts';
 import {deepCrossSubjectTopics} from './deep-cross-subject-lessons.ts';
 import {stage13Topics} from './authored-lessons-stage13.ts';
@@ -29,7 +30,11 @@ test('Stage 14 delivers sixteen individual courses, each in a different register
   assert.ok(topic,'Invalid curriculum name: '+key);
   const lesson=stage14Lesson(topic);
   assert.ok(lesson,'Missing deep lesson: '+key);
-  assert.deepEqual(starterLesson(topic),lesson,'Authored course should take priority over generic starters');
+  const active=starterLesson(topic);
+  assert.deepEqual(active,deepAuthoredCurriculumLesson(topic)??lesson,'Reviewed curriculum replacements take priority over the original stage 14 fallback');
+  assert.ok(parseCourseDocument(active),'Active reader lesson must remain valid: '+key);
+  // The original six-question contract remains checked below; replacements
+  // retain their separate structure, hashes and answer checks.
   assert.equal(starterCoverage(topic),'thematic');
   assert.ok(parseCourseDocument(lesson),'Course schema must be valid: '+key);
   assert.equal(lesson.review,'introductory','Do not imply human editorial validation');
