@@ -34,6 +34,13 @@ test('audit every registered exam without counting partial references as coverag
       assert.ok(row.coveredScope.trim() && row.missingScope.trim());
     }
     const missing = topics.filter(topic => !fullIds.has(topic.id));
+    const canonicalIds = new Set(full.map(row => row.canonicalId));
+    const sharedCanonicalIds = new Set(full.filter(row =>
+      mappings.some(other => other.exam !== exam && other.canonicalId === row.canonicalId)
+    ).map(row => row.canonicalId));
+    const fullMappingsReusingOtherExam = full.filter(row => sharedCanonicalIds.has(row.canonicalId)).length;
+    assert.ok(fullMappingsReusingOtherExam <= full.length);
+    assert.ok(sharedCanonicalIds.size <= canonicalIds.size);
     const bySubject = [...new Set(topics.map(topic => topic.subject))].sort()
       .map(subject => {
         const entries = topics.filter(topic => topic.subject === subject);
@@ -46,7 +53,9 @@ test('audit every registered exam without counting partial references as coverag
     assert.equal(bySubject.reduce((n, row) => n + row.fullLinks, 0), full.length);
     return {exam, entries: topics.length,
       distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
-      uniqueDeepCanonicalLessons: new Set(full.map(row => row.canonicalId)).size,
+      uniqueDeepCanonicalLessons: canonicalIds.size,
+      canonicalLessonsSharedAcrossExams: sharedCanonicalIds.size,
+      fullMappingsReusingOtherExam,
       fullLinks: full.length, gaps: missing.length,
       advisoryPartialReferences: advisory.length,
       partialOnlyTopics: new Set(advisory.filter(row => !fullIds.has(row.targetTopicId))
