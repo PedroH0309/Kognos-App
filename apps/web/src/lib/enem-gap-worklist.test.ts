@@ -87,6 +87,5 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
     missing: gaps.length,
     bySubject,
     prioritizedGaps,
-  }) + '
-');
+  }) + '\n');
 });
