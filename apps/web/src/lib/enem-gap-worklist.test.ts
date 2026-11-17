@@ -12,12 +12,22 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
   const topics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
   const full = canonicalExamTopicMappings().filter(row => row.exam === 'enem');
   const fullIds = new Set(full.map(row => row.examTopicId));
+  assert.equal(fullIds.size, full.length, 'Each ENEM topic must have at most one integral canonical link');
+  const editorialIds = new Set(topics.map(topic => topic.id));
+  assert.equal(editorialIds.size, topics.length, 'Historical ENEM topic IDs must be unique');
+  for (const link of full) {
+    assert.ok(editorialIds.has(link.examTopicId), 'Integral link must target an existing ENEM topic');
+  }
   const partials = semanticReviewQueue().filter(row => row.exam === 'enem');
   const partialById = new Map<string, typeof partials>();
   for (const partial of partials) {
     const entries = partialById.get(partial.targetTopicId) ?? [];
     entries.push(partial);
     partialById.set(partial.targetTopicId, entries);
+  }
+  for (const partial of partials) {
+    assert.ok(editorialIds.has(partial.targetTopicId), 'Partial reference must target an existing ENEM topic');
+    assert.ok(!fullIds.has(partial.targetTopicId), 'An integral link cannot also be an unresolved partial');
   }
   const gaps = topics.filter(topic => !fullIds.has(topic.id)).map(topic => ({
     id: topic.id,
@@ -67,7 +77,10 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
   process.stdout.write('KOGNOS_ENEM_GAP_WORKLIST ' + JSON.stringify({
     provenance: 'Kognos editorial catalog; not an official Inep skill mapping',
     totalEntries: topics.length,
+    distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
     fullLinks: full.length,
+    partialReferences: partials.length,
+    partialTargets: partialById.size,
     missing: gaps.length,
     bySubject,
     prioritizedGaps,
