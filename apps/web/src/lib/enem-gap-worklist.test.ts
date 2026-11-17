@@ -32,6 +32,27 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
   })).sort((a, b) => a.subject.localeCompare(b.subject) ||
     a.editorialTitle.localeCompare(b.editorialTitle) || a.id.localeCompare(b.id));
 
+  // Prioritize verified partial complements without counting them as full coverage.
+  const bySubject = [...new Set(topics.map(topic => topic.subject))].sort().map(subject => {
+    const entries = topics.filter(topic => topic.subject === subject);
+    const pending = gaps.filter(gap => gap.subject === subject);
+    return {
+      subject,
+      entries: entries.length,
+      distinctExactTitles: new Set(entries.map(topic => topic.topic)).size,
+      fullLinks: entries.length - pending.length,
+      gaps: pending.length,
+      partialComplementTargets: pending.filter(gap => gap.partialSources.length > 0).length,
+    };
+  });
+  const prioritizedGaps = [...gaps].sort((a, b) =>
+    Number(b.partialSources.length > 0) - Number(a.partialSources.length > 0) ||
+    a.subject.localeCompare(b.subject) || a.editorialTitle.localeCompare(b.editorialTitle) ||
+    a.id.localeCompare(b.id));
+  assert.equal(bySubject.reduce((sum, row) => sum + row.entries, 0), topics.length);
+  assert.equal(bySubject.reduce((sum, row) => sum + row.fullLinks, 0), full.length);
+  assert.equal(bySubject.reduce((sum, row) => sum + row.gaps, 0), gaps.length);
+  assert.deepEqual(new Set(prioritizedGaps.map(row => row.id)), new Set(gaps.map(row => row.id)));
   assert.equal(gaps.length + full.length, topics.length);
   assert.equal(new Set(gaps.map(row => row.id)).size, gaps.length);
   for (const gap of gaps) {
@@ -48,6 +69,7 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
     totalEntries: topics.length,
     fullLinks: full.length,
     missing: gaps.length,
-    gaps,
+    bySubject,
+    prioritizedGaps,
   }) + '\n');
 });
