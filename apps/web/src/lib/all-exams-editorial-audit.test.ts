@@ -47,10 +47,15 @@ test('audit every registered exam without counting partial references as coverag
         const deep = entries.filter(topic => fullIds.has(topic.id)).length;
         return {subject, entries: entries.length,
           distinctExactTitles: new Set(entries.map(topic => topic.topic)).size,
-          fullLinks: deep, gaps: entries.length - deep};
+          fullLinks: deep,
+          uniqueDeepCanonicalLessons: new Set(full.filter(row => row.subject === subject).map(row => row.canonicalId)).size,
+          reviewedSemanticLinks: full.filter(row => row.subject === subject && row.mappingKind === 'reviewed-semantic').length,
+          gaps: entries.length - deep};
       });
     assert.equal(bySubject.reduce((n, row) => n + row.entries, 0), topics.length);
     assert.equal(bySubject.reduce((n, row) => n + row.fullLinks, 0), full.length);
+    assert.equal(bySubject.reduce((n, row) => n + row.reviewedSemanticLinks, 0),
+      full.filter(row => row.mappingKind === 'reviewed-semantic').length);
     return {exam, entries: topics.length,
       distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
       uniqueDeepCanonicalLessons: canonicalIds.size,
