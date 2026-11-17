@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
+import {examBlueprints} from './exam-blueprints.ts';
 import {canonicalExamTopicMappings, semanticReviewQueue} from './canonical-lesson-reuse.ts';
 
 /**
@@ -123,13 +124,23 @@ test('ENEM canonical mappings share authored objects only with registered exams'
     }
     assert.equal(link.lesson.id, link.canonicalId);
   }
-  const registered = new Set(all.map(link => JSON.stringify([link.exam, link.examTopicId])));
+  // Validate against the independent exam blueprint, rather than checking a
+  // mapping against the very same mapping list (which is tautological).
+  for (const link of all) {
+    const topic = curriculumTopics.find(item => item.id === link.examTopicId);
+    assert.ok(topic, 'Canonical mapping references a real historical topic');
+    assert.equal(link.subject, topic.subject);
+    assert.equal(link.topicTitle, topic.topic);
+    assert.ok(examBlueprints[link.exam].subjects[topic.subject]?.includes(topic.topic),
+      'A canonical mapping must never leak into an unrelated exam');
+  }
   for (const link of enem) {
-    for (const exam of ['etec', 'fuvest', 'vunesp', 'saresp'] as const) {
-      if (!registered.has(JSON.stringify([exam, link.examTopicId]))) {
+    const topic = curriculumTopics.find(item => item.id === link.examTopicId)!;
+    for (const exam of Object.keys(examBlueprints) as Array<keyof typeof examBlueprints>) {
+      if (!examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic)) {
         assert.ok(!all.some(other => other.exam === exam &&
-          other.examTopicId === link.examTopicId),
-          'Unregistered exam inherited ENEM coverage');
+          other.examTopicId === topic.id),
+          'An exam outside the blueprint inherited ENEM coverage');
       }
     }
   }
