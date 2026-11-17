@@ -25,7 +25,7 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
     editorialTitle: topic.topic,
     status: partialById.has(topic.id) ? 'partial-needs-complement' : 'uncovered',
     partialSources: (partialById.get(topic.id) ?? []).map(ref => ({
-      canonicalId: ref.canonicalId,
+      canonicalId: ref.sourceCanonicalId,
       coveredScope: ref.coveredScope,
       missingScope: ref.missingScope,
     })),
