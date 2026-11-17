@@ -134,6 +134,25 @@ test('ENEM canonical mappings share authored objects only with registered exams'
     assert.ok(examBlueprints[link.exam].subjects[topic.subject]?.includes(topic.topic),
       'A canonical mapping must never leak into an unrelated exam');
   }
+  // A historical topic may belong to several exams, but its mapping must be
+  // unique *within* each exam. Advisory overlaps never grant full coverage.
+  const mappingKeys = all.map(link => link.exam + '\\0' + link.examTopicId);
+  assert.equal(new Set(mappingKeys).size, mappingKeys.length,
+    'Duplicate exam-topic mappings would inflate cross-exam coverage');
+  const advisory = semanticReviewQueue();
+  for (const reference of advisory) {
+    assert.equal(reference.eligibleForFullAlias, false);
+    assert.ok(reference.coveredScope.trim());
+    assert.ok(reference.missingScope.trim());
+    const topic = curriculumTopics.find(item => item.id === reference.targetTopicId);
+    assert.ok(topic?.exams.includes(reference.exam),
+      'Advisory references must belong to their registered exam');
+    assert.ok(!all.some(link => link.exam === reference.exam &&
+      link.examTopicId === reference.targetTopicId &&
+      link.canonicalId === reference.sourceCanonicalId &&
+      link.mappingKind === 'reviewed-semantic'),
+      'An explicitly partial source cannot silently become an integral semantic alias');
+  }
   for (const link of enem) {
     const topic = curriculumTopics.find(item => item.id === link.examTopicId)!;
     for (const exam of Object.keys(examBlueprints) as Array<keyof typeof examBlueprints>) {
