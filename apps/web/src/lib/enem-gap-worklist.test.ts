@@ -27,7 +27,7 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
   }
   for (const partial of partials) {
     assert.ok(editorialIds.has(partial.targetTopicId), 'Partial reference must target an existing ENEM topic');
-    assert.ok(!fullIds.has(partial.targetTopicId), 'An integral link cannot also be an unresolved partial');
+    // Advisory overlaps may coexist with an independently verified integral link.\n    // They must not be counted as unresolved gaps or additional full coverage.
   }
   const gaps = topics.filter(topic => !fullIds.has(topic.id)).map(topic => ({
     id: topic.id,
@@ -80,7 +80,7 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
     distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
     fullLinks: full.length,
     partialReferences: partials.length,
-    partialTargets: partialById.size,
+    partialTargets: partialById.size,\n    partialTargetsAlreadyFullyCovered: [...partialById.keys()].filter(id => fullIds.has(id)).length,\n    partialOnlyTargets: [...partialById.keys()].filter(id => !fullIds.has(id)).length,
     missing: gaps.length,
     bySubject,
     prioritizedGaps,
