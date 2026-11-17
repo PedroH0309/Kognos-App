@@ -12,6 +12,11 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
   const topics = curriculumTopics.filter(topic => topic.exams.includes('enem'));
   const full = canonicalExamTopicMappings().filter(row => row.exam === 'enem');
   const fullIds = new Set(full.map(row => row.examTopicId));
+  const uniqueCanonicalIds = new Set(full.map(row => row.canonicalId));
+  const reviewedSemanticLinks = full.filter(row => row.mappingKind === 'reviewed-semantic');
+  for (const link of full) {
+    assert.equal(link.lesson.id, link.canonicalId, 'A full mapping must resolve its actual canonical authored lesson');
+  }
   assert.equal(fullIds.size, full.length, 'Each ENEM topic must have at most one integral canonical link');
   const editorialIds = new Set(topics.map(topic => topic.id));
   assert.equal(editorialIds.size, topics.length, 'Historical ENEM topic IDs must be unique');
@@ -52,6 +57,8 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
       entries: entries.length,
       distinctExactTitles: new Set(entries.map(topic => topic.topic)).size,
       fullLinks: entries.length - pending.length,
+      uniqueCanonicalDeepLessons: new Set(full.filter(link => link.subject === subject).map(link => link.canonicalId)).size,
+      reviewedSemanticLinks: reviewedSemanticLinks.filter(link => link.subject === subject).length,
       gaps: pending.length,
       partialComplementTargets: pending.filter(gap => gap.partialSources.length > 0).length,
     };
@@ -63,6 +70,8 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
   assert.equal(bySubject.reduce((sum, row) => sum + row.entries, 0), topics.length);
   assert.equal(bySubject.reduce((sum, row) => sum + row.fullLinks, 0), full.length);
   assert.equal(bySubject.reduce((sum, row) => sum + row.gaps, 0), gaps.length);
+  assert.ok(uniqueCanonicalIds.size <= full.length);
+  assert.equal(bySubject.reduce((sum, row) => sum + row.reviewedSemanticLinks, 0), reviewedSemanticLinks.length);
   assert.deepEqual(new Set(prioritizedGaps.map(row => row.id)), new Set(gaps.map(row => row.id)));
   assert.equal(gaps.length + full.length, topics.length);
   assert.equal(new Set(gaps.map(row => row.id)).size, gaps.length);
@@ -80,6 +89,9 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
     totalEntries: topics.length,
     distinctExactTitles: new Set(topics.map(topic => topic.topic)).size,
     fullLinks: full.length,
+    uniqueCanonicalDeepLessons: uniqueCanonicalIds.size,
+    reviewedSemanticLinks: reviewedSemanticLinks.length,
+    canonicalLinks: full.map(link => ({examTopicId: link.examTopicId, canonicalId: link.canonicalId, mappingKind: link.mappingKind})),
     partialReferences: partials.length,
     partialTargets: partialById.size,
     partialTargetsAlreadyFullyCovered: [...partialById.keys()].filter(id => fullIds.has(id)).length,
