@@ -101,3 +101,36 @@ test('emit reproducible ENEM gap worklist with partial complements', () => {
     prioritizedGaps,
   }) + '\n');
 });
+
+/** Guard actual cross-exam reuse, not merely counts in an editorial report. */
+test('ENEM canonical mappings share authored objects only with registered exams', () => {
+  const all = canonicalExamTopicMappings();
+  const enem = all.filter(link => link.exam === 'enem');
+  const byCanonical = new Map<string, typeof all>();
+  for (const link of all) {
+    const group = byCanonical.get(link.canonicalId) ?? [];
+    group.push(link);
+    byCanonical.set(link.canonicalId, group);
+  }
+  for (const link of enem) {
+    const group = byCanonical.get(link.canonicalId) ?? [];
+    assert.ok(group.some(other => other.exam === 'enem' && other.examTopicId === link.examTopicId));
+    for (const other of group) {
+      assert.strictEqual(other.lesson, link.lesson,
+        'Shared canonical ID must resolve to the identical authored object');
+      assert.strictEqual(other.lesson.sections, link.lesson.sections);
+      assert.strictEqual(other.lesson.tasks, link.lesson.tasks);
+    }
+    assert.equal(link.lesson.id, link.canonicalId);
+  }
+  const registered = new Set(all.map(link => JSON.stringify([link.exam, link.examTopicId])));
+  for (const link of enem) {
+    for (const exam of ['etec', 'fuvest', 'vunesp', 'saresp'] as const) {
+      if (!registered.has(JSON.stringify([exam, link.examTopicId]))) {
+        assert.ok(!all.some(other => other.exam === exam &&
+          other.examTopicId === link.examTopicId),
+          'Unregistered exam inherited ENEM coverage');
+      }
+    }
+  }
+});
