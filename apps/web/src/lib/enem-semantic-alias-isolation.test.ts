@@ -31,7 +31,7 @@ test('reviewed ENEM semantic aliases resolve the same canonical object without e
       assert.strictEqual(resolved.lesson, canonicalLessonForExam(exam, source) ??
         mappings.find(link => link.canonicalId === source.id)?.lesson,
         'Alias must share the authored canonical source object');
-      const full = mappings.find(link => link.exam === exam && link.examTopicId === target.id);
+      const full: (typeof mappings)[number] | undefined = mappings.find(link => link.exam === exam && link.examTopicId === target.id);
       assert.ok(full);
       assert.equal(full.canonicalId, source.id);
       assert.strictEqual(full.lesson, resolved.lesson);
