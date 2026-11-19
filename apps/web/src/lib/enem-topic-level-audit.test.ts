@@ -71,6 +71,17 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
     entries: entries.length, distinctHistoricalIds: ids.size,
     fullLinks: mappings.length, uniqueCanonicalDeep: deepIds.size,
     advisoryReferences: advisory.length, missing: coverage.missing,
+    bySubject: Object.fromEntries([...new Set(entries.map(row => row.subject))].sort().map(subject => {
+      const rows = entries.filter(row => row.subject === subject);
+      return [subject, {
+        entries: rows.length,
+        distinctTitles: new Set(rows.map(row => row.editorialTitle)).size,
+        fullLinks: rows.filter(row => row.status === 'deep').length,
+        uniqueCanonicalDeep: new Set(rows.filter(row => row.status === 'deep').map(row => row.canonicalId)).size,
+        partialTargets: rows.filter(row => row.advisorySources.length > 0).length,
+        missing: rows.filter(row => row.status === 'missing').length,
+      }];
+    })),
     topics: entries,
-  }) + '\\n');
+  }) + '\n');
 });
