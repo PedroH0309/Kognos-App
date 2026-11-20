@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
+import {authoredCurriculumBatch15} from './authored-curriculum-batch15.ts';
+import {authoredLessonQualityIssues} from './authored-lesson-quality.ts';
 import {canonicalExamTopicMappings, reviewedPartialAssociations, semanticReviewQueue} from './canonical-lesson-reuse.ts';
 
 /** Editorial ENEM complement queue; no official Inep skill IDs are inferred. */
@@ -44,4 +46,21 @@ test('ENEM complement priorities reconcile with actual full coverage and partial
     provenance: 'Kognos editorial inventory, not official Inep competence or skill',
     priorities: report,
   }) + '\n');
+});
+
+/** A new authored draft is not, by itself, an approved integral ENEM alias. */
+test('batch 15 percentage lesson meets authored quality without auto-promoting partial aliases', () => {
+  const {subject, topic} = authoredCurriculumBatch15[0];
+  assert.equal(subject, 'Matemática');
+  assert.equal(topic, 'Porcentagem e razão');
+  assert.equal(authoredCurriculumBatch15.length, 1);
+  assert.deepEqual(authoredLessonQualityIssues(authoredCurriculumBatch15[0]), [],
+    'New authored lesson must satisfy the shared structural quality gate');
+  const enemTopic = curriculumTopics.find(row => row.subject === subject && row.topic === topic && row.exams.includes('enem'));
+  assert.ok(enemTopic, 'Authored batch target must be a registered ENEM editorial entry');
+  for (const partial of semanticReviewQueue().filter(row => row.exam === 'enem' && row.targetTopicId === enemTopic.id)) {
+    assert.equal(partial.eligibleForFullAlias, false,
+      'A draft cannot silently upgrade a consultative reference to integral coverage');
+    assert.ok(partial.missingScope.trim());
+  }
 });
