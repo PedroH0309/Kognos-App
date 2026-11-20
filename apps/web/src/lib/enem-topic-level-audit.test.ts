@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {curriculumTopics} from './curriculum-catalog.ts';
+import {canonicalLessonForExam} from './canonical-lesson-reuse.ts';
 import {examBlueprints} from './exam-blueprints.ts';
 import {
   canonicalExamTopicMappings, semanticReviewQueue,
@@ -117,4 +118,27 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
     })),
     topics: entries,
   }) + '\n');
+});
+
+/** Regression: a reported ENEM full link must resolve to the same authored
+ * canonical object, while an unrelated exam cannot inherit its lesson.
+ * Historical IDs stay attached to the exam-topic entry, not the source.
+ */
+test('ENEM full-link audit resolves real canonical lessons with exam isolation', () => {
+  const mappings = canonicalExamTopicMappings().filter(row => row.exam === 'enem');
+  const examIds = Object.keys(examBlueprints) as (keyof typeof examBlueprints)[];
+  for (const mapping of mappings) {
+    const target = curriculumTopics.find(topic => topic.id === mapping.examTopicId);
+    assert.ok(target, 'ENEM mapping has no registered historical topic: ' + mapping.examTopicId);
+    assert.ok(examBlueprints.enem.subjects[target.subject]?.includes(target.topic),
+      'ENEM mapping points outside its blueprint: ' + mapping.examTopicId);
+    const lesson = canonicalLessonForExam('enem', target);
+    assert.ok(lesson, 'ENEM mapping lacks authored source: ' + mapping.examTopicId);
+    assert.equal(lesson.id, mapping.canonicalId);
+    for (const exam of examIds) {
+      if (examBlueprints[exam].subjects[target.subject]?.includes(target.topic)) continue;
+      assert.equal(canonicalLessonForExam(exam, target), null,
+        'Unrelated exam inherited ENEM canonical lesson: ' + exam + '/' + mapping.examTopicId);
+    }
+  }
 });
