@@ -149,5 +149,5 @@ test('all registered exam aliases resolve one canonical object with strict membe
     uniqueCanonicalObjects: byCanonical.size,
     registeredExams: exams.length,
     physicalRowsDeleted: 0,
-  }) + '\\n');
+  }) + '\n');
 });
