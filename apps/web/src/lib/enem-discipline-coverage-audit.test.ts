@@ -78,12 +78,32 @@ test('ENEM-first discipline inventory reconciles every exam without promoting pa
     assert.ok(item.exactTitles <= item.entries);
     assert.equal(item.missing + item.fullLinks, item.entries);
   }
+  // Count proven cross-exam reuse separately from the number of links. A shared
+  // canonical ID is authored once, regardless of how many exam references use it.
+  const examsByCanonical = new Map<string, Set<ExamId>>();
+  for (const mapping of mappings) {
+    const examsForLesson = examsByCanonical.get(mapping.canonicalId) ?? new Set<ExamId>();
+    examsForLesson.add(mapping.exam);
+    examsByCanonical.set(mapping.canonicalId, examsForLesson);
+  }
+  const crossExamCanonicalIds = [...examsByCanonical.entries()]
+    .filter(([, linkedExams]) => linkedExams.size > 1)
+    .map(([canonicalId]) => canonicalId);
+  const sharedExamTopicLinks = mappings.filter(m => crossExamCanonicalIds.includes(m.canonicalId)).length;
+  assert.ok(sharedExamTopicLinks >= crossExamCanonicalIds.length * 2);
+  assert.equal(examsByCanonical.size, new Set(mappings.map(m => m.canonicalId)).size);
+  // Logical link reuse is not evidence that physical database rows were removed.
+  const logicalDuplicateAuthorshipAvoided = mappings.length - examsByCanonical.size;
+  assert.ok(logicalDuplicateAuthorshipAvoided >= 0);
   process.stdout.write('KOGNOS_EDITORIAL_DISCIPLINE_AUDIT ' + JSON.stringify({
     provenance: 'Kognos editorial exam blueprints; NOT official Inep competencies/skills',
     order: 'ENEM first, then other registered exam blueprints',
     exams: [enem, ...report.filter(r => r.exam !== 'enem')],
     globalUniqueCanonicalDeep: new Set(mappings.map(m => m.canonicalId)).size,
     globalExamTopicLinks: mappings.length,
+    crossExamCanonicalLessons: crossExamCanonicalIds.length,
+    sharedExamTopicLinks,
+    logicalDuplicateAuthorshipAvoided,
     physicalDatabaseRowsDeleted: 0,
     officialInepSkillMappingsVerifiedHere: 0,
   }) + '\n');
