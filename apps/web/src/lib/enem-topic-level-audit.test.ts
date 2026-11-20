@@ -98,7 +98,9 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
     provenance: 'Kognos editorial blueprints; official Inep competency/skill alignment not verified',
     entries: entries.length, distinctHistoricalIds: ids.size,
     fullLinks: mappings.length, uniqueCanonicalDeep: deepIds.size,
-    advisoryReferences: advisory.length, missing: coverage.missing,\n    missingWithAdvisory: missingWithAdvisory.length,\n    missingWithoutAdvisory: missingWithoutAdvisory.length,
+    advisoryReferences: advisory.length, missing: coverage.missing,
+    missingWithAdvisory: missingWithAdvisory.length,
+    missingWithoutAdvisory: missingWithoutAdvisory.length,
     bySubject: Object.fromEntries([...new Set(entries.map(row => row.subject))].sort().map(subject => {
       const rows = entries.filter(row => row.subject === subject);
       return [subject, {
@@ -106,7 +108,10 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
         distinctTitles: new Set(rows.map(row => row.editorialTitle)).size,
         fullLinks: rows.filter(row => row.status === 'deep').length,
         uniqueCanonicalDeep: new Set(rows.filter(row => row.status === 'deep').map(row => row.canonicalId)).size,
-        partialTargets: rows.filter(row => row.advisorySources.length > 0).length,\n        advisoryReferences: rows.reduce((sum, row) => sum + row.advisorySources.length, 0),\n        missingWithAdvisory: rows.filter(row => row.status === 'missing' && row.advisorySources.length > 0).length,\n        missingWithoutAdvisory: rows.filter(row => row.status === 'missing' && row.advisorySources.length === 0).length,
+        partialTargets: rows.filter(row => row.advisorySources.length > 0).length,
+        advisoryReferences: rows.reduce((sum, row) => sum + row.advisorySources.length, 0),
+        missingWithAdvisory: rows.filter(row => row.status === 'missing' && row.advisorySources.length > 0).length,
+        missingWithoutAdvisory: rows.filter(row => row.status === 'missing' && row.advisorySources.length === 0).length,
         missing: rows.filter(row => row.status === 'missing').length,
       }];
     })),
