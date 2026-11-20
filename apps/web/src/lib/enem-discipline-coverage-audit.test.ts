@@ -49,12 +49,20 @@ test('ENEM-first discipline inventory reconciles every exam without promoting pa
       };
     });
     const total = rows.reduce((n, r) => n + r.entries, 0);
+    const exactTitles = new Set(Object.values(examBlueprints[exam].subjects).flat()).size;
+    const partialTargets = new Set(advisory.filter(a => a.exam === exam).map(a => a.targetTopicId));
+    const fullTargets = new Set(mappings.filter(m => m.exam === exam).map(m => m.examTopicId));
+    const partialOnlyTargets = [...partialTargets].filter(id => !fullTargets.has(id)).length;
+    assert.ok(partialOnlyTargets <= total - fullTargets.size,
+      'Advisory-only targets cannot exceed uncovered exam entries');
     const deep = rows.reduce((n, r) => n + r.fullLinks, 0);
     assert.equal(total, coverage[exam].total);
     assert.equal(deep, coverage[exam].deep);
     assert.equal(total - deep, coverage[exam].missing);
     assert.equal(deep, mappings.filter(m => m.exam === exam).length);
-    return {exam, entries: total, distinctExamTopicIds: total, fullLinks: deep,
+    return {exam, entries: total, exactTitles, distinctExamTopicIds: total,
+      advisoryReferences: advisory.filter(a => a.exam === exam).length,
+      partialTargets: partialTargets.size, partialOnlyTargets, fullLinks: deep,
       uniqueCanonicalDeep: new Set(mappings.filter(m => m.exam === exam).map(m => m.canonicalId)).size,
       missing: total - deep, disciplines: rows};
   });
@@ -64,6 +72,12 @@ test('ENEM-first discipline inventory reconciles every exam without promoting pa
   const backlogEnem = new Set(backlog.filter(row => row.missingExams.includes('enem')).map(row => row.topicId));
   assert.equal(backlogEnem.size, enem.missing, 'ENEM backlog does not match missing editorial entries');
   assert.equal(report.reduce((n, r) => n + r.fullLinks, 0), mappings.length);
+  assert.equal(report.reduce((n, r) => n + r.advisoryReferences, 0), advisory.length);
+  assert.equal(new Set(mappings.map(m => m.canonicalId)).size <= mappings.length, true);
+  for (const item of report) {
+    assert.ok(item.exactTitles <= item.entries);
+    assert.equal(item.missing + item.fullLinks, item.entries);
+  }
   process.stdout.write('KOGNOS_EDITORIAL_DISCIPLINE_AUDIT ' + JSON.stringify({
     provenance: 'Kognos editorial exam blueprints; NOT official Inep competencies/skills',
     order: 'ENEM first, then other registered exam blueprints',
