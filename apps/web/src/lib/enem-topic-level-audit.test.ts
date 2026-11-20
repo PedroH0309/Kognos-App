@@ -142,3 +142,49 @@ test('ENEM full-link audit resolves real canonical lessons with exam isolation',
     }
   }
 });
+
+/** Cross-exam reuse must preserve object identity, not merely equal lesson text.
+ * A shared canonical ID is one source of truth across exam projections.
+ * Advisory overlaps are explicitly excluded from this invariant.
+ */
+test('ENEM shared canonical sources retain object identity across registered exams', () => {
+  const all = canonicalExamTopicMappings();
+  const enem = all.filter(row => row.exam === 'enem');
+  const byCanonical = new Map<string, typeof all>();
+  for (const row of all) {
+    const group = byCanonical.get(row.canonicalId) ?? [];
+    group.push(row);
+    byCanonical.set(row.canonicalId, group);
+  }
+  let shared = 0;
+  for (const row of enem) {
+    const group = byCanonical.get(row.canonicalId) ?? [];
+    for (const other of group) {
+      assert.strictEqual(other.lesson, row.lesson,
+        'Canonical content was cloned between exams: ' + row.canonicalId);
+      const historical = curriculumTopics.find(topic => topic.id === other.examTopicId);
+      assert.ok(historical);
+      assert.strictEqual(canonicalLessonForExam(other.exam, historical), row.lesson,
+        'Exam resolver did not reuse the same canonical object');
+      if (other.exam !== 'enem') shared++;
+    }
+  }
+  const partial = semanticReviewQueue().filter(row => row.exam === 'enem');
+  const fullTargets = new Set(enem.map(row => row.examTopicId));
+  for (const ref of partial) {
+    assert.equal(ref.eligibleForFullAlias, false);
+    assert.ok(ref.missingScope.trim().length > 0);
+    if (!fullTargets.has(ref.targetTopicId)) {
+      const target = curriculumTopics.find(topic => topic.id === ref.targetTopicId);
+      assert.ok(target);
+      assert.equal(canonicalLessonForExam('enem', target), null,
+        'Partial-only ENEM reference incorrectly grants full coverage');
+    }
+  }
+  process.stdout.write('KOGNOS_ENEM_SHARED_IDENTITY ' + JSON.stringify({
+    examinedFullLinks: enem.length,
+    crossExamPairsChecked: shared,
+    advisoryReferencesChecked: partial.length,
+    physicallyDeletedDuplicates: 0,
+  }) + '\\n');
+});
