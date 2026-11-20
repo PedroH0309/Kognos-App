@@ -55,11 +55,29 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
       };
     })
   );
+  // A consultative source never upgrades a missing target to a full mapping.
+  // Audit the partition at topic level, not merely the aggregate totals.
+  for (const row of entries) {
+    assert.equal(row.status === 'deep', row.canonicalId !== null);
+    assert.equal(row.status === 'deep', row.mappingKind !== null);
+    if (row.mappingKind === 'exact') assert.equal(row.canonicalId, row.historicalTopicId);
+    if (row.mappingKind === 'reviewed-semantic') assert.notEqual(row.canonicalId, row.historicalTopicId);
+    assert.equal(row.officialInepCompetency, null);
+    assert.equal(row.officialInepSkill, null);
+    for (const source of row.advisorySources) {
+      assert.ok(source.coveredScope.trim() && source.missingScope.trim());
+      assert.notEqual(source.canonicalId, row.historicalTopicId);
+    }
+  }
   const ids = new Set(entries.map(row => row.historicalTopicId));
   assert.equal(ids.size, entries.length);
   assert.equal(entries.filter(row => row.status === 'deep').length, mappings.length);
   const coverage = canonicalCoverageByExam()[exam];
   assert.equal(entries.length, coverage.total);
+  assert.equal(entries.filter(row => row.status === 'deep').length +
+    entries.filter(row => row.status === 'missing').length, entries.length);
+  assert.equal(new Set(entries.map(row => row.subject + '\\0' + row.editorialTitle)).size,
+    entries.length, 'Duplicate subject/title in ENEM blueprint');
   assert.equal(entries.filter(row => row.status === 'missing').length, coverage.missing);
   for (const ref of advisory) {
     assert.ok(ids.has(ref.targetTopicId), 'Advisory target outside ENEM');
