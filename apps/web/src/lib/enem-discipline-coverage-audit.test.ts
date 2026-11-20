@@ -108,3 +108,46 @@ test('ENEM-first discipline inventory reconciles every exam without promoting pa
     officialInepSkillMappingsVerifiedHere: 0,
   }) + '\n');
 });
+
+
+/**
+ * Cross-exam integrity: every approved mapping resolves the exact same authored
+ * object, and no exam can acquire an alias merely because another exam uses it.
+ * This is an editorial regression guard, not a claim of official syllabus fit.
+ */
+test('all registered exam aliases resolve one canonical object with strict membership', () => {
+  const mappings = canonicalExamTopicMappings();
+  const byExamTopic = new Map<string, (typeof mappings)[number]>();
+  const byCanonical = new Map<string, (typeof mappings)[number]['lesson']>();
+  const exams = Object.keys(examBlueprints) as ExamId[];
+  for (const mapping of mappings) {
+    const key = mapping.exam + '/' + mapping.examTopicId;
+    assert.equal(byExamTopic.has(key), false, 'Duplicate exam-topic alias: ' + key);
+    byExamTopic.set(key, mapping);
+    const topic = curriculumTopics.find(row => row.id === mapping.examTopicId);
+    assert.ok(topic, 'Unregistered historical topic: ' + key);
+    assert.ok(examBlueprints[mapping.exam].subjects[topic.subject]?.includes(topic.topic),
+      'Alias outside exam blueprint: ' + key);
+    const original = byCanonical.get(mapping.canonicalId);
+    if (original) assert.strictEqual(mapping.lesson, original,
+      'Canonical lesson object was copied: ' + mapping.canonicalId);
+    else byCanonical.set(mapping.canonicalId, mapping.lesson);
+    assert.equal(mapping.lesson.id, mapping.canonicalId);
+  }
+  for (const mapping of mappings) {
+    const topic = curriculumTopics.find(row => row.id === mapping.examTopicId);
+    assert.ok(topic);
+    for (const exam of exams) {
+      const present = examBlueprints[exam].subjects[topic.subject]?.includes(topic.topic) ?? false;
+      if (!present) assert.equal(byExamTopic.has(exam + '/' + topic.id), false,
+        'Unrelated exam inherited an alias: ' + exam + '/' + topic.id);
+    }
+  }
+  assert.equal(byExamTopic.size, mappings.length);
+  process.stdout.write('KOGNOS_ALL_EXAM_ALIAS_INTEGRITY ' + JSON.stringify({
+    examinedAliases: mappings.length,
+    uniqueCanonicalObjects: byCanonical.size,
+    registeredExams: exams.length,
+    physicalRowsDeleted: 0,
+  }) + '\\n');
+});
