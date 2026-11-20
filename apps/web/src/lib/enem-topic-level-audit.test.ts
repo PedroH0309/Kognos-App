@@ -186,5 +186,5 @@ test('ENEM shared canonical sources retain object identity across registered exa
     crossExamPairsChecked: shared,
     advisoryReferencesChecked: partial.length,
     physicallyDeletedDuplicates: 0,
-  }) + '\\n');
+  }) + '\n');
 });
