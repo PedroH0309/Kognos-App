@@ -82,13 +82,23 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
   for (const ref of advisory) {
     assert.ok(ids.has(ref.targetTopicId), 'Advisory target outside ENEM');
   }
+  // Distinguish uncovered targets with useful advisory sources from uncovered
+  // targets with no verified reference. References are not full coverage.
+  const missingWithAdvisory = entries.filter(row => row.status === 'missing' && row.advisorySources.length > 0);
+  const missingWithoutAdvisory = entries.filter(row => row.status === 'missing' && row.advisorySources.length === 0);
+  assert.equal(missingWithAdvisory.length + missingWithoutAdvisory.length, coverage.missing);
+  assert.equal(entries.reduce((sum, row) => sum + row.advisorySources.length, 0), advisory.length);
+  for (const row of missingWithAdvisory) {
+    assert.equal(row.canonicalId, null, 'Advisory-only ENEM topic incorrectly promoted');
+    assert.equal(row.mappingKind, null);
+  }
   const deepIds = new Set(entries.filter(row => row.status === 'deep').map(row => row.canonicalId));
   assert.equal(deepIds.size, coverage.canonicalIds.length);
   process.stdout.write('KOGNOS_ENEM_TOPIC_LEVEL_AUDIT ' + JSON.stringify({
     provenance: 'Kognos editorial blueprints; official Inep competency/skill alignment not verified',
     entries: entries.length, distinctHistoricalIds: ids.size,
     fullLinks: mappings.length, uniqueCanonicalDeep: deepIds.size,
-    advisoryReferences: advisory.length, missing: coverage.missing,
+    advisoryReferences: advisory.length, missing: coverage.missing,\n    missingWithAdvisory: missingWithAdvisory.length,\n    missingWithoutAdvisory: missingWithoutAdvisory.length,
     bySubject: Object.fromEntries([...new Set(entries.map(row => row.subject))].sort().map(subject => {
       const rows = entries.filter(row => row.subject === subject);
       return [subject, {
@@ -96,7 +106,7 @@ test('ENEM topic-by-topic audit retains partial gaps and exact provenance', () =
         distinctTitles: new Set(rows.map(row => row.editorialTitle)).size,
         fullLinks: rows.filter(row => row.status === 'deep').length,
         uniqueCanonicalDeep: new Set(rows.filter(row => row.status === 'deep').map(row => row.canonicalId)).size,
-        partialTargets: rows.filter(row => row.advisorySources.length > 0).length,
+        partialTargets: rows.filter(row => row.advisorySources.length > 0).length,\n        advisoryReferences: rows.reduce((sum, row) => sum + row.advisorySources.length, 0),\n        missingWithAdvisory: rows.filter(row => row.status === 'missing' && row.advisorySources.length > 0).length,\n        missingWithoutAdvisory: rows.filter(row => row.status === 'missing' && row.advisorySources.length === 0).length,
         missing: rows.filter(row => row.status === 'missing').length,
       }];
     })),
