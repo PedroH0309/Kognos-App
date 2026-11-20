@@ -151,3 +151,28 @@ test('all registered exam aliases resolve one canonical object with strict membe
     physicalRowsDeleted: 0,
   }) + '\n');
 });
+
+
+/**
+ * A consultative source can be reused across exams without granting integral
+ * coverage. Keep the missing objective explicit and preserve the historical
+ * exam-topic identity, even when a deep source exists.
+ */
+test('partial references preserve their missing scope and never create canonical aliases', () => {
+  const partials = semanticReviewQueue();
+  const full = canonicalExamTopicMappings();
+  const fullKeys = new Set(full.map(link => link.exam + '/' + link.examTopicId + '/' + link.canonicalId));
+  const registered = new Set(curriculumTopics.map(topic => topic.id));
+  for (const ref of partials) {
+    assert.equal(ref.eligibleForFullAlias, false);
+    assert.ok(ref.coveredScope.trim(), 'Partial source must describe its verified coverage');
+    assert.ok(ref.missingScope.trim(), 'Partial source must state the missing objectives');
+    assert.ok(registered.has(ref.targetTopicId), 'Partial target must be registered');
+    assert.equal(fullKeys.has(ref.exam + '/' + ref.targetTopicId + '/' + ref.sourceCanonicalId), false,
+      'A source declared partial must not also be promoted as the same integral alias');
+    const target = curriculumTopics.find(topic => topic.id === ref.targetTopicId);
+    assert.ok(target);
+    assert.ok(examBlueprints[ref.exam].subjects[target.subject]?.includes(target.topic),
+      'Consultative source cannot leak into unrelated exams');
+  }
+});
