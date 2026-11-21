@@ -214,3 +214,22 @@ test('ENEM shared canonical IDs resolve to identical lesson objects across regis
   assert.ok(verifiedShared > 0, 'expected at least one real shared cross-exam reference');
   assert.equal(enemMappings.length, new Set(enemMappings.map(row => row.examTopicId)).size);
 });
+
+test('unresolved ENEM partial candidates expose explicit blockers without counting as deep', () => {
+  const audit = enemCanonicalPriorityAudit();
+  assert.equal(audit.unresolvedPartialDetails.length, audit.unresolvedPartialCandidates);
+  const enemIds = new Set(curriculumTopics.filter(topic => topic.exams.includes('enem')).map(topic => topic.id));
+  const fullIds = new Set(audit.fullCanonicalMappings.map(row => row.examTopicId));
+  for (const candidate of audit.unresolvedPartialDetails) {
+    assert.ok(candidate.targetTopicId && enemIds.has(candidate.targetTopicId),
+      'only registered ENEM candidates may appear in this report');
+    assert.ok(candidate.blockers.length > 0, 'unresolved candidate requires explicit blockers');
+    assert.ok(candidate.blockers.every(blocker => blocker.trim().length > 0));
+    assert.ok(candidate.targetTitle.trim() && candidate.sourceTitle.trim());
+    if (!fullIds.has(candidate.targetTopicId)) {
+      assert.ok(audit.priorityQueue.some(row => row.topicId === candidate.targetTopicId),
+        'unresolved source cannot silently remove an ENEM backlog item');
+    }
+  }
+  assert.equal(audit.topics, audit.deep + audit.missing);
+});
