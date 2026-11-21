@@ -181,3 +181,55 @@ test('ENEM priority audit never double-counts a topic or promotes advisory-only 
   assert.equal(audit.uniqueDeepCanonicalLessons,
     new Set(audit.fullCanonicalMappings.map(row => row.canonicalId)).size);
 });
+
+
+test('ENEM shared canonical IDs resolve to identical lesson objects across registered exams only', () => {
+  const mappings = canonicalExamTopicMappings();
+  const byTopic = new Map(curriculumTopics.map(topic => [topic.id, topic] as const));
+  const enemMappings = mappings.filter(row => row.exam === 'enem');
+  let verifiedShared = 0;
+  for (const source of enemMappings) {
+    const topic = byTopic.get(source.examTopicId);
+    assert.ok(topic && topic.exams.includes('enem'));
+    const shared = mappings.filter(row =>
+      row.exam !== 'enem' && row.canonicalId === source.canonicalId);
+    for (const target of shared) {
+      const targetTopic = byTopic.get(target.examTopicId);
+      assert.ok(targetTopic, 'cross-exam mapping must refer to a registered topic');
+      assert.ok(targetTopic.exams.includes(target.exam));
+      assert.strictEqual(target.lesson, source.lesson,
+        'cross-exam canonical references must share one authored lesson object');
+      assert.strictEqual(canonicalLessonForExam(target.exam, targetTopic), source.lesson);
+      verifiedShared++;
+    }
+    for (const exam of ['etec', 'fuvest', 'saresp', 'vunesp'] as const) {
+      if (!topic.exams.includes(exam)) {
+        // A separate explicit semantic mapping may target a different historical
+        // topic in this exam; it must not grant access to this ENEM topic ID.
+        assert.equal(canonicalLessonForExam(exam, topic), null,
+          'an unregistered exam must not inherit the ENEM topic');
+      }
+    }
+  }
+  assert.ok(verifiedShared > 0, 'expected at least one real shared cross-exam reference');
+  assert.equal(enemMappings.length, new Set(enemMappings.map(row => row.examTopicId)).size);
+});
+
+test('unresolved ENEM partial candidates expose explicit blockers without counting as deep', () => {
+  const audit = enemCanonicalPriorityAudit();
+  assert.equal(audit.unresolvedPartialDetails.length, audit.unresolvedPartialCandidates);
+  const enemIds = new Set(curriculumTopics.filter(topic => topic.exams.includes('enem')).map(topic => topic.id));
+  const fullIds = new Set(audit.fullCanonicalMappings.map(row => row.examTopicId));
+  for (const candidate of audit.unresolvedPartialDetails) {
+    assert.ok(candidate.targetTopicId && enemIds.has(candidate.targetTopicId),
+      'only registered ENEM candidates may appear in this report');
+    assert.ok(candidate.blockers.length > 0, 'unresolved candidate requires explicit blockers');
+    assert.ok(candidate.blockers.every(blocker => blocker.trim().length > 0));
+    assert.ok(candidate.targetTitle.trim() && candidate.sourceTitle.trim());
+    if (!fullIds.has(candidate.targetTopicId)) {
+      assert.ok(audit.priorityQueue.some(row => row.topicId === candidate.targetTopicId),
+        'unresolved source cannot silently remove an ENEM backlog item');
+    }
+  }
+  assert.equal(audit.topics, audit.deep + audit.missing);
+});

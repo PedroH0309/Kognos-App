@@ -91,6 +91,15 @@ export function enemCanonicalPriorityAudit() {
     partialAdvisoryLinks: allReferences.length,
     partialOnlyTopics: priorityQueue.filter(row => row.advisorySources.length > 0).length,
     unresolvedPartialCandidates: unresolved.length,
+    /** Editorial blockers for unresolved candidates, not verified full links. */
+    unresolvedPartialDetails: unresolved.map(row => ({
+      subject: row.subject,
+      targetTitle: row.targetTitle,
+      sourceTitle: row.sourceTitle,
+      targetTopicId: row.targetTopicId,
+      sourceTopicId: row.sourceTopicId,
+      blockers: row.blockers
+    })),
     /** Reuse means shared references; never actual deletion of persisted data. */
     persistedDuplicatesDeleted: 0,
     priorityQueue
