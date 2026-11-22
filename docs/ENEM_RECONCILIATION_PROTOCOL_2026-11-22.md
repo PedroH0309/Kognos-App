@@ -1,0 +1,25 @@
+# ENEM-first: protocolo de reconciliação verificável (22/11/2026)
+
+> Documento de trabalho autoral, não homologado por docentes. Não é matriz oficial do Inep nem certificado de cobertura.
+
+## Fonte de verdade e limites
+
+- `apps/web/src/lib/enem-canonical-priority.ts` calcula o inventário editorial a partir de `curriculumTopics` com associação a `enem`. Seus títulos não equivalem automaticamente às competências e habilidades oficiais do Inep.
+- `canonical-lesson-reuse.ts` usa `canonicalExamTopicMappings()` para cobertura integral e `semanticReviewQueue()` para referências consultivas. **Não somar referências parciais à cobertura.**
+- `reviewedSemanticAliases` contém uma associação revisada de Português (coesão, coerência e progressão temática), limitada aos exames explicitamente listados. Sua existência não autoriza novas associações por semelhança lexical.
+- `reviewedPartialAssociations` descreve lacunas concretas, inclusive Citologia versus organização celular, probabilidade e estatística versus evento simples e urbanização e globalização versus questão urbana.
+- Uma fonte do Provão fora do catálogo editorial de outra prova pode ser referência consultiva, nunca prova automática de matrícula curricular ou de cobertura integral.
+
+## Critérios obrigatórios para promover um candidato a vínculo integral
+
+1. Conferir ambos os IDs e títulos registrados, a prova-alvo e a fonte autoral profunda existente na branch em análise.
+2. Comparar **todos** os objetivos e subtemas, série, extensão e profundidade da fonte com o escopo editorial-alvo; registrar evidências por objetivo.
+3. Se algum objetivo não estiver coberto, conservar `fullyCovered: false`, explicitar o complemento e **não** adicionar alias integral.
+4. Quando integral, registrar ID canônico único e exames-alvo explícitos; manter IDs históricos, rotas, progresso, respostas e dados persistidos intactos.
+5. Testar identidade da aula resolvida entre os exames autorizados, ausência de herança em exames não autorizados, unicidade de IDs e não promoção de referências parciais.
+6. Comparar o inventário **antes/depois no mesmo SHA**, separando entradas, títulos exatos distintos, aulas canônicas profundas únicas, vínculos integrais, links semânticos revisados, referências parciais, lacunas e duplicações realmente eliminadas.
+7. Executar testes curriculares, TypeScript, build, testes de segurança e CI; declarar somente o que foi efetivamente executado. Nunca fazer merge/deploy sem revisão.
+
+## Estado desta revisão
+
+Esta documentação **não** executa o inventário, não altera o registro de aliases e não comprova novas equivalências. Os números históricos de 16/11 (896 entradas ENEM, 192 vínculos integrais, 704 lacunas) devem ser tratados apenas como baseline histórico até recálculo no HEAD da branch e da main. O próximo lote deve priorizar a revisão de fontes profundas para as lacunas ENEM antes de produzir novas aulas.
