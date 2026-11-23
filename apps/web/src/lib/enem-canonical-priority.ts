@@ -90,6 +90,17 @@ export function enemCanonicalPriorityAudit() {
     })),
     /** Technical authored-lesson resolution only; NOT an official-syllabus certification. */
     deep: fullMappings.length,
+    /** Every technical mapping is individually reviewable; no scope is approved by title alone. */
+    scopeReviewQueue: fullMappings.map(row => ({
+      examTopicId: row.examTopicId,
+      canonicalId: row.canonicalId,
+      mappingKind: row.mappingKind,
+      subject: row.subject,
+      editorialTitle: row.topicTitle,
+      sharedWithExams: [...(examsForCanonical.get(row.canonicalId) ?? [])]
+        .filter(exam => exam !== 'enem').sort(),
+      status: 'pending-objective-evidence' as const
+    })),
     /** All resolved mappings await objective-by-objective pedagogical evidence. */
     scopeReviewPending: fullMappings.length,
     pedagogicallyVerifiedFullLinks: null as number | null,
