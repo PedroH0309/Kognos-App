@@ -58,6 +58,13 @@ export function enemCanonicalPriorityAudit() {
       uniqueDeepCanonicalLessons: new Set(subjectTopics.filter(topic => fullByTopic.has(topic.id)).map(topic => fullByTopic.get(topic.id)!.canonicalId)).size,
       approvedSemanticLinks: subjectTopics.filter(topic => fullByTopic.get(topic.id)?.mappingKind === 'reviewed-semantic').length,
       deep,
+      /** Technically resolved lessons still awaiting objective-by-objective scope review. */
+      scopeReviewPending: deep,
+      /** Exact-title reuse and reviewed aliases are not official-syllabus certification. */
+      fullLinksSharedWithOtherExams: subjectTopics.filter(topic => {
+        const mapping = fullByTopic.get(topic.id);
+        return mapping && [...(examsForCanonical.get(mapping.canonicalId) ?? [])].some(exam => exam !== 'enem');
+      }).length,
       missing: subjectTopics.length - deep,
       partialOnly: subjectTopics.filter(topic =>
         !fullByTopic.has(topic.id) && advisoryByTopic.has(topic.id)
