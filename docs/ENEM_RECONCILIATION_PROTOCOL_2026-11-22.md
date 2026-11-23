@@ -48,3 +48,10 @@ O inventário `subjects[]` agora inclui `scopeReviewPending` e `fullLinksSharedW
 ## Fila auditável de escopo por vínculo (23/11/2026)
 
 `enemCanonicalPriorityAudit().scopeReviewQueue` expõe, para cada vínculo técnico ENEM, `examTopicId`, `canonicalId`, `mappingKind`, disciplina, título editorial e exames adicionais que referenciam a mesma aula canônica. Cada registro permanece `pending-objective-evidence`. O campo permite organizar revisão objetivo→trecho da aula e detectar compartilhamento interprovas sem declarar equivalência pedagógica ou habilidade oficial do Inep. A fila não cria aliases, não altera conteúdo nem modifica progresso. Testes, TypeScript e build ainda exigem execução e não foram certificados neste lote.
+
+
+## Regressão de partição editorial dinâmica (23/11/2026, lote 19h)
+
+Novo teste `enem-editorial-partition-live-regression.test.ts` no commit `6a078c76ad69b81aa0ca201cc3ee07d30ef5c87c`. O teste deriva os totais dos catálogos efetivamente carregados, sem fixar 896/192/704 como constantes: exige IDs ENEM únicos, partição de tópicos resolvidos e faltantes, contagem de canônicos distintos, correspondência por disciplina, compartilhamento entre exames somente quando há mapeamento real e exclusão de referências parciais da cobertura integral. Exige ainda descrição de escopo faltante em cada referência consultiva da fila.
+
+**Antes/depois desta alteração:** o teste não altera dados curriculares, links, aulas, aliases nem schema; deltas de autoria e vínculos produzidos por este commit são zero. Os valores quantitativos atuais do inventário dependem de execução em CI; os números de 16/11 permanecem baseline histórico, não resultado desta execução. A comprovação pedagógica objetivo→evidência continua pendente. Não houve merge/deploy. O teste recém-adicionado ainda precisa ser executado e aprovado antes de declarar CI verde.
