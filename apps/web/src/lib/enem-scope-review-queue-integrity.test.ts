@@ -10,6 +10,8 @@ test('ENEM scope queue is a bijection with technical mappings, with exam isolati
   const links = canonicalExamTopicMappings().filter(row => row.exam === 'enem');
   const topics = new Map(curriculumTopics.filter(row => row.exams.includes('enem')).map(row => [row.id, row]));
   const byId = new Map(links.map(row => [row.examTopicId, row]));
+  const allMappings = canonicalExamTopicMappings();
+  const examCanonicalPairs = new Set(allMappings.map(row => `${row.exam}\u0000${row.canonicalId}`));
   assert.equal(audit.scopeReviewQueue.length, links.length);
   assert.equal(new Set(audit.scopeReviewQueue.map(row => row.examTopicId)).size, links.length);
   assert.equal(audit.scopeReviewPending, audit.scopeReviewQueue.length);
@@ -26,8 +28,7 @@ test('ENEM scope queue is a bijection with technical mappings, with exam isolati
     assert.ok(!row.sharedWithExams.includes('enem'));
     assert.equal(new Set(row.sharedWithExams).size, row.sharedWithExams.length);
     for (const exam of row.sharedWithExams) {
-      assert.ok(canonicalExamTopicMappings().some(other =>
-        other.exam === exam && other.canonicalId === row.canonicalId),
+      assert.ok(examCanonicalPairs.has(`${exam}\u0000${row.canonicalId}`),
         'Shared exam must really resolve the same canonical source');
     }
   }
@@ -37,5 +38,9 @@ test('ENEM scope queue is a bijection with technical mappings, with exam isolati
     assert.equal(subject.fullLinksSharedWithOtherExams,
       entries.filter(row => row.sharedWithExams.length > 0).length);
   }
+  // A shared canonical source does not prove identical curricular objectives.
+  // No technical mapping may be silently promoted into a pedagogical approval.
   assert.equal(audit.pedagogicallyVerifiedFullLinks, null);
+  assert.equal(audit.pedagogicalVerificationStatus, 'not-audited');
+  assert.ok(audit.scopeReviewQueue.every(row => row.status === 'pending-objective-evidence'));
 });
