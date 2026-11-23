@@ -85,7 +85,7 @@ export function enemCanonicalPriorityAudit() {
     deep: fullMappings.length,
     /** All resolved mappings await objective-by-objective pedagogical evidence. */
     scopeReviewPending: fullMappings.length,
-    pedagogicallyVerifiedFullLinks: 0,
+    pedagogicallyVerifiedFullLinks: null as number | null,
     pedagogicalVerificationStatus: 'not-audited' as const,
     missing: missing.length,
     uniqueDeepCanonicalLessons: deepCanonicalIds.length,
