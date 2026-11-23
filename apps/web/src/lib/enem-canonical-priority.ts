@@ -58,6 +58,13 @@ export function enemCanonicalPriorityAudit() {
       uniqueDeepCanonicalLessons: new Set(subjectTopics.filter(topic => fullByTopic.has(topic.id)).map(topic => fullByTopic.get(topic.id)!.canonicalId)).size,
       approvedSemanticLinks: subjectTopics.filter(topic => fullByTopic.get(topic.id)?.mappingKind === 'reviewed-semantic').length,
       deep,
+      /** Technically resolved lessons still awaiting objective-by-objective scope review. */
+      scopeReviewPending: deep,
+      /** Exact-title reuse and reviewed aliases are not official-syllabus certification. */
+      fullLinksSharedWithOtherExams: subjectTopics.filter(topic => {
+        const mapping = fullByTopic.get(topic.id);
+        return mapping && [...(examsForCanonical.get(mapping.canonicalId) ?? [])].some(exam => exam !== 'enem');
+      }).length,
       missing: subjectTopics.length - deep,
       partialOnly: subjectTopics.filter(topic =>
         !fullByTopic.has(topic.id) && advisoryByTopic.has(topic.id)
@@ -81,7 +88,23 @@ export function enemCanonicalPriorityAudit() {
     fullCanonicalMappings: fullMappings.map(row => ({
       examTopicId: row.examTopicId, canonicalId: row.canonicalId, mappingKind: row.mappingKind
     })),
+    /** Technical authored-lesson resolution only; NOT an official-syllabus certification. */
     deep: fullMappings.length,
+    /** Every technical mapping is individually reviewable; no scope is approved by title alone. */
+    scopeReviewQueue: fullMappings.map(row => ({
+      examTopicId: row.examTopicId,
+      canonicalId: row.canonicalId,
+      mappingKind: row.mappingKind,
+      subject: row.subject,
+      editorialTitle: row.topicTitle,
+      sharedWithExams: [...(examsForCanonical.get(row.canonicalId) ?? [])]
+        .filter(exam => exam !== 'enem').sort(),
+      status: 'pending-objective-evidence' as const
+    })),
+    /** All resolved mappings await objective-by-objective pedagogical evidence. */
+    scopeReviewPending: fullMappings.length,
+    pedagogicallyVerifiedFullLinks: null as number | null,
+    pedagogicalVerificationStatus: 'not-audited' as const,
     missing: missing.length,
     uniqueDeepCanonicalLessons: deepCanonicalIds.length,
     approvedSemanticLinks: fullMappings.filter(row => row.mappingKind === 'reviewed-semantic').length,
@@ -91,6 +114,15 @@ export function enemCanonicalPriorityAudit() {
     partialAdvisoryLinks: allReferences.length,
     partialOnlyTopics: priorityQueue.filter(row => row.advisorySources.length > 0).length,
     unresolvedPartialCandidates: unresolved.length,
+    /** Editorial blockers for unresolved candidates, not verified full links. */
+    unresolvedPartialDetails: unresolved.map(row => ({
+      subject: row.subject,
+      targetTitle: row.targetTitle,
+      sourceTitle: row.sourceTitle,
+      targetTopicId: row.targetTopicId,
+      sourceTopicId: row.sourceTopicId,
+      blockers: row.blockers
+    })),
     /** Reuse means shared references; never actual deletion of persisted data. */
     persistedDuplicatesDeleted: 0,
     priorityQueue
