@@ -23,3 +23,16 @@
 ## Estado desta revisão
 
 Esta documentação **não** executa o inventário, não altera o registro de aliases e não comprova novas equivalências. Os números históricos de 16/11 (896 entradas ENEM, 192 vínculos integrais, 704 lacunas) devem ser tratados apenas como baseline histórico até recálculo no HEAD da branch e da main. O próximo lote deve priorizar a revisão de fontes profundas para as lacunas ENEM antes de produzir novas aulas.
+
+## Revisão de código: risco de equivalência por título (22/11, lote noturno)
+
+Inspeção direta de `apps/web/src/lib/canonical-lesson-reuse.ts` e `apps/web/src/lib/enem-canonical-priority.ts`:
+
+- `verifiedCanonicalLessonLinks()` inclui uma aula profunda quando **o mesmo título e disciplina** aparece em pelo menos dois blueprints; essa condição não verifica, por si só, objetivos, série nem profundidade curricular de cada exame. O resultado deve ser tratado como **compartilhamento editorial exato**, não como certificado de equivalência pedagógica entre matrizes.
+- `canonicalLessonForExam()` valida ID/título/associação do blueprint e resolve primeiro a aula profunda do próprio tópico; esse caminho é seguro para identidade histórica, mas **não fornece evidência independente de escopo integral por prova**. O relatório de cobertura mede resolução técnica de aulas, não homologação docente.
+- `reviewedCanonicalAliasForExam()` é mais restritivo: exige alvo e fonte registrados, escopo de exame explícito e fonte profunda. A justificativa de revisão é textual; a matriz objetivo→evidência ainda precisa ser documentada por alias.
+- `enemCanonicalPriorityAudit()` chama os vínculos tecnicamente resolvidos de `fullCanonicalMappings`. Na comunicação externa, distinguir **cobertura técnica resolvida** de **equivalência curricular integral pedagogicamente comprovada** até haver revisão objetiva.
+
+**Gate de promoção recomendado:** para cada `(exam, examTopicId, canonicalId)`, anexar a lista de objetivos oficiais verificáveis (quando houver), objetivos editoriais, trechos/partes da aula que satisfazem cada objetivo, lacunas e veredito. Sem evidência completa, classificar como `pending-scope-review` ou referência parcial, sem aumentar a contagem de vínculos integralmente comprovados. Não desativar aulas historicamente acessíveis nem alterar progresso persistido como consequência de uma reclassificação de auditoria.
+
+**Validação deste lote:** revisão estática de código e documentação; nenhuma execução de testes, inventário dinâmico ou build. Nenhuma nova equivalência aprovada. A contagem histórica não foi recalculada.
