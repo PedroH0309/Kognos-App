@@ -81,7 +81,12 @@ export function enemCanonicalPriorityAudit() {
     fullCanonicalMappings: fullMappings.map(row => ({
       examTopicId: row.examTopicId, canonicalId: row.canonicalId, mappingKind: row.mappingKind
     })),
+    /** Technical authored-lesson resolution only; NOT an official-syllabus certification. */
     deep: fullMappings.length,
+    /** All resolved mappings await objective-by-objective pedagogical evidence. */
+    scopeReviewPending: fullMappings.length,
+    pedagogicallyVerifiedFullLinks: 0,
+    pedagogicalVerificationStatus: 'not-audited' as const,
     missing: missing.length,
     uniqueDeepCanonicalLessons: deepCanonicalIds.length,
     approvedSemanticLinks: fullMappings.filter(row => row.mappingKind === 'reviewed-semantic').length,
