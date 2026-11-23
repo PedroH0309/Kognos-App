@@ -233,3 +233,11 @@ test('unresolved ENEM partial candidates expose explicit blockers without counti
   }
   assert.equal(audit.topics, audit.deep + audit.missing);
 });
+
+test('technical ENEM links are never reported as pedagogically verified without objective evidence', () => {
+  const audit = enemCanonicalPriorityAudit();
+  assert.equal(audit.scopeReviewPending, audit.deep);
+  assert.equal(audit.pedagogicalVerificationStatus, 'not-audited');
+  assert.equal(audit.pedagogicallyVerifiedFullLinks, null);
+  assert.equal(audit.deep + audit.missing, audit.topics);
+});
