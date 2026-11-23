@@ -40,3 +40,7 @@ Inspeção direta de `apps/web/src/lib/canonical-lesson-reuse.ts` e `apps/web/sr
 ## Correção de transparência do relatório (23/11/2026)
 
 O retorno de `enemCanonicalPriorityAudit()` agora expõe `scopeReviewPending` (quantidade de vínculos técnicos ainda sem matriz objetivo→evidência), `pedagogicallyVerifiedFullLinks: null` e `pedagogicalVerificationStatus: 'not-audited'`. **`null` significa não medido**, não zero vínculos existentes ou zero vínculos pedagogicamente válidos. O campo histórico `deep` permanece uma contagem de resolução técnica de aulas autorais, sem alterar rotas, IDs, persistência ou RLS. Um teste de regressão exige essa distinção. Não houve promoção de alias, aula nova nem certificação pedagógica; a execução do teste e o inventário dinâmico ainda precisam ser confirmados em CI.
+
+## Visibilidade por disciplina (23/11/2026)
+
+O inventário `subjects[]` agora inclui `scopeReviewPending` e `fullLinksSharedWithOtherExams` por disciplina, usando as mesmas associações técnicas já computadas no agregado. O primeiro campo conta aulas resolvidas sem matriz pedagógica objetivo→evidência; o segundo conta vínculos técnicos cuja aula canônica também é referenciada por outro exame. Nenhum desses campos certifica equivalência curricular ou elimina duplicações persistidas. O cálculo não altera resolução de aulas, IDs, rotas, progresso ou dados. Auditoria dinâmica, testes e CI ainda não executados nesta alteração; não declarar verde até confirmação.
