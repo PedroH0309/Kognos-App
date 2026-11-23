@@ -44,3 +44,7 @@ O retorno de `enemCanonicalPriorityAudit()` agora expõe `scopeReviewPending` (q
 ## Visibilidade por disciplina (23/11/2026)
 
 O inventário `subjects[]` agora inclui `scopeReviewPending` e `fullLinksSharedWithOtherExams` por disciplina, usando as mesmas associações técnicas já computadas no agregado. O primeiro campo conta aulas resolvidas sem matriz pedagógica objetivo→evidência; o segundo conta vínculos técnicos cuja aula canônica também é referenciada por outro exame. Nenhum desses campos certifica equivalência curricular ou elimina duplicações persistidas. O cálculo não altera resolução de aulas, IDs, rotas, progresso ou dados. Auditoria dinâmica, testes e CI ainda não executados nesta alteração; não declarar verde até confirmação.
+
+## Fila auditável de escopo por vínculo (23/11/2026)
+
+`enemCanonicalPriorityAudit().scopeReviewQueue` expõe, para cada vínculo técnico ENEM, `examTopicId`, `canonicalId`, `mappingKind`, disciplina, título editorial e exames adicionais que referenciam a mesma aula canônica. Cada registro permanece `pending-objective-evidence`. O campo permite organizar revisão objetivo→trecho da aula e detectar compartilhamento interprovas sem declarar equivalência pedagógica ou habilidade oficial do Inep. A fila não cria aliases, não altera conteúdo nem modifica progresso. Testes, TypeScript e build ainda exigem execução e não foram certificados neste lote.
