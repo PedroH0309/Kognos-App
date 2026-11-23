@@ -36,3 +36,7 @@ Inspeção direta de `apps/web/src/lib/canonical-lesson-reuse.ts` e `apps/web/sr
 **Gate de promoção recomendado:** para cada `(exam, examTopicId, canonicalId)`, anexar a lista de objetivos oficiais verificáveis (quando houver), objetivos editoriais, trechos/partes da aula que satisfazem cada objetivo, lacunas e veredito. Sem evidência completa, classificar como `pending-scope-review` ou referência parcial, sem aumentar a contagem de vínculos integralmente comprovados. Não desativar aulas historicamente acessíveis nem alterar progresso persistido como consequência de uma reclassificação de auditoria.
 
 **Validação deste lote:** revisão estática de código e documentação; nenhuma execução de testes, inventário dinâmico ou build. Nenhuma nova equivalência aprovada. A contagem histórica não foi recalculada.
+
+## Correção de transparência do relatório (23/11/2026)
+
+O retorno de `enemCanonicalPriorityAudit()` agora expõe `scopeReviewPending` (quantidade de vínculos técnicos ainda sem matriz objetivo→evidência), `pedagogicallyVerifiedFullLinks: null` e `pedagogicalVerificationStatus: 'not-audited'`. **`null` significa não medido**, não zero vínculos existentes ou zero vínculos pedagogicamente válidos. O campo histórico `deep` permanece uma contagem de resolução técnica de aulas autorais, sem alterar rotas, IDs, persistência ou RLS. Um teste de regressão exige essa distinção. Não houve promoção de alias, aula nova nem certificação pedagógica; a execução do teste e o inventário dinâmico ainda precisam ser confirmados em CI.
